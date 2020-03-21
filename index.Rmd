@@ -14,7 +14,26 @@ description: "This book is for anyone in the medical field interested in learnin
 
 # Preface
 
-This is a book for anyone in the medical field interested in analyzing the data available to them to better understand health, disease, or delivery of care. This could include nurses, dieticians, psychologists and PhDs in related fields, as well as medical students, residents, fellows, or doctors in practice.     
+This is a book for anyone in the medical field interested in analyzing the data available to them to better understand health, disease, or delivery of care. This could include nurses, dieticians, psychologists, and PhDs in related fields, as well as medical students, residents, fellows, or doctors in practice.     
+
+## The Spiral of Success structure
+This book is structured on the concept of a "spiral of success", with readers learning about topics like data visualization, data wrangling, data modeling, reproducible research, and communication of results in repeated passes. These will initially be at a superficial level, and at each pass of the spiral, will provide increasing depth and complexity. This means that the chapters on data wrangling will not all be together, nor the chapters on data visualization. Our goal is to build skills gradually, and return to (and remind students of) their previously built skills in one area and to add to them. The eventual goal is for learners to be able to produce, document, and communicate reproducible research to their community.
+
+## Motivation for this Book
+Most medical people who learn R to do their own data analysis do it on their own time. They rarely have time for a semester-long course, and their clinical schedules usually will not allow it. Fortunately, a lot of people learn R on their own, and there is a strong and supportive R Community to help new learners. A 2019 Twitter survey conducted by @RLadies found that more than half of respondents were largely self-taught, from books and online resources.     
+There are a lot of good resources for learning R, so why one more? In part, because the needs of a medical audience are often different. There are distinct needs for protecting health information, generating a descriptive Table One, using secure data tools like REDCap, and creating standard medical journal and meeting output in Word, Powerpoint, and poster formats.
+
+
+## The Reproducibility Crisis
+
+## What this Book is Not
+This is not an introduction to Statistics. I am assuming that you have learned some statistics somewhere in secondary school, undergraduate studies, graduate school, or medical school. If you need to brush up on your statistics, no worries. There are several excellent (and free!) e-books on that very topic, using R. Some good examples include:     
+
+1. [Learning Statistics with R (LSR)](https://learningstatisticswithr-bookdown.netlify.com)
+2. [Modern Dive](https://bookdown.org/fjmcgrade/ismaykim/)
+3. [Foundations of Statistics](https://bookdown.org/speegled/foundations-of-statistics/)
+
+We will cover a lot of the same materials as these books, but with a less theoretical and more applied approach. I will focus on specific medical examples, and emphasize issues (like Protected Health Information) that are particularly important for medical data. I am assuming that you are here because you want to analyze your data in limited time.
 
 The **bookdown** package can be installed from CRAN or Github:
 
