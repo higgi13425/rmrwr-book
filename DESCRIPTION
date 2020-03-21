@@ -4,3 +4,5 @@ Title: Reproducible Medical Research with R
 Version: 0.0.1
 Imports: bookdown
 Remotes: rstudio/bookdown
+URL: https://github.com/higgi13425/rmrwr-book
+BugReports: https://github.com/higgi13425/rmrwr-book/issues
