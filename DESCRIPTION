@@ -1,0 +1,6 @@
+Package: rmrwr-book
+Type: Book
+Title: Reproducible Medical Research with R
+Version: 0.0.1
+Imports: bookdown
+Remotes: rstudio/bookdown
