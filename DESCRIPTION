@@ -8,5 +8,5 @@ URL: https://github.com/higgi13425/rmrwr-book
 BugReports: https://github.com/higgi13425/rmrwr-book/issues
 License: CC-BY-NC-SA
 Description: An e-book on Reproducible Medical Research with R
-Authors@R: c(person("Peter", "Higgins", role = c("aut", "cre"), email = "higgi13425@yahoo.com")
+Author: Peter Higgins <higgi13425@yahoo.com>
 Maintainer: Peter Higgins <higgi13425@yahoo.com>
