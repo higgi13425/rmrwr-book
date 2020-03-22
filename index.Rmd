@@ -36,9 +36,9 @@ There also are simply not enough statisticians to meet the needs of medical scie
 ## What this Book is Not
 
 ### This Book is Not A Statistics Text
-This is not an introduction to Statistics. I am assuming that you have learned some statistics somewhere in secondary school, undergraduate studies, graduate school, or medical school. There are lots of statisticians with Ph.D.s who can certainly teach statistics much better than I can. While I have a master's degree in Clinical Research Design and Statistical Analysis (isn't that a mouthful!) from the University of Michigan, I will leave formal teaching of statistics to the pros.      
+This is not an introduction to statistics. I am assuming that you have learned some statistics somewhere in secondary school, undergraduate studies, graduate school, or even medical school. There are lots of statisticians with Ph.D.s who can certainly teach statistics much more effectively than I can. While I have a master's degree in Clinical Research Design and Statistical Analysis (isn't that a mouthful!) from the University of Michigan, I will leave formal teaching of statistics to the pros.      
 
-If you need to brush up on your statistics, no worries. There are several excellent (and free!) e-books on that very topic, using R. Some good examples include:     
+If you need to brush up on your statistics, no worries. There are several excellent (and free!) e-books on that very topic, using R. Some good examples include (go ahead and click through the blue links to explore):     
 
 1. [Learning Statistics with R (LSR)](https://learningstatisticswithr-bookdown.netlify.com)
 2. [Modern Dive](https://bookdown.org/fjmcgrade/ismaykim/)
