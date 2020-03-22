@@ -45,9 +45,9 @@ If you need to brush up on your statistics, no worries. There are several excell
 3. [Foundations of Statistics](https://bookdown.org/speegled/foundations-of-statistics/)
 
 
-We will cover a lot of the same materials as these books, but with a less theoretical and more applied approach. I will focus on specific medical examples, and emphasize issues (like Protected Health Information) that are particularly important for medical data. I am assuming that you are here because you want to analyze your data in limited time.
+We will cover a lot of the same materials as these books, but with a less theoretical and more applied approach. I will focus on specific medical examples, and emphasize issues (like Protected Health Information) that are particularly important for medical data. I am assuming that you are here because you want to analyze your own data in your probably very limited free time.
 
-### A Launchpad, Not A Comprehensive Coverage of the R Universe
+### This Book is A Launchpad, Not Comprehensive Coverage of the R Universe
 This book is also far from comprehensive in teaching what is available in the R ecosystem. Many of the later chapters will be launching pads, giving you a taste of what is available in cerain areas, and guiding you to resources (and links) that you can explore to learn and do more beyond the scope of this book.
 
 
