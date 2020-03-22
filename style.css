@@ -71,14 +71,14 @@ h1, h2, h3, h4 {
 .title {
   font-family: 'Lora';
   font-size: 4em !important;
-  color: #00274c;
+  color: #0174bb;
   margin-top: 0.275em !important;
   margin-bottom: 0.35em !important;
 }
 
 .subtitle {
   font-family: 'Lora';
-  color: #514886;
+  color: #0174bb;
 }
 
 
@@ -146,17 +146,17 @@ h1, h2, h3, h4 {
   padding-bottom: 8px;
   padding-left: 15px;
   padding-right: 15px;
-  color: #0a4525;
+  color: #174992;
 }
 
 .summary a:hover {
-  color: #3ea2aad9 !important;
+  color: #514886 !important;
 }
 
 .book .book-summary ul.summary li.active>a { /*active TOC links*/
-  color: #379fa7 !important;
+  color: #00274c !important;
   border-left: solid 4px;
-  border-color: #379fa7;
+  border-color: #00274c;
   padding-left: 11px !important;
 }
 
