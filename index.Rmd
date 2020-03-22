@@ -44,8 +44,8 @@ This is not an introduction to Statistics. I am assuming that you have learned s
 
 We will cover a lot of the same materials as these books, but with a less theoretical and more applied approach. I will focus on specific medical examples, and emphasize issues (like Protected Health Information) that are particularly important for medical data. I am assuming that you are here because you want to analyze your data in limited time.
 
-### Not Comprehensive Coverage of R
-This book is also far from comprehensive in teaching what is available in the R ecosystem. Many of the later chapters will be launching pads, giving you a taste of what is available un cerain areas, and guiding you to resources that you can explore to learn and do more.
+### A Launchpad, Not A Comprehensive Coverage of the R Universe
+This book is also far from comprehensive in teaching what is available in the R ecosystem. Many of the later chapters will be launching pads, giving you a taste of what is available in cerain areas, and guiding you to resources (and links) that you can explore to learn and do more beyond the scope of this book.
 
 
 -----
