@@ -48,7 +48,7 @@ If you need to brush up on your statistics, no worries. There are several excell
 
 We will cover a lot of the same materials as these books, but with a less theoretical and more applied approach. I will focus on specific medical examples, and emphasize issues (like Protected Health Information) that are particularly important for medical data. I am assuming that you are here because you want to analyze your own data in your probably very limited free time.
 
-### This Does Not Provide Comprehensive Coverage of the R Universe
+### This Book Does Not Provide Comprehensive Coverage of the R Universe
 This book is also far from comprehensive in teaching what is available in the R ecosystem. This book should be considered a launch pad. Many of the later chapters will give you a taste of what is available in certain areas, and guide you to resources (and links) that you can explore to learn more and do more beyond the scope of this book.    
 
 
