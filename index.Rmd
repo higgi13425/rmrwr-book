@@ -48,13 +48,11 @@ If you need to brush up on your statistics, no worries. There are several excell
 We will cover a lot of the same materials as these books, but with a less theoretical and more applied approach. I will focus on specific medical examples, and emphasize issues (like Protected Health Information) that are particularly important for medical data. I am assuming that you are here because you want to analyze your own data in your probably very limited free time.
 
 ### This Book is A Launchpad, Not Comprehensive Coverage of the R Universe
-This book is also far from comprehensive in teaching what is available in the R ecosystem. Many of the later chapters will be launching pads, giving you a taste of what is available in cerain areas, and guiding you to resources (and links) that you can explore to learn and do more beyond the scope of this book.
+This book is also far from comprehensive in teaching what is available in the R ecosystem. Many of the later chapters will be launching pads, giving you a taste of what is available in cerain areas, and guiding you to resources (and links) that you can explore to learn and do more beyond the scope of this book.    
 
 
------
-Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading `#`.
 
-To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <https://yihui.name/tinytex/>.
+
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages
