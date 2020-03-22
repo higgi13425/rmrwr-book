@@ -1,5 +1,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/acb42178-12c8-4ca2-ae3a-d596bd3c568e/deploy-status)](https://app.netlify.com/sites/rmrwr-book/deploys)
 
+![bookdown](https://github.com/higgi13425/rmrwr-book/workflows/bookdown/badge.svg)
+
 This is the Github repository for Reproducible Medical Research with R, a book about working toward more reproducible medical research using R and associated tools, particularly those developed by RStudio.
 
 The book itself can be found [here](https://rmrwr-book.netlify.com/)
