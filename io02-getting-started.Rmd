@@ -24,6 +24,16 @@ While in many chapters, we will list the R packages you need, in this chapter, y
 - https://rstudio.com/products/rstudio/download/
 - https://git-scm.com/downloads 
 
+## Pathway for this Chapter
+This Chapter is part of the **TOOLS** pathway.
+Chapters in this pathway include
+
+- Getting Started and Installing Your Tools
+- Updating R, RStudio, and Your Packages
+- Advanced Use of the RStudio IDE
+- When You Don't Want to Update Packages (Using _renv_)
+- Major R Updates (Where Are My Packages?)
+
 ## Installing R on your Computer
 
 
