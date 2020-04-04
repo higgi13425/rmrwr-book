@@ -5,8 +5,8 @@ language:
 delete_merged_file: true
 rmd_files:
 - index.Rmd
-- getting-started.Rmd
-- updating.Rmd
-- major-updates.Rmd
-- references.Rmd
+- io02-getting-started.Rmd
+- io04-updating.Rmd
+- io07-major-updates.Rmd
+- io12-references.Rmd
 
