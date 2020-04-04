@@ -9,5 +9,18 @@ output: html_document
 
 # Getting Started and Installing Your Tools
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+One of the most intimidating parts of getting started with something new is the actual getting started part. Don't worry, we will walk you through this step-by step. 
+
+## Goals for this Chapter
+- Install R on your Computer
+- Install RStudio on your Computer
+- Install Git on your Computer
+- Get Acquainted with the RStudio IDE
+
+## Website links needed for this Chapter
+While in many chapters, we will list the R packages you need, in this chapter, you will be downloading and installing new software, so we will list the links here for your reference    
+
+- https://www.r-project.org
+- https://rstudio.com/products/rstudio/download/
+- https://git-scm.com/downloads 
 
