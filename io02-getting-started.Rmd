@@ -24,3 +24,13 @@ While in many chapters, we will list the R packages you need, in this chapter, y
 - https://rstudio.com/products/rstudio/download/
 - https://git-scm.com/downloads 
 
+## Installing R on your Computer
+
+
+## Installing RStudio on your Computer
+
+
+## Installing Git on your Computer
+
+
+## Getting Acquainted with the RStudio IDE

@@ -18,27 +18,26 @@ pre code {
 /*  Desiree custom css  */
 
 /* next 3 rules for setting large image at top of each page and pushing book content to appear beneath that */
-
+/*
 .hero-image-container {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 390px;
-  /*background-image: url("images/books.jpg");*/
+  /*background-image: url("images/books.jpg");
   background-color: #2F65A7;
-}
+}*/
 
-.hero-image {
+/*.hero-image {
   width: 100%;
   height: 390px;
   object-fit: cover;
-}
+}*/
 
-.page-inner {
+/*.page-inner {
   padding-top: 440px !important;
-}
-
+}*/
 
 /* Links */
 
