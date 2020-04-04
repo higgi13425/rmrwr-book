@@ -5,5 +5,8 @@ language:
 delete_merged_file: true
 rmd_files:
 - index.Rmd
+- Getting Started and Installing Your Tools
+- Updating R, RStudio, and Your Packages
+- Majore R Updates (Where Are My Packages?)
 - references.Rmd
 
