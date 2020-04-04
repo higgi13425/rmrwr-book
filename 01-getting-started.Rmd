@@ -1,4 +1,8 @@
-# Introduction {#intro}
+# Getting Started and Installing {#intro}
+
+To do medical data science in R, you first need up-to-date tools. In this chapter, we will get you started by installing R and then RStudio on your computer to get you started with R. Then we will help you install git on your computer as a first step into version control. We will walk you through the RStudio coding environment to get you ready for data visualization and producing a data communication product to share with friends and colleagues.
+
+
 
 You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods).
 
