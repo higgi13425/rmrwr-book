@@ -4,6 +4,6 @@ language:
     chapter_name: "Chapter "
 delete_merged_file: true
 rmd_files:
-  index.Rmd
-  references.Rmd
+- index.Rmd
+- references.Rmd
 
