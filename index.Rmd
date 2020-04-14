@@ -55,7 +55,21 @@ We will cover a lot of the same materials as these books, but with a less theore
 This book is also far from comprehensive in teaching what is available in the R ecosystem. This book should be considered a launch pad. Many of the later chapters will give you a taste of what is available in certain areas, and guide you to resources (and links) that you can explore to learn more and do more beyond the scope of this book.    
 
 
+## Some Guideposts
 
+Keep an eye out for Guideposts, which look like this:
+
+Warnings
+
+:::warning
+This is a common gotcha. Watch out for this.
+:::
+
+Explore More - resources for learning more about a particular topic.
+
+:::explore
+If you want to learn more about shiny, go to https://mastering-shiny.org to see a book in progress
+:::
 
 
 ```{r include=FALSE}

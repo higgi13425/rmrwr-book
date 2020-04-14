@@ -223,11 +223,11 @@ ul.summary > li > a { /* The > selects all the li's which are immediately within
   margin-left: 1rem;
 
 }
-/* Sidebar formating --------------------------------------------*/
-/* from r-pkgs.org*/
 
-div.rstudio-tip, div.tip {
-  border: 4px #aed6d963;
+/* -------------- div tips-------------------*/
+
+div.warning, div.tip, div.tryit, div.challenge, div.explore {
+  border: 4px #174992; /* south u blue */
   border-style: dashed solid;
   padding: 1em;
   margin: 1em 0;
@@ -236,16 +236,16 @@ div.rstudio-tip, div.tip {
   background-repeat: no-repeat;
   background-position: 15px center;
   min-height: 120px;
-  color: #2ea8b3;
-  background-color: #fcfcfc;
+  color: #0174bb; /* arboretum blue */
+  background-color: #00b5af; /* taubman teal */
 }
 
-div.rstudio-tip {
-  background-image: url("../images/rstudio.png");
+div.warning {
+  background-image: url("../images/warning.png");
 }
 
-div.tip {
-  background-image: url("../images/lightbulb.png");
+div.explore {
+  background-image: url("../images/lexplore.png");
 }
 
 /* .book .book-body .page-wrapper .page-inner section.normal is needed
