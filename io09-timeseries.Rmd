@@ -1,5 +1,5 @@
 ---
-title: "io09-timeseries"
+title: "Time Series with the Tidyverts Packages"
 author: "Daniel Y Chen"
 output: html_document
 ---
@@ -7,7 +7,9 @@ output: html_document
 
 
 # Time Series data with the Tidyverts Packages
-Fun text here
+Fun text here. 
+All kinds of crazy examples.
+Time series with influenza 1918, perhaps.
 
 ## Tsibble
 Time series tibble
