@@ -1,0 +1,6 @@
+---
+title: "Reproducible Medical Research with R"
+author: "Peter D.R. Higgins, MD, PhD, MSc"
+date: "`r Sys.Date()`"
+output: html_document
+---
