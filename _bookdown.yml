@@ -9,5 +9,6 @@ rmd_files:
 - io02-getting-started.Rmd
 - io04-updating.Rmd
 - io07-major-updates.Rmd
+- io09-timeseries.Rmd
 - io12-references.Rmd
 

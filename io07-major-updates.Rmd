@@ -1,6 +1,7 @@
 ---
 title: "Major R Updates (Where Are My Packages?)"
 author: "Peter Higgins"
+output: html_document
 ---
 
 

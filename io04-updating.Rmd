@@ -1,6 +1,7 @@
 ---
 title: "Updating R, RStudio, and Your Packages"
 author: "Peter Higgins"
+output: html_document
 ---
 
 

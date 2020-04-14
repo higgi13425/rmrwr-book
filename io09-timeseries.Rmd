@@ -1,0 +1,24 @@
+---
+title: "io09-timeseries"
+author: "Daniel Y Chen"
+output: html_document
+---
+
+
+
+# Time Series data with the Tidyverts Packages
+Fun text here
+
+## Tsibble
+Time series tibble
+
+## Fable
+Stuff here
+
+## Feasts
+More text
+
+## Slider
+Rolling averages!
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.

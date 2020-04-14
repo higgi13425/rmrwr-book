@@ -1,6 +1,7 @@
 ---
 title: "Getting Started and Installing Your Tools.Rmd"
 author: "Peter Higgins"
+output: html_document
 ---
 
 
