@@ -227,7 +227,7 @@ ul.summary > li > a { /* The > selects all the li's which are immediately within
 /* -------------- div tips-------------------*/
 
 div.warning, div.tip, div.tryit, div.challenge, div.explore {
-  border: 4px #dfedff; /* very light blue */
+  border: 4px #00274c; /* michigan blue */
   border-style: solid;
   padding: 1em;
   margin: 1em 0;
