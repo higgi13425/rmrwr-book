@@ -1,5 +1,5 @@
 --- 
-title: "Reproducible Medical Research with R"
+title: "Reproducible Medical with R"
 author: "Peter D.R. Higgins, MD, PhD, MSc"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
