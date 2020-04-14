@@ -227,7 +227,7 @@ ul.summary > li > a { /* The > selects all the li's which are immediately within
 /* -------------- div tips-------------------*/
 
 div.warning, div.tip, div.tryit, div.challenge, div.explore {
-  border: 4px #00274c; /* michigan blue */
+  border: 4px #0066ff; /* blue */
   border-style: solid;
   padding: 1em;
   margin: 1em 0;
@@ -236,8 +236,8 @@ div.warning, div.tip, div.tryit, div.challenge, div.explore {
   background-repeat: no-repeat;
   background-position: 15px center;
   min-height: 120px;
-  color: #0027fc; /* michigan blue */
-  background-color: #bed3ec; /* light blue */
+  color: #0066ff; /* blue */
+  background-color: #ffff00; /* aqua blue */
 }
 
 div.warning {
