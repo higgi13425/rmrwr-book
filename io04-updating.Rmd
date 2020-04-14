@@ -1,8 +1,6 @@
 ---
 title: "Updating R, RStudio, and Your Packages"
 author: "Peter Higgins"
-date: "4/4/2020"
-output: html_document
 ---
 
 
