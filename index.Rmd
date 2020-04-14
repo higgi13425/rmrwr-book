@@ -59,16 +59,34 @@ This book is also far from comprehensive in teaching what is available in the R 
 
 Keep an eye out for Guideposts, which look like this:
 
-Warnings
+**Warnings**
 
 :::warning
 This is a common gotcha. Watch out for this.
 :::
 
-Explore More - resources for learning more about a particular topic.
+**Tips**
+
+:::tip
+This is a helpful tip for debugging.
+:::
+
+**Try It Out**
+
+:::tryit
+Take what you have learned and try it yourself in the code box below.
+:::
+
+**Challenge** - take the next step and try a more challenging example.
+
+:::challenge
+Try this more complicated example.
+:::
+
+**Explore More** - resources for learning more about a particular topic.
 
 :::explore
-If you want to learn more about shiny, go to https://mastering-shiny.org to see a book in progress
+If you want to learn more about Shiny apps, go to https://mastering-shiny.org to see an entire book on the topic.
 :::
 
 
