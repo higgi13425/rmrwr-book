@@ -7,7 +7,7 @@ delete_merged_file: true
 rmd_files:
 - index.Rmd
 - io02-getting-started.Rmd
-- i03-tasting.Rmd
+- io03-tasting.Rmd
 - io04-updating.Rmd
 - io07-major-updates.Rmd
 - io09-timeseries.Rmd

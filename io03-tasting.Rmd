@@ -17,13 +17,13 @@ that you can share with friends and family.
 ## Getting Set Up
 
 At the end of this chapter, you will publish a data analysis to *RPubs*, a free website site where you can share your data analyses and visualizations. First you will need to set up an account on RPubs. Start by going to this [RPubs link](https://rpubs.com/users/new).
-![rpubs1]("/images/rpubs1.png")    
+![rpubs1](images/rpubs1.png)    
 <br>
 Enter your name, email, username and password, and you will be set up to use RPubs.    
 This will bring you to this page. We have set up an account for pdr.    
-![rpubs2]("/images/rpubs2.png") 
+![rpubs2](images/rpubs2.png) 
 Click on the _Here's How You Get Started_ link.
-![rpubs3]("/images/rpubs3.png")    
+![rpubs3](images/rpubs3.png)    
 You are now all set up and ready to go. Now you have a place on the internet to share your R creations!
 
 ## Goals for this Chapter
