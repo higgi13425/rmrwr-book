@@ -56,17 +56,22 @@ Chapters in this pathway include
 Let's get started in R. Turn on your computer, and open the RStudio application. You should see the familiar panes for the Console, Environment, and Files.    
 You need to open up a new document to activate the Source pane. While in RStudio, click on File/New File/R Script.
 It should look like this.    
+
 ![newrmd](images/newrmd1.png)
+
+
 Now you will see the window below. Rename the document from "Untitled" to "Tasting", and click the OK button.
+
 ![newrmd2](images/newrmd2.png)
 
 Now the file is open, and looks like the window below. Click on the save icon (like a floppy disk in the top left), and save this document as tasting.Rmd.
+
 ![newrmd3](images/newrmd3.png)
-You have created a new Rmarkdown document. An Rmarkdown document lets you mix data, code, and descriptive text. It is very helpful for presenting and explaining data and visualizations. An Rmarkdown document can be converted (Knit) to HTML for a web page, Microsoft Word, Powerpoint, PDF, and several other formats.     
-Code chunks are in a gray color, and both start and end with 3 backticks (`````).    
+<br>You have created a new Rmarkdown document. An Rmarkdown document lets you mix data, code, and descriptive text. It is very helpful for presenting and explaining data and visualizations. An Rmarkdown document can be converted (Knit) to HTML for a web page, Microsoft Word, Powerpoint, PDF, and several other formats.     
+Code chunks are denoted by a gray color, and both start and end with 3 backticks(\`\`\`).    
 Text can be body text, or can be headers and titles. The number of hashtags before some header text defines what level the header is.     
 You can insert links, pictures, and YouTube videos into Rmarkdown documents if it is helpful to explain your point. <br>
-The first code chunk in each Rmarkdown document is named `setup`. The name comes after the left curly brace and the r (`{r`) at the beginning of the setup chunk. The letter `r` tells RStudio that what is coming on the next line is R code (RStudio can also use SQL, C++, python, and several other languages). After the comma, you can define options for this code chunk. In this case, the option `include` is set to FALSE, so that when this Rmarkdown document is knitted, this code chunk will not appear. 
+The first code chunk in each Rmarkdown document is named `setup`. The name of the chunkcomes after the left curly brace and the r (`{r`) at the beginning of the setup chunk. The letter `r` tells RStudio that what is coming on the next line is R code (RStudio can also use SQL, C++, python, and several other languages). After the comma, you can define options for this code chunk. In this case, the option `include` is set to `FALSE`, so that when this Rmarkdown document is knitted, this code chunk will not appear. 
 
 ## Read in Data from a file
 
@@ -78,7 +83,7 @@ The first code chunk in each Rmarkdown document is named `setup`. The name comes
 
 ## The Dessert Cart
 
-Below are some examples of neat things you can do with medical data in R. These are more advanced approaches, but completely doable when you have more experience with R.
+Below are some examples of neat things you can do with medical data in R. These are more advanced approaches, but completely do-able when you have more experience with R.
 
 ### Interactive Plots
 
