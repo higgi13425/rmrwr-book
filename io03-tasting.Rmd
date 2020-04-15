@@ -75,9 +75,15 @@ Below are some examples of neat things you can do with medical data in R. These 
 ### A Shiny App
 
 ### An Example of Synergy in the R Community
+<<<<<<< HEAD
 One of the remarkable things about the open source R community is that people build all kinds of new R functions and packages that are useful to them, and then share them publicly with tools like _Github_ so that they can be useful to others. Often combining bits of several packages leads to **emergent properties**  - completely new creations that can only occur because all of the parts (packages) are present. The collaborative nature of the R community, in this case on Twitter (follow the #rstats hashtag), can lead to surprising collaborations and outcomes.     
 See the example below.     
 Go ahead, _click_ on the play button to run the gifs. All coded in R.
+=======
+One of the remarkable things about the open source R community is that people build all kinds of new R functions and packages that are useful to them, and then share them publicly with tools like _Github_ so that they can be useful to others. Often combining bits of several packages leads to emergent properties - completely new creations that only occur because all of the parts (packages) are present. The collaborative nature of the R community, in this case on Twitter (follow the #rstats hashtag), can lead to surprising collaborations and outcomes.     
+See the example below.     
+Go ahead, _click_ on the play button to run the gif. All coded in R.
+>>>>>>> ecad20f625892129d82b37838e0a671ea8d91a3f
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">I used a modified version of <a href="https://twitter.com/djnavarro?ref_src=twsrc%5Etfw">@djnavarro</a>&#39;s flametree package to produce this fractal tree in 3D, placed it in a LEGO planter for <a href="https://twitter.com/ryantimpe?ref_src=twsrc%5Etfw">@ryantimpe</a>, set down a copy of <a href="https://twitter.com/skyetetra?ref_src=twsrc%5Etfw">@skyetetra</a> and <a href="https://twitter.com/robinson_es?ref_src=twsrc%5Etfw">@robinson_es</a>&#39;s book for some light reading, and of course, used <a href="https://twitter.com/hashtag/rayrender?src=hash&amp;ref_src=twsrc%5Etfw">#rayrender</a> and <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> to render it all :) <a href="https://t.co/qRg2omUftw">https://t.co/qRg2omUftw</a> <a href="https://t.co/Ff9VeLtX97">pic.twitter.com/Ff9VeLtX97</a></p>&mdash; Tyler Morgan-Wall (@tylermorganwall) <a href="https://twitter.com/tylermorganwall/status/1250047222936416256?ref_src=twsrc%5Etfw">April 14, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
