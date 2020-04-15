@@ -1,5 +1,5 @@
 ---
-title: "Major R Updates (Where Are My Packages?)"
+title: "Major R Updates (Where Did My Packages Go?)"
 author: "Peter Higgins"
 output: html_document
 ---

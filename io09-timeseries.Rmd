@@ -16,13 +16,16 @@ I expect that most learners will be using this book in their spare time at night
 ## Tsibble
 Time series tibble
 
+[Tidyverts webpage](https://tidyverts.org)
+
 ## Fable
-Stuff here
+Tidy forecasting
 
 ## Feasts
-More text
+Feature extraction and Statistics
 
 ## Slider
-Rolling averages!
+Rolling anaylsis with window functions.     
+[Slider packagedown page](https://davisvaughan.github.io/slider/)    
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
