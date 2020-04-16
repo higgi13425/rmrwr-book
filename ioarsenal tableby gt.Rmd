@@ -1,0 +1,81 @@
+---
+title: "gt practice arsenal"
+author: "Peter Higgins"
+date: "February 26, 2019"
+output:
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(arsenal)
+library(gt)
+library(tidyverse)
+library(glue)
+```
+
+## R Markdown
+
+This is an R Markdown document. We will make a gt table.
+
+```{r cars}
+# Define the start and end dates for the data range
+start_date <- "2010-06-07"
+end_date <- "2010-06-14"
+
+# Create a gt table based on preprocessed
+# `sp500` table data
+sp500 %>%
+  dplyr::filter(date >= start_date & date <= end_date) %>%
+  dplyr::select(-adj_close) %>%
+  dplyr::mutate(date = as.character(date)) %>%
+  gt() %>%
+  tab_header(
+    title = "S&P 500",
+    subtitle = glue::glue("{start_date} to {end_date}")
+  ) %>%
+  fmt_date(
+    columns = vars(date),
+    date_style = 3
+  ) %>%
+  fmt_currency(
+    columns = vars(open, high, low, close),
+    currency = "USD"
+  ) %>%
+  fmt_number(
+    columns = vars(volume),
+    scale_by = 1 / 1E9,
+    pattern = "{x}B"
+  )  
+
+```
+
+## Now a tableby object
+
+You can also embed plots, for example:
+
+```{r table1 }
+tab <- tableby(arm ~ sex + age, data = mockstudy) %>%
+  summary(term.name = "term", text = NULL)
+
+format_for_gt <- function(df)
+{
+  df$variable <- df$label[1]
+  df[-1, ]
+}
+
+tab$object[[1]] <- tab$object[[1]] %>% 
+  group_by(variable) %>% 
+  do(format_for_gt(.)) %>%
+  ungroup()
+
+tab %>% 
+  as.data.frame() %>% 
+  mutate(variable = tab$object[[1]]$variable) %>% 
+  gt(
+    rowname_col = "term",
+    groupname_col = "variable"
+  ) 
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

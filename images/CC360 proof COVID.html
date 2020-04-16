@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Newgen PubKit</title>
+<script>
+  bucketName = "newgen-pk-prod"
+  bucketRegion = "us-east-1"
+  identityPoolId = "us-east-1:086c4450-fa44-46ac-ac22-bcba47a1007a"
+  is_feature_enabled = false
+  agGridLicence = "Newgen_Knowledge_Works_Multi_Multiple_Applications_1_Devs_1_Deployment_License_6_January_2021_[v2]_MTYwOTg5MTIwMDAwMA==d5419a9f9838589f1ce84b7449afc68e"
+  var gVar = {};
+</script>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no' name='viewport'>
+<link rel="shortcut icon" type="image/x-icon" href="/assets/newgen_favicon-a5862f6f5a42b784ac7612e26961341040ee668c8b8412b6ef3d4b8c4612fc57.ico" />
+<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+<link href='https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css' rel='stylesheet' type='text/css'>
+<link href='https://unpkg.com/ag-grid@18.1.2/dist/styles/ag-grid.css' rel='stylesheet' type='text/css'>
+<link href='https://unpkg.com/ag-grid@18.1.2/dist/styles/ag-theme-balham.css' rel='stylesheet' type='text/css'>
+<link href='https://unpkg.com/ag-grid@18.1.2/dist/styles/ag-theme-fresh.css' rel='stylesheet' type='text/css'>
+<script src="https://unpkg.com/ag-grid-enterprise@19.1.4/dist/ag-grid-enterprise.min.noStyle.js"></script>
+<link rel="stylesheet" media="all" href="/assets/application-5ae31a3f21e610ffe4830706b5a1477ea9974b8ca7d1a1535cbbecb759b4c6f9.css" />
+<!--[if lt IE 10]>
+<link rel="stylesheet" media="all" href="/assets/scss/ie-conditional/application-23e92f243a179d6d2f953632dc32600323ca853188e7143993044ed8355132b1.css" />
+<![endif]-->
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.94.0.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.6/ckeditor.js"></script>
+<script src="/assets/application-f723fa073422653dfef0621f545c749bf320d2091d72987686fbfbc1560c8ba6.js"></script>
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="CVuprCPCZgkVUFbeySX06DrvdX6RTgZu3tgdH0VatirVpCagfR3TSWaglK7fkRYeUb1UieKIS4MxMQwXX0aMxA==" />
+<script>
+  var tracking_id = "UA-152875801-1";
+  var host = "pubkit.newgen.co";
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', tracking_id, host, {'siteSpeedSampleRate': 100, 'cookieDomain': 'none'});
+  ga('set', 'title', location.pathname.split('?')[0].replace(/\/users\/\w*/, "/users/").replace(/(\d+)/g, ""));
+  ga('set', 'dimension1', "Reviewer");
+  ga('set', 'dimension2', "16878");
+  ga('send', 'pageview');
+</script>
+
+
+<!--
+App Version Info: d7c40de | 2020-04-16 10:41:06 +0530 |  (jms) 0190262 0169693 0189869 - Migration changes and Fix on MSNumber display issue
+-->
+</head>
+<body class='reviewer_mode' data-action='show' data-controller='scheduled_milestones'>
+<div class='overlay_bg'></div>
+<div class='overlay_dialog' id='overlay_dialog'></div>
+<div class='overlay_window'>
+<div class='header'></div>
+<div class='body'>
+<div class='message'>Please wait until your file(s) get uploaded</div>
+</div>
+<div class='footer'></div>
+</div>
+<nav class='navbar navbar-default' id='main-nav-bar'>
+<div class='container-fluid'>
+<div class='navbar-header'>
+<button class='navbar-toggle' data-target='#main-nav-bar-menus' data-toggle='collapse' type='button'>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+</button>
+<div class='navbar-brand'>
+<a href='/' id='brand-details'>
+<div id='brand-logo'>
+<img alt="Newgen Logo" src="/assets/newgen_logo-985e8324952a8827f9499fd881e7db52bb8b52dd8f2b8d2c2339d7b3b7b72d77.png" />
+</div>
+<div id='product-name'>
+PubKit
+</div>
+</a>
+</div>
+</div>
+<div class='collapse navbar-collapse' id='main-nav-bar-menus'>
+<ul class="nav navbar-nav"><li class="active"><a href="/users/4185df094e70e3874734a2323b7aba1b/projects">Projects</a></li>
+</ul>
+<ul class='nav navbar-nav navbar-right'>
+<li class='memo-container'>
+<a class="glyphicon glyphicon-list-alt memos" dataUrl="/users/4185df094e70e3874734a2323b7aba1b/memos/list" href="javascript:void(0);"></a>
+</li>
+<li class='user-notification-container'>
+<span class='dot hide'></span>
+</li>
+<li class='dropdown'>
+<a class='dropdown-toggle' data-toggle='dropdown'>
+<span class='glyphicon glyphicon-user'></span>
+<span>Hi, Peter D.R. Higgins</span>
+<span class='caret'></span>
+</a>
+<ul class='dropdown-menu change_user_drop_down'>
+<li><a class="set_password" data-toggle="modal" data-target="#set-password-modal" href="#">Set Password</a></li>
+<li><a class="user_logout" rel="nofollow" data-method="delete" href="/users/sign_out">Logout</a></li>
+</ul>
+</li>
+</ul>
+<script>
+  $('.memos').on('click', function(e){
+    var url = $(e.target).attr('dataUrl');
+    sidebar.load(url,'',sidebar.size.large);
+  })
+</script>
+
+</div>
+</div>
+</nav>
+
+<section id='ng-page-header'>
+<div id='project-header-wrapper'></div>
+<div id='project-header'>
+<h1>
+Dear Author
+</h1>
+<div class='pull-right'>
+<img width="100" src="/assets/oup_logo-8d8ac34f4e41aca0976762f41d3b3daec172066473aacf4e24a140c92b14f472.png" alt="Oup logo" />
+</div>
+</div>
+
+</section>
+<section class='container'>
+<div class='error alert alert-danger hide'></div>
+<div class='margin_top_50'>
+<div class='scheduled_milestone_files collapsible expanded '>
+<h2 class='header isDisabled' data-expanded-content="Please access your PDF proof by clicking 'Download'. If you have any difficulty in accessing your Proof, please contact crohnscolitis360_oup@newgen.co.">
+Files you will need for this task
+</h2>
+<div class='body clearfix'>
+<div class='clear_both'></div>
+<table class='table'>
+<thead>
+<th class='centered_no_content'>
+
+</th>
+</thead>
+<tbody>
+<tr class='centered_no_content'>
+<td>
+<a class="icon-download oup-download-button" title="Download" href="/scheduled_milestone_files/429147/download"></a>
+<div class='br'>
+otaa026.pdf
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class='margin_top_20'>
+<div class='scheduled_milestone_files collapsible expanded '>
+<h2 class='header isDisabled' data-expanded-content='Please open your proofs, correct the PDF of your article using the Adobe Commenting tools, and then save the file. Only 1 file can be uploaded, so if you would like to send us more than 1 file (e.g. if you have replacement figure or table files), please zip/compress the files into a single file for upload. If there are any queries concerning the proof, please answer them within the PDF. Queries are treated as corrections so please do not click ‘Approve proof without corrections’ if you have answered queries. '>
+Files you will need for this task
+</h2>
+<div class='body clearfix'>
+<div class='clear_both'></div>
+<form id="reviewer_file_upload_form" class="marked_for_dirty form" action="/users/4185df094e70e3874734a2323b7aba1b/projects/29810/scheduled_milestones/1025678/close_reviewer_milestone" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="RQ24QqM6kEM/4sKCGGvz9RrM4uMqG6lAED6hsTw842SZ8jdO/eUlA0wSAPIO3xEDcZ7DFFnd5K3/17C5JiDZig==" /><div class='centered_no_content'>
+<a id="upload_file_btn" class="btn btn-primary btn-xs oup-upload-button" href="javascript:void(0);">Upload</a>
+</div>
+<div class='upload_progress'></div>
+<div class='new_uploaded_files' data-accept='[".pdf", ".zip"]' data-out-files='1' data-user-id='16878'></div>
+</form>
+<div class='pull-right margin_top_10'>
+<button name="button" type="submit" class="btn btn-primary btn-sm oup-upload-button" id="send-submit-files"> Send And Submit</button>
+</div>
+<form id="s3_upload_form" class="marked_for_dirty hidden" data-callback-url="null" data-callback-method="POST" data-callback-param="file" data-key-starts-with="uploads/" enctype="multipart/form-data" action="https://newgen-pk-prod.s3.amazonaws.com" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="key" id="key" value="uploads/{timestamp}-{unique_id}-d54941748db5a51cfd1882969dc917b6/${filename}" /><input type="hidden" name="acl" id="acl" value="public-read" /><input type="hidden" name="AWSAccessKeyId" id="AWSAccessKeyId" value="AKIAJTJWYLKQQHIGKKXA" /><input type="hidden" name="policy" id="policy" value="eyJleHBpcmF0aW9uIjoiMjAyMC0wNC0xNlQyMjoyODozOVoiLCJjb25kaXRpb25zIjpbWyJzdGFydHMtd2l0aCIsIiR1dGY4IiwiIl0sWyJzdGFydHMtd2l0aCIsIiRrZXkiLCJ1cGxvYWRzLyJdLFsic3RhcnRzLXdpdGgiLCIkeC1yZXF1ZXN0ZWQtd2l0aCIsIiJdLFsiY29udGVudC1sZW5ndGgtcmFuZ2UiLDAsMTA3Mzc0MTgyNDBdLFsic3RhcnRzLXdpdGgiLCIkY29udGVudC10eXBlIiwiIl0seyJidWNrZXQiOiJuZXdnZW4tcGstcHJvZCJ9LHsiYWNsIjoicHVibGljLXJlYWQifSx7InN1Y2Nlc3NfYWN0aW9uX3N0YXR1cyI6IjIwMSJ9XX0=" /><input type="hidden" name="signature" id="signature" value="7SaDPiGrMGSjNPutjrsgeaS3GF0=" /><input type="hidden" name="success_action_status" id="success_action_status" value="201" /><input type="hidden" name="X-Requested-With" id="X-Requested-With" value="xhr" /><input type="file" name="file" id="file" multiple="multiple" class="upload_files" accept=".pdf,.zip" />
+</form>
+</div>
+</div>
+</div>
+<div class='margin_top_20'>
+<div class='scheduled_milestone_files collapsible expanded '>
+<h2 class='header isDisabled' data-expanded-content="If you do not have queries to answer and have no other corrections, please click ‘Approve proof without corrections'. Please note that by clicking this you are approving the proof, and you will not be allowed to upload additional files or text. ">
+Files you will need for this task
+</h2>
+<div class='body clearfix'>
+<div class='centered_no_content'>
+<a class="btn btn-primary btn-xs push-back-task oup-upload-button" rel="nofollow" data-method="post" href="/users/4185df094e70e3874734a2323b7aba1b/projects/29810/scheduled_milestones/1025678/approve_proof_without_corrections"><span class="icon-play"></span> Approve Proof without corrections</a>
+</div>
+</div>
+</div>
+</div>
+<div class='margin_top_10'></div>
+<div class='centered_no_content'>
+This Proof Correction System is compatible with Firefox, Chrome, Opera, and Safari.
+</div>
+
+</section>
+<div class='modal' id='set-password-modal'>
+<div class='modal-dialog modal-lg'>
+<div class='modal-content'>
+<div class='modal-header'>
+<button class='close' data-dismiss='modal'>
+<span>&times</span>
+</button>
+<h4 class='modal-title'>Set your password</h4>
+</div>
+<div class='modal-body'>
+<form id="change_password_form" class="edit_user" action="/users/4185df094e70e3874734a2323b7aba1b/update_password" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><div class='row'>
+<div class='col-sm-8'>
+<div class='alert alert-info'>For security reasons, you need to set a password for your account.</div>
+<div class='form-group'>
+<label for="user_Password">Password</label>
+<input class="form-control" type="password" name="user[password]" id="user_password" />
+</div>
+<div class='form-group'>
+<label for="user_Confirm password">Confirm password</label>
+<input class="form-control" type="password" name="user[password_confirmation]" id="user_password_confirmation" />
+</div>
+<div class='alert alert-danger hidden'></div>
+<div class='pull-right'>
+<input type="submit" name="commit" value="Continue" class="btn btn-success" />
+<input class='btn btn-default' data-dismiss='modal' type='button' value='Cancel'>
+</div>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+<script>
+  $(document).ready(function(){
+    var show_set_password = false;
+    if(show_set_password){
+      $('.set_password').trigger('click');
+    }
+  });
+</script>
+
+
+</body>
+</html>
+<!-- :: Icon Credits :: -->
+<!-- Trash by Filip Malinowski from the Noun Project -->
+<!-- Calendar by iconsphere from the Noun Project -->
+<!-- Reload by Daniel Llamas Soto from the Noun Project -->
+<script id='template-upload' type='text/x-tmpl'>
+<div class='upload' id='file-{%=o.unique_id%}'>
+<div class='filename hide'>{%= o.name %}</div>
+<div class='display_name'>{%= File.truncate(o.name) %}</div>
+<div class='filesize'>{%= File.displayFileSize(o.size)%}</div>
+<div class='progress'>
+<div class='bar progress-bar progress-bar-success progress-bar-striped' style='width: {%= o.progress%}%'></div>
+</div>
+<div class='percent'>
+<span>Uploading...</span>
+<span class='value'></span>
+<span>% completed of</span>
+<span>{%= File.displayFileSize(o.size)%}</span>
+</div>
+<a class='remove_attachment hide' data-unique_id='{%=o.unique_id%}' href='#'>
+Remove
+</a>
+</div>
+
+</script>
+<script></script>
+<script id='template-upload-fail' type='text/x-tmpl'>
+<div class='upload' id='file-{%=o.unique_id%}'>
+<div class='filename hide'>{%= o.name %}</div>
+<div class='display_name'>{%= File.truncate(o.name) %}</div>
+<div class='filesize'>{%= File.displayFileSize(o.size)%}</div>
+<div class='progress'>
+<div class='bar progress-bar progress-bar-danger progress-bar-striped' style='width: {%= o.progress%}%'></div>
+</div>
+<div class='percent'>
+<span>Uploading...</span>
+<span>Failed</span>
+<span>{%= File.displayFileSize(o.size)%}</span>
+</div>
+<a class='remove_attachment hide' data-unique_id='{%=o.unique_id%}' href='#'>
+Remove
+</a>
+</div>
+
+</script>
+<script>
+I18n.fallbacks = "en";
+I18n.locale = "en";
+</script>
+<!--[if lte IE 8]>
+<div class='hide' id='no-support'>
+Sorry. We don't support your browser. We support only IE9+, Chrome and Firefox. Please use http://whatbrowser.org if you want to install any other browser.
+<script>
+  window.onload = function() {
+    document.getElementById('no-support').className = '';
+  }
+</script>
+</div>
+<![endif]-->
+
+
+<div class='sidenav' id='Sidenav'>
+<div class='holder'>
+<div class='section'>
+<div class='closebtn glyphicon glyphicon-remove-circle'></div>
+<div class='backBtn glyphicon glyphicon-arrow-left'></div>
+<h3 class='header'></h3>
+</div>
+<div class='success alert alert-success hidden'></div>
+<div class='content'></div>
+</div>
+</div>
+<script>
+  sidebar = new Sidebar();
+</script>
+

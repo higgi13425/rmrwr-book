@@ -1,0 +1,63 @@
+---
+title: "AnalyzeData"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+# load the file with the data you want
+# you can also use processed-data-plater.csv and it will work identically
+d <- read_csv("data/processed-data-as-is.csv")
+```
+
+## Delta Ct
+
+Here I calculate the delta Ct. This could be made into a function. You need to know: 
+
+* Which gene is the reference gene (and how to handle multiple)
+* Which columns provide the matching information. I.e. GAPDH value from well E01 is the control for which other wells? In this case, the Sample# and Sample ID columns provide that information. 
+
+```{r}
+reference <- d %>% 
+  filter(Gene == "GAPDH") %>% 
+  mutate(GapdhCt = Cт) %>% 
+  select(`Sample#`, `Sample ID`, GapdhCt)
+
+d <- inner_join(d, reference) %>% 
+  mutate(dCt = GapdhCt - Cт)
+
+```
+
+## Plot dCt
+Recreate plot from the Excel file
+```{r}
+ggplot(d, aes(x = `Sample ID`, y = dCt)) + geom_point() + 
+  facet_wrap(~Gene) + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+## Average across biological replicates
+Here I average the dCt across the biological replicates. To make this a function you need to know which columns contain the Gene and matching information. In this case, it's the Gene and the Sample ID columns.
+
+```{r}
+d <- d %>% 
+  group_by(Gene, `Sample ID`) %>% 
+  summarise(AverageDCt = mean(dCt))
+```
+
+## ddCt and fold change
+Here I calculate ddCt and fold change. To make this a function, you need to know which columns contain the information allowing you to identify which wells are the baseline wells, i.e. the wells to which the ddCt should be calculated.
+
+```{r}
+baseline <- d %>% 
+  filter(`Sample ID` == "Un") %>% 
+  mutate(BaselineDCt = AverageDCt) %>% 
+  select(Gene, BaselineDCt)
+
+d <- inner_join(d, baseline) %>% 
+  mutate(ddCt = AverageDCt - BaselineDCt, FoldChange = 2^ddCt)
+
+ggplot(d, aes(x = `Sample ID`, y = FoldChange)) + geom_point() + 
+  facet_wrap(~Gene) + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
