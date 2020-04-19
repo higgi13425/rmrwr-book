@@ -12,8 +12,10 @@ output: html_document
 
 ###	Recall Bias
 
-###	Time bias
+###	Immortal Time bias
 
 ###	Ascertainment bias
+
+### Collider bias
 
 ### Assuming linearity on a scale
