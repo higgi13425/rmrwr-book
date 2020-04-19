@@ -1,0 +1,32 @@
+---
+title: "Study Design"
+author: "Peter Higgins"
+output: html_document
+---
+
+
+# Study Design
+
+####	Hypotheses – null and alternative
+
+####	Specific and testable
+
+####	Inclusion and exclusion
+
+####	How many eligible patients – DataDirect query
+
+####	Be conservative – most won’t enroll
+
+## Study Designs
+
+####	Cross sectional 
+
+####  Cohort
+
+####	Retrospective
+
+####	Rarely prospective – registries, case series more likely
+
+####	All Associations
+
+#### Causal Inference requires randomization

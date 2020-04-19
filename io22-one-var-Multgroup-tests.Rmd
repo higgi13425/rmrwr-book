@@ -1,0 +1,12 @@
+---
+title: "Tests with one var, multiple group"
+author: "Peter Higgins"
+output: html_document
+---
+
+# One variable, Multiple groups
+
+
+####	Fun with ANOVA - kind of a waste of time
+
+##### Use regression instead

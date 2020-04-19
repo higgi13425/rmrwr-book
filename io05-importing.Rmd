@@ -1,0 +1,38 @@
+---
+title: "Importing Data into R"
+author: "Peter Higgins"
+output: html_document
+---
+
+
+# Importing Data into R and Exploring It
+
+
+## Lots of options – start with readr
+
+## Exploration with str, glimpse and head/tail
+
+## Reading Excel Files with readxl
+
+## More exploration with skimr and DataExplorer
+
+## Other strange file types with rio
+
+## Practice loading data from multiple file types
+
+## Practice saving as csv, rds, xls, xlsx
+
+## How do readr and readxl parse columns?
+
+## What are the variable types?
+Numeric - integer and double
+Character - string
+Logical - TRUE/FALSE
+Dates - an unholy formatting mess
+Factors - categorical variables
+- nominal factors (no order)
+- ordinal factors (with a meaningful order)
+
+## Controlling Parsing
+
+## Chapter Challenges

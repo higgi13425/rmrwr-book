@@ -1,0 +1,26 @@
+---
+title: "Logistic Regression"
+author: "Peter Higgins"
+output: html_document
+---
+
+# Logistic Regression
+
+
+#### Concepts and OR
+
+#### Modeling
+
+#### Estimating GOF
+
+#### AuROC
+
+#### Sens Spec PPV NPV
+
+#### Confusion Matrix
+
+#### Present results with broom, RMarkdown
+
+#### Make user-friendly model predictions with Shiny
+
+

@@ -1,0 +1,42 @@
+---
+title: "Data Collection for R"
+author: "Peter Higgins"
+output: html_document
+---
+
+
+# Data Collection for Use in R
+
+
+Some _significant_ applications are demonstrated in this chapter.
+
+## Avoid using spreadsheets, especially for PHI data
+Why Excel is Evil
+- dates
+- gene names
+- variable type assignment
+- no default error checking
+
+## Best practices for data in spreadsheets
+
+### <https://peerj.com/preprints/3183/>   
+
+##	Google Forms and GoogleSheets
+
+##	SurveyMonkey data
+
+##  PHI data – REDCap and REDcapR package
+	
+##  Issues with PHI – laptops, memory sticks, cloud, github
+
+##	PHI solutions 
+### REDCap
+### private github
+### M+Box
+### deidentifying PHI with charlatan package in R
+### link to PHI that is secure
+ 
+##	Other sources of data
+### Surveys – REDCap and SurveyMonkey
+###	Data Direct
+###	Data Warehouse

@@ -1,0 +1,22 @@
+---
+title: "GGplot with Continuous vs Categorical Vars"
+author: "Peter Higgins"
+output: html_document
+---
+
+
+# Two variable GGplots - continuous vs categorical
+
+
+
+## Boxplot
+
+## Violin plot
+
+## geom point or jitter
+
+### Overplotting - jitter and alpha
+
+## Ridgeplots
+
+## Challenges

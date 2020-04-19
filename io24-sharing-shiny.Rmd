@@ -1,0 +1,11 @@
+---
+title: "Sharing your models with Shiny"
+author: "Peter Higgins"
+output: html_document
+---
+
+# Sharing Models with Shiny
+
+#### Basics of Shiny
+
+#### Practice with model from linear regression chapter

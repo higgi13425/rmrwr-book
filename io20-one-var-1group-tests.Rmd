@@ -1,0 +1,16 @@
+---
+title: "Tests with one var, one group"
+author: "Peter Higgins"
+output: html_document
+---
+
+# One variable, single group
+
+
+#### Continuous value – t test 
+
+#### Challenges for single continuous outcome
+
+#### Estimate single Proportion
+
+#### Challenges for single proportion

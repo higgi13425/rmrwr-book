@@ -1,0 +1,28 @@
+---
+title: "Tests with one var, 2 group"
+author: "Peter Higgins"
+output: html_document
+---
+
+# One variable, two groups
+
+
+####	Variable 1 is greater in group A vs group B
+
+#####	Test for skew – if not, T test
+
+###### Challenges
+
+#####	If yes, Wilcoxon, non parametric
+
+###### Challenges
+
+####	Variable 2 proportion is greater in group A vs group B
+
+#####	If no rare cells, chi square
+
+###### Challenges
+
+#####	If rare cells, Fischer exact test
+
+###### Challenges

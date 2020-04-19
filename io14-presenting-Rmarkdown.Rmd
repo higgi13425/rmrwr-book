@@ -1,0 +1,21 @@
+---
+title: "Presenting your Results with Rmarkdown"
+author: "Peter Higgins"
+output: html_document
+---
+
+
+# Presenting your Results with Rmarkdown
+
+The magic of the knit button
+
+## Making word document reports
+
+### setting up a custom template
+
+## Rmarkdown to powerpoint
+
+## Rmarkdown to HTML
+
+
+## Challenges
