@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.15)  18 APR 2020 21:12
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.15)  21 APR 2020 20:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -841,45 +841,258 @@ Chapter 1.
 Chapter 2.
 [9
 
-] [10] [11]
-Underfull \hbox (badness 10000) in paragraph at lines 460--463
+]
+File: images/drag.png Graphic file (type bmp)
+<images/drag.png>
+File: images/dashboard.png Graphic file (type bmp)
+<images/dashboard.png>
 
+Underfull \hbox (badness 1189) in paragraph at lines 292--300
+\TU/lmr/m/n/10 R is a statistical programming language, designed for non-progra
+mmers
  []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 292--300
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[10]
+File: images/r-project.png Graphic file (type bmp)
+<images/r-project.png>
+File: images/dash-tesla.png Graphic file (type bmp)
+<images/dash-tesla.png>
+
+Overfull \hbox (124.62451pt too wide) in paragraph at lines 301--308
+[]\TU/lmr/m/n/10 This screen will look like this [] 
+ []
+
+[11]
+File: images/cran-mirror.png Graphic file (type bmp)
+<images/cran-mirror.png>
+File: images/usa-mirrors.png Graphic file (type bmp)
+<images/usa-mirrors.png>
+
+Overfull \hbox (73.76251pt too wide) in paragraph at lines 309--316
+\TU/lmr/m/n/10 will download R. []
+ []
+
+
+Underfull \hbox (badness 1014) in paragraph at lines 309--316
+\TU/lmr/m/n/10 Scroll down to your country (yes, the USA is at the bottom), and
+ a
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 505--506
+File: images/installr.png Graphic file (type bmp)
+<images/installr.png>
+File: images/installr2.png Graphic file (type bmp)
+<images/installr2.png>
+File: images/installr3windows.png Graphic file (type bmp)
+<images/installr3windows.png>
+File: images/installrsave.png Graphic file (type bmp)
+<images/installrsave.png>
+File: images/installrexe.png Graphic file (type bmp)
+<images/installrexe.png>
+File: images/installrEnglish.png Graphic file (type bmp)
+<images/installrEnglish.png>
+File: images/installrdrive.png Graphic file (type bmp)
+<images/installrdrive.png>
+File: images/installrComponents.png Graphic file (type bmp)
+<images/installrComponents.png>
+File: images/installrdefaults.png Graphic file (type bmp)
+<images/installrdefaults.png>
+File: images/installrstartmenu.png Graphic file (type bmp)
+<images/installrstartmenu.png>
+
+Underfull \hbox (badness 1365) in paragraph at lines 323--338
+\TU/lmr/m/n/10 installation file (R-N.N.N-win.exe). Click Yes to allow this to 
+install.
+ []
+
+
+Overfull \hbox (18.89113pt too wide) in paragraph at lines 323--338
+\TU/lmr/m/n/10 Now select your language option []
+ []
+
+
+Overfull \hbox (24.13203pt too wide) in paragraph at lines 323--338
+\TU/lmr/m/n/10 sion. []
+ []
+
+
+Overfull \hbox (200.53503pt too wide) in paragraph at lines 323--338
+\TU/lmr/m/n/10 In the next dialog box, accept the default startup options. []
+ []
+
+
+Underfull \hbox (badness 1168) in paragraph at lines 323--338
+\TU/lmr/m/n/10 You can choose the start menu folder. The default R folder is fi
+ne.
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[13]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[14]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[15]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[16]
+File: images/installraddltasks.png Graphic file (type bmp)
+<images/installraddltasks.png>
+File: images/installrwizard.png Graphic file (type bmp)
+<images/installrwizard.png>
+
+Underfull \vbox (badness 1043) has occurred while \output is active []
+
+[17]
+File: images/installwin-path2.png Graphic file (type bmp)
+<images/installwin-path2.png>
+File: images/installrpath.png Graphic file (type bmp)
+<images/installrpath.png>
+File: images/windowsrterm.png Graphic file (type bmp)
+<images/windowsrterm.png>
+
+Overfull \hbox (39.12479pt too wide) in paragraph at lines 362--368
+\TU/lmr/m/n/10 prompt. []
+ []
+
+[18] [19]
+File: images/windowstest.png Graphic file (type bmp)
+<images/windowstest.png>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[20]
+File: images/installrpkgmac.png Graphic file (type bmp)
+<images/installrpkgmac.png>
+File: images/installrdownloadsmac.png Graphic file (type bmp)
+<images/installrdownloadsmac.png>
+
+Overfull \hbox (34.5825pt too wide) in paragraph at lines 386--390
+\TU/lmr/m/n/10 CRAN. []
+ []
+
+File: images/installrCont1mac.png Graphic file (type bmp)
+<images/installrCont1mac.png>
+File: images/installrCont2mac.png Graphic file (type bmp)
+<images/installrCont2mac.png>
+File: images/installrmacLicense.png Graphic file (type bmp)
+<images/installrmacLicense.png>
+File: images/installrmac-install.png Graphic file (type bmp)
+<images/installrmac-install.png>
+
+Underfull \hbox (badness 10000) in paragraph at lines 391--398
+[][]
+ []
+
+
+Overfull \hbox (225.44405pt too wide) in paragraph at lines 391--398
+\TU/lmr/m/n/10 Then you need to agree with the License Agreement, []
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[21]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[22]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[23]
+File: images/findrmac.png Graphic file (type bmp)
+<images/findrmac.png>
+File: images/rconsolemac.png Graphic file (type bmp)
+<images/rconsolemac.png>
+
+Overfull \hbox (109.72879pt too wide) in paragraph at lines 402--409
+\TU/lmr/m/n/10 ble click on this to run it. []
+ []
+
+
+Underfull \hbox (badness 5217) in paragraph at lines 402--409
+\TU/lmr/m/n/10 You should get this 2000=era terminal window named R Console.
+ []
+
+
+Underfull \hbox (badness 5147) in paragraph at lines 402--409
+\TU/lmr/m/n/10 The version number should match what you downloaded, and the
+ []
+
+
+Underfull \hbox (badness 1365) in paragraph at lines 402--409
+\TU/lmr/m/n/10 messaging should end with a “>” prompt. At this prompt, type in
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[24]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[25]
+File: images/mactestR.png Graphic file (type bmp)
+<images/mactestR.png>
+File: images/ready2R.png Graphic file (type bmp)
+<images/ready2R.png>
+
+Overfull \hbox (154.69pt too wide) in paragraph at lines 421--423
+\TU/lmr/m/n/10 Awesome. You are now Ready to R! [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[26] [27] [28]
+Underfull \hbox (badness 10000) in paragraph at lines 592--595
 
  []
 
-[13] [14]
+[29]
+Underfull \hbox (badness 10000) in paragraph at lines 637--638
 
-LaTeX Warning: Reference `methods' on page 15 undefined on input line 610.
+ []
+
+[30] [31]
+
+LaTeX Warning: Reference `methods' on page 32 undefined on input line 742.
 
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 616.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 748.
 File: io02-getting-started_files/figure-latex/nice-fig-1.pdf Graphic file (type
  pdf)
 <use io02-getting-started_files/figure-latex/nice-fig-1.pdf>
-[15] [16] [17] [18
-
-]
+[32] [33] [34]
 Chapter 3.
 File: images/tasting.png Graphic file (type bmp)
 <images/tasting.png>
 
-Underfull \hbox (badness 1990) in paragraph at lines 694--697
+Underfull \hbox (badness 1990) in paragraph at lines 826--829
 \TU/lmr/m/n/10 In this chapter, we will introduce you to a lot of neat things t
 hat
  []
 
 
-Underfull \hbox (badness 1024) in paragraph at lines 694--697
+Underfull \hbox (badness 1024) in paragraph at lines 826--829
 \TU/lmr/m/n/10 you can do with R and RStudio, and you will publish a simple dat
 a
  []
 
 
-Underfull \hbox (badness 1895) in paragraph at lines 694--697
+Underfull \hbox (badness 1895) in paragraph at lines 826--829
 \TU/lmr/m/n/10 analysis on the Internet that you can share with friends and fam
 ily.
  []
@@ -891,21 +1104,23 @@ File: images/rpubs2.png Graphic file (type bmp)
 File: images/rpubs3.png Graphic file (type bmp)
 <images/rpubs3.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 701--709
+Underfull \hbox (badness 10000) in paragraph at lines 833--841
 []
  []
 
 
-Overfull \hbox (199.10547pt too wide) in paragraph at lines 701--709
+Overfull \hbox (199.10547pt too wide) in paragraph at lines 833--841
 \TU/lmr/m/n/10 Click on the \TU/lmr/m/it/10 Here’s How You Get Started \TU/lmr/
 m/n/10 link. [] 
  []
 
-[19]
+[35
+
+]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[20]
-Overfull \hbox (15.74pt too wide) in paragraph at lines 738--740
+[36]
+Overfull \hbox (15.74pt too wide) in paragraph at lines 870--872
 \TU/lmr/m/n/10 tidyverse package is installed on your computer. \TU/lmtt/m/n/10
  install.packages("tidyverse") 
  []
@@ -915,102 +1130,102 @@ File: images/rmd1.png Graphic file (type bmp)
 File: images/rmd2.png Graphic file (type bmp)
 <images/rmd2.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 759--765
+Underfull \hbox (badness 10000) in paragraph at lines 891--897
 []
  []
 
 
-Overfull \hbox (157.42177pt too wide) in paragraph at lines 759--765
+Overfull \hbox (157.42177pt too wide) in paragraph at lines 891--897
 \TU/lmr/m/n/10 “Tasting”, and click the OK button. [] 
  []
 
-[21]
+[37]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[22]
+[38]
 File: images/rmd3.png Graphic file (type bmp)
 <images/rmd3.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 766--769
+Underfull \hbox (badness 10000) in paragraph at lines 898--901
 []
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[23]
-Underfull \hbox (badness 10000) in paragraph at lines 808--811
+[39]
+Underfull \hbox (badness 10000) in paragraph at lines 940--943
 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[24]
+[40]
 
-Package natbib Warning: Citation `djnavarro' on page 25 undefined on input line
- 812.
-
-
-Package natbib Warning: Citation `ryantimpe' on page 25 undefined on input line
- 812.
+Package natbib Warning: Citation `djnavarro' on page 41 undefined on input line
+ 944.
 
 
-Package natbib Warning: Citation `skyetetra' on page 25 undefined on input line
- 812.
+Package natbib Warning: Citation `ryantimpe' on page 41 undefined on input line
+ 944.
 
 
-Package natbib Warning: Citation `robinson_es' on page 25 undefined on input li
-ne 812.
+Package natbib Warning: Citation `skyetetra' on page 41 undefined on input line
+ 944.
 
 
-Package natbib Warning: Citation `tylermorganwall' on page 25 undefined on inpu
-t line 814.
+Package natbib Warning: Citation `robinson_es' on page 41 undefined on input li
+ne 944.
 
-[25] [26
+
+Package natbib Warning: Citation `tylermorganwall' on page 41 undefined on inpu
+t line 946.
+
+[41] [42
 
 ]
 Chapter 4.
-[27] [28
+[43] [44
 
 ]
 Chapter 5.
-[29] [30
+[45] [46
 
 ]
 Chapter 6.
-[31] (./rmrwr.bbl
+[47] (./rmrwr.bbl
 Overfull \hbox (0.55342pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 32 \TU/lmr/m/sl/10 CHAPTER 6.  TIME SERIES DATA WITH THE TIDYVER
+\TU/lmr/m/n/10 48 \TU/lmr/m/sl/10 CHAPTER 6.  TIME SERIES DATA WITH THE TIDYVER
 TS PACKAGES
  []
 
-[32])
+[48])
 
 Package natbib Warning: There were undefined citations.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 860.
-[33
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 992.
+[49
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 860.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 992.
 (./rmrwr.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 860.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 860.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 992.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 992.
 Package rerunfilecheck Info: File `rmrwr.out' has not changed.
 (rerunfilecheck)             Checksum: 7D5BB8A7A2AA84CC08F773831B126291;7265.
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 860.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 992.
  ) 
 Here is how much of TeX's memory you used:
- 16831 strings out of 481384
- 302700 string characters out of 5926546
- 726199 words of memory out of 5000000
- 33981 multiletter control sequences out of 15000+600000
+ 17027 strings out of 481384
+ 307489 string characters out of 5926546
+ 725199 words of memory out of 5000000
+ 34145 multiletter control sequences out of 15000+600000
  538805 words of font info for 79 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  53i,8n,118p,788b,418s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on rmrwr.pdf (33 pages).
+Output written on rmrwr.pdf (49 pages).

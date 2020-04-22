@@ -1,7 +1,7 @@
 --- 
 title: "Reproducible Medical Research with R"
 author: "Peter D.R. Higgins, MD, PhD, MSc"
-date: "2020-04-18"
+date: "2020-04-21"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
@@ -142,6 +142,120 @@ Chapters in this pathway include
 - Major R Updates (Where Are My Packages?)
 
 ## Installing R on your Computer
+R is a statistical programming language, designed for non-programmers (statisticians). It is optimized to work with data in tables. It is a very fast and powerful programming engine, but it is not terribly comfortable or convenient. R itself is not terribly user-friendly. It is a lot like a drag racing car, which is basically a person with a steering wheel strapped to an airplane engine.
+![drag racer](images/drag.png)
+Very aerodynamic and fast, but not comfortable for the long run (more than about 8 seconds).
+You will need something more like a production car, with a nice interior and a dashboard, and comfy leather seats. 
+![dashboard](images/dashboard.png)
+This is provided by the RStudio IDE (Integrated Developer Environment). We want you to install both R and RStudio, in that order.    
+Let's start with installing R.    
+R is free and available for download on the web. Go to the [r-project website](https://r-project.org/) to get started. 
+
+This screen will look like this
+![irproject](images/r-project.png)    
+You can see from the blue link (download R) that you can download R, but you will be downloading it faster if you pick a local CRAN mirror.   
+You might be wondering what CRAN and CRAN Mirrors are. Nothing to do with cranberries, fortunately. CRAN is the Comprehensive R Archive Network. Each site (mirror) in the network contains an archive of all R versions and packages, and the sites are scattered over the globe. A CRAN Mirror maintains an up to date copy of all of the R versions and packages on CRAN. If you use the nearest CRAN mirror, you will generally get faster downloads.   
+At this point, you might be wondering what a package is...   
+A package is a set of functions and/or data that you can download to upgrade and add features to R. It is a lot like a downloadable upgrade to a Tesla that lets you play the video game _Witcher 3_ on your console, but more useful.
+![tesla](images/dash-tesla.png)   
+
+Now click on the blue link that says "download R".    
+This will take you to a page to select your local CRAN Mirror , from which you will download R.
+![cran](images/cran-mirror.png)
+Scroll down to your country (yes, the USA is at the bottom), and a CRAN mirror near you.
+This is an example from northern Michigan, USA.
+![usa-mirrors](images/usa-mirrors.png)
+Once you click on a CRAN Mirror site to select the location, you will be taken to the actual Download site.
+
+![install](images/installr.png)
+Select the link for the operating system you want to use. We will walk through this with Windows first, then Mac. If you are using a Mac, skip forward to the Mac install. If you are using Linux, you can clearly figure it out on your own (it will look a lot like these).  
+Once you have clicked through, your next screen will look like this    
+![install2](images/installr2.png)
+You want to download both base and Rtools (you might need Rtools later). The base link will take you to the latest version, which will look something like this.
+
+![install3](images/installr3windows.png)
+Click on this link, and you will be able to save a file named R-N.N.N-win.exe (Ns depending on version number) to your Downloads folder. Click on the Save button to save it.
+![install4](images/installrsave.png)
+Now, go to your Downloads folder in Windows, and double clinic on the R installation file (R-N.N.N-win.exe). Click Yes to allow this to install.
+![install5exe](images/installrexe.png)
+Now select your language option
+![install_language](images/installrEnglish.png)
+You will be asked to accept the GNU license - do so. Click Yes to allow this to install. Then select where to install - generally use the default- a local (often C) drive - do not install on a shared network drive or in the cloud.
+![install_drive](images/installrdrive.png)
+Then select the Components - generally use the defaults, but newer computers can skip the 32 bit version.
+![install_comp](images/installrComponents.png)
+In the next dialog box, accept the default startup options.
+![install_defaults](images/installrdefaults.png)
+You can choose the start menu folder. The default R folder is fine.
+![install_start](images/installrstartmenu.png)
+
+You probably won't need shortcuts, so leave these unchecked in the next dialog box.
+![install_addltasks](images/installraddltasks.png)
+
+Then the Setup Wizard will appear - click Finish, and the rest of the installation will occur.
+
+![install_wizard](images/installrwizard.png)
+
+### Testing
+
+Now you want to test whether your Windows installation was successful. Can you find R and make it work?
+Hunt for your C folder, then for OS-APPS within that folder. Keep drilling down to the Program Files folder. Then the R folder, and the current version folder within that one (R-N.N.N). Within that folder will be the bin folder, and within that will be your R-N.N.N.exe file. Double click on this to run it. The example paths below can help guide you.
+
+![install_path2](images/installwin-path2.png)
+
+![install_path](images/installrpath.png)
+Opening the exe file will produce a classic 2000-era terminal window, called Rterm, with 64 bit if that is what your computer uses. The version number should match what you downloaded. The messaging should end with a ">" prompt.
+![install_term](images/windowsrterm.png)
+At this prompt, type in:     
+<br>
+paste(‘Two to the seventh power is’, 2^7)
+<br>
+(don't leave out the comma) - then press the Enter key.
+
+This should produce the following:    
+
+![install_test](images/windowstest.png)
+Note that you have explained what is being done and computed the result. 
+
+### Mac Install of R
+The installation for Mac is very similar, but the windows look a bit different. At the Download Version page, you click on the Mac Download.
+You will then click on the link for R-N.N.N.pkg, and allow downloads from CRAN.
+
+![install_path](images/installrpkgmac.png) 
+
+Then go to Finder, and navigate to the Downloads folder. Click on R-N.N.N.pkg
+You will then click on the link for R-N.N.N.pkg, and allow downloads from CRAN.
+![install_downloadmac](images/installrdownloadsmac.png)
+Click on Continue on 2 consecutive screens to download
+
+![cont1_mac](images/installrCont1mac.png)
+![cont2_mac](images/installrCont2mac.png)
+Then you need to agree with the License Agreement, 
+![mac_license](images/installrmacLicense.png)
+then Click on Install, and provide your Mac password for permission to install.
+![cont1_mac](images/installrmac-install.png)
+When the installation is complete, click on the Close button. Accept the prompt to move the installer file to the trash.
+
+### Testing R on the Mac
+Go to Finder, and then your Applications folder. Scroll down to the R file. Double click on this to run it. 
+![findrmac](images/findrmac.png)
+You should get this 2000=era terminal window named R Console. The version number should match what you downloaded, and the messaging should end with a ">" prompt.
+At this prompt, type in 
+<br>
+paste(‘Two to the seventh power is’, 2^7)
+<br>
+(DON’T leave out the comma)
+![rconsolemac](images/rconsolemac.png)
+
+This should result in
+
+![mactestR](images/mactestR.png)
+
+### Successful testing!
+
+Awesome. You are now Ready to R!
+![ready2R](images/ready2R.png)
+
 
 
 ## Installing RStudio on your Computer
@@ -563,7 +677,7 @@ Rolling anaylsis with window functions.
 ---
 title: "Reproducible Medical Research with R"
 author: "Peter D.R. Higgins, MD, PhD, MSc"
-date: "2020-04-18"
+date: "2020-04-21"
 output: html_document
 ---
 

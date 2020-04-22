@@ -5,6 +5,7 @@ output: html_document
 ---
 
 # Sample Size and Power
+Using the pwr package
 
 ####	Estimating measures in each group
 
@@ -15,3 +16,5 @@ output: html_document
 ####	Power calc for continuous
 
 ####	Power calc for proportion
+h <- pwr::ES.h(.14, .08) # effect size
+pwr::pwr.2p.test(h=0.1934809,n=350,sig.level=0.05,alternative="two.sided")
