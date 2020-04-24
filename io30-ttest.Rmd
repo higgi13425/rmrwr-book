@@ -1,0 +1,236 @@
+---
+title: "Comparing 2 groups"
+author: "Peter Higgins"
+date: "1/2/2019"
+output: powerpoint_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(broom)
+```
+
+## Comparing Two Measures of Centrality
+- Means and Medians
+- t tests and wilcoxon
+- for numerical continuous data
+
+
+## Common Problem
+- Comparing two groups
+  - Mean or median vs. expected
+  - Two arms of study - independent
+  - Pre and post / spouse and partner / left vs right arm – paired groups
+- Are the means significantly different?
+- Or the medians (if not normally distributed)?
+
+
+## How Skewed is Too Skewed?
+- Formal test of normality = Shapiro-Wilk test
+- Use base data set called ToothGrowth
+
+
+```{r data, message= FALSE,warning=TRUE, echo=TRUE}
+library(tidyverse)
+data <- ToothGrowth
+head(data)
+```
+
+## Visualize the Distribution of data$len in ggplot
+- Use geom_histogram or geom_density
+- Bonus points: facet by supplement treatment
+- Your turn to try it
+
+
+
+```{r density}
+data %>% 
+ggplot(mapping = aes(len)) +
+  #geom_histogram() +
+  geom_density() + 
+  facet_wrap(~supp)
+```
+
+```{r histogram, echo=TRUE, warning=FALSE, message=FALSE}
+data %>% 
+ggplot(mapping = aes(len)) +
+  geom_histogram() +
+  #geom_density() + 
+  facet_wrap(~supp)
+```
+
+## Visualize the Distribution of data$len in ggplot
+- The OJ group is left skewed
+- May be problematic for using means
+- formally test with Shapiro-Wilk
+```{r shapirowilk, echo=TRUE, warning=FALSE, message=FALSE}
+data$len %>% 
+shapiro.test()
+```
+
+## Results of Shapiro-Wilk
+- p-value = 0.1091
+- p not < 0.05
+- Acceptably close to normal
+- OK to compare means rather than medians
+- can use t test rather than wilcoxon test
+  - if p is < 0.05, use wilcoxon test
+  - also known as Mann-Whitney test
+  - a rank-based (non-parametric) test
+  
+## Try it yourself
+- use df <- msleep
+```{r shapirowilk2, echo=TRUE, warning=FALSE, message=FALSE}
+df <- msleep 
+head(df$sleep_total)
+```
+- test the normality of total sleep hours in mammals
+
+## Mammal sleep hours
+```{r shapirowilk3, echo=TRUE, warning=FALSE, message=FALSE}
+shapiro.test(df$sleep_total)
+```
+- meets criteria - acceptable to consider normally distributed
+- now consider - is the mean roughly 8 hours of sleep per day?
+
+## One Sample T test
+- univariate test
+  - Ho: mean is 8 hours
+  - Ha: mean is not 8 hours
+- can use t test because shapiro.test is NS
+
+## How to do One Sample T test
+```{r univar T, eval=FALSE, echo=TRUE}
+t.test(df$sleep_total, alternative = "two.sided",
+       mu = 8)
+```
+- Try it out, see if you can interpret results
+
+## Interpreting the One Sample T test
+```{r univar T2, eval=TRUE, echo=FALSE}
+t.test(df$sleep_total, alternative = "two.sided",
+       mu = 8)
+```
+- p is highly significant
+  - can reject the null, accept alternative
+  - sample mean 10.43, CI 9.46-11.41
+
+## What are the arguments of the t.test function?
+- x = vector of continuous numerical data
+- y= NULL - optional 2nd vector of continuous numerical data
+- alternative = c("two.sided", "less", "greater"),
+- mu = 0
+- paired = FALSE
+- var.equal = FALSE
+- conf.level = 0.95
+- [documentation](https://www.rdocumentation.org/packages/stats/versions/3.5.1/topics/t.test)
+
+
+
+## Fine, but what about 2 groups?
+- consider df$vore
+```{r vore, eval=T, echo=T}
+table(df$vore)
+```
+- hypothesis - herbivores need more time to get food, sleep less than carnivores
+- how to test this?
+  - normal, so can use t test for 2 groups
+  
+## Setting up 2 group t test
+- formula interface: outcome ~ groupvar 
+```{r vore2, eval=F, echo=T}
+df %>% 
+  filter(vore %in% c("herbi", "carni")) %>% 
+  t.test(formula = sleep_total ~ vore, data = .)
+```
+- Try it yourself
+- What do the results mean?
+
+## Results of the 2 group t test
+```{r vore3, eval=T, echo=F}
+df %>% 
+  filter(vore %in% c("herbi", "carni")) %>% 
+  t.test(formula = sleep_total ~ vore, data = .)
+```
+## Interpreting the 2 group t test
+- Welch t-test (not Student)
+  - Welch does NOT assume equal variances in each group
+- p value NS
+- accept null hypothesis
+  - Ho: means of groups roughly equal
+  - Ha: means are different
+  - 95% CI crosses 0
+- Carnivores sleep a little more, but not a lot
+
+## 2 group t test with wide data
+- You want to compare column A with column B (data are not tidy)
+- Do mammals spend more time awake than asleep?
+```{r wide, eval=F, echo=T}
+t.test(x = df$sleep_total, y = df$awake, data = msleep)
+```
+
+## Results of 2 group t test with wide data
+
+```{r wide2, eval=T, echo=T}
+t.test(x = df$sleep_total, y = df$awake, data = msleep)
+```
+
+## 3 Assumptions of Student's t test  
+1. Sample is normally distributed (test with Shapiro)
+2. Variances are homogeneous (homoskedasticity) (test with Levene)
+3. Observations are independent
+  + not paired like left vs. right colon
+  + not paired like spouse and partner
+  + not paired like measurements pre and post Rx
+  
+## Testing Assumptions of Student's t test  
+- Normality - test with Shapiro
+  - If not normal, Wilcoxon >  t test
+- Equal Variances - test with Levene
+  - If not equal, Welch t > Student's t
+- Observations are independent
+  - Think about data collection
+  - are some observations correlated with some others?
+  - If correlated, use paired t test
+  
+## Getting results out of t.test
+- Use the tidy function from the broom package
+- Do carnivores have bigger brains than insectivores?
+```{r tidy, eval=F, echo=T}
+df %>% 
+  filter(vore %in% c("carni", "insecti")) %>% 
+t.test(formula = brainwt ~ vore, data = .) %>% 
+  tidy() ->
+result
+result
+```
+
+## Getting results out of t.test
+
+```{r tidy7, eval=T, echo=F}
+df %>% 
+  filter(vore %in% c("carni", "insecti")) %>% 
+t.test(formula = brainwt ~ vore, data = ., var.equal=TRUE) %>% 
+  tidy() ->
+result
+result
+```
+## Reporting the results from t.test using inline code
+- use backticks before and after, start with r
+  - i.e. My result is [backtick]r code here[backtick].
+- The mean brain weight for carnivores was `r result$estimate1`
+- The mean brain weight for herbivores was `r result$estimate2`
+  - The difference was `r result$estimate`
+- The t statistic for this `r result$method` was `r result$statistic`
+- The p value was `r result$p.value`
+  - The confidence interval was from `r round(result$conf.low,2)` to `r round(result$conf.high,2)`
+
+
+## For Next Time  
+- Skewness and Kurtosis
+- Review Normality
+  - When to use Wilcoxon
+- Levene test for equal variances
+  - When to use Welch t vs. Student's t
+- Paired t and Wilcoxon tests

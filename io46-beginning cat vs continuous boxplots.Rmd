@@ -1,0 +1,308 @@
+---
+title: "Categorical vs Continuous Boxplots and More"
+author: "Peter Higgins"
+date: "6/14/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(pacman)
+p_load(tidyverse, fivethirtyeight, HSAUR, ggsignif, ggridges, scales, ggplot2)
+```
+
+## Boxplots
+Boxplots are common ways to compare a continous variable across several categories, and are often used to illustrate the continous outcome of an experiment across several groups.
+<br>
+The basic geom is geom_boxplot, with the aes containing a categorical variable (usually x),
+and a continuous variable, usually y. As usual, geom_boxplot inherits aes from the ggplot function.
+<br>
+Arguments to geom_boxplot include
+- outlier.color, outlier.fill
+- outlier.shape, outlier.stroke, outlier.alpha
+- outlier.size
+- color
+- fill
+- position = 'dodge2'
+
+<br>
+We will use the data from 4 clinical trials published from 1987-1989 by Lanza on the use of misoprostol to reduce the severity of NSAID-induced gastric ulcers on a 1-5 scale.
+Start by taking a look at the data.
+<br>
+Details are here: https://vincentarelbundock.github.io/Rdatasets/doc/HSAUR/Lanza.html 
+
+```{r mpg}
+data(Lanza)
+glimpse(Lanza)
+```
+
+## First Boxplot
+ Your basic boxplot aes needs a categorical x variable, and a continuous y variable. 
+  Add a geom_boxplot() to the code below to get the basic boxplot by treatment group.
+  Then use the color and fill arguments to map treatment to these graphic aesthetics. Use the show.legend=FALSE argument to geom_boxplot to control the legend. 
+
+```{r boxplot1, echo=FALSE}
+Lanza %>% 
+  mutate(ulcers = as.numeric(classification))%>%  ggplot( aes(x = treatment, y = ulcers) ) 
+```
+
+## Second Boxplot, with grouping by trial
+You can map another variable to your aesthetic statement with the fill aes. In this case, we will use x= study and fill= treatment, to separate the treatments the data in each study. Edit the code below to add the aes(fill=) mapping to produce comparisons for all 4 studies by treatment group. 
+
+```{r boxplot2, echo=FALSE}
+Lanza %>% 
+  mutate(ulcers = as.numeric(classification))%>%  ggplot(aes(x = study, y = ulcers)) +
+  geom_boxplot()
+```
+
+## Third Boxplot, with grouping by trial using facets
+Another way to do subgrouping of your data is to facet it into small multiples. This produces multiple small graphs. You can facet by a single variable with facet_wrap(~newvar) In this case, we will use x = treatment, y = ulcers, and add facet_wrap(~ study), to separate the data in each study. Edit the code below to produce comparisons for all 4 studies by treatment group.  Experiment with which variable is x and which is the variable used for faceting.
+
+```{r boxplot3, echo=FALSE}
+Lanza %>% 
+  mutate(ulcers = as.numeric(classification))%>%  ggplot(aes(x = treatment, y = ulcers)) +
+  geom_boxplot() +
+  facet_wrap(~study)
+```
+
+<br>
+<br>
+<br>
+<br>
+## CHALLENGE 1: make your own boxplot with a new dataset
+Without looking at or copy/pasting from the previous code,
+use the data from the polyps dataset to make a boxplot comparing the number of polyps in FAP patients taking placebo vs. taking NSAIDs.
+<br>
+Run the code below, then edit it to produce the desired boxplot.
+Remember to:
+
+1. map the aesthetics to both a categorical (treat) and a continuous (number of polyps) variable
+2. add the right geom
+3. Add title, labels with labs()
+4. use constant color and fill, or map these to variables also.
+5. Style the theme, colors, base_size as desired.
+
+
+```{r}
+data("polyps", package = "HSAUR")
+glimpse(polyps)
+
+ggplot(data=polyps)
+  
+```
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+
+## Fourth Boxplot, with grouping by trial and treatment using facets
+You can facet by two variables by adding facet_grid(catvar1 ~ catvar2). Try faceting by categorical variables treatment and study. Try again in reverse order. 
+
+```{r boxplot4, echo=FALSE}
+Lanza %>% 
+  mutate(ulcers = as.numeric(classification))%>%  ggplot(aes(y = ulcers)) +
+  geom_boxplot() 
+```
+
+## Fifth Boxplot, using arguments for varwidth, color, fill, and notch
+
+
+```{r boxplot5, echo=FALSE}
+Lanza %>% 
+  mutate(ulcers = as.numeric(classification))%>%  ggplot(aes(x = treatment, y = ulcers, fill = study)) +
+  geom_boxplot( varwidth = TRUE, notch = TRUE,
+        color = 'darkorchid1', fill = 'white') 
+```
+
+## Sixth Boxplot, with overlay of datapoints with geom_jitter and remove outliers (no need to repeat these). This provides a clearer view of the data.
+What would happen if you put geom_boxplot last?
+What would happen if outlier.shape = NA was removed?
+
+```{r boxplot6, echo=FALSE}
+Lanza %>% 
+  mutate(ulcers = as.numeric(classification))%>%  ggplot(aes(x = treatment, y = ulcers)) +
+  geom_boxplot( varwidth = TRUE,
+        color = 'steelblue', fill = 'lightblue',
+        alpha = 0.3, outlier.shape = NA) +
+  geom_jitter(width = 0.3, alpha = 0.6) +
+  theme_bw(base_size = 16)
+```
+
+## Seventh plot, with violin
+You can see how a boxplot obscures the distribution. Try this again with a violinplot. change the boxplot geom to violin in the code below.
+
+```{r boxplot7, echo=FALSE}
+Lanza %>% 
+  mutate(ulcers = as.numeric(classification))%>%  ggplot(aes(x = treatment, y = ulcers)) +
+  geom_boxplot(color = 'magenta', 
+              fill = 'lightblue',
+        alpha = 0.7) +
+  geom_jitter(width = 0.2, alpha = 0.6) +
+  theme_bw(base_size = 16)
+```
+
+<br>
+<br>
+<br>
+<br>
+## CHALLENGE 2: make your own violinplot overlaid with jittered datapoints with a new dataset
+Without looking at or copy/pasting from the previous code,
+use the data from the polyps dataset to make a violin plot comparing the number of polyps in FAP patients taking placebo vs. taking NSAIDs.
+<br>
+Run the code below, then edit it to produce the desired boxplot.
+Remember to:
+
+1. map the aesthetics to both a categorical (treat) and a continuous (number of polyps) variable
+2. add the violin geom
+3. Overlay with the jitter geom, control the width
+4. Add title, labels with labs()
+5. use constant color and fill, or map these to variables also.
+6. Use alpha to adjust the intensity of the violin fill and of the jittered points.
+7. Style the theme, colors, base_size as desired.
+
+```{r}
+data("polyps", package = "HSAUR")
+glimpse(polyps)
+
+ggplot(data=polyps)
+  
+```
+
+<br>
+<br>
+<br>
+<br>
+## Eighth Plot, with ridgeplots
+ Ridgeplots are a variant of violin plots that look like ridges, or mountain ranges. These are nice for comparing distribution densities.
+ You need to map your continuous variable in the x aesthetic, then pick categorical variables for your y and /or your fill aesthetics.
+ Map ulcers to x, study to y, and treatment to fill.  Experiment with swapping y and fill mappings.
+ 
+
+```{r plot8, echo=FALSE}
+Lanza %>% 
+  mutate(ulcers = as.numeric(classification)) ->
+lanza2
+lanza2 %>% 
+ggplot(aes(x = ulcers, y = study, fill = treatment)) +
+  geom_density_ridges()
+```
+
+## Ninth plot, with ridges in series
+Ridgeplots are often use to illustrate changes in distributions over time (consecutive months, or years).
+Add facet_wrap(~treatment) and see the distribution change by treatment from study to study.
+Add ncol=1 to the facet_wrap for a different view
+
+```{r plot9, echo=FALSE}
+lanza2 %>% 
+  ggplot(aes(x = ulcers, y = study)) +
+  geom_density_ridges( fill = 'magenta') 
+```
+
+## Tenth plot, with raincloud plots
+You can add the points (the 'rain') to the clouds by adding the argument jittered_points = TRUE to geom_density_ridges.
+You can also have the rain 'fall' by adding the arguments jittered_points = TRUE, position='raincloud', alpha =0.5, scale =0.9 <br>
+to geom_density_ridges.
+
+```{r plot10, echo=FALSE}
+lanza2 %>% 
+ggplot(aes(x = ulcers, y = study, fill = treatment)) +
+  geom_density_ridges() +
+  theme(legend.position = 'top')
+```
+<br>
+<br>
+<br>
+<br>
+## CHALLENGE 3: make your own raincloud plot with a new dataset
+Without looking at or copy/pasting from the previous code,
+use the data from the polyps dataset to make a raincloud plot comparing the age in FAP patients taking placebo vs. taking NSAIDs.
+<br>
+Run the code below, then edit it to produce the desired boxplot.
+Remember to:
+
+1. map the aesthetics to both a categorical (treat) and a continuous (age) variable
+2. add the raincloud geom
+3. Use jittered_points = TRUE, position='raincloud'
+4. adjust the alpha and scale options
+5. use constant color and fill, or map these to variables also.
+6. Use alpha to adjust the intensity of the jittered points.
+7. Style the theme, colors, base_size as desired.
+8. add appropriate labels
+
+```{r}
+data("polyps", package = "HSAUR")
+glimpse(polyps)
+
+ggplot(data=polyps)
+  
+```
+
+<br>
+<br>
+<br>
+<br>
+
+## Eleventh plot, with mean labels
+You can label the mean in a boxplot with a stat_summary, using function fun.y = mean, and specifying the geom as text. It helps to round the y to 1 decimal place.
+<br>
+more details here https://stackoverflow.com/questions/19876505/boxplot-show-the-value-of-mean 
+
+```{r plot11, echo=FALSE}
+lanza2 %>% 
+  ggplot(aes(x = treatment, y = ulcers)) +
+    geom_boxplot(color = 'darkorchid1',         fill = 'white') +
+  stat_summary(fun.y = mean, geom = 'text', aes(label = round(..y.., digits =1))) +
+  theme_classic(base_size = 15)
+  
+```
+
+## Twelfth plot, with ggsignif
+You can make comparisons and list p values between groups with the ggsignif package/
+<br>
+more details here: 
+https://cran.r-project.org/web/packages/ggsignif/vignettes/intro.html
+
+
+```{r plot12, echo=FALSE}
+lanza2 %>% 
+  ggplot(aes(x = treatment, y = ulcers)) +
+    geom_violin(color = 'steelblue',         fill = 'lightblue', alpha =0.7) +
+  geom_boxplot(width =0.2, alpha =0.3) +
+  geom_jitter(width = 0.2, alpha =0.2) +
+  theme_classic(base_size = 15) +
+  geom_signif(comparisons = list(c("Misoprostol", "Placebo")),
+              y_position = 5.8) +
+  ylim(0.4,6.3)
+```
+
+<br>
+<br>
+<br>
+<br>
+## CHALLENGE 4: make your own boxplot with significance comparison and p value for a new dataset
+Without looking at or copy/pasting from the previous code,
+use the data from the polyps dataset to make a boxplot/violinplot comparing the number of polyps in FAP patients taking placebo vs. taking NSAIDs.
+<br>
+Run the code below, then edit it to produce the desired plot.
+Remember to:
+
+1. map the aesthetics to both a categorical (treat) and a continuous (polyps) variable
+2. add the violin geom first, then boxplot
+3. adjust the alpha and width options for violin
+4. add ggsignif, list the correct groups for comparison, set the y position correctly 
+5. use constant color and fill, or map these to variables also.
+6. Style the theme, colors, base_size as desired.
+7. adjust ylim if needed
+8. add appropriate labels
+
+```{r}
+data("polyps", package = "HSAUR")
+glimpse(polyps)
+
+ggplot(data=polyps)
+  
+```

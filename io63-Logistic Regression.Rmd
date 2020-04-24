@@ -1,0 +1,415 @@
+---
+title: "Logistic Regression"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(arsenal)
+library(tidyverse)
+library(janitor)
+library(naniar)
+library(visdat)
+library(DataExplorer)
+library(broom)
+data <- mockstudy
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Introduction  
+  Logistic regression is used to model and analyze the relationship between a dependent **factor** variable and one or more independent variables.  The dependent factor variable, often an outcome, is most commonly dichotomous, with outcomes like life vs. death, success vs. failure, remission vs. non-remission. Logistic regression models probabilities in the range from 0 to 1, inclusive. Logistic regression is considered a *classification* technique, which classifies cases into outcome or non-outcome.  <br>
+  <br>
+  This classification is based on the logistic function modeling the probability of the outcome, which always produces an S-shaped probability curve (like linear regression always produces a line). This is based on the exponentiation of the coefficients with base e (2.718...). The probabilities are commonly communicated with *odds ratios*, which are Probability of X /(1 - Probability of X), and have a range between 0 and infinity.   <br>
+  <br>
+  Similar to linear regression, the independent side of the logistic regression equation has an intercept and coefficients for predictors (independent variables). For each unit increase in a predictor variable, the logit (the ln of the odds ratio) increases by the coefficient (B1) associated with that variable.    <br>
+  <br>
+  Logistic regression is most often used for binomial outcomes, but can be used in multinomial logistic regression, when there are more than 2 outcome categories, with simple adjustment to create a reference category and a model for each of the other categories. Ordinal logistic regression is another extension to multiple ordered categories in the outcome variable.  
+
+## Performing Logistic regression.  
+  The `glm` function is used to fit generalized linear models, including logistic regression. We will use the mockstudy data from the arsenal package, which has an outcome (`fu.stat`) of followup status. This variable is coded as 1=censored (alive at end of study) and 2=dead. The mockstudy data of an imaginary chemotherapy clinical trial have been loaded as the `data` object in your environment.
+  
+## The Rule of 10 in Logistic Regression
+As a general rule, if you have a lot of explanatory variables, and relatively few outcome events, you can easily over-fit your logistic regression model. This means that your model is optimized for your particular dataset, but less likely to be generalizable to other, similar data.   
+<br>
+One rule of thumb to protect against overfitting is to only use one explanatory variable for every 10 outcomes (of the least common outcome) in your dataset. If the outcome is life/death for 215 patients, of whom 43 died, then the least common outcome is death (172 lived). Then (43/10 = 4.3) you can use up to four variables in your logistic model and be reasonably safe from overfitting. Thus a dataset with 50% of the people having the outcome of interest is very helpful for modeling. Rare outcomes reduce your ability to do multivariate modeling.
+<br>
+A better way to predict against overfitting (if you have enough data and enough outcomes) is to hold out a test set of data (usually 20-30%). Train your model on the training set (70-80%). It can be slightly overfitted on the training data, but you will see when you test your model on the test set. Generally the accuracy will be a bit lower with the test set vs. the training set (due to overfitting), but hopefully not too much. Do **not** be tempted to report your accuray or AuROC on the test set - of course it works well on the test set - but only report the model accuracy on the training set.
+<br>
+Even better for generalizability is to get a test set from an entirely different data source - another medical center, a community dataset, etc. If you have hold-out test set, it is still from the same setting, which may or may not be generalizable to other locales and practice settings. 
+  
+  
+### Exercise 1: Outcome
+  Let's start by recoding the data to 0= died and 1 = lived. In the coding window below, pipe the data into a mutate function. Mutate a new variable (alive) into the data using alive = 2-fu.stat.   <br>
+  <br>
+  Then pipe this into tabyl(alive) from the janitor package to produce a table of outcomes.  
+  
+Write the R code required to build this pipe below:
+
+
+```{r table_of_alive, exercise=TRUE, exercise.eval=TRUE}
+
+```
+
+```{r table_of_alive-hint}
+data %>% 
+  mutate(alive = 2-fu.stat) %>% 
+  tabyl(alive) 
+```
+
+So, as expected, it appears that most of the subjects in this clinical study of treatment of cholangiocarcinoma died. Let's investigate this dataset.   <br>
+  <br>
+  Continue in the coding window above and create two-way tabyls of treatment arms `arm` and some of the covariates. Add a comma and a 2nd variable to the arguments of tabyl. For example, `tabyl(alive, arm)` <br>
+  <br>
+  The covariates include sex, race, baseline ps (performance score), hgb (hemoglobin), bmi, alk.phos, ast, age, age.ord (an ordered factor for age), and mdquality.s (0=deficient, 1=capable).   <br>
+  <br> Two-way tabyls work best with categorical variables. They are not very helpful for continuous variables, which tend to produce very wide or very long tables with columns/rows for each value represented.
+
+### Exercise 2: Modifying the dataset  
+
+Use the code above mutate(alive = 2- fu.stat) to create the alive variable, but instead of making a table, assign this result back to the `data` object with a rightward arrow to overwrite the data object with a new version that includes the variable `alive`. This should look something like:
+
+data %>%    
+  function() %>%    
+  function()  ->    
+data
+
+Use the code block below to modify the data object.
+
+Then use head(data) to check that you have successfully changed this dataset object. You will need to scroll right to find the `alive` variable.
+
+```{r new_data, exercise=TRUE, exercise.lines = 5}
+
+```
+
+```{r new_data-hint}
+data %>% 
+  mutate(alive = 2-fu.stat)  ->
+data
+```
+
+## Exploratory Data Analysis
+  It is often very helpful to spend some time exploring your data before you dive into analysis and modeling. Some important steps in EDA include:   
+  
+  1. Figuring out the structure of your dataset
+  2. Determining which variable types need to be recoded (i.e. character to factor, numeric to logical)
+  3. Cleaning up variable names to something concise but meaningful, without capitals or spaces.
+  4. Identifying cases with missing data.
+  5. Identifying outliers
+  6. Exploring the distribution of continuous variables
+  7. Exploring the distribution of factor variables (whether ordered or unordered)
+  8. Exploring bivariate relationships between variables, starting with the outcome (dependent) variable and predictor (independent) variables.
+  9. Determining whether pairs of predictor (independent) variables are correlated with each other, which could produce problematic collinearity in your regression model.  
+
+### Exercise 3: Data Structure and Distribution
+  Use the *glimpse* function in the code block below to examine the structure of `data`. Then use several functions from the DataExplorer package to look at the variables. Try out   
+<br>
+data %>% <br>
+  plot_bar() <br>
+  
+Also try out plot_histogram(), plot_boxplot(by = "outcome_var").
+What is your outcome_var in this dataset?
+
+```{r tabyls, exercise=TRUE, exercise.lines = 5}
+data %>% 
+  mutate(alive = 2-fu.stat) ->
+data
+
+data 
+
+
+```
+
+```{r tabyls-hint, exercise.lines = 5}
+data %>% 
+  mutate(alive = 2-fu.stat) ->
+data
+
+data %>% 
+  glimpse()
+
+data %>% 
+  plot_bar()
+
+data %>% 
+  plot_histogram()
+
+data %>% 
+  plot_boxplot( by = "alive")
+
+data %>% 
+  plot_scatterplot(by = "alive")
+```
+ Not a lot of obvious problems. Perhaps `alive` should be an integer, rather than a double (how would you convert this to an integer?), but the other data types seem reasonable.  
+ There is a fair amount of missing data, mostly in laboratory values. This is worth watching, as these cases with missing data will not be included in your logistic model, and will reduce your sample size and power if you use these variables in your model.
+
+### Exercise 4: Cleaning up Variable Names and Types
+  Use the *clean_names* function in the code block below to clean up the variable names.  Remember to save the result back to the data object. *glimpse* your data again to see what has changed.
+  Many of your factor variables already have helpful value labels. Let's make `mdquality_s` into a factor.
+  Use a mutate function and as_factor to make `mdquality_s` into a factor. Keep the same name for the variable in the mutate function. Remember to overwrite this back to the data object with the rightward arrow.
+  
+  
+```{r clean, exercise=TRUE, exercise.lines = 5}
+data 
+
+
+```
+
+```{r clean-hint}
+data %>% 
+  clean_names() ->
+data
+
+glimpse(data)
+
+data %>% 
+  mutate(mdquality_s = as_factor(mdquality_s)) ->
+data
+
+
+```
+
+
+### Exercise 5: Missing Data
+  Missing data can be a big issue in logistic regression. Missing outcome data in a case (a row of observations of one participant) means that you can not use those cases. But missing predictor data (for variables you add to the model) will also result in cases being dropped from your logistic regression model. It is important to know which variables have missing data. Let's use the visdat package to take a look. In the code block below, pipe the data into the *vis_dat()* functionto get a quick overview of missing cases.
+  To highlight the missing cases, use *vis_miss()* in place of vis_dat. You can also add the sort_miss=TRUE argument to the *vis_miss* function to sort the variables by missingness. You can also set cluster=TRUE to group the missing together, and help see where there are overlaps in missing data.
+  
+  
+```{r missing, exercise=TRUE, exercise.lines = 5}
+data 
+
+
+```
+
+```{r missing-hint}
+data %>% 
+  vis_dat()
+
+data %>% 
+  vis_miss(sort_miss = TRUE)
+
+data %>% 
+  vis_miss(cluster = TRUE)
+```
+
+The good news here is that the outcome variable (alive) is not missing at all. However, there are a lot of missing laboratory values. Fortunately, these 17.75% are correlated, so that they won't add up to more missing cases. However, mdquality_s is missing in different cases, so that these could add up to more than 30% missing, if both lab values and mdquality_s are included in the model. bmi and race are missing occassionally.
+
+### Exercise 6: Data Exploration
+  Use the code block below to create a 2 x 3 table for treatment arm by outcome. This uses the tabyl command and 2 
+arguments: arm, alive. Add the second argument.  
+
+```{r explore, exercise=TRUE, exercise.lines = 5}
+data %>% 
+  mutate(alive = 2-fu.stat) ->
+data
+
+data %>% 
+  tabyl(alive)
+```
+
+```{r explore-hint}
+data %>% 
+  mutate(alive = 2-fu.stat) ->
+data
+
+data %>% 
+  tabyl(alive, arm)
+```
+
+  It appears that roughly 1 in 7 subjects treated with FOLFOX survived, which looks numerically better than the IFL or IROX arms. Is this a statistically significant result, or due to chance?
+  Use this 2-way tabyl approach in this code block to explore the relationship between alive and the other factor covariates in this dataset on your own. This should give you some idea of which variables to put into the logistic regression model.
+  
+  
+### Exercise 7: Correlated Data
+  Correlations between predictor variables and the outcome are a good thing, and can help you build a useful model. On the other hand, correlations between predictor variables can become a problem, as these correlations create multi-collinearity. This occurs when you inadvertently ask the model to partition the variance between two predictor variables that are correlated, which is difficult to do. In general, this will become clear when adding one variable to the model makes the performance of its correlated predictor variable much worse.   
+  You can get a quick look at correlations between **numeric** variables in your dataset with the **visdat** function *vis_cor*.  
+  Pipe your data into select_if(is.numeric), then into the vis_cor() function in the code block below.
+  
+  
+```{r corr, exercise=TRUE, exercise.lines = 5}
+data 
+
+
+```
+
+```{r corr-hint}
+data %>% 
+  select_if(is.numeric) %>% 
+  vis_cor()
+
+```
+
+  Starting with the outcome variable, alive, there are trivial positive correlations with itself and fu.time, and a trivial negative correlation with fu.stat. There are some positive correlations with hgb and mdquality_s, and some negative correlations with alk_phos, ast, and ps to explore further.   
+  Looking at the predictor variables, there may be important correlations to watch out for between ast and alk_phos, hgb and ps, hgb and alk_phos, mdquality_s and ps, and bmi vs. alk_+_phos and ps.
+
+
+### Other ways to detect multi-collinearity
+1. Very high standard errors for regression coefficients
+When standard errors are orders of magnitude higher than their coefficients, that’s an indicator.
+
+2. The overall model is significant, but none of the coefficients are.
+Remember that a p-value for a coefficient tests whether the unique effect of that predictor on Y is zero. If all predictors overlap in what they measure, there is little unique effect, even if the predictors as a group have an effect on Y.
+
+3. Large changes in coefficients when adding predictors
+If the predictors are completely independent of each other, their coefficients won’t change at all when you add or remove one. But the more they overlap, the more drastically their coefficients will change.
+
+4. Coefficients have signs opposite what you’d expect from theory
+Be careful here as you don’t want to disregard an unexpected finding as problematic. Not all effects opposite theory indicate a problem with the model. That said, it could be multicollinearity and warrants taking a second look at other indicators.
+
+5. Coefficients on different samples are wildly different
+If you have a large enough sample, split the sample in half and run the model separately on each half. Wildly different coefficients in the two models could be a sign of multicollinearity.
+
+6. High Variance Inflation Factor (VIF) and Low Tolerance
+These two useful statistics are reciprocals of each other. So either a high VIF or a low tolerance is indicative of multicollinearity. VIF is a direct measure of how much the variance of the coefficient (ie. its standard error) is being inflated due to multicollinearity.
+
+## Topic 2: Building the Model
+
+### Exercise 8: First Steps
+  Let's start with a simple single predictor model, using **age** to predict **alive** status. Pipe your data into the glm() function, with 3 arguments.
+  These arguments are   
+  <br>
+  1. a formula for your model, in the format `outcome_var ~ indep_var1`   
+  2. data =. (for piping)   
+  3. family = binomial (makes glm use logistic modeling)   
+
+Assign your model with a rightward arrow to a new model_fit object. Start piping from the data object from the code below. This should look something like    
+`data %>% 
+  glm(outcome_var ~ indep_var, data=., family = binomial) ->
+model_fit`
+
+Then use the summary() function on your regression model object, `model_fit`. 
+
+```{r first, exercise=TRUE, exercise.eval=TRUE}
+data %>% 
+  mutate(alive = 2-fu.stat)  ->
+data
+
+data
+
+
+```
+
+```{r first-hint}
+data %>% 
+  glm(alive ~ age, data=., family=binomial) ->
+model_fit
+
+summary(model_fit)
+```
+
+This summary output for the model starts with the **Call** - this is simply the model that you entered.    
+<br>
+Next are the **Deviance Residuals**. Ideally the median should be close to zero, and the first and third quartiles of roughly similar absolute values.    
+<br>
+Next are the **Coefficients**. These always start with the Intercept, followed by the independent variables in the order stated in the formula call. There are four columns of data, the Estimate, the Standard Error, the Wald z statistic, and the p value.   
+<br> The age estimate tells you that for every one unit increase in age, the natural log odds of being alive decrease by -0.005. This is not significant, as the statistic has a small absolute value, and the p value is > 0.05.
+<br> 
+You can convert this to an odds ratio by taking the coefficient for age and exponentiating it (e to the power of the coefficient), with exp(-0.005), which is 0.9946509 for age. With an odds ratio of less than 1 for age, the outcome of alive is **less** likely with each added year of age.
+
+<br>
+Next are the **deviances**. The null model (with no predictors) has a deviance of 943.92, with 1498 degrees of freedom (there are 1499 observations). The one-predictor model with age has a deviance of 943.42, with 1497 degrees of freedom. That is not much improvement from adding age as a predictor.  
+<br>
+Next is the **AIC**. This is Akaike's Information Criterion. It is analogous to the adjusted R2 in multiple linear regression. Lower AIC is better for models fit to the same outcome. Models to be compared do not have to be nested. It is not unusual to get several models that have similarly good AIC. It is usually best to pick the model that makes the most sense, and/or has the most readily acquired predictor variables.
+Unlike adjusted R2 or R2, AIC has no meaning in terms of variance explained.
+<br>
+Last is the **iterations**. The number of Fisher Scoring iterations does not matter that much, but it is important that the model converged and that you got a meaningful solution. If you don't get a number here, you have a problem with your model.     
+
+### Two predictor model Exercise
+Now use the code block below to make a more complex model with 2 predictors, adding **ps** to **age**.      
+Save the resulting model with a rightward arrow to the object `model_fit`.
+
+Then use the `tidy` function from the `broom` package on `model_fit` to make a nice table of the model coefficients and p values.
+
+Then use `summary(model_fit)` to get a summary of this model. Compare the coefficients, standard errors, df, and AIC to the previous one predictor model.
+Remember, lower AIC indicates a better fitting model
+
+```{r age_sex, exercise= TRUE}
+data %>% 
+  mutate(alive = 2-fu.stat)  ->
+data
+
+data %>% 
+  glm(alive ~  age , data=., family=binomial) ->
+model_fit
+
+tidy(model_fit) 
+
+summary(model_fit)
+```
+
+```{r age_sex-hint}
+data %>% 
+  mutate(alive = 2-fu.stat)  ->
+data
+
+data %>% 
+  glm(alive ~  age + ps, data=., family=binomial) ->
+model_fit
+
+tidy(model_fit) -> tidymodel
+tidymodel
+
+summary(model_fit)
+```
+## Confounding vars
+http://www.sthda.com/english/articles/39-regression-model-diagnostics/159-confounding-variable-essentials/
+
+
+## Exercise 9: vif and multicolinearity with library car
+http://www.sthda.com/english/articles/39-regression-model-diagnostics/160-multicollinearity-essentials-and-vif-in-r/
+
+
+## Exercise 9.5: Hosmer-Lemeshow goodness of fit
+library("ResourceSelection")
+hoslem.test(data$outcome, fitted(model))
+Look for p value above 0.05 = good
+we have no significant difference between the model and the observed data (i.e. the p-value is above 0.05).
+
+https://www.theanalysisfactor.com/r-tutorial-glm1/ 
+https://stats.idre.ucla.edu/r/dae/logit-regression/
+http://r-statistics.co/Logistic-Regression-With-R.html
+
+## Exercise 10: MisClassError
+http://www.sthda.com/english/articles/36-classification-methods-essentials/143-evaluation-of-classification-model-accuracy-essentials/
+
+
+### Exercise 10.5: predictions
+http://www.sthda.com/english/articles/36-classification-methods-essentials/151-logistic-regression-essentials-in-r/
+
+
+### Exercise 11: plotROC
+ROCR or pROC or plotROC (medical) or ROCit
+https://rviews.rstudio.com/2019/03/01/some-r-packages-for-roc-curves/
+
+
+### Exercise 12: AIC
+AIC (Akaike Information Criterion) is analogous to adjusted R2 in multiple linear regression. Lower AIC is better for models fit to the same outcome. Models to be compared do not have to be nested. It is not unusual to get several models that have similarly good AIC. It is usually best to pick the model that makes the most sense, and/or has the most readily acquired predictor variables.
+Unlike adjusted R2 or R2, AIC has no meaning in terms of variance explained.
+
+### Exercise 13: Concordance, Spec, Sens, ConfusionMatrix
+
+http://r-statistics.co/Logistic-Regression-With-R.html 
+
+### Quiz
+
+*You can include any number of single or multiple choice questions as a quiz. Use the `question` function to define a question and the `quiz` function for grouping multiple questions together.*
+
+Some questions to verify that you understand the purposes of various base and recommended R packages:
+
+```{r quiz}
+quiz(
+  question("Which package contains functions for installing other R packages?",
+    answer("base"),
+    answer("tools"),
+    answer("utils", correct = TRUE),
+    answer("codetools")
+  ),
+  question("Which of the R packages listed below are used to create plots?",
+    answer("lattice", correct = TRUE),
+    answer("tools"),
+    answer("stats"),
+    answer("grid", correct = TRUE)
+  )
+)
+```
+

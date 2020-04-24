@@ -1,0 +1,100 @@
+---
+title: "Formatting Rmd to Word"
+author: "Peter Higgins"
+date: "12/9/2019"
+output: 
+  word_document:
+    reference_docx: word-styles-reference.docx
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(here)
+library(tidyverse)
+```
+<!-- Note this refers to the article at
+rmarkdown.rstudio.com/articles_docx.html
+--->
+# Header 1
+
+Example of body text  
+Note 2 spaces at end of line for line break  
+  
+Lines smush together if you
+don't add the two spaces.
+These are semantic line breaks
+which go away in the compiled word document
+<br>
+You can have visible line breaks <br>
+if you keep using <br>
+html tags <br>
+But these are kind of annoying, <br>
+and 2 spaces at the end of each line is pretty easy
+
+## R Markdown - level 2
+
+Note that you need a blank line before headers for them to be recognized as headers and formatted properly
+
+### A plot - level 3
+```{r cars}
+plot(pressure)
+```
+
+## Another level 2 header
+
+Note that the default formatting for Rmarkdown to Word is a bit goofy, with blue type and not my favorite font.   
+
+### and now a level 3 image
+
+![Histopathology of Ulcerative Colitis](/Users/peterhiggins/Documents/Rcode/ccfpartners/UCpathology.jpg)
+  
+### Solutions
+
+We can fix this with a Word formatting template.  
+Knit this document.
+
+## Save this document as word-styles.docx
+in the same directory as your Rmd file
+We will use this docx document as a template (after we reformat)
+
+#### Formatting - Heading 4
+Open the word document, Select the Home ribbon, then the Styles window louncher (Styles Pane) in the Styles group.  
+  
+Select the Title.
+It has the Title style. Scroll down to Title style in the Styles Window.
+  
+Change the font, the color, the size, ext.
+Then click on the dropdown arrow to the right of the Title style, and select 'Update Title to Match Selection'.
+
+Then repeat the process for body text, Heading2, Heading3  
+
+Then save the Document.
+
+## Using the Styles Template
+Go to the top of your Rmarkdown document.  
+It should have 2 dashed lines, with a title and   
+  
+output: word_document  
+  
+between them
+  
+You need to change this to (note that these are real indent tabs)  
+
+output:  
+(indent)word_document:  
+(indent)(indent)reference_docx: word-styles.docx  
+    
+Note the placement of the colons, what is on each line, and the indents are critical to making this work.
+
+## Now you are ready!
+now save this document and knit - you will get the format you intended. And you can use this template for any future Rmarkdown document - just be sure that you have  
+word-styles.docx  
+in the folder where your Rmarkdown document lives.  
+
+### Test it
+Open a new Rmarkdown document  
+Knit the default document to Word   
+
+Then change the output to use the template word-styles.docx  
+
+Then re-Knit the document.

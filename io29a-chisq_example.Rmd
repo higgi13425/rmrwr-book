@@ -1,0 +1,82 @@
+---
+title: "Untitled"
+author: "Peter Higgins"
+date: "3/21/2019"
+output:
+  word_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(arsenal)
+library(tidyverse)
+library(janitor)
+library(corrplot)
+```
+
+
+```{r glimpse, echo=FALSE}
+#glimpse(mockstudy)
+```
+
+```{r table, warning=FALSE}
+mockstudy %>% 
+  tabyl(arm, fu.stat) %>% 
+  column_to_rownames('arm') %>% 
+  chisq.test() ->
+results
+
+results$statistic
+results$parameter
+```
+
+## Study Results
+
+This is an R Markdown document. <br>
+
+In the evaluation of followup status by study arm, the null hypothesis of independence was rejected, with a chi-squared statistic of `r round(results$statistic,2)`, with `r results$parameter` degrees of freedom, and a p value of `r results$p.value`, using the `r results$method` method.
+
+```{r housetask, echo=FALSE}
+file_path <- "http://www.sthda.com/sthda/RDoc/data/housetasks.txt" 
+housetasks <- read.delim(file_path, row.names = 1)
+housetasks %>%
+  chisq.test()
+```
+
+```{r corr, warning=FALSE, echo=FALSE}
+file_path <- "http://www.sthda.com/sthda/RDoc/data/housetasks.txt" 
+housetasks <- read.delim(file_path, row.names = 1)
+housetasks %>%
+  chisq.test() ->
+results
+
+corrplot(results$residuals, is.cor = FALSE)
+```
+
+In the evaluation of household tasks by person responsible, the null hypothesis of independence was rejected, with a chi-squared statistic of `r round(results$statistic,2)`, with `r results$parameter` degrees of freedom, and a p value of `r results$p.value`, using the `r results$method` method.
+
+```{r as_dataframe}
+housetasks %>% 
+  as.data.frame() %>% 
+  rownames_to_column("Task") %>% 
+  filter(Task=="Finances" | Task=="Official") %>% 
+  select(Task, Wife, Husband) %>% 
+  column_to_rownames("Task") %>% 
+  chisq.test()
+```
+
+
+```{r percent, warning=FALSE, echo=FALSE}
+housetasks %>%
+  chisq.test() ->
+results
+
+contrib <- 100*results$residuals^2/results$statistic
+round(contrib, 3)
+corrplot(contrib, is.cor = FALSE)
+```
+
+
+
+

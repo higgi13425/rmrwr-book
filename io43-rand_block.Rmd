@@ -1,0 +1,89 @@
+---
+title: "LearnR blockrand Tutorial"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+if (!require(blockrand)){    # checks if already installed
+        install.packages(blockrand) #installs if not
+}
+library(blockrand)
+library(knitr)
+library(kableExtra)
+library(tidyverse, quietly = T)
+```
+
+
+## Topic 1
+
+### Exercise 
+
+*Here's a simple exercise with an empty code chunk provided for entering the answer.*
+
+Write the R code required to run a block randomization with n=200:
+
+```{r ex1, exercise=TRUE}
+
+```
+
+### Exercise with Code
+
+*Here's an exercise with some prepopulated code*
+Now edit the R code below to randomize 120 subjects to 
+upadacitinib, risankizumab, or upadacitinib + risankizumab:
+
+```{r ex2, exercise=TRUE}
+blockrand(n = 100,
+         block.prefix = "B_", # this is for block.id
+         stratum = "Stratum_1",
+         num.levels =  , # N distinct treatments
+         levels = c("A", "B", "C")
+          ) 
+```
+
+## Topic 2
+
+### Exercise with Hint
+
+*Here's an exercise where the chunk is pre-evaulated via the `exercise.eval` option (so the user can see the default output we'd like them to customize). We also add a "hint" to the correct solution via the chunk immediate below labeled `print-limit-hint`.*
+
+Modify the following code to randomize 250 patients to 4 doses of upadacitinib (7.5, 15, 30, 45 mg) vs. placebo:
+
+```{r ex3, exercise=TRUE, exercise.eval=TRUE}
+blockrand(n = 100,
+         block.prefix = "B_", # this is for block.id
+         num.levels =  17, # N distinct treatments
+         levels = c("A", "B", "C")
+          ) 
+```
+
+```{r ex3-hint}
+num.levels = 5
+```
+
+### Quiz
+
+*Use help or google to find the documentation for blockrand. Figure out how each argument works, and what each is for.*
+
+Some questions to verify that you understand the purposes of different arguments to blockrand:
+
+```{r quiz}
+quiz(
+  question("Which argument sets the number of arms in the clinical trial?",
+    answer("n"),
+    answer("block.prefix"),
+    answer("levels"),
+    answer("num.levels", correct = TRUE)
+  ),
+  question("Which argument names/labels the arms in the clinical trial?",
+    answer("n"),
+    answer("block.prefix"),
+    answer("levels", correct = TRUE),
+    answer("num.levels")
+  )
+)
+```
+

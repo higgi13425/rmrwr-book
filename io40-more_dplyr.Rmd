@@ -1,0 +1,148 @@
+---
+title: "more_dplyr"
+author: "Peter Higgins"
+date: "8/15/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(usethis)
+library(here)
+library(janitor)
+```
+
+## More dplyr
+
+You have learned the big 7 verbs in dplyr, including
+<br>
+1. filteR
+2. seleCt
+3. mutate
+4. group_by
+5. summarize
+6. arrange
+7. count
+<br>
+But there is more!!
+
+### rename
+
+when you don't need a full mutate, just better names.
+This often comes up after you have used clean_names to improve the formatting of variable names, but you end up with long, long names.
+<br>
+First run the code chunk below to see what you have in the data frame
+
+Then pipe tbl into a rename function, which has the format<br>
+rename(new_name = old_name)
+and rename the sbp as sbp_basel
+```{r rename}
+name <- c("Bob", "Carla", "Dave")
+the_value_of_sbp_at_baseline <- c(120, 134, 96)
+tbl <- data.frame(name, the_value_of_sbp_at_baseline)
+tbl %>% 
+  rename(sbp_base = the_value_of_sbp_at_baseline)
+```
+
+### Re-arrange your variables/columns
+
+If you don't like the order of your variables, you can use *select* to reorder them.
+use the format:
+select(var1, var2, var3:var4, everything())
+
+note that everything() puts all the other variables in at the end, in their previous order.
+This is helpful for pulling interesting variables to the front of the line.
+
+Run the chunk below,
+then pipe the tbl into 
+ select(pt_id, everything())
+
+```{r rearrange}
+firstname <- c("Bob", "Carla", "Dave", "Elena")
+pt_id <- c(001, 002, 003, 004)
+lastname <- c("Edwards", "Frankel", "Genghis", "Harrison")
+tbl <- data.frame(firstname, pt_id, lastname)
+tbl %>% 
+  select(pt_id, everything())
+```
+
+### Find distinct rows
+
+If you want to list only the distinct, unique observations, you can use the distinct function.
+
+Run the code chunk below to see the replicates by visit_num
+
+Then pipe tbl into 
+  distinct(var1, var2) - the variables you care about
+  
+  In this case, use firstname, lastname to find the distinct patients
+
+```{r distinct}
+firstname <- rep(c("Bob", "Carla", "Dave", "Elena"),3)
+pt_id <- rep(c(001, 002, 003, 004),3)
+lastname <- rep(c("Edwards", "Frankel", "Genghis", "Harrison"),3)
+visit_num <- c(rep(1,4), rep(2, 4), rep(3,4))
+tbl <- data.frame(pt_id, firstname, lastname, visit_num)
+tbl %>% 
+  distinct(firstname, lastname) ->
+unique_pts
+
+```
+
+### Select a group of rows with slice()
+Sometimes you just want a few contiguous rows, like with head(), or tail().
+but you can also pick which rows with slice()
+
+This is a simple command with 
+
+slice(start_row:end_row) to select the rows you want
+
+Run the chunk below to find out how many rows are in the starwars dataset.
+
+Then look at head and tail functions
+
+Then pipe starwars into a slice function.
+
+Slice out rows 15:25
+or
+46:60
+
+```{r}
+dim(starwars)
+
+starwars %>% 
+  head(7)
+
+starwars %>% 
+  tail(10)
+
+starwars %>% 
+  slice(15:35)
+```
+
+### Randomly sample some rows with sample_n() or sample_frac()
+Sometimes you want a smaller but representative sample of rows, 
+which you can get with sample_n() or sample_frac()
+
+sample_n needs a size (number of rows)
+
+while sample_frac needs a size between 0 and 1.
+
+You can also choose to sample with replacement (replace = TRUE)
+
+Using the chunk below,
+try to 
+
+1. sample 30 records from starwars (without replacement)
+2. take a 20% random sample (with replacement)
+
+```{r}
+starwars %>% 
+  sample_n(size =30, replace =TRUE)
+
+starwars %>% 
+  sample_frac(size = 0.2, replace = TRUE)
+```
+
+but you can also pick which rows with slice()

@@ -1,0 +1,16 @@
+---
+title: "GGplot with single variable"
+author: "Peter Higgins"
+output: html_document
+---
+
+
+# Single variable GGplots
+
+
+
+## Histograms
+
+### dotplots
+
+### other?

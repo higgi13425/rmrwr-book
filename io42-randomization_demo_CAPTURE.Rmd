@@ -1,0 +1,121 @@
+---
+title: "blockrand_demo"
+author: "Peter Higgins"
+date: "2/21/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+if (!require(blockrand)){    # checks if already installed
+        install.packages(blockrand) 
+} 
+library(blockrand)
+library(knitr)
+library(kableExtra)
+library(tidyverse, quietly = T)
+```
+
+The blockrand package is a user-friendly way to generate randomization for permuted blocks.
+
+### Block Randomization
+Block randomization is a commonly used technique in clinical trial design to reduce bias and achieve balance in the allocation of participants to treatment arms, especially when the sample size is small.
+
+### Permuted Block Randomization
+The permuted block technique randomizes patients between groups within a set of study participants, called a block. Treatment assignments within blocks are determined so that they are random in order but that the desired allocation proportions are achieved exactly within each block. In a 2-group trial with equal allocation and a block size of 6, 3 patients in each block would be assigned to the control and 3 to the treatment and the ordering of those 6 assignments would be random. For example, with treatment labels A and B, possible blocks might be: ABBABA, BABBAA, and AABABB (different permutations). As each block is filled, the trial is guaranteed to have the desired allocation to each group.
+The standard error of the treatment effect or the difference between the groups is therefore minimized with equal allocation. Permuted block randomization avoids significant imbalances, which can occur with simple randomization.
+
+### Random Size Permuted Blocks
+The main limitation of permuted block randomization is the potential for bias if treatment assignments become known or predictable. For example, with a block size of 4, if an investigator knew the first 3 assignments in the block, the investigator also would know with certainty the assignment for the next patient enrolled. The use of reasonably large block sizes, random block sizes, and strong blinding procedures such as double-blind treatment assignments and identical-appearing placebos are strategies used to prevent this.
+
+You can set up a random block size. For example, each block can be randomly selected with a size of 2, 4, or 6. This makes it very difficult to guess the next assignment.
+
+### Stratification
+You may have a baseline variable that is predictive of outcomes, or predictive of response to the treatment. For example, if you have a well-validated risk score that predicts the outcome, you want to make sure that the treatment groups have a similar distribution of risk levels. Otherwise, your study might be biased if a lot of the high risk patients ended up in one arm, and not the other.
+
+When this is the case, you can divide your population into different levels (or strata) of risk. Then do a separate randomization for each stratum.
+
+
+## Our Randomization
+Our goal is to have 500 assignments available across 5 strata of risk.
+To make this reproducible, I will set a distinct seed for each stratum.
+
+### Stratum 1 
+
+```{r}
+set.seed(1234)
+stratum1 <- blockrand(n = 100,
+                      block.prefix = "B_", # this is for block.id
+                      stratum = "Stratum_1",
+                      num.levels = 2, # 2 distinct treatments
+                      levels = c("Patient Navigator", "Control")
+                      ) %>% filter(id <101) # often will come out uneven
+                          # based on block size, so will trim to 100
+stratum1
+```
+ 
+### Now stratum 2
+ 
+```{r}
+set.seed(0714)
+stratum2 <- blockrand(n = 100,
+                      block.prefix = "B_",
+                      stratum = "Stratum_2",
+                      num.levels = 2,
+                      levels = c("Patient Navigator", "Control")
+                      ) %>% filter(id <101)
+stratum2
+```
+ 
+ 
+### Now stratum 3
+ 
+```{r}
+set.seed(1965)
+stratum3 <- blockrand(n = 100,
+                      block.prefix = "B_",
+                      stratum = "Stratum_3",
+                      num.levels = 2,
+                      levels = c("Patient Navigator", "Control")
+                      ) %>% filter(id <101)
+stratum3
+```
+ 
+### Now stratum 4
+ 
+```{r}
+set.seed(314159)
+stratum4 <- blockrand(n = 100,
+                      block.prefix = "B_",
+                      stratum = "Stratum_4",
+                      num.levels = 2,
+                      levels = c("Patient Navigator", "Control")
+                      ) %>% filter(id <101)
+stratum4
+```
+ 
+### Now Stratum 5
+ 
+```{r}
+set.seed(2718)
+stratum5 <- blockrand(n = 100,
+                      block.prefix = "B_",
+                      stratum = "Stratum_5",
+                      num.levels = 2,
+                      levels = c("Patient Navigator", "Control")
+                      ) %>% filter(id <101)
+stratum5
+```
+ 
+## Randomization Schedule
+now bind these together in one assignment sheet,
+so that we have one randomization schedule for all 5 strata.
+ 
+```{r}
+assign500 <- rbind(stratum1, stratum2, stratum3, stratum4, stratum5)
+assign500 %>%
+  rename(num = id) %>%
+  select(stratum, num, treatment, block.id, block.size) %>%
+  knitr::kable() %>%
+  kable_styling()
+```

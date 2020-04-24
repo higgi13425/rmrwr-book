@@ -1,0 +1,274 @@
+---
+title: "Tidying Your Data with Tidyr: Part 1"
+author: "Peter Higgins"
+date: "7/24/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# library(tidyverse)
+# devtools::install_github("tidyverse/tidyr", force = TRUE)
+library(tidyr)
+library(magrittr)
+library(dplyr)
+bp1 <- c("124/83", '145/96', "112/62", "108/48", "172/117", '133/77')
+bp2 <- c("134/88", '157/104', "118/69", "114/61", "189/122", '139/84')
+bp3 <- c("122/78", '127/74', "103/59", "102/51", "159/102", '129/76')
+MCS1 <- c(35, 42, 51, 63, 72, 49)
+MCS2 <- c(37, 44, 54, 67, 76, 53)
+MCS3 <- c(41, 48, 57, 69, 79, 57)
+studyid <- c(1,2,3,4,5,6)
+data <- data.frame(studyid, MCS1, MCS2, MCS3, bp1, bp2, bp3)
+
+data %>% 
+  pivot_longer(cols = starts_with("MCS"),
+               names_to = "visit_num",
+               names_prefix = "MCS",
+               values_to = "MCS")  %>% 
+  select(studyid, visit_num, MCS) ->
+mcsdata2
+
+data %>% 
+  pivot_longer(cols = starts_with("bp"),
+               names_to = "visit_num",
+               names_prefix = "bp",
+               values_to = "bp")  %>% 
+  select(studyid, visit_num, bp) %>% 
+  separate(col = "bp", into = c("sbp", "dbp"), sep = "/") ->
+bpdata2
+
+dplyr::left_join(mcsdata2, bpdata2) ->
+  data2
+
+data2
+```
+
+## What is Tidy Data?
+ Tidy data is rectangular (rows by columns) data formatted to fit 3 main rules:
+ 
+ 1. Each row is a unique observation.
+ 2. Each column contains a single variable.
+ 3. Each cell contains only one piece of data - a value or count.
+ 
+![Tidy Data Characteristics](/Users/peterhiggins/Documents/Rcode/teach_rmrwr/tidy-1.png) 
+ 
+<br>and different kinds of observations (usually recorded on distinct clinical report forms, or CRFs) are usually stored in distinct tables.
+ 
+### Tidy data is helpful because: 
+ 
+ 1. Most tidyverse and tidyverse-adjacent packages are designed to work on data in tidy data format, and output results in tidy data format.
+ 2. This standardized format allows packages and functions to work together, taking output from one function as input to another function.
+ 3. This allows "chaining" or piping (%>%) of functions together to allow you to do more powerful, more complex things with your data quickly and easily, with no friction between functions and data-processing steps.
+ 4. This allows you to focus on the analysis you want to do, rather than the mechanics of the functions and the data formats.
+
+Tidy data is particularly helpful for R, which treats each column as a vector, because a tidy layout ensures that values of variables (vectors) from the same observation are always matched.
+
+## Standardization and the Tidy Data Manifesto
+The original tidy data manifesto, by Hadley Wickham, can be found at (https://vita.had.co.nz/papers/tidy-data.pdf). This was written in part because R, as an open source language, had become a Wild West of data formats, with each package having its own particular data format, so that most functions were unable to work well together without a lot of data fiddling between each pair of functions.
+
+Even with this standardization, lots of clinical data are entered into spreadsheets, because they are ubiquitous and the startup costs are minimal. But spreadsheets also have few to no particular rules - just a wide open blank grid for entering data. 
+
+## The Dangers of Data Freedom
+
+This leads most folks to: 
+
+1. Label and comment on their data, with a lot of text near the top of a spreadsheet (need to skip rows when importing to get to the data)
+2. Consider their unit of observation as one patient, and enter longitudinal data with repeated measures in an ever-widening spreadsheet, with sequential observations from left to right, as in the data set below.
+
+![MessyData](/Users/peterhiggins/Documents/Rcode/teach_rmrwr/messydata.png)
+
+<br>
+This dataset has some annotation junk in the first 2 rows,
+data on the visit number in the 3rd row in merged cells that is hard to access/to assign to observations, and then wide data with repeated measures (which fortunately incorporate the visit number in their names). There is also messiness in the blood pressure values, which actually have two values (systolic and diastolic) in each cell.
+
+## The Many Ways of Messiness
+The most common ways that clinical data can be messy include:
+
+1. Column headers are values or categories, not variable names.
+2. Multiple variables are stored in one column.
+3. Variables are stored in both rows and columns.
+4. Multiple types of observational units are stored in the same table.
+5. A single observational unit is stored in multiple tables.
+
+Data tidying is the process of taking messy data and converting it to tidy format. As every messy dataset is messy in its own way, this can usually not be automated, but functions in the *tidyr* package make it much easier.
+
+Tidying is one of the key preparation steps in a Data Science workflow, after Importing and before Transforming.
+
+![DataScienceWorkflow](/Users/peterhiggins/Documents/Rcode/teach_rmrwr/data-science-workflow.png)
+
+
+## Tidying Data
+Today we will learn about two *tidyr* functions, 
+*pivot_longer*, which addresses multiple repeated longitudinal measures stored in wide format, and
+*separate*, which helps you separate multiple values stored in one column into their own distinct variables/columns.
+
+Let's start with *pivot_longer*. Take a look at the included data on 6 patients over 3 visits by running the code chunk below
+
+```{r}
+data
+```
+
+In this simple dataset, our intrepid investigator has entered one row per study subject, and 3 measures of the Mental Component Score of the SF-36 on 3 different days, and 3 measures of blood pressure at these visits, numbered 1 through 3.
+
+Ideally, we would have a tidy dataset, in which each row is a distinct observation, with a distinct combination of studyid and visit number, and values for MCS and bp for each unique observation. To truly make this tidy, you would separate bp into two distinct measures - a column for sbp and a column for dbp, as we want one value per data cell.
+
+This would look like the data2 object.
+Run the code chunk below to see what this data will look like after Tidying.
+```{r}
+data2
+```
+
+## Tidying Like a Real Data Scientist
+Let's see how you can do this tidying.
+We will use four steps:
+
+1. pivot_longer() for MCS scores
+2. pivot_longer() for bp measurements
+3. separate()  bp into systolic (sbp) and diastolic (dbp)
+4. merge MCS and bp data with dplyr::left_join() into one tidy dataset of 5 columns
+
+### 1. Tidy MCS 
+First, we will tidy the MCS scores. <br> 
+
+The *pivot_longer()* function uses four main arguments
+
+1. cols =  sets which columns you want to group together for pivoting to longer format
+2. names_to = what the new column name will be in which to collect and keep the information from the old pivoted column names (often a visit number, week, or other time point)
+3. names_prefix = what part of the old, pivoted column names is repeated and should be removed
+4. values_to = the name of the column in which to keep the values from the cells of the pivoted columns
+
+<br>
+1. Run the code below and see what it does. <br> 
+Why is this more tidy? <br> 
+What do the four arguments mean (google "pivot_longer tidyverse")? <br> 
+What other arguments are available? <br> 
+2. Run the code up to the select statement, to see what the data look like before selecting.<br> 
+2. Experiment with commenting out the names_prefix = 
+argument to see what it adds <br> 
+3. experiment with using cols = MCS1:MCS3 instead of starts_with <br> 
+4. change the names_to to something else <br> 
+```{r fix MCS}
+data %>% 
+  pivot_longer(cols = starts_with("MCS"),
+               names_to = "visit_num",
+               names_prefix = "MCS",
+               values_to = "MCS")  %>% 
+  select(studyid, visit_num, MCS) ->
+mcsdata
+
+mcsdata
+```
+
+### 2. Tidy bp
+
+Take a look at the BP data above, and use the code chunk below as a template. Edit this code to tidy the bp data. <br> 
+Then assign the resulting dataset to bpdata.
+
+```{r fix bp}
+data %>% 
+  pivot_longer(cols = starts_with("bp"),
+               names_to = "visit_num",
+               names_prefix = "bp",
+               values_to = "bp") %>% 
+  select(studyid, visit_num, bp) ->
+bpdata
+
+bpdata
+```
+
+### 3. Separate bp
+A problem with the bp data column is that it is messy, storing two values in a common format of SBP/DBP. The forward slash is the separator between the two values. <br> 
+
+Fortunately, tidyr has a function to deal with this sort of problem, called *separate()* <br> 
+
+You just pipe your dataframe into the separate function, which has 3 arguments: <br> 
+
+1. the column that needs to be separated, col = "column2separate"
+2. the columns that the new data will go into, into = c("newcol1", "newcol2")
+3. The separator, sep = "-" (whatever the separator text is, in quotes) <br> 
+
+Use your bpdata object (edit the code below) and the separate function below to split the BP values. Note - there are arguments that need fixing! <br> 
+
+```{r}
+bpdata %>% 
+  separate(col = "bp", into = c("sbp", "dbp"), sep = "/")
+```
+
+### 4. Merge MCS and bp to make a tidy dataset
+ We will use the *left_join()* function from the dplyr package to merget these two subsets together. Each observation is uniquely identifiable by the combination of studyid and visit_num. The combination (in database parlance) is called a *unique key*. This will help you do the merge between mcsdata and bpdata. <br>
+ 
+ We will use the left_join function to merge two datasets. You don't actually need _dplyr::_ here, as we did library(dplyr) in the setup chunk, but I am putting it in to make it clear where the left_join function comes from. As arguments, you just list your two datasets. and left_join figures out the unique key and joins them. The console output tells you what it is using to join them.
+ 
+You can also formally state the unique key that you want with the by argument (see  this illustrated in the second chunk of code below).
+
+The first dataset is used as the starting point, and new columns from the 2nd dataset are added to the right. <br>
+
+See what happens when you change the order of the datasets.
+ 
+ 
+```{r}
+dplyr::left_join(mcsdata, bpdata2) ->
+  data2
+
+left_join(bpdata2, mcsdata, by = c("studyid", "visit_num"))
+```
+## Challenge round!
+you have been provided (below) with a messy clinical dataset with longitudinal repeated data. Your job is to use your new tidying skills to tidy this dataset. This data is from a hypothetical 8 week study of 6 patients with Crohn's disease treated with Amazingmab who get a survey (CDAI - Crohn's Disease Activity Index) score at 0 and 8 weeks, and and endoscopic score (SES-CD - Simple Endoscopic Score for Crohn's Disease) at 0 and 8 weeks. They also vary in whether or not they have ileal or colonic (or both) involvement of active Crohn's disease at baseline.
+
+You should end up with 9 columns for:
+
+1. studyid
+2. name
+3. enrollment month
+4. enrollment year
+5. ileal involvement
+6. colonic involvement
+7. week
+8. CDAI
+9. SES_CD <br>
+<br>
+Run the code chunk below to take a look at the data, then get started on _*tidying your data!*_
+
+
+```{r newdata}
+name <- c("Alice", "Bob", "Cassie", "Doug", "Ellen", "Frank")
+studyid <- 1:6
+CDAIwk0 <- c(255, 310, 388, 274, 410, 375)
+CDAIwk8 <- c(110, 140, 175, 122, 180, 90)
+SES_CDwk0 <- c(25, 14, 19, 21, 22, 17)
+SES_CDwk8 <- c(7, 4, 6, 8, 7, 5)
+ileocolonic <- c('0_1', '1_1', '1_0', '1_1', '1_0', '1_1')
+enroll_month <- c("May-18", "Jun-18", 'Sep-18', 'Jan-19', 'Feb-19', 'Apr-19')
+
+challenge <- data.frame(studyid, name, enroll_month, ileocolonic, CDAIwk0, SES_CDwk0, CDAIwk8, SES_CDwk8)
+
+challenge
+```
+
+```{r}
+challenge %>% 
+  pivot_longer(cols = starts_with("CDAI"),
+               names_to = "Week",
+               values_to = "CDAI",
+               names_prefix = "CDAIwk") %>% 
+  select(studyid, Week, CDAI) ->
+cdai_data
+
+challenge %>% 
+  pivot_longer(cols = starts_with("SES"),
+               names_to = "Week",
+               values_to = "SES_CD",
+               names_prefix = "SES_CDwk") %>% 
+  select(studyid, Week, SES_CD) ->
+ses_data
+
+challenge %>% 
+  select(studyid:ileocolonic) %>% 
+  left_join(cdai_data) %>% 
+  left_join(ses_data) %>% 
+  separate(col = "enroll_month", into = c("month", "year"), sep = "-") %>% 
+  separate(col = "ileocolonic", into = c("ileal", "colonic"), sep = "_") 
+
+```
+

@@ -1,0 +1,105 @@
+---
+title: "Univariate Predictor Modeling with Purrr"
+author: "Peter D.R. Higgins"
+output:
+  html_document:
+    df_print: paged
+  html_notebook: default
+  pdf_document: default
+  word_document: default
+---
+
+Let's start by loading libraries.
+
+```{r setup libraries, message=FALSE}
+library(tidyverse)
+library(broom)
+library(purrr)  
+library(knitr)
+library(kableExtra)
+library(magrittr)
+```
+
+We will start with the mtcars dataset, with its many numeric variables.
+
+__Note__ that mtcars is a particularly convenient dataset for modeling. There are no character variables, and no extra (non-predictor) variables to remove. If there are predictors in your dataset that are of type(character), you probably want to convert them to factors, and order them into levels (if they are ordinal, rather than categorical) before modeling. The *forcats* package can be very helpful for this. 
+
+We will plan for modeling to predict the outcome variable, mpg, or miles per gallon. 
+Check out all the available predictors below. 
+
+How well will they predict mpg? 
+Should you put some of them, or all of them, into a multivariate model?
+
+Usually we look at how well single predictors predict the outcome variable in univariate models, then select the promising ones (p < 0.20, or p < 0.10, depending on how stringent you want to be) to put into a multivariate model.
+
+
+```{r inspect}
+head(mtcars)
+```
+
+In an R notebook, you can add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+Now let's look at an example of a single univariate predictor model, using cylinders as the predictor of mpg, using the *lm* function.
+
+With the broom package, we can *tidy* the model to get a dataframe as our output.
+
+```{r univariate test and tidy}
+model <- mtcars %>% 
+  lm(mpg ~ cyl, data = .)
+model %>% 
+  tidy()
+```
+
+We can also use the broom function *glance* to get statistics for the whole model.
+```{r glance at model}
+model %>% 
+  glance()
+```
+
+Now let's look at testing multiple univariate predictors for mpg - by constructing and summarizing multiple univariate models from one chain of tidy code using the _map_ function from the **purrr** package.
+
+This is a bit complicated.
+
+1. First we define full_df as mtcars, with both predictor variables and the outcome variable, mpg
+
+2. Then we use *select* to remove mpg (our outcome variable), to get a new dataframe of only predictor variables. We will pipe this predictors dataframe (predictors_df) into subsequent functions, but will also retain the ability to call the entire mtcars dataframe (which still includes the outcome variable mpg).
+
+3. Then we *map* the *lm* function over all the predictor variables (.x), using the full data from mtcars, which includes our outcome variable, mpg.
+
+4. We then *tidy* the resulting 10 models and save this as a list of 10 dataframes, each named for their predictor variable.
+
+5. Then we save the predictor variable names from this list to a vector called pred, which we will use later to label the predictors.
+
+6. Then we *bind_rows* (stack the rows) of the tidy dataframes from the 10 models in the list together into a single dataframe, and *filter* out the intercept rows.
+
+7. Then we add a column variable called predictor, and *select* the 3 variables we want, in the proper order.
+
+8. We *arrange* the rows by p value, then save this dataframe as an object called bivariate_table, and display it nicely in HTML with the *kable* function from knitr.
+
+```{r univariate models}
+full_df <- mtcars   #1
+predictors_df <- mtcars %>%  #2
+  dplyr::select(-mpg)
+
+predictors_df %>% 
+  map(~lm(full_df$mpg ~ .x, data = full_df)) %>% #3
+  map(tidy) -> #4
+list
+
+pred <- names(list) #5
+
+list %>% 
+  bind_rows() %>% #6
+  filter(term != "(Intercept)") %>% 
+  mutate(predictor = pred) %>% #7
+  select(predictor, estimate, p.value) %>% 
+  rename(Predictor = predictor, Estimate = estimate, `P value` = p.value) %>% 
+  arrange(`P value`) -> #8
+bivariate_table
+
+kable(bivariate_table, digits = 3) %>%
+  kable_styling(bootstrap_options = "responsive", full_width = FALSE) %>%
+  column_spec(2:3, width = "2.3cm")
+```
+
+

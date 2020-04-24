@@ -1,0 +1,166 @@
+---
+title: "R Notebook"
+output:
+  html_document:
+    df_print: paged
+---
+
+## Examples with tidylog
+
+Install the package if not already installed,
+then load libraries
+
+```{r setup}
+### devtools::install_github("elbersb/tidylog")
+library("dplyr")
+library("tidylog", warn.conflicts = FALSE)
+library(tidyverse)
+library(broom)
+library(scales)
+```
+
+The tidylog package will give you feedback about basic dplyr operations.
+It provides simple feedback for the most common functions, such as filter, mutate, select, full_join, and group_by.
+
+Let's see an example with a pipe.
+
+```{r pipe_example, warning=TRUE, collapse=TRUE}
+summary <- mtcars %>%
+    select(mpg, cyl, hp, am) %>%
+    filter(mpg > 15) %>%
+    mutate(mpg_round = round(mpg)) %>%
+    group_by(cyl, mpg_round, am) %>%
+    tally() %>%
+    filter(n >= 1)
+summary
+```
+
+Examples with filter and distinct
+
+```{r filter_distinct}
+a <- filter(mtcars, mpg > 20)
+
+b <- filter(mtcars, mpg > 100)
+ 
+c <- filter(mtcars, mpg > 0)
+ 
+d <- filter_at(mtcars, vars(starts_with("d")), any_vars((. %% 2) == 0))
+ 
+e <- distinct(mtcars)
+ 
+```
+
+Examples with mutate and transmute
+
+```{r}
+a <- mutate(mtcars, new_var = 1)
+ 
+b <- mutate(mtcars, new_var = runif(n()))
+ 
+c <- mutate(mtcars, new_var = NA)
+ 
+d <- mutate_at(mtcars, vars(mpg, gear, drat), round)
+ 
+e <- mutate(mtcars, am_factor = as.factor(am))
+ 
+f <- mutate(mtcars, am = as.factor(am))
+ 
+g <- mutate(mtcars, am = ifelse(am == 1, NA, am))
+ 
+h <- mutate(mtcars, am = recode(am, `0` = "zero", `1` = NA_character_))
+ 
+
+i <- transmute(mtcars, mpg = mpg * 2, gear = gear + 1, new_var = vs + am)
+ 
+```
+
+Examples with select
+
+```{r select}
+a <- select(mtcars, mpg, wt)
+ 
+b <- select(mtcars, matches("a"))
+ 
+c <- select_if(mtcars, is.character)
+```
+
+Examples with joins
+
+```{r joins}
+a <- left_join(band_members, band_instruments, by = "name")
+ 
+b <- full_join(band_members, band_instruments, by = "name")
+ 
+c <- anti_join(band_members, band_instruments, by = "name")
+
+a
+b
+c
+
+```
+
+Examples with summarize
+
+```{r}
+a <- mtcars %>%
+    group_by(cyl, carb) %>%
+    summarize(total_weight = sum(wt))
+a
+
+b <- iris %>%
+    group_by(Species) %>%
+    summarize_all(list(~min, ~max))
+b
+```
+
+How to turn tidylogging off and back on when needed
+
+```{r tidylog_off}
+options("tidylog.display" = list())  # turn off
+a <- filter(mtcars, mpg > 20)
+a
+```
+
+Now back on
+
+```{r tidylog_on}
+options("tidylog.display" = NULL)    # turn on
+a <- filter(mtcars, mpg > 20)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+```{r chisq}
+mtcars %>% 
+  group_by(cyl) %>% 
+  count(am) %>% 
+  spread(am, n) %>% 
+  column_to_rownames('cyl') %>% 
+  chisq.test() %>% 
+  tidy() 
+```
+
+```{r ttest}
+mt <- mtcars %>% 
+  group_by(cyl) %>% 
+  filter(cyl <7) %>% 
+  t.test(mpg ~ cyl, data = .) %>% 
+  tidy() 
+```
+
+The p value for this t test is `r mt$p.value[1] %>% pvalue(accuracy = 0.0001, decimal.mark = ".", add_p = FALSE)`
+
+
+```{r anova}
+mtcars %>% 
+  aov(mpg ~ cyl, data = .) %>% 
+  tidy() ->
+result
+```
+
+
+The result of the ANOVA test is F(`r result$df[1]`, `r result$df[2]`) = `r result$statistic[1] %>% round(2)`, with p `r result$p.value[1] %>% pvalue(., accuracy = 0.0001, decimal.mark = ".", add_p = FALSE)` 

@@ -10,7 +10,64 @@ rmd_files:
 - io03-tasting.Rmd
 - io04-updating.Rmd
 - io07-major-updates.Rmd
+- io08-data-validation.Rmd
 - io09-timeseries.Rmd
+- io10-tableOne.Rmd
+- io11-ggplot-single-var.Rmd
+- io13-ggplot-cont-vs-catvar.Rmd
+- io13-ggplot-cont-vs-cont.Rmd
+- io14-presenting-Rmarkdown.Rmd
+- io15-reproducible-research.Rmd
+- io16-study-design.Rmd
+- io17-sample-size.Rmd
+- io18-sources-bias.Rmd
+- io19_randomization_blockrand_CAPTURE.Rmd
+- io20-one-var-1group-tests.Rmd
+- io21-one-var-2group-tests.Rmd
+- io22-one-var-Multgroup-tests.Rmd
+- io23-linear-regression.Rmd
+- io24-sharing-shiny.Rmd
+- io25-logistic-regression.Rmd
+- io26-meta-analysis.Rmd
+- io27-learn_consort.Rmd
+- io28-mockstudy_analysis_chisq.Rmd
+- io29-learn_chisq.Rmd
+- io29a-chisq_example.Rmd
+- io30-ttest.Rmd
+- io30a-ttest.Rmd
+- io31-ttest_part2.Rmd
+- io33-tableone_arsenal.Rmd
+- io34-mockstudy_analysis.Rmd
+- io35-making tables of univariate predictors.Rmd
+- io36-tidyr1.Rmd
+- io37-tidyr2.Rmd
+- io38-tidylog.Rmd
+- io39-dplyr_verbs_demo.Rmd
+- io40-more_dplyr.Rmd
+- io41-draw_consort.Rmd
+- io42-randomization_demo_CAPTURE.Rmd
+- io42a-blockrand_CAPTURE.Rmd
+- io43-rand_block.Rmd
+- io44-UM_poster.Rmd
+- io45-Beginning ggplot with scatterplots.Rmd
+- io46-beginning cat vs continuous boxplots.Rmd
+- io47-beginning bars.Rmd
+- io48-learn_distrib_histo.Rmd
+- io49a-multipanel_with_tables.Rmd
+- io50-strings_intro_learnr.Rmd
+- io50a-strings_intro.Rmd
+- io50b-strings_intro.Rmd
+- io51-string_2.Rmd
+- io51a-strings_2.Rmd
+- io53-strings_3._learnr.Rmd
+- io55-ForkBranchCollaboration.Rmd
+- io56-FormattingRmd2Word.Rmd
+- io58-debugging pipes and plots.Rmd
+- io59-Hashtag Debugging Your Pipes and Plots.Rmd
+- io60-help_in_R.Rmd
+- io61-learn_lm.Rmd
+- io63-Logistic Regression.Rmd
+- io64-GAM.Rmd
 - io98-title-holder.Rmd
 - io99-references.Rmd
 new_session: true

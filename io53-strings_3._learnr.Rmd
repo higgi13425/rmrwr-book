@@ -1,0 +1,491 @@
+---
+title: "Challenge Tutorial for Strings"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+Run the first setup chunk to set up your libraries
+and load the data.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+#libraries
+library(learnr)
+tutorial_options(exercise.eval = FALSE)
+library(tidyverse)
+library(RVerbalExpressions)
+library(janitor)
+
+df <- data.frame(a = c(0,1), b = c(0,1))
+var <- 0
+
+# read in data
+fcp <- read_csv('fcp.csv')
+rad <- read_csv('rad.csv') 
+```
+
+
+## Text-based laboratory data: FCP
+
+### Explore the Fecal Calprotectin Data Set
+
+The fcp dataset is the result of a data warehouse lab query for 65 subjects participating in a clinical research study.
+
+Fecal calprotectin is a neutrophil protein that is stable in stool, and can be measured quantitatively with an ELISA assay. It quantitates inflammation in the gastrointestinal tract.
+
+Explore the dataset using functions like glimpse, tabyl, head, etc. to prepare for the following questions:
+
+
+1. How to extract the FCP value to a new (numeric) column?
+2. How to identify/filter for abnormal FCP values?
+3. How to store the definition of normal in a column?
+4. How to find and store the FCP units into a column?
+
+To get started, do the exercise below to glimpse the variables in FCP.
+Fill in the dataframe object fcp for glimpse, then try head(), and tabyl() on some of the variables.
+
+```{r glimpse, exercise=TRUE}
+glimpse()
+```
+```{r glimpse-hint-1}
+glimpse(fcp)
+head(fcp)
+tabyl(fcp$flag)
+```
+
+
+
+### Dig into the lab_result_text
+
+Take a look at the first entry for lab_result_text
+with the code chunk below
+By adding brackets and 1, i.e.
+fcp$lab_result_text[1]
+
+Then look at a few more with [2:5]
+
+Take a look at several until you are confident that you have a pattern to find that will consistently include the numerical result for calprotectin.
+
+```{r text, exercise=TRUE}
+fcp$lab_result_text[17]
+```
+
+```{r text-hint-1}
+fcp$lab_result_text[1]
+```
+
+```{r text-hint-2}
+fcp$lab_result_text[1:5]
+```
+
+### Find the result in lab_result_text
+
+Use str_view to find "Calprotectin, F" and, separately, "mcg/g"
+in a few rows of lab_result_text, by editing the code chunk below
+
+```{r find-text, exercise=TRUE, exercise.lines=15}
+str_view(string = fcp$lab_result_text, pattern= "55901")
+```
+
+```{r find-text-hint-1}
+str_view(string = fcp$lab_result_text, pattern= "Calprotectin, F")
+```
+
+```{r find-text-hint-2}
+str_view(string = fcp$lab_result_text, pattern= "mcg/g")
+```
+### Extracting the result from lab_result_text
+You have now bracketed the numeric result.
+
+Build a pattern using RVerbalExpressions 
+
+[RVE](https://rverbalexpressions.netlify.com/index.html)
+
+that includes
+
+1. starts with "Calprotectin, F" (_seek_ _prefix_)
+2. Result in the middle (anything)
+3. Ends with "mcg/g" (_seek_suffix_)
+
+Set this as your pattern, and see if you are selecting the numeric result with str_view by editing the code chunk below.
+
+Make sure your prefix and suffix are *unique* and flank the result value
+
+
+```{r see-number, exercise=TRUE, exercise.lines=15}
+p <- "Test Performed by:"
+
+
+str_view(string = fcp$lab_result_text, pattern = p)
+```
+
+```{r see-number-hint-1}
+p <- rx() %>% 
+  rx_seek_prefix("Calprotectin, F") %>% 
+  rx_anything() %>% 
+  rx_seek_suffix("mcg/g")
+
+str_view(string = fcp$lab_result_text, pattern = p)
+```
+
+### Extracting a number from lab_result_text
+You have a pattern to get your result.
+You probably have to peel off the letter H from some of these results.
+
+Try this out first with str_extract using the same pattern, then pipe it into 
+parse_number() 
+in the code chunk below
+
+
+```{r extract-number, exercise=TRUE, exercise.lines=15}
+p <- rx() %>% 
+  rx_seek_prefix("Calprotectin, F") %>% 
+  rx_anything() %>% 
+  rx_seek_suffix("mcg/g ")
+
+str_view(string = fcp$lab_result_text, pattern = p)
+```
+
+```{r extract-number-hint-1}
+p <- rx() %>% 
+  rx_seek_prefix("Calprotectin, F") %>% 
+  rx_anything() %>% 
+  rx_seek_suffix("mcg/g ")
+
+str_extract(string = fcp$lab_result_text, 
+            pattern = p)
+```
+### Create the new fcp_value variable
+Once you have this working,
+edit the code chunk below - 
+start with fcp, pipe it into a mutate statement,
+which should create a new variable called fcp_value, and set it equal to the str_extract/parse_number pipe result.
+
+```{r fcp-value, exercise = TRUE, exercise.lines=15}
+p <- rx() %>% 
+  rx_seek_prefix("Calprotectin, F") %>% 
+  rx_anything() %>% 
+  rx_seek_suffix("mcg/g ")
+
+fcp %>% 
+  mutate(fcp_value = var) %>% 
+  select(sbj_id, eff_date, flag, fcp_value)
+```
+
+```{r fcp-value-hint-1}
+p <- rx() %>% 
+  rx_seek_prefix("Calprotectin, F") %>% 
+  rx_anything() %>% 
+  rx_seek_suffix("mcg/g ")
+
+fcp %>% 
+  mutate(fcp_value = parse_number(str_extract(string = fcp$lab_result_text, pattern = p))) %>% 
+  select(subj_id, date, flag, fcp_value)
+```
+### More Challenges
+2. Identify/filter for abnormal FCP values?
+3. Store the definition of normal in a column?
+4. Find and store the FCP *units* into a column?
+
+## Text Results from Radiology Come in Blobs
+
+### Exploring the rad dataset
+
+Start with _glimpse()_ and _head()_ to get a feel for this dataset
+
+```{r glimpse-rad, exercise=TRUE, }
+glimpse(df)
+```
+
+```{r glimpse-rad-hint}
+glimpse(rad)
+head(rad)
+```
+
+We want to find out which patients had abscesses on their scans.
+
+
+### Exploring the text blobs
+The report text is in rad_text.
+Take a look at several of these entries
+using rad$rad_text.
+
+You can select which row with [row],
+as in rad$rad_text[4].
+Edit the code chunk below to review the rad_text from report 1,
+then reports 2 through 5.
+
+```{r rad-text, exercise = TRUE}
+rad
+```
+
+
+```{r rad-text-hint-1}
+rad$rad_text[1]
+rad$rad_text[2:5]
+```
+
+### Cleaning up newlines (\n)
+Notice that there are a lot of newline characters ("\n") which create line breaks.
+
+Use str_replace_all to replace all instances of "\n"
+with a space " ".
+
+Edit the code chunk below to mutate and create a new rad_text_sp variable, with all of the newline characters replaced by spaces.
+When you are convinced that it works, use the left assignment arrow to assign the str_replace pipe to rad$rad_text to overwrite the original version.
+
+```{r replace, exercise = TRUE}
+rad$rad_text
+
+rad$rad_text %>% 
+  str_replace("EXAMINATION:", "exam:")
+```
+
+```{r replace-hint-1}
+rad$rad_text
+
+rad$rad_text %>% 
+  str_replace_all("\n", " ")
+```
+
+```{r replace-hint-2}
+rad$rad_text <- rad$rad_text %>% 
+  str_replace_all("\n", " ")
+```
+
+### Finding abscesses
+Since this is a large dataset of 2781 imaging reports, we will start with detecting the word "abscess".
+
+Use str_detect on rad$rad_text to find out how in many rows the word "abscess" occurs. 
+Pipe this into the _sum()_ function to get the sum
+
+```{r view-rads, exercise = TRUE}
+rad$rad_text %>% 
+  str_detect("stricture") 
+```
+
+```{r view-rads-hint-1}
+rad$rad_text %>% 
+  str_detect("abscess") %>% 
+  sum()
+```
+
+Wow. 11156 out of 2781 seems like a lot.
+
+### Taking a Look with str_view()
+
+Let's see what is going on with _str_view()_.
+Edit the code block below to see what is going on.
+
+```{r view-abscess, exercise = TRUE}
+rad$rad_text %>% 
+  str_view("fistula") 
+```
+
+```{r view-abscess-hint-1}
+rad$rad_text %>% 
+  str_view("abscess") 
+```
+
+You can see that we have a *negation* problem. Just because a word appears in a text blob, it does not mean that the patient has that finding. It can easily be "No abscess". 
+
+This is a good time to use RVE to detect the words before and after "abscess" to help parse its meaning. 
+
+### Extracting Abscesses
+
+Let's build a pattern in RVerbalExpressions to detect the entire sentence surrounding the word "abscess". Or possibly a certain number of words before & after.
+
+This is probably a good time to peek at the RVE website.
+
+[RVE](https://rverbalexpressions.netlify.com/index.html)
+
+```{r extract-rads, exercise = TRUE}
+pattern = "abscess"
+
+rad$rad_text %>% 
+  str_extract(pattern) 
+```
+
+```{r extract-rads-hint-1}
+pattern = rx() %>% 
+  rx_find(". ") %>% 
+  rx_anything() %>% 
+  rx_find("abscess") %>% 
+  rx_anything() %>% 
+  rx_find(". ")
+  
+rad$rad_text %>% 
+  str_extract_all(pattern) 
+```
+
+```{r extract-rads-hint-2}
+pattern = rx() %>% 
+  rx_word() %>% 
+  rx_space() %>% 
+  rx_word() %>% 
+  rx_space() %>% 
+  rx_word() %>% 
+  rx_space() %>% 
+  rx_find("abscess") %>% 
+  rx_space() %>% 
+  rx_word() %>% 
+  rx_space() %>% 
+  rx_word() 
+  
+rad$rad_text %>% 
+  str_extract_all(pattern) 
+```
+### Encoding results
+Do you have enough of a pattern to mutate a new column variable named abscess_present and to create 1s and 0s for this variable?
+
+Or would you rather extract or str_view the cases that have the word abscess (can filter for these with str_detect), and hand code based on human interpretation?
+
+This is the kind of situation where NLP can benefit from human assistance, kind of like laparoscopy vs. hand-assisted laparoscopy. You can do most of the work with robots, but a little help from humans goes a long way.
+
+Edit the code block below  to
+
+1. create a variable in rads named abscess_present, and assign 0 to each row as the default
+2. filter the rad dataset with filter(str_select) to filter for only those rows with the word abscess. 
+3. Review the results, decide which ones truly have abscesses.
+4. Hand assign these values to 1, as in rad$abscess_present[patid == 73] <- 1
+
+```{r coding-abscess-present}
+rad
+
+rad %>% 
+  filter(str_detect(rad_text, "CT"))
+
+```
+
+```{r coding-abscess-hint-1}
+#rad %>% 
+ # mutate(abscess_present = 0)
+
+rad %>% 
+  filter(str_detect(rad_text, "abscess"))
+
+#rad$abscess_present[3214] <- 1
+#rad$abscess_present[1354] <- 1
+```
+
+
+### Challenges - On Your Own
+
+1. Can you extract CT, MR, and XR codes from the variable `code`, and determine what percentage of these exams are CT vs MR vs X-rays?
+
+```{r percentages, exercise = TRUE}
+rad$code 
+```
+
+```{r percentages-hint-1}
+rad$code %>% str_detect("^MR") %>% sum()
+rad$code %>% str_detect("^CT") %>% sum()
+rad$code %>% str_detect("^XR") %>% sum()
+length(rad$code)
+
+rad %>% 
+  mutate(mr = str_detect(code, "^MR")) %>% 
+  mutate(ct = str_detect(code, "^CT")) %>%
+  mutate(xr = str_detect(code, "^XR")) %>% 
+  pivot_longer(cols = c(mr, ct, xr), names_to = "exam") %>% 
+  filter(value == TRUE) %>% 
+  select(-value)
+```
+
+2. Can you determine whether more MRs or CTs find abscesses (by percentage of positive exams?)
+
+3. Which doctors (ordering_doc_id) order the highest percentage of MRIs? Which order the highest percentage of CT scans? Which group is more likely to be pediatricians?
+
+```{r}
+tabyl(rad$ordering_doc_id) %>% 
+  arrange(desc(n))
+```
+
+
+
+## Stringr and RVE Quiz of String Knowledge (Open Book)
+
+Some questions about functions in string-related packages:
+
+```{r strings-quiz, echo=FALSE}
+quiz(
+  question("What are the two common arguments to str_functions?",
+    answer("string and min"),
+    answer("min and pattern"),
+    answer("string and pattern", correct = TRUE),
+    answer("string and yarn")
+  ),
+  
+  question("Which str function will let you **see** where the matches occur (or don't)?",
+    answer("str_extract()"),
+    answer("str_detect()"),
+    answer("str_trunc()"),
+    answer("str_view()", correct = TRUE)
+  ),
+
+    question("Which str function will trim off whitespace from both ends of a string?",
+    answer("str_trunc()"),
+    answer("str_trim()", correct = TRUE),
+    answer("str_pad()"),
+    answer("str_c()")
+  ),
+  
+    question("Which str function will combine (concatenate) strings?",
+    answer("str_trunc()"),
+    answer("str_locate_all()"),
+    answer("str_sort()"),
+    answer("str_c()", correct = TRUE)
+  ),
+  
+  question("Which str function will return a vector of the matched strings when the matches occur (or don't)?",
+    answer("str_extract()", correct = TRUE),
+    answer("str_detect()"),
+    answer("str_match()"),
+    answer("str_view()")
+  ),
+   
+    question("Which str function will replace all of the matched patterns in a string?",
+    answer("str_replace()"),
+    answer("str_split()"),
+    answer("str_locate()"),
+    answer("str_replace_all()", correct = TRUE)
+  ),
+  
+  question("Which str functions can change string case?",
+    answer("str_to_upper()", correct = TRUE),
+    answer("str_split()"),
+    answer("str_to_title()", correct = TRUE),
+    answer("str_to_lower()", correct = TRUE)
+  ),
+  
+  question("Which RVerbal Expressions functions can used to start a regex pattern build?",
+    answer("rx()", correct = TRUE),
+    answer("rx_find()"),
+    answer("rx_line_break()"),
+    answer("rx_start_of_line", correct = TRUE)
+  ),
+  
+  question("Which RVerbal Expressions function makes your pattern case-insensitive?",
+    answer("rx_punctuation()"),
+    answer("rx_find()"),
+    answer("rx_uppercase()"),
+    answer("rx_with_any_case()", correct = TRUE)
+  ),
+  
+  question("Which RVerbal Expressions function repeats the previous group multiple times?",
+    answer("rx_multiple()", correct = TRUE),
+    answer("rx_range()"),
+    answer("rx_maybe()"),
+    answer("rx_anything_but()")
+  ),
+  
+  question("Which RVerbal Expressions function optionally matches a pattern?",
+    answer("rx_any_of()"),
+    answer("rx_maybe()", correct = TRUE),
+    answer("rx_either_of()"),
+    answer("rx_anything_but()")
+  )
+)
+```
+

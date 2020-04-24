@@ -1,0 +1,168 @@
+---
+title: "Learning Histograms, Distributions, and Scales"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(tidyverse)
+library(scales)
+library(HSAUR)
+library(arsenal)
+data("polyps")
+data("Indometh")
+data("Theoph")
+data("mockstudy")
+glimpse(Indometh)
+glimpse(polyps)
+glimpse(Theoph)
+glimpse(mockstudy)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Topic 1
+ A histogram is a common way to explore the distribution of a continuous numeric variable. A histogram divides your x variable into bins (segments of the distribution) and provides a count for each bin.
+<br>
+ The Indometh dataset contains data from a pharmacokinetic study of oral intake of a single dose of indomethacin, a common nonsteroidal medication often used to treat gout. The Indometh dataset contains two numeric variables, time and conc.  The y axis defaults to the count in each bin.
+<br>
+ The basic use of the geom_histogram requires:
+ 1. a dataset in the ggplot function
+ 2. an x variable in the aesthetic function, and
+ 3. geom_histogram()
+ 
+See the example below.
+ 
+```{r histo1}
+ggplot(data = Indometh, 
+       aes(x=conc)) +
+  geom_histogram()
+```
+<br>
+The number of bins defaults to 30. You can control this by setting the number of bins, or the binwidth in units of x, within the geom_histogram() function.
+Try this out in the exercise below. And while you are at it, set a contrasting fill and color for the bars.
+
+### Exercise Set bins or binwidth, set color and fill
+Note that if you set both bins = M and binwidth = N, binwidth will override the bins setting. A very wide binwidth or small number of bins can sometimes be misleading, so start with narrow bins and then scale back to see the true distribution. This one is clearly right-skewed.
+```{r histo2, exercise=TRUE}
+ggplot(data = Indometh, 
+       aes(x=conc)) +
+  geom_histogram()
+```
+
+### Exercise map to color
+You can also map the counts to a color, using the calculated stat named count. This is prefixed and suffixed with two dots, so that it looks like ..count..<br>
+In the aesthetic function below, map fill to ..count..<br>
+with bins = 12 in geom_histogram()
+```{r histo3, exercise=TRUE}
+ggplot(data = Indometh, 
+       aes(x=conc)) +
+  geom_histogram()
+```
+
+### Exercise with Code
+
+You can also manually control the bins by specifying the breaks with a statement like <br>
+breaks = c(seq(from= 0, to = 3, by = 0.5))).
+Note that we are using the seq function to generate a sequence quickly.
+<br>
+Run the code below to see this, then change the data to Theoph, a similar pK dataset for Theophylline. Run this code, then pick your own breaks to accurately reflect the distribution of concentration values. You may want to start with bins = 40 to start, then pick breaks that you like.
+
+```{r histo4, exercise=TRUE, exercise.lines = 5}
+ggplot(data = Indometh, 
+       aes(x=conc)) +
+  geom_histogram()
+```
+
+### Smooth distributions
+
+You can also map distributions without bins by using geom_density() <br>
+Try this with the code below - 
+<br>
+Run the code below, then change the data to Theoph, then change the geom to geom_density().
+This shows the overall distribution. Now to see the distribution by Subject, try
+
+1. add to the aes(group = Subject)
+1. add to the aes(color = Subject)
+
+```{r density1, exercise=TRUE, exercise.lines = 5}
+ggplot(data = Theoph, 
+       aes(x=conc)) +
+  geom_density()
+```
+### Overlaid distributions
+
+You can overlay distributions with both a histogram and a density plot using a density y axis <br>
+change the aesthetic function for beom_histogram below to <br>
+y = ..density.. and fill = ..density..
+
+```{r density1, exercise=TRUE, exercise.lines = 5}
+ggplot(data = Theoph)+
+  aes(x = conc) +
+  geom_histogram(aes()) +
+  geom_density()
+```
+
+
+### MOre on density here
+http://www.carlislerainey.com/teaching/pols-209/files/notes-08-histograms-r.pdf
+
+http://www.leahbrooks.org/leahweb/teaching/pppa_dataviz/2018/subpages/handouts/tutorials/lecture03/lecture03_ggplot_and_histograms_v04.pdf 
+
+
+You can also compare across a limited number of categories with geom_histogram.
+We will use the mockstudy data of cholangiocarcinoma patients and compare age distribution by sex. 
+In the aes mapping function, set color and fill to your categorical variable (sex), and alpha to ..count..
+
+```{r}
+ggplot(data = mockstudy, 
+       aes(x = age)) +
+  geom_histogram()
+```
+
+
+## Topic 2: Comparing distributions across a categorical variable.
+
+### Exercise with Hint
+If you want to compare distributions across a categorical variable, you can use geom_freqpoly(). 
+Modify the following code
+use the Theoph dataset, and compare the distributions across Subject. 
+Use geom_freqpoly in place of geom_histogram, use color + Subject, and set the binwidth to 1.
+*Here's an exercise where the chunk is pre-evaulated via the `exercise.eval` option (so the user can see the default output we'd like them to customize). We also add a "hint" to the correct solution via the chunk immediate below labeled `print-limit-hint`.*
+
+ 
+
+```{r freqpoly, exercise=TRUE, exercise.eval=TRUE}
+ggplot(data = Indometh, 
+       aes(x=conc, color = Subject)) +
+  geom_freqpoly(binwidth = 1, stat = 'density')
+```
+The default geom_freqpoly stat = 'count', but you can also set it to stat = 'density'. Give it a try.
+```{r print-limit-hint}
+head(mtcars)
+```
+
+### Quiz
+
+*You can include any number of single or multiple choice questions as a quiz. Use the `question` function to define a question and the `quiz` function for grouping multiple questions together.*
+
+Some questions to verify that you understand the purposes of various base and recommended R packages:
+
+```{r quiz}
+quiz(
+  question("Which package contains functions for installing other R packages?",
+    answer("base"),
+    answer("tools"),
+    answer("utils", correct = TRUE),
+    answer("codetools")
+  ),
+  question("Which of the R packages listed below are used to create plots?",
+    answer("lattice", correct = TRUE),
+    answer("tools"),
+    answer("stats"),
+    answer("grid", correct = TRUE)
+  )
+)
+```
+

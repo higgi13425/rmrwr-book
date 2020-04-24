@@ -1,0 +1,444 @@
+---
+title: "Tutorial"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(tidyverse)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+Let's learn about strings!
+
+## Data Types
+Strings (or character class) are one of the basic data types (classes) in R.
+
+Other data types include:
+
+1. Logical (TRUE/FALSE)
+2. integer (0/1/2/3/4)
+3. numeric (3.2, -7.14, 11.78)
+4. factor (red/blue/green) with variants:
+  + ordinal factor (low/medium/high)
+  + factor with labels (1/2, labels = c("female", "male"))
+5. complex (3 + 2i, 7 - 3i)
+6. (and of course) strings ("Bob", "yellow", "3.14")
+
+anything can be a string - so it is the default when reading in data of **mixed** types. 
+
+## A first string vector
+Here is an example of a vector of six strings.
+Execute this chunk by clicking the blue *Run code* button (top right) within the chunk to see the `strings` object, its length, and its underlying class.
+
+```{r strings-1, exercise = TRUE}
+strings <- c("alcoholic cirrhosis", "cirrhotic", "alcoholism", "alcohol abuse disorder", "alcohol toxicity", "alcoholic hepatitis")
+strings
+length(strings)
+class(strings)
+```
+
+This gives you three sets of results
+
+1. the vector of 6 strings, with index numbers in brackets on the left.
+2. the length of the strings object (6)
+3. the class of the strings object (character)
+Note that each of these results are vectors (even if only of length 1), and are numbered.
+
+## The Good and the Bad of Coercion
+Variables in a data frame in R are all vectors.
+Each column represents a vector.
+
+In a vector, all data elements have to be of the same data type (class).
+If they are not, they will be "coerced" to a common data type or class.
+This can be convenient at times (you always get a viable vector of a single class), but can also be **dangerous** if you don't see it coming (because it happens silently, behind the scenes), and can result in downstream errors later. <br>
+Below are some illustrative examples of mixed data in a single vector and the resulting **coercion** of data classes.
+
+Predict what you think the classes of the vectors `values` and `numbers` will be (logical, numeric, character??) in the chunk below. Then run each of the code chunks below with the `Run code` button. Check your predictions. See what happens when you try to multiply these vectors.
+
+```{r strings-2.1, exercise = TRUE} 
+values <- c(TRUE, FALSE, 7)
+values
+class(values)
+pi * values^2 
+```
+
+
+```{r strings-2.2, exercise = TRUE} 
+numbers <- c(3, 9, " ")
+numbers
+class(numbers)
+```
+
+
+```{r strings-2.3, exercise = TRUE} 
+numbers <- c(3, 9, " ")
+numbers * 2
+```
+Note that you can multiply TRUE and FALSE values (in `values` because these will be coerced to 1 and 0 when in a vector with a numeric), and an extra space in a column (often seen in data imported from Excel) can cause coercion of a numeric variable to the character class (as seen in `numbers`), making attempts to multiply or otherwise numerically manipulate this variable throw an error like `Error in numbers * 2 : non-numeric argument to binary operator`.
+
+## Stringr is your multitool for Strings
+
+Now that you have seen this common _'gotcha'_ with strings, on to things you can do with strings! 
+
+The tidyverse _stringr_ package has a lot of helpful string functions.
+
+Jump back to RStudio and run `help(stringr)` in the console to see some of them.
+<br>
+Also within RStudio (check this out in the menus above) you can get more help at `Help/Cheatsheets/Browse cheatsheets...` and find the `stringr` cheatsheet.
+<br>
+Note that you can get a lot more detail (and a cheatsheet)
+at (click on the link)
+
+[The Stringr Website](http://stringr.tidyverse.org)
+
+
+## Finding Patterns in Strings
+### str_detect()
+Let's start with the strings vector from above
+use _str_detect()_ to find "alc" and "cirr" in the vector.
+_str_detect()_ has 2 arguments, string (the string to be searched), and pattern (the pattern to search for).  These two arguments are common to most of the stringr functions.
+Run the code block below for an example
+
+```{r str-detect, exercise = TRUE}
+strings <- c("alcoholic cirrhosis", "cirrhotic", "alcoholism", "alcohol abuse disorder", "alcohol toxicity", "alcoholic hepatitis")
+str_detect(strings, "alc")
+str_detect(strings, "cirr")
+```
+
+This is somehat helpful to get a logical vector of `TRUE` and `FALSE` back (this will turn out to be more helpful later).
+
+### str_which()
+Now try the _str_which()_ function - add code to the block below to find which data elements contain "alc" and "cirr".
+Pipe the strings object into a str_which function.
+The syntax is helpfully consistent _str_which_(`string_to_be_searched`, `pattern`)
+
+```{r str_which, exercise = TRUE}
+strings <- c("alcoholic cirrhosis", "cirrhotic", "alcoholism", "alcohol abuse disorder", "alcohol toxicity", "alcoholic hepatitis")
+strings
+
+
+```
+
+```{r str_which-hint-1}
+strings <- c("alcoholic cirrhosis", "cirrhotic", "alcoholism", "alcohol abuse disorder", "alcohol toxicity", "alcoholic hepatitis")
+strings %>%
+  str_which("alc")
+
+strings %>%
+  str_which("cirr")
+
+```
+### str_count()
+Now try _str_count()_ - add code to the block below to find how many times these data elements contain "alc" and "c".
+Again, pipe the strings object into the function, which
+has 2 arguments, **string** and **pattern**.
+
+```{r str-count, exercise = TRUE}
+strings <- c("alcoholic cirrhosis", "cirrhotic", "alcoholism", "alcohol abuse disorder", "alcohol toxicity", "alcoholic hepatitis")
+strings
+
+
+```
+```{r str-count-hint-1}
+strings <- c("alcoholic cirrhosis", "cirrhotic", "alcoholism", "alcohol abuse disorder", "alcohol toxicity", "alcoholic hepatitis")
+strings %>%
+  str_count("alc")
+
+strings %>%
+  str_count("c")
+
+```
+
+### str_locate()
+Now try _str_locate()_ - add code to the block below to find where these data elements contain "alc", "cirr", and "c".<br>
+Note that this only locates the **first** instance of `pattern` in string. If you want to locate **all** occurrences of `pattern`, you must use _str_locate_all_.
+
+
+```{r str-locate, exercise = TRUE}
+strings <- c("alcoholic cirrhosis", "cirrhotic", "alcoholism", "alcohol abuse disorder", "alcohol toxicity", "alcoholic hepatitis")
+strings
+
+
+
+```
+
+```{r str-locate-hint-1}
+strings <- c("alcoholic cirrhosis", "cirrhotic", "alcoholism", "alcohol abuse disorder", "alcohol toxicity", "alcoholic hepatitis")
+strings %>%
+  str_locate("alc")
+strings %>%
+  str_locate("cirr")
+strings %>%
+  str_locate("c")
+
+
+```
+
+## Subsetting Text
+### str_sub()
+Now use _str_sub()_ to subset bits of the text.
+The arguments of str_sub() are 
+str_sub(`text`, `start_integer`, `end_integer`)
+Try both positive and negative (small) integers.
+See if you can figure out how the negative numbers work.
+
+```{r str-sub, exercise = TRUE}
+strings <- c("alcoholic cirrhosis", "cirrhotic", "alcoholism", "alcohol abuse disorder", "alcohol toxicity", "alcoholic hepatitis")
+strings
+
+
+
+```
+```{r str-sub-hint-1}
+strings <- c("alcoholic cirrhosis", "cirrhotic", "alcoholism", "alcohol abuse disorder", "alcohol toxicity", "alcoholic hepatitis")
+strings %>% 
+  str_sub(3,7)
+
+strings %>% 
+  str_sub(4,-3) #negative numbers count backward from the end of the string.
+
+strings %>% 
+  str_sub(1,10)
+
+
+
+```
+
+### str_subset()
+_str_subset()_ does something different - it gives you a subset of the vector, based on matches.
+Tray str_subset with "alc" and "cirr"
+```{r str-subset, exercise = TRUE}
+strings <- c("alcoholic cirrhosis", "cirrhotic", "alcoholism", "alcohol abuse disorder", "alcohol toxicity", "alcoholic hepatitis")
+strings
+
+
+
+```
+```{r str-subset-hint-1}
+strings <- c("alcoholic cirrhosis", "cirrhotic", "alcoholism", "alcohol abuse disorder", "alcohol toxicity", "alcoholic hepatitis")
+strings %>% 
+  str_subset("cirr")
+
+strings %>% 
+  str_subset("alc")
+
+
+```
+### str_extract()
+_str_extract()_ does something different - it gives you a subset of the data elements, based on matches.
+Try str_extract with "alc" and "cirr"
+str_match is pretty similar - give that a try as well
+Can you tell the difference?
+(note that there is also a _str_extract_all_)
+
+```{r str-extract, exercise = TRUE}
+strings <- c("alcoholic cirrhosis", "cirrhotic", "alcoholism", "alcohol abuse disorder", "alcohol toxicity", "alcoholic hepatitis")
+strings
+
+```
+```{r str-extract-hint-1}
+strings <- c("alcoholic cirrhosis", "cirrhotic", "alcoholism", "alcohol abuse disorder", "alcohol toxicity", "alcoholic hepatitis")
+strings %>% 
+  str_extract("cirr") #vector result with NAs, of same length.
+strings %>% 
+  str_extract("alc")
+
+```
+### str_match_all()
+also try _str_match_all()_ with "alc" as your pattern
+
+```{r str-match-all, exercise = TRUE}
+strings <- c("alcoholic cirrhosis", "cirrhotic", "alcoholism", "alcohol abuse disorder", "alcohol toxicity", "alcoholic hepatitis")
+strings
+
+```
+```{r str-match-all-hint-1}
+strings <- c("alcoholic cirrhosis", "cirrhotic", "alcoholism", "alcohol abuse disorder", "alcohol toxicity", "alcoholic hepatitis")
+strings %>% 
+  str_match_all("cirr")
+strings %>% 
+  str_match_all("alc")
+strings %>% 
+  str_match_all("c")
+```
+This results in a list output, and captures all occurrences.
+
+## Measuring and Changing String Length
+### str_length()
+Sometimes you want to measure or control the length of strings
+try _str_length()_ with strings,
+and with mrns (medical record numbers).
+_str_length()_ only needs one argument, **string**.
+
+```{r str-length, exercise = TRUE}
+strings <- c("alcoholic cirrhosis", "cirrhotic", "alcoholism", "alcohol abuse disorder", "alcohol toxicity", "alcoholic hepatitis")
+mrns <- c("012345678", "23456789     ", "345678901   ", "123456")
+
+
+```
+
+```{r str-length, exercise = TRUE}
+strings <- c("alcoholic cirrhosis", "cirrhotic", "alcoholism", "alcohol abuse disorder", "alcohol toxicity", "alcoholic hepatitis")
+mrns <- c("012345678", "23456789     ", "345678901   ", "123456")
+
+str_length(strings)
+str_length(mrns)
+
+```
+### str_trunc()
+when the strings are too long, you can truncate them
+with _str_trunc_(string, length)
+Try this with strings and mrns below to get them all to length 9.
+
+```{r str-trunc, exercise = TRUE}
+strings <- c("alcoholic cirrhosis", "cirrhotic", "alcoholism", "alcohol abuse disorder", "alcohol toxicity", "alcoholic hepatitis")
+mrns <- c("012345678", "23456789     ", "345678901   ", "123456")
+
+
+```
+```{r str-trunc-hint-1}
+strings <- c("alcoholic cirrhosis", "cirrhotic", "alcoholism", "alcohol abuse disorder", "alcohol toxicity", "alcoholic hepatitis")
+mrns <- c("012345678", "23456789     ", "345678901   ", "123456")
+
+str_trunc(strings, 9)
+str_trunc(mrns, 9)
+```
+Notice how the ellipsis is used to show that something has been cut off.
+
+### str_pad()
+Sometimes leading zeros get left off of numbers, especially when they have been passed through Excel (which by default strips off leading zeroes from numbers, or with MRNs.
+You can pad these to the right length with
+_str_pad_(text, length)
+This defaults to padding with spaces on the left.
+You can add a side argument for "right", "both", or "left" to str_pad
+i.e. side = "left"
+and a pad argument for what character to pad with
+i.e. pad = "0"
+Try to get all the MRNs to length 9,
+with the correct padding character on the correct side.
+Note that you have to trim off whitespaces **first**
+
+```{r str-pad, exercise = TRUE}
+mrns <- c("012345678", "23456789     ", "345678901   ", "123456")
+
+
+```
+```{r str-pad-hint-1}
+mrns <- c("012345678", "23456789     ", "345678901   ", "123456")
+mrns %>% 
+  str_trim() %>% 
+  str_pad(side = "left", width = 9, pad ="0")
+
+```
+
+### str_trim()
+If you just want to trim off extra whitespaces,
+you can use _str_trim(string)_
+Try this with mrns
+```{r str-trim, exercise = TRUE}
+mrns <- c("012345678", "23456789     ", "345678901   ", "123456")
+mrns
+str_trim(mrns)
+
+```
+
+## Changing Srings
+### str_replace()
+You can also use _str_replace()_ 
+to replace some text in string elements
+The three arguments are _string_, _pattern_, and _replacement_.
+Try the replacement below.
+Dream up some other options and try them out
+```{r str-replace, exercise = TRUE}
+strings <- c("alcoholic cirrhosis", "cirrhotic", "alcoholism", "alcohol abuse disorder", "alcohol toxicity", "alcoholic hepatitis")
+str_replace(strings, "cirr", "whirr")
+```
+
+### str_remove()
+You can also use _str_remove()_ 
+to remove some text pattern from string elements.
+The two arguments are _string_ and _pattern_.
+Try removing the pattern "alc" from strings in the chunk below.
+Dream up some other options and try them out
+```{r str-remove, exercise = TRUE}
+strings <- c("alcoholic cirrhosis", "cirrhotic", "alcoholism", "alcohol abuse disorder", "alcohol toxicity", "alcoholic hepatitis")
+strings
+```
+
+### str_wrap()
+You can also change strings with _str_wrap()_ 
+to srap strings into nice paragraphs. 
+The four arguments are _string_, _width_, _indent_, and _exdent_.
+Try wrapping the strings6 into a nice looking paragraph with indents and an exdent in the code chunk below.
+
+```{r str-wrap, exercise = TRUE}
+strings <- c("alcoholic cirrhosis", "cirrhotic", "alcoholism", "alcohol abuse disorder", "alcohol toxicity", "alcoholic hepatitis")
+strings6 <- str_c(rep(strings, 6), collapse = ", ")
+strings6 
+
+
+```
+
+## Changing the Case of sTrINGs
+### str_to_title(), str_to_upper(), str_to_lower()
+If you have text that has an unruly case,
+like ALCOHolic CiRRhosIS
+you can fix that with a few commands <br>
+_str_to_title()_, <br>
+_str_to_upper()_, <br>
+_str_to_lower()_, <br>
+_str_to_sentence()_, <br>
+all help
+Try changing strings to Upper case, title case, lowercase, then Sentence case in the code block below.
+```{r case, exercise = TRUE}
+strings <- c("alcoholic cirrhosis", "cirrhotic", "alcoholism", "alcohol abuse disorder", "alcohol toxicity", "alcoholic hepatitis")
+strings
+
+```
+
+## Combining and Splitting Strings
+
+### Combining Strings with str_c()
+Sometimes you get strings as a vector of string chunks, but you actually want them as a single character string.
+This can be fixed with _str_c()_ for combine (or collapse)
+Try the chunk below, then change the collapse character to 
+three spaces, or space-underscore-space, or just a single space.
+
+```{r str-c, exercise = TRUE}
+strings <- c("alcoholic cirrhosis", "cirrhotic", "alcoholism", "alcohol abuse disorder", "alcohol toxicity", "alcoholic hepatitis")
+str_c(strings, collapse = "+")
+```
+
+
+### Splitting Strings with str_split()
+Sometimes you get strings that combine two data fields, but you actually want them separated into different variables. Common examples include Name (combines firstname and lastname) and Month-Day, which contains two distinct variables.
+This can be fixed with _str_split()_.
+_str_split()_ has two main arguments, _string_ and _pattern_.
+Review the small `bdays` dataframe in the chunk below, then split the two variables using str_split() on the patterns space " " or dash "-" by running the code chunk.
+
+
+```{r str-split, exercise = TRUE}
+bdays <- data.frame(Name = c("Bob Anderson", "Cindy Davis", "Eric Fields", "Gemma Harris"),
+           Birthday = c("Jan-22", "May-14", "Apr-04", "Dec-11"))
+bdays$Name
+bdays$Birthday  %>% str_split("-")
+```
+
+### Splitting strings to separate variables with separate()
+The _separate()_ function is in the **tidyr** package, because it is so often needed in tidying datasets. It conveniently splits variables that combine data into distinct new variables.
+_separate()_ has 4 main arguments: data, col (column to split), into (names of new resulting columns), and sep (which defines the separator to split on).
+Run the example below for the Name column, then write code for a similar `separate` function on the Birthday column in the code chunk below.
+Try to end up with 4 distinct columns for the bdays dataset.
+
+```{r separate, exercise = TRUE}
+bdays %>% separate(col = Name, into = c("firstname", "lastname"), sep=" ")
+```
+
+```{r separate-hint-1}
+bdays %>% 
+  separate(col = Name, into = c("firstname", "lastname"), sep=" ") %>% 
+  separate(col = Birthday, into = c("month", "day"), sep="-") 
+```

@@ -1,0 +1,199 @@
+---
+title: "Comparing 2 groups"
+author: "Peter Higgins"
+date: "1/2/2019"
+output: powerpoint_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(broom)
+```
+
+## Review from t test part 1
+- Comparing Two Measures of Centrality
+  - is it normal (Shapiro test)?
+    - if yes, use t test
+    - if no, use Wilcoxon rank test (nonparametric)
+  - are the observations paired?
+    - if yes, use paired Wilcoxon or paired t test
+    - if no, can use usual versions
+  - are the variances equal in 2 groups (Levene test)?
+    - if yes, OK to use Student's t test
+    - if no, must use Welch t test (unequal var)
+
+## Review how to do t test part 1  
+  - one sample
+    - t.test(df$sleep_total, alternative = "two.sided",        mu = 8)
+  - formula interface: outcome ~ groupvar
+df %>%    filter(vore %in% c("herbi", "carni")) %>%    t.test(formula = sleep_total ~ vore, data = .)
+  - use broom::tidy() to get results into a dataframe
+  - can use results in text with inline code
+  - use backticks before and after, start with r
+i.e. My result is [backtick]r code here[backtick].
+
+
+## What We have Left to Cover
+- General info on Skewness and Kurtosis
+- When to use t tests vs. rank (wilcoxon)
+- Levene test for equal variances
+  - When to use Welch t vs. Student’s t
+- Paired t and Wilcoxon tests
+
+
+## Skewness
+-  A term for asymmetric data - obviously not normal
+  - Left-skewed - long leftward tail
+  -   aka negatively skewed
+    - mean less than the median
+    - typical of age at death in US, number of questions answered on a survey, sq_ft/$ in Ann Arbor housing
+    - often has a natural upper bound
+  - Right-skewed - long rightward tail
+    - aka positively skewed
+    - mean greater than the median
+    - typical of length of stay, medical costs, children per family
+    - mostly low, but some huge outliers
+    - often has a natural lower bound
+    
+## Skewness example: Old Faithful geyser eruption duration
+- Duration of eruptions in minutes is negatively skewed
+```{r geys}
+library(MASS)
+#skewness(geyser$duration) 
+hist(geyser$duration)
+```
+
+## Skewness example: Old Faithful eruption wait times
+- Wait time for eruptions in minutes is negatively skewed
+```{r geyser2}
+library(MASS)
+#skewness(geyser$waiting) 
+hist(geyser$waiting)
+```
+## How Skewed is Too Skewed?
+- Formal test of normality = Shapiro-Wilk test
+- Use base data set called ToothGrowth
+- test the len variable
+
+```{r data2, message= FALSE,warning=TRUE, echo=TRUE}
+library(tidyverse)
+library(MASS)
+shapiro.test(geyser$waiting)
+```
+
+## Kurtosis
+- Descriptive of how tightly bunched data are
+  - leptokurtotic - histogram has tall peak, little spread 
+    - think leaping high = lepto
+    - values <3 are platykurtotic
+  - platykurtotic - histogram is mostly flat, wide spread
+    - think flat, like a platypus beak
+    - values <3 are platykurtotic
+  - kurtosis values ~ 3 are mesokurtotic
+
+```{r data, message= FALSE,warning=TRUE, echo=TRUE}
+library(tidyverse)
+library(MASS)
+#kurtosis(geyser$waiting)
+```
+## Decision tree for Comparing 2 group data
+
+1. Is it normal (Shapiro test)?
+  - yes - t.test
+  - no - wilcoxon
+2. Is it paired data?
+  - use paired variants of either t.test or wilcoxon
+3. If normal, are the variances of the two groups equal (Levene test)?
+  - if yes, use Student t test (var.equal=TRUE)
+  - if no, use Welch t test (var.equal = FALSE)
+
+## Tooth length data
+- We know it is reasonably normal from Shapiro test
+  - Ok to use t test
+- Should we use the Student version (var.equal) or the Welch version?
+  - Welch (var.equal = FALSE) is the default
+- Determine this with Levene test for 2 groups (in car package)
+  - use Bartlett test if >2 groups and normally distributed
+
+```{r levene, message= FALSE,warning=TRUE, echo=TRUE}
+library(tidyverse)
+library(car)
+data <- ToothGrowth
+data %>% 
+  filter(dose > 0.9) %>% 
+  leveneTest(len ~ as.factor(dose), data = .)
+# note has to be as.factor - will not evaluate if groupvar is numeric
+```
+
+## Interpretation of Levene's test
+
+- the null hypothesis is that all populations variances are equal;
+- the alternative hypothesis is that at least two of them differ.
+```{r chunk2, ref.label="levene", echo=FALSE, eval=TRUE}
+```
+
+- will not reject null, OK to use Student t test
+
+## Arguments for t.test
+x = vector of continuous numerical data
+alternative = c(“two.sided”, “less”, “greater”),
+mu = 0
+paired = FALSE
+var.equal = FALSE
+conf.level = 0.95
+Open the t.test help - type in console "?t.test"
+
+
+## Mammal sleep hours for t test
+
+First with Student t test, compare herbivores to omnivores by sleep_rem
+```{r t sleep2, echo=TRUE, warning=FALSE, message=FALSE}
+df <- msleep
+df %>% 
+  filter(vore != 'carni') %>% 
+  filter(vore != 'insecti') %>% 
+  t.test(sleep_rem ~ vore, data=., var.equal=TRUE)
+```
+
+Now with Welch's t test, do the same thing
+compare herbivores to omnivores by sleep_rem
+```{r t sleep, echo=TRUE, warning=FALSE, message=FALSE}
+df <- msleep
+df %>% 
+  filter(vore %in% c('omni','herbi')) %>% 
+  t.test(sleep_rem ~ vore, data=., var.equal=FALSE)
+```
+## Paired T test
+```{r t paired, eval=FALSE, echo=TRUE}
+library(PairedData)
+# matched exposed and control children
+# exposed have parents who worked in factory with lead
+head(BloodLead)
+
+t.test(x=BloodLead$Exposed, y= BloodLead$Control, paired=TRUE,
+       alternative = "two.sided")
+```
+
+## Paired Wilcoxon test
+```{r wilcox paired, eval=FALSE, echo=TRUE}
+library(PairedData)
+# matched exposed and control children
+# exposed have parents who worked in factory with lead
+head(BloodLead)
+
+wilcox.test(x=BloodLead$Exposed, y= BloodLead$Control,
+              paired=TRUE,alternative = "two.sided")
+```
+```
+- Try it out, see if you can interpret results
+
+
+- p is highly significant
+  - can reject the null, accept alternative
+  - sample mean 10.43, CI 9.46-11.41
+
+
+
+
+

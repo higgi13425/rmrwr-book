@@ -1,0 +1,356 @@
+---
+title: "Tidying Your Data with Tidyr: Part 2"
+author: "Peter Higgins"
+date: "8/1/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# library(tidyverse)
+# devtools::install_github("tidyverse/tidyr", force = TRUE)
+library(tidyr)
+library(magrittr)
+library(dplyr)
+bp1 <- c("124/83", '145/96', "112/62", "108/48", "172/117", '133/77')
+bp2 <- c("134/88", '157/104', "118/69", "114/61", "189/122", '139/84')
+bp3 <- c("122/78", '127/74', "103/59", "102/51", "159/102", '129/76')
+MCS1 <- c(35, 42, 51, 63, 72, 49)
+MCS2 <- c(37, 44, 54, 67, 76, 53)
+MCS3 <- c(41, 48, 57, 69, 79, 57)
+studyid <- c(1,2,3,4,5,6)
+data <- data.frame(studyid, MCS1, MCS2, MCS3, bp1, bp2, bp3)
+
+data %>% 
+  pivot_longer(cols = starts_with("MCS"),
+               names_to = "visit_num",
+               names_prefix = "MCS",
+               values_to = "MCS")  %>% 
+  select(studyid, visit_num, MCS) ->
+mcsdata2
+
+data %>% 
+  pivot_longer(cols = starts_with("bp"),
+               names_to = "visit_num",
+               names_prefix = "bp",
+               values_to = "bp")  %>% 
+  select(studyid, visit_num, bp) %>% 
+  separate(col = "bp", into = c("sbp", "dbp"), sep = "/") ->
+bpdata2
+
+dplyr::left_join(mcsdata2, bpdata2) ->
+  data2
+
+data2
+```
+
+## Review: What is Tidy Data?
+ Tidy data is rectangular (rows by columns) data formatted to fit 3 main rules:
+ 
+ 1. Each row is a unique observation.
+ 2. Each column contains a single variable.
+ 3. Each cell contains only one piece of data - a value or count.
+ 
+![Tidy Data Characteristics](tidy-1.png) 
+ 
+<br>and different kinds of observations (usually recorded on distinct clinical report forms, or CRFs) are usually stored in distinct tables.
+ 
+### Tidy data is helpful because: 
+ 
+ 1. Most tidyverse and tidyverse-adjacent packages are designed to work on data in tidy data format, and output results in tidy data format.
+ 2. This standardized format allows packages and functions to work together, taking output from one function as input to another function.
+ 3. This allows "chaining" or piping (%>%) of functions together to allow you to do more powerful, more complex things with your data quickly and easily, with no friction between functions and data-processing steps.
+ 4. This allows you to focus on the analysis you want to do, rather than the mechanics of the functions and the data formats.
+
+Tidy data is particularly helpful for R, which treats each column as a vector, because a tidy layout ensures that values of variables (vectors) from the same observation are always matched.
+
+Tidying is one of the key preparation steps in a Data Science workflow, after Importing and before Transforming.
+
+![DataScienceWorkflow](/Users/peterhiggins/Documents/Rcode/teach_rmrwr/data-science-workflow.png)
+
+
+## Tidying Data
+Today we will review *pivot_longer* and *separate()*, and
+learn about new *tidyr* functions, 
+
+1. *pivot_wider()*, which does the reverse of *pivot_longer()*
+2. *unite()*, which does the opposite of *separate()*
+3. *separate_rows*, which addresses when you have a variable number of multiple values of the same type in one cell. One common examples is a list of medications (i.e. HCTZ, claritin, propanolol, enalapril) in a single cell.
+4. *uncount*, which takes a summary of counts, and returns these to individual rows of observations (the reverse of *count*)
+5. *nest()*, which allows you to group data by categorical factor variables and collect the remaining variables into a dataframe (in a list column!) for each row. This allows you to do complex operations (i.e. linear regressions) on each dataframe.
+6. *unnest()* which restores your nested data to individual observations.
+
+### 1. Review of pivot_longer
+Let's start with a review of *pivot_longer*. Take a look at the included pivotdx data on 6 recently hospitalized patients with multiple diagnoses by running the code chunk below.
+
+```{r pivotdx}
+name <- c("Alice", "Bob", "Cassie", "Doug", "Ellen", "Frank")
+studyid <- 1:6
+dx1 <- c("J15.0", "J13", "J15.7", "J18.9", "J13", "J18.9")
+dx2 <- c("K51.8", "K51.50", "K51.911", "K50.80", "K50.0", "K50.90")
+dx3 <- c("Z92.25", "Z92.25", "Z92.25", "Z92.25", "Z92.25", "Z92.25")
+dx4 <- c("D68.69", "D68.69", NA, "D68.69", "D68.69", "D68.69")
+dx5 <- c(NA, "N17.0", NA, "N17.0", "N17.0", "N17.0")
+dx6 <- c(NA, "I82.409", NA, "I82.409", "I82.409", NA)
+dx7 <- c(NA, "F33.0", NA, "N39.0", NA, NA)
+pivotdx <- data.frame(studyid, name, dx1, dx2, dx3, dx4, dx5, dx6, dx7)
+
+pivotdx
+```
+This is a common data format for hospitalizations and patient encounters.
+Everyone has at least one ICD-10 diagnosis, but some have as many as 15, while others may only have 3.
+This is untidy because the diagnoses should be in a single column, dx.
+
+Your challenge is to use *pivot_longer* to tidy this dataset.
+
+Remember that the *pivot_longer()* function uses four main arguments
+
+1. cols =  sets which columns you want to group together for pivoting to longer format
+2. names_to = what the new column name will be in which to collect and keep the information from the old pivoted column names (often a visit number, week, or other time point)
+3. names_prefix = what part of the old, pivoted column names is repeated and should be removed
+4. values_to = the name of the column in which to keep the values from the cells of the pivoted columns
+
+and when you have NAs, you want to add the argument <br>
+values_drop_na = TRUE <br>
+to the pivot_longer() function.
+
+Edit the code block below to tidy the pivotdx data and assign the result to tidydx.
+Assign the diagnosis number to dx_num.
+
+```{r fix pivotdx}
+pivotdx %>% 
+  pivot_longer(cols = starts_with("dx"),
+               names_to = "dx_num",
+               names_prefix = "dx",
+               values_to = "diagnosis",
+               values_drop_na = TRUE)  ->
+tidydx
+
+tidydx
+```
+
+### 2. Review of separate()
+
+Take a look at the blood pressure data by running to code chunk below. Edit this code to separate the bp data into sbp and dbp variables.
+
+Remember that the *separate()* function has 3 arguments: <br> 
+
+1. the column that needs to be separated, col = "column2separate"
+2. the columns that the new data will go into, into = c("newcol1", "newcol2")
+3. The separator, sep = "-" (whatever the separator text is, in quotes) <br> 
+
+Edit the code chunk below, replacing the *head()* function and using the *separate()* function to replace the bp column with sbp and dbp.
+
+```{r fix bp}
+data %>% 
+  pivot_longer(cols = starts_with("bp"),
+               names_to = "visit_num",
+               names_prefix = "bp",
+               values_to = "bp") %>% 
+  select(studyid, visit_num, bp) ->
+bpdata
+
+bpdata %>% 
+  separate(col = "bp",
+           into = c("sbp", "dbp"),
+           sep = "/")
+```
+
+
+### 3. Use separate_rows to tidy a medications column.
+
+It is common to have a data query that results in a list of medications in a single common, often separated by commas.
+Each patient will have a variable number of medications, and you want a tidy single column of medications, which requires the *separate_rows()* function.
+ 
+The *separate_rows()* function has 3 arguments: <br> 
+
+1. the dataframe (if not piped in already)
+2. the name of the column or columns that need to be separated, using the syntax from dplyr::select() - i.e. unquoted list with commas, column1:column4, starts_with(med), etc.
+3. The separator, sep = "-" (whatever the separator text is, in quotes, default is comma) 
+4. convert =TRUE  will convert data types if needed <br> 
+
+Edit the code chunk below to make the medications column tidy.
+ 
+ 
+```{r}
+name <- c("Alice", "Bob", "Cassie", "Doug", "Ellen", "Frank")
+studyid <- 1:6
+medications <- c("propanolol, HCTZ, aspirin", 
+                 "enalapril, aspirin, clonidine, sumatriptan", 
+                 "aspirin, ramipril, HCTZ, hydrocortisone", 
+                 "atorvastatin, aspirin, synthroid", 
+                 "albuterol, oxycodone, pravastatin, synthroid, omeprazole",                   "crestor, lantus, HCTZ, lyrica, januvia")
+
+meds <- data.frame(studyid, name, medications)
+
+meds %>% 
+  separate_rows("medications",
+                sep = ",")
+```
+
+### 4. Using *uncount()*
+Uncount takes a dataframe that is a summary of counts, and returns these to individual rows of observations (the reverse of *count*).
+
+Run the code chunk below to review the sex and primary diagnoses of patients in two weeks of a busy IBD clinic.
+
+To return this summary table (made with group_by and count) to individual tidy observations, use the *uncount()* function.
+
+The three arguments for uncount are
+
+1. the data frame (unless piped in)
+2. the weights for each group (often a variable named count or n)
+3. .id = A string if you want to generate a unique id for each observation. The string will be the name of the new column, i.e.   .id ="studyid"
+
+Note that *uncount()* will automatically generate rownames consisting of category # and the number in that group (i.e. 3.46). These can be moved to a useful column by piping the result of uncount() to the function <br>
+*rownames_to_column(var = "rowname")* from the *tibble* package
+<br>
+Try adding this line to your code
+
+Alternatively, you can pipe your result into <br>
+remove_rownames()
+
+```{r uncount}
+library(tibble)
+sex <- c("Male", "Female", "Male", "Female", "Male", "Female")
+primarydx <- c("Crohn's disease", "Ulcerative colitis", "Microscopic Colitis")
+count <- c(58, 61, 71, 59, 19, 84)
+
+counts <- data.frame(sex, primarydx, count)
+
+counts %>% 
+  uncount(count, .id ="studyid") %>% 
+  rownames_to_column(var = "number")
+```
+
+### 5. Nesting some of your data
+
+The *nest()* function allows you to group data by categorical factor variables and collect the remaining variables into a dataframe (in a list column!) for each row. This allows you to do complex operations (i.e. linear regressions) on each dataframe.
+
+As our first example, let's see how this works with the gapminder dataset.
+Run the code below, then view (in the Environment tab, by clicking on the dataset names) both the original gapminder dataset, and gap_nested to see the difference from nesting. 
+<br>
+Click on the dataframes in the individual cells of the gap_nested dataframe to see how they actually contain their own dataframes (inside a column) for that particular country.
+<br>
+The dataframes are nested inside a special kind of column, called a list-column, within the gap_nested dataframe.
+<br>
+This is a bit like Russian nesting dolls. If you glimpse(gap_nested), you will see that this column has the type *list<df[,4]>* meaning that it contains dataframes with varying numbers of rows and 4 columns.
+<br>
+This nested data format allows you to do complex things, like generate linear models for all 142 countries in gap_nested to show the relationship between gdpPercap and lifeExp (life expectancy) in each country, and store the slopes and intercepts as variables in the gap_nested dataframe.
+
+```{r gapminder}
+library(gapminder)
+gapminder <- gapminder::gapminder
+gapminder
+
+gapminder %>% 
+  group_by(country, continent) %>% 
+  nest() ->
+gap_nested
+
+gap_nested
+```
+
+In the chunk below, we will illustrate how to use the nested dataframes to make 142 linear models.
+Run it to see the result.
+
+```{r, fig.width=12, fig.height=10}
+library(purrr)
+library(broom)
+library(ggplot2)
+library(forcats)
+gap_nested  %>% 
+  mutate(model = map(data, ~lm(lifeExp ~ gdpPercap, data = .x))) ->
+models
+
+models %>% mutate(glance  = map(model, glance),
+         tidy    = map(model, tidy),
+         augment = map(model, augment),
+         rsq     = map_dbl(glance, "r.squared")) ->
+models2
+
+models2 %>% 
+  arrange(desc(rsq)) %>% 
+  ggplot(aes(x= fct_reorder(country, rsq), y = rsq, color= continent)) +
+  geom_point() +
+  coord_flip()
+  
+```
+
+
+### 6. Unnest simply reverses the nesting step
+This restores your dataframe to a tidy state, with one observation per row. 
+Try this out with gap_nested below.
+
+The arguments for unnest have good defaults, so you can often run *unnest(dataframe)* without any other arguments.
+
+But it is possible to use 
+.preserve = list-column_name (usually data) to keep particular list columns while unnesting the rest of them (if you have more than one list column)
+.drop = TRUE is the default, to drop all list columns after they are unnested.
+
+Edit the code below to unnest gap_nested. <br>
+You should get the original gapminder dataset back.
+
+```{r}
+gap_nested %>% 
+  unnest()
+```
+
+## Challenge round!
+you have been provided (below) with a messy clinical dataset with longitudinal repeated data. Your job is to use your new tidying skills to tidy this dataset. This data is from a hypothetical 8 week study of 6 patients with Crohn's disease treated with Amazingmab who get a survey (CDAI - Crohn's Disease Activity Index) score at 0 and 8 weeks, and and endoscopic score (SES-CD - Simple Endoscopic Score for Crohn's Disease) at 0 and 8 weeks. They also vary in whether or not they have ileal or colonic (or both) involvement of active Crohn's disease at baseline.
+
+You should end up with 9 columns for:
+
+1. studyid
+2. name
+3. enrollment month
+4. enrollment year
+5. ileal involvement
+6. colonic involvement
+7. week
+8. CDAI
+9. SES_CD <br>
+<br>
+Run the code chunk below to take a look at the data, then get started on _*tidying your data!*_
+
+
+```{r newdata}
+name <- c("Alice", "Bob", "Cassie", "Doug", "Ellen", "Frank")
+studyid <- 1:6
+CDAIwk0 <- c(255, 310, 388, 274, 410, 375)
+CDAIwk8 <- c(110, 140, 175, 122, 180, 90)
+SES_CDwk0 <- c(25, 14, 19, 21, 22, 17)
+SES_CDwk8 <- c(7, 4, 6, 8, 7, 5)
+ileocolonic <- c('0_1', '1_1', '1_0', '1_1', '1_0', '1_1')
+enroll_month <- c("May-18", "Jun-18", 'Sep-18', 'Jan-19', 'Feb-19', 'Apr-19')
+
+challenge <- data.frame(studyid, name, enroll_month, ileocolonic, CDAIwk0, SES_CDwk0, CDAIwk8, SES_CDwk8)
+
+challenge
+```
+
+```{r}
+challenge %>% 
+  pivot_longer(cols = starts_with("CDAI"),
+               names_to = "Week",
+               values_to = "CDAI",
+               names_prefix = "CDAIwk") %>% 
+  select(studyid, Week, CDAI) ->
+cdai_data
+
+challenge %>% 
+  pivot_longer(cols = starts_with("SES"),
+               names_to = "Week",
+               values_to = "SES_CD",
+               names_prefix = "SES_CDwk") %>% 
+  select(studyid, Week, SES_CD) ->
+ses_data
+
+challenge %>% 
+  select(studyid:ileocolonic) %>% 
+  left_join(cdai_data) %>% 
+  left_join(ses_data) %>% 
+  separate(col = "enroll_month", into = c("month", "year"), sep = "-") %>% 
+  separate(col = "ileocolonic", into = c("ileal", "colonic"), sep = "_") 
+
+```
+

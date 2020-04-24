@@ -1,0 +1,189 @@
+---
+title: "strings_rverbal"
+author: "Peter Higgins"
+date: "10/9/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+# devtools::install_github("VerbalExpressions/RVerbalExpressions")
+library(RVerbalExpressions)
+var <- " "
+read_csv("UC_BIOPSY_ALL_2018.csv", locale = readr::locale(encoding = "latin1")) %>% 
+  janitor::clean_names() %>% 
+  slice(1:500) %>% 
+  select(patient_key, lab_result_string_value) %>% 
+  rename(pat_id = patient_key, text = lab_result_string_value) ->
+path
+```
+
+## More complex string manipulation
+Working with real clinical text can be quite complex, as you deconstruct pieces of clinical documents. We will work up to examples of pathology report text blobs, and extracting useful pieces of information from these.
+
+### Getting Started
+Let's review some of our previous work, starting with *stringr* and _str_view_  vs. _str_detect_
+
+
+** note str_view to start, then str_detect**
+
+In the code chunk below, you have a string vector object called example_vec,
+which is a character (string) vector of colors.
+We are trying to find out which ones are gray.
+A text pattern is assigned to the object `pattern`
+then use str_detect(string = , pattern = pattern) to detect it.
+Use example_vec as your string to replace the placeholder `var`.
+
+```{r example}
+example_vec <- c("gray", "blue", "steel blue", "Gray blue", "grey", "cloudy gray", "Rainy Gray", "smoky blue")
+pattern <- "gray"
+str_detect(string = var, pattern = pattern)
+```
+Go ahead and check these.
+You will see that the color `grey` was not recognized, as it is not an exact match. Apparently a British person was supplying this color. 
+Later on, we will work on how to capture variants like this.
+
+### Finding inflammation
+Below, you have a string vector object called str_vec.
+Your task is to write the code to detect instances of the word "inflammation".
+Assign a text string to the object `pattern`
+then use str_detect(string = , pattern = pattern) to detect it.
+Replace the placeholder `var` with str_vec
+
+```{r inflamed}
+str_vec <- c("chronic inflammtion", "neutrophils in lamina propria", "acutely inflamed", "no evidence of inflammation", "lymphocytes and plasma cells indicating inflammation", "acutely inflamed with neutrophil crypt abscesses", "chronic inflammation with distortion of crypts", "active on chronic inflammation")
+
+pattern <- 
+
+str_detect(string = var, pattern = pattern)
+```
+Go ahead and check these manually.
+You will see that you don't pick up variants like "inflamed"
+and that you get false positives from negated statements like 
+"no evidence of inflammation".
+Real clinical text is challenging, and requires good tools and some careful pattern creation.
+
+### The Mystery of Regex and the Beauty of RVerbalExpressions
+
+REGular EXpressions, or regex, is a common approach to produce more complex string matching. It allows you to specify wild cards, numbers of repeated characters, white space, digits, etc. This is great, but it can be rather complex, and lead to pretty complicated and obscure pattern expressions.
+
+For example, this is the regex pattern to match a US phone number:
+
+`/^(1\s?)?((\([0-9]{3}\))|[0-9]{3})[\s\-]?[\0-9]{3}[\s\-]?[0-9]{4}$/g`
+
+to make this more manageable for beginners, we will use the 
+*RVerbalExpressions* package.
+
+Let's start with some simple _str_detect_.
+Predict the outcome (TRUE/FALSE) of each of the examples below, then run the code chunk.
+
+```{r verbal gray}
+str_detect(string = "cat", pattern = "c")
+str_detect(string = "grey", pattern = "gr")
+str_detect(string = c("grey", "Gray"), pattern = "gr")
+str_detect(string = c("grey", "gray"), pattern = "gr")
+str_detect(string = c("grey", "gray"), pattern = "gray")
+```
+
+You can see that the `grey` spelling variant is making this more difficult.
+We can make this work using more complex patterns.
+The RVerbalExpressions package can help us build these.
+
+Take about 10 minutes to explore the webpage for
+[RVerbalExpressions](https://rverbalexpressions.netlify.com/)
+Look at the home page, the Examples Article,
+and the Reference page for all of the functions.
+
+### Your First RVE
+
+We are going to build a regex pattern that will match both `grey` and `Gray`.
+
+Then we will run a str_detect with this pattern.
+The pattern starts with `rx_start_of_line()`
+to begin at the beginning of a word.
+Then `rx_find()` - fill in the text that is constant at the beginning of both gray and grey.
+Then `rx_any_of(" ")`  - fill in the two possible vowels, as in "oi"
+then `rx_find(' ')` again - fill in the constant letters at the end of gray and gray here
+
+Now replace the pattern argument in str_detect with your pattern object
+
+```{r gray redux}
+example_vec
+
+pattern <- rx() %>% 
+  rx_find('gr') %>% 
+  rx_any_of('ae') %>% 
+  rx_find('y') 
+pattern
+  
+str_detect(string = example_vec, pattern = pattern)
+```
+
+### Now an RVE with medical data
+- pathology output
+
+### Gotchas
+#### escaping stuff like \n for newline: \\n, \\t
+#### greek or other odd characters with unicode
+R> "\u00b5M"
+[1] "µM"
+R> "\u03b1"
+[1] "α"
+R> "\u03b2"
+[1] "β"
+R> "\u03b3"
+[1] "γ"
+
+#### wildcards like .
+#### \s for whitespace, \d for digit, \w for word
+
+### from stringr-vignettes/regular-expressions.html
+{2} for repetition
+. for wild card
+? 0 or 1
+* 0 or more
++ for one or more
+[abc] any of a,b,c
+[^abc] not a,b,c
+(abd|def) abc or def
+repeat
+### try on Biofire output
+
+```{r docname}
+doc_vec <- c("Pathologist Annie Jones MD", " Pathologist Ralph Boston MD", "Pathologist Carla Curtin MD", "Pathologist Dave Don Domino MD")
+
+pattern <- rx() %>% 
+  rx_find("Pathologist") %>% 
+  rx_space() %>% 
+  rx_word() %>% 
+  rx_space() %>% 
+  rx_word() %>% 
+  rx_space() %>% 
+  rx_find('MD') 
+pattern
+  
+str_view(string = doc_vec, pattern = pattern)
+```
+
+```{r}
+dx_pattern <- rx() %>% 
+  rx_seek_prefix("Diagnosis: ") %>% 
+  rx_anything() %>% 
+  rx_seek_suffix('Signing') 
+
+pathologist_pattern <- rx() %>% 
+  rx_seek_prefix("Signing Pathologist: ") %>% 
+  rx_anything() %>% 
+  rx_seek_suffix(', M.D.     History') 
+
+str_extract(string = path$text, pattern = pathologist_pattern) %>% 
+  str_trim() ->
+vector
+
+janitor::tabyl(vector) %>% 
+  arrange(desc(n))
+```
+
+
+

@@ -1,0 +1,341 @@
+---
+title: "Drawing a Consort Diagram in ggplot2"
+author: "Peter Higgins"
+date: "1/26/2019"
+output:  pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse, quietly = TRUE)
+# library(diagram)
+```
+
+## Why bother?
+ To begin, CONSORT diagrams are a common figure in the reporting of clinical trials. They are frequently used, but often require resorting to drawing flow diagrams in PowerPoint or Adobe Illustrator, removing the user from the R universe.
+ 
+ <br>
+  There are a few solutions available on the web, but they either use diagrammeR, which is an elegant package designed to be adaptable to networks and it reformats the diagram with each addition or removal of a node or edge. This makes it less useful for a static flow diagram. Also, honestly, diagrammeR code is not very literate programming. It is quite difficult to interpret what is going on in the code for complex flowcharts with multiple nodes and edges.
+  
+<br>
+   A second possibility is using the grid package, opening viewports, and essentially hacking a flowchart by hand. This provides a lot of options and customizability, and there are a few examples that are quite effective, but hacky-looking and far from elegant.
+
+<br>
+    One of the great appeals of ggplot2 is that it is literate programming, which is concise, elegant, and consistent. In this document, I will try to reproduce a CONSORT diagram from a recent study on which I was a senior author using ggplot2.
+
+<br>
+
+## Our goal
+Out end goal is to reproduce this diagram from the phase 2 study of Upadacitinib in ulcerative colitis. It is a reasonably complex 5 arm dose-ranging study that should illustrate what we can do with ggplot2.
+     
+```{r image}
+#! [Alt text] (/path/to/image.jpg)
+```
+
+<br>
+## Getting started
+Let's first draw a 100 x 100 grid that will be our working space.
+The grid lines will help us align and place boxes exactly where we want them. Later on we will change the graph theme to theme_void() to remove the background when we don't need it anymore.
+
+<br>
+
+```{r draw-grid}
+data <- tibble(x= 1:100, y= 1:100)
+head(data)
+data %>% 
+  ggplot(aes(x, y)) +
+  scale_x_continuous(minor_breaks = seq(10, 100, 10)) +
+  scale_y_continuous(minor_breaks = seq(10, 100, 10)) +
+  theme_linedraw() ->
+  p
+p
+```
+
+## Adding our first box and text
+Now let's add the top box with geom_rect, and the text with annotate.
+Feel free to fiddle with xmin, text location, until you have it right
+<br>
+
+```{r draw-box}
+p +
+  geom_rect(xmin = 36, xmax=64, ymin=94, ymax=100, color='black',
+            fill='white', size=0.25, size=0.25) +
+  annotate('text', x= 50, y=97,label= '446 Patients assessed for eligibility', size=2.5) ->
+  p
+p
+```
+
+## Adding our 2 more boxes
+Now let's add the top box with geom_rect, and the text with annotate.
+Feel free to fiddle with xmin, text location, until you have it right.
+Added 18 spaces after 196 patients excluded, to make it look sort of left-justified
+<br>
+
+```{r draw-2more-boxes}
+p +
+  geom_rect(xmin = 32, xmax=68, ymin=73, ymax=83, color='black',
+            fill='white', size=0.25) +
+  annotate('text', x= 50, y=78,label= '250 Patients randomly assigned\n and included in the intention-to-treat analysis', size=2.5) +
+  geom_rect(xmin = 70, xmax=97, ymin=80, ymax=98, color='black',
+            fill='white', size=0.25) +
+  annotate('text', x= 83.5, y=89,label= '196 Patients excluded                 \n 172 Did not meet inclusion criteria\n 17 Withdrew consent\n 2 Lost to follow up\n 5 Other reasons', size=2.5) ->
+  p
+p
+```
+
+## Adding Arrows
+Now let's add the arrows between the top box and the bottom box, as well as the downward line and the exclusions box on the right.
+We will use geom_segment, which takes arguments x, xend, y, and yend to place the line segment, and we will add the size and arrow arguments to draw an arrow.
+Feel free to fiddle with xmin, text location, until you have it right
+<br>
+
+```{r draw-arrows}
+p +
+  geom_segment(
+    x=50, xend=50, y=94, yend=83.3, 
+    size=0.15, linejoin = "mitre", lineend = "butt",
+    arrow = arrow(length = unit(1, "mm"), type= "closed")) +
+    geom_segment(
+    x=50, xend=69.7, y=89, yend=89, 
+    size=0.15, linejoin = "mitre", lineend = "butt",
+    arrow = arrow(length = unit(1, "mm"), type= "closed")) ->
+  p
+p
+```
+
+<br>
+
+## Now let's add 5 arrows (and a horizontal line)!
+Now let's add the 5 arrows between the assignment box and randomization groups. The arrow in the middle will be longer than the others, as it goes all the way from the randomization box to the 3rd group assignment box. The other 4 arrows only go from a horizontal line to their assignment boxes.
+
+<br>
+We will start from the bottom of the randomization box (y=**73**),
+and the top of the assignment boxes at y=**58.3**.
+
+Then we will add the horizontal line at y=**65**.
+
+```{r 5-arrows}
+p +
+  geom_segment(
+  #middle arrow first
+    x=50, xend=50, y=73, yend=58.3, 
+    size=0.15, linejoin = "mitre", lineend = "butt",
+    arrow = arrow(length = unit(1, "mm"), type= "closed")) +
+  # then leftmost arrow, x and xend=10
+  geom_segment(
+    x=10, xend=10, y=65, yend=58.3, 
+    size=0.15, linejoin = "mitre", lineend = "butt",
+    arrow = arrow(length = unit(1, "mm"), type= "closed")) +
+  # then 2nd arrow from the left, x and xend=30
+  geom_segment(
+    x=30, xend=30, y=65, yend=58.3, 
+    size=0.15, linejoin = "mitre", lineend = "butt",
+    arrow = arrow(length = unit(1, "mm"), type= "closed")) +
+  # then 4th arrow from the left, x and xend=70
+  geom_segment(
+    x=70, xend=70, y=65, yend=58.3, 
+    size=0.15, linejoin = "mitre", lineend = "butt",
+    arrow = arrow(length = unit(1, "mm"), type= "closed")) +
+# then rightmost arrow, x and xend=90
+  geom_segment(
+    x=90, xend=90, y=65, yend=58.3, 
+    size=0.15, linejoin = "mitre", lineend = "butt",
+    arrow = arrow(length = unit(1, "mm"), type= "closed")) +
+  # then horizontal line, but remove the arrow
+  geom_segment(
+    x=10, xend=90, y=65, yend=65, 
+    size=0.15, linejoin = "mitre", lineend = "butt")->
+  p
+p
+```
+
+<br>
+
+## Now let's add the assignment boxes!
+Now let's add the 5 assignment boxes below these 5 arrows. These will have y values from 49 to 58, and x values from 1-19, 21-39, 41-59, 61-79, and 81-99. Add the text as indicated in the figure
+
+
+```{r 5-boxes}
+p +
+  #first box on left
+  geom_rect(xmin = 1, xmax=19, ymin=49, ymax=58, 
+              color='black', fill='white', size=0.25) +
+  annotate('text', x= 10, y=54, size=2.5,
+             label= '46 Patients assigned\nto placebo') +
+  #2nd box on left
+  geom_rect(xmin = 21, xmax=39, ymin=49, ymax=58, 
+              color='black', fill='white', size=0.25) +
+  annotate('text', x= 30, y=54, size=2.5,
+             label= '47 Patients assigned\nto UPA 7.5 mg QD') +
+#3rd box on left
+  geom_rect(xmin = 41, xmax=59, ymin=49, ymax=58, 
+              color='black', fill='white', size=0.25) +
+  annotate('text', x= 50, y=54, size=2.5,
+             label= '49 Patients assigned\nto UPA 15 mg QD') +
+#4th box on left
+  geom_rect(xmin = 61, xmax=79, ymin=49, ymax=58, 
+              color='black', fill='white', size=0.25) +
+  annotate('text', x= 70, y=54, size=2.5,
+             label= '52 Patients assigned\nto UPA 30 mg QD') +
+#5th box on left
+  geom_rect(xmin = 81, xmax=99, ymin=49, ymax=58, 
+              color='black', fill='white', size=0.25) +
+  annotate('text', x= 90, y=54, size=2.5,
+             label= '56 Patients assigned\nto UPA 45 mg QD')->
+  p
+p
+```
+
+<br>
+
+## Now let's add the 5 long arrows!
+Now let's add the 5 long arrows below these 5 boxes These are off center, so they will have y values from 49 to 15.3, and x values of 2, 22, 42, 62, and 82. Add the text as indicated in the figure.
+
+
+```{r 5-long-arrows}
+p +
+  #first arrow on left
+  geom_segment(
+    x=2, xend=2, y=49, yend=15.3, 
+    size=0.15, linejoin = "mitre", lineend = "butt",
+    arrow = arrow(length = unit(1, "mm"), type= "closed")) +
+  #2nd arrow on left
+  geom_segment(
+    x=22, xend=22, y=49, yend=15.3, 
+    size=0.15, linejoin = "mitre", lineend = "butt",
+    arrow = arrow(length = unit(1, "mm"), type= "closed")) +
+#3rd arrow on left
+  geom_segment(
+    x=42, xend=42, y=49, yend=15.3, 
+    size=0.15, linejoin = "mitre", lineend = "butt",
+    arrow = arrow(length = unit(1, "mm"), type= "closed")) +
+#4th arrow on left
+  geom_segment(
+    x=62, xend=62, y=49, yend=15.3, 
+    size=0.15, linejoin = "mitre", lineend = "butt",
+    arrow = arrow(length = unit(1, "mm"), type= "closed")) +
+#5th arrow on left
+  geom_segment(
+    x=82, xend=82, y=49, yend=15.3, 
+    size=0.15, linejoin = "mitre", lineend = "butt",
+    arrow = arrow(length = unit(1, "mm"), type= "closed")) ->
+  p
+p
+```
+
+<br>
+
+## Now let's add the discontinuation boxes!
+Now let's add the 5 discontinuation boxes below these 5 boxes These are off center, so they will have y values from 40 to 25, and x values of 5-19, 25-39, 44-59, 65-79, and 85-99. Add the text as indicated in the figure. To make discontinued (sort of) left justified, add four spaces after each occurrence of discontinued.
+
+```{r 5-discontinuation-boxes}
+p +
+  #first box on left
+  geom_rect(xmin = 5, xmax=19, ymin=25, ymax=40, 
+              color='black', fill='white', size=0.25) +
+  annotate('text', x= 12, y=33, size=2.5,
+      label= '5 Discontinued    \n3 Adverse event\n2 Lack of efficacy') +
+  #2nd box from left
+  geom_rect(xmin = 25, xmax=39, ymin=25, ymax=40, 
+              color='black', fill='white', size=0.25) +
+  annotate('text', x= 32, y=33, size=2.5,
+      label= '1 Discontinued    \n1 Adverse event\n1 Lack of efficacy') +
+  #3rd box from left
+  geom_rect(xmin = 45, xmax=59, ymin=25, ymax=40, 
+              color='black', fill='white', size=0.25) +
+  annotate('text', x= 52, y=33, size=2.5,
+      label= '4 Discontinued    \n2 Adverse event\n1 Lack of efficacy\n1 Other') +
+  #4th box from left
+  geom_rect(xmin = 65, xmax=79, ymin=25, ymax=40, 
+              color='black', fill='white', size=0.25) +
+  annotate('text', x= 72, y=33, size=2.5,
+      label= '6 Discontinued    \n4 Adverse event\n1 Lack of efficacy\n1 Other') +
+#4th box from left
+  geom_rect(xmin = 85, xmax=99, ymin=25, ymax=40, 
+              color='black', fill='white', size=0.25) +
+  annotate('text', x= 92, y=33, size=2.5,
+      label= '6 Discontinued    \n4 Adverse event\n2 Lack of efficacy') ->p
+p
+```
+
+
+<br>
+
+## Now let's add the short arrows!
+Now let's add the 5 short arrows to the discontinuation boxes. These will go from x=2 to x=4.7 (plus 20*N), at a y value of 32.5. 
+
+```{r short-arrows}
+p +
+#first arrow on left
+  geom_segment(
+    x=2, xend=4.7, y=32.5, yend=32.5, 
+    size=0.15, linejoin = "mitre", lineend = "butt",
+    arrow = arrow(length = unit(1, "mm"), type= "closed")) +
+  #2nd arrow on left
+  geom_segment(
+    x=22, xend=24.7, y=32.5, yend=32.5, 
+    size=0.15, linejoin = "mitre", lineend = "butt",
+    arrow = arrow(length = unit(1, "mm"), type= "closed")) +
+#3rd arrow on left
+  geom_segment(
+    x=42, xend=44.7, y=32.5, yend=32.5,  
+    size=0.15, linejoin = "mitre", lineend = "butt",
+    arrow = arrow(length = unit(1, "mm"), type= "closed")) +
+#4th arrow on left
+  geom_segment(
+    x=62, xend=64.7, y=32.5, yend=32.5,  
+    size=0.15, linejoin = "mitre", lineend = "butt",
+    arrow = arrow(length = unit(1, "mm"), type= "closed")) +
+#5th arrow on left
+  geom_segment(
+    x=82, xend=84.7, y=32.5, yend=32.5, 
+    size=0.15, linejoin = "mitre", lineend = "butt",
+    arrow = arrow(length = unit(1, "mm"), type= "closed")) ->
+  p
+p
+```
+
+<br>
+
+## Now for the completion boxes!
+Now let's add the 5 completion boxes at the bottom. These will be aligned with the assignment boxes, so they will have y values from 15 to 7, and x values of 1-19, 21-39, 41-59, 61-79, and 81-99. Add the text as indicated in the figure. 
+
+```{r completion-boxes}
+p +
+  #first box on left
+  geom_rect(xmin = 1, xmax=19, ymin=7, ymax=15, 
+              color='black', fill='white', size=0.25) +
+  annotate('text', x= 10, y=11, size=2.5,
+             label= '41 Patients completed\nthe study') +
+  #2nd box on left
+  geom_rect(xmin = 21, xmax=39, ymin=7, ymax=15, 
+              color='black', fill='white', size=0.25) +
+  annotate('text', x= 30, y=11, size=2.5,
+             label= '45 Patients completed\nthe study') +
+#3rd box on left
+  geom_rect(xmin = 41, xmax=59, ymin=7, ymax=15, 
+              color='black', fill='white', size=0.25) +
+  annotate('text', x= 50, y=11, size=2.5,
+             label= '45 Patients completed\nthe study') +
+#4th box on left
+  geom_rect(xmin = 61, xmax=79, ymin=7, ymax=15,  
+              color='black', fill='white', size=0.25) +
+  annotate('text', x= 70, y=11, size=2.5,
+             label= '46 Patients completed\nthe study') +
+#5th box on left
+  geom_rect(xmin = 81, xmax=99, ymin=7, ymax=15,  
+              color='black', fill='white', size=0.25) +
+  annotate('text', x= 90, y=11, size=2.5,
+             label= '50 Patients completed\nthe study')->
+  p
+p
+```
+
+<br>
+
+## Now for the big reveal!
+Let's take away the axes and gridlines to reveal our creation!
+
+```{r reveal}
+p + theme_void()
+```

@@ -1,0 +1,79 @@
+---
+title: "Advanced Modeling"
+author: "Peter Higgins"
+date: "4/21/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(mgcv)
+library(magrittr)
+```
+
+## R Markdown
+
+Linear and Logistic models do not work in all cases.
+Consider the example of some pK data from oral dosing of Theophylline.
+
+```{r theoph}
+data("Theoph")
+glimpse(Theoph)
+
+```
+12 Subjects were given varying oral doses, with 132 serum levels taken at 11 time points. These roughly include 0, 0.25, 0.5, 1, 2, 4, 5, 7, 9, 12, and 24 h. Exact times are recorded as numeric variables, so that these Times are not groupable like a factor variable.
+
+So why is this hard to model?
+Let's take a look
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r plot, echo=FALSE}
+Theoph %>% 
+  ggplot(aes(x=Time, y=conc, color=Subject)) +
+  geom_point()
+```
+
+http://www.sthda.com/english/articles/40-regression-analysis/162-nonlinear-regression-essentials-in-r-polynomial-and-spline-regression-models/#spline-regression
+
+No surprise here, but this rises quickly after oral dosing, then slowly drifts down over 24 h. Not a good linear model or a logistic model. <br>
+You could imagine fitting two linear models in piecewise fashion - one up to 1 hour, and one after one hour.
+But how to interpret/explain that?
+And is the cutoff closer to 2 hours?
+And how to incorporate dose and Wt?
+
+This is where GAMs (General Additive Models) shine.
+It can automatically pick out where to best break the data into distinct models, and place 'knots' in the splines at these points, then piecewise model the data between these knots. 
+
+Let's set up a GAM
+
+```{r gam}
+model <- gam(conc ~ s(Wt) + s(Dose) + s(Time), data=Theoph)
+summary(model)
+```
+That adjusted R2 looks good, and the deviance explained seems high.
+But it is a black box.
+Lets make predictions and take a look.
+
+```{r predictions}
+model <- gam(conc ~ s(Wt) + s(Dose) + s(Time), data=Theoph)
+predictions <- model %>% predict(Theoph)
+predictions <- as.data.frame(predictions)
+Theoph <- cbind(Theoph, predictions$predictions)
+names(Theoph)[6] <- "predicted"
+Theoph <- Theoph[,1:6]
+ggplot(aes(x=Time, y=new$predicted, color=Subject), data=Theoph) + geom_line() +geom_point(aes(x=Time, y=conc))
+```
+
+that looks promising.
+How well do actual conc and predicted conc correlate?
+
+```{r cor}
+ggplot(aes(x=conc, y=predicted), data = Theoph) + geom_point()
+cor(Theoph$conc, Theoph$predicted)
+```
+

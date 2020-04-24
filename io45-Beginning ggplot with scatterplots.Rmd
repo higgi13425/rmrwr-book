@@ -1,0 +1,410 @@
+---
+title: "Building Plots in ggplot2"
+author: "Peter Higgins"
+date: "5/27/2019"
+output: powerpoint_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(scipen = 999)
+library(tidyverse)
+```
+
+# Building Plots
+ Building plots in **ggplot2** is based on  a conceptual model called the grammar of graphics. Each plot is built up as layers, and it's easy to build complex plots one layer at a time. it is often helpful to prepare the data in a tidy structure, which is usually a very tall data frame.
+
+---
+
+# Getting Started
+   Let's start with the simple example that illustrates the concept. You can add layers with the plus sign at the end of each line of code.
+    Start with your data frame, and type it into the ggplot command.
+    
+```{r mtcars}
+mtcars %>% 
+  ggplot() 
+```
+
+# Layer One - the plot window
+    All you get is a empty rectangle of gray.  this is the default. The ggplot function does not know what data variables you want to map to objects in the plot. Let's give it some more information.  Add a new layer beginning with a plus sign at the end of the previous line of code, and then on the line below, add a new line of code.
+
+```{r x axis}
+mtcars %>% 
+  ggplot() +
+  aes(x=wt)
+```
+
+# X Axis
+This line adds an aesthetic mapping, of the weight variable to the x axis.  Ggplot labels the X axis, and scales this axis appropriately for the range of the weight variable, which is the weight in pounds divided by 1000. But no y axis yet.
+```{r y axis}
+mtcars %>% 
+  ggplot() +
+  aes(x=wt) +
+  aes(y=mpg)
+```
+
+---
+
+# Y Axis
+Now we have two axes, each labeled and scaled to the appropriate range of the X and Y variables.  But we have no data displayed yet. We have not yet told ggplot how we want these data to be displayed with a particular geometry (aka geom).
+
+```{r scatter}
+mtcars %>% 
+  ggplot() +
+  aes(x=wt) +
+  aes(y=mpg) +
+  geom_point()
+```
+
+# Data
+   Now we have some data plotted, with a simple scatterplot.  It does give you some idea of the  inverse relationship between weight and miles per gallon.  We can add another geom layer to see this relationship.
+   
+```{r linear}
+mtcars %>% 
+  ggplot() +
+  aes(x=wt) +
+  aes(y=mpg) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+# Linear
+The geom smooth with a linear regression model method gives us the best fit least squares line.  This is placed on top of previous scatter plot, as an additional layer.  scatter plot points that fall on this line are partially obscured by the line, because this linear regression layer is listed last and it is on top.
+
+---
+
+# Points on Top?
+   Let's flip this around with the geom point last.  I will also add a new argument to geom_smooth, standard error equals FALSE
+   
+```{r points on top}
+mtcars %>% 
+  ggplot() +
+  aes(x=wt) +
+  aes(y=mpg) +
+  geom_smooth(method = "lm", se=FALSE) +
+  geom_point() 
+```
+
+# Points on Top
+It's a bit subtle, but the points are now on top of the linear regression line, because they are the last layer.  We have also removed the standard error interval around the smoothing line.
+
+---
+
+# More Geoms
+   We can add as many geoms as we want, to build up more complex plots. For now, let's focus on the elements of the scatter plot. What else can we do with these data points?
+
+---
+
+# More Options
+   We can control their color, shape, and size, their intensity of color(alpha), their fill (for hollow shapes), the stroke, and group. All of these can be mapped to other variables in your dataset, to provide more information to the viewer of your plot.
+
+```{r set color}
+mtcars %>% 
+  ggplot() +
+  aes(x=wt) +
+  aes(y=mpg) +
+  geom_point(color="forestgreen", shape = 4, size=3) 
+```
+
+# Color, size, and shape
+  We can set the color, size, and shape manually, which can make the plot look nice, but does not convey any new information. To convey more information, we need to map data to these aesthetic parameter with aes.
+  
+---
+
+# Numeric vs. Text
+   Note that numeric values can be set simply with equals, while text values like the color need to be set within quotes.
+   Sizes are easy, and you can experiment to find the size you want. How do you know what colors and shapes are available?
+  
+---
+
+# Colors
+    There are a number of cheat sheets for our colors available on the web.  All of these colors have names which are lowercase with no spaces or underscores. You can see a list of names by entering the function 'colors()' in the console
+     Examples of color  cheat sheets can be found at 
+
+http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf 
+
+and at 
+
+https://www.nceas.ucsb.edu/~frazier/RSpatialGuides
+
+---
+
+# Shapes
+
+      A diagram of the 25 available shapes for scatterplots can be found at:
+
+
+http://www.sthda.com/english/wiki/r-plot-pch-symbols-the-different-point-shapes-available-in-r 
+
+
+Note that most of these can only have a color attribute, with no fill. Shapes 21-25 can specify a distinct color (outline) and fill (inner color).
+
+  
+---
+
+# Mapping
+
+By mapping the colors, shapes, or size to a variable and your data set, you can communicate more information.  See the example below.
+
+```{r map color, shape, size}
+mtcars %>% 
+  ggplot() +
+  aes(x=wt) +
+  aes(y=mpg) +
+  geom_point(aes(color=factor(cyl), shape = factor(am), size=disp)) 
+```
+
+# More Information
+You can see that we are now recording more information in the scatter plot.  This requires more explanatory legends, shown by default on the right
+
+---
+
+# Mapping Variables
+   Note that in order to map variables to data aesthetics,  these have to be placed within an aes function.  For continuous aesthetics like size, you can use a continuous variable.  For discrete aesthetics like color or shape, these need to be factors with clear levels.
+   
+---
+
+# More Control of Color
+   You may not be a fan of the default colors in ggplot2. You may want to use specific colors to convey meaning (red= warning, green=healthy). There are a lot of ways to convey meaning with color. Color can have a single shade with levels of intensity to reflect dose or amount. You can use built in scales like viridis_d (for discrete levels).
+
+---
+   
+```{r viridis color}
+mtcars %>% 
+  ggplot() +
+  aes(x=wt) +
+  aes(y=mpg) +
+  geom_point(aes(color=factor(cyl), 
+            shape = factor(am), size=disp)) +
+  scale_colour_viridis_d()
+```
+
+---
+
+# Viridis 
+   The viridis colors are designed to have easily distinguished levels, print well in color or black and white, and be perceived as different by people who are color blind. This is the default palette. Thre are also magma, plasa, inferno, and cividis versions, i.e.  (scale_colour_viridis(option="magma", discrete=TRUE)). Edit the code above to try a few of these out.
+   
+---
+
+# Color Brewer / Color Distiller 
+   You can make custom color palettes automatically with color brewer (for discrete scales) and color distiller (continuous). Details at https://ggplot2.tidyverse.org/reference/scale_brewer.html 
+Just add scale_colour_brewer(palette="Blues").
+
+---
+# Color Brewer
+There are lots of standard palettes to choose from, seen here https://www.r-graph-gallery.com/38-rcolorbrewers-palettes/ 
+  Some guidance on how to use these can be found here https://www.datanovia.com/en/blog/the-a-z-of-rcolorbrewer-palette/ 
+  
+```{r blue color}
+mtcars %>% 
+  ggplot() +
+  aes(x=wt) +
+  aes(y=mpg) +
+  geom_point(aes(color=factor(cyl), 
+            shape = factor(am), size=disp)) +
+  scale_colour_brewer(palette="Blues")
+```
+
+---
+
+# Manual Colors
+What if you want to control each color? Then you can use scale_color_manual and set the values. Note that you can list more colors than the plot will use (that is fine), but if the plot needs 3 colors and you only list 2, it will throw an error.
+
+```{r manual color}
+mtcars %>% 
+  ggplot() +
+  aes(x=wt) +
+  aes(y=mpg) +
+  geom_point(aes(color=factor(cyl), 
+            shape = factor(am), size=disp)) +
+  scale_colour_manual(values = c("darkorchid", "chartreuse", "skyblue", "goldenrod"))
+```
+
+---
+
+# More Manual Colors
+You can even store your favorite color palette as an object, and use it throughout your graphs or in a custom ggplot theme. 
+
+```{r palette color}
+my_palette <- c( "royalblue2", "salmon", "springgreen2", "darkorchid", "chartreuse", "skyblue", "goldenrod", "darkslateblue", "deeppink", "lawngreen", "sienna3")
+mtcars %>% 
+  ggplot() +
+  aes(x=wt) +
+  aes(y=mpg) +
+  geom_point(aes(color=factor(cyl), 
+            shape = factor(am), size=disp)) +
+  scale_colour_manual(values = my_palette)
+
+```
+
+
+# Manual Control of Shapes
+You can control your shapes with the same approach, using scale_shape_manual, and a vector of values. 
+The full list of shapes can be found at http://www.sthda.com/english/wiki/ggplot2-point-shapes 
+Experiment with a few different shapes. See how some shapes (filled squares) capture the eye, and others (empty circle) fade into the background. You can use this effect to draw the viewer's eye to the information that you want to emphasize.
+
+```{r shape control}
+mtcars %>% 
+  ggplot() +
+  aes(x=wt) +
+  aes(y=mpg) +
+  geom_point(aes(color=factor(cyl), 
+            shape = factor(am), size=disp)) +
+  scale_shape_manual(values = c(1, 15))
+```
+
+# Manual Control of Size
+Sometimes the default range of sizes is too small or too big. You can take control with scale_size for continuous variables (scale_size(range = c(3,6)), or scale_size_manual(values= c(3,4,5,6)) for factor variables. Some details here https://ggplot2.tidyverse.org/reference/scale_size.html and at
+https://ggplot2.tidyverse.org/reference/scale_manual.html 
+
+---
+
+```{r size control}
+mtcars %>% 
+  ggplot() +
+  aes(x=wt) +
+  aes(y=mpg) +
+  geom_point(aes(color=factor(cyl), 
+            shape = factor(am), size=disp)) +
+  scale_size(range = c(3,6))
+```
+
+# Controlling alpha when you have many points
+Sometimes you have lots of data (in the diamonds dataset), and points are on top of each other. It is helpful to be able to discern when you have one point at a particular x,y location vs. 20 data points. This is where alpha (control of transparency) is a helpful aesthetic.
+
+
+```{r alpha control}
+diamonds %>% 
+  ggplot() +
+  aes(x=carat) +
+  aes(y=price) +
+  geom_point(aes(fill=clarity), shape = 21,
+             alpha = 1) 
+```
+
+
+# Adjusting Alpha
+You can see that better clarity (IF) is more valued than low clarity (I1), but it is hard to see what is going on as there are 53,940 diamonds in this dataset. Experiment with alpha =0.1 and 0.01, 0.005 to see more patterns in the data. You can also replace clarity with color as the fill to get another look at what is valued in diamonds. 
+
+---
+# Adjusting Alpha
+Notice that the fill is an argument of the aes() function, but that alpha and shape are not. This is because they are called as arguments to geom_point(), but are constants, and are not mapped to data. To map to data, you need aes().
+
+
+# Inheritance in ggplot
+Components of the ggplot call are inherited from ggplot() to the geoms. Inherited means that you can set an aesthetic in the ggplot() function, and it will be used downstream in each geom. You can override the inherited arguments by setting a different argument in the geom. See below.
+
+```{r alpha inheritance}
+diamonds %>% 
+  ggplot(aes(x=carat, y = price, fill=clarity),
+         shape = 21) +
+  geom_point(alpha = 0.2) +
+  geom_smooth(se=TRUE) 
+```
+
+
+# Many Smoother Lines
+The code above gives us a distinct smoother line for each level of clarity, because geom_smooth inherits the fill grouping from ggplot. What if we want an overall smoothed line for all levels of clarity? We have to remove fill from ggplot, and move it to aes(fill=clarity) within the geom_point. While you are at it, make se=FALSE in geom_smooth.
+You could also turn off the inheritance from ggplot by inserting aes(fill = NA) into geom_smooth.
+
+---
+
+# Improving this plot
+We can control the color of the smoother line, by adding color = "magenta" to geom_smooth without an aes() call. Note the quotes around the color name, as it is text, not an object. We can also hide the now not very useful legend by adding *theme(legend.position = "none")*. Again, quotes because we want the text "none", rather than having R search for an object named none in our environment pane.
+
+---
+
+# A common color mistake
+Evaluate the code below.
+Why did this not work as expected?
+
+```{r diamonds_red}
+ggplot(data = diamonds) +
+  geom_point(aes(x=carat, y=price, color ="blue")) +
+  labs(title = "diamonds_red")
+
+```
+# Colors Gone Wrong
+This went wrong because you should map data variables to aesthetics within the aes() function, and constants like color = "blue" should be in ggplot() or a geom() but outside of aes().
+By putting values in the aes() you are generating a new factor variable and a legend.
+Consider this example:
+
+
+```{r}
+ggplot(data = mtcars) +
+  geom_point(aes(x=mpg, y=wt, color ="blah")) +
+  geom_point(aes(x=mpg, y=drat, color ="asdfasdf")) +
+  scale_color_manual(values = c("blah"= "blue", "asdfasdf" = "red"))
+
+```
+Based on this information, go back and fix the diamonds_red plot above, so that the points are truly blue.
+
+---
+
+# Labeling Data Points
+One additional aes you can add is labeling your graphics with actual data values.
+This is done with geom_text(aes(label = variable, vjust = -0.5)).
+You will often want to add a vjust or hjust to have the label offset from the actual point.
+
+```{r data labels}
+mtcars2 <- mtcars %>% rownames_to_column("car")
+ggplot(data = mtcars2) +
+  geom_point(aes(x=mpg, y=wt)) +
+  geom_text(aes(x=mpg, y=wt,
+                label = car, vjust = -0.5))
+
+```
+
+
+
+
+# Labels for Your Plot
+
+Now let's turn to labeling your plot. There are 7+ key labels that we can access with the labs() function. These include the title, subtitle, x, y, caption, tag, and legend titles. These can all be added with *labs(label = "new label")*. You can remove a label by setting it to NULL, i.e. 'labs(title = NULL)'. Change the tag below to "A", and add better x, y, and color labels.
+
+```{r labeling}
+mtcars %>% 
+  ggplot(aes(x=wt, y = mpg, color=factor(cyl), 
+             size=disp, shape = factor(am))) +
+  geom_point() + 
+  labs(tag = "Figure 1A") +
+  theme(legend.position = "bottom")
+
+```
+
+Note that a lot of the text labels overlap. This is a good use case for the ggrepel package, with its functions geom_text_repel() and geom_label_repel(), which will automatically move these around to avoid overlaps. Details here https://cran.r-project.org/web/packages/ggrepel/vignettes/ggrepel.html 
+
+# More Labels
+
+You have shortened the tag, and improved your x and y axis labels. Now add a title, subtitle, caption, and improve the shape and size legend titles.
+
+```{r labeling2}
+mtcars %>% 
+  ggplot(aes(x=wt, y = mpg, color=factor(cyl), 
+             size=disp, shape = factor(am))) +
+  geom_point() + 
+  labs(tag = "A", x = "Car Weight", y = "Miles Per Gallon", color = "Cylinders") +
+  theme(legend.position = "bottom")
+
+```
+
+
+# Long Labels
+
+Sometimes you have labels that are a bit too long for their space, and they need a line break. Just insert "\n" for a new line inside the quotes. For example, "This is a Long Title \n It is Really too Long". Put a line break in the title and y axis title below. Note that you only want a space on **one** side of the "\n".
+
+```{r labeling3}
+mtcars %>% 
+  ggplot(aes(x=wt, y = mpg, color=factor(cyl), 
+             size=disp, shape = factor(am))) +
+  geom_point() + 
+  labs(tag = "A", x = "Car Weight", 
+       y = "Miles Per Gallon for the car we are talking about here", color = "Cylinders",
+       title = "A Really Long Title that Should Have Been Shortened a Few Versions Ago",
+       size = "Displacement",
+       shape = "Automatic Transmission") 
+
+```
+
+# Labels Other Ways
+labs() is the most convenient way to label your plot and keep all of your labels organized. There are some older ways to do this as well. You may see these in other people's code. ggtitle("My title") also works for titles. xlab("xaxis") and ylab("my_y_axis") also work for specific axis labels.

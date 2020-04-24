@@ -1,0 +1,240 @@
+---
+title: "Basics of Barplots"
+author: "Peter Higgins"
+date: "6/14/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(pacman)
+p_load(tidyverse, fivethirtyeight, ggalt)
+```
+
+## Barplots
+
+The basic geom is geom_bar, but you can change what it does pretty dramatically by changing its stat and position arguments. The default stat is stat='count', and the default position = 'stack'.
+Let's start with the basic defaults with the mpg dataset.
+
+
+```{r mpg}
+glimpse(mpg)
+```
+
+## First Barplot
+ Your basic barplot aes only needs an x variable, to divide by a categorical variable. The implied y variable is the count of cases in each category. This is because the default stat for geom_bar is stat='count').
+ Now run the code below to get the basic barplot by class of vehicle.
+ Delete the stat argument to make sure you get the same graph, proving that stat='count' is the default stat argument.
+
+```{r barplot1, echo=FALSE}
+ggplot(data = mpg, aes(x = class) ) + geom_bar(stat = 'count', fill="violetred")
+```
+
+## Second Barplot, with stat = 'count' and position = 'stack'
+You can add a 2nd variable to your aes statement with fill. In this case, we will use fill= factor(cyl), to separate the cases by categories of cylinders in each car's engine. This will work because the default position for geom_bar is position = 'stack').
+This version gives you the counts by class and cylinder.
+
+```{r barplot2, echo=FALSE}
+ggplot(data = mpg, aes(x = class, fill = factor(cyl))) + geom_bar(stat = 'count', position= 'stack')
+```
+
+## Third Barplot, with stat = 'count' and position = 'fill'
+You can view this same plot by proportions instead of counts, if you change the position to 'fill'. Change the position argument below from 'stack' to 'fill'. The y axis will now be a proportion scale, rather than count.
+
+```{r barplot3, echo=FALSE}
+ggplot(data = mpg, aes(x = class, fill = factor(cyl))) + geom_bar(stat = 'count', position= 'stack')
+```
+
+## Fourth Barplot, with stat = 'count' and position = 'dodge'
+The versions above are great for counts and proportions, but are a little hard to compare between cylinder groups. To line these up side by side, use position = 'dodge'. Edit the code below to dodge your geom_bar cylinders.
+
+```{r barplot4, echo=FALSE}
+ggplot(data = mpg, aes(x = class, fill = factor(cyl))) + geom_bar(stat = 'count', position= 'stack')
+```
+
+## Fifth Barplot, with a y variable and stat = 'identity'
+Sometimes you don't want to plot counts or proportions, but a different variable in your dataset. Maybe the average hwy mpg by class. In this case, you need to supply a y variable in the aes, and to change the stat to stat='identity'
+
+```{r barplot5, echo=FALSE}
+mpg %>% 
+  group_by(class) %>% 
+  summarize(mean_hwy = mean(hwy, na.rm = T)) %>% 
+  ggplot(aes(x = class, y = mean_hwy)) +
+  geom_bar(stat = 'identity', position = 'stack',
+           fill = 'chartreuse', color='olivedrab')
+```
+
+## Sixth Barplot, with a y variable and stat = 'identity' and reordering by the y variable values
+It is helpful for comparisons to have your categorical variable sorted by the value of your y variable. This can be done manually by setting factor levels before you ggplot, or you can do it on the fly within the aes by using fct_reorder from the forcats package.
+
+```{r barplot6, echo=FALSE}
+mpg %>% 
+  group_by(class) %>% 
+  summarize(mean_hwy = mean(hwy, na.rm = T)) %>% 
+  ggplot(aes(x = fct_reorder(class,mean_hwy), y = mean_hwy)) +
+  geom_bar(stat = 'identity', position = 'stack',
+           fill = 'darkorchid1', color='black')
+```
+## The problem with barplots and y variables
+Barplots are intended for use with counts, but can be used with distinct y variables. Unfortunately, they are not the best visual representation of comparable quantities. Rectangular areas are problematic for visual interpretation. Viewers are more accurate with a linear distance that is not confounded by area. 
+<br>
+For this reason, Cleveland dot plots and lollipop plots were developed.
+
+## Cleveland dot plot
+This is named after Cleveland, a researcher on visual perception of graphs and data.
+This clearly represents the point estimates of the average highway mpg. It does avoid the problem with rectangular areas. However, it is somwhat hard to connect to the labels on the x axis (which lollipop plots try to address), and does not show the confidence in this estimate.
+
+```{r cleveplot, echo=FALSE}
+mpg %>% 
+  group_by(class) %>% 
+  summarize(mean_hwy = mean(hwy, na.rm = T)) %>% 
+  ggplot(aes(x = fct_reorder(class,mean_hwy), y = mean_hwy)) +
+  geom_point(color = 'darkorchid1', size = 3) + 
+  coord_flip() +
+  theme_bw(base_size = 15) +
+  labs(y = 'Class of Vehicle', x = 'Mean Highway mpg')
+```
+## Lollipop plot
+This is named after the shape, like a lollipop.
+This clearly represents the point estimates of the average highway mpg, and makes it easier to connect the estimates to the labels on the x axis, but does not show the confidence in this estimate.
+
+```{r lolliplot, echo=FALSE}
+mpg %>% 
+  group_by(class) %>% 
+  summarize(mean_hwy = mean(hwy, na.rm = T)) %>% 
+  ggplot(aes(x = fct_reorder(class,mean_hwy), y = mean_hwy)) +
+  geom_lollipop(point.colour = 'darkorchid1', point.size = 5,
+                stem.color = 'black') + 
+  coord_flip() +
+  theme_bw(base_size = 15) +
+  labs(x = 'Class of Vehicle', y = 'Mean Highway mpg')
+```
+
+## Pointrange plot
+This geom has a point estimate and a confidence interval
+This clearly represents the point estimates of the average highway mpg, and the confidence in this estimate.
+
+```{r pointrange, echo=FALSE}
+mpg %>% 
+  group_by(class) %>% 
+  mutate(mean_hwy = mean(hwy, na.rm = T)) %>% 
+  mutate(hwy_sd = sd(hwy, na.rm = T)) %>% 
+  ggplot(aes(x = fct_reorder(class,mean_hwy), y = mean_hwy,
+             ymin = mean_hwy - 1.96*hwy_sd,
+             ymax = mean_hwy + 1.96*hwy_sd)) +
+  geom_pointrange(color = 'lightblue', size = 1) + 
+  coord_flip() +
+  theme_bw(base_size = 15) +
+  labs(x = 'Class of Vehicle', y = 'Mean Highway mpg') +
+  ylim(0,40) +
+  geom_text(aes(label = round(mean_hwy,1), nudge_x = -3))
+```
+
+
+## Seventh Barplot, with counts and reordering by the count values
+That reordering is nice. Can you do it with the original counts barplots? Yes you can, but you have to use fct_infreq to wrap the x variable, class.  Run the code below, then change it to make x = fct_infreq(class).
+
+```{r barplot7, echo=FALSE}
+mpg %>% 
+  ggplot(aes(x=class)) +
+  geom_bar(stat='count', color = 'black', fill = 'aquamarine')
+```
+
+## Eighth Barplot, with geom_col vs. geom_bar(stat='identity')
+You may see code in which geom_col() is used instead of geom_bar. They are essentially the same geom, except for one very important default. The default for geom_col() is stat='identity', so that it works well with a y axis that is not counts. But you get the same graph by using geom_bar with stat='identity'
+<br>
+Test it for yourself.
+Change the geom_col() code below to geom_bar with stat='identity'
+
+```{r barplot8, echo=FALSE}
+mpg %>% 
+  group_by(class) %>% 
+  summarize(mean_hwy = mean(hwy, na.rm = T)) %>% 
+  ggplot(aes(x = class, y = mean_hwy)) +
+  geom_col( position = 'stack',
+           fill = 'deepskyblue', color='blue')
+```
+
+## Ninth Barplot, with geom_bar(stat='identity') and coord_flip()
+It can be easier to compare the length of bars when they are horizontal. This is easily done by adding coord_flip to the end of your code. Be sure to do it at the end. If not, it can get confusing which axis is x and which is y.
+<br>
+Test it for yourself.
+Flip the plot below with coord_flip()
+
+```{r barplot9, echo=FALSE}
+mpg %>% 
+  group_by(class) %>% 
+  summarize(mean_hwy = mean(hwy, na.rm = T)) %>% 
+  ggplot(aes(x = class, y = mean_hwy)) +
+  geom_bar(stat = 'identity',  position = 'stack', fill = 'firebrick1', color='black') 
+```
+
+## Tenth Barplot, with value labels
+You can add value labels by adding geom_text(label=var)
+<br>
+Test it for yourself.
+add geom_text(label = mean_hwy, vjust=1.3) to the plot below.
+You can improve the labels by wrapping mean_hwy in a round function, like round(mean_hwy,1)
+
+```{r barplot10, echo=FALSE}
+mpg %>% 
+  group_by(class) %>% 
+  summarize(mean_hwy = mean(hwy, na.rm = T)) %>% 
+  ggplot(aes(x = class, y = mean_hwy)) +
+  geom_bar(stat = 'identity',  position = 'stack', fill = 'firebrick1', color='black') 
+```
+
+## Eleventh Barplot, with value labels that are dodges
+Adding value labels gets more complicated with position= 'dodge'.
+<br>
+add geom_text, but with
+geom_text(aes(label=round(mean_hwy)), position=position_dodge(width=0.9), vjust=-0.2)
+
+```{r barplot11, echo=FALSE}
+mpg %>% 
+  group_by(class, factor(cyl)) %>% 
+  mutate(mean_hwy = mean(hwy, na.rm = T)) %>% 
+  ggplot(aes(x = class, y = mean_hwy, fill=factor(cyl))) +
+  geom_bar(stat = 'identity',  position = 'dodge') 
+```
+
+
+
+## Twelfth Barplot, with labels on the bars instead of the axis
+You can label your groups with names directly on the bars.
+<br>
+first remove the x axis labels and x axis ticks,
+using 
+<br>
+theme(axis.text.y = element_blank()) +
+theme(axis.ticks.y = element_blank())
+**before** the coord_flip()
+
+Then add  geom_text(aes(x = class, y = 1, label = class), hjust=0)
+  again, **before** the coord_flip() 
+  <br>
+  Note that hjust =0 is left-aligned, hjust =0.5 is centered, and hjust = 1.0 is right-aligned.
+
+```{r barplot12, echo=FALSE}
+mpg %>%
+  ggplot(aes(x = class)) +
+  geom_bar(stat = 'count',  position = 'stack',
+           fill = 'lightgreen', color='black') +
+  theme(axis.text.y = element_blank()) +
+  theme(axis.ticks.y = element_blank()) +
+    coord_flip() 
+```
+
+
+## Fourteenth Barplot, moving and removing the legend
+You can move the legend to top, bottom, left or right with theme(legend.position = "top"), or the equivalent
+<br>
+You can remove the legend with theme(legend.position = "none")
+
+```{r barplot14, echo=FALSE}
+mpg %>% 
+  group_by(class) %>% 
+  mutate(mean_hwy = mean(hwy, na.rm = T)) %>% 
+  ggplot(aes(x = class, y = mean_hwy, fill = factor(cyl))) +
+  geom_bar(stat = 'identity',  position = 'stack')
+```
