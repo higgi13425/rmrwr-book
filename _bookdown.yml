@@ -38,7 +38,7 @@ rmd_files:
 - io31-ttest_part2.Rmd
 - io33-tableone_arsenal.Rmd
 - io34-mockstudy_analysis.Rmd
-- io35-making tables of univariate predictors.Rmd
+- io35-making-univariate-model-tables.Rmd
 - io36-tidyr1.Rmd
 - io37-tidyr2.Rmd
 - io38-tidylog.Rmd
@@ -49,9 +49,9 @@ rmd_files:
 - io42a-blockrand_CAPTURE.Rmd
 - io43-rand_block.Rmd
 - io44-UM_poster.Rmd
-- io45-Beginning ggplot with scatterplots.Rmd
-- io46-beginning cat vs continuous boxplots.Rmd
-- io47-beginning bars.Rmd
+- io45-begin_scatterplots.Rmd
+- io46-begin_boxplots.Rmd
+- io47-begin_bars.Rmd
 - io48-learn_distrib_histo.Rmd
 - io49a-multipanel_with_tables.Rmd
 - io50-strings_intro_learnr.Rmd
@@ -62,11 +62,11 @@ rmd_files:
 - io53-strings_3._learnr.Rmd
 - io55-ForkBranchCollaboration.Rmd
 - io56-FormattingRmd2Word.Rmd
-- io58-debugging pipes and plots.Rmd
-- io59-Hashtag Debugging Your Pipes and Plots.Rmd
+- io58-debug_pipes_plots.Rmd
+- io59-hashtag_debugging.Rmd
 - io60-help_in_R.Rmd
 - io61-learn_lm.Rmd
-- io63-Logistic Regression.Rmd
+- io63-logistic_regression.Rmd
 - io64-GAM.Rmd
 - io98-title-holder.Rmd
 - io99-references.Rmd
