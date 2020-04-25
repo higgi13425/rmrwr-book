@@ -13,4 +13,8 @@ output: html_document
 
 ### Arsenal package, tableby
 
-### gtsummary
+### The gtsummary package to flextable
+This is a newer approach which offers many of the same features as tableby. The gtsummary package is a companion to/built upon the gt package, ("gt" for grammar of tables), which is supported by RStudio. The gtsummary package, like gt, is designed to produce nice html output with lots of nice formatting. <br>
+However, as a nice bonus, gtsummary includes a neat function *as_flextable*, which converts your resulting table into a flextable, which can be knit to a Microsoft Word Document or a Powerpoint presentation with Rmarkdown. <br>
+This means that you can make a table once, and be able to produce output in HTML for webpages, Microsoft Word for manuscripts, and MS Powerpoint for presentations from the same file without any conversion issues.<br>
+The only question is how and when you prefer to format your table. Both gt and flextable have great options for formatting your tables. You can do this in gt, then do *as_flextable*, or you can convert to a flextable first, then do your formatting. You can choose based on your comfort and familiarity with flextable vs. gt. Both have excellent explanatory websites, with flextable [here](https://davidgohel.github.io/flextable/index.html) and gtsummary [here](http://www.danieldsjoberg.com/gtsummary/index.html).
