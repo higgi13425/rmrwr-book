@@ -97,7 +97,7 @@ You can overlay distributions with both a histogram and a density plot using a d
 change the aesthetic function for beom_histogram below to <br>
 y = ..density.. and fill = ..density..
 
-```{r density1, exercise=TRUE, exercise.lines = 5}
+```{r density2, exercise=TRUE, exercise.lines = 5}
 ggplot(data = Theoph)+
   aes(x = conc) +
   geom_histogram(aes()) +

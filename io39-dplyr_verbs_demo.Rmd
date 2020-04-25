@@ -20,7 +20,7 @@ glimpse(candy_rankings)
 Edit the code below to
 Glimpse candy_rankings
 
-```{r candy head, exercise = TRUE}
+```{r candyhead, exercise = TRUE}
 glimpse(bechdel)
 ```
 

@@ -109,7 +109,7 @@ a
 
 b <- iris %>%
     group_by(Species) %>%
-    summarize_all(list(~min, ~max))
+    summarize_if(is.numeric, list(min = min, max =max))
 b
 ```
 

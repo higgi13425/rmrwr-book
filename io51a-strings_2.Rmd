@@ -11,7 +11,7 @@ library(tidyverse)
 # devtools::install_github("VerbalExpressions/RVerbalExpressions")
 library(RVerbalExpressions)
 var <- " "
-read_csv("UC_BIOPSY_ALL_2018.csv", locale = readr::locale(encoding = "latin1")) %>% 
+read_csv("data_UC_BIOPSY_ALL_2018.csv", locale = readr::locale(encoding = "latin1")) %>% 
   janitor::clean_names() %>% 
   slice(1:500) %>% 
   select(patient_key, lab_result_string_value) %>% 

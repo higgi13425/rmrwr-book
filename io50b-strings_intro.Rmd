@@ -58,7 +58,7 @@ Below are some illustrative examples of mixed data in a single vector and the re
 
 Predict what you think the classes of the vectors `values` and `numbers` will be (logical, numeric, character??) in the chunk below. Then run each of the code chunks below with the `Run code` button. Check your predictions. See what happens when you try to multiply these vectors.
 
-```{r strings-2.1, exercise = TRUE} 
+```{r strings-21, exercise = TRUE} 
 values <- c(TRUE, FALSE, 7)
 values
 class(values)
@@ -66,14 +66,14 @@ pi * values^2
 ```
 
 
-```{r strings-2.2, exercise = TRUE} 
+```{r strings-22, exercise = TRUE} 
 numbers <- c(3, 9, " ")
 numbers
 class(numbers)
 ```
 
 
-```{r strings-2.3, exercise = TRUE} 
+```{r strings-23, exercise = TRUE} 
 numbers <- c(3, 9, " ")
 numbers * 2
 ```
@@ -280,7 +280,7 @@ mrns <- c("012345678", "23456789     ", "345678901   ", "123456")
 
 ```
 
-```{r str-length, exercise = TRUE}
+```{r str-length2, exercise = TRUE}
 strings <- c("alcoholic cirrhosis", "cirrhotic", "alcoholism", "alcohol abuse disorder", "alcohol toxicity", "alcoholic hepatitis")
 mrns <- c("012345678", "23456789     ", "345678901   ", "123456")
 

@@ -1,0 +1,32 @@
+---
+title: "Reproducible Research"
+author: "Peter Higgins"
+output: html_document
+---
+
+
+# Reproducibility in Your Research
+
+
+####	Collaborating with Past You and Future You
+
+#####	General references 
+
+######  <https://peerj.com/preprints/3192/>
+
+######  <https://peerj.com/preprints/3139/> 
+
+#### DataCamp GitHub Course
+
+####		The problem of versions and updated packages
+#####		Solutions
+###### Renv package
+###### Rocker (docker) containers
+
+####	R Projects
+####  RStudio on Projects
+#####	Multiple scripts and organization of projects
+##### Version control 
+###### <https://peerj.com/preprints/3159/>
+
+####	Linear and branching projects, and use of the drake package

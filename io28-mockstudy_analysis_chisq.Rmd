@@ -13,7 +13,7 @@ library(survminer)
 library(patchwork)
 library(tidyverse)
 library(janitor)
-#library(gt)
+library(gt)
 data("mockstudy")
 ```
 

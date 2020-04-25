@@ -21,8 +21,8 @@ df <- data.frame(a = c(0,1), b = c(0,1))
 var <- 0
 
 # read in data
-fcp <- read_csv('fcp.csv')
-rad <- read_csv('rad.csv') 
+fcp <- read_csv('data_fcp.csv')
+rad <- read_csv('data_rad.csv') 
 ```
 
 

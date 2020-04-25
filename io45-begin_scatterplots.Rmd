@@ -2,7 +2,7 @@
 title: "Building Plots in ggplot2"
 author: "Peter Higgins"
 date: "5/27/2019"
-output: powerpoint_presentation
+output: html_document
 ---
 
 ```{r setup, include=FALSE}

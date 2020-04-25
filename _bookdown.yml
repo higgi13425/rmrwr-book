@@ -14,7 +14,7 @@ rmd_files:
 - io09-timeseries.Rmd
 - io10-tableOne.Rmd
 - io11-ggplot-single-var.Rmd
-- io13-ggplot-cont-vs-catvar.Rmd
+- io12-ggplot-cont-vs-catvar.Rmd
 - io13-ggplot-cont-vs-cont.Rmd
 - io14-presenting-Rmarkdown.Rmd
 - io15-reproducible-research.Rmd
@@ -29,9 +29,7 @@ rmd_files:
 - io24-sharing-shiny.Rmd
 - io25-logistic-regression.Rmd
 - io26-meta-analysis.Rmd
-- io27-learn_consort.Rmd
 - io28-mockstudy_analysis_chisq.Rmd
-- io29-learn_chisq.Rmd
 - io29a-chisq_example.Rmd
 - io30-ttest.Rmd
 - io30a-ttest.Rmd
@@ -42,34 +40,20 @@ rmd_files:
 - io36-tidyr1.Rmd
 - io37-tidyr2.Rmd
 - io38-tidylog.Rmd
-- io39-dplyr_verbs_demo.Rmd
 - io40-more_dplyr.Rmd
 - io41-draw_consort.Rmd
 - io42-randomization_demo_CAPTURE.Rmd
-- io42a-blockrand_CAPTURE.Rmd
-- io43-rand_block.Rmd
-- io44-UM_poster.Rmd
 - io45-begin_scatterplots.Rmd
 - io46-begin_boxplots.Rmd
 - io47-begin_bars.Rmd
-- io48-learn_distrib_histo.Rmd
-- io49a-multipanel_with_tables.Rmd
-- io50-strings_intro_learnr.Rmd
-- io50a-strings_intro.Rmd
-- io50b-strings_intro.Rmd
-- io51-string_2.Rmd
-- io51a-strings_2.Rmd
-- io53-strings_3._learnr.Rmd
 - io55-ForkBranchCollaboration.Rmd
-- io56-FormattingRmd2Word.Rmd
 - io58-debug_pipes_plots.Rmd
-- io59-hashtag_debugging.Rmd
 - io60-help_in_R.Rmd
-- io61-learn_lm.Rmd
-- io63-logistic_regression.Rmd
 - io64-GAM.Rmd
 - io98-title-holder.Rmd
 - io99-references.Rmd
 new_session: true
+
+
 
 

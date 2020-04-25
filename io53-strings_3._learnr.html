@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Challenge Tutorial for Strings</title>
+  <meta name="description" content="Challenge Tutorial for Strings" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Challenge Tutorial for Strings" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Challenge Tutorial for Strings" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">RMRWR</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="0.1" data-path=""><a href="#section-text-based-laboratory-data-fcp"><i class="fa fa-check"></i><b>0.1</b> Text-based laboratory data: FCP</a><ul>
+<li class="chapter" data-level="0.1.1" data-path=""><a href="#section-explore-the-fecal-calprotectin-data-set"><i class="fa fa-check"></i><b>0.1.1</b> Explore the Fecal Calprotectin Data Set</a></li>
+<li class="chapter" data-level="0.1.2" data-path=""><a href="#section-dig-into-the-lab_result_text"><i class="fa fa-check"></i><b>0.1.2</b> Dig into the lab_result_text</a></li>
+<li class="chapter" data-level="0.1.3" data-path=""><a href="#section-find-the-result-in-lab_result_text"><i class="fa fa-check"></i><b>0.1.3</b> Find the result in lab_result_text</a></li>
+<li class="chapter" data-level="0.1.4" data-path=""><a href="#section-extracting-the-result-from-lab_result_text"><i class="fa fa-check"></i><b>0.1.4</b> Extracting the result from lab_result_text</a></li>
+<li class="chapter" data-level="0.1.5" data-path=""><a href="#section-extracting-a-number-from-lab_result_text"><i class="fa fa-check"></i><b>0.1.5</b> Extracting a number from lab_result_text</a></li>
+<li class="chapter" data-level="0.1.6" data-path=""><a href="#section-create-the-new-fcp_value-variable"><i class="fa fa-check"></i><b>0.1.6</b> Create the new fcp_value variable</a></li>
+<li class="chapter" data-level="0.1.7" data-path=""><a href="#section-more-challenges"><i class="fa fa-check"></i><b>0.1.7</b> More Challenges</a></li>
+</ul></li>
+<li class="chapter" data-level="0.2" data-path=""><a href="#section-text-results-from-radiology-come-in-blobs"><i class="fa fa-check"></i><b>0.2</b> Text Results from Radiology Come in Blobs</a><ul>
+<li class="chapter" data-level="0.2.1" data-path=""><a href="#section-exploring-the-rad-dataset"><i class="fa fa-check"></i><b>0.2.1</b> Exploring the rad dataset</a></li>
+<li class="chapter" data-level="0.2.2" data-path=""><a href="#section-exploring-the-text-blobs"><i class="fa fa-check"></i><b>0.2.2</b> Exploring the text blobs</a></li>
+<li class="chapter" data-level="0.2.3" data-path=""><a href="#section-cleaning-up-newlines"><i class="fa fa-check"></i><b>0.2.3</b> Cleaning up newlines ()</a></li>
+<li class="chapter" data-level="0.2.4" data-path=""><a href="#section-finding-abscesses"><i class="fa fa-check"></i><b>0.2.4</b> Finding abscesses</a></li>
+<li class="chapter" data-level="0.2.5" data-path=""><a href="#section-taking-a-look-with-str_view"><i class="fa fa-check"></i><b>0.2.5</b> Taking a Look with str_view()</a></li>
+<li class="chapter" data-level="0.2.6" data-path=""><a href="#section-extracting-abscesses"><i class="fa fa-check"></i><b>0.2.6</b> Extracting Abscesses</a></li>
+<li class="chapter" data-level="0.2.7" data-path=""><a href="#section-encoding-results"><i class="fa fa-check"></i><b>0.2.7</b> Encoding results</a></li>
+<li class="chapter" data-level="0.2.8" data-path=""><a href="#section-challenges---on-your-own"><i class="fa fa-check"></i><b>0.2.8</b> Challenges - On Your Own</a></li>
+</ul></li>
+<li class="chapter" data-level="0.3" data-path=""><a href="#section-stringr-and-rve-quiz-of-string-knowledge-open-book"><i class="fa fa-check"></i><b>0.3</b> Stringr and RVE Quiz of String Knowledge (Open Book)</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Challenge Tutorial for Strings</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="section-header">
+<h1 class="title">Challenge Tutorial for Strings</h1>
+</div>
+<p>Run the first setup chunk to set up your libraries
+and load the data.</p>
+<div id="section-text-based-laboratory-data-fcp" class="section level2">
+<h2><span class="header-section-number">0.1</span> Text-based laboratory data: FCP</h2>
+<div id="section-explore-the-fecal-calprotectin-data-set" class="section level3">
+<h3><span class="header-section-number">0.1.1</span> Explore the Fecal Calprotectin Data Set</h3>
+<p>The fcp dataset is the result of a data warehouse lab query for 65 subjects participating in a clinical research study.</p>
+<p>Fecal calprotectin is a neutrophil protein that is stable in stool, and can be measured quantitatively with an ELISA assay. It quantitates inflammation in the gastrointestinal tract.</p>
+<p>Explore the dataset using functions like glimpse, tabyl, head, etc. to prepare for the following questions:</p>
+<ol style="list-style-type: decimal">
+<li>How to extract the FCP value to a new (numeric) column?</li>
+<li>How to identify/filter for abnormal FCP values?</li>
+<li>How to store the definition of normal in a column?</li>
+<li>How to find and store the FCP units into a column?</li>
+</ol>
+<p>To get started, do the exercise below to glimpse the variables in FCP.
+Fill in the dataframe object fcp for glimpse, then try head(), and tabyl() on some of the variables.</p>
+<div class="tutorial-exercise" data-label="glimpse" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>glimpse()</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":7,"fig.height":5,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":672,"warning":true,"error":false,"message":true,"exercise.df_print":"default","exercise.checker":"NULL"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="glimpse-hint-1" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>glimpse(fcp)
+head(fcp)
+tabyl(fcp$flag)</code></pre>
+</div>
+</div>
+<div id="section-dig-into-the-lab_result_text" class="section level3">
+<h3><span class="header-section-number">0.1.2</span> Dig into the lab_result_text</h3>
+<p>Take a look at the first entry for lab_result_text
+with the code chunk below
+By adding brackets and 1, i.e.
+fcp$lab_result_text[1]</p>
+<p>Then look at a few more with [2:5]</p>
+<p>Take a look at several until you are confident that you have a pattern to find that will consistently include the numerical result for calprotectin.</p>
+<div class="tutorial-exercise" data-label="text" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>fcp$lab_result_text[17]</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":7,"fig.height":5,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":672,"warning":true,"error":false,"message":true,"exercise.df_print":"default","exercise.checker":"NULL"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="text-hint-1" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>fcp$lab_result_text[1]</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="text-hint-2" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>fcp$lab_result_text[1:5]</code></pre>
+</div>
+</div>
+<div id="section-find-the-result-in-lab_result_text" class="section level3">
+<h3><span class="header-section-number">0.1.3</span> Find the result in lab_result_text</h3>
+<p>Use str_view to find “Calprotectin, F” and, separately, “mcg/g”
+in a few rows of lab_result_text, by editing the code chunk below</p>
+<div class="tutorial-exercise" data-label="find-text" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="15">
+<pre class="text"><code>str_view(string = fcp$lab_result_text, pattern= &quot;55901&quot;)</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":7,"fig.height":5,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":672,"warning":true,"error":false,"message":true,"exercise.df_print":"default","exercise.checker":"NULL"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="find-text-hint-1" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>str_view(string = fcp$lab_result_text, pattern= &quot;Calprotectin, F&quot;)</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="find-text-hint-2" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>str_view(string = fcp$lab_result_text, pattern= &quot;mcg/g&quot;)</code></pre>
+</div>
+</div>
+<div id="section-extracting-the-result-from-lab_result_text" class="section level3">
+<h3><span class="header-section-number">0.1.4</span> Extracting the result from lab_result_text</h3>
+<p>You have now bracketed the numeric result.</p>
+<p>Build a pattern using RVerbalExpressions</p>
+<p><a href="https://rverbalexpressions.netlify.com/index.html">RVE</a></p>
+<p>that includes</p>
+<ol style="list-style-type: decimal">
+<li>starts with “Calprotectin, F” (<em>seek</em> <em>prefix</em>)</li>
+<li>Result in the middle (anything)</li>
+<li>Ends with “mcg/g” (<em>seek_suffix</em>)</li>
+</ol>
+<p>Set this as your pattern, and see if you are selecting the numeric result with str_view by editing the code chunk below.</p>
+<p>Make sure your prefix and suffix are <em>unique</em> and flank the result value</p>
+<div class="tutorial-exercise" data-label="see-number" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="15">
+<pre class="text"><code>p &lt;- &quot;Test Performed by:&quot;
+
+
+str_view(string = fcp$lab_result_text, pattern = p)</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":7,"fig.height":5,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":672,"warning":true,"error":false,"message":true,"exercise.df_print":"default","exercise.checker":"NULL"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="see-number-hint-1" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>p &lt;- rx() %&gt;% 
+  rx_seek_prefix(&quot;Calprotectin, F&quot;) %&gt;% 
+  rx_anything() %&gt;% 
+  rx_seek_suffix(&quot;mcg/g&quot;)
+
+str_view(string = fcp$lab_result_text, pattern = p)</code></pre>
+</div>
+</div>
+<div id="section-extracting-a-number-from-lab_result_text" class="section level3">
+<h3><span class="header-section-number">0.1.5</span> Extracting a number from lab_result_text</h3>
+<p>You have a pattern to get your result.
+You probably have to peel off the letter H from some of these results.</p>
+<p>Try this out first with str_extract using the same pattern, then pipe it into
+parse_number()
+in the code chunk below</p>
+<div class="tutorial-exercise" data-label="extract-number" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="15">
+<pre class="text"><code>p &lt;- rx() %&gt;% 
+  rx_seek_prefix(&quot;Calprotectin, F&quot;) %&gt;% 
+  rx_anything() %&gt;% 
+  rx_seek_suffix(&quot;mcg/g &quot;)
+
+str_view(string = fcp$lab_result_text, pattern = p)</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":7,"fig.height":5,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":672,"warning":true,"error":false,"message":true,"exercise.df_print":"default","exercise.checker":"NULL"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="extract-number-hint-1" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>p &lt;- rx() %&gt;% 
+  rx_seek_prefix(&quot;Calprotectin, F&quot;) %&gt;% 
+  rx_anything() %&gt;% 
+  rx_seek_suffix(&quot;mcg/g &quot;)
+
+str_extract(string = fcp$lab_result_text, 
+            pattern = p)</code></pre>
+</div>
+</div>
+<div id="section-create-the-new-fcp_value-variable" class="section level3">
+<h3><span class="header-section-number">0.1.6</span> Create the new fcp_value variable</h3>
+<p>Once you have this working,
+edit the code chunk below -
+start with fcp, pipe it into a mutate statement,
+which should create a new variable called fcp_value, and set it equal to the str_extract/parse_number pipe result.</p>
+<div class="tutorial-exercise" data-label="fcp-value" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="15">
+<pre class="text"><code>p &lt;- rx() %&gt;% 
+  rx_seek_prefix(&quot;Calprotectin, F&quot;) %&gt;% 
+  rx_anything() %&gt;% 
+  rx_seek_suffix(&quot;mcg/g &quot;)
+
+fcp %&gt;% 
+  mutate(fcp_value = var) %&gt;% 
+  select(sbj_id, eff_date, flag, fcp_value)</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":7,"fig.height":5,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":672,"warning":true,"error":false,"message":true,"exercise.df_print":"default","exercise.checker":"NULL"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="fcp-value-hint-1" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>p &lt;- rx() %&gt;% 
+  rx_seek_prefix(&quot;Calprotectin, F&quot;) %&gt;% 
+  rx_anything() %&gt;% 
+  rx_seek_suffix(&quot;mcg/g &quot;)
+
+fcp %&gt;% 
+  mutate(fcp_value = parse_number(str_extract(string = fcp$lab_result_text, pattern = p))) %&gt;% 
+  select(subj_id, date, flag, fcp_value)</code></pre>
+</div>
+</div>
+<div id="section-more-challenges" class="section level3">
+<h3><span class="header-section-number">0.1.7</span> More Challenges</h3>
+<ol start="2" style="list-style-type: decimal">
+<li>Identify/filter for abnormal FCP values?</li>
+<li>Store the definition of normal in a column?</li>
+<li>Find and store the FCP <em>units</em> into a column?</li>
+</ol>
+</div>
+</div>
+<div id="section-text-results-from-radiology-come-in-blobs" class="section level2">
+<h2><span class="header-section-number">0.2</span> Text Results from Radiology Come in Blobs</h2>
+<div id="section-exploring-the-rad-dataset" class="section level3">
+<h3><span class="header-section-number">0.2.1</span> Exploring the rad dataset</h3>
+<p>Start with <em>glimpse()</em> and <em>head()</em> to get a feel for this dataset</p>
+<div class="tutorial-exercise" data-label="glimpse-rad" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>glimpse(df)</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":7,"fig.height":5,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":672,"warning":true,"error":false,"message":true,"exercise.df_print":"default","exercise.checker":"NULL"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="glimpse-rad-hint" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>glimpse(rad)
+head(rad)</code></pre>
+</div>
+<p>We want to find out which patients had abscesses on their scans.</p>
+</div>
+<div id="section-exploring-the-text-blobs" class="section level3">
+<h3><span class="header-section-number">0.2.2</span> Exploring the text blobs</h3>
+<p>The report text is in rad_text.
+Take a look at several of these entries
+using rad$rad_text.</p>
+<p>You can select which row with [row],
+as in rad$rad_text[4].
+Edit the code chunk below to review the rad_text from report 1,
+then reports 2 through 5.</p>
+<div class="tutorial-exercise" data-label="rad-text" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>rad</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":7,"fig.height":5,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":672,"warning":true,"error":false,"message":true,"exercise.df_print":"default","exercise.checker":"NULL"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="rad-text-hint-1" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>rad$rad_text[1]
+rad$rad_text[2:5]</code></pre>
+</div>
+</div>
+<div id="section-cleaning-up-newlines" class="section level3">
+<h3><span class="header-section-number">0.2.3</span> Cleaning up newlines ()</h3>
+<p>Notice that there are a lot of newline characters (“”) which create line breaks.</p>
+<p>Use str_replace_all to replace all instances of “”
+with a space " ".</p>
+<p>Edit the code chunk below to mutate and create a new rad_text_sp variable, with all of the newline characters replaced by spaces.
+When you are convinced that it works, use the left assignment arrow to assign the str_replace pipe to rad$rad_text to overwrite the original version.</p>
+<div class="tutorial-exercise" data-label="replace" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>rad$rad_text
+
+rad$rad_text %&gt;% 
+  str_replace(&quot;EXAMINATION:&quot;, &quot;exam:&quot;)</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":7,"fig.height":5,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":672,"warning":true,"error":false,"message":true,"exercise.df_print":"default","exercise.checker":"NULL"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="replace-hint-1" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>rad$rad_text
+
+rad$rad_text %&gt;% 
+  str_replace_all(&quot;\n&quot;, &quot; &quot;)</code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="replace-hint-2" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>rad$rad_text &lt;- rad$rad_text %&gt;% 
+  str_replace_all(&quot;\n&quot;, &quot; &quot;)</code></pre>
+</div>
+</div>
+<div id="section-finding-abscesses" class="section level3">
+<h3><span class="header-section-number">0.2.4</span> Finding abscesses</h3>
+<p>Since this is a large dataset of 2781 imaging reports, we will start with detecting the word “abscess”.</p>
+<p>Use str_detect on rad$rad_text to find out how in many rows the word “abscess” occurs.
+Pipe this into the <em>sum()</em> function to get the sum</p>
+<div class="tutorial-exercise" data-label="view-rads" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>rad$rad_text %&gt;% 
+  str_detect(&quot;stricture&quot;) </code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":7,"fig.height":5,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":672,"warning":true,"error":false,"message":true,"exercise.df_print":"default","exercise.checker":"NULL"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="view-rads-hint-1" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>rad$rad_text %&gt;% 
+  str_detect(&quot;abscess&quot;) %&gt;% 
+  sum()</code></pre>
+</div>
+<p>Wow. 11156 out of 2781 seems like a lot.</p>
+</div>
+<div id="section-taking-a-look-with-str_view" class="section level3">
+<h3><span class="header-section-number">0.2.5</span> Taking a Look with str_view()</h3>
+<p>Let’s see what is going on with <em>str_view()</em>.
+Edit the code block below to see what is going on.</p>
+<div class="tutorial-exercise" data-label="view-abscess" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>rad$rad_text %&gt;% 
+  str_view(&quot;fistula&quot;) </code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":7,"fig.height":5,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":672,"warning":true,"error":false,"message":true,"exercise.df_print":"default","exercise.checker":"NULL"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="view-abscess-hint-1" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>rad$rad_text %&gt;% 
+  str_view(&quot;abscess&quot;) </code></pre>
+</div>
+<p>You can see that we have a <em>negation</em> problem. Just because a word appears in a text blob, it does not mean that the patient has that finding. It can easily be “No abscess”.</p>
+<p>This is a good time to use RVE to detect the words before and after “abscess” to help parse its meaning.</p>
+</div>
+<div id="section-extracting-abscesses" class="section level3">
+<h3><span class="header-section-number">0.2.6</span> Extracting Abscesses</h3>
+<p>Let’s build a pattern in RVerbalExpressions to detect the entire sentence surrounding the word “abscess”. Or possibly a certain number of words before &amp; after.</p>
+<p>This is probably a good time to peek at the RVE website.</p>
+<p><a href="https://rverbalexpressions.netlify.com/index.html">RVE</a></p>
+<div class="tutorial-exercise" data-label="extract-rads" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>pattern = &quot;abscess&quot;
+
+rad$rad_text %&gt;% 
+  str_extract(pattern) </code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":7,"fig.height":5,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":672,"warning":true,"error":false,"message":true,"exercise.df_print":"default","exercise.checker":"NULL"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="extract-rads-hint-1" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>pattern = rx() %&gt;% 
+  rx_find(&quot;. &quot;) %&gt;% 
+  rx_anything() %&gt;% 
+  rx_find(&quot;abscess&quot;) %&gt;% 
+  rx_anything() %&gt;% 
+  rx_find(&quot;. &quot;)
+  
+rad$rad_text %&gt;% 
+  str_extract_all(pattern) </code></pre>
+</div>
+<div class="tutorial-exercise-support" data-label="extract-rads-hint-2" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>pattern = rx() %&gt;% 
+  rx_word() %&gt;% 
+  rx_space() %&gt;% 
+  rx_word() %&gt;% 
+  rx_space() %&gt;% 
+  rx_word() %&gt;% 
+  rx_space() %&gt;% 
+  rx_find(&quot;abscess&quot;) %&gt;% 
+  rx_space() %&gt;% 
+  rx_word() %&gt;% 
+  rx_space() %&gt;% 
+  rx_word() 
+  
+rad$rad_text %&gt;% 
+  str_extract_all(pattern) </code></pre>
+</div>
+</div>
+<div id="section-encoding-results" class="section level3">
+<h3><span class="header-section-number">0.2.7</span> Encoding results</h3>
+<p>Do you have enough of a pattern to mutate a new column variable named abscess_present and to create 1s and 0s for this variable?</p>
+<p>Or would you rather extract or str_view the cases that have the word abscess (can filter for these with str_detect), and hand code based on human interpretation?</p>
+<p>This is the kind of situation where NLP can benefit from human assistance, kind of like laparoscopy vs. hand-assisted laparoscopy. You can do most of the work with robots, but a little help from humans goes a long way.</p>
+<p>Edit the code block below to</p>
+<ol style="list-style-type: decimal">
+<li>create a variable in rads named abscess_present, and assign 0 to each row as the default</li>
+<li>filter the rad dataset with filter(str_select) to filter for only those rows with the word abscess.</li>
+<li>Review the results, decide which ones truly have abscesses.</li>
+<li>Hand assign these values to 1, as in rad$abscess_present[patid == 73] &lt;- 1</li>
+</ol>
+<pre><code>## # A tibble: 2,781 x 6
+##    patid code   descr    ordering_doc_id date  rad_text     
+##    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;        
+##  1     2 MR990… MR ABDO…        21506082 1/23… &quot;MR ENTEROGR…
+##  2     3 CT741… CT ABDO…        21462872 1/23… &quot;at-containi…
+##  3     4 MR990… MR ABDO…        21579132 1/23… &quot;\nseveral t…
+##  4     5 MR990… MR ABDO…        21579132 1/23… &quot;MR ENTEROGR…
+##  5     8 MR990… MR ABDO…        20322014 1/22… &quot;MR ENTEROGR…
+##  6     9 CT741… CT ABDO…        20029941 1/21… &quot;CT SCAN OF …
+##  7    10 MR990… MR ABDO…        21503428 1/21… &quot;MR ENTEROGR…
+##  8    11 MR990… MR ABDO…        21506082 1/21… &quot;MR ENTEROGR…
+##  9    13 CTPOR… CT OFC …        21354742 1/20… &quot;stance of a…
+## 10    14 MR990… MR ABDO…        21567340 1/20… &quot;MR ENTEROGR…
+## # … with 2,771 more rows</code></pre>
+<pre><code>## # A tibble: 1,381 x 6
+##    patid code   descr    ordering_doc_id date  rad_text     
+##    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;        
+##  1     2 MR990… MR ABDO…        21506082 1/23… &quot;MR ENTEROGR…
+##  2     3 CT741… CT ABDO…        21462872 1/23… &quot;at-containi…
+##  3     8 MR990… MR ABDO…        20322014 1/22… &quot;MR ENTEROGR…
+##  4     9 CT741… CT ABDO…        20029941 1/21… &quot;CT SCAN OF …
+##  5    10 MR990… MR ABDO…        21503428 1/21… &quot;MR ENTEROGR…
+##  6    11 MR990… MR ABDO…        21506082 1/21… &quot;MR ENTEROGR…
+##  7    15 CT741… CT ABDO…        20392500 1/19… &quot;PROCEDURE: …
+##  8    16 CT763… CT 3D R…        21550268 1/19… &quot;PROCEDURE: …
+##  9    17 CT741… CT ENTE…        21550268 1/19… &quot;PROCEDURE: …
+## 10    20 CT741… CT ABDO…           29167 1/18… &quot;lated to a …
+## # … with 1,371 more rows</code></pre>
+<pre><code>## # A tibble: 1,156 x 6
+##    patid code   descr    ordering_doc_id date  rad_text     
+##    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;        
+##  1     2 MR990… MR ABDO…        21506082 1/23… &quot;MR ENTEROGR…
+##  2     4 MR990… MR ABDO…        21579132 1/23… &quot;\nseveral t…
+##  3     5 MR990… MR ABDO…        21579132 1/23… &quot;MR ENTEROGR…
+##  4    11 MR990… MR ABDO…        21506082 1/21… &quot;MR ENTEROGR…
+##  5    16 CT763… CT 3D R…        21550268 1/19… &quot;PROCEDURE: …
+##  6    17 CT741… CT ENTE…        21550268 1/19… &quot;PROCEDURE: …
+##  7    22 MR990… MR ABDO…        21513520 1/18… &quot;MR of the p…
+##  8    26 MR990… MR ABDO…        21510404 1/17… &quot;mal colon a…
+##  9    27 MR990… MR ABDO…        21373404 1/17… &quot;MRI ABDOMEN…
+## 10    28 CT741… CT ENTE…        20113868 1/17… &quot;CT ENTEROGR…
+## # … with 1,146 more rows</code></pre>
+</div>
+<div id="section-challenges---on-your-own" class="section level3">
+<h3><span class="header-section-number">0.2.8</span> Challenges - On Your Own</h3>
+<ol style="list-style-type: decimal">
+<li>Can you extract CT, MR, and XR codes from the variable <code>code</code>, and determine what percentage of these exams are CT vs MR vs X-rays?</li>
+</ol>
+<div class="tutorial-exercise" data-label="percentages" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>rad$code </code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":7,"fig.height":5,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":672,"warning":true,"error":false,"message":true,"exercise.df_print":"default","exercise.checker":"NULL"}</script>
+</div>
+<div class="tutorial-exercise-support" data-label="percentages-hint-1" data-caption="Code" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<pre class="text"><code>rad$code %&gt;% str_detect(&quot;^MR&quot;) %&gt;% sum()
+rad$code %&gt;% str_detect(&quot;^CT&quot;) %&gt;% sum()
+rad$code %&gt;% str_detect(&quot;^XR&quot;) %&gt;% sum()
+length(rad$code)
+
+rad %&gt;% 
+  mutate(mr = str_detect(code, &quot;^MR&quot;)) %&gt;% 
+  mutate(ct = str_detect(code, &quot;^CT&quot;)) %&gt;%
+  mutate(xr = str_detect(code, &quot;^XR&quot;)) %&gt;% 
+  pivot_longer(cols = c(mr, ct, xr), names_to = &quot;exam&quot;) %&gt;% 
+  filter(value == TRUE) %&gt;% 
+  select(-value)</code></pre>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Can you determine whether more MRs or CTs find abscesses (by percentage of positive exams?)</p></li>
+<li><p>Which doctors (ordering_doc_id) order the highest percentage of MRIs? Which order the highest percentage of CT scans? Which group is more likely to be pediatricians?</p></li>
+</ol>
+<pre><code>##  rad$ordering_doc_id   n     percent
+##             21506082 234 0.084142395
+##             20445404 144 0.051779935
+##             20322014 116 0.041711615
+##                 3535 113 0.040632866
+##             21513520  94 0.033800791
+##             20389272  83 0.029845379
+##             20321990  79 0.028407048
+##             21408188  63 0.022653722
+##             20029975  58 0.020855807
+##             20339950  55 0.019777059
+##             21501282  47 0.016900396
+##             20179376  46 0.016540813
+##                12160  44 0.015821647
+##             20339996  44 0.015821647
+##             20394504  40 0.014383315
+##               346012  37 0.013304567
+##             21372890  34 0.012225818
+##             21510404  33 0.011866235
+##             21503428  28 0.010068321
+##             20079678  27 0.009708738
+##                26600  21 0.007551241
+##             21354742  20 0.007191658
+##             21579132  20 0.007191658
+##             21579362  20 0.007191658
+##             20086010  19 0.006832075
+##                10649  18 0.006472492
+##                28987  17 0.006112909
+##             21373404  17 0.006112909
+##                 6327  16 0.005753326
+##             10024251  16 0.005753326
+##             20322196  16 0.005753326
+##             20502086  16 0.005753326
+##             21353420  16 0.005753326
+##             20353906  15 0.005393743
+##                24645  14 0.005034160
+##                25416  14 0.005034160
+##                32283  14 0.005034160
+##             20112400  14 0.005034160
+##             20320920  14 0.005034160
+##             20333608  14 0.005034160
+##             20501680  13 0.004674577
+##             20080210  12 0.004314995
+##             21489126  12 0.004314995
+##                34453  11 0.003955412
+##             20333702  11 0.003955412
+##             21368154  11 0.003955412
+##             20078694  10 0.003595829
+##             20502036  10 0.003595829
+##                19383   9 0.003236246
+##                25374   9 0.003236246
+##             10025644   9 0.003236246
+##             20178870   9 0.003236246
+##             20344118   9 0.003236246
+##             20391966   9 0.003236246
+##             21461546   9 0.003236246
+##             21462872   9 0.003236246
+##             21467212   9 0.003236246
+##                18878   8 0.002876663
+##             20032228   8 0.002876663
+##             20079944   8 0.002876663
+##             20322042   8 0.002876663
+##             20365814   8 0.002876663
+##             21372942   8 0.002876663
+##             21404044   8 0.002876663
+##             21462652   8 0.002876663
+##                25497   7 0.002517080
+##             20022010   7 0.002517080
+##             20178874   7 0.002517080
+##             20339566   7 0.002517080
+##             20444276   7 0.002517080
+##             21421556   7 0.002517080
+##             21511820   7 0.002517080
+##             21569994   7 0.002517080
+##                27969   6 0.002157497
+##             20391858   6 0.002157497
+##             21352310   6 0.002157497
+##             21353920   6 0.002157497
+##             21375894   6 0.002157497
+##             21421112   6 0.002157497
+##             21426064   6 0.002157497
+##             21488950   6 0.002157497
+##             21501086   6 0.002157497
+##             21521356   6 0.002157497
+##             21525694   6 0.002157497
+##             21540932   6 0.002157497
+##             21547124   6 0.002157497
+##                  273   5 0.001797914
+##                 3625   5 0.001797914
+##                 6393   5 0.001797914
+##                 7682   5 0.001797914
+##             20080198   5 0.001797914
+##             20175780   5 0.001797914
+##             20179650   5 0.001797914
+##             20322178   5 0.001797914
+##             20446798   5 0.001797914
+##             20478482   5 0.001797914
+##             20489004   5 0.001797914
+##             21373808   5 0.001797914
+##             21407480   5 0.001797914
+##             21426066   5 0.001797914
+##             21436116   5 0.001797914
+##             21479988   5 0.001797914
+##             21506542   5 0.001797914
+##             21567340   5 0.001797914
+##             21573312   5 0.001797914
+##                 4256   4 0.001438332
+##                15789   4 0.001438332
+##                21638   4 0.001438332
+##                23236   4 0.001438332
+##                36094   4 0.001438332
+##                82320   4 0.001438332
+##               105680   4 0.001438332
+##             10034356   4 0.001438332
+##             20010727   4 0.001438332
+##             20020647   4 0.001438332
+##             20048368   4 0.001438332
+##             20113868   4 0.001438332
+##             20113880   4 0.001438332
+##             20178860   4 0.001438332
+##             20393970   4 0.001438332
+##             20444756   4 0.001438332
+##             20466608   4 0.001438332
+##             20478508   4 0.001438332
+##             21352554   4 0.001438332
+##             21373518   4 0.001438332
+##             21396240   4 0.001438332
+##             21458644   4 0.001438332
+##             21461740   4 0.001438332
+##             21487018   4 0.001438332
+##             21498084   4 0.001438332
+##             21507918   4 0.001438332
+##             21509852   4 0.001438332
+##             21525224   4 0.001438332
+##  [ reached &#39;max&#39; / getOption(&quot;max.print&quot;) -- omitted 284 rows ]</code></pre>
+</div>
+</div>
+<div id="section-stringr-and-rve-quiz-of-string-knowledge-open-book" class="section level2">
+<h2><span class="header-section-number">0.3</span> Stringr and RVE Quiz of String Knowledge (Open Book)</h2>
+<p>Some questions about functions in string-related packages:</p>
+<p><div class="panel-heading tutorial-quiz-title">Quiz</div><div class="panel panel-default">
+<div data-label="strings-quiz-1" class="tutorial-question panel-body">
+<div id="strings-quiz-1-answer_container" class="shiny-html-output"></div>
+<div id="strings-quiz-1-message_container" class="shiny-html-output"></div>
+<div id="strings-quiz-1-action_button_container" class="shiny-html-output"></div>
+<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
+</div>
+</div><div class="panel panel-default">
+<div data-label="strings-quiz-2" class="tutorial-question panel-body">
+<div id="strings-quiz-2-answer_container" class="shiny-html-output"></div>
+<div id="strings-quiz-2-message_container" class="shiny-html-output"></div>
+<div id="strings-quiz-2-action_button_container" class="shiny-html-output"></div>
+<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
+</div>
+</div><div class="panel panel-default">
+<div data-label="strings-quiz-3" class="tutorial-question panel-body">
+<div id="strings-quiz-3-answer_container" class="shiny-html-output"></div>
+<div id="strings-quiz-3-message_container" class="shiny-html-output"></div>
+<div id="strings-quiz-3-action_button_container" class="shiny-html-output"></div>
+<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
+</div>
+</div><div class="panel panel-default">
+<div data-label="strings-quiz-4" class="tutorial-question panel-body">
+<div id="strings-quiz-4-answer_container" class="shiny-html-output"></div>
+<div id="strings-quiz-4-message_container" class="shiny-html-output"></div>
+<div id="strings-quiz-4-action_button_container" class="shiny-html-output"></div>
+<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
+</div>
+</div><div class="panel panel-default">
+<div data-label="strings-quiz-5" class="tutorial-question panel-body">
+<div id="strings-quiz-5-answer_container" class="shiny-html-output"></div>
+<div id="strings-quiz-5-message_container" class="shiny-html-output"></div>
+<div id="strings-quiz-5-action_button_container" class="shiny-html-output"></div>
+<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
+</div>
+</div><div class="panel panel-default">
+<div data-label="strings-quiz-6" class="tutorial-question panel-body">
+<div id="strings-quiz-6-answer_container" class="shiny-html-output"></div>
+<div id="strings-quiz-6-message_container" class="shiny-html-output"></div>
+<div id="strings-quiz-6-action_button_container" class="shiny-html-output"></div>
+<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
+</div>
+</div><div class="panel panel-default">
+<div data-label="strings-quiz-7" class="tutorial-question panel-body">
+<div id="strings-quiz-7-answer_container" class="shiny-html-output"></div>
+<div id="strings-quiz-7-message_container" class="shiny-html-output"></div>
+<div id="strings-quiz-7-action_button_container" class="shiny-html-output"></div>
+<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
+</div>
+</div><div class="panel panel-default">
+<div data-label="strings-quiz-8" class="tutorial-question panel-body">
+<div id="strings-quiz-8-answer_container" class="shiny-html-output"></div>
+<div id="strings-quiz-8-message_container" class="shiny-html-output"></div>
+<div id="strings-quiz-8-action_button_container" class="shiny-html-output"></div>
+<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
+</div>
+</div><div class="panel panel-default">
+<div data-label="strings-quiz-9" class="tutorial-question panel-body">
+<div id="strings-quiz-9-answer_container" class="shiny-html-output"></div>
+<div id="strings-quiz-9-message_container" class="shiny-html-output"></div>
+<div id="strings-quiz-9-action_button_container" class="shiny-html-output"></div>
+<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
+</div>
+</div><div class="panel panel-default">
+<div data-label="strings-quiz-10" class="tutorial-question panel-body">
+<div id="strings-quiz-10-answer_container" class="shiny-html-output"></div>
+<div id="strings-quiz-10-message_container" class="shiny-html-output"></div>
+<div id="strings-quiz-10-action_button_container" class="shiny-html-output"></div>
+<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
+</div>
+</div><div class="panel panel-default">
+<div data-label="strings-quiz-11" class="tutorial-question panel-body">
+<div id="strings-quiz-11-answer_container" class="shiny-html-output"></div>
+<div id="strings-quiz-11-message_container" class="shiny-html-output"></div>
+<div id="strings-quiz-11-action_button_container" class="shiny-html-output"></div>
+<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
+</div>
+</div></p>
+
+<script type="application/shiny-prerendered" data-context="server-start">
+knitr::opts_chunk$set(echo = FALSE)
+
+#libraries
+library(learnr)
+tutorial_options(exercise.eval = FALSE)
+library(tidyverse)
+library(RVerbalExpressions)
+library(janitor)
+
+df <- data.frame(a = c(0,1), b = c(0,1))
+var <- 0
+
+# read in data
+fcp <- read_csv('data_fcp.csv')
+rad <- read_csv('data_rad.csv') 
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::register_http_handlers(session, metadata = NULL)
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+session$onSessionEnded(function() {
+        learnr:::session_stop_event(session)
+      })
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-glimpse-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-glimpse-code-editor`)), session)
+output$`tutorial-exercise-glimpse-output` <- renderUI({
+  `tutorial-exercise-glimpse-result`()
+})
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-text-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-text-code-editor`)), session)
+output$`tutorial-exercise-text-output` <- renderUI({
+  `tutorial-exercise-text-result`()
+})
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-find-text-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-find-text-code-editor`)), session)
+output$`tutorial-exercise-find-text-output` <- renderUI({
+  `tutorial-exercise-find-text-result`()
+})
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-see-number-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-see-number-code-editor`)), session)
+output$`tutorial-exercise-see-number-output` <- renderUI({
+  `tutorial-exercise-see-number-result`()
+})
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-extract-number-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-extract-number-code-editor`)), session)
+output$`tutorial-exercise-extract-number-output` <- renderUI({
+  `tutorial-exercise-extract-number-result`()
+})
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-fcp-value-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-fcp-value-code-editor`)), session)
+output$`tutorial-exercise-fcp-value-output` <- renderUI({
+  `tutorial-exercise-fcp-value-result`()
+})
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-glimpse-rad-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-glimpse-rad-code-editor`)), session)
+output$`tutorial-exercise-glimpse-rad-output` <- renderUI({
+  `tutorial-exercise-glimpse-rad-result`()
+})
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-rad-text-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-rad-text-code-editor`)), session)
+output$`tutorial-exercise-rad-text-output` <- renderUI({
+  `tutorial-exercise-rad-text-result`()
+})
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-replace-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-replace-code-editor`)), session)
+output$`tutorial-exercise-replace-output` <- renderUI({
+  `tutorial-exercise-replace-result`()
+})
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-view-rads-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-view-rads-code-editor`)), session)
+output$`tutorial-exercise-view-rads-output` <- renderUI({
+  `tutorial-exercise-view-rads-result`()
+})
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-view-abscess-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-view-abscess-code-editor`)), session)
+output$`tutorial-exercise-view-abscess-output` <- renderUI({
+  `tutorial-exercise-view-abscess-result`()
+})
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-extract-rads-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-extract-rads-code-editor`)), session)
+output$`tutorial-exercise-extract-rads-output` <- renderUI({
+  `tutorial-exercise-extract-rads-result`()
+})
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-percentages-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-percentages-code-editor`)), session)
+output$`tutorial-exercise-percentages-output` <- renderUI({
+  `tutorial-exercise-percentages-result`()
+})
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "strings-quiz-1",     question = structure("What are the two common arguments to str_functions?", html = TRUE, class = c("html",     "character")), answers = list(structure(list(id = "lnr_ans_eb83a98",         option = "string and min", value = "string and min",         label = structure("string and min", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7eed891",         option = "min and pattern", value = "min and pattern",         label = structure("min and pattern", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9f89d9b",         option = "string and pattern", value = "string and pattern",         label = structure("string and pattern", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a83c836",         option = "string and yarn", value = "string and yarn",         label = structure("string and yarn", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html",     "character")), try_again = structure("Try Again", html = TRUE, class = c("html",     "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html",     "character")), try_again = structure("Incorrect", html = TRUE, class = c("html",     "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html",     "character")), message = NULL, post_message = NULL), ids = list(        answer = "strings-quiz-1-answer", question = "strings-quiz-1"),     loading = structure("<strong>Loading:<\u002fstrong> \nWhat are the two common arguments to str_functions?\n<br/><br/><br/>", html = TRUE, class = c("html",     "character")), random_answer_order = FALSE, allow_retry = FALSE,     seed = 1390313291.35258, options = list()), class = c("learnr_radio", "tutorial_question")))
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "strings-quiz-2",     question = structure("Which str function will let you <strong>see<\u002fstrong> where the matches occur (or don&#39;t)?", html = TRUE, class = c("html",     "character")), answers = list(structure(list(id = "lnr_ans_698cf98",         option = "str_extract()", value = "str_extract()", label = structure("str_extract()", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9b5c636",         option = "str_detect()", value = "str_detect()", label = structure("str_detect()", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ff59fa2",         option = "str_trunc()", value = "str_trunc()", label = structure("str_trunc()", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3201f3d",         option = "str_view()", value = "str_view()", label = structure("str_view()", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html",     "character")), try_again = structure("Try Again", html = TRUE, class = c("html",     "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html",     "character")), try_again = structure("Incorrect", html = TRUE, class = c("html",     "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html",     "character")), message = NULL, post_message = NULL), ids = list(        answer = "strings-quiz-2-answer", question = "strings-quiz-2"),     loading = structure("<strong>Loading:<\u002fstrong> \nWhich str function will let you <strong>see<\u002fstrong> where the matches occur (or don&#39;t)?\n<br/><br/><br/>", html = TRUE, class = c("html",     "character")), random_answer_order = FALSE, allow_retry = FALSE,     seed = 1052953799.00968, options = list()), class = c("learnr_radio", "tutorial_question")))
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "strings-quiz-3",     question = structure("Which str function will trim off whitespace from both ends of a string?", html = TRUE, class = c("html",     "character")), answers = list(structure(list(id = "lnr_ans_af1bf6c",         option = "str_trunc()", value = "str_trunc()", label = structure("str_trunc()", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a9d4ce9",         option = "str_trim()", value = "str_trim()", label = structure("str_trim()", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a06be43",         option = "str_pad()", value = "str_pad()", label = structure("str_pad()", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_1367857",         option = "str_c()", value = "str_c()", label = structure("str_c()", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html",     "character")), try_again = structure("Try Again", html = TRUE, class = c("html",     "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html",     "character")), try_again = structure("Incorrect", html = TRUE, class = c("html",     "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html",     "character")), message = NULL, post_message = NULL), ids = list(        answer = "strings-quiz-3-answer", question = "strings-quiz-3"),     loading = structure("<strong>Loading:<\u002fstrong> \nWhich str function will trim off whitespace from both ends of a string?\n<br/><br/><br/>", html = TRUE, class = c("html",     "character")), random_answer_order = FALSE, allow_retry = FALSE,     seed = 1699319648.20869, options = list()), class = c("learnr_radio", "tutorial_question")))
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "strings-quiz-4",     question = structure("Which str function will combine (concatenate) strings?", html = TRUE, class = c("html",     "character")), answers = list(structure(list(id = "lnr_ans_f7830bb",         option = "str_trunc()", value = "str_trunc()", label = structure("str_trunc()", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_340fae5",         option = "str_locate_all()", value = "str_locate_all()",         label = structure("str_locate_all()", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_13d49de",         option = "str_sort()", value = "str_sort()", label = structure("str_sort()", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c5b5f5d",         option = "str_c()", value = "str_c()", label = structure("str_c()", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html",     "character")), try_again = structure("Try Again", html = TRUE, class = c("html",     "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html",     "character")), try_again = structure("Incorrect", html = TRUE, class = c("html",     "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html",     "character")), message = NULL, post_message = NULL), ids = list(        answer = "strings-quiz-4-answer", question = "strings-quiz-4"),     loading = structure("<strong>Loading:<\u002fstrong> \nWhich str function will combine (concatenate) strings?\n<br/><br/><br/>", html = TRUE, class = c("html",     "character")), random_answer_order = FALSE, allow_retry = FALSE,     seed = 878927578.090717, options = list()), class = c("learnr_radio", "tutorial_question")))
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "strings-quiz-5",     question = structure("Which str function will return a vector of the matched strings when the matches occur (or don&#39;t)?", html = TRUE, class = c("html",     "character")), answers = list(structure(list(id = "lnr_ans_cf79a59",         option = "str_extract()", value = "str_extract()", label = structure("str_extract()", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e5a9e00",         option = "str_detect()", value = "str_detect()", label = structure("str_detect()", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c6510c9",         option = "str_match()", value = "str_match()", label = structure("str_match()", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_ed4face",         option = "str_view()", value = "str_view()", label = structure("str_view()", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html",     "character")), try_again = structure("Try Again", html = TRUE, class = c("html",     "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html",     "character")), try_again = structure("Incorrect", html = TRUE, class = c("html",     "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html",     "character")), message = NULL, post_message = NULL), ids = list(        answer = "strings-quiz-5-answer", question = "strings-quiz-5"),     loading = structure("<strong>Loading:<\u002fstrong> \nWhich str function will return a vector of the matched strings when the matches occur (or don&#39;t)?\n<br/><br/><br/>", html = TRUE, class = c("html",     "character")), random_answer_order = FALSE, allow_retry = FALSE,     seed = 276290618.871342, options = list()), class = c("learnr_radio", "tutorial_question")))
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "strings-quiz-6",     question = structure("Which str function will replace all of the matched patterns in a string?", html = TRUE, class = c("html",     "character")), answers = list(structure(list(id = "lnr_ans_734e6a5",         option = "str_replace()", value = "str_replace()", label = structure("str_replace()", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9d7cb8e",         option = "str_split()", value = "str_split()", label = structure("str_split()", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4d5a3c",         option = "str_locate()", value = "str_locate()", label = structure("str_locate()", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_17cb1eb",         option = "str_replace_all()", value = "str_replace_all()",         label = structure("str_replace_all()", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html",     "character")), try_again = structure("Try Again", html = TRUE, class = c("html",     "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html",     "character")), try_again = structure("Incorrect", html = TRUE, class = c("html",     "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html",     "character")), message = NULL, post_message = NULL), ids = list(        answer = "strings-quiz-6-answer", question = "strings-quiz-6"),     loading = structure("<strong>Loading:<\u002fstrong> \nWhich str function will replace all of the matched patterns in a string?\n<br/><br/><br/>", html = TRUE, class = c("html",     "character")), random_answer_order = FALSE, allow_retry = FALSE,     seed = 1850363009.63836, options = list()), class = c("learnr_radio", "tutorial_question")))
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "strings-quiz-7",     question = structure("Which str functions can change string case?", html = TRUE, class = c("html",     "character")), answers = list(structure(list(id = "lnr_ans_755f3ed",         option = "str_to_upper()", value = "str_to_upper()",         label = structure("str_to_upper()", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_4cf1b18",         option = "str_split()", value = "str_split()", label = structure("str_split()", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e2bdcdd",         option = "str_to_title()", value = "str_to_title()",         label = structure("str_to_title()", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_7d03098",         option = "str_to_lower()", value = "str_to_lower()",         label = structure("str_to_lower()", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html",     "character")), try_again = structure("Try Again", html = TRUE, class = c("html",     "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html",     "character")), try_again = structure("Incorrect", html = TRUE, class = c("html",     "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html",     "character")), message = NULL, post_message = NULL), ids = list(        answer = "strings-quiz-7-answer", question = "strings-quiz-7"),     loading = structure("<strong>Loading:<\u002fstrong> \nWhich str functions can change string case?\n<br/><br/><br/>", html = TRUE, class = c("html",     "character")), random_answer_order = FALSE, allow_retry = FALSE,     seed = 930274129.566807, options = list()), class = c("learnr_checkbox", "tutorial_question")))
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_checkbox", label = "strings-quiz-8",     question = structure("Which RVerbal Expressions functions can used to start a regex pattern build?", html = TRUE, class = c("html",     "character")), answers = list(structure(list(id = "lnr_ans_dc5e987",         option = "rx()", value = "rx()", label = structure("rx()", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b3c195f",         option = "rx_find()", value = "rx_find()", label = structure("rx_find()", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b6bd512",         option = "rx_line_break()", value = "rx_line_break()",         label = structure("rx_line_break()", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_652c680",         option = "rx_start_of_line", value = "rx_start_of_line",         label = structure("rx_start_of_line", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html",     "character")), try_again = structure("Try Again", html = TRUE, class = c("html",     "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html",     "character")), try_again = structure("Incorrect", html = TRUE, class = c("html",     "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html",     "character")), message = NULL, post_message = NULL), ids = list(        answer = "strings-quiz-8-answer", question = "strings-quiz-8"),     loading = structure("<strong>Loading:<\u002fstrong> \nWhich RVerbal Expressions functions can used to start a regex pattern build?\n<br/><br/><br/>", html = TRUE, class = c("html",     "character")), random_answer_order = FALSE, allow_retry = FALSE,     seed = 273219221.872772, options = list()), class = c("learnr_checkbox", "tutorial_question")))
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "strings-quiz-9",     question = structure("Which RVerbal Expressions function makes your pattern case-insensitive?", html = TRUE, class = c("html",     "character")), answers = list(structure(list(id = "lnr_ans_47ee83",         option = "rx_punctuation()", value = "rx_punctuation()",         label = structure("rx_punctuation()", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_eef1c53",         option = "rx_find()", value = "rx_find()", label = structure("rx_find()", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_80a7dd0",         option = "rx_uppercase()", value = "rx_uppercase()",         label = structure("rx_uppercase()", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_e47b95f",         option = "rx_with_any_case()", value = "rx_with_any_case()",         label = structure("rx_with_any_case()", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html",     "character")), try_again = structure("Try Again", html = TRUE, class = c("html",     "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html",     "character")), try_again = structure("Incorrect", html = TRUE, class = c("html",     "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html",     "character")), message = NULL, post_message = NULL), ids = list(        answer = "strings-quiz-9-answer", question = "strings-quiz-9"),     loading = structure("<strong>Loading:<\u002fstrong> \nWhich RVerbal Expressions function makes your pattern case-insensitive?\n<br/><br/><br/>", html = TRUE, class = c("html",     "character")), random_answer_order = FALSE, allow_retry = FALSE,     seed = 55485261.4741627, options = list()), class = c("learnr_radio", "tutorial_question")))
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "strings-quiz-10",     question = structure("Which RVerbal Expressions function repeats the previous group multiple times?", html = TRUE, class = c("html",     "character")), answers = list(structure(list(id = "lnr_ans_7da629",         option = "rx_multiple()", value = "rx_multiple()", label = structure("rx_multiple()", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_fa50dc5",         option = "rx_range()", value = "rx_range()", label = structure("rx_range()", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3bba8f6",         option = "rx_maybe()", value = "rx_maybe()", label = structure("rx_maybe()", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2e5898d",         option = "rx_anything_but()", value = "rx_anything_but()",         label = structure("rx_anything_but()", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html",     "character")), try_again = structure("Try Again", html = TRUE, class = c("html",     "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html",     "character")), try_again = structure("Incorrect", html = TRUE, class = c("html",     "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html",     "character")), message = NULL, post_message = NULL), ids = list(        answer = "strings-quiz-10-answer", question = "strings-quiz-10"),     loading = structure("<strong>Loading:<\u002fstrong> \nWhich RVerbal Expressions function repeats the previous group multiple times?\n<br/><br/><br/>", html = TRUE, class = c("html",     "character")), random_answer_order = FALSE, allow_retry = FALSE,     seed = 1008936241.03018, options = list()), class = c("learnr_radio", "tutorial_question")))
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "strings-quiz-11",     question = structure("Which RVerbal Expressions function optionally matches a pattern?", html = TRUE, class = c("html",     "character")), answers = list(structure(list(id = "lnr_ans_8b41548",         option = "rx_any_of()", value = "rx_any_of()", label = structure("rx_any_of()", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_a41f0e1",         option = "rx_maybe()", value = "rx_maybe()", label = structure("rx_maybe()", html = TRUE, class = c("html",         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_c1df54",         option = "rx_either_of()", value = "rx_either_of()",         label = structure("rx_either_of()", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer")), structure(list(id = "lnr_ans_680e876",         option = "rx_anything_but()", value = "rx_anything_but()",         label = structure("rx_anything_but()", html = TRUE, class = c("html",         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer",     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html",     "character")), try_again = structure("Try Again", html = TRUE, class = c("html",     "character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html",     "character")), try_again = structure("Incorrect", html = TRUE, class = c("html",     "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html",     "character")), message = NULL, post_message = NULL), ids = list(        answer = "strings-quiz-11-answer", question = "strings-quiz-11"),     loading = structure("<strong>Loading:<\u002fstrong> \nWhich RVerbal Expressions function optionally matches a pattern?\n<br/><br/><br/>", html = TRUE, class = c("html",     "character")), random_answer_order = FALSE, allow_retry = FALSE,     seed = 107249640.950058, options = list()), class = c("learnr_radio", "tutorial_question")))
+</script>
+
+<!--html_preserve-->
+<script type="application/shiny-prerendered" data-context="dependencies">
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["2.2.3"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["resources/jquery"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["bookdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["gitbook"]},{"type":"character","attributes":{},"value":["2.6.7"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["resources/gitbook"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["js/app.min.js","js/lunr.js","js/clipboard.min.js","js/plugin-search.js","js/plugin-sharing.js","js/plugin-fontsettings.js","js/plugin-bookdown.js","js/jquery.highlight.js","js/plugin-clipboard.js"]},{"type":"character","attributes":{},"value":["css/style.css","css/plugin-table.css","css/plugin-bookdown.css","css/plugin-highlight.css","css/plugin-search.css","css/plugin-fontsettings.css","css/plugin-clipboard.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["bookdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["1.11.3"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/jquery"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["font-awesome"]},{"type":"character","attributes":{},"value":["5.1.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/fontawesome"]}]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["css/all.css","css/v4-shims.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootbox"]},{"type":"character","attributes":{},"value":["4.4.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/bootbox"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["bootbox.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["idb-keyvalue"]},{"type":"character","attributes":{},"value":["3.2.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/idb-keyval"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["idb-keyval-iife-compat.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["tutorial"]},{"type":"character","attributes":{},"value":["0.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/tutorial"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tutorial.js"]},{"type":"character","attributes":{},"value":["tutorial.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["tutorial-autocompletion"]},{"type":"character","attributes":{},"value":["0.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/tutorial"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tutorial-autocompletion.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["tutorial-diagnostics"]},{"type":"character","attributes":{},"value":["0.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/tutorial"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tutorial-diagnostics.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1"]}]}]}
+</script>
+<!--/html_preserve-->
+<!--html_preserve-->
+<script type="application/shiny-prerendered" data-context="execution_dependencies">
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83]}},"value":[{"type":"character","attributes":{},"value":["assertthat","backports","base","bookdown","broom","cellranger","checkmate","cli","colorspace","compiler","crayon","datasets","DBI","dbplyr","digest","dplyr","ellipsis","evaluate","fansi","fastmap","forcats","fs","generics","ggplot2","glue","graphics","grDevices","grid","gtable","haven","hms","htmltools","htmlwidgets","httpuv","httr","janitor","jsonlite","knitr","later","lattice","learnr","lifecycle","lubridate","magrittr","markdown","methods","mime","modelr","munsell","nlme","pillar","pkgconfig","promises","purrr","R6","Rcpp","readr","readxl","reprex","rlang","rmarkdown","rprojroot","rstudioapi","RVerbalExpressions","rvest","scales","shiny","stats","stringi","stringr","tibble","tidyr","tidyselect","tidyverse","tools","utf8","utils","vctrs","withr","xfun","xml2","xtable","yaml"]},{"type":"character","attributes":{},"value":["0.2.1","1.1.6","3.6.2","0.18","0.5.6","1.1.0","2.0.0","2.0.2","1.4-1","3.6.2","1.3.4","3.6.2","1.1.0","1.4.2","0.6.25","0.8.99.9002","0.3.0","0.14","0.4.1","1.0.1","0.5.0","1.4.1","0.0.2","3.3.0.9000","1.4.0","3.6.2","3.6.2","3.6.2","0.3.0","2.2.0","0.5.3","0.4.0","1.5.1","1.5.2","1.4.1","1.2.1","1.6.1","1.28","1.0.0","0.20-41","0.10.1","0.2.0","1.7.8","1.5","1.1","3.6.2","0.9","0.1.6","0.5.0","3.1-145","1.4.3","2.0.3","1.1.0","0.3.4","2.4.1","1.0.4.6","1.3.1","1.3.1","0.3.0","0.4.5.9000","2.1","1.3-2","0.11","0.1.0.9000","0.3.5","1.1.0","1.4.0.2","3.6.2","1.4.6","1.4.0","3.0.1","1.0.2","1.0.0","1.3.0","3.6.2","1.1.4","3.6.2","0.2.99.9011","2.2.0","0.13","1.3.0","1.8-4","2.2.1"]}]}]}
+</script>
+<!--/html_preserve-->
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/%s",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"search": false
+});
+});
+</script>
+
+</body>
+
+</html>

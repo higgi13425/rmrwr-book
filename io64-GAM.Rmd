@@ -66,14 +66,18 @@ predictions <- as.data.frame(predictions)
 Theoph <- cbind(Theoph, predictions$predictions)
 names(Theoph)[6] <- "predicted"
 Theoph <- Theoph[,1:6]
-ggplot(aes(x=Time, y=new$predicted, color=Subject), data=Theoph) + geom_line() +geom_point(aes(x=Time, y=conc))
+ggplot(aes(x=Time, y=predicted, color=Subject), data=Theoph) + 
+  geom_line() +
+  geom_point(aes(x=Time, y=conc))
 ```
 
 that looks promising.
 How well do actual conc and predicted conc correlate?
 
 ```{r cor}
-ggplot(aes(x=conc, y=predicted), data = Theoph) + geom_point()
+ggplot(aes(x=conc, y=predicted), data = Theoph) + 
+  geom_point()
+
 cor(Theoph$conc, Theoph$predicted)
 ```
 

@@ -150,13 +150,5 @@ ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width)) +
   theme(legend.position = "top")
 ```
 
-## Nested layout
-```{r}
-p1 <- ggarrange(sp, bp + font("x.text", size = 9),
-                ncol = 1, nrow = 2)
-p2 <- ggarrange(density.p, stable.p, text.p, 
-                ncol = 1, nrow = 3,
-                heights = c(1, 0.5, 0.3))
-ggarrange(p1, p2, ncol = 2, nrow = 1)
-```
+
 

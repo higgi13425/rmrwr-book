@@ -9,6 +9,7 @@ output: powerpoint_presentation
 knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
 library(broom)
+library(car)
 ```
 
 ## Review from t test part 1

@@ -1,6 +1,7 @@
 ---
 title: "Tutorial"
 output: learnr::tutorial
+always_allow_html: true
 runtime: shiny_prerendered
 ---
 

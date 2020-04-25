@@ -11,7 +11,7 @@ library(tidyverse)
 # devtools::install_github("VerbalExpressions/RVerbalExpressions")
 library(RVerbalExpressions)
 var <- " "
-path <- read_csv("UC_BIOPSY_ALL_2018.csv") %>% 
+path <- read_csv("data_UC_BIOPSY_ALL_2018.csv") %>% 
   slice(1:500) %>% 
   select(PATIENT_KEY, LAB_RESULT_STRING_VALUE) %>% 
   rename(pat_id = PATIENT_KEY, text = LAB_RESULT_STRING_VALUE) %>% 
