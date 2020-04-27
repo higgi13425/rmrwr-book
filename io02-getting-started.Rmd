@@ -152,6 +152,105 @@ Awesome. You are now Ready to R!
 
 ## Installing RStudio on your Computer
 
+Now that R is working, we will install RStudio. This is an IDE (Integrated Development Environment), with lots of bells and whistles to help you do reproducible medical research.<br>
+
+![teslax_dash](images/teslax_dash.png)
+
+This is a lot like adding a dashboard with polished walnut, a large video screen map, and heated car seats with Corinthian Leather. Not absolutely necessary, but nice to have.<br>
+The RStudio IDE wraps around the R engine to make your experience more comfortable and efficient.
+![camry_dash](images/camry_dash.png)
+
+Fortunately, RStudio is a lot cheaper than any of these cars. In fact, it is free and open source. You can download it from the web at: <br>
+[rstudio](https://rstudio.com/products/rstudio/) <br>
+Click on the RStudio Desktop icon to begin. <br>
+
+![download](images/rstudio_download.png)
+<br>
+This will take you to a new site, where you will select the Open Source Edition of RStudio Desktop <br>
+
+![open_source](images/rstudio_opensource.png)
+<br>
+This will take you to a new site, where you will select the Free Version of RStudio Desktop <br>
+![free](images/rstudio_free.png)
+<br>
+Now select the right version for your Operating syxtem - Windows or Mac.<br>
+![mac_win](images/rstudio_mac_win.png)
+
+### Windows Install
+Now save the Rstudio.N.N.N.exe file (Ns will be digits representing the version number) to your downloads folder.
+<br>
+![winsave](images/rstudio_winsave.png)
+<br>
+Now go to your downloads folder, and double click on the Rstudio.N.N.N.exe file.
+<br>
+![winlaunch](images/rstudio_winlaunch.png)
+<br>
+Allow this app to make changes. Click Next to Continue, and Agree to the Install Location.
+<br>
+![wininstall](images/rstudio_wininstall.png)
+<br>
+Click Install to put Rstudio in the default Start Menu Folder, and when done, click the Finish button.
+<br>
+![winsave](images/rstudio_winstall_start.png)
+<br>
+![winfinish](images/rstudio_winstall_finish.png)
+<br>
+Now select your preferred language option, accept the GNU license, Click Yes to allow this to install. Select where to install. This is generally on a local (often C:) drive, and usually **not** a shared network drive or in the cloud.
+<br>
+### Testing Windows RStudio
+Now you should be ready to test your Windows installation of Rstudio.<br>
+Open your Start menu Program list, and find Rstudio. Pin it as a favorite now. 
+Click to Open Rstudio. 
+Within the Console window of Rstudio, an instance of R is started up. Check that the version number matches the version of R that you downloaded.<br>
+<br>
+Now run a test at the prompt (">") in the Console window. Type in <br>
+`paste("Three to the 5th power is", 3^5)`<br>
+** do not leave out the quotes or the comma**
+Then press the enter key
+<br>
+and this should be your result.
+![test_result35](images/test_result35.png)
+<br>
+A successful result means that you are ready to roll in Rstudio and R!<br>
+<br>
+![ready](images/ready_to_R.png)
+<br>
+
+### Installing R on the Mac
+Start at this link: [Rstudio Download](https://rstudio.com/products/rstudio/download/
+)<br>
+Select the Free RStudio Desktop Version<br>
+![mac_download](images/rstudio_mac_download.png)
+<br>
+Then click on the big button to Download RStudio for Mac.
+<br>
+![mac_download2](images/rstudio_mac_download2.png)
+<br>
+After the Download is complete, go to Finder and the Downloads Folder. Double click on the Rstudio.N.N.N.dmg file in your Downloads folder. <br>
+![mac_dmg](images/rstudio_mac_dmg.png)
+<br>
+This will open a window that looks like this
+<br>
+![mac_apps](images/rstudio_mac_apps.png)
+<br>
+Use your mouse to drag the RStudio icon into the Applications folder.
+<br>
+Now go back to Finder, then into the Applications folder.
+Double click on the RStudio icon, and click OK to Open. Pin your RStudio to the Dock. Double Click to run RStudio.<br>
+RStudio will open an instance of R inside the Console pane of RStudio with the version number of R that you installed, and a ">" prompt. <br>
+### Testing the Mac Installation of RStudio
+Type in <br>
+`paste("Three to the 5th power is", 3^5)`<br>
+** do not leave out the quotes or the comma**
+Then press the enter key
+<br>
+and this should be your result.<br>
+<br>
+![test_result35](images/test_result35.png)
+<br>
+A successful result means that you are ready to roll in Rstudio and R!<br>
+<br>
+![ready](images/ready_to_R.png)
 
 ## Installing Git on your Computer
 
