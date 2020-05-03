@@ -34,17 +34,22 @@ Chapters in this pathway include
 - Major R Updates (Where Are My Packages?)
 
 ## Installing R on your Computer
-R is a statistical programming language, designed for non-programmers (statisticians). It is optimized to work with data in tables. It is a very fast and powerful programming engine, but it is not terribly comfortable or convenient. R itself is not terribly user-friendly. It is a lot like a drag racing car, which is basically a person with a steering wheel strapped to an airplane engine.
+R is a statistical programming language, designed for non-programmers (statisticians). It is optimized to work with data in tables. It is a very fast and powerful programming engine, but it is not terribly comfortable or convenient. R itself is not terribly user-friendly. It is a lot like a drag racing car, which is basically a person with a steering wheel strapped to an airplane engine.<br>
+<br>
 ![drag racer](images/drag.png)
+<br>
 Very aerodynamic and fast, but not comfortable for the long run (more than about 8 seconds).
-You will need something more like a production car, with a nice interior and a dashboard, and comfy leather seats. 
+You will need something more like a production car, with a nice interior and a dashboard, and comfy leather seats. <br>
+<br>
 ![dashboard](images/dashboard.png)
-This is provided by the RStudio IDE (Integrated Developer Environment). We want you to install both R and RStudio, in that order.    
+<br>
+This is provided by the RStudio IDE (Integrated Developer Environment). We want you to install both R and RStudio, in that order.    <br>
 Let's start with installing R.    
 R is free and available for download on the web. Go to the [r-project website](https://r-project.org/) to get started. 
 
 This screen will look like this
 ![irproject](images/r-project.png)    
+<br>
 You can see from the blue link (download R) that you can download R, but you will be downloading it faster if you pick a local CRAN mirror.   
 You might be wondering what CRAN and CRAN Mirrors are. Nothing to do with cranberries, fortunately. CRAN is the Comprehensive R Archive Network. Each site (mirror) in the network contains an archive of all R versions and packages, and the sites are scattered over the globe. A CRAN Mirror maintains an up to date copy of all of the R versions and packages on CRAN. If you use the nearest CRAN mirror, you will generally get faster downloads.   
 At this point, you might be wondering what a package is...   
