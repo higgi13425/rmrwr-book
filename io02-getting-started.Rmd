@@ -53,57 +53,74 @@ This screen will look like this
 You can see from the blue link (download R) that you can download R, but you will be downloading it faster if you pick a local CRAN mirror.   
 You might be wondering what CRAN and CRAN Mirrors are. Nothing to do with cranberries, fortunately. CRAN is the Comprehensive R Archive Network. Each site (mirror) in the network contains an archive of all R versions and packages, and the sites are scattered over the globe. A CRAN Mirror maintains an up to date copy of all of the R versions and packages on CRAN. If you use the nearest CRAN mirror, you will generally get faster downloads.   
 At this point, you might be wondering what a package is...   
-A package is a set of functions and/or data that you can download to upgrade and add features to R. It is a lot like a downloadable upgrade to a Tesla that lets you play the video game _Witcher 3_ on your console, but more useful.
+A package is a set of functions and/or data that you can download to upgrade and add features to R. It is a lot like a downloadable upgrade to a Tesla that lets you play the video game _Witcher 3_ on your console, but more useful.<br>
+<br>
 ![tesla](images/dash-tesla.png)   
 
+<br>
 Now click on the blue link that says "download R".    
-This will take you to a page to select your local CRAN Mirror , from which you will download R.
+This will take you to a page to select your local CRAN Mirror , from which you will download R.<br>
+<br>
 ![cran](images/cran-mirror.png)
-Scroll down to your country (yes, the USA is at the bottom), and a CRAN mirror near you.
-This is an example from northern Michigan, USA.
+<br>Scroll down to your country (yes, the USA is at the bottom), and a CRAN mirror near you.
+This is an example from northern Michigan, USA.<br>
+<br>
 ![usa-mirrors](images/usa-mirrors.png)
-Once you click on a CRAN Mirror site to select the location, you will be taken to the actual Download site.
-
+<br>Once you click on a CRAN Mirror site to select the location, you will be taken to the actual Download site.<br>
+<br>
 ![install](images/installr.png)
-Select the link for the operating system you want to use. We will walk through this with Windows first, then Mac. If you are using a Mac, skip forward to the Mac install. If you are using Linux, you can clearly figure it out on your own (it will look a lot like these).  
+<br>Select the link for the operating system you want to use. We will walk through this with Windows first, then Mac. If you are using a Mac, skip forward to the Mac install. If you are using Linux, you can clearly figure it out on your own (it will look a lot like these).  
 Once you have clicked through, your next screen will look like this    
+<br>
 ![install2](images/installr2.png)
-You want to download both base and Rtools (you might need Rtools later). The base link will take you to the latest version, which will look something like this.
-
+<br>
+You want to download both base and Rtools (you might need Rtools later). The base link will take you to the latest version, which will look something like this.<br>
+<br>
 ![install3](images/installr3windows.png)
-Click on this link, and you will be able to save a file named R-N.N.N-win.exe (Ns depending on version number) to your Downloads folder. Click on the Save button to save it.
+<br>Click on this link, and you will be able to save a file named R-N.N.N-win.exe (Ns depending on version number) to your Downloads folder. Click on the Save button to save it.<br>
+<br>
 ![install4](images/installrsave.png)
-Now, go to your Downloads folder in Windows, and double clinic on the R installation file (R-N.N.N-win.exe). Click Yes to allow this to install.
+<br>Now, go to your Downloads folder in Windows, and double clinic on the R installation file (R-N.N.N-win.exe). Click Yes to allow this to install.<br>
+<br>
 ![install5exe](images/installrexe.png)
-Now select your language option
+<br>Now select your language option<br>
+<br>
 ![install_language](images/installrEnglish.png)
-You will be asked to accept the GNU license - do so. Click Yes to allow this to install. Then select where to install - generally use the default- a local (often C) drive - do not install on a shared network drive or in the cloud.
+<br>You will be asked to accept the GNU license - do so. Click Yes to allow this to install. Then select where to install - generally use the default- a local (often C) drive - do not install on a shared network drive or in the cloud.<br>
+<br>
 ![install_drive](images/installrdrive.png)
-Then select the Components - generally use the defaults, but newer computers can skip the 32 bit version.
+<br>Then select the Components - generally use the defaults, but newer computers can skip the 32 bit version.<br>
+<br>
 ![install_comp](images/installrComponents.png)
-In the next dialog box, accept the default startup options.
+<br>In the next dialog box, accept the default startup options.<br>
+<br>
 ![install_defaults](images/installrdefaults.png)
-You can choose the start menu folder. The default R folder is fine.
+<br>You can choose the start menu folder. The default R folder is fine.<br>
+<br>
 ![install_start](images/installrstartmenu.png)
 
-You probably won't need shortcuts, so leave these unchecked in the next dialog box.
+<br>You probably won't need shortcuts, so leave these unchecked in the next dialog box.<br>
+<br>
 ![install_addltasks](images/installraddltasks.png)
 
-Then the Setup Wizard will appear - click Finish, and the rest of the installation will occur.
+<br>Then the Setup Wizard will appear - click Finish, and the rest of the installation will occur.<br>
+<br>
 
 ![install_wizard](images/installrwizard.png)
 
 ### Testing
 
 Now you want to test whether your Windows installation was successful. Can you find R and make it work?
-Hunt for your C folder, then for OS-APPS within that folder. Keep drilling down to the Program Files folder. Then the R folder, and the current version folder within that one (R-N.N.N). Within that folder will be the bin folder, and within that will be your R-N.N.N.exe file. Double click on this to run it. The example paths below can help guide you.
-
+Hunt for your C folder, then for OS-APPS within that folder. Keep drilling down to the Program Files folder. Then the R folder, and the current version folder within that one (R-N.N.N). Within that folder will be the bin folder, and within that will be your R-N.N.N.exe file. Double click on this to run it. The example paths below can help guide you.<br>
+<br>
 ![install_path2](images/installwin-path2.png)
-
+<br>
+<br>
 ![install_path](images/installrpath.png)
-Opening the exe file will produce a classic 2000-era terminal window, called Rterm, with 64 bit if that is what your computer uses. The version number should match what you downloaded. The messaging should end with a ">" prompt.
+<br>Opening the exe file will produce a classic 2000-era terminal window, called Rterm, with 64 bit if that is what your computer uses. The version number should match what you downloaded. The messaging should end with a ">" prompt.<br>
+<br>
 ![install_term](images/windowsrterm.png)
-At this prompt, type in:     
+<br>At this prompt, type in:     
 <br>
 paste(‘Two to the seventh power is’, 2^7)
 <br>
@@ -112,7 +129,7 @@ paste(‘Two to the seventh power is’, 2^7)
 This should produce the following:    
 
 ![install_test](images/windowstest.png)
-Note that you have explained what is being done and computed the result. 
+<br>Note that you have explained what is being done and computed the result. <br>
 
 ### Mac Install of R
 The installation for Mac is very similar, but the windows look a bit different. At the Download Version page, you click on the Mac Download.
@@ -123,25 +140,31 @@ You will then click on the link for R-N.N.N.pkg, and allow downloads from CRAN.
 Then go to Finder, and navigate to the Downloads folder. Click on R-N.N.N.pkg
 You will then click on the link for R-N.N.N.pkg, and allow downloads from CRAN.
 ![install_downloadmac](images/installrdownloadsmac.png)
-Click on Continue on 2 consecutive screens to download
+<br>Click on Continue on 2 consecutive screens to download
+<br>
 
 ![cont1_mac](images/installrCont1mac.png)
-![cont2_mac](images/installrCont2mac.png)
-Then you need to agree with the License Agreement, 
+<br>
+<br>![cont2_mac](images/installrCont2mac.png)
+<br>Then you need to agree with the License Agreement, <br>
+<br>
 ![mac_license](images/installrmacLicense.png)
-then Click on Install, and provide your Mac password for permission to install.
+<br>then Click on Install, and provide your Mac password for permission to install.<br>
+<br>
 ![cont1_mac](images/installrmac-install.png)
-When the installation is complete, click on the Close button. Accept the prompt to move the installer file to the trash.
+<br>When the installation is complete, click on the Close button. Accept the prompt to move the installer file to the trash.
 
 ### Testing R on the Mac
-Go to Finder, and then your Applications folder. Scroll down to the R file. Double click on this to run it. 
+Go to Finder, and then your Applications folder. Scroll down to the R file. Double click on this to run it. <br>
+<br>
 ![findrmac](images/findrmac.png)
-You should get this 2000=era terminal window named R Console. The version number should match what you downloaded, and the messaging should end with a ">" prompt.
+<br>You should get this 2000=era terminal window named R Console. The version number should match what you downloaded, and the messaging should end with a ">" prompt.
 At this prompt, type in 
 <br>
 paste(‘Two to the seventh power is’, 2^7)
 <br>
-(DON’T leave out the comma)
+(DON’T leave out the comma)<br>
+<br>
 ![rconsolemac](images/rconsolemac.png)
 
 This should result in
@@ -150,7 +173,8 @@ This should result in
 
 ### Successful testing!
 
-Awesome. You are now Ready to R!
+Awesome. You are now Ready to R!<br>
+<br>
 ![ready2R](images/ready2R.png)
 
 
@@ -158,11 +182,12 @@ Awesome. You are now Ready to R!
 ## Installing RStudio on your Computer
 
 Now that R is working, we will install RStudio. This is an IDE (Integrated Development Environment), with lots of bells and whistles to help you do reproducible medical research.<br>
-
+<br>
 ![teslax_dash](images/teslax_dash.png)
 
 This is a lot like adding a dashboard with polished walnut, a large video screen map, and heated car seats with Corinthian Leather. Not absolutely necessary, but nice to have.<br>
-The RStudio IDE wraps around the R engine to make your experience more comfortable and efficient.
+The RStudio IDE wraps around the R engine to make your experience more comfortable and efficient.<br>
+<br>
 ![camry_dash](images/camry_dash.png)
 
 Fortunately, RStudio is a lot cheaper than any of these cars. In fact, it is free and open source. You can download it from the web at: <br>
@@ -171,30 +196,40 @@ Click on the RStudio Desktop icon to begin. <br>
 
 ![download](images/rstudio_download.png)
 <br>
-This will take you to a new site, where you will select the Open Source Edition of RStudio Desktop <br>
+<br>This will take you to a new site, where you will select the Open Source Edition of RStudio Desktop <br>
+<br>
 
 ![open_source](images/rstudio_opensource.png)
 <br>
-This will take you to a new site, where you will select the Free Version of RStudio Desktop <br>
+<br>This will take you to a new site, where you will select the Free Version of RStudio Desktop <br>
+<br>
 ![free](images/rstudio_free.png)
 <br>
+<br>
 Now select the right version for your Operating syxtem - Windows or Mac.<br>
+<br>
 ![mac_win](images/rstudio_mac_win.png)
 
 ### Windows Install
-Now save the Rstudio.N.N.N.exe file (Ns will be digits representing the version number) to your downloads folder.
+Now save the Rstudio.N.N.N.exe file (Ns will be digits representing the version number) to your downloads folder.<br>
 <br>
 ![winsave](images/rstudio_winsave.png)
 <br>
+<br>
 Now go to your downloads folder, and double click on the Rstudio.N.N.N.exe file.
+<br>
 <br>
 ![winlaunch](images/rstudio_winlaunch.png)
 <br>
+<br>
 Allow this app to make changes. Click Next to Continue, and Agree to the Install Location.
+<br>
 <br>
 ![wininstall](images/rstudio_wininstall.png)
 <br>
+<br>
 Click Install to put Rstudio in the default Start Menu Folder, and when done, click the Finish button.
+<br>
 <br>
 ![winsave](images/rstudio_winstall_start.png)
 <br>
@@ -202,18 +237,23 @@ Click Install to put Rstudio in the default Start Menu Folder, and when done, cl
 <br>
 Now select your preferred language option, accept the GNU license, Click Yes to allow this to install. Select where to install. This is generally on a local (often C:) drive, and usually **not** a shared network drive or in the cloud.
 <br>
+
 ### Testing Windows RStudio
 Now you should be ready to test your Windows installation of Rstudio.<br>
-Open your Start menu Program list, and find Rstudio. Pin it as a favorite now. 
-Click to Open Rstudio. 
+Open your Start menu Program list, and find Rstudio.<br>
+Pin it as a favorite now. <br>
+Click to Open Rstudio. <br>
 Within the Console window of Rstudio, an instance of R is started up. Check that the version number matches the version of R that you downloaded.<br>
 <br>
 Now run a test at the prompt (">") in the Console window. Type in <br>
 `paste("Three to the 5th power is", 3^5)`<br>
-** do not leave out the quotes or the comma**
-Then press the enter key
+
+**do not leave out the quotes or the comma** <br>
+
+Then press the enter key<br>
 <br>
-and this should be your result.
+and this should be your result.<br>
+<br>
 ![test_result35](images/test_result35.png)
 <br>
 A successful result means that you are ready to roll in Rstudio and R!<br>
@@ -224,30 +264,43 @@ A successful result means that you are ready to roll in Rstudio and R!<br>
 ### Installing R on the Mac
 Start at this link: [Rstudio Download](https://rstudio.com/products/rstudio/download/
 )<br>
+<br>
 Select the Free RStudio Desktop Version<br>
+<br>
 ![mac_download](images/rstudio_mac_download.png)
+<br>
 <br>
 Then click on the big button to Download RStudio for Mac.
 <br>
+<br>
 ![mac_download2](images/rstudio_mac_download2.png)
 <br>
+<br>
 After the Download is complete, go to Finder and the Downloads Folder. Double click on the Rstudio.N.N.N.dmg file in your Downloads folder. <br>
+<br>
+<br>
 ![mac_dmg](images/rstudio_mac_dmg.png)
 <br>
+<br>
 This will open a window that looks like this
+<br>
 <br>
 ![mac_apps](images/rstudio_mac_apps.png)
 <br>
 Use your mouse to drag the RStudio icon into the Applications folder.
 <br>
 Now go back to Finder, then into the Applications folder.
-Double click on the RStudio icon, and click OK to Open. Pin your RStudio to the Dock. Double Click to run RStudio.<br>
+Double click on the RStudio icon, and click OK to Open. <br>
+Pin your RStudio to the Dock. <br>
+Double Click to run RStudio.<br>
 RStudio will open an instance of R inside the Console pane of RStudio with the version number of R that you installed, and a ">" prompt. <br>
+<br>
+
 ### Testing the Mac Installation of RStudio
 Type in <br>
 `paste("Three to the 5th power is", 3^5)`<br>
-** do not leave out the quotes or the comma**
-Then press the enter key
+**do not leave out the quotes or the comma** <br>
+Then press the enter key<br>
 <br>
 and this should be your result.<br>
 <br>
