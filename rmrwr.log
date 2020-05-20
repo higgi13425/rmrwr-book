@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.24)  24 APR 2020 21:01
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.24)  20 MAY 2020 14:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -462,185 +462,49 @@ Package: amsthm 2017/10/31 v2.20.4
 \thm@postskip=\skip59
 \thm@headsep=\skip60
 \dth@everypar=\toks28
-) (/Users/peterhiggins/Library/TinyTeX/texmf-dist/tex/latex/tools/array.sty
-Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
-\col@sep=\dimen172
-\ar@mcellbox=\box55
-\extrarowheight=\dimen173
-\NC@list=\toks29
-\extratabsurround=\skip61
-\backup@length=\skip62
-\ar@cellbox=\box56
-)
-(/Users/peterhiggins/Library/TinyTeX/texmf-dist/tex/latex/multirow/multirow.sty
-Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
-\multirow@colwidth=\skip63
-\multirow@cntb=\count296
-\multirow@dima=\skip64
-\bigstrutjot=\dimen174
-) (/Users/peterhiggins/Library/TinyTeX/texmf-dist/tex/latex/wrapfig/wrapfig.sty
-\wrapoverhang=\dimen175
-\WF@size=\dimen176
-\c@WF@wrappedlines=\count297
-\WF@box=\box57
-\WF@everypar=\toks30
-Package: wrapfig 2003/01/31  v 3.6
-) (/Users/peterhiggins/Library/TinyTeX/texmf-dist/tex/latex/float/float.sty
-Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count298
-\float@exts=\toks31
-\float@box=\box58
-\@float@everytoks=\toks32
-\@floatcapt=\box59
-)
-(/Users/peterhiggins/Library/TinyTeX/texmf-dist/tex/latex/colortbl/colortbl.sty
-Package: colortbl 2020/01/04 v1.0e Color table columns (DPC)
-\everycr=\toks33
-\minrowclearance=\skip65
-)
-(/Users/peterhiggins/Library/TinyTeX/texmf-dist/tex/latex/pdflscape/pdflscape.s
-ty
-Package: pdflscape 2019/12/05 v0.12 Display of landscape pages in PDF (HO)
-(/Users/peterhiggins/Library/TinyTeX/texmf-dist/tex/latex/graphics/lscape.sty
-Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
-)
-Package pdflscape Info: Auto-detected driver: dvipdfm (xetex) on input line 98.
-
-) (/Users/peterhiggins/Library/TinyTeX/texmf-dist/tex/latex/tabu/tabu.sty
-Package: tabu 2019/01/11 v2.9 - flexible LaTeX tabulars (FC+tabu-fixed)
-
-(/Users/peterhiggins/Library/TinyTeX/texmf-dist/tex/latex/varwidth/varwidth.sty
-Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
-\@vwid@box=\box60
-\sift@deathcycles=\count299
-\@vwid@loff=\dimen177
-\@vwid@roff=\dimen178
-)
-\c@taburow=\count300
-\tabu@nbcols=\count301
-\tabu@cnt=\count302
-\tabu@Xcol=\count303
-\tabu@alloc=\count304
-\tabu@nested=\count305
-\tabu@target=\dimen179
-\tabu@spreadtarget=\dimen180
-\tabu@naturalX=\dimen181
-\tabucolX=\dimen182
-\tabu@Xsum=\dimen183
-\extrarowdepth=\dimen184
-\abovetabulinesep=\dimen185
-\belowtabulinesep=\dimen186
-\tabustrutrule=\dimen187
-\tabu@thebody=\toks34
-\tabu@footnotes=\toks35
-\tabu@box=\box61
-\tabu@arstrutbox=\box62
-\tabu@hleads=\box63
-\tabu@vleads=\box64
-\tabu@cellskip=\skip66
-)
-(/Users/peterhiggins/Library/TinyTeX/texmf-dist/tex/latex/threeparttable/threep
-arttable.sty
-Package: threeparttable 2003/06/13  v 3.0
-\@tempboxb=\box65
-)
-(/Users/peterhiggins/Library/TinyTeX/texmf-dist/tex/latex/threeparttablex/three
-parttablex.sty
-Package: threeparttablex 2013/07/23 v0.3 by daleif
-(/Users/peterhiggins/Library/TinyTeX/texmf-dist/tex/latex/environ/environ.sty
-Package: environ 2014/05/04 v0.3 A new way to define environments
-
-(/Users/peterhiggins/Library/TinyTeX/texmf-dist/tex/latex/trimspaces/trimspaces
-.sty
-Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
-))
-\TPTL@width=\skip67
-) (/Users/peterhiggins/Library/TinyTeX/texmf-dist/tex/generic/ulem/ulem.sty
-\UL@box=\box66
-\UL@hyphenbox=\box67
-\UL@skip=\skip68
-\UL@hook=\toks36
-\UL@height=\dimen188
-\UL@pe=\count306
-\UL@pixel=\dimen189
-\ULC@box=\box68
-Package: ulem 2019/11/18
-\ULdepth=\dimen190
-)
-(/Users/peterhiggins/Library/TinyTeX/texmf-dist/tex/latex/makecell/makecell.sty
-Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
-\rotheadsize=\dimen191
-\c@nlinenum=\count307
-\TeXr@lab=\toks37
-) (/Users/peterhiggins/Library/TinyTeX/texmf-dist/tex/latex/caption/caption.sty
-Package: caption 2020/01/03 v3.4h Customizing captions (AR)
-(/Users/peterhiggins/Library/TinyTeX/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2020/01/03 v1.8h caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 61.
-\captionmargin=\dimen192
-\captionmargin@=\dimen193
-\captionwidth=\dimen194
-\caption@tempdima=\dimen195
-\caption@indent=\dimen196
-\caption@parindent=\dimen197
-\caption@hangindent=\dimen198
-Package caption Info: Standard document class detected.
-)
-\c@caption@flags=\count308
-\c@continuedfloat=\count309
-Package caption Info: float package is loaded.
-Package caption Info: hyperref package is loaded.
-Package caption Info: longtable package is loaded.
-
-(/Users/peterhiggins/Library/TinyTeX/texmf-dist/tex/latex/caption/ltcaption.sty
-Package: ltcaption 2018/08/26 v1.4a longtable captions (AR)
-)
-Package caption Info: threeparttable package is loaded.
-Package caption Info: wrapfig package is loaded.
 ) (/Users/peterhiggins/Library/TinyTeX/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip69
-\bibsep=\skip70
+\bibhang=\skip61
+\bibsep=\skip62
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count310
-)
-No file rmrwr.aux.
+\c@NAT@ctr=\count296
+) (./rmrwr.aux)
 \openout1 = `rmrwr.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 141.
-LaTeX Font Info:    ... okay on input line 141.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 141.
-LaTeX Font Info:    ... okay on input line 141.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 141.
-LaTeX Font Info:    ... okay on input line 141.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 141.
-LaTeX Font Info:    ... okay on input line 141.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 141.
-LaTeX Font Info:    ... okay on input line 141.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 141.
-LaTeX Font Info:    ... okay on input line 141.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 141.
-LaTeX Font Info:    ... okay on input line 141.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 141.
-LaTeX Font Info:    ... okay on input line 141.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 141.
-LaTeX Font Info:    ... okay on input line 141.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 141.
-LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 125.
+LaTeX Font Info:    ... okay on input line 125.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 141.
+(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 125.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 141.
+(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 125.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 141.
+(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 125.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 141.
+(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 125.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 141.
+(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 125.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 141.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 125.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 141.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 125.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -669,7 +533,7 @@ pt=math;language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 141.
+(Font)              scaled to size 10.0pt on input line 125.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -708,18 +572,18 @@ pt=math;language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 141.
+(Font)              scaled to size 10.0pt on input line 125.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 141.
+(Font)              `operators' in the math version `normal' on input line 125.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input
- line 141.
+ line 125.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 141.
+(Font)              `operators' in the math version `bold' on input line 125.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on inpu
-t line 141.
+t line 125.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -806,15 +670,15 @@ t=math;language=dflt;"
 (fontspec)             \fontdimen 21\font =0pt\relax 
 
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 141.
+(Font)              `symbols' in the math version `normal' on input line 125.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
 (Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on inpu
-t line 141.
+t line 125.
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 141.
+(Font)              `symbols' in the math version `bold' on input line 125.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
 (Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on inpu
-t line 141.
+t line 125.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -884,18 +748,18 @@ pt=math;language=dflt;"
 
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
 (Font)              `largesymbols' in the math version `normal' on input line 1
-41.
+25.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on inpu
-t line 141.
+t line 125.
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 141
+(Font)              `largesymbols' in the math version `bold' on input line 125
 .
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on inpu
-t line 141.
-\AtBeginShipoutBox=\box69
-Package hyperref Info: Link coloring OFF on input line 141.
+t line 125.
+\AtBeginShipoutBox=\box55
+Package hyperref Info: Link coloring OFF on input line 125.
 (/Users/peterhiggins/Library/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 
@@ -906,48 +770,44 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 itlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count311
+\c@section@level=\count297
 )
-LaTeX Info: Redefining \ref on input line 141.
-LaTeX Info: Redefining \pageref on input line 141.
-LaTeX Info: Redefining \nameref on input line 141.
+LaTeX Info: Redefining \ref on input line 125.
+LaTeX Info: Redefining \pageref on input line 125.
+LaTeX Info: Redefining \nameref on input line 125.
+(./rmrwr.out) (./rmrwr.out)
 \@outlinefile=\write4
 \openout4 = `rmrwr.out'.
 
-
-Package hyperref Warning: Rerun to get /PageLabels entry.
-
-Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 143.
+(Font)              scaled to size 12.0pt on input line 127.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 143.
+(Font)              scaled to size 8.0pt on input line 127.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 143.
+(Font)              scaled to size 6.0pt on input line 127.
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-43.
+27.
 (/Users/peterhiggins/Library/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 12.0011pt on input line 143.
+(Font)              scaled to size 12.0011pt on input line 127.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.00073pt on input line 143.
+(Font)              scaled to size 8.00073pt on input line 127.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.00055pt on input line 143.
+(Font)              scaled to size 6.00055pt on input line 127.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 11.99872pt on input line 143.
+(Font)              scaled to size 11.99872pt on input line 127.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.99915pt on input line 143.
+(Font)              scaled to size 7.99915pt on input line 127.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.99936pt on input line 143.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 143
+(Font)              scaled to size 5.99936pt on input line 127.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 127
 .
 (/Users/peterhiggins/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 143
+LaTeX Font Info:    Trying to load font information for U+msb on input line 127
 .
 (/Users/peterhiggins/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -956,34 +816,34 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 ] [2
 
-]
+] (./rmrwr.toc
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 7.0pt on input line 2.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 5.0pt on input line 2.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 10.00092pt on input line 2.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 7.00064pt on input line 2.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 5.00046pt on input line 2.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 9.99893pt on input line 2.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 6.99925pt on input line 2.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 4.99947pt on input line 2.
+[3] [4])
 \tf@toc=\write5
 \openout5 = `rmrwr.toc'.
 
-[3] [4
+[5] [6
 
 ]
 Chapter 1.
-[5] [6] [7]
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 250.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 250.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.00092pt on input line 250.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.00064pt on input line 250.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.00046pt on input line 250.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.99893pt on input line 250.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.99925pt on input line 250.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.99947pt on input line 250.
-[8]
+[7] [8] [9] [10]
 Chapter 2.
-[9
+[11
 
 ]
 File: images/drag.png Graphic file (type bmp)
@@ -991,49 +851,36 @@ File: images/drag.png Graphic file (type bmp)
 File: images/dashboard.png Graphic file (type bmp)
 <images/dashboard.png>
 
-Underfull \hbox (badness 1189) in paragraph at lines 310--318
+Underfull \hbox (badness 1189) in paragraph at lines 294--302
 \TU/lmr/m/n/10 R is a statistical programming language, designed for non-progra
 mmers
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 310--318
+Underfull \hbox (badness 10000) in paragraph at lines 294--302
 []
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[10]
+[12]
 File: images/r-project.png Graphic file (type bmp)
 <images/r-project.png>
 File: images/dash-tesla.png Graphic file (type bmp)
 <images/dash-tesla.png>
 
-Overfull \hbox (124.62451pt too wide) in paragraph at lines 319--326
+Overfull \hbox (124.62451pt too wide) in paragraph at lines 303--310
 []\TU/lmr/m/n/10 This screen will look like this [] 
  []
 
-[11]
+[13]
+File: images/smartphone.jpg Graphic file (type bmp)
+<images/smartphone.jpg>
 File: images/cran-mirror.png Graphic file (type bmp)
 <images/cran-mirror.png>
 File: images/usa-mirrors.png Graphic file (type bmp)
 <images/usa-mirrors.png>
-
-Overfull \hbox (73.76251pt too wide) in paragraph at lines 327--334
-\TU/lmr/m/n/10 will download R. []
- []
-
-
-Underfull \hbox (badness 1014) in paragraph at lines 327--334
-\TU/lmr/m/n/10 Scroll down to your country (yes, the USA is at the bottom), and
- a
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[12]
 File: images/installr.png Graphic file (type bmp)
 <images/installr.png>
 File: images/installr2.png Graphic file (type bmp)
@@ -1054,37 +901,46 @@ File: images/installrdefaults.png Graphic file (type bmp)
 <images/installrdefaults.png>
 File: images/installrstartmenu.png Graphic file (type bmp)
 <images/installrstartmenu.png>
+File: images/installraddltasks.png Graphic file (type bmp)
+<images/installraddltasks.png>
 
-Underfull \hbox (badness 1365) in paragraph at lines 341--356
+Overfull \hbox (73.76251pt too wide) in paragraph at lines 311--344
+\TU/lmr/m/n/10 will download R. []
+ []
+
+
+Overfull \hbox (112.60321pt too wide) in paragraph at lines 311--344
+\TU/lmr/m/n/10 the actual Download site. []
+ []
+
+
+Underfull \hbox (badness 1365) in paragraph at lines 311--344
 \TU/lmr/m/n/10 installation file (R-N.N.N-win.exe). Click Yes to allow this to 
 install.
  []
 
 
-Overfull \hbox (18.89113pt too wide) in paragraph at lines 341--356
-\TU/lmr/m/n/10 Now select your language option []
+Overfull \hbox (23.52113pt too wide) in paragraph at lines 311--344
+\TU/lmr/m/n/10 Now select your language option. []
  []
 
 
-Overfull \hbox (24.13203pt too wide) in paragraph at lines 341--356
+Overfull \hbox (24.13203pt too wide) in paragraph at lines 311--344
 \TU/lmr/m/n/10 sion. []
  []
 
 
-Overfull \hbox (200.53503pt too wide) in paragraph at lines 341--356
+Overfull \hbox (200.53503pt too wide) in paragraph at lines 311--344
 \TU/lmr/m/n/10 In the next dialog box, accept the default startup options. []
  []
 
 
-Underfull \hbox (badness 1168) in paragraph at lines 341--356
+Underfull \hbox (badness 1168) in paragraph at lines 311--344
 \TU/lmr/m/n/10 You can choose the start menu folder. The default R folder is fi
 ne.
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[13]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [14]
@@ -1094,14 +950,17 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [16]
-File: images/installraddltasks.png Graphic file (type bmp)
-<images/installraddltasks.png>
-File: images/installrwizard.png Graphic file (type bmp)
-<images/installrwizard.png>
-
-Underfull \vbox (badness 1043) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [17]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[18]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[19]
+File: images/installrwizard.png Graphic file (type bmp)
+<images/installrwizard.png>
 File: images/installwin-path2.png Graphic file (type bmp)
 <images/installwin-path2.png>
 File: images/installrpath.png Graphic file (type bmp)
@@ -1109,154 +968,280 @@ File: images/installrpath.png Graphic file (type bmp)
 File: images/windowsrterm.png Graphic file (type bmp)
 <images/windowsrterm.png>
 
-Overfull \hbox (39.12479pt too wide) in paragraph at lines 380--386
+Underfull \hbox (badness 1102) in paragraph at lines 354--363
+\TU/lmr/m/n/10 Now you want to test whether your Windows installation was succe
+ss-
+ []
+
+
+Underfull \hbox (badness 1092) in paragraph at lines 354--363
+\TU/lmr/m/n/10 for OS-APPS within that folder. Keep drilling down to the Progra
+m
+ []
+
+
+Underfull \hbox (badness 2452) in paragraph at lines 354--363
+\TU/lmr/m/n/10 that one (R-N.N.N). Within that folder will be the bin folder, a
+nd
+ []
+
+
+Overfull \hbox (39.12479pt too wide) in paragraph at lines 354--363
 \TU/lmr/m/n/10 prompt. []
  []
 
-[18] [19]
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[20] [21]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[22]
 File: images/windowstest.png Graphic file (type bmp)
 <images/windowstest.png>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[20]
+[23]
 File: images/installrpkgmac.png Graphic file (type bmp)
 <images/installrpkgmac.png>
 File: images/installrdownloadsmac.png Graphic file (type bmp)
 <images/installrdownloadsmac.png>
 
-Overfull \hbox (34.5825pt too wide) in paragraph at lines 404--408
-\TU/lmr/m/n/10 CRAN. []
- []
-
-File: images/installrCont1mac.png Graphic file (type bmp)
-<images/installrCont1mac.png>
-File: images/installrCont2mac.png Graphic file (type bmp)
-<images/installrCont2mac.png>
-File: images/installrmacLicense.png Graphic file (type bmp)
-<images/installrmacLicense.png>
-File: images/installrmac-install.png Graphic file (type bmp)
-<images/installrmac-install.png>
-
-Underfull \hbox (badness 10000) in paragraph at lines 409--416
+Underfull \hbox (badness 10000) in paragraph at lines 375--379
 [][]
  []
 
 
-Overfull \hbox (225.44405pt too wide) in paragraph at lines 409--416
-\TU/lmr/m/n/10 Then you need to agree with the License Agreement, []
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[21]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[22]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[23]
-File: images/findrmac.png Graphic file (type bmp)
-<images/findrmac.png>
-File: images/rconsolemac.png Graphic file (type bmp)
-<images/rconsolemac.png>
-
-Overfull \hbox (109.72879pt too wide) in paragraph at lines 420--427
-\TU/lmr/m/n/10 ble click on this to run it. []
- []
-
-
-Underfull \hbox (badness 5217) in paragraph at lines 420--427
-\TU/lmr/m/n/10 You should get this 2000=era terminal window named R Console.
- []
-
-
-Underfull \hbox (badness 5147) in paragraph at lines 420--427
-\TU/lmr/m/n/10 The version number should match what you downloaded, and the
- []
-
-
-Underfull \hbox (badness 1365) in paragraph at lines 420--427
-\TU/lmr/m/n/10 messaging should end with a “>” prompt. At this prompt, type in
+Overfull \hbox (34.5825pt too wide) in paragraph at lines 375--379
+\TU/lmr/m/n/10 CRAN. [] 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [24]
+File: images/installrCont1mac.png Graphic file (type bmp)
+<images/installrCont1mac.png>
+File: images/installrCont2mac.png Graphic file (type bmp)
+<images/installrCont2mac.png>
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [25]
+File: images/installrmacLicense.png Graphic file (type bmp)
+<images/installrmacLicense.png>
+File: images/installrmac-install.png Graphic file (type bmp)
+<images/installrmac-install.png>
+
+Overfull \hbox (225.44405pt too wide) in paragraph at lines 390--395
+[]\TU/lmr/m/n/10 Then you need to agree with the License Agreement, []
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[26]
+File: images/findrmac.png Graphic file (type bmp)
+<images/findrmac.png>
+File: images/rconsolemac.png Graphic file (type bmp)
+<images/rconsolemac.png>
 File: images/mactestR.png Graphic file (type bmp)
 <images/mactestR.png>
+
+Overfull \hbox (109.72879pt too wide) in paragraph at lines 399--408
+\TU/lmr/m/n/10 ble click on this to run it. []
+ []
+
+
+Underfull \hbox (badness 2310) in paragraph at lines 399--408
+\TU/lmr/m/n/10 sion number should match what you downloaded, and the messaging
+ []
+
+
+Overfull \hbox (70.84209pt too wide) in paragraph at lines 399--408
+\TU/lmr/m/n/10 This should result in [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[27]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[28]
 File: images/ready2R.png Graphic file (type bmp)
 <images/ready2R.png>
 
-Overfull \hbox (154.69pt too wide) in paragraph at lines 439--441
+Overfull \hbox (154.69pt too wide) in paragraph at lines 412--414
 \TU/lmr/m/n/10 Awesome. You are now Ready to R! [] 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[26] [27] [28]
-Underfull \hbox (badness 10000) in paragraph at lines 610--613
-
- []
-
 [29]
-Underfull \hbox (badness 10000) in paragraph at lines 655--656
+File: images/teslax_dash.png Graphic file (type bmp)
+<images/teslax_dash.png>
+File: images/camry_dash.png Graphic file (type bmp)
+<images/camry_dash.png>
 
+Overfull \hbox (111.13538pt too wide) in paragraph at lines 418--426
+\TU/lmr/m/n/10 ducible medical research. []
  []
 
-[30] [31]
 
-LaTeX Warning: Reference `intro' on page 32 undefined on input line 760.
-
-
-LaTeX Warning: Reference `methods' on page 32 undefined on input line 760.
-
-LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 766.
-File: io02-getting-started_files/figure-latex/nice-fig-1.pdf Graphic file (type
- pdf)
-<use io02-getting-started_files/figure-latex/nice-fig-1.pdf>
-
-LaTeX Warning: Reference `fig:nice-fig' on page 32 undefined on input line 780.
+Underfull \hbox (badness 1418) in paragraph at lines 418--426
+\TU/lmr/m/n/10 the R engine to make your experience more comfortable and effici
+ent.
+ []
 
 
+Underfull \hbox (badness 2057) in paragraph at lines 418--426
+[] \TU/lmr/m/n/10 For-
+ []
 
-LaTeX Warning: Reference `tab:nice-tab' on page 32 undefined on input line 780.
+[30]
+File: images/rstudio_download.png Graphic file (type bmp)
+<images/rstudio_download.png>
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[31]
+File: images/rstudio_opensource.png Graphic file (type bmp)
+<images/rstudio_opensource.png>
+File: images/rstudio_free.png Graphic file (type bmp)
+<images/rstudio_free.png>
+File: images/rstudio_mac_win.png Graphic file (type bmp)
+<images/rstudio_mac_win.png>
+
+Overfull \hbox (37.99153pt too wide) in paragraph at lines 430--435
+\TU/lmr/m/n/10 Desktop []
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [32]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Package natbib Warning: Citation `R-bookdown' on page 33 undefined on input lin
-e 826.
+[33]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[34]
+File: images/rstudio_winsave.png Graphic file (type bmp)
+<images/rstudio_winsave.png>
+File: images/rstudio_winlaunch.png Graphic file (type bmp)
+<images/rstudio_winlaunch.png>
+File: images/rstudio_wininstall.png Graphic file (type bmp)
+<images/rstudio_wininstall.png>
+File: images/rstudio_winstall_start.png Graphic file (type bmp)
+<images/rstudio_winstall_start.png>
+File: images/winstall_finish.png Graphic file (type bmp)
+<images/winstall_finish.png>
+
+Overfull \hbox (126.38036pt too wide) in paragraph at lines 439--449
+\TU/lmr/m/n/10 number) to your downloads folder. []
+ []
 
 
-Package natbib Warning: Citation `xie2015' on page 33 undefined on input line 8
-26.
+Overfull \hbox (65.67435pt too wide) in paragraph at lines 439--449
+\TU/lmr/m/n/10 stall Location. []
+ []
 
-[33] [34]
+
+Overfull \hbox (103.45209pt too wide) in paragraph at lines 439--449
+\TU/lmr/m/n/10 click the Finish button. []
+ []
+
+
+Underfull \hbox (badness 3503) in paragraph at lines 439--449
+[] \TU/lmr/m/n/10 Now select
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[35]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[36]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[37]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[38]
+File: images/test_result35.png Graphic file (type bmp)
+<images/test_result35.png>
+File: images/ready_to_R.png Graphic file (type bmp)
+<images/ready_to_R.png>
+
+Overfull \hbox (239.0203pt too wide) in paragraph at lines 463--468
+[]\TU/lmr/m/n/10 Then press the enter key and this should be your result: []
+ []
+
+File: images/rstudio_mac_download.png Graphic file (type bmp)
+<images/rstudio_mac_download.png>
+File: images/rstudio_mac_download2.png Graphic file (type bmp)
+<images/rstudio_mac_download2.png>
+File: images/rstudio_mac_dmg.png Graphic file (type bmp)
+<images/rstudio_mac_dmg.png>
+File: images/rstudio_mac_apps.png Graphic file (type bmp)
+<images/rstudio_mac_apps.png>
+
+Overfull \hbox (257.19753pt too wide) in paragraph at lines 472--487
+\TU/lmr/m/n/10 Then click on the big button to Download RStudio for Mac. []
+ []
+
+
+Underfull \hbox (badness 1629) in paragraph at lines 472--487
+\TU/lmr/m/n/10 Double click on the Rstudio.N.N.N.dmg file in your Downloads fol
+der.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 472--487
+[]
+ []
+
+
+Overfull \hbox (185.74516pt too wide) in paragraph at lines 472--487
+\TU/lmr/m/n/10 This will open a window that looks like this []
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[39]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[40]
+File: images/test_result35.png Graphic file (type bmp)
+<images/test_result35.png>
+File: images/ready_to_R.png Graphic file (type bmp)
+<images/ready_to_R.png>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[41] [42]
 Chapter 3.
 File: images/tasting.png Graphic file (type bmp)
 <images/tasting.png>
 
-Underfull \hbox (badness 1990) in paragraph at lines 844--847
+Underfull \hbox (badness 1990) in paragraph at lines 509--512
 \TU/lmr/m/n/10 In this chapter, we will introduce you to a lot of neat things t
 hat
  []
 
 
-Underfull \hbox (badness 1024) in paragraph at lines 844--847
+Underfull \hbox (badness 1024) in paragraph at lines 509--512
 \TU/lmr/m/n/10 you can do with R and RStudio, and you will publish a simple dat
 a
  []
 
 
-Underfull \hbox (badness 1895) in paragraph at lines 844--847
+Underfull \hbox (badness 1895) in paragraph at lines 509--512
 \TU/lmr/m/n/10 analysis on the Internet that you can share with friends and fam
 ily.
  []
@@ -1268,23 +1253,23 @@ File: images/rpubs2.png Graphic file (type bmp)
 File: images/rpubs3.png Graphic file (type bmp)
 <images/rpubs3.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 851--859
+Underfull \hbox (badness 10000) in paragraph at lines 516--524
 []
  []
 
 
-Overfull \hbox (199.10547pt too wide) in paragraph at lines 851--859
+Overfull \hbox (199.10547pt too wide) in paragraph at lines 516--524
 \TU/lmr/m/n/10 Click on the \TU/lmr/m/it/10 Here’s How You Get Started \TU/lmr/
 m/n/10 link. [] 
  []
 
-[35
+[43
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[36]
-Overfull \hbox (15.74pt too wide) in paragraph at lines 888--890
+[44]
+Overfull \hbox (15.74pt too wide) in paragraph at lines 553--555
 \TU/lmr/m/n/10 tidyverse package is installed on your computer. \TU/lmtt/m/n/10
  install.packages("tidyverse") 
  []
@@ -1294,619 +1279,153 @@ File: images/rmd1.png Graphic file (type bmp)
 File: images/rmd2.png Graphic file (type bmp)
 <images/rmd2.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 909--915
+Underfull \hbox (badness 10000) in paragraph at lines 574--580
 []
  []
 
 
-Overfull \hbox (157.42177pt too wide) in paragraph at lines 909--915
+Overfull \hbox (157.42177pt too wide) in paragraph at lines 574--580
 \TU/lmr/m/n/10 “Tasting”, and click the OK button. [] 
  []
 
-[37]
+[45]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[38]
+[46]
 File: images/rmd3.png Graphic file (type bmp)
 <images/rmd3.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 916--919
+Underfull \hbox (badness 10000) in paragraph at lines 581--584
 []
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[39]
-Underfull \hbox (badness 10000) in paragraph at lines 958--961
+[47]
+Underfull \hbox (badness 10000) in paragraph at lines 623--626
 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[40]
+[48]
 
-Package natbib Warning: Citation `djnavarro' on page 41 undefined on input line
- 962.
-
-
-Package natbib Warning: Citation `ryantimpe' on page 41 undefined on input line
- 962.
+Package natbib Warning: Citation `djnavarro' on page 49 undefined on input line
+ 627.
 
 
-Package natbib Warning: Citation `skyetetra' on page 41 undefined on input line
- 962.
+Package natbib Warning: Citation `ryantimpe' on page 49 undefined on input line
+ 627.
 
 
-Package natbib Warning: Citation `robinson_es' on page 41 undefined on input li
-ne 962.
+Package natbib Warning: Citation `skyetetra' on page 49 undefined on input line
+ 627.
 
 
-Package natbib Warning: Citation `tylermorganwall' on page 41 undefined on inpu
-t line 964.
+Package natbib Warning: Citation `robinson_es' on page 49 undefined on input li
+ne 627.
 
-[41] [42
+
+Package natbib Warning: Citation `tylermorganwall' on page 49 undefined on inpu
+t line 629.
+
+[49] [50
 
 ]
 Chapter 4.
-[43] [44
+[51] [52
 
 ]
 Chapter 5.
-[45] [46
-
-]
-Chapter 6.
-[47]
-Overfull \hbox (87.41454pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 48 \TU/lmr/m/sl/10 CHAPTER 6.  CHECKING, VALIDATING, AND ASSERTI
-NG THINGS ABOUT YOUR DATA
- []
-
-[48
-
-]
-Chapter 7.
-[49]
-Overfull \hbox (0.55342pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 50 \TU/lmr/m/sl/10 CHAPTER 7.  TIME SERIES DATA WITH THE TIDYVER
-TS PACKAGES
- []
-
-[50]
-Chapter 8.
-[51
-
-] [52
-
-]
-Chapter 9.
 [53] [54
 
 ]
-Chapter 10.
+Chapter 6.
 [55]
-Overfull \hbox (37.89453pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 56 \TU/lmr/m/sl/10 CHAPTER 10.  TWO VARIABLE GGPLOTS - CONTINUOU
-S VS CATEGORICAL
+Overfull \hbox (87.41454pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 56 \TU/lmr/m/sl/10 CHAPTER 6.  CHECKING, VALIDATING, AND ASSERTI
+NG THINGS ABOUT YOUR DATA
  []
 
 [56
 
 ]
-Chapter 11.
+Chapter 7.
 [57]
-Overfull \hbox (31.57452pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 58 \TU/lmr/m/sl/10 CHAPTER 11.  TWO VARIABLE GGPLOTS - CONTINUOU
-S VS CONTINUOUS
+Overfull \hbox (0.55342pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 58 \TU/lmr/m/sl/10 CHAPTER 7.  TIME SERIES DATA WITH THE TIDYVER
+TS PACKAGES
  []
 
-[58
+[58]
+Chapter 8.
 
-]
-Chapter 12.
-[59] [60
-
-]
-Chapter 13.
-[61] [62]
-Chapter 14.
-[63
-
-] [64
-
-]
-Chapter 15.
-
-Overfull \hbox (148.50203pt too wide) in paragraph at lines 1235--1237
-\TU/lmr/m/n/10 h <- pwr::ES.h(.14, .08) # effect size pwr::pwr.2p.test(h=0.1934
-809,n=350,sig.level=0.05,alternative=“two.sided”) 
- []
-
-[65] [66
-
-]
-Chapter 16.
-[67] [68] [69] [70] [71] [72] [73] [74] [75] [76] [77]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[78]
-Overfull \vbox (5662.79694pt too high) has occurred while \output is active []
+[59
 
-[79] [80]
-Chapter 17.
-[81
+] [60]
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 794.
+[61]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-] [82
-
-]
-Chapter 18.
-[83] [84
-
-]
-Chapter 19.
-[85] [86
-
-]
-Chapter 20.
-[87] [88
-
-]
-Chapter 21.
-[89] [90
-
-]
-Chapter 22.
-[91] [92
-
-]
-Chapter 23.
-[93]
-Underfull \vbox (badness 10000) detected at line 3028
- []
-
-[94] [95]
-File: io28-mockstudy_analysis_chisq_files/figure-latex/survivaltime_boxplot-1.p
-df Graphic file (type pdf)
-<use io28-mockstudy_analysis_chisq_files/figure-latex/survivaltime_boxplot-1.pd
-f>
-
-Overfull \hbox (59.25pt too wide) in paragraph at lines 3142--3142
-[]\TU/lmtt/m/n/10 ## Warning: Vectorized input to []element_text()[] is not off
-icially supported.[] 
- []
-
-
-Overfull \hbox (38.25pt too wide) in paragraph at lines 3142--3142
-[]\TU/lmtt/m/n/10 ## Results may be unexpected or may change in future versions
- of ggplot2.[] 
- []
-
-File: io28-mockstudy_analysis_chisq_files/figure-latex/survival_curves-1.pdf Gr
-aphic file (type pdf)
-<use io28-mockstudy_analysis_chisq_files/figure-latex/survival_curves-1.pdf>
-[96] [97]
-File: io29a-chisq_example_files/figure-latex/corr-1.pdf Graphic file (type pdf)
-
-<use io29a-chisq_example_files/figure-latex/corr-1.pdf>
-[98]
-File: io29a-chisq_example_files/figure-latex/percent-1.pdf Graphic file (type p
-df)
-<use io29a-chisq_example_files/figure-latex/percent-1.pdf>
-[99]
+[62]
 File: io30-ttest_files/figure-latex/density-1.pdf Graphic file (type pdf)
 <use io30-ttest_files/figure-latex/density-1.pdf>
-
-Underfull \vbox (badness 2173) has occurred while \output is active []
-
-[100]
 File: io30-ttest_files/figure-latex/histogram-1.pdf Graphic file (type pdf)
 <use io30-ttest_files/figure-latex/histogram-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[101] [102] [103] [104]
-Overfull \hbox (17.25pt too wide) in paragraph at lines 3596--3596
+
+Overfull \hbox (9.21231pt too wide) has occurred while \output is active
+\TU/lmr/m/sl/10 8.5.  VISUALIZE THE DISTRIBUTION OF DATA VARIABLES IN GGPLOT \T
+U/lmr/m/n/10 63
+ []
+
+[63] [64] [65] [66]
+Overfull \hbox (17.25pt too wide) in paragraph at lines 1143--1143
 []\TU/lmtt/m/n/10 ## alternative hypothesis: true difference in means is not eq
 ual to 0[] 
  []
 
-[105]
-Overfull \hbox (17.25pt too wide) in paragraph at lines 3667--3667
+[67]
+Overfull \hbox (17.25pt too wide) in paragraph at lines 1214--1214
 []\TU/lmtt/m/n/10 ## alternative hypothesis: true difference in means is not eq
 ual to 0[] 
  []
 
-[106] [107] [108]
-File: io30a-ttest_files/figure-latex/density-1.pdf Graphic file (type pdf)
-<use io30a-ttest_files/figure-latex/density-1.pdf>
-[109]
-File: io30a-ttest_files/figure-latex/histogram-1.pdf Graphic file (type pdf)
-<use io30a-ttest_files/figure-latex/histogram-1.pdf>
-[110] [111] [112]
-Overfull \hbox (17.25pt too wide) in paragraph at lines 4186--4186
-[]\TU/lmtt/m/n/10 ## alternative hypothesis: true difference in means is not eq
-ual to 0[] 
- []
+[68] [69] (./rmrwr.bbl [70]
 
-[113]
-Overfull \hbox (17.25pt too wide) in paragraph at lines 4257--4257
-[]\TU/lmtt/m/n/10 ## alternative hypothesis: true difference in means is not eq
-ual to 0[] 
- []
+Package natbib Warning: Empty `thebibliography' environment on input line 3.
 
-[114] [115] [116] [117]
-File: io31-ttest_part2_files/figure-latex/geys-1.pdf Graphic file (type pdf)
-<use io31-ttest_part2_files/figure-latex/geys-1.pdf>
-File: io31-ttest_part2_files/figure-latex/geyser2-1.pdf Graphic file (type pdf)
+)
 
-<use io31-ttest_part2_files/figure-latex/geyser2-1.pdf>
+Package natbib Warning: There were undefined citations.
 
-Overfull \hbox (236.94263pt too wide) in paragraph at lines 4563--4567
-[]\TU/lmr/m/n/10 Wait time for eruptions in minutes is negatively skewed []
- []
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1373.
+[71
 
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1373.
+(./rmrwr.aux)
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1373.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1373.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[118]
-Overfull \hbox (12.03452pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 23.55.  SKEWNESS EXAMPLE: OLD FAITHFUL ERUPTION WAIT TIMES \TU/
-lmr/m/n/10 119
- []
-
-[119] [120] [121]
-Overfull \hbox (17.25pt too wide) in paragraph at lines 4798--4798
-[]\TU/lmtt/m/n/10 ## alternative hypothesis: true difference in means is not eq
-ual to 0[] 
- []
-
-
-Overfull \hbox (17.25pt too wide) in paragraph at lines 4824--4824
-[]\TU/lmtt/m/n/10 ## alternative hypothesis: true difference in means is not eq
-ual to 0[] 
- []
-
-[122] [123] [124]
-Overfull \hbox (185.25pt too wide) in paragraph at lines 4995--4995
-[]\TU/lmtt/m/n/10 ## |             | A: IFL (N=428)  | F: FOLFOX (N=691) | G: I
-ROX (N=380) | Total (N=1499)  | p value|[] 
- []
-
-
-Overfull \hbox (185.25pt too wide) in paragraph at lines 4995--4995
-[]\TU/lmtt/m/n/10 ## |:------------|:---------------:|:-----------------:|:----
------------:|:---------------:|-------:|[] 
- []
-
-
-Overfull \hbox (185.25pt too wide) in paragraph at lines 4995--4995
-[]\TU/lmtt/m/n/10 ## |sex          |                 |                   |     
-            |                 |   0.190|[] 
- []
-
-
-Overfull \hbox (185.25pt too wide) in paragraph at lines 4995--4995
-[]\TU/lmtt/m/n/10 ## |-  Male      |   277 (64.7%)   |    411 (59.5%)    |   22
-8 (60.0%)   |   916 (61.1%)   |        |[] 
- []
-
-
-Overfull \hbox (185.25pt too wide) in paragraph at lines 4995--4995
-[]\TU/lmtt/m/n/10 ## |-  Female    |   151 (35.3%)   |    280 (40.5%)    |   15
-2 (40.0%)   |   583 (38.9%)   |        |[] 
- []
-
-
-Overfull \hbox (185.25pt too wide) in paragraph at lines 4995--4995
-[]\TU/lmtt/m/n/10 ## |Age in Years |                 |                   |     
-            |                 |   0.614|[] 
- []
-
-
-Overfull \hbox (185.25pt too wide) in paragraph at lines 4995--4995
-[]\TU/lmtt/m/n/10 ## |-  Mean (SD) | 59.673 (11.365) |  60.301 (11.632)  | 59.7
-63 (11.499) | 59.985 (11.519) |        |[] 
- []
-
-
-Overfull \hbox (185.25pt too wide) in paragraph at lines 4995--4995
-[]\TU/lmtt/m/n/10 ## |-  Range     | 27.000 - 88.000 |  19.000 - 88.000  | 26.0
-00 - 85.000 | 19.000 - 88.000 |        |[] 
- []
-
-[125]
-Overfull \hbox (269.25pt too wide) in paragraph at lines 5079--5079
-[]\TU/lmtt/m/n/10 ## |                             | A: IFL (N=428)  | F: FOLFO
-X (N=691) | G: IROX (N=380) | Total (N=1499)  | p value|[] 
- []
-
-
-Overfull \hbox (269.25pt too wide) in paragraph at lines 5079--5079
-[]\TU/lmtt/m/n/10 ## |:----------------------------|:---------------:|:--------
----------:|:---------------:|:---------------:|-------:|[] 
- []
-
-
-Overfull \hbox (269.25pt too wide) in paragraph at lines 5079--5079
-[]\TU/lmtt/m/n/10 ## |**ps**                       |                 |         
-          |                 |                 |   0.903|[] 
- []
-
-
-Overfull \hbox (269.25pt too wide) in paragraph at lines 5079--5079
-[]\TU/lmtt/m/n/10 ## |&nbsp;&nbsp;&nbsp;N-Miss     |       69        |        1
-41        |       56        |       266       |        |[] 
- []
-
-
-Overfull \hbox (269.25pt too wide) in paragraph at lines 5079--5079
-[]\TU/lmtt/m/n/10 ## |&nbsp;&nbsp;&nbsp;Mean (SD)  |  0.529 (0.597)  |   0.547 
-(0.595)   |  0.537 (0.606)  |  0.539 (0.598)  |        |[] 
- []
-
-
-Overfull \hbox (269.25pt too wide) in paragraph at lines 5079--5079
-[]\TU/lmtt/m/n/10 ## |&nbsp;&nbsp;&nbsp;Range      |  0.000 - 2.000  |   0.000 
-- 2.000   |  0.000 - 2.000  |  0.000 - 2.000  |        |[] 
- []
-
-
-Overfull \hbox (269.25pt too wide) in paragraph at lines 5079--5079
-[]\TU/lmtt/m/n/10 ## |**hgb**                      |                 |         
-          |                 |                 |   0.639|[] 
- []
-
-
-Overfull \hbox (269.25pt too wide) in paragraph at lines 5079--5079
-[]\TU/lmtt/m/n/10 ## |&nbsp;&nbsp;&nbsp;N-Miss     |       69        |        1
-41        |       56        |       266       |        |[] 
- []
-
-
-Overfull \hbox (269.25pt too wide) in paragraph at lines 5079--5079
-[]\TU/lmtt/m/n/10 ## |&nbsp;&nbsp;&nbsp;Mean (SD)  | 12.276 (1.686)  |  12.381 
-(1.763)   | 12.373 (1.680)  | 12.348 (1.719)  |        |[] 
- []
-
-
-Overfull \hbox (269.25pt too wide) in paragraph at lines 5079--5079
-[]\TU/lmtt/m/n/10 ## |&nbsp;&nbsp;&nbsp;Range      | 9.060 - 17.300  |  9.000 -
- 18.200   | 9.000 - 17.000  | 9.000 - 18.200  |        |[] 
- []
-
-
-Overfull \hbox (269.25pt too wide) in paragraph at lines 5079--5079
-[]\TU/lmtt/m/n/10 ## |**Body Mass Index (kg/m^2)** |                 |         
-          |                 |                 |   0.892|[] 
- []
-
-
-Overfull \hbox (269.25pt too wide) in paragraph at lines 5079--5079
-[]\TU/lmtt/m/n/10 ## |&nbsp;&nbsp;&nbsp;N-Miss     |        9        |        2
-0         |        4        |       33        |        |[] 
- []
-
-
-Overfull \hbox (269.25pt too wide) in paragraph at lines 5079--5079
-[]\TU/lmtt/m/n/10 ## |&nbsp;&nbsp;&nbsp;Mean (SD)  | 27.290 (5.552)  |  27.210 
-(5.173)   | 27.106 (5.751)  | 27.206 (5.432)  |        |[] 
- []
-
-
-Overfull \hbox (269.25pt too wide) in paragraph at lines 5079--5079
-[]\TU/lmtt/m/n/10 ## |&nbsp;&nbsp;&nbsp;Range      | 14.053 - 53.008 |  16.649 
-- 49.130  | 15.430 - 60.243 | 14.053 - 60.243 |        |[] 
- []
-
-
-Overfull \hbox (337.5pt too wide) in paragraph at lines 5103--5103
-[]\TU/lmtt/m/n/10 ## |                            |   A: IFL (N=428)    |  F: F
-OLFOX (N=691)  |   G: IROX (N=380)   |   Total (N=1499)    | p value|[] 
- []
-
-
-Overfull \hbox (337.5pt too wide) in paragraph at lines 5103--5103
-[]\TU/lmtt/m/n/10 ## |:---------------------------|:-------------------:|:-----
---------------:|:-------------------:|:-------------------:|-------:|[] 
- []
-
-
-Overfull \hbox (337.5pt too wide) in paragraph at lines 5103--5103
-[]\TU/lmtt/m/n/10 ## |**sex**                     |                     |      
-               |                     |                     |    0.19|[] 
- []
-
-
-Overfull \hbox (337.5pt too wide) in paragraph at lines 5103--5103
-[]\TU/lmtt/m/n/10 ## |&nbsp;&nbsp;&nbsp;Male      |     277 (64.7%)     |     4
-11 (59.5%)     |     228 (60.0%)     |     916 (61.1%)     |        |[] 
- []
-
-
-Overfull \hbox (337.5pt too wide) in paragraph at lines 5103--5103
-[]\TU/lmtt/m/n/10 ## |&nbsp;&nbsp;&nbsp;Female    |     151 (35.3%)     |     2
-80 (40.5%)     |     152 (40.0%)     |     583 (38.9%)     |        |[] 
- []
-
-[126]
-Overfull \hbox (337.5pt too wide) in paragraph at lines 5103--5103
-[]\TU/lmtt/m/n/10 ## |**fu.time**                 |                     |      
-               |                     |                     |  < 0.01|[] 
- []
-
-
-Overfull \hbox (337.5pt too wide) in paragraph at lines 5103--5103
-[]\TU/lmtt/m/n/10 ## |&nbsp;&nbsp;&nbsp;Mean (SD) | 553.5841 (419.6065) | 731.2
-460 (487.7443) | 607.2421 (435.5092) | 649.0841 (462.5109) |        |[] 
- []
-
-
-Overfull \hbox (337.5pt too wide) in paragraph at lines 5103--5103
-[]\TU/lmtt/m/n/10 ## |&nbsp;&nbsp;&nbsp;Range     | 9.0000 - 2170.0000  | 0.000
-0 - 2472.0000  | 17.0000 - 2118.0000 | 0.0000 - 2472.0000  |        |[] 
- []
-
-
-Overfull \hbox (1356.0pt too wide) in paragraph at lines 5138--5138
-[]\TU/lmtt/m/n/10 ## /Applications/RStudio.app/Contents/MacOS/pandoc/pandoc +RT
-S -K512m -RTS table1.docx.utf8.md --to docx --from markdown+autolink_bare_uris+
-tex_math_single_backslash+smart --output table1.docx --highlight-style tango --
-lua-filter /Library/Frameworks/R.framework/Versions/3.6/Resources/library/rmark
-down/rmd/lua/pagebreak.lua[] 
- []
-
-
-Overfull \hbox (169.5pt too wide) in paragraph at lines 5162--5162
-[]\TU/lmtt/m/n/10 ## 500 records and 13 columns were read from REDCap in 0.5 se
-conds.  The http status code was 200.[] 
- []
-
-[127]
-Overfull \hbox (195.75pt too wide) in paragraph at lines 5202--5202
-[]\TU/lmtt/m/n/10 ## |                            |     1 (N=250)     |     2 (
-N=250)     |   Total (N=500)   |  p value|[] 
- []
-
-
-Overfull \hbox (195.75pt too wide) in paragraph at lines 5202--5202
-[]\TU/lmtt/m/n/10 ## |:---------------------------|:-----------------:|:-------
-----------:|:-----------------:|--------:|[] 
- []
-
-
-Overfull \hbox (195.75pt too wide) in paragraph at lines 5202--5202
-[]\TU/lmtt/m/n/10 ## |**race**                    |                   |        
-           |                   | 0.625^1^|[] 
- []
-
-
-Overfull \hbox (195.75pt too wide) in paragraph at lines 5202--5202
-[]\TU/lmtt/m/n/10 ## |&nbsp;&nbsp;&nbsp;1         |     12 (4.8%)     |     7 (
-2.8%)      |     19 (3.8%)     |         |[] 
- []
-
-
-Overfull \hbox (195.75pt too wide) in paragraph at lines 5202--5202
-[]\TU/lmtt/m/n/10 ## |&nbsp;&nbsp;&nbsp;3         |     24 (9.6%)     |    32 (
-12.8%)     |    56 (11.2%)     |         |[] 
- []
-
-
-Overfull \hbox (195.75pt too wide) in paragraph at lines 5202--5202
-[]\TU/lmtt/m/n/10 ## |&nbsp;&nbsp;&nbsp;4         |    176 (70.4%)    |    176 
-(70.4%)    |    352 (70.4%)    |         |[] 
- []
-
-
-Overfull \hbox (195.75pt too wide) in paragraph at lines 5202--5202
-[]\TU/lmtt/m/n/10 ## |&nbsp;&nbsp;&nbsp;5         |    31 (12.4%)     |    28 (
-11.2%)     |    59 (11.8%)     |         |[] 
- []
-
-
-Overfull \hbox (195.75pt too wide) in paragraph at lines 5202--5202
-[]\TU/lmtt/m/n/10 ## |&nbsp;&nbsp;&nbsp;6         |     7 (2.8%)      |     7 (
-2.8%)      |     14 (2.8%)     |         |[] 
- []
-
-
-Overfull \hbox (195.75pt too wide) in paragraph at lines 5202--5202
-[]\TU/lmtt/m/n/10 ## |**gender**                  |                   |        
-           |                   | 0.372^2^|[] 
- []
-
-
-Overfull \hbox (195.75pt too wide) in paragraph at lines 5202--5202
-[]\TU/lmtt/m/n/10 ## |&nbsp;&nbsp;&nbsp;Mean (SD) |   0.460 (0.499)   |   0.500
- (0.501)   |   0.480 (0.500)   |         |[] 
- []
-
-
-Overfull \hbox (195.75pt too wide) in paragraph at lines 5202--5202
-[]\TU/lmtt/m/n/10 ## |&nbsp;&nbsp;&nbsp;Range     |   0.000 - 1.000   |   0.000
- - 1.000   |   0.000 - 1.000   |         |[] 
- []
-
-
-Overfull \hbox (195.75pt too wide) in paragraph at lines 5202--5202
-[]\TU/lmtt/m/n/10 ## |**height**                  |                   |        
-           |                   | 0.498^2^|[] 
- []
-
-
-Overfull \hbox (195.75pt too wide) in paragraph at lines 5202--5202
-[]\TU/lmtt/m/n/10 ## |&nbsp;&nbsp;&nbsp;Mean (SD) | 173.092 (10.610)  |  172.47
-6 (9.725)  | 172.784 (10.171)  |         |[] 
- []
-
-
-Overfull \hbox (195.75pt too wide) in paragraph at lines 5202--5202
-[]\TU/lmtt/m/n/10 ## |&nbsp;&nbsp;&nbsp;Range     | 142.500 - 204.300 | 142.900
- - 205.300 | 142.500 - 205.300 |         |[] 
- []
-
-
-Overfull \hbox (195.75pt too wide) in paragraph at lines 5202--5202
-[]\TU/lmtt/m/n/10 ## |**weight**                  |                   |        
-           |                   | 0.850^2^|[] 
- []
-
-
-Overfull \hbox (195.75pt too wide) in paragraph at lines 5202--5202
-[]\TU/lmtt/m/n/10 ## |&nbsp;&nbsp;&nbsp;Mean (SD) | 110.356 (22.806)  | 109.940
- (26.311)  | 110.148 (24.597)  |         |[] 
- []
-
-
-Overfull \hbox (195.75pt too wide) in paragraph at lines 5202--5202
-[]\TU/lmtt/m/n/10 ## |&nbsp;&nbsp;&nbsp;Range     | 48.000 - 171.000  | 36.000 
-- 189.000  | 36.000 - 189.000  |         |[] 
- []
-
-[128]
-Underfull \vbox (badness 10000) detected at line 5264
- []
-
-[129] [130]
-File: io34-mockstudy_analysis_files/figure-latex/survivaltime_boxplot-1.pdf Gra
-phic file (type pdf)
-<use io34-mockstudy_analysis_files/figure-latex/survivaltime_boxplot-1.pdf>
-
-Overfull \hbox (59.25pt too wide) in paragraph at lines 5373--5373
-[]\TU/lmtt/m/n/10 ## Warning: Vectorized input to []element_text()[] is not off
-icially supported.[] 
- []
-
-
-Overfull \hbox (38.25pt too wide) in paragraph at lines 5373--5373
-[]\TU/lmtt/m/n/10 ## Results may be unexpected or may change in future versions
- of ggplot2.[] 
- []
-
-[131]
-File: io34-mockstudy_analysis_files/figure-latex/survival_curves-1.pdf Graphic 
-file (type pdf)
-<use io34-mockstudy_analysis_files/figure-latex/survival_curves-1.pdf>
-[132] [133] [134]
-
-LaTeX Warning: File `/Users/peterhiggins/Documents/Rcode/teach_rmrwr/tidy-1.png
-' not found on input line 5565.
-
-! Unable to load picture or PDF file '/Users/peterhiggins/Documents/Rcode/teach
-_rmrwr/tidy-1.png'.
-<to be read again> 
-                   }
-l.5565 .../Documents/Rcode/teach_rmrwr/tidy-1.png}
-                                                   
+Package rerunfilecheck Info: File `rmrwr.out' has not changed.
+(rerunfilecheck)             Checksum: 152CCC63E9650C30CE7E3CDD26B6167D;12463.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1373.
+ ) 
 Here is how much of TeX's memory you used:
- 20246 strings out of 481384
- 359227 string characters out of 5926546
- 896092 words of memory out of 5000000
- 37258 multiletter control sequences out of 15000+600000
- 538919 words of font info for 81 fonts, out of 8000000 for 9000
+ 17904 strings out of 481384
+ 319598 string characters out of 5926546
+ 730799 words of memory out of 5000000
+ 34992 multiletter control sequences out of 15000+600000
+ 538813 words of font info for 80 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 53i,11n,118p,899b,494s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 53i,6n,118p,899b,459s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on rmrwr.pdf (134 pages).
+Output written on rmrwr.pdf (71 pages).

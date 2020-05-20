@@ -13,6 +13,7 @@ rmd_files:
 - io08-data-validation.Rmd
 - io09-timeseries.Rmd
 - io10-tableOne.Rmd
+- io30-ttest.Rmd
 - io98-title-holder.Rmd
 - io99-references.Rmd
 new_session: true

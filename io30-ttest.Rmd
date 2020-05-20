@@ -1,20 +1,39 @@
 ---
-title: "Comparing 2 groups"
+title: "Comparing 2 groups by a Continuous Measure of Centrality"
 author: "Peter Higgins"
 date: "1/2/2019"
-output: powerpoint_presentation
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
 library(broom)
+library(medicaldata)
 ```
 
 ## Comparing Two Measures of Centrality
-- Means and Medians
-- t tests and wilcoxon
-- for numerical continuous data
+A common question in medical research is whether one group had a better outcome than another group. These outcomes can be measured with dichotomous outcomes like death or hospitalization,
+but continuous outcomes like systolic blood pressure, endoscopic score, or ejection fraction are more commonly available, and provide more statistical power, and usually require a smaller sample size. <br>
+There is a tendency in clinical research to focus on dichotomous outcomes, even to the point of converting continuous measures to dichotomous ones (aka "dichotomania", see Frank Harrell comments [here](http://biostat.mc.vanderbilt.edu/wiki/Main/CatContinuous)), for fear of detecting and acting upon a small change in a continuous outcome that is not clinically meaningful. <br>
+While this can be a concern, especially in very large, over-powered studies, it can be addressed by aiming for a continuous difference that is at least as large as one that many clinicians agree (_a priori_) is clinically important (the MCID, or Minimum Clinically Important Difference).<br>
+The most common comparison of two groups with a continuous outcome is to look at the means or medians, and determine whether the available evidence suggests that these are equal (the null hypothesis). This can be done for means with Student's t-test.
+<br>
+Let's start by looking at the cytomegalovirus data set. This includes data on 64 patients who received bone marrow stem cell transplant, and looks at their time to activation of CMV (cytomegalovirus). In the code chunk below, we group the data by donor cmv status (`donor.cmv`), and look at the mean time to CMV activation (`time.to.cmv` variable). Run the code (using the green arrow at the top right of the code chunk below) to see the difference in time to CMV activation in months between groups.
+
+Try out some other grouping variables in the `group_by` statement, in place of `donor.cmv`.
+Consider variables like race, sex, and recipient.cmv. Edit the code and run it again with the green arrow at the top right.
+
+```{r, warning=FALSE, message=FALSE}
+cytomegalovirus %>% 
+  group_by(sex) %>% 
+  summarize(mean_time2cmv = mean(time.to.cmv)) ->
+summ
+
+summ
+```
+
+That seems like a big difference for donor.cmv, between `r summ[1,2]` months and `r summ[2,2]` months. And it makes theoretical sense that having a CMV positive donor is more likely to be associated with early activation of CMV in the recipient. But is it a significant difference, one that would be very unlikely to happen by chance? That depends on things like the number of people in each group, and the standard deviation in each group. That is the kind of question you can answer with a t-test, or for particularly skewed data like hospital length of stay or medical charges, a Wilcoxon test.
 
 
 ## Common Problem
@@ -33,31 +52,31 @@ library(broom)
 
 ```{r data, message= FALSE,warning=TRUE, echo=TRUE}
 library(tidyverse)
-data <- ToothGrowth
+data <- cytomegalovirus
 head(data)
 ```
 
-## Visualize the Distribution of data$len in ggplot
-- Use geom_histogram or geom_density
-- Bonus points: facet by supplement treatment
+## Visualize the Distribution of data variables in ggplot
+- Use geom_histogram or geom_density (pick one or the other)
+- look at the distribution of CD3.dose or time.to.cmv
+- Bonus points: facet by sex or race or donor.cmv
 - Your turn to try it
 
 
 
-```{r density}
+```{r density, message=FALSE, warning=FALSE}
 data %>% 
-ggplot(mapping = aes(len)) +
-  #geom_histogram() +
-  geom_density() + 
-  facet_wrap(~supp)
+ggplot(mapping = aes(time.to.cmv)) +
+  geom_density() +
+  facet_wrap(~sex) +
+  theme_linedraw()
 ```
 
 ```{r histogram, echo=TRUE, warning=FALSE, message=FALSE}
 data %>% 
-ggplot(mapping = aes(len)) +
+ggplot(mapping = aes(time.to.cmv)) +
   geom_histogram() +
-  #geom_density() + 
-  facet_wrap(~supp)
+  facet_wrap(~race)
 ```
 
 ## Visualize the Distribution of data$len in ggplot
@@ -65,7 +84,7 @@ ggplot(mapping = aes(len)) +
 - May be problematic for using means
 - formally test with Shapiro-Wilk
 ```{r shapirowilk, echo=TRUE, warning=FALSE, message=FALSE}
-data$len %>% 
+data$time.to.cmv %>% 
 shapiro.test()
 ```
 
