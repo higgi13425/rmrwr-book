@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.24)  20 MAY 2020 14:14
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.4.24)  20 MAY 2020 16:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -833,17 +833,17 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 6.99925pt on input line 2.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 4.99947pt on input line 2.
-[3] [4])
+[3])
 \tf@toc=\write5
 \openout5 = `rmrwr.toc'.
 
-[5] [6
-
-]
+[4]
 Chapter 1.
-[7] [8] [9] [10]
+[5
+
+] [6] [7] [8]
 Chapter 2.
-[11
+[9
 
 ]
 File: images/drag.png Graphic file (type bmp)
@@ -864,7 +864,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 294--302
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[12]
+[10]
 File: images/r-project.png Graphic file (type bmp)
 <images/r-project.png>
 File: images/dash-tesla.png Graphic file (type bmp)
@@ -874,7 +874,7 @@ Overfull \hbox (124.62451pt too wide) in paragraph at lines 303--310
 []\TU/lmr/m/n/10 This screen will look like this [] 
  []
 
-[13]
+[11]
 File: images/smartphone.jpg Graphic file (type bmp)
 <images/smartphone.jpg>
 File: images/cran-mirror.png Graphic file (type bmp)
@@ -943,6 +943,12 @@ ne.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+[12]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[13]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 [14]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -953,12 +959,6 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [17]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[18]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[19]
 File: images/installrwizard.png Graphic file (type bmp)
 <images/installrwizard.png>
 File: images/installwin-path2.png Graphic file (type bmp)
@@ -993,16 +993,16 @@ Overfull \hbox (39.12479pt too wide) in paragraph at lines 354--363
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[20] [21]
+[18] [19]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[22]
+[20]
 File: images/windowstest.png Graphic file (type bmp)
 <images/windowstest.png>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[23]
+[21]
 File: images/installrpkgmac.png Graphic file (type bmp)
 <images/installrpkgmac.png>
 File: images/installrdownloadsmac.png Graphic file (type bmp)
@@ -1020,7 +1020,7 @@ Overfull \hbox (34.5825pt too wide) in paragraph at lines 375--379
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[24]
+[22]
 File: images/installrCont1mac.png Graphic file (type bmp)
 <images/installrCont1mac.png>
 File: images/installrCont2mac.png Graphic file (type bmp)
@@ -1028,7 +1028,7 @@ File: images/installrCont2mac.png Graphic file (type bmp)
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[25]
+[23]
 File: images/installrmacLicense.png Graphic file (type bmp)
 <images/installrmacLicense.png>
 File: images/installrmac-install.png Graphic file (type bmp)
@@ -1041,7 +1041,7 @@ Overfull \hbox (225.44405pt too wide) in paragraph at lines 390--395
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[26]
+[24]
 File: images/findrmac.png Graphic file (type bmp)
 <images/findrmac.png>
 File: images/rconsolemac.png Graphic file (type bmp)
@@ -1066,10 +1066,10 @@ Overfull \hbox (70.84209pt too wide) in paragraph at lines 399--408
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[27]
+[25]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[28]
+[26]
 File: images/ready2R.png Graphic file (type bmp)
 <images/ready2R.png>
 
@@ -1080,7 +1080,7 @@ Overfull \hbox (154.69pt too wide) in paragraph at lines 412--414
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[29]
+[27]
 File: images/teslax_dash.png Graphic file (type bmp)
 <images/teslax_dash.png>
 File: images/camry_dash.png Graphic file (type bmp)
@@ -1101,13 +1101,13 @@ Underfull \hbox (badness 2057) in paragraph at lines 418--426
 [] \TU/lmr/m/n/10 For-
  []
 
-[30]
+[28]
 File: images/rstudio_download.png Graphic file (type bmp)
 <images/rstudio_download.png>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[31]
+[29]
 File: images/rstudio_opensource.png Graphic file (type bmp)
 <images/rstudio_opensource.png>
 File: images/rstudio_free.png Graphic file (type bmp)
@@ -1122,13 +1122,13 @@ Overfull \hbox (37.99153pt too wide) in paragraph at lines 430--435
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+[30]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[31]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 [32]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[33]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[34]
 File: images/rstudio_winsave.png Graphic file (type bmp)
 <images/rstudio_winsave.png>
 File: images/rstudio_winlaunch.png Graphic file (type bmp)
@@ -1162,16 +1162,16 @@ Underfull \hbox (badness 3503) in paragraph at lines 439--449
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+[33]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[34]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 [35]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [36]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[37]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[38]
 File: images/test_result35.png Graphic file (type bmp)
 <images/test_result35.png>
 File: images/ready_to_R.png Graphic file (type bmp)
@@ -1213,10 +1213,10 @@ Overfull \hbox (185.74516pt too wide) in paragraph at lines 472--487
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[39]
+[37]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[40]
+[38]
 File: images/test_result35.png Graphic file (type bmp)
 <images/test_result35.png>
 File: images/ready_to_R.png Graphic file (type bmp)
@@ -1224,7 +1224,7 @@ File: images/ready_to_R.png Graphic file (type bmp)
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[41] [42]
+[39] [40]
 Chapter 3.
 File: images/tasting.png Graphic file (type bmp)
 <images/tasting.png>
@@ -1263,12 +1263,12 @@ Overfull \hbox (199.10547pt too wide) in paragraph at lines 516--524
 m/n/10 link. [] 
  []
 
-[43
+[41
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[44]
+[42]
 Overfull \hbox (15.74pt too wide) in paragraph at lines 553--555
 \TU/lmr/m/n/10 tidyverse package is installed on your computer. \TU/lmtt/m/n/10
  install.packages("tidyverse") 
@@ -1288,10 +1288,10 @@ Overfull \hbox (157.42177pt too wide) in paragraph at lines 574--580
 \TU/lmr/m/n/10 “Tasting”, and click the OK button. [] 
  []
 
-[45]
+[43]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[46]
+[44]
 File: images/rmd3.png Graphic file (type bmp)
 <images/rmd3.png>
 
@@ -1302,7 +1302,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 581--584
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[47]
+[45]
 Underfull \hbox (badness 10000) in paragraph at lines 623--626
 
  []
@@ -1310,95 +1310,91 @@ Underfull \hbox (badness 10000) in paragraph at lines 623--626
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[48]
+[46]
 
-Package natbib Warning: Citation `djnavarro' on page 49 undefined on input line
+Package natbib Warning: Citation `djnavarro' on page 47 undefined on input line
  627.
 
 
-Package natbib Warning: Citation `ryantimpe' on page 49 undefined on input line
+Package natbib Warning: Citation `ryantimpe' on page 47 undefined on input line
  627.
 
 
-Package natbib Warning: Citation `skyetetra' on page 49 undefined on input line
+Package natbib Warning: Citation `skyetetra' on page 47 undefined on input line
  627.
 
 
-Package natbib Warning: Citation `robinson_es' on page 49 undefined on input li
+Package natbib Warning: Citation `robinson_es' on page 47 undefined on input li
 ne 627.
 
 
-Package natbib Warning: Citation `tylermorganwall' on page 49 undefined on inpu
+Package natbib Warning: Citation `tylermorganwall' on page 47 undefined on inpu
 t line 629.
 
-[49] [50
+[47] [48
 
 ]
 Chapter 4.
-[51] [52
+[49] [50
 
 ]
 Chapter 5.
-[53] [54
+[51] [52
 
 ]
 Chapter 6.
-[55]
+[53]
 Overfull \hbox (87.41454pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 56 \TU/lmr/m/sl/10 CHAPTER 6.  CHECKING, VALIDATING, AND ASSERTI
+\TU/lmr/m/n/10 54 \TU/lmr/m/sl/10 CHAPTER 6.  CHECKING, VALIDATING, AND ASSERTI
 NG THINGS ABOUT YOUR DATA
  []
 
-[56
+[54
 
 ]
 Chapter 7.
-[57]
+[55]
 Overfull \hbox (0.55342pt too wide) has occurred while \output is active
-\TU/lmr/m/n/10 58 \TU/lmr/m/sl/10 CHAPTER 7.  TIME SERIES DATA WITH THE TIDYVER
+\TU/lmr/m/n/10 56 \TU/lmr/m/sl/10 CHAPTER 7.  TIME SERIES DATA WITH THE TIDYVER
 TS PACKAGES
  []
 
-[58]
+[56]
 Chapter 8.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+[57
+
+] [58]
+Chapter 9.
 [59
 
-] [60]
+]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
 (Font)              Font shape `TU/lmtt/b/n' tried instead on input line 794.
-[61]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[62]
+[60]
 File: io30-ttest_files/figure-latex/density-1.pdf Graphic file (type pdf)
 <use io30-ttest_files/figure-latex/density-1.pdf>
-File: io30-ttest_files/figure-latex/histogram-1.pdf Graphic file (type pdf)
-<use io30-ttest_files/figure-latex/histogram-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-Overfull \hbox (9.21231pt too wide) has occurred while \output is active
-\TU/lmr/m/sl/10 8.5.  VISUALIZE THE DISTRIBUTION OF DATA VARIABLES IN GGPLOT \T
-U/lmr/m/n/10 63
- []
-
-[63] [64] [65] [66]
+[61]
+File: io30-ttest_files/figure-latex/histogram-1.pdf Graphic file (type pdf)
+<use io30-ttest_files/figure-latex/histogram-1.pdf>
+[62] [63] [64] [65]
 Overfull \hbox (17.25pt too wide) in paragraph at lines 1143--1143
 []\TU/lmtt/m/n/10 ## alternative hypothesis: true difference in means is not eq
 ual to 0[] 
  []
 
-[67]
+
 Overfull \hbox (17.25pt too wide) in paragraph at lines 1214--1214
 []\TU/lmtt/m/n/10 ## alternative hypothesis: true difference in means is not eq
 ual to 0[] 
  []
 
-[68] [69] (./rmrwr.bbl [70]
+[66] [67] (./rmrwr.bbl [68]
 
 Package natbib Warning: Empty `thebibliography' environment on input line 3.
 
@@ -1407,7 +1403,7 @@ Package natbib Warning: Empty `thebibliography' environment on input line 3.
 Package natbib Warning: There were undefined citations.
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1373.
-[71
+[69
 
 ]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 1373.
@@ -1416,16 +1412,16 @@ Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1373.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1373.
 
 Package rerunfilecheck Info: File `rmrwr.out' has not changed.
-(rerunfilecheck)             Checksum: 152CCC63E9650C30CE7E3CDD26B6167D;12463.
+(rerunfilecheck)             Checksum: E865F353D03C82577A1AA0668DBBD797;8627.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1373.
  ) 
 Here is how much of TeX's memory you used:
- 17904 strings out of 481384
- 319598 string characters out of 5926546
- 730799 words of memory out of 5000000
- 34992 multiletter control sequences out of 15000+600000
+ 17905 strings out of 481384
+ 319609 string characters out of 5926546
+ 729135 words of memory out of 5000000
+ 34993 multiletter control sequences out of 15000+600000
  538813 words of font info for 80 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 53i,6n,118p,899b,459s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 53i,6n,118p,899b,463s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on rmrwr.pdf (71 pages).
+Output written on rmrwr.pdf (69 pages).
