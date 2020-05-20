@@ -8,9 +8,7 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-library(tidyverse)
 library(medicaldata)
-library(broom)
 ```
 
 # Comparing Two Measures of Centrality
