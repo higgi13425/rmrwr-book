@@ -1,10 +1,9 @@
 ---
 title: "Comparing 2 groups by a Continuous Measure of Centrality"
 author: "Peter Higgins"
-date: "5/20/2020"
+date: "1/2/2019"
 output: html_document
 ---
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
@@ -13,7 +12,7 @@ library(broom)
 library(medicaldata)
 ```
 
-# Comparing Two Measures of Centrality
+## Comparing Two Measures of Centrality
 A common question in medical research is whether one group had a better outcome than another group. These outcomes can be measured with dichotomous outcomes like death or hospitalization,
 but continuous outcomes like systolic blood pressure, endoscopic score, or ejection fraction are more commonly available, and provide more statistical power, and usually require a smaller sample size. <br>
 There is a tendency in clinical research to focus on dichotomous outcomes, even to the point of converting continuous measures to dichotomous ones (aka "dichotomania", see Frank Harrell comments [here](http://biostat.mc.vanderbilt.edu/wiki/Main/CatContinuous)), for fear of detecting and acting upon a small change in a continuous outcome that is not clinically meaningful. <br>
@@ -84,7 +83,6 @@ ggplot(mapping = aes(time.to.cmv)) +
 - The OJ group is left skewed
 - May be problematic for using means
 - formally test with Shapiro-Wilk
-
 ```{r shapirowilk, echo=TRUE, warning=FALSE, message=FALSE}
 data$time.to.cmv %>% 
 shapiro.test()
@@ -102,7 +100,6 @@ shapiro.test()
   
 ## Try it yourself
 - use df <- msleep
-
 ```{r shapirowilk2, echo=TRUE, warning=FALSE, message=FALSE}
 df <- msleep 
 head(df$sleep_total)
