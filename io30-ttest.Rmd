@@ -24,7 +24,7 @@ The most common comparison of two groups with a continuous outcome is to look at
 Let's start by looking at the cytomegalovirus data set. This includes data on 64 patients who received bone marrow stem cell transplant, and looks at their time to activation of CMV (cytomegalovirus). In the code chunk below, we group the data by donor cmv status (`donor.cmv`), and look at the mean time to CMV activation (`time.to.cmv` variable). Run the code (using the green arrow at the top right of the code chunk below) to see the difference in time to CMV activation in months between groups.
 
 Try out some other grouping variables in the `group_by` statement, in place of `donor.cmv`.
-Consider variables like race, sex, and recipient.cmv. Edit the code and run it again with the green arrow at the top right.
+Consider variables like race, sex, and recipient.cmv. Edit the code and run it again with the green arrow at the top right. <br>
 
 ```{r, warning=FALSE, message=FALSE}
 cytomegalovirus %>% 
