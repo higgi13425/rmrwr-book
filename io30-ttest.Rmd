@@ -14,6 +14,7 @@ library(medicaldata)
 ```
 
 # Comparing Two Measures of Centrality
+
 A common question in medical research is whether one group had a better outcome than another group. These outcomes can be measured with dichotomous outcomes like death or hospitalization,
 but continuous outcomes like systolic blood pressure, endoscopic score, or ejection fraction are more commonly available, and provide more statistical power, and usually require a smaller sample size. <br>
 There is a tendency in clinical research to focus on dichotomous outcomes, even to the point of converting continuous measures to dichotomous ones (aka "dichotomania", see Frank Harrell comments [here](http://biostat.mc.vanderbilt.edu/wiki/Main/CatContinuous)), for fear of detecting and acting upon a small change in a continuous outcome that is not clinically meaningful. <br>
@@ -46,7 +47,7 @@ That seems like a big difference for donor.cmv, between `r summ[1,2]` months and
 - Or the medians (if not normally distributed)?
 
 
-## How Skewed is Too Skewed?
+### How Skewed is Too Skewed?
 - Formal test of normality = Shapiro-Wilk test
 - Use base data set called ToothGrowth
 
@@ -57,7 +58,7 @@ data <- cytomegalovirus
 head(data)
 ```
 
-## Visualize the Distribution of data variables in ggplot
+### Visualize the Distribution of data variables in ggplot
 - Use geom_histogram or geom_density (pick one or the other)
 - look at the distribution of CD3.dose or time.to.cmv
 - Bonus points: facet by sex or race or donor.cmv
@@ -80,7 +81,7 @@ ggplot(mapping = aes(time.to.cmv)) +
   facet_wrap(~race)
 ```
 
-## Visualize the Distribution of data$len in ggplot
+### Visualize the Distribution of data$len in ggplot
 - The OJ group is left skewed
 - May be problematic for using means
 - formally test with Shapiro-Wilk
@@ -90,7 +91,7 @@ data$time.to.cmv %>%
 shapiro.test()
 ```
 
-## Results of Shapiro-Wilk
+### Results of Shapiro-Wilk
 - p-value = 0.1091
 - p not < 0.05
 - Acceptably close to normal
@@ -100,7 +101,7 @@ shapiro.test()
   - also known as Mann-Whitney test
   - a rank-based (non-parametric) test
   
-## Try it yourself
+### Try it yourself
 - use df <- msleep
 
 ```{r shapirowilk2, echo=TRUE, warning=FALSE, message=FALSE}
@@ -109,7 +110,7 @@ head(df$sleep_total)
 ```
 - test the normality of total sleep hours in mammals
 
-## Mammal sleep hours
+### Mammal sleep hours
 ```{r shapirowilk3, echo=TRUE, warning=FALSE, message=FALSE}
 shapiro.test(df$sleep_total)
 ```
@@ -122,14 +123,14 @@ shapiro.test(df$sleep_total)
   - Ha: mean is not 8 hours
 - can use t test because shapiro.test is NS
 
-## How to do One Sample T test
+### How to do One Sample T test
 ```{r univar T, eval=FALSE, echo=TRUE}
 t.test(df$sleep_total, alternative = "two.sided",
        mu = 8)
 ```
 - Try it out, see if you can interpret results
 
-## Interpreting the One Sample T test
+### Interpreting the One Sample T test
 ```{r univar T2, eval=TRUE, echo=FALSE}
 t.test(df$sleep_total, alternative = "two.sided",
        mu = 8)
@@ -138,7 +139,7 @@ t.test(df$sleep_total, alternative = "two.sided",
   - can reject the null, accept alternative
   - sample mean 10.43, CI 9.46-11.41
 
-## What are the arguments of the t.test function?
+### What are the arguments of the t.test function?
 - x = vector of continuous numerical data
 - y= NULL - optional 2nd vector of continuous numerical data
 - alternative = c("two.sided", "less", "greater"),
@@ -159,7 +160,7 @@ table(df$vore)
 - how to test this?
   - normal, so can use t test for 2 groups
   
-## Setting up 2 group t test
+### Setting up 2 group t test
 - formula interface: outcome ~ groupvar 
 ```{r vore2, eval=F, echo=T}
 df %>% 
@@ -169,13 +170,13 @@ df %>%
 - Try it yourself
 - What do the results mean?
 
-## Results of the 2 group t test
+### Results of the 2 group t test
 ```{r vore3, eval=T, echo=F}
 df %>% 
   filter(vore %in% c("herbi", "carni")) %>% 
   t.test(formula = sleep_total ~ vore, data = .)
 ```
-## Interpreting the 2 group t test
+### Interpreting the 2 group t test
 - Welch t-test (not Student)
   - Welch does NOT assume equal variances in each group
 - p value NS
@@ -185,14 +186,14 @@ df %>%
   - 95% CI crosses 0
 - Carnivores sleep a little more, but not a lot
 
-## 2 group t test with wide data
+### 2 group t test with wide data
 - You want to compare column A with column B (data are not tidy)
 - Do mammals spend more time awake than asleep?
 ```{r wide, eval=F, echo=T}
 t.test(x = df$sleep_total, y = df$awake, data = msleep)
 ```
 
-## Results of 2 group t test with wide data
+### Results of 2 group t test with wide data
 
 ```{r wide2, eval=T, echo=T}
 t.test(x = df$sleep_total, y = df$awake, data = msleep)
@@ -206,7 +207,7 @@ t.test(x = df$sleep_total, y = df$awake, data = msleep)
   + not paired like spouse and partner
   + not paired like measurements pre and post Rx
   
-## Testing Assumptions of Student's t test  
+### Testing Assumptions of Student's t test  
 - Normality - test with Shapiro
   - If not normal, Wilcoxon >  t test
 - Equal Variances - test with Levene
@@ -228,7 +229,7 @@ result
 result
 ```
 
-## Getting results out of t.test
+### Getting results out of t.test
 
 ```{r tidy7, eval=T, echo=F}
 df %>% 
@@ -249,7 +250,7 @@ result
   - The confidence interval was from `r round(result$conf.low,2)` to `r round(result$conf.high,2)`
 
 
-## For Next Time  
+### For Next Time  
 - Skewness and Kurtosis
 - Review Normality
   - When to use Wilcoxon
