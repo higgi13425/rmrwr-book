@@ -18,7 +18,10 @@ rmd_files:
 - io98-title-holder.Rmd
 - io99-references.Rmd
 
-
-
+# notes
+# build book using Build tab
+# Go into Finder, find _book folder in Rcode/rmrwr_book
+# go on web to app.netlify.com/drop, drag and drop folder
+# claimed as https://rmrwr.netlify.app
 
 
