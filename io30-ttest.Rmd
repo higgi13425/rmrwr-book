@@ -7,10 +7,7 @@ output: html_document
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-library(tidyverse)
-library(medicaldata)
-library(broom)
+knitr::opts_chunk$set(echo = TRUE, fig.align="center")
 ```
 
 # Comparing Two Measures of Centrality
