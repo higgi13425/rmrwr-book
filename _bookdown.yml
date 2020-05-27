@@ -16,7 +16,7 @@ rmd_files:
 - io30-ttest.Rmd
 - io98-title-holder.Rmd
 - io99-references.Rmd
-new_session: true
+
 
 
 

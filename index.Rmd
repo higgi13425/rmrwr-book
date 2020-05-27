@@ -14,6 +14,13 @@ url: 'https\://rmrwr-book.netlify.com'
 cover-image: "images/data-science-workflow.png"
 ---
 
+
+```{r setup-index}
+library(tidyverse)
+library(medicaldata)
+library(broom)
+```
+
 # Preface
 Welcome to Reproducible Medical Research with R (RMWR). I hope that this book meets your needs.     
 
@@ -99,10 +106,7 @@ Try this more complicated example.
 
 :::explore
 If you want to learn more about Shiny apps, go to https://mastering-shiny.org to see an entire book on the topic.
-:::
-
-
-```{r include=FALSE}
+:::```{r include=FALSE}
 # automatically create a bib database for R packages
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown'
