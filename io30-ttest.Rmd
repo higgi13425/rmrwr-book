@@ -1,14 +1,14 @@
 ---
-title: "Making A Consort Diagram"
+title: "Using t tests"
 author: "Peter Higgins"
+date: "5/20/2020"
 output: html_document
 ---
 
-# Descriptive Data Tables
 
-In this chapter, we will focus on making the descriptive table of the participants in your study, often colloquially know as "Table One", based on its usual placement in a medical manuscript.    
-<br>
-
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
 
 # Comparing Two Measures of Centrality
 <br>
