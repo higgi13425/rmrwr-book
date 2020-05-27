@@ -30,7 +30,7 @@ Consider variables like race, sex, and recipient.cmv. Edit the code and run it a
 # insert libraries in each chunk as if independent
 library(tidyverse)
 library(medicaldata)
-library(broom)
+
 cytomegalovirus %>% 
   group_by(sex) %>% 
   summarize(mean_time2cmv = mean(time.to.cmv)) ->
@@ -58,6 +58,7 @@ That seems like a big difference for donor.cmv, between `r summ[1,2]` months and
 
 ```{r data, message= FALSE,warning=TRUE, echo=TRUE}
 library(tidyverse)
+library(medicaldata)
 data <- cytomegalovirus
 head(data)
 ```
@@ -292,7 +293,7 @@ result
   - i.e. My result is [backtick]r code here[backtick].
 - The mean brain weight for carnivores was `r result$estimate1`
 - The mean brain weight for herbivores was `r result$estimate2`
-  - The difference was `r result$estimate`
+  - The difference was `r result$estimate1-result$estimate2`
 - The t statistic for this `r result$method` was `r result$statistic`
 - The p value was `r result$p.value`
   - The confidence interval was from `r round(result$conf.low,2)` to `r round(result$conf.high,2)`
