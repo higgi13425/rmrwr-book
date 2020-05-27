@@ -23,5 +23,7 @@ rmd_files:
 # Go into Finder, find _book folder in Rcode/rmrwr_book
 # go on web to app.netlify.com/drop, drag and drop folder
 # claimed as https://rmrwr.netlify.app
+# now can go to https://app.netlify.com/sites/rmrwr/deploys
+# drag and drop to update site
 
 

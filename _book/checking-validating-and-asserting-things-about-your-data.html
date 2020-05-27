@@ -10,8 +10,8 @@
 
   <meta property="og:title" content="Chapter 6 Checking, Validating, And Asserting things about your Data | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://rmrwr-book.netlify.com" />
-  <meta property="og:image" content="https://rmrwr-book.netlify.comimages/data-science-workflow.png" />
+  <meta property="og:url" content="https://rmrwr.netlify.com" />
+  
   <meta property="og:description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
   <meta name="github-repo" content="higgi13425/rmrwr-book" />
 
@@ -19,7 +19,7 @@
   <meta name="twitter:title" content="Chapter 6 Checking, Validating, And Asserting things about your Data | Reproducible Medical Research with R" />
   
   <meta name="twitter:description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
-  <meta name="twitter:image" content="https://rmrwr-book.netlify.comimages/data-science-workflow.png" />
+  
 
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
@@ -186,7 +186,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html"><i class="fa fa-check"></i><b>4</b> Updating R, RStudio, and Your Packages</a></li>
 <li class="chapter" data-level="5" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html"><i class="fa fa-check"></i><b>5</b> Major R Updates (Where Are My Packages?)</a></li>
 <li class="chapter" data-level="6" data-path="checking-validating-and-asserting-things-about-your-data.html"><a href="checking-validating-and-asserting-things-about-your-data.html"><i class="fa fa-check"></i><b>6</b> Checking, Validating, And Asserting things about your Data</a><ul>
-<li class="chapter" data-level="6.0.1" data-path="checking-validating-and-asserting-things-about-your-data.html"><a href="checking-validating-and-asserting-things-about-your-data.html#asserting-properties-of-your-data-with-assertr"><i class="fa fa-check"></i><b>6.0.1</b> Asserting properties of your data with assertr</a></li>
+<li class="chapter" data-level="6.1" data-path="checking-validating-and-asserting-things-about-your-data.html"><a href="checking-validating-and-asserting-things-about-your-data.html#why-spend-time-validating-your-data"><i class="fa fa-check"></i><b>6.1</b> Why Spend Time Validating Your Data?</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="checking-validating-and-asserting-things-about-your-data.html"><a href="checking-validating-and-asserting-things-about-your-data.html#asserting-properties-of-your-data-with-assertr"><i class="fa fa-check"></i><b>6.1.1</b> Asserting properties of your data with assertr</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="time-series-data-with-the-tidyverts-packages.html"><a href="time-series-data-with-the-tidyverts-packages.html"><i class="fa fa-check"></i><b>7</b> Time Series data with the Tidyverts Packages</a><ul>
 <li class="chapter" data-level="7.1" data-path="time-series-data-with-the-tidyverts-packages.html"><a href="time-series-data-with-the-tidyverts-packages.html#tsibble"><i class="fa fa-check"></i><b>7.1</b> Tsibble</a></li>
@@ -262,32 +264,48 @@ Great!
 Now to start the analysis!</p>
 <p>Not so fast, cowboy!<br />
 First you need to validate your data.</p>
+<div id="why-spend-time-validating-your-data" class="section level2">
+<h2><span class="header-section-number">6.1</span> Why Spend Time Validating Your Data?</h2>
+<p>It is much more exciting to make plots, to make interactive Shiny apps of your models to share on the web, and to knit your Markdown documents to Word or PDF. <br>
+<br>
+But it turns out that most of the truly heinous, embarrassing errors in medical data analysis occur during the process of <strong>data wrangling</strong>. <br>
+<br>
+Imagine being the star of some of these sordid tales. <br>
+<br>
+After publishing a paper in JAMA in 2019, the authors share their SAS code on Github, and an interested critic noticed that they listed data for 73,000 kidney transplants in the US in one year. But someone familiar with the UNOS data knew that there are about 280,000 kidney transplants per year. During a merge step between two databases, SAS silently over-wrote much of the original data. This discovery led to a retraction of the paper and re-analysis, demonstraing a much smaller effect size. (Gander JC, Zhang X, Ross K, et al. <em>Association between dialysis facility ownership and access to kidney transplantation</em>. Retracted and replaced April 21, 2020. JAMA. 2019;322(10):957-973.) Twitter thread link here <a href="https://twitter.com/eric_weinhandl/status/1253127109830156289?s=20" class="uri">https://twitter.com/eric_weinhandl/status/1253127109830156289?s=20</a> <br>
+<br>
+After publishing a report of a randomized controlled trial in COPD in JAMA in 2018 (Aboumatar H, Naquibiddin M, Chung S, et al. <em>Effect of a Program Combining Transitional Care and Long-term Self-management Support on Outcomes of Hospitalized Patients With Chronic Obstructive Pulmonary Disease. A Randomized Clinical Trial</em>. Retracted and replaced Nov 12, 2018. JAMA. 2018;320(22):2335-2343.), the authors realized that they had miscoded the treatment arms. For their logistic regression analysis, they had to recode the treatment arms from 1 and 2 to 0 and 1. Unfortunately, they flipped the values, and interpreted their results as beneficial. When they realized that the mis-coding changed the result from beneficial to harmful, they reported it to the journal and retracted the paper. <br>
+<br>
+After publishing a report on Best Practices for In-Hospital Cardiac Arrest in JAMA Cardiology, the authors found coding errors in their data. 9 hospitals of 130 had been misclassified, changing some of their associations. (<a href="https://jamanetwork.com/journals/jama/article-abstract/2764714" class="uri">https://jamanetwork.com/journals/jama/article-abstract/2764714</a>) <br>
+<br>
+A med student analyzing a dataset for the first time uses boolean statements to categorize values. But she does not realize that this Stata dataset used “99” for missing values.</p>
 <div id="cleaning-names-with-janitor-package-to-snake_case" class="section level4">
-<h4><span class="header-section-number">6.0.0.1</span> Cleaning – names with janitor package to snake_case</h4>
+<h4><span class="header-section-number">6.1.0.1</span> Cleaning – names with janitor package to snake_case</h4>
 <div id="a-few-words-about-tidyverse-style" class="section level5">
-<h5><span class="header-section-number">6.0.0.1.1</span> A few words about tidyverse style</h5>
+<h5><span class="header-section-number">6.1.0.1.1</span> A few words about tidyverse style</h5>
 </div>
 </div>
 <div id="finding-missing-data-naniar-and-visdat-packages" class="section level4">
-<h4><span class="header-section-number">6.0.0.2</span> Finding Missing data – naniar and visdat packages</h4>
+<h4><span class="header-section-number">6.1.0.2</span> Finding Missing data – naniar and visdat packages</h4>
 </div>
 <div id="validating-data-validate-package" class="section level4">
-<h4><span class="header-section-number">6.0.0.3</span> Validating data – validate package</h4>
+<h4><span class="header-section-number">6.1.0.3</span> Validating data – validate package</h4>
 </div>
 <div id="asserting-properties-of-your-data-with-assertr" class="section level3">
-<h3><span class="header-section-number">6.0.1</span> Asserting properties of your data with assertr</h3>
+<h3><span class="header-section-number">6.1.1</span> Asserting properties of your data with assertr</h3>
 <div id="evaluating-str-glimpse" class="section level4">
-<h4><span class="header-section-number">6.0.1.1</span> Evaluating – str, glimpse</h4>
+<h4><span class="header-section-number">6.1.1.1</span> Evaluating – str, glimpse</h4>
 </div>
 <div id="exploring--skimr-package" class="section level4">
-<h4><span class="header-section-number">6.0.1.2</span> Exploring- skimr package</h4>
+<h4><span class="header-section-number">6.1.1.2</span> Exploring- skimr package</h4>
 </div>
 <div id="histograms" class="section level4">
-<h4><span class="header-section-number">6.0.1.3</span> Histograms</h4>
+<h4><span class="header-section-number">6.1.1.3</span> Histograms</h4>
 </div>
 <div id="correlations-ggally-extension-of-ggplot2-and-corrr-package" class="section level4">
-<h4><span class="header-section-number">6.0.1.4</span> Correlations – ggally extension of ggplot2, and corrr package</h4>
+<h4><span class="header-section-number">6.1.1.4</span> Correlations – ggally extension of ggplot2, and corrr package</h4>
 
+</div>
 </div>
 </div>
 </div>

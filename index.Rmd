@@ -10,8 +10,7 @@ biblio-style: apalike
 link-citations: yes
 github-repo: higgi13425/rmrwr-book
 description: "This book is for anyone in the medical field interested in learning R to analyze available health data."
-url: 'https\://rmrwr-book.netlify.com'
-cover-image: "images/data-science-workflow.png"
+url: 'https\://rmrwr.netlify.com'
 ---
 
 
