@@ -15,11 +15,6 @@ cover-image: "images/data-science-workflow.png"
 ---
 
 
-```{r setup-index}
-library(tidyverse)
-library(medicaldata)
-library(broom)
-```
 
 # Preface
 Welcome to Reproducible Medical Research with R (RMWR). I hope that this book meets your needs.     
