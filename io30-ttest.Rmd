@@ -27,6 +27,10 @@ Try out some other grouping variables in the `group_by` statement, in place of `
 Consider variables like race, sex, and recipient.cmv. Edit the code and run it again with the green arrow at the top right. <br>
 
 ```{r, warning=FALSE, message=FALSE}
+# insert libraries in each chunk as if independent
+library(tidyverse)
+library(medicaldata)
+library(broom)
 cytomegalovirus %>% 
   group_by(sex) %>% 
   summarize(mean_time2cmv = mean(time.to.cmv)) ->
@@ -67,6 +71,9 @@ head(data)
 
 
 ```{r density, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(medicaldata)
+
 data %>% 
 ggplot(mapping = aes(time.to.cmv)) +
   geom_density() +
@@ -75,6 +82,9 @@ ggplot(mapping = aes(time.to.cmv)) +
 ```
 
 ```{r histogram, echo=TRUE, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(medicaldata)
+ 
 data %>% 
 ggplot(mapping = aes(time.to.cmv)) +
   geom_histogram() +
@@ -87,6 +97,9 @@ ggplot(mapping = aes(time.to.cmv)) +
 - formally test with Shapiro-Wilk
 
 ```{r shapirowilk, echo=TRUE, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(medicaldata)
+
 data$time.to.cmv %>% 
 shapiro.test()
 ```
@@ -105,6 +118,9 @@ shapiro.test()
 - use df <- msleep
 
 ```{r shapirowilk2, echo=TRUE, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(medicaldata)
+
 df <- msleep 
 head(df$sleep_total)
 ```
@@ -112,6 +128,9 @@ head(df$sleep_total)
 
 ### Mammal sleep hours
 ```{r shapirowilk3, echo=TRUE, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(medicaldata)
+
 shapiro.test(df$sleep_total)
 ```
 - meets criteria - acceptable to consider normally distributed
@@ -125,6 +144,9 @@ shapiro.test(df$sleep_total)
 
 ### How to do One Sample T test
 ```{r univar T, eval=FALSE, echo=TRUE}
+library(tidyverse)
+library(medicaldata)
+
 t.test(df$sleep_total, alternative = "two.sided",
        mu = 8)
 ```
@@ -132,6 +154,9 @@ t.test(df$sleep_total, alternative = "two.sided",
 
 ### Interpreting the One Sample T test
 ```{r univar T2, eval=TRUE, echo=FALSE}
+library(tidyverse)
+library(medicaldata)
+
 t.test(df$sleep_total, alternative = "two.sided",
        mu = 8)
 ```
@@ -154,6 +179,9 @@ t.test(df$sleep_total, alternative = "two.sided",
 ## Fine, but what about 2 groups?
 - consider df$vore
 ```{r vore, eval=T, echo=T}
+library(tidyverse)
+library(medicaldata)
+
 table(df$vore)
 ```
 - hypothesis - herbivores need more time to get food, sleep less than carnivores
@@ -163,6 +191,9 @@ table(df$vore)
 ### Setting up 2 group t test
 - formula interface: outcome ~ groupvar 
 ```{r vore2, eval=F, echo=T}
+library(tidyverse)
+library(medicaldata)
+
 df %>% 
   filter(vore %in% c("herbi", "carni")) %>% 
   t.test(formula = sleep_total ~ vore, data = .)
@@ -172,6 +203,9 @@ df %>%
 
 ### Results of the 2 group t test
 ```{r vore3, eval=T, echo=F}
+library(tidyverse)
+library(medicaldata)
+ 
 df %>% 
   filter(vore %in% c("herbi", "carni")) %>% 
   t.test(formula = sleep_total ~ vore, data = .)
@@ -190,12 +224,18 @@ df %>%
 - You want to compare column A with column B (data are not tidy)
 - Do mammals spend more time awake than asleep?
 ```{r wide, eval=F, echo=T}
+library(tidyverse)
+library(medicaldata)
+
 t.test(x = df$sleep_total, y = df$awake, data = msleep)
 ```
 
 ### Results of 2 group t test with wide data
 
 ```{r wide2, eval=T, echo=T}
+library(tidyverse)
+library(medicaldata)
+
 t.test(x = df$sleep_total, y = df$awake, data = msleep)
 ```
 
@@ -221,6 +261,10 @@ t.test(x = df$sleep_total, y = df$awake, data = msleep)
 - Use the tidy function from the broom package
 - Do carnivores have bigger brains than insectivores?
 ```{r tidy, eval=F, echo=T}
+library(tidyverse)
+library(medicaldata)
+library(broom)
+
 df %>% 
   filter(vore %in% c("carni", "insecti")) %>% 
 t.test(formula = brainwt ~ vore, data = .) %>% 
@@ -232,6 +276,10 @@ result
 ### Getting results out of t.test
 
 ```{r tidy7, eval=T, echo=F}
+library(tidyverse)
+library(medicaldata)
+library(broom)
+
 df %>% 
   filter(vore %in% c("carni", "insecti")) %>% 
 t.test(formula = brainwt ~ vore, data = ., var.equal=TRUE) %>% 
