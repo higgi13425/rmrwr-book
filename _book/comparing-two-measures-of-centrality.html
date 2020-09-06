@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 Comparing Two Measures of Centrality | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
-  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 Comparing Two Measures of Centrality | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2020-05-26" />
+<meta name="date" content="2020-09-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="descriptive-data-tables.html"/>
-<link rel="next" href="title-holder.html"/>
+<link rel="next" href="running-r-from-the-unix-command-line.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,6 +50,7 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
@@ -166,10 +167,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html"><i class="fa fa-check"></i><b>3</b> A Tasting Menu of R</a><ul>
 <li class="chapter" data-level="3.1" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#setting-the-table"><i class="fa fa-check"></i><b>3.1</b> Setting the Table</a></li>
-<li class="chapter" data-level="3.2" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#goals-for-this-chapter-1"><i class="fa fa-check"></i><b>3.2</b> Goals for this Chapter</a></li>
+<li class="chapter" data-level="3.2" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html#goals-for-this-chapter"><i class="fa fa-check"></i><b>3.2</b> Goals for this Chapter</a></li>
 <li class="chapter" data-level="3.3" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#packages-needed-for-this-chapter"><i class="fa fa-check"></i><b>3.3</b> Packages needed for this Chapter</a></li>
-<li class="chapter" data-level="3.4" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#website-links-needed-for-this-chapter-1"><i class="fa fa-check"></i><b>3.4</b> Website links needed for this Chapter</a></li>
-<li class="chapter" data-level="3.5" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#pathway-for-this-chapter-1"><i class="fa fa-check"></i><b>3.5</b> Pathway for this Chapter</a></li>
+<li class="chapter" data-level="3.4" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html#website-links-needed-for-this-chapter"><i class="fa fa-check"></i><b>3.4</b> Website links needed for this Chapter</a></li>
+<li class="chapter" data-level="3.5" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html#pathway-for-this-chapter"><i class="fa fa-check"></i><b>3.5</b> Pathway for this Chapter</a></li>
 <li class="chapter" data-level="3.6" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#open-a-new-rmarkdown-document"><i class="fa fa-check"></i><b>3.6</b> Open a New Rmarkdown document</a></li>
 <li class="chapter" data-level="3.7" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#read-in-data-from-a-file"><i class="fa fa-check"></i><b>3.7</b> Read in Data from a file</a></li>
 <li class="chapter" data-level="3.8" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#wrangle-your-data"><i class="fa fa-check"></i><b>3.8</b> Wrangle Your Data</a></li>
@@ -235,6 +236,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.6.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#for-next-time"><i class="fa fa-check"></i><b>9.6.1</b> For Next Time</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="10" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html"><i class="fa fa-check"></i><b>10</b> Running R from the UNIX Command Line</a><ul>
+<li class="chapter" data-level="10.1" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#what-is-the-unix-command-line"><i class="fa fa-check"></i><b>10.1</b> What is the UNIX Command line?</a></li>
+<li class="chapter" data-level="10.2" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#why-run-r-from-the-command-line"><i class="fa fa-check"></i><b>10.2</b> Why run R from the command line?</a></li>
+<li class="chapter" data-level="10.3" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#how-do-you-get-started"><i class="fa fa-check"></i><b>10.3</b> How do you get started?</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#on-a-mac"><i class="fa fa-check"></i><b>10.3.1</b> On a Mac</a></li>
+<li class="chapter" data-level="10.3.2" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#on-a-windows-pc"><i class="fa fa-check"></i><b>10.3.2</b> On a Windows PC</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#the-yawning-blackness-of-the-terminal-window"><i class="fa fa-check"></i><b>10.4</b> The Yawning Blackness of the Terminal Window</a></li>
+<li class="chapter" data-level="10.5" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#where-are-we"><i class="fa fa-check"></i><b>10.5</b> Where Are We?</a></li>
+<li class="chapter" data-level="10.6" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#other-helpful-file-commands"><i class="fa fa-check"></i><b>10.6</b> Other helpful file commands</a></li>
+<li class="chapter" data-level="10.7" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#what-about-r"><i class="fa fa-check"></i><b>10.7</b> What about R?</a></li>
+<li class="chapter" data-level="10.8" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#what-about-just-a-few-lines-of-r"><i class="fa fa-check"></i><b>10.8</b> What about just a few lines of R?</a></li>
+<li class="chapter" data-level="10.9" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#running-an-r-script-from-the-terminal"><i class="fa fa-check"></i><b>10.9</b> Running an R Script from the Terminal</a></li>
+<li class="chapter" data-level="10.10" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#rendering-an-rmarkdown-file-from-the-terminal"><i class="fa fa-check"></i><b>10.10</b> Rendering an Rmarkdown file from the Terminal</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="title-holder.html"><a href="title-holder.html"><i class="fa fa-check"></i>Title holder</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -281,7 +297,7 @@ Consider variables like race, sex, and recipient.cmv. Edit the code and run it a
 <span id="cb1-10"><a href="comparing-two-measures-of-centrality.html#cb1-10"></a>summ</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 2
 ##     sex mean_time2cmv
-## * &lt;dbl&gt;         &lt;dbl&gt;
+##   &lt;dbl&gt;         &lt;dbl&gt;
 ## 1     0          13.7
 ## 2     1          12.7</code></pre>
 <p>That seems like a big difference for donor.cmv, between 13.7303333 months and 12.7441176 months. And it makes theoretical sense that having a CMV positive donor is more likely to be associated with early activation of CMV in the recipient. But is it a significant difference, one that would be very unlikely to happen by chance? That depends on things like the number of people in each group, and the standard deviation in each group. That is the kind of question you can answer with a t-test, or for particularly skewed data like hospital length of stay or medical charges, a Wilcoxon test.</p>
@@ -389,7 +405,7 @@ Consider variables like race, sex, and recipient.cmv. Edit the code and run it a
 <span id="cb7-4"><a href="comparing-two-measures-of-centrality.html#cb7-4"></a>data<span class="op">$</span>time.to.cmv <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb7-5"><a href="comparing-two-measures-of-centrality.html#cb7-5"></a><span class="kw">shapiro.test</span>()</span></code></pre></div>
 <pre><code>## 
-##  Shapiro-Wilk normality test
+## 	Shapiro-Wilk normality test
 ## 
 ## data:  .
 ## W = 0.68261, p-value = 0.0000000001762</code></pre>
@@ -431,7 +447,7 @@ Consider variables like race, sex, and recipient.cmv. Edit the code and run it a
 <span id="cb11-3"><a href="comparing-two-measures-of-centrality.html#cb11-3"></a></span>
 <span id="cb11-4"><a href="comparing-two-measures-of-centrality.html#cb11-4"></a><span class="kw">shapiro.test</span>(df<span class="op">$</span>sleep_total)</span></code></pre></div>
 <pre><code>## 
-##  Shapiro-Wilk normality test
+## 	Shapiro-Wilk normality test
 ## 
 ## data:  df$sleep_total
 ## W = 0.97973, p-value = 0.2143</code></pre>
@@ -465,7 +481,7 @@ Consider variables like race, sex, and recipient.cmv. Edit the code and run it a
 <div id="interpreting-the-one-sample-t-test" class="section level3">
 <h3><span class="header-section-number">9.2.2</span> Interpreting the One Sample T test</h3>
 <pre><code>## 
-##  One Sample t-test
+## 	One Sample t-test
 ## 
 ## data:  df$sleep_total
 ## t = 4.9822, df = 82, p-value = 0.000003437
@@ -535,7 +551,7 @@ Consider variables like race, sex, and recipient.cmv. Edit the code and run it a
 <div id="results-of-the-2-group-t-test" class="section level3">
 <h3><span class="header-section-number">9.3.2</span> Results of the 2 group t test</h3>
 <pre><code>## 
-##  Welch Two Sample t-test
+## 	Welch Two Sample t-test
 ## 
 ## data:  sleep_total by vore
 ## t = 0.63232, df = 39.31, p-value = 0.5308
@@ -581,7 +597,7 @@ Consider variables like race, sex, and recipient.cmv. Edit the code and run it a
 <span id="cb20-3"><a href="comparing-two-measures-of-centrality.html#cb20-3"></a></span>
 <span id="cb20-4"><a href="comparing-two-measures-of-centrality.html#cb20-4"></a><span class="kw">t.test</span>(<span class="dt">x =</span> df<span class="op">$</span>sleep_total, <span class="dt">y =</span> df<span class="op">$</span>awake, <span class="dt">data =</span> msleep)</span></code></pre></div>
 <pre><code>## 
-##  Welch Two Sample t-test
+## 	Welch Two Sample t-test
 ## 
 ## data:  df$sleep_total and df$awake
 ## t = -4.5353, df = 164, p-value = 0.00001106
@@ -643,12 +659,12 @@ Consider variables like race, sex, and recipient.cmv. Edit the code and run it a
 <span id="cb22-10"><a href="comparing-two-measures-of-centrality.html#cb22-10"></a>result</span></code></pre></div>
 <div id="getting-results-out-of-t.test-1" class="section level3">
 <h3><span class="header-section-number">9.5.1</span> Getting results out of t.test</h3>
-<pre><code>## # A tibble: 1 x 9
-##   estimate1 estimate2 statistic p.value parameter conf.low
-##       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-## 1    0.0793    0.0216      1.20   0.253        12  -0.0471
-## # … with 3 more variables: conf.high &lt;dbl&gt;, method &lt;chr&gt;,
-## #   alternative &lt;chr&gt;</code></pre>
+<pre><code>## # A tibble: 1 x 10
+##   estimate estimate1 estimate2 statistic p.value parameter
+##      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;
+## 1   0.0577    0.0793    0.0216      1.20   0.253        12
+## # … with 4 more variables: conf.low &lt;dbl&gt;, conf.high &lt;dbl&gt;,
+## #   method &lt;chr&gt;, alternative &lt;chr&gt;</code></pre>
 </div>
 </div>
 <div id="reporting-the-results-from-t.test-using-inline-code" class="section level2">
@@ -693,7 +709,7 @@ Consider variables like race, sex, and recipient.cmv. Edit the code and run it a
         </div>
       </div>
 <a href="descriptive-data-tables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="title-holder.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="running-r-from-the-unix-command-line.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

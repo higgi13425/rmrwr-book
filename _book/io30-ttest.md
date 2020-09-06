@@ -38,7 +38,7 @@ summ
 ```
 ## # A tibble: 2 x 2
 ##     sex mean_time2cmv
-## * <dbl>         <dbl>
+##   <dbl>         <dbl>
 ## 1     0          13.7
 ## 2     1          12.7
 ```
@@ -396,12 +396,12 @@ result
 
 
 ```
-## # A tibble: 1 x 9
-##   estimate1 estimate2 statistic p.value parameter conf.low
-##       <dbl>     <dbl>     <dbl>   <dbl>     <dbl>    <dbl>
-## 1    0.0793    0.0216      1.20   0.253        12  -0.0471
-## # … with 3 more variables: conf.high <dbl>, method <chr>,
-## #   alternative <chr>
+## # A tibble: 1 x 10
+##   estimate estimate1 estimate2 statistic p.value parameter
+##      <dbl>     <dbl>     <dbl>     <dbl>   <dbl>     <dbl>
+## 1   0.0577    0.0793    0.0216      1.20   0.253        12
+## # … with 4 more variables: conf.low <dbl>, conf.high <dbl>,
+## #   method <chr>, alternative <chr>
 ```
 ## Reporting the results from t.test using inline code
 - use backticks before and after, start with r
