@@ -379,3 +379,6 @@ dataframe -> xtabs(~ var1 + var2) -> chisq.test()
 Once you have the chisq.test, you can save it to a results object, and then extract the pieces you need to write up your results, and you can use the residuals or percent contribution to generate a plot of the results.
 
 Now you are ready to try this out on your own!
+
+
+
