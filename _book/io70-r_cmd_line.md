@@ -68,7 +68,7 @@ whoami;date
 
 ```
 ## peterhiggins
-## Sun Sep  6 17:13:07 EDT 2020
+## Sun Sep  6 17:35:17 EDT 2020
 ```
 OK, fine. This is sort of helpful. It was really important when you were on a terminal and paying by the minute for time on a mainframe back in 1969. And, on occasion, if you will need to use an entire computer cluster to run a script (or scripts) on a lot of data, you will likely have to use some of this command line knowledge. You can even schedule jobs (scripts) to run when your time is scheduled on the cluster with `cron` and `crontab`.
 <br><br>
