@@ -5,6 +5,7 @@ language:
     chapter_name: "Chapter "
 delete_merged_file: true
 new_session: yes
+output_dir: "docs"
 rmd_files:
 - index.Rmd
 - io02-getting-started.Rmd

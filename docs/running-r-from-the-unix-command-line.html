@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 10 Running R from the UNIX Command Line | Reproducible Medical Research with R</title>
+  <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 10 Running R from the UNIX Command Line | Reproducible Medical Research with R" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://rmrwr.netlify.com" />
+  
+  <meta property="og:description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
+  <meta name="github-repo" content="higgi13425/rmrwr-book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 10 Running R from the UNIX Command Line | Reproducible Medical Research with R" />
+  
+  <meta name="twitter:description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
+  
+
+<meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
+
+
+<meta name="date" content="2020-09-06" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="comparing-two-measures-of-centrality.html"/>
+<link rel="next" href="title-holder.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">RMRWR</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#who-this-book-is-for"><i class="fa fa-check"></i><b>1.1</b> Who This Book is For</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i><b>1.2</b> Prerequisites</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#the-spiral-of-success-structure"><i class="fa fa-check"></i><b>1.3</b> The Spiral of Success Structure</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#motivation-for-this-book"><i class="fa fa-check"></i><b>1.4</b> Motivation for this Book</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#the-scientific-reproducibility-crisis"><i class="fa fa-check"></i><b>1.5</b> The Scientific Reproducibility Crisis</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#what-this-book-is-not"><i class="fa fa-check"></i><b>1.6</b> What this Book is Not</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="index.html"><a href="index.html#this-book-is-not-a-statistics-text"><i class="fa fa-check"></i><b>1.6.1</b> This Book is Not A Statistics Text</a></li>
+<li class="chapter" data-level="1.6.2" data-path="index.html"><a href="index.html#this-book-does-not-provide-comprehensive-coverage-of-the-r-universe"><i class="fa fa-check"></i><b>1.6.2</b> This Book Does Not Provide Comprehensive Coverage of the R Universe</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#some-guideposts"><i class="fa fa-check"></i><b>1.7</b> Some Guideposts</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html"><i class="fa fa-check"></i><b>2</b> Getting Started and Installing Your Tools</a><ul>
+<li class="chapter" data-level="2.1" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html#goals-for-this-chapter"><i class="fa fa-check"></i><b>2.1</b> Goals for this Chapter</a></li>
+<li class="chapter" data-level="2.2" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html#website-links-needed-for-this-chapter"><i class="fa fa-check"></i><b>2.2</b> Website links needed for this Chapter</a></li>
+<li class="chapter" data-level="2.3" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html#pathway-for-this-chapter"><i class="fa fa-check"></i><b>2.3</b> Pathway for this Chapter</a></li>
+<li class="chapter" data-level="2.4" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html#installing-r-on-your-computer"><i class="fa fa-check"></i><b>2.4</b> Installing R on your Computer</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html#testing"><i class="fa fa-check"></i><b>2.4.1</b> Testing</a></li>
+<li class="chapter" data-level="2.4.2" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html#mac-install-of-r"><i class="fa fa-check"></i><b>2.4.2</b> Mac Install of R</a></li>
+<li class="chapter" data-level="2.4.3" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html#testing-r-on-the-mac"><i class="fa fa-check"></i><b>2.4.3</b> Testing R on the Mac</a></li>
+<li class="chapter" data-level="2.4.4" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html#successful-testing"><i class="fa fa-check"></i><b>2.4.4</b> Successful testing!</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html#installing-rstudio-on-your-computer"><i class="fa fa-check"></i><b>2.5</b> Installing RStudio on your Computer</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html#windows-install"><i class="fa fa-check"></i><b>2.5.1</b> Windows Install</a></li>
+<li class="chapter" data-level="2.5.2" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html#testing-windows-rstudio"><i class="fa fa-check"></i><b>2.5.2</b> Testing Windows RStudio</a></li>
+<li class="chapter" data-level="2.5.3" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html#installing-rstudio-on-the-mac"><i class="fa fa-check"></i><b>2.5.3</b> Installing RStudio on the Mac</a></li>
+<li class="chapter" data-level="2.5.4" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html#testing-the-mac-installation-of-rstudio"><i class="fa fa-check"></i><b>2.5.4</b> Testing the Mac Installation of RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html#installing-git-on-your-computer"><i class="fa fa-check"></i><b>2.6</b> Installing Git on your Computer</a></li>
+<li class="chapter" data-level="2.7" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html#getting-acquainted-with-the-rstudio-ide"><i class="fa fa-check"></i><b>2.7</b> Getting Acquainted with the RStudio IDE</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html"><i class="fa fa-check"></i><b>3</b> A Tasting Menu of R</a><ul>
+<li class="chapter" data-level="3.1" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#setting-the-table"><i class="fa fa-check"></i><b>3.1</b> Setting the Table</a></li>
+<li class="chapter" data-level="3.2" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html#goals-for-this-chapter"><i class="fa fa-check"></i><b>3.2</b> Goals for this Chapter</a></li>
+<li class="chapter" data-level="3.3" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#packages-needed-for-this-chapter"><i class="fa fa-check"></i><b>3.3</b> Packages needed for this Chapter</a></li>
+<li class="chapter" data-level="3.4" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html#website-links-needed-for-this-chapter"><i class="fa fa-check"></i><b>3.4</b> Website links needed for this Chapter</a></li>
+<li class="chapter" data-level="3.5" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html#pathway-for-this-chapter"><i class="fa fa-check"></i><b>3.5</b> Pathway for this Chapter</a></li>
+<li class="chapter" data-level="3.6" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#open-a-new-rmarkdown-document"><i class="fa fa-check"></i><b>3.6</b> Open a New Rmarkdown document</a></li>
+<li class="chapter" data-level="3.7" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#read-in-data-from-a-file"><i class="fa fa-check"></i><b>3.7</b> Read in Data from a file</a></li>
+<li class="chapter" data-level="3.8" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#wrangle-your-data"><i class="fa fa-check"></i><b>3.8</b> Wrangle Your Data</a></li>
+<li class="chapter" data-level="3.9" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#visualize-your-data"><i class="fa fa-check"></i><b>3.9</b> Visualize Your Data</a></li>
+<li class="chapter" data-level="3.10" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#publish-your-work-to-rpubs"><i class="fa fa-check"></i><b>3.10</b> Publish your work to RPubs</a></li>
+<li class="chapter" data-level="3.11" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#the-dessert-cart"><i class="fa fa-check"></i><b>3.11</b> The Dessert Cart</a><ul>
+<li class="chapter" data-level="3.11.1" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#interactive-plots"><i class="fa fa-check"></i><b>3.11.1</b> Interactive Plots</a></li>
+<li class="chapter" data-level="3.11.2" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#animated-graphics"><i class="fa fa-check"></i><b>3.11.2</b> Animated Graphics</a></li>
+<li class="chapter" data-level="3.11.3" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#a-clinical-trial-dashboard"><i class="fa fa-check"></i><b>3.11.3</b> A Clinical Trial Dashboard</a></li>
+<li class="chapter" data-level="3.11.4" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#a-shiny-app"><i class="fa fa-check"></i><b>3.11.4</b> A Shiny App</a></li>
+<li class="chapter" data-level="3.11.5" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#an-example-of-synergy-in-the-r-community"><i class="fa fa-check"></i><b>3.11.5</b> An Example of Synergy in the R Community</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html"><i class="fa fa-check"></i><b>4</b> Updating R, RStudio, and Your Packages</a></li>
+<li class="chapter" data-level="5" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html"><i class="fa fa-check"></i><b>5</b> Major R Updates (Where Are My Packages?)</a></li>
+<li class="chapter" data-level="6" data-path="checking-validating-and-asserting-things-about-your-data.html"><a href="checking-validating-and-asserting-things-about-your-data.html"><i class="fa fa-check"></i><b>6</b> Checking, Validating, And Asserting things about your Data</a><ul>
+<li class="chapter" data-level="6.1" data-path="checking-validating-and-asserting-things-about-your-data.html"><a href="checking-validating-and-asserting-things-about-your-data.html#why-spend-time-validating-your-data"><i class="fa fa-check"></i><b>6.1</b> Why Spend Time Validating Your Data?</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="checking-validating-and-asserting-things-about-your-data.html"><a href="checking-validating-and-asserting-things-about-your-data.html#asserting-properties-of-your-data-with-assertr"><i class="fa fa-check"></i><b>6.1.1</b> Asserting properties of your data with assertr</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="time-series-data-with-the-tidyverts-packages.html"><a href="time-series-data-with-the-tidyverts-packages.html"><i class="fa fa-check"></i><b>7</b> Time Series data with the Tidyverts Packages</a><ul>
+<li class="chapter" data-level="7.1" data-path="time-series-data-with-the-tidyverts-packages.html"><a href="time-series-data-with-the-tidyverts-packages.html#tsibble"><i class="fa fa-check"></i><b>7.1</b> Tsibble</a></li>
+<li class="chapter" data-level="7.2" data-path="time-series-data-with-the-tidyverts-packages.html"><a href="time-series-data-with-the-tidyverts-packages.html#fable"><i class="fa fa-check"></i><b>7.2</b> Fable</a></li>
+<li class="chapter" data-level="7.3" data-path="time-series-data-with-the-tidyverts-packages.html"><a href="time-series-data-with-the-tidyverts-packages.html#feasts"><i class="fa fa-check"></i><b>7.3</b> Feasts</a></li>
+<li class="chapter" data-level="7.4" data-path="time-series-data-with-the-tidyverts-packages.html"><a href="time-series-data-with-the-tidyverts-packages.html#slider"><i class="fa fa-check"></i><b>7.4</b> Slider</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html"><i class="fa fa-check"></i><b>8</b> Descriptive Data Tables</a><ul>
+<li class="chapter" data-level="8.1" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-table-one"><i class="fa fa-check"></i><b>8.1</b> Making Table One</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#the-tableby-function-in-the-arsenal-package"><i class="fa fa-check"></i><b>8.1.1</b> The <em>tableby</em> function in the <strong>arsenal</strong> package</a></li>
+<li class="chapter" data-level="8.1.2" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#the-gtsummary-package-with-flextable"><i class="fa fa-check"></i><b>8.1.2</b> The gtsummary package with flextable</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-an-adverse-events-table"><i class="fa fa-check"></i><b>8.2</b> Making An Adverse Events Table</a></li>
+<li class="chapter" data-level="8.3" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-a-results-table"><i class="fa fa-check"></i><b>8.3</b> Making A Results Table</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html"><i class="fa fa-check"></i><b>9</b> Comparing Two Measures of Centrality</a><ul>
+<li class="chapter" data-level="9.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#common-problem"><i class="fa fa-check"></i><b>9.1</b> Common Problem</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#how-skewed-is-too-skewed"><i class="fa fa-check"></i><b>9.1.1</b> How Skewed is Too Skewed?</a></li>
+<li class="chapter" data-level="9.1.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#visualize-the-distribution-of-data-variables-in-ggplot"><i class="fa fa-check"></i><b>9.1.2</b> Visualize the Distribution of data variables in ggplot</a></li>
+<li class="chapter" data-level="9.1.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#visualize-the-distribution-of-datalen-in-ggplot"><i class="fa fa-check"></i><b>9.1.3</b> Visualize the Distribution of data$len in ggplot</a></li>
+<li class="chapter" data-level="9.1.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-shapiro-wilk"><i class="fa fa-check"></i><b>9.1.4</b> Results of Shapiro-Wilk</a></li>
+<li class="chapter" data-level="9.1.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#try-it-yourself"><i class="fa fa-check"></i><b>9.1.5</b> Try it yourself</a></li>
+<li class="chapter" data-level="9.1.6" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#mammal-sleep-hours"><i class="fa fa-check"></i><b>9.1.6</b> Mammal sleep hours</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#one-sample-t-test"><i class="fa fa-check"></i><b>9.2</b> One Sample T test</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#how-to-do-one-sample-t-test"><i class="fa fa-check"></i><b>9.2.1</b> How to do One Sample T test</a></li>
+<li class="chapter" data-level="9.2.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#interpreting-the-one-sample-t-test"><i class="fa fa-check"></i><b>9.2.2</b> Interpreting the One Sample T test</a></li>
+<li class="chapter" data-level="9.2.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#what-are-the-arguments-of-the-t.test-function"><i class="fa fa-check"></i><b>9.2.3</b> What are the arguments of the t.test function?</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#fine-but-what-about-2-groups"><i class="fa fa-check"></i><b>9.3</b> Fine, but what about 2 groups?</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#setting-up-2-group-t-test"><i class="fa fa-check"></i><b>9.3.1</b> Setting up 2 group t test</a></li>
+<li class="chapter" data-level="9.3.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-the-2-group-t-test"><i class="fa fa-check"></i><b>9.3.2</b> Results of the 2 group t test</a></li>
+<li class="chapter" data-level="9.3.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#interpreting-the-2-group-t-test"><i class="fa fa-check"></i><b>9.3.3</b> Interpreting the 2 group t test</a></li>
+<li class="chapter" data-level="9.3.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#group-t-test-with-wide-data"><i class="fa fa-check"></i><b>9.3.4</b> 2 group t test with wide data</a></li>
+<li class="chapter" data-level="9.3.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-2-group-t-test-with-wide-data"><i class="fa fa-check"></i><b>9.3.5</b> Results of 2 group t test with wide data</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#assumptions-of-students-t-test"><i class="fa fa-check"></i><b>9.4</b> 3 Assumptions of Student’s t test</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#testing-assumptions-of-students-t-test"><i class="fa fa-check"></i><b>9.4.1</b> Testing Assumptions of Student’s t test</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#getting-results-out-of-t.test"><i class="fa fa-check"></i><b>9.5</b> Getting results out of t.test</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#getting-results-out-of-t.test-1"><i class="fa fa-check"></i><b>9.5.1</b> Getting results out of t.test</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#reporting-the-results-from-t.test-using-inline-code"><i class="fa fa-check"></i><b>9.6</b> Reporting the results from t.test using inline code</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#for-next-time"><i class="fa fa-check"></i><b>9.6.1</b> For Next Time</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html"><i class="fa fa-check"></i><b>10</b> Running R from the UNIX Command Line</a><ul>
+<li class="chapter" data-level="10.1" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#what-is-the-unix-command-line"><i class="fa fa-check"></i><b>10.1</b> What is the UNIX Command line?</a></li>
+<li class="chapter" data-level="10.2" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#why-run-r-from-the-command-line"><i class="fa fa-check"></i><b>10.2</b> Why run R from the command line?</a></li>
+<li class="chapter" data-level="10.3" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#how-do-you-get-started"><i class="fa fa-check"></i><b>10.3</b> How do you get started?</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#on-a-mac"><i class="fa fa-check"></i><b>10.3.1</b> On a Mac</a></li>
+<li class="chapter" data-level="10.3.2" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#on-a-windows-pc"><i class="fa fa-check"></i><b>10.3.2</b> On a Windows PC</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#the-yawning-blackness-of-the-terminal-window"><i class="fa fa-check"></i><b>10.4</b> The Yawning Blackness of the Terminal Window</a></li>
+<li class="chapter" data-level="10.5" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#where-are-we"><i class="fa fa-check"></i><b>10.5</b> Where Are We?</a></li>
+<li class="chapter" data-level="10.6" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#other-helpful-file-commands"><i class="fa fa-check"></i><b>10.6</b> Other helpful file commands</a></li>
+<li class="chapter" data-level="10.7" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#what-about-r"><i class="fa fa-check"></i><b>10.7</b> What about R?</a></li>
+<li class="chapter" data-level="10.8" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#what-about-just-a-few-lines-of-r"><i class="fa fa-check"></i><b>10.8</b> What about just a few lines of R?</a></li>
+<li class="chapter" data-level="10.9" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#running-an-r-script-from-the-terminal"><i class="fa fa-check"></i><b>10.9</b> Running an R Script from the Terminal</a></li>
+<li class="chapter" data-level="10.10" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#rendering-an-rmarkdown-file-from-the-terminal"><i class="fa fa-check"></i><b>10.10</b> Rendering an Rmarkdown file from the Terminal</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="title-holder.html"><a href="title-holder.html"><i class="fa fa-check"></i>Title holder</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Reproducible Medical Research with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="running-r-from-the-unix-command-line" class="section level1">
+<h1><span class="header-section-number">Chapter 10</span> Running R from the UNIX Command Line</h1>
+<div id="what-is-the-unix-command-line" class="section level2">
+<h2><span class="header-section-number">10.1</span> What is the UNIX Command line?</h2>
+<p>The command line is a simple Terminal window with a prompt at which you can type commands, And do primitive but powerful things to your files. The UNIX computing environment was developed in the 1960s, and is still beloved and fetishized by brogrammers, who believe you are not truly a programmmer if you can’t code from the command line. This is silly.
+<br><br>
+The major attraction to UNIX in the 1960s is that it was much better than punch cards. Which isn’t saying much. We have had 60 years of software advancement and user interface improvements, so we really should not have to put up with the inherent user hostility of the UNIX environment.
+<br><br>
+UNIX is an early operating system, which is built around a ‘kernel’ which executes operating system commands, and a ‘shell’ which interprets your commands and sends them to the kernel for execution. The most common shell these days is named ‘bash’, which is a silly recursive brogrammer joke. You will sometimes see references to shell scripts or shell or bash programming. These are the same thing as command line programming.
+<br><br>
+UNIX is a common under-the-hood language across many computers today, as the Apple iOS is built on top of UNIX, and the various versions of the LinuxOS are built on a UNIX-like kernel, with a similar command shell.
+<br><br>
+Running R from the command line is a bit like spending a day tuning your car’s engine by yourself. There is a case to be made that this will improve the efficiency and performance of your car, but it is also usually more efficient to pay someone else to do it, unless you are a car expert with a lot of free time.</p>
+</div>
+<div id="why-run-r-from-the-command-line" class="section level2">
+<h2><span class="header-section-number">10.2</span> Why run R from the command line?</h2>
+<p>You can run R from the command line. It has none of the bells and whistles, nor any of the user conveniences of the RStudio Interactive Developer Environment (IDE). But it is how R was originally expected to be used when it was developed back in 2000 in New Zealand.
+<br><br>
+Running R from the command line allows you to do powerful things, like process multiple files at once, which can be handy when you have multiple files of sequencing data from distinct observations, or you have a multistep data wrangling pipeline with several slow steps. For many years, this was the only way to easily apply code across multiple files to build a complex data pipeline.
+<br><br>
+This is much less true today, with tools to handle file paths like the {here} and {fs} packages, and the {drake} package to manage multi-step data pipelines (similar to <em>make</em>). But some labs have been doing things at the command line for years, and find it hard to change.</p>
+</div>
+<div id="how-do-you-get-started" class="section level2">
+<h2><span class="header-section-number">10.3</span> How do you get started?</h2>
+<p>First, you need to open a terminal window.
+And to do that, you need to find it. This is akin to getting under the hood of a car, and computer makers don’t exactly encourage it.</p>
+<div id="on-a-mac" class="section level3">
+<h3><span class="header-section-number">10.3.1</span> On a Mac</h3>
+<ul>
+<li>Go to Finder/Applications/Utilities/Terminal</li>
+</ul>
+</div>
+<div id="on-a-windows-pc" class="section level3">
+<h3><span class="header-section-number">10.3.2</span> On a Windows PC</h3>
+<ul>
+<li>Go to Applications/Terminal</li>
+</ul>
+</div>
+</div>
+<div id="the-yawning-blackness-of-the-terminal-window" class="section level2">
+<h2><span class="header-section-number">10.4</span> The Yawning Blackness of the Terminal Window</h2>
+<p>So, you have managed to open a terminal window, which has a standard UNIX prompt, ending in something like <code>%</code> or <code>$</code>. Not terribly helpful, is it? The bash shell is waiting for you to enter a command. <br>
+No user interface for you!
+<br><br></p>
+<div class="tryit">
+<p>Let’s start with a simple one, which can’t do any harm. Run the command below:<br>
+<code>whoami</code></p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="running-r-from-the-unix-command-line.html#cb24-1"></a><span class="fu">whoami</span></span></code></pre></div>
+<pre><code>## peterhiggins</code></pre>
+</div>
+<p>Remember that UNIX started out as an operating system for terminals, and knowing who was logged in was a helpful thing.
+<br><br>
+You can string together two commands with a semicolon between them. <br></p>
+<div class="tryit">
+<p>Try the following:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="running-r-from-the-unix-command-line.html#cb26-1"></a><span class="fu">whoami</span><span class="kw">;</span><span class="fu">date</span></span></code></pre></div>
+<pre><code>## peterhiggins
+## Sun Sep  6 18:51:13 EDT 2020</code></pre>
+</div>
+<p>OK, fine. This is sort of helpful. It was really important when you were on a terminal and paying by the minute for time on a mainframe back in 1969. And, on occasion, if you will need to use an entire computer cluster to run a script (or scripts) on a lot of data, you will likely have to use some of this command line knowledge. You can even schedule jobs (scripts) to run when your time is scheduled on the cluster with <code>cron</code> and <code>crontab</code>.
+<br><br>
+At this point, it would be helpful to open a window with your Documents folder, and keep it side by side with the window in which you are reading this e-book. We will start working with files and directories, and it is helpful to see changes in your file/folder structure in real time. As we run commands in the bash shell, check them against what you see in the folder window. You may find that some files (dotfiles, starting with a period) are hidden from the user to prevent problems that occur when these are deleted.
+<br><br></p>
+</div>
+<div id="where-are-we" class="section level2">
+<h2><span class="header-section-number">10.5</span> Where Are We?</h2>
+<p>OK, let’s start looking at files and directories. Start with the <code>pwd</code> command, which does <strong>not</strong> stand for password, but for <code>print working directory</code>.<br></p>
+<div class="tryit">
+<p>Run the code below in your Terminal window.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="running-r-from-the-unix-command-line.html#cb28-1"></a><span class="bu">pwd</span></span></code></pre></div>
+<pre><code>## /Users/peterhiggins/Documents/RCode/rmrwr-book</code></pre>
+</div>
+<p>You can see the full path to your current directory. This can be a bit obscure if you are just looking at your folder structure, particularly at the beginning of the path. Fortunately, the {here} package handles a lot of this for you when you are working in Rstudio projects. <br>
+We think of the directory as a tree, with a root - in this case, <code>Users</code>, and various branches as you build out folders and subfolders.<br>
+We can move up and down the folders of the directory paths with the <code>cd</code> command, for <code>change directory</code>.
+<br><br></p>
+<div class="tryit">
+<p>Try this command in your Terminal Window, and see if you can figure out what it does.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb30-1"><a href="running-r-from-the-unix-command-line.html#cb30-1"></a><span class="bu">cd</span> ..</span></code></pre></div>
+</div>
+<p>It changes the directory <code>up</code> one level closer to the root directory. It is straightforward to go up the directory tree, as each folder only has one <code>parent</code>. But it is tricky to go down the directory tree, as there are many possible branches/children, and you do not inherently know the names of these branches. We need to list the contents of your current directory with <code>ls</code> to know what is there.
+:::tryit
+Try the <code>ls</code> command in your Terminal window</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb31-1"><a href="running-r-from-the-unix-command-line.html#cb31-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/<span class="kw">;</span></span>
+<span id="cb31-2"><a href="running-r-from-the-unix-command-line.html#cb31-2"></a><span class="fu">ls</span></span></code></pre></div>
+<pre><code>## 2020-Jun-05 AGA IMIBD meeting notest.docx
+## 2021 AGA Invited Speaker Session Basic Hybrid Example.pdf
+## A is for Allspice.2.0.docx
+## A is for Allspice.docx
+## ABT263_HIO_report_toWord.docx
+## AGA IMIBD
+## AGA IMIBD Webinar Outline.docx
+## AMAG DDW Clear draft_PDRH comments.docx
+## APG1244_Milestone_report.docx
+## A_Woodward_Score Sheet_PDRH.docx
+## Accounts and Access (1) (1).docx
+## Advice for participants in webinars.docx
+## Animation of NSAID.pptx
+## BKochar_Frailty.pdf
+## BM recommendation.docx
+## Beginners_GuideToR.pdf
+## Biosketch for K.pptx
+## Biosketch_2020_Higgins_ClinResIBD_biosketch.doc
+## Brazil.ItineraryNov2015.docx
+## Butter BCS Chicken.docx
+## CAS.K.candidate.background_SB_PDRH.docx
+## CAS.T32.Project.Description-JS.docx
+## CAS.career.goals.obj.development.training_PDRH.docx
+## CC360_The Risk of SARS.R1.docx
+## CC360_The Risk of SARS.docx
+## CCF IBD Webcast 2020 Draft Deck_For Review.pptx
+## CCFA EIC Candidate Interview Questions (candidates) jobin[1].doc
+## CDC_proposal1.1.docx
+## CLARE STOCKS.docx
+## COVID Trials Feasibility
+## CaltechCampus Tour &amp; Information Session.webarchive
+## Cancel Appt Epic.ppt
+## Causal.png
+## CellDeath_DDW_2021_ISS.pdf
+## Chu RPG Review_PDRH.docx
+## Clare Investment Summary.docx
+## Coursera_Programming in R Notes.docx
+## CoverLetterPlus.pptx
+## Crash&amp;Burn_ScriptV2_100318 copy.pdf
+## DataCamp Courses by Topic.docx
+## DeEscalationACG2016.pptx
+## Demographics.pdf
+## DrHiggins IBD Data Request.xlsx
+## Draft Postop IBD Surgery Care Protocols v2_SERedit.docx
+## ECCO 2016 Amsterdam Schedule.docx
+## ECCO 2019 UC PRO SS Abstract D1f_JP_UA_YO_AM_PDRH.docx
+## ECCO2016Lycera30937.pptx
+## Effect of medications on the recurrence of cancer in IBD patients.docx
+## Electrical engineering interview questions.docx
+## FDAtofaResponse.docx
+## FFMI Kickstart-FinalReport 5-20-16-LJ.docx
+## FITBITProtocol_28NOV2016_AbbVie.docx
+## FITBITProtocol_4DEC2016_AbbVie.docx
+## FMT_DDW_2021_ISS.pdf
+## FibrosisIBDCedars2016.pptx
+## Figures-KC-JAMA.pptx
+## Finance and Retirement Plans.docx
+## Financial Priorities.docx
+## Garmin Notes.docx
+## General thoughts about query letters.docx
+## GitHub
+## Glover_RPG_Review_PDRH.docx
+## GoToMeeting Chats
+## GradPartyHigginsInvites.xlsx
+## HPI-5016 IBD Patient Contact Info.xlsx
+## HS movie.docx
+## Higgins AGA Webinar Slides.pptx
+## Higgins New IBD.pptx
+## Higgins Refractory Proctitis.pptx
+## Higgins biosketch2015KRao.doc
+## Higgins biosketch2016KRao.doc
+## HigginsACGMidwest2019_PerioperativeIBD.pptx
+## Higgins_LOS_IBDBiobank_Shah_Nusrat_2019.docx
+## Higgins_UM_CME_Pregnancy in IBD.pptx
+## How To Log in to IBD Server.docx
+## How To Log in to RStudio Server for HigginsLab.docx
+## How To Log in to RStudio Server for Shiny.docx
+## IBD 2020 - Honorarium reimbursement Form.docx
+## IBD Biobank Cryostor.pptx
+## IBD Clinical Trials for MDsDearborn2017.pptx
+## IBD Insurance Pilot Results.docx
+## IBD Insurance Survey for CCFA Partners Existing.docx
+## IBD Journal Club 13Feb2017.docx
+## IBD Journal Club July 11.docx
+## IBD Plexus meeting 21 Sep 2015 notes.docx
+## IBD School 322 Script.docx
+## IBD School 324 Script.docx
+## IBD School 325 Script.docx
+## IBD and biologics tweets.docx
+## IBD inbox coverage.docx
+## IBDInsuranceSurvey3.docx
+## IBDMentoringConferenceCall4AbstractsPH.docx
+## IBD_Deescalation_Apr_2019_PDRH.docx
+## IBDforLansing2017.pptx
+## IMG_0006.jpg
+## IMG_0008.jpg
+## IMG_1523st.jpg
+## IMIBD Councilors 2020-21.docx
+## IMIBD Partners insurance 2020DDW.pptx
+## JAK_DDW_2021_ISS.pdf
+## JAMA_KC_Second JAMA.docx
+## JAMA_Review_on_CD_Revisions_Tracked_Changes with edits_PDRH.docx
+## JB_V1 Career Goals and Objectives 7.8.2020_PDRH.docx
+## JB_V2 Candidate’s Background 7.7.2020_PDRH.docx
+## JDix_Study_update.docx
+## K Award Institutional Letter of Commitment.pptx
+## K Candidate Section.pptx
+## K105_Melmed_PROs in Practice_MB_bb_JLS.pptx
+## K23 Aims - Shirley Cohen-Mekelburg 11.14.19.docx
+## K23_morph_measurements_MockupManuscript_21JAN2019.docx
+## Learning R discussion Jeremy Louissaint.docx
+## Lin_Reviewer Score_PDRH.docx
+## Log in to IBD Server.docx
+## MIM-TESRIC PROTOCOL_Higgins_14Apr2020.docx
+## MIM-TESRIC PROTOCOL_Higgins_26Aug2020.docx
+## Managment of CD.pptx
+## Manuscript v1.docx
+## Manuscript v2.PDRH.docx
+## McDonald, Nancy.pdf
+## Megan McLeod Rec Letter Residency.docx
+## MentoringAgendaDraftPH.docx
+## Meta analysis TB vs CD version 3.5.docx
+## Michigan Medicine Gastroenterology Social Media Initiative.docx
+## Michigan Medicine Model for COVID-19 Clinical Trial Oversight DRAFT (KSB 04.17.20)-AL-PDRH.docx
+## Microsoft User Data
+## MultidisciplinaryIBDClinicPHv2.docx
+## NordicTrackTC9iTreadmillManual.pdf
+## Oct2019payPDRH.PDF
+## Odd college lists.docx
+## PHcv2019.docx
+## PHcv2020.docx
+## PRO agenda videos VINDICO.docx
+## PRO letter.docx
+## PS_K grant aims 6-25_PDRH.docx
+## PTM LOS From PDRH.docx
+## PTM LOS From PDRH.pdf
+## Pearson 5 Notes.docx
+## Personal statement version 3!.docx
+## Pitch Letter - S is for Saffron.docx
+## Poppy Eulogy backup.docx
+## Poppy Eulogy.docx
+## Possible Eastern College Tour.docx
+## Powerpoint
+## PredictingIBD_DDW_2021_ISS.html
+## PredictingIBD_DDW_2021_ISS.pdf
+## Purdue Disclosure Form_Higgins.docx
+## Question 16.docx
+## RCode
+## Ramp up clinical research_PH.xlsx
+## Ramping up human subject research - MM 6-1-20 _KDA_PDRH_suggestions.docx
+## Recordings
+## Review Criteria for COVID Clinical Trials.docx
+## Review guidelines_2017.docx
+## Roasted Salted Cashews.docx
+## S is for Saffron 3.0.docx
+## S is for Saffron 3.1.docx
+## S is for Saffron 3.2.docx
+## S is for Saffron.2.0.docx
+## SEAN STOCKS.docx
+## SIG_Template_IBD Program_FINAL.docx
+## Sean Common App academic honors list.docx
+## Sean Common App activities list.docx
+## Sean Higgins Bordogni.mp4
+## Sean Higgins Brag Sheet.docx
+## Sean Investment Summary.docx
+## Sean Resume Tabular VBorder.docx
+## Sean Resume Tabular.docx
+## Sean Resume.docx
+## Sean Summer Priorities 2016.docx
+## SecureIBD.pptx
+## ShareRmd.html
+## Sherman Prize Nominee Questions.docx
+## Shoreline West Tour Information.docx
+## Short PA slides.pptx
+## Signing Clinical Research Infusion Orders.pdf
+## SingleCell_DDW_2021_ISS.pdf
+## Source Code PT1.docx
+## Stelara paper.docx
+## T32_current_text_14June2019.docx
+## TOPPIC ML draft v5SCM_YL_AKW_PDRH.docx
+## TabaCrohn IBD J club.docx
+## Tables.docx
+## Takeda_IBD School Videos_Submission.pdf
+## Task List 2020-2.docx
+## Task List 2020.docx
+## Testing signatures with Adobe.pdf
+## The Risk of SARS.R1.Markup.docx
+## Tidymodels.docx
+## Tofa in ICI Figure Legends_Final Draft_V2.docx
+## Tofa inpatient induction Protocol_02NOV2018_PHforEdits.docx
+## Toffee Separation Tips.docx
+## UCRx_DDW_2021_ISS.pdf
+## UC_protocol_comments_2020.docx
+## UM IBD Clinical Trials IBD referral form.docx
+## UPA_U_ACHIEVE 1st draft_PDRH.docx
+## VINDICO_PRO.pptx
+## VideoVisitSchedulingQuickApptsforProviders.pdf
+## VirtualPtEdMar2020.v2.pdf
+## WebEx
+## Zoom
+## Zwift
+## Zwift-Gift-Card.pdf
+## aga institute council july 2020 meeting.pdf
+## biomakers_fibrosisPDRH.docx
+## epic cancel_reschedule appointments.ppt
+## epic schedule viewing_close.ppt
+## escalator.html
+## fellow graduation 2020.docx
+## hexStickers.jpg
+## iBike Rides
+## learnr app diagram.jpg
+## learnr app diagram.pptx
+## letter Lowrimore.docx
+## mockstudy manuscript draft.docx
+## nejm1966_beecher_ethics.pdf
+## pdrh_IBD_email.xlsx
+## personal statement fellowship_PDRH.docx
+## peterhiggins.jpg
+## seq-6.pdf
+## signature.docx
+## signature.fld
+## signature.html
+## signature.pdf
+## signature.png
+## stiff_bcl.R
+## submitJanssen_IBD School Videos_12Jul2018.pdf
+## tidyr_pivot.png
+## tidyr_pivot.xcf
+## ucla1.jpg
+## wga_min20.pdf
+## ~$T Review Higgins.docx
+## ~$sk List 2020.docx
+## ~$tter BCS Chicken.docx</code></pre>
+<p>:::</p>
+<p>You will see a listing of all files and folders in the current directory. You can get more details by adding the option (sometimes called a <code>flag</code>) <code>-l</code></p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="running-r-from-the-unix-command-line.html#cb33-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/<span class="kw">;</span></span>
+<span id="cb33-2"><a href="running-r-from-the-unix-command-line.html#cb33-2"></a><span class="fu">ls</span> -l</span></code></pre></div>
+<p>The full listing will give you more details, including read &amp; write permissions, file size, date last saved, etc. <br>
+Many commands have options, or flags, that modify what they do.
+<br><br>
+Find a folder inside of your Documents folder. We will now go <code>down</code> a level in the directory tree. In my case, I will use the <code>Powerpoint</code> folder. <br>
+In your Terminal window:</p>
+<div class="tryit">
+<ul>
+<li>change the directory to the Powerpoint directory</li>
+<li>list the contents of this folder</li>
+</ul>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb34-1"><a href="running-r-from-the-unix-command-line.html#cb34-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/Powerpoint<span class="kw">;</span></span>
+<span id="cb34-2"><a href="running-r-from-the-unix-command-line.html#cb34-2"></a><span class="fu">ls</span></span></code></pre></div>
+<pre><code>## 2016IBDClinTrialsforMDsDearborn.pptx
+## 2016IntegratedDeckorMDsGB.pptx
+## 2019 SCSG GI Symposium IBD SoA  -  Read-Only.pptx
+## BE LGD Dearborn 2016.04.12.pptx
+## Getting Started in RStudio.pptx
+## Higgins Microbiota for IBD Patient Ed.pptx
+## HigginsDec2018AJG_SmokingStatus.pptx
+## IBDUpdate.pptx
+## Integrated Slide Deck Dearborn 2016.04.12.pptx
+## MER Stress Management Dearborn 4-14.pptx
+## MichiganMedicine-IBDTemplate.potx
+## PDRH RCAR 2020.pptx
+## PennThioMTX2017Higgins.pptx
+## Pregnancy in IBD.pptx
+## Regenbogen CRS for GI CME Course2016.pptx
+## Senior Slide Show.pptx
+## ThomsonRectalStumpComplicationsIBD2_13.pptx
+## UMHS Talk- Moving Beyond AntiTNF 4-2016 FINAL v2.pptx
+## VirtualPtEdMar2020.v2.pptx
+## Writers Room.pptx</code></pre>
+</div>
+<p>Great!<br>
+You moved to a new directory and listed it.<br>
+Now we will get fancy, and make a new directory within this directory with the <code>mkdir</code> command.<br></p>
+<div class="tryit">
+<p>Try this in your Terminal window:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="running-r-from-the-unix-command-line.html#cb36-1"></a><span class="bu">pwd</span><span class="kw">;</span></span>
+<span id="cb36-2"><a href="running-r-from-the-unix-command-line.html#cb36-2"></a><span class="fu">mkdir</span> new_files<span class="kw">;</span></span>
+<span id="cb36-3"><a href="running-r-from-the-unix-command-line.html#cb36-3"></a><span class="fu">ls</span></span></code></pre></div>
+</div>
+<p>You have now made a new directory (folder) within the previous directory, named <code>new_files</code>. Verify this in your Documents folder.<br>
+You can now change to this directory <br>
+and list the contents (it should be empty).<br></p>
+<div class="tryit">
+<p>Try this out in your Terminal Window (<strong>note</strong> edit the <code>cd</code> command to your own directory path).</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb37-1"><a href="running-r-from-the-unix-command-line.html#cb37-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/Powerpoint/new_files<span class="kw">;</span></span>
+<span id="cb37-2"><a href="running-r-from-the-unix-command-line.html#cb37-2"></a><span class="fu">ls</span></span></code></pre></div>
+</div>
+<p>Note that you can abbreviate the current directory with <code>.</code>, so that you could have also used <code>cd ./new_files</code>
+<br><br></p>
+<p>You can create a new (empty) file in this directory with the <code>touch</code> command.
+Sometimes you need to create a new file, then write data to it.</p>
+<div class="tryit">
+<p>Try this out</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb38-1"><a href="running-r-from-the-unix-command-line.html#cb38-1"></a><span class="fu">touch</span> file_name<span class="kw">;</span></span>
+<span id="cb38-2"><a href="running-r-from-the-unix-command-line.html#cb38-2"></a><span class="fu">ls</span></span></code></pre></div>
+</div>
+<p>You can also create a file with data inside it with the <code>cat &gt;</code> command.</p>
+<div class="tryit">
+<p>Type in the following lines into your Terminal window. When complete, type control-D to be done and return to the Terminal prompt.
+<code>cat</code> stands for concatenate.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb39-1"><a href="running-r-from-the-unix-command-line.html#cb39-1"></a><span class="fu">cat</span> <span class="op">&gt;</span> file2.txt</span>
+<span id="cb39-2"><a href="running-r-from-the-unix-command-line.html#cb39-2"></a><span class="ex">cat1</span></span>
+<span id="cb39-3"><a href="running-r-from-the-unix-command-line.html#cb39-3"></a><span class="ex">cat2</span></span>
+<span id="cb39-4"><a href="running-r-from-the-unix-command-line.html#cb39-4"></a><span class="ex">cat3</span></span></code></pre></div>
+</div>
+<p>Now you can list the contents of this file with the <code>cat</code> command below.</p>
+<div class="tryit">
+<p>Give this a try</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="running-r-from-the-unix-command-line.html#cb40-1"></a><span class="fu">cat</span> file2.txt</span></code></pre></div>
+</div>
+<p>You can also list the directory of your <code>new_files</code> folder with ls to see the new folder contents.</p>
+<div class="tryit">
+<p>Try this</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb41-1"><a href="running-r-from-the-unix-command-line.html#cb41-1"></a><span class="fu">ls</span></span></code></pre></div>
+</div>
+<p>OK, now we are done with the file <code>file2.txt</code> and the directory <code>new_files</code>.
+Let’s get rid of them with <code>rm</code> (for removing files) and <code>rmdir</code> for removing directories. <br>
+In order, we will
+- Make sure we are in the right directory
+- remove the file with <code>rm file2.txt</code>
+- go up one level of the directory with <code>cd ..</code>
+- remove the directory with <code>rmdir new_files</code></p>
+<div class="tryit">
+<p>Give this a try</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb42-1"><a href="running-r-from-the-unix-command-line.html#cb42-1"></a><span class="bu">pwd</span><span class="kw">;</span></span>
+<span id="cb42-2"><a href="running-r-from-the-unix-command-line.html#cb42-2"></a><span class="fu">rm</span> file2.txt<span class="kw">;</span></span>
+<span id="cb42-3"><a href="running-r-from-the-unix-command-line.html#cb42-3"></a><span class="bu">cd</span> ..<span class="kw">;</span></span>
+<span id="cb42-4"><a href="running-r-from-the-unix-command-line.html#cb42-4"></a><span class="fu">rmdir</span> new_files</span></code></pre></div>
+</div>
+<p>Verify all of this in your Documents window.<br>
+This is great. But you can imagine a situation in which you mistakenly <code>rm</code> a file (or directory) that you actually needed. Unlike your usual user interface, when a file is removed at the command line, it is gone. It is not in the trash folder. It is gone. There is something to be said for modern user interfaces, which are built for humans, who occasionally make mistakes. Sometimes we do want files or folders back.</p>
+</div>
+<div id="other-helpful-file-commands" class="section level2">
+<h2><span class="header-section-number">10.6</span> Other helpful file commands</h2>
+<p>Here are some file commands worth knowing</p>
+<ul>
+<li><code>cat filename</code> - to print out whole file to your monitor</li>
+<li><code>less filename</code> - to print out the first page of a file, and you can scroll through each page one at a time</li>
+<li><code>head filename</code> - print first 10 lines of a file</li>
+<li><code>tail filename</code> - print last 10 lines of a file</li>
+<li><code>cp file1 file2</code> - copy file1 to file2</li>
+<li><code>mv file1.txt file.2.txt file3.txt new_folder</code> - move 3 files to a new folder</li>
+</ul>
+</div>
+<div id="what-about-r" class="section level2">
+<h2><span class="header-section-number">10.7</span> What about R?</h2>
+<p>So now you can get around directories, and find your files in the Terminal window, but you really want to run R.<br>
+You can launch an R session from the Terminal Window (if you have R installed on your computer) by typing the letter <code>R</code> at the Terminal prompt</p>
+<div class="tryit">
+<p>Launch R</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb43-1"><a href="running-r-from-the-unix-command-line.html#cb43-1"></a><span class="ex">R</span></span></code></pre></div>
+</div>
+<p>You get the usual R intro, including version number, and the <code>R&gt;</code> prompt.<br>
+Now you can run R in interactive mode with available datasets, or your own datasets.<br></p>
+<div class="tryit">
+<p>Try a few simple commands with the mtcars dataset.<br>
+Give the examples below a try.<br></p>
+<p>You can use <code>q()</code> to quit back to the terminal (and reply “n” to <strong>not</strong> save the workplace image).</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="running-r-from-the-unix-command-line.html#cb44-1"></a><span class="kw">head</span>(mtcars)</span></code></pre></div>
+<pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0
+##                   gear carb
+## Mazda RX4            4    4
+## Mazda RX4 Wag        4    4
+## Datsun 710           4    1
+## Hornet 4 Drive       3    1
+## Hornet Sportabout    3    2
+## Valiant              3    1</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="running-r-from-the-unix-command-line.html#cb46-1"></a>mtcars <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb46-2"><a href="running-r-from-the-unix-command-line.html#cb46-2"></a><span class="st">  </span><span class="kw">filter</span>(mpg <span class="op">&gt;</span><span class="st"> </span><span class="dv">25</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb46-3"><a href="running-r-from-the-unix-command-line.html#cb46-3"></a><span class="st">  </span><span class="kw">select</span>(<span class="kw">starts_with</span>(<span class="st">&#39;m&#39;</span>)<span class="op">|</span><span class="kw">starts_with</span>(<span class="st">&#39;c&#39;</span>))</span></code></pre></div>
+<pre><code>##                 mpg cyl carb
+## Fiat 128       32.4   4    1
+## Honda Civic    30.4   4    2
+## Toyota Corolla 33.9   4    1
+## Fiat X1-9      27.3   4    1
+## Porsche 914-2  26.0   4    2
+## Lotus Europa   30.4   4    2</code></pre>
+</div>
+</div>
+<div id="what-about-just-a-few-lines-of-r" class="section level2">
+<h2><span class="header-section-number">10.8</span> What about just a few lines of R?</h2>
+<p>Sometimes you will want to call R, run some code, and be done with R.<br>
+You can call R, run a few lines, and quit in one go.<br>
+Just add the flag <code>-e</code> (for <em>evaluate</em>) to the call to R,<br>
+and put the R commands in quotes.<br></p>
+<div class="tryit">
+<p>Try the example below
+(<strong>note</strong> that this will not work if you are still in R - be sure you are back in the terminal with the <code>%</code> or <code>$</code> prompt)</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb48-1"><a href="running-r-from-the-unix-command-line.html#cb48-1"></a><span class="ex">R</span> -e <span class="st">&quot;head(mtcars)&quot;</span></span></code></pre></div>
+</div>
+<p>or this example - note that single or double quotes does not matter - as long as they match.</p>
+<div class="tryit">
+<p>Try this</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb49-1"><a href="running-r-from-the-unix-command-line.html#cb49-1"></a><span class="ex">R</span> -e <span class="st">&#39;install(palmerpenguins)&#39;</span></span></code></pre></div>
+</div>
+<p>You can also string together several commands with the semicolon between them.</p>
+<div class="tryit">
+<p>Try the example below.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb50-1"><a href="running-r-from-the-unix-command-line.html#cb50-1"></a><span class="ex">R</span> -e <span class="st">&#39;library(palmerpenguins);data(penguins);tail(penguins)&#39;</span></span></code></pre></div>
+</div>
+</div>
+<div id="running-an-r-script-from-the-terminal" class="section level2">
+<h2><span class="header-section-number">10.9</span> Running an R Script from the Terminal</h2>
+<p>Now we are stepping up a level - you have an R script that you have carefully created and saved as the <code>myscript.R</code> file. How do you run this from the Terminal?<br>
+This is easy - just call the <code>Rscript</code> command with your file name.</p>
+<div class="tryit">
+<p>Pick out a short R file you have written, make sure you are in the right directory where the file is, and use it as in the example below.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb51-1"><a href="running-r-from-the-unix-command-line.html#cb51-1"></a><span class="ex">Rscript</span> myscript.R</span></code></pre></div>
+</div>
+<p>This launches R, runs your script, saves resulting output (if your script includes save or ggsave commands), closes R, and sends you back to the Terminal. Very simple.</p>
+</div>
+<div id="rendering-an-rmarkdown-file-from-the-terminal" class="section level2">
+<h2><span class="header-section-number">10.10</span> Rendering an Rmarkdown file from the Terminal</h2>
+<p>This is a little different, as you can’t just run an Rmarkdown file. Normally you would use the dropdown button to knit your file from Rstudio. But you can use the <code>rmarkdown::render</code> command to render your files to HTML, PDF, Word, Powerpoint, etc. Pick out a simple Rmd file like <code>output_file.Rmd</code> below, make sure you are in the right directory where the file is, and try something like the example below. <br>
+Note that this is one case where nesting different types of quotes (single vs. double) can come in handy.<br>
+It helps to use single quotes around your filename and double quotes around the <code>rmarkown::render</code> command.</p>
+<div class="tryit">
+<p>Try it out</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb52-1"><a href="running-r-from-the-unix-command-line.html#cb52-1"></a><span class="ex">Rscript</span> -e <span class="st">&quot;rmarkdown::render(&#39;output_file.Rmd&#39;)&quot;</span></span></code></pre></div>
+</div>
+<p>So there you have it! <br>
+Just enough to get you started with R from the command line.
+<br>
+<br></p>
+<div class="explore">
+<p>For further reading, check out these helpful links:</p>
+<ol style="list-style-type: decimal">
+<li><a href="https://www.datascienceatthecommandline.com/1e/">Data Science at the Command line (e-book)</a></li>
+<li><a href="http://www.cureffi.org/2014/01/15/running-r-batch-mode-linux/">R in Batch mode on Linux</a></li>
+<li><a href="https://uwaterloo.ca/statistics-and-actuarial-science/research/resources/r-tutorial-unix-environment">R tutorial for a Unix Environment</a></li>
+<li><a href="https://www.amazon.com/Linux-Command-Line-2nd-Introduction/dp/1593279523/ref=sr_1_12?crid=13X90SPNPT377&amp;dchild=1&amp;keywords=shell+scripting&amp;qid=1599228400&amp;s=books&amp;sprefix=shell+scripting%2Caps%2C154&amp;sr=1-12">The Linux Command Line: A Complete Introduction - a whole book on the topic</a></li>
+<li><a href="https://ole.michelsen.dk/blog/schedule-jobs-with-crontab-on-mac-osx/">Scheduling jobs with cron</a></li>
+</ol>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="comparing-two-measures-of-centrality.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="title-holder.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/io70-r_cmd_line.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["rmrwr.pdf", "rmrwr.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
