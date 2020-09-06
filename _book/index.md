@@ -100,9 +100,6 @@ Try this more complicated example.
 
 :::explore
 If you want to learn more about Shiny apps, go to https://mastering-shiny.org to see an entire book on the topic.
-:::```{r include=FALSE}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'
-), 'packages.bib')
-```
+:::
+
+

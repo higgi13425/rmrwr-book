@@ -45,6 +45,8 @@ And to do that, you need to find it. This is akin to getting under the hood of a
 So, you have managed to open a terminal window, which has a standard UNIX prompt, ending in something like `%` or `$`. Not terribly helpful, is it? The bash shell is waiting for you to enter a command. <br>
 No user interface for you!
 <br><br>
+
+:::tryit
 Let's start with a simple one, which can't do any harm. Run the command below:<br>
 `whoami`
 
@@ -56,10 +58,13 @@ whoami
 ```
 ## peterhiggins
 ```
+:::
 
 Remember that UNIX started out as an operating system for terminals, and knowing who was logged in was a helpful thing.
 <br><br>
 You can string together two commands with a semicolon between them. <br>
+
+:::tryit
 Try the following:
 
 ```bash
@@ -68,8 +73,10 @@ whoami;date
 
 ```
 ## peterhiggins
-## Sun Sep  6 17:44:50 EDT 2020
+## Sun Sep  6 18:08:47 EDT 2020
 ```
+:::
+
 OK, fine. This is sort of helpful. It was really important when you were on a terminal and paying by the minute for time on a mainframe back in 1969. And, on occasion, if you will need to use an entire computer cluster to run a script (or scripts) on a lot of data, you will likely have to use some of this command line knowledge. You can even schedule jobs (scripts) to run when your time is scheduled on the cluster with `cron` and `crontab`.
 <br><br>
 At this point, it would be helpful to open a window with your Documents folder, and keep it side by side with the window in which you are reading this e-book. We will start working with files and directories, and it is helpful to see changes in your file/folder structure in real time. As we run commands in the bash shell, check them against what you see in the folder window. You may find that some files (dotfiles, starting with a period) are hidden from the user to prevent problems that occur when these are deleted. 
@@ -78,6 +85,9 @@ At this point, it would be helpful to open a window with your Documents folder, 
 ## Where Are We?
 
 OK, let's start looking at files and directories. Start with the `pwd` command, which does **not** stand for password, but for `print working directory`.<br>
+
+
+:::tryit
 Run the code below in your Terminal window.
 
 
@@ -88,17 +98,25 @@ pwd
 ```
 ## /Users/peterhiggins/Documents/RCode/rmrwr-book
 ```
+:::
+
 You can see the full path to your current directory. This can be a bit obscure if you are just looking at your folder structure, particularly at the beginning of the path. Fortunately, the {here} package handles a lot of this for you when you are working in Rstudio projects. <br>
 We think of the directory as a tree, with a root - in this case, `Users`, and various branches as you build out folders and subfolders.<br>
 We can move up and down the folders of the directory paths with the `cd` command, for `change directory`.
 <br><br>
+
+:::tryit
 Try this command in your Terminal Window, and see if you can figure out what it does.
 
 
 ```bash
 cd ..
 ```
-It changes the directory `up` one level closer to the root directory. It is straightforward to go up the directory tree, as each folder only has one `parent`. But it is tricky to go down the directory tree, as there are many possible branches/children, and you do not inherently know the names of these branches. We need to list the contents of your current directory with `ls` to know what is there. Try the `ls` command in your Terminal window
+:::
+
+It changes the directory `up` one level closer to the root directory. It is straightforward to go up the directory tree, as each folder only has one `parent`. But it is tricky to go down the directory tree, as there are many possible branches/children, and you do not inherently know the names of these branches. We need to list the contents of your current directory with `ls` to know what is there. 
+:::tryit
+Try the `ls` command in your Terminal window
 
 
 ```bash
@@ -341,6 +359,7 @@ ls
 ## ~$sk List 2020.docx
 ## ~$tter BCS Chicken.docx
 ```
+:::
 
 You will see a listing of all files and folders in the current directory. You can get more details by adding the option (sometimes called a `flag`) `-l`
 
@@ -356,6 +375,7 @@ Many commands have options, or flags, that modify what they do.
 Find a folder inside of your Documents folder. We will now go `down` a level in the directory tree. In my case, I will use the `Powerpoint` folder. <br>
 In your Terminal window:
 
+:::tryit
 - change the directory to the Powerpoint directory
 - list the contents of this folder
 
@@ -386,9 +406,13 @@ ls
 ## VirtualPtEdMar2020.v2.pptx
 ## Writers Room.pptx
 ```
+:::
+
 Great!<br>
 You moved to a new directory and listed it.<br>
 Now we will get fancy, and make a new directory within this directory with the `mkdir` command.<br>
+
+:::tryit
 Try this in your Terminal window:
 
 
@@ -397,9 +421,14 @@ pwd;
 mkdir new_files;
 ls
 ```
+:::
+
 You have now made a new directory (folder) within the previous directory, named `new_files`. Verify this in your Documents folder.<br> 
 You can now change to this directory <br>
 and list the contents (it should be empty).<br>
+
+
+:::tryit
 Try this out in your Terminal Window (**note** edit the `cd` command to your own directory path).
 
 
@@ -407,18 +436,26 @@ Try this out in your Terminal Window (**note** edit the `cd` command to your own
 cd /Users/peterhiggins/Documents/Powerpoint/new_files;
 ls
 ```
+:::
+
 Note that you can abbreviate the current directory with `.`, so that you could have also used `cd ./new_files`
 <br><br>
+
 You can create a new (empty) file in this directory with the `touch` command.
 Sometimes you need to create a new file, then write data to it.
 
+:::tryit
+Try this out
 
 ```bash
 touch file_name;
 ls
 ```
+:::
 
 You can also create a file with data inside it with the `cat >` command.
+
+:::tryit
 Type in the following lines into your Terminal window. When complete, type control-D to be done and return to the Terminal prompt.
 `cat` stands for concatenate.
 
@@ -429,20 +466,27 @@ cat1
 cat2
 cat3
 ```
+:::
 
 Now you can list the contents of this file with the `cat` command below.
 
+:::tryit
+Give this a try
 
 ```bash
 cat file2.txt
 ```
+:::
+
 You can also list the directory of your `new_files` folder with ls to see the new folder contents.
 
+:::tryit
+Try this
 
 ```bash
 ls
 ```
-
+:::
 
 OK, now we are done with the file `file2.txt` and the directory `new_files`.
 Let's get rid of them with `rm` (for removing files) and `rmdir` for removing directories. <br>
@@ -452,12 +496,17 @@ In order, we will
 - go up one level of the directory with `cd ..`
 - remove the directory with `rmdir new_files`
 
+:::tryit
+Give this a try
+
 ```bash
 pwd;
 rm file2.txt;
 cd ..;
 rmdir new_files
 ```
+:::
+
 Verify all of this in your Documents window.<br>
 This is great. But you can imagine a situation in which you mistakenly `rm` a file (or directory) that you actually needed. Unlike your usual user interface, when a file is removed at the command line, it is gone. It is not in the trash folder. It is gone. There is something to be said for modern user interfaces, which are built for humans, who occasionally make mistakes. Sometimes we do want files or folders back.
 
@@ -475,11 +524,19 @@ Here are some file commands worth knowing
 So now you can get around directories, and find your files in the Terminal window, but you really want to run R.<br>
 You can launch an R session from the Terminal Window (if you have R installed on your computer) by typing the letter `R` at the Terminal prompt
 
+:::tryit
+Launch R
+
 ```bash
 R
 ```
+:::
+
 You get the usual R intro, including version number, and the `R>` prompt.<br>
 Now you can run R in interactive mode with available datasets, or your own datasets.<br>
+
+
+:::tryit
 Try a few simple commands with the mtcars dataset.<br>
 Give the examples below a try.<br>     
 
@@ -521,40 +578,53 @@ mtcars %>%
 ## Porsche 914-2  26.0   4    2
 ## Lotus Europa   30.4   4    2
 ```
+:::
 
 ## What about just a few lines of R?
 Sometimes you will want to call R, run some code, and be done with R.<br>
 You can call R, run a few lines, and quit in one go.<br>
 Just add the flag `-e` (for _evaluate_) to the call to R,<br>
 and put the R commands in quotes.<br>
+
+:::tryit
 Try the example below
 (**note** that this will not work if you are still in R - be sure you are back in the terminal with the `%` or `$` prompt)
 
 ```bash
 R -e "head(mtcars)"
 ```
+:::
 or this example - note that single or double quotes does not matter - as long as they match.
 
+:::tryit
+Try this
 
 ```bash
 R -e 'install(palmerpenguins)'
 ```
-You can also string together several commands with the semicolon between them. Try the example below.
+:::
+You can also string together several commands with the semicolon between them. 
+
+:::tryit
+Try the example below.
 
 
 ```bash
 R -e 'library(palmerpenguins);data(penguins);tail(penguins)'
 ```
-
+:::
 ## Running an R Script from the Terminal
 Now we are stepping up a level - you have an R script that you have carefully created and saved as the `myscript.R` file. How do you run this from the Terminal?<br>
-This is easy - just call the `Rscript` command with your file name. Pick out a short R file you have written, make sure you are in the right directory where the file is, and use it as in the example below.
+This is easy - just call the `Rscript` command with your file name. 
+
+:::tryit
+Pick out a short R file you have written, make sure you are in the right directory where the file is, and use it as in the example below.
 
 
 ```bash
 Rscript myscript.R
 ```
-
+:::
 This launches R, runs your script, saves resulting output (if your script includes save or ggsave commands), closes R, and sends you back to the Terminal. Very simple.
 
 ## Rendering an Rmarkdown file from the Terminal
@@ -562,19 +632,24 @@ This is a little different, as you can't just run an Rmarkdown file. Normally yo
 Note that this is one case where nesting different types of quotes (single vs. double) can come in handy.<br>
 It helps to use single quotes around your filename and double quotes around the `rmarkown::render` command.
 
+:::tryit
+Try it out
 
 ```bash
 Rscript -e "rmarkdown::render('output_file.Rmd')"
 ```
-
+:::
 So there you have it! <br>
 Just enough to get you started with R from the command line.
 <br>
 <br>
+
+:::explore
 For further reading, check out these helpful links:
 
+1. [Data Science at the Command line (e-book)](https://www.datascienceatthecommandline.com/1e/)
 1. [R in Batch mode on Linux](http://www.cureffi.org/2014/01/15/running-r-batch-mode-linux/) 
-2. [R tutorial for a Unix Environment](https://uwaterloo.ca/statistics-and-actuarial-science/research/resources/r-tutorial-unix-environment)
-3. [The Linux Command Line: A Complete Introduction - a whole book on the topic](https://www.amazon.com/Linux-Command-Line-2nd-Introduction/dp/1593279523/ref=sr_1_12?crid=13X90SPNPT377&dchild=1&keywords=shell+scripting&qid=1599228400&s=books&sprefix=shell+scripting%2Caps%2C154&sr=1-12)
-4. [Scheduling jobs with cron](https://ole.michelsen.dk/blog/schedule-jobs-with-crontab-on-mac-osx/)
-
+1. [R tutorial for a Unix Environment](https://uwaterloo.ca/statistics-and-actuarial-science/research/resources/r-tutorial-unix-environment)
+1. [The Linux Command Line: A Complete Introduction - a whole book on the topic](https://www.amazon.com/Linux-Command-Line-2nd-Introduction/dp/1593279523/ref=sr_1_12?crid=13X90SPNPT377&dchild=1&keywords=shell+scripting&qid=1599228400&s=books&sprefix=shell+scripting%2Caps%2C154&sr=1-12)
+1. [Scheduling jobs with cron](https://ole.michelsen.dk/blog/schedule-jobs-with-crontab-on-mac-osx/)
+:::
