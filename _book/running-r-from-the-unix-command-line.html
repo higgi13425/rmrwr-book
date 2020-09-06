@@ -330,7 +330,7 @@ You can string together two commands with a semicolon between them. <br></p>
 <p>Try the following:</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="running-r-from-the-unix-command-line.html#cb26-1"></a><span class="fu">whoami</span><span class="kw">;</span><span class="fu">date</span></span></code></pre></div>
 <pre><code>## peterhiggins
-## Sun Sep  6 19:15:10 EDT 2020</code></pre>
+## Sun Sep  6 19:20:49 EDT 2020</code></pre>
 </div>
 <p>OK, fine. This is sort of helpful. It was really important when you were on a terminal and paying by the minute for time on a mainframe back in 1969. And, on occasion, if you will need to use an entire computer cluster to run a script (or scripts) on a lot of data, you will likely have to use some of this command line knowledge. You can even schedule jobs (scripts) to run when your time is scheduled on the cluster with <code>cron</code> and <code>crontab</code>.
 <br><br>
@@ -353,9 +353,9 @@ We can move up and down the folders of the directory paths with the <code>cd</co
 <p>Try this command in your Terminal Window, and see if you can figure out what it does.</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb30-1"><a href="running-r-from-the-unix-command-line.html#cb30-1"></a><span class="bu">cd</span> ..</span></code></pre></div>
 </div>
-<p>It changes the directory <code>up</code> one level closer to the root directory. It is straightforward to go up the directory tree, as each folder only has one <code>parent</code>. But it is tricky to go down the directory tree, as there are many possible branches/children, and you do not inherently know the names of these branches. We need to list the contents of your current directory with <code>ls</code> to know what is there.
-:::tryit
-Try the <code>ls</code> command in your Terminal window</p>
+<p>It changes the directory <code>up</code> one level closer to the root directory. It is straightforward to go up the directory tree, as each folder only has one <code>parent</code>. But it is tricky to go down the directory tree, as there are many possible branches/children, and you do not inherently know the names of these branches. We need to list the contents of your current directory with <code>ls</code> to know what is there.</p>
+<div class="tryit">
+<p>Try the <code>ls</code> command in your Terminal window</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb31-1"><a href="running-r-from-the-unix-command-line.html#cb31-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/<span class="kw">;</span></span>
 <span id="cb31-2"><a href="running-r-from-the-unix-command-line.html#cb31-2"></a><span class="fu">ls</span></span></code></pre></div>
 <pre><code>## 2020-Jun-05 AGA IMIBD meeting notest.docx
@@ -591,7 +591,7 @@ Try the <code>ls</code> command in your Terminal window</p>
 ## ~$T Review Higgins.docx
 ## ~$sk List 2020.docx
 ## ~$tter BCS Chicken.docx</code></pre>
-<p>:::</p>
+</div>
 <p>You will see a listing of all files and folders in the current directory. You can get more details by adding the option (sometimes called a <code>flag</code>) <code>-l</code></p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="running-r-from-the-unix-command-line.html#cb33-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/<span class="kw">;</span></span>
 <span id="cb33-2"><a href="running-r-from-the-unix-command-line.html#cb33-2"></a><span class="fu">ls</span> -l</span></code></pre></div>

@@ -73,7 +73,7 @@ whoami;date
 
 ```
 ## peterhiggins
-## Sun Sep  6 19:15:10 EDT 2020
+## Sun Sep  6 19:20:49 EDT 2020
 ```
 :::
 
@@ -115,6 +115,7 @@ cd ..
 :::
 
 It changes the directory `up` one level closer to the root directory. It is straightforward to go up the directory tree, as each folder only has one `parent`. But it is tricky to go down the directory tree, as there are many possible branches/children, and you do not inherently know the names of these branches. We need to list the contents of your current directory with `ls` to know what is there. 
+
 :::tryit
 Try the `ls` command in your Terminal window
 
