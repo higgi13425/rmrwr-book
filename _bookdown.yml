@@ -20,6 +20,8 @@ rmd_files:
 - io99-references.Rmd
 
 # notes
+
+# drag and drop quick publishing
 # build book using Build tab
 # Go into Finder, find _book folder in Rcode/rmrwr_book
 # go on web to app.netlify.com/drop, drag and drop folder
@@ -27,4 +29,12 @@ rmd_files:
 # now can go to https://app.netlify.com/sites/rmrwr/deploys
 # drag and drop to update site
 
+
+# publishing to bookdown.org
+# details at https://bookdown.org/yihui/bookdown/rstudio-connect.html
+
+# render book with
+# bookdown::render_book('index.html')
+# publish book with
+# bookdown::publish_book(account = 'pdr_higgins')
 
