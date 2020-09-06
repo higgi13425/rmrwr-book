@@ -4,7 +4,7 @@
 
 This is the Github repository for Reproducible Medical Research with R, a book about working toward more reproducible medical research using R and associated tools, particularly those developed by RStudio.
 
-The book itself can be found [here](https://rmrwr-book.netlify.com/)
+The book itself can be found [here](https://bookdown.org/pdr_higgins/rmrwr/)
 
 ## Goals
 

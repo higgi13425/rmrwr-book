@@ -36,6 +36,7 @@ rmd_files:
 # render book with
 # bookdown::render_book('index.html')
 # publish book with
-# bookdown::publish_book(account = 'pdr_higgins')
+# bookdown::publish_book(account = 'pdrhiggins')
+# published at: https://bookdown.org/pdrhiggins/rmrwr/
 # then commit and push to github
 
