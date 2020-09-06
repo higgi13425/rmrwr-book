@@ -279,9 +279,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">10.1</span> What is the UNIX Command line?</h2>
 <p>The command line is a simple Terminal window with a prompt at which you can type commands, And do primitive but powerful things to your files. The UNIX computing environment was developed in the 1960s, and is still beloved and fetishized by brogrammers, who believe you are not truly a programmmer if you can’t code from the command line. This is silly.
 <br><br>
-The major attraction to UNIX in the 1960s is that it was much better than punch cards. Which isn’t saying much. We have had 60 years of software advancement and user interface improvements, so we really should not have to put up with the inherent user hostility of UNIX environment.
+The major attraction to UNIX in the 1960s is that it was much better than punch cards. Which isn’t saying much. We have had 60 years of software advancement and user interface improvements, so we really should not have to put up with the inherent user hostility of the UNIX environment.
 <br><br>
-UNIX is an early operating system, which is built around a ‘kernel’ which executes operating system commands, and a ‘shell’ which interprets your commands and sends them to the kernel for execution. The most common shell these days is named ‘bash’, which is a silly recursive brogrammer joke. You will sometimes see references to shell scripts or shell programming. These are the same thing as command line programming.
+UNIX is an early operating system, which is built around a ‘kernel’ which executes operating system commands, and a ‘shell’ which interprets your commands and sends them to the kernel for execution. The most common shell these days is named ‘bash’, which is a silly recursive brogrammer joke. You will sometimes see references to shell scripts or shell or bash programming. These are the same thing as command line programming.
 <br><br>
 UNIX is a common under-the-hood language across many computers today, as the Apple iOS is built on top of UNIX, and the various versions of the LinuxOS are built on a UNIX-like kernel, with a similar command shell.
 <br><br>
@@ -291,9 +291,9 @@ Running R from the command line is a bit like spending a day tuning your car’s
 <h2><span class="header-section-number">10.2</span> Why run R from the command line?</h2>
 <p>You can run R from the command line. It has none of the bells and whistles, nor any of the user conveniences of the RStudio Interactive Developer Environment (IDE). But it is how R was originally expected to be used when it was developed back in 2000 in New Zealand.
 <br><br>
-Running R from the command line allows you to do powerful things, like process multiple files at once, which can be handy when you have multiple files of sequencing data from distinct observations, or you have a multistep data wrangling pipeline with several slow steps. For many years, this was the only way to easily apply code across multiple files.
+Running R from the command line allows you to do powerful things, like process multiple files at once, which can be handy when you have multiple files of sequencing data from distinct observations, or you have a multistep data wrangling pipeline with several slow steps. For many years, this was the only way to easily apply code across multiple files to build a complex data pipeline.
 <br><br>
-This is much less true today, with tools to handle file paths like the {here} and {fs} packages, and the {drake} package to manage multistep data pipelines (similar to <em>make</em>). But some labs have been doing things at the command line for years, and find it hard to change.</p>
+This is much less true today, with tools to handle file paths like the {here} and {fs} packages, and the {drake} package to manage multi-step data pipelines (similar to <em>make</em>). But some labs have been doing things at the command line for years, and find it hard to change.</p>
 </div>
 <div id="how-do-you-get-started" class="section level2">
 <h2><span class="header-section-number">10.3</span> How do you get started?</h2>
@@ -314,17 +314,21 @@ And to do that, you need to find it. This is akin to getting under the hood of a
 </div>
 <div id="the-yawning-blackness-of-the-terminal-window" class="section level2">
 <h2><span class="header-section-number">10.4</span> The Yawning Blackness of the Terminal Window</h2>
-<p>So, you have managed to open a terminal window, which has a standard UNIX prompt, ending in <code>%</code>. Not terribly helpful, is it? The bash shell is waiting for you to enter a command. No user interface for you!
+<p>So, you have managed to open a terminal window, which has a standard UNIX prompt, ending in something like <code>%</code> or <code>$</code>. Not terribly helpful, is it? The bash shell is waiting for you to enter a command. <br>
+No user interface for you!
 <br><br>
 Let’s start with a simple one, which can’t do any harm. Run the command below:<br>
 <code>whoami</code></p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="running-r-from-the-unix-command-line.html#cb24-1"></a><span class="fu">whoami</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="running-r-from-the-unix-command-line.html#cb1-1"></a><span class="fu">whoami</span></span></code></pre></div>
+<pre><code>## peterhiggins</code></pre>
 <p>Remember that UNIX started out as an operating system for terminals, and knowing who was logged in was a helpful thing.
 <br><br>
 You can string together two commands with a semicolon between them. <br>
 Try the following:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="running-r-from-the-unix-command-line.html#cb25-1"></a><span class="fu">whoami</span><span class="kw">;</span><span class="fu">date</span></span></code></pre></div>
-<p>OK, fine. This is sort of helpful. It was really important when you were on a terminal and paying by the minute for time on a mainframe back in 1969. And, on occasion, if you will need to use a cluster to run a script on a lot of data, you will likely have to use some of this command line knowledge.
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="running-r-from-the-unix-command-line.html#cb3-1"></a><span class="fu">whoami</span><span class="kw">;</span><span class="fu">date</span></span></code></pre></div>
+<pre><code>## peterhiggins
+## Sun Sep  6 17:13:07 EDT 2020</code></pre>
+<p>OK, fine. This is sort of helpful. It was really important when you were on a terminal and paying by the minute for time on a mainframe back in 1969. And, on occasion, if you will need to use an entire computer cluster to run a script (or scripts) on a lot of data, you will likely have to use some of this command line knowledge. You can even schedule jobs (scripts) to run when your time is scheduled on the cluster with <code>cron</code> and <code>crontab</code>.
 <br><br>
 At this point, it would be helpful to open a window with your Documents folder, and keep it side by side with the window in which you are reading this e-book. We will start working with files and directories, and it is helpful to see changes in your file/folder structure in real time. As we run commands in the bash shell, check them against what you see in the folder window. You may find that some files (dotfiles, starting with a period) are hidden from the user to prevent problems that occur when these are deleted.
 <br><br></p>
@@ -333,19 +337,253 @@ At this point, it would be helpful to open a window with your Documents folder, 
 <h2><span class="header-section-number">10.5</span> Where Are We?</h2>
 <p>OK, let’s start looking at files and directories. Start with the <code>pwd</code> command, which does <strong>not</strong> stand for password, but for <code>print working directory</code>.<br>
 Run the code below in your Terminal window.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="running-r-from-the-unix-command-line.html#cb26-1"></a><span class="bu">pwd</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="running-r-from-the-unix-command-line.html#cb5-1"></a><span class="bu">pwd</span></span></code></pre></div>
+<pre><code>## /Users/peterhiggins/Documents/RCode/rmrwr-book</code></pre>
 <p>You can see the full path to your current directory. This can be a bit obscure if you are just looking at your folder structure, particularly at the beginning of the path. Fortunately, the {here} package handles a lot of this for you when you are working in Rstudio projects. <br>
 We think of the directory as a tree, with a root - in this case, <code>Users</code>, and various branches as you build out folders and subfolders.<br>
 We can move up and down the folders of the directory paths with the <code>cd</code> command, for <code>change directory</code>.
 <br><br>
 Try this command in your Terminal Window, and see if you can figure out what it does.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="running-r-from-the-unix-command-line.html#cb27-1"></a><span class="bu">cd</span> ..</span></code></pre></div>
-<p>It changes the directory <code>up</code> one level closer to the root directory. It is straightforward to go up the directory tree, as each folder only has one <code>parent</code>. But it is tricky to go down the directory tree, as there are many possible branches, and you do not inherently know the names of these branches. We need to list the contents of your current directory with <code>ls</code> to know what is there. Try the <code>ls</code> command in your Terminal window</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="running-r-from-the-unix-command-line.html#cb28-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/<span class="kw">;</span></span>
-<span id="cb28-2"><a href="running-r-from-the-unix-command-line.html#cb28-2"></a><span class="fu">ls</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="running-r-from-the-unix-command-line.html#cb7-1"></a><span class="bu">cd</span> ..</span></code></pre></div>
+<p>It changes the directory <code>up</code> one level closer to the root directory. It is straightforward to go up the directory tree, as each folder only has one <code>parent</code>. But it is tricky to go down the directory tree, as there are many possible branches/children, and you do not inherently know the names of these branches. We need to list the contents of your current directory with <code>ls</code> to know what is there. Try the <code>ls</code> command in your Terminal window</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="running-r-from-the-unix-command-line.html#cb8-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/<span class="kw">;</span></span>
+<span id="cb8-2"><a href="running-r-from-the-unix-command-line.html#cb8-2"></a><span class="fu">ls</span></span></code></pre></div>
+<pre><code>## 2020-Jun-05 AGA IMIBD meeting notest.docx
+## 2021 AGA Invited Speaker Session Basic Hybrid Example.pdf
+## A is for Allspice.2.0.docx
+## A is for Allspice.docx
+## ABT263_HIO_report_toWord.docx
+## AGA IMIBD
+## AGA IMIBD Webinar Outline.docx
+## AMAG DDW Clear draft_PDRH comments.docx
+## APG1244_Milestone_report.docx
+## A_Woodward_Score Sheet_PDRH.docx
+## Accounts and Access (1) (1).docx
+## Advice for participants in webinars.docx
+## Animation of NSAID.pptx
+## BKochar_Frailty.pdf
+## BM recommendation.docx
+## Beginners_GuideToR.pdf
+## Biosketch for K.pptx
+## Biosketch_2020_Higgins_ClinResIBD_biosketch.doc
+## Brazil.ItineraryNov2015.docx
+## Butter BCS Chicken.docx
+## CAS.K.candidate.background_SB_PDRH.docx
+## CAS.T32.Project.Description-JS.docx
+## CAS.career.goals.obj.development.training_PDRH.docx
+## CC360_The Risk of SARS.R1.docx
+## CC360_The Risk of SARS.docx
+## CCF IBD Webcast 2020 Draft Deck_For Review.pptx
+## CCFA EIC Candidate Interview Questions (candidates) jobin[1].doc
+## CDC_proposal1.1.docx
+## CLARE STOCKS.docx
+## COVID Trials Feasibility
+## CaltechCampus Tour &amp; Information Session.webarchive
+## Cancel Appt Epic.ppt
+## Causal.png
+## CellDeath_DDW_2021_ISS.pdf
+## Chu RPG Review_PDRH.docx
+## Clare Investment Summary.docx
+## Coursera_Programming in R Notes.docx
+## CoverLetterPlus.pptx
+## Crash&amp;Burn_ScriptV2_100318 copy.pdf
+## DataCamp Courses by Topic.docx
+## DeEscalationACG2016.pptx
+## Demographics.pdf
+## DrHiggins IBD Data Request.xlsx
+## Draft Postop IBD Surgery Care Protocols v2_SERedit.docx
+## ECCO 2016 Amsterdam Schedule.docx
+## ECCO 2019 UC PRO SS Abstract D1f_JP_UA_YO_AM_PDRH.docx
+## ECCO2016Lycera30937.pptx
+## Effect of medications on the recurrence of cancer in IBD patients.docx
+## Electrical engineering interview questions.docx
+## FDAtofaResponse.docx
+## FFMI Kickstart-FinalReport 5-20-16-LJ.docx
+## FITBITProtocol_28NOV2016_AbbVie.docx
+## FITBITProtocol_4DEC2016_AbbVie.docx
+## FMT_DDW_2021_ISS.pdf
+## FibrosisIBDCedars2016.pptx
+## Figures-KC-JAMA.pptx
+## Finance and Retirement Plans.docx
+## Financial Priorities.docx
+## Garmin Notes.docx
+## General thoughts about query letters.docx
+## GitHub
+## Glover_RPG_Review_PDRH.docx
+## GoToMeeting Chats
+## GradPartyHigginsInvites.xlsx
+## HPI-5016 IBD Patient Contact Info.xlsx
+## HS movie.docx
+## Higgins AGA Webinar Slides.pptx
+## Higgins New IBD.pptx
+## Higgins Refractory Proctitis.pptx
+## Higgins biosketch2015KRao.doc
+## Higgins biosketch2016KRao.doc
+## HigginsACGMidwest2019_PerioperativeIBD.pptx
+## Higgins_LOS_IBDBiobank_Shah_Nusrat_2019.docx
+## Higgins_UM_CME_Pregnancy in IBD.pptx
+## How To Log in to IBD Server.docx
+## How To Log in to RStudio Server for HigginsLab.docx
+## How To Log in to RStudio Server for Shiny.docx
+## IBD 2020 - Honorarium reimbursement Form.docx
+## IBD Biobank Cryostor.pptx
+## IBD Clinical Trials for MDsDearborn2017.pptx
+## IBD Insurance Pilot Results.docx
+## IBD Insurance Survey for CCFA Partners Existing.docx
+## IBD Journal Club 13Feb2017.docx
+## IBD Journal Club July 11.docx
+## IBD Plexus meeting 21 Sep 2015 notes.docx
+## IBD School 322 Script.docx
+## IBD School 324 Script.docx
+## IBD School 325 Script.docx
+## IBD and biologics tweets.docx
+## IBD inbox coverage.docx
+## IBDInsuranceSurvey3.docx
+## IBDMentoringConferenceCall4AbstractsPH.docx
+## IBD_Deescalation_Apr_2019_PDRH.docx
+## IBDforLansing2017.pptx
+## IMG_0006.jpg
+## IMG_0008.jpg
+## IMG_1523st.jpg
+## IMIBD Councilors 2020-21.docx
+## IMIBD Partners insurance 2020DDW.pptx
+## JAK_DDW_2021_ISS.pdf
+## JAMA_KC_Second JAMA.docx
+## JAMA_Review_on_CD_Revisions_Tracked_Changes with edits_PDRH.docx
+## JB_V1 Career Goals and Objectives 7.8.2020_PDRH.docx
+## JB_V2 Candidate’s Background 7.7.2020_PDRH.docx
+## JDix_Study_update.docx
+## K Award Institutional Letter of Commitment.pptx
+## K Candidate Section.pptx
+## K105_Melmed_PROs in Practice_MB_bb_JLS.pptx
+## K23 Aims - Shirley Cohen-Mekelburg 11.14.19.docx
+## K23_morph_measurements_MockupManuscript_21JAN2019.docx
+## Learning R discussion Jeremy Louissaint.docx
+## Lin_Reviewer Score_PDRH.docx
+## Log in to IBD Server.docx
+## MIM-TESRIC PROTOCOL_Higgins_14Apr2020.docx
+## MIM-TESRIC PROTOCOL_Higgins_26Aug2020.docx
+## Managment of CD.pptx
+## Manuscript v1.docx
+## Manuscript v2.PDRH.docx
+## McDonald, Nancy.pdf
+## Megan McLeod Rec Letter Residency.docx
+## MentoringAgendaDraftPH.docx
+## Meta analysis TB vs CD version 3.5.docx
+## Michigan Medicine Gastroenterology Social Media Initiative.docx
+## Michigan Medicine Model for COVID-19 Clinical Trial Oversight DRAFT (KSB 04.17.20)-AL-PDRH.docx
+## Microsoft User Data
+## MultidisciplinaryIBDClinicPHv2.docx
+## NordicTrackTC9iTreadmillManual.pdf
+## Oct2019payPDRH.PDF
+## Odd college lists.docx
+## PHcv2019.docx
+## PHcv2020.docx
+## PRO agenda videos VINDICO.docx
+## PRO letter.docx
+## PS_K grant aims 6-25_PDRH.docx
+## PTM LOS From PDRH.docx
+## PTM LOS From PDRH.pdf
+## Pearson 5 Notes.docx
+## Personal statement version 3!.docx
+## Pitch Letter - S is for Saffron.docx
+## Poppy Eulogy backup.docx
+## Poppy Eulogy.docx
+## Possible Eastern College Tour.docx
+## Powerpoint
+## PredictingIBD_DDW_2021_ISS.html
+## PredictingIBD_DDW_2021_ISS.pdf
+## Purdue Disclosure Form_Higgins.docx
+## Question 16.docx
+## RCode
+## Ramp up clinical research_PH.xlsx
+## Ramping up human subject research - MM 6-1-20 _KDA_PDRH_suggestions.docx
+## Recordings
+## Review Criteria for COVID Clinical Trials.docx
+## Review guidelines_2017.docx
+## Roasted Salted Cashews.docx
+## S is for Saffron 3.0.docx
+## S is for Saffron 3.1.docx
+## S is for Saffron 3.2.docx
+## S is for Saffron.2.0.docx
+## SEAN STOCKS.docx
+## SIG_Template_IBD Program_FINAL.docx
+## Sean Common App academic honors list.docx
+## Sean Common App activities list.docx
+## Sean Higgins Bordogni.mp4
+## Sean Higgins Brag Sheet.docx
+## Sean Investment Summary.docx
+## Sean Resume Tabular VBorder.docx
+## Sean Resume Tabular.docx
+## Sean Resume.docx
+## Sean Summer Priorities 2016.docx
+## SecureIBD.pptx
+## ShareRmd.html
+## Sherman Prize Nominee Questions.docx
+## Shoreline West Tour Information.docx
+## Short PA slides.pptx
+## Signing Clinical Research Infusion Orders.pdf
+## SingleCell_DDW_2021_ISS.pdf
+## Source Code PT1.docx
+## Stelara paper.docx
+## T32_current_text_14June2019.docx
+## TOPPIC ML draft v5SCM_YL_AKW_PDRH.docx
+## TabaCrohn IBD J club.docx
+## Tables.docx
+## Takeda_IBD School Videos_Submission.pdf
+## Task List 2020-2.docx
+## Task List 2020.docx
+## Testing signatures with Adobe.pdf
+## The Risk of SARS.R1.Markup.docx
+## Tidymodels.docx
+## Tofa in ICI Figure Legends_Final Draft_V2.docx
+## Tofa inpatient induction Protocol_02NOV2018_PHforEdits.docx
+## Toffee Separation Tips.docx
+## UCRx_DDW_2021_ISS.pdf
+## UC_protocol_comments_2020.docx
+## UM IBD Clinical Trials IBD referral form.docx
+## UPA_U_ACHIEVE 1st draft_PDRH.docx
+## VINDICO_PRO.pptx
+## VideoVisitSchedulingQuickApptsforProviders.pdf
+## VirtualPtEdMar2020.v2.pdf
+## WebEx
+## Zoom
+## Zwift
+## Zwift-Gift-Card.pdf
+## aga institute council july 2020 meeting.pdf
+## biomakers_fibrosisPDRH.docx
+## epic cancel_reschedule appointments.ppt
+## epic schedule viewing_close.ppt
+## escalator.html
+## fellow graduation 2020.docx
+## hexStickers.jpg
+## iBike Rides
+## learnr app diagram.jpg
+## learnr app diagram.pptx
+## letter Lowrimore.docx
+## mockstudy manuscript draft.docx
+## nejm1966_beecher_ethics.pdf
+## pdrh_IBD_email.xlsx
+## personal statement fellowship_PDRH.docx
+## peterhiggins.jpg
+## seq-6.pdf
+## signature.docx
+## signature.fld
+## signature.html
+## signature.pdf
+## signature.png
+## stiff_bcl.R
+## submitJanssen_IBD School Videos_12Jul2018.pdf
+## tidyr_pivot.png
+## tidyr_pivot.xcf
+## ucla1.jpg
+## wga_min20.pdf
+## ~$T Review Higgins.docx
+## ~$sk List 2020.docx
+## ~$tter BCS Chicken.docx</code></pre>
 <p>You will see a listing of all files and folders in the current directory. You can get more details by adding the option (sometimes called a <code>flag</code>) <code>-l</code></p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb29-1"><a href="running-r-from-the-unix-command-line.html#cb29-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/<span class="kw">;</span></span>
-<span id="cb29-2"><a href="running-r-from-the-unix-command-line.html#cb29-2"></a><span class="fu">ls</span> -l</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="running-r-from-the-unix-command-line.html#cb10-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/<span class="kw">;</span></span>
+<span id="cb10-2"><a href="running-r-from-the-unix-command-line.html#cb10-2"></a><span class="fu">ls</span> -l</span></code></pre></div>
 <p>The full listing will give you more details, including read &amp; write permissions, file size, date last saved, etc. <br>
 Many commands have options, or flags, that modify what they do.
 <br><br>
@@ -355,41 +593,58 @@ In your Terminal window:</p>
 <li>change the directory to the Powerpoint directory</li>
 <li>list the contents of this folder</li>
 </ul>
-<div class="sourceCode" id="cb30"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb30-1"><a href="running-r-from-the-unix-command-line.html#cb30-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/Powerpoint<span class="kw">;</span></span>
-<span id="cb30-2"><a href="running-r-from-the-unix-command-line.html#cb30-2"></a><span class="fu">ls</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="running-r-from-the-unix-command-line.html#cb11-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/Powerpoint<span class="kw">;</span></span>
+<span id="cb11-2"><a href="running-r-from-the-unix-command-line.html#cb11-2"></a><span class="fu">ls</span></span></code></pre></div>
+<pre><code>## 2016IBDClinTrialsforMDsDearborn.pptx
+## 2016IntegratedDeckorMDsGB.pptx
+## 2019 SCSG GI Symposium IBD SoA  -  Read-Only.pptx
+## BE LGD Dearborn 2016.04.12.pptx
+## Getting Started in RStudio.pptx
+## Higgins Microbiota for IBD Patient Ed.pptx
+## HigginsDec2018AJG_SmokingStatus.pptx
+## IBDUpdate.pptx
+## Integrated Slide Deck Dearborn 2016.04.12.pptx
+## MER Stress Management Dearborn 4-14.pptx
+## MichiganMedicine-IBDTemplate.potx
+## PDRH RCAR 2020.pptx
+## PennThioMTX2017Higgins.pptx
+## Pregnancy in IBD.pptx
+## Regenbogen CRS for GI CME Course2016.pptx
+## Senior Slide Show.pptx
+## ThomsonRectalStumpComplicationsIBD2_13.pptx
+## UMHS Talk- Moving Beyond AntiTNF 4-2016 FINAL v2.pptx
+## VirtualPtEdMar2020.v2.pptx
+## Writers Room.pptx</code></pre>
 <p>Great!<br>
 You moved to a new directory and listed it.<br>
 Now we will get fancy, and make a new directory within this directory with the <code>mkdir</code> command.<br>
 Try this in your Terminal window:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb31-1"><a href="running-r-from-the-unix-command-line.html#cb31-1"></a><span class="bu">pwd</span><span class="kw">;</span></span>
-<span id="cb31-2"><a href="running-r-from-the-unix-command-line.html#cb31-2"></a><span class="fu">mkdir</span> new_files<span class="kw">;</span></span>
-<span id="cb31-3"><a href="running-r-from-the-unix-command-line.html#cb31-3"></a><span class="fu">ls</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="running-r-from-the-unix-command-line.html#cb13-1"></a><span class="bu">pwd</span><span class="kw">;</span></span>
+<span id="cb13-2"><a href="running-r-from-the-unix-command-line.html#cb13-2"></a><span class="fu">mkdir</span> new_files<span class="kw">;</span></span>
+<span id="cb13-3"><a href="running-r-from-the-unix-command-line.html#cb13-3"></a><span class="fu">ls</span></span></code></pre></div>
 <p>You have now made a new directory (folder) within the previous directory, named <code>new_files</code>. Verify this in your Documents folder.<br>
 You can now change to this directory <br>
 and list the contents (it should be empty).<br>
 Try this out in your Terminal Window (<strong>note</strong> edit the <code>cd</code> command to your own directory path).</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb32-1"><a href="running-r-from-the-unix-command-line.html#cb32-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/Powerpoint/new_files<span class="kw">;</span></span>
-<span id="cb32-2"><a href="running-r-from-the-unix-command-line.html#cb32-2"></a><span class="fu">ls</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="running-r-from-the-unix-command-line.html#cb14-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/Powerpoint/new_files<span class="kw">;</span></span>
+<span id="cb14-2"><a href="running-r-from-the-unix-command-line.html#cb14-2"></a><span class="fu">ls</span></span></code></pre></div>
 <p>Note that you can abbreviate the current directory with <code>.</code>, so that you could have also used <code>cd ./new_files</code>
 <br><br>
 You can create a new (empty) file in this directory with the <code>touch</code> command.
 Sometimes you need to create a new file, then write data to it.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="running-r-from-the-unix-command-line.html#cb33-1"></a><span class="fu">touch</span> file_name<span class="kw">;</span></span>
-<span id="cb33-2"><a href="running-r-from-the-unix-command-line.html#cb33-2"></a><span class="fu">ls</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="running-r-from-the-unix-command-line.html#cb15-1"></a><span class="fu">touch</span> file_name<span class="kw">;</span></span>
+<span id="cb15-2"><a href="running-r-from-the-unix-command-line.html#cb15-2"></a><span class="fu">ls</span></span></code></pre></div>
 <p>You can also create a file with data inside it with the <code>cat &gt;</code> command.
-Type in the following lines into your Terminal window. When complete, type control-D to be done.
+Type in the following lines into your Terminal window. When complete, type control-D to be done and return to the Terminal prompt.
 <code>cat</code> stands for concatenate.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb34-1"><a href="running-r-from-the-unix-command-line.html#cb34-1"></a><span class="fu">cat</span> <span class="op">&gt;</span> file2.txt</span>
-<span id="cb34-2"><a href="running-r-from-the-unix-command-line.html#cb34-2"></a><span class="ex">cat1</span></span>
-<span id="cb34-3"><a href="running-r-from-the-unix-command-line.html#cb34-3"></a><span class="ex">cat2</span></span>
-<span id="cb34-4"><a href="running-r-from-the-unix-command-line.html#cb34-4"></a><span class="ex">cat3</span></span></code></pre></div>
-<p>Now you can list the contents of this file with the <code>cat</code> command below.
-I have to change the directory to get to the right place first. Check your directory with <code>pwd</code> - you may not need to do <code>cd</code>.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb35-1"><a href="running-r-from-the-unix-command-line.html#cb35-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/Powerpoint/new_files<span class="kw">;</span></span>
-<span id="cb35-2"><a href="running-r-from-the-unix-command-line.html#cb35-2"></a><span class="fu">cat</span> file2.txt</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="running-r-from-the-unix-command-line.html#cb16-1"></a><span class="fu">cat</span> <span class="op">&gt;</span> file2.txt</span>
+<span id="cb16-2"><a href="running-r-from-the-unix-command-line.html#cb16-2"></a><span class="ex">cat1</span></span>
+<span id="cb16-3"><a href="running-r-from-the-unix-command-line.html#cb16-3"></a><span class="ex">cat2</span></span>
+<span id="cb16-4"><a href="running-r-from-the-unix-command-line.html#cb16-4"></a><span class="ex">cat3</span></span></code></pre></div>
+<p>Now you can list the contents of this file with the <code>cat</code> command below.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="running-r-from-the-unix-command-line.html#cb17-1"></a><span class="fu">cat</span> file2.txt</span></code></pre></div>
 <p>You can also list the directory of your <code>new_files</code> folder with ls to see the new folder contents.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="running-r-from-the-unix-command-line.html#cb36-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/Powerpoint/new_files<span class="kw">;</span></span>
-<span id="cb36-2"><a href="running-r-from-the-unix-command-line.html#cb36-2"></a><span class="fu">ls</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="running-r-from-the-unix-command-line.html#cb18-1"></a><span class="fu">ls</span></span></code></pre></div>
 <p>OK, now we are done with the file <code>file2.txt</code> and the directory <code>new_files</code>.
 Let’s get rid of them with <code>rm</code> (for removing files) and <code>rmdir</code> for removing directories. <br>
 In order, we will
@@ -397,35 +652,36 @@ In order, we will
 - remove the file with <code>rm file2.txt</code>
 - go up one level of the directory with <code>cd ..</code>
 - remove the directory with <code>rmdir new_files</code></p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb37-1"><a href="running-r-from-the-unix-command-line.html#cb37-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/Powerpoint/new_files<span class="kw">;</span></span>
-<span id="cb37-2"><a href="running-r-from-the-unix-command-line.html#cb37-2"></a><span class="fu">rm</span> file2.txt<span class="kw">;</span></span>
-<span id="cb37-3"><a href="running-r-from-the-unix-command-line.html#cb37-3"></a><span class="bu">cd</span> ..<span class="kw">;</span></span>
-<span id="cb37-4"><a href="running-r-from-the-unix-command-line.html#cb37-4"></a><span class="fu">rmdir</span> new_files</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="running-r-from-the-unix-command-line.html#cb19-1"></a><span class="bu">pwd</span><span class="kw">;</span></span>
+<span id="cb19-2"><a href="running-r-from-the-unix-command-line.html#cb19-2"></a><span class="fu">rm</span> file2.txt<span class="kw">;</span></span>
+<span id="cb19-3"><a href="running-r-from-the-unix-command-line.html#cb19-3"></a><span class="bu">cd</span> ..<span class="kw">;</span></span>
+<span id="cb19-4"><a href="running-r-from-the-unix-command-line.html#cb19-4"></a><span class="fu">rmdir</span> new_files</span></code></pre></div>
 <p>Verify all of this in your Documents window.<br>
-This is great. But you can imagine a situation in which you mistakenly <code>rm</code> a file that you actually needed. Unlike your usual user interface, when a file is removed at the command line, it is gone. It is not in the trash folder. It is gone. There is something to be said for modern user interfaces, which are built for humans, who occasionally make mistakes. Sometimes we do want files or folders back.</p>
+This is great. But you can imagine a situation in which you mistakenly <code>rm</code> a file (or directory) that you actually needed. Unlike your usual user interface, when a file is removed at the command line, it is gone. It is not in the trash folder. It is gone. There is something to be said for modern user interfaces, which are built for humans, who occasionally make mistakes. Sometimes we do want files or folders back.</p>
 </div>
 <div id="other-helpful-file-commands" class="section level2">
 <h2><span class="header-section-number">10.6</span> Other helpful file commands</h2>
 <p>Here are some file commands worth knowing</p>
 <ul>
 <li><code>cat filename</code> - to print out whole file to your monitor</li>
-<li><code>less filename</code> - to print out the first page, and you can tab through each page one at a time</li>
+<li><code>less filename</code> - to print out the first page of a file, and you can scroll through each page one at a time</li>
 <li><code>head filename</code> - print first 10 lines of a file</li>
 <li><code>tail filename</code> - print last 10 lines of a file</li>
 <li><code>cp file1 file2</code> - copy file1 to file2</li>
-<li><code>mv file1.txt file.2.txt file3.txt folder</code> - move files to a new folder</li>
+<li><code>mv file1.txt file.2.txt file3.txt new_folder</code> - move 3 files to a new folder</li>
 </ul>
 </div>
 <div id="what-about-r" class="section level2">
 <h2><span class="header-section-number">10.7</span> What about R?</h2>
 <p>So now you can get around directories, and find your files in the Terminal window, but you really want to run R.<br>
 You can launch an R session from the Terminal Window (if you have R installed on your computer) by typing the letter <code>R</code> at the Terminal prompt</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb38-1"><a href="running-r-from-the-unix-command-line.html#cb38-1"></a><span class="ex">R</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="running-r-from-the-unix-command-line.html#cb20-1"></a><span class="ex">R</span></span></code></pre></div>
 <p>You get the usual R intro, including version number, and the <code>R&gt;</code> prompt.<br>
 Now you can run R in interactive mode with available datasets, or your own datasets.<br>
-Try a few simple commands with the mtcars dataset.<br></p>
+Try a few simple commands with the mtcars dataset.<br>
+Give the examples below a try.<br></p>
 <p>You can use <code>q()</code> to quit back to the terminal (and reply “n” to <strong>not</strong> save the workplace image).</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="running-r-from-the-unix-command-line.html#cb39-1"></a><span class="kw">head</span>(mtcars)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="running-r-from-the-unix-command-line.html#cb21-1"></a><span class="kw">head</span>(mtcars)</span></code></pre></div>
 <pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am
 ## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1
 ## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1
@@ -440,9 +696,9 @@ Try a few simple commands with the mtcars dataset.<br></p>
 ## Hornet 4 Drive       3    1
 ## Hornet Sportabout    3    2
 ## Valiant              3    1</code></pre>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="running-r-from-the-unix-command-line.html#cb41-1"></a>mtcars <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb41-2"><a href="running-r-from-the-unix-command-line.html#cb41-2"></a><span class="st">  </span><span class="kw">filter</span>(mpg <span class="op">&gt;</span><span class="st"> </span><span class="dv">25</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb41-3"><a href="running-r-from-the-unix-command-line.html#cb41-3"></a><span class="st">  </span><span class="kw">select</span>(<span class="kw">starts_with</span>(<span class="st">&#39;m&#39;</span>)<span class="op">|</span><span class="kw">starts_with</span>(<span class="st">&#39;c&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="running-r-from-the-unix-command-line.html#cb23-1"></a>mtcars <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb23-2"><a href="running-r-from-the-unix-command-line.html#cb23-2"></a><span class="st">  </span><span class="kw">filter</span>(mpg <span class="op">&gt;</span><span class="st"> </span><span class="dv">25</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb23-3"><a href="running-r-from-the-unix-command-line.html#cb23-3"></a><span class="st">  </span><span class="kw">select</span>(<span class="kw">starts_with</span>(<span class="st">&#39;m&#39;</span>)<span class="op">|</span><span class="kw">starts_with</span>(<span class="st">&#39;c&#39;</span>))</span></code></pre></div>
 <pre><code>##                 mpg cyl carb
 ## Fiat 128       32.4   4    1
 ## Honda Civic    30.4   4    2
@@ -459,25 +715,25 @@ Just add the flag <code>-e</code> (for <em>evaluate</em>) to the call to R,<br>
 and put the R commands in quotes.<br>
 Try the example below
 (<strong>note</strong> that this will not work if you are still in R - be sure you are back in the terminal with the <code>%</code> or <code>$</code> prompt)</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb43-1"><a href="running-r-from-the-unix-command-line.html#cb43-1"></a><span class="ex">R</span> -e <span class="st">&quot;head(mtcars)&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="running-r-from-the-unix-command-line.html#cb25-1"></a><span class="ex">R</span> -e <span class="st">&quot;head(mtcars)&quot;</span></span></code></pre></div>
 <p>or this example - note that single or double quotes does not matter - as long as they match.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb44-1"><a href="running-r-from-the-unix-command-line.html#cb44-1"></a><span class="ex">R</span> -e <span class="st">&#39;install(palmerpenguins)&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="running-r-from-the-unix-command-line.html#cb26-1"></a><span class="ex">R</span> -e <span class="st">&#39;install(palmerpenguins)&#39;</span></span></code></pre></div>
 <p>You can also string together several commands with the semicolon between them. Try the example below.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb45-1"><a href="running-r-from-the-unix-command-line.html#cb45-1"></a><span class="ex">R</span> -e <span class="st">&#39;library(palmerpenguins);data(penguins);tail(penguins)&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="running-r-from-the-unix-command-line.html#cb27-1"></a><span class="ex">R</span> -e <span class="st">&#39;library(palmerpenguins);data(penguins);tail(penguins)&#39;</span></span></code></pre></div>
 </div>
 <div id="running-an-r-script-from-the-terminal" class="section level2">
 <h2><span class="header-section-number">10.9</span> Running an R Script from the Terminal</h2>
-<p>Now we are stepping up a level - you have an R script that you have carefully created and save as the <code>myscript.R</code> file. How do you run this from the Terminal?<br>
-This is easy - just call the <code>Rscript</code> command with your file name. Pick out a short R file you have written, and use it as in the example below.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb46-1"><a href="running-r-from-the-unix-command-line.html#cb46-1"></a><span class="ex">Rscript</span> myscript.R</span></code></pre></div>
+<p>Now we are stepping up a level - you have an R script that you have carefully created and saved as the <code>myscript.R</code> file. How do you run this from the Terminal?<br>
+This is easy - just call the <code>Rscript</code> command with your file name. Pick out a short R file you have written, make sure you are in the right directory where the file is, and use it as in the example below.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="running-r-from-the-unix-command-line.html#cb28-1"></a><span class="ex">Rscript</span> myscript.R</span></code></pre></div>
 <p>This launches R, runs your script, saves resulting output (if your script includes save or ggsave commands), closes R, and sends you back to the Terminal. Very simple.</p>
 </div>
 <div id="rendering-an-rmarkdown-file-from-the-terminal" class="section level2">
 <h2><span class="header-section-number">10.10</span> Rendering an Rmarkdown file from the Terminal</h2>
-<p>This is a little different, as you can just run an Rmarkdown file. Normally you would use the dropdown button to knit your file from Rstudio. But you can use the <code>rmarkdown::render</code> command to render your files to HTML, PDF, Word, powerpoint, etc. Pick out a simple Rmd file, and try something like the example below. <br>
+<p>This is a little different, as you can’t just run an Rmarkdown file. Normally you would use the dropdown button to knit your file from Rstudio. But you can use the <code>rmarkdown::render</code> command to render your files to HTML, PDF, Word, Powerpoint, etc. Pick out a simple Rmd file like <code>output_file.Rmd</code> below, make sure you are in the right directory where the file is, and try something like the example below. <br>
 Note that this is one case where nesting different types of quotes (single vs. double) can come in handy.<br>
 It helps to use single quotes around your filename and double quotes around the <code>rmarkown::render</code> command.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb47-1"><a href="running-r-from-the-unix-command-line.html#cb47-1"></a><span class="ex">Rscript</span> -e <span class="st">&quot;rmarkdown::render(&#39;output_file.Rmd&#39;)&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb29-1"><a href="running-r-from-the-unix-command-line.html#cb29-1"></a><span class="ex">Rscript</span> -e <span class="st">&quot;rmarkdown::render(&#39;output_file.Rmd&#39;)&quot;</span></span></code></pre></div>
 <p>So there you have it! <br>
 Just enough to get you started with R from the command line.
 <br>
@@ -486,7 +742,7 @@ For further reading, check out these helpful links:</p>
 <ol style="list-style-type: decimal">
 <li><a href="http://www.cureffi.org/2014/01/15/running-r-batch-mode-linux/">R in Batch mode on Linux</a></li>
 <li><a href="https://uwaterloo.ca/statistics-and-actuarial-science/research/resources/r-tutorial-unix-environment">R tutorial for a Unix Environment</a></li>
-<li>[The Linux Command Line: A Complete Introduction (book)] (<a href="https://www.amazon.com/Linux-Command-Line-2nd-Introduction/dp/1593279523/ref=sr_1_12?crid=13X90SPNPT377&amp;dchild=1&amp;keywords=shell+scripting&amp;qid=1599228400&amp;s=books&amp;sprefix=shell+scripting%2Caps%2C154&amp;sr=1-12" class="uri">https://www.amazon.com/Linux-Command-Line-2nd-Introduction/dp/1593279523/ref=sr_1_12?crid=13X90SPNPT377&amp;dchild=1&amp;keywords=shell+scripting&amp;qid=1599228400&amp;s=books&amp;sprefix=shell+scripting%2Caps%2C154&amp;sr=1-12</a>)</li>
+<li><a href="https://www.amazon.com/Linux-Command-Line-2nd-Introduction/dp/1593279523/ref=sr_1_12?crid=13X90SPNPT377&amp;dchild=1&amp;keywords=shell+scripting&amp;qid=1599228400&amp;s=books&amp;sprefix=shell+scripting%2Caps%2C154&amp;sr=1-12">The Linux Command Line: A Complete Introduction - a whole book on the topic</a></li>
 <li><a href="https://ole.michelsen.dk/blog/schedule-jobs-with-crontab-on-mac-osx/">Scheduling jobs with cron</a></li>
 </ol>
 

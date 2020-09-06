@@ -12,9 +12,9 @@ output: html_document
 ## What is the UNIX Command line?
 The command line is a simple Terminal window with a prompt at which you can type commands, And do primitive but powerful things to your files. The UNIX computing environment was developed in the 1960s, and is still beloved and fetishized by brogrammers, who believe you are not truly a programmmer if you can't code from the command line. This is silly.
 <br><br>
-The major attraction to UNIX in the 1960s is that it was much better than punch cards.  Which isn't saying much. We have had 60 years of software advancement and user interface improvements, so we really should not have to put up with the inherent user hostility of UNIX environment.
+The major attraction to UNIX in the 1960s is that it was much better than punch cards.  Which isn't saying much. We have had 60 years of software advancement and user interface improvements, so we really should not have to put up with the inherent user hostility of the UNIX environment.
 <br><br>
-UNIX is an early operating system, which is built around a 'kernel' which executes operating system commands, and a 'shell' which interprets your commands and sends them to the kernel for execution. The most common shell these days is named 'bash', which is a silly recursive brogrammer joke. You will sometimes see references to shell scripts or shell programming. These are the same thing as command line programming.
+UNIX is an early operating system, which is built around a 'kernel' which executes operating system commands, and a 'shell' which interprets your commands and sends them to the kernel for execution. The most common shell these days is named 'bash', which is a silly recursive brogrammer joke. You will sometimes see references to shell scripts or shell or bash programming. These are the same thing as command line programming.
 <br><br>
 UNIX is a common under-the-hood language across many computers today, as the Apple iOS is built on top of UNIX, and the various versions of the LinuxOS are built on a UNIX-like kernel, with a similar command shell. 
 <br><br>
@@ -24,9 +24,9 @@ Running R from the command line is a bit like spending a day tuning your car's e
 
 You can run R from the command line. It has none of the bells and whistles, nor any of the user conveniences of the RStudio Interactive Developer Environment (IDE). But it is how R was originally expected to be used when it was developed back in 2000 in New Zealand.
 <br><br>
-Running R from the command line allows you to do powerful things, like process multiple files at once, which can be handy when you have multiple files of sequencing data from distinct observations, or you have a multistep data wrangling pipeline with several slow steps. For many years, this was the only way to easily apply code across multiple files.
+Running R from the command line allows you to do powerful things, like process multiple files at once, which can be handy when you have multiple files of sequencing data from distinct observations, or you have a multistep data wrangling pipeline with several slow steps. For many years, this was the only way to easily apply code across multiple files to build a complex data pipeline.
 <br><br>
-This is much less true today, with tools to handle file paths like the {here} and {fs} packages, and the {drake} package to manage multistep data pipelines (similar to _make_). But some labs have been doing things at the command line for years, and find it hard to change.
+This is much less true today, with tools to handle file paths like the {here} and {fs} packages, and the {drake} package to manage multi-step data pipelines (similar to _make_). But some labs have been doing things at the command line for years, and find it hard to change.
 
 ## How do you get started?
 First, you need to open a terminal window.
@@ -42,7 +42,8 @@ And to do that, you need to find it. This is akin to getting under the hood of a
 
 
 ## The Yawning Blackness of the Terminal Window
-So, you have managed to open a terminal window, which has a standard UNIX prompt, ending in `%`. Not terribly helpful, is it? The bash shell is waiting for you to enter a command. No user interface for you!
+So, you have managed to open a terminal window, which has a standard UNIX prompt, ending in something like `%` or `$`. Not terribly helpful, is it? The bash shell is waiting for you to enter a command. <br>
+No user interface for you!
 <br><br>
 Let's start with a simple one, which can't do any harm. Run the command below:<br>
 `whoami`
@@ -50,6 +51,10 @@ Let's start with a simple one, which can't do any harm. Run the command below:<b
 
 ```bash
 whoami
+```
+
+```
+## peterhiggins
 ```
 
 Remember that UNIX started out as an operating system for terminals, and knowing who was logged in was a helpful thing.
@@ -60,7 +65,12 @@ Try the following:
 ```bash
 whoami;date
 ```
-OK, fine. This is sort of helpful. It was really important when you were on a terminal and paying by the minute for time on a mainframe back in 1969. And, on occasion, if you will need to use a cluster to run a script on a lot of data, you will likely have to use some of this command line knowledge. 
+
+```
+## peterhiggins
+## Sun Sep  6 17:13:07 EDT 2020
+```
+OK, fine. This is sort of helpful. It was really important when you were on a terminal and paying by the minute for time on a mainframe back in 1969. And, on occasion, if you will need to use an entire computer cluster to run a script (or scripts) on a lot of data, you will likely have to use some of this command line knowledge. You can even schedule jobs (scripts) to run when your time is scheduled on the cluster with `cron` and `crontab`.
 <br><br>
 At this point, it would be helpful to open a window with your Documents folder, and keep it side by side with the window in which you are reading this e-book. We will start working with files and directories, and it is helpful to see changes in your file/folder structure in real time. As we run commands in the bash shell, check them against what you see in the folder window. You may find that some files (dotfiles, starting with a period) are hidden from the user to prevent problems that occur when these are deleted. 
 <br><br>
@@ -74,6 +84,10 @@ Run the code below in your Terminal window.
 ```bash
 pwd
 ```
+
+```
+## /Users/peterhiggins/Documents/RCode/rmrwr-book
+```
 You can see the full path to your current directory. This can be a bit obscure if you are just looking at your folder structure, particularly at the beginning of the path. Fortunately, the {here} package handles a lot of this for you when you are working in Rstudio projects. <br>
 We think of the directory as a tree, with a root - in this case, `Users`, and various branches as you build out folders and subfolders.<br>
 We can move up and down the folders of the directory paths with the `cd` command, for `change directory`.
@@ -84,12 +98,248 @@ Try this command in your Terminal Window, and see if you can figure out what it 
 ```bash
 cd ..
 ```
-It changes the directory `up` one level closer to the root directory. It is straightforward to go up the directory tree, as each folder only has one `parent`. But it is tricky to go down the directory tree, as there are many possible branches, and you do not inherently know the names of these branches. We need to list the contents of your current directory with `ls` to know what is there. Try the `ls` command in your Terminal window
+It changes the directory `up` one level closer to the root directory. It is straightforward to go up the directory tree, as each folder only has one `parent`. But it is tricky to go down the directory tree, as there are many possible branches/children, and you do not inherently know the names of these branches. We need to list the contents of your current directory with `ls` to know what is there. Try the `ls` command in your Terminal window
 
 
 ```bash
 cd /Users/peterhiggins/Documents/;
 ls
+```
+
+```
+## 2020-Jun-05 AGA IMIBD meeting notest.docx
+## 2021 AGA Invited Speaker Session Basic Hybrid Example.pdf
+## A is for Allspice.2.0.docx
+## A is for Allspice.docx
+## ABT263_HIO_report_toWord.docx
+## AGA IMIBD
+## AGA IMIBD Webinar Outline.docx
+## AMAG DDW Clear draft_PDRH comments.docx
+## APG1244_Milestone_report.docx
+## A_Woodward_Score Sheet_PDRH.docx
+## Accounts and Access (1) (1).docx
+## Advice for participants in webinars.docx
+## Animation of NSAID.pptx
+## BKochar_Frailty.pdf
+## BM recommendation.docx
+## Beginners_GuideToR.pdf
+## Biosketch for K.pptx
+## Biosketch_2020_Higgins_ClinResIBD_biosketch.doc
+## Brazil.ItineraryNov2015.docx
+## Butter BCS Chicken.docx
+## CAS.K.candidate.background_SB_PDRH.docx
+## CAS.T32.Project.Description-JS.docx
+## CAS.career.goals.obj.development.training_PDRH.docx
+## CC360_The Risk of SARS.R1.docx
+## CC360_The Risk of SARS.docx
+## CCF IBD Webcast 2020 Draft Deck_For Review.pptx
+## CCFA EIC Candidate Interview Questions (candidates) jobin[1].doc
+## CDC_proposal1.1.docx
+## CLARE STOCKS.docx
+## COVID Trials Feasibility
+## CaltechCampus Tour & Information Session.webarchive
+## Cancel Appt Epic.ppt
+## Causal.png
+## CellDeath_DDW_2021_ISS.pdf
+## Chu RPG Review_PDRH.docx
+## Clare Investment Summary.docx
+## Coursera_Programming in R Notes.docx
+## CoverLetterPlus.pptx
+## Crash&Burn_ScriptV2_100318 copy.pdf
+## DataCamp Courses by Topic.docx
+## DeEscalationACG2016.pptx
+## Demographics.pdf
+## DrHiggins IBD Data Request.xlsx
+## Draft Postop IBD Surgery Care Protocols v2_SERedit.docx
+## ECCO 2016 Amsterdam Schedule.docx
+## ECCO 2019 UC PRO SS Abstract D1f_JP_UA_YO_AM_PDRH.docx
+## ECCO2016Lycera30937.pptx
+## Effect of medications on the recurrence of cancer in IBD patients.docx
+## Electrical engineering interview questions.docx
+## FDAtofaResponse.docx
+## FFMI Kickstart-FinalReport 5-20-16-LJ.docx
+## FITBITProtocol_28NOV2016_AbbVie.docx
+## FITBITProtocol_4DEC2016_AbbVie.docx
+## FMT_DDW_2021_ISS.pdf
+## FibrosisIBDCedars2016.pptx
+## Figures-KC-JAMA.pptx
+## Finance and Retirement Plans.docx
+## Financial Priorities.docx
+## Garmin Notes.docx
+## General thoughts about query letters.docx
+## GitHub
+## Glover_RPG_Review_PDRH.docx
+## GoToMeeting Chats
+## GradPartyHigginsInvites.xlsx
+## HPI-5016 IBD Patient Contact Info.xlsx
+## HS movie.docx
+## Higgins AGA Webinar Slides.pptx
+## Higgins New IBD.pptx
+## Higgins Refractory Proctitis.pptx
+## Higgins biosketch2015KRao.doc
+## Higgins biosketch2016KRao.doc
+## HigginsACGMidwest2019_PerioperativeIBD.pptx
+## Higgins_LOS_IBDBiobank_Shah_Nusrat_2019.docx
+## Higgins_UM_CME_Pregnancy in IBD.pptx
+## How To Log in to IBD Server.docx
+## How To Log in to RStudio Server for HigginsLab.docx
+## How To Log in to RStudio Server for Shiny.docx
+## IBD 2020 - Honorarium reimbursement Form.docx
+## IBD Biobank Cryostor.pptx
+## IBD Clinical Trials for MDsDearborn2017.pptx
+## IBD Insurance Pilot Results.docx
+## IBD Insurance Survey for CCFA Partners Existing.docx
+## IBD Journal Club 13Feb2017.docx
+## IBD Journal Club July 11.docx
+## IBD Plexus meeting 21 Sep 2015 notes.docx
+## IBD School 322 Script.docx
+## IBD School 324 Script.docx
+## IBD School 325 Script.docx
+## IBD and biologics tweets.docx
+## IBD inbox coverage.docx
+## IBDInsuranceSurvey3.docx
+## IBDMentoringConferenceCall4AbstractsPH.docx
+## IBD_Deescalation_Apr_2019_PDRH.docx
+## IBDforLansing2017.pptx
+## IMG_0006.jpg
+## IMG_0008.jpg
+## IMG_1523st.jpg
+## IMIBD Councilors 2020-21.docx
+## IMIBD Partners insurance 2020DDW.pptx
+## JAK_DDW_2021_ISS.pdf
+## JAMA_KC_Second JAMA.docx
+## JAMA_Review_on_CD_Revisions_Tracked_Changes with edits_PDRH.docx
+## JB_V1 Career Goals and Objectives 7.8.2020_PDRH.docx
+## JB_V2 Candidate’s Background 7.7.2020_PDRH.docx
+## JDix_Study_update.docx
+## K Award Institutional Letter of Commitment.pptx
+## K Candidate Section.pptx
+## K105_Melmed_PROs in Practice_MB_bb_JLS.pptx
+## K23 Aims - Shirley Cohen-Mekelburg 11.14.19.docx
+## K23_morph_measurements_MockupManuscript_21JAN2019.docx
+## Learning R discussion Jeremy Louissaint.docx
+## Lin_Reviewer Score_PDRH.docx
+## Log in to IBD Server.docx
+## MIM-TESRIC PROTOCOL_Higgins_14Apr2020.docx
+## MIM-TESRIC PROTOCOL_Higgins_26Aug2020.docx
+## Managment of CD.pptx
+## Manuscript v1.docx
+## Manuscript v2.PDRH.docx
+## McDonald, Nancy.pdf
+## Megan McLeod Rec Letter Residency.docx
+## MentoringAgendaDraftPH.docx
+## Meta analysis TB vs CD version 3.5.docx
+## Michigan Medicine Gastroenterology Social Media Initiative.docx
+## Michigan Medicine Model for COVID-19 Clinical Trial Oversight DRAFT (KSB 04.17.20)-AL-PDRH.docx
+## Microsoft User Data
+## MultidisciplinaryIBDClinicPHv2.docx
+## NordicTrackTC9iTreadmillManual.pdf
+## Oct2019payPDRH.PDF
+## Odd college lists.docx
+## PHcv2019.docx
+## PHcv2020.docx
+## PRO agenda videos VINDICO.docx
+## PRO letter.docx
+## PS_K grant aims 6-25_PDRH.docx
+## PTM LOS From PDRH.docx
+## PTM LOS From PDRH.pdf
+## Pearson 5 Notes.docx
+## Personal statement version 3!.docx
+## Pitch Letter - S is for Saffron.docx
+## Poppy Eulogy backup.docx
+## Poppy Eulogy.docx
+## Possible Eastern College Tour.docx
+## Powerpoint
+## PredictingIBD_DDW_2021_ISS.html
+## PredictingIBD_DDW_2021_ISS.pdf
+## Purdue Disclosure Form_Higgins.docx
+## Question 16.docx
+## RCode
+## Ramp up clinical research_PH.xlsx
+## Ramping up human subject research - MM 6-1-20 _KDA_PDRH_suggestions.docx
+## Recordings
+## Review Criteria for COVID Clinical Trials.docx
+## Review guidelines_2017.docx
+## Roasted Salted Cashews.docx
+## S is for Saffron 3.0.docx
+## S is for Saffron 3.1.docx
+## S is for Saffron 3.2.docx
+## S is for Saffron.2.0.docx
+## SEAN STOCKS.docx
+## SIG_Template_IBD Program_FINAL.docx
+## Sean Common App academic honors list.docx
+## Sean Common App activities list.docx
+## Sean Higgins Bordogni.mp4
+## Sean Higgins Brag Sheet.docx
+## Sean Investment Summary.docx
+## Sean Resume Tabular VBorder.docx
+## Sean Resume Tabular.docx
+## Sean Resume.docx
+## Sean Summer Priorities 2016.docx
+## SecureIBD.pptx
+## ShareRmd.html
+## Sherman Prize Nominee Questions.docx
+## Shoreline West Tour Information.docx
+## Short PA slides.pptx
+## Signing Clinical Research Infusion Orders.pdf
+## SingleCell_DDW_2021_ISS.pdf
+## Source Code PT1.docx
+## Stelara paper.docx
+## T32_current_text_14June2019.docx
+## TOPPIC ML draft v5SCM_YL_AKW_PDRH.docx
+## TabaCrohn IBD J club.docx
+## Tables.docx
+## Takeda_IBD School Videos_Submission.pdf
+## Task List 2020-2.docx
+## Task List 2020.docx
+## Testing signatures with Adobe.pdf
+## The Risk of SARS.R1.Markup.docx
+## Tidymodels.docx
+## Tofa in ICI Figure Legends_Final Draft_V2.docx
+## Tofa inpatient induction Protocol_02NOV2018_PHforEdits.docx
+## Toffee Separation Tips.docx
+## UCRx_DDW_2021_ISS.pdf
+## UC_protocol_comments_2020.docx
+## UM IBD Clinical Trials IBD referral form.docx
+## UPA_U_ACHIEVE 1st draft_PDRH.docx
+## VINDICO_PRO.pptx
+## VideoVisitSchedulingQuickApptsforProviders.pdf
+## VirtualPtEdMar2020.v2.pdf
+## WebEx
+## Zoom
+## Zwift
+## Zwift-Gift-Card.pdf
+## aga institute council july 2020 meeting.pdf
+## biomakers_fibrosisPDRH.docx
+## epic cancel_reschedule appointments.ppt
+## epic schedule viewing_close.ppt
+## escalator.html
+## fellow graduation 2020.docx
+## hexStickers.jpg
+## iBike Rides
+## learnr app diagram.jpg
+## learnr app diagram.pptx
+## letter Lowrimore.docx
+## mockstudy manuscript draft.docx
+## nejm1966_beecher_ethics.pdf
+## pdrh_IBD_email.xlsx
+## personal statement fellowship_PDRH.docx
+## peterhiggins.jpg
+## seq-6.pdf
+## signature.docx
+## signature.fld
+## signature.html
+## signature.pdf
+## signature.png
+## stiff_bcl.R
+## submitJanssen_IBD School Videos_12Jul2018.pdf
+## tidyr_pivot.png
+## tidyr_pivot.xcf
+## ucla1.jpg
+## wga_min20.pdf
+## ~$T Review Higgins.docx
+## ~$sk List 2020.docx
+## ~$tter BCS Chicken.docx
 ```
 
 You will see a listing of all files and folders in the current directory. You can get more details by adding the option (sometimes called a `flag`) `-l`
@@ -112,6 +362,29 @@ In your Terminal window:
 ```bash
 cd /Users/peterhiggins/Documents/Powerpoint;
 ls
+```
+
+```
+## 2016IBDClinTrialsforMDsDearborn.pptx
+## 2016IntegratedDeckorMDsGB.pptx
+## 2019 SCSG GI Symposium IBD SoA  -  Read-Only.pptx
+## BE LGD Dearborn 2016.04.12.pptx
+## Getting Started in RStudio.pptx
+## Higgins Microbiota for IBD Patient Ed.pptx
+## HigginsDec2018AJG_SmokingStatus.pptx
+## IBDUpdate.pptx
+## Integrated Slide Deck Dearborn 2016.04.12.pptx
+## MER Stress Management Dearborn 4-14.pptx
+## MichiganMedicine-IBDTemplate.potx
+## PDRH RCAR 2020.pptx
+## PennThioMTX2017Higgins.pptx
+## Pregnancy in IBD.pptx
+## Regenbogen CRS for GI CME Course2016.pptx
+## Senior Slide Show.pptx
+## ThomsonRectalStumpComplicationsIBD2_13.pptx
+## UMHS Talk- Moving Beyond AntiTNF 4-2016 FINAL v2.pptx
+## VirtualPtEdMar2020.v2.pptx
+## Writers Room.pptx
 ```
 Great!<br>
 You moved to a new directory and listed it.<br>
@@ -146,7 +419,7 @@ ls
 ```
 
 You can also create a file with data inside it with the `cat >` command.
-Type in the following lines into your Terminal window. When complete, type control-D to be done.
+Type in the following lines into your Terminal window. When complete, type control-D to be done and return to the Terminal prompt.
 `cat` stands for concatenate.
 
 
@@ -158,17 +431,15 @@ cat3
 ```
 
 Now you can list the contents of this file with the `cat` command below.
-I have to change the directory to get to the right place first. Check your directory with `pwd` - you may not need to do `cd`.
+
 
 ```bash
-cd /Users/peterhiggins/Documents/Powerpoint/new_files;
 cat file2.txt
 ```
 You can also list the directory of your `new_files` folder with ls to see the new folder contents.
 
 
 ```bash
-cd /Users/peterhiggins/Documents/Powerpoint/new_files;
 ls
 ```
 
@@ -182,23 +453,23 @@ In order, we will
 - remove the directory with `rmdir new_files`
 
 ```bash
-cd /Users/peterhiggins/Documents/Powerpoint/new_files;
+pwd;
 rm file2.txt;
 cd ..;
 rmdir new_files
 ```
 Verify all of this in your Documents window.<br>
-This is great. But you can imagine a situation in which you mistakenly `rm` a file that you actually needed. Unlike your usual user interface, when a file is removed at the command line, it is gone. It is not in the trash folder. It is gone. There is something to be said for modern user interfaces, which are built for humans, who occasionally make mistakes. Sometimes we do want files or folders back.
+This is great. But you can imagine a situation in which you mistakenly `rm` a file (or directory) that you actually needed. Unlike your usual user interface, when a file is removed at the command line, it is gone. It is not in the trash folder. It is gone. There is something to be said for modern user interfaces, which are built for humans, who occasionally make mistakes. Sometimes we do want files or folders back.
 
 ## Other helpful file commands
 Here are some file commands worth knowing
 
 - `cat filename` - to print out whole file to your monitor
-- `less filename` - to print out the first page, and you can tab through each page one at a time
+- `less filename` - to print out the first page of a file, and you can scroll through each page one at a time
 - `head filename` - print first 10 lines of a file
 - `tail filename` - print last 10 lines of a file
 - `cp file1 file2` - copy file1 to file2
-- `mv file1.txt file.2.txt file3.txt folder` - move files to a new folder
+- `mv file1.txt file.2.txt file3.txt new_folder` - move 3 files to a new folder
 
 ## What about R?
 So now you can get around directories, and find your files in the Terminal window, but you really want to run R.<br>
@@ -210,6 +481,7 @@ R
 You get the usual R intro, including version number, and the `R>` prompt.<br>
 Now you can run R in interactive mode with available datasets, or your own datasets.<br>
 Try a few simple commands with the mtcars dataset.<br>
+Give the examples below a try.<br>     
 
 You can use `q()` to quit back to the terminal (and reply "n" to **not** save the workplace image).
 
@@ -275,8 +547,8 @@ R -e 'library(palmerpenguins);data(penguins);tail(penguins)'
 ```
 
 ## Running an R Script from the Terminal
-Now we are stepping up a level - you have an R script that you have carefully created and save as the `myscript.R` file. How do you run this from the Terminal?<br>
-This is easy - just call the `Rscript` command with your file name. Pick out a short R file you have written, and use it as in the example below.
+Now we are stepping up a level - you have an R script that you have carefully created and saved as the `myscript.R` file. How do you run this from the Terminal?<br>
+This is easy - just call the `Rscript` command with your file name. Pick out a short R file you have written, make sure you are in the right directory where the file is, and use it as in the example below.
 
 
 ```bash
@@ -286,7 +558,7 @@ Rscript myscript.R
 This launches R, runs your script, saves resulting output (if your script includes save or ggsave commands), closes R, and sends you back to the Terminal. Very simple.
 
 ## Rendering an Rmarkdown file from the Terminal
-This is a little different, as you can just run an Rmarkdown file. Normally you would use the dropdown button to knit your file from Rstudio. But you can use the `rmarkdown::render` command to render your files to HTML, PDF, Word, powerpoint, etc. Pick out a simple Rmd file, and try something like the example below. <br>
+This is a little different, as you can't just run an Rmarkdown file. Normally you would use the dropdown button to knit your file from Rstudio. But you can use the `rmarkdown::render` command to render your files to HTML, PDF, Word, Powerpoint, etc. Pick out a simple Rmd file like `output_file.Rmd` below, make sure you are in the right directory where the file is, and try something like the example below. <br>
 Note that this is one case where nesting different types of quotes (single vs. double) can come in handy.<br>
 It helps to use single quotes around your filename and double quotes around the `rmarkown::render` command.
 
@@ -303,6 +575,6 @@ For further reading, check out these helpful links:
 
 1. [R in Batch mode on Linux](http://www.cureffi.org/2014/01/15/running-r-batch-mode-linux/) 
 2. [R tutorial for a Unix Environment](https://uwaterloo.ca/statistics-and-actuarial-science/research/resources/r-tutorial-unix-environment)
-3. [The Linux Command Line: A Complete Introduction (book)] (https://www.amazon.com/Linux-Command-Line-2nd-Introduction/dp/1593279523/ref=sr_1_12?crid=13X90SPNPT377&dchild=1&keywords=shell+scripting&qid=1599228400&s=books&sprefix=shell+scripting%2Caps%2C154&sr=1-12)
+3. [The Linux Command Line: A Complete Introduction - a whole book on the topic](https://www.amazon.com/Linux-Command-Line-2nd-Introduction/dp/1593279523/ref=sr_1_12?crid=13X90SPNPT377&dchild=1&keywords=shell+scripting&qid=1599228400&s=books&sprefix=shell+scripting%2Caps%2C154&sr=1-12)
 4. [Scheduling jobs with cron](https://ole.michelsen.dk/blog/schedule-jobs-with-crontab-on-mac-osx/)
 
