@@ -73,7 +73,7 @@ whoami;date
 
 ```
 ## peterhiggins
-## Sun Sep  6 19:20:49 EDT 2020
+## Mon Sep  7 06:57:12 EDT 2020
 ```
 :::
 
@@ -652,5 +652,6 @@ For further reading, check out these helpful links:
 1. [R in Batch mode on Linux](http://www.cureffi.org/2014/01/15/running-r-batch-mode-linux/) 
 1. [R tutorial for a Unix Environment](https://uwaterloo.ca/statistics-and-actuarial-science/research/resources/r-tutorial-unix-environment)
 1. [The Linux Command Line: A Complete Introduction - a whole book on the topic](https://www.amazon.com/Linux-Command-Line-2nd-Introduction/dp/1593279523/ref=sr_1_12?crid=13X90SPNPT377&dchild=1&keywords=shell+scripting&qid=1599228400&s=books&sprefix=shell+scripting%2Caps%2C154&sr=1-12)
+1. [Software Carpentry Command-Line Programs](https://swcarpentry.github.io/r-novice-inflammation/05-cmdline/)
 1. [Scheduling jobs with cron](https://ole.michelsen.dk/blog/schedule-jobs-with-crontab-on-mac-osx/)
 :::

@@ -236,16 +236,18 @@ div.warning, div.tip, div.tryit, div.challenge, div.explore {
   background-repeat: no-repeat;
   background-position: 15px center;
   min-height: 120px;
-  color: #00274c; /* blue */
-  background-color: #bed3ec; /* light blue */
+  color: #00274c; /* blue text */
+  background-color: #bed3ec; /* light blue background */
 }
 
 div.warning {
   background-image: url("images/warning.png");
+  background-color: #f7f7f7; /* gray97 background */
 }
 
 div.tip {
   background-image: url("images/tip.png");
+  background-color: #fff8dc; /* cornsilk background */
 }
 
 div.tryit {
@@ -254,10 +256,13 @@ div.tryit {
 
 div.challenge {
   background-image: url("images/challenge.png");
+  color: #4b0082; /* indigo text */
+  background-color: #ffe1ff; /* thistle background */
 }
 
 div.explore {
   background-image: url("images/explore.png");
+  background-color: #d0faee; /* green card background */
 }
 
 /* .book .book-body .page-wrapper .page-inner section.normal is needed
