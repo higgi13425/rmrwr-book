@@ -247,11 +247,12 @@ div.warning {
 
 div.tip {
   background-image: url("images/tip.png");
-  background-color: #fff8dc; /* cornsilk background */
+  background-color: #fff7bc; /* warm yellow background */
 }
 
 div.tryit {
   background-image: url("images/tryit.png");
+  background-color: #edf8fb; /* light blue background */
 }
 
 div.challenge {
