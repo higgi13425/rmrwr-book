@@ -23,6 +23,7 @@ A repository of things I want to teach and share with medical research trainees.
 1. Edit an existing chapter .Rmd file - naming convention is io##-Topic.Rmd
 2. Create a new chapter .Rmd file - naming convention is io##-Topic.Rmd
 3. Knit to check that everything works.
+4. If a new chapter has been added and is ready for public viewing (not just draft form), add it to the list of chapters in order in _bookdown.yml, somwehere in between index.Rmd and io98-title_holder.Rmd
 4. Render the book with `bookdown::render_book('index.html')`
 5. Publish the book with `bookdown::publish_book(account = 'pdr_higgins')`
 6. Then commit changes and push to github
