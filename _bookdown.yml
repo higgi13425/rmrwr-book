@@ -9,6 +9,7 @@ rmd_files:
 - index.Rmd
 - io02-getting-started.Rmd
 - io03-tasting.Rmd
+- io65-error_messages.Rmd
 - io04-updating.Rmd
 - io07-major-updates.Rmd
 - io08-data-validation.Rmd
@@ -21,6 +22,21 @@ rmd_files:
 
 # notes
 
+
+# publishing to bookdown.org - primary
+# details at https://bookdown.org/yihui/bookdown/rstudio-connect.html
+
+# render book with
+# bookdown::render_book('index.html')
+# publish book with
+# bookdown::publish_book(account = 'pdr_higgins')
+# published at: https://bookdown.org/pdr_higgins/rmrwr/
+# then commit and push to github
+
+
+
+
+## backup option
 # drag and drop quick publishing
 # build book using Build tab
 # Go into Finder, find _book folder in Rcode/rmrwr_book
@@ -28,15 +44,3 @@ rmd_files:
 # claimed as https://rmrwr.netlify.app
 # now can go to https://app.netlify.com/sites/rmrwr/deploys
 # drag and drop to update site
-
-
-# publishing to bookdown.org
-# details at https://bookdown.org/yihui/bookdown/rstudio-connect.html
-
-# render book with
-# bookdown::render_book('index.html')
-# publish book with
-# bookdown::publish_book(account = 'pdrhiggins')
-# published at: https://bookdown.org/pdrhiggins/rmrwr/
-# then commit and push to github
-

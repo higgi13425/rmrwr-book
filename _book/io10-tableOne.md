@@ -34,6 +34,25 @@ This means that you can make a table once, and be able to produce output in HTML
 <br>
 The only question is how and when you prefer to format your table. Both gt and flextable have great options for formatting your tables. You can do this in gt, then do *as_flextable*, or you can convert to a flextable first, then do your formatting. You can choose based on your comfort and familiarity with flextable vs. gt. Both have excellent explanatory websites, with flextable [here](https://davidgohel.github.io/flextable/index.html) and gtsummary [here](http://www.danieldsjoberg.com/gtsummary/index.html).
 
+
+
+ 
+### Example of how to build a Table 1 with gtsummary
+ 
+
+
+In the window below, you can:
+ 
+- Expand the example below to View in full screen by clicking the four arrows icon (Esc to return to small version).
+- Go to the next slide or previous slide with the left and right arrow icons/keys (or hover your mouse over the window and slowly scroll up and down.) 
+- Share on the internet by clicking the Share icon (3 circles connected by 2 lines).
+
+Give it a try.
+ 
+<iframe src="table-one.html" width="672" height="360"></iframe>
+
+
+
 ## Making An Adverse Events Table
 
 ## Making A Results Table

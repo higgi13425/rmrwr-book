@@ -98,6 +98,10 @@ Go ahead and play the example below, which uses rayrendering (all coded entirely
 <br>
  
 
+```
+## Warning in knitr::write_bib("rayrender", "packages.bib"):
+## package(s) rayrender not found
+```
 
 
 

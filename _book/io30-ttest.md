@@ -262,7 +262,30 @@ t.test(df$sleep_total, alternative = "two.sided",
 - conf.level = 0.95
 - [documentation](https://www.rdocumentation.org/packages/stats/versions/3.5.1/topics/t.test)
 
+## Insert flipbook for ttest here
+Below is a flipbook.<br>
+It illustrates a bit of how to do a t-test. <br>
+click on it and you can use the arrow keys to proceed forward and back through the slides, as you add lines of code and more results occur.
 
+Let's start with a flipbook slide show.
+When the title slide appears, you can step through each line of the code to see what it does. The right/left and/or up/down arrows will let you move forward and backward in the code.
+
+You can use the arrow keys to go through it one step at a time (forward or backward, depending on which arrow key you use), to see what each line of code actually does.
+
+Give it a try below. See if you can figure out what each line of code is doing.
+
+### Flipbook Time!
+
+<!---FLIPBOOK EX 1--> 
+
+<iframe style="margin:0 auto; border: solid black;" 
+id="myIframe8" 
+width = "763" height = "432" src="https://higgi13425.github.io/mini_flipbooks/ttest_flipbook.html#1" 
+scrolling="no"></iframe> 
+
+<!-------------> 
+
+This is t-testing in action.
 
 ## Fine, but what about 2 groups?
 - consider df$vore
@@ -270,14 +293,14 @@ t.test(df$sleep_total, alternative = "two.sided",
 ```r
 library(tidyverse)
 library(medicaldata)
-
-table(df$vore)
+prostate <- medicaldata::blood_storage
+tabyl(prostate$AA)
 ```
 
 ```
-## 
-##   carni   herbi insecti    omni 
-##      19      32       5      20
+##  prostate$AA   n   percent
+##            0 261 0.8259494
+##            1  55 0.1740506
 ```
 - hypothesis - herbivores need more time to get food, sleep less than carnivores
 - how to test this?
@@ -409,7 +432,7 @@ result
 - The mean brain weight for carnivores was 0.0792556
 - The mean brain weight for herbivores was 0.02155
   - The difference was 0.0577056
-- The t statistic for this  Two Sample t-test was 1.1995501
+- The t statistic for this Two Sample t-test was 1.1995501
 - The p value was 0.2534631
   - The confidence interval was from -0.05 to 0.16
 

@@ -18,6 +18,9 @@ UNIX is an early operating system, which is built around a 'kernel' which execut
 <br><br>
 UNIX is a common under-the-hood language across many computers today, as the Apple iOS is built on top of UNIX, and the various versions of the LinuxOS are built on a UNIX-like kernel, with a similar command shell. 
 <br><br>
+The command line is often the least common denominator between different pieces of open-source software that were not designed to work together. It can occasionally be helpful to build a data pipeline from mismatched parts.
+ However, there is a lot of low-quality user-hostile command line work involved to get it done, often referred to as "command-line bullshittery". This is a common bottleneck that slows scientific productivity, and there is a vigorous discussion of it on the interwebs [here](https://pg.ucsd.edu/command-line-bullshittery.htm) and [here (counterpoint)](https://medium.com/@eytanadar/on-the-value-of-command-line-bullshittery-94dc19ec8c61). Essentially, some argue that it is largely a waste of time and effort, while others see it as a valuable learning experience, like doing least squares regression by hand with a pencil.
+<br><br>
 Running R from the command line is a bit like spending a day tuning your car's engine by yourself. There is a case to be made that this will improve the efficiency and performance of your car, but it is also usually more efficient to pay someone else to do it, unless you are a car expert with a lot of free time.
 
 ## Why run R from the command line?
@@ -26,7 +29,7 @@ You can run R from the command line. It has none of the bells and whistles, nor 
 <br><br>
 Running R from the command line allows you to do powerful things, like process multiple files at once, which can be handy when you have multiple files of sequencing data from distinct observations, or you have a multistep data wrangling pipeline with several slow steps. For many years, this was the only way to easily apply code across multiple files to build a complex data pipeline.
 <br><br>
-This is much less true today, with tools to handle file paths like the {here} and {fs} packages, and the {drake} package to manage multi-step data pipelines (similar to _make_). But some labs have been doing things at the command line for years, and find it hard to change.
+This is much less true today, with tools to handle file paths like the {here} and {fs} packages, run Python scripts from R with the {reticulate} package, run C++ scripts with Rcpp, and run bash, python, SQL, D3, and Stan scripts from Rmarkdown. You can use the {drake} package to manage multi-step data pipelines in different languages (similar to _make_). But some labs have been doing things at the command line for years, and find it hard to change.
 
 ## How do you get started?
 First, you need to open a terminal window.
@@ -73,7 +76,7 @@ whoami;date
 
 ```
 ## peterhiggins
-## Mon Sep  7 10:54:08 EDT 2020
+## Sat Dec 12 15:44:10 EST 2020
 ```
 :::
 
@@ -126,15 +129,25 @@ ls
 ```
 
 ```
+## 1FQ_Crohn's Disease_23Oct2020 (002).doc
 ## 2020-Jun-05 AGA IMIBD meeting notest.docx
 ## 2021 AGA Invited Speaker Session Basic Hybrid Example.pdf
+## 2021.Higgins AGA Distinguished Clinician.CO.docx
 ## A is for Allspice.2.0.docx
 ## A is for Allspice.docx
 ## ABT263_HIO_report_toWord.docx
 ## AGA IMIBD
+## AGA IMIBD Councilor Career Discussion Guide.docx
 ## AGA IMIBD Webinar Outline.docx
+## AIBD CAM Higgins.pdf
+## AIBD CAM Higgins.pptx
+## AIBD SoMe Higgins.pdf
+## AIBD SoMe Higgins.pptx
+## AIBD agreement.docx
+## AIBD20Template.pptx
 ## AMAG DDW Clear draft_PDRH comments.docx
 ## APG1244_Milestone_report.docx
+## ASUC_UC_protocol_comments_2020.docx
 ## A_Woodward_Score Sheet_PDRH.docx
 ## Accounts and Access (1) (1).docx
 ## Advice for participants in webinars.docx
@@ -162,12 +175,14 @@ ls
 ## CellDeath_DDW_2021_ISS.pdf
 ## Chu RPG Review_PDRH.docx
 ## Clare Investment Summary.docx
+## Council Conversations Author Chat Guide.docx
 ## Coursera_Programming in R Notes.docx
 ## CoverLetterPlus.pptx
 ## Crash&Burn_ScriptV2_100318 copy.pdf
 ## DataCamp Courses by Topic.docx
 ## DeEscalationACG2016.pptx
 ## Demographics.pdf
+## Documents.Rproj
 ## DrHiggins IBD Data Request.xlsx
 ## Draft Postop IBD Surgery Care Protocols v2_SERedit.docx
 ## ECCO 2016 Amsterdam Schedule.docx
@@ -185,18 +200,23 @@ ls
 ## Finance and Retirement Plans.docx
 ## Financial Priorities.docx
 ## Garmin Notes.docx
+## General Social Media Tips.docx
 ## General thoughts about query letters.docx
+## Git for MDs_2.pptx
 ## GitHub
+## Github for MDs_1.pptx
 ## Glover_RPG_Review_PDRH.docx
 ## GoToMeeting Chats
 ## GradPartyHigginsInvites.xlsx
 ## HPI-5016 IBD Patient Contact Info.xlsx
 ## HS movie.docx
 ## Higgins AGA Webinar Slides.pptx
+## Higgins Bio.docx
 ## Higgins New IBD.pptx
 ## Higgins Refractory Proctitis.pptx
 ## Higgins biosketch2015KRao.doc
 ## Higgins biosketch2016KRao.doc
+## Higgins-peter.jpg
 ## HigginsACGMidwest2019_PerioperativeIBD.pptx
 ## Higgins_LOS_IBDBiobank_Shah_Nusrat_2019.docx
 ## Higgins_UM_CME_Pregnancy in IBD.pptx
@@ -225,6 +245,7 @@ ls
 ## IMG_1523st.jpg
 ## IMIBD Councilors 2020-21.docx
 ## IMIBD Partners insurance 2020DDW.pptx
+## IMIBD_expanded_descriptors.xlsx
 ## JAK_DDW_2021_ISS.pdf
 ## JAMA_KC_Second JAMA.docx
 ## JAMA_Review_on_CD_Revisions_Tracked_Changes with edits_PDRH.docx
@@ -237,8 +258,11 @@ ls
 ## K23 Aims - Shirley Cohen-Mekelburg 11.14.19.docx
 ## K23_morph_measurements_MockupManuscript_21JAN2019.docx
 ## Learning R discussion Jeremy Louissaint.docx
+## Letter to Frank Hamilton.docx
 ## Lin_Reviewer Score_PDRH.docx
 ## Log in to IBD Server.docx
+## MEI_2020_PH_W9.pdf
+## MEI_ACH_Wire Transfer Form.docx
 ## MIM-TESRIC PROTOCOL_Higgins_14Apr2020.docx
 ## MIM-TESRIC PROTOCOL_Higgins_26Aug2020.docx
 ## Managment of CD.pptx
@@ -255,6 +279,9 @@ ls
 ## NordicTrackTC9iTreadmillManual.pdf
 ## Oct2019payPDRH.PDF
 ## Odd college lists.docx
+## P Singh K grant aims 8-25_PDRH.docx
+## P2PEP slide 2020
+## P2PEP slide 2020.pptx
 ## PHcv2019.docx
 ## PHcv2020.docx
 ## PRO agenda videos VINDICO.docx
@@ -263,12 +290,15 @@ ls
 ## PTM LOS From PDRH.docx
 ## PTM LOS From PDRH.pdf
 ## Pearson 5 Notes.docx
+## Perils of Excel.pptx
 ## Personal statement version 3!.docx
 ## Pitch Letter - S is for Saffron.docx
 ## Poppy Eulogy backup.docx
 ## Poppy Eulogy.docx
 ## Possible Eastern College Tour.docx
 ## Powerpoint
+## Prashant Rec Letter.docx
+## Prashant Rec Letter.pdf
 ## PredictingIBD_DDW_2021_ISS.html
 ## PredictingIBD_DDW_2021_ISS.pdf
 ## Purdue Disclosure Form_Higgins.docx
@@ -300,8 +330,11 @@ ls
 ## Sherman Prize Nominee Questions.docx
 ## Shoreline West Tour Information.docx
 ## Short PA slides.pptx
+## Shotwave thread.docx
 ## Signing Clinical Research Infusion Orders.pdf
 ## SingleCell_DDW_2021_ISS.pdf
+## SoMe_use_2020.png
+## Social Media for GI.pptx
 ## Source Code PT1.docx
 ## Stelara paper.docx
 ## T32_current_text_14June2019.docx
@@ -310,6 +343,7 @@ ls
 ## Tables.docx
 ## Takeda_IBD School Videos_Submission.pdf
 ## Task List 2020-2.docx
+## Task List 2020-5.docx
 ## Task List 2020.docx
 ## Testing signatures with Adobe.pdf
 ## The Risk of SARS.R1.Markup.docx
@@ -323,24 +357,34 @@ ls
 ## UPA_U_ACHIEVE 1st draft_PDRH.docx
 ## VINDICO_PRO.pptx
 ## VideoVisitSchedulingQuickApptsforProviders.pdf
+## VincentChen_K specific aims 2020-10-25.docx
 ## VirtualPtEdMar2020.v2.pdf
 ## WebEx
 ## Zoom
 ## Zwift
 ## Zwift-Gift-Card.pdf
 ## aga institute council july 2020 meeting.pdf
+## algorithms_thiopurine.pdf
+## base-r-cheatsheet.pdf
 ## biomakers_fibrosisPDRH.docx
+## bmj_imputation.pdf
+## cgh_factors_utilization.pdf
+## draft_tokenization letter Risa_Uste.docx
+## early-career-faculty_Dec-2020.xlsx
 ## epic cancel_reschedule appointments.ppt
 ## epic schedule viewing_close.ppt
 ## escalator.html
 ## fellow graduation 2020.docx
 ## hexStickers.jpg
+## higgins2x3.jpg
 ## iBike Rides
 ## learnr app diagram.jpg
 ## learnr app diagram.pptx
 ## letter Lowrimore.docx
 ## mockstudy manuscript draft.docx
 ## nejm1966_beecher_ethics.pdf
+## nejm_indomethacin.pdf
+## nejm_statins.pdf
 ## pdrh_IBD_email.xlsx
 ## personal statement fellowship_PDRH.docx
 ## peterhiggins.jpg
@@ -355,10 +399,11 @@ ls
 ## tidyr_pivot.png
 ## tidyr_pivot.xcf
 ## ucla1.jpg
+## untidy_sheets.pptx
 ## wga_min20.pdf
 ## ~$T Review Higgins.docx
+## ~$sk List 2020-5.docx
 ## ~$sk List 2020.docx
-## ~$tter BCS Chicken.docx
 ```
 :::
 
@@ -403,9 +448,12 @@ ls
 ## Regenbogen CRS for GI CME Course2016.pptx
 ## Senior Slide Show.pptx
 ## ThomsonRectalStumpComplicationsIBD2_13.pptx
+## UEGweek2020.pptx
 ## UMHS Talk- Moving Beyond AntiTNF 4-2016 FINAL v2.pptx
+## Vertebrate Animals for K.pptx
 ## VirtualPtEdMar2020.v2.pptx
 ## Writers Room.pptx
+## ibd_meds_surgery_metan.pptx
 ```
 :::
 
@@ -488,6 +536,32 @@ Try this
 ls
 ```
 :::
+
+Note that you don't need to use the Terminal to run bash commands. You can do this from an Rmarkdown file. <br>
+Take a moment to run `pwd` in your Terminal, to get the current directory.<br>
+<br>
+
+:::tryit
+Now open Rstudio, and a new Rmarkdown document.<br>
+Copy the path to the current directory from the Terminal.<br>
+Switch back to the Rmarkdown document.<br>
+Select one of the R code chunks (note the {r} at the top) and delete it.<br>
+Now click on the Insert dropdown at the top of the document, and insert a Bash chunk.<br>
+Now add UNIX commands (separated by a semicolon), like
+
+
+```bash
+cd (paste in path here);
+pwd;
+ls;
+cat file2.txt
+```
+Then run this chunk. <br>
+:::
+
+Now you can run terminal commands directly from Rmarkdown!
+
+## Cleaning Up
 
 OK, now we are done with the file `file2.txt` and the directory `new_files`.
 Let's get rid of them with `rm` (for removing files) and `rmdir` for removing directories. <br>

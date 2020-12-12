@@ -1,13 +1,13 @@
 --- 
 title: "Reproducible Medical Research with R"
 author: "Peter D.R. Higgins, MD, PhD, MSc"
-date: "2020-09-07"
+date: "2020-12-12"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
-bibliography: [book.bib, packages.bib]
-biblio-style: apalike
-link-citations: yes
+# bibliography: [book.bib, packages.bib]
+# biblio-style: apalike
+# link-citations: yes
 github-repo: higgi13425/rmrwr-book
 description: "This book is for anyone in the medical field interested in learning R to analyze available health data."
 url: 'https\://rmrwr.netlify.com'

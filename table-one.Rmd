@@ -1,0 +1,54 @@
+---
+title: "table-one"
+subtitle: ""
+author: ""
+output:
+  xaringan::moon_reader:
+    seal: FALSE
+    lib_dir: libs
+    css: [default, hygge, ninjutsu]
+    nature:
+      ratio: 16:10
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+
+```{r, include = F}
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F)
+library(flipbookr)
+library(tidyverse)
+load("current_image.Rdata")
+```
+
+
+```{r, echo = F, eval = TRUE , message = F, warning = F}
+xaringanExtra::use_share_again()
+```
+
+```{r, include = F}
+readLines("table-one.R") %>%
+  paste(collapse = "
+") %>%
+  code_parse() %>%
+  parsed_return_partial_code_sequence() ->
+the_code_seq
+```
+
+
+`r chunk_reveal(code_seq = the_code_seq, chunk_name = "table-one", break_type = "auto")`
+
+
+
+```{css, eval = TRUE, echo = FALSE}
+.remark-code{line-height: 1.5; font-size: 110%}
+
+@media print {
+  .has-continuation {
+    display: block;
+  }
+}
+```
+
