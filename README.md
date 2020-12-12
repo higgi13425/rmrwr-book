@@ -11,7 +11,23 @@ The book itself can be found [here](https://bookdown.org/pdr_higgins/rmrwr/)
 Making it easier to share data.     
 Making it easier to create literate code, and share this code.     
 Training the next generation of medical researchers to use ROpenSci tools, open research, and to encourage others to evaluate their data and their code to improve it.     
+
+
 ## Secondary Gains
 
 A repository of Things I have Learned (TILs) that I might want to reference in the future.     
 A repository of things I want to teach and share with medical research trainees.     
+
+# Notes on how to publish to bookdown.org
+
+1. Edit an existing chapter .Rmd file - naming convention is io##-Topic.Rmd
+2. Create a new chapter .Rmd file - naming convention is io##-Topic.Rmd
+3. Knit to check that everything works.
+4. Render the book with `bookdown::render_book('index.html')`
+5. Publish the book with `bookdown::publish_book(account = 'pdr_higgins')`
+6. Then commit changes and push to github
+7. within a minute or three, the updated book will appear at https://bookdown.org/pdr_higgins/rmrwr/
+
+More details can be found at https://bookdown.org/yihui/bookdown/rstudio-connect.html
+and at
+https://bookdown.org/home/about/ 
