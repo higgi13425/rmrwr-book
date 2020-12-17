@@ -10,8 +10,11 @@ output: html_document
 In this chapter, we will introduce you ways to wrangle rows in R. You will often want to focus your analysis on particular observations, or rows, in your dataset. This chapter will show you how to include the rows you want, and exclude the rows you don't want. 
 Once your data wrangling and data validation is done, you will be ready for data analysis.
 
-## A Few Examples
+## Filtering on Numbers - Starting with A Flipbook
 
+If you have not used a flipbook before, you can **click** on the frame below to activate it, then use **arrow keys** to move forward and back through the demo. 
+
+Before each forward step, try to predict the next result. Make sure you understand how the output was produced.
 
 <!---FLIPBOOK EX 1-->
 
