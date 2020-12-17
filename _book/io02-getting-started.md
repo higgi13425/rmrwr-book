@@ -4,8 +4,6 @@ author: "Peter Higgins"
 output: html_document
 ---
 
-
-
 # Getting Started and Installing Your Tools
 
 One of the most intimidating parts of getting started with something new is the actual getting started part. Don't worry, we will walk you through this step-by step. 
@@ -450,8 +448,53 @@ A successful result means that you are ready to roll in Rstudio and R!
 <br>
 ![ready](images/ready_to_R.png)
 
+## Critical Setup - Tuning Your RStudio
+
+We have 6+ adjustments that we need to make in your RStudio Global Settings for optimal R and RStudio use.
+
+1. At this point, it is a good idea to jump out of RStudio and create an "Rcode" folder on your computer, in a place that is easy to find, often at the top level in your Documents folder, to make all of your future projects easy to find. 
+
+Once that is in place, switch back to RStudio. In the RStudio Menus, go to Tools/Global Options. A new Global Options window will open up. Click on the General tab on the left. At the top, there is a small window for identifying your Default working directory. Click on the Browse button, and browse to your new "Rcode" folder and select it. From now on, your R files and Projects will all be in one place and easy to find.     
+
+2. In the same General tab, de-select the first 3 options
+  - turn off Restore most recently opened project at startup
+  - turn off Restore previously open source documents at startup
+  - turn off Restore .RData into workspace    
+  
+3. In the same General tab, find Save workspace to .RData on exit. Click on the dropdown menu to select "Never"
+
+These tune-ups (#2 and #3) to your RStudio will mean you will always start with a clean workspace in a new RStudio session, which will avoid a lot of potential problems later.
+
+4. In the same General tab, at the top, click on the Advanced tab. Then select the box for
+  - Show full path to project in window title
+This will show your working directory at the top of your Console Pane. This can prevent confusion and problems later.
+
+5. On the left, click on the Rmarkdown tab. Then de-select the option for    
+  - Show output inline for all Rmarkdown documents.
+  
+This will put your temporary output from Code Chunks into the larger and nicer Viewer tab.
+
+6. Take a look at the Appearance tab. You can change your code font, the font size, and the theme. I wouldn't make any drastic changes at this point, but it is good to know that these options are available. Any changes here are entirely optional (and cosmetic) at this point.
+
+7. in the RStudio menus, select Code, then check/select two options to turn these on:
+  - Soft Wrap Long Lines - so that your code does not get too wide
+  - Rainbow Parentheses - color-codes parentheses so that you can keep track of whether you have closed all of your open parentheses (a common source of errors)
+
 ## Installing Git on your Computer
 
 
 ## Getting Acquainted with the RStudio IDE
+
+When you first open the RStudio IDE (Integrated Development Environment), there will be a left side pane, with tabs for Console, Terminal, Rmarkdown, and Jobs.
+
+Just for fun, go to the RStudio menus, and choose File/New File/RScript.
+This will open a new pane at the top left, which we will call Q1 (quadrant 1), or the top left pane, or the Source pane. This pane will contain tabs for each active script or document, along with tabs for any datasets you have opened up to have a look at.
+
+The Quadrant 2 pane, with tabs for Console, Terminal, Rmarkdown, and Jobs, has now been pushed to the lower right pane. You will use the Console for interactive programming, and as a "sandbox" to test out new code. When your code works and is good enough to save, you will move it to the Source pane and save it to a Script or an Rmarkdown document. Any code that is not saved to Source will be lost (actually it will be somewhere in the History, but it can be a pain to find the version that works later - best to save the good stuff to a Script or .Rmd).
+
+The Quadrant 3, or top right pane, includes tabs for your Environment (objects, like datasets, functions, and variables you have defined), History (saving the past in case you forget to, but messy), and Connections tabs for connections to databases. Later a Git tab will be added for version control (backup) of your Source documents.
+
+In Quadrant 4, or the bottom right pane, you will find tabs for your Files, Plots, Packages, Help, and a Viewer for HTML output. 
+
+This is material that is also well described in the "Basic Basics 1" section of RLadiesSydney. Check it out at [BasicBasics1](https://rladiessydney.org/courses/ryouwithme/01-basicbasics-1/). There is a nice ~ 15 minute video by Jen Richmond.
 

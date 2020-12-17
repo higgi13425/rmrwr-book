@@ -129,11 +129,9 @@ This course is entirely voluntary. I hope that you will learn valuable skills th
 <br>
 
 ### Task Goals
-1.	Learn concepts through Data Camp  
-a.	Multiple short courses to correspond with each unit
+1.	Learn concepts through RYouWithMe
 2.	Test yourself with assignments in ModernDive
-a.	Chapters corresponding to each unit
-3.	Three Challenges
+3.	 Challenges
 a.	Clean data and perform descriptive data analysis on the biofire dataset
 b.	Clean data and model outcomes in the health satisfaction dataset, producing a final report
 c.	Use logistic regression to model dichotomous outcomes and produce a Shiny app to allow users to make predictions for future patients 
@@ -153,13 +151,15 @@ There will be a final capstone project. This is an opportunity for you to use yo
 
 ### Tips for success
 1.	Read materials for each unit
-2.	Do Data Camp courses for each unit – usually around 1 chapter (1 hour) per day.
-3.	Do Data Camp daily practice on any day that you don’t have time to do a full chapter
-4.	At end of each course, review material, take notes, copy/reproduce/save code on your laptop
-5.	Try new skills on your own data, or on one of the open data sets
-6.	Use RStudio and DataCamp Cheat sheets
-7.	Annotate your code to help ‘future you’ understand it.
-8.	Save and reuse your code for future projects
+2.	Study intro materials at your own speed at [RYouWithMe?](https://rladiessydney.org/courses/ryouwithme/)
+3.  Save your code as RMarkdown or RScript Files
+4.  Annotate your code to help ‘future you’ understand it.
+5.  Work on your own data and projects within RStudio Projects
+6.  Use the {here} package in your projects to manage paths to files
+7. For important projects that you will want to revisit later (make reproducible), maintain project-specific libraries with the {renv} package
+8. Try the *Challenges* in each chapter - ask for help from colleagues if you get stuck
+9. Learn how to make a *minimal reprex* with the {reprex} package and post questions to the [RStudio Community](https://community.rstudio.com)
+10.	Learn from each project - save and reuse your code (and functions) for future projects
 <br>
 
 ### Expected work load  

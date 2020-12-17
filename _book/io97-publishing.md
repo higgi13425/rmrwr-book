@@ -1,0 +1,439 @@
+---
+title: "Creating and Publishing this E-Book on Bookdown.org"
+author: "Peter Higgins"
+date: "12/12/2020"
+output: html_document
+---
+
+
+# Building and Publishing a {bookdown} book on bookdown.org
+
+This book is published on bookdown.org, where you can create an account to publish your own e-book and share it with the world.
+
+Once you have an account,
+
+## Setting up
+
+Install the {bookdown} package, with `install.packages('bookdown')`.
+
+Then run `library(bookdown)` in the Console to load the package.
+
+Then, in the RStudio IDE, Choose File/New Project/Book Project using bookdown.
+
+Then go to the Files tab, open index.Rmd, and click the Knit button. The Preview Window will show you a minimal example of a bookdown book.
+You can start editing and adding chapters.
+
+## Bookdown YAML
+
+You can edit your `_bookdown.yml` file, which controls the setup of your book.
+My `_bookdown.yml` file looks like this:
+
+
+```r
+book_filename: "rmrwr"
+title: "Reproducible Medical Research with R"
+language:
+  ui:
+    chapter_name: "Chapter "
+delete_merged_file: true
+new_session: yes
+rmd_files:
+- index.Rmd
+- io02-getting-started.Rmd
+- io03-tasting.Rmd
+- io65-error_messages.Rmd
+- io04-updating.Rmd
+- io07-major-updates.Rmd
+- io08-data-validation.Rmd
+- io09-timeseries.Rmd
+- io10-tableOne.Rmd
+- io30-ttest.Rmd
+- io70-r_cmd_line.Rmd
+- io98-title-holder.Rmd
+- io99-references.Rmd
+```
+
+
+## Output YAML
+
+You can edit your `_output.yml` file, which controls the output and look of your book.
+My `_output.yml` file looks like this:
+
+
+```r
+bookdown::gitbook:
+  css: style.css
+  config:
+    toc:
+      before: |
+        <li><a href="./">RMRWR</a></li>
+      after: |
+        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+    edit: https://github.com/rstudio/bookdown-demo/edit/master/%s
+    download: ["pdf", "epub"]
+bookdown::pdf_book:
+  includes:
+    in_header: preamble.tex
+  latex_engine: xelatex
+  citation_package: natbib
+  keep_tex: yes
+bookdown::epub_book: default
+```
+
+Note that this refers to a `style.css` file, which affects the appearance of your book.
+
+## Styles.css
+My `style.css` file looks like this:
+
+
+```r
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Source+Sans+Pro:400,400i,700,700i|Lora:400,400i,700,700i&display=swap');
+
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+/*  Desiree custom css  */
+
+/* next 3 rules for setting large image at top of each page and pushing book content to appear beneath that */
+/*
+.hero-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 390px;
+  /*background-image: url("images/books.jpg");
+  background-color: #2F65A7;
+}*/
+
+/*.hero-image {
+  width: 100%;
+  height: 390px;
+  object-fit: cover;
+}*/
+
+/*.page-inner {
+  padding-top: 440px !important;
+}*/
+
+/* Links */
+
+.book .book-body .page-wrapper .page-inner section.normal a {
+  color: #702082;
+}
+
+
+/* Body and header text */
+
+.book.font-family-1 {
+  font-family: 'Source Sans Pro', arial, sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Lora', arial, sans-serif;
+}
+
+
+.book .book-body .page-wrapper .page-inner section.normal h1,
+.book .book-body .page-wrapper .page-inner section.normal h2,
+.book .book-body .page-wrapper .page-inner section.normal h3,
+.book .book-body .page-wrapper .page-inner section.normal h4,
+.book .book-body .page-wrapper .page-inner section.normal h5,
+.book .book-body .page-wrapper .page-inner section.normal h6 {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.title {
+  font-family: 'Lora';
+  font-size: 3em !important;
+  color: #2f65a7;
+  margin-top: 0.275em !important;
+  margin-bottom: 0.35em !important;
+}
+
+.subtitle {
+  font-family: 'Lora';
+  color: #2f65a7;
+}
+
+
+/* DROP CAPS*/
+
+
+/*p:nth-child(2):first-letter {   /* /* DROP-CAP FOR FIRST P BENEATH EACH H1 OR H2*/ /*
+  color: #2f65a7;
+  float: left;
+  font-family: 'Abril Fatface', serif;
+  font-size: 7em;
+  line-height: 65px;
+  padding-top: 4px;
+  padding-right: 8px;
+  padding-left: 3px;
+  margin-bottom: 9px;
+}
+*/
+
+/* try the below with the ~ instead...or just the space?) */
+
+.section.level1 > p:first-of-type:first-letter { /*drop cap for first p beneath level 1 headers only within class .section*/
+  color: #2f65a7;
+  float: left;
+  font-family: 'Abril Fatface', serif;
+  font-size: 6em;
+  line-height: 65px;
+  padding-top: 4px;
+  padding-right: 8px;
+  padding-left: 3px;
+  margin-bottom: 9px;
+}
+
+/* add drop cap to first paragraph that follows the first 2nd level header*/
+/*
+.section.level2:first-of-type > p:first-of-type:first-letter {
+  color: #2f65a7;
+  float: left;
+  font-family: 'Abril Fatface', serif;
+  font-size: 7em;
+  line-height: 65px;
+  padding-top: 4px;
+  padding-right: 8px;
+  padding-left: 3px;
+  margin-bottom: 9px;
+}
+*/
+
+
+
+/* TOC */
+
+.book .book-summary {
+  background: white;
+  border-right: none;
+}
+
+.summary{
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* all TOC list items, basically */
+.book .book-summary ul.summary li a, .book .book-summary ul.summary li span {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: #00274c;
+}
+
+.summary a:hover {
+  color: #ffcb05 !important;
+}
+
+.book .book-summary ul.summary li.active>a { /*active TOC links*/
+  color: #d86018 !important;
+  border-left: solid 4px;
+  border-color: #d86018;
+  padding-left: 11px !important;
+}
+
+
+li.appendix span, li.part span { /* for TOC part names */
+  margin-top: 1em;
+  color: #000000;
+  opacity: .9 !important;
+  text-transform: uppercase;
+}
+
+.part + li[data-level=""] { /* grabs first .chapter immediately after .part...but only those ch without numbers */
+ text-transform: uppercase;
+}
+
+
+
+ul.summary > li > a { /* The > selects all the li's which are immediately within the class summary*/
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* The next two rules make the horizontal line go straight across in top navbar */
+
+.summary > li:first-child {
+	height: 50px;
+	padding-top: 10px;
+	border-bottom: 1px solid rgba(0,0,0,.07);
+}
+
+.book .book-summary ul.summary li.divider {
+	height: 0px;
+}
+
+
+/* source code copy button */
+.copy {
+  width: inherit;
+  background-color: #e2e2e2 ;
+  border: none;
+  border-radius: 2px;
+  float: right;
+  font-size: 60%;
+  padding: 4px 4px 4px 4px;
+}
+
+/* Two columns */
+
+.col2 {
+  columns: 2 200px;         /* number of columns and width in pixels*/
+  -webkit-columns: 2 200px; /* chrome, safari */
+  -moz-columns: 2 200px;    /* firefox */
+}
+
+
+.side-by-side {
+  display: flex;
+}
+
+.side1 {
+  width: 40%;
+}
+
+.side2 {
+  width: 58%;
+  margin-left: 1rem;
+
+}
+
+/* -------------- div tips-------------------*/
+
+div.warning, div.tip, div.tryit, div.challenge, div.explore {
+  border: 4px #dfedff; /* very light blue */
+  border-style: solid;
+  padding: 1em;
+  margin: 1em 0;
+  padding-left: 100px;
+  background-size: 70px;
+  background-repeat: no-repeat;
+  background-position: 15px center;
+  min-height: 120px;
+  color: #00274c; /* blue text */
+  background-color: #bed3ec; /* light blue background */
+}
+
+div.warning {
+  background-image: url("images/warning.png");
+  background-color: #f7f7f7; /* gray97 background */
+}
+
+div.tip {
+  background-image: url("images/tip.png");
+  background-color: #fff7bc; /* warm yellow background */
+}
+
+div.tryit {
+  background-image: url("images/tryit.png");
+  background-color: #edf8fb; /* light blue background */
+}
+
+div.challenge {
+  background-image: url("images/challenge.png");
+  color: #4b0082; /* indigo text */
+  background-color: #ffe1ff; /* thistle background */
+}
+
+div.explore {
+  background-image: url("images/explore.png");
+  background-color: #d0faee; /* green card background */
+}
+
+/* .book .book-body .page-wrapper .page-inner section.normal is needed
+   to override the styles produced by gitbook, which are ridiculously
+   overspecified. Goal of the selectors is to ensure internal "margins"
+   controlled only by padding of container */
+
+.book .book-body .page-wrapper .page-inner section.normal div.rstudio-tip > :first-child,
+.book .book-body .page-wrapper .page-inner section.normal div.tip > :first-child {
+  margin-top: 0;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal div.rstudio-tip > :last-child,
+.book .book-body .page-wrapper .page-inner section.normal div.tip > :last-child {
+  margin-bottom: 0;
+}
+
+iframe {
+   -moz-transform-origin: top left;
+   -webkit-transform-origin: top left;
+   -o-transform-origin: top left;
+   -ms-transform-origin: top left;
+   transform-origin: top left;
+}
+
+.iframe-container {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  border: #ddd 2px solid;
+  box-shadow: #888 0px 5px 8px;
+  margin-bottom: 1em;
+}
+
+.iframe-container > iframe {
+  border: none;
+}
+```
+
+
+## Creating Chapters in R Markdown
+
+Each chapter was created in R Markdown, with R code chunks, flipbooks, an learnr apps as exercises.
+
+Note that each chapter should start with a level 1 header, which will be the title of the chapter. Each level 1 header starts with a single hashtag, then a space, then the text of the title.   
+
+You can save draft chapters without necessarily publishing them to the final book. They will not be included until you list them in your `_bookdown.yml` file.
+
+After saving and knitting each chapter successfully, the finalized chapters can be included in the book build, and ordered, by adding them to the `_bookdown.yml` file, in between index.Rmd, and io98-title-holder.Rmd.
+
+## Chapter Names
+The names of each chapter follow the convention,
+io##-Topic.Rmd.
+This is so that they will alphabetically follow index.Rmd
+and largely be in order.
+
+## When a Chapter is Ready for Sharing
+
+Add the new chapter to  the list of chapters in order in `_bookdown.yml`, somewhere in between     
+- index.Rmd and     
+- io98-title_holder.Rmd
+
+## Building the Book
+
+Render the book with `bookdown::render_book('index.html')`
+
+## Publishing the Book
+
+Publish the book with     
+`bookdown::publish_book(account = 'pdr_higgins')`   
+
+Then commit the changes and push to Github  
+
+Within a minute or three, the updated book will appear at:
+<br>
+https://bookdown.org/pdr_higgins/rmrwr/
+
+
+More details can be found at:    
+
+https://bookdown.org/yihui/bookdown/rstudio-connect.html   
+
+and at     
+
+https://bookdown.org/home/about/ 

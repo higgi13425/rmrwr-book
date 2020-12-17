@@ -76,7 +76,7 @@ whoami;date
 
 ```
 ## peterhiggins
-## Sat Dec 12 18:06:05 EST 2020
+## Thu Dec 17 14:44:09 EST 2020
 ```
 :::
 
@@ -202,6 +202,7 @@ ls
 ## Garmin Notes.docx
 ## General Social Media Tips.docx
 ## General thoughts about query letters.docx
+## Getting Started with REDCap.docx
 ## Git for MDs_2.pptx
 ## GitHub
 ## Github for MDs_1.pptx
@@ -369,6 +370,7 @@ ls
 ## biomakers_fibrosisPDRH.docx
 ## bmj_imputation.pdf
 ## cgh_factors_utilization.pdf
+## cycling core exercises.docx
 ## draft_tokenization letter Risa_Uste.docx
 ## early-career-faculty_Dec-2020.xlsx
 ## epic cancel_reschedule appointments.ppt

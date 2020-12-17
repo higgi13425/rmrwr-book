@@ -24,7 +24,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2020-12-12" />
+<meta name="date" content="2020-12-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="getting-started-and-installing-your-tools.html"/>
-<link rel="next" href="interpreting-error-messages.html"/>
+<link rel="next" href="wrangling-rows-in-r-with-filter.html"/>
 <script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -170,8 +170,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5.3" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html#installing-rstudio-on-the-mac"><i class="fa fa-check"></i><b>2.5.3</b> Installing RStudio on the Mac</a></li>
 <li class="chapter" data-level="2.5.4" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html#testing-the-mac-installation-of-rstudio"><i class="fa fa-check"></i><b>2.5.4</b> Testing the Mac Installation of RStudio</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html#installing-git-on-your-computer"><i class="fa fa-check"></i><b>2.6</b> Installing Git on your Computer</a></li>
-<li class="chapter" data-level="2.7" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html#getting-acquainted-with-the-rstudio-ide"><i class="fa fa-check"></i><b>2.7</b> Getting Acquainted with the RStudio IDE</a></li>
+<li class="chapter" data-level="2.6" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html#critical-setup---tuning-your-rstudio"><i class="fa fa-check"></i><b>2.6</b> Critical Setup - Tuning Your RStudio</a></li>
+<li class="chapter" data-level="2.7" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html#installing-git-on-your-computer"><i class="fa fa-check"></i><b>2.7</b> Installing Git on your Computer</a></li>
+<li class="chapter" data-level="2.8" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html#getting-acquainted-with-the-rstudio-ide"><i class="fa fa-check"></i><b>2.8</b> Getting Acquainted with the RStudio IDE</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html"><i class="fa fa-check"></i><b>3</b> A Tasting Menu of R</a>
 <ul>
@@ -194,107 +195,137 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.11.5" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#an-example-of-synergy-in-the-r-community"><i class="fa fa-check"></i><b>3.11.5</b> An Example of Synergy in the R Community</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html"><i class="fa fa-check"></i><b>4</b> Interpreting Error Messages</a>
+<li class="chapter" data-level="4" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html"><i class="fa fa-check"></i><b>4</b> Wrangling Rows in R with Filter</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#the-common-errors-table"><i class="fa fa-check"></i><b>4.1</b> The Common Errors Table</a></li>
-<li class="chapter" data-level="4.2" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#examples-of-common-errors-and-how-to-fix-them"><i class="fa fa-check"></i><b>4.2</b> Examples of Common Errors and How to fix them</a></li>
-<li class="chapter" data-level="4.3" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#package-and-dependency-problems"><i class="fa fa-check"></i><b>4.3</b> Package (and Dependency) Problems</a></li>
-<li class="chapter" data-level="4.4" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#debugging-strategies"><i class="fa fa-check"></i><b>4.4</b> Debugging Strategies</a>
+<li class="chapter" data-level="4.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#a-few-examples"><i class="fa fa-check"></i><b>4.1</b> A Few Examples</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#add-one-line"><i class="fa fa-check"></i><b>4.4.1</b> Add-One-Line</a></li>
-<li class="chapter" data-level="4.4.2" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#tidylog"><i class="fa fa-check"></i><b>4.4.2</b> Tidylog</a></li>
-<li class="chapter" data-level="4.4.3" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#ask-the-internet"><i class="fa fa-check"></i><b>4.4.3</b> Ask the Internet</a></li>
-<li class="chapter" data-level="4.4.4" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#google-strategies"><i class="fa fa-check"></i><b>4.4.4</b> Google strategies</a></li>
-</ul></li>
-<li class="chapter" data-level="4.5" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#restart-r-session"><i class="fa fa-check"></i><b>4.5</b> Restart R Session</a></li>
-<li class="chapter" data-level="4.6" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#references"><i class="fa fa-check"></i><b>4.6</b> References:</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html"><i class="fa fa-check"></i><b>5</b> Updating R, RStudio, and Your Packages</a></li>
-<li class="chapter" data-level="6" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html"><i class="fa fa-check"></i><b>6</b> Major R Updates (Where Are My Packages?)</a></li>
-<li class="chapter" data-level="7" data-path="checking-validating-and-asserting-things-about-your-data.html"><a href="checking-validating-and-asserting-things-about-your-data.html"><i class="fa fa-check"></i><b>7</b> Checking, Validating, And Asserting things about your Data</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="checking-validating-and-asserting-things-about-your-data.html"><a href="checking-validating-and-asserting-things-about-your-data.html#why-spend-time-validating-your-data"><i class="fa fa-check"></i><b>7.1</b> Why Spend Time Validating Your Data?</a>
-<ul>
-<li class="chapter" data-level="7.1.1" data-path="checking-validating-and-asserting-things-about-your-data.html"><a href="checking-validating-and-asserting-things-about-your-data.html#asserting-properties-of-your-data-with-assertr"><i class="fa fa-check"></i><b>7.1.1</b> Asserting properties of your data with assertr</a></li>
+<li class="chapter" data-level="4.1.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#an-example-of-synergy"><i class="fa fa-check"></i><b>4.1.1</b> An Example of Synergy</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="time-series-data-with-the-tidyverts-packages.html"><a href="time-series-data-with-the-tidyverts-packages.html"><i class="fa fa-check"></i><b>8</b> Time Series data with the Tidyverts Packages</a>
+<li class="chapter" data-level="5" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html"><i class="fa fa-check"></i><b>5</b> Interpreting Error Messages</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="time-series-data-with-the-tidyverts-packages.html"><a href="time-series-data-with-the-tidyverts-packages.html#tsibble"><i class="fa fa-check"></i><b>8.1</b> Tsibble</a></li>
-<li class="chapter" data-level="8.2" data-path="time-series-data-with-the-tidyverts-packages.html"><a href="time-series-data-with-the-tidyverts-packages.html#fable"><i class="fa fa-check"></i><b>8.2</b> Fable</a></li>
-<li class="chapter" data-level="8.3" data-path="time-series-data-with-the-tidyverts-packages.html"><a href="time-series-data-with-the-tidyverts-packages.html#feasts"><i class="fa fa-check"></i><b>8.3</b> Feasts</a></li>
-<li class="chapter" data-level="8.4" data-path="time-series-data-with-the-tidyverts-packages.html"><a href="time-series-data-with-the-tidyverts-packages.html#slider"><i class="fa fa-check"></i><b>8.4</b> Slider</a></li>
+<li class="chapter" data-level="5.1" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#the-common-errors-table"><i class="fa fa-check"></i><b>5.1</b> The Common Errors Table</a></li>
+<li class="chapter" data-level="5.2" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#examples-of-common-errors-and-how-to-fix-them"><i class="fa fa-check"></i><b>5.2</b> Examples of Common Errors and How to fix them</a></li>
+<li class="chapter" data-level="5.3" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#package-and-dependency-problems"><i class="fa fa-check"></i><b>5.3</b> Package (and Dependency) Problems</a></li>
+<li class="chapter" data-level="5.4" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#debugging-strategies"><i class="fa fa-check"></i><b>5.4</b> Debugging Strategies</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#add-one-line"><i class="fa fa-check"></i><b>5.4.1</b> Add-One-Line</a></li>
+<li class="chapter" data-level="5.4.2" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#tidylog"><i class="fa fa-check"></i><b>5.4.2</b> Tidylog</a></li>
+<li class="chapter" data-level="5.4.3" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#ask-the-internet"><i class="fa fa-check"></i><b>5.4.3</b> Ask the Internet</a></li>
+<li class="chapter" data-level="5.4.4" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#google-strategies"><i class="fa fa-check"></i><b>5.4.4</b> Google strategies</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html"><i class="fa fa-check"></i><b>9</b> Descriptive Data Tables</a>
-<ul>
-<li class="chapter" data-level="9.1" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-table-one"><i class="fa fa-check"></i><b>9.1</b> Making Table One</a>
-<ul>
-<li class="chapter" data-level="9.1.1" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#the-tableby-function-in-the-arsenal-package"><i class="fa fa-check"></i><b>9.1.1</b> The <em>tableby</em> function in the <strong>arsenal</strong> package</a></li>
-<li class="chapter" data-level="9.1.2" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#the-gtsummary-package-with-flextable"><i class="fa fa-check"></i><b>9.1.2</b> The gtsummary package with flextable</a></li>
-<li class="chapter" data-level="9.1.3" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#example-of-how-to-build-a-table-1-with-gtsummary"><i class="fa fa-check"></i><b>9.1.3</b> Example of how to build a Table 1 with gtsummary</a></li>
+<li class="chapter" data-level="5.5" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#restart-r-session"><i class="fa fa-check"></i><b>5.5</b> Restart R Session</a></li>
+<li class="chapter" data-level="5.6" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#references"><i class="fa fa-check"></i><b>5.6</b> References:</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-an-adverse-events-table"><i class="fa fa-check"></i><b>9.2</b> Making An Adverse Events Table</a></li>
-<li class="chapter" data-level="9.3" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-a-results-table"><i class="fa fa-check"></i><b>9.3</b> Making A Results Table</a></li>
+<li class="chapter" data-level="6" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html"><i class="fa fa-check"></i><b>6</b> Updating R, RStudio, and Your Packages</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages"><i class="fa fa-check"></i><b>6.1</b> Installing Packages</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-from-github"><i class="fa fa-check"></i><b>6.1.1</b> Installing Packages from Github</a></li>
+<li class="chapter" data-level="6.1.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#problems-with-installing-packages"><i class="fa fa-check"></i><b>6.1.2</b> Problems with Installing Packages</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html"><i class="fa fa-check"></i><b>10</b> Comparing Two Measures of Centrality</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#common-problem"><i class="fa fa-check"></i><b>10.1</b> Common Problem</a>
-<ul>
-<li class="chapter" data-level="10.1.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#how-skewed-is-too-skewed"><i class="fa fa-check"></i><b>10.1.1</b> How Skewed is Too Skewed?</a></li>
-<li class="chapter" data-level="10.1.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#visualize-the-distribution-of-data-variables-in-ggplot"><i class="fa fa-check"></i><b>10.1.2</b> Visualize the Distribution of data variables in ggplot</a></li>
-<li class="chapter" data-level="10.1.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#visualize-the-distribution-of-datalen-in-ggplot"><i class="fa fa-check"></i><b>10.1.3</b> Visualize the Distribution of data$len in ggplot</a></li>
-<li class="chapter" data-level="10.1.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-shapiro-wilk"><i class="fa fa-check"></i><b>10.1.4</b> Results of Shapiro-Wilk</a></li>
-<li class="chapter" data-level="10.1.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#try-it-yourself"><i class="fa fa-check"></i><b>10.1.5</b> Try it yourself</a></li>
-<li class="chapter" data-level="10.1.6" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#mammal-sleep-hours"><i class="fa fa-check"></i><b>10.1.6</b> Mammal sleep hours</a></li>
+<li class="chapter" data-level="6.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#loading-packages-with-library"><i class="fa fa-check"></i><b>6.2</b> Loading Packages with Library</a></li>
+<li class="chapter" data-level="6.3" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-r"><i class="fa fa-check"></i><b>6.3</b> Updating R</a></li>
+<li class="chapter" data-level="6.4" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-rstudio"><i class="fa fa-check"></i><b>6.4</b> Updating RStudio</a></li>
+<li class="chapter" data-level="6.5" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-your-packages"><i class="fa fa-check"></i><b>6.5</b> Updating Your Packages</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#one-sample-t-test"><i class="fa fa-check"></i><b>10.2</b> One Sample T test</a>
+<li class="chapter" data-level="7" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html"><i class="fa fa-check"></i><b>7</b> Major R Updates (Where Are My Packages?)</a></li>
+<li class="chapter" data-level="8" data-path="checking-validating-and-asserting-things-about-your-data.html"><a href="checking-validating-and-asserting-things-about-your-data.html"><i class="fa fa-check"></i><b>8</b> Checking, Validating, And Asserting things about your Data</a>
 <ul>
-<li class="chapter" data-level="10.2.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#how-to-do-one-sample-t-test"><i class="fa fa-check"></i><b>10.2.1</b> How to do One Sample T test</a></li>
-<li class="chapter" data-level="10.2.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#interpreting-the-one-sample-t-test"><i class="fa fa-check"></i><b>10.2.2</b> Interpreting the One Sample T test</a></li>
-<li class="chapter" data-level="10.2.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#what-are-the-arguments-of-the-t.test-function"><i class="fa fa-check"></i><b>10.2.3</b> What are the arguments of the t.test function?</a></li>
-</ul></li>
-<li class="chapter" data-level="10.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#insert-flipbook-for-ttest-here"><i class="fa fa-check"></i><b>10.3</b> Insert flipbook for ttest here</a>
+<li class="chapter" data-level="8.1" data-path="checking-validating-and-asserting-things-about-your-data.html"><a href="checking-validating-and-asserting-things-about-your-data.html#why-spend-time-validating-your-data"><i class="fa fa-check"></i><b>8.1</b> Why Spend Time Validating Your Data?</a>
 <ul>
-<li class="chapter" data-level="10.3.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#flipbook-time"><i class="fa fa-check"></i><b>10.3.1</b> Flipbook Time!</a></li>
-</ul></li>
-<li class="chapter" data-level="10.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#fine-but-what-about-2-groups"><i class="fa fa-check"></i><b>10.4</b> Fine, but what about 2 groups?</a>
-<ul>
-<li class="chapter" data-level="10.4.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#setting-up-2-group-t-test"><i class="fa fa-check"></i><b>10.4.1</b> Setting up 2 group t test</a></li>
-<li class="chapter" data-level="10.4.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-the-2-group-t-test"><i class="fa fa-check"></i><b>10.4.2</b> Results of the 2 group t test</a></li>
-<li class="chapter" data-level="10.4.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#interpreting-the-2-group-t-test"><i class="fa fa-check"></i><b>10.4.3</b> Interpreting the 2 group t test</a></li>
-<li class="chapter" data-level="10.4.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#group-t-test-with-wide-data"><i class="fa fa-check"></i><b>10.4.4</b> 2 group t test with wide data</a></li>
-<li class="chapter" data-level="10.4.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-2-group-t-test-with-wide-data"><i class="fa fa-check"></i><b>10.4.5</b> Results of 2 group t test with wide data</a></li>
-</ul></li>
-<li class="chapter" data-level="10.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#assumptions-of-students-t-test"><i class="fa fa-check"></i><b>10.5</b> 3 Assumptions of Student’s t test</a>
-<ul>
-<li class="chapter" data-level="10.5.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#testing-assumptions-of-students-t-test"><i class="fa fa-check"></i><b>10.5.1</b> Testing Assumptions of Student’s t test</a></li>
-</ul></li>
-<li class="chapter" data-level="10.6" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#getting-results-out-of-t.test"><i class="fa fa-check"></i><b>10.6</b> Getting results out of t.test</a>
-<ul>
-<li class="chapter" data-level="10.6.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#getting-results-out-of-t.test-1"><i class="fa fa-check"></i><b>10.6.1</b> Getting results out of t.test</a></li>
-</ul></li>
-<li class="chapter" data-level="10.7" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#reporting-the-results-from-t.test-using-inline-code"><i class="fa fa-check"></i><b>10.7</b> Reporting the results from t.test using inline code</a>
-<ul>
-<li class="chapter" data-level="10.7.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#for-next-time"><i class="fa fa-check"></i><b>10.7.1</b> For Next Time</a></li>
+<li class="chapter" data-level="8.1.1" data-path="checking-validating-and-asserting-things-about-your-data.html"><a href="checking-validating-and-asserting-things-about-your-data.html#asserting-properties-of-your-data-with-assertr"><i class="fa fa-check"></i><b>8.1.1</b> Asserting properties of your data with assertr</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html"><i class="fa fa-check"></i><b>11</b> Running R from the UNIX Command Line</a>
+<li class="chapter" data-level="9" data-path="time-series-data-with-the-tidyverts-packages.html"><a href="time-series-data-with-the-tidyverts-packages.html"><i class="fa fa-check"></i><b>9</b> Time Series data with the Tidyverts Packages</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#what-is-the-unix-command-line"><i class="fa fa-check"></i><b>11.1</b> What is the UNIX Command line?</a></li>
-<li class="chapter" data-level="11.2" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#why-run-r-from-the-command-line"><i class="fa fa-check"></i><b>11.2</b> Why run R from the command line?</a></li>
-<li class="chapter" data-level="11.3" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#how-do-you-get-started"><i class="fa fa-check"></i><b>11.3</b> How do you get started?</a>
-<ul>
-<li class="chapter" data-level="11.3.1" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#on-a-mac"><i class="fa fa-check"></i><b>11.3.1</b> On a Mac</a></li>
-<li class="chapter" data-level="11.3.2" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#on-a-windows-pc"><i class="fa fa-check"></i><b>11.3.2</b> On a Windows PC</a></li>
+<li class="chapter" data-level="9.1" data-path="time-series-data-with-the-tidyverts-packages.html"><a href="time-series-data-with-the-tidyverts-packages.html#tsibble"><i class="fa fa-check"></i><b>9.1</b> Tsibble</a></li>
+<li class="chapter" data-level="9.2" data-path="time-series-data-with-the-tidyverts-packages.html"><a href="time-series-data-with-the-tidyverts-packages.html#fable"><i class="fa fa-check"></i><b>9.2</b> Fable</a></li>
+<li class="chapter" data-level="9.3" data-path="time-series-data-with-the-tidyverts-packages.html"><a href="time-series-data-with-the-tidyverts-packages.html#feasts"><i class="fa fa-check"></i><b>9.3</b> Feasts</a></li>
+<li class="chapter" data-level="9.4" data-path="time-series-data-with-the-tidyverts-packages.html"><a href="time-series-data-with-the-tidyverts-packages.html#slider"><i class="fa fa-check"></i><b>9.4</b> Slider</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#the-yawning-blackness-of-the-terminal-window"><i class="fa fa-check"></i><b>11.4</b> The Yawning Blackness of the Terminal Window</a></li>
-<li class="chapter" data-level="11.5" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#where-are-we"><i class="fa fa-check"></i><b>11.5</b> Where Are We?</a></li>
-<li class="chapter" data-level="11.6" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#cleaning-up"><i class="fa fa-check"></i><b>11.6</b> Cleaning Up</a></li>
-<li class="chapter" data-level="11.7" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#other-helpful-file-commands"><i class="fa fa-check"></i><b>11.7</b> Other helpful file commands</a></li>
-<li class="chapter" data-level="11.8" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#what-about-r"><i class="fa fa-check"></i><b>11.8</b> What about R?</a></li>
-<li class="chapter" data-level="11.9" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#what-about-just-a-few-lines-of-r"><i class="fa fa-check"></i><b>11.9</b> What about just a few lines of R?</a></li>
-<li class="chapter" data-level="11.10" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#running-an-r-script-from-the-terminal"><i class="fa fa-check"></i><b>11.10</b> Running an R Script from the Terminal</a></li>
-<li class="chapter" data-level="11.11" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#rendering-an-rmarkdown-file-from-the-terminal"><i class="fa fa-check"></i><b>11.11</b> Rendering an Rmarkdown file from the Terminal</a></li>
+<li class="chapter" data-level="10" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html"><i class="fa fa-check"></i><b>10</b> Descriptive Data Tables</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-table-one"><i class="fa fa-check"></i><b>10.1</b> Making Table One</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#the-tableby-function-in-the-arsenal-package"><i class="fa fa-check"></i><b>10.1.1</b> The <em>tableby</em> function in the <strong>arsenal</strong> package</a></li>
+<li class="chapter" data-level="10.1.2" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#the-gtsummary-package-with-flextable"><i class="fa fa-check"></i><b>10.1.2</b> The gtsummary package with flextable</a></li>
+<li class="chapter" data-level="10.1.3" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#example-of-how-to-build-a-table-1-with-gtsummary"><i class="fa fa-check"></i><b>10.1.3</b> Example of how to build a Table 1 with gtsummary</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-an-adverse-events-table"><i class="fa fa-check"></i><b>10.2</b> Making An Adverse Events Table</a></li>
+<li class="chapter" data-level="10.3" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-a-results-table"><i class="fa fa-check"></i><b>10.3</b> Making A Results Table</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html"><i class="fa fa-check"></i><b>11</b> Comparing Two Measures of Centrality</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#common-problem"><i class="fa fa-check"></i><b>11.1</b> Common Problem</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#how-skewed-is-too-skewed"><i class="fa fa-check"></i><b>11.1.1</b> How Skewed is Too Skewed?</a></li>
+<li class="chapter" data-level="11.1.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#visualize-the-distribution-of-data-variables-in-ggplot"><i class="fa fa-check"></i><b>11.1.2</b> Visualize the Distribution of data variables in ggplot</a></li>
+<li class="chapter" data-level="11.1.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#visualize-the-distribution-of-datalen-in-ggplot"><i class="fa fa-check"></i><b>11.1.3</b> Visualize the Distribution of data$len in ggplot</a></li>
+<li class="chapter" data-level="11.1.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-shapiro-wilk"><i class="fa fa-check"></i><b>11.1.4</b> Results of Shapiro-Wilk</a></li>
+<li class="chapter" data-level="11.1.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#try-it-yourself"><i class="fa fa-check"></i><b>11.1.5</b> Try it yourself</a></li>
+<li class="chapter" data-level="11.1.6" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#mammal-sleep-hours"><i class="fa fa-check"></i><b>11.1.6</b> Mammal sleep hours</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#one-sample-t-test"><i class="fa fa-check"></i><b>11.2</b> One Sample T test</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#how-to-do-one-sample-t-test"><i class="fa fa-check"></i><b>11.2.1</b> How to do One Sample T test</a></li>
+<li class="chapter" data-level="11.2.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#interpreting-the-one-sample-t-test"><i class="fa fa-check"></i><b>11.2.2</b> Interpreting the One Sample T test</a></li>
+<li class="chapter" data-level="11.2.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#what-are-the-arguments-of-the-t.test-function"><i class="fa fa-check"></i><b>11.2.3</b> What are the arguments of the t.test function?</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#insert-flipbook-for-ttest-here"><i class="fa fa-check"></i><b>11.3</b> Insert flipbook for ttest here</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#flipbook-time"><i class="fa fa-check"></i><b>11.3.1</b> Flipbook Time!</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#fine-but-what-about-2-groups"><i class="fa fa-check"></i><b>11.4</b> Fine, but what about 2 groups?</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#setting-up-2-group-t-test"><i class="fa fa-check"></i><b>11.4.1</b> Setting up 2 group t test</a></li>
+<li class="chapter" data-level="11.4.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-the-2-group-t-test"><i class="fa fa-check"></i><b>11.4.2</b> Results of the 2 group t test</a></li>
+<li class="chapter" data-level="11.4.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#interpreting-the-2-group-t-test"><i class="fa fa-check"></i><b>11.4.3</b> Interpreting the 2 group t test</a></li>
+<li class="chapter" data-level="11.4.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#group-t-test-with-wide-data"><i class="fa fa-check"></i><b>11.4.4</b> 2 group t test with wide data</a></li>
+<li class="chapter" data-level="11.4.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-2-group-t-test-with-wide-data"><i class="fa fa-check"></i><b>11.4.5</b> Results of 2 group t test with wide data</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#assumptions-of-students-t-test"><i class="fa fa-check"></i><b>11.5</b> 3 Assumptions of Student’s t test</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#testing-assumptions-of-students-t-test"><i class="fa fa-check"></i><b>11.5.1</b> Testing Assumptions of Student’s t test</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#getting-results-out-of-t.test"><i class="fa fa-check"></i><b>11.6</b> Getting results out of t.test</a>
+<ul>
+<li class="chapter" data-level="11.6.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#getting-results-out-of-t.test-1"><i class="fa fa-check"></i><b>11.6.1</b> Getting results out of t.test</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#reporting-the-results-from-t.test-using-inline-code"><i class="fa fa-check"></i><b>11.7</b> Reporting the results from t.test using inline code</a>
+<ul>
+<li class="chapter" data-level="11.7.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#for-next-time"><i class="fa fa-check"></i><b>11.7.1</b> For Next Time</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html"><i class="fa fa-check"></i><b>12</b> Running R from the UNIX Command Line</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#what-is-the-unix-command-line"><i class="fa fa-check"></i><b>12.1</b> What is the UNIX Command line?</a></li>
+<li class="chapter" data-level="12.2" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#why-run-r-from-the-command-line"><i class="fa fa-check"></i><b>12.2</b> Why run R from the command line?</a></li>
+<li class="chapter" data-level="12.3" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#how-do-you-get-started"><i class="fa fa-check"></i><b>12.3</b> How do you get started?</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#on-a-mac"><i class="fa fa-check"></i><b>12.3.1</b> On a Mac</a></li>
+<li class="chapter" data-level="12.3.2" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#on-a-windows-pc"><i class="fa fa-check"></i><b>12.3.2</b> On a Windows PC</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#the-yawning-blackness-of-the-terminal-window"><i class="fa fa-check"></i><b>12.4</b> The Yawning Blackness of the Terminal Window</a></li>
+<li class="chapter" data-level="12.5" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#where-are-we"><i class="fa fa-check"></i><b>12.5</b> Where Are We?</a></li>
+<li class="chapter" data-level="12.6" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#cleaning-up"><i class="fa fa-check"></i><b>12.6</b> Cleaning Up</a></li>
+<li class="chapter" data-level="12.7" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#other-helpful-file-commands"><i class="fa fa-check"></i><b>12.7</b> Other helpful file commands</a></li>
+<li class="chapter" data-level="12.8" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#what-about-r"><i class="fa fa-check"></i><b>12.8</b> What about R?</a></li>
+<li class="chapter" data-level="12.9" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#what-about-just-a-few-lines-of-r"><i class="fa fa-check"></i><b>12.9</b> What about just a few lines of R?</a></li>
+<li class="chapter" data-level="12.10" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#running-an-r-script-from-the-terminal"><i class="fa fa-check"></i><b>12.10</b> Running an R Script from the Terminal</a></li>
+<li class="chapter" data-level="12.11" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#rendering-an-rmarkdown-file-from-the-terminal"><i class="fa fa-check"></i><b>12.11</b> Rendering an Rmarkdown file from the Terminal</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><i class="fa fa-check"></i><b>13</b> Building and Publishing a {bookdown} book on bookdown.org</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#setting-up"><i class="fa fa-check"></i><b>13.1</b> Setting up</a></li>
+<li class="chapter" data-level="13.2" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#bookdown-yaml"><i class="fa fa-check"></i><b>13.2</b> Bookdown YAML</a></li>
+<li class="chapter" data-level="13.3" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#output-yaml"><i class="fa fa-check"></i><b>13.3</b> Output YAML</a></li>
+<li class="chapter" data-level="13.4" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#styles.css"><i class="fa fa-check"></i><b>13.4</b> Styles.css</a></li>
+<li class="chapter" data-level="13.5" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#creating-chapters-in-r-markdown"><i class="fa fa-check"></i><b>13.5</b> Creating Chapters in R Markdown</a></li>
+<li class="chapter" data-level="13.6" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#chapter-names"><i class="fa fa-check"></i><b>13.6</b> Chapter Names</a></li>
+<li class="chapter" data-level="13.7" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#when-a-chapter-is-ready-for-sharing"><i class="fa fa-check"></i><b>13.7</b> When a Chapter is Ready for Sharing</a></li>
+<li class="chapter" data-level="13.8" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#building-the-book"><i class="fa fa-check"></i><b>13.8</b> Building the Book</a></li>
+<li class="chapter" data-level="13.9" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#publishing-the-book"><i class="fa fa-check"></i><b>13.9</b> Publishing the Book</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="title-holder.html"><a href="title-holder.html"><i class="fa fa-check"></i>Title holder</a></li>
 <li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
@@ -429,7 +460,7 @@ Go ahead and play the example below, which uses rayrendering (all coded entirely
         </div>
       </div>
 <a href="getting-started-and-installing-your-tools.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="interpreting-error-messages.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="wrangling-rows-in-r-with-filter.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

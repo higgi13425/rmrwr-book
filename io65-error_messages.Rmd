@@ -34,7 +34,7 @@ errors <- tibble::tribble(
 # parentheses don't match
 # missing comma
 # forgot to save the object (assignment)
-# 
+# used one = for logic test, instead of ==
 ```
 
 # Interpreting Error Messages
