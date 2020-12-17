@@ -142,3 +142,4 @@ chapter-names
 when-a-chapter-is-ready-for-sharing
 building-the-book
 publishing-the-book
+bibliography-book.bib-packages.bib
