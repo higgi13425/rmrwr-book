@@ -24,7 +24,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2020-12-17" />
+<meta name="date" content="2020-12-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="a-tasting-menu-of-r.html"/>
 <link rel="next" href="interpreting-error-messages.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,8 +51,6 @@
 
 
 
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
 <script src="libs/tabwid-1.0.0/tabwid.js"></script>
 
@@ -144,12 +142,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#the-spiral-of-success-structure"><i class="fa fa-check"></i><b>1.3</b> The Spiral of Success Structure</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#motivation-for-this-book"><i class="fa fa-check"></i><b>1.4</b> Motivation for this Book</a></li>
 <li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#the-scientific-reproducibility-crisis"><i class="fa fa-check"></i><b>1.5</b> The Scientific Reproducibility Crisis</a></li>
-<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#what-this-book-is-not"><i class="fa fa-check"></i><b>1.6</b> What this Book is Not</a>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#features-of-a-bookdown-electronic-book"><i class="fa fa-check"></i><b>1.6</b> Features of a Bookdown electronic book</a>
 <ul>
-<li class="chapter" data-level="1.6.1" data-path="index.html"><a href="index.html#this-book-is-not-a-statistics-text"><i class="fa fa-check"></i><b>1.6.1</b> This Book is Not A Statistics Text</a></li>
-<li class="chapter" data-level="1.6.2" data-path="index.html"><a href="index.html#this-book-does-not-provide-comprehensive-coverage-of-the-r-universe"><i class="fa fa-check"></i><b>1.6.2</b> This Book Does Not Provide Comprehensive Coverage of the R Universe</a></li>
+<li class="chapter" data-level="1.6.1" data-path="index.html"><a href="index.html#icons"><i class="fa fa-check"></i><b>1.6.1</b> Icons</a></li>
+<li class="chapter" data-level="1.6.2" data-path="index.html"><a href="index.html#sharing"><i class="fa fa-check"></i><b>1.6.2</b> Sharing</a></li>
+<li class="chapter" data-level="1.6.3" data-path="index.html"><a href="index.html#scrollingpaging"><i class="fa fa-check"></i><b>1.6.3</b> Scrolling/Paging</a></li>
 </ul></li>
-<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#some-guideposts"><i class="fa fa-check"></i><b>1.7</b> Some Guideposts</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#what-this-book-is-not"><i class="fa fa-check"></i><b>1.7</b> What this Book is Not</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="index.html"><a href="index.html#this-book-is-not-a-statistics-text"><i class="fa fa-check"></i><b>1.7.1</b> This Book is Not A Statistics Text</a></li>
+<li class="chapter" data-level="1.7.2" data-path="index.html"><a href="index.html#this-book-does-not-provide-comprehensive-coverage-of-the-r-universe"><i class="fa fa-check"></i><b>1.7.2</b> This Book Does Not Provide Comprehensive Coverage of the R Universe</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#some-guideposts"><i class="fa fa-check"></i><b>1.8</b> Some Guideposts</a></li>
+<li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#helpful-tools"><i class="fa fa-check"></i><b>1.9</b> Helpful Tools</a>
+<ul>
+<li class="chapter" data-level="1.9.1" data-path="index.html"><a href="index.html#demonstrations-in-flipbooks"><i class="fa fa-check"></i><b>1.9.1</b> Demonstrations in Flipbooks</a></li>
+<li class="chapter" data-level="1.9.2" data-path="index.html"><a href="index.html#learnr-coding-exercises"><i class="fa fa-check"></i><b>1.9.2</b> Learnr Coding Exercises</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html"><i class="fa fa-check"></i><b>2</b> Getting Started and Installing Your Tools</a>
 <ul>
@@ -199,7 +208,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#filtering-on-numbers---starting-with-a-flipbook"><i class="fa fa-check"></i><b>4.1</b> Filtering on Numbers - Starting with A Flipbook</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#an-example-of-synergy"><i class="fa fa-check"></i><b>4.1.1</b> An Example of Synergy</a></li>
+<li class="chapter" data-level="4.1.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#your-turn---learnr-exercises"><i class="fa fa-check"></i><b>4.1.1</b> Your Turn - learnr exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#filtering-on-multiple-criteria-with-boolean-logic"><i class="fa fa-check"></i><b>4.2</b> Filtering on Multiple Criteria with Boolean Logic</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#your-turn---learnr-exercises-1"><i class="fa fa-check"></i><b>4.2.1</b> Your Turn - learnr exercises</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html"><i class="fa fa-check"></i><b>5</b> Interpreting Error Messages</a>
@@ -355,13 +368,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Once your data wrangling and data validation is done, you will be ready for data analysis.</p>
 <div id="filtering-on-numbers---starting-with-a-flipbook" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Filtering on Numbers - Starting with A Flipbook</h2>
-<p>If you have not used a flipbook before, you can <strong>click</strong> on the frame below to activate it, then use <strong>arrow keys</strong> to move forward and back through the demo.</p>
-<p>Before each forward step, try to predict the next result. Make sure you understand how the output was produced.</p>
+<p>If you have not used a flipbook before, you can <strong>click</strong> on the frame below to activate it, then use <strong>right and left arrow keys</strong> to move forward and back through the demo.</p>
+<p>With each forward step in the code on the left, examine the resulting output on the right. Make sure you understand how the output was produced.</p>
 <!---FLIPBOOK EX 1-->
 <iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_1_num.html#1" scrolling="no">
 </iframe>
-<div id="an-example-of-synergy" class="section level3" number="4.1.1">
-<h3><span class="header-section-number">4.1.1</span> An Example of Synergy</h3>
+<!---FLIPBOOK EX 1-->
+<div id="your-turn---learnr-exercises" class="section level3" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Your Turn - learnr exercises</h3>
+<!---LEARNR TUTORIAL EX 1-->
+<iframe style="margin:0 auto; border: solid black;" id="myIframe9" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter1/" scrolling="yes">
+</iframe>
+<!---LEARNR TUTORIAL EX 1-->
+</div>
+</div>
+<div id="filtering-on-multiple-criteria-with-boolean-logic" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Filtering on Multiple Criteria with Boolean Logic</h2>
+<p>You can use multiple filters on your data, and combine these with
+AND
+OR
+XOR
+parentheses
+and combinations thereof.</p>
+<!---FLIPBOOK -->
+<iframe style="margin:0 auto; border: solid black;" id="myIframe9" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_2_boolean.html#1" scrolling="no">
+</iframe>
+<!---FLIPBOOK  -->
+<div id="your-turn---learnr-exercises-1" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Your Turn - learnr exercises</h3>
+<!---LEARNR TUTORIAL EX 2-->
+<iframe style="margin:0 auto; border: solid black;" id="myIframe9" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter2/" scrolling="yes">
+</iframe>
+<!---LEARNR TUTORIAL EX 2-->
 
 </div>
 </div>

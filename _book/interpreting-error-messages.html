@@ -24,7 +24,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2020-12-17" />
+<meta name="date" content="2020-12-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="wrangling-rows-in-r-with-filter.html"/>
 <link rel="next" href="updating-r-rstudio-and-your-packages.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,8 +51,6 @@
 
 
 
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
 <script src="libs/tabwid-1.0.0/tabwid.js"></script>
 
@@ -144,12 +142,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#the-spiral-of-success-structure"><i class="fa fa-check"></i><b>1.3</b> The Spiral of Success Structure</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#motivation-for-this-book"><i class="fa fa-check"></i><b>1.4</b> Motivation for this Book</a></li>
 <li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#the-scientific-reproducibility-crisis"><i class="fa fa-check"></i><b>1.5</b> The Scientific Reproducibility Crisis</a></li>
-<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#what-this-book-is-not"><i class="fa fa-check"></i><b>1.6</b> What this Book is Not</a>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#features-of-a-bookdown-electronic-book"><i class="fa fa-check"></i><b>1.6</b> Features of a Bookdown electronic book</a>
 <ul>
-<li class="chapter" data-level="1.6.1" data-path="index.html"><a href="index.html#this-book-is-not-a-statistics-text"><i class="fa fa-check"></i><b>1.6.1</b> This Book is Not A Statistics Text</a></li>
-<li class="chapter" data-level="1.6.2" data-path="index.html"><a href="index.html#this-book-does-not-provide-comprehensive-coverage-of-the-r-universe"><i class="fa fa-check"></i><b>1.6.2</b> This Book Does Not Provide Comprehensive Coverage of the R Universe</a></li>
+<li class="chapter" data-level="1.6.1" data-path="index.html"><a href="index.html#icons"><i class="fa fa-check"></i><b>1.6.1</b> Icons</a></li>
+<li class="chapter" data-level="1.6.2" data-path="index.html"><a href="index.html#sharing"><i class="fa fa-check"></i><b>1.6.2</b> Sharing</a></li>
+<li class="chapter" data-level="1.6.3" data-path="index.html"><a href="index.html#scrollingpaging"><i class="fa fa-check"></i><b>1.6.3</b> Scrolling/Paging</a></li>
 </ul></li>
-<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#some-guideposts"><i class="fa fa-check"></i><b>1.7</b> Some Guideposts</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#what-this-book-is-not"><i class="fa fa-check"></i><b>1.7</b> What this Book is Not</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="index.html"><a href="index.html#this-book-is-not-a-statistics-text"><i class="fa fa-check"></i><b>1.7.1</b> This Book is Not A Statistics Text</a></li>
+<li class="chapter" data-level="1.7.2" data-path="index.html"><a href="index.html#this-book-does-not-provide-comprehensive-coverage-of-the-r-universe"><i class="fa fa-check"></i><b>1.7.2</b> This Book Does Not Provide Comprehensive Coverage of the R Universe</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="index.html"><a href="index.html#some-guideposts"><i class="fa fa-check"></i><b>1.8</b> Some Guideposts</a></li>
+<li class="chapter" data-level="1.9" data-path="index.html"><a href="index.html#helpful-tools"><i class="fa fa-check"></i><b>1.9</b> Helpful Tools</a>
+<ul>
+<li class="chapter" data-level="1.9.1" data-path="index.html"><a href="index.html#demonstrations-in-flipbooks"><i class="fa fa-check"></i><b>1.9.1</b> Demonstrations in Flipbooks</a></li>
+<li class="chapter" data-level="1.9.2" data-path="index.html"><a href="index.html#learnr-coding-exercises"><i class="fa fa-check"></i><b>1.9.2</b> Learnr Coding Exercises</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="getting-started-and-installing-your-tools.html"><a href="getting-started-and-installing-your-tools.html"><i class="fa fa-check"></i><b>2</b> Getting Started and Installing Your Tools</a>
 <ul>
@@ -199,7 +208,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#filtering-on-numbers---starting-with-a-flipbook"><i class="fa fa-check"></i><b>4.1</b> Filtering on Numbers - Starting with A Flipbook</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#an-example-of-synergy"><i class="fa fa-check"></i><b>4.1.1</b> An Example of Synergy</a></li>
+<li class="chapter" data-level="4.1.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#your-turn---learnr-exercises"><i class="fa fa-check"></i><b>4.1.1</b> Your Turn - learnr exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#filtering-on-multiple-criteria-with-boolean-logic"><i class="fa fa-check"></i><b>4.2</b> Filtering on Multiple Criteria with Boolean Logic</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#your-turn---learnr-exercises-1"><i class="fa fa-check"></i><b>4.2.1</b> Your Turn - learnr exercises</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html"><i class="fa fa-check"></i><b>5</b> Interpreting Error Messages</a>
@@ -362,8 +375,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="the-common-errors-table" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> The Common Errors Table</h2>
 <p>Examine the error message from R, particularly the part that comes after the colon (:). The error messages listed in the left column will be what appears after the colon (:)</p>
-<div class="tabwid"><style>.cl-78eb012a{border-collapse:collapse;}.cl-78e01152{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-78e03948{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:3pt;padding-top:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;}.cl-78e097d0{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-78e097ee{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-78e097f8{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-78eb012a'>
-<thead><tr style="overflow-wrap:break-word;"><td class="cl-78e097f8"><p class="cl-78e03948"><span class="cl-78e01152">error_message</span></p></td><td class="cl-78e097f8"><p class="cl-78e03948"><span class="cl-78e01152">what_it_means</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-78e097d0"><p class="cl-78e03948"><span class="cl-78e01152">could not find function</span></p></td><td class="cl-78e097d0"><p class="cl-78e03948"><span class="cl-78e01152">This usually means that you made a typo in the function name (including Capitalization), or that the package you are intending to use (which contains the function) is not installed <br>(with `install.packages('package_name')`) or loaded (with `library(package)`)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-78e097d0"><p class="cl-78e03948"><span class="cl-78e01152">object 'object-name' not found</span></p></td><td class="cl-78e097d0"><p class="cl-78e03948"><span class="cl-78e01152">This usually means that the function looked for an object (like a data frame or a vector) in your working environment (check your Environment pane) and could not find it. This commonly happens when you (1) mistype the name of the object (double-check this, easy to fix), or (2) you did not actually create or save this object to your working environment - confirm by checking your Environment tab at the top right in RStudio.</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-78e097d0"><p class="cl-78e03948"><span class="cl-78e01152">filename does not exist in current working directory ('path/to/working/directory')</span></p></td><td class="cl-78e097d0"><p class="cl-78e03948"><span class="cl-78e01152">This usually means one of three things: (1) you mistyped the name of the file, or part of the path, (2) you are not in the directory where the file is, or (3) the file you thought you had saved does not exist (check your Files tab in the lower right pane in RStudio).</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-78e097ee"><p class="cl-78e03948"><span class="cl-78e01152">error in if</span></p></td><td class="cl-78e097ee"><p class="cl-78e03948"><span class="cl-78e01152">This usually means that you have an *if* statement that is trying to make a branch-point decision, but the logical statement that you wrote is not providing either a TRUE or a FALSE value. The most common reasons are typos in the logical statement, or an NA in one of the underlying values, which yields an NA from the logical statement. You may need to use a `na.rm = TRUE` option in your logical statement.</span></p></td></tr></tbody></table></div>
+<div class="tabwid"><style>.cl-40e14aa0{border-collapse:collapse;}.cl-40d65050{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-40d67300{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:3pt;padding-top:3pt;padding-left:3pt;padding-right:3pt;line-height: 1;background-color:transparent;}.cl-40d6db60{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-40d6db88{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-40d6db92{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(0, 0, 0, 1.00);border-top: 2pt solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-40e14aa0'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-40d6db92"><p class="cl-40d67300"><span class="cl-40d65050">error_message</span></p></td><td class="cl-40d6db92"><p class="cl-40d67300"><span class="cl-40d65050">what_it_means</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-40d6db60"><p class="cl-40d67300"><span class="cl-40d65050">could not find function</span></p></td><td class="cl-40d6db60"><p class="cl-40d67300"><span class="cl-40d65050">This usually means that you made a typo in the function name (including Capitalization), or that the package you are intending to use (which contains the function) is not installed <br>(with `install.packages('package_name')`) or loaded (with `library(package)`)</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-40d6db60"><p class="cl-40d67300"><span class="cl-40d65050">object 'object-name' not found</span></p></td><td class="cl-40d6db60"><p class="cl-40d67300"><span class="cl-40d65050">This usually means that the function looked for an object (like a data frame or a vector) in your working environment (check your Environment pane) and could not find it. This commonly happens when you (1) mistype the name of the object (double-check this, easy to fix), or (2) you did not actually create or save this object to your working environment - confirm by checking your Environment tab at the top right in RStudio.</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-40d6db60"><p class="cl-40d67300"><span class="cl-40d65050">filename does not exist in current working directory ('path/to/working/directory')</span></p></td><td class="cl-40d6db60"><p class="cl-40d67300"><span class="cl-40d65050">This usually means one of three things: (1) you mistyped the name of the file, or part of the path, (2) you are not in the directory where the file is, or (3) the file you thought you had saved does not exist (check your Files tab in the lower right pane in RStudio).</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-40d6db88"><p class="cl-40d67300"><span class="cl-40d65050">error in if</span></p></td><td class="cl-40d6db88"><p class="cl-40d67300"><span class="cl-40d65050">This usually means that you have an *if* statement that is trying to make a branch-point decision, but the logical statement that you wrote is not providing either a TRUE or a FALSE value. The most common reasons are typos in the logical statement, or an NA in one of the underlying values, which yields an NA from the logical statement. You may need to use a `na.rm = TRUE` option in your logical statement.</span></p></td></tr></tbody></table></div>
 </div>
 <div id="examples-of-common-errors-and-how-to-fix-them" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> Examples of Common Errors and How to fix them</h2>
