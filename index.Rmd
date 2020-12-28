@@ -143,7 +143,13 @@ Activate it by clicking on it, and step through the pipeline of code with the ri
 Learnr coding exercises are windows in this book in which you can write your own R code to solve a problem. Each learnr exercise tests whether you have mastered important code concepts, and often new functions in R. If needed, you can reset to a fresh code window with the `Start Over` button. You can type lines of code into the window, then click on the `Run Code` button at the top right to run the code and get your results. Your code may not produce the right result the first time, and you will have to interpret the error message to figure out how to fix it. Rely on the text and your notes and the demonstrations to help you. If you are stuck, you can click on the `Hint` button to see an example of correct code, and compare it to your own. If you would like, you can even copy this code to the clipboard with the `Copy` button and  
 
 Take a look at the example of a learnr exercise below.    
-There is a dataset piped into a series of functions ('verbs'), with a blank. Fill in the blank with 'p_vol' (without the quotes), which stands for the variable prostate volume. Then run your code with the `Run Code` button to get a result. Practice using the `Start Over` button, the `Hint` button, and the `Copy To Clipboard` button.
+There is a dataset piped into a series of functions ('verbs'), with a blank. Fill in the blank with 'p_vol' (without the quotes), which stands for the variable prostate volume. Then run your code with the `Run Code` button to get a result. Practice using the `Start Over` button, the `Hint` button (there may be more than one - usually the **last** one is the solution), and the `Copy To Clipboard` button.
+
+<!---LEARNR TUTORIAL EX 1-->
+<iframe style="margin:0 auto; border: solid black;" id="myIframe9" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_demo/" scrolling="yes">
+</iframe>
+<!---LEARNR TUTORIAL EX 1-->
+
 
 When you get a table of data as a result from a code pipeline, it may have more columns (variables) than can be displayed easily. When this is the case, there will be a black arrow pointing rightward at the top right of the table of results. Click on this to scroll right and see more columns.    
 A table of data as a result from a code pipeline may also have more rows (observations) than can be displayed easily. When this is the case, the table will be paginated, with 10 rows per page. At the bottom right of the table, there will be a clickable listing of pages, along with `Previous` and `Next` buttons. Click on these buttons (or the page number buttons) to see more pages of data to inspect your results. 
