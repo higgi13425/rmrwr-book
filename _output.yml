@@ -1,4 +1,4 @@
-bookdown::gitbook:
+bookdown::html_document2:   #changed from gitbook
   css: style.css
   config:
     toc:
@@ -14,4 +14,5 @@ bookdown::pdf_book:
   latex_engine: xelatex
   citation_package: natbib
   keep_tex: yes
+  code_download: true #added
 bookdown::epub_book: default
