@@ -66,12 +66,13 @@ You can use == to test exact equality of strings, but you can also use str_detec
 
 <!---FLIPBOOK  -->
 
+Test the strings
+
 ### Your Turn - learnr exercises
 
-<!---LEARNR TUTORIAL EX 2-->
-<iframe style="margin:0 auto; border: solid black;" id="myIframe6" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter2/" scrolling="yes">
-</iframe>
-<!---LEARNR TUTORIAL EX 2-->
+Strings learnr here
+
+
 
 ## Filtering Dates 
 
@@ -86,10 +87,7 @@ You can use the {lubridate} package to format strings for logical tests, and fil
 
 ### Your Turn - learnr exercises
 
-<!---LEARNR TUTORIAL EX 2-->
-<iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter2/" scrolling="yes">
-</iframe>
-<!---LEARNR TUTORIAL EX 2-->
+Dates learnr here
 
 ## Filtering Out or Identifying Missing Data 
 
@@ -104,10 +102,7 @@ You can use the is.na(), drop_na() and negation with ! to help identify and filt
 
 ### Your Turn - learnr exercises
 
-<!---LEARNR TUTORIAL EX 2-->
-<iframe style="margin:0 auto; border: solid black;" id="myIframe10" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter2/" scrolling="yes">
-</iframe>
-<!---LEARNR TUTORIAL EX 2-->
+NA learnr here
 
 ## Filtering Out Duplicate observations 
 
@@ -122,10 +117,7 @@ You can use the {janitor} package to help you find duplicated observations/rows 
 
 ### Your Turn - learnr exercises
 
-<!---LEARNR TUTORIAL EX 2-->
-<iframe style="margin:0 auto; border: solid black;" id="myIframe12" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter2/" scrolling="yes">
-</iframe>
-<!---LEARNR TUTORIAL EX 2-->
+Dupes learnr here
 
 ## Slicing Data by Row
 
@@ -138,12 +130,7 @@ You can use the _slice()_ family of functions to cut out a chunk of your observa
 
 <!---FLIPBOOK  -->
 
-### Your Turn - learnr exercises
-
-<!---LEARNR TUTORIAL EX 2-->
-<iframe style="margin:0 auto; border: solid black;" id="myIframe14" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter2/" scrolling="yes">
-</iframe>
-<!---LEARNR TUTORIAL EX 2-->
+Slice learnr here
 
 ## Randomly Sampling Your Rows
 
@@ -158,7 +145,4 @@ You can use the _slice_sample()_ function to take a random subset of large datas
 
 ### Your Turn - learnr exercises
 
-<!---LEARNR TUTORIAL EX 2-->
-<iframe style="margin:0 auto; border: solid black;" id="myIframe16" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter2/" scrolling="yes">
-</iframe>
-<!---LEARNR TUTORIAL EX 2-->
+Sample learnr here

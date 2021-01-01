@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 13 Building and Publishing a {bookdown} book on bookdown.org | Reproducible Medical Research with R</title>
+  <title>Chapter 11 Building and Publishing a {bookdown} book on bookdown.org | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 13 Building and Publishing a {bookdown} book on bookdown.org | Reproducible Medical Research with R" />
+  <meta property="og:title" content="Chapter 11 Building and Publishing a {bookdown} book on bookdown.org | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rmrwr.netlify.com" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="higgi13425/rmrwr-book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 13 Building and Publishing a {bookdown} book on bookdown.org | Reproducible Medical Research with R" />
+  <meta name="twitter:title" content="Chapter 11 Building and Publishing a {bookdown} book on bookdown.org | Reproducible Medical Research with R" />
   
   <meta name="twitter:description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2020-12-30" />
+<meta name="date" content="2021-01-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -224,6 +224,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.2.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#your-turn---learnr-exercises-1"><i class="fa fa-check"></i><b>4.2.1</b> Your Turn - learnr exercises</a></li>
 </ul></li>
+<li class="chapter" data-level="4.3" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#filtering-strings"><i class="fa fa-check"></i><b>4.3</b> Filtering Strings</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#your-turn---learnr-exercises-2"><i class="fa fa-check"></i><b>4.3.1</b> Your Turn - learnr exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#filtering-dates"><i class="fa fa-check"></i><b>4.4</b> Filtering Dates</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#your-turn---learnr-exercises-3"><i class="fa fa-check"></i><b>4.4.1</b> Your Turn - learnr exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#filtering-out-or-identifying-missing-data"><i class="fa fa-check"></i><b>4.5</b> Filtering Out or Identifying Missing Data</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#your-turn---learnr-exercises-4"><i class="fa fa-check"></i><b>4.5.1</b> Your Turn - learnr exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#filtering-out-duplicate-observations"><i class="fa fa-check"></i><b>4.6</b> Filtering Out Duplicate observations</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#your-turn---learnr-exercises-5"><i class="fa fa-check"></i><b>4.6.1</b> Your Turn - learnr exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#slicing-data-by-row"><i class="fa fa-check"></i><b>4.7</b> Slicing Data by Row</a></li>
+<li class="chapter" data-level="4.8" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#randomly-sampling-your-rows"><i class="fa fa-check"></i><b>4.8</b> Randomly Sampling Your Rows</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#your-turn---learnr-exercises-6"><i class="fa fa-check"></i><b>4.8.1</b> Your Turn - learnr exercises</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html"><i class="fa fa-check"></i><b>5</b> Interpreting Error Messages</a>
 <ul>
@@ -260,102 +281,88 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-your-packages"><i class="fa fa-check"></i><b>6.5</b> Updating Your Packages</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html"><i class="fa fa-check"></i><b>7</b> Major R Updates (Where Are My Packages?)</a></li>
-<li class="chapter" data-level="8" data-path="checking-validating-and-asserting-things-about-your-data.html"><a href="checking-validating-and-asserting-things-about-your-data.html"><i class="fa fa-check"></i><b>8</b> Checking, Validating, And Asserting things about your Data</a>
+<li class="chapter" data-level="8" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html"><i class="fa fa-check"></i><b>8</b> Descriptive Data Tables</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="checking-validating-and-asserting-things-about-your-data.html"><a href="checking-validating-and-asserting-things-about-your-data.html#why-spend-time-validating-your-data"><i class="fa fa-check"></i><b>8.1</b> Why Spend Time Validating Your Data?</a>
+<li class="chapter" data-level="8.1" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-table-one"><i class="fa fa-check"></i><b>8.1</b> Making Table One</a>
 <ul>
-<li class="chapter" data-level="8.1.1" data-path="checking-validating-and-asserting-things-about-your-data.html"><a href="checking-validating-and-asserting-things-about-your-data.html#asserting-properties-of-your-data-with-assertr"><i class="fa fa-check"></i><b>8.1.1</b> Asserting properties of your data with assertr</a></li>
+<li class="chapter" data-level="8.1.1" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#the-tableby-function-in-the-arsenal-package"><i class="fa fa-check"></i><b>8.1.1</b> The <em>tableby</em> function in the <strong>arsenal</strong> package</a></li>
+<li class="chapter" data-level="8.1.2" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#the-gtsummary-package-with-flextable"><i class="fa fa-check"></i><b>8.1.2</b> The gtsummary package with flextable</a></li>
+<li class="chapter" data-level="8.1.3" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#example-of-how-to-build-a-table-1-with-gtsummary"><i class="fa fa-check"></i><b>8.1.3</b> Example of how to build a Table 1 with gtsummary</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-an-adverse-events-table"><i class="fa fa-check"></i><b>8.2</b> Making An Adverse Events Table</a></li>
+<li class="chapter" data-level="8.3" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-a-results-table"><i class="fa fa-check"></i><b>8.3</b> Making A Results Table</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html"><i class="fa fa-check"></i><b>9</b> Comparing Two Measures of Centrality</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#common-problem"><i class="fa fa-check"></i><b>9.1</b> Common Problem</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#how-skewed-is-too-skewed"><i class="fa fa-check"></i><b>9.1.1</b> How Skewed is Too Skewed?</a></li>
+<li class="chapter" data-level="9.1.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#visualize-the-distribution-of-data-variables-in-ggplot"><i class="fa fa-check"></i><b>9.1.2</b> Visualize the Distribution of data variables in ggplot</a></li>
+<li class="chapter" data-level="9.1.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#visualize-the-distribution-of-datalen-in-ggplot"><i class="fa fa-check"></i><b>9.1.3</b> Visualize the Distribution of data$len in ggplot</a></li>
+<li class="chapter" data-level="9.1.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-shapiro-wilk"><i class="fa fa-check"></i><b>9.1.4</b> Results of Shapiro-Wilk</a></li>
+<li class="chapter" data-level="9.1.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#try-it-yourself"><i class="fa fa-check"></i><b>9.1.5</b> Try it yourself</a></li>
+<li class="chapter" data-level="9.1.6" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#mammal-sleep-hours"><i class="fa fa-check"></i><b>9.1.6</b> Mammal sleep hours</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#one-sample-t-test"><i class="fa fa-check"></i><b>9.2</b> One Sample T test</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#how-to-do-one-sample-t-test"><i class="fa fa-check"></i><b>9.2.1</b> How to do One Sample T test</a></li>
+<li class="chapter" data-level="9.2.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#interpreting-the-one-sample-t-test"><i class="fa fa-check"></i><b>9.2.2</b> Interpreting the One Sample T test</a></li>
+<li class="chapter" data-level="9.2.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#what-are-the-arguments-of-the-t.test-function"><i class="fa fa-check"></i><b>9.2.3</b> What are the arguments of the t.test function?</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#insert-flipbook-for-ttest-here"><i class="fa fa-check"></i><b>9.3</b> Insert flipbook for ttest here</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#flipbook-time"><i class="fa fa-check"></i><b>9.3.1</b> Flipbook Time!</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#fine-but-what-about-2-groups"><i class="fa fa-check"></i><b>9.4</b> Fine, but what about 2 groups?</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#setting-up-2-group-t-test"><i class="fa fa-check"></i><b>9.4.1</b> Setting up 2 group t test</a></li>
+<li class="chapter" data-level="9.4.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-the-2-group-t-test"><i class="fa fa-check"></i><b>9.4.2</b> Results of the 2 group t test</a></li>
+<li class="chapter" data-level="9.4.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#interpreting-the-2-group-t-test"><i class="fa fa-check"></i><b>9.4.3</b> Interpreting the 2 group t test</a></li>
+<li class="chapter" data-level="9.4.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#group-t-test-with-wide-data"><i class="fa fa-check"></i><b>9.4.4</b> 2 group t test with wide data</a></li>
+<li class="chapter" data-level="9.4.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-2-group-t-test-with-wide-data"><i class="fa fa-check"></i><b>9.4.5</b> Results of 2 group t test with wide data</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#assumptions-of-students-t-test"><i class="fa fa-check"></i><b>9.5</b> 3 Assumptions of Student’s t test</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#testing-assumptions-of-students-t-test"><i class="fa fa-check"></i><b>9.5.1</b> Testing Assumptions of Student’s t test</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#getting-results-out-of-t.test"><i class="fa fa-check"></i><b>9.6</b> Getting results out of t.test</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#getting-results-out-of-t.test-1"><i class="fa fa-check"></i><b>9.6.1</b> Getting results out of t.test</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#reporting-the-results-from-t.test-using-inline-code"><i class="fa fa-check"></i><b>9.7</b> Reporting the results from t.test using inline code</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#for-next-time"><i class="fa fa-check"></i><b>9.7.1</b> For Next Time</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="time-series-data-with-the-tidyverts-packages.html"><a href="time-series-data-with-the-tidyverts-packages.html"><i class="fa fa-check"></i><b>9</b> Time Series data with the Tidyverts Packages</a>
+<li class="chapter" data-level="10" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html"><i class="fa fa-check"></i><b>10</b> Running R from the UNIX Command Line</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="time-series-data-with-the-tidyverts-packages.html"><a href="time-series-data-with-the-tidyverts-packages.html#tsibble"><i class="fa fa-check"></i><b>9.1</b> Tsibble</a></li>
-<li class="chapter" data-level="9.2" data-path="time-series-data-with-the-tidyverts-packages.html"><a href="time-series-data-with-the-tidyverts-packages.html#fable"><i class="fa fa-check"></i><b>9.2</b> Fable</a></li>
-<li class="chapter" data-level="9.3" data-path="time-series-data-with-the-tidyverts-packages.html"><a href="time-series-data-with-the-tidyverts-packages.html#feasts"><i class="fa fa-check"></i><b>9.3</b> Feasts</a></li>
-<li class="chapter" data-level="9.4" data-path="time-series-data-with-the-tidyverts-packages.html"><a href="time-series-data-with-the-tidyverts-packages.html#slider"><i class="fa fa-check"></i><b>9.4</b> Slider</a></li>
+<li class="chapter" data-level="10.1" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#what-is-the-unix-command-line"><i class="fa fa-check"></i><b>10.1</b> What is the UNIX Command line?</a></li>
+<li class="chapter" data-level="10.2" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#why-run-r-from-the-command-line"><i class="fa fa-check"></i><b>10.2</b> Why run R from the command line?</a></li>
+<li class="chapter" data-level="10.3" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#how-do-you-get-started"><i class="fa fa-check"></i><b>10.3</b> How do you get started?</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#on-a-mac"><i class="fa fa-check"></i><b>10.3.1</b> On a Mac</a></li>
+<li class="chapter" data-level="10.3.2" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#on-a-windows-pc"><i class="fa fa-check"></i><b>10.3.2</b> On a Windows PC</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html"><i class="fa fa-check"></i><b>10</b> Descriptive Data Tables</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-table-one"><i class="fa fa-check"></i><b>10.1</b> Making Table One</a>
-<ul>
-<li class="chapter" data-level="10.1.1" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#the-tableby-function-in-the-arsenal-package"><i class="fa fa-check"></i><b>10.1.1</b> The <em>tableby</em> function in the <strong>arsenal</strong> package</a></li>
-<li class="chapter" data-level="10.1.2" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#the-gtsummary-package-with-flextable"><i class="fa fa-check"></i><b>10.1.2</b> The gtsummary package with flextable</a></li>
-<li class="chapter" data-level="10.1.3" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#example-of-how-to-build-a-table-1-with-gtsummary"><i class="fa fa-check"></i><b>10.1.3</b> Example of how to build a Table 1 with gtsummary</a></li>
+<li class="chapter" data-level="10.4" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#the-yawning-blackness-of-the-terminal-window"><i class="fa fa-check"></i><b>10.4</b> The Yawning Blackness of the Terminal Window</a></li>
+<li class="chapter" data-level="10.5" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#where-are-we"><i class="fa fa-check"></i><b>10.5</b> Where Are We?</a></li>
+<li class="chapter" data-level="10.6" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#cleaning-up"><i class="fa fa-check"></i><b>10.6</b> Cleaning Up</a></li>
+<li class="chapter" data-level="10.7" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#other-helpful-file-commands"><i class="fa fa-check"></i><b>10.7</b> Other helpful file commands</a></li>
+<li class="chapter" data-level="10.8" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#what-about-r"><i class="fa fa-check"></i><b>10.8</b> What about R?</a></li>
+<li class="chapter" data-level="10.9" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#what-about-just-a-few-lines-of-r"><i class="fa fa-check"></i><b>10.9</b> What about just a few lines of R?</a></li>
+<li class="chapter" data-level="10.10" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#running-an-r-script-from-the-terminal"><i class="fa fa-check"></i><b>10.10</b> Running an R Script from the Terminal</a></li>
+<li class="chapter" data-level="10.11" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#rendering-an-rmarkdown-file-from-the-terminal"><i class="fa fa-check"></i><b>10.11</b> Rendering an Rmarkdown file from the Terminal</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-an-adverse-events-table"><i class="fa fa-check"></i><b>10.2</b> Making An Adverse Events Table</a></li>
-<li class="chapter" data-level="10.3" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-a-results-table"><i class="fa fa-check"></i><b>10.3</b> Making A Results Table</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html"><i class="fa fa-check"></i><b>11</b> Comparing Two Measures of Centrality</a>
+<li class="chapter" data-level="11" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><i class="fa fa-check"></i><b>11</b> Building and Publishing a {bookdown} book on bookdown.org</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#common-problem"><i class="fa fa-check"></i><b>11.1</b> Common Problem</a>
-<ul>
-<li class="chapter" data-level="11.1.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#how-skewed-is-too-skewed"><i class="fa fa-check"></i><b>11.1.1</b> How Skewed is Too Skewed?</a></li>
-<li class="chapter" data-level="11.1.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#visualize-the-distribution-of-data-variables-in-ggplot"><i class="fa fa-check"></i><b>11.1.2</b> Visualize the Distribution of data variables in ggplot</a></li>
-<li class="chapter" data-level="11.1.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#visualize-the-distribution-of-datalen-in-ggplot"><i class="fa fa-check"></i><b>11.1.3</b> Visualize the Distribution of data$len in ggplot</a></li>
-<li class="chapter" data-level="11.1.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-shapiro-wilk"><i class="fa fa-check"></i><b>11.1.4</b> Results of Shapiro-Wilk</a></li>
-<li class="chapter" data-level="11.1.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#try-it-yourself"><i class="fa fa-check"></i><b>11.1.5</b> Try it yourself</a></li>
-<li class="chapter" data-level="11.1.6" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#mammal-sleep-hours"><i class="fa fa-check"></i><b>11.1.6</b> Mammal sleep hours</a></li>
-</ul></li>
-<li class="chapter" data-level="11.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#one-sample-t-test"><i class="fa fa-check"></i><b>11.2</b> One Sample T test</a>
-<ul>
-<li class="chapter" data-level="11.2.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#how-to-do-one-sample-t-test"><i class="fa fa-check"></i><b>11.2.1</b> How to do One Sample T test</a></li>
-<li class="chapter" data-level="11.2.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#interpreting-the-one-sample-t-test"><i class="fa fa-check"></i><b>11.2.2</b> Interpreting the One Sample T test</a></li>
-<li class="chapter" data-level="11.2.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#what-are-the-arguments-of-the-t.test-function"><i class="fa fa-check"></i><b>11.2.3</b> What are the arguments of the t.test function?</a></li>
-</ul></li>
-<li class="chapter" data-level="11.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#insert-flipbook-for-ttest-here"><i class="fa fa-check"></i><b>11.3</b> Insert flipbook for ttest here</a>
-<ul>
-<li class="chapter" data-level="11.3.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#flipbook-time"><i class="fa fa-check"></i><b>11.3.1</b> Flipbook Time!</a></li>
-</ul></li>
-<li class="chapter" data-level="11.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#fine-but-what-about-2-groups"><i class="fa fa-check"></i><b>11.4</b> Fine, but what about 2 groups?</a>
-<ul>
-<li class="chapter" data-level="11.4.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#setting-up-2-group-t-test"><i class="fa fa-check"></i><b>11.4.1</b> Setting up 2 group t test</a></li>
-<li class="chapter" data-level="11.4.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-the-2-group-t-test"><i class="fa fa-check"></i><b>11.4.2</b> Results of the 2 group t test</a></li>
-<li class="chapter" data-level="11.4.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#interpreting-the-2-group-t-test"><i class="fa fa-check"></i><b>11.4.3</b> Interpreting the 2 group t test</a></li>
-<li class="chapter" data-level="11.4.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#group-t-test-with-wide-data"><i class="fa fa-check"></i><b>11.4.4</b> 2 group t test with wide data</a></li>
-<li class="chapter" data-level="11.4.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-2-group-t-test-with-wide-data"><i class="fa fa-check"></i><b>11.4.5</b> Results of 2 group t test with wide data</a></li>
-</ul></li>
-<li class="chapter" data-level="11.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#assumptions-of-students-t-test"><i class="fa fa-check"></i><b>11.5</b> 3 Assumptions of Student’s t test</a>
-<ul>
-<li class="chapter" data-level="11.5.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#testing-assumptions-of-students-t-test"><i class="fa fa-check"></i><b>11.5.1</b> Testing Assumptions of Student’s t test</a></li>
-</ul></li>
-<li class="chapter" data-level="11.6" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#getting-results-out-of-t.test"><i class="fa fa-check"></i><b>11.6</b> Getting results out of t.test</a>
-<ul>
-<li class="chapter" data-level="11.6.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#getting-results-out-of-t.test-1"><i class="fa fa-check"></i><b>11.6.1</b> Getting results out of t.test</a></li>
-</ul></li>
-<li class="chapter" data-level="11.7" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#reporting-the-results-from-t.test-using-inline-code"><i class="fa fa-check"></i><b>11.7</b> Reporting the results from t.test using inline code</a>
-<ul>
-<li class="chapter" data-level="11.7.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#for-next-time"><i class="fa fa-check"></i><b>11.7.1</b> For Next Time</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html"><i class="fa fa-check"></i><b>12</b> Running R from the UNIX Command Line</a>
-<ul>
-<li class="chapter" data-level="12.1" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#what-is-the-unix-command-line"><i class="fa fa-check"></i><b>12.1</b> What is the UNIX Command line?</a></li>
-<li class="chapter" data-level="12.2" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#why-run-r-from-the-command-line"><i class="fa fa-check"></i><b>12.2</b> Why run R from the command line?</a></li>
-<li class="chapter" data-level="12.3" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#how-do-you-get-started"><i class="fa fa-check"></i><b>12.3</b> How do you get started?</a>
-<ul>
-<li class="chapter" data-level="12.3.1" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#on-a-mac"><i class="fa fa-check"></i><b>12.3.1</b> On a Mac</a></li>
-<li class="chapter" data-level="12.3.2" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#on-a-windows-pc"><i class="fa fa-check"></i><b>12.3.2</b> On a Windows PC</a></li>
-</ul></li>
-<li class="chapter" data-level="12.4" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#the-yawning-blackness-of-the-terminal-window"><i class="fa fa-check"></i><b>12.4</b> The Yawning Blackness of the Terminal Window</a></li>
-<li class="chapter" data-level="12.5" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#where-are-we"><i class="fa fa-check"></i><b>12.5</b> Where Are We?</a></li>
-<li class="chapter" data-level="12.6" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#cleaning-up"><i class="fa fa-check"></i><b>12.6</b> Cleaning Up</a></li>
-<li class="chapter" data-level="12.7" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#other-helpful-file-commands"><i class="fa fa-check"></i><b>12.7</b> Other helpful file commands</a></li>
-<li class="chapter" data-level="12.8" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#what-about-r"><i class="fa fa-check"></i><b>12.8</b> What about R?</a></li>
-<li class="chapter" data-level="12.9" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#what-about-just-a-few-lines-of-r"><i class="fa fa-check"></i><b>12.9</b> What about just a few lines of R?</a></li>
-<li class="chapter" data-level="12.10" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#running-an-r-script-from-the-terminal"><i class="fa fa-check"></i><b>12.10</b> Running an R Script from the Terminal</a></li>
-<li class="chapter" data-level="12.11" data-path="running-r-from-the-unix-command-line.html"><a href="running-r-from-the-unix-command-line.html#rendering-an-rmarkdown-file-from-the-terminal"><i class="fa fa-check"></i><b>12.11</b> Rendering an Rmarkdown file from the Terminal</a></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><i class="fa fa-check"></i><b>13</b> Building and Publishing a {bookdown} book on bookdown.org</a>
-<ul>
-<li class="chapter" data-level="13.1" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#setting-up"><i class="fa fa-check"></i><b>13.1</b> Setting up</a></li>
-<li class="chapter" data-level="13.2" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#bookdown-yaml"><i class="fa fa-check"></i><b>13.2</b> Bookdown YAML</a></li>
-<li class="chapter" data-level="13.3" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#output-yaml"><i class="fa fa-check"></i><b>13.3</b> Output YAML</a></li>
-<li class="chapter" data-level="13.4" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#styles.css"><i class="fa fa-check"></i><b>13.4</b> Styles.css</a></li>
-<li class="chapter" data-level="13.5" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#creating-chapters-in-r-markdown"><i class="fa fa-check"></i><b>13.5</b> Creating Chapters in R Markdown</a></li>
-<li class="chapter" data-level="13.6" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#chapter-names"><i class="fa fa-check"></i><b>13.6</b> Chapter Names</a></li>
-<li class="chapter" data-level="13.7" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#when-a-chapter-is-ready-for-sharing"><i class="fa fa-check"></i><b>13.7</b> When a Chapter is Ready for Sharing</a></li>
-<li class="chapter" data-level="13.8" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#building-the-book"><i class="fa fa-check"></i><b>13.8</b> Building the Book</a></li>
-<li class="chapter" data-level="13.9" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#publishing-the-book"><i class="fa fa-check"></i><b>13.9</b> Publishing the Book</a></li>
+<li class="chapter" data-level="11.1" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#setting-up"><i class="fa fa-check"></i><b>11.1</b> Setting up</a></li>
+<li class="chapter" data-level="11.2" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#bookdown-yaml"><i class="fa fa-check"></i><b>11.2</b> Bookdown YAML</a></li>
+<li class="chapter" data-level="11.3" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#output-yaml"><i class="fa fa-check"></i><b>11.3</b> Output YAML</a></li>
+<li class="chapter" data-level="11.4" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#styles.css"><i class="fa fa-check"></i><b>11.4</b> Styles.css</a></li>
+<li class="chapter" data-level="11.5" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#creating-chapters-in-r-markdown"><i class="fa fa-check"></i><b>11.5</b> Creating Chapters in R Markdown</a></li>
+<li class="chapter" data-level="11.6" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#chapter-names"><i class="fa fa-check"></i><b>11.6</b> Chapter Names</a></li>
+<li class="chapter" data-level="11.7" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#when-a-chapter-is-ready-for-sharing"><i class="fa fa-check"></i><b>11.7</b> When a Chapter is Ready for Sharing</a></li>
+<li class="chapter" data-level="11.8" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#building-the-book"><i class="fa fa-check"></i><b>11.8</b> Building the Book</a></li>
+<li class="chapter" data-level="11.9" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#publishing-the-book"><i class="fa fa-check"></i><b>11.9</b> Publishing the Book</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="title-holder.html"><a href="title-holder.html"><i class="fa fa-check"></i>Title holder</a></li>
 <li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
@@ -379,20 +386,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="building-and-publishing-a-bookdown-book-on-bookdown.org" class="section level1" number="13">
-<h1><span class="header-section-number">Chapter 13</span> Building and Publishing a {bookdown} book on bookdown.org</h1>
+<div id="building-and-publishing-a-bookdown-book-on-bookdown.org" class="section level1" number="11">
+<h1><span class="header-section-number">Chapter 11</span> Building and Publishing a {bookdown} book on bookdown.org</h1>
 <p>This book is published on bookdown.org, where you can create an account to publish your own e-book and share it with the world.</p>
 <p>Once you have an account,</p>
-<div id="setting-up" class="section level2" number="13.1">
-<h2><span class="header-section-number">13.1</span> Setting up</h2>
+<div id="setting-up" class="section level2" number="11.1">
+<h2><span class="header-section-number">11.1</span> Setting up</h2>
 <p>Install the {bookdown} package, with <code>install.packages('bookdown')</code>.</p>
 <p>Then run <code>library(bookdown)</code> in the Console to load the package.</p>
 <p>Then, in the RStudio IDE, Choose File/New Project/Book Project using bookdown.</p>
 <p>Then go to the Files tab, open index.Rmd, and click the Knit button. The Preview Window will show you a minimal example of a bookdown book.
 You can start editing and adding chapters.</p>
 </div>
-<div id="bookdown-yaml" class="section level2" number="13.2">
-<h2><span class="header-section-number">13.2</span> Bookdown YAML</h2>
+<div id="bookdown-yaml" class="section level2" number="11.2">
+<h2><span class="header-section-number">11.2</span> Bookdown YAML</h2>
 <p>You can edit your <code>_bookdown.yml</code> file, which controls the setup of your book.
 My <code>_bookdown.yml</code> file looks like this:</p>
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#cb76-1" aria-hidden="true" tabindex="-1"></a>book_filename<span class="sc">:</span> <span class="st">&quot;rmrwr&quot;</span></span>
@@ -417,8 +424,8 @@ My <code>_bookdown.yml</code> file looks like this:</p>
 <span id="cb76-20"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#cb76-20" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> io98<span class="sc">-</span>title<span class="sc">-</span>holder.Rmd</span>
 <span id="cb76-21"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#cb76-21" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span> io99<span class="sc">-</span>references.Rmd</span></code></pre></div>
 </div>
-<div id="output-yaml" class="section level2" number="13.3">
-<h2><span class="header-section-number">13.3</span> Output YAML</h2>
+<div id="output-yaml" class="section level2" number="11.3">
+<h2><span class="header-section-number">11.3</span> Output YAML</h2>
 <p>You can edit your <code>_output.yml</code> file, which controls the output and look of your book.
 My <code>_output.yml</code> file looks like this:</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#cb77-1" aria-hidden="true" tabindex="-1"></a>bookdown<span class="sc">::</span>gitbook<span class="sc">:</span></span>
@@ -440,8 +447,8 @@ My <code>_output.yml</code> file looks like this:</p>
 <span id="cb77-17"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#cb77-17" aria-hidden="true" tabindex="-1"></a>bookdown<span class="sc">::</span>epub_book<span class="sc">:</span> default</span></code></pre></div>
 <p>Note that this refers to a <code>style.css</code> file, which affects the appearance of your book.</p>
 </div>
-<div id="styles.css" class="section level2" number="13.4">
-<h2><span class="header-section-number">13.4</span> Styles.css</h2>
+<div id="styles.css" class="section level2" number="11.4">
+<h2><span class="header-section-number">11.4</span> Styles.css</h2>
 <p>My <code>style.css</code> file looks like this:</p>
 <div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="sc">@</span>import <span class="fu">url</span>(<span class="st">&#39;https://fonts.googleapis.com/css?family=Abril+Fatface|Source+Sans+Pro:400,400i,700,700i|Lora:400,400i,700,700i&amp;display=swap&#39;</span>);</span>
 <span id="cb78-2"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#cb78-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -746,32 +753,32 @@ My <code>_output.yml</code> file looks like this:</p>
 <span id="cb78-301"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#cb78-301" aria-hidden="true" tabindex="-1"></a><span class="st">  border: none;</span></span>
 <span id="cb78-302"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#cb78-302" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span></code></pre></div>
 </div>
-<div id="creating-chapters-in-r-markdown" class="section level2" number="13.5">
-<h2><span class="header-section-number">13.5</span> Creating Chapters in R Markdown</h2>
+<div id="creating-chapters-in-r-markdown" class="section level2" number="11.5">
+<h2><span class="header-section-number">11.5</span> Creating Chapters in R Markdown</h2>
 <p>Each chapter was created in R Markdown, with R code chunks, flipbooks, an learnr apps as exercises.</p>
 <p>Note that each chapter should start with a level 1 header, which will be the title of the chapter. Each level 1 header starts with a single hashtag, then a space, then the text of the title.</p>
 <p>You can save draft chapters without necessarily publishing them to the final book. They will not be included until you list them in your <code>_bookdown.yml</code> file.</p>
 <p>After saving and knitting each chapter successfully, the finalized chapters can be included in the book build, and ordered, by adding them to the <code>_bookdown.yml</code> file, in between index.Rmd, and io98-title-holder.Rmd.</p>
 </div>
-<div id="chapter-names" class="section level2" number="13.6">
-<h2><span class="header-section-number">13.6</span> Chapter Names</h2>
+<div id="chapter-names" class="section level2" number="11.6">
+<h2><span class="header-section-number">11.6</span> Chapter Names</h2>
 <p>The names of each chapter follow the convention,
 io##-Topic.Rmd.
 This is so that they will alphabetically follow index.Rmd
 and largely be in order.</p>
 </div>
-<div id="when-a-chapter-is-ready-for-sharing" class="section level2" number="13.7">
-<h2><span class="header-section-number">13.7</span> When a Chapter is Ready for Sharing</h2>
+<div id="when-a-chapter-is-ready-for-sharing" class="section level2" number="11.7">
+<h2><span class="header-section-number">11.7</span> When a Chapter is Ready for Sharing</h2>
 <p>Add the new chapter to the list of chapters in order in <code>_bookdown.yml</code>, somewhere in between<br />
 - index.Rmd and<br />
 - io98-title_holder.Rmd</p>
 </div>
-<div id="building-the-book" class="section level2" number="13.8">
-<h2><span class="header-section-number">13.8</span> Building the Book</h2>
+<div id="building-the-book" class="section level2" number="11.8">
+<h2><span class="header-section-number">11.8</span> Building the Book</h2>
 <p>Render the book with <code>bookdown::render_book('index.html')</code></p>
 </div>
-<div id="publishing-the-book" class="section level2" number="13.9">
-<h2><span class="header-section-number">13.9</span> Publishing the Book</h2>
+<div id="publishing-the-book" class="section level2" number="11.9">
+<h2><span class="header-section-number">11.9</span> Publishing the Book</h2>
 <p>Publish the book with<br />
 <code>bookdown::publish_book(account = 'pdr_higgins')</code></p>
 <p>Then commit the changes and push to Github</p>
@@ -833,7 +840,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["rmrwr.pdf", "rmrwr.epub"],
+"download": ["RMRWR.pdf", "RMRWR.epub"],
 "toc": {
 "collapse": "subsection"
 }

@@ -1,4 +1,4 @@
-bookdown::html_document2:   #changed from gitbook
+bookdown::gitbook:
   css: style.css
   config:
     toc:
