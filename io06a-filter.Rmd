@@ -42,7 +42,7 @@ and combinations thereof.
 
 <!---FLIPBOOK -->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe3" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_2_boolean.html#1" scrolling="no">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe3" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_2_boolean.html#1" scrolling="no" allowfullscreen loading="lazy">
 </iframe>
 
 <!---FLIPBOOK  -->
@@ -61,7 +61,7 @@ You can use == to test exact equality of strings, but you can also use str_detec
 
 <!---FLIPBOOK -->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe5" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_3_string.html#1" scrolling="no">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe5" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_3_string.html#1" scrolling="no" allowfullscreen loading="lazy">
 </iframe>
 
 <!---FLIPBOOK  -->
@@ -80,7 +80,7 @@ You can use the {lubridate} package to format strings for logical tests, and fil
 
 <!---FLIPBOOK -->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe7" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_4_dates.html#1" scrolling="no">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe7" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_4_dates.html#1" scrolling="no" allowfullscreen loading="lazy">
 </iframe>
 
 <!---FLIPBOOK  -->
@@ -95,7 +95,7 @@ You can use the is.na(), drop_na() and negation with ! to help identify and filt
 
 <!---FLIPBOOK -->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe9" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_5_na.html#1" scrolling="no">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe9" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_5_na.html#1" scrolling="no" allowfullscreen loading="lazy">
 </iframe>
 
 <!---FLIPBOOK  -->
@@ -110,7 +110,7 @@ You can use the {janitor} package to help you find duplicated observations/rows 
 
 <!---FLIPBOOK -->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe11" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_6_dupes.html#1" scrolling="no">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe11" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_6_dupes.html#1" scrolling="no" allowfullscreen loading="lazy">
 </iframe>
 
 <!---FLIPBOOK  -->
@@ -125,7 +125,7 @@ You can use the _slice()_ family of functions to cut out a chunk of your observa
 
 <!---FLIPBOOK -->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe13" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_7_slice.html#1" scrolling="no">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe13" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_7_slice.html#1" scrolling="no" allowfullscreen loading="lazy">
 </iframe>
 
 <!---FLIPBOOK  -->
@@ -138,7 +138,7 @@ You can use the _slice_sample()_ function to take a random subset of large datas
 
 <!---FLIPBOOK -->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe15" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_8_sample.html#1" scrolling="no">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe15" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_8_sample.html#1" scrolling="no" allowfullscreen loading="lazy">
 </iframe>
 
 <!---FLIPBOOK  -->
