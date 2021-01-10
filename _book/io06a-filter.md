@@ -120,7 +120,7 @@ clear.
 
 <!---FLIPBOOK EX 1-->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe1" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_1_num.html#1" scrolling="no">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe1" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_1_num.html#1" scrolling="no" allowfullscreen loading="lazy">
 
 </iframe>
 
