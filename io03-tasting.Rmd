@@ -12,6 +12,7 @@ editor_options:
 library(tidyverse)
 library(medicaldata)
 library(rayrender)
+library(plotly)
 ```
 
 # A Tasting Menu of R
@@ -202,11 +203,58 @@ These are more advanced approaches, but completely doable when you have more exp
 
 ### Interactive Plots
 
+Below is an interactive plot.
+Click on the plot to activate it.
+Then you can hover your mouse over each point to get more details about the data.
+You can also use the crosshairs to draw a zoom rectangle, or use the plotly menu bar at top right to zoom in or out of a region of the data.
+
+```{r, echo=FALSE}
+p <- medicaldata::cytomegalovirus %>% 
+  ggplot(aes(x = time.to.transplant, y = time.to.agvhd,
+             color = factor(donor.cmv))) +
+  geom_point() +
+  labs(title = "Time to Transplant vs Time to Acute GVHD by Donor CMV Status",
+       x = "Time to Transplant", y = "Time to Acute GVHD",
+       color = "Donor\nCMV\nStatus") +
+  theme_bw() 
+
+ggplotly(p)
+```
+
 ### Animated Graphics
+
+Here is an example of animated graphics that you can create in R to illustrate changes in data over time.
+
+```{r ,echo=FALSE}
+knitr::include_graphics("images/vaccination-animation.gif")
+```
 
 ### A Clinical Trial Dashboard
 
+Below is an screen capture picture of a web flexdashboard to track the data in an ongoing clinical trial (which is now completed and published).
+You can see the actual web dashboard [here](https://jenthompson.me/examples/progressdash.html).
+
+Check out the various tabs.
+Imagine how useful it would be to track enrollment, exclusions, missing data, and outcomes in real time.
+
+Details on how this is done can be found [here](https://jenthompson.me/2018/02/09/flexdashboards-monitoring/), and the underlying code [here](https://github.com/jenniferthompson/MOSAICProgress).
+
+All of this work was done in R by [Jenn Thompson](https://jenthompson.me/about/).
+
+```{r, echo = FALSE, fig.width=10}
+knitr::include_graphics("images/clin_trial_dashboard.png")
+```
+
 ### A Shiny App
+
+The frame below shows a publicly available Shiny web application, built with R, which can help clinicians calculate the probablity of intestinal TB vs. Crohn's disease with available clinical data.
+And to determine how new test results would change this estimate.
+
+The web app can be accessed [here](https://www.pathology.med.umich.edu/shiny/tbcrohns/).
+
+```{r, echo = FALSE, fig.width=10}
+knitr::include_graphics("images/tb_shiny_app.png")
+```
 
 ### An Example of Synergy in the R Community
 

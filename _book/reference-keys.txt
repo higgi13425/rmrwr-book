@@ -1,3 +1,4 @@
+fig:unnamed-chunk-1
 preface
 who-this-book-is-for
 prerequisites
@@ -56,6 +57,10 @@ a-clinical-trial-dashboard
 a-shiny-app
 an-example-of-synergy-in-the-r-community
 wrangling-rows-in-r-with-filter
+goals-for-this-chapter-2
+packages-needed-for-this-chapter-1
+pathway-for-this-chapter-2
+logical-statements-in-r
 filtering-on-numbers---starting-with-a-flipbook
 your-turn---learnr-exercises
 filtering-on-multiple-criteria-with-boolean-logic
@@ -65,12 +70,14 @@ your-turn---learnr-exercises-2
 filtering-dates
 your-turn---learnr-exercises-3
 filtering-out-or-identifying-missing-data
+working-with-missing-data
 your-turn---learnr-exercises-4
 filtering-out-duplicate-observations
-your-turn---learnr-exercises-5
 slicing-data-by-row
 randomly-sampling-your-rows
-your-turn---learnr-exercises-6
+your-turn---learnr-exercises-5
+further-challenges
+explore-more-about-filtering
 interpreting-error-messages
 the-common-errors-table
 examples-of-common-errors-and-how-to-fix-them
@@ -133,7 +140,7 @@ getting-results-out-of-t.test
 getting-results-out-of-t.test-1
 reporting-the-results-from-t.test-using-inline-code
 for-next-time
-running-r-from-the-unix-command-line
+cmd-line
 what-is-the-unix-command-line
 why-run-r-from-the-command-line
 how-do-you-get-started

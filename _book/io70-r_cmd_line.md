@@ -7,7 +7,7 @@ output: html_document
 
 
 
-# Running R from the UNIX Command Line
+# Running R from the UNIX Command Line {#cmd-line}
 
 ## What is the UNIX Command line?
 The command line is a simple Terminal window with a prompt at which you can type commands, And do primitive but powerful things to your files. The UNIX computing environment was developed in the 1960s, and is still beloved and fetishized by brogrammers, who believe you are not truly a programmmer if you can't code from the command line. This is silly.
@@ -76,7 +76,7 @@ whoami;date
 
 ```
 ## peterhiggins
-## Fri Jan  1 08:25:51 EST 2021
+## Sun Jan 10 14:54:20 EST 2021
 ```
 :::
 
@@ -136,6 +136,7 @@ ls
 ## A is for Allspice.2.0.docx
 ## A is for Allspice.docx
 ## ABT263_HIO_report_toWord.docx
+## AGA DDW 2021
 ## AGA IMIBD
 ## AGA IMIBD Councilor Career Discussion Guide.docx
 ## AGA IMIBD Webinar Outline.docx
@@ -195,6 +196,7 @@ ls
 ## FITBITProtocol_28NOV2016_AbbVie.docx
 ## FITBITProtocol_4DEC2016_AbbVie.docx
 ## FMT_DDW_2021_ISS.pdf
+## Feasibility and Pilot Studies.pptx
 ## FibrosisIBDCedars2016.pptx
 ## Figures-KC-JAMA.pptx
 ## Finance and Retirement Plans.docx
@@ -264,6 +266,7 @@ ls
 ## Lin_Reviewer Score_PDRH.docx
 ## Log in to IBD Server.docx
 ## MEI_2020_PH_W9.pdf
+## MEI_2021_PH_W9.pdf
 ## MEI_ACH_Wire Transfer Form.docx
 ## MIM-TESRIC PROTOCOL_Higgins_14Apr2020.docx
 ## MIM-TESRIC PROTOCOL_Higgins_26Aug2020.docx
@@ -381,6 +384,7 @@ ls
 ## hexStickers.jpg
 ## higgins2x3.jpg
 ## iBike Rides
+## jama_cushing_crohn_review_2021.pdf
 ## learnr app diagram.jpg
 ## learnr app diagram.pptx
 ## letter Lowrimore.docx
