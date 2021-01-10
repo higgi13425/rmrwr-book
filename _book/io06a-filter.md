@@ -121,7 +121,6 @@ clear.
 <!---FLIPBOOK EX 1-->
 
 <iframe style="margin:0 auto; border: solid black;" id="myIframe1" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_1_num.html#1" scrolling="no" allowfullscreen loading="lazy">
-
 </iframe>
 
 <!---FLIPBOOK EX 1-->
@@ -180,12 +179,7 @@ and you can use parentheses as well, to control the order of operations.
 
 <!---FLIPBOOK -->
 
-<<<<<<< Updated upstream
 <iframe style="margin:0 auto; border: solid black;" id="myIframe3" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_2_boolean.html#1" scrolling="no" allowfullscreen loading="lazy">
-=======
-<iframe style="margin:0 auto; border: solid black;" id="myIframe3" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_2_boolean.html#1" scrolling="no">
-
->>>>>>> Stashed changes
 </iframe>
 
 <!---FLIPBOOK  -->
@@ -237,12 +231,7 @@ The typical formats for string filtering are
 
 <!---FLIPBOOK -->
 
-<<<<<<< Updated upstream
 <iframe style="margin:0 auto; border: solid black;" id="myIframe5" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_3_string.html#1" scrolling="no" allowfullscreen loading="lazy">
-=======
-<iframe style="margin:0 auto; border: solid black;" id="myIframe5" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_3_string.html#1" scrolling="no">
-
->>>>>>> Stashed changes
 </iframe>
 
 <!---FLIPBOOK  -->
@@ -299,10 +288,7 @@ The typical formats for date filtering are
 
 <<<<<<< Updated upstream
 <iframe style="margin:0 auto; border: solid black;" id="myIframe7" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_4_dates.html#1" scrolling="no" allowfullscreen loading="lazy">
-=======
-<iframe style="margin:0 auto; border: solid black;" id="myIframe7" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_4_dates.html#1" scrolling="no">
 
->>>>>>> Stashed changes
 </iframe>
 
 <!---FLIPBOOK  -->
@@ -388,12 +374,7 @@ assumptions involved are very important.
 
 <!---FLIPBOOK -->
 
-<<<<<<< Updated upstream
 <iframe style="margin:0 auto; border: solid black;" id="myIframe9" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_5_na.html#1" scrolling="no" allowfullscreen loading="lazy">
-=======
-<iframe style="margin:0 auto; border: solid black;" id="myIframe9" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_5_na.html#1" scrolling="no">
-
->>>>>>> Stashed changes
 </iframe>
 
 <!---FLIPBOOK  -->
@@ -432,14 +413,9 @@ Common formats for this include
     duplicated in all variables, counts them, and displays them in
     duplicated groups.
 
--   <!---FLIPBOOK -->
+<!---FLIPBOOK -->
 
-<<<<<<< Updated upstream
 <iframe style="margin:0 auto; border: solid black;" id="myIframe11" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_6_dupes.html#1" scrolling="no" allowfullscreen loading="lazy">
-=======
-<iframe style="margin:0 auto; border: solid black;" id="myIframe11" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_6_dupes.html#1" scrolling="no">
-
->>>>>>> Stashed changes
 </iframe>
 
 <!---FLIPBOOK  -->
@@ -485,12 +461,7 @@ Common formats for this include
 
 <!---FLIPBOOK -->
 
-<<<<<<< Updated upstream
 <iframe style="margin:0 auto; border: solid black;" id="myIframe13" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_7_slice.html#1" scrolling="no" allowfullscreen loading="lazy">
-=======
-<iframe style="margin:0 auto; border: solid black;" id="myIframe13" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_7_slice.html#1" scrolling="no">
-
->>>>>>> Stashed changes
 </iframe>
 
 <!---FLIPBOOK  -->
@@ -526,12 +497,7 @@ Common formats for this include
 
     <!---FLIPBOOK -->
 
-<<<<<<< Updated upstream
 <iframe style="margin:0 auto; border: solid black;" id="myIframe15" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_8_sample.html#1" scrolling="no" allowfullscreen loading="lazy">
-=======
-<iframe style="margin:0 auto; border: solid black;" id="myIframe15" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_8_sample.html#1" scrolling="no">
-
->>>>>>> Stashed changes
 </iframe>
 
 <!---FLIPBOOK  -->
