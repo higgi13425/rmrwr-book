@@ -61,12 +61,13 @@ car, with a nice interior and a dashboard, and comfy leather seats.
 ![dashboard](images/dashboard.png){width="600"}
 
 This equivalent of a comfy coding environment is provided by the RStudio
-IDE (Integrated Developer Environment). I want you to install both R and
-RStudio, in that order.\
+IDE (Integrated Developer Environment). I want you to install both the R
+statistical language and the RStudio IDE, in that order.\
 
 Let's start with installing R.\
-R is free and available for download on the web. Go to the [r-project
-website](https://r-project.org/) to get started.
+R is free and available for download on the web. Click on the following
+link to go to the [r-project website](https://r-project.org/) to get
+started.
 
 This screen will look like this ![irproject](images/r-project.png)\
 
@@ -91,9 +92,9 @@ console, but more useful.
 ![](images/dash-tesla.png){width="600"}
 
 Another useful analogy for packages is that they are like apps for a
-smartphone. When you buy your first smartphone, it only comes with the
-basic apps that allow it to work as a phone, but a notepad and a
-calculator.
+smartphone. When you buy a new smartphone, it only comes with the basic
+apps that allow it to work as a phone, and a few other things, like a
+notepad and a calculator.
 
 If you want to do cool things with your smartphone, you download apps
 that allow your smartphone to have new capabilities. That is what
@@ -120,23 +121,23 @@ taken to the actual Download site.
 
 Select the link for the operating system you want to use. We will walk
 through this with Windows first, then Mac. If you are using a Mac, skip
-forward to the Mac install directions. If you are computer-savvy enough
-to be using Linux, you can clearly figure it out on your own (it will
-look a lot like these).
+forward to the Mac install directions in section 2.6. If you are
+computer-savvy enough to be using Linux, you can probably figure it out
+on your own (it will look a lot like these).
 
 ## Windows-Specific Steps for Installing R
 
 If you are installing R on a Mac, jump ahead to the Mac-specific version
-below.
+below in section 2.6.
 
-On windows, once you have clicked through, your next screen will look
+On Windows, once you have clicked through, your next screen will look
 like this:\
 
 ![install2](images/installr2.png)
 
-You want to download both base and Rtools (you might need Rtools later).
-The base link will take you to the latest version, which will look
-something like this.
+You want to download both base and Rtools (you might need Rtools later
+to build packages). The base link will take you to the latest version,
+which will look something like this.
 
 ![install3](images/installr3windows.png)
 
@@ -159,15 +160,15 @@ Now select your language option.
 
 You will be asked to accept the GNU license - do so. Click Yes to allow
 this to install. Then select where to install - generally use the
-default- a local (often C) drive - do not install on a shared network
-drive or in the cloud.
+default- a local (often C) drive - we usually do not install on a shared
+network drive or in the cloud.
 
 ![install_drive](images/installrdrive.png)
 
 Then select the Components - generally use the defaults, but newer
 computers can skip the 32 bit version.
 
-![install_comp](images/installrComponents.png)
+![install_components](images/installrComponents.png)
 
 In the next dialog box, accept the default startup options.
 
@@ -179,8 +180,9 @@ You can choose the start menu folder. The default R folder is fine.
 
 If you want a shortcut icon for R on your desktop, you can leave this
 checked. But most people start RStudio, with R running within RStudio,
-rather than directly starting R. You probably won't need an R shortcut,
-so leave these unchecked in the next dialog box.
+rather than directly starting R. You can choose to create an R shortcut
+on your desktop in the next dialog box. You can delete it later if you
+don't like it.
 
 ![install_addltasks](images/installraddltasks.png)
 
@@ -192,18 +194,19 @@ installation will occur.
 ### Testing R on Windows
 
 Now you want to test whether your Windows installation was successful.
-Can you find R and make it work? Hunt for your C folder, then for
-OS-APPS within that folder. Keep drilling down to the Program Files
-folder. Then the R folder, and the current version folder within that
-one (R-N.N.N). Within that folder will be the bin folder, and within
-that will be your R-N.N.N.exe file. Double click on this to run it. The
-example paths below can help guide you.
+Can you find R and make it work? This is easy if you chose to make an R
+shortcut. If not, hunt for your C folder, then for OS-APPS within that
+folder. Keep drilling down to the Program Files folder. Then the R
+folder, and the current version folder within that one (R-N.N.N). Within
+that folder will be the bin folder, and within that will be your
+R-N.N.N.exe file. Double click on this to run it. The example paths
+below can help guide you.
 
 ![install_path2](images/installwin-path2.png)
 
 ![install_path](images/installrpath.png)
 
-Opening the exe file will produce a classic 2000-era terminal window,
+Opening the exe file will open a classic year 2000-era terminal window,
 called Rterm, with 64 bit if that is what your computer uses. The
 version number should match what you downloaded. The messaging should
 end with a "\>" prompt.
@@ -212,7 +215,7 @@ end with a "\>" prompt.
 
 At this prompt, type in:\
 
-paste('Two to the seventh power is', 2\^7)
+paste("Two to the seventh power is", 2\^7)
 
 (don't leave out the comma or the quotes) - then press the Enter key.
 
@@ -229,9 +232,9 @@ computed the result and displayed it.
 
 The installation for Mac is very similar, but the windows look a bit
 different. If you are working with Windows, jump ahead at this point to
-Installing RStudio. At the Download Version page, you click on the Mac
-Download. You will then click on the link for R-N.N.N.pkg, and allow
-downloads from CRAN.
+Installing RStudio in section 2.7. At the Download Version page, you
+click on the Mac Download. You will then click on the link for
+R-N.N.N.pkg, and allow downloads from CRAN.
 
 ![install_path](images/installrpkgmac.png)
 
@@ -261,8 +264,9 @@ prompt to move the installer file to the trash.
 
 ### Testing R on the Mac
 
-Go to Finder, and then your Applications folder. Scroll down to the R
-file. Double click on this to run it.
+If you chose to create an R desktop shortcut, double-click on this to
+start. If not, go to Finder, and then your Applications folder. Scroll
+down to the R file. Double click on this to run it.
 
 ![findrmac](images/findrmac.png)
 
@@ -440,10 +444,10 @@ A successful result means that you are ready to roll in RStudio and R!
 
 ![ready](images/ready_to_R.png)
 
-## Critical Setup - Tuning Your RStudio Installation
+### Critical Setup - Tuning Your RStudio Installation
 
-You now have 6+ adjustments that you need to make in your RStudio Global
-Settings for optimal R and RStudio use.
+You now have \~ 7 adjustments that you need to make in your RStudio
+Global Settings for optimal R and RStudio use.
 
 1.  At this point, it is a good idea to jump out of RStudio and create
     an "Rcode" folder on your computer, in a place that is easy to find,
@@ -621,33 +625,36 @@ Environment), there will be a left side pane, with tabs for Console,
 Terminal, Rmarkdown, and Jobs.
 
 Just for fun, go to the RStudio menus, and choose File/New File/RScript.
-This will open a new pane at the top left, which we will call Q1
-(quadrant 1), or the top left pane, or the Source pane. This pane will
-contain tabs for each active script or document, along with tabs for any
-datasets you have opened up to have a look at.
+This will open a new pane at the top left, which we will call the top
+left pane, or the Source pane. This pane will contain tabs for each
+active script or document, along with tabs for any datasets you have
+opened up to have a look at.
 
-The Quadrant 2 pane, with tabs for Console, Terminal, Rmarkdown, and
-Jobs, has now been pushed to the lower left pane. You will use the
-Console for interactive programming, and as a "sandbox" to test out new
-code. When your code works and is good enough to save, you will move it
-to the Source pane and save it to a Script or an Rmarkdown document. Any
-code that is not saved to Source will be lost (actually it will be
-somewhere in the History, but it can be a pain to find the version that
-works later - it is best to save the good stuff to a Script or .Rmd).
+The Console pane, with tabs for Console, Terminal, Rmarkdown, and Jobs,
+has now been pushed to the lower left quadrant. You will use the Console
+for interactive programming, and as a "sandbox" to test out new code.
+When your code works and is good enough to save, you will move it to the
+Source pane and save it to a Script or an Rmarkdown document. Any code
+that is not saved to Source will be lost (actually it will be somewhere
+in the History, but it can be a pain to find the version that works
+later - it is best to save the good stuff to a Script or .Rmd).
 
-The Quadrant 3, or top right pane, includes tabs for your Environment
-(objects, like datasets, functions, and variables you have defined),
-History (saving the past in case you forget to, but messy), and
-Connections tabs for connections to databases. Later a Git tab will be
-added for version control (backup) of your Source documents.
+The top right pane includes tabs for your Environment (objects, like
+datasets, functions, and variables you have defined), History (saving
+the past in case you forget to, but messy), and Connections tabs for
+connections to databases. Later a Git tab will be added for version
+control (backup) of your Source documents.
 
-In Quadrant 4, or the bottom right pane, you will find tabs for your
-Files, Plots, Packages, Help, and a Viewer for HTML output.
+The bottom right pane contains tabs for your Files, Plots, Packages,
+Help, and a Viewer for HTML output.
 
 This is material that is also well described in the "Basic Basics 1"
-section of RLadiesSydney. Check it out at
-[BasicBasics1](https://rladiessydney.org/courses/ryouwithme/01-basicbasics-1/).
+section of RLadiesSydney. Check it out at [Basic Basics
+1](https://rladiessydney.org/courses/ryouwithme/01-basicbasics-1/).
 There is a nice \~ 15 minute video by Jen Richmond worth watching if you
 are just getting started. Note that a lot of the other material on this
 website ([RYouWithMe](https://bookdown.org/connect/#/apps/5384/access))
-is very helpful for people new to R.
+is very helpful for getting started with R.
+
+For a more complete introduction to the RStudio IDE, see Chapter *TBD*,
+titled Using the RStudio IDE.

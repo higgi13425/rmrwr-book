@@ -16,6 +16,7 @@ some-guideposts
 helpful-tools
 demonstrations-in-flipbooks
 learnr-coding-exercises
+coding
 getting-started-and-installing-your-tools
 goals-for-this-chapter
 website-links-needed-for-this-chapter

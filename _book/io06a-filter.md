@@ -495,7 +495,7 @@ Common formats for this include
 
 -   slice_sample(n = N) - randomly samples N of your rows.
 
-    <!---FLIPBOOK -->
+<!---FLIPBOOK -->
 
 <iframe style="margin:0 auto; border: solid black;" id="myIframe15" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_8_sample.html#1" scrolling="no" allowfullscreen loading="lazy">
 </iframe>
@@ -565,3 +565,10 @@ A blog post on filtering by Michael Toth, found
 The RYouWithMe series from RLadiesSyndey post on filtering
 [here](https://rladiessydney.org/courses/ryouwithme/02-cleanitup-2/).
 :::
+
+<!---FLIPBOOK -->
+
+<iframe style="margin:0 auto; border: solid black;" id="myIframe15" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_9_demo_tabset.html#1" scrolling="no" allowfullscreen loading="lazy">
+</iframe>
+
+<!---FLIPBOOK  -->
