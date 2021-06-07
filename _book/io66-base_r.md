@@ -15,8 +15,12 @@ There are many really basic and important functions in base R that are worth kno
 
 Once you have a handle on these basic functions, you can say
 
+<<<<<<< HEAD
 ![Obscure base R / video game meme](~/Documents/Rcode/rmrwr-book/images/baseRmeme.png)
 
+=======
+![Obscure baseR video game meme](~/Documents/Rcode/rmrwr-book/images/baseRmeme.png)
+>>>>>>> 310652dad27103eab96573483d04acbb7fe61199
 [meme details](https://en.wikipedia.org/wiki/All_your_base_are_belong_to_us)
 
 ## Dimensions of Data Rectangles
