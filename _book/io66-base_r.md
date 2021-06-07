@@ -15,7 +15,9 @@ There are many really basic and important functions in base R that are worth kno
 
 Once you have a handle on these basic functions, you can say
 
-![baseRmeme](~/Documents/Rcode/rmrwr-book/images/baseRmeme.png)
+![Obscure base R / video game meme](~/Documents/Rcode/rmrwr-book/images/baseRmeme.png)
+
+[meme details](https://en.wikipedia.org/wiki/All_your_base_are_belong_to_us)
 
 ## Dimensions of Data Rectangles
 
@@ -210,7 +212,7 @@ Note also that we used the bracket notation above to print just the first 10 row
 
     :::
 
-We can use brackets to choose exactly which rows and columns we want.
+We can use also use brackets to choose exactly which rows and columns we want.
 
 
 ```r
