@@ -411,10 +411,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>While there are many great features of the <em>tidyverse</em>, one should not throw out the base R with the bathwater.</p>
 <p>There are many really basic and important functions in base R that are worth knowing about.</p>
 <p>Once you have a handle on these basic functions, you can say</p>
-<div class="figure">
-<img src="images/baseRmeme.png" alt="" />
-<p class="caption">baseRmeme</p>
-</div>
+<p><img src="images/baseRmeme.png" alt="Obscure baseR video game meme" />
+<a href="https://en.wikipedia.org/wiki/All_your_base_are_belong_to_us">meme details</a></p>
 <div id="dimensions-of-data-rectangles" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> Dimensions of Data Rectangles</h2>
 <p>Whether you have a data.frame, a tibble, or a matrix, it can be helpful to know the dimensions of what you have. You can get at these dimensions with</p>
@@ -520,7 +518,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 This is because we did set the names, and printed the result out to the console, but did <strong>not</strong> assign the result back to the licorice object with an assignment arrow, so it is transient, rather than a lasting change to the licorice object. This is a common pitfall for beginners.</p>
 </div></li>
 </ul>
-<p>We can use brackets to choose exactly which rows and columns we want.</p>
+<p>We can use also use brackets to choose exactly which rows and columns we want.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="the-basics-of-base-r.html#cb23-1" aria-hidden="true" tabindex="-1"></a>licorice[<span class="dv">4</span><span class="sc">:</span><span class="dv">7</span>, <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">10</span>)]</span></code></pre></div>
 <pre><code>##   B E J
 ## 4 2 2 0
