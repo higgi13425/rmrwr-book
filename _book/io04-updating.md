@@ -48,7 +48,7 @@ install.packages("tidyverse")
 ```
 ## 
 ## The downloaded binary packages are in
-## 	/var/folders/93/s18zkv2d4f556fxbjvb8yglc0000gp/T//RtmpnqekKh/downloaded_packages
+## 	/var/folders/_p/8ghzfv1n0qd0bp2thqt6v3qm0000gn/T//Rtmp5k9vHK/downloaded_packages
 ```
 
 ### Installing Packages from Github
@@ -60,11 +60,7 @@ devtools::install_github("higgi13425/medicaldata")
 ```
 
 ```
-## Using github PAT from envvar GITHUB_PAT
-```
-
-```
-## Skipping install of 'medicaldata' from a github remote, the SHA1 (1c039d8b) has not changed since last install.
+## Skipping install of 'medicaldata' from a github remote, the SHA1 (51732cf8) has not changed since last install.
 ##   Use `force = TRUE` to force installation
 ```
 

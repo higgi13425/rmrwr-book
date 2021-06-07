@@ -76,7 +76,7 @@ whoami;date
 
 ```
 ## peterhiggins
-## Tue Jan 19 21:55:02 EST 2021
+## Mon Jun  7 13:03:56 EDT 2021
 ```
 :::
 
@@ -99,7 +99,7 @@ pwd
 ```
 
 ```
-## /Users/peterhiggins/Documents/RCode/rmrwr-book
+## /Users/peterhiggins/Documents/Rcode/rmrwr-book
 ```
 :::
 
@@ -129,296 +129,302 @@ ls
 ```
 
 ```
-## 1FQ_Crohn's Disease_23Oct2020 (002).doc
-## 2020-Jun-05 AGA IMIBD meeting notest.docx
-## 2021 AGA Invited Speaker Session Basic Hybrid Example.pdf
-## 2021.Higgins AGA Distinguished Clinician.CO.docx
-## A is for Allspice.2.0.docx
-## A is for Allspice.docx
-## ABT263_HIO_report_toWord.docx
-## ACLS eCard Peter Higgins.pdf
-## AGA DDW 2021
-## AGA IMIBD
-## AGA IMIBD Councilor Career Discussion Guide.docx
-## AGA IMIBD Webinar Outline.docx
-## AIBD CAM Higgins.pdf
-## AIBD CAM Higgins.pptx
-## AIBD SoMe Higgins.pdf
-## AIBD SoMe Higgins.pptx
-## AIBD agreement.docx
-## AIBD20Template.pptx
-## AMAG DDW Clear draft_PDRH comments.docx
-## APG1244_Milestone_report.docx
-## ASUC_UC_protocol_comments_2020.docx
-## A_Woodward_Score Sheet_PDRH.docx
-## Accounts and Access (1) (1).docx
-## Advice for participants in webinars.docx
-## Animation of NSAID.pptx
-## BKochar_Frailty.pdf
-## BM recommendation.docx
-## Beginners_GuideToR.pdf
-## Biosketch for K.pptx
-## Biosketch_2020_Higgins_ClinResIBD_biosketch.doc
-## Brazil.ItineraryNov2015.docx
-## Butter BCS Chicken.docx
-## CAS.K.candidate.background_SB_PDRH.docx
-## CAS.T32.Project.Description-JS.docx
-## CAS.career.goals.obj.development.training_PDRH.docx
-## CC360_The Risk of SARS.R1.docx
-## CC360_The Risk of SARS.docx
-## CCF IBD Webcast 2020 Draft Deck_For Review.pptx
-## CCFA EIC Candidate Interview Questions (candidates) jobin[1].doc
-## CDC_proposal1.1.docx
-## CLARE STOCKS.docx
-## COVID Trials Feasibility
-## CaltechCampus Tour & Information Session.webarchive
-## Cancel Appt Epic.ppt
-## Causal.png
-## CellDeath_DDW_2021_ISS.pdf
-## Chu RPG Review_PDRH.docx
-## Clare Investment Summary.docx
-## Council Conversations Author Chat Guide.docx
-## Coursera_Programming in R Notes.docx
-## CoverLetterPlus.pptx
-## Crash&Burn_ScriptV2_100318 copy.pdf
-## DataCamp Courses by Topic.docx
+## 01 ECCO 2018 PRO Symposia_Higgins 15Feb2018 Final.pptx
+## 03 ECCO 2018 PRO Symposia_Irving 15Feb2018 Final.pptx
+## 1-s2.0-S0016508514012682-main.pdf
+## 12_2018_MLR01_Higgins_Waljee_ResearchPlan.docx
+## 2016IBDClinTrialsforMDsDearborn.pptx
+## 2017_drugR01_research-plan_DRAFT.docx
+## 2018UCLABuildingCareer.pptx
+## 2018UCLAOptimizingIBDMedications.pptx
+## 2018UCLAOptimizingIBDMedications2.pptx
+## 3SlidesFibrosis.pptx
+## 44 days.docx
+## 5asa abstractSCM_PDRH.docx
+## 65LV163_IBD AMCP_Flint MI_2.27.17.pptx
+## 65LV1720 IBD Rural _ Kalamazoo.pptx
+## ABT-737 in vitro data.pptx
+## ACD Introduction 1.10.2017.pptx
+## ACD Introduction.pptx
+## ACD_CTSU_Nov2016.pptx
+## AGA symposium Management of non-responders 2017 5-6-17.pptx
+## AIBD_Quality_PRO_Higgins_2017.pptx
+## AJG_Vedo Prediction in UC_2.docx
+## AbstractCCFEntrepreneur.docx
+## Academic Teams Fund.docx
+## Acute Severe Colitis Cases.pptx
+## Advisory Board Meeting 6.16.2017.pptx
+## Allergan IBSD IBD Advisory Board Agenda and Participants.pdf
+## Aspire tofa TURANDOT clinical protocol.docx
+## Aspire tofa TURANDOT clinical protocol_KLS.docx
+## Aspire tofacitinib fibrosis protocol.docx
+## BE LGD Dearborn 2016.04.13.pptx
+## BP fistulas.pptx
+## BP story summary stem cells.docx
+## Bcl2 inhibitors R01 data.pptx
+## Bcl2_inhibs_tissuedistrib_MCTI_Feb2017.pptx
+## Bcl2_inhibs_tissuedistrib_MCTI_Feb2017Higgins_ER.pptx
+## Beaumont Medicine GR 2020.pptx
+## BiofireDDW2018
+## BiofireDDW2018.pdf
+## BiofireDDW2018.pptx
+## Brainstorming for CCFA speech ideas[1].docx
+## Buhlmann_Waljee.docx
+## C.Steiner.Ch34.docx
+## CC360 Title Page.docx
+## CCF CRA 2018
+## CCFA DDx NewIBD3.ppt
+## CCFA Fibrosis 2017.jpg
+## CCFA Fibrosis 2017.pptx
+## CCFA speech.docx
+## CCFA_Partners_Higgins_Insurance_v1_2017_02_10_ML.docx
+## CDPRO Version 6.1.docx
+## CRA 2018
+## CTSU Introduction Overview 4.11.17.pptx
+## CTSU Introduction Overview 6.9.17.pptx
+## CTSU intro.pptx
+## CareerDevTrain-Govani 2016 K.docx
+## Case IBD comorbidity_MS PDRH2016 AIBD.pptx
+## Chemlab Note Sheets.docx
+## Clinical Trials Academy
+## Clinical Trials Subcommittee - ACD_CTSU Progress Report 2017.pptx
+## ClinicalUsePROs.pptx
+## Confident Vedo Decision Making in Practice Brazil 2016.2.pptx
+## Confident Vedo Decision Making in Practice Brazil 2016.pptx
+## Current IBD Studies_15Jun2016.pptx
+## DDW Presentation-JB-Capture.pptx
+## DDWIntestinalOrganoids3.pptx
+## Dan Sharp.jpg
 ## DeEscalationACG2016.pptx
-## Demographics.pdf
+## Dearborn2017TalkHowToChooseIBDMed.pptx
+## Dillman2015T2MT.pdf
 ## Documents.Rproj
-## DrHiggins IBD Data Request.xlsx
-## Draft Postop IBD Surgery Care Protocols v2_SERedit.docx
-## ECCO 2016 Amsterdam Schedule.docx
-## ECCO 2019 UC PRO SS Abstract D1f_JP_UA_YO_AM_PDRH.docx
+## DonorTalk2016.pptx
+## Draft Postop IBD Surgery Care Protocols.docx
+## DrugDevInIBD.pptx
 ## ECCO2016Lycera30937.pptx
-## Effect of medications on the recurrence of cancer in IBD patients.docx
-## Electrical engineering interview questions.docx
-## FDAtofaResponse.docx
-## FFMI Kickstart-FinalReport 5-20-16-LJ.docx
-## FITBITProtocol_28NOV2016_AbbVie.docx
-## FITBITProtocol_4DEC2016_AbbVie.docx
-## FMT_DDW_2021_ISS.pdf
-## Feasibility and Pilot Studies.pptx
+## ECCO_Axl_2017_handout.pdf
+## ECCO_BIOFIRE_poster_2017.pdf
+## ECCO_VedoUC_2017_handout.pdf
+## ENDING CLIP.mp4
+## Eclipse Pics
+## Editorial Commentary on biosimilar.docx
+## FALK2016FibrosisManuscript.docx
+## Fail FastDenver2018RxPrediction.pdf
+## Fail FastDenver2018RxPrediction.pptx
+## FalkNewTricksKnownDrugs2017.pptx
+## Fibrosis workshop_agenda_V5.docx
+## FibrosisAbbvieMatter2016.pptx
 ## FibrosisIBDCedars2016.pptx
-## Figures-KC-JAMA.pptx
-## Finance and Retirement Plans.docx
-## Financial Priorities.docx
-## Garmin Notes.docx
-## General Social Media Tips.docx
-## General thoughts about query letters.docx
-## Getting Started with REDCap.docx
-## Git for MDs_2.pptx
-## GitHub
-## Github for MDs_1.pptx
-## Glover_RPG_Review_PDRH.docx
+## Figures List for Research Plan (1).docx
+## Fundraising Pitches.docx
+## GI T32 Application 2017 v2.docx
+## GailBetsy.jpg
+## GailGrandkids.jpg
+## GailPat.jpg
+## Getting to and Using IBD Epidemiology Server.docx
 ## GoToMeeting Chats
-## GradPartyHigginsInvites.xlsx
-## HPI-5016 IBD Patient Contact Info.xlsx
+## GossetPhoto.jpg
+## GrantWriting.pptx
+## HBV testing before biologic use.pptx
+## HGI1016Higgins.docx
 ## HS movie.docx
-## Higgins AGA Webinar Slides.pptx
-## Higgins Bio.docx
-## Higgins New IBD.pptx
-## Higgins Refractory Proctitis.pptx
-## Higgins biosketch2015KRao.doc
-## Higgins biosketch2016KRao.doc
+## Harlan_Kids.jpg
+## Health Insurance Consumer Satisfaction DDW abstract 2016.docx
+## Higgins - DeEscalationACG2016.pptx
+## Higgins Beijing 2017The Gut Microbiota and the Pathophysiology of IBD.pptx
+## Higgins CCFA CTPROs in IBD.pptx
+## Higgins CCFACT2017FundingClinicalResearch.pptx
+## Higgins HK 2017IBD Nursing and Quality of Care.pptx
+## Higgins HK 2017The Gut Microbiota and the Pathophysiology of IBD.pptx
+## Higgins Introduction.docx
+## Higgins Lab Generic research proposal 030916.docx
+## Higgins Microbiota for IBD Patient Ed2.pptx
 ## Higgins-peter.jpg
-## HigginsACGMidwest2019_PerioperativeIBD.pptx
-## Higgins_LOS_IBDBiobank_Shah_Nusrat_2019.docx
-## Higgins_UM_CME_Pregnancy in IBD.pptx
-## How To Log in to IBD Server.docx
-## How To Log in to RStudio Server for HigginsLab.docx
-## How To Log in to RStudio Server for Shiny.docx
-## IBD 2020 - Honorarium reimbursement Form.docx
-## IBD Biobank Cryostor.pptx
-## IBD Clinical Trials for MDsDearborn2017.pptx
-## IBD Insurance Pilot Results.docx
-## IBD Insurance Survey for CCFA Partners Existing.docx
-## IBD Journal Club 13Feb2017.docx
-## IBD Journal Club July 11.docx
-## IBD Plexus meeting 21 Sep 2015 notes.docx
-## IBD School 322 Script.docx
-## IBD School 324 Script.docx
-## IBD School 325 Script.docx
-## IBD and biologics tweets.docx
-## IBD inbox coverage.docx
-## IBDInsuranceSurvey3.docx
-## IBDMentoringConferenceCall4AbstractsPH.docx
-## IBD_Deescalation_Apr_2019_PDRH.docx
-## IBDforLansing2017.pptx
-## IMG_0006.jpg
-## IMG_0008.jpg
-## IMG_1523st.jpg
-## IMIBD Councilors 2020-21.docx
-## IMIBD Partners insurance 2020DDW.pptx
-## IMIBD_expanded_descriptors.xlsx
-## Introduction to Application Supplement Photoacoustic.docx
-## JAK_DDW_2021_ISS.pdf
-## JAMA_KC_Second JAMA.docx
-## JAMA_Review_on_CD_Revisions_Tracked_Changes with edits_PDRH.docx
-## JB_V1 Career Goals and Objectives 7.8.2020_PDRH.docx
-## JB_V2 Candidate’s Background 7.7.2020_PDRH.docx
-## JDix_Study_update.docx
-## K Award Institutional Letter of Commitment.pptx
-## K Candidate Section.pptx
-## K105_Melmed_PROs in Practice_MB_bb_JLS.pptx
-## K23 Aims - Shirley Cohen-Mekelburg 11.14.19.docx
-## K23_morph_measurements_MockupManuscript_21JAN2019.docx
-## Learning R discussion Jeremy Louissaint.docx
-## Letter to Frank Hamilton.docx
-## Lin_Reviewer Score_PDRH.docx
-## Log in to IBD Server.docx
-## MEI_2020_PH_W9.pdf
-## MEI_2021_PH_W9.pdf
-## MEI_ACH_Wire Transfer Form.docx
-## MIM-TESRIC PROTOCOL_Higgins_14Apr2020.docx
-## MIM-TESRIC PROTOCOL_Higgins_26Aug2020.docx
-## Managment of CD.pptx
-## Manuscript v1.docx
-## Manuscript v2.PDRH.docx
-## McDonald, Nancy.pdf
-## Megan McLeod Rec Letter Residency.docx
-## MentoringAgendaDraftPH.docx
-## Meta analysis TB vs CD version 3.5.docx
-## Michigan Medicine Gastroenterology Social Media Initiative.docx
-## Michigan Medicine Model for COVID-19 Clinical Trial Oversight DRAFT (KSB 04.17.20)-AL-PDRH.docx
-## Microsoft User Data
-## MultidisciplinaryIBDClinicPHv2.docx
-## NordicTrackTC9iTreadmillManual.pdf
-## Oct2019payPDRH.PDF
-## Odd college lists.docx
-## P Singh K grant aims 8-25_PDRH.docx
-## P2PEP slide 2020
-## P2PEP slide 2020.pptx
-## PHcv2019.docx
-## PHcv2020.docx
-## PRO agenda videos VINDICO.docx
-## PRO letter.docx
-## PS_K grant aims 6-25_PDRH.docx
-## PTM LOS From PDRH.docx
-## PTM LOS From PDRH.pdf
-## Pearson 5 Notes.docx
-## Perils of Excel.pptx
-## Personal statement version 3!.docx
-## Pitch Letter - S is for Saffron.docx
+## HigginsAI talk for DDW2019.pdf
+## HigginsDubaiWhenHowFirstBiologic.pptx
+## HigginsDubaiiAntiTNFExit.pptx
+## HigginsDubaiiFactors2ndBiologic.pptx
+## HigginsDubaiiMucHealing.pptx
+## HigginsDubaiiUpdatesCDManagement.pptx
+## HigginsFALKFibrosis2015.pptx
+## HigginsFALKMadridThioMtx2017.pptx
+## HigginsFam.jpg
+## HigginsUCBFibrosisMarkers2016.pptx
+## IBD COVID Infographic.pdf
+## IBD COVID Infographic.pptx
+## IBD COVID Infographic.tiff
+## IBD Organoid CrossTalk 2016.pptx
+## IBD Risk PDF.pdf
+## IBD map pics michigan.pptx
+## IBDDeckPtEdRoad2016 8-11-16.pptx
+## IBDDeckPtEdRoad2016_Frankenmuth.pptx
+## IBDDeckPtEdRoad2016_Frankenmuthv2.pptx
+## IBD_Deescalation_2016_11_15.docx
+## IBD_manuscript.docx
+## IBD_pt_ed_Liver_14DEC2017-2.ppt
+## IBDforPrimaryCare.pptx
+## IBS Biofire GI panel Protocol v1 PDRH edits.docx
+## IMGP2847.JPG
+## IOIBD.Fibrosis.Higgins.2018.Amsterdam.pptx
+## Imaging of Fibrosis Review - Draft 5PH.docx
+## ImagingIBD.Data
+## ImagingIBD.enl
+## Imaging_Fibrosis_Review_StidhamHiggins_Revision_31Jan2016.docx
+## Instructions on using the pivot table and vlook up for task list reports[1].docx
+## Intro for P2PEP.docx
+## JeffCole_on_phone.jpg
+## June-2017 MCTI Tx Fund Q2 Proj-update.pptx
+## K CANDIDATE INFORMATION.CAS.docx
+## K23 Review Questions for Candidate Score.docx
+## KC.PDRH.Mentor Letter of Support.docx
+## KEH fistulas.pptx
+## Kay Greveson.jpg
+## Kelly Referee AA SCM edits.docx
+## Keystone Intro Thursday.pptx
+## Lexi Brown.jpg
+## Lexi Brown2.jpg
+## Lycera_LYC30937-2001 Clinical Study Protocol_01Mar2016_Tracked.docx
+## MC PRO DDW abstract draft 1.docx
+## MER Stress Management Dearborn 4-14.pptx
+## ML and AF WisconsinJuly17.pptx
+## MLforPrecisionMed2018.pptx
+## MLinGI.pptx
+## MLinIBDBeijing2017.pptx
+## MachineLearning26Sep2016.docx
+## MarnieKids.jpg
+## Meeting with Abbvie.pptx
+## Meta analysis TB vs CD version 3.4.docx
+## MohamedNoureldin.jpeg
+## Mscan adherence paper v4.docx
+## My EndNote Library.Data
+## My EndNote Library.enl
+## NewIBDTherapiesUtah2018.pptx
+## Notes on blogdown package.docx
+## Olorinab - ECCO 2019 Abstract - Higgins - Tolerability and analgesic efficacy_D6a_KG_PDRH.docx
+## Organoid slides for Peter.pptx
+## P2PEP Up-To-Date Topics.docx
+## P2PEPWrapUp2016.pptx
+## PDRH_FibrosisImaging_Congress_2019.2.pptx
+## PDRH_FibrosisImaging_Congress_2019.jpg
+## PDRH_FibrosisImaging_Congress_2019.pdf
+## PHNutritionBasicsofIBDAug2016.pptx
+## PHcv2016.docx
+## PHcv2017Prof.docx
+## PPT
+## PROsJanssen2017.pptx
+## PennIBDFistulizingCD2017Higgins.pptx
+## PennThioMTX2017Higgins.pptx
+## Pomish Story.docx
+## Pomish Tweets.pptx
 ## Poppy Eulogy backup.docx
 ## Poppy Eulogy.docx
-## Possible Eastern College Tour.docx
-## Powerpoint
-## Prashant Rec Letter.docx
-## Prashant Rec Letter.pdf
-## PredictingIBD_DDW_2021_ISS.html
-## PredictingIBD_DDW_2021_ISS.pdf
-## Purdue Disclosure Form_Higgins.docx
-## Question 16.docx
-## RCode
-## Ramp up clinical research_PH.xlsx
-## Ramping up human subject research - MM 6-1-20 _KDA_PDRH_suggestions.docx
+## Possible collaborations with UCB.docx
+## Poster Welcome.doc
+## Poster Welcome.docx
+## PragueRefractoryRisingBar2017.pptx
+## PragueRefractoryRisingBar2017_2.pptx
+## Predicting Steroid Use.docx
+## Predicting Therapeutic Outcomes in IBD.pptx
+## Prediction of Future IBD Health Care Utilization and Peter FINAL.docx
+## Prediction of Future IBD Health Care Utilization and Peter clean.docx
+## Presentation1.png
+## Presentation3.pptx
+## PtEdRdDeckFrankenmuth2017.pptx
+## PtEdRdDeckGrandRapids2018.pptx
+## QAFunctionalRequirements_GI_IBD Dashboard_DRAFT_v5.docx
+## R session Fri PM.docx
+## REDCapTableOne.pptx
+## RFModelsInEpicEMR2018.pptx
+## RUBIN - Diagnosis and Management of Nutritional Deficiencies and Anemia.FINAL.pptx
+## Rcode
 ## Recordings
-## Review Criteria for COVID Clinical Trials.docx
-## Review guidelines_2017.docx
-## Roasted Salted Cashews.docx
-## S is for Saffron 3.0.docx
-## S is for Saffron 3.1.docx
-## S is for Saffron 3.2.docx
-## S is for Saffron.2.0.docx
-## SEAN STOCKS.docx
-## SIG_Template_IBD Program_FINAL.docx
-## SPECIFIC AIMS 2_PDRH.docx
-## Sean Common App academic honors list.docx
-## Sean Common App activities list.docx
-## Sean Higgins Bordogni.mp4
-## Sean Higgins Brag Sheet.docx
-## Sean Investment Summary.docx
-## Sean Resume Tabular VBorder.docx
-## Sean Resume Tabular.docx
-## Sean Resume.docx
-## Sean Summer Priorities 2016.docx
-## SecureIBD.pptx
-## ShareRmd.html
-## Sherman Prize Nominee Questions.docx
-## Shoreline West Tour Information.docx
-## Short PA slides.pptx
-## Shotwave thread.docx
-## Signing Clinical Research Infusion Orders.pdf
-## SingleCell_DDW_2021_ISS.pdf
-## SoMe_use_2020.png
+## RimolaDelayGadEnh2015.pdf
+## Rlibs
+## S is for Saffron 3.3.docx
+## SCENIC Chicago2017.pptx
+## SCENIC DDW16.pptx
+## SPARC IBD Study China.V3.pptx
+## SPARC IBD Study China.pptx
+## SWV US R01 DDW abstract 2016.docx
+## SWVUSRadiology2013.pdf
+## Scientific Review Committee SALTYFOOD.pdf
+## Screen Shot 2017-09-03 at 5.51.16 PM.png
+## Screen Shot 2018-05-28 at 8.32.19 AM.png
+## Screen Shot 2018-05-31 at 10.58.08 AM.png
+## Senior Slide Show.ppsx
+## Sept2017-Higgins-MCTI Tx Fund Q3_update.pptx
 ## Social Media for GI.pptx
-## Source Code PT1.docx
-## Stelara paper.docx
-## T32_current_text_14June2019.docx
-## TOPPIC ML draft v5SCM_YL_AKW_PDRH.docx
-## TabaCrohn IBD J club.docx
-## Tables.docx
-## Takeda_IBD School Videos_Submission.pdf
-## Task List 2020-2.docx
-## Task List 2020-5.docx
-## Task List 2020.docx
-## Testing signatures with Adobe.pdf
-## The Risk of SARS.R1.Markup.docx
-## Tidymodels.docx
-## Tofa in ICI Figure Legends_Final Draft_V2.docx
-## Tofa inpatient induction Protocol_02NOV2018_PHforEdits.docx
-## Toffee Separation Tips.docx
-## UCRx_DDW_2021_ISS.pdf
-## UC_protocol_comments_2020.docx
-## UM IBD Clinical Trials IBD referral form.docx
-## UPA_U_ACHIEVE 1st draft_PDRH.docx
-## VINDICO_PRO.pptx
-## VideoVisitSchedulingQuickApptsforProviders.pdf
-## VincentChen_K specific aims 2020-10-25.docx
-## VirtualPtEdMar2020.v2.pdf
-## WebEx
+## Stidham_Higgins_BroadMar2016.pptx
+## Supplementary documents v2.docx
+## Syllabus DS4P.docx
+## TOPPICData Request Form v1.0 06Jan2017.docx
+## Table practice with flextable.docx
+## TakedaAug2017.pdf
+## TakedaAug2017.pptx
+## Task-Based GI Fellow Evaluation.docx
+## Test_Rmd_PPT.Rmd
+## Test_Rmd_PPT.pptx
+## The ABC IBD Management-RN.pptx
+## Thiopurine Update2014.pptx
+## Tofa inpatient induction Protocol_RCT_11Jun2019_Pfizer.docx
+## Tofacitinib for Patient Binder.v1SCM.docx
+## UC-PRO-SS Manuscript Draft 1Feb2016.docx
+## UC-PRO-SS Manuscript DraftPH.docx
+## UCPRO Version 6.1.docx
+## UEGW CD PRO SS_oral presentation 18Oct19.pptx
+## UEIStidhamGastro2011.pdf
+## UM Hospital.jpg
+## UMCME_Management of CD.pptx
+## UMHS Talk- Moving Beyond AntiTNF 4-2016 FINAL v2.pptx
+## UMHSaerial_3.jpg
+## UMNonDegreeApp2016.pdf
+## US Nonlinear for Surgeons.pptx
+## US R01.pdf
+## Ulcerative_colitis_Cases_AIBD_Baidoo_Mahadevan_Higgins.pptx
+## Ustekinumab for Patient Binder[1].docx
+## Utah2018HowToChooseIBDMed.pptx
+## UtahNewIBDTherapiesHiggins20182.pptx
+## Vedo Prediction in CD.docx
+## VedoUCDDW2017.pptx
+## Viberzi Allergan SlidesHiggins.pptx
+## Viberzi for Crohns without inflammation protocol Higgins.docx
+## VindicoMed Agenda.doc
+## Visual Abstract BMJ Steroids[1].jpg
+## Wellspringboard.png
+## Why IBD Training.pptx
+## Xenoestrogen budget- final.xlsx
+## Xenoestrogen proposal2.docx
+## XmasLetter2015.docx
+## Xu Photoacoustic 2015.pdf
 ## Zoom
-## Zwift
-## Zwift-Gift-Card.pdf
-## aga institute council july 2020 meeting.pdf
-## algorithms_thiopurine.pdf
-## base-r-cheatsheet.pdf
-## biomakers_fibrosisPDRH.docx
-## blue_down_arrow - Gravit Designer.html
-## bmj_imputation.pdf
-## cgh_factors_utilization.pdf
-## cycling core exercises.docx
-## draft_tokenization letter Risa_Uste.docx
-## early-career-faculty_Dec-2020.xlsx
-## epic cancel_reschedule appointments.ppt
-## epic schedule viewing_close.ppt
-## escalator.html
-## fellow graduation 2020.docx
-## hexStickers.jpg
-## higgins2x3.jpg
-## iBike Rides
-## jama_cushing_crohn_review_2021.pdf
-## learnr app diagram.jpg
-## learnr app diagram.pptx
-## letter Lowrimore.docx
-## mockstudy manuscript draft.docx
-## nejm1966_beecher_ethics.pdf
-## nejm_indomethacin.pdf
-## nejm_statins.pdf
-## orange_green_down_arrow - Gravit Designer.html
-## orange_green_down_arrow- Gravit Designer.pdf
-## pdrh_IBD_email.xlsx
-## personal statement fellowship_PDRH.docx
-## peterhiggins.jpg
-## pink_down_arrow - Gravit Designer.html
-## pink_up_arrow - Gravit Designer.pdf
-## seq-6.pdf
-## signature.docx
-## signature.fld
-## signature.html
-## signature.pdf
-## signature.png
-## stiff_bcl.R
-## submitJanssen_IBD School Videos_12Jul2018.pdf
-## tidyr_pivot.png
-## tidyr_pivot.xcf
-## ucla1.jpg
-## untidy_sheets.pptx
-## wga_min20.pdf
-## ~$T Review Higgins.docx
-## ~$gnature.docx
-## ~$sk List 2020-5.docx
-## ~$sk List 2020.docx
+## ]GI Clinical Protocols 3.7.19_RWS.xlsx
+## abtdataRfiles
+## ahorst_broom_package.png
+## ajg20168a.pdf
+## biomakers_fibrosis_text_draft_07MAR2016-4.docx
+## command_line_R.pptx
+## day1_s1_explore-libraries
+## day1_s2_copy-files
+## explore-libraries
+## healthInsSatPredictors.xlsx
+## human_cases-Xu_PA-09-28-18[1].tiff
+## images SWV, MTMRI.pptx
+## intern pic.png
+## mmc1.pdf
+## nejmStatinHiggins.pdf
+## not easy.jpg
+## p2pep.jpg
+## phiggins.jpg
+## phiggins2.jpg
+## phiggins3.jpg
+## ppt_from_Rmarkdown.docx
+## tablet.JPG
+## university-of-michigan-hospital.jpg
+## unknown_solicit.xlsx
+## volvulus.ppt
+## ~$llabus DS4P.docx
+## ~$ster Welcome.doc
 ```
 :::
 
@@ -446,29 +452,173 @@ ls
 ```
 
 ```
-## 2016IBDClinTrialsforMDsDearborn.pptx
-## 2016IntegratedDeckorMDsGB.pptx
-## 2019 SCSG GI Symposium IBD SoA  -  Read-Only.pptx
-## BE LGD Dearborn 2016.04.12.pptx
-## Getting Started in RStudio.pptx
-## Higgins Microbiota for IBD Patient Ed.pptx
-## HigginsDec2018AJG_SmokingStatus.pptx
-## IBDUpdate.pptx
-## Integrated Slide Deck Dearborn 2016.04.12.pptx
-## MER Stress Management Dearborn 4-14.pptx
-## MichiganMedicine-IBDTemplate.potx
-## PDRH RCAR 2020.pptx
-## PennThioMTX2017Higgins.pptx
-## Pregnancy in IBD.pptx
-## Regenbogen CRS for GI CME Course2016.pptx
-## Senior Slide Show.pptx
-## ThomsonRectalStumpComplicationsIBD2_13.pptx
-## UEGweek2020.pptx
-## UMHS Talk- Moving Beyond AntiTNF 4-2016 FINAL v2.pptx
-## Vertebrate Animals for K.pptx
-## VirtualPtEdMar2020.v2.pptx
-## Writers Room.pptx
-## ibd_meds_surgery_metan.pptx
+## bash: line 0: cd: /Users/peterhiggins/Documents/Powerpoint: No such file or directory
+## -1.png
+## DESCRIPTION
+## LICENSE
+## README.md
+## _book
+## _bookdown.yml
+## _bookdown_files
+## _build.sh
+## _deploy.sh
+## _output.yml
+## boxes_ggconsort.R
+## current_image.Rdata
+## data_MST-41.xlsx
+## data_UC_BIOPSY_ALL_2018.csv
+## data_USDemand_ParrotAnalytics.xlsx
+## data_fcp.csv
+## data_rad.csv
+## file2.txt
+## file_name
+## france.png
+## images
+## index.Rmd
+## index.md
+## io02-getting-started.Rmd
+## io02-getting-started.md
+## io02-getting-started_files
+## io03-tasting.Rmd
+## io03-tasting.md
+## io04-updating.Rmd
+## io04-updating.md
+## io05-importing.Rmd
+## io06-data collection.Rmd
+## io06a-filter.Rmd
+## io06a-filter.md
+## io07-major-updates.Rmd
+## io07-major-updates.md
+## io08-data-validation.Rmd
+## io09-timeseries.Rmd
+## io10-tableOne.Rmd
+## io10-tableOne.knit.md
+## io11-ggplot-single-var.Rmd
+## io12-ggplot-cont-vs-catvar.Rmd
+## io13-ggplot-cont-vs-cont.Rmd
+## io14-presenting-Rmarkdown.Rmd
+## io15-reproducible-research.Rmd
+## io16-study-design.Rmd
+## io17-sample-size.Rmd
+## io18-sources-bias.Rmd
+## io19_randomization_blockrand_CAPTURE.Rmd
+## io20-one-var-1group-tests.Rmd
+## io21-one-var-2group-tests.Rmd
+## io22-one-var-Multgroup-tests.Rmd
+## io23-linear-regression.Rmd
+## io24-sharing-shiny.Rmd
+## io25-logistic-regression.Rmd
+## io26-meta-analysis.Rmd
+## io27-learn_consort.Rmd
+## io27-learn_consort.knit.md
+## io28-mockstudy_analysis_chisq.Rmd
+## io28-mockstudy_analysis_chisq_files
+## io29-learn_chisq.Rmd
+## io29a-chisq_example.Rmd
+## io29a-chisq_example_files
+## io2a-alt_intro.Rmd
+## io30-ttest.Rmd
+## io30-ttest.md
+## io30-ttest_files
+## io30a-ttest.Rmd
+## io30a-ttest_files
+## io30b-ttest.Rmd
+## io31-ttest_part2.Rmd
+## io31-ttest_part2_files
+## io32-table_ttest_broom.R
+## io33-tableone_arsenal.Rmd
+## io34-mockstudy_analysis.Rmd
+## io34-mockstudy_analysis_files
+## io35-making-univariate-model-tables.Rmd
+## io36-tidyr1.Rmd
+## io37-tidyr2.Rmd
+## io37-tidyr2_files
+## io38-tidylog.Rmd
+## io39-dplyr_verbs_demo.Rmd
+## io39-dplyr_verbs_demo.knit.md
+## io39a-dplyr_verbs_demo.Rmd
+## io40-more_dplyr.Rmd
+## io41-draw_consort.Rmd
+## io41-draw_consort_files
+## io42-randomization_demo_CAPTURE.Rmd
+## io42a-blockrand_CAPTURE.Rmd
+## io43-rand_block.Rmd
+## io44-UM_poster.Rmd
+## io44-UM_poster_cache
+## io44-UM_poster_files
+## io45-begin_scatterplots.Rmd
+## io45-begin_scatterplots_files
+## io46-begin_boxplots.Rmd
+## io46-begin_boxplots_files
+## io47-begin_bars.Rmd
+## io47-begin_bars_files
+## io48-learn_distrib_histo.Rmd
+## io48-learn_distrib_histo_files
+## io49a-multipanel_with_tables.Rmd
+## io49a-multipanel_with_tables_files
+## io50-strings_intro_learnr.Rmd
+## io50a-strings_intro.Rmd
+## io50a-strings_intro.html
+## io50b-strings_intro.Rmd
+## io50b-strings_intro.html
+## io51-string_2.Rmd
+## io51-string_2.knit.md
+## io51a-strings_2.Rmd
+## io53-strings_3._learnr.Rmd
+## io53-strings_3._learnr.html
+## io53a-Sample_colonoscopy_text_parse.R
+## io55-ForkBranchCollaboration.Rmd
+## io56-FormattingRmd2Word.Rmd
+## io56-FormattingRmd2Word_files
+## io57-first_function_tidyeval.R
+## io58-debug_pipes_plots.Rmd
+## io59-hashtag_debugging.Rmd
+## io60-help_in_R.Rmd
+## io60-help_in_R_files
+## io61-learnr_lm.Rmd
+## io62-leaps_demo.R
+## io63-logistic_regression.Rmd
+## io64-GAM.Rmd
+## io64-GAM_files
+## io65-error_messages.Rmd
+## io65-error_messages.md
+## io65-error_messages_files
+## io66-base_r.Rmd
+## io66-base_r.md
+## io70-r_cmd_line.Rmd
+## io97-publishing.Rmd
+## io98-title-holder.Rmd
+## io99-references.Rmd
+## ioAnalysis.Rmd
+## ioHow to Install R.docx
+## ioHow to Install Rstudio.docx
+## ioarsenal tableby gt.Rmd
+## iobar_plot in ggplot with value labels.R
+## iobibliometrix.R
+## iocleaning list of insplans.R
+## iocovid animation.R
+## iofcp.csv
+## ioparrot animate bar chart race.R
+## iopower_calc_proportions.R
+## iorad.csv
+## ioropenaq demo map.R
+## notes-on-how-to-publish-to-bookdown-org.html
+## now.json
+## packages.bib
+## preamble.tex
+## render1780e4d58aa62.rds
+## render7f3925ade8dd.rds
+## renv
+## renv.lock
+## rmrwr-book.Rproj
+## rmrwr.rds
+## rmrwr_files
+## style.css
+## table-one.R
+## table-one.Rmd
+## table-one.html
+## table1.docx
+## toc.css
 ```
 :::
 

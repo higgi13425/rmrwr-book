@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 Comparing Two Measures of Centrality | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 Comparing Two Measures of Centrality | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
@@ -24,17 +24,17 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2021-01-19" />
+<meta name="date" content="2021-06-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="descriptive-data-tables.html"/>
+<link rel="prev" href="major-r-updates-where-are-my-packages.html"/>
 <link rel="next" href="cmd-line.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -51,11 +51,13 @@
 
 
 
-<script src="libs/htmlwidgets-1.5.3.9000/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.2.9000/plotly.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
 
@@ -123,6 +125,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -280,30 +283,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#references"><i class="fa fa-check"></i><b>5.5</b> References:</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html"><i class="fa fa-check"></i><b>6</b> Updating R, RStudio, and Your Packages</a>
+<li class="chapter" data-level="6" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html"><i class="fa fa-check"></i><b>6</b> The Basics of Base R</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-1"><i class="fa fa-check"></i><b>6.1</b> Installing Packages</a>
+<li class="chapter" data-level="6.1" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#dimensions-of-data-rectangles"><i class="fa fa-check"></i><b>6.1</b> Dimensions of Data Rectangles</a></li>
+<li class="chapter" data-level="6.2" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#naming-columns"><i class="fa fa-check"></i><b>6.2</b> Naming columns</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html"><i class="fa fa-check"></i><b>7</b> Updating R, RStudio, and Your Packages</a>
 <ul>
-<li class="chapter" data-level="6.1.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-from-github"><i class="fa fa-check"></i><b>6.1.1</b> Installing Packages from Github</a></li>
-<li class="chapter" data-level="6.1.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#problems-with-installing-packages"><i class="fa fa-check"></i><b>6.1.2</b> Problems with Installing Packages</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#loading-packages-with-library-1"><i class="fa fa-check"></i><b>6.2</b> Loading Packages with Library</a></li>
-<li class="chapter" data-level="6.3" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-r"><i class="fa fa-check"></i><b>6.3</b> Updating R</a></li>
-<li class="chapter" data-level="6.4" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-rstudio"><i class="fa fa-check"></i><b>6.4</b> Updating RStudio</a></li>
-<li class="chapter" data-level="6.5" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-your-packages"><i class="fa fa-check"></i><b>6.5</b> Updating Your Packages</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html"><i class="fa fa-check"></i><b>7</b> Major R Updates (Where Are My Packages?)</a></li>
-<li class="chapter" data-level="8" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html"><i class="fa fa-check"></i><b>8</b> Descriptive Data Tables</a>
+<li class="chapter" data-level="7.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-1"><i class="fa fa-check"></i><b>7.1</b> Installing Packages</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-table-one"><i class="fa fa-check"></i><b>8.1</b> Making Table One</a>
-<ul>
-<li class="chapter" data-level="8.1.1" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#the-tableby-function-in-the-arsenal-package"><i class="fa fa-check"></i><b>8.1.1</b> The <em>tableby</em> function in the <strong>arsenal</strong> package</a></li>
-<li class="chapter" data-level="8.1.2" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#the-gtsummary-package-with-flextable"><i class="fa fa-check"></i><b>8.1.2</b> The gtsummary package with flextable</a></li>
-<li class="chapter" data-level="8.1.3" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#example-of-how-to-build-a-table-1-with-gtsummary"><i class="fa fa-check"></i><b>8.1.3</b> Example of how to build a Table 1 with gtsummary</a></li>
+<li class="chapter" data-level="7.1.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-from-github"><i class="fa fa-check"></i><b>7.1.1</b> Installing Packages from Github</a></li>
+<li class="chapter" data-level="7.1.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#problems-with-installing-packages"><i class="fa fa-check"></i><b>7.1.2</b> Problems with Installing Packages</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-an-adverse-events-table"><i class="fa fa-check"></i><b>8.2</b> Making An Adverse Events Table</a></li>
-<li class="chapter" data-level="8.3" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-a-results-table"><i class="fa fa-check"></i><b>8.3</b> Making A Results Table</a></li>
+<li class="chapter" data-level="7.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#loading-packages-with-library-1"><i class="fa fa-check"></i><b>7.2</b> Loading Packages with Library</a></li>
+<li class="chapter" data-level="7.3" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-r"><i class="fa fa-check"></i><b>7.3</b> Updating R</a></li>
+<li class="chapter" data-level="7.4" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-rstudio"><i class="fa fa-check"></i><b>7.4</b> Updating RStudio</a></li>
+<li class="chapter" data-level="7.5" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-your-packages"><i class="fa fa-check"></i><b>7.5</b> Updating Your Packages</a></li>
 </ul></li>
+<li class="chapter" data-level="8" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html"><i class="fa fa-check"></i><b>8</b> Major R Updates (Where Are My Packages?)</a></li>
 <li class="chapter" data-level="9" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html"><i class="fa fa-check"></i><b>9</b> Comparing Two Measures of Centrality</a>
 <ul>
 <li class="chapter" data-level="9.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#common-problem"><i class="fa fa-check"></i><b>9.1</b> Common Problem</a>
@@ -364,18 +361,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.10" data-path="cmd-line.html"><a href="cmd-line.html#running-an-r-script-from-the-terminal"><i class="fa fa-check"></i><b>10.10</b> Running an R Script from the Terminal</a></li>
 <li class="chapter" data-level="10.11" data-path="cmd-line.html"><a href="cmd-line.html#rendering-an-rmarkdown-file-from-the-terminal"><i class="fa fa-check"></i><b>10.11</b> Rendering an Rmarkdown file from the Terminal</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><i class="fa fa-check"></i><b>11</b> Building and Publishing a {bookdown} book on bookdown.org</a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#setting-up"><i class="fa fa-check"></i><b>11.1</b> Setting up</a></li>
-<li class="chapter" data-level="11.2" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#bookdown-yaml"><i class="fa fa-check"></i><b>11.2</b> Bookdown YAML</a></li>
-<li class="chapter" data-level="11.3" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#output-yaml"><i class="fa fa-check"></i><b>11.3</b> Output YAML</a></li>
-<li class="chapter" data-level="11.4" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#styles.css"><i class="fa fa-check"></i><b>11.4</b> Styles.css</a></li>
-<li class="chapter" data-level="11.5" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#creating-chapters-in-r-markdown"><i class="fa fa-check"></i><b>11.5</b> Creating Chapters in R Markdown</a></li>
-<li class="chapter" data-level="11.6" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#chapter-names"><i class="fa fa-check"></i><b>11.6</b> Chapter Names</a></li>
-<li class="chapter" data-level="11.7" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#when-a-chapter-is-ready-for-sharing"><i class="fa fa-check"></i><b>11.7</b> When a Chapter is Ready for Sharing</a></li>
-<li class="chapter" data-level="11.8" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#building-the-book"><i class="fa fa-check"></i><b>11.8</b> Building the Book</a></li>
-<li class="chapter" data-level="11.9" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#publishing-the-book"><i class="fa fa-check"></i><b>11.9</b> Publishing the Book</a></li>
-</ul></li>
 <li class="chapter" data-level="" data-path="title-holder.html"><a href="title-holder.html"><i class="fa fa-check"></i>Title holder</a></li>
 <li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -410,16 +395,16 @@ The most common comparison of two groups with a continuous outcome is to look at
 Let’s start by looking at the cytomegalovirus data set. This includes data on 64 patients who received bone marrow stem cell transplant, and looks at their time to activation of CMV (cytomegalovirus). In the code chunk below, we group the data by donor cmv status (<code>donor.cmv</code>), and look at the mean time to CMV activation (<code>time.to.cmv</code> variable). Run the code (using the green arrow at the top right of the code chunk below) to see the difference in time to CMV activation in months between groups.</p>
 <p>Try out some other grouping variables in the <code>group_by</code> statement, in place of <code>donor.cmv</code>.
 Consider variables like race, sex, and recipient.cmv. Edit the code and run it again with the green arrow at the top right. <br></p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="comparing-two-measures-of-centrality.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># insert libraries in each chunk as if independent</span></span>
-<span id="cb23-2"><a href="comparing-two-measures-of-centrality.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb23-3"><a href="comparing-two-measures-of-centrality.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb23-4"><a href="comparing-two-measures-of-centrality.html#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-5"><a href="comparing-two-measures-of-centrality.html#cb23-5" aria-hidden="true" tabindex="-1"></a>cytomegalovirus <span class="sc">%&gt;%</span> </span>
-<span id="cb23-6"><a href="comparing-two-measures-of-centrality.html#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-7"><a href="comparing-two-measures-of-centrality.html#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_time2cmv =</span> <span class="fu">mean</span>(time.to.cmv)) <span class="ot">-&gt;</span></span>
-<span id="cb23-8"><a href="comparing-two-measures-of-centrality.html#cb23-8" aria-hidden="true" tabindex="-1"></a>summ</span>
-<span id="cb23-9"><a href="comparing-two-measures-of-centrality.html#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-10"><a href="comparing-two-measures-of-centrality.html#cb23-10" aria-hidden="true" tabindex="-1"></a>summ</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="comparing-two-measures-of-centrality.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># insert libraries in each chunk as if independent</span></span>
+<span id="cb46-2"><a href="comparing-two-measures-of-centrality.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb46-3"><a href="comparing-two-measures-of-centrality.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb46-4"><a href="comparing-two-measures-of-centrality.html#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="comparing-two-measures-of-centrality.html#cb46-5" aria-hidden="true" tabindex="-1"></a>cytomegalovirus <span class="sc">%&gt;%</span> </span>
+<span id="cb46-6"><a href="comparing-two-measures-of-centrality.html#cb46-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span> </span>
+<span id="cb46-7"><a href="comparing-two-measures-of-centrality.html#cb46-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_time2cmv =</span> <span class="fu">mean</span>(time.to.cmv)) <span class="ot">-&gt;</span></span>
+<span id="cb46-8"><a href="comparing-two-measures-of-centrality.html#cb46-8" aria-hidden="true" tabindex="-1"></a>summ</span>
+<span id="cb46-9"><a href="comparing-two-measures-of-centrality.html#cb46-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-10"><a href="comparing-two-measures-of-centrality.html#cb46-10" aria-hidden="true" tabindex="-1"></a>summ</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 2
 ##     sex mean_time2cmv
 ##   &lt;dbl&gt;         &lt;dbl&gt;
@@ -444,10 +429,10 @@ Consider variables like race, sex, and recipient.cmv. Edit the code and run it a
 <li>Formal test of normality = Shapiro-Wilk test</li>
 <li>Use base data set called ToothGrowth</li>
 </ul>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="comparing-two-measures-of-centrality.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb25-2"><a href="comparing-two-measures-of-centrality.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb25-3"><a href="comparing-two-measures-of-centrality.html#cb25-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> cytomegalovirus</span>
-<span id="cb25-4"><a href="comparing-two-measures-of-centrality.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="comparing-two-measures-of-centrality.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb48-2"><a href="comparing-two-measures-of-centrality.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb48-3"><a href="comparing-two-measures-of-centrality.html#cb48-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> cytomegalovirus</span>
+<span id="cb48-4"><a href="comparing-two-measures-of-centrality.html#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
 <pre><code>##   ID age sex race                    diagnosis
 ## 1  1  61   1    0       acute myeloid leukemia
 ## 2  2  62   1    1         non-Hodgkin lymphoma
@@ -499,22 +484,22 @@ Consider variables like race, sex, and recipient.cmv. Edit the code and run it a
 <li>Bonus points: facet by sex or race or donor.cmv</li>
 <li>Your turn to try it</li>
 </ul>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="comparing-two-measures-of-centrality.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb27-2"><a href="comparing-two-measures-of-centrality.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb27-3"><a href="comparing-two-measures-of-centrality.html#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-4"><a href="comparing-two-measures-of-centrality.html#cb27-4" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
-<span id="cb27-5"><a href="comparing-two-measures-of-centrality.html#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(time.to.cmv)) <span class="sc">+</span></span>
-<span id="cb27-6"><a href="comparing-two-measures-of-centrality.html#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
-<span id="cb27-7"><a href="comparing-two-measures-of-centrality.html#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>sex) <span class="sc">+</span></span>
-<span id="cb27-8"><a href="comparing-two-measures-of-centrality.html#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="comparing-two-measures-of-centrality.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb50-2"><a href="comparing-two-measures-of-centrality.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb50-3"><a href="comparing-two-measures-of-centrality.html#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="comparing-two-measures-of-centrality.html#cb50-4" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb50-5"><a href="comparing-two-measures-of-centrality.html#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(time.to.cmv)) <span class="sc">+</span></span>
+<span id="cb50-6"><a href="comparing-two-measures-of-centrality.html#cb50-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
+<span id="cb50-7"><a href="comparing-two-measures-of-centrality.html#cb50-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>sex) <span class="sc">+</span></span>
+<span id="cb50-8"><a href="comparing-two-measures-of-centrality.html#cb50-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>()</span></code></pre></div>
 <p><img src="io30-ttest_files/figure-html/density-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="comparing-two-measures-of-centrality.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb28-2"><a href="comparing-two-measures-of-centrality.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb28-3"><a href="comparing-two-measures-of-centrality.html#cb28-3" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb28-4"><a href="comparing-two-measures-of-centrality.html#cb28-4" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
-<span id="cb28-5"><a href="comparing-two-measures-of-centrality.html#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(time.to.cmv)) <span class="sc">+</span></span>
-<span id="cb28-6"><a href="comparing-two-measures-of-centrality.html#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
-<span id="cb28-7"><a href="comparing-two-measures-of-centrality.html#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>race)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="comparing-two-measures-of-centrality.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb51-2"><a href="comparing-two-measures-of-centrality.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb51-3"><a href="comparing-two-measures-of-centrality.html#cb51-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb51-4"><a href="comparing-two-measures-of-centrality.html#cb51-4" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb51-5"><a href="comparing-two-measures-of-centrality.html#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(time.to.cmv)) <span class="sc">+</span></span>
+<span id="cb51-6"><a href="comparing-two-measures-of-centrality.html#cb51-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb51-7"><a href="comparing-two-measures-of-centrality.html#cb51-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>race)</span></code></pre></div>
 <p><img src="io30-ttest_files/figure-html/histogram-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="visualize-the-distribution-of-datalen-in-ggplot" class="section level3" number="9.1.3">
@@ -524,11 +509,11 @@ Consider variables like race, sex, and recipient.cmv. Edit the code and run it a
 <li>May be problematic for using means</li>
 <li>formally test with Shapiro-Wilk</li>
 </ul>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="comparing-two-measures-of-centrality.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb29-2"><a href="comparing-two-measures-of-centrality.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb29-3"><a href="comparing-two-measures-of-centrality.html#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-4"><a href="comparing-two-measures-of-centrality.html#cb29-4" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>time.to.cmv <span class="sc">%&gt;%</span> </span>
-<span id="cb29-5"><a href="comparing-two-measures-of-centrality.html#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="comparing-two-measures-of-centrality.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb52-2"><a href="comparing-two-measures-of-centrality.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb52-3"><a href="comparing-two-measures-of-centrality.html#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="comparing-two-measures-of-centrality.html#cb52-4" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>time.to.cmv <span class="sc">%&gt;%</span> </span>
+<span id="cb52-5"><a href="comparing-two-measures-of-centrality.html#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>()</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -555,11 +540,11 @@ Consider variables like race, sex, and recipient.cmv. Edit the code and run it a
 <ul>
 <li>use df &lt;- msleep</li>
 </ul>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="comparing-two-measures-of-centrality.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb31-2"><a href="comparing-two-measures-of-centrality.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb31-3"><a href="comparing-two-measures-of-centrality.html#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-4"><a href="comparing-two-measures-of-centrality.html#cb31-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> msleep </span>
-<span id="cb31-5"><a href="comparing-two-measures-of-centrality.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df<span class="sc">$</span>sleep_total)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="comparing-two-measures-of-centrality.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb54-2"><a href="comparing-two-measures-of-centrality.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb54-3"><a href="comparing-two-measures-of-centrality.html#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-4"><a href="comparing-two-measures-of-centrality.html#cb54-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> msleep </span>
+<span id="cb54-5"><a href="comparing-two-measures-of-centrality.html#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df<span class="sc">$</span>sleep_total)</span></code></pre></div>
 <pre><code>## [1] 12.1 17.0 14.4 14.9  4.0 14.4</code></pre>
 <ul>
 <li>test the normality of total sleep hours in mammals</li>
@@ -567,10 +552,10 @@ Consider variables like race, sex, and recipient.cmv. Edit the code and run it a
 </div>
 <div id="mammal-sleep-hours" class="section level3" number="9.1.6">
 <h3><span class="header-section-number">9.1.6</span> Mammal sleep hours</h3>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="comparing-two-measures-of-centrality.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb33-2"><a href="comparing-two-measures-of-centrality.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb33-3"><a href="comparing-two-measures-of-centrality.html#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-4"><a href="comparing-two-measures-of-centrality.html#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(df<span class="sc">$</span>sleep_total)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="comparing-two-measures-of-centrality.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb56-2"><a href="comparing-two-measures-of-centrality.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb56-3"><a href="comparing-two-measures-of-centrality.html#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="comparing-two-measures-of-centrality.html#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(df<span class="sc">$</span>sleep_total)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -594,11 +579,11 @@ Consider variables like race, sex, and recipient.cmv. Edit the code and run it a
 </ul>
 <div id="how-to-do-one-sample-t-test" class="section level3" number="9.2.1">
 <h3><span class="header-section-number">9.2.1</span> How to do One Sample T test</h3>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="comparing-two-measures-of-centrality.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb35-2"><a href="comparing-two-measures-of-centrality.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb35-3"><a href="comparing-two-measures-of-centrality.html#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-4"><a href="comparing-two-measures-of-centrality.html#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(df<span class="sc">$</span>sleep_total, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,</span>
-<span id="cb35-5"><a href="comparing-two-measures-of-centrality.html#cb35-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">mu =</span> <span class="dv">8</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="comparing-two-measures-of-centrality.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb58-2"><a href="comparing-two-measures-of-centrality.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb58-3"><a href="comparing-two-measures-of-centrality.html#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-4"><a href="comparing-two-measures-of-centrality.html#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(df<span class="sc">$</span>sleep_total, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,</span>
+<span id="cb58-5"><a href="comparing-two-measures-of-centrality.html#cb58-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">mu =</span> <span class="dv">8</span>)</span></code></pre></div>
 <ul>
 <li>Try it out, see if you can interpret results</li>
 </ul>
@@ -661,10 +646,10 @@ When the title slide appears, you can step through each line of the code to see 
 <ul>
 <li>consider df$vore</li>
 </ul>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="comparing-two-measures-of-centrality.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb37-2"><a href="comparing-two-measures-of-centrality.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb37-3"><a href="comparing-two-measures-of-centrality.html#cb37-3" aria-hidden="true" tabindex="-1"></a>prostate <span class="ot">&lt;-</span> medicaldata<span class="sc">::</span>blood_storage</span>
-<span id="cb37-4"><a href="comparing-two-measures-of-centrality.html#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tabyl</span>(prostate<span class="sc">$</span>AA)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="comparing-two-measures-of-centrality.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb60-2"><a href="comparing-two-measures-of-centrality.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb60-3"><a href="comparing-two-measures-of-centrality.html#cb60-3" aria-hidden="true" tabindex="-1"></a>prostate <span class="ot">&lt;-</span> medicaldata<span class="sc">::</span>blood_storage</span>
+<span id="cb60-4"><a href="comparing-two-measures-of-centrality.html#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tabyl</span>(prostate<span class="sc">$</span>AA)</span></code></pre></div>
 <pre><code>##  prostate$AA   n   percent
 ##            0 261 0.8259494
 ##            1  55 0.1740506</code></pre>
@@ -680,12 +665,12 @@ When the title slide appears, you can step through each line of the code to see 
 <ul>
 <li>formula interface: outcome ~ groupvar</li>
 </ul>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="comparing-two-measures-of-centrality.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb39-2"><a href="comparing-two-measures-of-centrality.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb39-3"><a href="comparing-two-measures-of-centrality.html#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-4"><a href="comparing-two-measures-of-centrality.html#cb39-4" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb39-5"><a href="comparing-two-measures-of-centrality.html#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(vore <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;herbi&quot;</span>, <span class="st">&quot;carni&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb39-6"><a href="comparing-two-measures-of-centrality.html#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t.test</span>(<span class="at">formula =</span> sleep_total <span class="sc">~</span> vore, <span class="at">data =</span> .)</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="comparing-two-measures-of-centrality.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb62-2"><a href="comparing-two-measures-of-centrality.html#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb62-3"><a href="comparing-two-measures-of-centrality.html#cb62-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-4"><a href="comparing-two-measures-of-centrality.html#cb62-4" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb62-5"><a href="comparing-two-measures-of-centrality.html#cb62-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(vore <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;herbi&quot;</span>, <span class="st">&quot;carni&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb62-6"><a href="comparing-two-measures-of-centrality.html#cb62-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t.test</span>(<span class="at">formula =</span> sleep_total <span class="sc">~</span> vore, <span class="at">data =</span> .)</span></code></pre></div>
 <ul>
 <li>Try it yourself</li>
 <li>What do the results mean?</li>
@@ -728,17 +713,17 @@ When the title slide appears, you can step through each line of the code to see 
 <li>You want to compare column A with column B (data are not tidy)</li>
 <li>Do mammals spend more time awake than asleep?</li>
 </ul>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="comparing-two-measures-of-centrality.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb41-2"><a href="comparing-two-measures-of-centrality.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb41-3"><a href="comparing-two-measures-of-centrality.html#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-4"><a href="comparing-two-measures-of-centrality.html#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> df<span class="sc">$</span>sleep_total, <span class="at">y =</span> df<span class="sc">$</span>awake, <span class="at">data =</span> msleep)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="comparing-two-measures-of-centrality.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb64-2"><a href="comparing-two-measures-of-centrality.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb64-3"><a href="comparing-two-measures-of-centrality.html#cb64-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-4"><a href="comparing-two-measures-of-centrality.html#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> df<span class="sc">$</span>sleep_total, <span class="at">y =</span> df<span class="sc">$</span>awake, <span class="at">data =</span> msleep)</span></code></pre></div>
 </div>
 <div id="results-of-2-group-t-test-with-wide-data" class="section level3" number="9.4.5">
 <h3><span class="header-section-number">9.4.5</span> Results of 2 group t test with wide data</h3>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="comparing-two-measures-of-centrality.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb42-2"><a href="comparing-two-measures-of-centrality.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb42-3"><a href="comparing-two-measures-of-centrality.html#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-4"><a href="comparing-two-measures-of-centrality.html#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> df<span class="sc">$</span>sleep_total, <span class="at">y =</span> df<span class="sc">$</span>awake, <span class="at">data =</span> msleep)</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="comparing-two-measures-of-centrality.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb65-2"><a href="comparing-two-measures-of-centrality.html#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb65-3"><a href="comparing-two-measures-of-centrality.html#cb65-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-4"><a href="comparing-two-measures-of-centrality.html#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> df<span class="sc">$</span>sleep_total, <span class="at">y =</span> df<span class="sc">$</span>awake, <span class="at">data =</span> msleep)</span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -790,16 +775,16 @@ When the title slide appears, you can step through each line of the code to see 
 <li>Use the tidy function from the broom package</li>
 <li>Do carnivores have bigger brains than insectivores?</li>
 </ul>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="comparing-two-measures-of-centrality.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb44-2"><a href="comparing-two-measures-of-centrality.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb44-3"><a href="comparing-two-measures-of-centrality.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
-<span id="cb44-4"><a href="comparing-two-measures-of-centrality.html#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-5"><a href="comparing-two-measures-of-centrality.html#cb44-5" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb44-6"><a href="comparing-two-measures-of-centrality.html#cb44-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(vore <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;carni&quot;</span>, <span class="st">&quot;insecti&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-7"><a href="comparing-two-measures-of-centrality.html#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">formula =</span> brainwt <span class="sc">~</span> vore, <span class="at">data =</span> .) <span class="sc">%&gt;%</span> </span>
-<span id="cb44-8"><a href="comparing-two-measures-of-centrality.html#cb44-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="ot">-&gt;</span></span>
-<span id="cb44-9"><a href="comparing-two-measures-of-centrality.html#cb44-9" aria-hidden="true" tabindex="-1"></a>result</span>
-<span id="cb44-10"><a href="comparing-two-measures-of-centrality.html#cb44-10" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="comparing-two-measures-of-centrality.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb67-2"><a href="comparing-two-measures-of-centrality.html#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb67-3"><a href="comparing-two-measures-of-centrality.html#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb67-4"><a href="comparing-two-measures-of-centrality.html#cb67-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-5"><a href="comparing-two-measures-of-centrality.html#cb67-5" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb67-6"><a href="comparing-two-measures-of-centrality.html#cb67-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(vore <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;carni&quot;</span>, <span class="st">&quot;insecti&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb67-7"><a href="comparing-two-measures-of-centrality.html#cb67-7" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">formula =</span> brainwt <span class="sc">~</span> vore, <span class="at">data =</span> .) <span class="sc">%&gt;%</span> </span>
+<span id="cb67-8"><a href="comparing-two-measures-of-centrality.html#cb67-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="ot">-&gt;</span></span>
+<span id="cb67-9"><a href="comparing-two-measures-of-centrality.html#cb67-9" aria-hidden="true" tabindex="-1"></a>result</span>
+<span id="cb67-10"><a href="comparing-two-measures-of-centrality.html#cb67-10" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div>
 <div id="getting-results-out-of-t.test-1" class="section level3" number="9.6.1">
 <h3><span class="header-section-number">9.6.1</span> Getting results out of t.test</h3>
 <pre><code>## # A tibble: 1 x 10
@@ -851,7 +836,7 @@ When the title slide appears, you can step through each line of the code to see 
           </div>
         </div>
       </div>
-<a href="descriptive-data-tables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="major-r-updates-where-are-my-packages.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="cmd-line.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -875,6 +860,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

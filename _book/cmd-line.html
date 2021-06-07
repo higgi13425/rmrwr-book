@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 10 Running R from the UNIX Command Line | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 Running R from the UNIX Command Line | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2021-01-19" />
+<meta name="date" content="2021-06-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,9 +32,9 @@
   
   
 <link rel="prev" href="comparing-two-measures-of-centrality.html"/>
-<link rel="next" href="building-and-publishing-a-bookdown-book-on-bookdown-org.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link rel="next" href="title-holder.html"/>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -51,11 +51,13 @@
 
 
 
-<script src="libs/htmlwidgets-1.5.3.9000/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.2.9000/plotly.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
 
@@ -123,6 +125,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -280,30 +283,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#references"><i class="fa fa-check"></i><b>5.5</b> References:</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html"><i class="fa fa-check"></i><b>6</b> Updating R, RStudio, and Your Packages</a>
+<li class="chapter" data-level="6" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html"><i class="fa fa-check"></i><b>6</b> The Basics of Base R</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-1"><i class="fa fa-check"></i><b>6.1</b> Installing Packages</a>
+<li class="chapter" data-level="6.1" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#dimensions-of-data-rectangles"><i class="fa fa-check"></i><b>6.1</b> Dimensions of Data Rectangles</a></li>
+<li class="chapter" data-level="6.2" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#naming-columns"><i class="fa fa-check"></i><b>6.2</b> Naming columns</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html"><i class="fa fa-check"></i><b>7</b> Updating R, RStudio, and Your Packages</a>
 <ul>
-<li class="chapter" data-level="6.1.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-from-github"><i class="fa fa-check"></i><b>6.1.1</b> Installing Packages from Github</a></li>
-<li class="chapter" data-level="6.1.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#problems-with-installing-packages"><i class="fa fa-check"></i><b>6.1.2</b> Problems with Installing Packages</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#loading-packages-with-library-1"><i class="fa fa-check"></i><b>6.2</b> Loading Packages with Library</a></li>
-<li class="chapter" data-level="6.3" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-r"><i class="fa fa-check"></i><b>6.3</b> Updating R</a></li>
-<li class="chapter" data-level="6.4" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-rstudio"><i class="fa fa-check"></i><b>6.4</b> Updating RStudio</a></li>
-<li class="chapter" data-level="6.5" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-your-packages"><i class="fa fa-check"></i><b>6.5</b> Updating Your Packages</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html"><i class="fa fa-check"></i><b>7</b> Major R Updates (Where Are My Packages?)</a></li>
-<li class="chapter" data-level="8" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html"><i class="fa fa-check"></i><b>8</b> Descriptive Data Tables</a>
+<li class="chapter" data-level="7.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-1"><i class="fa fa-check"></i><b>7.1</b> Installing Packages</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-table-one"><i class="fa fa-check"></i><b>8.1</b> Making Table One</a>
-<ul>
-<li class="chapter" data-level="8.1.1" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#the-tableby-function-in-the-arsenal-package"><i class="fa fa-check"></i><b>8.1.1</b> The <em>tableby</em> function in the <strong>arsenal</strong> package</a></li>
-<li class="chapter" data-level="8.1.2" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#the-gtsummary-package-with-flextable"><i class="fa fa-check"></i><b>8.1.2</b> The gtsummary package with flextable</a></li>
-<li class="chapter" data-level="8.1.3" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#example-of-how-to-build-a-table-1-with-gtsummary"><i class="fa fa-check"></i><b>8.1.3</b> Example of how to build a Table 1 with gtsummary</a></li>
+<li class="chapter" data-level="7.1.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-from-github"><i class="fa fa-check"></i><b>7.1.1</b> Installing Packages from Github</a></li>
+<li class="chapter" data-level="7.1.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#problems-with-installing-packages"><i class="fa fa-check"></i><b>7.1.2</b> Problems with Installing Packages</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-an-adverse-events-table"><i class="fa fa-check"></i><b>8.2</b> Making An Adverse Events Table</a></li>
-<li class="chapter" data-level="8.3" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-a-results-table"><i class="fa fa-check"></i><b>8.3</b> Making A Results Table</a></li>
+<li class="chapter" data-level="7.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#loading-packages-with-library-1"><i class="fa fa-check"></i><b>7.2</b> Loading Packages with Library</a></li>
+<li class="chapter" data-level="7.3" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-r"><i class="fa fa-check"></i><b>7.3</b> Updating R</a></li>
+<li class="chapter" data-level="7.4" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-rstudio"><i class="fa fa-check"></i><b>7.4</b> Updating RStudio</a></li>
+<li class="chapter" data-level="7.5" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-your-packages"><i class="fa fa-check"></i><b>7.5</b> Updating Your Packages</a></li>
 </ul></li>
+<li class="chapter" data-level="8" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html"><i class="fa fa-check"></i><b>8</b> Major R Updates (Where Are My Packages?)</a></li>
 <li class="chapter" data-level="9" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html"><i class="fa fa-check"></i><b>9</b> Comparing Two Measures of Centrality</a>
 <ul>
 <li class="chapter" data-level="9.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#common-problem"><i class="fa fa-check"></i><b>9.1</b> Common Problem</a>
@@ -363,18 +360,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.9" data-path="cmd-line.html"><a href="cmd-line.html#what-about-just-a-few-lines-of-r"><i class="fa fa-check"></i><b>10.9</b> What about just a few lines of R?</a></li>
 <li class="chapter" data-level="10.10" data-path="cmd-line.html"><a href="cmd-line.html#running-an-r-script-from-the-terminal"><i class="fa fa-check"></i><b>10.10</b> Running an R Script from the Terminal</a></li>
 <li class="chapter" data-level="10.11" data-path="cmd-line.html"><a href="cmd-line.html#rendering-an-rmarkdown-file-from-the-terminal"><i class="fa fa-check"></i><b>10.11</b> Rendering an Rmarkdown file from the Terminal</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><i class="fa fa-check"></i><b>11</b> Building and Publishing a {bookdown} book on bookdown.org</a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#setting-up"><i class="fa fa-check"></i><b>11.1</b> Setting up</a></li>
-<li class="chapter" data-level="11.2" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#bookdown-yaml"><i class="fa fa-check"></i><b>11.2</b> Bookdown YAML</a></li>
-<li class="chapter" data-level="11.3" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#output-yaml"><i class="fa fa-check"></i><b>11.3</b> Output YAML</a></li>
-<li class="chapter" data-level="11.4" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#styles.css"><i class="fa fa-check"></i><b>11.4</b> Styles.css</a></li>
-<li class="chapter" data-level="11.5" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#creating-chapters-in-r-markdown"><i class="fa fa-check"></i><b>11.5</b> Creating Chapters in R Markdown</a></li>
-<li class="chapter" data-level="11.6" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#chapter-names"><i class="fa fa-check"></i><b>11.6</b> Chapter Names</a></li>
-<li class="chapter" data-level="11.7" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#when-a-chapter-is-ready-for-sharing"><i class="fa fa-check"></i><b>11.7</b> When a Chapter is Ready for Sharing</a></li>
-<li class="chapter" data-level="11.8" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#building-the-book"><i class="fa fa-check"></i><b>11.8</b> Building the Book</a></li>
-<li class="chapter" data-level="11.9" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#publishing-the-book"><i class="fa fa-check"></i><b>11.9</b> Publishing the Book</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="title-holder.html"><a href="title-holder.html"><i class="fa fa-check"></i>Title holder</a></li>
 <li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
@@ -448,7 +433,7 @@ No user interface for you!
 <div class="tryit">
 <p>Let’s start with a simple one, which can’t do any harm. Run the command below:<br>
 <code>whoami</code></p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb46-1"><a href="cmd-line.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">whoami</span></span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb69-1"><a href="cmd-line.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">whoami</span></span></code></pre></div>
 <pre><code>## peterhiggins</code></pre>
 </div>
 <p>Remember that UNIX started out as an operating system for terminals, and knowing who was logged in was a helpful thing.
@@ -456,9 +441,9 @@ No user interface for you!
 You can string together two commands with a semicolon between them. <br></p>
 <div class="tryit">
 <p>Try the following:</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb48-1"><a href="cmd-line.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">whoami</span><span class="kw">;</span><span class="fu">date</span></span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb71-1"><a href="cmd-line.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">whoami</span><span class="kw">;</span><span class="fu">date</span></span></code></pre></div>
 <pre><code>## peterhiggins
-## Tue Jan 19 21:55:02 EST 2021</code></pre>
+## Mon Jun  7 13:03:56 EDT 2021</code></pre>
 </div>
 <p>OK, fine. This is sort of helpful. It was really important when you were on a terminal and paying by the minute for time on a mainframe back in 1969. And, on occasion, if you will need to use an entire computer cluster to run a script (or scripts) on a lot of data, you will likely have to use some of this command line knowledge. You can even schedule jobs (scripts) to run when your time is scheduled on the cluster with <code>cron</code> and <code>crontab</code>.
 <br><br>
@@ -470,8 +455,8 @@ At this point, it would be helpful to open a window with your Documents folder, 
 <p>OK, let’s start looking at files and directories. Start with the <code>pwd</code> command, which does <strong>not</strong> stand for password, but for <code>print working directory</code>.<br></p>
 <div class="tryit">
 <p>Run the code below in your Terminal window.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb50-1"><a href="cmd-line.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre></div>
-<pre><code>## /Users/peterhiggins/Documents/RCode/rmrwr-book</code></pre>
+<div class="sourceCode" id="cb73"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb73-1"><a href="cmd-line.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre></div>
+<pre><code>## /Users/peterhiggins/Documents/Rcode/rmrwr-book</code></pre>
 </div>
 <p>You can see the full path to your current directory. This can be a bit obscure if you are just looking at your folder structure, particularly at the beginning of the path. Fortunately, the {here} package handles a lot of this for you when you are working in Rstudio projects. <br>
 We think of the directory as a tree, with a root - in this case, <code>Users</code>, and various branches as you build out folders and subfolders.<br>
@@ -479,307 +464,313 @@ We can move up and down the folders of the directory paths with the <code>cd</co
 <br><br></p>
 <div class="tryit">
 <p>Try this command in your Terminal Window, and see if you can figure out what it does.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb52-1"><a href="cmd-line.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb75-1"><a href="cmd-line.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code></pre></div>
 </div>
 <p>It changes the directory <code>up</code> one level closer to the root directory. It is straightforward to go up the directory tree, as each folder only has one <code>parent</code>. But it is tricky to go down the directory tree, as there are many possible branches/children, and you do not inherently know the names of these branches. We need to list the contents of your current directory with <code>ls</code> to know what is there.</p>
 <div class="tryit">
 <p>Try the <code>ls</code> command in your Terminal window</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb53-1"><a href="cmd-line.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/<span class="kw">;</span></span>
-<span id="cb53-2"><a href="cmd-line.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
-<pre><code>## 1FQ_Crohn&#39;s Disease_23Oct2020 (002).doc
-## 2020-Jun-05 AGA IMIBD meeting notest.docx
-## 2021 AGA Invited Speaker Session Basic Hybrid Example.pdf
-## 2021.Higgins AGA Distinguished Clinician.CO.docx
-## A is for Allspice.2.0.docx
-## A is for Allspice.docx
-## ABT263_HIO_report_toWord.docx
-## ACLS eCard Peter Higgins.pdf
-## AGA DDW 2021
-## AGA IMIBD
-## AGA IMIBD Councilor Career Discussion Guide.docx
-## AGA IMIBD Webinar Outline.docx
-## AIBD CAM Higgins.pdf
-## AIBD CAM Higgins.pptx
-## AIBD SoMe Higgins.pdf
-## AIBD SoMe Higgins.pptx
-## AIBD agreement.docx
-## AIBD20Template.pptx
-## AMAG DDW Clear draft_PDRH comments.docx
-## APG1244_Milestone_report.docx
-## ASUC_UC_protocol_comments_2020.docx
-## A_Woodward_Score Sheet_PDRH.docx
-## Accounts and Access (1) (1).docx
-## Advice for participants in webinars.docx
-## Animation of NSAID.pptx
-## BKochar_Frailty.pdf
-## BM recommendation.docx
-## Beginners_GuideToR.pdf
-## Biosketch for K.pptx
-## Biosketch_2020_Higgins_ClinResIBD_biosketch.doc
-## Brazil.ItineraryNov2015.docx
-## Butter BCS Chicken.docx
-## CAS.K.candidate.background_SB_PDRH.docx
-## CAS.T32.Project.Description-JS.docx
-## CAS.career.goals.obj.development.training_PDRH.docx
-## CC360_The Risk of SARS.R1.docx
-## CC360_The Risk of SARS.docx
-## CCF IBD Webcast 2020 Draft Deck_For Review.pptx
-## CCFA EIC Candidate Interview Questions (candidates) jobin[1].doc
-## CDC_proposal1.1.docx
-## CLARE STOCKS.docx
-## COVID Trials Feasibility
-## CaltechCampus Tour &amp; Information Session.webarchive
-## Cancel Appt Epic.ppt
-## Causal.png
-## CellDeath_DDW_2021_ISS.pdf
-## Chu RPG Review_PDRH.docx
-## Clare Investment Summary.docx
-## Council Conversations Author Chat Guide.docx
-## Coursera_Programming in R Notes.docx
-## CoverLetterPlus.pptx
-## Crash&amp;Burn_ScriptV2_100318 copy.pdf
-## DataCamp Courses by Topic.docx
+<div class="sourceCode" id="cb76"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb76-1"><a href="cmd-line.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/<span class="kw">;</span></span>
+<span id="cb76-2"><a href="cmd-line.html#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+<pre><code>## 01 ECCO 2018 PRO Symposia_Higgins 15Feb2018 Final.pptx
+## 03 ECCO 2018 PRO Symposia_Irving 15Feb2018 Final.pptx
+## 1-s2.0-S0016508514012682-main.pdf
+## 12_2018_MLR01_Higgins_Waljee_ResearchPlan.docx
+## 2016IBDClinTrialsforMDsDearborn.pptx
+## 2017_drugR01_research-plan_DRAFT.docx
+## 2018UCLABuildingCareer.pptx
+## 2018UCLAOptimizingIBDMedications.pptx
+## 2018UCLAOptimizingIBDMedications2.pptx
+## 3SlidesFibrosis.pptx
+## 44 days.docx
+## 5asa abstractSCM_PDRH.docx
+## 65LV163_IBD AMCP_Flint MI_2.27.17.pptx
+## 65LV1720 IBD Rural _ Kalamazoo.pptx
+## ABT-737 in vitro data.pptx
+## ACD Introduction 1.10.2017.pptx
+## ACD Introduction.pptx
+## ACD_CTSU_Nov2016.pptx
+## AGA symposium Management of non-responders 2017 5-6-17.pptx
+## AIBD_Quality_PRO_Higgins_2017.pptx
+## AJG_Vedo Prediction in UC_2.docx
+## AbstractCCFEntrepreneur.docx
+## Academic Teams Fund.docx
+## Acute Severe Colitis Cases.pptx
+## Advisory Board Meeting 6.16.2017.pptx
+## Allergan IBSD IBD Advisory Board Agenda and Participants.pdf
+## Aspire tofa TURANDOT clinical protocol.docx
+## Aspire tofa TURANDOT clinical protocol_KLS.docx
+## Aspire tofacitinib fibrosis protocol.docx
+## BE LGD Dearborn 2016.04.13.pptx
+## BP fistulas.pptx
+## BP story summary stem cells.docx
+## Bcl2 inhibitors R01 data.pptx
+## Bcl2_inhibs_tissuedistrib_MCTI_Feb2017.pptx
+## Bcl2_inhibs_tissuedistrib_MCTI_Feb2017Higgins_ER.pptx
+## Beaumont Medicine GR 2020.pptx
+## BiofireDDW2018
+## BiofireDDW2018.pdf
+## BiofireDDW2018.pptx
+## Brainstorming for CCFA speech ideas[1].docx
+## Buhlmann_Waljee.docx
+## C.Steiner.Ch34.docx
+## CC360 Title Page.docx
+## CCF CRA 2018
+## CCFA DDx NewIBD3.ppt
+## CCFA Fibrosis 2017.jpg
+## CCFA Fibrosis 2017.pptx
+## CCFA speech.docx
+## CCFA_Partners_Higgins_Insurance_v1_2017_02_10_ML.docx
+## CDPRO Version 6.1.docx
+## CRA 2018
+## CTSU Introduction Overview 4.11.17.pptx
+## CTSU Introduction Overview 6.9.17.pptx
+## CTSU intro.pptx
+## CareerDevTrain-Govani 2016 K.docx
+## Case IBD comorbidity_MS PDRH2016 AIBD.pptx
+## Chemlab Note Sheets.docx
+## Clinical Trials Academy
+## Clinical Trials Subcommittee - ACD_CTSU Progress Report 2017.pptx
+## ClinicalUsePROs.pptx
+## Confident Vedo Decision Making in Practice Brazil 2016.2.pptx
+## Confident Vedo Decision Making in Practice Brazil 2016.pptx
+## Current IBD Studies_15Jun2016.pptx
+## DDW Presentation-JB-Capture.pptx
+## DDWIntestinalOrganoids3.pptx
+## Dan Sharp.jpg
 ## DeEscalationACG2016.pptx
-## Demographics.pdf
+## Dearborn2017TalkHowToChooseIBDMed.pptx
+## Dillman2015T2MT.pdf
 ## Documents.Rproj
-## DrHiggins IBD Data Request.xlsx
-## Draft Postop IBD Surgery Care Protocols v2_SERedit.docx
-## ECCO 2016 Amsterdam Schedule.docx
-## ECCO 2019 UC PRO SS Abstract D1f_JP_UA_YO_AM_PDRH.docx
+## DonorTalk2016.pptx
+## Draft Postop IBD Surgery Care Protocols.docx
+## DrugDevInIBD.pptx
 ## ECCO2016Lycera30937.pptx
-## Effect of medications on the recurrence of cancer in IBD patients.docx
-## Electrical engineering interview questions.docx
-## FDAtofaResponse.docx
-## FFMI Kickstart-FinalReport 5-20-16-LJ.docx
-## FITBITProtocol_28NOV2016_AbbVie.docx
-## FITBITProtocol_4DEC2016_AbbVie.docx
-## FMT_DDW_2021_ISS.pdf
-## Feasibility and Pilot Studies.pptx
+## ECCO_Axl_2017_handout.pdf
+## ECCO_BIOFIRE_poster_2017.pdf
+## ECCO_VedoUC_2017_handout.pdf
+## ENDING CLIP.mp4
+## Eclipse Pics
+## Editorial Commentary on biosimilar.docx
+## FALK2016FibrosisManuscript.docx
+## Fail FastDenver2018RxPrediction.pdf
+## Fail FastDenver2018RxPrediction.pptx
+## FalkNewTricksKnownDrugs2017.pptx
+## Fibrosis workshop_agenda_V5.docx
+## FibrosisAbbvieMatter2016.pptx
 ## FibrosisIBDCedars2016.pptx
-## Figures-KC-JAMA.pptx
-## Finance and Retirement Plans.docx
-## Financial Priorities.docx
-## Garmin Notes.docx
-## General Social Media Tips.docx
-## General thoughts about query letters.docx
-## Getting Started with REDCap.docx
-## Git for MDs_2.pptx
-## GitHub
-## Github for MDs_1.pptx
-## Glover_RPG_Review_PDRH.docx
+## Figures List for Research Plan (1).docx
+## Fundraising Pitches.docx
+## GI T32 Application 2017 v2.docx
+## GailBetsy.jpg
+## GailGrandkids.jpg
+## GailPat.jpg
+## Getting to and Using IBD Epidemiology Server.docx
 ## GoToMeeting Chats
-## GradPartyHigginsInvites.xlsx
-## HPI-5016 IBD Patient Contact Info.xlsx
+## GossetPhoto.jpg
+## GrantWriting.pptx
+## HBV testing before biologic use.pptx
+## HGI1016Higgins.docx
 ## HS movie.docx
-## Higgins AGA Webinar Slides.pptx
-## Higgins Bio.docx
-## Higgins New IBD.pptx
-## Higgins Refractory Proctitis.pptx
-## Higgins biosketch2015KRao.doc
-## Higgins biosketch2016KRao.doc
+## Harlan_Kids.jpg
+## Health Insurance Consumer Satisfaction DDW abstract 2016.docx
+## Higgins - DeEscalationACG2016.pptx
+## Higgins Beijing 2017The Gut Microbiota and the Pathophysiology of IBD.pptx
+## Higgins CCFA CTPROs in IBD.pptx
+## Higgins CCFACT2017FundingClinicalResearch.pptx
+## Higgins HK 2017IBD Nursing and Quality of Care.pptx
+## Higgins HK 2017The Gut Microbiota and the Pathophysiology of IBD.pptx
+## Higgins Introduction.docx
+## Higgins Lab Generic research proposal 030916.docx
+## Higgins Microbiota for IBD Patient Ed2.pptx
 ## Higgins-peter.jpg
-## HigginsACGMidwest2019_PerioperativeIBD.pptx
-## Higgins_LOS_IBDBiobank_Shah_Nusrat_2019.docx
-## Higgins_UM_CME_Pregnancy in IBD.pptx
-## How To Log in to IBD Server.docx
-## How To Log in to RStudio Server for HigginsLab.docx
-## How To Log in to RStudio Server for Shiny.docx
-## IBD 2020 - Honorarium reimbursement Form.docx
-## IBD Biobank Cryostor.pptx
-## IBD Clinical Trials for MDsDearborn2017.pptx
-## IBD Insurance Pilot Results.docx
-## IBD Insurance Survey for CCFA Partners Existing.docx
-## IBD Journal Club 13Feb2017.docx
-## IBD Journal Club July 11.docx
-## IBD Plexus meeting 21 Sep 2015 notes.docx
-## IBD School 322 Script.docx
-## IBD School 324 Script.docx
-## IBD School 325 Script.docx
-## IBD and biologics tweets.docx
-## IBD inbox coverage.docx
-## IBDInsuranceSurvey3.docx
-## IBDMentoringConferenceCall4AbstractsPH.docx
-## IBD_Deescalation_Apr_2019_PDRH.docx
-## IBDforLansing2017.pptx
-## IMG_0006.jpg
-## IMG_0008.jpg
-## IMG_1523st.jpg
-## IMIBD Councilors 2020-21.docx
-## IMIBD Partners insurance 2020DDW.pptx
-## IMIBD_expanded_descriptors.xlsx
-## Introduction to Application Supplement Photoacoustic.docx
-## JAK_DDW_2021_ISS.pdf
-## JAMA_KC_Second JAMA.docx
-## JAMA_Review_on_CD_Revisions_Tracked_Changes with edits_PDRH.docx
-## JB_V1 Career Goals and Objectives 7.8.2020_PDRH.docx
-## JB_V2 Candidate’s Background 7.7.2020_PDRH.docx
-## JDix_Study_update.docx
-## K Award Institutional Letter of Commitment.pptx
-## K Candidate Section.pptx
-## K105_Melmed_PROs in Practice_MB_bb_JLS.pptx
-## K23 Aims - Shirley Cohen-Mekelburg 11.14.19.docx
-## K23_morph_measurements_MockupManuscript_21JAN2019.docx
-## Learning R discussion Jeremy Louissaint.docx
-## Letter to Frank Hamilton.docx
-## Lin_Reviewer Score_PDRH.docx
-## Log in to IBD Server.docx
-## MEI_2020_PH_W9.pdf
-## MEI_2021_PH_W9.pdf
-## MEI_ACH_Wire Transfer Form.docx
-## MIM-TESRIC PROTOCOL_Higgins_14Apr2020.docx
-## MIM-TESRIC PROTOCOL_Higgins_26Aug2020.docx
-## Managment of CD.pptx
-## Manuscript v1.docx
-## Manuscript v2.PDRH.docx
-## McDonald, Nancy.pdf
-## Megan McLeod Rec Letter Residency.docx
-## MentoringAgendaDraftPH.docx
-## Meta analysis TB vs CD version 3.5.docx
-## Michigan Medicine Gastroenterology Social Media Initiative.docx
-## Michigan Medicine Model for COVID-19 Clinical Trial Oversight DRAFT (KSB 04.17.20)-AL-PDRH.docx
-## Microsoft User Data
-## MultidisciplinaryIBDClinicPHv2.docx
-## NordicTrackTC9iTreadmillManual.pdf
-## Oct2019payPDRH.PDF
-## Odd college lists.docx
-## P Singh K grant aims 8-25_PDRH.docx
-## P2PEP slide 2020
-## P2PEP slide 2020.pptx
-## PHcv2019.docx
-## PHcv2020.docx
-## PRO agenda videos VINDICO.docx
-## PRO letter.docx
-## PS_K grant aims 6-25_PDRH.docx
-## PTM LOS From PDRH.docx
-## PTM LOS From PDRH.pdf
-## Pearson 5 Notes.docx
-## Perils of Excel.pptx
-## Personal statement version 3!.docx
-## Pitch Letter - S is for Saffron.docx
+## HigginsAI talk for DDW2019.pdf
+## HigginsDubaiWhenHowFirstBiologic.pptx
+## HigginsDubaiiAntiTNFExit.pptx
+## HigginsDubaiiFactors2ndBiologic.pptx
+## HigginsDubaiiMucHealing.pptx
+## HigginsDubaiiUpdatesCDManagement.pptx
+## HigginsFALKFibrosis2015.pptx
+## HigginsFALKMadridThioMtx2017.pptx
+## HigginsFam.jpg
+## HigginsUCBFibrosisMarkers2016.pptx
+## IBD COVID Infographic.pdf
+## IBD COVID Infographic.pptx
+## IBD COVID Infographic.tiff
+## IBD Organoid CrossTalk 2016.pptx
+## IBD Risk PDF.pdf
+## IBD map pics michigan.pptx
+## IBDDeckPtEdRoad2016 8-11-16.pptx
+## IBDDeckPtEdRoad2016_Frankenmuth.pptx
+## IBDDeckPtEdRoad2016_Frankenmuthv2.pptx
+## IBD_Deescalation_2016_11_15.docx
+## IBD_manuscript.docx
+## IBD_pt_ed_Liver_14DEC2017-2.ppt
+## IBDforPrimaryCare.pptx
+## IBS Biofire GI panel Protocol v1 PDRH edits.docx
+## IMGP2847.JPG
+## IOIBD.Fibrosis.Higgins.2018.Amsterdam.pptx
+## Imaging of Fibrosis Review - Draft 5PH.docx
+## ImagingIBD.Data
+## ImagingIBD.enl
+## Imaging_Fibrosis_Review_StidhamHiggins_Revision_31Jan2016.docx
+## Instructions on using the pivot table and vlook up for task list reports[1].docx
+## Intro for P2PEP.docx
+## JeffCole_on_phone.jpg
+## June-2017 MCTI Tx Fund Q2 Proj-update.pptx
+## K CANDIDATE INFORMATION.CAS.docx
+## K23 Review Questions for Candidate Score.docx
+## KC.PDRH.Mentor Letter of Support.docx
+## KEH fistulas.pptx
+## Kay Greveson.jpg
+## Kelly Referee AA SCM edits.docx
+## Keystone Intro Thursday.pptx
+## Lexi Brown.jpg
+## Lexi Brown2.jpg
+## Lycera_LYC30937-2001 Clinical Study Protocol_01Mar2016_Tracked.docx
+## MC PRO DDW abstract draft 1.docx
+## MER Stress Management Dearborn 4-14.pptx
+## ML and AF WisconsinJuly17.pptx
+## MLforPrecisionMed2018.pptx
+## MLinGI.pptx
+## MLinIBDBeijing2017.pptx
+## MachineLearning26Sep2016.docx
+## MarnieKids.jpg
+## Meeting with Abbvie.pptx
+## Meta analysis TB vs CD version 3.4.docx
+## MohamedNoureldin.jpeg
+## Mscan adherence paper v4.docx
+## My EndNote Library.Data
+## My EndNote Library.enl
+## NewIBDTherapiesUtah2018.pptx
+## Notes on blogdown package.docx
+## Olorinab - ECCO 2019 Abstract - Higgins - Tolerability and analgesic efficacy_D6a_KG_PDRH.docx
+## Organoid slides for Peter.pptx
+## P2PEP Up-To-Date Topics.docx
+## P2PEPWrapUp2016.pptx
+## PDRH_FibrosisImaging_Congress_2019.2.pptx
+## PDRH_FibrosisImaging_Congress_2019.jpg
+## PDRH_FibrosisImaging_Congress_2019.pdf
+## PHNutritionBasicsofIBDAug2016.pptx
+## PHcv2016.docx
+## PHcv2017Prof.docx
+## PPT
+## PROsJanssen2017.pptx
+## PennIBDFistulizingCD2017Higgins.pptx
+## PennThioMTX2017Higgins.pptx
+## Pomish Story.docx
+## Pomish Tweets.pptx
 ## Poppy Eulogy backup.docx
 ## Poppy Eulogy.docx
-## Possible Eastern College Tour.docx
-## Powerpoint
-## Prashant Rec Letter.docx
-## Prashant Rec Letter.pdf
-## PredictingIBD_DDW_2021_ISS.html
-## PredictingIBD_DDW_2021_ISS.pdf
-## Purdue Disclosure Form_Higgins.docx
-## Question 16.docx
-## RCode
-## Ramp up clinical research_PH.xlsx
-## Ramping up human subject research - MM 6-1-20 _KDA_PDRH_suggestions.docx
+## Possible collaborations with UCB.docx
+## Poster Welcome.doc
+## Poster Welcome.docx
+## PragueRefractoryRisingBar2017.pptx
+## PragueRefractoryRisingBar2017_2.pptx
+## Predicting Steroid Use.docx
+## Predicting Therapeutic Outcomes in IBD.pptx
+## Prediction of Future IBD Health Care Utilization and Peter FINAL.docx
+## Prediction of Future IBD Health Care Utilization and Peter clean.docx
+## Presentation1.png
+## Presentation3.pptx
+## PtEdRdDeckFrankenmuth2017.pptx
+## PtEdRdDeckGrandRapids2018.pptx
+## QAFunctionalRequirements_GI_IBD Dashboard_DRAFT_v5.docx
+## R session Fri PM.docx
+## REDCapTableOne.pptx
+## RFModelsInEpicEMR2018.pptx
+## RUBIN - Diagnosis and Management of Nutritional Deficiencies and Anemia.FINAL.pptx
+## Rcode
 ## Recordings
-## Review Criteria for COVID Clinical Trials.docx
-## Review guidelines_2017.docx
-## Roasted Salted Cashews.docx
-## S is for Saffron 3.0.docx
-## S is for Saffron 3.1.docx
-## S is for Saffron 3.2.docx
-## S is for Saffron.2.0.docx
-## SEAN STOCKS.docx
-## SIG_Template_IBD Program_FINAL.docx
-## SPECIFIC AIMS 2_PDRH.docx
-## Sean Common App academic honors list.docx
-## Sean Common App activities list.docx
-## Sean Higgins Bordogni.mp4
-## Sean Higgins Brag Sheet.docx
-## Sean Investment Summary.docx
-## Sean Resume Tabular VBorder.docx
-## Sean Resume Tabular.docx
-## Sean Resume.docx
-## Sean Summer Priorities 2016.docx
-## SecureIBD.pptx
-## ShareRmd.html
-## Sherman Prize Nominee Questions.docx
-## Shoreline West Tour Information.docx
-## Short PA slides.pptx
-## Shotwave thread.docx
-## Signing Clinical Research Infusion Orders.pdf
-## SingleCell_DDW_2021_ISS.pdf
-## SoMe_use_2020.png
+## RimolaDelayGadEnh2015.pdf
+## Rlibs
+## S is for Saffron 3.3.docx
+## SCENIC Chicago2017.pptx
+## SCENIC DDW16.pptx
+## SPARC IBD Study China.V3.pptx
+## SPARC IBD Study China.pptx
+## SWV US R01 DDW abstract 2016.docx
+## SWVUSRadiology2013.pdf
+## Scientific Review Committee SALTYFOOD.pdf
+## Screen Shot 2017-09-03 at 5.51.16 PM.png
+## Screen Shot 2018-05-28 at 8.32.19 AM.png
+## Screen Shot 2018-05-31 at 10.58.08 AM.png
+## Senior Slide Show.ppsx
+## Sept2017-Higgins-MCTI Tx Fund Q3_update.pptx
 ## Social Media for GI.pptx
-## Source Code PT1.docx
-## Stelara paper.docx
-## T32_current_text_14June2019.docx
-## TOPPIC ML draft v5SCM_YL_AKW_PDRH.docx
-## TabaCrohn IBD J club.docx
-## Tables.docx
-## Takeda_IBD School Videos_Submission.pdf
-## Task List 2020-2.docx
-## Task List 2020-5.docx
-## Task List 2020.docx
-## Testing signatures with Adobe.pdf
-## The Risk of SARS.R1.Markup.docx
-## Tidymodels.docx
-## Tofa in ICI Figure Legends_Final Draft_V2.docx
-## Tofa inpatient induction Protocol_02NOV2018_PHforEdits.docx
-## Toffee Separation Tips.docx
-## UCRx_DDW_2021_ISS.pdf
-## UC_protocol_comments_2020.docx
-## UM IBD Clinical Trials IBD referral form.docx
-## UPA_U_ACHIEVE 1st draft_PDRH.docx
-## VINDICO_PRO.pptx
-## VideoVisitSchedulingQuickApptsforProviders.pdf
-## VincentChen_K specific aims 2020-10-25.docx
-## VirtualPtEdMar2020.v2.pdf
-## WebEx
+## Stidham_Higgins_BroadMar2016.pptx
+## Supplementary documents v2.docx
+## Syllabus DS4P.docx
+## TOPPICData Request Form v1.0 06Jan2017.docx
+## Table practice with flextable.docx
+## TakedaAug2017.pdf
+## TakedaAug2017.pptx
+## Task-Based GI Fellow Evaluation.docx
+## Test_Rmd_PPT.Rmd
+## Test_Rmd_PPT.pptx
+## The ABC IBD Management-RN.pptx
+## Thiopurine Update2014.pptx
+## Tofa inpatient induction Protocol_RCT_11Jun2019_Pfizer.docx
+## Tofacitinib for Patient Binder.v1SCM.docx
+## UC-PRO-SS Manuscript Draft 1Feb2016.docx
+## UC-PRO-SS Manuscript DraftPH.docx
+## UCPRO Version 6.1.docx
+## UEGW CD PRO SS_oral presentation 18Oct19.pptx
+## UEIStidhamGastro2011.pdf
+## UM Hospital.jpg
+## UMCME_Management of CD.pptx
+## UMHS Talk- Moving Beyond AntiTNF 4-2016 FINAL v2.pptx
+## UMHSaerial_3.jpg
+## UMNonDegreeApp2016.pdf
+## US Nonlinear for Surgeons.pptx
+## US R01.pdf
+## Ulcerative_colitis_Cases_AIBD_Baidoo_Mahadevan_Higgins.pptx
+## Ustekinumab for Patient Binder[1].docx
+## Utah2018HowToChooseIBDMed.pptx
+## UtahNewIBDTherapiesHiggins20182.pptx
+## Vedo Prediction in CD.docx
+## VedoUCDDW2017.pptx
+## Viberzi Allergan SlidesHiggins.pptx
+## Viberzi for Crohns without inflammation protocol Higgins.docx
+## VindicoMed Agenda.doc
+## Visual Abstract BMJ Steroids[1].jpg
+## Wellspringboard.png
+## Why IBD Training.pptx
+## Xenoestrogen budget- final.xlsx
+## Xenoestrogen proposal2.docx
+## XmasLetter2015.docx
+## Xu Photoacoustic 2015.pdf
 ## Zoom
-## Zwift
-## Zwift-Gift-Card.pdf
-## aga institute council july 2020 meeting.pdf
-## algorithms_thiopurine.pdf
-## base-r-cheatsheet.pdf
-## biomakers_fibrosisPDRH.docx
-## blue_down_arrow - Gravit Designer.html
-## bmj_imputation.pdf
-## cgh_factors_utilization.pdf
-## cycling core exercises.docx
-## draft_tokenization letter Risa_Uste.docx
-## early-career-faculty_Dec-2020.xlsx
-## epic cancel_reschedule appointments.ppt
-## epic schedule viewing_close.ppt
-## escalator.html
-## fellow graduation 2020.docx
-## hexStickers.jpg
-## higgins2x3.jpg
-## iBike Rides
-## jama_cushing_crohn_review_2021.pdf
-## learnr app diagram.jpg
-## learnr app diagram.pptx
-## letter Lowrimore.docx
-## mockstudy manuscript draft.docx
-## nejm1966_beecher_ethics.pdf
-## nejm_indomethacin.pdf
-## nejm_statins.pdf
-## orange_green_down_arrow - Gravit Designer.html
-## orange_green_down_arrow- Gravit Designer.pdf
-## pdrh_IBD_email.xlsx
-## personal statement fellowship_PDRH.docx
-## peterhiggins.jpg
-## pink_down_arrow - Gravit Designer.html
-## pink_up_arrow - Gravit Designer.pdf
-## seq-6.pdf
-## signature.docx
-## signature.fld
-## signature.html
-## signature.pdf
-## signature.png
-## stiff_bcl.R
-## submitJanssen_IBD School Videos_12Jul2018.pdf
-## tidyr_pivot.png
-## tidyr_pivot.xcf
-## ucla1.jpg
-## untidy_sheets.pptx
-## wga_min20.pdf
-## ~$T Review Higgins.docx
-## ~$gnature.docx
-## ~$sk List 2020-5.docx
-## ~$sk List 2020.docx</code></pre>
+## ]GI Clinical Protocols 3.7.19_RWS.xlsx
+## abtdataRfiles
+## ahorst_broom_package.png
+## ajg20168a.pdf
+## biomakers_fibrosis_text_draft_07MAR2016-4.docx
+## command_line_R.pptx
+## day1_s1_explore-libraries
+## day1_s2_copy-files
+## explore-libraries
+## healthInsSatPredictors.xlsx
+## human_cases-Xu_PA-09-28-18[1].tiff
+## images SWV, MTMRI.pptx
+## intern pic.png
+## mmc1.pdf
+## nejmStatinHiggins.pdf
+## not easy.jpg
+## p2pep.jpg
+## phiggins.jpg
+## phiggins2.jpg
+## phiggins3.jpg
+## ppt_from_Rmarkdown.docx
+## tablet.JPG
+## university-of-michigan-hospital.jpg
+## unknown_solicit.xlsx
+## volvulus.ppt
+## ~$llabus DS4P.docx
+## ~$ster Welcome.doc</code></pre>
 </div>
 <p>You will see a listing of all files and folders in the current directory. You can get more details by adding the option (sometimes called a <code>flag</code>) <code>-l</code></p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb55-1"><a href="cmd-line.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/<span class="kw">;</span></span>
-<span id="cb55-2"><a href="cmd-line.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> -l</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb78-1"><a href="cmd-line.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/<span class="kw">;</span></span>
+<span id="cb78-2"><a href="cmd-line.html#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> -l</span></code></pre></div>
 <p>The full listing will give you more details, including read &amp; write permissions, file size, date last saved, etc. <br>
 Many commands have options, or flags, that modify what they do.
 <br><br>
@@ -790,48 +781,192 @@ In your Terminal window:</p>
 <li>change the directory to the Powerpoint directory</li>
 <li>list the contents of this folder</li>
 </ul>
-<div class="sourceCode" id="cb56"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb56-1"><a href="cmd-line.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/Powerpoint<span class="kw">;</span></span>
-<span id="cb56-2"><a href="cmd-line.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
-<pre><code>## 2016IBDClinTrialsforMDsDearborn.pptx
-## 2016IntegratedDeckorMDsGB.pptx
-## 2019 SCSG GI Symposium IBD SoA  -  Read-Only.pptx
-## BE LGD Dearborn 2016.04.12.pptx
-## Getting Started in RStudio.pptx
-## Higgins Microbiota for IBD Patient Ed.pptx
-## HigginsDec2018AJG_SmokingStatus.pptx
-## IBDUpdate.pptx
-## Integrated Slide Deck Dearborn 2016.04.12.pptx
-## MER Stress Management Dearborn 4-14.pptx
-## MichiganMedicine-IBDTemplate.potx
-## PDRH RCAR 2020.pptx
-## PennThioMTX2017Higgins.pptx
-## Pregnancy in IBD.pptx
-## Regenbogen CRS for GI CME Course2016.pptx
-## Senior Slide Show.pptx
-## ThomsonRectalStumpComplicationsIBD2_13.pptx
-## UEGweek2020.pptx
-## UMHS Talk- Moving Beyond AntiTNF 4-2016 FINAL v2.pptx
-## Vertebrate Animals for K.pptx
-## VirtualPtEdMar2020.v2.pptx
-## Writers Room.pptx
-## ibd_meds_surgery_metan.pptx</code></pre>
+<div class="sourceCode" id="cb79"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb79-1"><a href="cmd-line.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/Powerpoint<span class="kw">;</span></span>
+<span id="cb79-2"><a href="cmd-line.html#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+<pre><code>## bash: line 0: cd: /Users/peterhiggins/Documents/Powerpoint: No such file or directory
+## -1.png
+## DESCRIPTION
+## LICENSE
+## README.md
+## _book
+## _bookdown.yml
+## _bookdown_files
+## _build.sh
+## _deploy.sh
+## _output.yml
+## boxes_ggconsort.R
+## current_image.Rdata
+## data_MST-41.xlsx
+## data_UC_BIOPSY_ALL_2018.csv
+## data_USDemand_ParrotAnalytics.xlsx
+## data_fcp.csv
+## data_rad.csv
+## file2.txt
+## file_name
+## france.png
+## images
+## index.Rmd
+## index.md
+## io02-getting-started.Rmd
+## io02-getting-started.md
+## io02-getting-started_files
+## io03-tasting.Rmd
+## io03-tasting.md
+## io04-updating.Rmd
+## io04-updating.md
+## io05-importing.Rmd
+## io06-data collection.Rmd
+## io06a-filter.Rmd
+## io06a-filter.md
+## io07-major-updates.Rmd
+## io07-major-updates.md
+## io08-data-validation.Rmd
+## io09-timeseries.Rmd
+## io10-tableOne.Rmd
+## io10-tableOne.knit.md
+## io11-ggplot-single-var.Rmd
+## io12-ggplot-cont-vs-catvar.Rmd
+## io13-ggplot-cont-vs-cont.Rmd
+## io14-presenting-Rmarkdown.Rmd
+## io15-reproducible-research.Rmd
+## io16-study-design.Rmd
+## io17-sample-size.Rmd
+## io18-sources-bias.Rmd
+## io19_randomization_blockrand_CAPTURE.Rmd
+## io20-one-var-1group-tests.Rmd
+## io21-one-var-2group-tests.Rmd
+## io22-one-var-Multgroup-tests.Rmd
+## io23-linear-regression.Rmd
+## io24-sharing-shiny.Rmd
+## io25-logistic-regression.Rmd
+## io26-meta-analysis.Rmd
+## io27-learn_consort.Rmd
+## io27-learn_consort.knit.md
+## io28-mockstudy_analysis_chisq.Rmd
+## io28-mockstudy_analysis_chisq_files
+## io29-learn_chisq.Rmd
+## io29a-chisq_example.Rmd
+## io29a-chisq_example_files
+## io2a-alt_intro.Rmd
+## io30-ttest.Rmd
+## io30-ttest.md
+## io30-ttest_files
+## io30a-ttest.Rmd
+## io30a-ttest_files
+## io30b-ttest.Rmd
+## io31-ttest_part2.Rmd
+## io31-ttest_part2_files
+## io32-table_ttest_broom.R
+## io33-tableone_arsenal.Rmd
+## io34-mockstudy_analysis.Rmd
+## io34-mockstudy_analysis_files
+## io35-making-univariate-model-tables.Rmd
+## io36-tidyr1.Rmd
+## io37-tidyr2.Rmd
+## io37-tidyr2_files
+## io38-tidylog.Rmd
+## io39-dplyr_verbs_demo.Rmd
+## io39-dplyr_verbs_demo.knit.md
+## io39a-dplyr_verbs_demo.Rmd
+## io40-more_dplyr.Rmd
+## io41-draw_consort.Rmd
+## io41-draw_consort_files
+## io42-randomization_demo_CAPTURE.Rmd
+## io42a-blockrand_CAPTURE.Rmd
+## io43-rand_block.Rmd
+## io44-UM_poster.Rmd
+## io44-UM_poster_cache
+## io44-UM_poster_files
+## io45-begin_scatterplots.Rmd
+## io45-begin_scatterplots_files
+## io46-begin_boxplots.Rmd
+## io46-begin_boxplots_files
+## io47-begin_bars.Rmd
+## io47-begin_bars_files
+## io48-learn_distrib_histo.Rmd
+## io48-learn_distrib_histo_files
+## io49a-multipanel_with_tables.Rmd
+## io49a-multipanel_with_tables_files
+## io50-strings_intro_learnr.Rmd
+## io50a-strings_intro.Rmd
+## io50a-strings_intro.html
+## io50b-strings_intro.Rmd
+## io50b-strings_intro.html
+## io51-string_2.Rmd
+## io51-string_2.knit.md
+## io51a-strings_2.Rmd
+## io53-strings_3._learnr.Rmd
+## io53-strings_3._learnr.html
+## io53a-Sample_colonoscopy_text_parse.R
+## io55-ForkBranchCollaboration.Rmd
+## io56-FormattingRmd2Word.Rmd
+## io56-FormattingRmd2Word_files
+## io57-first_function_tidyeval.R
+## io58-debug_pipes_plots.Rmd
+## io59-hashtag_debugging.Rmd
+## io60-help_in_R.Rmd
+## io60-help_in_R_files
+## io61-learnr_lm.Rmd
+## io62-leaps_demo.R
+## io63-logistic_regression.Rmd
+## io64-GAM.Rmd
+## io64-GAM_files
+## io65-error_messages.Rmd
+## io65-error_messages.md
+## io65-error_messages_files
+## io66-base_r.Rmd
+## io66-base_r.md
+## io70-r_cmd_line.Rmd
+## io97-publishing.Rmd
+## io98-title-holder.Rmd
+## io99-references.Rmd
+## ioAnalysis.Rmd
+## ioHow to Install R.docx
+## ioHow to Install Rstudio.docx
+## ioarsenal tableby gt.Rmd
+## iobar_plot in ggplot with value labels.R
+## iobibliometrix.R
+## iocleaning list of insplans.R
+## iocovid animation.R
+## iofcp.csv
+## ioparrot animate bar chart race.R
+## iopower_calc_proportions.R
+## iorad.csv
+## ioropenaq demo map.R
+## notes-on-how-to-publish-to-bookdown-org.html
+## now.json
+## packages.bib
+## preamble.tex
+## render1780e4d58aa62.rds
+## render7f3925ade8dd.rds
+## renv
+## renv.lock
+## rmrwr-book.Rproj
+## rmrwr.rds
+## rmrwr_files
+## style.css
+## table-one.R
+## table-one.Rmd
+## table-one.html
+## table1.docx
+## toc.css</code></pre>
 </div>
 <p>Great!<br>
 You moved to a new directory and listed it.<br>
 Now we will get fancy, and make a new directory within this directory with the <code>mkdir</code> command.<br></p>
 <div class="tryit">
 <p>Try this in your Terminal window:</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb58-1"><a href="cmd-line.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span><span class="kw">;</span></span>
-<span id="cb58-2"><a href="cmd-line.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> new_files<span class="kw">;</span></span>
-<span id="cb58-3"><a href="cmd-line.html#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb81-1"><a href="cmd-line.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span><span class="kw">;</span></span>
+<span id="cb81-2"><a href="cmd-line.html#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> new_files<span class="kw">;</span></span>
+<span id="cb81-3"><a href="cmd-line.html#cb81-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
 </div>
 <p>You have now made a new directory (folder) within the previous directory, named <code>new_files</code>. Verify this in your Documents folder.<br>
 You can now change to this directory <br>
 and list the contents (it should be empty).<br></p>
 <div class="tryit">
 <p>Try this out in your Terminal Window (<strong>note</strong> edit the <code>cd</code> command to your own directory path).</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb59-1"><a href="cmd-line.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/Powerpoint/new_files<span class="kw">;</span></span>
-<span id="cb59-2"><a href="cmd-line.html#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb82-1"><a href="cmd-line.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/Powerpoint/new_files<span class="kw">;</span></span>
+<span id="cb82-2"><a href="cmd-line.html#cb82-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
 </div>
 <p>Note that you can abbreviate the current directory with <code>.</code>, so that you could have also used <code>cd ./new_files</code>
 <br><br></p>
@@ -839,27 +974,27 @@ and list the contents (it should be empty).<br></p>
 Sometimes you need to create a new file, then write data to it.</p>
 <div class="tryit">
 <p>Try this out</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb60-1"><a href="cmd-line.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> file_name<span class="kw">;</span></span>
-<span id="cb60-2"><a href="cmd-line.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb83-1"><a href="cmd-line.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> file_name<span class="kw">;</span></span>
+<span id="cb83-2"><a href="cmd-line.html#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
 </div>
 <p>You can also create a file with data inside it with the <code>cat &gt;</code> command.</p>
 <div class="tryit">
 <p>Type in the following lines into your Terminal window. When complete, type control-D to be done and return to the Terminal prompt.
 <code>cat</code> stands for concatenate.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb61-1"><a href="cmd-line.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="op">&gt;</span> file2.txt</span>
-<span id="cb61-2"><a href="cmd-line.html#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="ex">cat1</span></span>
-<span id="cb61-3"><a href="cmd-line.html#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="ex">cat2</span></span>
-<span id="cb61-4"><a href="cmd-line.html#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="ex">cat3</span></span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb84-1"><a href="cmd-line.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="op">&gt;</span> file2.txt</span>
+<span id="cb84-2"><a href="cmd-line.html#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="ex">cat1</span></span>
+<span id="cb84-3"><a href="cmd-line.html#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="ex">cat2</span></span>
+<span id="cb84-4"><a href="cmd-line.html#cb84-4" aria-hidden="true" tabindex="-1"></a><span class="ex">cat3</span></span></code></pre></div>
 </div>
 <p>Now you can list the contents of this file with the <code>cat</code> command below.</p>
 <div class="tryit">
 <p>Give this a try</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb62-1"><a href="cmd-line.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> file2.txt</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb85-1"><a href="cmd-line.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> file2.txt</span></code></pre></div>
 </div>
 <p>You can also list the directory of your <code>new_files</code> folder with ls to see the new folder contents.</p>
 <div class="tryit">
 <p>Try this</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb63-1"><a href="cmd-line.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb86-1"><a href="cmd-line.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
 </div>
 <p>Note that you don’t need to use the Terminal to run bash commands. You can do this from an Rmarkdown file. <br>
 Take a moment to run <code>pwd</code> in your Terminal, to get the current directory.<br>
@@ -871,10 +1006,10 @@ Switch back to the Rmarkdown document.<br>
 Select one of the R code chunks (note the {r} at the top) and delete it.<br>
 Now click on the Insert dropdown at the top of the document, and insert a Bash chunk.<br>
 Now add UNIX commands (separated by a semicolon), like</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb64-1"><a href="cmd-line.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> (paste in path here);</span>
-<span id="cb64-2"><a href="cmd-line.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span><span class="kw">;</span></span>
-<span id="cb64-3"><a href="cmd-line.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span><span class="kw">;</span></span>
-<span id="cb64-4"><a href="cmd-line.html#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> file2.txt</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb87-1"><a href="cmd-line.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> (paste in path here);</span>
+<span id="cb87-2"><a href="cmd-line.html#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span><span class="kw">;</span></span>
+<span id="cb87-3"><a href="cmd-line.html#cb87-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span><span class="kw">;</span></span>
+<span id="cb87-4"><a href="cmd-line.html#cb87-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> file2.txt</span></code></pre></div>
 <p>Then run this chunk. <br></p>
 </div>
 <p>Now you can run terminal commands directly from Rmarkdown!</p>
@@ -890,10 +1025,10 @@ In order, we will
 - remove the directory with <code>rmdir new_files</code></p>
 <div class="tryit">
 <p>Give this a try</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb65-1"><a href="cmd-line.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span><span class="kw">;</span></span>
-<span id="cb65-2"><a href="cmd-line.html#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> file2.txt<span class="kw">;</span></span>
-<span id="cb65-3"><a href="cmd-line.html#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..<span class="kw">;</span></span>
-<span id="cb65-4"><a href="cmd-line.html#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rmdir</span> new_files</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb88-1"><a href="cmd-line.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span><span class="kw">;</span></span>
+<span id="cb88-2"><a href="cmd-line.html#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> file2.txt<span class="kw">;</span></span>
+<span id="cb88-3"><a href="cmd-line.html#cb88-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..<span class="kw">;</span></span>
+<span id="cb88-4"><a href="cmd-line.html#cb88-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rmdir</span> new_files</span></code></pre></div>
 </div>
 <p>Verify all of this in your Documents window.<br>
 This is great. But you can imagine a situation in which you mistakenly <code>rm</code> a file (or directory) that you actually needed. Unlike your usual user interface, when a file is removed at the command line, it is gone. It is not in the trash folder. It is gone. There is something to be said for modern user interfaces, which are built for humans, who occasionally make mistakes. Sometimes we do want files or folders back.</p>
@@ -916,7 +1051,7 @@ This is great. But you can imagine a situation in which you mistakenly <code>rm<
 You can launch an R session from the Terminal Window (if you have R installed on your computer) by typing the letter <code>R</code> at the Terminal prompt</p>
 <div class="tryit">
 <p>Launch R</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb66-1"><a href="cmd-line.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span></span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb89-1"><a href="cmd-line.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span></span></code></pre></div>
 </div>
 <p>You get the usual R intro, including version number, and the <code>R&gt;</code> prompt.<br>
 Now you can run R in interactive mode with available datasets, or your own datasets.<br></p>
@@ -924,7 +1059,7 @@ Now you can run R in interactive mode with available datasets, or your own datas
 <p>Try a few simple commands with the mtcars dataset.<br>
 Give the examples below a try.<br></p>
 <p>You can use <code>q()</code> to quit back to the terminal (and reply “n” to <strong>not</strong> save the workplace image).</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="cmd-line.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="cmd-line.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code></pre></div>
 <pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am
 ## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1
 ## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1
@@ -939,9 +1074,9 @@ Give the examples below a try.<br></p>
 ## Hornet 4 Drive       3    1
 ## Hornet Sportabout    3    2
 ## Valiant              3    1</code></pre>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="cmd-line.html#cb69-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb69-2"><a href="cmd-line.html#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(mpg <span class="sc">&gt;</span> <span class="dv">25</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb69-3"><a href="cmd-line.html#cb69-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&#39;m&#39;</span>)<span class="sc">|</span><span class="fu">starts_with</span>(<span class="st">&#39;c&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="cmd-line.html#cb92-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb92-2"><a href="cmd-line.html#cb92-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(mpg <span class="sc">&gt;</span> <span class="dv">25</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb92-3"><a href="cmd-line.html#cb92-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&#39;m&#39;</span>)<span class="sc">|</span><span class="fu">starts_with</span>(<span class="st">&#39;c&#39;</span>))</span></code></pre></div>
 <pre><code>##                 mpg cyl carb
 ## Fiat 128       32.4   4    1
 ## Honda Civic    30.4   4    2
@@ -960,17 +1095,17 @@ and put the R commands in quotes.<br></p>
 <div class="tryit">
 <p>Try the example below
 (<strong>note</strong> that this will not work if you are still in R - be sure you are back in the terminal with the <code>%</code> or <code>$</code> prompt)</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb71-1"><a href="cmd-line.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> -e <span class="st">&quot;head(mtcars)&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb94-1"><a href="cmd-line.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> -e <span class="st">&quot;head(mtcars)&quot;</span></span></code></pre></div>
 </div>
 <p>or this example - note that single or double quotes does not matter - as long as they match.</p>
 <div class="tryit">
 <p>Try this</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb72-1"><a href="cmd-line.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> -e <span class="st">&#39;install(palmerpenguins)&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb95-1"><a href="cmd-line.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> -e <span class="st">&#39;install(palmerpenguins)&#39;</span></span></code></pre></div>
 </div>
 <p>You can also string together several commands with the semicolon between them.</p>
 <div class="tryit">
 <p>Try the example below.</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb73-1"><a href="cmd-line.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> -e <span class="st">&#39;library(palmerpenguins);data(penguins);tail(penguins)&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb96-1"><a href="cmd-line.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span> -e <span class="st">&#39;library(palmerpenguins);data(penguins);tail(penguins)&#39;</span></span></code></pre></div>
 </div>
 </div>
 <div id="running-an-r-script-from-the-terminal" class="section level2" number="10.10">
@@ -979,7 +1114,7 @@ and put the R commands in quotes.<br></p>
 This is easy - just call the <code>Rscript</code> command with your file name.</p>
 <div class="tryit">
 <p>Pick out a short R file you have written, make sure you are in the right directory where the file is, and use it as in the example below.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb74-1"><a href="cmd-line.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> myscript.R</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb97-1"><a href="cmd-line.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> myscript.R</span></code></pre></div>
 </div>
 <p>This launches R, runs your script, saves resulting output (if your script includes save or ggsave commands), closes R, and sends you back to the Terminal. Very simple.</p>
 </div>
@@ -990,7 +1125,7 @@ Note that this is one case where nesting different types of quotes (single vs. 
 It helps to use single quotes around your filename and double quotes around the <code>rmarkown::render</code> command.</p>
 <div class="tryit">
 <p>Try it out</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb75-1"><a href="cmd-line.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> -e <span class="st">&quot;rmarkdown::render(&#39;output_file.Rmd&#39;)&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb98-1"><a href="cmd-line.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> -e <span class="st">&quot;rmarkdown::render(&#39;output_file.Rmd&#39;)&quot;</span></span></code></pre></div>
 </div>
 <p>So there you have it! <br>
 Just enough to get you started with R from the command line.
@@ -1016,7 +1151,7 @@ Just enough to get you started with R from the command line.
         </div>
       </div>
 <a href="comparing-two-measures-of-centrality.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="title-holder.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -1039,6 +1174,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {

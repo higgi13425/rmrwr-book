@@ -14,10 +14,8 @@ rmd_files:
 - io66-base_r.Rmd
 - io04-updating.Rmd
 - io07-major-updates.Rmd
-- io10-tableOne.Rmd
 - io30-ttest.Rmd
 - io70-r_cmd_line.Rmd
-- io97-publishing.Rmd
 - io98-title-holder.Rmd
 - io99-references.Rmd
 

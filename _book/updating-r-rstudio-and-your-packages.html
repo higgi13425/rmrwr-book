@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Updating R, RStudio, and Your Packages | Reproducible Medical Research with R</title>
+  <title>Chapter 7 Updating R, RStudio, and Your Packages | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Updating R, RStudio, and Your Packages | Reproducible Medical Research with R" />
+  <meta property="og:title" content="Chapter 7 Updating R, RStudio, and Your Packages | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rmrwr.netlify.com" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="higgi13425/rmrwr-book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Updating R, RStudio, and Your Packages | Reproducible Medical Research with R" />
+  <meta name="twitter:title" content="Chapter 7 Updating R, RStudio, and Your Packages | Reproducible Medical Research with R" />
   
   <meta name="twitter:description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
   
@@ -24,17 +24,17 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2021-01-19" />
+<meta name="date" content="2021-06-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="interpreting-error-messages.html"/>
+<link rel="prev" href="the-basics-of-base-r.html"/>
 <link rel="next" href="major-r-updates-where-are-my-packages.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -51,11 +51,13 @@
 
 
 
-<script src="libs/htmlwidgets-1.5.3.9000/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.2.9000/plotly.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
 
@@ -123,6 +125,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -280,30 +283,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#references"><i class="fa fa-check"></i><b>5.5</b> References:</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html"><i class="fa fa-check"></i><b>6</b> Updating R, RStudio, and Your Packages</a>
+<li class="chapter" data-level="6" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html"><i class="fa fa-check"></i><b>6</b> The Basics of Base R</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-1"><i class="fa fa-check"></i><b>6.1</b> Installing Packages</a>
+<li class="chapter" data-level="6.1" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#dimensions-of-data-rectangles"><i class="fa fa-check"></i><b>6.1</b> Dimensions of Data Rectangles</a></li>
+<li class="chapter" data-level="6.2" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#naming-columns"><i class="fa fa-check"></i><b>6.2</b> Naming columns</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html"><i class="fa fa-check"></i><b>7</b> Updating R, RStudio, and Your Packages</a>
 <ul>
-<li class="chapter" data-level="6.1.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-from-github"><i class="fa fa-check"></i><b>6.1.1</b> Installing Packages from Github</a></li>
-<li class="chapter" data-level="6.1.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#problems-with-installing-packages"><i class="fa fa-check"></i><b>6.1.2</b> Problems with Installing Packages</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#loading-packages-with-library-1"><i class="fa fa-check"></i><b>6.2</b> Loading Packages with Library</a></li>
-<li class="chapter" data-level="6.3" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-r"><i class="fa fa-check"></i><b>6.3</b> Updating R</a></li>
-<li class="chapter" data-level="6.4" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-rstudio"><i class="fa fa-check"></i><b>6.4</b> Updating RStudio</a></li>
-<li class="chapter" data-level="6.5" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-your-packages"><i class="fa fa-check"></i><b>6.5</b> Updating Your Packages</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html"><i class="fa fa-check"></i><b>7</b> Major R Updates (Where Are My Packages?)</a></li>
-<li class="chapter" data-level="8" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html"><i class="fa fa-check"></i><b>8</b> Descriptive Data Tables</a>
+<li class="chapter" data-level="7.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-1"><i class="fa fa-check"></i><b>7.1</b> Installing Packages</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-table-one"><i class="fa fa-check"></i><b>8.1</b> Making Table One</a>
-<ul>
-<li class="chapter" data-level="8.1.1" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#the-tableby-function-in-the-arsenal-package"><i class="fa fa-check"></i><b>8.1.1</b> The <em>tableby</em> function in the <strong>arsenal</strong> package</a></li>
-<li class="chapter" data-level="8.1.2" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#the-gtsummary-package-with-flextable"><i class="fa fa-check"></i><b>8.1.2</b> The gtsummary package with flextable</a></li>
-<li class="chapter" data-level="8.1.3" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#example-of-how-to-build-a-table-1-with-gtsummary"><i class="fa fa-check"></i><b>8.1.3</b> Example of how to build a Table 1 with gtsummary</a></li>
+<li class="chapter" data-level="7.1.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-from-github"><i class="fa fa-check"></i><b>7.1.1</b> Installing Packages from Github</a></li>
+<li class="chapter" data-level="7.1.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#problems-with-installing-packages"><i class="fa fa-check"></i><b>7.1.2</b> Problems with Installing Packages</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-an-adverse-events-table"><i class="fa fa-check"></i><b>8.2</b> Making An Adverse Events Table</a></li>
-<li class="chapter" data-level="8.3" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-a-results-table"><i class="fa fa-check"></i><b>8.3</b> Making A Results Table</a></li>
+<li class="chapter" data-level="7.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#loading-packages-with-library-1"><i class="fa fa-check"></i><b>7.2</b> Loading Packages with Library</a></li>
+<li class="chapter" data-level="7.3" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-r"><i class="fa fa-check"></i><b>7.3</b> Updating R</a></li>
+<li class="chapter" data-level="7.4" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-rstudio"><i class="fa fa-check"></i><b>7.4</b> Updating RStudio</a></li>
+<li class="chapter" data-level="7.5" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-your-packages"><i class="fa fa-check"></i><b>7.5</b> Updating Your Packages</a></li>
 </ul></li>
+<li class="chapter" data-level="8" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html"><i class="fa fa-check"></i><b>8</b> Major R Updates (Where Are My Packages?)</a></li>
 <li class="chapter" data-level="9" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html"><i class="fa fa-check"></i><b>9</b> Comparing Two Measures of Centrality</a>
 <ul>
 <li class="chapter" data-level="9.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#common-problem"><i class="fa fa-check"></i><b>9.1</b> Common Problem</a>
@@ -364,18 +361,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.10" data-path="cmd-line.html"><a href="cmd-line.html#running-an-r-script-from-the-terminal"><i class="fa fa-check"></i><b>10.10</b> Running an R Script from the Terminal</a></li>
 <li class="chapter" data-level="10.11" data-path="cmd-line.html"><a href="cmd-line.html#rendering-an-rmarkdown-file-from-the-terminal"><i class="fa fa-check"></i><b>10.11</b> Rendering an Rmarkdown file from the Terminal</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><i class="fa fa-check"></i><b>11</b> Building and Publishing a {bookdown} book on bookdown.org</a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#setting-up"><i class="fa fa-check"></i><b>11.1</b> Setting up</a></li>
-<li class="chapter" data-level="11.2" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#bookdown-yaml"><i class="fa fa-check"></i><b>11.2</b> Bookdown YAML</a></li>
-<li class="chapter" data-level="11.3" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#output-yaml"><i class="fa fa-check"></i><b>11.3</b> Output YAML</a></li>
-<li class="chapter" data-level="11.4" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#styles.css"><i class="fa fa-check"></i><b>11.4</b> Styles.css</a></li>
-<li class="chapter" data-level="11.5" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#creating-chapters-in-r-markdown"><i class="fa fa-check"></i><b>11.5</b> Creating Chapters in R Markdown</a></li>
-<li class="chapter" data-level="11.6" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#chapter-names"><i class="fa fa-check"></i><b>11.6</b> Chapter Names</a></li>
-<li class="chapter" data-level="11.7" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#when-a-chapter-is-ready-for-sharing"><i class="fa fa-check"></i><b>11.7</b> When a Chapter is Ready for Sharing</a></li>
-<li class="chapter" data-level="11.8" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#building-the-book"><i class="fa fa-check"></i><b>11.8</b> Building the Book</a></li>
-<li class="chapter" data-level="11.9" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#publishing-the-book"><i class="fa fa-check"></i><b>11.9</b> Publishing the Book</a></li>
-</ul></li>
 <li class="chapter" data-level="" data-path="title-holder.html"><a href="title-holder.html"><i class="fa fa-check"></i>Title holder</a></li>
 <li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -398,13 +383,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="updating-r-rstudio-and-your-packages" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> Updating R, RStudio, and Your Packages</h1>
-<div id="installing-packages-1" class="section level2" number="6.1">
-<h2><span class="header-section-number">6.1</span> Installing Packages</h2>
+<div id="updating-r-rstudio-and-your-packages" class="section level1" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Updating R, RStudio, and Your Packages</h1>
+<div id="installing-packages-1" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Installing Packages</h2>
 <p>The most important way to update R is to add <em>packages</em>. Each package adds new functions and/or data to R, enabling you to do much more in the R and RStudio environment.</p>
 <p>When you open R, or start a new session, you have only the base version of R available, and it is pretty spartan. You can see how many packages you have available to you by starting RStudio and going to the menu Session/New Session, or Session/Restart R. Each of these will give you a clean workspace to start in. Once you have started a new session, or restarted R, run the following code:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="updating-r-rstudio-and-your-packages.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">.packages</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="updating-r-rstudio-and-your-packages.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">.packages</span>())</span></code></pre></div>
 <pre><code>##  [1] &quot;medicaldata&quot; &quot;forcats&quot;     &quot;stringr&quot;     &quot;dplyr&quot;      
 ##  [5] &quot;purrr&quot;       &quot;readr&quot;       &quot;tidyr&quot;       &quot;tibble&quot;     
 ##  [9] &quot;ggplot2&quot;     &quot;tidyverse&quot;   &quot;stats&quot;       &quot;graphics&quot;   
@@ -417,60 +402,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Notice that the package_name has to be in quotes. These can be single or double quotes. The package_name and install.packages() are <em>case_sensitive</em> like all objects and functions in R, so that something like <code>Install.Packages</code> will not work.</p>
 <p>Once the package is installed, you keep that in your R library associated with your current major version of R. You will need to update &amp; reinstall packages each time you update a major version of R. R versions are designated with R version #.#.# A change in the third number indicates a minor version change. A change in the first or 2nd number (from R 3.6.2 to 4.0.0, or 4.0.2 to 4.1.0) is a major version upgrade which will require re-installation of packages.</p>
 <p>Let’s practice installing a package. Run the code below to install the <em>tidyverse</em> package.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="updating-r-rstudio-and-your-packages.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="updating-r-rstudio-and-your-packages.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/93/s18zkv2d4f556fxbjvb8yglc0000gp/T//RtmpnqekKh/downloaded_packages</code></pre>
-<div id="installing-packages-from-github" class="section level3" number="6.1.1">
-<h3><span class="header-section-number">6.1.1</span> Installing Packages from Github</h3>
+##  /var/folders/_p/8ghzfv1n0qd0bp2thqt6v3qm0000gn/T//Rtmp5k9vHK/downloaded_packages</code></pre>
+<div id="installing-packages-from-github" class="section level3" number="7.1.1">
+<h3><span class="header-section-number">7.1.1</span> Installing Packages from Github</h3>
 <p>Some packages are still in development. These are often in repositories on github, rather than on the CRAN servers. To install these packages, you need to know path to the repository. You can install the <em>medicaldata</em> package from Github. Run the code below to install this package.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="updating-r-rstudio-and-your-packages.html#cb18-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;higgi13425/medicaldata&quot;</span>)</span></code></pre></div>
-<pre><code>## Using github PAT from envvar GITHUB_PAT</code></pre>
-<pre><code>## Skipping install of &#39;medicaldata&#39; from a github remote, the SHA1 (1c039d8b) has not changed since last install.
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="updating-r-rstudio-and-your-packages.html#cb42-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;higgi13425/medicaldata&quot;</span>)</span></code></pre></div>
+<pre><code>## Skipping install of &#39;medicaldata&#39; from a github remote, the SHA1 (51732cf8) has not changed since last install.
 ##   Use `force = TRUE` to force installation</code></pre>
 <p>In contrast, to install.packages, the library() function can work with quotes around the package_name, but they are not required. This is because these packages are already installed in your R library, and are known quantities. In general, known objects in your R environment do not require quotes, and novel things like packages do require quotes.</p>
 <p>If you re-run <code>print(.packages)</code> at this point, you will not have any more packages. This is because you have installed new packages, but not loaded them.</p>
 </div>
-<div id="problems-with-installing-packages" class="section level3" number="6.1.2">
-<h3><span class="header-section-number">6.1.2</span> Problems with Installing Packages</h3>
-<div id="r-version-issues" class="section level4" number="6.1.2.1">
-<h4><span class="header-section-number">6.1.2.1</span> R Version Issues</h4>
+<div id="problems-with-installing-packages" class="section level3" number="7.1.2">
+<h3><span class="header-section-number">7.1.2</span> Problems with Installing Packages</h3>
+<div id="r-version-issues" class="section level4" number="7.1.2.1">
+<h4><span class="header-section-number">7.1.2.1</span> R Version Issues</h4>
 <p>Sometimes you may run into a problem installing a package which was developed for a previous version of R. Especially if you have recently upgraded your R version recently, the CRAN version of a package may be a bit behind. This can often be fixed by googling for “github” and “package_name”. This will usually lead you to the github repository for that package, which will have a pathname of “github_username/package_name”. Once you know this, you can use</p>
 <p>`devtools::install_github(‘github_username/package_name’) to install the newest version of the package, which will usually be compatible with the latest version of R.</p>
 </div>
-<div id="installing-from-source-vs-binaries" class="section level4" number="6.1.2.2">
-<h4><span class="header-section-number">6.1.2.2</span> Installing from Source vs Binaries</h4>
+<div id="installing-from-source-vs-binaries" class="section level4" number="7.1.2.2">
+<h4><span class="header-section-number">7.1.2.2</span> Installing from Source vs Binaries</h4>
 </div>
-<div id="dependencies" class="section level4" number="6.1.2.3">
-<h4><span class="header-section-number">6.1.2.3</span> Dependencies</h4>
+<div id="dependencies" class="section level4" number="7.1.2.3">
+<h4><span class="header-section-number">7.1.2.3</span> Dependencies</h4>
 <p>Some packages are dependent on <em>specific</em> versions of other packages, and will ask you to update the other packages during installation. As a general rule, you should say ‘yes’. If you are worried about over-writing an existing package in a way that would break your code in a different project, then that project needs its own project-specific library, which you can create with the {renv} package.</p>
 </div>
-<div id="extra-r-dependencies" class="section level4" number="6.1.2.4">
-<h4><span class="header-section-number">6.1.2.4</span> Extra-R Dependencies</h4>
+<div id="extra-r-dependencies" class="section level4" number="7.1.2.4">
+<h4><span class="header-section-number">7.1.2.4</span> Extra-R Dependencies</h4>
 <p>Sometimes packages require (depend upon) software that is not part of the R ecosystem. These will generally give you messages during the install process asking you to install this helper software. Common helper software includes things like Fortran and RJava. Sometimes you will need to go to websites, or use software like Homebrew (on the Mac) to install these extra helper pieces of software.</p>
 </div>
 </div>
 </div>
-<div id="loading-packages-with-library-1" class="section level2" number="6.2">
-<h2><span class="header-section-number">6.2</span> Loading Packages with Library</h2>
+<div id="loading-packages-with-library-1" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> Loading Packages with Library</h2>
 <p>Run the code chunk below to load both {tidyverse} and {medicaldata}. Note that the {tidyverse} package is actually a meta-package that contains 8 packages, and each one has its own version number.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="updating-r-rstudio-and-your-packages.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb21-2"><a href="updating-r-rstudio-and-your-packages.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="updating-r-rstudio-and-your-packages.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb44-2"><a href="updating-r-rstudio-and-your-packages.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span></code></pre></div>
 <p>Notice that loading tidyverse led to some <strong>conflict</strong> messages. The dplyr::filter function masks the stats::filter() function. These two packages, {dplyr} and {stats}, both have a function named filter(). The more recently loaded package is assumed to be the default, so if you call a filter() command, R will use dplyr::filter(). If you want to call the stats::filter() command, you have to explicitly use the package::function() format. If you are not sure which package you loaded last, it can be wise to use the explicit format when calling functions in R.</p>
 <p>The other masked function is <em>lag()</em>. The function dplyr::lag() is masking stats::lag(), as {dplyr} was loaded after {stats}. Most of the time this is not a big difference, but every once in a while a conflict between package functions can get very confusing. When in doubt, use the explicit format, in which you call package::function() to make clear what you mean - dplyr::lag() vs. stats::lag().</p>
 <p>Note that it is <em>good practice</em> to load all of your packages needed for an R script or an Rmarkdown (.Rmd) document at the <strong>beginning</strong> of the script or .Rmd. This allows someone else using your script or Rmd to check whether they have the needed packages installed, and install them if needed. In an Rmarkdown document, this is done in a special <em>setup</em> code chunk near the top of the document. If some of these packages are not on CRAN, it is good practice to add a comment (a statement after a hashtag) on how to install this package. For example, in a setup chunk that loads {tidyverse} and {medicaldata}, it is a good idea to add a comment on how to install {medicaldata}, which is not yet on CRAN. See the example below</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="updating-r-rstudio-and-your-packages.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb22-2"><a href="updating-r-rstudio-and-your-packages.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb22-3"><a href="updating-r-rstudio-and-your-packages.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># the {medicaldata} package can be installed with devtools::install_github(&#39;higgi13425/medicaldata&#39;)</span></span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="updating-r-rstudio-and-your-packages.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb45-2"><a href="updating-r-rstudio-and-your-packages.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb45-3"><a href="updating-r-rstudio-and-your-packages.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># the {medicaldata} package can be installed with devtools::install_github(&#39;higgi13425/medicaldata&#39;)</span></span></code></pre></div>
 </div>
-<div id="updating-r" class="section level2" number="6.3">
-<h2><span class="header-section-number">6.3</span> Updating R</h2>
+<div id="updating-r" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Updating R</h2>
 </div>
-<div id="updating-rstudio" class="section level2" number="6.4">
-<h2><span class="header-section-number">6.4</span> Updating RStudio</h2>
+<div id="updating-rstudio" class="section level2" number="7.4">
+<h2><span class="header-section-number">7.4</span> Updating RStudio</h2>
 </div>
-<div id="updating-your-packages" class="section level2" number="6.5">
-<h2><span class="header-section-number">6.5</span> Updating Your Packages</h2>
+<div id="updating-your-packages" class="section level2" number="7.5">
+<h2><span class="header-section-number">7.5</span> Updating Your Packages</h2>
 
 </div>
 </div>
@@ -479,7 +463,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="interpreting-error-messages.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="the-basics-of-base-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="major-r-updates-where-are-my-packages.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -503,6 +487,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
