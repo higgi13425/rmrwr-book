@@ -11,6 +11,7 @@ rmd_files:
 - io03-tasting.Rmd
 - io06a-filter.Rmd
 - io65-error_messages.Rmd
+- io66-base_r.Rmd
 - io04-updating.Rmd
 - io07-major-updates.Rmd
 - io10-tableOne.Rmd
