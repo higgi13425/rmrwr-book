@@ -14,13 +14,13 @@ library(tidyverse)
 
 # The Basics of Base R
 
-While there are many great features of the *tidyverse*, one should not throw out the base R with the bathwater.
+While there are many great features of the *tidyverse*, one should not throw out the base R with the bathwater. The functions and packages of base R are stable and slow to change (unlike the dynamic packages and functions of the tidyverse), and many are helpful and important building blocks for using R. Some of the functions in base R tend to fail silently, and have unhelpful error messages, but they are embedded in a lot of R scripts. When you search for help with R on websites like RStudio Community and Stack Overflow, you will often find base R code, and you will need to know how to interpret it.
 
 There are many really basic and important functions in base R that are worth knowing about.
 
 Once you have a handle on these basic functions, you can say
 
-![Obscure baseR video game meme](~/Documents/Rcode/rmrwr-book/images/baseRmeme.png)
+![Obscure base R / video game meme](~/Documents/Rcode/rmrwr-book/images/baseRmeme.png)
 
 [meme details](https://en.wikipedia.org/wiki/All_your_base_are_belong_to_us)
 
@@ -180,9 +180,19 @@ You will generally need at least 3 of these to describe a sequence, or *seq()* w
 See the examples below
 
 ```{r}
-seq(from = 2, to = 18, by = 2)
-seq(3,18, length=6)
-seq(from = 24, to = 4, by = 6)
-seq(from = 5, by = 5, length = 6)
-seq(from = 16, to = 128, length = 8)
+# leaving out "length"
+seq(from = 2, to = 18, by = 2) 
+
+# leaving out argument names
+seq(3, 18, length=6) 
+
+# 'length' and 'to' do not match
+seq(from = 24, to = 4, by = -6) 
+
+# leaving out "to"
+seq(from = 5, by = 5, length = 6) 
+
+# leaving out "by"
+seq(from = 16, to = 128, length = 8) 
+seq(from = 51, by = -3, length = 17)
 ```
