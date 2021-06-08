@@ -177,6 +177,8 @@ You can make more complex sequences with the seq() function. The main arguments 
 
 You will generally need at least 3 of these to describe a sequence, or *seq()* will use the default *by* value of 1. Note that if the *by* increment does not match the *to* argument, the sequence will stop at the last number before the *to* number.
 
+*seq_len(n)* is a shortcut that gives you a sequence from 1 to n, while *seq_along(vector)* is a shortcut that gives you a sequence from 1 to the length of a the vector.
+
 See the examples below
 
 ```{r}
@@ -195,4 +197,47 @@ seq(from = 5, by = 5, length = 6)
 # leaving out "by"
 seq(from = 16, to = 128, length = 8) 
 seq(from = 51, by = -3, length = 17)
+
+# using the seq_len() shortcut with n
+seq_len(14)
+
+# using the seq_along() shortcut with a vector
+seq_along(7:23)
+seq_along(licorice$C)
+```
+
+## Mathematical functions
+
+R has many mathematical functions, which can be used in a variety of calculations. These can be run on a vector, or on a variable in a dataframe. These include (and there are many more):
+
+-   mean
+
+-   median
+
+-   var
+
+-   sd
+
+-   min
+
+-   max
+
+-   range
+
+-   rank
+
+-   sum
+
+Examples are shown below
+
+```{r}
+mean(1:20)
+median(licorice$C)
+var(licorice$C)
+sd(licorice$C)
+min(licorice$C)
+max(licorice$C)
+range(licorice$C)[2] # selects 2nd value in range (max)
+rank(licorice$C)[1] # ranks first 10 values
+sum(licorice$C) # sum of values
 ```
