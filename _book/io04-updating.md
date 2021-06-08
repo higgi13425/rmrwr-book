@@ -48,7 +48,7 @@ install.packages("tidyverse")
 ```
 ## 
 ## The downloaded binary packages are in
-## 	/var/folders/_p/8ghzfv1n0qd0bp2thqt6v3qm0000gn/T//Rtmp5k9vHK/downloaded_packages
+## 	/var/folders/_p/8ghzfv1n0qd0bp2thqt6v3qm0000gn/T//Rtmp3ol8Db/downloaded_packages
 ```
 
 ### Installing Packages from Github
