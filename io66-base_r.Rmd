@@ -20,12 +20,8 @@ There are many really basic and important functions in base R that are worth kno
 
 Once you have a handle on these basic functions, you can say
 
-<<<<<<< HEAD
-![Obscure base R / video game meme](~/Documents/Rcode/rmrwr-book/images/baseRmeme.png)
-
-=======
 ![Obscure baseR video game meme](~/Documents/Rcode/rmrwr-book/images/baseRmeme.png)
->>>>>>> 310652dad27103eab96573483d04acbb7fe61199
+
 [meme details](https://en.wikipedia.org/wiki/All_your_base_are_belong_to_us)
 
 ## Dimensions of Data Rectangles
@@ -117,11 +113,9 @@ Note also that we used the bracket notation above to print just the first 10 row
 
 -   By putting nothing after the comma, we select ***all*** columns.
 
-    :::{.warning}
-
+    ::: {.warning}
     You might be wondering why the column names reverted to alphabetical letters after we used set_names to change them to numbers. <br>\
     This is because we did set the names, and printed the result out to the console, but did **not** assign the result back to the licorice object with an assignment arrow, so it is transient, rather than a lasting change to the licorice object. This is a common pitfall for beginners.
-
     :::
 
 We can use also use brackets to choose exactly which rows and columns we want.
@@ -131,3 +125,64 @@ licorice[4:7, c(2,5,10)]
 ```
 
 Here we have selected 4 particular rows with a sequence (4:7), and 3 particular columns (by concatenating these into a vector with the *c()* function).
+
+## Concatenation
+
+One of the simplest, but most common early functions in R is c(). The c() function concatenates items together into a vector. This can be helpful for building a vector of items to iterate over, or to build a vector which will become a variable in a dataframe, or even a vector of options for a function.
+
+You simply write the items, separated by commas, in order inside the parentheses of c(). Remember that strings need to be enclosed in matching quotes.
+
+```{r}
+fib_numbers <- c(1, 1, 2, 3, 5, 8, 13, 21, 34)
+fruit_vec <- c("apple", "banana", "coconut", "dragonfruit", "elderberry")
+
+fib_numbers
+
+fruit_vec
+```
+
+## Sequences
+
+There are times when you want to create a sequence of numbers (i.e. 1 to 10, or 1 to 100), without manually concatenating a vector. The easiest way to do this is with the colon (:). You can assign 1:12 to an object, or 77:83, if you prefer.
+
+```{r}
+1:12
+77:83
+```
+
+## Constants
+
+Note that base R has some handy constants that may help in making vectors - LETTERS (vector of letters (string) from A to Z) - letters (vector of letters (string) from a to z) - month.abb (vector of 3 letter (English) month abbreviations from Jan to Dec) - month.name (vector of 3 letter (English) month abbreviations from January to December) - pi (the irrational number for relating diameter to circumference)
+
+You can select subsets of these with the bracket notation, i.e letters[1:13]. You can also format number for printing as strings with sprintf() (for print formatting) to include the desired number of decimals.
+
+```{r}
+LETTERS[7:12]
+letters[5:10]
+month.abb[10:12]
+pi %>% sprintf(fmt = "%1.5f", .)
+```
+
+## Fancier Sequences
+
+You can make more complex sequences with the seq() function. The main arguments (parameters) of seq() are
+
+-   from (default =1)
+
+-   to (default =1)
+
+-   by (default = (*to*-*from*)/*length*)
+
+-   length
+
+You will generally need at least 3 of these to describe a sequence, or *seq()* will use the default *by* value of 1. Note that if the *by* increment does not match the *to* argument, the sequence will stop at the last number before the *to* number.
+
+See the examples below
+
+```{r}
+seq(from = 2, to = 18, by = 2)
+seq(3,18, length=6)
+seq(from = 24, to = 4, by = 6)
+seq(from = 5, by = 5, length = 6)
+seq(from = 16, to = 128, length = 8)
+```
