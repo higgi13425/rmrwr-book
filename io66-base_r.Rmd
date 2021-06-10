@@ -241,3 +241,78 @@ range(licorice$C)[2] # selects 2nd value in range (max)
 rank(licorice$C)[1] # ranks first 10 values
 sum(licorice$C) # sum of values
 ```
+
+## Handling missing data (NAs)
+
+R designates missing values as the symbol NA (not available). NAs propagate through calculations, so that if you have a vector with at least one NA, and you try to calculate the mean, it will return NA.
+
+```{r}
+mean(licorice$J)
+```
+
+You can handle this within many functions (including mean, median, sd, and var) with the argument **na.rm** = TRUE. The default for these is na.rm = FALSE, so that if you are trying to do an operation on missing data, R will tell you.
+
+na.rm is an argument in a number of mathematical functions, in which **na** comes first, followed by the verb **rm** (remove).
+
+Testing whether a value or values are missing (NA) is in the reverse order. You use the *is.na()* function, in which the verb comes first, and then followed by NA. You might reasonably think that you can just use a normal equality test for NA values, like
+
+```{r}
+licorice$J == NA
+```
+
+but, because NAs propagate, you get just NAs, rather than TRUE or FALSE.
+
+You can use is.na() for this.
+
+```{r}
+licorice$J %>% is.na()
+```
+
+There are a few TRUEs in there (value is NA), but they can be hard to count. The sum() function can help, when combined with *is.na().* The *which()* function can help you figure out which values are missing.
+
+The anyNA() function can tell you if there are any missing values in a vector (or a variable/column in a dataframe).
+
+```{r}
+licorice$J %>% is.na() %>% sum()
+
+licorice$J %>% is.na() %>% which()
+
+licorice$C %>% anyNA()
+licorice$J %>% anyNA()
+
+```
+
+There are two missing values, in rows 113 and 123.
+
+The na.omit() function can remove all of the rows(cases, observations) from a dataframe that have at least one missing value in any column. This can be helpful for modeling, in which cases with missing data can cause problems. It is helpful to keep track of the number of rows before and after na.omit(), to know how many cases/observations/rows you are discarding.
+
+```{r}
+nrow(licorice)
+
+licorice %>% 
+  na.omit() %>% 
+  # modeling would happen here if not too many cases discarded
+  nrow()
+```
+
+Note that this can also be done in the tidyverse with drop_na() in the {tidyr} package. You can include a particular column or columns as an argument in drop_na() to only drop observations if there are missing values in these particular columns.
+
+```{r}
+licorice %>% 
+  drop_na(H:J) %>% 
+  nrow()
+```
+
+The code above takes the licorice dataset, looks for NA values in rows of (only) columns H through J, and drops 2 rows based on missing data, reducing the number of rows from 235 to 233.
+
+## Cutting Continuous data into Levels
+
+While there are good arguments for why **not** to do this (dichotomania, loss of granularity in data), it is common to cut continuous data into levels, like (mild, moderate, severe), or (normal weight, overweight, obese). This can, when there are already established standard levels, make the data easier to interpret. The cut() function in base R makes this easy to do.
+
+```{r}
+C_factor3 <- cut(licorice$C, breaks = 3)
+table(C_factor3)
+str(C_factor3)
+```
+
+This creates a new variable (C_factor), which is a factor with 3 levels. The levels are stored as 1, 2, 3, and range from 15.6-22.5 for 1, above 22.5-29.4 for 2, and above 29.4 to 36.4 for 3. The interval notation uses the square bracket for including the listed number, and parentheses for starting just after the listed number. It is a good practice to develop a standard way of naming these created variables, which are related to the original variable, are factors, and have a certain number of levels. One helpful shorthand is to take the original variable name, and to add the suffix "\_f4*"* for a factor with 4 levels. A dichotomized variable would be *"*varname_f2"
