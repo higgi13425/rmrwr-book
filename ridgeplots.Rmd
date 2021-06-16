@@ -1,0 +1,115 @@
+---
+title: "GGRidges"
+author: "Peter Higgins"
+date: "5/27/2021"
+output: html_document
+bibliography: references.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(ggridges)
+library(medicaldata)
+library(janitor)
+
+cmv <- medicaldata::cytomegalovirus 
+
+covid <- medicaldata::covid_testing %>% 
+  filter(patient_class != "not applicable") %>% 
+  filter(!is.na(patient_class)) %>% 
+  filter(patient_class != "day surgery") %>% 
+  filter(patient_class != "admit after surgery-ip") %>% 
+  filter(patient_class != "admit after surgery-obs")
+```
+
+## Ridgeline Plots
+
+Ridgeline plots are a nice way to show the distribution of a continuous variable, and compare distributions across several categories
+
+```{r plot}
+cmv %>% 
+ggplot(aes(x = time.to.transplant, y = diagnosis)) + geom_density_ridges(scale = 0.9) 
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r plot2}
+cmv %>% 
+ggplot(aes(x = time.to.agvhd, y = diagnosis,
+           fill= stat(x))) + 
+  geom_density_ridges_gradient(scale = 0.9) +
+  scale_fill_viridis_c(name = "Days", option = "A") +
+  labs(title = "Time to AGvHD in Days")
+```
+
+## Including Points
+
+You can also add data points, for example:
+
+```{r plot3}
+cmv %>% 
+ggplot(aes(x = time.to.cmv, y = diagnosis,
+           fill= stat(x))) + 
+  geom_density_ridges_gradient(scale = 0.5,
+        jittered_points = TRUE,
+        position = "raincloud",
+        alpha = 0.5) +
+  scale_fill_viridis_c(name = "Days", option = "B") +
+  labs(title = "Time to CMV in Days") +
+  theme_ridges()
+```
+
+## Including Points
+
+You can also add data points, for example:
+
+```{r plot4}
+cmv %>% 
+ggplot(aes(x = CD8.dose, y = diagnosis,
+           fill= stat(x))) + 
+  geom_density_ridges_gradient(scale = 0.9) +
+  scale_fill_viridis_c(name = "Days", option = "C") +
+  labs(title = "CD8 Dose") +
+  theme_ridges()
+```
+
+## Including Points
+
+You can also add data points, for example:
+
+```{r plot5}
+cmv %>% 
+ggplot(aes(x = CD3.dose, y = diagnosis,
+           fill= stat(x))) + 
+  geom_density_ridges_gradient(scale = 0.7,
+        jittered_points = TRUE,
+        position = "raincloud") +
+  scale_fill_viridis_c(name = "Days", option = "D") +
+  labs(title = "CD3 Dose") +
+  theme_ridges()
+```
+
+## Including Points
+
+You can also add data points, for example:
+
+```{r plot6}
+cmv %>% 
+ggplot(aes(x = TNC.dose, y = diagnosis,
+           fill= stat(x))) + 
+  geom_density_ridges_gradient(scale = 2,
+        jittered_points = TRUE,
+        position = "points_sina",
+        alpha = 0.7) +
+  scale_fill_viridis_c(name = "Days", option = "E") +
+  labs(title = "TNC Dose") +
+  theme_ridges()
+```
+
+## 
+
+[@stidham2012]

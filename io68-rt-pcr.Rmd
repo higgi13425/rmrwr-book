@@ -1,0 +1,167 @@
+---
+title: "Wrangling RT-PCR data"
+author: "Peter Higgins"
+date: "4/22/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+# library(plater)
+library(readxl)
+library(janitor)
+
+```
+
+## RT-PCR data
+
+RT-PCR stands for real-time polymerase chain reaction, and it is a common way to measure gene expression. Messenger RNA (mRNA) from cells is harvested (often from multiple samples in an experiment), and a reverse transcriptase enzyme is used to convert the mRNA into DNA in each sample. This resulting DNA can be then amplified, through polymerase chain reaction, or PCR. The concentration of output DNA amplicons rises in a sigmoid curve, and the threshold concentration (Ct) is proportional to the number of copies of the target RNA in the original sample. This can be used to compare the expression of genes (as mRNA) across samples in an experiment. You can evaluate which experimental conditions increase or decrease the expression of a given gene.
+
+The count of mRNA copies is, of course, influenced by the number of cells present. This can confound your results, so it is standard practice to `normalize` your data to the expression of a *housekeeping* gene that does not vary much in gene expression across different conditions. Typically we use a common gene, like GAPDH, to standardize gene expression, and use this difference to generate results in AU (arbitrary units).
+
+We often have NTC wells, for No Template Control - these should give results of zero. If not, there may be a contamination problem.
+
+We usually have 2-3 technical replicates (wells) of each set of experimental conditions. These (barring zeroes or outliers) are averaged (after normalizing to GAPDH) to produce our data.
+
+Typically, with multiple technical replicates, you end up with many tiny experiments, which are usually done in standard 96-well (8 rows[A-H] by 12 columns) plates.
+
+The data are usually dumped out into an Excel spreadsheet or csv file.
+
+Let's take a look at one.
+
+```{r rt-pcr-data}
+pcr_data <- read_excel("data/3_24_21_FINAL_TGFB_GFP_qPCR_FIRST_tHIO_INDUCTION-2.xls",
+                       sheet = 1,
+                       skip = 6) %>% 
+  clean_names() %>% 
+  select(well:target_name, task, ct) %>% 
+  mutate(ct = as.numeric(ct))
+```
+
+\
+Note that we skip the first six lines, which contain some technical details about the PCR run, clean up the names, and select 5 columns instead of the whole blob of data. Now we need to validate that the experiment ran correnctly. To do this, we want to know:
+
+-   Did the NTC wells all generate a ct value of zero or undetermined?
+
+-   Did all of the GAPDH wells generate a ct value \< 30?
+
+    ```{r}
+    pcr_data %>% 
+      filter(task == "NTC")
+
+    pcr_data %>% 
+      filter(target_name == "GAPDH") 
+
+    ```
+
+    Reality check - both validation steps check out.
+
+-   Now let's remove all rows with no sample and no target
+
+```{r}
+pcr_data %>% 
+  filter(!is.na(sample_name)) %>% 
+  filter(!is.na(target_name)) %>% 
+  mutate(sample_name = as.numeric(sample_name)) %>% 
+  select(-task) ->
+pcr_data_clean
+```
+
+Now we can see that we have 27 distinct samples, and we have measured 3 distinct genes - TGFB1, eGFP, and the control, GAPDH, in each sample.
+
+There are 3 technical replicates for each condition, so there are 9 distinct experimental conditions, with 3 technical replicates each. \
+Let's check that all of these generated values of ct \< 40 (generally over 40 cycles of PCR to detect a signal is considered noise).
+
+```{r}
+pcr_data_clean %T>% 
+  filter(target_name == "TGFB1" | target_name == "eGFP") %>% 
+  print(n=Inf)
+
+```
+
+All \< 40. Looking good.
+
+## Adding the Experimental Conditions
+
+The experimental conditions for each well are generally recorded as a map of the 8R x 12C (96-well) plate. To see this, we can read in the sheet name expt_cond
+
+```{r plate-cond}
+plate_cond <- read_excel("data/3_24_21_FINAL_TGFB_GFP_qPCR_FIRST_tHIO_INDUCTION-2.xls",
+                       sheet = "exp_cond")  
+
+```
+
+For each well, we have a sample_number, the number of days of doxycycline, and the presence or absence of the TGFB vector. This is in what is called `plater` format, which is far from tidy. But it is very convenient for keeping track of your wells when you are pipetting into a plate.
+
+Let's read in the experimental conditions from the tidy_exp sheet.
+
+```{r}
+exp_cond <- read_excel("data/3_24_21_FINAL_TGFB_GFP_qPCR_FIRST_tHIO_INDUCTION-2.xls",
+                       sheet = "tidy_exp")  
+
+```
+
+We can join these experimental conditions to our pcr_data_clean with a left_join
+
+```{r}
+pcr_expt <- left_join(pcr_data_clean, exp_cond, by = "sample_name")
+```
+
+## Calculations
+
+To get relative gene expression in AU (arbitrary units), we first have to subtract the ct of the gene of interest from the ct of GAPDH (the control) to get x, the difference in cycle threshold compared to GAPDH. This result is then converted to relative gene expression by converting this into the number of doublings (PCR essentially doubles the number of copies each cycle (during the linear range portion of amplification), with the formula AU = 2\^x \*10000.
+
+```{r convert-to-au}
+# convert TGFB1
+pcr_expt %>% 
+  filter(target_name == "TGFB1" | target_name == "GAPDH") %>% 
+  group_by(sample_name) %>% 
+  arrange(sample_name, desc(target_name)) %>% 
+  mutate(delta_ct = lead(ct) - ct) %>% 
+  mutate(au = (2^delta_ct)*10000) %>% 
+  filter(target_name=="TGFB1")->
+tgfb_results
+
+# convert eGFP
+pcr_expt %>% 
+  filter(target_name == "eGFP" | target_name == "GAPDH") %>% 
+  group_by(sample_name) %>% 
+  arrange(sample_name, target_name) %>% 
+  mutate(delta_ct = lead(ct) - ct) %>% 
+  mutate(au = (2^delta_ct)*10000) %>% 
+  filter(target_name=="eGFP")->
+egfp_results
+```
+
+Now plotting
+
+```{r}
+library(ggtext)
+t<- tgfb_results %>% 
+  ggplot(aes(x = au, y = factor(sample_num), col = factor(days_dox))) +
+  geom_boxplot() +
+  geom_jitter() +
+  labs(title = "TGFB1 Gene Expression by Days of Doxycycline",
+       subtitle = "TFGB1 vector in organoids",
+       x = "Arbitrary Units of Relative Gene Expression",
+       y = "Sample Number") +
+  scale_color_discrete("Days of Doxy") +
+  theme_linedraw() +
+  theme(legend.position = c(0.9, 0.1))
+  
+e <- egfp_results %>% 
+  ggplot(aes(x = au, y = factor(sample_num), col = factor(days_dox))) +
+  geom_boxplot() +
+  geom_jitter() +
+  labs(title = "eGFP Gene Expression by Days of Doxycycline",
+       subtitle = "TFGB1 vector in organoids",
+       x = "Arbitrary Units of Relative Gene Expression",
+       y = "Sample Number") +
+  scale_color_discrete("Days of Doxy") +
+  theme_linedraw() +
+  theme(legend.position = c(0.9, 0.1))
+
+library(patchwork)
+(t + e)
+```

@@ -24,7 +24,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2021-01-19" />
+<meta name="date" content="2021-05-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,9 +32,9 @@
   
   
 <link rel="prev" href="wrangling-rows-in-r-with-filter.html"/>
-<link rel="next" href="updating-r-rstudio-and-your-packages.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link rel="next" href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -52,10 +52,10 @@
 
 
 <script src="libs/htmlwidgets-1.5.3.9000/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.2.9000/plotly.js"></script>
+<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
 
@@ -203,30 +203,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#goals-for-this-chapter-1"><i class="fa fa-check"></i><b>3.2</b> Goals for this Chapter</a></li>
 <li class="chapter" data-level="3.3" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#packages-needed-for-this-chapter"><i class="fa fa-check"></i><b>3.3</b> Packages needed for this Chapter</a></li>
 <li class="chapter" data-level="3.4" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#website-links-needed-for-this-chapter-1"><i class="fa fa-check"></i><b>3.4</b> Website links needed for this Chapter</a></li>
-<li class="chapter" data-level="3.5" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#pathway-for-this-chapter-1"><i class="fa fa-check"></i><b>3.5</b> Pathway for this Chapter</a></li>
+<li class="chapter" data-level="3.5" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#setting-up-rpubs"><i class="fa fa-check"></i><b>3.5</b> Setting up RPubs</a></li>
 <li class="chapter" data-level="3.6" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#open-a-new-rmarkdown-document"><i class="fa fa-check"></i><b>3.6</b> Open a New Rmarkdown document</a></li>
-<li class="chapter" data-level="3.7" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#read-in-data-from-a-file"><i class="fa fa-check"></i><b>3.7</b> Read in Data from a file</a>
+<li class="chapter" data-level="3.7" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#knitting-your-rmarkdown-document"><i class="fa fa-check"></i><b>3.7</b> Knitting your Rmarkdown document</a>
 <ul>
 <li class="chapter" data-level="3.7.1" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#installing-packages"><i class="fa fa-check"></i><b>3.7.1</b> Installing Packages</a></li>
 <li class="chapter" data-level="3.7.2" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#loading-packages-with-library"><i class="fa fa-check"></i><b>3.7.2</b> Loading Packages with library()</a></li>
 </ul></li>
-<li class="chapter" data-level="3.8" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#wrangle-your-data"><i class="fa fa-check"></i><b>3.8</b> Wrangle Your Data</a></li>
-<li class="chapter" data-level="3.9" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#visualize-your-data"><i class="fa fa-check"></i><b>3.9</b> Visualize Your Data</a></li>
-<li class="chapter" data-level="3.10" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#publish-your-work-to-rpubs"><i class="fa fa-check"></i><b>3.10</b> Publish your work to RPubs</a></li>
-<li class="chapter" data-level="3.11" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#the-dessert-cart"><i class="fa fa-check"></i><b>3.11</b> The Dessert Cart</a>
+<li class="chapter" data-level="3.8" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#your-turn-to-write-text"><i class="fa fa-check"></i><b>3.8</b> Your Turn to Write Text</a></li>
+<li class="chapter" data-level="3.9" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#wrangle-your-data"><i class="fa fa-check"></i><b>3.9</b> Wrangle Your Data</a></li>
+<li class="chapter" data-level="3.10" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#summarize-your-data"><i class="fa fa-check"></i><b>3.10</b> Summarize Your Data</a></li>
+<li class="chapter" data-level="3.11" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#visualize-your-data"><i class="fa fa-check"></i><b>3.11</b> Visualize Your Data</a></li>
+<li class="chapter" data-level="3.12" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#statistical-testing-of-differences"><i class="fa fa-check"></i><b>3.12</b> Statistical Testing of Differences</a></li>
+<li class="chapter" data-level="3.13" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#publish-your-work-to-rpubs"><i class="fa fa-check"></i><b>3.13</b> Publish your work to RPubs</a></li>
+<li class="chapter" data-level="3.14" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#the-dessert-cart"><i class="fa fa-check"></i><b>3.14</b> The Dessert Cart</a>
 <ul>
-<li class="chapter" data-level="3.11.1" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#interactive-plots"><i class="fa fa-check"></i><b>3.11.1</b> Interactive Plots</a></li>
-<li class="chapter" data-level="3.11.2" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#animated-graphics"><i class="fa fa-check"></i><b>3.11.2</b> Animated Graphics</a></li>
-<li class="chapter" data-level="3.11.3" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#a-clinical-trial-dashboard"><i class="fa fa-check"></i><b>3.11.3</b> A Clinical Trial Dashboard</a></li>
-<li class="chapter" data-level="3.11.4" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#a-shiny-app"><i class="fa fa-check"></i><b>3.11.4</b> A Shiny App</a></li>
-<li class="chapter" data-level="3.11.5" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#an-example-of-synergy-in-the-r-community"><i class="fa fa-check"></i><b>3.11.5</b> An Example of Synergy in the R Community</a></li>
+<li class="chapter" data-level="3.14.1" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#interactive-plots"><i class="fa fa-check"></i><b>3.14.1</b> Interactive Plots</a></li>
+<li class="chapter" data-level="3.14.2" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#animated-graphics"><i class="fa fa-check"></i><b>3.14.2</b> Animated Graphics</a></li>
+<li class="chapter" data-level="3.14.3" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#a-clinical-trial-dashboard"><i class="fa fa-check"></i><b>3.14.3</b> A Clinical Trial Dashboard</a></li>
+<li class="chapter" data-level="3.14.4" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#a-shiny-app"><i class="fa fa-check"></i><b>3.14.4</b> A Shiny App</a></li>
+<li class="chapter" data-level="3.14.5" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#an-example-of-synergy-in-the-r-community"><i class="fa fa-check"></i><b>3.14.5</b> An Example of Synergy in the R Community</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html"><i class="fa fa-check"></i><b>4</b> Wrangling Rows in R with Filter</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#goals-for-this-chapter-2"><i class="fa fa-check"></i><b>4.1</b> Goals for this Chapter</a></li>
 <li class="chapter" data-level="4.2" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#packages-needed-for-this-chapter-1"><i class="fa fa-check"></i><b>4.2</b> Packages needed for this Chapter</a></li>
-<li class="chapter" data-level="4.3" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#pathway-for-this-chapter-2"><i class="fa fa-check"></i><b>4.3</b> Pathway for this Chapter</a></li>
+<li class="chapter" data-level="4.3" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#pathway-for-this-chapter-1"><i class="fa fa-check"></i><b>4.3</b> Pathway for this Chapter</a></li>
 <li class="chapter" data-level="4.4" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#logical-statements-in-r"><i class="fa fa-check"></i><b>4.4</b> Logical Statements in R</a></li>
 <li class="chapter" data-level="4.5" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#filtering-on-numbers---starting-with-a-flipbook"><i class="fa fa-check"></i><b>4.5</b> Filtering on Numbers - Starting with A Flipbook</a>
 <ul>
@@ -280,30 +283,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#references"><i class="fa fa-check"></i><b>5.5</b> References:</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html"><i class="fa fa-check"></i><b>6</b> Updating R, RStudio, and Your Packages</a>
+<li class="chapter" data-level="6" data-path="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html"><i class="fa fa-check"></i><b>6</b> The Building Blocks of R: data types, data structures, functions, and packages.</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-1"><i class="fa fa-check"></i><b>6.1</b> Installing Packages</a>
+<li class="chapter" data-level="6.1" data-path="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html#data-types"><i class="fa fa-check"></i><b>6.1</b> Data Types</a></li>
+<li class="chapter" data-level="6.2" data-path="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html#data-structures"><i class="fa fa-check"></i><b>6.2</b> Data Structures</a></li>
+<li class="chapter" data-level="6.3" data-path="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html#examining-data-types-and-data-structures"><i class="fa fa-check"></i><b>6.3</b> Examining Data Types and Data Structures</a></li>
+<li class="chapter" data-level="6.4" data-path="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html#functions"><i class="fa fa-check"></i><b>6.4</b> Functions</a></li>
+<li class="chapter" data-level="6.5" data-path="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html#packages"><i class="fa fa-check"></i><b>6.5</b> Packages</a></li>
+<li class="chapter" data-level="6.6" data-path="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html#the-building-blocks-of-r"><i class="fa fa-check"></i><b>6.6</b> The Building Blocks of R</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html"><i class="fa fa-check"></i><b>7</b> Updating R, RStudio, and Your Packages</a>
 <ul>
-<li class="chapter" data-level="6.1.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-from-github"><i class="fa fa-check"></i><b>6.1.1</b> Installing Packages from Github</a></li>
-<li class="chapter" data-level="6.1.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#problems-with-installing-packages"><i class="fa fa-check"></i><b>6.1.2</b> Problems with Installing Packages</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#loading-packages-with-library-1"><i class="fa fa-check"></i><b>6.2</b> Loading Packages with Library</a></li>
-<li class="chapter" data-level="6.3" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-r"><i class="fa fa-check"></i><b>6.3</b> Updating R</a></li>
-<li class="chapter" data-level="6.4" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-rstudio"><i class="fa fa-check"></i><b>6.4</b> Updating RStudio</a></li>
-<li class="chapter" data-level="6.5" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-your-packages"><i class="fa fa-check"></i><b>6.5</b> Updating Your Packages</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html"><i class="fa fa-check"></i><b>7</b> Major R Updates (Where Are My Packages?)</a></li>
-<li class="chapter" data-level="8" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html"><i class="fa fa-check"></i><b>8</b> Descriptive Data Tables</a>
+<li class="chapter" data-level="7.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-1"><i class="fa fa-check"></i><b>7.1</b> Installing Packages</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-table-one"><i class="fa fa-check"></i><b>8.1</b> Making Table One</a>
-<ul>
-<li class="chapter" data-level="8.1.1" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#the-tableby-function-in-the-arsenal-package"><i class="fa fa-check"></i><b>8.1.1</b> The <em>tableby</em> function in the <strong>arsenal</strong> package</a></li>
-<li class="chapter" data-level="8.1.2" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#the-gtsummary-package-with-flextable"><i class="fa fa-check"></i><b>8.1.2</b> The gtsummary package with flextable</a></li>
-<li class="chapter" data-level="8.1.3" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#example-of-how-to-build-a-table-1-with-gtsummary"><i class="fa fa-check"></i><b>8.1.3</b> Example of how to build a Table 1 with gtsummary</a></li>
+<li class="chapter" data-level="7.1.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-from-github"><i class="fa fa-check"></i><b>7.1.1</b> Installing Packages from Github</a></li>
+<li class="chapter" data-level="7.1.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#problems-with-installing-packages"><i class="fa fa-check"></i><b>7.1.2</b> Problems with Installing Packages</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-an-adverse-events-table"><i class="fa fa-check"></i><b>8.2</b> Making An Adverse Events Table</a></li>
-<li class="chapter" data-level="8.3" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-a-results-table"><i class="fa fa-check"></i><b>8.3</b> Making A Results Table</a></li>
+<li class="chapter" data-level="7.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#loading-packages-with-library-1"><i class="fa fa-check"></i><b>7.2</b> Loading Packages with Library</a></li>
+<li class="chapter" data-level="7.3" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-r"><i class="fa fa-check"></i><b>7.3</b> Updating R</a></li>
+<li class="chapter" data-level="7.4" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-rstudio"><i class="fa fa-check"></i><b>7.4</b> Updating RStudio</a></li>
+<li class="chapter" data-level="7.5" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-your-packages"><i class="fa fa-check"></i><b>7.5</b> Updating Your Packages</a></li>
 </ul></li>
+<li class="chapter" data-level="8" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html"><i class="fa fa-check"></i><b>8</b> Major R Updates (Where Are My Packages?)</a></li>
 <li class="chapter" data-level="9" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html"><i class="fa fa-check"></i><b>9</b> Comparing Two Measures of Centrality</a>
 <ul>
 <li class="chapter" data-level="9.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#common-problem"><i class="fa fa-check"></i><b>9.1</b> Common Problem</a>
@@ -346,35 +347,83 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.7.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#for-next-time"><i class="fa fa-check"></i><b>9.7.1</b> For Next Time</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="cmd-line.html"><a href="cmd-line.html"><i class="fa fa-check"></i><b>10</b> Running R from the UNIX Command Line</a>
+<li class="chapter" data-level="10" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html"><i class="fa fa-check"></i><b>10</b> Sample Size Calculations with <code>{pwr}</code></a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="cmd-line.html"><a href="cmd-line.html#what-is-the-unix-command-line"><i class="fa fa-check"></i><b>10.1</b> What is the UNIX Command line?</a></li>
-<li class="chapter" data-level="10.2" data-path="cmd-line.html"><a href="cmd-line.html#why-run-r-from-the-command-line"><i class="fa fa-check"></i><b>10.2</b> Why run R from the command line?</a></li>
-<li class="chapter" data-level="10.3" data-path="cmd-line.html"><a href="cmd-line.html#how-do-you-get-started"><i class="fa fa-check"></i><b>10.3</b> How do you get started?</a>
-<ul>
-<li class="chapter" data-level="10.3.1" data-path="cmd-line.html"><a href="cmd-line.html#on-a-mac"><i class="fa fa-check"></i><b>10.3.1</b> On a Mac</a></li>
-<li class="chapter" data-level="10.3.2" data-path="cmd-line.html"><a href="cmd-line.html#on-a-windows-pc"><i class="fa fa-check"></i><b>10.3.2</b> On a Windows PC</a></li>
+<li class="chapter" data-level="10.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-a-continuous-endpoint-t-test"><i class="fa fa-check"></i><b>10.1</b> Sample Size for a Continuous Endpoint (t-test)</a></li>
+<li class="chapter" data-level="10.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#one-sample-t-test-for-lowering-creatinine"><i class="fa fa-check"></i><b>10.2</b> One Sample t-test for Lowering Creatinine</a></li>
+<li class="chapter" data-level="10.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#paired-t-tests-before-vs-after-or-truly-paired"><i class="fa fa-check"></i><b>10.3</b> Paired t-tests (before vs after, or truly paired)</a></li>
+<li class="chapter" data-level="10.4" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-t-tests-with-unequal-study-arm-sizes"><i class="fa fa-check"></i><b>10.4</b> 2 Sample t tests with Unequal Study Arm Sizes</a></li>
+<li class="chapter" data-level="10.5" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#testing-multiple-options-and-plotting-results"><i class="fa fa-check"></i><b>10.5</b> Testing Multiple Options and Plotting Results</a></li>
+<li class="chapter" data-level="10.6" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#your-turn"><i class="fa fa-check"></i><b>10.6</b> Your Turn</a></li>
+<li class="chapter" data-level="10.6.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-1-fev1-in-copd"><i class="fa fa-check"></i><b>10.6.1</b> Scenario 1: FEV1 in COPD</a></li>
+<li class="chapter" data-level="10.6.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-2-bnp-in-chf"><i class="fa fa-check"></i><b>10.6.2</b> Scenario 2: BNP in CHF</a></li>
+<li class="chapter" data-level="10.6.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-3-barthel-index-in-stroke"><i class="fa fa-check"></i><b>10.6.3</b> Scenario 3: Barthel Index in Stroke</a></li>
+<li class="chapter" data-level="10.7" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-sizes-for-proportions"><i class="fa fa-check"></i><b>10.7</b> Sample Sizes for Proportions</a></li>
+<li class="chapter" data-level="10.8" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-two-proportions-equal-n"><i class="fa fa-check"></i><b>10.8</b> Sample size for two proportions, equal n</a></li>
+<li class="chapter" data-level="10.9" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-two-proportions-unequal-arms"><i class="fa fa-check"></i><b>10.9</b> Sample size for two proportions, unequal arms</a></li>
+<li class="chapter" data-level="10.10" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#your-turn-1"><i class="fa fa-check"></i><b>10.10</b> Your Turn</a></li>
+<li class="chapter" data-level="10.10.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-1-mortality-on-renal-dialysis"><i class="fa fa-check"></i><b>10.10.1</b> Scenario 1: Mortality on Renal Dialysis</a></li>
+<li class="chapter" data-level="10.10.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-2-intestinal-anastomosis-in-crohns-disease"><i class="fa fa-check"></i><b>10.10.2</b> Scenario 2: Intestinal anastomosis in Crohn’s disease</a></li>
+<li class="chapter" data-level="10.10.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-3-metformin-in-donuts"><i class="fa fa-check"></i><b>10.10.3</b> Scenario 3: Metformin in Donuts</a></li>
+<li class="chapter" data-level="10.11" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-chi-square"><i class="fa fa-check"></i><b>10.11</b> add chi square</a></li>
+<li class="chapter" data-level="10.12" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-correlation-test"><i class="fa fa-check"></i><b>10.12</b> add correlation test</a></li>
+<li class="chapter" data-level="10.13" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-anova"><i class="fa fa-check"></i><b>10.13</b> add anova</a></li>
+<li class="chapter" data-level="10.14" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-linear-model"><i class="fa fa-check"></i><b>10.14</b> add linear model</a></li>
+<li class="chapter" data-level="10.15" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-note-on-guessing-effect-sizes---cohen-small-medium-large"><i class="fa fa-check"></i><b>10.15</b> add note on guessing effect sizes - cohen small, medium, large</a></li>
+<li class="chapter" data-level="10.16" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#explore-more"><i class="fa fa-check"></i><b>10.16</b> Explore More</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="cmd-line.html"><a href="cmd-line.html#the-yawning-blackness-of-the-terminal-window"><i class="fa fa-check"></i><b>10.4</b> The Yawning Blackness of the Terminal Window</a></li>
-<li class="chapter" data-level="10.5" data-path="cmd-line.html"><a href="cmd-line.html#where-are-we"><i class="fa fa-check"></i><b>10.5</b> Where Are We?</a></li>
-<li class="chapter" data-level="10.6" data-path="cmd-line.html"><a href="cmd-line.html#cleaning-up"><i class="fa fa-check"></i><b>10.6</b> Cleaning Up</a></li>
-<li class="chapter" data-level="10.7" data-path="cmd-line.html"><a href="cmd-line.html#other-helpful-file-commands"><i class="fa fa-check"></i><b>10.7</b> Other helpful file commands</a></li>
-<li class="chapter" data-level="10.8" data-path="cmd-line.html"><a href="cmd-line.html#what-about-r"><i class="fa fa-check"></i><b>10.8</b> What about R?</a></li>
-<li class="chapter" data-level="10.9" data-path="cmd-line.html"><a href="cmd-line.html#what-about-just-a-few-lines-of-r"><i class="fa fa-check"></i><b>10.9</b> What about just a few lines of R?</a></li>
-<li class="chapter" data-level="10.10" data-path="cmd-line.html"><a href="cmd-line.html#running-an-r-script-from-the-terminal"><i class="fa fa-check"></i><b>10.10</b> Running an R Script from the Terminal</a></li>
-<li class="chapter" data-level="10.11" data-path="cmd-line.html"><a href="cmd-line.html#rendering-an-rmarkdown-file-from-the-terminal"><i class="fa fa-check"></i><b>10.11</b> Rendering an Rmarkdown file from the Terminal</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><i class="fa fa-check"></i><b>11</b> Building and Publishing a {bookdown} book on bookdown.org</a>
+<li class="chapter" data-level="11" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html"><i class="fa fa-check"></i><b>11</b> Randomization for Clinical Trials with R</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#setting-up"><i class="fa fa-check"></i><b>11.1</b> Setting up</a></li>
-<li class="chapter" data-level="11.2" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#bookdown-yaml"><i class="fa fa-check"></i><b>11.2</b> Bookdown YAML</a></li>
-<li class="chapter" data-level="11.3" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#output-yaml"><i class="fa fa-check"></i><b>11.3</b> Output YAML</a></li>
-<li class="chapter" data-level="11.4" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#styles.css"><i class="fa fa-check"></i><b>11.4</b> Styles.css</a></li>
-<li class="chapter" data-level="11.5" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#creating-chapters-in-r-markdown"><i class="fa fa-check"></i><b>11.5</b> Creating Chapters in R Markdown</a></li>
-<li class="chapter" data-level="11.6" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#chapter-names"><i class="fa fa-check"></i><b>11.6</b> Chapter Names</a></li>
-<li class="chapter" data-level="11.7" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#when-a-chapter-is-ready-for-sharing"><i class="fa fa-check"></i><b>11.7</b> When a Chapter is Ready for Sharing</a></li>
-<li class="chapter" data-level="11.8" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#building-the-book"><i class="fa fa-check"></i><b>11.8</b> Building the Book</a></li>
-<li class="chapter" data-level="11.9" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#publishing-the-book"><i class="fa fa-check"></i><b>11.9</b> Publishing the Book</a></li>
+<li class="chapter" data-level="11.1" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#printing-these-on-cards"><i class="fa fa-check"></i><b>11.1</b> Printing these on Cards</a></li>
+<li class="chapter" data-level="11.2" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#now-try-this-yourself"><i class="fa fa-check"></i><b>11.2</b> Now, try this yourself</a></li>
+<li class="chapter" data-level="11.3" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#now-freestyle"><i class="fa fa-check"></i><b>11.3</b> Now Freestyle</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html"><i class="fa fa-check"></i><b>12</b> Helping out with ggplot</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#ggxgghelp"><i class="fa fa-check"></i><b>12.1</b> ggx::gghelp()</a></li>
+<li class="chapter" data-level="12.2" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#getting-more-help-with-theming-with-ggthemeassist"><i class="fa fa-check"></i><b>12.2</b> Getting more help with theming with ggThemeAssist</a></li>
+<li class="chapter" data-level="12.3" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#website-helpers-for-ggplot"><i class="fa fa-check"></i><b>12.3</b> Website helpers for ggplot</a></li>
+<li class="chapter" data-level="12.4" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#getting-even-more-help-with-esquisse"><i class="fa fa-check"></i><b>12.4</b> Getting Even more help with esquisse</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#acknowledgement"><i class="fa fa-check"></i><b>12.4.1</b> Acknowledgement</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="functions-1.html"><a href="functions-1.html"><i class="fa fa-check"></i><b>13</b> Functions</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="functions-1.html"><a href="functions-1.html#dont-repeat-yourself"><i class="fa fa-check"></i><b>13.1</b> Don’t repeat yourself</a></li>
+<li class="chapter" data-level="13.2" data-path="functions-1.html"><a href="functions-1.html#your-turn-2"><i class="fa fa-check"></i><b>13.2</b> Your Turn</a></li>
+<li class="chapter" data-level="13.3" data-path="functions-1.html"><a href="functions-1.html#freestyle"><i class="fa fa-check"></i><b>13.3</b> Freestyle</a></li>
+<li class="chapter" data-level="13.4" data-path="functions-1.html"><a href="functions-1.html#read-more"><i class="fa fa-check"></i><b>13.4</b> Read More</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="cmd-line.html"><a href="cmd-line.html"><i class="fa fa-check"></i><b>14</b> Running R from the UNIX Command Line</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="cmd-line.html"><a href="cmd-line.html#what-is-the-unix-command-line"><i class="fa fa-check"></i><b>14.1</b> What is the UNIX Command line?</a></li>
+<li class="chapter" data-level="14.2" data-path="cmd-line.html"><a href="cmd-line.html#why-run-r-from-the-command-line"><i class="fa fa-check"></i><b>14.2</b> Why run R from the command line?</a></li>
+<li class="chapter" data-level="14.3" data-path="cmd-line.html"><a href="cmd-line.html#how-do-you-get-started"><i class="fa fa-check"></i><b>14.3</b> How do you get started?</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="cmd-line.html"><a href="cmd-line.html#on-a-mac"><i class="fa fa-check"></i><b>14.3.1</b> On a Mac</a></li>
+<li class="chapter" data-level="14.3.2" data-path="cmd-line.html"><a href="cmd-line.html#on-a-windows-pc"><i class="fa fa-check"></i><b>14.3.2</b> On a Windows PC</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="cmd-line.html"><a href="cmd-line.html#the-yawning-blackness-of-the-terminal-window"><i class="fa fa-check"></i><b>14.4</b> The Yawning Blackness of the Terminal Window</a></li>
+<li class="chapter" data-level="14.5" data-path="cmd-line.html"><a href="cmd-line.html#where-are-we"><i class="fa fa-check"></i><b>14.5</b> Where Are We?</a></li>
+<li class="chapter" data-level="14.6" data-path="cmd-line.html"><a href="cmd-line.html#cleaning-up"><i class="fa fa-check"></i><b>14.6</b> Cleaning Up</a></li>
+<li class="chapter" data-level="14.7" data-path="cmd-line.html"><a href="cmd-line.html#other-helpful-file-commands"><i class="fa fa-check"></i><b>14.7</b> Other helpful file commands</a></li>
+<li class="chapter" data-level="14.8" data-path="cmd-line.html"><a href="cmd-line.html#what-about-r"><i class="fa fa-check"></i><b>14.8</b> What about R?</a></li>
+<li class="chapter" data-level="14.9" data-path="cmd-line.html"><a href="cmd-line.html#what-about-just-a-few-lines-of-r"><i class="fa fa-check"></i><b>14.9</b> What about just a few lines of R?</a></li>
+<li class="chapter" data-level="14.10" data-path="cmd-line.html"><a href="cmd-line.html#running-an-r-script-from-the-terminal"><i class="fa fa-check"></i><b>14.10</b> Running an R Script from the Terminal</a></li>
+<li class="chapter" data-level="14.11" data-path="cmd-line.html"><a href="cmd-line.html#rendering-an-rmarkdown-file-from-the-terminal"><i class="fa fa-check"></i><b>14.11</b> Rendering an Rmarkdown file from the Terminal</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><i class="fa fa-check"></i><b>15</b> Building and Publishing a {bookdown} book on bookdown.org</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#setting-up"><i class="fa fa-check"></i><b>15.1</b> Setting up</a></li>
+<li class="chapter" data-level="15.2" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#bookdown-yaml"><i class="fa fa-check"></i><b>15.2</b> Bookdown YAML</a></li>
+<li class="chapter" data-level="15.3" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#output-yaml"><i class="fa fa-check"></i><b>15.3</b> Output YAML</a></li>
+<li class="chapter" data-level="15.4" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#styles.css"><i class="fa fa-check"></i><b>15.4</b> Styles.css</a></li>
+<li class="chapter" data-level="15.5" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#creating-chapters-in-r-markdown"><i class="fa fa-check"></i><b>15.5</b> Creating Chapters in R Markdown</a></li>
+<li class="chapter" data-level="15.6" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#chapter-names"><i class="fa fa-check"></i><b>15.6</b> Chapter Names</a></li>
+<li class="chapter" data-level="15.7" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#when-a-chapter-is-ready-for-sharing"><i class="fa fa-check"></i><b>15.7</b> When a Chapter is Ready for Sharing</a></li>
+<li class="chapter" data-level="15.8" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#building-the-book"><i class="fa fa-check"></i><b>15.8</b> Building the Book</a></li>
+<li class="chapter" data-level="15.9" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#publishing-the-book"><i class="fa fa-check"></i><b>15.9</b> Publishing the Book</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="title-holder.html"><a href="title-holder.html"><i class="fa fa-check"></i>Title holder</a></li>
 <li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
@@ -432,7 +481,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <tr class="odd">
 <td>could not find function</td>
 <td><p>This usually means that you made a typographical error in the function name (including Capitalization - R <strong>is</strong> case-sensitive), or that the package you are intending to use (which contains the function) is not installed - with `install.packages(‘package_name’)`</p>
-<p>or loaded - with `library(package)`</p></td>
+<p>or the package is not loaded - with `library(package)`</p></td>
 </tr>
 <tr class="even">
 <td>object ‘object-name’ not found</td>
@@ -444,7 +493,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 <tr class="odd">
 <td>filename does not exist in current working directory (‘path/to/working/directory’)</td>
-<td><p>This usually means one of three things: (1) you mistyped the name of the file, or part of the path,</p>
+<td><p>This usually means one of three things:</p>
+<ol style="list-style-type: decimal">
+<li>you mistyped the name of the file, or part of the path,</li>
+</ol>
+<!-- -->
 <ol start="2" style="list-style-type: decimal">
 <li><p>you are not in the directory where the file is, or</p></li>
 <li><p>the file you thought you had saved does not exist (check your Files tab in the lower right pane in RStudio).</p></li>
@@ -452,11 +505,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 <tr class="even">
 <td>error in if</td>
-<td>This usually means that you have an *if* statement that is trying to make a branch-point decision, but the logical statement that you wrote is not providing either a TRUE or a FALSE value. The most common reasons are typographical errors s in the logical statement, or an NA in one of the underlying values, which yields an NA from the logical statement. You may need to use a `na.rm = TRUE` option in your logical statement.</td>
+<td>This usually means that you have an *if* statement that is trying to make a branch-point decision, but the logical statement that you wrote is not providing either a TRUE or a FALSE value. The most common reasons are typographical errors s in the logical statement, or an NA in one of the underlying values, which yields an NA from the logical statement. You may need to use a `na.rm = TRUE` option in your logical statement (the na.rm issue often comes up with means and medians).</td>
 </tr>
 <tr class="odd">
 <td>error in eval</td>
-<td>This usually occurs when you are trying to run a function on an object that does not exist in your environment. Check to make sure in your Environment pane, and consider that you may not have saved/assigned the object. Alternatively, you may have a typographical error in the object name. Worth checking.</td>
+<td>This usually occurs when you are trying to run a function on an object that does not exist in your environment. Check to make sure in your Environment pane, and consider that you may not have saved/assigned the object in a previous step. Alternatively, you may have a typographical error in the object name. Worth checking.</td>
 </tr>
 <tr class="even">
 <td>cannot open</td>
@@ -464,11 +517,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 <tr class="odd">
 <td>no applicable method</td>
-<td>This usually occurs when you are using a function that expects a particular data structure (vector, list, dataframe), but you have given it a different data structure as the input. Check the data structure of your object, and check the documentation for your function. For example, if you want to use a function that acts on vectors, this function will not work on a dataframe variable. You may have to use the `pull(var)`function to “pull” this variable out of the dataframe into a vector before using this function.</td>
+<td>This usually occurs when you are using a function that expects a particular data structure (vector, list, dataframe), but you have given it a different data structure as the input. Check the data structure of your object, and check the documentation for your function. For example, if you want to use a function that acts on vectors, this function will not work on a dataframe object. You may have to use the `pull(variable)`function to “pull” this variable out of the dataframe into a vector before using this function.</td>
 </tr>
 <tr class="even">
 <td>subscript out of bounds</td>
-<td>you are trying to access an item in an environment object (like a vector, dataframe, or list) that does not exist, like the 9th item in a vector that is 7 items long, or the -1st row of a dataframe. Check the length of the item, and the math that you used to count the item number (loops that go too long are often a culprit)</td>
+<td>you are trying to access an item in an environment object (like a vector, dataframe, or list) that does not exist, like the 9th item in a vector that is 7 items long, or the negative 2nd row of a dataframe. Check the length of the item, and the math that you used to count the item number (loops that go too long are often a culprit)</td>
 </tr>
 <tr class="odd">
 <td>replacement has [x] rows, data has [y] rows</td>
@@ -495,12 +548,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">5.2.1</span> Missing Parenthesis</h3>
 <p>This is a very common error. It is easy to lose track of how many sets of parentheses you have open in putting together a complicated function.</p>
 <p>Here is an example, where a closing parenthesis is missing from a <em>mutate()</em> function.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="interpreting-error-messages.html#cb5-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
-<span id="cb5-2"><a href="interpreting-error-messages.html#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(t_vol, p_vol, age, aa) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-3"><a href="interpreting-error-messages.html#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> t_vol<span class="sc">/</span>p_vol,</span>
-<span id="cb5-4"><a href="interpreting-error-messages.html#cb5-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">older_aa =</span> <span class="fu">case_when</span>(age <span class="sc">&gt;</span><span class="dv">65</span> <span class="sc">&amp;</span> aa <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb5-5"><a href="interpreting-error-messages.html#cb5-5" aria-hidden="true" tabindex="-1"></a>                              <span class="cn">TRUE</span> <span class="sc">~</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-6"><a href="interpreting-error-messages.html#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(older_aa <span class="sc">==</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="interpreting-error-messages.html#cb9-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="interpreting-error-messages.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(t_vol, p_vol, age, aa) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href="interpreting-error-messages.html#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> t_vol<span class="sc">/</span>p_vol,</span>
+<span id="cb9-4"><a href="interpreting-error-messages.html#cb9-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">older_aa =</span> <span class="fu">case_when</span>(age <span class="sc">&gt;</span><span class="dv">65</span> <span class="sc">&amp;</span> aa <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb9-5"><a href="interpreting-error-messages.html#cb9-5" aria-hidden="true" tabindex="-1"></a>                              <span class="cn">TRUE</span> <span class="sc">~</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-6"><a href="interpreting-error-messages.html#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(older_aa <span class="sc">==</span><span class="dv">1</span>)</span></code></pre></div>
 <p>In this case, no output is produced, and the console does not return to the <code>&gt;</code> prompt. Instead, it offers a <code>+</code> prompt - in effect, asking you for something more. If you type in an extra closing parenthesis (after the filter function), it will give you an error.</p>
 <p>The error you get is:</p>
 <blockquote>
@@ -508,6 +561,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </blockquote>
 <p>R identifies a problem with the input “older_aa” to mutate - the parentheses are not closed.<br />
 It then fails on the next function - filter, and gives you a strange error message - <code>filter_</code> applied to… - because the input to the filter step (the next step after the error) was incoherent. This can be a bit confusing. But if you inspect the input older_aa, you will find the mis-matched parentheses. This is <strong>much</strong> easier to find with “rainbow parentheses” turned on in Tools/Global Options. When this option is on, you can be sure your parentheses are <strong>right</strong> when you end on <strong>red</strong>.</p>
+<p>Sometimes the very thin parentheses of some fonts can make it difficult to identify your red close parenthesis. The red vs. yellow parentheses may be easier to differentiate if you use a <strong>bold</strong> font for your code. You can change this with RStudio Tools/Global Options/Appearance. I am currently using FiraCode-Bold and the Crimson Editor theme in RStudio, which seems to help me.</p>
 <p>In this case, adding the missing parenthesis to the mutate step fixes it.</p>
 <div class="tip">
 <p>Parentheses that end on <strong>red</strong> are all <strong>right</strong>.</p>
@@ -516,12 +570,12 @@ It then fails on the next function - filter, and gives you a strange error messa
 <div id="an-extra-parenthesis" class="section level3" number="5.2.2">
 <h3><span class="header-section-number">5.2.2</span> An Extra Parenthesis</h3>
 <p>What if you go the other way, with an extra parenthesis after some misguided copy-paste adventures? Let’s see what happens.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="interpreting-error-messages.html#cb6-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
-<span id="cb6-2"><a href="interpreting-error-messages.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(t_vol, p_vol, age, aa) <span class="sc">%&gt;%</span> </span>
-<span id="cb6-3"><a href="interpreting-error-messages.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> t_vol<span class="sc">/</span>p_vol,</span>
-<span id="cb6-4"><a href="interpreting-error-messages.html#cb6-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">older_aa =</span> <span class="fu">case_when</span>(age <span class="sc">&gt;</span><span class="dv">65</span> <span class="sc">&amp;</span> aa <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb6-5"><a href="interpreting-error-messages.html#cb6-5" aria-hidden="true" tabindex="-1"></a>                              <span class="cn">TRUE</span> <span class="sc">~</span><span class="dv">0</span>))<span class="er">)</span> <span class="sc">%&gt;%</span> </span>
-<span id="cb6-6"><a href="interpreting-error-messages.html#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(older_aa <span class="sc">==</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="interpreting-error-messages.html#cb10-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="interpreting-error-messages.html#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(t_vol, p_vol, age, aa) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-3"><a href="interpreting-error-messages.html#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> t_vol<span class="sc">/</span>p_vol,</span>
+<span id="cb10-4"><a href="interpreting-error-messages.html#cb10-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">older_aa =</span> <span class="fu">case_when</span>(age <span class="sc">&gt;</span><span class="dv">65</span> <span class="sc">&amp;</span> aa <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb10-5"><a href="interpreting-error-messages.html#cb10-5" aria-hidden="true" tabindex="-1"></a>                              <span class="cn">TRUE</span> <span class="sc">~</span><span class="dv">0</span>))<span class="er">)</span> <span class="sc">%&gt;%</span> </span>
+<span id="cb10-6"><a href="interpreting-error-messages.html#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(older_aa <span class="sc">==</span><span class="dv">1</span>)</span></code></pre></div>
 <p>In this code block, you will end up with two red closing parentheses, and when you click to the right of the final closing parenthesis, there will be no matching highlighted open parenthesis (note that the preceding closing parentheses both have matching highlighted open parentheses. Both of these are clues that this last one is an extra.</p>
 <p>The error you get from R is</p>
 <blockquote>
@@ -534,12 +588,12 @@ It then fails on the next function - filter, and gives you a strange error messa
 <h3><span class="header-section-number">5.2.3</span> Missing pipe <code>%&gt;%</code> in a data wrangling pipeline</h3>
 <p>This is a common error. It is easy to cut out one of your <code>%&gt;%</code> connectors when you are editing/debugging a data wrangling pipeline.</p>
 <p>Here is an example, where a <code>%&gt;%</code> is missing. Can you spot it?</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="interpreting-error-messages.html#cb7-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
-<span id="cb7-2"><a href="interpreting-error-messages.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(t_vol, p_vol, age, aa)  </span>
-<span id="cb7-3"><a href="interpreting-error-messages.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> t_vol<span class="sc">/</span>p_vol,</span>
-<span id="cb7-4"><a href="interpreting-error-messages.html#cb7-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">older_aa =</span> <span class="fu">case_when</span>(age <span class="sc">&gt;</span><span class="dv">65</span> <span class="sc">&amp;</span> aa <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb7-5"><a href="interpreting-error-messages.html#cb7-5" aria-hidden="true" tabindex="-1"></a>                              <span class="cn">TRUE</span> <span class="sc">~</span><span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-6"><a href="interpreting-error-messages.html#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(older_aa <span class="sc">==</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="interpreting-error-messages.html#cb11-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="interpreting-error-messages.html#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(t_vol, p_vol, age, aa)  </span>
+<span id="cb11-3"><a href="interpreting-error-messages.html#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> t_vol<span class="sc">/</span>p_vol,</span>
+<span id="cb11-4"><a href="interpreting-error-messages.html#cb11-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">older_aa =</span> <span class="fu">case_when</span>(age <span class="sc">&gt;</span><span class="dv">65</span> <span class="sc">&amp;</span> aa <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb11-5"><a href="interpreting-error-messages.html#cb11-5" aria-hidden="true" tabindex="-1"></a>                              <span class="cn">TRUE</span> <span class="sc">~</span><span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-6"><a href="interpreting-error-messages.html#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(older_aa <span class="sc">==</span><span class="dv">1</span>)</span></code></pre></div>
 <p>In this case, the error you get is:</p>
 <blockquote>
 <p>Error in mutate(ratio = t_vol/p_vol, older_aa = case_when(age &gt; 65 &amp; aa == : object ‘t_vol’ not found</p>
@@ -555,12 +609,12 @@ Check every data wrangling pipeline to make sure each step (except the last) end
 <h3><span class="header-section-number">5.2.4</span> Missing + in a ggplot pipeline</h3>
 <p>This is a common error. It is easy to cut out one of your + connectors when you are editing/debugging a ggplot.</p>
 <p>Here is an example, where a + is missing in the middle of a ggplot pipeline.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="interpreting-error-messages.html#cb8-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
-<span id="cb8-2"><a href="interpreting-error-messages.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(t_vol, p_vol, age, aa) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-3"><a href="interpreting-error-messages.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(t_vol), <span class="at">y =</span>p_vol)) </span>
-<span id="cb8-4"><a href="interpreting-error-messages.html#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb8-5"><a href="interpreting-error-messages.html#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;tumor volume&quot;</span>, <span class="at">y =</span> <span class="st">&quot;prostate volume&quot;</span>) <span class="sc">+</span></span>
-<span id="cb8-6"><a href="interpreting-error-messages.html#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="interpreting-error-messages.html#cb12-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a href="interpreting-error-messages.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(t_vol, p_vol, age, aa) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-3"><a href="interpreting-error-messages.html#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(t_vol), <span class="at">y =</span>p_vol)) </span>
+<span id="cb12-4"><a href="interpreting-error-messages.html#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb12-5"><a href="interpreting-error-messages.html#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;tumor volume&quot;</span>, <span class="at">y =</span> <span class="st">&quot;prostate volume&quot;</span>) <span class="sc">+</span></span>
+<span id="cb12-6"><a href="interpreting-error-messages.html#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
 <p>In this case, you get a ggplot output, but without any boxplots. It is also missing your custom labels for the x and y axes, and the theme you wanted. Essentially, the code stops running after the initial ggplot() statement and the remaining lines of code are ignored. This can be pretty puzzling, as you do get a plot, but not what you intended. There is a partial plot in the Plots tab, but you get a somewhat helpful error in the Console.</p>
 <p>The error you get is:</p>
 <blockquote>
@@ -577,12 +631,12 @@ Check every ggplot pipeline to make sure each step (except the last) ends in a p
 <h3><span class="header-section-number">5.2.5</span> Pipe <code>%&gt;%</code> in Place of a <code>+</code></h3>
 <p>This is a common error. It is easy to start with your dataset, do some data wrangling steps with the pipe <code>%&gt;%</code> and keep piping out of habit, even after you start your ggplot. Unfortunately, once you start to ggplot, you have to use + as your code connector. Having a pipe instead will cause an error.</p>
 <p>Here is an example, where a <code>%&gt;%</code> is used instead of <code>+</code> in a ggplot pipeline. It usually happens at the beginning of the ggplot, when you are still in piping mode.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="interpreting-error-messages.html#cb9-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
-<span id="cb9-2"><a href="interpreting-error-messages.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(t_vol, p_vol, age, aa) <span class="sc">%&gt;%</span> </span>
-<span id="cb9-3"><a href="interpreting-error-messages.html#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(t_vol), <span class="at">y =</span>p_vol)) <span class="sc">%&gt;%</span> </span>
-<span id="cb9-4"><a href="interpreting-error-messages.html#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb9-5"><a href="interpreting-error-messages.html#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;tumor volume&quot;</span>, <span class="at">y =</span> <span class="st">&quot;prostate volume&quot;</span>) <span class="sc">+</span></span>
-<span id="cb9-6"><a href="interpreting-error-messages.html#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="interpreting-error-messages.html#cb13-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="interpreting-error-messages.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(t_vol, p_vol, age, aa) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-3"><a href="interpreting-error-messages.html#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(t_vol), <span class="at">y =</span>p_vol)) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-4"><a href="interpreting-error-messages.html#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb13-5"><a href="interpreting-error-messages.html#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;tumor volume&quot;</span>, <span class="at">y =</span> <span class="st">&quot;prostate volume&quot;</span>) <span class="sc">+</span></span>
+<span id="cb13-6"><a href="interpreting-error-messages.html#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
 <p>In this case, you will not get a ggplot output, and you will get an error in the console.</p>
 <p>The error you get is:</p>
 <blockquote>
@@ -595,13 +649,13 @@ Check every ggplot pipeline to make sure each step (except the last) ends in a p
 <h3><span class="header-section-number">5.2.6</span> Missing Comma Within a Function()</h3>
 <p>This is a common error. It is easy to start a series of arguments to a function, like multiple variables in a mutate step, and miss a comma between them.</p>
 <p>Here is an example, where a comma is missing in a series of mutate steps. Note that it is a good habit to put one mutate step on each line, with each line ending in a comma. This will help you find the missing comma if (no, when) you make this mistake.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="interpreting-error-messages.html#cb10-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
-<span id="cb10-2"><a href="interpreting-error-messages.html#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(t_vol, p_vol, age, aa) <span class="sc">%&gt;%</span> </span>
-<span id="cb10-3"><a href="interpreting-error-messages.html#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> t_vol<span class="sc">/</span>p_vol,</span>
-<span id="cb10-4"><a href="interpreting-error-messages.html#cb10-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">older_aa =</span> <span class="fu">case_when</span>(age <span class="sc">&gt;</span><span class="dv">65</span> <span class="sc">&amp;</span> aa <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb10-5"><a href="interpreting-error-messages.html#cb10-5" aria-hidden="true" tabindex="-1"></a>                              <span class="cn">TRUE</span> <span class="sc">~</span><span class="dv">0</span>)</span>
-<span id="cb10-6"><a href="interpreting-error-messages.html#cb10-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">age_decade =</span> <span class="fu">floor</span>(age <span class="sc">/</span> <span class="dv">10</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb10-7"><a href="interpreting-error-messages.html#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(older_aa <span class="sc">==</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="interpreting-error-messages.html#cb14-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2"><a href="interpreting-error-messages.html#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(t_vol, p_vol, age, aa) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-3"><a href="interpreting-error-messages.html#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> t_vol<span class="sc">/</span>p_vol,</span>
+<span id="cb14-4"><a href="interpreting-error-messages.html#cb14-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">older_aa =</span> <span class="fu">case_when</span>(age <span class="sc">&gt;</span><span class="dv">65</span> <span class="sc">&amp;</span> aa <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb14-5"><a href="interpreting-error-messages.html#cb14-5" aria-hidden="true" tabindex="-1"></a>                              <span class="cn">TRUE</span> <span class="sc">~</span><span class="dv">0</span>)</span>
+<span id="cb14-6"><a href="interpreting-error-messages.html#cb14-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">age_decade =</span> <span class="fu">floor</span>(age <span class="sc">/</span> <span class="dv">10</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-7"><a href="interpreting-error-messages.html#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(older_aa <span class="sc">==</span><span class="dv">1</span>)</span></code></pre></div>
 <p>In this case, you will not get a tibble output, and you will get an error in the console.</p>
 <p>The error you get is:</p>
 <blockquote>
@@ -615,14 +669,14 @@ Check every ggplot pipeline to make sure each step (except the last) ends in a p
 <p>This is a common error. You may have created or modified a dataframe, but forgot to assign it to a new object name. Or maybe you did this assignment in a different session, but have not done it in your current session. Or maybe you made a typographical error in calling the object (“covvid” instead of “covid”). Either way, this object is not yet loaded into your computing environment (the Environment tab).</p>
 <p>In this example, we request data from the {medicaldata} package, but forget to assign it to an object.</p>
 <p>So it does not exist when we try to use it to start a pipeline. This does not work.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="interpreting-error-messages.html#cb11-1" aria-hidden="true" tabindex="-1"></a>medicaldata<span class="sc">::</span>covid_testing</span>
-<span id="cb11-2"><a href="interpreting-error-messages.html#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="interpreting-error-messages.html#cb11-3" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
-<span id="cb11-4"><a href="interpreting-error-messages.html#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(subject_id, age, result, ct_result, patient_class) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-5"><a href="interpreting-error-messages.html#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">high_titer =</span> <span class="fu">case_when</span>(ct_result <span class="sc">&lt;</span> <span class="dv">18</span>,</span>
-<span id="cb11-6"><a href="interpreting-error-messages.html#cb11-6" aria-hidden="true" tabindex="-1"></a>                                    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">0</span>),</span>
-<span id="cb11-7"><a href="interpreting-error-messages.html#cb11-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">age_decade =</span> <span class="fu">floor</span>(age <span class="sc">/</span> <span class="dv">10</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-8"><a href="interpreting-error-messages.html#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(age <span class="sc">&gt;</span><span class="dv">50</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="interpreting-error-messages.html#cb15-1" aria-hidden="true" tabindex="-1"></a>medicaldata<span class="sc">::</span>covid_testing</span>
+<span id="cb15-2"><a href="interpreting-error-messages.html#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="interpreting-error-messages.html#cb15-3" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
+<span id="cb15-4"><a href="interpreting-error-messages.html#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(subject_id, age, result, ct_result, patient_class) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-5"><a href="interpreting-error-messages.html#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">high_titer =</span> <span class="fu">case_when</span>(ct_result <span class="sc">&lt;</span> <span class="dv">18</span>,</span>
+<span id="cb15-6"><a href="interpreting-error-messages.html#cb15-6" aria-hidden="true" tabindex="-1"></a>                                    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">0</span>),</span>
+<span id="cb15-7"><a href="interpreting-error-messages.html#cb15-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">age_decade =</span> <span class="fu">floor</span>(age <span class="sc">/</span> <span class="dv">10</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-8"><a href="interpreting-error-messages.html#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(age <span class="sc">&gt;</span><span class="dv">50</span>)</span></code></pre></div>
 <p>In this case, you will not get a tibble output, and you will get an error in the console.</p>
 <p>The error you get is:</p>
 <blockquote>
@@ -640,13 +694,12 @@ fixes your data wrangling pipeline.</p>
 <li>To <strong>test</strong> a logical statement, like age == 60, or fam_hx == 1, or location == “Outpatient”. In all of these logical tests, you use <strong><em>two</em></strong> equals signs.</li>
 </ol>
 <p>It is very common to use one equals sign in a logical statement. This causes errors. Watch the last filter step below.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="interpreting-error-messages.html#cb12-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
-<span id="cb12-2"><a href="interpreting-error-messages.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(t_vol, p_vol, age, aa) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-3"><a href="interpreting-error-messages.html#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> t_vol<span class="sc">/</span>p_vol,</span>
-<span id="cb12-4"><a href="interpreting-error-messages.html#cb12-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">older_aa =</span> <span class="fu">case_when</span>(age <span class="sc">&gt;</span><span class="dv">65</span> <span class="sc">&amp;</span> aa <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb12-5"><a href="interpreting-error-messages.html#cb12-5" aria-hidden="true" tabindex="-1"></a>                              <span class="cn">TRUE</span> <span class="sc">~</span><span class="dv">0</span>),</span>
-<span id="cb12-6"><a href="interpreting-error-messages.html#cb12-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">age_decade =</span> <span class="fu">floor</span>(age <span class="sc">/</span> <span class="dv">10</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-7"><a href="interpreting-error-messages.html#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="at">older_aa =</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="interpreting-error-messages.html#cb16-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="interpreting-error-messages.html#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(t_vol, p_vol, age, aa) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-3"><a href="interpreting-error-messages.html#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> t_vol<span class="sc">/</span>p_vol,</span>
+<span id="cb16-4"><a href="interpreting-error-messages.html#cb16-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">older_aa =</span> <span class="fu">case_when</span>(age <span class="sc">&gt;</span><span class="dv">65</span> <span class="sc">&amp;</span> aa <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>, <span class="cn">TRUE</span> <span class="sc">~</span><span class="dv">0</span>),</span>
+<span id="cb16-5"><a href="interpreting-error-messages.html#cb16-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">age_decade =</span> <span class="fu">floor</span>(age <span class="sc">/</span> <span class="dv">10</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-6"><a href="interpreting-error-messages.html#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(older_aa <span class="sc">==</span><span class="dv">1</span>)</span></code></pre></div>
 <p>In this case, the error you receive is very helpful:</p>
 <blockquote>
 <p>Error: Problem with `filter()` input `..1`. x Input `..1` is named. ℹ This usually means that you’ve used `=` instead of `==`. ℹ Did you mean `older_aa == 1`?</p>
@@ -661,8 +714,8 @@ fixes your data wrangling pipeline.</p>
 <h3><span class="header-section-number">5.2.9</span> Non-numeric argument to a binary operator</h3>
 <p>This happens when you try to do math on things that are not numbers. It usually occurs when you have a variable(column) that <em>looks</em> like it is numeric (it contains numbers), but somewhere along the way it became a character string variable. This often occurs when data are being entered into a spreadsheet, and one value in the column has characters in it. This often happens when you have a column of systolic blood pressures, and one value is entered as “this was not done”, or “102, but taken standing up”. Having comments, even if only one character string in a column in Excel <strong>makes the whole column</strong> into the character string data type.</p>
 <p>This is not apparent until you try to do math with this variable, as in</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="interpreting-error-messages.html#cb13-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
-<span id="cb13-2"><a href="interpreting-error-messages.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mean_art_pressure =</span> sbp<span class="sc">/</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span><span class="sc">*</span> dbp)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="interpreting-error-messages.html#cb17-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a href="interpreting-error-messages.html#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mean_art_pressure =</span> sbp<span class="sc">/</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span><span class="sc">*</span> dbp)</span></code></pre></div>
 <p>This will give you the error:</p>
 <blockquote>
 <p>Error in mutate(mean_art_pressure: non-numeric argument to binary operator</p>
@@ -688,8 +741,9 @@ fixes your data wrangling pipeline.</p>
 <h2><span class="header-section-number">5.3</span> Errors Beyond This List</h2>
 <p>This is where the internet comes in handy. Whatever errors you can create, <strong>someone</strong> has already run into. And they have asked for help on the internet, and most of the time, someone has helped them solve their error.</p>
 <p>You should copy your entire error message, and paste it into a web search. Google will often yield multiple similar examples, with various ways to solve the problem.</p>
+<p>In a future chapter, we will explore more effective ways to seek help, using a <strong>minimal reprex</strong> to describe your problem accurately to other people on sites like <a href="community.rstudio.com">community.rstudio.com</a>.</p>
 <p><strong>Remember</strong> that the error may have occurred because of a problem in the previous line of code (missing parenthesis, comma, etc.), so don’t forget to check one line above.</p>
-<p>The <strong>Add-One-Line</strong> debugging strategy is a good place to start. Select the code for your pipeline from the beginning to 2 lines of code before the error. If that runs without errors, add one line to your selection, and run it. Keep adding lines to your selection and running until you hit the error. Then try to find the problem and fix it.</p>
+<p>The <strong>Add-One-Line</strong> debugging strategy is another good strategy. Select the code for your pipeline from the beginning to 2 lines of code before the error. If that runs without errors, add one line to your selection, and run it. Keep adding lines to your selection and running until you hit the error. Then try to find the problem and fix it.</p>
 </div>
 <div id="when-things-get-weird" class="section level2" number="5.4">
 <h2><span class="header-section-number">5.4</span> When Things Get Weird</h2>
@@ -700,6 +754,7 @@ fixes your data wrangling pipeline.</p>
 </div>
 <div id="references" class="section level2" number="5.5">
 <h2><span class="header-section-number">5.5</span> References:</h2>
+<p>These are some helpful general references on troubleshooting in R, particularly focused on error messages encountered by beginners to R. Click on some of the links to check these out.</p>
 <p><a href="https://bookdown.org/yih_huynh/Guide-to-R-Book/trouble.html" class="uri">https://bookdown.org/yih_huynh/Guide-to-R-Book/trouble.html</a></p>
 <p><a href="https://medium.com/analytics-vidhya/common-errors-in-r-and-debugging-techniques-f11af3f1c7d3" class="uri">https://medium.com/analytics-vidhya/common-errors-in-r-and-debugging-techniques-f11af3f1c7d3</a></p>
 <p><a href="https://rpubs.com/Altruimetavasi/Troubleshooting-in-R" class="uri">https://rpubs.com/Altruimetavasi/Troubleshooting-in-R</a></p>
@@ -717,7 +772,7 @@ fixes your data wrangling pipeline.</p>
         </div>
       </div>
 <a href="wrangling-rows-in-r-with-filter.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="updating-r-rstudio-and-your-packages.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -24,7 +24,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2021-01-19" />
+<meta name="date" content="2021-05-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +33,8 @@
   
 <link rel="prev" href="getting-started-and-installing-your-tools.html"/>
 <link rel="next" href="wrangling-rows-in-r-with-filter.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -52,10 +52,10 @@
 
 
 <script src="libs/htmlwidgets-1.5.3.9000/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.2.9000/plotly.js"></script>
+<script src="libs/plotly-binding-4.9.3/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
 
@@ -203,30 +203,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#goals-for-this-chapter-1"><i class="fa fa-check"></i><b>3.2</b> Goals for this Chapter</a></li>
 <li class="chapter" data-level="3.3" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#packages-needed-for-this-chapter"><i class="fa fa-check"></i><b>3.3</b> Packages needed for this Chapter</a></li>
 <li class="chapter" data-level="3.4" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#website-links-needed-for-this-chapter-1"><i class="fa fa-check"></i><b>3.4</b> Website links needed for this Chapter</a></li>
-<li class="chapter" data-level="3.5" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#pathway-for-this-chapter-1"><i class="fa fa-check"></i><b>3.5</b> Pathway for this Chapter</a></li>
+<li class="chapter" data-level="3.5" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#setting-up-rpubs"><i class="fa fa-check"></i><b>3.5</b> Setting up RPubs</a></li>
 <li class="chapter" data-level="3.6" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#open-a-new-rmarkdown-document"><i class="fa fa-check"></i><b>3.6</b> Open a New Rmarkdown document</a></li>
-<li class="chapter" data-level="3.7" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#read-in-data-from-a-file"><i class="fa fa-check"></i><b>3.7</b> Read in Data from a file</a>
+<li class="chapter" data-level="3.7" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#knitting-your-rmarkdown-document"><i class="fa fa-check"></i><b>3.7</b> Knitting your Rmarkdown document</a>
 <ul>
 <li class="chapter" data-level="3.7.1" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#installing-packages"><i class="fa fa-check"></i><b>3.7.1</b> Installing Packages</a></li>
 <li class="chapter" data-level="3.7.2" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#loading-packages-with-library"><i class="fa fa-check"></i><b>3.7.2</b> Loading Packages with library()</a></li>
 </ul></li>
-<li class="chapter" data-level="3.8" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#wrangle-your-data"><i class="fa fa-check"></i><b>3.8</b> Wrangle Your Data</a></li>
-<li class="chapter" data-level="3.9" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#visualize-your-data"><i class="fa fa-check"></i><b>3.9</b> Visualize Your Data</a></li>
-<li class="chapter" data-level="3.10" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#publish-your-work-to-rpubs"><i class="fa fa-check"></i><b>3.10</b> Publish your work to RPubs</a></li>
-<li class="chapter" data-level="3.11" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#the-dessert-cart"><i class="fa fa-check"></i><b>3.11</b> The Dessert Cart</a>
+<li class="chapter" data-level="3.8" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#your-turn-to-write-text"><i class="fa fa-check"></i><b>3.8</b> Your Turn to Write Text</a></li>
+<li class="chapter" data-level="3.9" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#wrangle-your-data"><i class="fa fa-check"></i><b>3.9</b> Wrangle Your Data</a></li>
+<li class="chapter" data-level="3.10" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#summarize-your-data"><i class="fa fa-check"></i><b>3.10</b> Summarize Your Data</a></li>
+<li class="chapter" data-level="3.11" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#visualize-your-data"><i class="fa fa-check"></i><b>3.11</b> Visualize Your Data</a></li>
+<li class="chapter" data-level="3.12" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#statistical-testing-of-differences"><i class="fa fa-check"></i><b>3.12</b> Statistical Testing of Differences</a></li>
+<li class="chapter" data-level="3.13" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#publish-your-work-to-rpubs"><i class="fa fa-check"></i><b>3.13</b> Publish your work to RPubs</a></li>
+<li class="chapter" data-level="3.14" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#the-dessert-cart"><i class="fa fa-check"></i><b>3.14</b> The Dessert Cart</a>
 <ul>
-<li class="chapter" data-level="3.11.1" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#interactive-plots"><i class="fa fa-check"></i><b>3.11.1</b> Interactive Plots</a></li>
-<li class="chapter" data-level="3.11.2" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#animated-graphics"><i class="fa fa-check"></i><b>3.11.2</b> Animated Graphics</a></li>
-<li class="chapter" data-level="3.11.3" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#a-clinical-trial-dashboard"><i class="fa fa-check"></i><b>3.11.3</b> A Clinical Trial Dashboard</a></li>
-<li class="chapter" data-level="3.11.4" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#a-shiny-app"><i class="fa fa-check"></i><b>3.11.4</b> A Shiny App</a></li>
-<li class="chapter" data-level="3.11.5" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#an-example-of-synergy-in-the-r-community"><i class="fa fa-check"></i><b>3.11.5</b> An Example of Synergy in the R Community</a></li>
+<li class="chapter" data-level="3.14.1" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#interactive-plots"><i class="fa fa-check"></i><b>3.14.1</b> Interactive Plots</a></li>
+<li class="chapter" data-level="3.14.2" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#animated-graphics"><i class="fa fa-check"></i><b>3.14.2</b> Animated Graphics</a></li>
+<li class="chapter" data-level="3.14.3" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#a-clinical-trial-dashboard"><i class="fa fa-check"></i><b>3.14.3</b> A Clinical Trial Dashboard</a></li>
+<li class="chapter" data-level="3.14.4" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#a-shiny-app"><i class="fa fa-check"></i><b>3.14.4</b> A Shiny App</a></li>
+<li class="chapter" data-level="3.14.5" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#an-example-of-synergy-in-the-r-community"><i class="fa fa-check"></i><b>3.14.5</b> An Example of Synergy in the R Community</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html"><i class="fa fa-check"></i><b>4</b> Wrangling Rows in R with Filter</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#goals-for-this-chapter-2"><i class="fa fa-check"></i><b>4.1</b> Goals for this Chapter</a></li>
 <li class="chapter" data-level="4.2" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#packages-needed-for-this-chapter-1"><i class="fa fa-check"></i><b>4.2</b> Packages needed for this Chapter</a></li>
-<li class="chapter" data-level="4.3" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#pathway-for-this-chapter-2"><i class="fa fa-check"></i><b>4.3</b> Pathway for this Chapter</a></li>
+<li class="chapter" data-level="4.3" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#pathway-for-this-chapter-1"><i class="fa fa-check"></i><b>4.3</b> Pathway for this Chapter</a></li>
 <li class="chapter" data-level="4.4" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#logical-statements-in-r"><i class="fa fa-check"></i><b>4.4</b> Logical Statements in R</a></li>
 <li class="chapter" data-level="4.5" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#filtering-on-numbers---starting-with-a-flipbook"><i class="fa fa-check"></i><b>4.5</b> Filtering on Numbers - Starting with A Flipbook</a>
 <ul>
@@ -280,30 +283,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#references"><i class="fa fa-check"></i><b>5.5</b> References:</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html"><i class="fa fa-check"></i><b>6</b> Updating R, RStudio, and Your Packages</a>
+<li class="chapter" data-level="6" data-path="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html"><i class="fa fa-check"></i><b>6</b> The Building Blocks of R: data types, data structures, functions, and packages.</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-1"><i class="fa fa-check"></i><b>6.1</b> Installing Packages</a>
+<li class="chapter" data-level="6.1" data-path="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html#data-types"><i class="fa fa-check"></i><b>6.1</b> Data Types</a></li>
+<li class="chapter" data-level="6.2" data-path="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html#data-structures"><i class="fa fa-check"></i><b>6.2</b> Data Structures</a></li>
+<li class="chapter" data-level="6.3" data-path="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html#examining-data-types-and-data-structures"><i class="fa fa-check"></i><b>6.3</b> Examining Data Types and Data Structures</a></li>
+<li class="chapter" data-level="6.4" data-path="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html#functions"><i class="fa fa-check"></i><b>6.4</b> Functions</a></li>
+<li class="chapter" data-level="6.5" data-path="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html#packages"><i class="fa fa-check"></i><b>6.5</b> Packages</a></li>
+<li class="chapter" data-level="6.6" data-path="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages-.html#the-building-blocks-of-r"><i class="fa fa-check"></i><b>6.6</b> The Building Blocks of R</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html"><i class="fa fa-check"></i><b>7</b> Updating R, RStudio, and Your Packages</a>
 <ul>
-<li class="chapter" data-level="6.1.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-from-github"><i class="fa fa-check"></i><b>6.1.1</b> Installing Packages from Github</a></li>
-<li class="chapter" data-level="6.1.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#problems-with-installing-packages"><i class="fa fa-check"></i><b>6.1.2</b> Problems with Installing Packages</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#loading-packages-with-library-1"><i class="fa fa-check"></i><b>6.2</b> Loading Packages with Library</a></li>
-<li class="chapter" data-level="6.3" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-r"><i class="fa fa-check"></i><b>6.3</b> Updating R</a></li>
-<li class="chapter" data-level="6.4" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-rstudio"><i class="fa fa-check"></i><b>6.4</b> Updating RStudio</a></li>
-<li class="chapter" data-level="6.5" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-your-packages"><i class="fa fa-check"></i><b>6.5</b> Updating Your Packages</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html"><i class="fa fa-check"></i><b>7</b> Major R Updates (Where Are My Packages?)</a></li>
-<li class="chapter" data-level="8" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html"><i class="fa fa-check"></i><b>8</b> Descriptive Data Tables</a>
+<li class="chapter" data-level="7.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-1"><i class="fa fa-check"></i><b>7.1</b> Installing Packages</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-table-one"><i class="fa fa-check"></i><b>8.1</b> Making Table One</a>
-<ul>
-<li class="chapter" data-level="8.1.1" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#the-tableby-function-in-the-arsenal-package"><i class="fa fa-check"></i><b>8.1.1</b> The <em>tableby</em> function in the <strong>arsenal</strong> package</a></li>
-<li class="chapter" data-level="8.1.2" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#the-gtsummary-package-with-flextable"><i class="fa fa-check"></i><b>8.1.2</b> The gtsummary package with flextable</a></li>
-<li class="chapter" data-level="8.1.3" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#example-of-how-to-build-a-table-1-with-gtsummary"><i class="fa fa-check"></i><b>8.1.3</b> Example of how to build a Table 1 with gtsummary</a></li>
+<li class="chapter" data-level="7.1.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-from-github"><i class="fa fa-check"></i><b>7.1.1</b> Installing Packages from Github</a></li>
+<li class="chapter" data-level="7.1.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#problems-with-installing-packages"><i class="fa fa-check"></i><b>7.1.2</b> Problems with Installing Packages</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-an-adverse-events-table"><i class="fa fa-check"></i><b>8.2</b> Making An Adverse Events Table</a></li>
-<li class="chapter" data-level="8.3" data-path="descriptive-data-tables.html"><a href="descriptive-data-tables.html#making-a-results-table"><i class="fa fa-check"></i><b>8.3</b> Making A Results Table</a></li>
+<li class="chapter" data-level="7.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#loading-packages-with-library-1"><i class="fa fa-check"></i><b>7.2</b> Loading Packages with Library</a></li>
+<li class="chapter" data-level="7.3" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-r"><i class="fa fa-check"></i><b>7.3</b> Updating R</a></li>
+<li class="chapter" data-level="7.4" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-rstudio"><i class="fa fa-check"></i><b>7.4</b> Updating RStudio</a></li>
+<li class="chapter" data-level="7.5" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-your-packages"><i class="fa fa-check"></i><b>7.5</b> Updating Your Packages</a></li>
 </ul></li>
+<li class="chapter" data-level="8" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html"><i class="fa fa-check"></i><b>8</b> Major R Updates (Where Are My Packages?)</a></li>
 <li class="chapter" data-level="9" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html"><i class="fa fa-check"></i><b>9</b> Comparing Two Measures of Centrality</a>
 <ul>
 <li class="chapter" data-level="9.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#common-problem"><i class="fa fa-check"></i><b>9.1</b> Common Problem</a>
@@ -346,35 +347,83 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.7.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#for-next-time"><i class="fa fa-check"></i><b>9.7.1</b> For Next Time</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="cmd-line.html"><a href="cmd-line.html"><i class="fa fa-check"></i><b>10</b> Running R from the UNIX Command Line</a>
+<li class="chapter" data-level="10" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html"><i class="fa fa-check"></i><b>10</b> Sample Size Calculations with <code>{pwr}</code></a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="cmd-line.html"><a href="cmd-line.html#what-is-the-unix-command-line"><i class="fa fa-check"></i><b>10.1</b> What is the UNIX Command line?</a></li>
-<li class="chapter" data-level="10.2" data-path="cmd-line.html"><a href="cmd-line.html#why-run-r-from-the-command-line"><i class="fa fa-check"></i><b>10.2</b> Why run R from the command line?</a></li>
-<li class="chapter" data-level="10.3" data-path="cmd-line.html"><a href="cmd-line.html#how-do-you-get-started"><i class="fa fa-check"></i><b>10.3</b> How do you get started?</a>
-<ul>
-<li class="chapter" data-level="10.3.1" data-path="cmd-line.html"><a href="cmd-line.html#on-a-mac"><i class="fa fa-check"></i><b>10.3.1</b> On a Mac</a></li>
-<li class="chapter" data-level="10.3.2" data-path="cmd-line.html"><a href="cmd-line.html#on-a-windows-pc"><i class="fa fa-check"></i><b>10.3.2</b> On a Windows PC</a></li>
+<li class="chapter" data-level="10.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-a-continuous-endpoint-t-test"><i class="fa fa-check"></i><b>10.1</b> Sample Size for a Continuous Endpoint (t-test)</a></li>
+<li class="chapter" data-level="10.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#one-sample-t-test-for-lowering-creatinine"><i class="fa fa-check"></i><b>10.2</b> One Sample t-test for Lowering Creatinine</a></li>
+<li class="chapter" data-level="10.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#paired-t-tests-before-vs-after-or-truly-paired"><i class="fa fa-check"></i><b>10.3</b> Paired t-tests (before vs after, or truly paired)</a></li>
+<li class="chapter" data-level="10.4" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-t-tests-with-unequal-study-arm-sizes"><i class="fa fa-check"></i><b>10.4</b> 2 Sample t tests with Unequal Study Arm Sizes</a></li>
+<li class="chapter" data-level="10.5" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#testing-multiple-options-and-plotting-results"><i class="fa fa-check"></i><b>10.5</b> Testing Multiple Options and Plotting Results</a></li>
+<li class="chapter" data-level="10.6" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#your-turn"><i class="fa fa-check"></i><b>10.6</b> Your Turn</a></li>
+<li class="chapter" data-level="10.6.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-1-fev1-in-copd"><i class="fa fa-check"></i><b>10.6.1</b> Scenario 1: FEV1 in COPD</a></li>
+<li class="chapter" data-level="10.6.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-2-bnp-in-chf"><i class="fa fa-check"></i><b>10.6.2</b> Scenario 2: BNP in CHF</a></li>
+<li class="chapter" data-level="10.6.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-3-barthel-index-in-stroke"><i class="fa fa-check"></i><b>10.6.3</b> Scenario 3: Barthel Index in Stroke</a></li>
+<li class="chapter" data-level="10.7" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-sizes-for-proportions"><i class="fa fa-check"></i><b>10.7</b> Sample Sizes for Proportions</a></li>
+<li class="chapter" data-level="10.8" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-two-proportions-equal-n"><i class="fa fa-check"></i><b>10.8</b> Sample size for two proportions, equal n</a></li>
+<li class="chapter" data-level="10.9" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-two-proportions-unequal-arms"><i class="fa fa-check"></i><b>10.9</b> Sample size for two proportions, unequal arms</a></li>
+<li class="chapter" data-level="10.10" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#your-turn-1"><i class="fa fa-check"></i><b>10.10</b> Your Turn</a></li>
+<li class="chapter" data-level="10.10.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-1-mortality-on-renal-dialysis"><i class="fa fa-check"></i><b>10.10.1</b> Scenario 1: Mortality on Renal Dialysis</a></li>
+<li class="chapter" data-level="10.10.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-2-intestinal-anastomosis-in-crohns-disease"><i class="fa fa-check"></i><b>10.10.2</b> Scenario 2: Intestinal anastomosis in Crohn’s disease</a></li>
+<li class="chapter" data-level="10.10.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-3-metformin-in-donuts"><i class="fa fa-check"></i><b>10.10.3</b> Scenario 3: Metformin in Donuts</a></li>
+<li class="chapter" data-level="10.11" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-chi-square"><i class="fa fa-check"></i><b>10.11</b> add chi square</a></li>
+<li class="chapter" data-level="10.12" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-correlation-test"><i class="fa fa-check"></i><b>10.12</b> add correlation test</a></li>
+<li class="chapter" data-level="10.13" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-anova"><i class="fa fa-check"></i><b>10.13</b> add anova</a></li>
+<li class="chapter" data-level="10.14" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-linear-model"><i class="fa fa-check"></i><b>10.14</b> add linear model</a></li>
+<li class="chapter" data-level="10.15" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-note-on-guessing-effect-sizes---cohen-small-medium-large"><i class="fa fa-check"></i><b>10.15</b> add note on guessing effect sizes - cohen small, medium, large</a></li>
+<li class="chapter" data-level="10.16" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#explore-more"><i class="fa fa-check"></i><b>10.16</b> Explore More</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="cmd-line.html"><a href="cmd-line.html#the-yawning-blackness-of-the-terminal-window"><i class="fa fa-check"></i><b>10.4</b> The Yawning Blackness of the Terminal Window</a></li>
-<li class="chapter" data-level="10.5" data-path="cmd-line.html"><a href="cmd-line.html#where-are-we"><i class="fa fa-check"></i><b>10.5</b> Where Are We?</a></li>
-<li class="chapter" data-level="10.6" data-path="cmd-line.html"><a href="cmd-line.html#cleaning-up"><i class="fa fa-check"></i><b>10.6</b> Cleaning Up</a></li>
-<li class="chapter" data-level="10.7" data-path="cmd-line.html"><a href="cmd-line.html#other-helpful-file-commands"><i class="fa fa-check"></i><b>10.7</b> Other helpful file commands</a></li>
-<li class="chapter" data-level="10.8" data-path="cmd-line.html"><a href="cmd-line.html#what-about-r"><i class="fa fa-check"></i><b>10.8</b> What about R?</a></li>
-<li class="chapter" data-level="10.9" data-path="cmd-line.html"><a href="cmd-line.html#what-about-just-a-few-lines-of-r"><i class="fa fa-check"></i><b>10.9</b> What about just a few lines of R?</a></li>
-<li class="chapter" data-level="10.10" data-path="cmd-line.html"><a href="cmd-line.html#running-an-r-script-from-the-terminal"><i class="fa fa-check"></i><b>10.10</b> Running an R Script from the Terminal</a></li>
-<li class="chapter" data-level="10.11" data-path="cmd-line.html"><a href="cmd-line.html#rendering-an-rmarkdown-file-from-the-terminal"><i class="fa fa-check"></i><b>10.11</b> Rendering an Rmarkdown file from the Terminal</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><i class="fa fa-check"></i><b>11</b> Building and Publishing a {bookdown} book on bookdown.org</a>
+<li class="chapter" data-level="11" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html"><i class="fa fa-check"></i><b>11</b> Randomization for Clinical Trials with R</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#setting-up"><i class="fa fa-check"></i><b>11.1</b> Setting up</a></li>
-<li class="chapter" data-level="11.2" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#bookdown-yaml"><i class="fa fa-check"></i><b>11.2</b> Bookdown YAML</a></li>
-<li class="chapter" data-level="11.3" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#output-yaml"><i class="fa fa-check"></i><b>11.3</b> Output YAML</a></li>
-<li class="chapter" data-level="11.4" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#styles.css"><i class="fa fa-check"></i><b>11.4</b> Styles.css</a></li>
-<li class="chapter" data-level="11.5" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#creating-chapters-in-r-markdown"><i class="fa fa-check"></i><b>11.5</b> Creating Chapters in R Markdown</a></li>
-<li class="chapter" data-level="11.6" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#chapter-names"><i class="fa fa-check"></i><b>11.6</b> Chapter Names</a></li>
-<li class="chapter" data-level="11.7" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#when-a-chapter-is-ready-for-sharing"><i class="fa fa-check"></i><b>11.7</b> When a Chapter is Ready for Sharing</a></li>
-<li class="chapter" data-level="11.8" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#building-the-book"><i class="fa fa-check"></i><b>11.8</b> Building the Book</a></li>
-<li class="chapter" data-level="11.9" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#publishing-the-book"><i class="fa fa-check"></i><b>11.9</b> Publishing the Book</a></li>
+<li class="chapter" data-level="11.1" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#printing-these-on-cards"><i class="fa fa-check"></i><b>11.1</b> Printing these on Cards</a></li>
+<li class="chapter" data-level="11.2" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#now-try-this-yourself"><i class="fa fa-check"></i><b>11.2</b> Now, try this yourself</a></li>
+<li class="chapter" data-level="11.3" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#now-freestyle"><i class="fa fa-check"></i><b>11.3</b> Now Freestyle</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html"><i class="fa fa-check"></i><b>12</b> Helping out with ggplot</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#ggxgghelp"><i class="fa fa-check"></i><b>12.1</b> ggx::gghelp()</a></li>
+<li class="chapter" data-level="12.2" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#getting-more-help-with-theming-with-ggthemeassist"><i class="fa fa-check"></i><b>12.2</b> Getting more help with theming with ggThemeAssist</a></li>
+<li class="chapter" data-level="12.3" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#website-helpers-for-ggplot"><i class="fa fa-check"></i><b>12.3</b> Website helpers for ggplot</a></li>
+<li class="chapter" data-level="12.4" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#getting-even-more-help-with-esquisse"><i class="fa fa-check"></i><b>12.4</b> Getting Even more help with esquisse</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#acknowledgement"><i class="fa fa-check"></i><b>12.4.1</b> Acknowledgement</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="functions-1.html"><a href="functions-1.html"><i class="fa fa-check"></i><b>13</b> Functions</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="functions-1.html"><a href="functions-1.html#dont-repeat-yourself"><i class="fa fa-check"></i><b>13.1</b> Don’t repeat yourself</a></li>
+<li class="chapter" data-level="13.2" data-path="functions-1.html"><a href="functions-1.html#your-turn-2"><i class="fa fa-check"></i><b>13.2</b> Your Turn</a></li>
+<li class="chapter" data-level="13.3" data-path="functions-1.html"><a href="functions-1.html#freestyle"><i class="fa fa-check"></i><b>13.3</b> Freestyle</a></li>
+<li class="chapter" data-level="13.4" data-path="functions-1.html"><a href="functions-1.html#read-more"><i class="fa fa-check"></i><b>13.4</b> Read More</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="cmd-line.html"><a href="cmd-line.html"><i class="fa fa-check"></i><b>14</b> Running R from the UNIX Command Line</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="cmd-line.html"><a href="cmd-line.html#what-is-the-unix-command-line"><i class="fa fa-check"></i><b>14.1</b> What is the UNIX Command line?</a></li>
+<li class="chapter" data-level="14.2" data-path="cmd-line.html"><a href="cmd-line.html#why-run-r-from-the-command-line"><i class="fa fa-check"></i><b>14.2</b> Why run R from the command line?</a></li>
+<li class="chapter" data-level="14.3" data-path="cmd-line.html"><a href="cmd-line.html#how-do-you-get-started"><i class="fa fa-check"></i><b>14.3</b> How do you get started?</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="cmd-line.html"><a href="cmd-line.html#on-a-mac"><i class="fa fa-check"></i><b>14.3.1</b> On a Mac</a></li>
+<li class="chapter" data-level="14.3.2" data-path="cmd-line.html"><a href="cmd-line.html#on-a-windows-pc"><i class="fa fa-check"></i><b>14.3.2</b> On a Windows PC</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="cmd-line.html"><a href="cmd-line.html#the-yawning-blackness-of-the-terminal-window"><i class="fa fa-check"></i><b>14.4</b> The Yawning Blackness of the Terminal Window</a></li>
+<li class="chapter" data-level="14.5" data-path="cmd-line.html"><a href="cmd-line.html#where-are-we"><i class="fa fa-check"></i><b>14.5</b> Where Are We?</a></li>
+<li class="chapter" data-level="14.6" data-path="cmd-line.html"><a href="cmd-line.html#cleaning-up"><i class="fa fa-check"></i><b>14.6</b> Cleaning Up</a></li>
+<li class="chapter" data-level="14.7" data-path="cmd-line.html"><a href="cmd-line.html#other-helpful-file-commands"><i class="fa fa-check"></i><b>14.7</b> Other helpful file commands</a></li>
+<li class="chapter" data-level="14.8" data-path="cmd-line.html"><a href="cmd-line.html#what-about-r"><i class="fa fa-check"></i><b>14.8</b> What about R?</a></li>
+<li class="chapter" data-level="14.9" data-path="cmd-line.html"><a href="cmd-line.html#what-about-just-a-few-lines-of-r"><i class="fa fa-check"></i><b>14.9</b> What about just a few lines of R?</a></li>
+<li class="chapter" data-level="14.10" data-path="cmd-line.html"><a href="cmd-line.html#running-an-r-script-from-the-terminal"><i class="fa fa-check"></i><b>14.10</b> Running an R Script from the Terminal</a></li>
+<li class="chapter" data-level="14.11" data-path="cmd-line.html"><a href="cmd-line.html#rendering-an-rmarkdown-file-from-the-terminal"><i class="fa fa-check"></i><b>14.11</b> Rendering an Rmarkdown file from the Terminal</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><i class="fa fa-check"></i><b>15</b> Building and Publishing a {bookdown} book on bookdown.org</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#setting-up"><i class="fa fa-check"></i><b>15.1</b> Setting up</a></li>
+<li class="chapter" data-level="15.2" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#bookdown-yaml"><i class="fa fa-check"></i><b>15.2</b> Bookdown YAML</a></li>
+<li class="chapter" data-level="15.3" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#output-yaml"><i class="fa fa-check"></i><b>15.3</b> Output YAML</a></li>
+<li class="chapter" data-level="15.4" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#styles.css"><i class="fa fa-check"></i><b>15.4</b> Styles.css</a></li>
+<li class="chapter" data-level="15.5" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#creating-chapters-in-r-markdown"><i class="fa fa-check"></i><b>15.5</b> Creating Chapters in R Markdown</a></li>
+<li class="chapter" data-level="15.6" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#chapter-names"><i class="fa fa-check"></i><b>15.6</b> Chapter Names</a></li>
+<li class="chapter" data-level="15.7" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#when-a-chapter-is-ready-for-sharing"><i class="fa fa-check"></i><b>15.7</b> When a Chapter is Ready for Sharing</a></li>
+<li class="chapter" data-level="15.8" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#building-the-book"><i class="fa fa-check"></i><b>15.8</b> Building the Book</a></li>
+<li class="chapter" data-level="15.9" data-path="building-and-publishing-a-bookdown-book-on-bookdown-org.html"><a href="building-and-publishing-a-bookdown-book-on-bookdown-org.html#publishing-the-book"><i class="fa fa-check"></i><b>15.9</b> Publishing the Book</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="title-holder.html"><a href="title-holder.html"><i class="fa fa-check"></i>Title holder</a></li>
 <li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
@@ -404,25 +453,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <img src="images/tasting.png" alt="tasting" /></p>
 <div id="setting-the-table" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Setting the Table</h2>
-<p>At the end of this chapter, you will publish a data analysis to <em>RPubs</em>, a free website site where you can share your data analyses and visualizations.
-First you will need to set up an account on RPubs.
-Start by opening a new tab in your browser, and navigating to this <a href="https://rpubs.com/users/new">RPubs link</a>.
-It should look like the image below.
-<img src="images/rpubs1.png" alt="rpubs1" /><br />
-<br> Enter your name, email, username and password, and click on the <em>Register Now</em> button, and you will be set up to use RPubs.<br />
-This will bring you to this pag
-e. In the image below, we have set up an account for pd
-r.<br />
-<img src="images/rpubs2.png" alt="rpubs2" /> Click on the <em>Here’s How You Get Started</em> l
-ink. <img src="images/rpubs3.png" alt="rpubs3" /><br />
-You are now all set up and ready
-to go. Now you have a place on the internet to share your R crea
-tions. On to the creation
-part!</p>
+<p>In this chapter, you will get a rapid overview of the kind of things you can do with R.
+You will</p>
+<ul>
+<li><p>create an Rmarkdown document</p></li>
+<li><p>read in data</p></li>
+<li><p>wrangle your data</p></li>
+<li><p>create a data visualization and</p></li>
+<li><p>publish your findings.</p>
+<p>At the end of this chapter, you will publish your data analysis to <em>RPubs</em>, a free website site where you can share your data analyses and visualizations.</p></li>
+</ul>
 </div>
 <div id="goals-for-this-chapter-1" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Goals for this Chapter</h2>
 <ul>
+<li>Set up an RPubs account</li>
 <li>Open a New Rmarkdown document</li>
 <li>Read in Data from a file</li>
 <li>Wrangle Your Data</li>
@@ -436,19 +481,40 @@ part!</p>
 </div>
 <div id="packages-needed-for-this-chapter" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Packages needed for this Chapter</h2>
-<p>You will need to enter this line of code into your console, to make sure that the tidyverse package is installed on your computer.
-<code>install.packages("tidyverse")</code></p>
-<p>In the setup chunk of your Rmarkdown document, you will need to access the tidyverse package with one line of code: <code>library(tidyverse)</code></p>
+<p>In this chapter, we will use the following R packages:</p>
+<ul>
+<li><p>tidyverse</p></li>
+<li><p>janitor</p></li>
+<li><p>rstatix</p></li>
+<li><p>medicaldata</p></li>
+</ul>
+<p>If you have not installed these packages on your computer already, we will walk you through installation after you open your Rmarkdown document (see below).</p>
 </div>
 <div id="website-links-needed-for-this-chapter-1" class="section level2" number="3.4">
 <h2><span class="header-section-number">3.4</span> Website links needed for this Chapter</h2>
 <p>In this chapter, you will need to access the RPubs website.<br />
-- <a href="https://rpubs.com/" class="uri">https://rpubs.com/</a></p>
+<br />
+<a href="https://rpubs.com/" class="uri">https://rpubs.com/</a></p>
 </div>
-<div id="pathway-for-this-chapter-1" class="section level2" number="3.5">
-<h2><span class="header-section-number">3.5</span> Pathway for this Chapter</h2>
-<p>This Chapter is part of the <strong>XXX</strong> pathway.
-Chapters in this pathway include</p>
+<div id="setting-up-rpubs" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Setting up RPubs</h2>
+<p>First you will need to set up a free account on RPubs.
+Start by opening a new tab in your browser, and navigating to this link <a href="https://rpubs.com/users/new">RPubs link</a>.
+It should look like the image below.</p>
+<p><img src="images/rpubs1.png" alt="rpubs1" /><br />
+Enter your name, email, username and password, (remember these, you will need them later) and click on the <em>Register Now</em> button, and you will be set up to use RPubs
+.</p>
+<p><br />
+This will bring you to this page.
+In the image below, we have set up an account for pdr.</p>
+<p><br />
+<img src="images/rpubs2.png" alt="rpubs2" /></p>
+<p>Click on the <em>Here’s How You Get Started</em> link (blue text).</p>
+<p><img src="images/rpubs3.png" alt="rpubs3" /><br />
+</p>
+<p>You are now all set up and ready to go.
+Now you have a place on the internet to share your R creations.
+On to the creation part!</p>
 </div>
 <div id="open-a-new-rmarkdown-document" class="section level2" number="3.6">
 <h2><span class="header-section-number">3.6</span> Open a New Rmarkdown document</h2>
@@ -457,109 +523,260 @@ Turn on your computer, and open the RStudio application.
 You should see the familiar panes for the Console, Environment, and Files.<br />
 You need to open up a new document to activate the Source pane.
 While in RStudio, click on File/New File/RMarkdown.
-It should look like this.<br />
-<img src="images/rmd1.png" alt="newrmd" /> Now you will see the window belo
-w. Rename the document from “Untitled” to “Tasting”, Enter your own name as the Author, and click the OK butto
-n. <img src="images/rmd2.png" alt="newrmd2" /></p>
-<p>Now the file is open, and looks like the window below.
-Click on the save icon (like a floppy disk in the top left), and save this document as tasting.Rmd.
-<img src="images/rmd3.png" alt="newrmd3" /></p>
+It should look like this.</p>
+<div class="figure">
+<img src="images/rmd1.png" alt="" />
+<p class="caption">Opening a New Rmarkdown Document</p>
+</div>
+<p>Now you will see the window below.
+Rename the document from “Untitled” to “Tasting”.
+Enter your own name as the Author, and click the OK button.</p>
+<div class="figure">
+<img src="images/rmd2.png" alt="" />
+<p class="caption">Adding Title and Author</p>
+</div>
+<p>Now the file is open, and looks like the window below (with title “Tasting” and author “Peter Higgins”. Click on the save icon (like a floppy disk in the top left), and save this document as my_data_analysis.Rmd.</p>
+<div class="figure">
+<img src="images/rmd3.png" alt="" />
+<p class="caption">What Your New Rmarkdown Document Looks Like</p>
+</div>
 <p>You have created a new Rmarkdown document.
 An Rmarkdown document lets you mix data, code, and descriptive text.
 It is very helpful for presenting and explaining data and visualizations.
-An Rmarkdown document can be converted (Knit) to HTML for a web page, Microsoft Word, Powerpoint, PDF, and several other formats.</p>
-<p><strong>Code chunks</strong> are in a gray color, and both start and end with 3 backticks (```).</p>
+An Rmarkdown document can be converted (Knit) to HTML for a web page, or to Microsoft Word, Powerpoint, PDF, and several other output formats.</p>
+<div class="figure">
+<img src="images/rmarkdown_wizards-2.png" alt="" />
+<p class="caption">artwork by Allison Horst, @allison_horst</p>
+</div>
+<p><strong>Code chunks</strong> are in a gray color, and both start and end with 3 backticks (```), like this.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="a-tasting-menu-of-r.html#cb2-1" aria-hidden="true" tabindex="-1"></a>code goes here</span></code></pre></div>
 <p><strong>Text</strong> can be body text, or can be headers and titles.
 The number of hashtags before some header text defines what level the header is.<br />
 You can insert <strong>links</strong>, <strong>images</strong>, and even YouTube <strong>videos</strong> into Rmarkdown documents if it is helpful to explain your point.</p>
+<p>You can change the way that the Rmarkdown document is displayed with two buttons in the top right of the new Tasting document tab.
+The button with several horizontal lines that looks like an outline can be clicked to toggle an outline pane on and off.
+When the outline pane is on, you can click on the entries to go to a different part of your document quickly.</p>
+<p>The button that looks a bit like an Angstrom symbol (A with a circle on top), or perhaps it looks like a compass to you, allows you to turn on Visual Editing, or WYSIWIG (what you see is what you get) visual editing.
+When this is off, you can see the markdown codes that make the words “R Markdown” a level 2 header (right after the setup chunk), with two hashtags right before the text.
+But when the Visual Editing button is turned on, you can see the formatting as it will appear in the output document, and a new formatting bar appears at the top of the document below the Knit button.
+This formatting bar adds the ability to select text and change the heading level (top left), or make text bold, italic, underlined, etc.
+The formatting bar also lets you insert images, links, and tables into your document, much like you would with a word processor.</p>
 <p>The first code chunk in each Rmarkdown document is named <code>setup</code>.
-The name comes after the left curly brace and the r (<code>{r</code>) at the beginning of the setup chunk.
-The letter <code>r</code> tells RStudio that what is coming on the next line is R code (RStudio can also use SQL, C++, python, and several other languages).
-After the comma, you can define options for this code chunk.
-In this case, the option <code>include</code> is set to FALSE, so that when this Rmarkdown document is knitted, this code chunk will not appear.</p>
+Find this code chunk in your “Tasting” document.
+The code chunk name (in this case, setup) comes after the left curly brace and the r (<code>{r</code>) at the beginning of the each code chunk.
+The letter <code>r</code> tells RStudio that what is coming on the next line is R code (RStudio can also use SQL, C++, python, and several other commputer languages).
+After a comma, you can define options for this code chunk.
+In the case of this <strong>setup</strong> chunk, the option <code>include</code> is set to FALSE, so that when this Rmarkdown document is knitted, this code chunk will run, but no output or warnings or messages will appear in the output document.</p>
 </div>
-<div id="read-in-data-from-a-file" class="section level2" number="3.7">
-<h2><span class="header-section-number">3.7</span> Read in Data from a file</h2>
-<p>We will start by reading in some data from the {medicaldata} package.</p>
+<div id="knitting-your-rmarkdown-document" class="section level2" number="3.7">
+<h2><span class="header-section-number">3.7</span> Knitting your Rmarkdown document</h2>
+<p>While this is just an example template, you can see that there is some explanatory text, some formatting, and two code chunks.
+One code chunk has the option, echo = FALSE, which means that the code in that code chunk will not appear in the output document, but the results of the code chunk <strong>will</strong> appear.</p>
+<p>To see what the output of this Rmarkdown document looks like, click on the Knit button - this is at the top center of your Tasting document next to a blue ball of yarn with a knitting needle.</p>
+<p>When you knit the Rmarkdown document, the default result is an HTML output document.
+Notice that you can see the code for the cars code chunk, but that the setup code chunk and pressure code chunk do not appear.</p>
+<p>But you do get results: a summary of the cars dataset and a plot of the pressure data.</p>
+<p>You also have the option of knitting Rmarkdown documents to other kinds of output, including Microsoft Word, Microsoft Powerpoint, posters for medical meetings, books (like this book), and pdf documents.</p>
 <div id="installing-packages" class="section level3" number="3.7.1">
 <h3><span class="header-section-number">3.7.1</span> Installing Packages</h3>
-<p>Before we begin, you have to have a few R packages installed on your computer.</p>
-<p>Go to your Console tab, and type in (or copy and paste in) the following 3 lines (below the {r} ):</p>
+<p>Before we begin working on your Rmarkdown document, you will need to install a few R packages on your computer.</p>
+<p>Go to your Console tab (lower left in RStudio), and type in (or copy and paste in) the following 5 lines:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="a-tasting-menu-of-r.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tidyverse&#39;</span>)</span>
 <span id="cb3-2"><a href="a-tasting-menu-of-r.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;janitor&#39;</span>)</span>
-<span id="cb3-3"><a href="a-tasting-menu-of-r.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;medicaldata&#39;</span>)</span></code></pre></div>
+<span id="cb3-3"><a href="a-tasting-menu-of-r.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;rstatix&#39;</span>)</span>
+<span id="cb3-4"><a href="a-tasting-menu-of-r.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;remotes&#39;</span>)</span>
+<span id="cb3-5"><a href="a-tasting-menu-of-r.html#cb3-5" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&#39;higgi13425/medicaldata&#39;</span>)</span></code></pre></div>
 <p>Press Enter to run these functions.
-These will install the 3 packages, {tidyverse}, {janitor}, and {medicaldata}.
+These will install the 5 packages, {tidyverse}, {janitor}, {rstatix}, {remotes}, and {medicaldata}.
 Installing packages is like buying apps for your phone.
-But these apps are not loaded unless you tell R and RStudio that you want them loaded in the current session.
+But these apps are not loaded into your current R session unless you tell R and RStudio that you want them loaded in the current session.
 You do this with the <em>library()</em> function.</p>
 </div>
 <div id="loading-packages-with-library" class="section level3" number="3.7.2">
 <h3><span class="header-section-number">3.7.2</span> Loading Packages with library()</h3>
-<p>Copy and paste to add the following 4 lines (below the {r} line) to your <code>setup</code> chunk in your “Tasting.Rmd” Rmarkdown document:</p>
+<p>Copy and paste to add the following 5 lines to your <code>setup</code> chunk in your “Tasting.Rmd” Rmarkdown document:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="a-tasting-menu-of-r.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb4-2"><a href="a-tasting-menu-of-r.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
-<span id="cb4-3"><a href="a-tasting-menu-of-r.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb4-4"><a href="a-tasting-menu-of-r.html#cb4-4" aria-hidden="true" tabindex="-1"></a>prostate <span class="ot">&lt;-</span> medicaldata<span class="sc">::</span>blood_storage <span class="sc">%&gt;%</span> <span class="fu">clean_names</span>()</span></code></pre></div>
-<p>These functions will load 3 packages and reads in data from a study of prostate cancer and blood storage into the <code>prostate</code> object.</p>
-<p>To run these functions, click on the green rightward arrow at the top right of the <code>setup</code> code chunk.</p>
-<p>The {tidyverse} package (it is actually a meta-package that contains multiple packages) will be quite chatty, telling you which packages are being attached, and when conflicts with identically-named functions in the {stat} package have occurred.
-When you call these functions, <em>filter()</em> and <em>lag()</em>, the versions from the {tidyverse} package will be used by default, and the versions from the {stats} package will be masked.</p>
+<span id="cb4-3"><a href="a-tasting-menu-of-r.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstatix)</span>
+<span id="cb4-4"><a href="a-tasting-menu-of-r.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb4-5"><a href="a-tasting-menu-of-r.html#cb4-5" aria-hidden="true" tabindex="-1"></a>prostate <span class="ot">&lt;-</span> medicaldata<span class="sc">::</span>blood_storage <span class="sc">%&gt;%</span> <span class="fu">clean_names</span>()</span></code></pre></div>
+<p>These functions will load 4 packages and read in data from a study of prostate cancer and blood storage into the <code>prostate</code> object.</p>
+<p>Now run these functions, by clicking on the green rightward arrow at the top right of the <code>setup</code> code chunk in your Rmarkdown document.</p>
+<p>The installation of the {tidyverse} package (it is actually a meta-package that contains multiple packages) will be quite chatty, telling you which packages are being attached, and when conflicts with identically-named functions in the {stat} package have occurred.</p>
+<p>When you call the functions, <em>filter()</em> and <em>lag()</em>, the versions from the {tidyverse} package will be used by default, and the versions from the {stats} package will be masked.</p>
 <p>The {janitor} package will tell you that it has 2 conflicts with the {stats} package, and will supercede (mask) the {stats} functions for <em>chisq.test()</em> and <em>fisher.test().</em></p>
-<p>If you really want to access the versions from the {stats} package, you can do so by using the <strong>package::function</strong> construction, e.g. <code>stats::chisq.test().</code></p>
+<p>If you really want to access the versions from the {stats} package, you can do so by using the <strong>package::function</strong> construction, e.g. <code>stats::chisq.test()</code>, which tells R that you want to use the version of the function from the {stats} package, rather than the {janitor} package.</p>
 <p>If you check the Environment tab in the top right pane of RStudio, you will find that you now have a <strong>prostate</strong> object under the Data header.
 You can click on the white-on-blue arrow to the left of the word prostate to get an overview of each variable, the variable type (numeric, string, etc.), and the first few values of each variable.</p>
-<p>You can also click on the word prostate in the Environment window to open up a View of the whole dataset in the Source pane (top left).
+<p>You can also click on the word <strong>prostate</strong> in the Environment window to open up a View of the whole dataset in the Source pane (top left).
 You can scroll up and down the rows, or right and left in the columns to inspect the data.</p>
 <p>If you check the Console tab (lower left), you will see that when you clicked on prostate, this sent a function to the console to <strong>View(prostate)</strong>.
 You can view any dataset in the Environment tab with this function.</p>
-<p>You can also look at your data in the Console, with</p>
-<p><code>summary(prostate) or</code></p>
+<p>You can also look at your data in the Console, by running (type in and press Enter for each line)</p>
 <p><code>glimpse(prostate)</code></p>
-<p>Underneath the setup chunk, write something about the prostate dataset.
-You can write in Normal text, and add headers by starting a line with 2 hashtags, a space, and text like this</p>
+<p><code>summary(prostate)</code></p>
+<p>to provide some information on the contents of the prostate dataframe, and a summary of the data.</p>
+</div>
+</div>
+<div id="your-turn-to-write-text" class="section level2" number="3.8">
+<h2><span class="header-section-number">3.8</span> Your Turn to Write Text</h2>
+<p>Underneath the setup chunk, change the text of the first header (“R Markdown”) to “Analysis of Prostate Data”.</p>
+<p>Now delete the next two paragraphs of Normal text and write something about the prostate dataset, based on the summary in the console .
+You write body text for your documents in Normal text, and you can add new headers by starting a line with 2 hashtags, a space, and text like this</p>
 <p>## Headline about Prostate data</p>
-<p>Write a few sentences after your headline.
+<p>Write a few sentences after your heading.
 You can add <em>italics</em> or <strong>bold</strong> text by wrapping the text to be highlighted in underscores or 2 asterisks, respectively.</p>
+<p>If you are using the Visual Editor mode, you can do these things more easily by selecting your text, and clicking on the bold or italic icons in the formatting bar.
+You can also change a line of text to a header by selecting it, then clicking the dropdown arrow next to the word “Normal” at the top left of the formatting bar.
+You can make this into one of 6 levels of Headings, or a code chunk.
+We often reserve the level 1 Heading for the title.
+Try adding some text and formatting to your text.</p>
+</div>
+<div id="wrangle-your-data" class="section level2" number="3.9">
+<h2><span class="header-section-number">3.9</span> Wrangle Your Data</h2>
+<p>Find the {r cars} code chunk.</p>
+<p>Edit the name “cars” to “wrangle”</p>
+<p>Delete the one line of code from the template - “summary(cars)”</p>
+<p>We will replace this with a few lines of code to improve the data in the prostate dataset.</p>
+<p>We will be modifying the prostate dataset (with the <strong>mutate</strong> function), particularly the variables <strong>aa</strong> and <strong>fam_hx</strong> into properly labeled categorical variables, called <strong><em>factors</em></strong> in R.
+Then we will save (assign) the result to the <strong>prostate_factors</strong> object, while retaining the previous version in the <strong>prostate</strong> object.
+Copy the lines of code below and paste them into the new <strong>wrangle</strong> code chunk.</p>
+<p>You can see in the code that we start with the prostate dataset, and then (the pipe symbol [%&gt;%] is read as “and then”) mutate the <strong>aa</strong> variable to a labelled factor, and then mutate the <strong>fam_hx</strong> variable to a labelled factor.
+Then the resulting dataframe is <strong>assigned</strong> to the new prostate_factors object.
+This version of the data will be helpful for plotting later.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="a-tasting-menu-of-r.html#cb5-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="a-tasting-menu-of-r.html#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">aa =</span> <span class="fu">factor</span>(aa, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), </span>
+<span id="cb5-3"><a href="a-tasting-menu-of-r.html#cb5-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;White&quot;</span>, <span class="st">&quot;African-American&quot;</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-4"><a href="a-tasting-menu-of-r.html#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fam_hx =</span> <span class="fu">factor</span>(fam_hx, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), </span>
+<span id="cb5-5"><a href="a-tasting-menu-of-r.html#cb5-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;No Family History&quot;</span>, <span class="st">&quot;FHx of Prostate Cancer&quot;</span>))) <span class="ot">-&gt;</span></span>
+<span id="cb5-6"><a href="a-tasting-menu-of-r.html#cb5-6" aria-hidden="true" tabindex="-1"></a>prostate_factors</span></code></pre></div>
+<div class="warning">
+<p>Note that R will not ask you if you want to over-write an object.</p>
+<p>This is just a reminder to be careful when you assign data to an object.
+You don’t want to re-use an object name (like prostate) and inadvertently over-write your previous work.
+It is fine if this is what you intended, but make sure it is that this is you want to do.
+It is generally a good practice to assign data to well-named objects, so that you know what they are, where they came from, and how they have changed since the last data wrangling iteration.
+It is generally <strong>not</strong> a good idea to over-write your data.</p>
 </div>
 </div>
-<div id="wrangle-your-data" class="section level2" number="3.8">
-<h2><span class="header-section-number">3.8</span> Wrangle Your Data</h2>
-<p>Add a new code chunk</p>
-<p>name it</p>
-<p>wrangle it - select, filter</p>
+<div id="summarize-your-data" class="section level2" number="3.10">
+<h2><span class="header-section-number">3.10</span> Summarize Your Data</h2>
+<p>Now you will Insert a new R code chunk, after the <strong>wrangle</strong> chunk.
+First, click with your mouse to place your cursor on a blank line below the wrangle chunk.
+Now open a new code chunk.
+To do this, find the green <strong>code (C) button</strong> in the menu bar at the top of your Rmarkdown document.
+Click on it and select R as the language being used.
+You will get a gray code chunk with the <strong>{r}</strong> label at the top.
+Insert your cursor after the r, and before the closing brace.
+Add a space, then type the name, <strong>summarize</strong>.
+In this chunk, we will run some code to summarize three variables.
+Paste the four lines of code below into your new code chunk.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="a-tasting-menu-of-r.html#cb6-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="a-tasting-menu-of-r.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(age, p_vol, preop_psa, aa, fam_hx) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-3"><a href="a-tasting-menu-of-r.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(aa, fam_hx) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-4"><a href="a-tasting-menu-of-r.html#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(age<span class="sc">:</span>preop_psa, mean, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code></pre></div>
+<p>This code starts with the prostate dataset, and then selects 5 of the variables.
+Then it groups the observations by African-American race and Family history of prostate cancer.
+Then it summarizes across 3 variables to get the mean value of each one (after removing any missing values).</p>
+<p>Try this out by clicking on the rightward green arrow at the top right of your <strong>summarize</strong> code chunk.
+This should produce a summary table of results for age, prostate volume, and preoperative PSA.</p>
+<p>Add some body text below the code chunk, with your interpretation of these results, and some hypotheses about these summary results, including the contrasts by family history and race.
+Depending on the sample size, some of these differences might be statistically significant.
+Which ones would you like to test?</p>
 </div>
-<div id="visualize-your-data" class="section level2" number="3.9">
-<h2><span class="header-section-number">3.9</span> Visualize Your Data</h2>
-<p>first ggplot</p>
+<div id="visualize-your-data" class="section level2" number="3.11">
+<h2><span class="header-section-number">3.11</span> Visualize Your Data</h2>
+<p>Now let’s plot the prostate_factors data.
+Change the name of the previous <strong>plot</strong> chunk to "<strong>visualize"</strong>.
+Delete the one line of code from the example.
+We will produce a scatterplot, faceted by African-American race and Family History.
+Copy and paste the code below into your Rmarkdown document in this <strong>visualize</strong> code chunk.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="a-tasting-menu-of-r.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(prostate_factors) <span class="sc">+</span> </span>
+<span id="cb7-2"><a href="a-tasting-menu-of-r.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> p_vol, <span class="at">y =</span> preop_psa, <span class="at">col =</span> aa) <span class="sc">+</span> </span>
+<span id="cb7-3"><a href="a-tasting-menu-of-r.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb7-4"><a href="a-tasting-menu-of-r.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
+<span id="cb7-5"><a href="a-tasting-menu-of-r.html#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(aa <span class="sc">~</span> fam_hx) <span class="sc">+</span></span>
+<span id="cb7-6"><a href="a-tasting-menu-of-r.html#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&#39;Prostate Volume&#39;</span>, <span class="at">y =</span> <span class="st">&quot;Preoperative PSA&quot;</span>,</span>
+<span id="cb7-7"><a href="a-tasting-menu-of-r.html#cb7-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&#39;Relationship Between Prostate Volume and Preop PSA,</span><span class="sc">\n</span><span class="st">Subdivided by Family History and Race&#39;</span>) <span class="sc">+</span></span>
+<span id="cb7-8"><a href="a-tasting-menu-of-r.html#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>)</span></code></pre></div>
+<p>This will run the code to generate a plot.
+Note that these steps for a ggplot are connected with <strong><code>+</code></strong> signs, while the data wrangling steps are connected with the pipe ( %&gt;% ) symbol.
+Let’s walk through each step of the code.
+First you are stating the dataset to plot, with <code>ggplot(prostate)</code>, and then the aesthetic mappings are stated, with p_vol mapped to x, preop_psa mapped to y, and the aa variable mapped to color.
+This all happens in the <code>aes(x = p_vol, y = preop_psa, col = aa)</code> step.</p>
+<p>Then these are plotted as scatterplot points with <code>geom_point</code>, and linear regression lines are added with <code>geom_smooth(method = "lm")</code> (method = “lm” is for linear model).
+Then the plot is faceted (broken into comparison plots) by the <strong>aa</strong> and <strong>fam_hx</strong> variables with <code>facet_grid(aa ~ fam_hx)</code>.
+Then labels for x and y and the title are added.
+Then a theme option is used to move the legend position to the bottom.</p>
+<p>You can run the <strong>visualize</strong> code chunk and see the plot by clicking on the green arrow at the top right of the code chunk.</p>
+<p>Do you think that the slopes of the linear regression lines are all the same?
+Are there differences or patterns?
+Add some text below your plot stating your interpretation of these plots, and any hypotheses generated by this visualization of the data.</p>
 </div>
-<div id="publish-your-work-to-rpubs" class="section level2" number="3.10">
-<h2><span class="header-section-number">3.10</span> Publish your work to RPubs</h2>
-<p>push to RPubs</p>
-<p>You did it.</p>
-<p>Share website with others</p>
+<div id="statistical-testing-of-differences" class="section level2" number="3.12">
+<h2><span class="header-section-number">3.12</span> Statistical Testing of Differences</h2>
+<p>Based on the previous summary, it looks like the African-American patients in this dataset may have, on average, a higher preoperative PSA level.
+We can test this with Student’s t test.</p>
+<p>Insert a new header for Statistical Testing (or T testing).
+Make sure it is in the Heading 2 format.</p>
+<p>Then insert some Normal text in which you state your hypothesis.</p>
+<p>Then insert a code chunk (green C button, select the R language).
+Name this new code chunk “t-test”.</p>
+<p>Paste in the three lines of code below to get the results of a t test comparing preop_psa levels between African-Americans and Whites in this dataset.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="a-tasting-menu-of-r.html#cb8-1" aria-hidden="true" tabindex="-1"></a>prostate_factors <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a href="a-tasting-menu-of-r.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t_test</span>(<span class="at">formula =</span> preop_psa <span class="sc">~</span> aa,</span>
+<span id="cb8-3"><a href="a-tasting-menu-of-r.html#cb8-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">detailed =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Now write some body text below the results, with your interpretation for this result in this dataset and sample size.</p>
 </div>
-<div id="the-dessert-cart" class="section level2" number="3.11">
-<h2><span class="header-section-number">3.11</span> The Dessert Cart</h2>
-<p>Below are some examples of neat things you can do with medical data in R.
+<div id="publish-your-work-to-rpubs" class="section level2" number="3.13">
+<h2><span class="header-section-number">3.13</span> Publish your work to RPubs</h2>
+<p>Now you have a complete data analysis, including data wrangling, summarizing, plotting, and statistical testing.
+Your report combines code, results, graphics, and text introduction of the questions, and text interpretation of the results.</p>
+<p>Go ahead and Knit this Rmarkdown document to see the final result.
+Use the Knit button (blue ball of yarn with knitting needle) near the top left of your Rmarkdown document.
+Now you can share this document with others, by publishing your results and interpretation on the web.</p>
+<p>Now that you have a knitted HTML document, look for the Publish button at the top right of the HTML output (it looks sort of like a blue eye, or two blue semicircles wrapped around a blue dot).
+Click on this and select RPubs.
+The knitted HTML document will now be uploaded to RPubs, and your result can be found at <a href="https://rpubs.com/username" class="uri">https://rpubs.com/username</a>, based on your RPubs username.
+You may have to click on the username dropdown at the top right to reach View Profile, which will show the documents that you have published.
+Click on the thumbnail of your new document to go to the full link and see it in its full HTML glory.</p>
+<p>This page will have a specific link, which will be something like at <a href="https://rpubs.com/username">[[https://rpubs.com/username](https://rpubs.com/username/123456)](https://rpubs.com/username)/123456</a> , which is a dedicated link you can share with other people who want to see your results.
+You can share this link via email, and anyone (collaborators, mentors, friends) can see your results report from anywhere with a web connection.</p>
+<p>You did it!
+You should feel like an Rmarkdown rock star!</p>
+<div class="figure">
+<img src="images/rmarkdown_rockstar.png" alt="" />
+<p class="caption">artwork by Allison Horst, @allison_horst</p>
+</div>
+<p>You can also knit Rmarkdown documents to:</p>
+<ul>
+<li><p>Microsoft Word (1st draft of manuscript)</p></li>
+<li><p>Microsoft Powerpoint (1st draft of presentation)</p></li>
+<li><p>Posterdown (a poster-making package - for meeting posters)</p></li>
+</ul>
+<p>so that you don’t need to copy/paste your results or plots, and you can easily re-run your analyses and produce new outputs if you get more data.</p>
+<p>This chapter should give you a taste of the powerful tools for research reproducibility in R that can make your research work more efficient and more reproducible.</p>
+</div>
+<div id="the-dessert-cart" class="section level2" number="3.14">
+<h2><span class="header-section-number">3.14</span> The Dessert Cart</h2>
+<p>Below are some examples of more neat things you can do with medical data in R.
 These are more advanced approaches, but completely doable when you have more experience with R.</p>
-<div id="interactive-plots" class="section level3" number="3.11.1">
-<h3><span class="header-section-number">3.11.1</span> Interactive Plots</h3>
+<div id="interactive-plots" class="section level3" number="3.14.1">
+<h3><span class="header-section-number">3.14.1</span> Interactive Plots</h3>
 <p>Below is an interactive plot.
 Click on the plot to activate it.
 Then you can hover your mouse over each point to get more details about the data.
 You can also use the crosshairs to draw a zoom rectangle, or use the plotly menu bar at top right to zoom in or out of a region of the data.</p>
-<div id="htmlwidget-3a814b2db6d33fd75a73" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3a814b2db6d33fd75a73">{"x":{"data":[{"x":[5.16,79.05,33.02,92.71,8.71,30.98,14.23,4.53,9.66,18.79,27.76,5.19,19.42,99.42,88.57,14,14.62,18.33,13.7,30.39,10.97,4.5,5.68,70.74,151.59,173.83],"y":[3.55,65.12,28.55,22.05,23.95,85.19,17.71,3.25,6.8,0.66,0.76,1.35,2.73,1.15,1.15,3.22,29.31,23.66,34,3.61,20.34,8.9,3.06,0.99,21.68,3.32],"text":["time.to.transplant:   5.16<br />time.to.agvhd:  3.55<br />factor(donor.cmv): 0","time.to.transplant:  79.05<br />time.to.agvhd: 65.12<br />factor(donor.cmv): 0","time.to.transplant:  33.02<br />time.to.agvhd: 28.55<br />factor(donor.cmv): 0","time.to.transplant:  92.71<br />time.to.agvhd: 22.05<br />factor(donor.cmv): 0","time.to.transplant:   8.71<br />time.to.agvhd: 23.95<br />factor(donor.cmv): 0","time.to.transplant:  30.98<br />time.to.agvhd: 85.19<br />factor(donor.cmv): 0","time.to.transplant:  14.23<br />time.to.agvhd: 17.71<br />factor(donor.cmv): 0","time.to.transplant:   4.53<br />time.to.agvhd:  3.25<br />factor(donor.cmv): 0","time.to.transplant:   9.66<br />time.to.agvhd:  6.80<br />factor(donor.cmv): 0","time.to.transplant:  18.79<br />time.to.agvhd:  0.66<br />factor(donor.cmv): 0","time.to.transplant:  27.76<br />time.to.agvhd:  0.76<br />factor(donor.cmv): 0","time.to.transplant:   5.19<br />time.to.agvhd:  1.35<br />factor(donor.cmv): 0","time.to.transplant:  19.42<br />time.to.agvhd:  2.73<br />factor(donor.cmv): 0","time.to.transplant:  99.42<br />time.to.agvhd:  1.15<br />factor(donor.cmv): 0","time.to.transplant:  88.57<br />time.to.agvhd:  1.15<br />factor(donor.cmv): 0","time.to.transplant:  14.00<br />time.to.agvhd:  3.22<br />factor(donor.cmv): 0","time.to.transplant:  14.62<br />time.to.agvhd: 29.31<br />factor(donor.cmv): 0","time.to.transplant:  18.33<br />time.to.agvhd: 23.66<br />factor(donor.cmv): 0","time.to.transplant:  13.70<br />time.to.agvhd: 34.00<br />factor(donor.cmv): 0","time.to.transplant:  30.39<br />time.to.agvhd:  3.61<br />factor(donor.cmv): 0","time.to.transplant:  10.97<br />time.to.agvhd: 20.34<br />factor(donor.cmv): 0","time.to.transplant:   4.50<br />time.to.agvhd:  8.90<br />factor(donor.cmv): 0","time.to.transplant:   5.68<br />time.to.agvhd:  3.06<br />factor(donor.cmv): 0","time.to.transplant:  70.74<br />time.to.agvhd:  0.99<br />factor(donor.cmv): 0","time.to.transplant: 151.59<br />time.to.agvhd: 21.68<br />factor(donor.cmv): 0","time.to.transplant: 173.83<br />time.to.agvhd:  3.32<br />factor(donor.cmv): 0"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(248,118,109,1)"}},"hoveron":"points","name":"0","legendgroup":"0","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[35.58,11.4,2.43,9.59,null,43.43,39,17.84,4.53,21.32,16.33,162.4,13.7,76.09,10.35,5.45,3.65,6.9,3.19,8.67,136.87,4.07,9.92,12.88,8.48,11.7,13.04,1.84,43.89,7.82,46.82,24.34,10.74,2.53,4.01,33.54,8.94,24.44],"y":[3.75,2.79,3.88,2.99,4.8,0.69,2.14,1.41,10.58,12.48,9.59,77.54,21.32,0.72,84.47,78.29,0.82,2.63,44.71,16.26,18.53,2.04,21.68,53.78,3.65,2.99,3.29,2.6,9.66,0.95,2.2,11.1,31.54,7.92,2.07,11.3,7.43,8.05],"text":["time.to.transplant:  35.58<br />time.to.agvhd:  3.75<br />factor(donor.cmv): 1","time.to.transplant:  11.40<br />time.to.agvhd:  2.79<br />factor(donor.cmv): 1","time.to.transplant:   2.43<br />time.to.agvhd:  3.88<br />factor(donor.cmv): 1","time.to.transplant:   9.59<br />time.to.agvhd:  2.99<br />factor(donor.cmv): 1","time.to.transplant:     NA<br />time.to.agvhd:  4.80<br />factor(donor.cmv): 1","time.to.transplant:  43.43<br />time.to.agvhd:  0.69<br />factor(donor.cmv): 1","time.to.transplant:  39.00<br />time.to.agvhd:  2.14<br />factor(donor.cmv): 1","time.to.transplant:  17.84<br />time.to.agvhd:  1.41<br />factor(donor.cmv): 1","time.to.transplant:   4.53<br />time.to.agvhd: 10.58<br />factor(donor.cmv): 1","time.to.transplant:  21.32<br />time.to.agvhd: 12.48<br />factor(donor.cmv): 1","time.to.transplant:  16.33<br />time.to.agvhd:  9.59<br />factor(donor.cmv): 1","time.to.transplant: 162.40<br />time.to.agvhd: 77.54<br />factor(donor.cmv): 1","time.to.transplant:  13.70<br />time.to.agvhd: 21.32<br />factor(donor.cmv): 1","time.to.transplant:  76.09<br />time.to.agvhd:  0.72<br />factor(donor.cmv): 1","time.to.transplant:  10.35<br />time.to.agvhd: 84.47<br />factor(donor.cmv): 1","time.to.transplant:   5.45<br />time.to.agvhd: 78.29<br />factor(donor.cmv): 1","time.to.transplant:   3.65<br />time.to.agvhd:  0.82<br />factor(donor.cmv): 1","time.to.transplant:   6.90<br />time.to.agvhd:  2.63<br />factor(donor.cmv): 1","time.to.transplant:   3.19<br />time.to.agvhd: 44.71<br />factor(donor.cmv): 1","time.to.transplant:   8.67<br />time.to.agvhd: 16.26<br />factor(donor.cmv): 1","time.to.transplant: 136.87<br />time.to.agvhd: 18.53<br />factor(donor.cmv): 1","time.to.transplant:   4.07<br />time.to.agvhd:  2.04<br />factor(donor.cmv): 1","time.to.transplant:   9.92<br />time.to.agvhd: 21.68<br />factor(donor.cmv): 1","time.to.transplant:  12.88<br />time.to.agvhd: 53.78<br />factor(donor.cmv): 1","time.to.transplant:   8.48<br />time.to.agvhd:  3.65<br />factor(donor.cmv): 1","time.to.transplant:  11.70<br />time.to.agvhd:  2.99<br />factor(donor.cmv): 1","time.to.transplant:  13.04<br />time.to.agvhd:  3.29<br />factor(donor.cmv): 1","time.to.transplant:   1.84<br />time.to.agvhd:  2.60<br />factor(donor.cmv): 1","time.to.transplant:  43.89<br />time.to.agvhd:  9.66<br />factor(donor.cmv): 1","time.to.transplant:   7.82<br />time.to.agvhd:  0.95<br />factor(donor.cmv): 1","time.to.transplant:  46.82<br />time.to.agvhd:  2.20<br />factor(donor.cmv): 1","time.to.transplant:  24.34<br />time.to.agvhd: 11.10<br />factor(donor.cmv): 1","time.to.transplant:  10.74<br />time.to.agvhd: 31.54<br />factor(donor.cmv): 1","time.to.transplant:   2.53<br />time.to.agvhd:  7.92<br />factor(donor.cmv): 1","time.to.transplant:   4.01<br />time.to.agvhd:  2.07<br />factor(donor.cmv): 1","time.to.transplant:  33.54<br />time.to.agvhd: 11.30<br />factor(donor.cmv): 1","time.to.transplant:   8.94<br />time.to.agvhd:  7.43<br />factor(donor.cmv): 1","time.to.transplant:  24.44<br />time.to.agvhd:  8.05<br />factor(donor.cmv): 1"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,191,196,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,191,196,1)"}},"hoveron":"points","name":"1","legendgroup":"1","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.7625570776256,"r":7.30593607305936,"b":40.1826484018265,"l":37.2602739726027},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"title":{"text":"Time to Transplant vs Time to Acute GVHD by Donor CMV Status","font":{"color":"rgba(0,0,0,1)","family":"","size":17.5342465753425},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-6.7595,182.4295],"tickmode":"array","ticktext":["0","50","100","150"],"tickvals":[-8.88178419700125e-16,50,100,150],"categoryorder":"array","categoryarray":["0","50","100","150"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Time to Transplant","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-3.5665,89.4165],"tickmode":"array","ticktext":["0","20","40","60","80"],"tickvals":[0,20,40,60,80],"categoryorder":"array","categoryarray":["0","20","40","60","80"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Time to Acute GVHD","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"y":0.913385826771654},"annotations":[{"text":"Donor<br />CMV<br />Status","x":1.02,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"left","yanchor":"bottom","legendTitle":true}],"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"536870a5432d":{"x":{},"y":{},"colour":{},"type":"scatter"}},"cur_data":"536870a5432d","visdat":{"536870a5432d":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-2ecae6711cda44cde7db" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2ecae6711cda44cde7db">{"x":{"data":[{"x":[5.16,79.05,33.02,92.71,8.71,30.98,14.23,4.53,9.66,18.79,27.76,5.19,19.42,99.42,88.57,14,14.62,18.33,13.7,30.39,10.97,4.5,5.68,70.74,151.59,173.83],"y":[3.55,65.12,28.55,22.05,23.95,85.19,17.71,3.25,6.8,0.66,0.76,1.35,2.73,1.15,1.15,3.22,29.31,23.66,34,3.61,20.34,8.9,3.06,0.99,21.68,3.32],"text":["time.to.transplant:   5.16<br />time.to.agvhd:  3.55<br />factor(donor.cmv): 0","time.to.transplant:  79.05<br />time.to.agvhd: 65.12<br />factor(donor.cmv): 0","time.to.transplant:  33.02<br />time.to.agvhd: 28.55<br />factor(donor.cmv): 0","time.to.transplant:  92.71<br />time.to.agvhd: 22.05<br />factor(donor.cmv): 0","time.to.transplant:   8.71<br />time.to.agvhd: 23.95<br />factor(donor.cmv): 0","time.to.transplant:  30.98<br />time.to.agvhd: 85.19<br />factor(donor.cmv): 0","time.to.transplant:  14.23<br />time.to.agvhd: 17.71<br />factor(donor.cmv): 0","time.to.transplant:   4.53<br />time.to.agvhd:  3.25<br />factor(donor.cmv): 0","time.to.transplant:   9.66<br />time.to.agvhd:  6.80<br />factor(donor.cmv): 0","time.to.transplant:  18.79<br />time.to.agvhd:  0.66<br />factor(donor.cmv): 0","time.to.transplant:  27.76<br />time.to.agvhd:  0.76<br />factor(donor.cmv): 0","time.to.transplant:   5.19<br />time.to.agvhd:  1.35<br />factor(donor.cmv): 0","time.to.transplant:  19.42<br />time.to.agvhd:  2.73<br />factor(donor.cmv): 0","time.to.transplant:  99.42<br />time.to.agvhd:  1.15<br />factor(donor.cmv): 0","time.to.transplant:  88.57<br />time.to.agvhd:  1.15<br />factor(donor.cmv): 0","time.to.transplant:  14.00<br />time.to.agvhd:  3.22<br />factor(donor.cmv): 0","time.to.transplant:  14.62<br />time.to.agvhd: 29.31<br />factor(donor.cmv): 0","time.to.transplant:  18.33<br />time.to.agvhd: 23.66<br />factor(donor.cmv): 0","time.to.transplant:  13.70<br />time.to.agvhd: 34.00<br />factor(donor.cmv): 0","time.to.transplant:  30.39<br />time.to.agvhd:  3.61<br />factor(donor.cmv): 0","time.to.transplant:  10.97<br />time.to.agvhd: 20.34<br />factor(donor.cmv): 0","time.to.transplant:   4.50<br />time.to.agvhd:  8.90<br />factor(donor.cmv): 0","time.to.transplant:   5.68<br />time.to.agvhd:  3.06<br />factor(donor.cmv): 0","time.to.transplant:  70.74<br />time.to.agvhd:  0.99<br />factor(donor.cmv): 0","time.to.transplant: 151.59<br />time.to.agvhd: 21.68<br />factor(donor.cmv): 0","time.to.transplant: 173.83<br />time.to.agvhd:  3.32<br />factor(donor.cmv): 0"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(248,118,109,1)"}},"hoveron":"points","name":"0","legendgroup":"0","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[35.58,11.4,2.43,9.59,null,43.43,39,17.84,4.53,21.32,16.33,162.4,13.7,76.09,10.35,5.45,3.65,6.9,3.19,8.67,136.87,4.07,9.92,12.88,8.48,11.7,13.04,1.84,43.89,7.82,46.82,24.34,10.74,2.53,4.01,33.54,8.94,24.44],"y":[3.75,2.79,3.88,2.99,4.8,0.69,2.14,1.41,10.58,12.48,9.59,77.54,21.32,0.72,84.47,78.29,0.82,2.63,44.71,16.26,18.53,2.04,21.68,53.78,3.65,2.99,3.29,2.6,9.66,0.95,2.2,11.1,31.54,7.92,2.07,11.3,7.43,8.05],"text":["time.to.transplant:  35.58<br />time.to.agvhd:  3.75<br />factor(donor.cmv): 1","time.to.transplant:  11.40<br />time.to.agvhd:  2.79<br />factor(donor.cmv): 1","time.to.transplant:   2.43<br />time.to.agvhd:  3.88<br />factor(donor.cmv): 1","time.to.transplant:   9.59<br />time.to.agvhd:  2.99<br />factor(donor.cmv): 1","time.to.transplant:     NA<br />time.to.agvhd:  4.80<br />factor(donor.cmv): 1","time.to.transplant:  43.43<br />time.to.agvhd:  0.69<br />factor(donor.cmv): 1","time.to.transplant:  39.00<br />time.to.agvhd:  2.14<br />factor(donor.cmv): 1","time.to.transplant:  17.84<br />time.to.agvhd:  1.41<br />factor(donor.cmv): 1","time.to.transplant:   4.53<br />time.to.agvhd: 10.58<br />factor(donor.cmv): 1","time.to.transplant:  21.32<br />time.to.agvhd: 12.48<br />factor(donor.cmv): 1","time.to.transplant:  16.33<br />time.to.agvhd:  9.59<br />factor(donor.cmv): 1","time.to.transplant: 162.40<br />time.to.agvhd: 77.54<br />factor(donor.cmv): 1","time.to.transplant:  13.70<br />time.to.agvhd: 21.32<br />factor(donor.cmv): 1","time.to.transplant:  76.09<br />time.to.agvhd:  0.72<br />factor(donor.cmv): 1","time.to.transplant:  10.35<br />time.to.agvhd: 84.47<br />factor(donor.cmv): 1","time.to.transplant:   5.45<br />time.to.agvhd: 78.29<br />factor(donor.cmv): 1","time.to.transplant:   3.65<br />time.to.agvhd:  0.82<br />factor(donor.cmv): 1","time.to.transplant:   6.90<br />time.to.agvhd:  2.63<br />factor(donor.cmv): 1","time.to.transplant:   3.19<br />time.to.agvhd: 44.71<br />factor(donor.cmv): 1","time.to.transplant:   8.67<br />time.to.agvhd: 16.26<br />factor(donor.cmv): 1","time.to.transplant: 136.87<br />time.to.agvhd: 18.53<br />factor(donor.cmv): 1","time.to.transplant:   4.07<br />time.to.agvhd:  2.04<br />factor(donor.cmv): 1","time.to.transplant:   9.92<br />time.to.agvhd: 21.68<br />factor(donor.cmv): 1","time.to.transplant:  12.88<br />time.to.agvhd: 53.78<br />factor(donor.cmv): 1","time.to.transplant:   8.48<br />time.to.agvhd:  3.65<br />factor(donor.cmv): 1","time.to.transplant:  11.70<br />time.to.agvhd:  2.99<br />factor(donor.cmv): 1","time.to.transplant:  13.04<br />time.to.agvhd:  3.29<br />factor(donor.cmv): 1","time.to.transplant:   1.84<br />time.to.agvhd:  2.60<br />factor(donor.cmv): 1","time.to.transplant:  43.89<br />time.to.agvhd:  9.66<br />factor(donor.cmv): 1","time.to.transplant:   7.82<br />time.to.agvhd:  0.95<br />factor(donor.cmv): 1","time.to.transplant:  46.82<br />time.to.agvhd:  2.20<br />factor(donor.cmv): 1","time.to.transplant:  24.34<br />time.to.agvhd: 11.10<br />factor(donor.cmv): 1","time.to.transplant:  10.74<br />time.to.agvhd: 31.54<br />factor(donor.cmv): 1","time.to.transplant:   2.53<br />time.to.agvhd:  7.92<br />factor(donor.cmv): 1","time.to.transplant:   4.01<br />time.to.agvhd:  2.07<br />factor(donor.cmv): 1","time.to.transplant:  33.54<br />time.to.agvhd: 11.30<br />factor(donor.cmv): 1","time.to.transplant:   8.94<br />time.to.agvhd:  7.43<br />factor(donor.cmv): 1","time.to.transplant:  24.44<br />time.to.agvhd:  8.05<br />factor(donor.cmv): 1"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,191,196,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,191,196,1)"}},"hoveron":"points","name":"1","legendgroup":"1","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":43.7625570776256,"r":7.30593607305936,"b":40.1826484018265,"l":37.2602739726027},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"title":{"text":"Time to Transplant vs Time to Acute GVHD by Donor CMV Status","font":{"color":"rgba(0,0,0,1)","family":"","size":17.5342465753425},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-6.7595,182.4295],"tickmode":"array","ticktext":["0","50","100","150"],"tickvals":[-8.88178419700125e-16,50,100,150],"categoryorder":"array","categoryarray":["0","50","100","150"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"Time to Transplant","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-3.5665,89.4165],"tickmode":"array","ticktext":["0","20","40","60","80"],"tickvals":[0,20,40,60,80],"categoryorder":"array","categoryarray":["0","20","40","60","80"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"Time to Acute GVHD","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"y":0.913385826771654},"annotations":[{"text":"Donor<br />CMV<br />Status","x":1.02,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"left","yanchor":"bottom","legendTitle":true}],"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"3f8472ea7653":{"x":{},"y":{},"colour":{},"type":"scatter"}},"cur_data":"3f8472ea7653","visdat":{"3f8472ea7653":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
-<div id="animated-graphics" class="section level3" number="3.11.2">
-<h3><span class="header-section-number">3.11.2</span> Animated Graphics</h3>
+<div id="animated-graphics" class="section level3" number="3.14.2">
+<h3><span class="header-section-number">3.14.2</span> Animated Graphics</h3>
 <p>Here is an example of animated graphics that you can create in R to illustrate changes in data over time.</p>
 <p><img src="images/vaccination-animation.gif" /><!-- --></p>
 </div>
-<div id="a-clinical-trial-dashboard" class="section level3" number="3.11.3">
-<h3><span class="header-section-number">3.11.3</span> A Clinical Trial Dashboard</h3>
+<div id="a-clinical-trial-dashboard" class="section level3" number="3.14.3">
+<h3><span class="header-section-number">3.14.3</span> A Clinical Trial Dashboard</h3>
 <p>Below is an screen capture picture of a web flexdashboard to track the data in an ongoing clinical trial (which is now completed and published).
 You can see the actual web dashboard <a href="https://jenthompson.me/examples/progressdash.html">here</a>.</p>
 <p>Check out the various tabs.
@@ -568,15 +785,15 @@ Imagine how useful it would be to track enrollment, exclusions, missing data, an
 <p>All of this work was done in R by <a href="https://jenthompson.me/about/">Jenn Thompson</a>.</p>
 <p><img src="images/clin_trial_dashboard.png" width="638" /></p>
 </div>
-<div id="a-shiny-app" class="section level3" number="3.11.4">
-<h3><span class="header-section-number">3.11.4</span> A Shiny App</h3>
+<div id="a-shiny-app" class="section level3" number="3.14.4">
+<h3><span class="header-section-number">3.14.4</span> A Shiny App</h3>
 <p>The frame below shows a publicly available Shiny web application, built with R, which can help clinicians calculate the probablity of intestinal TB vs. Crohn’s disease with available clinical data.
 And to determine how new test results would change this estimate.</p>
 <p>The web app can be accessed <a href="https://www.pathology.med.umich.edu/shiny/tbcrohns/">here</a>.</p>
 <p><img src="images/tb_shiny_app.png" width="634" /></p>
 </div>
-<div id="an-example-of-synergy-in-the-r-community" class="section level3" number="3.11.5">
-<h3><span class="header-section-number">3.11.5</span> An Example of Synergy in the R Community</h3>
+<div id="an-example-of-synergy-in-the-r-community" class="section level3" number="3.14.5">
+<h3><span class="header-section-number">3.14.5</span> An Example of Synergy in the R Community</h3>
 <p>One of the remarkable things about the open source R community is that people build all kinds of new R functions and packages that are useful to them, and then share them publicly with tools like <em>Github</em> so that they can be useful to others.
 Often combining bits of several packages leads to <strong>emergent properties</strong> - completely new creations that can only occur because all of the parts (packages) are present.
 The collaborative nature of the R community, in this case on Twitter (follow the #rstats hashtag), can lead to surprising collaborations and outcomes.<br />

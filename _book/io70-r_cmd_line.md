@@ -76,7 +76,7 @@ whoami;date
 
 ```
 ## peterhiggins
-## Tue Jan 19 21:55:02 EST 2021
+## Thu May  6 18:05:35 EDT 2021
 ```
 :::
 
@@ -133,6 +133,7 @@ ls
 ## 2020-Jun-05 AGA IMIBD meeting notest.docx
 ## 2021 AGA Invited Speaker Session Basic Hybrid Example.pdf
 ## 2021.Higgins AGA Distinguished Clinician.CO.docx
+## 203ClareScenes080119 copy.pdf
 ## A is for Allspice.2.0.docx
 ## A is for Allspice.docx
 ## ABT263_HIO_report_toWord.docx
@@ -151,12 +152,17 @@ ls
 ## APG1244_Milestone_report.docx
 ## ASUC_UC_protocol_comments_2020.docx
 ## A_Woodward_Score Sheet_PDRH.docx
+## AbbVie_Contract_2021_K000013379_-_Peter_Higgins.pdf
+## AbbVie_Contract_K000013378_-_Peter_Higgins_2021_adhoc.pdf
+## Abbvie_DocuSign_Dr_Higgins_Invoice.docx.pdf
 ## Accounts and Access (1) (1).docx
 ## Advice for participants in webinars.docx
 ## Animation of NSAID.pptx
+## Applicant Research Design Task T32.docx
 ## BKochar_Frailty.pdf
 ## BM recommendation.docx
 ## Beginners_GuideToR.pdf
+## Best Practices Perils Excel
 ## Biosketch for K.pptx
 ## Biosketch_2020_Higgins_ClinResIBD_biosketch.doc
 ## Brazil.ItineraryNov2015.docx
@@ -164,6 +170,7 @@ ls
 ## CAS.K.candidate.background_SB_PDRH.docx
 ## CAS.T32.Project.Description-JS.docx
 ## CAS.career.goals.obj.development.training_PDRH.docx
+## CB6 and JAK_stat.pptx
 ## CC360_The Risk of SARS.R1.docx
 ## CC360_The Risk of SARS.docx
 ## CCF IBD Webcast 2020 Draft Deck_For Review.pptx
@@ -177,10 +184,13 @@ ls
 ## CellDeath_DDW_2021_ISS.pdf
 ## Chu RPG Review_PDRH.docx
 ## Clare Investment Summary.docx
+## Clinical Coordination and Intense Proactive Monitoring to Improve Utilization of Resources and Reduce Expenditures in High.docx
 ## Council Conversations Author Chat Guide.docx
 ## Coursera_Programming in R Notes.docx
 ## CoverLetterPlus.pptx
 ## Crash&Burn_ScriptV2_100318 copy.pdf
+## DDW JAK for UC.pptx
+## DDW2021 CB6 powerpoint.pptx
 ## DataCamp Courses by Topic.docx
 ## DeEscalationACG2016.pptx
 ## Demographics.pdf
@@ -192,12 +202,14 @@ ls
 ## ECCO2016Lycera30937.pptx
 ## Effect of medications on the recurrence of cancer in IBD patients.docx
 ## Electrical engineering interview questions.docx
+## FCP Sensor proposal draft.docx
 ## FDAtofaResponse.docx
 ## FFMI Kickstart-FinalReport 5-20-16-LJ.docx
 ## FITBITProtocol_28NOV2016_AbbVie.docx
 ## FITBITProtocol_4DEC2016_AbbVie.docx
 ## FMT_DDW_2021_ISS.pdf
 ## Feasibility and Pilot Studies.pptx
+## Feb2021_ibdTrials.pptx
 ## FibrosisIBDCedars2016.pptx
 ## Figures-KC-JAMA.pptx
 ## Finance and Retirement Plans.docx
@@ -224,6 +236,7 @@ ls
 ## HigginsACGMidwest2019_PerioperativeIBD.pptx
 ## Higgins_LOS_IBDBiobank_Shah_Nusrat_2019.docx
 ## Higgins_UM_CME_Pregnancy in IBD.pptx
+## Higginslab server.pptx
 ## How To Log in to IBD Server.docx
 ## How To Log in to RStudio Server for HigginsLab.docx
 ## How To Log in to RStudio Server for Shiny.docx
@@ -249,9 +262,12 @@ ls
 ## IMG_1523st.jpg
 ## IMIBD Councilors 2020-21.docx
 ## IMIBD Partners insurance 2020DDW.pptx
+## IMIBD Plenary Intro.pptx
 ## IMIBD_expanded_descriptors.xlsx
 ## Introduction to Application Supplement Photoacoustic.docx
 ## JAK_DDW_2021_ISS.pdf
+## JAMA Review on CD.docx
+## JAMA.CD.Highlights_PDRH.docx
 ## JAMA_KC_Second JAMA.docx
 ## JAMA_Review_on_CD_Revisions_Tracked_Changes with edits_PDRH.docx
 ## JB_V1 Career Goals and Objectives 7.8.2020_PDRH.docx
@@ -264,10 +280,13 @@ ls
 ## K23_morph_measurements_MockupManuscript_21JAN2019.docx
 ## Learning R discussion Jeremy Louissaint.docx
 ## Letter to Frank Hamilton.docx
+## Library
 ## Lin_Reviewer Score_PDRH.docx
 ## Log in to IBD Server.docx
+## Low Enrollers ACD.xlsx
 ## MEI_2020_PH_W9.pdf
 ## MEI_2021_PH_W9.pdf
+## MEI_2021_W9.pdf
 ## MEI_ACH_Wire Transfer Form.docx
 ## MIM-TESRIC PROTOCOL_Higgins_14Apr2020.docx
 ## MIM-TESRIC PROTOCOL_Higgins_26Aug2020.docx
@@ -298,7 +317,10 @@ ls
 ## Pearson 5 Notes.docx
 ## Perils of Excel.pptx
 ## Personal statement version 3!.docx
+## Peter Higgins 2021 Vision Statment for the NSAC.docx
+## Pfizer_Contract_for_Peter_Higgins_-_RD-20-D11.pdf
 ## Pitch Letter - S is for Saffron.docx
+## Pitching Notes.docx
 ## Poppy Eulogy backup.docx
 ## Poppy Eulogy.docx
 ## Possible Eastern College Tour.docx
@@ -313,6 +335,7 @@ ls
 ## Ramp up clinical research_PH.xlsx
 ## Ramping up human subject research - MM 6-1-20 _KDA_PDRH_suggestions.docx
 ## Recordings
+## Reply_JAMA_Thiopurines.docx
 ## Review Criteria for COVID Clinical Trials.docx
 ## Review guidelines_2017.docx
 ## Roasted Salted Cashews.docx
@@ -320,9 +343,11 @@ ls
 ## S is for Saffron 3.1.docx
 ## S is for Saffron 3.2.docx
 ## S is for Saffron.2.0.docx
+## SCM Mentor Letters.docx
 ## SEAN STOCKS.docx
 ## SIG_Template_IBD Program_FINAL.docx
 ## SPECIFIC AIMS 2_PDRH.docx
+## Screenwriting Contests.docx
 ## Sean Common App academic honors list.docx
 ## Sean Common App activities list.docx
 ## Sean Higgins Bordogni.mp4
@@ -340,10 +365,14 @@ ls
 ## Shotwave thread.docx
 ## Signing Clinical Research Infusion Orders.pdf
 ## SingleCell_DDW_2021_ISS.pdf
+## SkinCancer.IBD.Gentics_Yanhua_PDRH.docx
 ## SoMe_use_2020.png
 ## Social Media for GI.pptx
 ## Source Code PT1.docx
+## Specific Aims.pdf
 ## Stelara paper.docx
+## Stelara paper_revised_PDRH_KCC.docx
+## Structure of Aim 3.docx
 ## T32_current_text_14June2019.docx
 ## TOPPIC ML draft v5SCM_YL_AKW_PDRH.docx
 ## TabaCrohn IBD J club.docx
@@ -352,21 +381,28 @@ ls
 ## Task List 2020-2.docx
 ## Task List 2020-5.docx
 ## Task List 2020.docx
+## Task List 2021.docx
 ## Testing signatures with Adobe.pdf
 ## The Risk of SARS.R1.Markup.docx
 ## Tidymodels.docx
+## Timelines for K submission.pptx
 ## Tofa in ICI Figure Legends_Final Draft_V2.docx
 ## Tofa inpatient induction Protocol_02NOV2018_PHforEdits.docx
+## Tofa_Presentation_2_10_2021.pptx
 ## Toffee Separation Tips.docx
+## UC CD Impact Manuscript Tables__19Feb2021_PDRH.docx
+## UC and CD Impact Manuscript_Draft1_19Feb2021_PDRH.docx
 ## UCRx_DDW_2021_ISS.pdf
 ## UC_protocol_comments_2020.docx
 ## UM IBD Clinical Trials IBD referral form.docx
 ## UPA_U_ACHIEVE 1st draft_PDRH.docx
+## Upa ASUC Concept Page.docx
 ## VINDICO_PRO.pptx
 ## VideoVisitSchedulingQuickApptsforProviders.pdf
 ## VincentChen_K specific aims 2020-10-25.docx
 ## VirtualPtEdMar2020.v2.pdf
 ## WebEx
+## Why not excel.docx
 ## Zoom
 ## Zwift
 ## Zwift-Gift-Card.pdf
@@ -383,10 +419,13 @@ ls
 ## epic cancel_reschedule appointments.ppt
 ## epic schedule viewing_close.ppt
 ## escalator.html
+## exercise1.xlsx
+## exercise2.xlsx
 ## fellow graduation 2020.docx
 ## hexStickers.jpg
 ## higgins2x3.jpg
 ## iBike Rides
+## introduce_clare.docx
 ## jama_cushing_crohn_review_2021.pdf
 ## learnr app diagram.jpg
 ## learnr app diagram.pptx
@@ -412,13 +451,14 @@ ls
 ## submitJanssen_IBD School Videos_12Jul2018.pdf
 ## tidyr_pivot.png
 ## tidyr_pivot.xcf
+## tofa_checkpoint.pdf
 ## ucla1.jpg
 ## untidy_sheets.pptx
 ## wga_min20.pdf
 ## ~$T Review Higgins.docx
-## ~$gnature.docx
 ## ~$sk List 2020-5.docx
 ## ~$sk List 2020.docx
+## ~$sk List 2021.docx
 ```
 :::
 
@@ -449,7 +489,10 @@ ls
 ## 2016IBDClinTrialsforMDsDearborn.pptx
 ## 2016IntegratedDeckorMDsGB.pptx
 ## 2019 SCSG GI Symposium IBD SoA  -  Read-Only.pptx
+## Annual Research Career Review 2021PH.pptx
 ## BE LGD Dearborn 2016.04.12.pptx
+## CCF_Clinical_Trials.pptx
+## Feasibility and Pilot Studies.pptx
 ## Getting Started in RStudio.pptx
 ## Higgins Microbiota for IBD Patient Ed.pptx
 ## HigginsDec2018AJG_SmokingStatus.pptx
@@ -457,14 +500,16 @@ ls
 ## Integrated Slide Deck Dearborn 2016.04.12.pptx
 ## MER Stress Management Dearborn 4-14.pptx
 ## MichiganMedicine-IBDTemplate.potx
-## PDRH RCAR 2020.pptx
+## PDRH RCR 2020.pptx
 ## PennThioMTX2017Higgins.pptx
 ## Pregnancy in IBD.pptx
 ## Regenbogen CRS for GI CME Course2016.pptx
 ## Senior Slide Show.pptx
+## Social Media for GI.pptx
 ## ThomsonRectalStumpComplicationsIBD2_13.pptx
 ## UEGweek2020.pptx
 ## UMHS Talk- Moving Beyond AntiTNF 4-2016 FINAL v2.pptx
+## UMich COVID-19  IBD.pptx
 ## Vertebrate Animals for K.pptx
 ## VirtualPtEdMar2020.v2.pptx
 ## Writers Room.pptx

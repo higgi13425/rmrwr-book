@@ -48,7 +48,7 @@ Note that if you set both bins = M and binwidth = N, binwidth will override the 
 ```{r histo2, exercise=TRUE}
 ggplot(data = Indometh, 
        aes(x=conc)) +
-  geom_histogram()
+  geom_histogram( binwidth = 0.2)
 ```
 
 ### Exercise map to color
@@ -57,8 +57,8 @@ In the aesthetic function below, map fill to ..count..<br>
 with bins = 12 in geom_histogram()
 ```{r histo3, exercise=TRUE}
 ggplot(data = Indometh, 
-       aes(x=conc)) +
-  geom_histogram()
+       aes(x=conc, fill = ..count..)) +
+  geom_histogram( bins = 12)
 ```
 
 ### Exercise with Code
@@ -72,7 +72,7 @@ Run the code below to see this, then change the data to Theoph, a similar pK dat
 ```{r histo4, exercise=TRUE, exercise.lines = 5}
 ggplot(data = Indometh, 
        aes(x=conc)) +
-  geom_histogram()
+  geom_histogram( breaks = c(seq(from= 0, to = 3, by = 0.333)))
 ```
 
 ### Smooth distributions
@@ -88,20 +88,20 @@ This shows the overall distribution. Now to see the distribution by Subject, try
 
 ```{r density1, exercise=TRUE, exercise.lines = 5}
 ggplot(data = Theoph, 
-       aes(x=conc)) +
+       aes(x=conc, group = Subject, color = Subject)) +
   geom_density()
 ```
 ### Overlaid distributions
 
 You can overlay distributions with both a histogram and a density plot using a density y axis <br>
-change the aesthetic function for beom_histogram below to <br>
+change the aesthetic function for geom_histogram below to <br>
 y = ..density.. and fill = ..density..
 
 ```{r density2, exercise=TRUE, exercise.lines = 5}
 ggplot(data = Theoph)+
   aes(x = conc) +
-  geom_histogram(aes()) +
-  geom_density()
+  geom_histogram(aes(y = ..density.., fill = ..density..)) +
+  geom_density(outline.type = "upper", inherit.aes = )
 ```
 
 
@@ -117,7 +117,7 @@ In the aes mapping function, set color and fill to your categorical variable (se
 
 ```{r}
 ggplot(data = mockstudy, 
-       aes(x = age)) +
+       aes(x = age, color = sex, fill = sex, alpha = ..count..)) +
   geom_histogram()
 ```
 
@@ -134,7 +134,7 @@ Use geom_freqpoly in place of geom_histogram, use color + Subject, and set the b
  
 
 ```{r freqpoly, exercise=TRUE, exercise.eval=TRUE}
-ggplot(data = Indometh, 
+ggplot(data = Theoph, 
        aes(x=conc, color = Subject)) +
   geom_freqpoly(binwidth = 1, stat = 'density')
 ```
