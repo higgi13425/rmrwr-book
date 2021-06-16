@@ -1,0 +1,318 @@
+---
+title: "A Bit of Base R"
+author: "Peter Higgins"
+date: "6/7/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(medicaldata)
+licorice <- medicaldata::licorice_gargle
+library(tidyverse)
+```
+
+# The Basics of Base R
+
+While there are many great features of the *tidyverse*, one should not throw out the base R with the bathwater. The functions and packages of base R are stable and slow to change (unlike the dynamic packages and functions of the tidyverse), and many are helpful and important building blocks for using R. Some of the functions in base R tend to fail silently, and have unhelpful error messages, but they are embedded in a lot of R scripts. When you search for help with R on websites like RStudio Community and Stack Overflow, you will often find base R code, and you will need to know how to interpret it.
+
+There are many really basic and important functions in base R that are worth knowing about.
+
+Once you have a handle on these basic functions, you can say
+
+![Obscure base R / video game meme](~/Documents/Rcode/rmrwr-book/images/baseRmeme.png)
+
+[meme details](https://en.wikipedia.org/wiki/All_your_base_are_belong_to_us)
+
+## Dimensions of Data Rectangles
+
+Whether you have a data.frame, a tibble, or a matrix, it can be helpful to know the dimensions of what you have. You can get at these dimensions with
+
+-   dim()
+
+-   nrow()
+
+-   ncol()
+
+    You may want to know how many rows to loop over, or how many columns need names, but you will frequently need to access these numbers. The dim() function returns two numbers - the rows first, then the columns. Let's try this on the ***licorice*** dataset from the {medicaldata} package.
+
+```{r licorice}
+dim(licorice)
+```
+
+This is great, as long as you know that the first number is the number of rows, and the 2nd number is the number of columns (standard notation is R x C, so rows first, columns second). But if you want to get the number of rows out, and store it in a variable, you need to use the brackets [n] notation. Brackets allow you to pull out the ***nth*** item in a vector or a list. Let's pull out the first item (the number of rows), and the second item (the number of columns) separately. We will store these in the 2 variables *rows* and *columns*, then print them out.
+
+```{r}
+rows <- dim(licorice)[1]
+rows
+
+columns <- dim(licorice)[2]
+columns
+
+```
+
+You can also do this more directly with the *nrow*() and *ncol*() functions.
+
+```{r}
+rows <- nrow(licorice)
+rows
+
+columns <- ncol(licorice)
+columns
+
+```
+
+A similar approach can give you the length of a vector with the *length*() function. Here we will check the length of the **treat** vector in the **licorice** tibble.
+
+```{r}
+length(licorice$treat)
+
+```
+
+::: {.warning}
+The *length*() function works a bit differently on dataframes or tibbles - it returns the number of *variables/columns*. This can be surprising if you don't expect it, and you are expecting the number of rows.
+:::
+
+```{r}
+length(licorice)
+
+```
+
+## Naming columns
+
+Sometimes you want to take a quick look at the names of all of you columns in a dataframe. The *names*() function is a quick solution.
+
+```{r}
+names(licorice)
+```
+
+You can also use *names*() to re-set the names if you want to change a bunch of column names, by assigning a vector of names (of the same length).
+
+```{r}
+names(licorice) <- c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S")
+licorice[1:10, ]
+```
+
+Note that you can use the *set_names()* function in the {purrr} package to conveniently change variable/column names within a data pipeline, and the *rename()* function in the dplyr package to change particular variable/column names.
+
+```{r}
+licorice %>% 
+  purrr::set_names(1:19) %>% 
+  dplyr::rename("purple" = 2) %>% 
+  # note rename(new_name = old_name)
+  tibble()
+```
+
+```{r}
+licorice[1:10, ]
+```
+
+Note also that we used the bracket notation above to print just the first 10 rows of the renamed version of the *licorice* dataframe. This was done with brackets that define which [rows, columns] we want to use (in this case for printing).
+
+-   By using the sequence 1:10, we choose the first 10 rows.
+
+-   By putting nothing after the comma, we select ***all*** columns.
+
+    ::: {.warning}
+    You might be wondering why the column names reverted to alphabetical letters after we used set_names to change them to numbers. <br>\
+    This is because we did set the names, and printed the result out to the console, but did **not** assign the result back to the licorice object with an assignment arrow, so it is transient, rather than a lasting change to the licorice object. This is a common pitfall for beginners.
+    :::
+
+We can use also use brackets to choose exactly which rows and columns we want.
+
+```{r}
+licorice[4:7, c(2,5,10)]
+```
+
+Here we have selected 4 particular rows with a sequence (4:7), and 3 particular columns (by concatenating these into a vector with the *c()* function).
+
+## Concatenation
+
+One of the simplest, but most common early functions in R is c(). The c() function concatenates items together into a vector. This can be helpful for building a vector of items to iterate over, or to build a vector which will become a variable in a dataframe, or even a vector of options for a function.
+
+You simply write the items, separated by commas, in order inside the parentheses of c(). Remember that strings need to be enclosed in matching quotes.
+
+```{r}
+fib_numbers <- c(1, 1, 2, 3, 5, 8, 13, 21, 34)
+fruit_vec <- c("apple", "banana", "coconut", "dragonfruit", "elderberry")
+
+fib_numbers
+
+fruit_vec
+```
+
+## Sequences
+
+There are times when you want to create a sequence of numbers (i.e. 1 to 10, or 1 to 100), without manually concatenating a vector. The easiest way to do this is with the colon (:). You can assign 1:12 to an object, or 77:83, if you prefer.
+
+```{r}
+1:12
+77:83
+```
+
+## Constants
+
+Note that base R has some handy constants that may help in making vectors - LETTERS (vector of letters (string) from A to Z) - letters (vector of letters (string) from a to z) - month.abb (vector of 3 letter (English) month abbreviations from Jan to Dec) - month.name (vector of 3 letter (English) month abbreviations from January to December) - pi (the irrational number for relating diameter to circumference)
+
+You can select subsets of these with the bracket notation, i.e letters[1:13]. You can also format number for printing as strings with sprintf() (for print formatting) to include the desired number of decimals.
+
+```{r}
+LETTERS[7:12]
+letters[5:10]
+month.abb[10:12]
+pi %>% sprintf(fmt = "%1.5f", .)
+```
+
+## Fancier Sequences
+
+You can make more complex sequences with the seq() function. The main arguments (parameters) of seq() are
+
+-   from (default =1)
+
+-   to (default =1)
+
+-   by (default = (*to*-*from*)/*length*)
+
+-   length
+
+You will generally need at least 3 of these to describe a sequence, or *seq()* will use the default *by* value of 1. Note that if the *by* increment does not match the *to* argument, the sequence will stop at the last number before the *to* number.
+
+*seq_len(n)* is a shortcut that gives you a sequence from 1 to n, while *seq_along(vector)* is a shortcut that gives you a sequence from 1 to the length of a the vector.
+
+See the examples below
+
+```{r}
+# leaving out "length"
+seq(from = 2, to = 18, by = 2) 
+
+# leaving out argument names
+seq(3, 18, length=6) 
+
+# 'length' and 'to' do not match
+seq(from = 24, to = 4, by = -6) 
+
+# leaving out "to"
+seq(from = 5, by = 5, length = 6) 
+
+# leaving out "by"
+seq(from = 16, to = 128, length = 8) 
+seq(from = 51, by = -3, length = 17)
+
+# using the seq_len() shortcut with n
+seq_len(14)
+
+# using the seq_along() shortcut with a vector
+seq_along(7:23)
+seq_along(licorice$C)
+```
+
+## Mathematical functions
+
+R has many mathematical functions, which can be used in a variety of calculations. These can be run on a vector, or on a variable in a dataframe. These include (and there are many more):
+
+-   mean
+
+-   median
+
+-   var
+
+-   sd
+
+-   min
+
+-   max
+
+-   range
+
+-   rank
+
+-   sum
+
+Examples are shown below
+
+```{r}
+mean(1:20)
+median(licorice$C)
+var(licorice$C)
+sd(licorice$C)
+min(licorice$C)
+max(licorice$C)
+range(licorice$C)[2] # selects 2nd value in range (max)
+rank(licorice$C)[1] # ranks first 10 values
+sum(licorice$C) # sum of values
+```
+
+## Handling missing data (NAs)
+
+R designates missing values as the symbol NA (not available). NAs propagate through calculations, so that if you have a vector with at least one NA, and you try to calculate the mean, it will return NA.
+
+```{r}
+mean(licorice$J)
+```
+
+You can handle this within many functions (including mean, median, sd, and var) with the argument **na.rm** = TRUE. The default for these is na.rm = FALSE, so that if you are trying to do an operation on missing data, R will tell you.
+
+na.rm is an argument in a number of mathematical functions, in which **na** comes first, followed by the verb **rm** (remove).
+
+Testing whether a value or values are missing (NA) is in the reverse order. You use the *is.na()* function, in which the verb comes first, and then followed by NA. You might reasonably think that you can just use a normal equality test for NA values, like
+
+```{r}
+licorice$J == NA
+```
+
+but, because NAs propagate, you get just NAs, rather than TRUE or FALSE.
+
+You can use is.na() for this.
+
+```{r}
+licorice$J %>% is.na()
+```
+
+There are a few TRUEs in there (value is NA), but they can be hard to count. The sum() function can help, when combined with *is.na().* The *which()* function can help you figure out which values are missing.
+
+The anyNA() function can tell you if there are any missing values in a vector (or a variable/column in a dataframe).
+
+```{r}
+licorice$J %>% is.na() %>% sum()
+
+licorice$J %>% is.na() %>% which()
+
+licorice$C %>% anyNA()
+licorice$J %>% anyNA()
+
+```
+
+There are two missing values, in rows 113 and 123.
+
+The na.omit() function can remove all of the rows(cases, observations) from a dataframe that have at least one missing value in any column. This can be helpful for modeling, in which cases with missing data can cause problems. It is helpful to keep track of the number of rows before and after na.omit(), to know how many cases/observations/rows you are discarding.
+
+```{r}
+nrow(licorice)
+
+licorice %>% 
+  na.omit() %>% 
+  # modeling would happen here if not too many cases discarded
+  nrow()
+```
+
+Note that this can also be done in the tidyverse with drop_na() in the {tidyr} package. You can include a particular column or columns as an argument in drop_na() to only drop observations if there are missing values in these particular columns.
+
+```{r}
+licorice %>% 
+  drop_na(H:J) %>% 
+  nrow()
+```
+
+The code above takes the licorice dataset, looks for NA values in rows of (only) columns H through J, and drops 2 rows based on missing data, reducing the number of rows from 235 to 233.
+
+## Cutting Continuous data into Levels
+
+While there are good arguments for why **not** to do this (dichotomania, loss of granularity in data), it is common to cut continuous data into levels, like (mild, moderate, severe), or (normal weight, overweight, obese). This can, when there are already established standard levels, make the data easier to interpret. The cut() function in base R makes this easy to do.
+
+```{r}
+C_factor3 <- cut(licorice$C, breaks = 3)
+table(C_factor3)
+str(C_factor3)
+```
+
+This creates a new variable (C_factor), which is a factor with 3 levels. The levels are stored as 1, 2, 3, and range from 15.6-22.5 for 1, above 22.5-29.4 for 2, and above 29.4 to 36.4 for 3. The interval notation uses the square bracket for including the listed number, and parentheses for starting just after the listed number. It is a good practice to develop a standard way of naming these created variables, which are related to the original variable, are factors, and have a certain number of levels. One helpful shorthand is to take the original variable name, and to add the suffix "\_f4*"* for a factor with 4 levels. A dichotomized variable would be *"*varname_f2"

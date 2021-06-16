@@ -11,7 +11,7 @@ rmd_files:
 - io03-tasting.Rmd
 - io06a-filter.Rmd
 - io65-error_messages.Rmd
-- io09-building-blocks.Rmd
+- io66-base_r.Rmd
 - io04-updating.Rmd
 - io07-major-updates.Rmd
 - io30-ttest.Rmd
@@ -20,7 +20,6 @@ rmd_files:
 - io67-ggplot_helpers.Rmd
 - io71-functions_plots.Rmd
 - io70-r_cmd_line.Rmd
-- io97-publishing.Rmd
 - io98-title-holder.Rmd
 - io99-references.Rmd
 
