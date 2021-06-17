@@ -9,8 +9,12 @@ rmd_files:
 - index.Rmd
 - io02-getting-started.Rmd
 - io03-tasting.Rmd
+- io09-building-blocks.Rmd
 - io06a-filter.Rmd
 - io65-error_messages.Rmd
+- io58-debug_pipes_plots.Rmd
+- io59-hashtag_debugging.Rmd
+- io60-help_in_R.Rmd
 - io66-base_r.Rmd
 - io04-updating.Rmd
 - io07-major-updates.Rmd
