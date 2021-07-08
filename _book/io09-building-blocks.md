@@ -345,7 +345,10 @@ structures, and these include
     ```
     
     ```r
-    starwars %>% select(name, films) %>% unnest()
+    # gives you a hidden list of films
+    starwars %>% 
+      select(name, films) %>% 
+      unnest(cols = c(films))
     ```
     
     ```
@@ -363,6 +366,10 @@ structures, and these include
      9 C-3PO          Revenge of the Sith    
     10 C-3PO          Return of the Jedi     
     # … with 163 more rows
+    ```
+    
+    ```r
+    # unnest expands to multiple rows to show detail
     ```
 
     Lists can be useful for bundling togther related data of different
@@ -407,7 +414,7 @@ structures, and these include
     list.\
     \
     You can build a dataframe from a set of vectors (variables) by
-    binding these together as columns/variables with the `data_frame()`
+    binding these together as columns/variables with the `tibble()`
     function.
 
     
@@ -415,7 +422,7 @@ structures, and these include
     pat_id <- c(1,1,2,2, 3,3)
     date <- c(lubridate::ymd("2020-11-07", "2020-12-03", "2020-12-02", "2020-12-15", "2020-11-09", "2020-12-02"))
     crp <- c(5.1, 3.2, 7.6, 4.1, 4.3, 1.7)
-    new_df <- data_frame(pat_id, date, crp)
+    new_df <- tibble(pat_id, date, crp)
     new_df
     ```
     
@@ -1053,7 +1060,7 @@ sd
 function (x, na.rm = FALSE) 
 sqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x), 
     na.rm = na.rm))
-<bytecode: 0x7feee4505950>
+<bytecode: 0x7ff658cb1e18>
 <environment: namespace:stats>
 ```
 :::

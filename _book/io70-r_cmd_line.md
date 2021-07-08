@@ -76,7 +76,7 @@ whoami;date
 
 ```
 ## peterhiggins
-## Wed Jun 16 20:07:58 EDT 2021
+## Thu Jun 17 20:20:02 EDT 2021
 ```
 :::
 
@@ -227,6 +227,7 @@ ls
 ## Git for MDs_2.pptx
 ## GitHub
 ## Github for MDs_1.pptx
+## Github for MDs_3.pptx
 ## Glover_RPG_Review_PDRH.docx
 ## GoToMeeting Chats
 ## GradPartyHigginsInvites.xlsx
@@ -468,6 +469,7 @@ ls
 ## untidy_sheets.pptx
 ## wga_min20.pdf
 ## zwift_training_pacepartner.xlsx
+## {"Attachments"-[{"__type"-"F.textClipping
 ## ~$21.Biobanking Program_InVivo_DRAFT-6.14.2021.docx
 ## ~$T Review Higgins.docx
 ## ~$sk List 2020-5.docx

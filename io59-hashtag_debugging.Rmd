@@ -1,14 +1,3 @@
----
-title: "Tutorial"
-output: learnr::tutorial
-runtime: shiny_prerendered
----
-
-```{r setup1, include=FALSE}
-library(learnr)
-knitr::opts_chunk$set(echo = FALSE)
-```
-
 
 ---
 title: "Tips for Hashtag Debugging your Pipes and GGPlots"
@@ -36,6 +25,8 @@ data("gapminder")
 data("us_contagious_diseases")
 the_disease <- "Measles"
 ```
+
+# Tips for Hashtag Debugging your Pipes and GGPlots
 
 ## Debugging
 While layering functions with piping in the tidyverse

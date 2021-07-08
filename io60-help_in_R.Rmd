@@ -20,6 +20,10 @@ emerg_dept <- ae_attendances %>%
   top_n(50)
 ```
 
+# Finding Help in R
+
+Because the path to something valuable is never easy.  Learning R programming is hard, and at times will be frustrating. You will need help frequently. But the journey is a lot easier if you learn how to ask the R community for help when you are stuck. There is a very good chance that someone else has been stuck in the same place, and that there is good advice available.
+
 ## Programming in R
 
 Saving programs and data in R is critical to producing reproducible medical research. But for most people, coding is not easy, comes with lots of syntax errors and cryptic error messages, and can be frustrating. One of the key skills in programming in R is finding help when you are stuck. <br>

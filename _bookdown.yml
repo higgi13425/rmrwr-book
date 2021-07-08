@@ -13,7 +13,6 @@ rmd_files:
 - io06a-filter.Rmd
 - io65-error_messages.Rmd
 - io58-debug_pipes_plots.Rmd
-- io59-hashtag_debugging.Rmd
 - io60-help_in_R.Rmd
 - io66-base_r.Rmd
 - io04-updating.Rmd
@@ -21,6 +20,7 @@ rmd_files:
 - io30-ttest.Rmd
 - io69-sample_size.Rmd
 - io66-blockrand.rmd
+- io48-univariate_distrib_plots.Rmd
 - io67-ggplot_helpers.Rmd
 - io71-functions_plots.Rmd
 - io70-r_cmd_line.Rmd

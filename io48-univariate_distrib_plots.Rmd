@@ -2,7 +2,9 @@
 title: "Univariate ggplots to visualize Distributions"
 author: "Peter Higgins"
 date: "4/29/2021"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -30,39 +32,40 @@ covid <- medicaldata::covid_testing %>%
   filter(patient_class != "admit after surgery-obs")
 ```
 
-## Univariate ggplots to Visualize Distributions
+# Univariate ggplots to Visualize Distributions
 
-It is often helpful to start with Data Exploration and Validation (DEV) when you first encounter a new dataset. Note that DEV is different from EDA (Exploratory Data Analysis), which involves rummaging through your data (often with plots) and generating new hypotheses, performing multiple tests, and essentially data mining.
+When you first encounter a new dataset, it is often helpful to start with Data Exploration and Validation (DEV) . Note that DEV is different from EDA (Exploratory Data Analysis), which involves rummaging through your data (often with plots) and generating new hypotheses, performing multiple tests, and essentially data mining.
 
-DEV has specific goals, which include identifying variables with problematic values (NA, outliers), unexpected distributions (sometimes bimodal), and less-than-helpful variable names or data types.
+DEV has specific goals, which include identifying variables with problematic values (NA, outliers), unexpected distributions (sometimes bimodal), and less-than-helpful variable names or data types. In this chapter, we will look at investigating single continuous variables, looking for outliers, multi-modal distributions, and making comparisons across categories.
 
 ## HIstograms
 
-One of the most helpful ways to get started is to explore your continuous variables with the humble dotplot or histogram. These geoms in ggplot2 allow you to see a distribution of a single variable, and are a good way to get started with ggplot. Let's start by looking at the distribution of the number of colon polyps found in participants in a clinical trial.
+One of the most helpful ways to get started is to explore your continuous variables with the humble histogram or dotplot. These geoms in ggplot2 allow you to see a distribution of a single variable, and are a good way to get started with ggplot. Let's start by looking at the distribution of the number of colon polyps found in participants in a clinical trial. You just need to map a variable (in this case, *number12m*) to the x aesthetic, and you are good to go.
 
-{r histogram}
-polyps %\>%
-ggplot() +
-aes(x = number) +
-geom_histogram(binwidth = 3)
+```{r histogram} 
+medicaldata::polyps %>% 
+  ggplot() + 
+  aes(x = number12m) + 
+  geom_histogram()
+```
 
 This gives us a very basic histogram, with some participants with zero polyps, but many with much larger numbers.
 
-We also learn that `geom_histogram` is a bit grumpy, and complains that we have not picked a binwidth (or a number of bins). Since the distribution goes out to 60+ polyps, let's pick a binwidth of 5 (or about 12 bins).
+We also learn that `geom_histogram` is a bit grumpy, and complains that we have not picked a binwidth (or a number of bins). Since the distribution goes out to 60+ polyps, let's pick a binwidth of 5 (or about 13 bins).
 
 ```{r histogram2}
 polyps %>% 
   ggplot() + 
-  aes(x = number) +
+  aes(x = number12m) +
   geom_histogram(binwidth = 5)
 ```
 
-Even with 12 bins, most bins contain only one or two participants. It would be more helpful to visualize each participant as a single dot.
+Even with 13 bins, most bins contain only one or two participants. It would be more helpful to visualize each participant as a single dot, which you can do with a dotplot (geom_dotplot).
 
 ```{r dotplot}
-polyps %>% 
+medicaldata::polyps %>% 
   ggplot() + 
-  aes(x = number, fill = treat) +
+  aes(x = number12m, fill = treatment) +
   geom_dotplot(binwidth = 1) +
   scale_y_continuous(NULL, breaks = NULL) + 
   # Make this ratio = (tallest column * binwidth * 1.5)
@@ -73,17 +76,60 @@ polyps %>%
 
 One of the nice things about geom_dotplot() is that it represents each participant as a dot, which is closer to reality than columns which look like they are portraying values, rather than counts. The y-axis is less helpful. It is showing the proportion of the total sample, which is sort of helpful, but this leaves a lot of empty space with no data most of the time.
 
-### Comparisons with Histograms
+### Comparisons of Distributions with Histograms
 
-You can compare a small number of categories with density plots, usually 5 or less. <https://www.r-graph-gallery.com/density-plot>
+When you have a continuous variable that could vary across several categories of a categorical variable, you may want to compare the distributions across the categories. You can compare a small number of categories with histograms, usually 5 categories or less is manageable. There are several ways to make this kind of comparison.
 
--   You can set color and fill to the same variable. But you may have a lot of overlap. It may help to make these semi-transparent. It can be problematic if there is a lot of overlap and multiple categories, as they can hide each other
+-   You can set the fill aesthetic to the categorical variable. In this case, we will use the treatment variable. This is OK, as you can see the sulindac-treated patients are shifted to the left, but it is not great, as the counts are stacked, and this can make comparisons hard. Note that color = outline of bars color, as opposed to fill.
 
--   A mirror density chart can work well for 2 categories.
+  ```{r}
+    medicaldata::polyps %>% 
+     ggplot() + 
+     aes(x = number12m, fill = treatment) +
+      geom_histogram(bins=15,
+                     color = "purple") 
+  ```
+
+-   A mirror histogram can work well for 2 categories. You filter the data by value within the geom, and set the y value to ..density.. for one category value, and to negative -..density.. for the other category value, as seen below. The ..density.. variable is a value ggplot calculates in the background with a stat function.
+
+  ```{r mirror-histogram}
+    medicaldata::polyps %>% 
+     ggplot(aes(x = number12m)) + 
+      geom_histogram(fill = "red",
+        aes(y = ..density..),
+        data = . %>% 
+          filter(treatment == 'placebo'),
+        bins = 15) +
+      geom_label(aes(x = 55, y = 0.03, label = "Placebo"), color = "red") +
+      geom_histogram(fill = "#404080",
+        aes(y = -..density..),
+        data = . %>% 
+          filter(treatment == 'sulindac'),
+        bins = 15) +
+      geom_label(aes(x = 20, y = -0.03, label = "Sulindac"), color = "#404080") 
+```
 
 -   You can do small multiples with facet_wrap
 
--   You can even do a stacked density chart. This is not great, as after the first layer, the baseline changes, and it ban be hard to compare. Can work for large differences between categories, but not good for small differences.
+```{r}
+    medicaldata::polyps %>% 
+     ggplot() + 
+      aes(x = number12m, fill = treatment) +
+      geom_histogram(bins =15) +
+    facet_grid(. ~ treatment)
+```
+
+    Note for facet_wrap and facet_grid, the formula notation or the arguments is y \~ x, so that by putting treatment after the tilde, the treatments are compared on the x axis, or side by side. If you put the treatment categorical value in the first (y) position, they would be shown as top and bottom.
+
+  ```{r}
+    medicaldata::polyps %>% 
+     ggplot() + 
+      aes(x = number12m, fill = treatment) +
+      geom_histogram(bins =15) +
+      facet_grid(treatment ~ .)
+  ```
+
+-   While the viewer can generally make the comparisons with 2 categories, it can get more complicated with increasing numbers of categories.
 
 ### Histograms and Categories
 
@@ -92,8 +138,8 @@ You can also look at distributions of different categories, by color:
 ```{r }
 mockstudy %>% 
   ggplot() + 
-  aes(x = age, color = sex) +
-  geom_histogram(fill="white", alpha=0.5, position="identity")
+  aes(x = age, color = sex, fill = sex) +
+  geom_histogram(alpha=0.3, position="identity")
 ```
 
 Or with vertical facets:
@@ -138,10 +184,7 @@ The only required aesthetic (like histogram) is an x variable. Optional aestheti
 mockstudy %>% 
   ggplot() + 
   aes(x = age) +
-  geom_density()
-
-
-  , color = sex) +
+  geom_density() +
   geom_density(fill="orchid", 
                size = 2,
                position="identity",
