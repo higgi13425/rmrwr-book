@@ -12,10 +12,11 @@ library(tidyverse)
 library(medicaldata)
 library(readxl)
 library(skimr)
+library(here)
 scurvy <- medicaldata::scurvy
-write_csv(scurvy, 'temp_data/scurvy.csv')
+write_csv(scurvy, 'data/scurvy.csv')
 strep_tb <- medicaldata::strep_tb
-write_tsv(strep_tb, 'temp_data/strep_tb.tsv')
+write_tsv(strep_tb, 'data/strep_tb.tsv')
 ```
 
 # Importing Your Data into R
