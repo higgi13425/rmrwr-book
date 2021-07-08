@@ -76,7 +76,11 @@ whoami;date
 
 ```
 ## peterhiggins
+<<<<<<< HEAD
 ## Thu Jun 17 20:20:02 EDT 2021
+=======
+## Wed Jun 16 19:42:55 EDT 2021
+>>>>>>> parent of 422fb74 (cleaned up problems with cape cod push, now published again. Learned git revert {commit#}`)
 ```
 :::
 
