@@ -401,7 +401,8 @@ Numeric - integer and double Character - string Logical - TRUE/FALSE Dates - an 
 
 ## Chapter Challenges
 
-1. There is a file named "paulolol.xlsx" with the path of 'data/paulolol.xlsx'. A picture of this problematic file is shown below.
+1. There is a file named "paulolol.xlsx" with the path of 'data/paulolol.xlsx'. A picture of this problematic file is shown below.<br>
+
 ![paulolol](images/paulolol.png)
 
 - Read in this file with the {readxl} package. Just for fun, try this see how this turns out with no additional arguments.
