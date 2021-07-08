@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Reproducible Medical Research with R</title>
+  <title>Chapter 4 Importing Your Data into R | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Reproducible Medical Research with R" />
+  <meta property="og:title" content="Chapter 4 Importing Your Data into R | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rmrwr.netlify.com" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="higgi13425/rmrwr-book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Reproducible Medical Research with R" />
+  <meta name="twitter:title" content="Chapter 4 Importing Your Data into R | Reproducible Medical Research with R" />
   
   <meta name="twitter:description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="getting-started-and-installing-your-tools.html"/>
+<link rel="prev" href="a-tasting-menu-of-r.html"/>
+<link rel="next" href="wrangling-rows-in-r-with-filter.html"/>
 <script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -62,6 +62,69 @@
 <script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -80,7 +143,7 @@
 <li><a href="./">RMRWR</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> bibliography: [book.bib, packages.bib]</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#who-this-book-is-for"><i class="fa fa-check"></i><b>1.1</b> Who This Book is For</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i><b>1.2</b> Prerequisites</a></li>
@@ -178,7 +241,7 @@
 <li class="chapter" data-level="4.4" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#more-exploration-with-skimr-and-dataexplorer"><i class="fa fa-check"></i><b>4.4</b> More exploration with skimr and DataExplorer</a></li>
 <li class="chapter" data-level="4.5" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#other-strange-file-types-with-rio"><i class="fa fa-check"></i><b>4.5</b> Other strange file types with rio</a></li>
 <li class="chapter" data-level="4.6" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#practice-loading-data-from-multiple-file-types"><i class="fa fa-check"></i><b>4.6</b> Practice loading data from multiple file types</a></li>
-<li class="chapter" data-level="4.7" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#practice-saving-as-csv-rds-xls-xlsx"><i class="fa fa-check"></i><b>4.7</b> Practice saving as csv, rds, xls, xlsx</a></li>
+<li class="chapter" data-level="4.7" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#practice-saving-writing-to-disk-data-objects-in-formats-including-csv-rds-xls-xlsx"><i class="fa fa-check"></i><b>4.7</b> Practice saving (writing to disk) data objects in formats including csv, rds, xls, xlsx</a></li>
 <li class="chapter" data-level="4.8" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#how-do-readr-and-readxl-parse-columns"><i class="fa fa-check"></i><b>4.8</b> How do readr and readxl parse columns?</a></li>
 <li class="chapter" data-level="4.9" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#what-are-the-variable-types"><i class="fa fa-check"></i><b>4.9</b> What are the variable types?</a></li>
 <li class="chapter" data-level="4.10" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#controlling-parsing"><i class="fa fa-check"></i><b>4.10</b> Controlling Parsing</a></li>
@@ -450,216 +513,663 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Reproducible Medical Research with R</h1>
-<p class="author"><em>Peter D.R. Higgins, MD, PhD, MSc</em></p>
-<p class="date" style="margin-top: 1.5em;"><em>2021-07-08</em></p>
+<div id="importing-your-data-into-r" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Importing Your Data into R</h1>
+<p>For most of this book, we will be using datasets from the {medicaldata} package.
+These are easy to load.
+You just type into the Console pane <code>medicaldata::scurvy</code> and you get James Lind’s scurvy dataset (actually, a reconstruction of what it might have looked like for his 12 participants).
+If you want to save this data to an object in your work environment, you just need to assign this to a named object, like <code>scurvy</code>, like so:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="importing-your-data-into-r.html#cb1-1" aria-hidden="true" tabindex="-1"></a>scurvy <span class="ot">&lt;-</span> medicaldata<span class="sc">::</span>scurvy</span>
+<span id="cb1-2"><a href="importing-your-data-into-r.html#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="importing-your-data-into-r.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># now print the colums for id and treatment</span></span>
+<span id="cb1-4"><a href="importing-your-data-into-r.html#cb1-4" aria-hidden="true" tabindex="-1"></a>scurvy <span class="sc">%&gt;%</span> <span class="fu">select</span>(study_id<span class="sc">:</span>treatment)</span></code></pre></div>
+<pre><code>## # A tibble: 12 x 2
+##    study_id treatment           
+##    &lt;chr&gt;    &lt;fct&gt;               
+##  1 001      cider               
+##  2 002      cider               
+##  3 003      dilute_sulfuric_acid
+##  4 004      dilute_sulfuric_acid
+##  5 005      vinegar             
+##  6 006      vinegar             
+##  7 007      sea_water           
+##  8 008      sea_water           
+##  9 009      citrus              
+## 10 010      citrus              
+## 11 011      purgative_mixture   
+## 12 012      purgative_mixture</code></pre>
+<p>There are a number of medical datasets to explore and learn within the {medicaldata} package.</p>
+<p>However, at some point, you will want to use R to work on your <em>own</em> data.
+You may already to be itching to get started on your own data.
+This is a good thing.
+Working with your own data, toward your own goals, will be a motivating example, and will help you learn R.
+As you go through the different chapters, use the example data and exercises to get you started and learn the principles, and then try what you have learned on your own data.</p>
+<div class="{.{warning}}">
+<p>It is an important principle to <em>always</em> save an untouched copy of your raw data.
+You can copy it to a new object, and experiment with modifying it, cleaning it, making plots, etc., but <em>always</em> leave the original data file untouched.
+You want to create a completely reproducible, step-by-step trail from your raw data to your finished analysis and final report, and you can only do that if you preserve the original raw data.
+That is the cornerstone of your analysis.
+It is tempting to fix minor data entry errors, or other aspects of the raw data.
+Do not do this - leave all errors intact in your raw data, and explicitly make edits with explanations of - who made the edit - when it was made - what was changed - why it was made - provide a justification, and identify source documents to support the rationale Every edit should be documented in your code, with who, when, what, and why</p>
 </div>
-<div id="preface" class="section level1" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Preface</h1>
-<p>Welcome to Reproducible Medical Research with R (RMRWR).
-I hope that this book is helpful to you.</p>
-<div id="who-this-book-is-for" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Who This Book is For</h2>
-<p>This is a book for anyone in the medical field interested in analyzing the data available to them to better understand health, disease, or the delivery of care.
-This could include nurses, dieticians, psychologists, and PhDs in related fields, as well as medical students, residents, fellows, or doctors in practice.<br />
-I expect that most learners will be using this book in their spare time at night and on weekends, as the health training curricula are already packed full of information, and there is no room to add skills in reproducible research to the standard curriculum.
-This book is designed for self-teaching, and many hints and solutions will be provided to avoid roadblocks and frustration.
-Many learners find themselves wanting to develop reproducible research skills after they have finished their training, and after they have become comfortable with their clinical role.
-This is the time when they identify and want to address problems faced by patients in their practice with the data they have before them.
-This book is for you.</p>
-</div>
-<div id="prerequisites" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> Prerequisites</h2>
-<p>Thank you for giving this e-book a try.
-This is designed for physicians and others analyzing health data who are interested in pursuing this field using the R computer language.
-<br> We will assume that:</p>
+<p>Now, on to the fun part.
+Let’s read in some data!</p>
+<div id="reading-data-with-the-readr-package" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Reading data with the {readr} package</h2>
+<p>Many of the standard data formats can be read with functions in the {readr} package.
+These include:</p>
 <ul>
-<li>You have access to a computer</li>
-<li>You have access to the internet</li>
-<li>You can download and install software from the internet to your computer</li>
+<li>read_csv() for comma-separated values (*.csv) files</li>
+<li>read_tsv() for tab-separated values (*.tsv) files</li>
+<li>read_delim() for files with a different delimiter that you can specify (instead of commas or tabs, there might be semicolons)</li>
+<li>read_fwf() for fixed width files</li>
+<li>read_table() for tabular files where columns are separated by white-space.</li>
+<li>read_log() is specifically for web log files</li>
 </ul>
-<p>How to download and install R and RStudio will be addressed, step by step, in Chapter 2.
-<br></p>
+<p>Let’s read a csv file.
+First, make sure that you have the {readr} package loaded (or the {tidyverse} meta-package, which includes {readr}).
+You can load {readr} with the <code>library()</code> function.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="importing-your-data-into-r.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb3-2"><a href="importing-your-data-into-r.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or you can use</span></span>
+<span id="cb3-3"><a href="importing-your-data-into-r.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># which will load 8 packages, including readr</span></span></code></pre></div>
+<p>Note that this will <em>not</em> work if you do not already have the {readr} package installed on your computer.
+You will get an error, like this: <code>Error in library(readr) : there is no package called 'readr'</code></p>
+<p>No problem - you just have to install the package first.
+You only need to do this once, like buying a book, and putting it in your personal library.
+Each time you use the package, you have to pull the book off the shelf, with <code>library(packagename)</code>.
+To install the {readr} package, we can install the whole {tidyverse} package, which will come in handy later.
+Just enter the following in your Console pane:</p>
+<p><code>install.packages('tidyverse')</code></p>
+<p>Note that quotes around ‘tidyverse’ are required, as tidyverse is not yet a known object or package in your working environment.
+Once the {tidyverse} package is installed, you can use <code>library(tidyverse)</code> without quotes, as it is a known (installed) package.</p>
+<p>OK, after that detour, we should be all caught up - you should be able to run <code>library(tidyverse)</code> or <code>library(readr)</code> without an error.
+Now that you have {readr} loaded, you can read in some csv data.
+Let’s start with a file named <code>scurvy.csv</code> in a ’data’folder on GitHub. You will need to glue together the url_stem and “data/scurvy.csv” to get the full web address. Run the code chunk below to see the url_stem and the dataset.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="importing-your-data-into-r.html#cb4-1" aria-hidden="true" tabindex="-1"></a>url_stem</span></code></pre></div>
+<pre><code>## [1] &quot;https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/&quot;</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="importing-your-data-into-r.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="fu">glue</span>(url_stem, <span class="st">&#39;data/scurvy.csv&#39;</span>))</span></code></pre></div>
+<pre><code>## 
+## ── Column specification ────────────────────────────────────
+## cols(
+##   study_id = col_character(),
+##   treatment = col_character(),
+##   dosing_regimen_for_scurvy = col_character(),
+##   gum_rot_d6 = col_character(),
+##   skin_sores_d6 = col_character(),
+##   weakness_of_the_knees_d6 = col_character(),
+##   lassitude_d6 = col_character(),
+##   fit_for_duty_d6 = col_character()
+## )</code></pre>
+<pre><code>## # A tibble: 12 x 8
+##    study_id treatment    dosing_regimen_for_scur… gum_rot_d6
+##    &lt;chr&gt;    &lt;chr&gt;        &lt;chr&gt;                    &lt;chr&gt;     
+##  1 001      cider        1 quart per day          2_moderate
+##  2 002      cider        1 quart per day          2_moderate
+##  3 003      dilute_sulf… 25 drops of elixir of v… 1_mild    
+##  4 004      dilute_sulf… 25 drops of elixir of v… 2_moderate
+##  5 005      vinegar      two spoonfuls, three ti… 3_severe  
+##  6 006      vinegar      two spoonfuls, three ti… 3_severe  
+##  7 007      sea_water    half pint daily          3_severe  
+##  8 008      sea_water    half pint daily          3_severe  
+##  9 009      citrus       two lemons and an orang… 1_mild    
+## 10 010      citrus       two lemons and an orang… 0_none    
+## 11 011      purgative_m… a nutmeg-sized paste of… 3_severe  
+## 12 012      purgative_m… a nutmeg-sized paste of… 3_severe  
+## # … with 4 more variables: skin_sores_d6 &lt;chr&gt;,
+## #   weakness_of_the_knees_d6 &lt;chr&gt;, lassitude_d6 &lt;chr&gt;,
+## #   fit_for_duty_d6 &lt;chr&gt;</code></pre>
+<p>Let’s look at what was extracted from the csv file.
+The Console pane has a print out of the Column specification, followed by the data in rectangular format.
+In the Column specification, each column is named, and a data type has been assigned to each column.
+This is done ‘automagically’, as the read_csv() function reads the first 1000 rows, then guesses what data type is present in each column (variable).
+It is often conservative, and in this case, made all of these columns into character variables (also called strings).
+You could argue that the col_character() assignment should be numeric for the study_id variable, or that the Likert scales used for outcomes like gum_rot_d6 and skin_sores_d6 should be coded as ordinal variables, known as ordered factors in R.
+You will learn to control these data types during data import with the <code>col_spec</code> argument.</p>
+<p>The second piece of output is the data itself.
+This is first identified as a ‘tibble’, which is a type of data table, with 12 rows and 8 columns, in <code># A tibble: 12 x 8</code>.
+This is followed by a header row of variable names, and just below that is the data type (<code>&lt;chr&gt;</code> for character) for each column.
+Then, on the left are gray row numbers (not actually part of the data set), and rows of data.
+A tibble, by default, only prints out 10 rows of data, and no more columns than will fill your current console window.
+The other columns are listed in order at the bottom of the tibble in gray type.</p>
+<p>Now, by simply reading in the data, you can look at it, but you can’t do anything with it, as you have not saved it as an object in your working Environment.
+If you want to do things with this data, and make them last, you have to <em>assign</em> the data to an object, and give it a name.
+To do this, you need to use an assignment arrow, as below</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="importing-your-data-into-r.html#cb9-1" aria-hidden="true" tabindex="-1"></a>scurvy_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">glue</span>(url_stem, <span class="st">&#39;data/scurvy.csv&#39;</span>))</span></code></pre></div>
+<pre><code>## 
+## ── Column specification ────────────────────────────────────
+## cols(
+##   study_id = col_character(),
+##   treatment = col_character(),
+##   dosing_regimen_for_scurvy = col_character(),
+##   gum_rot_d6 = col_character(),
+##   skin_sores_d6 = col_character(),
+##   weakness_of_the_knees_d6 = col_character(),
+##   lassitude_d6 = col_character(),
+##   fit_for_duty_d6 = col_character()
+## )</code></pre>
+<p>Now this is saved to <code>scurvy_data</code> in your working Environment.
+You can look in the Environment tab (top right pane in RStudio) and see that scurvy_data has now appeared in the Data section, with 12 observations of 8 variables.
+This is not a file written (saved) to disk, but it is now available in the working environment as an assigned data object.
+You can now print this out at any time by typing <code>scurvy_data</code> into the Console, or into a script. Try this out in the Console pane.</p>
+<p>You can also start with the <code>scurvy_data</code> object, and <em>do</em> things to this data object, like summarize it, or graph it, or calculate total_symptom_score in a data pipeline.
+Once you have assigned your data to an object, it will stick around in that R session for later use.</p>
+<p>csv (comma separated values) is a very common data format, and most data management programs have a way to export <code>*.csv</code> files.
+The csv format is simple, is not owned by anyone, and works across platforms.
+However, it can occasionally be messy if you have commas in the middle of a variable like degree, with entries like ‘md, phd’ in a column that is mostly ‘md’.
+The read_csv function is pretty smart, and usually gets the number of columns right, but this is something to watch out for.
+Notice that read_csv had no problem with the dosing of vinegar (“two spoonfuls, three times a day”) in the scurvy dataset.</p>
+<p>If you happen to come across a tab-separated values file, <em>read_tsv()</em> works the same way.
+Both of these functions have reasonable defaults, so that most of the time, you just have to use the path to your file (usually on your hard drive, rather than on the web) as the only argument.
+On occasion, though, you will want to take control of some of the other arguments, and use something other than the defaults.</p>
+<p>When your data has no column names (headers), read_csv will assume that the first row of the data is the column names.
+To fix this, add the argument, <strong>col_names</strong> = FALSE.
+You can also assign your own <strong>col_names</strong> by setting a vector, like c(“patient_id”, “treatment”, “outcome”) to col_names, as below</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="importing-your-data-into-r.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="at">file =</span> <span class="fu">glue</span>(url_stem, <span class="st">&#39;data/scurvy.csv&#39;</span>), </span>
+<span id="cb11-2"><a href="importing-your-data-into-r.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">&quot;pat_id&quot;</span>, <span class="st">&quot;arm&quot;</span>, <span class="st">&quot;dose&quot;</span>, <span class="st">&quot;gums&quot;</span>, <span class="st">&quot;skin&quot;</span>, <span class="st">&quot;weak&quot;</span>, <span class="st">&quot;lass&quot;</span>, <span class="st">&quot;fit&quot;</span>))</span></code></pre></div>
+<pre><code>## 
+## ── Column specification ────────────────────────────────────
+## cols(
+##   pat_id = col_character(),
+##   arm = col_character(),
+##   dose = col_character(),
+##   gums = col_character(),
+##   skin = col_character(),
+##   weak = col_character(),
+##   lass = col_character(),
+##   fit = col_character()
+## )</code></pre>
+<pre><code>## # A tibble: 13 x 8
+##    pat_id  arm     dose      gums   skin  weak   lass  fit  
+##    &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;
+##  1 study_… treatm… dosing_r… gum_r… skin… weakn… lass… fit_…
+##  2 001     cider   1 quart … 2_mod… 2_mo… 2_mod… 2_mo… 0_no 
+##  3 002     cider   1 quart … 2_mod… 1_mi… 2_mod… 3_se… 0_no 
+##  4 003     dilute… 25 drops… 1_mild 3_se… 3_sev… 3_se… 0_no 
+##  5 004     dilute… 25 drops… 2_mod… 3_se… 3_sev… 3_se… 0_no 
+##  6 005     vinegar two spoo… 3_sev… 3_se… 3_sev… 3_se… 0_no 
+##  7 006     vinegar two spoo… 3_sev… 3_se… 3_sev… 3_se… 0_no 
+##  8 007     sea_wa… half pin… 3_sev… 3_se… 3_sev… 3_se… 0_no 
+##  9 008     sea_wa… half pin… 3_sev… 3_se… 3_sev… 3_se… 0_no 
+## 10 009     citrus  two lemo… 1_mild 1_mi… 0_none 1_mi… 0_no 
+## 11 010     citrus  two lemo… 0_none 0_no… 0_none 0_no… 1_yes
+## 12 011     purgat… a nutmeg… 3_sev… 3_se… 3_sev… 3_se… 0_no 
+## 13 012     purgat… a nutmeg… 3_sev… 3_se… 3_sev… 3_se… 0_no</code></pre>
+<p>In this case, when we set our own <strong>col_names</strong>, the actual column headers are now included in the first row of data.
+We can fix this with the <strong>skip</strong> argument, which has a default of 0.
+We can skip as many lines as we want, which can be helpful if you have an Excel file with a lot of blank lines or commentary at the top of the spreadsheet.
+When we set skip = 1, we get a cleaner dataset.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="importing-your-data-into-r.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="at">file =</span> <span class="fu">glue</span>(url_stem, <span class="st">&#39;data/scurvy.csv&#39;</span>), </span>
+<span id="cb14-2"><a href="importing-your-data-into-r.html#cb14-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">&quot;pat_id&quot;</span>, <span class="st">&quot;arm&quot;</span>, <span class="st">&quot;dose&quot;</span>, <span class="st">&quot;gums&quot;</span>, <span class="st">&quot;skin&quot;</span>, <span class="st">&quot;weak&quot;</span>, <span class="st">&quot;lass&quot;</span>, <span class="st">&quot;fit&quot;</span>),</span>
+<span id="cb14-3"><a href="importing-your-data-into-r.html#cb14-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">skip =</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## 
+## ── Column specification ────────────────────────────────────
+## cols(
+##   pat_id = col_character(),
+##   arm = col_character(),
+##   dose = col_character(),
+##   gums = col_character(),
+##   skin = col_character(),
+##   weak = col_character(),
+##   lass = col_character(),
+##   fit = col_character()
+## )</code></pre>
+<pre><code>## # A tibble: 12 x 8
+##    pat_id arm     dose        gums   skin  weak  lass  fit  
+##    &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+##  1 001    cider   1 quart pe… 2_mod… 2_mo… 2_mo… 2_mo… 0_no 
+##  2 002    cider   1 quart pe… 2_mod… 1_mi… 2_mo… 3_se… 0_no 
+##  3 003    dilute… 25 drops o… 1_mild 3_se… 3_se… 3_se… 0_no 
+##  4 004    dilute… 25 drops o… 2_mod… 3_se… 3_se… 3_se… 0_no 
+##  5 005    vinegar two spoonf… 3_sev… 3_se… 3_se… 3_se… 0_no 
+##  6 006    vinegar two spoonf… 3_sev… 3_se… 3_se… 3_se… 0_no 
+##  7 007    sea_wa… half pint … 3_sev… 3_se… 3_se… 3_se… 0_no 
+##  8 008    sea_wa… half pint … 3_sev… 3_se… 3_se… 3_se… 0_no 
+##  9 009    citrus  two lemons… 1_mild 1_mi… 0_no… 1_mi… 0_no 
+## 10 010    citrus  two lemons… 0_none 0_no… 0_no… 0_no… 1_yes
+## 11 011    purgat… a nutmeg-s… 3_sev… 3_se… 3_se… 3_se… 0_no 
+## 12 012    purgat… a nutmeg-s… 3_sev… 3_se… 3_se… 3_se… 0_no</code></pre>
+<p>Now we don’t have extra column names as data.
+Also note that in this code chunk, we put each argument on its own line.
+This is a good practice, to make your code more readable.
+You can also set <strong>n_max</strong> to a particular number of rows to be read in (the default is infinity, or Inf) You might want a smaller number if you have a very large dataset and limited computer memory.
+Another important argument (option) for read_csv and read_tsv is <strong>col_types</strong>, which lets you take control of the column types during the data</p>
+<p>What if you want to take more control of the import process with read_xxx()?
+You can add a col_types argument to the read_csv() function.
+You can copy the Column specifications from the first attempt at importing, and then make some edits.
+Take a look at the code chunk below.
+I have added the col_types argument, and set it equal to the copied Column specifications.
+Then I edited study_id to <code>col_integer()</code>, and treatment to <code>col_factor()</code>.
+Run the code chunk below to see how this works.
+The <code>glimpse</code> function will give an overview of the new <code>scurvy_cols</code> object that I assigned the data to.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="importing-your-data-into-r.html#cb17-1" aria-hidden="true" tabindex="-1"></a>scurvy_cols <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
+<span id="cb17-2"><a href="importing-your-data-into-r.html#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="fu">glue</span>(url_stem, <span class="st">&#39;data/scurvy.csv&#39;</span>),</span>
+<span id="cb17-3"><a href="importing-your-data-into-r.html#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">col_types =</span> <span class="fu">cols</span>(</span>
+<span id="cb17-4"><a href="importing-your-data-into-r.html#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">study_id =</span> <span class="fu">col_integer</span>(),</span>
+<span id="cb17-5"><a href="importing-your-data-into-r.html#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">treatment =</span> <span class="fu">col_factor</span>(),</span>
+<span id="cb17-6"><a href="importing-your-data-into-r.html#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">dosing_regimen_for_scurvy =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb17-7"><a href="importing-your-data-into-r.html#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">gum_rot_d6 =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb17-8"><a href="importing-your-data-into-r.html#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">skin_sores_d6 =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb17-9"><a href="importing-your-data-into-r.html#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">weakness_of_the_knees_d6 =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb17-10"><a href="importing-your-data-into-r.html#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">lassitude_d6 =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb17-11"><a href="importing-your-data-into-r.html#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">fit_for_duty_d6 =</span> <span class="fu">col_character</span>()</span>
+<span id="cb17-12"><a href="importing-your-data-into-r.html#cb17-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-13"><a href="importing-your-data-into-r.html#cb17-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb17-14"><a href="importing-your-data-into-r.html#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(scurvy_cols)</span></code></pre></div>
+<pre><code>## Rows: 12
+## Columns: 8
+## $ study_id                  &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, …
+## $ treatment                 &lt;fct&gt; cider, cider, dilute_sul…
+## $ dosing_regimen_for_scurvy &lt;chr&gt; &quot;1 quart per day&quot;, &quot;1 qu…
+## $ gum_rot_d6                &lt;chr&gt; &quot;2_moderate&quot;, &quot;2_moderat…
+## $ skin_sores_d6             &lt;chr&gt; &quot;2_moderate&quot;, &quot;1_mild&quot;, …
+## $ weakness_of_the_knees_d6  &lt;chr&gt; &quot;2_moderate&quot;, &quot;2_moderat…
+## $ lassitude_d6              &lt;chr&gt; &quot;2_moderate&quot;, &quot;3_severe&quot;…
+## $ fit_for_duty_d6           &lt;chr&gt; &quot;0_no&quot;, &quot;0_no&quot;, &quot;0_no&quot;, …</code></pre>
+<p>You can see that study_id is now considered the integer data type (<code>&lt;int&gt;</code>), and treatment is now a factor (<code>&lt;fct&gt;</code>).
+You can choose:</p>
+<ul>
+<li>col_integer</li>
+<li>col_character</li>
+<li>col_number() (handles #s with commas)</li>
+<li>col_double (to specify decimal #s)</li>
+<li>col_logical (only TRUE and FALSE)</li>
+<li>col_date(format = "") - may need to define format</li>
+<li>col_time(format = "“) - col_datetime(format =”")</li>
+<li>col_factor(levels = "", ordered = TRUE) - you may want to set levels and ordered if ordinal.</li>
+<li>col_guess() - is the default</li>
+<li>col_skip() if you want to skip a column</li>
+</ul>
+<p>The read_csv() guesses may be fine, but you can take more control if needed.</p>
+<p>This <em>col_types()</em> approach gives you fine control of each column.
+But it is a lot of typing.
+Sometimes you want to set all the column types with a lot less typing, and you don’t need to set levels for factors, or formats for dates.
+You can do this by setting col_types to a string, in which each letter specifies the column type for each column.
+Run the example below by clicking on the green arrow at the top right of the code chunk, in which I use i for col_integer, c for col_character, and f for col_factor.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="importing-your-data-into-r.html#cb19-1" aria-hidden="true" tabindex="-1"></a>scurvy_cols2 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
+<span id="cb19-2"><a href="importing-your-data-into-r.html#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="fu">glue</span>(url_stem, <span class="st">&#39;data/scurvy.csv&#39;</span>),</span>
+<span id="cb19-3"><a href="importing-your-data-into-r.html#cb19-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">col_types =</span> <span class="st">&quot;ifcffff&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: Unnamed `col_types` should have the same length as
+## `col_names`. Using smaller of the two.</code></pre>
+<pre><code>## Warning: 12 parsing failures.
+## row col  expected    actual                                                                             file
+##   1  -- 7 columns 8 columns &#39;https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/data/scurvy.csv&#39;
+##   2  -- 7 columns 8 columns &#39;https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/data/scurvy.csv&#39;
+##   3  -- 7 columns 8 columns &#39;https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/data/scurvy.csv&#39;
+##   4  -- 7 columns 8 columns &#39;https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/data/scurvy.csv&#39;
+##   5  -- 7 columns 8 columns &#39;https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/data/scurvy.csv&#39;
+## ... ... ......... ......... ................................................................................
+## See problems(...) for more details.</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="importing-your-data-into-r.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(scurvy_cols2)</span></code></pre></div>
+<pre><code>## Rows: 12
+## Columns: 7
+## $ study_id                  &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, …
+## $ treatment                 &lt;fct&gt; cider, cider, dilute_sul…
+## $ dosing_regimen_for_scurvy &lt;chr&gt; &quot;1 quart per day&quot;, &quot;1 qu…
+## $ gum_rot_d6                &lt;fct&gt; 2_moderate, 2_moderate, …
+## $ skin_sores_d6             &lt;fct&gt; 2_moderate, 1_mild, 3_se…
+## $ weakness_of_the_knees_d6  &lt;fct&gt; 2_moderate, 2_moderate, …
+## $ lassitude_d6              &lt;fct&gt; 2_moderate, 3_severe, 3_…</code></pre>
+<p>Now try this yourself with a *.tsv file.
+The file <code>strep_tb.tsv</code> is located in the same GitHub folder, and you can use the same url_stem.</p>
+<p>In the example code chunk below, there are several blanks.
+Copy this code chunk (use the copy button in the top right of the code chunk - hover to find it) to your RStudio Console pane.
+Edit it and run it as directed below.</p>
+<ul>
+<li>Fill in the second part of the read_xxx() function correctly to read this file</li>
+<li>Fill in the correct file name to complete the path</li>
+<li>Run the code chunk</li>
+</ul>
+<p>This version of the code chunk will read in every column as the character data type.
+This is OK, but not quite right.
+Edit the <code>col_types</code> string to make:</p>
+<ul>
+<li>both doses numeric (n or d)</li>
+<li><code>gender</code> a factor (f)</li>
+<li>all 4 of the <code>baseline</code> variables into factors</li>
+<li>skip over strep_resistance and radiologic_6m - set as hyphens (<code>-</code>)</li>
+<li><code>rad_num</code> into an integer (i)</li>
+<li><code>improved</code> into a logical (l)</li>
+</ul>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="importing-your-data-into-r.html#cb24-1" aria-hidden="true" tabindex="-1"></a>strep_tb_cols <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(</span>
+<span id="cb24-2"><a href="importing-your-data-into-r.html#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">file =</span> <span class="fu">glue</span>(url_stem, <span class="st">&#39;data/strep_tb.tsv&#39;</span>),</span>
+<span id="cb24-3"><a href="importing-your-data-into-r.html#cb24-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">col_types =</span> <span class="st">&quot;ccccccccccccc&quot;</span>)</span>
+<span id="cb24-4"><a href="importing-your-data-into-r.html#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="importing-your-data-into-r.html#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(strep_tb_cols)</span></code></pre></div>
 </div>
-<div id="the-spiral-of-success-structure" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> The Spiral of Success Structure</h2>
-<p>This book is structured on the concept of a “spiral of success”, with readers learning about topics like data visualization, data wrangling, data modeling, reproducible research, and communication of results in repeated passes.
-These will initially be at a superficial level, and at each pass of the spiral, will provide increasing depth and complexity.
-This means that the chapters on data wrangling will not all be together, nor the chapters on data visualization.
-Our goal is to build skills gradually, and return to (and remind students of) their previously built skills in one area and to add to them.
-The eventual goal is for learners to be able to produce, document, and communicate reproducible research to their community.</p>
+<div id="exploration-with-glimpse-str-and-headtail" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Exploration with glimpse, str, and head/tail</h2>
+<p>Once you have a dataset read into your working Environment (see the Environment tab in RStudio), you will want to know more about it.
+There are several helpful functions and packages to get you started in exploring your data.</p>
+<div id="taking-a-glimpse-with-glimpse" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Taking a glimpse with <em>glimpse()</em></h3>
+<p>The <em>glimpse()</em> function is part of the tidyverse, and is a helpful way to see a bit of all of the variables in a dataset.
+Let’s try this with the scurvy dataset, which we have already assigned to the object <code>scurvy</code> in the working Environment.
+Just put the object name as an argument withing the <em>glimpse()</em> function (inside the parentheses), as below.
+Run the code chunk below to get the glimpse() output.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="importing-your-data-into-r.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(scurvy)</span></code></pre></div>
+<pre><code>## Rows: 12
+## Columns: 8
+## $ study_id                  &lt;chr&gt; &quot;001&quot;, &quot;002&quot;, &quot;003&quot;, &quot;00…
+## $ treatment                 &lt;fct&gt; cider, cider, dilute_sul…
+## $ dosing_regimen_for_scurvy &lt;chr&gt; &quot;1 quart per day&quot;, &quot;1 qu…
+## $ gum_rot_d6                &lt;fct&gt; 2_moderate, 2_moderate, …
+## $ skin_sores_d6             &lt;fct&gt; 2_moderate, 1_mild, 3_se…
+## $ weakness_of_the_knees_d6  &lt;fct&gt; 2_moderate, 2_moderate, …
+## $ lassitude_d6              &lt;fct&gt; 2_moderate, 3_severe, 3_…
+## $ fit_for_duty_d6           &lt;fct&gt; 0_no, 0_no, 0_no, 0_no, …</code></pre>
+<p>The <em>glimpse()</em> function output tells you that there are 12 rows (observations) and 8 columns (variables).
+Then it lists each of the 8 variables, followed by the data type, and the first few values (or as much as will fit in the width of your Console pane).
+We can see that study_id and dosing_regimen_for_scurvy are both of the <code>character</code> (aka string) data type, and the other 6 variables are factors.</p>
+<p>Try this out yourself.
+What can you learn about the strep_tb dataset with <em>glimpse()</em>?
+Edit the code chunk below to find out about strep_tb.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="importing-your-data-into-r.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(strep_tb)</span></code></pre></div>
+<p>Test yourself&gt; - which variable is the logical data type?
+- which variables are the dbl numeric data type?
+- How many observations are in this dataset?</p>
 </div>
-<div id="motivation-for-this-book" class="section level2" number="1.4">
-<h2><span class="header-section-number">1.4</span> Motivation for this Book</h2>
-<p>Most medical providers who learn R to do their own data analysis do it on their own time.
-They rarely have time for a semester-long course, as their clinical schedules usually will not allow it.
-Fortunately, a lot of people learn R on their own, and there is a strong and supportive R community to help new learners.
-A 2019 Twitter survey conducted by <span class="citation">@RLadies</span> found that more than half of respondents were largely self-taught, from books and online resources.</p>
-<p>There are a lot of good resources for learning R, so why one more?
-In part, because the needs of a medical audience are often different.
-There are distinct needs for protecting health information, generating a descriptive Table One, using secure data tools like REDCap, and creating standard medical journal and meeting output in Word, Powerpoint, and poster formats.</p>
-<p>Further, while learning from a textbook can be helpful, this e-book has the ability to include interactive features that are important for learning to write your own analysis code.
-Informative <strong>flipbook</strong> demonstrations will show you what steps in R code do, and <strong>learnr</strong> exercises will give you a chance to do your own coding to solve problems, right within this e-book.</p>
-<p>More and more, all science is becoming data science.
-We are able to track patients, their test results, and even the individual pixels (voxels) of their CT scans electronically, and use those data points to develop new knowledge.
-While one could argue that health care workers should collect data and bring it to trained statisticians, this does not work nearly as well as you might expect.
-Most academic statisticians are incentivized to develop new statistical methods, and are not very interested (nor incentivized) to do the hand-holding required to wrangle messy clinical data into a manuscript.</p>
-<p>There also are simply not enough statisticians to meet the needs of medical science.
-Having clinicians on the front lines with some data science training makes a big difference, whether in 1854 in London (John Snow) or in 2014 in Flint, Michigan (Mona Hanna-Atisha).
-Having more clinicians with some data science training will impact medical care, as they will identify local problems that would have otherwise never reached a statistician, and probably never been addressed with data otherwise.</p>
+<div id="examining-structure-with-str" class="section level3" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Examining Structure with <em>str()</em></h3>
+<p>The <em>str()</em> function is part of the {utils} package in base R, and can tell you the structure of any object in R, whether a list, a dataset, a tibble, or a single variable.
+It is very helpful for reality-checking your data, especially when you are getting errors in your code.
+A common source of errors is trying to run a function that requires a particular data structure or data type on the wrong data structure or data type.
+Sometimes just checking the data structure will reveal the source of an error.</p>
+<p>The <em>str()</em> function does largely what <em>glimpse()</em> does, but provides a bit more detail, with less attractive formatting.
+Run the code chunk below to see the output of <em>str()</em>.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="importing-your-data-into-r.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(scurvy)</span></code></pre></div>
+<pre><code>## tibble [12 × 8] (S3: tbl_df/tbl/data.frame)
+##  $ study_id                 : chr [1:12] &quot;001&quot; &quot;002&quot; &quot;003&quot; &quot;004&quot; ...
+##  $ treatment                : Factor w/ 6 levels &quot;cider&quot;,&quot;citrus&quot;,..: 1 1 3 3 6 6 5 5 2 2 ...
+##  $ dosing_regimen_for_scurvy: chr [1:12] &quot;1 quart per day&quot; &quot;1 quart per day&quot; &quot;25 drops of elixir of vitriol, three times a day&quot; &quot;25 drops of elixir of vitriol, three times a day&quot; ...
+##  $ gum_rot_d6               : Factor w/ 4 levels &quot;0_none&quot;,&quot;1_mild&quot;,..: 3 3 2 3 4 4 4 4 2 1 ...
+##  $ skin_sores_d6            : Factor w/ 4 levels &quot;0_none&quot;,&quot;1_mild&quot;,..: 3 2 4 4 4 4 4 4 2 1 ...
+##  $ weakness_of_the_knees_d6 : Factor w/ 4 levels &quot;0_none&quot;,&quot;1_mild&quot;,..: 3 3 4 4 4 4 4 4 1 1 ...
+##  $ lassitude_d6             : Factor w/ 4 levels &quot;0_none&quot;,&quot;1_mild&quot;,..: 3 4 4 4 4 4 4 4 2 1 ...
+##  $ fit_for_duty_d6          : Factor w/ 2 levels &quot;0_no&quot;,&quot;1_yes&quot;: 1 1 1 1 1 1 1 1 1 2 ...</code></pre>
+<p>The str() output starts by telling you that scurvy is a tibble, which is a modern sort of data table.
+A tibble will by default only print 10 rows of data, and only the number of columns that will fit in your Console pane.
+Then you see [12 x 8], which means that there are 12 rows and 8 columns - the default in R is to always list rows first, then columns (R x C notation).
+Then you learn that this is an S3 object, that is a tbl_df (tibble), and a tbl, and also a data.frame).
+Then you get a listing of each variable, data type, and a bit of the data, much like <em>glimpse()</em>.
+Another extra detail provided by str() is that it tells you some of the levels of each factor variable, and then shows these as integers (how the data is actually stored).
+Note that you can also use <em>str()</em> and <em>glimpse()</em> on a single variable.
+You often use this approach when you get an error message that tells you that you have the wrong data type.
+Try this with the strep_tb dataset variable <code>patient_id</code> by running the code chunk below.
+Imagine that you wanted to get the mean of <code>patient_id</code>.
+You got a <strong>warning</strong> that pointed out that the <code>argument is not numeric or logical</code>.
+So you run <em>str()</em> to find out the data structure of this variable.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="importing-your-data-into-r.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(strep_tb<span class="sc">$</span>patient_id)</span></code></pre></div>
+<pre><code>## Warning in mean.default(strep_tb$patient_id): argument is
+## not numeric or logical: returning NA</code></pre>
+<pre><code>## [1] NA</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="importing-your-data-into-r.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(strep_tb<span class="sc">$</span>patient_id)</span></code></pre></div>
+<pre><code>##  chr [1:107] &quot;0001&quot; &quot;0002&quot; &quot;0003&quot; &quot;0004&quot; &quot;0005&quot; &quot;0006&quot; ...</code></pre>
+<p>This shows you that patient_id is actually a character variable.
+If you wanted to find the mean value, you would have to change it to numeric (with <em>as.numeric()</em> first).
+The glimpse() function provides identical output to str() for a variable in a table.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="importing-your-data-into-r.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(strep_tb<span class="sc">$</span>patient_id)</span></code></pre></div>
+<pre><code>##  chr [1:107] &quot;0001&quot; &quot;0002&quot; &quot;0003&quot; &quot;0004&quot; &quot;0005&quot; &quot;0006&quot; ...</code></pre>
+<p>You can choose whether you prefer the details of <em>str()</em> or the nicer formatting of <em>glimpse()</em> for yourself.</p>
 </div>
-<div id="the-scientific-reproducibility-crisis" class="section level2" number="1.5">
-<h2><span class="header-section-number">1.5</span> The Scientific Reproducibility Crisis</h2>
-<p>Beginning as far back as 1989, with the David Baltimore case, and increasingly and publicly through the 2010s, there has been a rising tide of realization that a lot of taxpayer-funded science is done sloppily, and that our standards as scientists need to be higher.
-The line between carelessly-done science and outright fraud is a thin one, and the case can be made that doing science in a sloppy fashion defrauds the funders, as it leads to results that can not be reproduced by the authors nor replicated by others.
-Particularly in medicine, where incorrect findings can cause great harm, we should take special care to do scientific research which is well-documented, reproducible, and replicable.
-This topic as a motivating force for doing careful medical research will be expanded upon in Chapter 1.</p>
+<div id="examining-a-bit-of-data-with-head-and-tail" class="section level3" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Examining a bit of data with <em>head()</em> and <em>tail()</em></h3>
+<p>Oftentimes, you want just a quick peek at your data, especially after a merge or a mutate, to make sure that things have gone as expected.
+This is where the base R functions <em>head()</em> and <em>tail()</em> can be helpful.
+As you might have guessed, these functions give you a quick view of the head (top 6 rows) and tail (last 6 rows) of your data.
+Try this out with scurvy or strep_tb.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="importing-your-data-into-r.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">as.data.frame</span>(scurvy))</span></code></pre></div>
+<pre><code>##   study_id            treatment
+## 1      001                cider
+## 2      002                cider
+## 3      003 dilute_sulfuric_acid
+## 4      004 dilute_sulfuric_acid
+## 5      005              vinegar
+## 6      006              vinegar
+##                          dosing_regimen_for_scurvy
+## 1                                  1 quart per day
+## 2                                  1 quart per day
+## 3 25 drops of elixir of vitriol, three times a day
+## 4 25 drops of elixir of vitriol, three times a day
+## 5                 two spoonfuls, three times daily
+## 6                 two spoonfuls, three times daily
+##   gum_rot_d6 skin_sores_d6 weakness_of_the_knees_d6
+## 1 2_moderate    2_moderate               2_moderate
+## 2 2_moderate        1_mild               2_moderate
+## 3     1_mild      3_severe                 3_severe
+## 4 2_moderate      3_severe                 3_severe
+## 5   3_severe      3_severe                 3_severe
+## 6   3_severe      3_severe                 3_severe
+##   lassitude_d6 fit_for_duty_d6
+## 1   2_moderate            0_no
+## 2     3_severe            0_no
+## 3     3_severe            0_no
+## 4     3_severe            0_no
+## 5     3_severe            0_no
+## 6     3_severe            0_no</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="importing-your-data-into-r.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(strep_tb)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 13
+##   patient_id arm          dose_strep_g dose_PAS_g gender
+##   &lt;chr&gt;      &lt;fct&gt;               &lt;dbl&gt;      &lt;dbl&gt; &lt;fct&gt; 
+## 1 0100       Streptomycin            2          0 M     
+## 2 0101       Streptomycin            2          0 F     
+## 3 0104       Streptomycin            2          0 M     
+## 4 0105       Streptomycin            2          0 F     
+## 5 0106       Streptomycin            2          0 F     
+## 6 0107       Streptomycin            2          0 F     
+## # … with 8 more variables: baseline_condition &lt;fct&gt;,
+## #   baseline_temp &lt;fct&gt;, baseline_esr &lt;fct&gt;,
+## #   baseline_cavitation &lt;fct&gt;, strep_resistance &lt;fct&gt;,
+## #   radiologic_6m &lt;fct&gt;, rad_num &lt;dbl&gt;, improved &lt;lgl&gt;</code></pre>
+<p>Note that since these are tibbles, they will only print the columns that will fit into your Console pane.
+You can see all variables and the whole width (though it will wrap around to new lines) by either (1) converting these to a data frame first, to avoid tibble behavior, or (2) by using print, which has a width argument that allows you to control the number of columns.
+Run the code chunk below to see how this is different.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="importing-your-data-into-r.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">as.data.frame</span>(scurvy))</span></code></pre></div>
+<pre><code>##   study_id            treatment
+## 1      001                cider
+## 2      002                cider
+## 3      003 dilute_sulfuric_acid
+## 4      004 dilute_sulfuric_acid
+## 5      005              vinegar
+## 6      006              vinegar
+##                          dosing_regimen_for_scurvy
+## 1                                  1 quart per day
+## 2                                  1 quart per day
+## 3 25 drops of elixir of vitriol, three times a day
+## 4 25 drops of elixir of vitriol, three times a day
+## 5                 two spoonfuls, three times daily
+## 6                 two spoonfuls, three times daily
+##   gum_rot_d6 skin_sores_d6 weakness_of_the_knees_d6
+## 1 2_moderate    2_moderate               2_moderate
+## 2 2_moderate        1_mild               2_moderate
+## 3     1_mild      3_severe                 3_severe
+## 4 2_moderate      3_severe                 3_severe
+## 5   3_severe      3_severe                 3_severe
+## 6   3_severe      3_severe                 3_severe
+##   lassitude_d6 fit_for_duty_d6
+## 1   2_moderate            0_no
+## 2     3_severe            0_no
+## 3     3_severe            0_no
+## 4     3_severe            0_no
+## 5     3_severe            0_no
+## 6     3_severe            0_no</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="importing-your-data-into-r.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">tail</span>(strep_tb), <span class="at">width =</span> <span class="cn">Inf</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 13
+##   patient_id arm          dose_strep_g dose_PAS_g gender
+##   &lt;chr&gt;      &lt;fct&gt;               &lt;dbl&gt;      &lt;dbl&gt; &lt;fct&gt; 
+## 1 0100       Streptomycin            2          0 M     
+## 2 0101       Streptomycin            2          0 F     
+## 3 0104       Streptomycin            2          0 M     
+## 4 0105       Streptomycin            2          0 F     
+## 5 0106       Streptomycin            2          0 F     
+## 6 0107       Streptomycin            2          0 F     
+##   baseline_condition baseline_temp baseline_esr
+##   &lt;fct&gt;              &lt;fct&gt;         &lt;fct&gt;       
+## 1 3_Poor             2_99-99.9F    4_51+       
+## 2 3_Poor             4_100F+       4_51+       
+## 3 3_Poor             4_100F+       4_51+       
+## 4 3_Poor             4_100F+       4_51+       
+## 5 3_Poor             4_100F+       4_51+       
+## 6 3_Poor             4_100F+       4_51+       
+##   baseline_cavitation strep_resistance
+##   &lt;fct&gt;               &lt;fct&gt;           
+## 1 yes                 3_resist_100+   
+## 2 yes                 3_resist_100+   
+## 3 yes                 3_resist_100+   
+## 4 yes                 3_resist_100+   
+## 5 yes                 3_resist_100+   
+## 6 yes                 3_resist_100+   
+##   radiologic_6m                rad_num improved
+##   &lt;fct&gt;                          &lt;dbl&gt; &lt;lgl&gt;   
+## 1 4_No_change                        4 FALSE   
+## 2 2_Considerable_deterioration       2 FALSE   
+## 3 5_Moderate_improvement             5 TRUE    
+## 4 2_Considerable_deterioration       2 FALSE   
+## 5 1_Death                            1 FALSE   
+## 6 6_Considerable_improvement         6 TRUE</code></pre>
+<p>It is actually much easier to see the full width and height of a data set by scrolling, which you can do when you <em>View()</em> a dataset in the RStudio viewer. Try this out in the Console pane, with <code>View(strep_tb)</code>.
+If you just want a quick view of a few critical columns of your data, you can obtain this with the <em>select()</em> function, as in the code chunk below.
+Note that if you want to look at a random sample of your dataset, rather than the head or tail, you can use <em>sample_frac()</em> or <em>sample_n()</em> to do this.
+See how this is used by running the code chunk below, which uses a 10% random sample of strep_tb to check that the mutate steps to generate the variables <code>rad_num</code> and <code>improved</code> worked correctly.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="importing-your-data-into-r.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check that radiologic_6m, rad_num, and improved all match</span></span>
+<span id="cb45-2"><a href="importing-your-data-into-r.html#cb45-2" aria-hidden="true" tabindex="-1"></a>strep_tb <span class="sc">%&gt;%</span> </span>
+<span id="cb45-3"><a href="importing-your-data-into-r.html#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_frac</span>(<span class="fl">0.1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-4"><a href="importing-your-data-into-r.html#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(radiologic_6m, rad_num, improved)</span></code></pre></div>
+<pre><code>## # A tibble: 11 x 3
+##    radiologic_6m                rad_num improved
+##    &lt;fct&gt;                          &lt;dbl&gt; &lt;lgl&gt;   
+##  1 5_Moderate_improvement             5 TRUE    
+##  2 6_Considerable_improvement         6 TRUE    
+##  3 6_Considerable_improvement         6 TRUE    
+##  4 6_Considerable_improvement         6 TRUE    
+##  5 1_Death                            1 FALSE   
+##  6 1_Death                            1 FALSE   
+##  7 2_Considerable_deterioration       2 FALSE   
+##  8 6_Considerable_improvement         6 TRUE    
+##  9 6_Considerable_improvement         6 TRUE    
+## 10 3_Moderate_deterioration           3 FALSE   
+## 11 3_Moderate_deterioration           3 FALSE</code></pre>
 </div>
-<div id="features-of-a-bookdown-electronic-book" class="section level2" number="1.6">
-<h2><span class="header-section-number">1.6</span> Features of a Bookdown electronic book</h2>
-<div id="icons" class="section level3" number="1.6.1">
-<h3><span class="header-section-number">1.6.1</span> Icons</h3>
-<p>There are several icons at the top left, to the right of the clickable RMWR link, that can be helpful:</p>
-<p>1.
-The Table of Contents Sidebar - Click on the <strong>‘hamburger’ menu icon</strong> (three horizontal lines) or the <code>s</code> key to toggle the sidebar (table of contents) on and off.
-Within the sidebar, you can click on whichever chapter or subsection you want.</p>
-<p>2.
-This book is Searchable - Click on the <strong>magnifying glass</strong> or use the <code>f</code> key to toggle the <code>Find</code> box and search for whatever you need to find.</p>
-<p>3.
-You can change the font size, font, and background by clicking on the <strong>A</strong> icon.</p>
-<p>4.
-You can download the chapter with the download icon (downward arrow into a file tray) in PDF or EPUB formats.</p>
 </div>
-<div id="sharing" class="section level3" number="1.6.2">
-<h3><span class="header-section-number">1.6.2</span> Sharing</h3>
-<p>At the top right, there are several icons for sharing links to the current chapter through social media.</p>
+<div id="reading-excel-files-with-readxl" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Reading Excel Files with readxl</h2>
+<p>While file types like *.csv and *.tsv are common, it is also common to use Microsoft Excel or an equivalent for data entry.
+There are a lot of reasons that this is not a good idea (see chapter XX and video at link), but Excel is so ubiquitous, that it is often used.</p>
+<p>Fortunately, the {readxl} package provides functions for reading excel files.
+The <em>read_xl()</em> function works nearly the same as <em>read_csv()</em>.
+But there are a few bonus arguments (options) that are really helpful.</p>
+<p>The <em>read_excel()</em> function includes helpful arguments like <strong>skip</strong>, <strong>col_names</strong>, <strong>col_types</strong>, and <strong>n_max</strong>, much like <em>read_csv()</em>.
+In addition, read_excel() has a <strong>sheet</strong> argument, which lets you specify which sheet in an excel workbook you want to read.
+The default is the first worksheet, but you can set this to sheet = 4 for the 4th worksheet from the left, or sheet = “raw_data” to get the right worksheet.
+You can also set the range argument to only read in a particular range of cells, like range = “B2:G14”.
+Below is an example of how to read in an Excel worksheet.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="importing-your-data-into-r.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">&#39;data/paulolol.xlsx&#39;</span>,</span>
+<span id="cb47-2"><a href="importing-your-data-into-r.html#cb47-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">sheet =</span> <span class="dv">1</span>,</span>
+<span id="cb47-3"><a href="importing-your-data-into-r.html#cb47-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">skip =</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## New names:
+## * `` -&gt; ...2
+## * `` -&gt; ...3
+## * `` -&gt; ...4
+## * `` -&gt; ...5
+## * `` -&gt; ...6</code></pre>
+<pre><code>## # A tibble: 13 x 6
+##    `Paul Investigator… ...2      ...3   ...4    ...5  ...6  
+##    &lt;chr&gt;               &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; 
+##  1 44338               &lt;NA&gt;      &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;  &lt;NA&gt;  
+##  2 pat_id              SBP_start SBP_e… HR_sta… HR_e… treat…
+##  3 1                   145       120    92      78    paulo…
+##  4 2                   147       148    88      87    place…
+##  5 3                   158       139    96      80    paulo…
+##  6 4                   167       166    87      88    place…
+##  7 5                   154       131    84      72    paulo…
+##  8 6                   178       177    99      97    place…
+##  9 7                   151       134    101     86    paulo…
+## 10 8                   149       148    92      93    place…
+## 11 &lt;NA&gt;                &lt;NA&gt;      &lt;NA&gt;   sbp     hr    &lt;NA&gt;  
+## 12 &lt;NA&gt;                mean pau… &lt;NA&gt;   131     79    &lt;NA&gt;  
+## 13 &lt;NA&gt;                mean pla… &lt;NA&gt;   159.75  91.25 &lt;NA&gt;</code></pre>
 </div>
-<div id="scrollingpaging" class="section level3" number="1.6.3">
-<h3><span class="header-section-number">1.6.3</span> Scrolling/Paging</h3>
+<div id="more-exploration-with-skimr-and-dataexplorer" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> More exploration with skimr and DataExplorer</h2>
+</div>
+<div id="other-strange-file-types-with-rio" class="section level2" number="4.5">
+<h2><span class="header-section-number">4.5</span> Other strange file types with rio</h2>
+</div>
+<div id="practice-loading-data-from-multiple-file-types" class="section level2" number="4.6">
+<h2><span class="header-section-number">4.6</span> Practice loading data from multiple file types</h2>
+</div>
+<div id="practice-saving-writing-to-disk-data-objects-in-formats-including-csv-rds-xls-xlsx" class="section level2" number="4.7">
+<h2><span class="header-section-number">4.7</span> Practice saving (writing to disk) data objects in formats including csv, rds, xls, xlsx</h2>
+</div>
+<div id="how-do-readr-and-readxl-parse-columns" class="section level2" number="4.8">
+<h2><span class="header-section-number">4.8</span> How do readr and readxl parse columns?</h2>
+</div>
+<div id="what-are-the-variable-types" class="section level2" number="4.9">
+<h2><span class="header-section-number">4.9</span> What are the variable types?</h2>
+<p>Numeric - integer and double Character - string Logical - TRUE/FALSE Dates - an unholy formatting mess Factors - categorical variables - nominal factors (no order) - ordinal factors (with a meaningful order)</p>
+</div>
+<div id="controlling-parsing" class="section level2" number="4.10">
+<h2><span class="header-section-number">4.10</span> Controlling Parsing</h2>
+</div>
+<div id="chapter-challenges" class="section level2" number="4.11">
+<h2><span class="header-section-number">4.11</span> Chapter Challenges</h2>
 <ol style="list-style-type: decimal">
-<li>You can scroll up and down within a chapter with your mouse, or use the up and down arrow keys.</li>
-<li>You can page through chapters with the left and right arrow keys.</li>
+<li>There is a file named “paulolol.xlsx” with the path of ‘data/paulolol.xlsx’. A picture of this problematic file is shown below.
+<img src="images/paulolol.png" alt="paulolol" /></li>
 </ol>
-</div>
-</div>
-<div id="what-this-book-is-not" class="section level2" number="1.7">
-<h2><span class="header-section-number">1.7</span> What this Book is Not</h2>
-<div id="this-book-is-not-a-statistics-text" class="section level3" number="1.7.1">
-<h3><span class="header-section-number">1.7.1</span> This Book is Not A Statistics Text</h3>
-<p>This is not an introduction to statistics.
-I am assuming that you have learned some statistics somewhere in secondary school, undergraduate studies, graduate school, or even medical school.
-There are lots of statisticians with Ph.D.s who can certainly teach statistics much more effectively than I can.
-While I have a master’s degree in Clinical Research Design and Statistical Analysis (isn’t that a mouthful!) from the University of Michigan, I will leave formal teaching of statistics to the pros.<br />
-If you need to brush up on your statistics, no worries.
-There are several excellent (and free!) e-books on that very topic, using R.
-Some good examples include (go ahead and click through the blue links to explore):</p>
-<ol style="list-style-type: decimal">
-<li><a href="https://learningstatisticswithr-bookdown.netlify.com">Learning Statistics with R (LSR)</a></li>
-<li><a href="https://www.openintro.org/book/os/">Open Intro Statistics</a></li>
-<li><a href="https://bookdown.org/fjmcgrade/ismaykim/">Modern Dive</a></li>
-<li><a href="https://tinystats.github.io/teacups-giraffes-and-statistics/index.html">Teacup Giraffes</a></li>
+<ul>
+<li>Read in this file with the {readxl} package. Just for fun, try this see how this turns out with no additional arguments.</li>
+<li>Be sure to skip the problematic non-data first few rows</li>
+<li>Be sure to exclude the problematic non-data calculations below the table.</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Our intrepid Investigator has inserted a chart in place of his data table on sheet 1, and moved the data table to a 2nd sheet named ‘data’, and placed in the top left corner, at the suggestion of his harried statistician, in a new file with the path of ’data/paulolol2.xlsx"</li>
 </ol>
-<p>We will cover much of the same material as these books, but with a less theoretical and more applied approach.
-I will focus on specific medical examples, and emphasize issues (like Protected Health Information) that are particularly important for medical data.
-I am assuming that you are here because you want to analyze your own data in your (probably) very limited free time.</p>
+<ul>
+<li>Try reading this file in with read_excel()</li>
+<li>read the help file <code>help(read_excel)</code> to figure out how to read in the data from this excel file.</li>
+</ul>
 </div>
-<div id="this-book-does-not-provide-comprehensive-coverage-of-the-r-universe" class="section level3" number="1.7.2">
-<h3><span class="header-section-number">1.7.2</span> This Book Does Not Provide Comprehensive Coverage of the R Universe</h3>
-<p>This book is also far from comprehensive in teaching what is available in the R ecosystem.
-This book should be considered a launch pad.
-Many of the later chapters will give you a taste of what is available in certain areas, and guide you to resources (and links) that you can explore to learn more and do more beyond the scope of this book.
-The R computer language has expanded far beyond statistics, and allows you to do many powerful things to improve your workflow, make amazing graphics, and share results with others.</p>
+<div id="future-forms-of-data-ingestion" class="section level2" number="4.12">
+<h2><span class="header-section-number">4.12</span> Future forms of data ingestion</h2>
+<ul>
+<li>reading data from the web with readr</li>
+<li>reading data from Google Sheets with googlesheets</li>
+<li>reading data from web tables with rvest</li>
+<li>reading data from a REDCap database with REDCapR</li>
+</ul>
 </div>
-</div>
-<div id="some-guideposts" class="section level2" number="1.8">
-<h2><span class="header-section-number">1.8</span> Some Guideposts</h2>
-<p>Keep an eye out for helpful Guideposts, which look like this:</p>
-<p><strong>Warnings</strong></p>
-<div class="warning">
-<p>This is a common syntax error, especially for beginners.
-Watch out for this.</p>
-</div>
-<p><strong>Tips</strong></p>
-<div class="tip">
-<p>This is a helpful tip for debugging.</p>
-</div>
-<p><strong>Try It Out</strong></p>
-<div class="tryit">
-<p>Take what you have learned and try it yourself on your own computer.</p>
-</div>
-<p><strong>Challenge</strong> - take the next step and try a more challenging example.</p>
-<div class="challenge">
-<p>Try this more complicated example.</p>
-</div>
-<p><strong>Explore More</strong> - resources for learning more about a particular topic.</p>
-<div class="explore">
-<p>If you want to learn more about Shiny apps, go to <a href="https://mastering-shiny.org" class="uri">https://mastering-shiny.org</a> to see an entire book on the topic.</p>
-</div>
-</div>
-<div id="helpful-tools" class="section level2" number="1.9">
-<h2><span class="header-section-number">1.9</span> Helpful Tools</h2>
-<p>Throughout this book you will find <strong>flipbook</strong> code demonstrations and <strong>learnr</strong> code interactive exercises in which you can practice writing R code right in the book.
-Let’s explain how to use these demonstration flipbooks and learnr exercises.</p>
-<div id="demonstrations-in-flipbooks" class="section level3" number="1.9.1">
-<h3><span class="header-section-number">1.9.1</span> Demonstrations in Flipbooks</h3>
-<p>Flipbooks are windows in this book in which you can watch R code being built into pipelines, and see the results at each step.
-Each flipbook demonstrates some important code concepts, and often new functions in R.
-You can click on the window to activate it, and the fullscreen (4 arrows) icon to expand it to the full screen.
-Then use the left and right arrow keys to go forward and back in the code, one step at a time.
-You will want to go through these <em>slowly</em>, and make sure that you understand what is happening in each step.
-You may even want to take notes, particularly on the function syntax, as you will likely coding exercises with these functions shortly after the flipbook demonstration.</p>
-<p>Take a look at the example of a flipbook below.<br />
-Activate it by clicking on it, and use the expand icon (4 arrows at the lower right) to make it full screen.
-You can step forward and backward through the pipeline of code with the right and left arrow keys.
-Watch the results of each step.</p>
-<!---FLIPBOOK EX 1-->
-<iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/demo_microflip.html#1" scrolling="no" allowfullscreen loading="lazy">
-</iframe>
-<!---FLIPBOOK EX 1-->
-</div>
-<div id="learnr-coding-exercises" class="section level3" number="1.9.2">
-<h3><span class="header-section-number">1.9.2</span> Learnr Coding Exercises</h3>
-<p>Learnr coding exercises are windows in this book in which you can write your own R code to solve a problem.
-Each learnr exercise tests whether you have mastered important code concepts, and often new functions in R.
-If needed, you can reset to a fresh code window with the <code>Start Over</code> button.
-You can type lines of code into the window, then click on the <code>Run Code</code> button at the top right to run the code and get your results.
-Your code may not produce the right result the first time, and you will have to interpret the error message to figure out how to fix it.
-Rely on the text and your notes and the demonstrations to help you.
-If you are stuck, you can click on the <code>Hint</code> button to see an example of correct code, and compare it to your own.
-If you would like, you can even copy this code to the clipboard with the <code>Copy</code> button and</p>
-<p>Take a look at the example of a learnr exercise below.<br />
-There is a dataset piped into a series of functions (‘verbs’), with a blank.
-Fill in the blank with ‘p_vol’ (without the quotes), which stands for the variable, prostate volume.
-Then run your code with the <code>Run Code</code> button to get a result.
-Practice using the <code>Start Over</code> button, the <code>Hint</code> button (there may be more than one - usually the <strong>last</strong> one is the solution), and the <code>Copy To Clipboard</code> button.</p>
-<!---LEARNR TUTORIAL EX 1-->
-<iframe style="margin:0 auto; border: solid black;" id="myIframe9" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_demo/" scrolling="yes">
-</iframe>
-<!---LEARNR TUTORIAL EX 1-->
-<p>When you get a table of data as a result from a code pipeline, it may have more columns (variables) than can be displayed easily.
-When this is the case, there will be a black arrow pointing rightward at the top right of the table of results.
-Click on this to scroll right and see more columns.<br />
-A table of data as a result from a code pipeline may also have more rows (observations) than can be displayed easily.
-When this is the case, the table will be paginated, with 10 rows per page.
-At the bottom right of the table, there will be a clickable listing of pages, along with <code>Previous</code> and <code>Next</code> buttons.
-Click on these buttons (or the page number buttons) to see more pages of data to inspect and check your results.</p>
-</div>
-<div id="coding" class="section level3" number="1.9.3">
-<h3><span class="header-section-number">1.9.3</span> Coding</h3>
-<p>An <strong>important note</strong> on writing your own code: you should always have an internet search window open when you are writing code.
-No one can remember every function, nor the correct arguments and syntax of each function.
-A critical skill in writing code is searching for how to do something correctly.
-This is <strong>not</strong> a sign of weakness.
-Professional programmers google “<em>how do I do x?</em>” many times each day.
-This is <strong>how</strong> programming is done.
-You will often search for things like “how do I do x in R?” or “how to x in tidyverse”.
-This is completely normal, and to be expected.
-You do not have time to memorize hundreds of functions, and you may have days or even weeks between coding sessions (because of your day job), making it hard to remember all the details from your last coding session.
-This is not a problem.
-There are lots of websites that can help you solve specific problems, as you will find in the How to Find Help chapter.</p>
+<div id="solutions-to-challenges" class="section level2" number="4.13">
+<h2><span class="header-section-number">4.13</span> Solutions to Challenges</h2>
+<p>Solution to Challenge 1: paulolol.xlsx</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="importing-your-data-into-r.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">&#39;data/paulolol.xlsx&#39;</span>,</span>
+<span id="cb50-2"><a href="importing-your-data-into-r.html#cb50-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">skip =</span> <span class="dv">3</span>,</span>
+<span id="cb50-3"><a href="importing-your-data-into-r.html#cb50-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">n_max =</span> <span class="dv">8</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 8 x 6
+##   pat_id SBP_start SBP_end HR_start HR_end treatment
+##    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    
+## 1      1       145     120       92     78 paulolol 
+## 2      2       147     148       88     87 placebo  
+## 3      3       158     139       96     80 paulolol 
+## 4      4       167     166       87     88 placebo  
+## 5      5       154     131       84     72 paulolol 
+## 6      6       178     177       99     97 placebo  
+## 7      7       151     134      101     86 paulolol 
+## 8      8       149     148       92     93 placebo</code></pre>
+<p>Solution to Challenge 2: paulolol2.xlsx</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="importing-your-data-into-r.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">&#39;data/paulolol2.xlsx&#39;</span>,</span>
+<span id="cb52-2"><a href="importing-your-data-into-r.html#cb52-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">sheet =</span> <span class="st">&#39;data&#39;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 8 x 6
+##   pat_id SBP_start SBP_end HR_start HR_end treatment
+##    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    
+## 1      1       145     120       92     78 paulolol 
+## 2      2       147     148       88     87 placebo  
+## 3      3       158     139       96     80 paulolol 
+## 4      4       167     166       87     88 placebo  
+## 5      5       154     131       84     72 paulolol 
+## 6      6       178     177       99     97 placebo  
+## 7      7       151     134      101     86 paulolol 
+## 8      8       149     148       92     93 placebo</code></pre>
 
-</div>
 </div>
 </div>
             </section>
@@ -667,8 +1177,8 @@ There are lots of websites that can help you solve specific problems, as you wil
           </div>
         </div>
       </div>
-
-<a href="getting-started-and-installing-your-tools.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="a-tasting-menu-of-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="wrangling-rows-in-r-with-filter.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -700,7 +1210,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/io05-importing.Rmd",
 "text": "Edit"
 },
 "history": {

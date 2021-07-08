@@ -7,19 +7,7 @@ editor_options:
     wrap: sentence
 ---
 
-```{r setup, include=FALSE}
-library(tidyverse)
-library(medicaldata)
-library(readxl)
-library(skimr)
-library(here)
-library(glue)
-scurvy <- medicaldata::scurvy
-write_csv(scurvy, 'data/scurvy.csv')
-strep_tb <- medicaldata::strep_tb
-write_tsv(strep_tb, 'data/strep_tb.tsv')
-url_stem <- "https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/"
-```
+
 
 # Importing Your Data into R
 
@@ -28,11 +16,30 @@ These are easy to load.
 You just type into the Console pane `medicaldata::scurvy` and you get James Lind's scurvy dataset (actually, a reconstruction of what it might have looked like for his 12 participants).
 If you want to save this data to an object in your work environment, you just need to assign this to a named object, like `scurvy`, like so:
 
-```{r}
+
+```r
 scurvy <- medicaldata::scurvy
 
 # now print the colums for id and treatment
 scurvy %>% select(study_id:treatment)
+```
+
+```
+## # A tibble: 12 x 2
+##    study_id treatment           
+##    <chr>    <fct>               
+##  1 001      cider               
+##  2 002      cider               
+##  3 003      dilute_sulfuric_acid
+##  4 004      dilute_sulfuric_acid
+##  5 005      vinegar             
+##  6 006      vinegar             
+##  7 007      sea_water           
+##  8 008      sea_water           
+##  9 009      citrus              
+## 10 010      citrus              
+## 11 011      purgative_mixture   
+## 12 012      purgative_mixture
 ```
 
 There are a number of medical datasets to explore and learn within the {medicaldata} package.
@@ -71,7 +78,8 @@ Let's read a csv file.
 First, make sure that you have the {readr} package loaded (or the {tidyverse} meta-package, which includes {readr}).
 You can load {readr} with the `library()` function.
 
-```{r}
+
+```r
 library(readr)
 # or you can use
 library(tidyverse) # which will load 8 packages, including readr
@@ -95,9 +103,53 @@ OK, after that detour, we should be all caught up - you should be able to run `l
 Now that you have {readr} loaded, you can read in some csv data.
 Let's start with a file named `scurvy.csv` in a 'data'folder on GitHub. You will need to glue together the url_stem and "data/scurvy.csv" to get the full web address. Run the code chunk below to see the url_stem and the dataset.
 
-```{r}
+
+```r
 url_stem
+```
+
+```
+## [1] "https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/"
+```
+
+```r
 read_csv(glue(url_stem, 'data/scurvy.csv'))
+```
+
+```
+## 
+## ── Column specification ────────────────────────────────────
+## cols(
+##   study_id = col_character(),
+##   treatment = col_character(),
+##   dosing_regimen_for_scurvy = col_character(),
+##   gum_rot_d6 = col_character(),
+##   skin_sores_d6 = col_character(),
+##   weakness_of_the_knees_d6 = col_character(),
+##   lassitude_d6 = col_character(),
+##   fit_for_duty_d6 = col_character()
+## )
+```
+
+```
+## # A tibble: 12 x 8
+##    study_id treatment    dosing_regimen_for_scur… gum_rot_d6
+##    <chr>    <chr>        <chr>                    <chr>     
+##  1 001      cider        1 quart per day          2_moderate
+##  2 002      cider        1 quart per day          2_moderate
+##  3 003      dilute_sulf… 25 drops of elixir of v… 1_mild    
+##  4 004      dilute_sulf… 25 drops of elixir of v… 2_moderate
+##  5 005      vinegar      two spoonfuls, three ti… 3_severe  
+##  6 006      vinegar      two spoonfuls, three ti… 3_severe  
+##  7 007      sea_water    half pint daily          3_severe  
+##  8 008      sea_water    half pint daily          3_severe  
+##  9 009      citrus       two lemons and an orang… 1_mild    
+## 10 010      citrus       two lemons and an orang… 0_none    
+## 11 011      purgative_m… a nutmeg-sized paste of… 3_severe  
+## 12 012      purgative_m… a nutmeg-sized paste of… 3_severe  
+## # … with 4 more variables: skin_sores_d6 <chr>,
+## #   weakness_of_the_knees_d6 <chr>, lassitude_d6 <chr>,
+## #   fit_for_duty_d6 <chr>
 ```
 
 Let's look at what was extracted from the csv file.
@@ -119,8 +171,24 @@ Now, by simply reading in the data, you can look at it, but you can't do anythin
 If you want to do things with this data, and make them last, you have to *assign* the data to an object, and give it a name.
 To do this, you need to use an assignment arrow, as below
 
-```{r}
+
+```r
 scurvy_data <- read_csv(glue(url_stem, 'data/scurvy.csv'))
+```
+
+```
+## 
+## ── Column specification ────────────────────────────────────
+## cols(
+##   study_id = col_character(),
+##   treatment = col_character(),
+##   dosing_regimen_for_scurvy = col_character(),
+##   gum_rot_d6 = col_character(),
+##   skin_sores_d6 = col_character(),
+##   weakness_of_the_knees_d6 = col_character(),
+##   lassitude_d6 = col_character(),
+##   fit_for_duty_d6 = col_character()
+## )
 ```
 
 Now this is saved to `scurvy_data` in your working Environment.
@@ -145,9 +213,44 @@ When your data has no column names (headers), read_csv will assume that the firs
 To fix this, add the argument, **col_names** = FALSE.
 You can also assign your own **col_names** by setting a vector, like c("patient_id", "treatment", "outcome") to col_names, as below
 
-```{r}
+
+```r
 read_csv(file = glue(url_stem, 'data/scurvy.csv'), 
 col_names = c("pat_id", "arm", "dose", "gums", "skin", "weak", "lass", "fit"))
+```
+
+```
+## 
+## ── Column specification ────────────────────────────────────
+## cols(
+##   pat_id = col_character(),
+##   arm = col_character(),
+##   dose = col_character(),
+##   gums = col_character(),
+##   skin = col_character(),
+##   weak = col_character(),
+##   lass = col_character(),
+##   fit = col_character()
+## )
+```
+
+```
+## # A tibble: 13 x 8
+##    pat_id  arm     dose      gums   skin  weak   lass  fit  
+##    <chr>   <chr>   <chr>     <chr>  <chr> <chr>  <chr> <chr>
+##  1 study_… treatm… dosing_r… gum_r… skin… weakn… lass… fit_…
+##  2 001     cider   1 quart … 2_mod… 2_mo… 2_mod… 2_mo… 0_no 
+##  3 002     cider   1 quart … 2_mod… 1_mi… 2_mod… 3_se… 0_no 
+##  4 003     dilute… 25 drops… 1_mild 3_se… 3_sev… 3_se… 0_no 
+##  5 004     dilute… 25 drops… 2_mod… 3_se… 3_sev… 3_se… 0_no 
+##  6 005     vinegar two spoo… 3_sev… 3_se… 3_sev… 3_se… 0_no 
+##  7 006     vinegar two spoo… 3_sev… 3_se… 3_sev… 3_se… 0_no 
+##  8 007     sea_wa… half pin… 3_sev… 3_se… 3_sev… 3_se… 0_no 
+##  9 008     sea_wa… half pin… 3_sev… 3_se… 3_sev… 3_se… 0_no 
+## 10 009     citrus  two lemo… 1_mild 1_mi… 0_none 1_mi… 0_no 
+## 11 010     citrus  two lemo… 0_none 0_no… 0_none 0_no… 1_yes
+## 12 011     purgat… a nutmeg… 3_sev… 3_se… 3_sev… 3_se… 0_no 
+## 13 012     purgat… a nutmeg… 3_sev… 3_se… 3_sev… 3_se… 0_no
 ```
 
 In this case, when we set our own **col_names**, the actual column headers are now included in the first row of data.
@@ -155,10 +258,44 @@ We can fix this with the **skip** argument, which has a default of 0.
 We can skip as many lines as we want, which can be helpful if you have an Excel file with a lot of blank lines or commentary at the top of the spreadsheet.
 When we set skip = 1, we get a cleaner dataset.
 
-```{r}
+
+```r
 read_csv(file = glue(url_stem, 'data/scurvy.csv'), 
          col_names = c("pat_id", "arm", "dose", "gums", "skin", "weak", "lass", "fit"),
          skip = 1)
+```
+
+```
+## 
+## ── Column specification ────────────────────────────────────
+## cols(
+##   pat_id = col_character(),
+##   arm = col_character(),
+##   dose = col_character(),
+##   gums = col_character(),
+##   skin = col_character(),
+##   weak = col_character(),
+##   lass = col_character(),
+##   fit = col_character()
+## )
+```
+
+```
+## # A tibble: 12 x 8
+##    pat_id arm     dose        gums   skin  weak  lass  fit  
+##    <chr>  <chr>   <chr>       <chr>  <chr> <chr> <chr> <chr>
+##  1 001    cider   1 quart pe… 2_mod… 2_mo… 2_mo… 2_mo… 0_no 
+##  2 002    cider   1 quart pe… 2_mod… 1_mi… 2_mo… 3_se… 0_no 
+##  3 003    dilute… 25 drops o… 1_mild 3_se… 3_se… 3_se… 0_no 
+##  4 004    dilute… 25 drops o… 2_mod… 3_se… 3_se… 3_se… 0_no 
+##  5 005    vinegar two spoonf… 3_sev… 3_se… 3_se… 3_se… 0_no 
+##  6 006    vinegar two spoonf… 3_sev… 3_se… 3_se… 3_se… 0_no 
+##  7 007    sea_wa… half pint … 3_sev… 3_se… 3_se… 3_se… 0_no 
+##  8 008    sea_wa… half pint … 3_sev… 3_se… 3_se… 3_se… 0_no 
+##  9 009    citrus  two lemons… 1_mild 1_mi… 0_no… 1_mi… 0_no 
+## 10 010    citrus  two lemons… 0_none 0_no… 0_no… 0_no… 1_yes
+## 11 011    purgat… a nutmeg-s… 3_sev… 3_se… 3_se… 3_se… 0_no 
+## 12 012    purgat… a nutmeg-s… 3_sev… 3_se… 3_se… 3_se… 0_no
 ```
 
 Now we don't have extra column names as data.
@@ -176,7 +313,8 @@ Then I edited study_id to `col_integer()`, and treatment to `col_factor()`.
 Run the code chunk below to see how this works.
 The `glimpse` function will give an overview of the new `scurvy_cols` object that I assigned the data to.
 
-```{r}
+
+```r
 scurvy_cols <- read_csv(
   file = glue(url_stem, 'data/scurvy.csv'),
     col_types = cols(
@@ -191,6 +329,19 @@ scurvy_cols <- read_csv(
 )
 )
 glimpse(scurvy_cols)
+```
+
+```
+## Rows: 12
+## Columns: 8
+## $ study_id                  <int> 1, 2, 3, 4, 5, 6, 7, 8, …
+## $ treatment                 <fct> cider, cider, dilute_sul…
+## $ dosing_regimen_for_scurvy <chr> "1 quart per day", "1 qu…
+## $ gum_rot_d6                <chr> "2_moderate", "2_moderat…
+## $ skin_sores_d6             <chr> "2_moderate", "1_mild", …
+## $ weakness_of_the_knees_d6  <chr> "2_moderate", "2_moderat…
+## $ lassitude_d6              <chr> "2_moderate", "3_severe"…
+## $ fit_for_duty_d6           <chr> "0_no", "0_no", "0_no", …
 ```
 
 You can see that study_id is now considered the integer data type (`<int>`), and treatment is now a factor (`<fct>`).
@@ -215,12 +366,44 @@ Sometimes you want to set all the column types with a lot less typing, and you d
 You can do this by setting col_types to a string, in which each letter specifies the column type for each column.
 Run the example below by clicking on the green arrow at the top right of the code chunk, in which I use i for col_integer, c for col_character, and f for col_factor.
 
-```{r}
+
+```r
 scurvy_cols2 <- read_csv(
   file = glue(url_stem, 'data/scurvy.csv'),
          col_types = "ifcffff")
+```
 
+```
+## Warning: Unnamed `col_types` should have the same length as
+## `col_names`. Using smaller of the two.
+```
+
+```
+## Warning: 12 parsing failures.
+## row col  expected    actual                                                                             file
+##   1  -- 7 columns 8 columns 'https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/data/scurvy.csv'
+##   2  -- 7 columns 8 columns 'https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/data/scurvy.csv'
+##   3  -- 7 columns 8 columns 'https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/data/scurvy.csv'
+##   4  -- 7 columns 8 columns 'https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/data/scurvy.csv'
+##   5  -- 7 columns 8 columns 'https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/data/scurvy.csv'
+## ... ... ......... ......... ................................................................................
+## See problems(...) for more details.
+```
+
+```r
 glimpse(scurvy_cols2)
+```
+
+```
+## Rows: 12
+## Columns: 7
+## $ study_id                  <int> 1, 2, 3, 4, 5, 6, 7, 8, …
+## $ treatment                 <fct> cider, cider, dilute_sul…
+## $ dosing_regimen_for_scurvy <chr> "1 quart per day", "1 qu…
+## $ gum_rot_d6                <fct> 2_moderate, 2_moderate, …
+## $ skin_sores_d6             <fct> 2_moderate, 1_mild, 3_se…
+## $ weakness_of_the_knees_d6  <fct> 2_moderate, 2_moderate, …
+## $ lassitude_d6              <fct> 2_moderate, 3_severe, 3_…
 ```
 
 Now try this yourself with a *.tsv file.
@@ -245,7 +428,8 @@ Edit the `col_types` string to make:
 -   `rad_num` into an integer (i)
 -   `improved` into a logical (l)
 
-```{r, error=TRUE, eval=FALSE}
+
+```r
 strep_tb_cols <- read_tsv(
     file = glue(url_stem, 'data/strep_tb.tsv'),
       col_types = "ccccccccccccc")
@@ -265,8 +449,22 @@ Let's try this with the scurvy dataset, which we have already assigned to the ob
 Just put the object name as an argument withing the *glimpse()* function (inside the parentheses), as below.
 Run the code chunk below to get the glimpse() output.
 
-```{r}
+
+```r
 glimpse(scurvy)
+```
+
+```
+## Rows: 12
+## Columns: 8
+## $ study_id                  <chr> "001", "002", "003", "00…
+## $ treatment                 <fct> cider, cider, dilute_sul…
+## $ dosing_regimen_for_scurvy <chr> "1 quart per day", "1 qu…
+## $ gum_rot_d6                <fct> 2_moderate, 2_moderate, …
+## $ skin_sores_d6             <fct> 2_moderate, 1_mild, 3_se…
+## $ weakness_of_the_knees_d6  <fct> 2_moderate, 2_moderate, …
+## $ lassitude_d6              <fct> 2_moderate, 3_severe, 3_…
+## $ fit_for_duty_d6           <fct> 0_no, 0_no, 0_no, 0_no, …
 ```
 
 The *glimpse()* function output tells you that there are 12 rows (observations) and 8 columns (variables).
@@ -277,7 +475,8 @@ Try this out yourself.
 What can you learn about the strep_tb dataset with *glimpse()*?
 Edit the code chunk below to find out about strep_tb.
 
-```{r, error=TRUE, eval=FALSE}
+
+```r
 glimpse(strep_tb)
 ```
 
@@ -295,8 +494,21 @@ Sometimes just checking the data structure will reveal the source of an error.
 The *str()* function does largely what *glimpse()* does, but provides a bit more detail, with less attractive formatting.
 Run the code chunk below to see the output of *str()*.
 
-```{r}
+
+```r
 str(scurvy)
+```
+
+```
+## tibble [12 × 8] (S3: tbl_df/tbl/data.frame)
+##  $ study_id                 : chr [1:12] "001" "002" "003" "004" ...
+##  $ treatment                : Factor w/ 6 levels "cider","citrus",..: 1 1 3 3 6 6 5 5 2 2 ...
+##  $ dosing_regimen_for_scurvy: chr [1:12] "1 quart per day" "1 quart per day" "25 drops of elixir of vitriol, three times a day" "25 drops of elixir of vitriol, three times a day" ...
+##  $ gum_rot_d6               : Factor w/ 4 levels "0_none","1_mild",..: 3 3 2 3 4 4 4 4 2 1 ...
+##  $ skin_sores_d6            : Factor w/ 4 levels "0_none","1_mild",..: 3 2 4 4 4 4 4 4 2 1 ...
+##  $ weakness_of_the_knees_d6 : Factor w/ 4 levels "0_none","1_mild",..: 3 3 4 4 4 4 4 4 1 1 ...
+##  $ lassitude_d6             : Factor w/ 4 levels "0_none","1_mild",..: 3 4 4 4 4 4 4 4 2 1 ...
+##  $ fit_for_duty_d6          : Factor w/ 2 levels "0_no","1_yes": 1 1 1 1 1 1 1 1 1 2 ...
 ```
 
 The str() output starts by telling you that scurvy is a tibble, which is a modern sort of data table.
@@ -312,17 +524,39 @@ Imagine that you wanted to get the mean of `patient_id`.
 You got a **warning** that pointed out that the `argument is not numeric or logical`.
 So you run *str()* to find out the data structure of this variable.
 
-```{r}
+
+```r
 mean(strep_tb$patient_id)
+```
+
+```
+## Warning in mean.default(strep_tb$patient_id): argument is
+## not numeric or logical: returning NA
+```
+
+```
+## [1] NA
+```
+
+```r
 str(strep_tb$patient_id)
+```
+
+```
+##  chr [1:107] "0001" "0002" "0003" "0004" "0005" "0006" ...
 ```
 
 This shows you that patient_id is actually a character variable.
 If you wanted to find the mean value, you would have to change it to numeric (with *as.numeric()* first).
 The glimpse() function provides identical output to str() for a variable in a table.
 
-```{r}
+
+```r
 glimpse(strep_tb$patient_id)
+```
+
+```
+##  chr [1:107] "0001" "0002" "0003" "0004" "0005" "0006" ...
 ```
 
 You can choose whether you prefer the details of *str()* or the nicer formatting of *glimpse()* for yourself.
@@ -334,19 +568,140 @@ This is where the base R functions *head()* and *tail()* can be helpful.
 As you might have guessed, these functions give you a quick view of the head (top 6 rows) and tail (last 6 rows) of your data.
 Try this out with scurvy or strep_tb.
 
-```{r}
-head(as.data.frame(scurvy))
-tail(strep_tb)
 
+```r
+head(as.data.frame(scurvy))
+```
+
+```
+##   study_id            treatment
+## 1      001                cider
+## 2      002                cider
+## 3      003 dilute_sulfuric_acid
+## 4      004 dilute_sulfuric_acid
+## 5      005              vinegar
+## 6      006              vinegar
+##                          dosing_regimen_for_scurvy
+## 1                                  1 quart per day
+## 2                                  1 quart per day
+## 3 25 drops of elixir of vitriol, three times a day
+## 4 25 drops of elixir of vitriol, three times a day
+## 5                 two spoonfuls, three times daily
+## 6                 two spoonfuls, three times daily
+##   gum_rot_d6 skin_sores_d6 weakness_of_the_knees_d6
+## 1 2_moderate    2_moderate               2_moderate
+## 2 2_moderate        1_mild               2_moderate
+## 3     1_mild      3_severe                 3_severe
+## 4 2_moderate      3_severe                 3_severe
+## 5   3_severe      3_severe                 3_severe
+## 6   3_severe      3_severe                 3_severe
+##   lassitude_d6 fit_for_duty_d6
+## 1   2_moderate            0_no
+## 2     3_severe            0_no
+## 3     3_severe            0_no
+## 4     3_severe            0_no
+## 5     3_severe            0_no
+## 6     3_severe            0_no
+```
+
+```r
+tail(strep_tb)
+```
+
+```
+## # A tibble: 6 x 13
+##   patient_id arm          dose_strep_g dose_PAS_g gender
+##   <chr>      <fct>               <dbl>      <dbl> <fct> 
+## 1 0100       Streptomycin            2          0 M     
+## 2 0101       Streptomycin            2          0 F     
+## 3 0104       Streptomycin            2          0 M     
+## 4 0105       Streptomycin            2          0 F     
+## 5 0106       Streptomycin            2          0 F     
+## 6 0107       Streptomycin            2          0 F     
+## # … with 8 more variables: baseline_condition <fct>,
+## #   baseline_temp <fct>, baseline_esr <fct>,
+## #   baseline_cavitation <fct>, strep_resistance <fct>,
+## #   radiologic_6m <fct>, rad_num <dbl>, improved <lgl>
 ```
 
 Note that since these are tibbles, they will only print the columns that will fit into your Console pane.
 You can see all variables and the whole width (though it will wrap around to new lines) by either (1) converting these to a data frame first, to avoid tibble behavior, or (2) by using print, which has a width argument that allows you to control the number of columns.
 Run the code chunk below to see how this is different.
 
-```{r}
+
+```r
 head(as.data.frame(scurvy))
+```
+
+```
+##   study_id            treatment
+## 1      001                cider
+## 2      002                cider
+## 3      003 dilute_sulfuric_acid
+## 4      004 dilute_sulfuric_acid
+## 5      005              vinegar
+## 6      006              vinegar
+##                          dosing_regimen_for_scurvy
+## 1                                  1 quart per day
+## 2                                  1 quart per day
+## 3 25 drops of elixir of vitriol, three times a day
+## 4 25 drops of elixir of vitriol, three times a day
+## 5                 two spoonfuls, three times daily
+## 6                 two spoonfuls, three times daily
+##   gum_rot_d6 skin_sores_d6 weakness_of_the_knees_d6
+## 1 2_moderate    2_moderate               2_moderate
+## 2 2_moderate        1_mild               2_moderate
+## 3     1_mild      3_severe                 3_severe
+## 4 2_moderate      3_severe                 3_severe
+## 5   3_severe      3_severe                 3_severe
+## 6   3_severe      3_severe                 3_severe
+##   lassitude_d6 fit_for_duty_d6
+## 1   2_moderate            0_no
+## 2     3_severe            0_no
+## 3     3_severe            0_no
+## 4     3_severe            0_no
+## 5     3_severe            0_no
+## 6     3_severe            0_no
+```
+
+```r
 print(tail(strep_tb), width = Inf)
+```
+
+```
+## # A tibble: 6 x 13
+##   patient_id arm          dose_strep_g dose_PAS_g gender
+##   <chr>      <fct>               <dbl>      <dbl> <fct> 
+## 1 0100       Streptomycin            2          0 M     
+## 2 0101       Streptomycin            2          0 F     
+## 3 0104       Streptomycin            2          0 M     
+## 4 0105       Streptomycin            2          0 F     
+## 5 0106       Streptomycin            2          0 F     
+## 6 0107       Streptomycin            2          0 F     
+##   baseline_condition baseline_temp baseline_esr
+##   <fct>              <fct>         <fct>       
+## 1 3_Poor             2_99-99.9F    4_51+       
+## 2 3_Poor             4_100F+       4_51+       
+## 3 3_Poor             4_100F+       4_51+       
+## 4 3_Poor             4_100F+       4_51+       
+## 5 3_Poor             4_100F+       4_51+       
+## 6 3_Poor             4_100F+       4_51+       
+##   baseline_cavitation strep_resistance
+##   <fct>               <fct>           
+## 1 yes                 3_resist_100+   
+## 2 yes                 3_resist_100+   
+## 3 yes                 3_resist_100+   
+## 4 yes                 3_resist_100+   
+## 5 yes                 3_resist_100+   
+## 6 yes                 3_resist_100+   
+##   radiologic_6m                rad_num improved
+##   <fct>                          <dbl> <lgl>   
+## 1 4_No_change                        4 FALSE   
+## 2 2_Considerable_deterioration       2 FALSE   
+## 3 5_Moderate_improvement             5 TRUE    
+## 4 2_Considerable_deterioration       2 FALSE   
+## 5 1_Death                            1 FALSE   
+## 6 6_Considerable_improvement         6 TRUE
 ```
 
 It is actually much easier to see the full width and height of a data set by scrolling, which you can do when you *View()* a dataset in the RStudio viewer. Try this out in the Console pane, with `View(strep_tb)`.
@@ -354,11 +709,29 @@ If you just want a quick view of a few critical columns of your data, you can ob
 Note that if you want to look at a random sample of your dataset, rather than the head or tail, you can use *sample_frac()* or *sample_n()* to do this.
 See how this is used by running the code chunk below, which uses a 10% random sample of strep_tb to check that the mutate steps to generate the variables `rad_num` and `improved` worked correctly.
 
-```{r}
+
+```r
 #check that radiologic_6m, rad_num, and improved all match
 strep_tb %>% 
   sample_frac(0.1) %>% 
   select(radiologic_6m, rad_num, improved)
+```
+
+```
+## # A tibble: 11 x 3
+##    radiologic_6m                rad_num improved
+##    <fct>                          <dbl> <lgl>   
+##  1 5_Moderate_improvement             5 TRUE    
+##  2 6_Considerable_improvement         6 TRUE    
+##  3 6_Considerable_improvement         6 TRUE    
+##  4 6_Considerable_improvement         6 TRUE    
+##  5 1_Death                            1 FALSE   
+##  6 1_Death                            1 FALSE   
+##  7 2_Considerable_deterioration       2 FALSE   
+##  8 6_Considerable_improvement         6 TRUE    
+##  9 6_Considerable_improvement         6 TRUE    
+## 10 3_Moderate_deterioration           3 FALSE   
+## 11 3_Moderate_deterioration           3 FALSE
 ```
 
 ## Reading Excel Files with readxl
@@ -376,11 +749,39 @@ The default is the first worksheet, but you can set this to sheet = 4 for the 4t
 You can also set the range argument to only read in a particular range of cells, like range = "B2:G14".
 Below is an example of how to read in an Excel worksheet.
 
-```{r, error=TRUE}
+
+```r
 read_excel(path = 'data/paulolol.xlsx',
            sheet = 1,
            skip = 1)
+```
 
+```
+## New names:
+## * `` -> ...2
+## * `` -> ...3
+## * `` -> ...4
+## * `` -> ...5
+## * `` -> ...6
+```
+
+```
+## # A tibble: 13 x 6
+##    `Paul Investigator… ...2      ...3   ...4    ...5  ...6  
+##    <chr>               <chr>     <chr>  <chr>   <chr> <chr> 
+##  1 44338               <NA>      <NA>   <NA>    <NA>  <NA>  
+##  2 pat_id              SBP_start SBP_e… HR_sta… HR_e… treat…
+##  3 1                   145       120    92      78    paulo…
+##  4 2                   147       148    88      87    place…
+##  5 3                   158       139    96      80    paulo…
+##  6 4                   167       166    87      88    place…
+##  7 5                   154       131    84      72    paulo…
+##  8 6                   178       177    99      97    place…
+##  9 7                   151       134    101     86    paulo…
+## 10 8                   149       148    92      93    place…
+## 11 <NA>                <NA>      <NA>   sbp     hr    <NA>  
+## 12 <NA>                mean pau… <NA>   131     79    <NA>  
+## 13 <NA>                mean pla… <NA>   159.75  91.25 <NA>
 ```
 
 ## More exploration with skimr and DataExplorer
@@ -415,8 +816,7 @@ Numeric - integer and double Character - string Logical - TRUE/FALSE Dates - an 
 - read the help file `help(read_excel)` to figure out how to read in the data from this excel file.
 
 ## Future forms of data ingestion
-- reading files from SAS, Stata, SPSS, Systat, Minitab, RDA or RData (haven)
-- https://www.datacamp.com/community/tutorials/r-data-import-tutorial?utm_source=adwords_ppc&utm_campaignid=1658343521&utm_adgroupid=63833880415&utm_device=c&utm_keyword=%2Bread%20%2Bdata%20%2Br&utm_matchtype=b&utm_network=g&utm_adpostion=&utm_creative=469789579368&utm_targetid=aud-392016246653:kwd-309793905111&utm_loc_interest_ms=&utm_loc_physical_ms=9016851&gclid=Cj0KCQjwxJqHBhC4ARIsAChq4auwh82WzCiJsUDzDOiaABetyowW0CXmTLbUFkQmnl1pn4Op9xcCcdQaAhMWEALw_wcB
+
 - reading data from the web with readr
 - reading data from Google Sheets with googlesheets
 - reading data from web tables with rvest
@@ -426,15 +826,45 @@ Numeric - integer and double Character - string Logical - TRUE/FALSE Dates - an 
 ## Solutions to Challenges
 
 Solution to Challenge 1: paulolol.xlsx
-```{r}
+
+```r
 read_excel(path = 'data/paulolol.xlsx',
            skip = 3,
            n_max = 8)
 ```
 
+```
+## # A tibble: 8 x 6
+##   pat_id SBP_start SBP_end HR_start HR_end treatment
+##    <dbl>     <dbl>   <dbl>    <dbl>  <dbl> <chr>    
+## 1      1       145     120       92     78 paulolol 
+## 2      2       147     148       88     87 placebo  
+## 3      3       158     139       96     80 paulolol 
+## 4      4       167     166       87     88 placebo  
+## 5      5       154     131       84     72 paulolol 
+## 6      6       178     177       99     97 placebo  
+## 7      7       151     134      101     86 paulolol 
+## 8      8       149     148       92     93 placebo
+```
+
 
 Solution to Challenge 2: paulolol2.xlsx
-```{r}
+
+```r
 read_excel(path = 'data/paulolol2.xlsx',
            sheet = 'data')
+```
+
+```
+## # A tibble: 8 x 6
+##   pat_id SBP_start SBP_end HR_start HR_end treatment
+##    <dbl>     <dbl>   <dbl>    <dbl>  <dbl> <chr>    
+## 1      1       145     120       92     78 paulolol 
+## 2      2       147     148       88     87 placebo  
+## 3      3       158     139       96     80 paulolol 
+## 4      4       167     166       87     88 placebo  
+## 5      5       154     131       84     72 paulolol 
+## 6      6       178     177       99     97 placebo  
+## 7      7       151     134      101     86 paulolol 
+## 8      8       149     148       92     93 placebo
 ```

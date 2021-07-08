@@ -76,11 +76,7 @@ whoami;date
 
 ```
 ## peterhiggins
-<<<<<<< HEAD
-## Thu Jun 17 20:20:02 EDT 2021
-=======
-## Wed Jun 16 19:42:55 EDT 2021
->>>>>>> parent of 422fb74 (cleaned up problems with cape cod push, now published again. Learned git revert {commit#}`)
+## Thu Jul  8 18:18:19 EDT 2021
 ```
 :::
 
@@ -138,11 +134,13 @@ ls
 ## 2020_Higgins_ClinResIBD_biosketch.doc
 ## 2021 AGA Invited Speaker Session Basic Hybrid Example.pdf
 ## 2021.Biobanking Program_InVivo_DRAFT-6.14.2021.docx
+## 2021.Biobanking Program_InVivo_PDRH-6.21.docx
 ## 2021.Higgins AGA Distinguished Clinician.CO.docx
 ## 203ClareScenes080119 copy.pdf
 ## A is for Allspice.2.0.docx
 ## A is for Allspice.docx
 ## ABT263_HIO_report_toWord.docx
+## ACG U-ACHIEVE and U-ACCOMPLISH.docx
 ## ACLS eCard Peter Higgins.pdf
 ## AGA DDW 2021
 ## AGA IMIBD
@@ -219,6 +217,8 @@ ls
 ## FMT_DDW_2021_ISS.pdf
 ## Feasibility and Pilot Studies.pptx
 ## Feb2021_ibdTrials.pptx
+## FellowshipRec_Janson Jacob_Higgins_JB.docx
+## FellowshipRec_Janson Jacob_Higgins_JB.pdf
 ## FibrosisIBDCedars2016.pptx
 ## Figures-KC-JAMA.pptx
 ## Finance and Retirement Plans.docx
@@ -286,6 +286,8 @@ ls
 ## JB_V1 Career Goals and Objectives 7.8.2020_PDRH.docx
 ## JB_V2 Candidate’s Background 7.7.2020_PDRH.docx
 ## JDix_Study_update.docx
+## Jessica Sheehan Rec Letter Fellowship.docx
+## Jessica Sheehan Rec Letter Fellowship.pdf
 ## Jun2021_ibdTrials.pptx
 ## K Award Institutional Letter of Commitment.pptx
 ## K Candidate Section.pptx
@@ -348,6 +350,8 @@ ls
 ## Proposal for MCTSU Study Accrual Monitoring.docx
 ## Purdue Disclosure Form_Higgins.docx
 ## Question 16.docx
+## Quiros SRA- Higgins LoS draft_PDRH.docx
+## Quiros SRA- Higgins LoS draft_PDRH.pdf
 ## RCode
 ## Ramp up clinical research_PH.xlsx
 ## Ramping up human subject research - MM 6-1-20 _KDA_PDRH_suggestions.docx
@@ -364,6 +368,7 @@ ls
 ## SEAN STOCKS.docx
 ## SIG_Template_IBD Program_FINAL.docx
 ## SPECIFIC AIMS 2_PDRH.docx
+## Scoring Sheet_Janda_PDRHiggins.docx
 ## Screenwriting Contests.docx
 ## Sean Common App academic honors list.docx
 ## Sean Common App activities list.docx
@@ -471,10 +476,10 @@ ls
 ## tofa_checkpoint.pdf
 ## ucla1.jpg
 ## untidy_sheets.pptx
+## user_testing_learnr tutorials.pptx
 ## wga_min20.pdf
 ## zwift_training_pacepartner.xlsx
 ## {"Attachments"-[{"__type"-"F.textClipping
-## ~$21.Biobanking Program_InVivo_DRAFT-6.14.2021.docx
 ## ~$T Review Higgins.docx
 ## ~$sk List 2020-5.docx
 ## ~$sk List 2020.docx
