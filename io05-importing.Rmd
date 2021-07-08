@@ -13,10 +13,12 @@ library(medicaldata)
 library(readxl)
 library(skimr)
 library(here)
+library(glue)
 scurvy <- medicaldata::scurvy
 write_csv(scurvy, 'data/scurvy.csv')
 strep_tb <- medicaldata::strep_tb
 write_tsv(strep_tb, 'data/strep_tb.tsv')
+url_stem <- "https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/data/"
 ```
 
 # Importing Your Data into R
@@ -91,19 +93,20 @@ Once the {tidyverse} package is installed, you can use `library(tidyverse)` with
 
 OK, after that detour, we should be all caught up - you should be able to run `library(tidyverse)` or `library(readr)` without an error.
 Now that you have {readr} loaded, you can read in some csv data.
-Let's start with a file in the `temp_data` folder named `scurvy.csv`.
+Let's start with a file in folder on GitHub named `scurvy.csv`. You will need to glue together the url_stem and "scurvy.csv" to get the full web address. Run the code chunk below to see the url_stem and the dataset.
 
 ```{r}
-read_csv('temp_data/scurvy.csv')
+url_stem
+read_csv(glue(url_stem, 'scurvy.csv'))
 ```
 
 Let's look at what was extracted from the csv file.
-The console pane has a print out of the Column specification, followed by the data in rectangular format.
+The Console pane has a print out of the Column specification, followed by the data in rectangular format.
 In the Column specification, each column is named, and a data type has been assigned to each column.
-This is done 'automagically', as the read_csv() function reads the first 1000 rows, then guesses what data type is present in each column.
-It is often conservative, and made all of these columns into character variables (also called strings).
+This is done 'automagically', as the read_csv() function reads the first 1000 rows, then guesses what data type is present in each column (variable).
+It is often conservative, and in this case, made all of these columns into character variables (also called strings).
 You could argue that the col_character() assignment should be numeric for the study_id variable, or that the Likert scales used for outcomes like gum_rot_d6 and skin_sores_d6 should be coded as ordinal variables, known as ordered factors in R.
-You will learn to control these data types during data import with the col_spec argument.
+You will learn to control these data types during data import with the `col_spec` argument.
 
 The second piece of output is the data itself.
 This is first identified as a 'tibble', which is a type of data table, with 12 rows and 8 columns, in `# A tibble: 12 x 8`.
@@ -117,25 +120,25 @@ If you want to do things with this data, and make them last, you have to *assign
 To do this, you need to use an assignment arrow, as below
 
 ```{r}
-scurvy_data <- read_csv('temp_data/scurvy.csv')
+scurvy_data <- read_csv(glue(url_stem, 'scurvy.csv'))
 ```
 
 Now this is saved to `scurvy_data` in your working Environment.
 You can look in the Environment tab (top right pane in RStudio) and see that scurvy_data has now appeared in the Data section, with 12 observations of 8 variables.
-This is not a file written to disk, but it is now available in the working environment.
-You can now print this out at any time by typing `scurvy_data` into the Console, or into a script.
+This is not a file written (saved) to disk, but it is now available in the working environment as an assigned data object.
+You can now print this out at any time by typing `scurvy_data` into the Console, or into a script. Try this out in the Console pane.
 
 You can also start with the `scurvy_data` object, and *do* things to this data object, like summarize it, or graph it, or calculate total_symptom_score in a data pipeline.
-Once you have assigned your data to an object, it will stick around for later use.
+Once you have assigned your data to an object, it will stick around in that R session for later use.
 
-csv is a very common data format, and most data management programs have a way to export \*.csv files.
+csv (comma separated values) is a very common data format, and most data management programs have a way to export `*.csv` files.
 The csv format is simple, is not owned by anyone, and works across platforms.
 However, it can occasionally be messy if you have commas in the middle of a variable like degree, with entries like 'md, phd' in a column that is mostly 'md'.
 The read_csv function is pretty smart, and usually gets the number of columns right, but this is something to watch out for.
 Notice that read_csv had no problem with the dosing of vinegar ("two spoonfuls, three times a day") in the scurvy dataset.
 
 If you happen to come across a tab-separated values file, *read_tsv()* works the same way.
-Both of these functions have reasonable defaults, so that most of the time, you just have to use the path to your file as the only argument.
+Both of these functions have reasonable defaults, so that most of the time, you just have to use the path to your file (usually on your hard drive, rather than on the web) as the only argument.
 On occasion, though, you will want to take control of some of the other arguments, and use something other than the defaults.
 
 When your data has no column names (headers), read_csv will assume that the first row of the data is the column names.
@@ -143,16 +146,17 @@ To fix this, add the argument, **col_names** = FALSE.
 You can also assign your own **col_names** by setting a vector, like c("patient_id", "treatment", "outcome") to col_names, as below
 
 ```{r}
-read_csv('temp_data/scurvy.csv', col_names = c("pat_id", "arm", "dose", "gums", "skin", "weak", "lass", "fit"))
+read_csv(file = glue(url_stem, 'scurvy.csv'), 
+col_names = c("pat_id", "arm", "dose", "gums", "skin", "weak", "lass", "fit"))
 ```
 
 In this case, when we set our own **col_names**, the actual column headers are now included in the first row of data.
 We can fix this with the **skip** argument, which has a default of 0.
 We can skip as many lines as we want, which can be helpful if you have an Excel file with a lot of blank lines or commentary at the top of the spreadsheet.
-When we set skip =1, we get a cleaner dataset.
+When we set skip = 1, we get a cleaner dataset.
 
 ```{r}
-read_csv(file = 'temp_data/scurvy.csv', 
+read_csv(file = glue(url_stem, 'scurvy.csv'), 
          col_names = c("pat_id", "arm", "dose", "gums", "skin", "weak", "lass", "fit"),
          skip = 1)
 ```
@@ -173,8 +177,9 @@ Run the code chunk below to see how this works.
 The `glimpse` function will give an overview of the new `scurvy_cols` object that I assigned the data to.
 
 ```{r}
-scurvy_cols <- read_csv('temp_data/scurvy.csv',
-         col_types = cols(
+scurvy_cols <- read_csv(
+  file = glue(url_stem, 'scurvy.csv'),
+    col_types = cols(
   study_id = col_integer(),
   treatment = col_factor(),
   dosing_regimen_for_scurvy = col_character(),
@@ -189,28 +194,40 @@ glimpse(scurvy_cols)
 ```
 
 You can see that study_id is now considered the integer data type (`<int>`), and treatment is now a factor (`<fct>`).
-You can choose - col_integer - col_character - col_number() (handles \#s with commas) - col_double (to specify decimal \#s) - col_logical (only TRUE and FALSE) - col_date(format = "") - may need to define format - col_time(format = "") - col_datetime(format = "") - col_factor(levels = "", ordered = TRUE) - may want to set levels and ordered if ordinal.
-The read_csv() guesses may be fine, but you can take more control if needed.
-- col_guess() - is the default - col_skip() if you want to skip a column
+You can choose: 
 
-This gives you fine control of each column.
+- col_integer 
+- col_character 
+- col_number() (handles \#s with commas) 
+- col_double (to specify decimal \#s) 
+- col_logical (only TRUE and FALSE) 
+- col_date(format = "") - may need to define format 
+- col_time(format = "") - col_datetime(format = "") 
+- col_factor(levels = "", ordered = TRUE) - you may want to set levels and ordered if ordinal.
+- col_guess() - is the default 
+- col_skip() if you want to skip a column
+
+The read_csv() guesses may be fine, but you can take more control if needed.
+
+This *col_types()* approach gives you fine control of each column.
 But it is a lot of typing.
 Sometimes you want to set all the column types with a lot less typing, and you don't need to set levels for factors, or formats for dates.
 You can do this by setting col_types to a string, in which each letter specifies the column type for each column.
 Run the example below by clicking on the green arrow at the top right of the code chunk, in which I use i for col_integer, c for col_character, and f for col_factor.
 
 ```{r}
-scurvy_cols2 <- read_csv('temp_data/scurvy.csv',
+scurvy_cols2 <- read_csv(
+  file = glue(url_stem, 'scurvy.csv'),
          col_types = "ifcffff")
 
 glimpse(scurvy_cols2)
 ```
 
-Now try this yourself with a \*.tsv file.
-The file `strep_tb.tsv` is located in the `temp_data` folder.
-The path to this file is `temp_data/strep_tb.csv`.
+Now try this yourself with a *.tsv file.
+The file `strep_tb.tsv` is located in the same GitHub folder, and you can use the same url_stem.
+
 In the example code chunk below, there are several blanks.
-Copy this code chunk (use the copy button in the top right of the code chunk - hover to find it) to your RStudio console pane.
+Copy this code chunk (use the copy button in the top right of the code chunk - hover to find it) to your RStudio Console pane.
 Edit it and run it as directed below.
 
 -   Fill in the second part of the read_xxx() function correctly to read this file
@@ -229,8 +246,9 @@ Edit the `col_types` string to make:
 -   `improved` into a logical (l)
 
 ```{r, error=TRUE, eval=FALSE}
-strep_tb_cols <- read_---('temp_data/-----.tsv',
-                    col_types = "ccccccccccccc")
+strep_tb_cols <- read_---(
+    file = glue(url_stem, 'scurvy.csv'),,
+      col_types = "ccccccccccccc")
 
 glimpse(strep_tb_cols)
 ```
@@ -301,7 +319,7 @@ str(strep_tb$patient_id)
 
 This shows you that patient_id is actually a character variable.
 If you wanted to find the mean value, you would have to change it to numeric (with *as.numeric()* first).
-The glimpse() function provides identical output.
+The glimpse() function provides identical output to str() for a variable in a table.
 
 ```{r}
 glimpse(strep_tb$patient_id)
@@ -319,7 +337,7 @@ Try this out with scurvy or strep_tb.
 ```{r}
 head(as.data.frame(scurvy))
 tail(strep_tb)
-print(tail(strep_tb), width = Inf)
+
 ```
 
 Note that since these are tibbles, they will only print the columns that will fit into your Console pane.
@@ -331,7 +349,7 @@ head(as.data.frame(scurvy))
 print(tail(strep_tb), width = Inf)
 ```
 
-It is actually much easier to see the full width and height of a data set by scrolling, which you can do when you *View()* a dataset in the RStudio viewer.
+It is actually much easier to see the full width and height of a data set by scrolling, which you can do when you *View()* a dataset in the RStudio viewer. Try this out in the Console pane, with `View(strep_tb)`.
 If you just want a quick view of a few critical columns of your data, you can obtain this with the *select()* function, as in the code chunk below.
 Note that if you want to look at a random sample of your dataset, rather than the head or tail, you can use *sample_frac()* or *sample_n()* to do this.
 See how this is used by running the code chunk below, which uses a 10% random sample of strep_tb to check that the mutate steps to generate the variables `rad_num` and `improved` worked correctly.
@@ -382,3 +400,16 @@ Numeric - integer and double Character - string Logical - TRUE/FALSE Dates - an 
 ## Controlling Parsing
 
 ## Chapter Challenges
+
+1. There is a file named "paulolol.xlsx" in the GitHub repository, and you can read it in using the same url_stem and glue() to produce the filename. A picture of this problematic file is shown below.
+```{r, echo=FALSE, out.width=50%}
+knitr::include_graphics(glue(url_stem, "paulolol.png"))
+```
+
+
+## Future forms of data ingestion
+
+- reading data from the web with readr
+- reading data from Google Sheets with googlesheets
+- reading data from web tables with rvest
+- reading data from a REDCap database with REDCapR
