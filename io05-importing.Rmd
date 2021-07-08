@@ -2,17 +2,367 @@
 title: "Importing Data into R"
 author: "Peter Higgins"
 output: html_document
+editor_options: 
+  markdown: 
+    wrap: sentence
 ---
 
+```{r setup, include=FALSE}
+library(tidyverse)
+library(medicaldata)
+library(readxl)
+library(skimr)
+scurvy <- medicaldata::scurvy
+write_csv(scurvy, 'temp_data/scurvy.csv')
+strep_tb <- medicaldata::strep_tb
+write_tsv(strep_tb, 'temp_data/strep_tb.tsv')
+```
 
-# Importing Data into R and Exploring It
+# Importing Your Data into R
 
+For most of this book, we will be using datasets from the {medicaldata} package.
+These are easy to load.
+You just type into the Console pane `medicaldata::scurvy` and you get James Lind's scurvy dataset (actually, a reconstruction of what it might have looked like for his 12 participants).
+If you want to save this data to an object in your work environment, you just need to assign this to a named object, like `scurvy`, like so:
 
-## Lots of options – start with readr
+```{r}
+scurvy <- medicaldata::scurvy
 
-## Exploration with str, glimpse and head/tail
+# now print the colums for id and treatment
+scurvy %>% select(study_id:treatment)
+```
+
+There are a number of medical datasets to explore and learn within the {medicaldata} package.
+
+However, at some point, you will want to use R to work on your *own* data.
+You may already to be itching to get started on your own data.
+This is a good thing.
+Working with your own data, toward your own goals, will be a motivating example, and will help you learn R.
+As you go through the different chapters, use the example data and exercises to get you started and learn the principles, and then try what you have learned on your own data.
+
+::: {.{warning}}
+It is an important principle to *always* save an untouched copy of your raw data.
+You can copy it to a new object, and experiment with modifying it, cleaning it, making plots, etc., but *always* leave the original data file untouched.
+You want to create a completely reproducible, step-by-step trail from your raw data to your finished analysis and final report, and you can only do that if you preserve the original raw data.
+That is the cornerstone of your analysis.
+It is tempting to fix minor data entry errors, or other aspects of the raw data.
+Do not do this - leave all errors intact in your raw data, and explicitly make edits with explanations of - who made the edit - when it was made - what was changed - why it was made - provide a justification, and identify source documents to support the rationale Every edit should be documented in your code, with who, when, what, and why
+:::
+
+Now, on to the fun part.
+Let's read in some data!
+
+## Reading data with the {readr} package
+
+Many of the standard data formats can be read with functions in the {readr} package.
+These include:
+
+-   read_csv() for comma-separated values (\*.csv) files
+-   read_tsv() for tab-separated values (\*.tsv) files
+-   read_delim() for files with a different delimiter that you can specify (instead of commas or tabs, there might be semicolons)
+-   read_fwf() for fixed width files
+-   read_table() for tabular files where columns are separated by white-space.
+-   read_log() is specifically for web log files
+
+Let's read a csv file.
+First, make sure that you have the {readr} package loaded (or the {tidyverse} meta-package, which includes {readr}).
+You can load {readr} with the `library()` function.
+
+```{r}
+library(readr)
+# or you can use
+library(tidyverse) # which will load 8 packages, including readr
+```
+
+Note that this will *not* work if you do not already have the {readr} package installed on your computer.
+You will get an error, like this: `Error in library(readr) : there is no package called 'readr'`
+
+No problem - you just have to install the package first.
+You only need to do this once, like buying a book, and putting it in your personal library.
+Each time you use the package, you have to pull the book off the shelf, with `library(packagename)`.
+To install the {readr} package, we can install the whole {tidyverse} package, which will come in handy later.
+Just enter the following in your Console pane:
+
+`install.packages('tidyverse')`
+
+Note that quotes around 'tidyverse' are required, as tidyverse is not yet a known object or package in your working environment.
+Once the {tidyverse} package is installed, you can use `library(tidyverse)` without quotes, as it is a known (installed) package.
+
+OK, after that detour, we should be all caught up - you should be able to run `library(tidyverse)` or `library(readr)` without an error.
+Now that you have {readr} loaded, you can read in some csv data.
+Let's start with a file in the `temp_data` folder named `scurvy.csv`.
+
+```{r}
+read_csv('temp_data/scurvy.csv')
+```
+
+Let's look at what was extracted from the csv file.
+The console pane has a print out of the Column specification, followed by the data in rectangular format.
+In the Column specification, each column is named, and a data type has been assigned to each column.
+This is done 'automagically', as the read_csv() function reads the first 1000 rows, then guesses what data type is present in each column.
+It is often conservative, and made all of these columns into character variables (also called strings).
+You could argue that the col_character() assignment should be numeric for the study_id variable, or that the Likert scales used for outcomes like gum_rot_d6 and skin_sores_d6 should be coded as ordinal variables, known as ordered factors in R.
+You will learn to control these data types during data import with the col_spec argument.
+
+The second piece of output is the data itself.
+This is first identified as a 'tibble', which is a type of data table, with 12 rows and 8 columns, in `# A tibble: 12 x 8`.
+This is followed by a header row of variable names, and just below that is the data type (`<chr>` for character) for each column.
+Then, on the left are gray row numbers (not actually part of the data set), and rows of data.
+A tibble, by default, only prints out 10 rows of data, and no more columns than will fill your current console window.
+The other columns are listed in order at the bottom of the tibble in gray type.
+
+Now, by simply reading in the data, you can look at it, but you can't do anything with it, as you have not saved it as an object in your working Environment.
+If you want to do things with this data, and make them last, you have to *assign* the data to an object, and give it a name.
+To do this, you need to use an assignment arrow, as below
+
+```{r}
+scurvy_data <- read_csv('temp_data/scurvy.csv')
+```
+
+Now this is saved to `scurvy_data` in your working Environment.
+You can look in the Environment tab (top right pane in RStudio) and see that scurvy_data has now appeared in the Data section, with 12 observations of 8 variables.
+This is not a file written to disk, but it is now available in the working environment.
+You can now print this out at any time by typing `scurvy_data` into the Console, or into a script.
+
+You can also start with the `scurvy_data` object, and *do* things to this data object, like summarize it, or graph it, or calculate total_symptom_score in a data pipeline.
+Once you have assigned your data to an object, it will stick around for later use.
+
+csv is a very common data format, and most data management programs have a way to export \*.csv files.
+The csv format is simple, is not owned by anyone, and works across platforms.
+However, it can occasionally be messy if you have commas in the middle of a variable like degree, with entries like 'md, phd' in a column that is mostly 'md'.
+The read_csv function is pretty smart, and usually gets the number of columns right, but this is something to watch out for.
+Notice that read_csv had no problem with the dosing of vinegar ("two spoonfuls, three times a day") in the scurvy dataset.
+
+If you happen to come across a tab-separated values file, *read_tsv()* works the same way.
+Both of these functions have reasonable defaults, so that most of the time, you just have to use the path to your file as the only argument.
+On occasion, though, you will want to take control of some of the other arguments, and use something other than the defaults.
+
+When your data has no column names (headers), read_csv will assume that the first row of the data is the column names.
+To fix this, add the argument, **col_names** = FALSE.
+You can also assign your own **col_names** by setting a vector, like c("patient_id", "treatment", "outcome") to col_names, as below
+
+```{r}
+read_csv('temp_data/scurvy.csv', col_names = c("pat_id", "arm", "dose", "gums", "skin", "weak", "lass", "fit"))
+```
+
+In this case, when we set our own **col_names**, the actual column headers are now included in the first row of data.
+We can fix this with the **skip** argument, which has a default of 0.
+We can skip as many lines as we want, which can be helpful if you have an Excel file with a lot of blank lines or commentary at the top of the spreadsheet.
+When we set skip =1, we get a cleaner dataset.
+
+```{r}
+read_csv(file = 'temp_data/scurvy.csv', 
+         col_names = c("pat_id", "arm", "dose", "gums", "skin", "weak", "lass", "fit"),
+         skip = 1)
+```
+
+Now we don't have extra column names as data.
+Also note that in this code chunk, we put each argument on its own line.
+This is a good practice, to make your code more readable.
+You can also set **n_max** to a particular number of rows to be read in (the default is infinity, or Inf) You might want a smaller number if you have a very large dataset and limited computer memory.
+Another important argument (option) for read_csv and read_tsv is **col_types**, which lets you take control of the column types during the data
+
+What if you want to take more control of the import process with read_xxx()?
+You can add a col_types argument to the read_csv() function.
+You can copy the Column specifications from the first attempt at importing, and then make some edits.
+Take a look at the code chunk below.
+I have added the col_types argument, and set it equal to the copied Column specifications.
+Then I edited study_id to `col_integer()`, and treatment to `col_factor()`.
+Run the code chunk below to see how this works.
+The `glimpse` function will give an overview of the new `scurvy_cols` object that I assigned the data to.
+
+```{r}
+scurvy_cols <- read_csv('temp_data/scurvy.csv',
+         col_types = cols(
+  study_id = col_integer(),
+  treatment = col_factor(),
+  dosing_regimen_for_scurvy = col_character(),
+  gum_rot_d6 = col_character(),
+  skin_sores_d6 = col_character(),
+  weakness_of_the_knees_d6 = col_character(),
+  lassitude_d6 = col_character(),
+  fit_for_duty_d6 = col_character()
+)
+)
+glimpse(scurvy_cols)
+```
+
+You can see that study_id is now considered the integer data type (`<int>`), and treatment is now a factor (`<fct>`).
+You can choose - col_integer - col_character - col_number() (handles \#s with commas) - col_double (to specify decimal \#s) - col_logical (only TRUE and FALSE) - col_date(format = "") - may need to define format - col_time(format = "") - col_datetime(format = "") - col_factor(levels = "", ordered = TRUE) - may want to set levels and ordered if ordinal.
+The read_csv() guesses may be fine, but you can take more control if needed.
+- col_guess() - is the default - col_skip() if you want to skip a column
+
+This gives you fine control of each column.
+But it is a lot of typing.
+Sometimes you want to set all the column types with a lot less typing, and you don't need to set levels for factors, or formats for dates.
+You can do this by setting col_types to a string, in which each letter specifies the column type for each column.
+Run the example below by clicking on the green arrow at the top right of the code chunk, in which I use i for col_integer, c for col_character, and f for col_factor.
+
+```{r}
+scurvy_cols2 <- read_csv('temp_data/scurvy.csv',
+         col_types = "ifcffff")
+
+glimpse(scurvy_cols2)
+```
+
+Now try this yourself with a \*.tsv file.
+The file `strep_tb.tsv` is located in the `temp_data` folder.
+The path to this file is `temp_data/strep_tb.csv`.
+In the example code chunk below, there are several blanks.
+Copy this code chunk (use the copy button in the top right of the code chunk - hover to find it) to your RStudio console pane.
+Edit it and run it as directed below.
+
+-   Fill in the second part of the read_xxx() function correctly to read this file
+-   Fill in the correct file name to complete the path
+-   Run the code chunk
+
+This version of the code chunk will read in every column as the character data type.
+This is OK, but not quite right.
+Edit the `col_types` string to make:
+
+-   both doses numeric (n or d)
+-   `gender` a factor (f)
+-   all 4 of the `baseline` variables into factors
+-   skip over strep_resistance and radiologic_6m - set as hyphens (`-`)
+-   `rad_num` into an integer (i)
+-   `improved` into a logical (l)
+
+```{r, error=TRUE, eval=FALSE}
+strep_tb_cols <- read_---('temp_data/-----.tsv',
+                    col_types = "ccccccccccccc")
+
+glimpse(strep_tb_cols)
+```
+
+## Exploration with glimpse, str, and head/tail
+
+Once you have a dataset read into your working Environment (see the Environment tab in RStudio), you will want to know more about it.
+There are several helpful functions and packages to get you started in exploring your data.
+
+### Taking a glimpse with *glimpse()*
+
+The *glimpse()* function is part of the tidyverse, and is a helpful way to see a bit of all of the variables in a dataset.
+Let's try this with the scurvy dataset, which we have already assigned to the object `scurvy` in the working Environment.
+Just put the object name as an argument withing the *glimpse()* function (inside the parentheses), as below.
+Run the code chunk below to get the glimpse() output.
+
+```{r}
+glimpse(scurvy)
+```
+
+The *glimpse()* function output tells you that there are 12 rows (observations) and 8 columns (variables).
+Then it lists each of the 8 variables, followed by the data type, and the first few values (or as much as will fit in the width of your Console pane).
+We can see that study_id and dosing_regimen_for_scurvy are both of the `character` (aka string) data type, and the other 6 variables are factors.
+
+Try this out yourself.
+What can you learn about the strep_tb dataset with *glimpse()*?
+Edit the code chunk below to find out about strep_tb.
+
+```{r, error=TRUE, eval=FALSE}
+glimpse(strep_tb)
+```
+
+Test yourself\> - which variable is the logical data type?
+- which variables are the dbl numeric data type?
+- How many observations are in this dataset?
+
+### Examining Structure with *str()*
+
+The *str()* function is part of the {utils} package in base R, and can tell you the structure of any object in R, whether a list, a dataset, a tibble, or a single variable.
+It is very helpful for reality-checking your data, especially when you are getting errors in your code.
+A common source of errors is trying to run a function that requires a particular data structure or data type on the wrong data structure or data type.
+Sometimes just checking the data structure will reveal the source of an error.
+
+The *str()* function does largely what *glimpse()* does, but provides a bit more detail, with less attractive formatting.
+Run the code chunk below to see the output of *str()*.
+
+```{r}
+str(scurvy)
+```
+
+The str() output starts by telling you that scurvy is a tibble, which is a modern sort of data table.
+A tibble will by default only print 10 rows of data, and only the number of columns that will fit in your Console pane.
+Then you see [12 x 8], which means that there are 12 rows and 8 columns - the default in R is to always list rows first, then columns (R x C notation).
+Then you learn that this is an S3 object, that is a tbl_df (tibble), and a tbl, and also a data.frame).
+Then you get a listing of each variable, data type, and a bit of the data, much like *glimpse()*.
+Another extra detail provided by str() is that it tells you some of the levels of each factor variable, and then shows these as integers (how the data is actually stored).
+Note that you can also use *str()* and *glimpse()* on a single variable.
+You often use this approach when you get an error message that tells you that you have the wrong data type.
+Try this with the strep_tb dataset variable `patient_id` by running the code chunk below.
+Imagine that you wanted to get the mean of `patient_id`.
+You got a **warning** that pointed out that the `argument is not numeric or logical`.
+So you run *str()* to find out the data structure of this variable.
+
+```{r}
+mean(strep_tb$patient_id)
+str(strep_tb$patient_id)
+```
+
+This shows you that patient_id is actually a character variable.
+If you wanted to find the mean value, you would have to change it to numeric (with *as.numeric()* first).
+The glimpse() function provides identical output.
+
+```{r}
+glimpse(strep_tb$patient_id)
+```
+
+You can choose whether you prefer the details of *str()* or the nicer formatting of *glimpse()* for yourself.
+
+### Examining a bit of data with *head()* and *tail()*
+
+Oftentimes, you want just a quick peek at your data, especially after a merge or a mutate, to make sure that things have gone as expected.
+This is where the base R functions *head()* and *tail()* can be helpful.
+As you might have guessed, these functions give you a quick view of the head (top 6 rows) and tail (last 6 rows) of your data.
+Try this out with scurvy or strep_tb.
+
+```{r}
+head(as.data.frame(scurvy))
+tail(strep_tb)
+print(tail(strep_tb), width = Inf)
+```
+
+Note that since these are tibbles, they will only print the columns that will fit into your Console pane.
+You can see all variables and the whole width (though it will wrap around to new lines) by either (1) converting these to a data frame first, to avoid tibble behavior, or (2) by using print, which has a width argument that allows you to control the number of columns.
+Run the code chunk below to see how this is different.
+
+```{r}
+head(as.data.frame(scurvy))
+print(tail(strep_tb), width = Inf)
+```
+
+It is actually much easier to see the full width and height of a data set by scrolling, which you can do when you *View()* a dataset in the RStudio viewer.
+If you just want a quick view of a few critical columns of your data, you can obtain this with the *select()* function, as in the code chunk below.
+Note that if you want to look at a random sample of your dataset, rather than the head or tail, you can use *sample_frac()* or *sample_n()* to do this.
+See how this is used by running the code chunk below, which uses a 10% random sample of strep_tb to check that the mutate steps to generate the variables `rad_num` and `improved` worked correctly.
+
+```{r}
+#check that radiologic_6m, rad_num, and improved all match
+strep_tb %>% 
+  sample_frac(0.1) %>% 
+  select(radiologic_6m, rad_num, improved)
+```
 
 ## Reading Excel Files with readxl
+
+While file types like \*.csv and \*.tsv are common, it is also common to use Microsoft Excel or an equivalent for data entry.
+There are a lot of reasons that this is not a good idea (see chapter XX and video at link), but Excel is so ubiquitous, that it is often used.
+
+Fortunately, the {readxl} package provides functions for reading excel files.
+The *read_xl()* function works nearly the same as *read_csv()*.
+But there are a few bonus arguments (options) that are really helpful.
+
+The *read_excel()* function includes helpful arguments like **skip**, **col_names**, **col_types**, and **n_max**, much like *read_csv()*.
+In addition, read_excel() has a **sheet** argument, which lets you specify which sheet in an excel workbook you want to read.
+The default is the first worksheet, but you can set this to sheet = 4 for the 4th worksheet from the left, or sheet = "raw_data" to get the right worksheet.
+You can also set the range argument to only read in a particular range of cells, like range = "B2:G14".
+Below is an example of how to read in an Excel worksheet.
+
+```{r, error=TRUE}
+read_excel(path= 'temp_data/data_workbook.xlsx',
+           sheet = "raw_data",
+           skip = 4)
+
+```
 
 ## More exploration with skimr and DataExplorer
 
@@ -25,13 +375,8 @@ output: html_document
 ## How do readr and readxl parse columns?
 
 ## What are the variable types?
-Numeric - integer and double
-Character - string
-Logical - TRUE/FALSE
-Dates - an unholy formatting mess
-Factors - categorical variables
-- nominal factors (no order)
-- ordinal factors (with a meaningful order)
+
+Numeric - integer and double Character - string Logical - TRUE/FALSE Dates - an unholy formatting mess Factors - categorical variables - nominal factors (no order) - ordinal factors (with a meaningful order)
 
 ## Controlling Parsing
 
