@@ -18,7 +18,7 @@ scurvy <- medicaldata::scurvy
 write_csv(scurvy, 'data/scurvy.csv')
 strep_tb <- medicaldata::strep_tb
 write_tsv(strep_tb, 'data/strep_tb.tsv')
-url_stem <- "https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/data/"
+url_stem <- "https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/"
 ```
 
 # Importing Your Data into R
@@ -93,11 +93,11 @@ Once the {tidyverse} package is installed, you can use `library(tidyverse)` with
 
 OK, after that detour, we should be all caught up - you should be able to run `library(tidyverse)` or `library(readr)` without an error.
 Now that you have {readr} loaded, you can read in some csv data.
-Let's start with a file in folder on GitHub named `scurvy.csv`. You will need to glue together the url_stem and "scurvy.csv" to get the full web address. Run the code chunk below to see the url_stem and the dataset.
+Let's start with a file named `scurvy.csv` in a 'data'folder on GitHub. You will need to glue together the url_stem and "data/scurvy.csv" to get the full web address. Run the code chunk below to see the url_stem and the dataset.
 
 ```{r}
 url_stem
-read_csv(glue(url_stem, 'scurvy.csv'))
+read_csv(glue(url_stem, 'data/scurvy.csv'))
 ```
 
 Let's look at what was extracted from the csv file.
@@ -120,7 +120,7 @@ If you want to do things with this data, and make them last, you have to *assign
 To do this, you need to use an assignment arrow, as below
 
 ```{r}
-scurvy_data <- read_csv(glue(url_stem, 'scurvy.csv'))
+scurvy_data <- read_csv(glue(url_stem, 'data/scurvy.csv'))
 ```
 
 Now this is saved to `scurvy_data` in your working Environment.
@@ -146,7 +146,7 @@ To fix this, add the argument, **col_names** = FALSE.
 You can also assign your own **col_names** by setting a vector, like c("patient_id", "treatment", "outcome") to col_names, as below
 
 ```{r}
-read_csv(file = glue(url_stem, 'scurvy.csv'), 
+read_csv(file = glue(url_stem, 'data/scurvy.csv'), 
 col_names = c("pat_id", "arm", "dose", "gums", "skin", "weak", "lass", "fit"))
 ```
 
@@ -156,7 +156,7 @@ We can skip as many lines as we want, which can be helpful if you have an Excel 
 When we set skip = 1, we get a cleaner dataset.
 
 ```{r}
-read_csv(file = glue(url_stem, 'scurvy.csv'), 
+read_csv(file = glue(url_stem, 'data/scurvy.csv'), 
          col_names = c("pat_id", "arm", "dose", "gums", "skin", "weak", "lass", "fit"),
          skip = 1)
 ```
@@ -178,7 +178,7 @@ The `glimpse` function will give an overview of the new `scurvy_cols` object tha
 
 ```{r}
 scurvy_cols <- read_csv(
-  file = glue(url_stem, 'scurvy.csv'),
+  file = glue(url_stem, 'data/scurvy.csv'),
     col_types = cols(
   study_id = col_integer(),
   treatment = col_factor(),
@@ -217,7 +217,7 @@ Run the example below by clicking on the green arrow at the top right of the cod
 
 ```{r}
 scurvy_cols2 <- read_csv(
-  file = glue(url_stem, 'scurvy.csv'),
+  file = glue(url_stem, 'data/scurvy.csv'),
          col_types = "ifcffff")
 
 glimpse(scurvy_cols2)
@@ -246,8 +246,8 @@ Edit the `col_types` string to make:
 -   `improved` into a logical (l)
 
 ```{r, error=TRUE, eval=FALSE}
-strep_tb_cols <- read_---(
-    file = glue(url_stem, 'scurvy.csv'),,
+strep_tb_cols <- read_tsv(
+    file = glue(url_stem, 'data/strep_tb.tsv'),
       col_types = "ccccccccccccc")
 
 glimpse(strep_tb_cols)
@@ -401,11 +401,18 @@ Numeric - integer and double Character - string Logical - TRUE/FALSE Dates - an 
 
 ## Chapter Challenges
 
-1. There is a file named "paulolol.xlsx" in the GitHub repository, and you can read it in using the same url_stem and glue() to produce the filename. A picture of this problematic file is shown below.
-```{r, echo=FALSE, out.width=50%}
-knitr::include_graphics(glue(url_stem, "paulolol.png"))
-```
+1. There is a file named "paulolol.xlsx" with the path of 'data/paulolol.xlsx'. A picture of this problematic file is shown below.
+![paulolol](images/paulolol.png)
 
+- Read in this file with the {readxl} package. Just for fun, try this see how this turns out with no additional arguments.
+- Be sure to skip the problematic non-data first few rows
+- Be sure to exclude the problematic non-data calculations below the table.
+
+
+2. Our intrepid Investigator has inserted a chart in place of his data table on sheet 1, and moved the data table to a 2nd sheet named 'data', and placed in the top left corner, at the suggestion of his harried statistician, in a new file with the path of 'data/paulolol2.xlsx"
+
+- Try reading this file in with read_excel()
+- read the help file `help(read_excel)` to figure out how to read in the data from this excel file.
 
 ## Future forms of data ingestion
 
@@ -413,3 +420,20 @@ knitr::include_graphics(glue(url_stem, "paulolol.png"))
 - reading data from Google Sheets with googlesheets
 - reading data from web tables with rvest
 - reading data from a REDCap database with REDCapR
+
+
+## Solutions to Challenges
+
+Solution to Challenge 1: paulolol.xlsx
+```{r}
+read_excel(path = 'data/paulolol.xlsx',
+           skip = 3,
+           n_max = 8)
+```
+
+
+Solution to Challenge 2: paulolol2.xlsx
+```{r}
+read_excel(path = 'data/paulolol2.xlsx',
+           sheet = 'data')
+```
