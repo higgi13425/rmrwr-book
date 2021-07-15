@@ -1,0 +1,26 @@
+/* styles for webex-solveme */
+.webex-solveme { border: 2px dotted red; background: pink; }
+.webex-solveme.webex-correct { border: 2px solid green; background: #cef7ce; }
+.webex-solveme.webex-incorrect { border: 2px solid blue; background: pink;}
+
+/* styles for hidden solutions */
+.webex-solution {
+    height: 2.5em;
+    overflow-y: hidden;
+    padding: 0.5em;
+}
+.webex-solution.open { /* format for open box */
+    height: auto;
+    background-color: skyblue;
+    /*background-color: rgba(0, 0, 0, 0.1);*/
+    border-radius: 5px;
+}
+.webex-solution button {
+    height: 2em;
+    margin-bottom: 0.5em;
+    background-color: aliceblue;
+    color: blue; /*text color*/
+}
+.webex-solution pre.sourceCode {
+    border-color: green;
+}

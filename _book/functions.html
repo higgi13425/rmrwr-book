@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 13 Functions | Reproducible Medical Research with R</title>
+  <title>Chapter 17 Functions | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 13 Functions | Reproducible Medical Research with R" />
+  <meta property="og:title" content="Chapter 17 Functions | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rmrwr.netlify.com" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="higgi13425/rmrwr-book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 13 Functions | Reproducible Medical Research with R" />
+  <meta name="twitter:title" content="Chapter 17 Functions | Reproducible Medical Research with R" />
   
   <meta name="twitter:description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2021-06-16" />
+<meta name="date" content="2021-07-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -127,7 +127,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 
-<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="include/webex.css" type="text/css" />
+<link rel="stylesheet" href="include/style.css" type="text/css" />
 </head>
 
 <body>
@@ -228,196 +229,274 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.14.5" data-path="a-tasting-menu-of-r.html"><a href="a-tasting-menu-of-r.html#an-example-of-synergy-in-the-r-community"><i class="fa fa-check"></i><b>3.14.5</b> An Example of Synergy in the R Community</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html"><i class="fa fa-check"></i><b>4</b> Wrangling Rows in R with Filter</a>
+<li class="chapter" data-level="4" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html"><i class="fa fa-check"></i><b>4</b> Importing Your Data into R</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#goals-for-this-chapter-2"><i class="fa fa-check"></i><b>4.1</b> Goals for this Chapter</a></li>
-<li class="chapter" data-level="4.2" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#packages-needed-for-this-chapter-1"><i class="fa fa-check"></i><b>4.2</b> Packages needed for this Chapter</a></li>
-<li class="chapter" data-level="4.3" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#pathway-for-this-chapter-1"><i class="fa fa-check"></i><b>4.3</b> Pathway for this Chapter</a></li>
-<li class="chapter" data-level="4.4" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#logical-statements-in-r"><i class="fa fa-check"></i><b>4.4</b> Logical Statements in R</a></li>
-<li class="chapter" data-level="4.5" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#filtering-on-numbers---starting-with-a-flipbook"><i class="fa fa-check"></i><b>4.5</b> Filtering on Numbers - Starting with A Flipbook</a>
+<li class="chapter" data-level="4.1" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#reading-data-with-the-readr-package"><i class="fa fa-check"></i><b>4.1</b> Reading data with the {readr} package</a>
 <ul>
-<li class="chapter" data-level="4.5.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#your-turn---learnr-exercises"><i class="fa fa-check"></i><b>4.5.1</b> Your Turn - learnr exercises</a></li>
+<li class="chapter" data-level="4.1.1" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#try-it-yourself"><i class="fa fa-check"></i><b>4.1.1</b> Try it Yourself</a></li>
 </ul></li>
-<li class="chapter" data-level="4.6" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#filtering-on-multiple-criteria-with-boolean-logic"><i class="fa fa-check"></i><b>4.6</b> Filtering on Multiple Criteria with Boolean Logic</a>
+<li class="chapter" data-level="4.2" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#exploration-with-glimpse-str-and-headtail"><i class="fa fa-check"></i><b>4.2</b> Exploration with glimpse, str, and head/tail</a>
 <ul>
-<li class="chapter" data-level="4.6.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#your-turn---learnr-exercises-1"><i class="fa fa-check"></i><b>4.6.1</b> Your Turn - learnr exercises</a></li>
+<li class="chapter" data-level="4.2.1" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#taking-a-glimpse-with-glimpse"><i class="fa fa-check"></i><b>4.2.1</b> Taking a glimpse with <em>glimpse()</em></a></li>
+<li class="chapter" data-level="4.2.2" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#try-this-out-yourself."><i class="fa fa-check"></i><b>4.2.2</b> Try this out yourself.</a></li>
+<li class="chapter" data-level="4.2.3" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#test-yourself-on-strep_tb"><i class="fa fa-check"></i><b>4.2.3</b> Test yourself on strep_tb</a></li>
+<li class="chapter" data-level="4.2.4" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#examining-structure-with-str"><i class="fa fa-check"></i><b>4.2.4</b> Examining Structure with <em>str()</em></a></li>
+<li class="chapter" data-level="4.2.5" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#test-yourself-on-the-scurvy-dataset"><i class="fa fa-check"></i><b>4.2.5</b> Test yourself on the scurvy dataset</a></li>
+<li class="chapter" data-level="4.2.6" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#examining-a-bit-of-data-with-head-and-tail"><i class="fa fa-check"></i><b>4.2.6</b> Examining a bit of data with <em>head()</em> and <em>tail()</em></a></li>
+<li class="chapter" data-level="4.2.7" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#test-yourself-on-the-printing-tibbles"><i class="fa fa-check"></i><b>4.2.7</b> Test yourself on the printing tibbles</a></li>
 </ul></li>
-<li class="chapter" data-level="4.7" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#filtering-strings"><i class="fa fa-check"></i><b>4.7</b> Filtering Strings</a>
+<li class="chapter" data-level="4.3" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#reading-excel-files-with-readxl"><i class="fa fa-check"></i><b>4.3</b> Reading Excel Files with readxl</a>
 <ul>
-<li class="chapter" data-level="4.7.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#your-turn---learnr-exercises-2"><i class="fa fa-check"></i><b>4.7.1</b> Your Turn - learnr exercises</a></li>
+<li class="chapter" data-level="4.3.1" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#test-yourself-on-strep_tb-1"><i class="fa fa-check"></i><b>4.3.1</b> Test yourself on strep_tb</a></li>
 </ul></li>
-<li class="chapter" data-level="4.8" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#filtering-dates"><i class="fa fa-check"></i><b>4.8</b> Filtering Dates</a>
+<li class="chapter" data-level="4.4" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#more-exploration-with-skimr-and-dataexplorer"><i class="fa fa-check"></i><b>4.4</b> More exploration with skimr and DataExplorer</a></li>
+<li class="chapter" data-level="4.5" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#other-strange-file-types-with-rio"><i class="fa fa-check"></i><b>4.5</b> Other strange file types with rio</a></li>
+<li class="chapter" data-level="4.6" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#practice-loading-data-from-multiple-file-types"><i class="fa fa-check"></i><b>4.6</b> Practice loading data from multiple file types</a></li>
+<li class="chapter" data-level="4.7" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#practice-saving-writing-to-disk-data-objects-in-formats-including-csv-rds-xls-xlsx"><i class="fa fa-check"></i><b>4.7</b> Practice saving (writing to disk) data objects in formats including csv, rds, xls, xlsx</a></li>
+<li class="chapter" data-level="4.8" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#how-do-readr-and-readxl-parse-columns"><i class="fa fa-check"></i><b>4.8</b> How do readr and readxl parse columns?</a></li>
+<li class="chapter" data-level="4.9" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#what-are-the-variable-types"><i class="fa fa-check"></i><b>4.9</b> What are the variable types?</a></li>
+<li class="chapter" data-level="4.10" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#controlling-parsing"><i class="fa fa-check"></i><b>4.10</b> Controlling Parsing</a></li>
+<li class="chapter" data-level="4.11" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#chapter-challenges"><i class="fa fa-check"></i><b>4.11</b> Chapter Challenges</a></li>
+<li class="chapter" data-level="4.12" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#future-forms-of-data-ingestion"><i class="fa fa-check"></i><b>4.12</b> Future forms of data ingestion</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html"><i class="fa fa-check"></i><b>5</b> Wrangling Rows in R with Filter</a>
 <ul>
-<li class="chapter" data-level="4.8.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#your-turn---learnr-exercises-3"><i class="fa fa-check"></i><b>4.8.1</b> Your Turn - learnr exercises</a></li>
-</ul></li>
-<li class="chapter" data-level="4.9" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#filtering-out-or-identifying-missing-data"><i class="fa fa-check"></i><b>4.9</b> Filtering Out or Identifying Missing Data</a>
+<li class="chapter" data-level="5.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#goals-for-this-chapter-2"><i class="fa fa-check"></i><b>5.1</b> Goals for this Chapter</a></li>
+<li class="chapter" data-level="5.2" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#packages-needed-for-this-chapter-1"><i class="fa fa-check"></i><b>5.2</b> Packages needed for this Chapter</a></li>
+<li class="chapter" data-level="5.3" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#pathway-for-this-chapter-1"><i class="fa fa-check"></i><b>5.3</b> Pathway for this Chapter</a></li>
+<li class="chapter" data-level="5.4" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#logical-statements-in-r"><i class="fa fa-check"></i><b>5.4</b> Logical Statements in R</a></li>
+<li class="chapter" data-level="5.5" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#filtering-on-numbers---starting-with-a-flipbook"><i class="fa fa-check"></i><b>5.5</b> Filtering on Numbers - Starting with A Flipbook</a>
 <ul>
-<li class="chapter" data-level="4.9.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#working-with-missing-data"><i class="fa fa-check"></i><b>4.9.1</b> Working with Missing data</a></li>
-<li class="chapter" data-level="4.9.2" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#your-turn---learnr-exercises-4"><i class="fa fa-check"></i><b>4.9.2</b> Your Turn - learnr exercises</a></li>
+<li class="chapter" data-level="5.5.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#your-turn---learnr-exercises"><i class="fa fa-check"></i><b>5.5.1</b> Your Turn - learnr exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="4.10" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#filtering-out-duplicate-observations"><i class="fa fa-check"></i><b>4.10</b> Filtering Out Duplicate observations</a></li>
-<li class="chapter" data-level="4.11" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#slicing-data-by-row"><i class="fa fa-check"></i><b>4.11</b> Slicing Data by Row</a></li>
-<li class="chapter" data-level="4.12" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#randomly-sampling-your-rows"><i class="fa fa-check"></i><b>4.12</b> Randomly Sampling Your Rows</a>
+<li class="chapter" data-level="5.6" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#filtering-on-multiple-criteria-with-boolean-logic"><i class="fa fa-check"></i><b>5.6</b> Filtering on Multiple Criteria with Boolean Logic</a>
 <ul>
-<li class="chapter" data-level="4.12.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#your-turn---learnr-exercises-5"><i class="fa fa-check"></i><b>4.12.1</b> Your Turn - learnr exercises</a></li>
+<li class="chapter" data-level="5.6.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#your-turn---learnr-exercises-1"><i class="fa fa-check"></i><b>5.6.1</b> Your Turn - learnr exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="4.13" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#further-challenges"><i class="fa fa-check"></i><b>4.13</b> Further Challenges</a></li>
-<li class="chapter" data-level="4.14" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#explore-more-about-filtering"><i class="fa fa-check"></i><b>4.14</b> Explore More about Filtering</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html"><i class="fa fa-check"></i><b>5</b> Interpreting Error Messages</a>
+<li class="chapter" data-level="5.7" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#filtering-strings"><i class="fa fa-check"></i><b>5.7</b> Filtering Strings</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#the-common-errors-table"><i class="fa fa-check"></i><b>5.1</b> The Common Errors Table</a></li>
-<li class="chapter" data-level="5.2" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#examples-of-common-errors-and-how-to-fix-them"><i class="fa fa-check"></i><b>5.2</b> Examples of Common Errors and How to fix them</a>
-<ul>
-<li class="chapter" data-level="5.2.1" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#missing-parenthesis"><i class="fa fa-check"></i><b>5.2.1</b> Missing Parenthesis</a></li>
-<li class="chapter" data-level="5.2.2" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#an-extra-parenthesis"><i class="fa fa-check"></i><b>5.2.2</b> An Extra Parenthesis</a></li>
-<li class="chapter" data-level="5.2.3" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#missing-pipe-in-a-data-wrangling-pipeline"><i class="fa fa-check"></i><b>5.2.3</b> Missing pipe <code>%&gt;%</code> in a data wrangling pipeline</a></li>
-<li class="chapter" data-level="5.2.4" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#missing-in-a-ggplot-pipeline"><i class="fa fa-check"></i><b>5.2.4</b> Missing + in a ggplot pipeline</a></li>
-<li class="chapter" data-level="5.2.5" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#pipe-in-place-of-a"><i class="fa fa-check"></i><b>5.2.5</b> Pipe <code>%&gt;%</code> in Place of a <code>+</code></a></li>
-<li class="chapter" data-level="5.2.6" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#missing-comma-within-a-function"><i class="fa fa-check"></i><b>5.2.6</b> Missing Comma Within a Function()</a></li>
-<li class="chapter" data-level="5.2.7" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#a-missing-object"><i class="fa fa-check"></i><b>5.2.7</b> A Missing Object</a></li>
-<li class="chapter" data-level="5.2.8" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#one-equals-sign-when-you-need-two"><i class="fa fa-check"></i><b>5.2.8</b> One Equals Sign When you Need Two</a></li>
-<li class="chapter" data-level="5.2.9" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#non-numeric-argument-to-a-binary-operator"><i class="fa fa-check"></i><b>5.2.9</b> Non-numeric argument to a binary operator</a></li>
+<li class="chapter" data-level="5.7.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#your-turn---learnr-exercises-2"><i class="fa fa-check"></i><b>5.7.1</b> Your Turn - learnr exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#errors-beyond-this-list"><i class="fa fa-check"></i><b>5.3</b> Errors Beyond This List</a></li>
-<li class="chapter" data-level="5.4" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#when-things-get-weird"><i class="fa fa-check"></i><b>5.4</b> When Things Get Weird</a>
+<li class="chapter" data-level="5.8" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#filtering-dates"><i class="fa fa-check"></i><b>5.8</b> Filtering Dates</a>
 <ul>
-<li class="chapter" data-level="5.4.1" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#restart-your-r-session-shift-cmd-f10"><i class="fa fa-check"></i><b>5.4.1</b> Restart your R Session (Shift-Cmd-F10)</a></li>
+<li class="chapter" data-level="5.8.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#your-turn---learnr-exercises-3"><i class="fa fa-check"></i><b>5.8.1</b> Your Turn - learnr exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#references"><i class="fa fa-check"></i><b>5.5</b> References:</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html"><i class="fa fa-check"></i><b>6</b> The Basics of Base R</a>
+<li class="chapter" data-level="5.9" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#filtering-out-or-identifying-missing-data"><i class="fa fa-check"></i><b>5.9</b> Filtering Out or Identifying Missing Data</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#dimensions-of-data-rectangles"><i class="fa fa-check"></i><b>6.1</b> Dimensions of Data Rectangles</a></li>
-<li class="chapter" data-level="6.2" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#naming-columns"><i class="fa fa-check"></i><b>6.2</b> Naming columns</a></li>
-<li class="chapter" data-level="6.3" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#concatenation"><i class="fa fa-check"></i><b>6.3</b> Concatenation</a></li>
-<li class="chapter" data-level="6.4" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#sequences"><i class="fa fa-check"></i><b>6.4</b> Sequences</a></li>
-<li class="chapter" data-level="6.5" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#constants"><i class="fa fa-check"></i><b>6.5</b> Constants</a></li>
-<li class="chapter" data-level="6.6" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#fancier-sequences"><i class="fa fa-check"></i><b>6.6</b> Fancier Sequences</a></li>
-<li class="chapter" data-level="6.7" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#mathematical-functions"><i class="fa fa-check"></i><b>6.7</b> Mathematical functions</a></li>
-<li class="chapter" data-level="6.8" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#handling-missing-data-nas"><i class="fa fa-check"></i><b>6.8</b> Handling missing data (NAs)</a></li>
-<li class="chapter" data-level="6.9" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#cutting-continuous-data-into-levels"><i class="fa fa-check"></i><b>6.9</b> Cutting Continuous data into Levels</a></li>
+<li class="chapter" data-level="5.9.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#working-with-missing-data"><i class="fa fa-check"></i><b>5.9.1</b> Working with Missing data</a></li>
+<li class="chapter" data-level="5.9.2" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#your-turn---learnr-exercises-4"><i class="fa fa-check"></i><b>5.9.2</b> Your Turn - learnr exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html"><i class="fa fa-check"></i><b>7</b> Updating R, RStudio, and Your Packages</a>
+<li class="chapter" data-level="5.10" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#filtering-out-duplicate-observations"><i class="fa fa-check"></i><b>5.10</b> Filtering Out Duplicate observations</a></li>
+<li class="chapter" data-level="5.11" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#slicing-data-by-row"><i class="fa fa-check"></i><b>5.11</b> Slicing Data by Row</a></li>
+<li class="chapter" data-level="5.12" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#randomly-sampling-your-rows"><i class="fa fa-check"></i><b>5.12</b> Randomly Sampling Your Rows</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-1"><i class="fa fa-check"></i><b>7.1</b> Installing Packages</a>
-<ul>
-<li class="chapter" data-level="7.1.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-from-github"><i class="fa fa-check"></i><b>7.1.1</b> Installing Packages from Github</a></li>
-<li class="chapter" data-level="7.1.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#problems-with-installing-packages"><i class="fa fa-check"></i><b>7.1.2</b> Problems with Installing Packages</a></li>
+<li class="chapter" data-level="5.12.1" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#your-turn---learnr-exercises-5"><i class="fa fa-check"></i><b>5.12.1</b> Your Turn - learnr exercises</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#loading-packages-with-library-1"><i class="fa fa-check"></i><b>7.2</b> Loading Packages with Library</a></li>
-<li class="chapter" data-level="7.3" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-r"><i class="fa fa-check"></i><b>7.3</b> Updating R</a></li>
-<li class="chapter" data-level="7.4" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-rstudio"><i class="fa fa-check"></i><b>7.4</b> Updating RStudio</a></li>
-<li class="chapter" data-level="7.5" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-your-packages"><i class="fa fa-check"></i><b>7.5</b> Updating Your Packages</a></li>
+<li class="chapter" data-level="5.13" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#further-challenges"><i class="fa fa-check"></i><b>5.13</b> Further Challenges</a></li>
+<li class="chapter" data-level="5.14" data-path="wrangling-rows-in-r-with-filter.html"><a href="wrangling-rows-in-r-with-filter.html#explore-more-about-filtering"><i class="fa fa-check"></i><b>5.14</b> Explore More about Filtering</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html"><i class="fa fa-check"></i><b>8</b> Major R Updates (Where Are My Packages?)</a></li>
-<li class="chapter" data-level="9" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html"><i class="fa fa-check"></i><b>9</b> Comparing Two Measures of Centrality</a>
+<li class="chapter" data-level="6" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html"><i class="fa fa-check"></i><b>6</b> Interpreting Error Messages</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#common-problem"><i class="fa fa-check"></i><b>9.1</b> Common Problem</a>
+<li class="chapter" data-level="6.1" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#the-common-errors-table"><i class="fa fa-check"></i><b>6.1</b> The Common Errors Table</a></li>
+<li class="chapter" data-level="6.2" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#examples-of-common-errors-and-how-to-fix-them"><i class="fa fa-check"></i><b>6.2</b> Examples of Common Errors and How to fix them</a>
 <ul>
-<li class="chapter" data-level="9.1.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#how-skewed-is-too-skewed"><i class="fa fa-check"></i><b>9.1.1</b> How Skewed is Too Skewed?</a></li>
-<li class="chapter" data-level="9.1.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#visualize-the-distribution-of-data-variables-in-ggplot"><i class="fa fa-check"></i><b>9.1.2</b> Visualize the Distribution of data variables in ggplot</a></li>
-<li class="chapter" data-level="9.1.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#visualize-the-distribution-of-datalen-in-ggplot"><i class="fa fa-check"></i><b>9.1.3</b> Visualize the Distribution of data$len in ggplot</a></li>
-<li class="chapter" data-level="9.1.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-shapiro-wilk"><i class="fa fa-check"></i><b>9.1.4</b> Results of Shapiro-Wilk</a></li>
-<li class="chapter" data-level="9.1.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#try-it-yourself"><i class="fa fa-check"></i><b>9.1.5</b> Try it yourself</a></li>
-<li class="chapter" data-level="9.1.6" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#mammal-sleep-hours"><i class="fa fa-check"></i><b>9.1.6</b> Mammal sleep hours</a></li>
+<li class="chapter" data-level="6.2.1" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#missing-parenthesis"><i class="fa fa-check"></i><b>6.2.1</b> Missing Parenthesis</a></li>
+<li class="chapter" data-level="6.2.2" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#an-extra-parenthesis"><i class="fa fa-check"></i><b>6.2.2</b> An Extra Parenthesis</a></li>
+<li class="chapter" data-level="6.2.3" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#missing-pipe-in-a-data-wrangling-pipeline"><i class="fa fa-check"></i><b>6.2.3</b> Missing pipe <code>%&gt;%</code> in a data wrangling pipeline</a></li>
+<li class="chapter" data-level="6.2.4" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#missing-in-a-ggplot-pipeline"><i class="fa fa-check"></i><b>6.2.4</b> Missing + in a ggplot pipeline</a></li>
+<li class="chapter" data-level="6.2.5" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#pipe-in-place-of-a"><i class="fa fa-check"></i><b>6.2.5</b> Pipe <code>%&gt;%</code> in Place of a <code>+</code></a></li>
+<li class="chapter" data-level="6.2.6" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#missing-comma-within-a-function"><i class="fa fa-check"></i><b>6.2.6</b> Missing Comma Within a Function()</a></li>
+<li class="chapter" data-level="6.2.7" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#a-missing-object"><i class="fa fa-check"></i><b>6.2.7</b> A Missing Object</a></li>
+<li class="chapter" data-level="6.2.8" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#one-equals-sign-when-you-need-two"><i class="fa fa-check"></i><b>6.2.8</b> One Equals Sign When you Need Two</a></li>
+<li class="chapter" data-level="6.2.9" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#non-numeric-argument-to-a-binary-operator"><i class="fa fa-check"></i><b>6.2.9</b> Non-numeric argument to a binary operator</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#one-sample-t-test"><i class="fa fa-check"></i><b>9.2</b> One Sample T test</a>
+<li class="chapter" data-level="6.3" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#errors-beyond-this-list"><i class="fa fa-check"></i><b>6.3</b> Errors Beyond This List</a></li>
+<li class="chapter" data-level="6.4" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#when-things-get-weird"><i class="fa fa-check"></i><b>6.4</b> When Things Get Weird</a>
 <ul>
-<li class="chapter" data-level="9.2.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#how-to-do-one-sample-t-test"><i class="fa fa-check"></i><b>9.2.1</b> How to do One Sample T test</a></li>
-<li class="chapter" data-level="9.2.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#interpreting-the-one-sample-t-test"><i class="fa fa-check"></i><b>9.2.2</b> Interpreting the One Sample T test</a></li>
-<li class="chapter" data-level="9.2.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#what-are-the-arguments-of-the-t.test-function"><i class="fa fa-check"></i><b>9.2.3</b> What are the arguments of the t.test function?</a></li>
+<li class="chapter" data-level="6.4.1" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#restart-your-r-session-shift-cmd-f10"><i class="fa fa-check"></i><b>6.4.1</b> Restart your R Session (Shift-Cmd-F10)</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#insert-flipbook-for-ttest-here"><i class="fa fa-check"></i><b>9.3</b> Insert flipbook for ttest here</a>
+<li class="chapter" data-level="6.5" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#references"><i class="fa fa-check"></i><b>6.5</b> References:</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><i class="fa fa-check"></i><b>7</b> Tips for Hashtag Debugging your Pipes and GGPlots</a>
 <ul>
-<li class="chapter" data-level="9.3.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#flipbook-time"><i class="fa fa-check"></i><b>9.3.1</b> Flipbook Time!</a></li>
+<li class="chapter" data-level="7.1" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#debugging"><i class="fa fa-check"></i><b>7.1</b> Debugging</a></li>
+<li class="chapter" data-level="7.2" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#the-quick-screen"><i class="fa fa-check"></i><b>7.2</b> The Quick Screen</a></li>
+<li class="chapter" data-level="7.3" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#systematic-hunting-for-bugs-in-pipes"><i class="fa fa-check"></i><b>7.3</b> Systematic Hunting For Bugs in Pipes</a></li>
+<li class="chapter" data-level="7.4" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#systematic-hunting-for-bugs-in-plots"><i class="fa fa-check"></i><b>7.4</b> Systematic Hunting For Bugs in Plots</a></li>
+<li class="chapter" data-level="7.5" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#hashtag-debugging"><i class="fa fa-check"></i><b>7.5</b> Hashtag Debugging</a></li>
+<li class="chapter" data-level="7.6" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#pipe-2"><i class="fa fa-check"></i><b>7.6</b> Pipe 2</a></li>
+<li class="chapter" data-level="7.7" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#plot-2"><i class="fa fa-check"></i><b>7.7</b> Plot 2</a></li>
+<li class="chapter" data-level="7.8" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#plot3"><i class="fa fa-check"></i><b>7.8</b> Plot3</a></li>
+<li class="chapter" data-level="7.9" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#pipe-3"><i class="fa fa-check"></i><b>7.9</b> Pipe 3</a></li>
 </ul></li>
-<li class="chapter" data-level="9.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#fine-but-what-about-2-groups"><i class="fa fa-check"></i><b>9.4</b> Fine, but what about 2 groups?</a>
+<li class="chapter" data-level="8" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html"><i class="fa fa-check"></i><b>8</b> Finding Help in R</a>
 <ul>
-<li class="chapter" data-level="9.4.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#setting-up-2-group-t-test"><i class="fa fa-check"></i><b>9.4.1</b> Setting up 2 group t test</a></li>
-<li class="chapter" data-level="9.4.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-the-2-group-t-test"><i class="fa fa-check"></i><b>9.4.2</b> Results of the 2 group t test</a></li>
-<li class="chapter" data-level="9.4.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#interpreting-the-2-group-t-test"><i class="fa fa-check"></i><b>9.4.3</b> Interpreting the 2 group t test</a></li>
-<li class="chapter" data-level="9.4.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#group-t-test-with-wide-data"><i class="fa fa-check"></i><b>9.4.4</b> 2 group t test with wide data</a></li>
-<li class="chapter" data-level="9.4.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-2-group-t-test-with-wide-data"><i class="fa fa-check"></i><b>9.4.5</b> Results of 2 group t test with wide data</a></li>
-</ul></li>
-<li class="chapter" data-level="9.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#assumptions-of-students-t-test"><i class="fa fa-check"></i><b>9.5</b> 3 Assumptions of Student’s t test</a>
+<li class="chapter" data-level="8.1" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#programming-in-r"><i class="fa fa-check"></i><b>8.1</b> Programming in R</a></li>
+<li class="chapter" data-level="8.2" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#starting-with-help"><i class="fa fa-check"></i><b>8.2</b> Starting with Help!</a></li>
+<li class="chapter" data-level="8.3" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#the-magic-of-vignettes"><i class="fa fa-check"></i><b>8.3</b> The Magic of Vignettes</a></li>
+<li class="chapter" data-level="8.4" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#googling-the-error-message"><i class="fa fa-check"></i><b>8.4</b> Googling the Error Message</a></li>
+<li class="chapter" data-level="8.5" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#you-know-what-you-want-to-do-but-dont-know-what-package-or-function-to-use"><i class="fa fa-check"></i><b>8.5</b> You Know What You Want to Do, but Don’t Know What Package or Function to Use</a>
 <ul>
-<li class="chapter" data-level="9.5.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#testing-assumptions-of-students-t-test"><i class="fa fa-check"></i><b>9.5.1</b> Testing Assumptions of Student’s t test</a></li>
+<li class="chapter" data-level="8.5.1" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#cran-task-views"><i class="fa fa-check"></i><b>8.5.1</b> CRAN Task Views</a></li>
+<li class="chapter" data-level="8.5.2" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#google-is-your-friend"><i class="fa fa-check"></i><b>8.5.2</b> Google is Your Friend</a></li>
 </ul></li>
-<li class="chapter" data-level="9.6" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#getting-results-out-of-t.test"><i class="fa fa-check"></i><b>9.6</b> Getting results out of t.test</a>
+<li class="chapter" data-level="8.6" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#seeking-advanced-help-with-a-minimal-reprex"><i class="fa fa-check"></i><b>8.6</b> Seeking Advanced Help with a Minimal REPREX</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html"><i class="fa fa-check"></i><b>9</b> The Basics of Base R</a>
 <ul>
-<li class="chapter" data-level="9.6.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#getting-results-out-of-t.test-1"><i class="fa fa-check"></i><b>9.6.1</b> Getting results out of t.test</a></li>
+<li class="chapter" data-level="9.1" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#dimensions-of-data-rectangles"><i class="fa fa-check"></i><b>9.1</b> Dimensions of Data Rectangles</a></li>
+<li class="chapter" data-level="9.2" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#naming-columns"><i class="fa fa-check"></i><b>9.2</b> Naming columns</a></li>
+<li class="chapter" data-level="9.3" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#concatenation"><i class="fa fa-check"></i><b>9.3</b> Concatenation</a></li>
+<li class="chapter" data-level="9.4" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#sequences"><i class="fa fa-check"></i><b>9.4</b> Sequences</a></li>
+<li class="chapter" data-level="9.5" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#constants"><i class="fa fa-check"></i><b>9.5</b> Constants</a></li>
+<li class="chapter" data-level="9.6" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#fancier-sequences"><i class="fa fa-check"></i><b>9.6</b> Fancier Sequences</a></li>
+<li class="chapter" data-level="9.7" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#mathematical-functions"><i class="fa fa-check"></i><b>9.7</b> Mathematical functions</a></li>
+<li class="chapter" data-level="9.8" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#handling-missing-data-nas"><i class="fa fa-check"></i><b>9.8</b> Handling missing data (NAs)</a></li>
+<li class="chapter" data-level="9.9" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#cutting-continuous-data-into-levels"><i class="fa fa-check"></i><b>9.9</b> Cutting Continuous data into Levels</a></li>
 </ul></li>
-<li class="chapter" data-level="9.7" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#reporting-the-results-from-t.test-using-inline-code"><i class="fa fa-check"></i><b>9.7</b> Reporting the results from t.test using inline code</a>
+<li class="chapter" data-level="10" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html"><i class="fa fa-check"></i><b>10</b> Updating R, RStudio, and Your Packages</a>
 <ul>
-<li class="chapter" data-level="9.7.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#for-next-time"><i class="fa fa-check"></i><b>9.7.1</b> For Next Time</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html"><i class="fa fa-check"></i><b>10</b> Sample Size Calculations with <code>{pwr}</code></a>
+<li class="chapter" data-level="10.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-1"><i class="fa fa-check"></i><b>10.1</b> Installing Packages</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-a-continuous-endpoint-t-test"><i class="fa fa-check"></i><b>10.1</b> Sample Size for a Continuous Endpoint (t-test)</a></li>
-<li class="chapter" data-level="10.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#one-sample-t-test-for-lowering-creatinine"><i class="fa fa-check"></i><b>10.2</b> One Sample t-test for Lowering Creatinine</a></li>
-<li class="chapter" data-level="10.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#paired-t-tests-before-vs-after-or-truly-paired"><i class="fa fa-check"></i><b>10.3</b> Paired t-tests (before vs after, or truly paired)</a></li>
-<li class="chapter" data-level="10.4" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-t-tests-with-unequal-study-arm-sizes"><i class="fa fa-check"></i><b>10.4</b> 2 Sample t tests with Unequal Study Arm Sizes</a></li>
-<li class="chapter" data-level="10.5" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#testing-multiple-options-and-plotting-results"><i class="fa fa-check"></i><b>10.5</b> Testing Multiple Options and Plotting Results</a></li>
-<li class="chapter" data-level="10.6" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#your-turn"><i class="fa fa-check"></i><b>10.6</b> Your Turn</a></li>
-<li class="chapter" data-level="10.6.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-1-fev1-in-copd"><i class="fa fa-check"></i><b>10.6.1</b> Scenario 1: FEV1 in COPD</a></li>
-<li class="chapter" data-level="10.6.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-2-bnp-in-chf"><i class="fa fa-check"></i><b>10.6.2</b> Scenario 2: BNP in CHF</a></li>
-<li class="chapter" data-level="10.6.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-3-barthel-index-in-stroke"><i class="fa fa-check"></i><b>10.6.3</b> Scenario 3: Barthel Index in Stroke</a></li>
-<li class="chapter" data-level="10.7" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-sizes-for-proportions"><i class="fa fa-check"></i><b>10.7</b> Sample Sizes for Proportions</a></li>
-<li class="chapter" data-level="10.8" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-two-proportions-equal-n"><i class="fa fa-check"></i><b>10.8</b> Sample size for two proportions, equal n</a></li>
-<li class="chapter" data-level="10.9" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-two-proportions-unequal-arms"><i class="fa fa-check"></i><b>10.9</b> Sample size for two proportions, unequal arms</a></li>
-<li class="chapter" data-level="10.10" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#your-turn-1"><i class="fa fa-check"></i><b>10.10</b> Your Turn</a></li>
-<li class="chapter" data-level="10.10.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-1-mortality-on-renal-dialysis"><i class="fa fa-check"></i><b>10.10.1</b> Scenario 1: Mortality on Renal Dialysis</a></li>
-<li class="chapter" data-level="10.10.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-2-intestinal-anastomosis-in-crohns-disease"><i class="fa fa-check"></i><b>10.10.2</b> Scenario 2: Intestinal anastomosis in Crohn’s disease</a></li>
-<li class="chapter" data-level="10.10.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-3-metformin-in-donuts"><i class="fa fa-check"></i><b>10.10.3</b> Scenario 3: Metformin in Donuts</a></li>
-<li class="chapter" data-level="10.11" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-chi-square"><i class="fa fa-check"></i><b>10.11</b> add chi square</a></li>
-<li class="chapter" data-level="10.12" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-correlation-test"><i class="fa fa-check"></i><b>10.12</b> add correlation test</a></li>
-<li class="chapter" data-level="10.13" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-anova"><i class="fa fa-check"></i><b>10.13</b> add anova</a></li>
-<li class="chapter" data-level="10.14" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-linear-model"><i class="fa fa-check"></i><b>10.14</b> add linear model</a></li>
-<li class="chapter" data-level="10.15" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-note-on-guessing-effect-sizes---cohen-small-medium-large"><i class="fa fa-check"></i><b>10.15</b> add note on guessing effect sizes - cohen small, medium, large</a></li>
-<li class="chapter" data-level="10.16" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#explore-more"><i class="fa fa-check"></i><b>10.16</b> Explore More</a></li>
+<li class="chapter" data-level="10.1.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-from-github"><i class="fa fa-check"></i><b>10.1.1</b> Installing Packages from Github</a></li>
+<li class="chapter" data-level="10.1.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#problems-with-installing-packages"><i class="fa fa-check"></i><b>10.1.2</b> Problems with Installing Packages</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html"><i class="fa fa-check"></i><b>11</b> Randomization for Clinical Trials with R</a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#printing-these-on-cards"><i class="fa fa-check"></i><b>11.1</b> Printing these on Cards</a></li>
-<li class="chapter" data-level="11.2" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#now-try-this-yourself"><i class="fa fa-check"></i><b>11.2</b> Now, try this yourself</a></li>
-<li class="chapter" data-level="11.3" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#now-freestyle"><i class="fa fa-check"></i><b>11.3</b> Now Freestyle</a></li>
+<li class="chapter" data-level="10.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#loading-packages-with-library-1"><i class="fa fa-check"></i><b>10.2</b> Loading Packages with Library</a></li>
+<li class="chapter" data-level="10.3" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-r"><i class="fa fa-check"></i><b>10.3</b> Updating R</a></li>
+<li class="chapter" data-level="10.4" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-rstudio"><i class="fa fa-check"></i><b>10.4</b> Updating RStudio</a></li>
+<li class="chapter" data-level="10.5" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-your-packages"><i class="fa fa-check"></i><b>10.5</b> Updating Your Packages</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html"><i class="fa fa-check"></i><b>12</b> Helping out with ggplot</a>
+<li class="chapter" data-level="11" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html"><i class="fa fa-check"></i><b>11</b> Major R Updates (Where Are My Packages?)</a></li>
+<li class="chapter" data-level="12" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html"><i class="fa fa-check"></i><b>12</b> Comparing Two Measures of Centrality</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#ggxgghelp"><i class="fa fa-check"></i><b>12.1</b> ggx::gghelp()</a></li>
-<li class="chapter" data-level="12.2" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#getting-more-help-with-theming-with-ggthemeassist"><i class="fa fa-check"></i><b>12.2</b> Getting more help with theming with ggThemeAssist</a></li>
-<li class="chapter" data-level="12.3" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#website-helpers-for-ggplot"><i class="fa fa-check"></i><b>12.3</b> Website helpers for ggplot</a></li>
-<li class="chapter" data-level="12.4" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#getting-even-more-help-with-esquisse"><i class="fa fa-check"></i><b>12.4</b> Getting Even more help with esquisse</a>
+<li class="chapter" data-level="12.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#common-problem"><i class="fa fa-check"></i><b>12.1</b> Common Problem</a>
 <ul>
-<li class="chapter" data-level="12.4.1" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#acknowledgement"><i class="fa fa-check"></i><b>12.4.1</b> Acknowledgement</a></li>
+<li class="chapter" data-level="12.1.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#how-skewed-is-too-skewed"><i class="fa fa-check"></i><b>12.1.1</b> How Skewed is Too Skewed?</a></li>
+<li class="chapter" data-level="12.1.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#visualize-the-distribution-of-data-variables-in-ggplot"><i class="fa fa-check"></i><b>12.1.2</b> Visualize the Distribution of data variables in ggplot</a></li>
+<li class="chapter" data-level="12.1.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#visualize-the-distribution-of-datalen-in-ggplot"><i class="fa fa-check"></i><b>12.1.3</b> Visualize the Distribution of data$len in ggplot</a></li>
+<li class="chapter" data-level="12.1.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-shapiro-wilk"><i class="fa fa-check"></i><b>12.1.4</b> Results of Shapiro-Wilk</a></li>
+<li class="chapter" data-level="12.1.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#try-it-yourself-1"><i class="fa fa-check"></i><b>12.1.5</b> Try it yourself</a></li>
+<li class="chapter" data-level="12.1.6" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#mammal-sleep-hours"><i class="fa fa-check"></i><b>12.1.6</b> Mammal sleep hours</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#one-sample-t-test"><i class="fa fa-check"></i><b>12.2</b> One Sample T test</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#how-to-do-one-sample-t-test"><i class="fa fa-check"></i><b>12.2.1</b> How to do One Sample T test</a></li>
+<li class="chapter" data-level="12.2.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#interpreting-the-one-sample-t-test"><i class="fa fa-check"></i><b>12.2.2</b> Interpreting the One Sample T test</a></li>
+<li class="chapter" data-level="12.2.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#what-are-the-arguments-of-the-t.test-function"><i class="fa fa-check"></i><b>12.2.3</b> What are the arguments of the t.test function?</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#insert-flipbook-for-ttest-here"><i class="fa fa-check"></i><b>12.3</b> Insert flipbook for ttest here</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#flipbook-time"><i class="fa fa-check"></i><b>12.3.1</b> Flipbook Time!</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#fine-but-what-about-2-groups"><i class="fa fa-check"></i><b>12.4</b> Fine, but what about 2 groups?</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#setting-up-2-group-t-test"><i class="fa fa-check"></i><b>12.4.1</b> Setting up 2 group t test</a></li>
+<li class="chapter" data-level="12.4.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-the-2-group-t-test"><i class="fa fa-check"></i><b>12.4.2</b> Results of the 2 group t test</a></li>
+<li class="chapter" data-level="12.4.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#interpreting-the-2-group-t-test"><i class="fa fa-check"></i><b>12.4.3</b> Interpreting the 2 group t test</a></li>
+<li class="chapter" data-level="12.4.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#group-t-test-with-wide-data"><i class="fa fa-check"></i><b>12.4.4</b> 2 group t test with wide data</a></li>
+<li class="chapter" data-level="12.4.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-2-group-t-test-with-wide-data"><i class="fa fa-check"></i><b>12.4.5</b> Results of 2 group t test with wide data</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#assumptions-of-students-t-test"><i class="fa fa-check"></i><b>12.5</b> 3 Assumptions of Student’s t test</a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#testing-assumptions-of-students-t-test"><i class="fa fa-check"></i><b>12.5.1</b> Testing Assumptions of Student’s t test</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#getting-results-out-of-t.test"><i class="fa fa-check"></i><b>12.6</b> Getting results out of t.test</a>
+<ul>
+<li class="chapter" data-level="12.6.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#getting-results-out-of-t.test-1"><i class="fa fa-check"></i><b>12.6.1</b> Getting results out of t.test</a></li>
+</ul></li>
+<li class="chapter" data-level="12.7" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#reporting-the-results-from-t.test-using-inline-code"><i class="fa fa-check"></i><b>12.7</b> Reporting the results from t.test using inline code</a>
+<ul>
+<li class="chapter" data-level="12.7.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#for-next-time"><i class="fa fa-check"></i><b>12.7.1</b> For Next Time</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>13</b> Functions</a>
+<li class="chapter" data-level="13" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html"><i class="fa fa-check"></i><b>13</b> Sample Size Calculations with <code>{pwr}</code></a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="functions.html"><a href="functions.html#dont-repeat-yourself"><i class="fa fa-check"></i><b>13.1</b> Don’t repeat yourself</a></li>
-<li class="chapter" data-level="13.2" data-path="functions.html"><a href="functions.html#your-turn-2"><i class="fa fa-check"></i><b>13.2</b> Your Turn</a></li>
-<li class="chapter" data-level="13.3" data-path="functions.html"><a href="functions.html#freestyle"><i class="fa fa-check"></i><b>13.3</b> Freestyle</a></li>
-<li class="chapter" data-level="13.4" data-path="functions.html"><a href="functions.html#read-more"><i class="fa fa-check"></i><b>13.4</b> Read More</a></li>
+<li class="chapter" data-level="13.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-a-continuous-endpoint-t-test"><i class="fa fa-check"></i><b>13.1</b> Sample Size for a Continuous Endpoint (t-test)</a></li>
+<li class="chapter" data-level="13.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#one-sample-t-test-for-lowering-creatinine"><i class="fa fa-check"></i><b>13.2</b> One Sample t-test for Lowering Creatinine</a></li>
+<li class="chapter" data-level="13.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#paired-t-tests-before-vs-after-or-truly-paired"><i class="fa fa-check"></i><b>13.3</b> Paired t-tests (before vs after, or truly paired)</a></li>
+<li class="chapter" data-level="13.4" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-t-tests-with-unequal-study-arm-sizes"><i class="fa fa-check"></i><b>13.4</b> 2 Sample t tests with Unequal Study Arm Sizes</a></li>
+<li class="chapter" data-level="13.5" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#testing-multiple-options-and-plotting-results"><i class="fa fa-check"></i><b>13.5</b> Testing Multiple Options and Plotting Results</a></li>
+<li class="chapter" data-level="13.6" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#your-turn"><i class="fa fa-check"></i><b>13.6</b> Your Turn</a></li>
+<li class="chapter" data-level="13.6.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-1-fev1-in-copd"><i class="fa fa-check"></i><b>13.6.1</b> Scenario 1: FEV1 in COPD</a></li>
+<li class="chapter" data-level="13.6.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-2-bnp-in-chf"><i class="fa fa-check"></i><b>13.6.2</b> Scenario 2: BNP in CHF</a></li>
+<li class="chapter" data-level="13.6.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-3-barthel-index-in-stroke"><i class="fa fa-check"></i><b>13.6.3</b> Scenario 3: Barthel Index in Stroke</a></li>
+<li class="chapter" data-level="13.7" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-sizes-for-proportions"><i class="fa fa-check"></i><b>13.7</b> Sample Sizes for Proportions</a></li>
+<li class="chapter" data-level="13.8" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-two-proportions-equal-n"><i class="fa fa-check"></i><b>13.8</b> Sample size for two proportions, equal n</a></li>
+<li class="chapter" data-level="13.9" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-two-proportions-unequal-arms"><i class="fa fa-check"></i><b>13.9</b> Sample size for two proportions, unequal arms</a></li>
+<li class="chapter" data-level="13.10" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#your-turn-1"><i class="fa fa-check"></i><b>13.10</b> Your Turn</a></li>
+<li class="chapter" data-level="13.10.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-1-mortality-on-renal-dialysis"><i class="fa fa-check"></i><b>13.10.1</b> Scenario 1: Mortality on Renal Dialysis</a></li>
+<li class="chapter" data-level="13.10.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-2-intestinal-anastomosis-in-crohns-disease"><i class="fa fa-check"></i><b>13.10.2</b> Scenario 2: Intestinal anastomosis in Crohn’s disease</a></li>
+<li class="chapter" data-level="13.10.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-3-metformin-in-donuts"><i class="fa fa-check"></i><b>13.10.3</b> Scenario 3: Metformin in Donuts</a></li>
+<li class="chapter" data-level="13.11" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-chi-square"><i class="fa fa-check"></i><b>13.11</b> add chi square</a></li>
+<li class="chapter" data-level="13.12" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-correlation-test"><i class="fa fa-check"></i><b>13.12</b> add correlation test</a></li>
+<li class="chapter" data-level="13.13" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-anova"><i class="fa fa-check"></i><b>13.13</b> add anova</a></li>
+<li class="chapter" data-level="13.14" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-linear-model"><i class="fa fa-check"></i><b>13.14</b> add linear model</a></li>
+<li class="chapter" data-level="13.15" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-note-on-guessing-effect-sizes---cohen-small-medium-large"><i class="fa fa-check"></i><b>13.15</b> add note on guessing effect sizes - cohen small, medium, large</a></li>
+<li class="chapter" data-level="13.16" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#explore-more"><i class="fa fa-check"></i><b>13.16</b> Explore More</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="cmd-line.html"><a href="cmd-line.html"><i class="fa fa-check"></i><b>14</b> Running R from the UNIX Command Line</a>
+<li class="chapter" data-level="14" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html"><i class="fa fa-check"></i><b>14</b> Randomization for Clinical Trials with R</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="cmd-line.html"><a href="cmd-line.html#what-is-the-unix-command-line"><i class="fa fa-check"></i><b>14.1</b> What is the UNIX Command line?</a></li>
-<li class="chapter" data-level="14.2" data-path="cmd-line.html"><a href="cmd-line.html#why-run-r-from-the-command-line"><i class="fa fa-check"></i><b>14.2</b> Why run R from the command line?</a></li>
-<li class="chapter" data-level="14.3" data-path="cmd-line.html"><a href="cmd-line.html#how-do-you-get-started"><i class="fa fa-check"></i><b>14.3</b> How do you get started?</a>
-<ul>
-<li class="chapter" data-level="14.3.1" data-path="cmd-line.html"><a href="cmd-line.html#on-a-mac"><i class="fa fa-check"></i><b>14.3.1</b> On a Mac</a></li>
-<li class="chapter" data-level="14.3.2" data-path="cmd-line.html"><a href="cmd-line.html#on-a-windows-pc"><i class="fa fa-check"></i><b>14.3.2</b> On a Windows PC</a></li>
+<li class="chapter" data-level="14.1" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#printing-these-on-cards"><i class="fa fa-check"></i><b>14.1</b> Printing these on Cards</a></li>
+<li class="chapter" data-level="14.2" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#now-try-this-yourself"><i class="fa fa-check"></i><b>14.2</b> Now, try this yourself</a></li>
+<li class="chapter" data-level="14.3" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#now-freestyle"><i class="fa fa-check"></i><b>14.3</b> Now Freestyle</a></li>
 </ul></li>
-<li class="chapter" data-level="14.4" data-path="cmd-line.html"><a href="cmd-line.html#the-yawning-blackness-of-the-terminal-window"><i class="fa fa-check"></i><b>14.4</b> The Yawning Blackness of the Terminal Window</a></li>
-<li class="chapter" data-level="14.5" data-path="cmd-line.html"><a href="cmd-line.html#where-are-we"><i class="fa fa-check"></i><b>14.5</b> Where Are We?</a></li>
-<li class="chapter" data-level="14.6" data-path="cmd-line.html"><a href="cmd-line.html#cleaning-up"><i class="fa fa-check"></i><b>14.6</b> Cleaning Up</a></li>
-<li class="chapter" data-level="14.7" data-path="cmd-line.html"><a href="cmd-line.html#other-helpful-file-commands"><i class="fa fa-check"></i><b>14.7</b> Other helpful file commands</a></li>
-<li class="chapter" data-level="14.8" data-path="cmd-line.html"><a href="cmd-line.html#what-about-r"><i class="fa fa-check"></i><b>14.8</b> What about R?</a></li>
-<li class="chapter" data-level="14.9" data-path="cmd-line.html"><a href="cmd-line.html#what-about-just-a-few-lines-of-r"><i class="fa fa-check"></i><b>14.9</b> What about just a few lines of R?</a></li>
-<li class="chapter" data-level="14.10" data-path="cmd-line.html"><a href="cmd-line.html#running-an-r-script-from-the-terminal"><i class="fa fa-check"></i><b>14.10</b> Running an R Script from the Terminal</a></li>
-<li class="chapter" data-level="14.11" data-path="cmd-line.html"><a href="cmd-line.html#rendering-an-rmarkdown-file-from-the-terminal"><i class="fa fa-check"></i><b>14.11</b> Rendering an Rmarkdown file from the Terminal</a></li>
+<li class="chapter" data-level="15" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html"><i class="fa fa-check"></i><b>15</b> Univariate ggplots to Visualize Distributions</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#histograms"><i class="fa fa-check"></i><b>15.1</b> HIstograms</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#comparisons-of-distributions-with-histograms"><i class="fa fa-check"></i><b>15.1.1</b> Comparisons of Distributions with Histograms</a></li>
+<li class="chapter" data-level="15.1.2" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#histograms-and-categories"><i class="fa fa-check"></i><b>15.1.2</b> Histograms and Categories</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#density-plots"><i class="fa fa-check"></i><b>15.2</b> Density Plots</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#comparisons-with-density-plots"><i class="fa fa-check"></i><b>15.2.1</b> Comparisons with Density plots</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#comparing-distributions-across-categories"><i class="fa fa-check"></i><b>15.3</b> Comparing Distributions Across Categories</a></li>
+<li class="chapter" data-level="15.4" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#boxplots"><i class="fa fa-check"></i><b>15.4</b> Boxplots</a></li>
+<li class="chapter" data-level="15.5" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#violin-plots"><i class="fa fa-check"></i><b>15.5</b> Violin Plots</a></li>
+<li class="chapter" data-level="15.6" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#ridgeline-plots"><i class="fa fa-check"></i><b>15.6</b> Ridgeline Plots</a>
+<ul>
+<li class="chapter" data-level="15.6.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-plots"><i class="fa fa-check"></i><b>15.6.1</b> Including Plots</a></li>
+<li class="chapter" data-level="15.6.2" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-points"><i class="fa fa-check"></i><b>15.6.2</b> Including Points</a></li>
+<li class="chapter" data-level="15.6.3" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-points-1"><i class="fa fa-check"></i><b>15.6.3</b> Including Points</a></li>
+<li class="chapter" data-level="15.6.4" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-points-2"><i class="fa fa-check"></i><b>15.6.4</b> Including Points</a></li>
+<li class="chapter" data-level="15.6.5" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-points-3"><i class="fa fa-check"></i><b>15.6.5</b> Including Points</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html"><i class="fa fa-check"></i><b>16</b> Helping out with ggplot</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#ggxgghelp"><i class="fa fa-check"></i><b>16.1</b> ggx::gghelp()</a></li>
+<li class="chapter" data-level="16.2" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#getting-more-help-with-theming-with-ggthemeassist"><i class="fa fa-check"></i><b>16.2</b> Getting more help with theming with ggThemeAssist</a></li>
+<li class="chapter" data-level="16.3" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#website-helpers-for-ggplot"><i class="fa fa-check"></i><b>16.3</b> Website helpers for ggplot</a></li>
+<li class="chapter" data-level="16.4" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#getting-even-more-help-with-esquisse"><i class="fa fa-check"></i><b>16.4</b> Getting Even more help with esquisse</a>
+<ul>
+<li class="chapter" data-level="16.4.1" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#acknowledgement"><i class="fa fa-check"></i><b>16.4.1</b> Acknowledgement</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>17</b> Functions</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="functions.html"><a href="functions.html#dont-repeat-yourself"><i class="fa fa-check"></i><b>17.1</b> Don’t repeat yourself</a></li>
+<li class="chapter" data-level="17.2" data-path="functions.html"><a href="functions.html#your-turn-2"><i class="fa fa-check"></i><b>17.2</b> Your Turn</a></li>
+<li class="chapter" data-level="17.3" data-path="functions.html"><a href="functions.html#freestyle"><i class="fa fa-check"></i><b>17.3</b> Freestyle</a></li>
+<li class="chapter" data-level="17.4" data-path="functions.html"><a href="functions.html#read-more"><i class="fa fa-check"></i><b>17.4</b> Read More</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="cmd-line.html"><a href="cmd-line.html"><i class="fa fa-check"></i><b>18</b> Running R from the UNIX Command Line</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="cmd-line.html"><a href="cmd-line.html#what-is-the-unix-command-line"><i class="fa fa-check"></i><b>18.1</b> What is the UNIX Command line?</a></li>
+<li class="chapter" data-level="18.2" data-path="cmd-line.html"><a href="cmd-line.html#why-run-r-from-the-command-line"><i class="fa fa-check"></i><b>18.2</b> Why run R from the command line?</a></li>
+<li class="chapter" data-level="18.3" data-path="cmd-line.html"><a href="cmd-line.html#how-do-you-get-started"><i class="fa fa-check"></i><b>18.3</b> How do you get started?</a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="cmd-line.html"><a href="cmd-line.html#on-a-mac"><i class="fa fa-check"></i><b>18.3.1</b> On a Mac</a></li>
+<li class="chapter" data-level="18.3.2" data-path="cmd-line.html"><a href="cmd-line.html#on-a-windows-pc"><i class="fa fa-check"></i><b>18.3.2</b> On a Windows PC</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="cmd-line.html"><a href="cmd-line.html#the-yawning-blackness-of-the-terminal-window"><i class="fa fa-check"></i><b>18.4</b> The Yawning Blackness of the Terminal Window</a></li>
+<li class="chapter" data-level="18.5" data-path="cmd-line.html"><a href="cmd-line.html#where-are-we"><i class="fa fa-check"></i><b>18.5</b> Where Are We?</a></li>
+<li class="chapter" data-level="18.6" data-path="cmd-line.html"><a href="cmd-line.html#cleaning-up"><i class="fa fa-check"></i><b>18.6</b> Cleaning Up</a></li>
+<li class="chapter" data-level="18.7" data-path="cmd-line.html"><a href="cmd-line.html#other-helpful-file-commands"><i class="fa fa-check"></i><b>18.7</b> Other helpful file commands</a></li>
+<li class="chapter" data-level="18.8" data-path="cmd-line.html"><a href="cmd-line.html#what-about-r"><i class="fa fa-check"></i><b>18.8</b> What about R?</a></li>
+<li class="chapter" data-level="18.9" data-path="cmd-line.html"><a href="cmd-line.html#what-about-just-a-few-lines-of-r"><i class="fa fa-check"></i><b>18.9</b> What about just a few lines of R?</a></li>
+<li class="chapter" data-level="18.10" data-path="cmd-line.html"><a href="cmd-line.html#running-an-r-script-from-the-terminal"><i class="fa fa-check"></i><b>18.10</b> Running an R Script from the Terminal</a></li>
+<li class="chapter" data-level="18.11" data-path="cmd-line.html"><a href="cmd-line.html#rendering-an-rmarkdown-file-from-the-terminal"><i class="fa fa-check"></i><b>18.11</b> Rendering an Rmarkdown file from the Terminal</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="title-holder.html"><a href="title-holder.html"><i class="fa fa-check"></i>Title holder</a></li>
 <li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
@@ -441,25 +520,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="functions" class="section level1" number="13">
-<h1><span class="header-section-number">Chapter 13</span> Functions</h1>
+<div id="functions" class="section level1" number="17">
+<h1><span class="header-section-number">Chapter 17</span> Functions</h1>
 <p>Nearly everything in R and the tidyverse is built on functions. Every command you write that ends with parentheses is a function. The parentheses contain arguments (unless you just use the defaults), which the function acts upon.</p>
 <p>If you type a function into the console and forget the parentheses, you may be surprised at what you get back when you press the Enter key. Try this with the sd function by running the chunk below</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="functions.html#cb190-1" aria-hidden="true" tabindex="-1"></a>sd</span></code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="functions.html#cb320-1" aria-hidden="true" tabindex="-1"></a>sd</span></code></pre></div>
 <p>At first this looks like computer gobbledygook, but if you look at it closely, the first line sets up the structure of the function and its arguments, and the second line defines the function as the square root of the variance of a vector that contains numbers. You are seeing the inner workings of the sd function.</p>
 <p>Other functions may be written in other languages (like C++) for more speed, but you can use R to write more R functions. When you try this for another function, like filter in the dplyr package, it is less informative. As you can see when you unpack the function below.</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="functions.html#cb191-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span>filter</span></code></pre></div>
-<div id="dont-repeat-yourself" class="section level2" number="13.1">
-<h2><span class="header-section-number">13.1</span> Don’t repeat yourself</h2>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="functions.html#cb321-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span>filter</span></code></pre></div>
+<div id="dont-repeat-yourself" class="section level2" number="17.1">
+<h2><span class="header-section-number">17.1</span> Don’t repeat yourself</h2>
 <p>Functions are especially helpful when you do something repeatedly, or do the same thing on several variables or several datasets. Let’s start with a simple plot of Ct (COVID viral load) vs age for inpatients. Run the code chunk below.</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="functions.html#cb192-1" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
-<span id="cb192-2"><a href="functions.html#cb192-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(patient_class <span class="sc">==</span> <span class="st">&quot;inpatient&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb192-3"><a href="functions.html#cb192-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb192-4"><a href="functions.html#cb192-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> ct_result) <span class="sc">+</span></span>
-<span id="cb192-5"><a href="functions.html#cb192-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb192-6"><a href="functions.html#cb192-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
-<span id="cb192-7"><a href="functions.html#cb192-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;viral load (in Ct)&quot;</span>,</span>
-<span id="cb192-8"><a href="functions.html#cb192-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Patient class: inpatient&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="functions.html#cb322-1" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
+<span id="cb322-2"><a href="functions.html#cb322-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(patient_class <span class="sc">==</span> <span class="st">&quot;inpatient&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb322-3"><a href="functions.html#cb322-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb322-4"><a href="functions.html#cb322-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> ct_result) <span class="sc">+</span></span>
+<span id="cb322-5"><a href="functions.html#cb322-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb322-6"><a href="functions.html#cb322-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
+<span id="cb322-7"><a href="functions.html#cb322-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;viral load (in Ct)&quot;</span>,</span>
+<span id="cb322-8"><a href="functions.html#cb322-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Patient class: inpatient&quot;</span>)</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/covid-plot-1-1.png" width="672" /></p>
 <p>This is great, but you would like a similar plot for ER patients, observation patients, outpatients, etc. How do you do this without multiple copy-paste and careful edits of the key variables (often with errors)?</p>
 <p>First, you need to avoid hard-coding the specific values that change from plot to plot.</p>
@@ -468,16 +547,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>filter the data</li>
 <li>set the title (using the glue function)</li>
 </ol>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="functions.html#cb193-1" aria-hidden="true" tabindex="-1"></a>patient_class_choice_env <span class="ot">=</span> <span class="st">&quot;inpatient&quot;</span></span>
-<span id="cb193-2"><a href="functions.html#cb193-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb193-3"><a href="functions.html#cb193-3" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
-<span id="cb193-4"><a href="functions.html#cb193-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(.data<span class="sc">$</span>patient_class <span class="sc">==</span> .env<span class="sc">$</span>patient_class_choice_env) <span class="sc">%&gt;%</span></span>
-<span id="cb193-5"><a href="functions.html#cb193-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb193-6"><a href="functions.html#cb193-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> ct_result) <span class="sc">+</span></span>
-<span id="cb193-7"><a href="functions.html#cb193-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb193-8"><a href="functions.html#cb193-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
-<span id="cb193-9"><a href="functions.html#cb193-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;viral load (in Ct)&quot;</span>,</span>
-<span id="cb193-10"><a href="functions.html#cb193-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Patient class: {patient_class_choice_env}&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="functions.html#cb323-1" aria-hidden="true" tabindex="-1"></a>patient_class_choice_env <span class="ot">=</span> <span class="st">&quot;inpatient&quot;</span></span>
+<span id="cb323-2"><a href="functions.html#cb323-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb323-3"><a href="functions.html#cb323-3" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
+<span id="cb323-4"><a href="functions.html#cb323-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(.data<span class="sc">$</span>patient_class <span class="sc">==</span> .env<span class="sc">$</span>patient_class_choice_env) <span class="sc">%&gt;%</span></span>
+<span id="cb323-5"><a href="functions.html#cb323-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb323-6"><a href="functions.html#cb323-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> ct_result) <span class="sc">+</span></span>
+<span id="cb323-7"><a href="functions.html#cb323-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb323-8"><a href="functions.html#cb323-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
+<span id="cb323-9"><a href="functions.html#cb323-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;viral load (in Ct)&quot;</span>,</span>
+<span id="cb323-10"><a href="functions.html#cb323-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Patient class: {patient_class_choice_env}&quot;</span>))</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/covid-plot-2-1.png" width="672" /></p>
 <p>The use of variable pronouns is very important in the filter step.</p>
 <p>.data$patient_class means the variable “patient_class” in the currently in-use dataframe.</p>
@@ -486,16 +565,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>It is usually better to give these slightly different names. In this case, I have added the suffix, “choice_env” for the variable in the environment in which I have specified the value chosen.</p>
 <p>Let’s try another example.</p>
 <p>In the code chunk below, edit the patient_class_choice_env variable to the value “emergency”, and then run the code chunk.</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="functions.html#cb194-1" aria-hidden="true" tabindex="-1"></a>patient_class_choice_env <span class="ot">=</span> <span class="st">&quot;emergency&quot;</span></span>
-<span id="cb194-2"><a href="functions.html#cb194-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb194-3"><a href="functions.html#cb194-3" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
-<span id="cb194-4"><a href="functions.html#cb194-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(.data<span class="sc">$</span>patient_class <span class="sc">==</span> .env<span class="sc">$</span>patient_class_choice_env) <span class="sc">%&gt;%</span></span>
-<span id="cb194-5"><a href="functions.html#cb194-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb194-6"><a href="functions.html#cb194-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> ct_result) <span class="sc">+</span></span>
-<span id="cb194-7"><a href="functions.html#cb194-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb194-8"><a href="functions.html#cb194-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
-<span id="cb194-9"><a href="functions.html#cb194-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;viral load (in Ct)&quot;</span>,</span>
-<span id="cb194-10"><a href="functions.html#cb194-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Patient class: {patient_class_choice_env}&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="functions.html#cb324-1" aria-hidden="true" tabindex="-1"></a>patient_class_choice_env <span class="ot">=</span> <span class="st">&quot;emergency&quot;</span></span>
+<span id="cb324-2"><a href="functions.html#cb324-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb324-3"><a href="functions.html#cb324-3" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
+<span id="cb324-4"><a href="functions.html#cb324-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(.data<span class="sc">$</span>patient_class <span class="sc">==</span> .env<span class="sc">$</span>patient_class_choice_env) <span class="sc">%&gt;%</span></span>
+<span id="cb324-5"><a href="functions.html#cb324-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb324-6"><a href="functions.html#cb324-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> ct_result) <span class="sc">+</span></span>
+<span id="cb324-7"><a href="functions.html#cb324-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb324-8"><a href="functions.html#cb324-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
+<span id="cb324-9"><a href="functions.html#cb324-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;viral load (in Ct)&quot;</span>,</span>
+<span id="cb324-10"><a href="functions.html#cb324-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Patient class: {patient_class_choice_env}&quot;</span>))</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/covid-plot-3-1.png" width="672" /></p>
 <p>Fairly slick, right? You can edit and run through each value for patient_class.</p>
 <p>But what if you want to automate this, and just produce all the plots for all the possible values?</p>
@@ -504,72 +583,72 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Then, you wrap the code in curly braces, and preface it with “function(arguments)”</p>
 <p>Then you assign it to a function name.</p>
 <p>Examine, then run the example below.</p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="functions.html#cb195-1" aria-hidden="true" tabindex="-1"></a>make_covid_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(patient_class_choice_env) {</span>
-<span id="cb195-2"><a href="functions.html#cb195-2" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
-<span id="cb195-3"><a href="functions.html#cb195-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(.data<span class="sc">$</span>patient_class <span class="sc">==</span> .env<span class="sc">$</span>patient_class_choice_env) <span class="sc">%&gt;%</span> </span>
-<span id="cb195-4"><a href="functions.html#cb195-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb195-5"><a href="functions.html#cb195-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> ct_result) <span class="sc">+</span></span>
-<span id="cb195-6"><a href="functions.html#cb195-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb195-7"><a href="functions.html#cb195-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
-<span id="cb195-8"><a href="functions.html#cb195-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;viral load (in Ct)&quot;</span>,</span>
-<span id="cb195-9"><a href="functions.html#cb195-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Patient class: {patient_class_choice_env}&quot;</span>))</span>
-<span id="cb195-10"><a href="functions.html#cb195-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb195-11"><a href="functions.html#cb195-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb195-12"><a href="functions.html#cb195-12" aria-hidden="true" tabindex="-1"></a><span class="fu">make_covid_plot</span>(<span class="st">&quot;recurring outpatient&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="functions.html#cb325-1" aria-hidden="true" tabindex="-1"></a>make_covid_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(patient_class_choice_env) {</span>
+<span id="cb325-2"><a href="functions.html#cb325-2" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
+<span id="cb325-3"><a href="functions.html#cb325-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(.data<span class="sc">$</span>patient_class <span class="sc">==</span> .env<span class="sc">$</span>patient_class_choice_env) <span class="sc">%&gt;%</span> </span>
+<span id="cb325-4"><a href="functions.html#cb325-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb325-5"><a href="functions.html#cb325-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> ct_result) <span class="sc">+</span></span>
+<span id="cb325-6"><a href="functions.html#cb325-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb325-7"><a href="functions.html#cb325-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
+<span id="cb325-8"><a href="functions.html#cb325-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;viral load (in Ct)&quot;</span>,</span>
+<span id="cb325-9"><a href="functions.html#cb325-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Patient class: {patient_class_choice_env}&quot;</span>))</span>
+<span id="cb325-10"><a href="functions.html#cb325-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb325-11"><a href="functions.html#cb325-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb325-12"><a href="functions.html#cb325-12" aria-hidden="true" tabindex="-1"></a><span class="fu">make_covid_plot</span>(<span class="st">&quot;recurring outpatient&quot;</span>)</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/covid-plot-4-1.png" width="672" /></p>
 <p>Note that this creates a function object named <strong>make_covid_plot</strong> in your Environment pane.</p>
 <p>And you still have to call the function with the argument “recurring outpatient” to get one plot.</p>
 <p>Generally, you should write functions when you find yourself copy-pasting the same code several times.</p>
 <p>Each function should be no more than 20-30 lines. If longer, break it up into a couple of functions.</p>
 <p>You can do this repeatedly, over several values for patient_class. Try this below by editing the code chunk to make plots for “emergency” and “not applicable” patient classes.</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="functions.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make_covid_plot</span>(<span class="st">&quot;outpatient&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="functions.html#cb326-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make_covid_plot</span>(<span class="st">&quot;outpatient&quot;</span>)</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="functions.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make_covid_plot</span>(<span class="st">&quot;observation&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="functions.html#cb327-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make_covid_plot</span>(<span class="st">&quot;observation&quot;</span>)</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/unnamed-chunk-2-2.png" width="672" /></p>
 <p>This is better, but it is still not completely automated.</p>
 <p>Let’s automate calling the function over several values with the <em>map</em> function.</p>
 <p><em>map</em> takes each element of the vector <strong>patient_class</strong> and uses it as input for <em>make_covid_plot()</em>.</p>
 <p><em>map</em> returns a list of created plots.</p>
 <p>We can return these with bracket references to items 1,2, and 3 in the list.</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="functions.html#cb198-1" aria-hidden="true" tabindex="-1"></a>patient_class <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;emergency&quot;</span>, <span class="st">&quot;inpatient&quot;</span>, <span class="st">&quot;observation&quot;</span>)</span>
-<span id="cb198-2"><a href="functions.html#cb198-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb198-3"><a href="functions.html#cb198-3" aria-hidden="true" tabindex="-1"></a>plots <span class="ot">&lt;-</span> <span class="fu">map</span>(patient_class, make_covid_plot)</span>
-<span id="cb198-4"><a href="functions.html#cb198-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb198-5"><a href="functions.html#cb198-5" aria-hidden="true" tabindex="-1"></a>plots[[<span class="dv">1</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="functions.html#cb328-1" aria-hidden="true" tabindex="-1"></a>patient_class <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;emergency&quot;</span>, <span class="st">&quot;inpatient&quot;</span>, <span class="st">&quot;observation&quot;</span>)</span>
+<span id="cb328-2"><a href="functions.html#cb328-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb328-3"><a href="functions.html#cb328-3" aria-hidden="true" tabindex="-1"></a>plots <span class="ot">&lt;-</span> <span class="fu">map</span>(patient_class, make_covid_plot)</span>
+<span id="cb328-4"><a href="functions.html#cb328-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb328-5"><a href="functions.html#cb328-5" aria-hidden="true" tabindex="-1"></a>plots[[<span class="dv">1</span>]]</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="functions.html#cb199-1" aria-hidden="true" tabindex="-1"></a>plots[[<span class="dv">2</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="functions.html#cb329-1" aria-hidden="true" tabindex="-1"></a>plots[[<span class="dv">2</span>]]</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="functions.html#cb200-1" aria-hidden="true" tabindex="-1"></a>plots[[<span class="dv">3</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="functions.html#cb330-1" aria-hidden="true" tabindex="-1"></a>plots[[<span class="dv">3</span>]]</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/unnamed-chunk-3-3.png" width="672" /></p>
 <p>We can make this simpler with the <em>walk</em> function.</p>
 <p>The <em>walk</em> function is like map, but it does not return values, only side effects (like printing). In this case, it is applying the <em>print</em> function to each element of the <strong>plots</strong> list.</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="functions.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="fu">walk</span>(plots, print)</span></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="functions.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="fu">walk</span>(plots, print)</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/unnamed-chunk-4-1.png" width="672" /><img src="io71-functions_plots_files/figure-html/unnamed-chunk-4-2.png" width="672" /><img src="io71-functions_plots_files/figure-html/unnamed-chunk-4-3.png" width="672" /></p>
 <p>We can automate this further, and not need to supply the vector of <strong>patient_class</strong> values. We can automate it by applying the <em>make_covid_plot</em> function to all available <strong>patient_class</strong> values.</p>
 <p>To demonstrate this, we need a more general function, with 2 arguments: one for the dataset, and one for for patient_class.</p>
 <p>We will test this on the “inpatient” class.</p>
 <p>The filtering operation will be moved outside of the function</p>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="functions.html#cb202-1" aria-hidden="true" tabindex="-1"></a>make_covid_plot_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, patient_class) {</span>
-<span id="cb202-2"><a href="functions.html#cb202-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="co"># note data argument</span></span>
-<span id="cb202-3"><a href="functions.html#cb202-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># filtering now done outside of function</span></span>
-<span id="cb202-4"><a href="functions.html#cb202-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb202-5"><a href="functions.html#cb202-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> ct_result) <span class="sc">+</span></span>
-<span id="cb202-6"><a href="functions.html#cb202-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb202-7"><a href="functions.html#cb202-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
-<span id="cb202-8"><a href="functions.html#cb202-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;viral load (in Ct)&quot;</span>,</span>
-<span id="cb202-9"><a href="functions.html#cb202-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Patient class: {patient_class}&quot;</span>))</span>
-<span id="cb202-10"><a href="functions.html#cb202-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb202-11"><a href="functions.html#cb202-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb202-12"><a href="functions.html#cb202-12" aria-hidden="true" tabindex="-1"></a>data_inpatient <span class="ot">&lt;-</span> covid <span class="sc">%&gt;%</span> </span>
-<span id="cb202-13"><a href="functions.html#cb202-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(patient_class <span class="sc">==</span> <span class="st">&quot;inpatient&quot;</span>)</span>
-<span id="cb202-14"><a href="functions.html#cb202-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb202-15"><a href="functions.html#cb202-15" aria-hidden="true" tabindex="-1"></a><span class="fu">make_covid_plot_2</span>(data_inpatient,</span>
-<span id="cb202-16"><a href="functions.html#cb202-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">patient_class =</span> <span class="st">&quot;inpatient&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="functions.html#cb332-1" aria-hidden="true" tabindex="-1"></a>make_covid_plot_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, patient_class) {</span>
+<span id="cb332-2"><a href="functions.html#cb332-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="co"># note data argument</span></span>
+<span id="cb332-3"><a href="functions.html#cb332-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># filtering now done outside of function</span></span>
+<span id="cb332-4"><a href="functions.html#cb332-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb332-5"><a href="functions.html#cb332-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> ct_result) <span class="sc">+</span></span>
+<span id="cb332-6"><a href="functions.html#cb332-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb332-7"><a href="functions.html#cb332-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
+<span id="cb332-8"><a href="functions.html#cb332-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;viral load (in Ct)&quot;</span>,</span>
+<span id="cb332-9"><a href="functions.html#cb332-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Patient class: {patient_class}&quot;</span>))</span>
+<span id="cb332-10"><a href="functions.html#cb332-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb332-11"><a href="functions.html#cb332-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb332-12"><a href="functions.html#cb332-12" aria-hidden="true" tabindex="-1"></a>data_inpatient <span class="ot">&lt;-</span> covid <span class="sc">%&gt;%</span> </span>
+<span id="cb332-13"><a href="functions.html#cb332-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(patient_class <span class="sc">==</span> <span class="st">&quot;inpatient&quot;</span>)</span>
+<span id="cb332-14"><a href="functions.html#cb332-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb332-15"><a href="functions.html#cb332-15" aria-hidden="true" tabindex="-1"></a><span class="fu">make_covid_plot_2</span>(data_inpatient,</span>
+<span id="cb332-16"><a href="functions.html#cb332-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">patient_class =</span> <span class="st">&quot;inpatient&quot;</span>)</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/covid-plot-5-1.png" width="672" /></p>
 <p>Now we can try this in a tidy pipeline.</p>
 <p>We will first subset the data by nesting it with the <em>nest</em> function. Take a look at what this does</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="functions.html#cb203-1" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
-<span id="cb203-2"><a href="functions.html#cb203-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span>patient_class)</span></code></pre></div>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="functions.html#cb333-1" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
+<span id="cb333-2"><a href="functions.html#cb333-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span>patient_class)</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 2
 ##   patient_class        data               
 ##   &lt;chr&gt;                &lt;list&gt;             
@@ -581,9 +660,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We have essentially grouped the data in to 5 distinct tibbles (dataframes) in the list-column named <strong>data</strong>.</p>
 <p>These are dataframes in a column nested inside of a larger dataframe.</p>
 <p>Now we can make a plot from each of these smaller dataframes, using the <em>mutate</em> function and the <em>map</em> function, and our original <em>make_covid_plot</em> function.</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="functions.html#cb205-1" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
-<span id="cb205-2"><a href="functions.html#cb205-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span>patient_class) <span class="sc">%&gt;%</span> </span>
-<span id="cb205-3"><a href="functions.html#cb205-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">plots =</span> <span class="fu">map</span>(patient_class, make_covid_plot)) </span></code></pre></div>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="functions.html#cb335-1" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
+<span id="cb335-2"><a href="functions.html#cb335-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span>patient_class) <span class="sc">%&gt;%</span> </span>
+<span id="cb335-3"><a href="functions.html#cb335-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">plots =</span> <span class="fu">map</span>(patient_class, make_covid_plot)) </span></code></pre></div>
 <pre><code>## # A tibble: 5 x 3
 ##   patient_class        data                plots 
 ##   &lt;chr&gt;                &lt;list&gt;              &lt;list&gt;
@@ -594,40 +673,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 inpatient            &lt;tibble [111 × 16]&gt; &lt;gg&gt;</code></pre>
 <p>Now we have a column that contains the plots.</p>
 <p>We can pull these out of the dataframe into a vector with the <em>pull</em> function (because <em>walk</em> works on vectors), then <em>print</em> them to the Plots tab with the <em>walk</em> function.</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="functions.html#cb207-1" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
-<span id="cb207-2"><a href="functions.html#cb207-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span>patient_class) <span class="sc">%&gt;%</span> </span>
-<span id="cb207-3"><a href="functions.html#cb207-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">plots =</span> <span class="fu">map</span>(patient_class, make_covid_plot)) <span class="sc">%&gt;%</span> </span>
-<span id="cb207-4"><a href="functions.html#cb207-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(plots) <span class="sc">%&gt;%</span> </span>
-<span id="cb207-5"><a href="functions.html#cb207-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">walk</span>(print)</span></code></pre></div>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="functions.html#cb337-1" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
+<span id="cb337-2"><a href="functions.html#cb337-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span>patient_class) <span class="sc">%&gt;%</span> </span>
+<span id="cb337-3"><a href="functions.html#cb337-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">plots =</span> <span class="fu">map</span>(patient_class, make_covid_plot)) <span class="sc">%&gt;%</span> </span>
+<span id="cb337-4"><a href="functions.html#cb337-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(plots) <span class="sc">%&gt;%</span> </span>
+<span id="cb337-5"><a href="functions.html#cb337-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">walk</span>(print)</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/make-covid-plot8-1.png" width="672" /><img src="io71-functions_plots_files/figure-html/make-covid-plot8-2.png" width="672" /><img src="io71-functions_plots_files/figure-html/make-covid-plot8-3.png" width="672" /><img src="io71-functions_plots_files/figure-html/make-covid-plot8-4.png" width="672" /><img src="io71-functions_plots_files/figure-html/make-covid-plot8-5.png" width="672" /></p>
 <p>Note that we could also <em>walk</em> the <em>ggsave</em> function if we wanted to save these plots as tiffs or pdfs or png files.</p>
 <p>We can use our more generalizable function <em>make_covid_plot_2</em> in this pipeline if we use <em>map2</em>, which is like <em>map</em>, but for functions with 2 arguments. The arguments of the <em>map2</em> function include the two arguments (<strong>data</strong>, <strong>patient_class</strong>) for making plots, and then the function (<em>make_covid_plot_2</em>).</p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="functions.html#cb208-1" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
-<span id="cb208-2"><a href="functions.html#cb208-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span>patient_class) <span class="sc">%&gt;%</span> </span>
-<span id="cb208-3"><a href="functions.html#cb208-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">plots =</span> <span class="fu">map2</span>(data, patient_class, make_covid_plot_2)) <span class="sc">%&gt;%</span></span>
-<span id="cb208-4"><a href="functions.html#cb208-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(plots) <span class="sc">%&gt;%</span> </span>
-<span id="cb208-5"><a href="functions.html#cb208-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">walk</span>(print)</span></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="functions.html#cb338-1" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
+<span id="cb338-2"><a href="functions.html#cb338-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span>patient_class) <span class="sc">%&gt;%</span> </span>
+<span id="cb338-3"><a href="functions.html#cb338-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">plots =</span> <span class="fu">map2</span>(data, patient_class, make_covid_plot_2)) <span class="sc">%&gt;%</span></span>
+<span id="cb338-4"><a href="functions.html#cb338-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(plots) <span class="sc">%&gt;%</span> </span>
+<span id="cb338-5"><a href="functions.html#cb338-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">walk</span>(print)</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/make-covid-plot9-1.png" width="672" /><img src="io71-functions_plots_files/figure-html/make-covid-plot9-2.png" width="672" /><img src="io71-functions_plots_files/figure-html/make-covid-plot9-3.png" width="672" /><img src="io71-functions_plots_files/figure-html/make-covid-plot9-4.png" width="672" /><img src="io71-functions_plots_files/figure-html/make-covid-plot9-5.png" width="672" /></p>
 <p>This version of the pipeline will automatically process all patient classes in the dataset, whatever they are called, without us having to specify them.</p>
 </div>
-<div id="your-turn-2" class="section level2" number="13.2">
-<h2><span class="header-section-number">13.2</span> Your Turn</h2>
+<div id="your-turn-2" class="section level2" number="17.2">
+<h2><span class="header-section-number">17.2</span> Your Turn</h2>
 <p>Let’s look at how to do this with the <strong>prostate</strong> dataset. We will start with a simple violin and jitter plot of time to recurrence by baseline Gleason score (bgs), in the subgroup where rbc_age_group = 1.</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="functions.html#cb209-1" aria-hidden="true" tabindex="-1"></a>rbc_age_group <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb209-2"><a href="functions.html#cb209-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb209-3"><a href="functions.html#cb209-3" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
-<span id="cb209-4"><a href="functions.html#cb209-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(rbc_age_group <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb209-5"><a href="functions.html#cb209-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb209-6"><a href="functions.html#cb209-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> bgs, </span>
-<span id="cb209-7"><a href="functions.html#cb209-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> time_to_recurrence,</span>
-<span id="cb209-8"><a href="functions.html#cb209-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> bgs) <span class="sc">+</span></span>
-<span id="cb209-9"><a href="functions.html#cb209-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
-<span id="cb209-10"><a href="functions.html#cb209-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb209-11"><a href="functions.html#cb209-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb209-12"><a href="functions.html#cb209-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb209-13"><a href="functions.html#cb209-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Baseline Gleason Score&quot;</span>,</span>
-<span id="cb209-14"><a href="functions.html#cb209-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Time to Recurrence&#39;</span>,</span>
-<span id="cb209-15"><a href="functions.html#cb209-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Preop PSA by baseline Gleason Score for RBC Age: {rbc_age_group}&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="functions.html#cb339-1" aria-hidden="true" tabindex="-1"></a>rbc_age_group <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb339-2"><a href="functions.html#cb339-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb339-3"><a href="functions.html#cb339-3" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb339-4"><a href="functions.html#cb339-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(rbc_age_group <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb339-5"><a href="functions.html#cb339-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb339-6"><a href="functions.html#cb339-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> bgs, </span>
+<span id="cb339-7"><a href="functions.html#cb339-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> time_to_recurrence,</span>
+<span id="cb339-8"><a href="functions.html#cb339-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> bgs) <span class="sc">+</span></span>
+<span id="cb339-9"><a href="functions.html#cb339-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb339-10"><a href="functions.html#cb339-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb339-11"><a href="functions.html#cb339-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb339-12"><a href="functions.html#cb339-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb339-13"><a href="functions.html#cb339-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Baseline Gleason Score&quot;</span>,</span>
+<span id="cb339-14"><a href="functions.html#cb339-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Time to Recurrence&#39;</span>,</span>
+<span id="cb339-15"><a href="functions.html#cb339-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Preop PSA by baseline Gleason Score for RBC Age: {rbc_age_group}&quot;</span>))</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/prostate-plot-1-1.png" width="672" /></p>
 <p>We would like to make this plot for each level of rbc age (rbc_age_group).</p>
 <p>Let’s walk through the process of how to build this into a function, and how to <em>map</em> it across all the values of rbc_age_group.</p>
@@ -636,21 +715,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>and .env$var for an environment variable.</p>
 <p>Edit both sides of logic test in the filter statement in the code chunk below to eliminate hard coding the filter variable and the filter value.</p>
 <p>Then, check that this works for other values by changing the rbc_age_group environmental variable value to 2 or 3.</p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="functions.html#cb210-1" aria-hidden="true" tabindex="-1"></a>rbc_age_group <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb210-2"><a href="functions.html#cb210-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb210-3"><a href="functions.html#cb210-3" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
-<span id="cb210-4"><a href="functions.html#cb210-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(rbc_age_group <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb210-5"><a href="functions.html#cb210-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb210-6"><a href="functions.html#cb210-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> bgs, </span>
-<span id="cb210-7"><a href="functions.html#cb210-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> time_to_recurrence,</span>
-<span id="cb210-8"><a href="functions.html#cb210-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> bgs) <span class="sc">+</span></span>
-<span id="cb210-9"><a href="functions.html#cb210-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
-<span id="cb210-10"><a href="functions.html#cb210-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb210-11"><a href="functions.html#cb210-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb210-12"><a href="functions.html#cb210-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb210-13"><a href="functions.html#cb210-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Baseline Gleason Score&quot;</span>,</span>
-<span id="cb210-14"><a href="functions.html#cb210-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Preoperative PSA&#39;</span>,</span>
-<span id="cb210-15"><a href="functions.html#cb210-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Preop PSA by baseline Gleason Score for RBC Age: {rbc_age_group}&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="functions.html#cb340-1" aria-hidden="true" tabindex="-1"></a>rbc_age_group <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb340-2"><a href="functions.html#cb340-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb340-3"><a href="functions.html#cb340-3" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb340-4"><a href="functions.html#cb340-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(rbc_age_group <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb340-5"><a href="functions.html#cb340-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb340-6"><a href="functions.html#cb340-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> bgs, </span>
+<span id="cb340-7"><a href="functions.html#cb340-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> time_to_recurrence,</span>
+<span id="cb340-8"><a href="functions.html#cb340-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> bgs) <span class="sc">+</span></span>
+<span id="cb340-9"><a href="functions.html#cb340-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb340-10"><a href="functions.html#cb340-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb340-11"><a href="functions.html#cb340-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb340-12"><a href="functions.html#cb340-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb340-13"><a href="functions.html#cb340-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Baseline Gleason Score&quot;</span>,</span>
+<span id="cb340-14"><a href="functions.html#cb340-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Preoperative PSA&#39;</span>,</span>
+<span id="cb340-15"><a href="functions.html#cb340-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Preop PSA by baseline Gleason Score for RBC Age: {rbc_age_group}&quot;</span>))</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/prostate-plot-2-1.png" width="672" /></p>
 <p>Now make this into a function, named <em>make_plot.</em> Edit the chunk below to turn it into a function by</p>
 <ol style="list-style-type: decimal">
@@ -659,34 +738,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>assigning the function to the name <em>make_plot</em></li>
 </ol>
 <p>Then run <em>make_plot</em>(1)</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="functions.html#cb211-1" aria-hidden="true" tabindex="-1"></a>rbc_age_group <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb211-2"><a href="functions.html#cb211-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb211-3"><a href="functions.html#cb211-3" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb211-4"><a href="functions.html#cb211-4" aria-hidden="true" tabindex="-1"></a>  prostate <span class="sc">%&gt;%</span> </span>
-<span id="cb211-5"><a href="functions.html#cb211-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(.data<span class="sc">$</span>rbc_age_group <span class="sc">==</span> .env<span class="sc">$</span>rbc_age_group) <span class="sc">%&gt;%</span> </span>
-<span id="cb211-6"><a href="functions.html#cb211-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb211-7"><a href="functions.html#cb211-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> bgs, </span>
-<span id="cb211-8"><a href="functions.html#cb211-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> time_to_recurrence,</span>
-<span id="cb211-9"><a href="functions.html#cb211-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> bgs) <span class="sc">+</span></span>
-<span id="cb211-10"><a href="functions.html#cb211-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
-<span id="cb211-11"><a href="functions.html#cb211-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb211-12"><a href="functions.html#cb211-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb211-13"><a href="functions.html#cb211-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb211-14"><a href="functions.html#cb211-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Baseline Gleason Score&quot;</span>,</span>
-<span id="cb211-15"><a href="functions.html#cb211-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Preoperative PSA&#39;</span>,</span>
-<span id="cb211-16"><a href="functions.html#cb211-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Preop PSA by baseline Gleason Score for RBC Age: {rbc_age_group}&quot;</span>))</span>
-<span id="cb211-17"><a href="functions.html#cb211-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="functions.html#cb341-1" aria-hidden="true" tabindex="-1"></a>rbc_age_group <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb341-2"><a href="functions.html#cb341-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb341-3"><a href="functions.html#cb341-3" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb341-4"><a href="functions.html#cb341-4" aria-hidden="true" tabindex="-1"></a>  prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb341-5"><a href="functions.html#cb341-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(.data<span class="sc">$</span>rbc_age_group <span class="sc">==</span> .env<span class="sc">$</span>rbc_age_group) <span class="sc">%&gt;%</span> </span>
+<span id="cb341-6"><a href="functions.html#cb341-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb341-7"><a href="functions.html#cb341-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> bgs, </span>
+<span id="cb341-8"><a href="functions.html#cb341-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> time_to_recurrence,</span>
+<span id="cb341-9"><a href="functions.html#cb341-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> bgs) <span class="sc">+</span></span>
+<span id="cb341-10"><a href="functions.html#cb341-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb341-11"><a href="functions.html#cb341-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb341-12"><a href="functions.html#cb341-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb341-13"><a href="functions.html#cb341-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb341-14"><a href="functions.html#cb341-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Baseline Gleason Score&quot;</span>,</span>
+<span id="cb341-15"><a href="functions.html#cb341-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Preoperative PSA&#39;</span>,</span>
+<span id="cb341-16"><a href="functions.html#cb341-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Preop PSA by baseline Gleason Score for RBC Age: {rbc_age_group}&quot;</span>))</span>
+<span id="cb341-17"><a href="functions.html#cb341-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Now, let’s automate calling the function, with a vector of the values of rbc_age_group, and running the function over each of these with map(vector, function).</p>
 <p>Edit the vector and function in the code chunk below to use the <em>map</em> function to create a list of plots.</p>
 <p>Hint - the vector is provided, and your new function name is <em>make_plot.</em></p>
 <p>When it is working, simplify the plots1-3 by replacing them with <em>walk</em>(plots, print)</p>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="functions.html#cb212-1" aria-hidden="true" tabindex="-1"></a>rbc_age_group <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
-<span id="cb212-2"><a href="functions.html#cb212-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb212-3"><a href="functions.html#cb212-3" aria-hidden="true" tabindex="-1"></a>plots <span class="ot">&lt;-</span> <span class="fu">map</span>(vector, func)</span>
-<span id="cb212-4"><a href="functions.html#cb212-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb212-5"><a href="functions.html#cb212-5" aria-hidden="true" tabindex="-1"></a>plots[[<span class="dv">1</span>]]</span>
-<span id="cb212-6"><a href="functions.html#cb212-6" aria-hidden="true" tabindex="-1"></a>plots[[<span class="dv">2</span>]]</span>
-<span id="cb212-7"><a href="functions.html#cb212-7" aria-hidden="true" tabindex="-1"></a>plots[[<span class="dv">3</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="functions.html#cb342-1" aria-hidden="true" tabindex="-1"></a>rbc_age_group <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb342-2"><a href="functions.html#cb342-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb342-3"><a href="functions.html#cb342-3" aria-hidden="true" tabindex="-1"></a>plots <span class="ot">&lt;-</span> <span class="fu">map</span>(vector, func)</span>
+<span id="cb342-4"><a href="functions.html#cb342-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb342-5"><a href="functions.html#cb342-5" aria-hidden="true" tabindex="-1"></a>plots[[<span class="dv">1</span>]]</span>
+<span id="cb342-6"><a href="functions.html#cb342-6" aria-hidden="true" tabindex="-1"></a>plots[[<span class="dv">2</span>]]</span>
+<span id="cb342-7"><a href="functions.html#cb342-7" aria-hidden="true" tabindex="-1"></a>plots[[<span class="dv">3</span>]]</span></code></pre></div>
 <p>Now let’s make this a more generalized function with 2 arguments - data, and rbc_age_group.</p>
 <p>Edit the code chunk below to create a new function, <em>make_plot2</em>. Remember to:</p>
 <ol style="list-style-type: decimal">
@@ -697,49 +776,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Replace the filter step with a separate (outside the function) filter step to filter for rbc_age_group ==1, that saves the result to data_prostate_1</li>
 <li>Then run <em>make_plot2</em></li>
 </ol>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="functions.html#cb213-1" aria-hidden="true" tabindex="-1"></a>rbc_age_group <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb213-2"><a href="functions.html#cb213-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb213-3"><a href="functions.html#cb213-3" aria-hidden="true" tabindex="-1"></a>make_plot2 <span class="ot">&lt;-</span> <span class="cf">function</span>(arg1, arg2){</span>
-<span id="cb213-4"><a href="functions.html#cb213-4" aria-hidden="true" tabindex="-1"></a>  prostate <span class="sc">%&gt;%</span> </span>
-<span id="cb213-5"><a href="functions.html#cb213-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(.data<span class="sc">$</span>rbc_age_group <span class="sc">==</span> .env<span class="sc">$</span>rbc_age_group) <span class="sc">%&gt;%</span> </span>
-<span id="cb213-6"><a href="functions.html#cb213-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb213-7"><a href="functions.html#cb213-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> bgs, </span>
-<span id="cb213-8"><a href="functions.html#cb213-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> time_to_recurrence,</span>
-<span id="cb213-9"><a href="functions.html#cb213-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> bgs) <span class="sc">+</span></span>
-<span id="cb213-10"><a href="functions.html#cb213-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
-<span id="cb213-11"><a href="functions.html#cb213-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb213-12"><a href="functions.html#cb213-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb213-13"><a href="functions.html#cb213-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb213-14"><a href="functions.html#cb213-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Baseline Gleason Score&quot;</span>,</span>
-<span id="cb213-15"><a href="functions.html#cb213-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Preoperative PSA&#39;</span>,</span>
-<span id="cb213-16"><a href="functions.html#cb213-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Preop PSA by baseline Gleason Score for RBC Age: {rbc_age_group}&quot;</span>))</span>
-<span id="cb213-17"><a href="functions.html#cb213-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb213-18"><a href="functions.html#cb213-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb213-19"><a href="functions.html#cb213-19" aria-hidden="true" tabindex="-1"></a>data_prostate_1 <span class="ot">&lt;-</span> prostate <span class="sc">%&gt;%</span> <span class="fu">filter</span>(rbc_age_group <span class="sc">==</span> <span class="dv">1</span>)</span>
-<span id="cb213-20"><a href="functions.html#cb213-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb213-21"><a href="functions.html#cb213-21" aria-hidden="true" tabindex="-1"></a><span class="fu">make_plot2</span>(data_prostate_1, <span class="at">rbc_age_group =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="functions.html#cb343-1" aria-hidden="true" tabindex="-1"></a>rbc_age_group <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb343-2"><a href="functions.html#cb343-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb343-3"><a href="functions.html#cb343-3" aria-hidden="true" tabindex="-1"></a>make_plot2 <span class="ot">&lt;-</span> <span class="cf">function</span>(arg1, arg2){</span>
+<span id="cb343-4"><a href="functions.html#cb343-4" aria-hidden="true" tabindex="-1"></a>  prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb343-5"><a href="functions.html#cb343-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(.data<span class="sc">$</span>rbc_age_group <span class="sc">==</span> .env<span class="sc">$</span>rbc_age_group) <span class="sc">%&gt;%</span> </span>
+<span id="cb343-6"><a href="functions.html#cb343-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb343-7"><a href="functions.html#cb343-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> bgs, </span>
+<span id="cb343-8"><a href="functions.html#cb343-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> time_to_recurrence,</span>
+<span id="cb343-9"><a href="functions.html#cb343-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> bgs) <span class="sc">+</span></span>
+<span id="cb343-10"><a href="functions.html#cb343-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb343-11"><a href="functions.html#cb343-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb343-12"><a href="functions.html#cb343-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb343-13"><a href="functions.html#cb343-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb343-14"><a href="functions.html#cb343-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Baseline Gleason Score&quot;</span>,</span>
+<span id="cb343-15"><a href="functions.html#cb343-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Preoperative PSA&#39;</span>,</span>
+<span id="cb343-16"><a href="functions.html#cb343-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Preop PSA by baseline Gleason Score for RBC Age: {rbc_age_group}&quot;</span>))</span>
+<span id="cb343-17"><a href="functions.html#cb343-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb343-18"><a href="functions.html#cb343-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb343-19"><a href="functions.html#cb343-19" aria-hidden="true" tabindex="-1"></a>data_prostate_1 <span class="ot">&lt;-</span> prostate <span class="sc">%&gt;%</span> <span class="fu">filter</span>(rbc_age_group <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb343-20"><a href="functions.html#cb343-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb343-21"><a href="functions.html#cb343-21" aria-hidden="true" tabindex="-1"></a><span class="fu">make_plot2</span>(data_prostate_1, <span class="at">rbc_age_group =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p>Now let’s try to use make_plot in a tidy pipeline in the chunk below. In the chunk below, you want to nest the data by <strong>rbc_age_group</strong>,</p>
 <p>and map the <em>make_plot</em> function over the values of <strong>rbc_age_group</strong>.</p>
 <p>Edit both of the var values in the code chunk below to <strong>rbc_age_group</strong>.</p>
 <p>Run it to see the nested tibbles and nested plots in your new dataframe.</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="functions.html#cb214-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
-<span id="cb214-2"><a href="functions.html#cb214-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span>var) <span class="sc">%&gt;%</span> </span>
-<span id="cb214-3"><a href="functions.html#cb214-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">plots =</span> <span class="fu">map</span>(var, make_plot))</span></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="functions.html#cb344-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb344-2"><a href="functions.html#cb344-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span>var) <span class="sc">%&gt;%</span> </span>
+<span id="cb344-3"><a href="functions.html#cb344-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">plots =</span> <span class="fu">map</span>(var, make_plot))</span></code></pre></div>
 <p>Now pull out the plots and print them with <em>pull</em> and <em>walk</em> by editing the code chunk below. Pipe this code into the <em>pull</em> and <em>walk</em> functions by adding two lines of code. Remember that the argument for <em>pull</em> is the <strong>plots</strong>column. Remember that the argument for <em>walk</em> is the <em>print</em> function.</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="functions.html#cb215-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
-<span id="cb215-2"><a href="functions.html#cb215-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span>rbc_age_group) <span class="sc">%&gt;%</span> </span>
-<span id="cb215-3"><a href="functions.html#cb215-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">plots =</span> <span class="fu">map</span>(rbc_age_group, make_plot))</span></code></pre></div>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="functions.html#cb345-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb345-2"><a href="functions.html#cb345-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span>rbc_age_group) <span class="sc">%&gt;%</span> </span>
+<span id="cb345-3"><a href="functions.html#cb345-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">plots =</span> <span class="fu">map</span>(rbc_age_group, make_plot))</span></code></pre></div>
 <p>Now let’s make this even more generalizable with the <em>make_plot2</em> functiion, which has 2 arguments, for <strong>data</strong> and <strong>rbc_age_group</strong>.</p>
 <p>Edit the code chunk below to replace arg1 with the <strong>data</strong> column, and func with <em>make_plot2</em>. See if this runs</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="functions.html#cb216-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
-<span id="cb216-2"><a href="functions.html#cb216-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span>rbc_age_group) <span class="sc">%&gt;%</span> </span>
-<span id="cb216-3"><a href="functions.html#cb216-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">plots =</span> <span class="fu">map2</span>(arg1, rbc_age_group, func)) <span class="sc">%&gt;%</span> </span>
-<span id="cb216-4"><a href="functions.html#cb216-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(plots) <span class="sc">%&gt;%</span> </span>
-<span id="cb216-5"><a href="functions.html#cb216-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">walk</span>(print)</span></code></pre></div>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="functions.html#cb346-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb346-2"><a href="functions.html#cb346-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span>rbc_age_group) <span class="sc">%&gt;%</span> </span>
+<span id="cb346-3"><a href="functions.html#cb346-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">plots =</span> <span class="fu">map2</span>(arg1, rbc_age_group, func)) <span class="sc">%&gt;%</span> </span>
+<span id="cb346-4"><a href="functions.html#cb346-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(plots) <span class="sc">%&gt;%</span> </span>
+<span id="cb346-5"><a href="functions.html#cb346-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">walk</span>(print)</span></code></pre></div>
 <p>This version of the pipeline should run for all values of rbc_age_group.</p>
 </div>
-<div id="freestyle" class="section level2" number="13.3">
-<h2><span class="header-section-number">13.3</span> Freestyle</h2>
+<div id="freestyle" class="section level2" number="17.3">
+<h2><span class="header-section-number">17.3</span> Freestyle</h2>
 <p>Now try this on your own - and use the outline mode to jump back and forth to previous code chunks to make this easier.</p>
 <ol style="list-style-type: decimal">
 <li>Make a plot of age (on the y axis) vs by parity (x axis) in the <strong>infert</strong> dataset with violin and jitter plots, as in the prostate example prostate-plot-1. This should be filtered for education == “0-5yrs”. Edit to make appropriate axis labels as appropriate.</li>
@@ -752,8 +831,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Now make a nested and generalizable version for all values of education, using your <em>make_infert_plots2</em> function, as in prostate-plot-8</li>
 </ol>
 </div>
-<div id="read-more" class="section level2" number="13.4">
-<h2><span class="header-section-number">13.4</span> Read More</h2>
+<div id="read-more" class="section level2" number="17.4">
+<h2><span class="header-section-number">17.4</span> Read More</h2>
 <p>More on these topics can be found in</p>
 <p>R for Data Science - Chapter 19: <a href="https://r4ds.had.co.nz/functions.html">Functions</a></p>
 <p>R for Data Science - Chapter 21.5: <a href="https://r4ds.had.co.nz/iteration.html#the-map-functions">Map Functions</a></p>
@@ -762,6 +841,108 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </div>
 </div>
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  if (t = document.getElementById("webex-total_correct")) {
+    t.innerHTML =
+      document.getElementsByClassName("webex-correct").length + " of " +
+      document.getElementsByClassName("webex-solveme").length + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer !== "" & real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+  } else {
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+  }
+
+  update_total_correct();
+}
+
+</script>
             </section>
 
           </div>

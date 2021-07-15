@@ -1,5 +1,9 @@
 bookdown::gitbook:
-  css: style.css
+  default: true
+  smart: false
+  includes:
+    after_body: include/webex.js
+  css: [include/webex.css, include/style.css]
   config:
     toc:
       before: |

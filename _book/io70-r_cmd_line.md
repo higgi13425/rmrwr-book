@@ -76,7 +76,7 @@ whoami;date
 
 ```
 ## peterhiggins
-## Thu Jul  8 18:18:19 EDT 2021
+## Wed Jul 14 16:11:19 EDT 2021
 ```
 :::
 
@@ -133,6 +133,7 @@ ls
 ## 2020-Jun-05 AGA IMIBD meeting notest.docx
 ## 2020_Higgins_ClinResIBD_biosketch.doc
 ## 2021 AGA Invited Speaker Session Basic Hybrid Example.pdf
+## 2021-07-13_Higgins_WH_signed_letter.docx
 ## 2021.Biobanking Program_InVivo_DRAFT-6.14.2021.docx
 ## 2021.Biobanking Program_InVivo_PDRH-6.21.docx
 ## 2021.Higgins AGA Distinguished Clinician.CO.docx
@@ -335,6 +336,7 @@ ls
 ## Perils of Excel.pptx
 ## Personal statement version 3!.docx
 ## Peter Higgins 2021 Vision Statment for the NSAC.docx
+## Peter Higgins_Annual_Review.docx
 ## Peter_Higgins_photo_headshot.jpg
 ## Pfizer_Contract_for_Peter_Higgins_-_RD-20-D11.pdf
 ## Pitch Letter - S is for Saffron.docx

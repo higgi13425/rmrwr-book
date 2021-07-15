@@ -406,6 +406,8 @@ glimpse(scurvy_cols2)
 ## $ lassitude_d6              <fct> 2_moderate, 3_severe, 3_…
 ```
 
+### Try it Yourself
+
 Now try this yourself with a *.tsv file.
 The file `strep_tb.tsv` is located in the same GitHub folder, and you can use the same url_stem.
 
@@ -419,7 +421,7 @@ Edit it and run it as directed below.
 
 This version of the code chunk will read in every column as the character data type.
 This is OK, but not quite right.
-Edit the `col_types` string to make:
+Now edit the `col_types` string to make:
 
 -   both doses numeric (n or d)
 -   `gender` a factor (f)
@@ -430,8 +432,8 @@ Edit the `col_types` string to make:
 
 
 ```r
-strep_tb_cols <- read_tsv(
-    file = glue(url_stem, 'data/strep_tb.tsv'),
+strep_tb_cols <- read_---(
+    file = glue(url_stem, 'data/----.tsv'),
       col_types = "ccccccccccccc")
 
 glimpse(strep_tb_cols)
@@ -446,7 +448,7 @@ There are several helpful functions and packages to get you started in exploring
 
 The *glimpse()* function is part of the tidyverse, and is a helpful way to see a bit of all of the variables in a dataset.
 Let's try this with the scurvy dataset, which we have already assigned to the object `scurvy` in the working Environment.
-Just put the object name as an argument withing the *glimpse()* function (inside the parentheses), as below.
+Just put the object name as an argument within the *glimpse()* function (inside the parentheses), as below.
 Run the code chunk below to get the glimpse() output.
 
 
@@ -471,18 +473,30 @@ The *glimpse()* function output tells you that there are 12 rows (observations) 
 Then it lists each of the 8 variables, followed by the data type, and the first few values (or as much as will fit in the width of your Console pane).
 We can see that study_id and dosing_regimen_for_scurvy are both of the `character` (aka string) data type, and the other 6 variables are factors.
 
-Try this out yourself.
+### Try this out yourself.
+
 What can you learn about the strep_tb dataset with *glimpse()*?
 Edit the code chunk below to find out about strep_tb.
 
 
 ```r
-glimpse(strep_tb)
+glimpse(----)
 ```
 
-Test yourself\> - which variable is the logical data type?
-- which variables are the dbl numeric data type?
+### Test yourself on strep_tb
+
+- which variable is the logical data type? 
+
+<select class='webex-solveme' data-answer='["improved"]'> <option></option> <option>baseline_esr</option> <option>improved</option> <option>patient_id</option></select>
+
+- which variable is the dbl numeric data type?
+
+<select class='webex-solveme' data-answer='["rad_num"]'> <option></option> <option>arm</option> <option>patient_id</option> <option>rad_num</option></select>
+
 - How many observations are in this dataset?
+
+<input class='webex-solveme nospaces' size='3' data-answer='["107"]'/>
+
 
 ### Examining Structure with *str()*
 
@@ -517,6 +531,22 @@ Then you see [12 x 8], which means that there are 12 rows and 8 columns - the de
 Then you learn that this is an S3 object, that is a tbl_df (tibble), and a tbl, and also a data.frame).
 Then you get a listing of each variable, data type, and a bit of the data, much like *glimpse()*.
 Another extra detail provided by str() is that it tells you some of the levels of each factor variable, and then shows these as integers (how the data is actually stored).
+
+### Test yourself on the scurvy dataset
+
+- what is the dose of cider? 
+
+<select class='webex-solveme' data-answer='["1 quart per day"]'> <option></option> <option>25 drops</option> <option>1 quart per day</option> <option>one-half rood</option></select>
+
+- how many levels of gum_rot are there?
+
+<input class='webex-solveme nospaces' size='1' data-answer='["4"]'/>
+
+- Which numeric value indicates 'fit for duty'?
+
+<input class='webex-solveme nospaces' size='1' data-answer='["1"]'/>
+
+
 Note that you can also use *str()* and *glimpse()* on a single variable.
 You often use this approach when you get an error message that tells you that you have the wrong data type.
 Try this with the strep_tb dataset variable `patient_id` by running the code chunk below.
@@ -625,7 +655,7 @@ tail(strep_tb)
 ```
 
 Note that since these are tibbles, they will only print the columns that will fit into your Console pane.
-You can see all variables and the whole width (though it will wrap around to new lines) by either (1) converting these to a data frame first, to avoid tibble behavior, or (2) by using print, which has a width argument that allows you to control the number of columns.
+You can see all variables and the whole width (though it will wrap around to new lines) by either (1) converting these to a data frame first, to avoid tibble behavior, or (2) by using print, which has a width argument that allows you to control the number of columns (it also has an *n* argument that lets you print all rows).
 Run the code chunk below to see how this is different.
 
 
@@ -705,6 +735,17 @@ print(tail(strep_tb), width = Inf)
 ```
 
 It is actually much easier to see the full width and height of a data set by scrolling, which you can do when you *View()* a dataset in the RStudio viewer. Try this out in the Console pane, with `View(strep_tb)`.
+
+### Test yourself on the printing tibbles
+
+- What function (and argument) let you print all the columns of a tibble?
+
+<select class='webex-solveme' data-answer='["print(x, width=Inf)"]'> <option></option> <option>print(x, width=Inf)</option> <option>filter(starts_with("width"))</option> <option>sum(na.rm=TRUE)</option></select>
+
+- What function (and argument) let you print all the *rows* of a tibble?
+
+<select class='webex-solveme' data-answer='["print(x, n=Inf)"]'> <option></option> <option>filter(ends_with("all"))</option> <option>median(na.rm=TRUE)</option> <option>print(x, n=Inf)</option></select>
+
 If you just want a quick view of a few critical columns of your data, you can obtain this with the *select()* function, as in the code chunk below.
 Note that if you want to look at a random sample of your dataset, rather than the head or tail, you can use *sample_frac()* or *sample_n()* to do this.
 See how this is used by running the code chunk below, which uses a 10% random sample of strep_tb to check that the mutate steps to generate the variables `rad_num` and `improved` worked correctly.
@@ -723,15 +764,15 @@ strep_tb %>%
 ##    <fct>                          <dbl> <lgl>   
 ##  1 5_Moderate_improvement             5 TRUE    
 ##  2 6_Considerable_improvement         6 TRUE    
-##  3 6_Considerable_improvement         6 TRUE    
-##  4 6_Considerable_improvement         6 TRUE    
-##  5 1_Death                            1 FALSE   
+##  3 5_Moderate_improvement             5 TRUE    
+##  4 5_Moderate_improvement             5 TRUE    
+##  5 2_Considerable_deterioration       2 FALSE   
 ##  6 1_Death                            1 FALSE   
-##  7 2_Considerable_deterioration       2 FALSE   
-##  8 6_Considerable_improvement         6 TRUE    
-##  9 6_Considerable_improvement         6 TRUE    
-## 10 3_Moderate_deterioration           3 FALSE   
-## 11 3_Moderate_deterioration           3 FALSE
+##  7 6_Considerable_improvement         6 TRUE    
+##  8 3_Moderate_deterioration           3 FALSE   
+##  9 1_Death                            1 FALSE   
+## 10 5_Moderate_improvement             5 TRUE    
+## 11 2_Considerable_deterioration       2 FALSE
 ```
 
 ## Reading Excel Files with readxl
@@ -784,6 +825,21 @@ read_excel(path = 'data/paulolol.xlsx',
 ## 13 <NA>                mean pla… <NA>   159.75  91.25 <NA>
 ```
 
+### Test yourself on strep_tb
+
+- which argument in read_excel lets you skip rows of commentary? 
+
+<select class='webex-solveme' data-answer='["skip"]'> <option></option> <option>sheet</option> <option>skip</option> <option>path</option></select>
+
+- which argument in read_excel lets you pick which spreadsheet tab to read? 
+
+<select class='webex-solveme' data-answer='["sheet"]'> <option></option> <option>sheet</option> <option>skip</option> <option>path</option></select>
+
+- How many missing (NA) values are in this dataset?
+
+<input class='webex-solveme nospaces' size='2' data-answer='["15"]'/>
+
+
 ## More exploration with skimr and DataExplorer
 
 ## Other strange file types with rio
@@ -802,30 +858,18 @@ Numeric - integer and double Character - string Logical - TRUE/FALSE Dates - an 
 
 ## Chapter Challenges
 
-1. There is a file named "paulolol.xlsx" with the path of 'data/paulolol.xlsx'. A picture of this problematic file is shown below.
+1. There is a file named "paulolol.xlsx" with the path of 'data/paulolol.xlsx'. A picture of this problematic file is shown below.<br>
+
 ![paulolol](images/paulolol.png)
 
 - Read in this file with the {readxl} package. Just for fun, try this see how this turns out with no additional arguments.
 - Be sure to skip the problematic non-data first few rows
 - Be sure to exclude the problematic non-data calculations below the table.
 
-
-2. Our intrepid Investigator has inserted a chart in place of his data table on sheet 1, and moved the data table to a 2nd sheet named 'data', and placed in the top left corner, at the suggestion of his harried statistician, in a new file with the path of 'data/paulolol2.xlsx"
-
-- Try reading this file in with read_excel()
-- read the help file `help(read_excel)` to figure out how to read in the data from this excel file.
-
-## Future forms of data ingestion
-
-- reading data from the web with readr
-- reading data from Google Sheets with googlesheets
-- reading data from web tables with rvest
-- reading data from a REDCap database with REDCapR
-
-
-## Solutions to Challenges
-
 Solution to Challenge 1: paulolol.xlsx
+
+<div class='webex-solution'><button>Show Me Solution 1</button>
+
 
 ```r
 read_excel(path = 'data/paulolol.xlsx',
@@ -847,8 +891,18 @@ read_excel(path = 'data/paulolol.xlsx',
 ## 8      8       149     148       92     93 placebo
 ```
 
+</div>
+
+
+2. Our intrepid Investigator has inserted a chart in place of his data table on sheet 1, and moved the data table to a 2nd sheet named 'data', and placed in the top left corner, at the suggestion of his harried statistician, in a new file with the path of 'data/paulolol2.xlsx"
+
+- Try reading this file in with read_excel()
+- read the help file `help(read_excel)` to figure out how to read in the data from this excel file.
 
 Solution to Challenge 2: paulolol2.xlsx
+
+<div class='webex-solution'><button>Show Me Solution 2</button>
+
 
 ```r
 read_excel(path = 'data/paulolol2.xlsx',
@@ -868,3 +922,14 @@ read_excel(path = 'data/paulolol2.xlsx',
 ## 7      7       151     134      101     86 paulolol 
 ## 8      8       149     148       92     93 placebo
 ```
+
+</div>
+
+
+## Future forms of data ingestion
+- reading files from SAS, Stata, SPSS, Systat, Minitab, RDA or RData (haven)
+- https://www.datacamp.com/community/tutorials/r-data-import-tutorial?utm_source=adwords_ppc&utm_campaignid=1658343521&utm_adgroupid=63833880415&utm_device=c&utm_keyword=%2Bread%20%2Bdata%20%2Br&utm_matchtype=b&utm_network=g&utm_adpostion=&utm_creative=469789579368&utm_targetid=aud-392016246653:kwd-309793905111&utm_loc_interest_ms=&utm_loc_physical_ms=9016851&gclid=Cj0KCQjwxJqHBhC4ARIsAChq4auwh82WzCiJsUDzDOiaABetyowW0CXmTLbUFkQmnl1pn4Op9xcCcdQaAhMWEALw_wcB
+- reading data from the web with readr
+- reading data from Google Sheets with googlesheets
+- reading data from web tables with rvest
+

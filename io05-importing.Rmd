@@ -14,6 +14,7 @@ library(readxl)
 library(skimr)
 library(here)
 library(glue)
+library(webex)
 scurvy <- medicaldata::scurvy
 write_csv(scurvy, 'data/scurvy.csv')
 strep_tb <- medicaldata::strep_tb
@@ -223,6 +224,8 @@ scurvy_cols2 <- read_csv(
 glimpse(scurvy_cols2)
 ```
 
+### Try it Yourself
+
 Now try this yourself with a *.tsv file.
 The file `strep_tb.tsv` is located in the same GitHub folder, and you can use the same url_stem.
 
@@ -236,7 +239,7 @@ Edit it and run it as directed below.
 
 This version of the code chunk will read in every column as the character data type.
 This is OK, but not quite right.
-Edit the `col_types` string to make:
+Now edit the `col_types` string to make:
 
 -   both doses numeric (n or d)
 -   `gender` a factor (f)
@@ -246,8 +249,8 @@ Edit the `col_types` string to make:
 -   `improved` into a logical (l)
 
 ```{r, error=TRUE, eval=FALSE}
-strep_tb_cols <- read_tsv(
-    file = glue(url_stem, 'data/strep_tb.tsv'),
+strep_tb_cols <- read_---(
+    file = glue(url_stem, 'data/----.tsv'),
       col_types = "ccccccccccccc")
 
 glimpse(strep_tb_cols)
@@ -262,7 +265,7 @@ There are several helpful functions and packages to get you started in exploring
 
 The *glimpse()* function is part of the tidyverse, and is a helpful way to see a bit of all of the variables in a dataset.
 Let's try this with the scurvy dataset, which we have already assigned to the object `scurvy` in the working Environment.
-Just put the object name as an argument withing the *glimpse()* function (inside the parentheses), as below.
+Just put the object name as an argument within the *glimpse()* function (inside the parentheses), as below.
 Run the code chunk below to get the glimpse() output.
 
 ```{r}
@@ -273,17 +276,29 @@ The *glimpse()* function output tells you that there are 12 rows (observations) 
 Then it lists each of the 8 variables, followed by the data type, and the first few values (or as much as will fit in the width of your Console pane).
 We can see that study_id and dosing_regimen_for_scurvy are both of the `character` (aka string) data type, and the other 6 variables are factors.
 
-Try this out yourself.
+### Try this out yourself.
+
 What can you learn about the strep_tb dataset with *glimpse()*?
 Edit the code chunk below to find out about strep_tb.
 
 ```{r, error=TRUE, eval=FALSE}
-glimpse(strep_tb)
+glimpse(----)
 ```
 
-Test yourself\> - which variable is the logical data type?
-- which variables are the dbl numeric data type?
+### Test yourself on strep_tb
+
+- which variable is the logical data type? 
+
+`r webex::mcq(c('baseline_esr', answer = 'improved', 'patient_id'))`
+
+- which variable is the dbl numeric data type?
+
+`r webex::mcq(c('arm', 'patient_id', answer = 'rad_num'))`
+
 - How many observations are in this dataset?
+
+`r webex::fitb('107')`
+
 
 ### Examining Structure with *str()*
 
@@ -305,6 +320,22 @@ Then you see [12 x 8], which means that there are 12 rows and 8 columns - the de
 Then you learn that this is an S3 object, that is a tbl_df (tibble), and a tbl, and also a data.frame).
 Then you get a listing of each variable, data type, and a bit of the data, much like *glimpse()*.
 Another extra detail provided by str() is that it tells you some of the levels of each factor variable, and then shows these as integers (how the data is actually stored).
+
+### Test yourself on the scurvy dataset
+
+- what is the dose of cider? 
+
+`r webex::mcq(c('25 drops', answer = '1 quart per day', 'one-half rood'))`
+
+- how many levels of gum_rot are there?
+
+`r webex::fitb('4')`
+
+- Which numeric value indicates 'fit for duty'?
+
+`r webex::fitb('1')`
+
+
 Note that you can also use *str()* and *glimpse()* on a single variable.
 You often use this approach when you get an error message that tells you that you have the wrong data type.
 Try this with the strep_tb dataset variable `patient_id` by running the code chunk below.
@@ -341,7 +372,7 @@ tail(strep_tb)
 ```
 
 Note that since these are tibbles, they will only print the columns that will fit into your Console pane.
-You can see all variables and the whole width (though it will wrap around to new lines) by either (1) converting these to a data frame first, to avoid tibble behavior, or (2) by using print, which has a width argument that allows you to control the number of columns.
+You can see all variables and the whole width (though it will wrap around to new lines) by either (1) converting these to a data frame first, to avoid tibble behavior, or (2) by using print, which has a width argument that allows you to control the number of columns (it also has an *n* argument that lets you print all rows).
 Run the code chunk below to see how this is different.
 
 ```{r}
@@ -350,6 +381,17 @@ print(tail(strep_tb), width = Inf)
 ```
 
 It is actually much easier to see the full width and height of a data set by scrolling, which you can do when you *View()* a dataset in the RStudio viewer. Try this out in the Console pane, with `View(strep_tb)`.
+
+### Test yourself on the printing tibbles
+
+- What function (and argument) let you print all the columns of a tibble?
+
+`r webex::mcq(c(answer = 'print(x, width=Inf)', 'filter(starts_with("width"))','sum(na.rm=TRUE)'))`
+
+- What function (and argument) let you print all the *rows* of a tibble?
+
+`r webex::mcq(c('filter(ends_with("all"))','median(na.rm=TRUE)', answer = 'print(x, n=Inf)'))`
+
 If you just want a quick view of a few critical columns of your data, you can obtain this with the *select()* function, as in the code chunk below.
 Note that if you want to look at a random sample of your dataset, rather than the head or tail, you can use *sample_frac()* or *sample_n()* to do this.
 See how this is used by running the code chunk below, which uses a 10% random sample of strep_tb to check that the mutate steps to generate the variables `rad_num` and `improved` worked correctly.
@@ -383,6 +425,21 @@ read_excel(path = 'data/paulolol.xlsx',
 
 ```
 
+### Test yourself on strep_tb
+
+- which argument in read_excel lets you skip rows of commentary? 
+
+`r webex::mcq(c('sheet', answer = 'skip', 'path'))`
+
+- which argument in read_excel lets you pick which spreadsheet tab to read? 
+
+`r webex::mcq(c(answer = 'sheet', 'skip', 'path'))`
+
+- How many missing (NA) values are in this dataset?
+
+`r webex::fitb('15')`
+
+
 ## More exploration with skimr and DataExplorer
 
 ## Other strange file types with rio
@@ -409,11 +466,27 @@ Numeric - integer and double Character - string Logical - TRUE/FALSE Dates - an 
 - Be sure to skip the problematic non-data first few rows
 - Be sure to exclude the problematic non-data calculations below the table.
 
+Solution to Challenge 1: paulolol.xlsx
+`r hide("Show Me Solution 1")`
+```{r}
+read_excel(path = 'data/paulolol.xlsx',
+           skip = 3,
+           n_max = 8)
+```
+`r unhide()`
 
 2. Our intrepid Investigator has inserted a chart in place of his data table on sheet 1, and moved the data table to a 2nd sheet named 'data', and placed in the top left corner, at the suggestion of his harried statistician, in a new file with the path of 'data/paulolol2.xlsx"
 
 - Try reading this file in with read_excel()
 - read the help file `help(read_excel)` to figure out how to read in the data from this excel file.
+
+Solution to Challenge 2: paulolol2.xlsx
+`r hide("Show Me Solution 2")`
+```{r}
+read_excel(path = 'data/paulolol2.xlsx',
+           sheet = 'data')
+```
+`r unhide()`
 
 ## Future forms of data ingestion
 - reading files from SAS, Stata, SPSS, Systat, Minitab, RDA or RData (haven)
@@ -421,21 +494,4 @@ Numeric - integer and double Character - string Logical - TRUE/FALSE Dates - an 
 - reading data from the web with readr
 - reading data from Google Sheets with googlesheets
 - reading data from web tables with rvest
-- reading data from a REDCap database with REDCapR
 
-
-## Solutions to Challenges
-
-Solution to Challenge 1: paulolol.xlsx
-```{r}
-read_excel(path = 'data/paulolol.xlsx',
-           skip = 3,
-           n_max = 8)
-```
-
-
-Solution to Challenge 2: paulolol2.xlsx
-```{r}
-read_excel(path = 'data/paulolol2.xlsx',
-           sheet = 'data')
-```
