@@ -117,18 +117,19 @@ read_csv(glue(url_stem, 'data/scurvy.csv'))
 ```
 
 ```
-## 
+## Rows: 12 Columns: 8
+```
+
+```
 ## ── Column specification ────────────────────────────────────
-## cols(
-##   study_id = col_character(),
-##   treatment = col_character(),
-##   dosing_regimen_for_scurvy = col_character(),
-##   gum_rot_d6 = col_character(),
-##   skin_sores_d6 = col_character(),
-##   weakness_of_the_knees_d6 = col_character(),
-##   lassitude_d6 = col_character(),
-##   fit_for_duty_d6 = col_character()
-## )
+## Delimiter: ","
+## chr (8): study_id, treatment, dosing_regimen_for_scurvy,...
+```
+
+```
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
 
 ```
@@ -153,17 +154,19 @@ read_csv(glue(url_stem, 'data/scurvy.csv'))
 ```
 
 Let's look at what was extracted from the csv file.
+This starts after the url_stem (web address) is printed out.
+
 The Console pane has a print out of the Column specification, followed by the data in rectangular format.
-In the Column specification, each column is named, and a data type has been assigned to each column.
-This is done 'automagically', as the read_csv() function reads the first 1000 rows, then guesses what data type is present in each column (variable).
+In the Column specification, the delimiter between items of data is identified (a comma), and a listing of variables with the `character` (chr) data type is printed. There are no non-character data types in this particular dataset.
+The 'guessing' of what data type is appropriate for each variable is done 'automagically', as the read_csv() function reads the first 1000 rows, then guesses what data type is present in each column (variable).
 It is often conservative, and in this case, made all of these columns into character variables (also called strings).
 You could argue that the col_character() assignment should be numeric for the study_id variable, or that the Likert scales used for outcomes like gum_rot_d6 and skin_sores_d6 should be coded as ordinal variables, known as ordered factors in R.
-You will learn to control these data types during data import with the `col_spec` argument.
+You will learn to control these data types during data import with the `spec()` argument.
 
 The second piece of output is the data itself.
 This is first identified as a 'tibble', which is a type of data table, with 12 rows and 8 columns, in `# A tibble: 12 x 8`.
 This is followed by a header row of variable names, and just below that is the data type (`<chr>` for character) for each column.
-Then, on the left are gray row numbers (not actually part of the data set), and rows of data.
+Then, on the left are gray row numbers (not actually part of the data set), followed by (to the right) rows of data.
 A tibble, by default, only prints out 10 rows of data, and no more columns than will fill your current console window.
 The other columns are listed in order at the bottom of the tibble in gray type.
 
@@ -177,23 +180,24 @@ scurvy_data <- read_csv(glue(url_stem, 'data/scurvy.csv'))
 ```
 
 ```
-## 
+## Rows: 12 Columns: 8
+```
+
+```
 ## ── Column specification ────────────────────────────────────
-## cols(
-##   study_id = col_character(),
-##   treatment = col_character(),
-##   dosing_regimen_for_scurvy = col_character(),
-##   gum_rot_d6 = col_character(),
-##   skin_sores_d6 = col_character(),
-##   weakness_of_the_knees_d6 = col_character(),
-##   lassitude_d6 = col_character(),
-##   fit_for_duty_d6 = col_character()
-## )
+## Delimiter: ","
+## chr (8): study_id, treatment, dosing_regimen_for_scurvy,...
+```
+
+```
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
 
 Now this is saved to `scurvy_data` in your working Environment.
 You can look in the Environment tab (top right pane in RStudio) and see that scurvy_data has now appeared in the Data section, with 12 observations of 8 variables.
-This is not a file written (saved) to disk, but it is now available in the working environment as an assigned data object.
+This is not a file written (saved) to disk, but this dataset is now available in the working environment as an assigned data object.
 You can now print this out at any time by typing `scurvy_data` into the Console, or into a script. Try this out in the Console pane.
 
 You can also start with the `scurvy_data` object, and *do* things to this data object, like summarize it, or graph it, or calculate total_symptom_score in a data pipeline.
@@ -209,7 +213,7 @@ If you happen to come across a tab-separated values file, *read_tsv()* works the
 Both of these functions have reasonable defaults, so that most of the time, you just have to use the path to your file (usually on your hard drive, rather than on the web) as the only argument.
 On occasion, though, you will want to take control of some of the other arguments, and use something other than the defaults.
 
-When your data has no column names (headers), read_csv will assume that the first row of the data is the column names.
+When your data has no column names (headers), read_csv will (by default) assume that the first row of the data is the column names.
 To fix this, add the argument, **col_names** = FALSE.
 You can also assign your own **col_names** by setting a vector, like c("patient_id", "treatment", "outcome") to col_names, as below
 
@@ -220,18 +224,19 @@ col_names = c("pat_id", "arm", "dose", "gums", "skin", "weak", "lass", "fit"))
 ```
 
 ```
-## 
+## Rows: 13 Columns: 8
+```
+
+```
 ## ── Column specification ────────────────────────────────────
-## cols(
-##   pat_id = col_character(),
-##   arm = col_character(),
-##   dose = col_character(),
-##   gums = col_character(),
-##   skin = col_character(),
-##   weak = col_character(),
-##   lass = col_character(),
-##   fit = col_character()
-## )
+## Delimiter: ","
+## chr (8): pat_id, arm, dose, gums, skin, weak, lass, fit
+```
+
+```
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
 
 ```
@@ -253,10 +258,10 @@ col_names = c("pat_id", "arm", "dose", "gums", "skin", "weak", "lass", "fit"))
 ## 13 012     purgat… a nutmeg… 3_sev… 3_se… 3_sev… 3_se… 0_no
 ```
 
-In this case, when we set our own **col_names**, the actual column headers are now included in the first row of data.
-We can fix this with the **skip** argument, which has a default of 0.
+In this case, when we set our own **col_names**, the original column headers are now included in the first row of data.
+We can fix this with the **skip** argument within the parentheses of the `read_csv()` function, which has a default of 0.
 We can skip as many lines as we want, which can be helpful if you have an Excel file with a lot of blank lines or commentary at the top of the spreadsheet.
-When we set skip = 1, we get a cleaner dataset.
+When we set skip = 1 in this case, we get a cleaner dataset, without variable names as data.
 
 
 ```r
@@ -266,18 +271,19 @@ read_csv(file = glue(url_stem, 'data/scurvy.csv'),
 ```
 
 ```
-## 
+## Rows: 12 Columns: 8
+```
+
+```
 ## ── Column specification ────────────────────────────────────
-## cols(
-##   pat_id = col_character(),
-##   arm = col_character(),
-##   dose = col_character(),
-##   gums = col_character(),
-##   skin = col_character(),
-##   weak = col_character(),
-##   lass = col_character(),
-##   fit = col_character()
-## )
+## Delimiter: ","
+## chr (8): pat_id, arm, dose, gums, skin, weak, lass, fit
+```
+
+```
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
 
 ```
@@ -299,16 +305,38 @@ read_csv(file = glue(url_stem, 'data/scurvy.csv'),
 ```
 
 Now we don't have extra column names as data.
-Also note that in this code chunk, we put each argument on its own line.
+Also note that in this code chunk, we put each argument to the function on its own line, with commas between them.
 This is a good practice, to make your code more readable.
-You can also set **n_max** to a particular number of rows to be read in (the default is infinity, or Inf) You might want a smaller number if you have a very large dataset and limited computer memory.
+You can also set **n_max** to a particular number of rows to be read in (the default is infinity, or `Inf`) You might want a smaller number if you have a very large dataset and limited computer memory.
 Another important argument (option) for read_csv and read_tsv is **col_types**, which lets you take control of the column types during the data
 
 What if you want to take more control of the import process with read_xxx()?
 You can add a col_types argument to the read_csv() function.
-You can copy the Column specifications from the first attempt at importing, and then make some edits.
-Take a look at the code chunk below.
-I have added the col_types argument, and set it equal to the copied Column specifications.
+You can copy the Column specifications from the first attempt at importing, and then make some edits. You can get the column specifications as guessed by {readr} by running the `spec()` function on the survey_data object.
+Try this out in the code chunk below.
+
+
+```r
+spec(scurvy_data)
+```
+
+```
+## cols(
+##   study_id = col_character(),
+##   treatment = col_character(),
+##   dosing_regimen_for_scurvy = col_character(),
+##   gum_rot_d6 = col_character(),
+##   skin_sores_d6 = col_character(),
+##   weakness_of_the_knees_d6 = col_character(),
+##   lassitude_d6 = col_character(),
+##   fit_for_duty_d6 = col_character()
+## )
+```
+This sets the data type for each column (variable).
+This is helpful if you want to change a few of these.
+
+Take a look at the next code chunk below.
+I have added the col_types argument, and set it equal to the Column specifications (copied from above).
 Then I edited study_id to `col_integer()`, and treatment to `col_factor()`.
 Run the code chunk below to see how this works.
 The `glimpse` function will give an overview of the new `scurvy_cols` object that I assigned the data to.
@@ -345,13 +373,13 @@ glimpse(scurvy_cols)
 ```
 
 You can see that study_id is now considered the integer data type (`<int>`), and treatment is now a factor (`<fct>`).
-You can choose: 
+You can choose as data types: 
 
-- col_integer 
-- col_character 
+- col_integer ()
+- col_character() 
 - col_number() (handles \#s with commas) 
-- col_double (to specify decimal \#s) 
-- col_logical (only TRUE and FALSE) 
+- col_double() (to specify decimal \#s) 
+- col_logical() (only TRUE and FALSE) 
 - col_date(format = "") - may need to define format 
 - col_time(format = "") - col_datetime(format = "") 
 - col_factor(levels = "", ordered = TRUE) - you may want to set levels and ordered if ordinal.
@@ -371,32 +399,13 @@ Run the example below by clicking on the green arrow at the top right of the cod
 scurvy_cols2 <- read_csv(
   file = glue(url_stem, 'data/scurvy.csv'),
          col_types = "ifcffff")
-```
 
-```
-## Warning: Unnamed `col_types` should have the same length as
-## `col_names`. Using smaller of the two.
-```
-
-```
-## Warning: 12 parsing failures.
-## row col  expected    actual                                                                             file
-##   1  -- 7 columns 8 columns 'https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/data/scurvy.csv'
-##   2  -- 7 columns 8 columns 'https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/data/scurvy.csv'
-##   3  -- 7 columns 8 columns 'https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/data/scurvy.csv'
-##   4  -- 7 columns 8 columns 'https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/data/scurvy.csv'
-##   5  -- 7 columns 8 columns 'https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/data/scurvy.csv'
-## ... ... ......... ......... ................................................................................
-## See problems(...) for more details.
-```
-
-```r
 glimpse(scurvy_cols2)
 ```
 
 ```
 ## Rows: 12
-## Columns: 7
+## Columns: 8
 ## $ study_id                  <int> 1, 2, 3, 4, 5, 6, 7, 8, …
 ## $ treatment                 <fct> cider, cider, dilute_sul…
 ## $ dosing_regimen_for_scurvy <chr> "1 quart per day", "1 qu…
@@ -404,6 +413,7 @@ glimpse(scurvy_cols2)
 ## $ skin_sores_d6             <fct> 2_moderate, 1_mild, 3_se…
 ## $ weakness_of_the_knees_d6  <fct> 2_moderate, 2_moderate, …
 ## $ lassitude_d6              <fct> 2_moderate, 3_severe, 3_…
+## $ fit_for_duty_d6           <chr> "0_no", "0_no", "0_no", …
 ```
 
 ### Try it Yourself
@@ -763,16 +773,16 @@ strep_tb %>%
 ##    radiologic_6m                rad_num improved
 ##    <fct>                          <dbl> <lgl>   
 ##  1 5_Moderate_improvement             5 TRUE    
-##  2 6_Considerable_improvement         6 TRUE    
-##  3 5_Moderate_improvement             5 TRUE    
-##  4 5_Moderate_improvement             5 TRUE    
-##  5 2_Considerable_deterioration       2 FALSE   
-##  6 1_Death                            1 FALSE   
+##  2 2_Considerable_deterioration       2 FALSE   
+##  3 6_Considerable_improvement         6 TRUE    
+##  4 6_Considerable_improvement         6 TRUE    
+##  5 1_Death                            1 FALSE   
+##  6 3_Moderate_deterioration           3 FALSE   
 ##  7 6_Considerable_improvement         6 TRUE    
-##  8 3_Moderate_deterioration           3 FALSE   
-##  9 1_Death                            1 FALSE   
+##  8 5_Moderate_improvement             5 TRUE    
+##  9 2_Considerable_deterioration       2 FALSE   
 ## 10 5_Moderate_improvement             5 TRUE    
-## 11 2_Considerable_deterioration       2 FALSE
+## 11 6_Considerable_improvement         6 TRUE
 ```
 
 ## Reading Excel Files with readxl

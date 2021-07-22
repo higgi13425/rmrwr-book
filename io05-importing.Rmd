@@ -102,17 +102,19 @@ read_csv(glue(url_stem, 'data/scurvy.csv'))
 ```
 
 Let's look at what was extracted from the csv file.
+This starts after the url_stem (web address) is printed out.
+
 The Console pane has a print out of the Column specification, followed by the data in rectangular format.
-In the Column specification, each column is named, and a data type has been assigned to each column.
-This is done 'automagically', as the read_csv() function reads the first 1000 rows, then guesses what data type is present in each column (variable).
+In the Column specification, the delimiter between items of data is identified (a comma), and a listing of variables with the `character` (chr) data type is printed. There are no non-character data types in this particular dataset.
+The 'guessing' of what data type is appropriate for each variable is done 'automagically', as the read_csv() function reads the first 1000 rows, then guesses what data type is present in each column (variable).
 It is often conservative, and in this case, made all of these columns into character variables (also called strings).
 You could argue that the col_character() assignment should be numeric for the study_id variable, or that the Likert scales used for outcomes like gum_rot_d6 and skin_sores_d6 should be coded as ordinal variables, known as ordered factors in R.
-You will learn to control these data types during data import with the `col_spec` argument.
+You will learn to control these data types during data import with the `spec()` argument.
 
 The second piece of output is the data itself.
 This is first identified as a 'tibble', which is a type of data table, with 12 rows and 8 columns, in `# A tibble: 12 x 8`.
 This is followed by a header row of variable names, and just below that is the data type (`<chr>` for character) for each column.
-Then, on the left are gray row numbers (not actually part of the data set), and rows of data.
+Then, on the left are gray row numbers (not actually part of the data set), followed by (to the right) rows of data.
 A tibble, by default, only prints out 10 rows of data, and no more columns than will fill your current console window.
 The other columns are listed in order at the bottom of the tibble in gray type.
 
@@ -126,7 +128,7 @@ scurvy_data <- read_csv(glue(url_stem, 'data/scurvy.csv'))
 
 Now this is saved to `scurvy_data` in your working Environment.
 You can look in the Environment tab (top right pane in RStudio) and see that scurvy_data has now appeared in the Data section, with 12 observations of 8 variables.
-This is not a file written (saved) to disk, but it is now available in the working environment as an assigned data object.
+This is not a file written (saved) to disk, but this dataset is now available in the working environment as an assigned data object.
 You can now print this out at any time by typing `scurvy_data` into the Console, or into a script. Try this out in the Console pane.
 
 You can also start with the `scurvy_data` object, and *do* things to this data object, like summarize it, or graph it, or calculate total_symptom_score in a data pipeline.
@@ -142,7 +144,7 @@ If you happen to come across a tab-separated values file, *read_tsv()* works the
 Both of these functions have reasonable defaults, so that most of the time, you just have to use the path to your file (usually on your hard drive, rather than on the web) as the only argument.
 On occasion, though, you will want to take control of some of the other arguments, and use something other than the defaults.
 
-When your data has no column names (headers), read_csv will assume that the first row of the data is the column names.
+When your data has no column names (headers), read_csv will (by default) assume that the first row of the data is the column names.
 To fix this, add the argument, **col_names** = FALSE.
 You can also assign your own **col_names** by setting a vector, like c("patient_id", "treatment", "outcome") to col_names, as below
 
@@ -151,10 +153,10 @@ read_csv(file = glue(url_stem, 'data/scurvy.csv'),
 col_names = c("pat_id", "arm", "dose", "gums", "skin", "weak", "lass", "fit"))
 ```
 
-In this case, when we set our own **col_names**, the actual column headers are now included in the first row of data.
-We can fix this with the **skip** argument, which has a default of 0.
+In this case, when we set our own **col_names**, the original column headers are now included in the first row of data.
+We can fix this with the **skip** argument within the parentheses of the `read_csv()` function, which has a default of 0.
 We can skip as many lines as we want, which can be helpful if you have an Excel file with a lot of blank lines or commentary at the top of the spreadsheet.
-When we set skip = 1, we get a cleaner dataset.
+When we set skip = 1 in this case, we get a cleaner dataset, without variable names as data.
 
 ```{r}
 read_csv(file = glue(url_stem, 'data/scurvy.csv'), 
@@ -163,16 +165,24 @@ read_csv(file = glue(url_stem, 'data/scurvy.csv'),
 ```
 
 Now we don't have extra column names as data.
-Also note that in this code chunk, we put each argument on its own line.
+Also note that in this code chunk, we put each argument to the function on its own line, with commas between them.
 This is a good practice, to make your code more readable.
-You can also set **n_max** to a particular number of rows to be read in (the default is infinity, or Inf) You might want a smaller number if you have a very large dataset and limited computer memory.
+You can also set **n_max** to a particular number of rows to be read in (the default is infinity, or `Inf`) You might want a smaller number if you have a very large dataset and limited computer memory.
 Another important argument (option) for read_csv and read_tsv is **col_types**, which lets you take control of the column types during the data
 
 What if you want to take more control of the import process with read_xxx()?
 You can add a col_types argument to the read_csv() function.
-You can copy the Column specifications from the first attempt at importing, and then make some edits.
-Take a look at the code chunk below.
-I have added the col_types argument, and set it equal to the copied Column specifications.
+You can copy the Column specifications from the first attempt at importing, and then make some edits. You can get the column specifications as guessed by {readr} by running the `spec()` function on the survey_data object.
+Try this out in the code chunk below.
+
+```{r}
+spec(scurvy_data)
+```
+This sets the data type for each column (variable).
+This is helpful if you want to change a few of these.
+
+Take a look at the next code chunk below.
+I have added the col_types argument, and set it equal to the Column specifications (copied from above).
 Then I edited study_id to `col_integer()`, and treatment to `col_factor()`.
 Run the code chunk below to see how this works.
 The `glimpse` function will give an overview of the new `scurvy_cols` object that I assigned the data to.
@@ -195,13 +205,13 @@ glimpse(scurvy_cols)
 ```
 
 You can see that study_id is now considered the integer data type (`<int>`), and treatment is now a factor (`<fct>`).
-You can choose: 
+You can choose as data types: 
 
-- col_integer 
-- col_character 
+- col_integer ()
+- col_character() 
 - col_number() (handles \#s with commas) 
-- col_double (to specify decimal \#s) 
-- col_logical (only TRUE and FALSE) 
+- col_double() (to specify decimal \#s) 
+- col_logical() (only TRUE and FALSE) 
 - col_date(format = "") - may need to define format 
 - col_time(format = "") - col_datetime(format = "") 
 - col_factor(levels = "", ordered = TRUE) - you may want to set levels and ordered if ordinal.
@@ -255,6 +265,69 @@ strep_tb_cols <- read_---(
 
 glimpse(strep_tb_cols)
 ```
+
+## Reading Excel Files with readxl
+
+While file types like \*.csv and \*.tsv are common, it is also common to use Microsoft Excel or an equivalent for data entry.
+There are a lot of reasons that this is not a good idea (see chapter XX and video at link), but Excel is so ubiquitous, that it is often used.
+
+Fortunately, the {readxl} package provides functions for reading excel files.
+The *read_xl()* function works nearly the same as *read_csv()*.
+But there are a few bonus arguments (options) that are really helpful.
+
+The *read_excel()* function includes helpful arguments like **skip**, **col_names**, **col_types**, and **n_max**, much like *read_csv()*.
+In addition, read_excel() has a **sheet** argument, which lets you specify which sheet in an excel workbook you want to read.
+The default is the first worksheet, but you can set this to sheet = 4 for the 4th worksheet from the left, or sheet = "raw_data" to get the right worksheet.
+You can also set the range argument to only read in a particular range of cells, like range = "B2:G14".
+Below is an example of how to read in an Excel worksheet.
+
+```{r, error=TRUE}
+read_excel(path = 'data/paulolol.xlsx',
+           sheet = 1,
+           skip = 1)
+
+```
+
+### Test yourself on strep_tb
+
+- which argument in read_excel lets you skip rows of commentary? 
+
+`r webex::mcq(c('sheet', answer = 'skip', 'path'))`
+
+- which argument in read_excel lets you pick which spreadsheet tab to read? 
+
+`r webex::mcq(c(answer = 'sheet', 'skip', 'path'))`
+
+- How many missing (NA) values are in this dataset (as run with skip =1)?
+
+`r webex::fitb('15')`
+
+## Bringing in data from other Statistical Programs (SAS, Stata, SPSS) with the {haven} package
+
+It is common to have the occasional collaborator who still uses one of the older proprietary statistical packages. They will send you files with filenames like `data.sas7bdat` (SAS), `data.dta` (Stata), or `data.sav` (SPSS).
+
+The {haven} package makes this straightforward. 
+
+
+## Other strange file types with rio
+
+Once in a while, you will run into a strange data file that is not a csv or Excel or from a common statistical package (SAS, Stata, SPSS). These might include Systat, Minitab, RDA, or others.
+
+This is when the {rio} package comes to the rescue. The name, rio, stands for R input and output. The {rio} package looks at the file extension (like .csv, .xls, .dta) to guess the file type, and then applies the appropriate method to read in the data. The import() function in {rio} makes data import much easier. You don't always have the fine control seen in {readr}, but {rio} is an all-purpose tool that can get nearly any data format into R.
+
+Try this out with the code chunk below.
+Just replace the *filename* with one of the files below.
+Try to use the same `import()` function to read 
+
+- scurvy.csv
+- strep_tb.tsv
+- paulolol.xlsx
+- blood_storage.sas7bdat
+
+```{r}
+rio::import(glue(url_stem, "data/blood_storage.sas7bdat"))
+```
+
 
 ## Exploration with glimpse, str, and head/tail
 
@@ -403,56 +476,69 @@ strep_tb %>%
   select(radiologic_6m, rad_num, improved)
 ```
 
-## Reading Excel Files with readxl
-
-While file types like \*.csv and \*.tsv are common, it is also common to use Microsoft Excel or an equivalent for data entry.
-There are a lot of reasons that this is not a good idea (see chapter XX and video at link), but Excel is so ubiquitous, that it is often used.
-
-Fortunately, the {readxl} package provides functions for reading excel files.
-The *read_xl()* function works nearly the same as *read_csv()*.
-But there are a few bonus arguments (options) that are really helpful.
-
-The *read_excel()* function includes helpful arguments like **skip**, **col_names**, **col_types**, and **n_max**, much like *read_csv()*.
-In addition, read_excel() has a **sheet** argument, which lets you specify which sheet in an excel workbook you want to read.
-The default is the first worksheet, but you can set this to sheet = 4 for the 4th worksheet from the left, or sheet = "raw_data" to get the right worksheet.
-You can also set the range argument to only read in a particular range of cells, like range = "B2:G14".
-Below is an example of how to read in an Excel worksheet.
-
-```{r, error=TRUE}
-read_excel(path = 'data/paulolol.xlsx',
-           sheet = 1,
-           skip = 1)
-
-```
-
-### Test yourself on strep_tb
-
-- which argument in read_excel lets you skip rows of commentary? 
-
-`r webex::mcq(c('sheet', answer = 'skip', 'path'))`
-
-- which argument in read_excel lets you pick which spreadsheet tab to read? 
-
-`r webex::mcq(c(answer = 'sheet', 'skip', 'path'))`
-
-- How many missing (NA) values are in this dataset?
-
-`r webex::fitb('15')`
-
 
 ## More exploration with skimr and DataExplorer
 
-## Other strange file types with rio
+Once you have your data read in, you usually want to get an overview of this new dataset. While there are many ways to explore a dataset, I will introduce two:
+
+- skim() from the {skimr} package
+- create_report() from the {DataExplorer} package
+
+You can get a more detailed look at a dataset with the {skimr} package, which has the `skim()` function, gives you a quick look at each variable in the dataset, with simple output in the Console. Try this out with the **strep_tb** dataset.
+Run the code chunk below, applying the `skim()` function to the strep_tb dataset.
+
+```{r}
+skimr::skim(strep_tb)
+```
+
+### Test yourself on the `skim()` results
+
+- How many females participated in the strep_tb study? 
+
+`r webex::mcq(c('52', answer = '59', '48'))`
+
+- What proportion of subjects in strep_tb were improved? 
+
+`r webex::mcq(c('0.493', answer = '50.514', '0.55'))`
+
+- What is the mean value for rad_num in strep_tb? 
+
+`r webex::mcq(c(answer = '3.93', '1.89', '4.7'))`
+
+
+A fancier approach is taken by the DataExplorer package, which can create a full html report with correlations and PCA analysis. Copy and run the chunk below to see what the Data Profiling Report looks like.
+
+```{r}
+DataExplorer::create_report(strep_tb)
+```
+
+### Test yourself on the `create_report()` results
+
+- What percentage of the baseline_esr values were missing? 
+
+`r webex::mcq(c('9.3%', '0.09%', answer = '0.93%', '1%'))`
+
+- How many total data points ('observations') are there in the strep_tb dataset? 
+
+`r webex::mcq(c('10,000', answer = '1,391', '107'))`
+
+You can choose which you prefer, the simpler approach of {skimr} vs the fancier reports of {DataExplorer.}
 
 ## Practice loading data from multiple file types
 
-## Practice saving (writing to disk) data objects in formats including csv, rds, xls, xlsx
+## Practice saving (writing to disk) data objects in formats including csv, rds, xls, xlsx and statistical program formats
 
 ## How do readr and readxl parse columns?
 
 ## What are the variable types?
 
-Numeric - integer and double Character - string Logical - TRUE/FALSE Dates - an unholy formatting mess Factors - categorical variables - nominal factors (no order) - ordinal factors (with a meaningful order)
+- Numeric - integer and double 
+- Character - string 
+- Logical - TRUE/FALSE 
+- Dates - an unholy formatting mess 
+- Factors - categorical variables 
+  - nominal factors (no order) 
+  - ordinal factors (with a meaningful order)
 
 ## Controlling Parsing
 
