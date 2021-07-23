@@ -265,3 +265,5 @@ what-about-r
 what-about-just-a-few-lines-of-r
 running-an-r-script-from-the-terminal
 rendering-an-rmarkdown-file-from-the-terminal
+bibliography-book.bib-packages.bib
+your-turn-to-debug-a-plot

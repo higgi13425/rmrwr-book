@@ -18,11 +18,11 @@ library(webex)
 library(httr)
 
 github_raw_link <- "https://github.com/higgi13425/rmrwr-book/raw/master/data/paulolol.xlsx"
-paulolol <- tempfile(fileext = ".xlsx")
-req <- httr::GET(github_link, 
+paulolol_xlsx <- tempfile(fileext = ".xlsx")
+req <- httr::GET(github_raw_link, 
           # write result to disk
-           write_disk(path = paulolol))
-
+           write_disk(path = paulolol_xlsx))
+# add/download files from https://www.cdc.gov/nchs/hus/contents2016.htm
 ```
 
 # Importing Your Data into R
@@ -302,9 +302,9 @@ You can also set the range argument to only read in a particular range of cells,
 Below is an example of how to read in an Excel worksheet.
 
 ```{r, error=TRUE}
-read_excel(paulolol, # path = "paulolol.xlsx" has been saved to paulolol
+read_excel(paulolol_xlsx, 
            sheet = 1,
-           skip = 1)
+           skip = 0)
 
 ```
 
@@ -545,7 +545,7 @@ skimr::skim(strep_tb)
 
 A fancier approach is taken by the DataExplorer package, which can create a full html report with correlations and PCA analysis. Copy and run the chunk below to see what the Data Profiling Report looks like.
 
-```{r}
+```{r, eval=FALSE}
 DataExplorer::create_report(strep_tb)
 ```
 
@@ -569,13 +569,20 @@ You can choose which you prefer, the simpler approach of {skimr} vs the fancier 
 
 ## What are the variable types?
 
-- Numeric - integer and double 
-- Character - string 
-- Logical - TRUE/FALSE 
-- Dates - an unholy formatting mess 
-- Factors - categorical variables 
-  - nominal factors (no order) 
-  - ordinal factors (with a meaningful order)
+| Variable Type | Long form | Abbreviation|
+|---------------|-----------|:-----------:|
+|Logical (TRUE/FALSE)| col_logical()|  l  |
+|Integer  |    col_integer()  |   i  |
+|Double  |    col_double()  |   d  |
+|Character  |    col_character()  |   c  |
+|Factor (nominal or ordinal)  |    col_factor(levels, ordered)  |   f  |
+|Date  |    col_date(format)  |   D  |
+|Time  |    col_time(format)  |  t  |
+|Date & Time  |    col_datetime(format)  |  T  |
+|Number  |    col_number()  |  n  |
+|Don't import  |    col_skip()  |  -  |
+|Default Guessing  |    col_guess()  |  ?  |
+
 
 ## Controlling Parsing
 

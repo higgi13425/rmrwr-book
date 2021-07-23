@@ -106,6 +106,7 @@ Let's start with a file named `scurvy.csv` in a `data` folder on GitHub. You wil
 
 
 ```r
+url_stem <- "https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/"
 url_stem
 ```
 
@@ -482,9 +483,9 @@ Below is an example of how to read in an Excel worksheet.
 
 
 ```r
-read_excel(path = 'data/paulolol.xlsx',
+read_excel(paulolol_xlsx, 
            sheet = 1,
-           skip = 1)
+           skip = 0)
 ```
 
 ```
@@ -497,33 +498,34 @@ read_excel(path = 'data/paulolol.xlsx',
 ```
 
 ```
-## # A tibble: 13 x 6
-##    `Paul Investigator… ...2      ...3   ...4    ...5  ...6  
-##    <chr>               <chr>     <chr>  <chr>   <chr> <chr> 
-##  1 44338               <NA>      <NA>   <NA>    <NA>  <NA>  
-##  2 pat_id              SBP_start SBP_e… HR_sta… HR_e… treat…
-##  3 1                   145       120    92      78    paulo…
-##  4 2                   147       148    88      87    place…
-##  5 3                   158       139    96      80    paulo…
-##  6 4                   167       166    87      88    place…
-##  7 5                   154       131    84      72    paulo…
-##  8 6                   178       177    99      97    place…
-##  9 7                   151       134    101     86    paulo…
-## 10 8                   149       148    92      93    place…
-## 11 <NA>                <NA>      <NA>   sbp     hr    <NA>  
-## 12 <NA>                mean pau… <NA>   131     79    <NA>  
-## 13 <NA>                mean pla… <NA>   159.75  91.25 <NA>
+## # A tibble: 14 x 6
+##    `Data for my stud… ...2      ...3   ...4    ...5  ...6   
+##    <chr>              <chr>     <chr>  <chr>   <chr> <chr>  
+##  1 Paul Investigator… <NA>      <NA>   <NA>    <NA>  <NA>   
+##  2 44338              <NA>      <NA>   <NA>    <NA>  <NA>   
+##  3 pat_id             SBP_start SBP_e… HR_sta… HR_e… treatm…
+##  4 1                  145       120    92      78    paulol…
+##  5 2                  147       148    88      87    placebo
+##  6 3                  158       139    96      80    paulol…
+##  7 4                  167       166    87      88    placebo
+##  8 5                  154       131    84      72    paulol…
+##  9 6                  178       177    99      97    placebo
+## 10 7                  151       134    101     86    paulol…
+## 11 8                  149       148    92      93    placebo
+## 12 <NA>               <NA>      <NA>   sbp     hr    <NA>   
+## 13 <NA>               mean pau… <NA>   131     79    <NA>   
+## 14 <NA>               mean pla… <NA>   159.75  91.25 <NA>
 ```
 
 ### Test yourself on strep_tb
 
-- which argument in read_excel lets you skip rows of commentary? 
+- which argument in read_excel lets you jump past initial rows of commentary? 
 
-<select class='webex-solveme' data-answer='["skip"]'> <option></option> <option>sheet</option> <option>skip</option> <option>path</option></select>
+<select class='webex-solveme' data-answer='["skip"]'> <option></option> <option>jump</option> <option>sheet</option> <option>skip</option> <option>path</option></select>
 
 - which argument in read_excel lets you pick which spreadsheet tab to read? 
 
-<select class='webex-solveme' data-answer='["sheet"]'> <option></option> <option>sheet</option> <option>skip</option> <option>path</option></select>
+<select class='webex-solveme' data-answer='["sheet"]'> <option></option> <option>pick</option> <option>sheet</option> <option>skip</option> <option>path</option></select>
 
 - How many missing (NA) values are in this dataset (as run with skip =1)?
 
@@ -531,7 +533,7 @@ read_excel(path = 'data/paulolol.xlsx',
 
 - what should the **range** argument be to read in these data cleanly? 
 
-<select class='webex-solveme' data-answer='["A3:F8"]'> <option></option> <option>A3:F8</option> <option>A1:L30</option> <option>B4:K15</option></select>
+<select class='webex-solveme' data-answer='["A4:F11"]'> <option></option> <option>B2:F8</option> <option>A4:F11</option> <option>A1:L30</option> <option>B4:K15</option></select>
 
 ## Bringing in data from other Statistical Programs (SAS, Stata, SPSS) with the {haven} package
 
@@ -907,19 +909,19 @@ strep_tb %>%
 
 ```
 ## # A tibble: 11 x 3
-##    radiologic_6m              rad_num improved
-##    <fct>                        <dbl> <lgl>   
-##  1 5_Moderate_improvement           5 TRUE    
-##  2 4_No_change                      4 FALSE   
-##  3 4_No_change                      4 FALSE   
-##  4 1_Death                          1 FALSE   
-##  5 6_Considerable_improvement       6 TRUE    
-##  6 6_Considerable_improvement       6 TRUE    
-##  7 3_Moderate_deterioration         3 FALSE   
-##  8 1_Death                          1 FALSE   
-##  9 3_Moderate_deterioration         3 FALSE   
-## 10 5_Moderate_improvement           5 TRUE    
-## 11 1_Death                          1 FALSE
+##    radiologic_6m                rad_num improved
+##    <fct>                          <dbl> <lgl>   
+##  1 3_Moderate_deterioration           3 FALSE   
+##  2 2_Considerable_deterioration       2 FALSE   
+##  3 1_Death                            1 FALSE   
+##  4 5_Moderate_improvement             5 TRUE    
+##  5 5_Moderate_improvement             5 TRUE    
+##  6 5_Moderate_improvement             5 TRUE    
+##  7 5_Moderate_improvement             5 TRUE    
+##  8 2_Considerable_deterioration       2 FALSE   
+##  9 3_Moderate_deterioration           3 FALSE   
+## 10 6_Considerable_improvement         6 TRUE    
+## 11 1_Death                            1 FALSE
 ```
 
 
@@ -1157,7 +1159,7 @@ DataExplorer::create_report(strep_tb)
 ```
 
 ```
-## /usr/local/bin/pandoc +RTS -K512m -RTS /Users/peterhiggins/Documents/RCode/rmrwr-book/report.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output /Users/peterhiggins/Documents/RCode/rmrwr-book/report.html --lua-filter /Library/Frameworks/R.framework/Versions/4.0/Resources/library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /Library/Frameworks/R.framework/Versions/4.0/Resources/library/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --variable bs3=TRUE --standalone --section-divs --table-of-contents --toc-depth 6 --template /Library/Frameworks/R.framework/Versions/4.0/Resources/library/rmarkdown/rmd/h/default.html --no-highlight --variable highlightjs=1 --variable theme=yeti --include-in-header /var/folders/93/s18zkv2d4f556fxbjvb8yglc0000gp/T//RtmpJ78fmR/rmarkdown-str11ef9438d9e14.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+## /usr/local/bin/pandoc +RTS -K512m -RTS /Users/peterhiggins/Documents/RCode/rmrwr-book/report.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output /Users/peterhiggins/Documents/RCode/rmrwr-book/report.html --lua-filter /Library/Frameworks/R.framework/Versions/4.0/Resources/library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /Library/Frameworks/R.framework/Versions/4.0/Resources/library/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --variable bs3=TRUE --standalone --section-divs --table-of-contents --toc-depth 6 --template /Library/Frameworks/R.framework/Versions/4.0/Resources/library/rmarkdown/rmd/h/default.html --no-highlight --variable highlightjs=1 --variable theme=yeti --include-in-header /var/folders/93/s18zkv2d4f556fxbjvb8yglc0000gp/T//RtmpKWdTBp/rmarkdown-str13adf3c399d.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
 ```
 
 ```
@@ -1184,6 +1186,11 @@ You can choose which you prefer, the simpler approach of {skimr} vs the fancier 
 ## How do readr and readxl parse columns?
 
 ## What are the variable types?
+
+| Variable Type | Long form | Abbreviation|
+|---------------|-----------|-------------|
+|Logical (TRUE/FALSE)| col_logical()|  l  |
+|Integer  |    col_integer()  |   i  |
 
 - Numeric - integer and double 
 - Character - string 
