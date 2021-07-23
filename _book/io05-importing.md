@@ -20,7 +20,7 @@ If you want to save this data to an object in your work environment, you just ne
 ```r
 scurvy <- medicaldata::scurvy
 
-# now print the colums for id and treatment
+# now print the columns for id and treatment
 scurvy %>% select(study_id:treatment)
 ```
 
@@ -42,21 +42,22 @@ scurvy %>% select(study_id:treatment)
 ## 12 012      purgative_mixture
 ```
 
-There are a number of medical datasets to explore and learn within the {medicaldata} package.
+There are a number of medical datasets to explore and learn with, within the {medicaldata} package.
 
-However, at some point, you will want to use R to work on your *own* data.
-You may already to be itching to get started on your own data.
+However, at some point, you will want to use R to work on your **own** data.
+You may already be itching to get started on your own data.
 This is a good thing.
 Working with your own data, toward your own goals, will be a motivating example, and will help you learn R.
-As you go through the different chapters, use the example data and exercises to get you started and learn the principles, and then try what you have learned on your own data.
+As you go through the different chapters, use the example data and exercises to get you started and to learn the principles, and then try what you have learned on your own data.
 
-::: {.{warning}}
+::: {.warning}
+Reproducibility and Raw Data<br>
 It is an important principle to *always* save an untouched copy of your raw data.
 You can copy it to a new object, and experiment with modifying it, cleaning it, making plots, etc., but *always* leave the original data file untouched.
 You want to create a completely reproducible, step-by-step trail from your raw data to your finished analysis and final report, and you can only do that if you preserve the original raw data.
 That is the cornerstone of your analysis.
 It is tempting to fix minor data entry errors, or other aspects of the raw data.
-Do not do this - leave all errors intact in your raw data, and explicitly make edits with explanations of - who made the edit - when it was made - what was changed - why it was made - provide a justification, and identify source documents to support the rationale Every edit should be documented in your code, with who, when, what, and why
+Do not do this - leave all errors intact in your raw data, and explicitly make edits with explanations of - who made the edit - when it was made - what was changed - why it was made - provide a justification, and identify source documents to support the rationale. Every edit should be documented in your code, with who, when, what, and why.
 :::
 
 Now, on to the fun part.
@@ -69,7 +70,7 @@ These include:
 
 -   read_csv() for comma-separated values (\*.csv) files
 -   read_tsv() for tab-separated values (\*.tsv) files
--   read_delim() for files with a different delimiter that you can specify (instead of commas or tabs, there might be semicolons)
+-   read_delim() for files with a different delimiter that you can specify (instead of commas or tabs, there might be semicolons), or you can let {readr} guess the delimiter in readr 2.0.
 -   read_fwf() for fixed width files
 -   read_table() for tabular files where columns are separated by white-space.
 -   read_log() is specifically for web log files
@@ -88,7 +89,7 @@ library(tidyverse) # which will load 8 packages, including readr
 Note that this will *not* work if you do not already have the {readr} package installed on your computer.
 You will get an error, like this: `Error in library(readr) : there is no package called 'readr'`
 
-No problem - you just have to install the package first.
+This is not a problem - you just have to install the package first.
 You only need to do this once, like buying a book, and putting it in your personal library.
 Each time you use the package, you have to pull the book off the shelf, with `library(packagename)`.
 To install the {readr} package, we can install the whole {tidyverse} package, which will come in handy later.
@@ -101,7 +102,7 @@ Once the {tidyverse} package is installed, you can use `library(tidyverse)` with
 
 OK, after that detour, we should be all caught up - you should be able to run `library(tidyverse)` or `library(readr)` without an error.
 Now that you have {readr} loaded, you can read in some csv data.
-Let's start with a file named `scurvy.csv` in a 'data'folder on GitHub. You will need to glue together the url_stem and "data/scurvy.csv" to get the full web address. Run the code chunk below to see the url_stem and the dataset.
+Let's start with a file named `scurvy.csv` in a `data` folder on GitHub. You will need to glue together the url_stem and "data/scurvy.csv" to get the full web address. Run the code chunk below to see the url_stem and the dataset.
 
 
 ```r
@@ -200,18 +201,34 @@ You can look in the Environment tab (top right pane in RStudio) and see that scu
 This is not a file written (saved) to disk, but this dataset is now available in the working environment as an assigned data object.
 You can now print this out at any time by typing `scurvy_data` into the Console, or into a script. Try this out in the Console pane.
 
+### Test yourself on scurvy
+
+- How many limes did the British seamen in the citrus arm receive each day? 
+
+<select class='webex-solveme' data-answer='["zero"]'> <option></option> <option>3</option> <option>2</option> <option>zero</option> <option>1.5</option></select>
+
 You can also start with the `scurvy_data` object, and *do* things to this data object, like summarize it, or graph it, or calculate total_symptom_score in a data pipeline.
 Once you have assigned your data to an object, it will stick around in that R session for later use.
 
-csv (comma separated values) is a very common data format, and most data management programs have a way to export `*.csv` files.
+The csv (comma separated values) format is a very common data format, and most data management programs have a way to export `*.csv` files.
 The csv format is simple, is not owned by anyone, and works across platforms.
-However, it can occasionally be messy if you have commas in the middle of a variable like degree, with entries like 'md, phd' in a column that is mostly 'md'.
+However, it can occasionally be tricky if you have commas in the middle of a variable like `degree`, with entries like 'md, phd' in a column that is mostly 'md'.
 The read_csv function is pretty smart, and usually gets the number of columns right, but this is something to watch out for.
-Notice that read_csv had no problem with the dosing of vinegar ("two spoonfuls, three times a day") in the scurvy dataset.
+**Notice** that read_csv had no problem with the dosing of vinegar ("two spoonfuls, three times a day") in the scurvy dataset.
 
 If you happen to come across a tab-separated values file, *read_tsv()* works the same way.
 Both of these functions have reasonable defaults, so that most of the time, you just have to use the path to your file (usually on your hard drive, rather than on the web) as the only argument.
 On occasion, though, you will want to take control of some of the other arguments, and use something other than the defaults.
+
+::: {.warning}
+### What is a path?<br>
+A **path** is the trail through the folders in your hard drive (or on the web) that the computer needs to follow to find a particupar file. Paths can look something like: <br>
+
+- C:/Documents/Rcode/my_file.R
+- ~/User/Documents/Rcode/my_file.R
+
+and can get pretty complicated to keep track of. One particularly nice feature of Projects in RStudio is that the project directory is always your home, or root directory. You can make your life easier by using the {here} package, which memorizes the path to your project, so you can just write `here(my_file.R)`, and not have to worry about making a typo in a long path name.
+:::
 
 When your data has no column names (headers), read_csv will (by default) assume that the first row of the data is the column names.
 To fix this, add the argument, **col_names** = FALSE.
@@ -258,7 +275,7 @@ col_names = c("pat_id", "arm", "dose", "gums", "skin", "weak", "lass", "fit"))
 ## 13 012     purgat… a nutmeg… 3_sev… 3_se… 3_sev… 3_se… 0_no
 ```
 
-In this case, when we set our own **col_names**, the original column headers are now included in the first row of data.
+In this case, when we set our own **col_names**, there are now **13** rows of data, and the original column headers are now listed as the first row of data.
 We can fix this with the **skip** argument within the parentheses of the `read_csv()` function, which has a default of 0.
 We can skip as many lines as we want, which can be helpful if you have an Excel file with a lot of blank lines or commentary at the top of the spreadsheet.
 When we set skip = 1 in this case, we get a cleaner dataset, without variable names as data.
@@ -304,15 +321,15 @@ read_csv(file = glue(url_stem, 'data/scurvy.csv'),
 ## 12 012    purgat… a nutmeg-s… 3_sev… 3_se… 3_se… 3_se… 0_no
 ```
 
-Now we don't have extra column names as data.
+Now we don't have extra column names as data, and we are back to 12 rows.
 Also note that in this code chunk, we put each argument to the function on its own line, with commas between them.
 This is a good practice, to make your code more readable.
 You can also set **n_max** to a particular number of rows to be read in (the default is infinity, or `Inf`) You might want a smaller number if you have a very large dataset and limited computer memory.
-Another important argument (option) for read_csv and read_tsv is **col_types**, which lets you take control of the column types during the data
+Another important argument (option) for both read_csv and read_tsv is **col_types**, which lets you take control of the column types during the data
 
 What if you want to take more control of the import process with read_xxx()?
 You can add a col_types argument to the read_csv() function.
-You can copy the Column specifications from the first attempt at importing, and then make some edits. You can get the column specifications as guessed by {readr} by running the `spec()` function on the survey_data object.
+You can copy the Column specifications from the first attempt at importing, and then make some edits. You can get the column specifications as guessed by {readr} by running the `spec()` function on the scurvy_data object.
 Try this out in the code chunk below.
 
 
@@ -336,7 +353,7 @@ This sets the data type for each column (variable).
 This is helpful if you want to change a few of these.
 
 Take a look at the next code chunk below.
-I have added the col_types argument, and set it equal to the Column specifications (copied from above).
+I have added the col_types argument to _read_csv()_, and set it equal to the Column specifications (copied from above).
 Then I edited study_id to `col_integer()`, and treatment to `col_factor()`.
 Run the code chunk below to see how this works.
 The `glimpse` function will give an overview of the new `scurvy_cols` object that I assigned the data to.
@@ -372,7 +389,7 @@ glimpse(scurvy_cols)
 ## $ fit_for_duty_d6           <chr> "0_no", "0_no", "0_no", …
 ```
 
-You can see that study_id is now considered the integer data type (`<int>`), and treatment is now a factor (`<fct>`).
+You can see that study_id is now considered the integer data type (`<int>`), and the treatment variable is now a factor (`<fct>`).
 You can choose as data types: 
 
 - col_integer ()
@@ -423,22 +440,21 @@ The file `strep_tb.tsv` is located in the same GitHub folder, and you can use th
 
 In the example code chunk below, there are several blanks.
 Copy this code chunk (use the copy button in the top right of the code chunk - hover to find it) to your RStudio Console pane.
-Edit it and run it as directed below.
+Edit it to make the two changes listed, and run the code chunk as directed below.
 
 -   Fill in the second part of the read_xxx() function correctly to read this file
 -   Fill in the correct file name to complete the path
--   Run the code chunk
 
 This version of the code chunk will read in every column as the character data type.
 This is OK, but not quite right.
 Now edit the `col_types` string to make:
 
--   both doses numeric (n or d)
--   `gender` a factor (f)
--   all 4 of the `baseline` variables into factors
--   skip over strep_resistance and radiologic_6m - set as hyphens (`-`)
--   `rad_num` into an integer (i)
--   `improved` into a logical (l)
+-   both doses numeric (n or d) (variables 3,4)
+-   `gender` a factor (f) (var 5)
+-   all 4 of the `baseline` variables into factors (var 6-9)
+-   skip over strep_resistance and radiologic_6m - set as hyphens (`-`) (var 10-11)
+-   `rad_num` into an integer (i) (var 12)
+-   `improved` into a logical (l) (var 13)
 
 
 ```r
@@ -449,7 +465,144 @@ strep_tb_cols <- read_---(
 glimpse(strep_tb_cols)
 ```
 
-## Exploration with glimpse, str, and head/tail
+## Reading Excel Files with readxl
+
+While file types like \*.csv and \*.tsv are common, it is also common to use Microsoft Excel or an equivalent for data entry.
+There are a lot of reasons that this is not a good idea (see chapter XX and video at [link](https://www.youtube.com/watch?v=9f-hpJbjKZo)), but Excel is so ubiquitous, that it is often used for data entry.
+
+Fortunately, the {readxl} package provides functions for reading excel files.
+The *read_xl()* function works nearly the same as *read_csv()*.
+But there are a few bonus arguments (options) that are really helpful.
+
+The *read_excel()* function includes helpful arguments like **skip**, **col_names**, **col_types**, and **n_max**, much like *read_csv()*.
+In addition, read_excel() has a **sheet** argument, which lets you specify which sheet in an excel workbook you want to read.
+The default is the first worksheet, but you can set this to sheet = 4 for the 4th worksheet from the left, or sheet = "raw_data" to get the correct worksheet.
+You can also set the range argument to only read in a particular range of cells, like range = "B2:G14".
+Below is an example of how to read in an Excel worksheet.
+
+
+```r
+read_excel(path = 'data/paulolol.xlsx',
+           sheet = 1,
+           skip = 1)
+```
+
+```
+## New names:
+## * `` -> ...2
+## * `` -> ...3
+## * `` -> ...4
+## * `` -> ...5
+## * `` -> ...6
+```
+
+```
+## # A tibble: 13 x 6
+##    `Paul Investigator… ...2      ...3   ...4    ...5  ...6  
+##    <chr>               <chr>     <chr>  <chr>   <chr> <chr> 
+##  1 44338               <NA>      <NA>   <NA>    <NA>  <NA>  
+##  2 pat_id              SBP_start SBP_e… HR_sta… HR_e… treat…
+##  3 1                   145       120    92      78    paulo…
+##  4 2                   147       148    88      87    place…
+##  5 3                   158       139    96      80    paulo…
+##  6 4                   167       166    87      88    place…
+##  7 5                   154       131    84      72    paulo…
+##  8 6                   178       177    99      97    place…
+##  9 7                   151       134    101     86    paulo…
+## 10 8                   149       148    92      93    place…
+## 11 <NA>                <NA>      <NA>   sbp     hr    <NA>  
+## 12 <NA>                mean pau… <NA>   131     79    <NA>  
+## 13 <NA>                mean pla… <NA>   159.75  91.25 <NA>
+```
+
+### Test yourself on strep_tb
+
+- which argument in read_excel lets you skip rows of commentary? 
+
+<select class='webex-solveme' data-answer='["skip"]'> <option></option> <option>sheet</option> <option>skip</option> <option>path</option></select>
+
+- which argument in read_excel lets you pick which spreadsheet tab to read? 
+
+<select class='webex-solveme' data-answer='["sheet"]'> <option></option> <option>sheet</option> <option>skip</option> <option>path</option></select>
+
+- How many missing (NA) values are in this dataset (as run with skip =1)?
+
+<input class='webex-solveme nospaces' size='2' data-answer='["15"]'/>
+
+- what should the **range** argument be to read in these data cleanly? 
+
+<select class='webex-solveme' data-answer='["A3:F8"]'> <option></option> <option>A3:F8</option> <option>A1:L30</option> <option>B4:K15</option></select>
+
+## Bringing in data from other Statistical Programs (SAS, Stata, SPSS) with the {haven} package
+
+It is common to have the occasional collaborator who still uses one of the older proprietary statistical packages. They will send you files with filenames like `data.sas7bdat` (SAS), `data.dta` (Stata), or `data.sav` (SPSS).
+
+The {haven} package makes reding in these data files straightforward. 
+
+
+** Set up **
+
+
+
+```r
+haven::read_sas(glue(url_stem, "data/blood_storage.sas7bdat"))
+```
+
+```
+## # A tibble: 316 x 20
+##    rbc_age_group median_rbc_age   age    aa fam_hx p_vol
+##            <dbl>          <dbl> <dbl> <dbl>  <dbl> <dbl>
+##  1             3             25  72.1     0      0  54  
+##  2             3             25  73.6     0      0  43.2
+##  3             3             25  67.5     0      0 103. 
+##  4             2             15  65.8     0      0  46  
+##  5             2             15  63.2     0      0  60  
+##  6             3             25  65.4     0      0  45.9
+##  7             3             25  65.5     1      0  42.6
+##  8             1             10  67.1     0      0  40.7
+##  9             1             10  63.9     0      0  45  
+## 10             2             15  63       1      0  67.6
+## # … with 306 more rows, and 14 more variables: t_vol <dbl>,
+## #   t_stage <dbl>, b_gs <dbl>, bn <dbl>,
+## #   organ_confined <dbl>, preop_psa <dbl>,
+## #   preop_therapy <dbl>, units <dbl>, s_gs <dbl>,
+## #   any_adj_therapy <dbl>, adj_rad_therapy <dbl>,
+## #   recurrence <dbl>, censor <dbl>,
+## #   time_to_recurrence <dbl>
+```
+
+** write files, add examples for Stata, SPSS **
+
+
+
+
+## Other strange file types with rio
+
+Once in a while, you will run into a strange data file that is not a csv or Excel or from a common statistical package (SAS, Stata, SPSS). These might include Systat, Minitab, RDA, or others.
+
+This is when the {rio} package comes to the rescue. The name, rio, stands for R input and output. The {rio} package looks at the file extension (like .csv, .xls, .dta) to guess the file type, and then applies the appropriate method to read in the data. The import() function in {rio} makes data import much easier. You don't always have the fine control seen in {readr}, but {rio} is an all-purpose tool that can get nearly any data format into R.
+
+Try this out with the code chunk below.
+Just replace the *filename* in the code chunk with one of the files named below.
+Try to use the same `import()` function to read 
+
+- scurvy.csv
+- strep_tb.tsv
+- paulolol.xlsx
+- blood_storage.sas7bdat
+
+
+```r
+rio::import(glue(url_stem, "data/filename"))
+```
+
+```
+## Error in remote_to_local(file, format = format): Unrecognized file format. Try specifying with the format argument.
+```
+
+It can be very convenient to use {rio} for unusual file types.
+
+## Data exploration with glimpse, str, and head/tail
 
 Once you have a dataset read into your working Environment (see the Environment tab in RStudio), you will want to know more about it.
 There are several helpful functions and packages to get you started in exploring your data.
@@ -610,38 +763,22 @@ Try this out with scurvy or strep_tb.
 
 
 ```r
-head(as.data.frame(scurvy))
+head(scurvy)
 ```
 
 ```
-##   study_id            treatment
-## 1      001                cider
-## 2      002                cider
-## 3      003 dilute_sulfuric_acid
-## 4      004 dilute_sulfuric_acid
-## 5      005              vinegar
-## 6      006              vinegar
-##                          dosing_regimen_for_scurvy
-## 1                                  1 quart per day
-## 2                                  1 quart per day
-## 3 25 drops of elixir of vitriol, three times a day
-## 4 25 drops of elixir of vitriol, three times a day
-## 5                 two spoonfuls, three times daily
-## 6                 two spoonfuls, three times daily
-##   gum_rot_d6 skin_sores_d6 weakness_of_the_knees_d6
-## 1 2_moderate    2_moderate               2_moderate
-## 2 2_moderate        1_mild               2_moderate
-## 3     1_mild      3_severe                 3_severe
-## 4 2_moderate      3_severe                 3_severe
-## 5   3_severe      3_severe                 3_severe
-## 6   3_severe      3_severe                 3_severe
-##   lassitude_d6 fit_for_duty_d6
-## 1   2_moderate            0_no
-## 2     3_severe            0_no
-## 3     3_severe            0_no
-## 4     3_severe            0_no
-## 5     3_severe            0_no
-## 6     3_severe            0_no
+## # A tibble: 6 x 8
+##   study_id treatment     dosing_regimen_for_scur… gum_rot_d6
+##   <chr>    <fct>         <chr>                    <fct>     
+## 1 001      cider         1 quart per day          2_moderate
+## 2 002      cider         1 quart per day          2_moderate
+## 3 003      dilute_sulfu… 25 drops of elixir of v… 1_mild    
+## 4 004      dilute_sulfu… 25 drops of elixir of v… 2_moderate
+## 5 005      vinegar       two spoonfuls, three ti… 3_severe  
+## 6 006      vinegar       two spoonfuls, three ti… 3_severe  
+## # … with 4 more variables: skin_sores_d6 <fct>,
+## #   weakness_of_the_knees_d6 <fct>, lassitude_d6 <fct>,
+## #   fit_for_duty_d6 <fct>
 ```
 
 ```r
@@ -757,7 +894,7 @@ It is actually much easier to see the full width and height of a data set by scr
 <select class='webex-solveme' data-answer='["print(x, n=Inf)"]'> <option></option> <option>filter(ends_with("all"))</option> <option>median(na.rm=TRUE)</option> <option>print(x, n=Inf)</option></select>
 
 If you just want a quick view of a few critical columns of your data, you can obtain this with the *select()* function, as in the code chunk below.
-Note that if you want to look at a random sample of your dataset, rather than the head or tail, you can use *sample_frac()* or *sample_n()* to do this.
+Note that if you want to look at a random sample of your dataset, rather than the head or tail, you can use *sample_frac()* or *sample_n()* to do this. This sampling can be helpful if your data are sorted, or the head and tail rows are not representative of the whole dataset.
 See how this is used by running the code chunk below, which uses a 10% random sample of strep_tb to check that the mutate steps to generate the variables `rad_num` and `improved` worked correctly.
 
 
@@ -770,99 +907,291 @@ strep_tb %>%
 
 ```
 ## # A tibble: 11 x 3
-##    radiologic_6m                rad_num improved
-##    <fct>                          <dbl> <lgl>   
-##  1 5_Moderate_improvement             5 TRUE    
-##  2 2_Considerable_deterioration       2 FALSE   
-##  3 6_Considerable_improvement         6 TRUE    
-##  4 6_Considerable_improvement         6 TRUE    
-##  5 1_Death                            1 FALSE   
-##  6 3_Moderate_deterioration           3 FALSE   
-##  7 6_Considerable_improvement         6 TRUE    
-##  8 5_Moderate_improvement             5 TRUE    
-##  9 2_Considerable_deterioration       2 FALSE   
-## 10 5_Moderate_improvement             5 TRUE    
-## 11 6_Considerable_improvement         6 TRUE
+##    radiologic_6m              rad_num improved
+##    <fct>                        <dbl> <lgl>   
+##  1 5_Moderate_improvement           5 TRUE    
+##  2 4_No_change                      4 FALSE   
+##  3 4_No_change                      4 FALSE   
+##  4 1_Death                          1 FALSE   
+##  5 6_Considerable_improvement       6 TRUE    
+##  6 6_Considerable_improvement       6 TRUE    
+##  7 3_Moderate_deterioration         3 FALSE   
+##  8 1_Death                          1 FALSE   
+##  9 3_Moderate_deterioration         3 FALSE   
+## 10 5_Moderate_improvement           5 TRUE    
+## 11 1_Death                          1 FALSE
 ```
-
-## Reading Excel Files with readxl
-
-While file types like \*.csv and \*.tsv are common, it is also common to use Microsoft Excel or an equivalent for data entry.
-There are a lot of reasons that this is not a good idea (see chapter XX and video at link), but Excel is so ubiquitous, that it is often used.
-
-Fortunately, the {readxl} package provides functions for reading excel files.
-The *read_xl()* function works nearly the same as *read_csv()*.
-But there are a few bonus arguments (options) that are really helpful.
-
-The *read_excel()* function includes helpful arguments like **skip**, **col_names**, **col_types**, and **n_max**, much like *read_csv()*.
-In addition, read_excel() has a **sheet** argument, which lets you specify which sheet in an excel workbook you want to read.
-The default is the first worksheet, but you can set this to sheet = 4 for the 4th worksheet from the left, or sheet = "raw_data" to get the right worksheet.
-You can also set the range argument to only read in a particular range of cells, like range = "B2:G14".
-Below is an example of how to read in an Excel worksheet.
-
-
-```r
-read_excel(path = 'data/paulolol.xlsx',
-           sheet = 1,
-           skip = 1)
-```
-
-```
-## New names:
-## * `` -> ...2
-## * `` -> ...3
-## * `` -> ...4
-## * `` -> ...5
-## * `` -> ...6
-```
-
-```
-## # A tibble: 13 x 6
-##    `Paul Investigator… ...2      ...3   ...4    ...5  ...6  
-##    <chr>               <chr>     <chr>  <chr>   <chr> <chr> 
-##  1 44338               <NA>      <NA>   <NA>    <NA>  <NA>  
-##  2 pat_id              SBP_start SBP_e… HR_sta… HR_e… treat…
-##  3 1                   145       120    92      78    paulo…
-##  4 2                   147       148    88      87    place…
-##  5 3                   158       139    96      80    paulo…
-##  6 4                   167       166    87      88    place…
-##  7 5                   154       131    84      72    paulo…
-##  8 6                   178       177    99      97    place…
-##  9 7                   151       134    101     86    paulo…
-## 10 8                   149       148    92      93    place…
-## 11 <NA>                <NA>      <NA>   sbp     hr    <NA>  
-## 12 <NA>                mean pau… <NA>   131     79    <NA>  
-## 13 <NA>                mean pla… <NA>   159.75  91.25 <NA>
-```
-
-### Test yourself on strep_tb
-
-- which argument in read_excel lets you skip rows of commentary? 
-
-<select class='webex-solveme' data-answer='["skip"]'> <option></option> <option>sheet</option> <option>skip</option> <option>path</option></select>
-
-- which argument in read_excel lets you pick which spreadsheet tab to read? 
-
-<select class='webex-solveme' data-answer='["sheet"]'> <option></option> <option>sheet</option> <option>skip</option> <option>path</option></select>
-
-- How many missing (NA) values are in this dataset?
-
-<input class='webex-solveme nospaces' size='2' data-answer='["15"]'/>
 
 
 ## More exploration with skimr and DataExplorer
 
-## Other strange file types with rio
+Once you have your data read in, you usually want to get an overview of this new dataset. While there are many ways to explore a dataset, I will introduce two:
+
+- skim() from the {skimr} package
+- create_report() from the {DataExplorer} package
+
+You can get a more detailed look at a dataset with the {skimr} package, which has the `skim()` function, gives you a quick look at each variable in the dataset, with simple output in the Console. Try this out with the **strep_tb** dataset.
+Run the code chunk below, applying the `skim()` function to the strep_tb dataset.
+
+
+```r
+skimr::skim(strep_tb)
+```
+
+
+Table: (\#tab:unnamed-chunk-22)Data summary
+
+|                         |         |
+|:------------------------|:--------|
+|Name                     |strep_tb |
+|Number of rows           |107      |
+|Number of columns        |13       |
+|_______________________  |         |
+|Column type frequency:   |         |
+|character                |1        |
+|factor                   |8        |
+|logical                  |1        |
+|numeric                  |3        |
+|________________________ |         |
+|Group variables          |None     |
+
+
+**Variable type: character**
+
+|skim_variable | n_missing| complete_rate| min| max| empty| n_unique| whitespace|
+|:-------------|---------:|-------------:|---:|---:|-----:|--------:|----------:|
+|patient_id    |         0|             1|   4|   4|     0|      107|          0|
+
+
+**Variable type: factor**
+
+|skim_variable       | n_missing| complete_rate|ordered | n_unique|top_counts                         |
+|:-------------------|---------:|-------------:|:-------|--------:|:----------------------------------|
+|arm                 |         0|          1.00|FALSE   |        2|Str: 55, Con: 52                   |
+|gender              |         0|          1.00|FALSE   |        2|F: 59, M: 48                       |
+|baseline_condition  |         0|          1.00|FALSE   |        3|3_P: 54, 2_F: 37, 1_G: 16          |
+|baseline_temp       |         0|          1.00|FALSE   |        4|4_1: 43, 3_1: 32, 2_9: 25, 1_9: 7  |
+|baseline_esr        |         1|          0.99|FALSE   |        3|4_5: 65, 3_2: 36, 2_1: 5, 1_0: 0   |
+|baseline_cavitation |         0|          1.00|FALSE   |        2|yes: 62, no: 45                    |
+|strep_resistance    |         0|          1.00|FALSE   |        3|1_s: 65, 3_r: 34, 2_m: 8           |
+|radiologic_6m       |         0|          1.00|FALSE   |        6|6_C: 32, 5_M: 23, 1_D: 18, 3_M: 17 |
+
+
+**Variable type: logical**
+
+|skim_variable | n_missing| complete_rate| mean|count            |
+|:-------------|---------:|-------------:|----:|:----------------|
+|improved      |         0|             1| 0.51|TRU: 55, FAL: 52 |
+
+
+**Variable type: numeric**
+
+|skim_variable | n_missing| complete_rate| mean|   sd| p0| p25| p50| p75| p100|hist  |
+|:-------------|---------:|-------------:|----:|----:|--:|---:|---:|---:|----:|:-----|
+|dose_strep_g  |         0|             1| 1.03| 1.00|  0|   0|   2|   2|    2|▇▁▁▁▇ |
+|dose_PAS_g    |         0|             1| 0.00| 0.00|  0|   0|   0|   0|    0|▁▁▇▁▁ |
+|rad_num       |         0|             1| 3.93| 1.89|  1|   2|   5|   6|    6|▇▅▁▆▇ |
+
+### Test yourself on the `skim()` results
+
+- How many females participated in the strep_tb study? 
+
+<select class='webex-solveme' data-answer='["59"]'> <option></option> <option>52</option> <option>59</option> <option>48</option></select>
+
+- What proportion of subjects in strep_tb were improved? 
+
+<select class='webex-solveme' data-answer='["50.514"]'> <option></option> <option>0.493</option> <option>50.514</option> <option>0.55</option></select>
+
+- What is the mean value for rad_num in strep_tb? 
+
+<select class='webex-solveme' data-answer='["3.93"]'> <option></option> <option>3.93</option> <option>1.89</option> <option>4.7</option></select>
+
+
+A fancier approach is taken by the DataExplorer package, which can create a full html report with correlations and PCA analysis. Copy and run the chunk below to see what the Data Profiling Report looks like.
+
+
+```r
+DataExplorer::create_report(strep_tb)
+```
+
+```
+## 
+## 
+## processing file: report.rmd
+```
+
+```
+##   |                                                          |                                                  |   0%  |                                                          |.                                                 |   2%
+##    inline R code fragments
+## 
+##   |                                                          |..                                                |   5%
+## label: global_options (with options) 
+## List of 1
+##  $ include: logi FALSE
+## 
+##   |                                                          |....                                              |   7%
+##   ordinary text without R code
+## 
+##   |                                                          |.....                                             |  10%
+## label: introduce
+##   |                                                          |......                                            |  12%
+##   ordinary text without R code
+## 
+##   |                                                          |.......                                           |  14%
+## label: plot_intro
+```
+
+```
+##   |                                                          |........                                          |  17%
+##   ordinary text without R code
+## 
+##   |                                                          |..........                                        |  19%
+## label: data_structure
+##   |                                                          |...........                                       |  21%
+##   ordinary text without R code
+## 
+##   |                                                          |............                                      |  24%
+## label: missing_profile
+```
+
+```
+##   |                                                          |.............                                     |  26%
+##   ordinary text without R code
+## 
+##   |                                                          |..............                                    |  29%
+## label: univariate_distribution_header
+##   |                                                          |...............                                   |  31%
+##   ordinary text without R code
+## 
+##   |                                                          |.................                                 |  33%
+## label: plot_histogram
+```
+
+```
+##   |                                                          |..................                                |  36%
+##   ordinary text without R code
+## 
+##   |                                                          |...................                               |  38%
+## label: plot_density
+##   |                                                          |....................                              |  40%
+##   ordinary text without R code
+## 
+##   |                                                          |.....................                             |  43%
+## label: plot_frequency_bar
+```
+
+```
+##   |                                                          |.......................                           |  45%
+##   ordinary text without R code
+## 
+##   |                                                          |........................                          |  48%
+## label: plot_response_bar
+##   |                                                          |.........................                         |  50%
+##   ordinary text without R code
+## 
+##   |                                                          |..........................                        |  52%
+## label: plot_with_bar
+##   |                                                          |...........................                       |  55%
+##   ordinary text without R code
+## 
+##   |                                                          |.............................                     |  57%
+## label: plot_normal_qq
+```
+
+```
+##   |                                                          |..............................                    |  60%
+##   ordinary text without R code
+## 
+##   |                                                          |...............................                   |  62%
+## label: plot_response_qq
+##   |                                                          |................................                  |  64%
+##   ordinary text without R code
+## 
+##   |                                                          |.................................                 |  67%
+## label: plot_by_qq
+##   |                                                          |...................................               |  69%
+##   ordinary text without R code
+## 
+##   |                                                          |....................................              |  71%
+## label: correlation_analysis
+```
+
+```
+##   |                                                          |.....................................             |  74%
+##   ordinary text without R code
+## 
+##   |                                                          |......................................            |  76%
+## label: principal_component_analysis
+```
+
+```
+##   |                                                          |.......................................           |  79%
+##   ordinary text without R code
+## 
+##   |                                                          |........................................          |  81%
+## label: bivariate_distribution_header
+##   |                                                          |..........................................        |  83%
+##   ordinary text without R code
+## 
+##   |                                                          |...........................................       |  86%
+## label: plot_response_boxplot
+##   |                                                          |............................................      |  88%
+##   ordinary text without R code
+## 
+##   |                                                          |.............................................     |  90%
+## label: plot_by_boxplot
+##   |                                                          |..............................................    |  93%
+##   ordinary text without R code
+## 
+##   |                                                          |................................................  |  95%
+## label: plot_response_scatterplot
+##   |                                                          |................................................. |  98%
+##   ordinary text without R code
+## 
+##   |                                                          |..................................................| 100%
+## label: plot_by_scatterplot
+```
+
+```
+## output file: /Users/peterhiggins/Documents/RCode/rmrwr-book/report.knit.md
+```
+
+```
+## /usr/local/bin/pandoc +RTS -K512m -RTS /Users/peterhiggins/Documents/RCode/rmrwr-book/report.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output /Users/peterhiggins/Documents/RCode/rmrwr-book/report.html --lua-filter /Library/Frameworks/R.framework/Versions/4.0/Resources/library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /Library/Frameworks/R.framework/Versions/4.0/Resources/library/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --variable bs3=TRUE --standalone --section-divs --table-of-contents --toc-depth 6 --template /Library/Frameworks/R.framework/Versions/4.0/Resources/library/rmarkdown/rmd/h/default.html --no-highlight --variable highlightjs=1 --variable theme=yeti --include-in-header /var/folders/93/s18zkv2d4f556fxbjvb8yglc0000gp/T//RtmpJ78fmR/rmarkdown-str11ef9438d9e14.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+```
+
+```
+## 
+## Output created: report.html
+```
+
+### Test yourself on the `create_report()` results
+
+- What percentage of the baseline_esr values were missing? 
+
+<select class='webex-solveme' data-answer='["0.93%"]'> <option></option> <option>9.3%</option> <option>0.09%</option> <option>0.93%</option> <option>1%</option></select>
+
+- How many total data points ('observations') are there in the strep_tb dataset? 
+
+<select class='webex-solveme' data-answer='["1,391"]'> <option></option> <option>10,000</option> <option>1,391</option> <option>107</option></select>
+
+You can choose which you prefer, the simpler approach of {skimr} vs the fancier reports of {DataExplorer.}
 
 ## Practice loading data from multiple file types
 
-## Practice saving (writing to disk) data objects in formats including csv, rds, xls, xlsx
+## Practice saving (writing to disk) data objects in formats including csv, rds, xls, xlsx and statistical program formats
 
 ## How do readr and readxl parse columns?
 
 ## What are the variable types?
 
-Numeric - integer and double Character - string Logical - TRUE/FALSE Dates - an unholy formatting mess Factors - categorical variables - nominal factors (no order) - ordinal factors (with a meaningful order)
+- Numeric - integer and double 
+- Character - string 
+- Logical - TRUE/FALSE 
+- Dates - an unholy formatting mess 
+- Factors - categorical variables 
+  - nominal factors (no order) 
+  - ordinal factors (with a meaningful order)
 
 ## Controlling Parsing
 
@@ -937,7 +1266,6 @@ read_excel(path = 'data/paulolol2.xlsx',
 
 
 ## Future forms of data ingestion
-- reading files from SAS, Stata, SPSS, Systat, Minitab, RDA or RData (haven)
 - https://www.datacamp.com/community/tutorials/r-data-import-tutorial?utm_source=adwords_ppc&utm_campaignid=1658343521&utm_adgroupid=63833880415&utm_device=c&utm_keyword=%2Bread%20%2Bdata%20%2Br&utm_matchtype=b&utm_network=g&utm_adpostion=&utm_creative=469789579368&utm_targetid=aud-392016246653:kwd-309793905111&utm_loc_interest_ms=&utm_loc_physical_ms=9016851&gclid=Cj0KCQjwxJqHBhC4ARIsAChq4auwh82WzCiJsUDzDOiaABetyowW0CXmTLbUFkQmnl1pn4Op9xcCcdQaAhMWEALw_wcB
 - reading data from the web with readr
 - reading data from Google Sheets with googlesheets
