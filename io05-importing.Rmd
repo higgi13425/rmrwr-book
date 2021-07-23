@@ -15,11 +15,14 @@ library(skimr)
 library(here)
 library(glue)
 library(webex)
-scurvy <- medicaldata::scurvy
-write_csv(scurvy, 'data/scurvy.csv')
-strep_tb <- medicaldata::strep_tb
-write_tsv(strep_tb, 'data/strep_tb.tsv')
-url_stem <- "https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/"
+library(httr)
+
+github_raw_link <- "https://github.com/higgi13425/rmrwr-book/raw/master/data/paulolol.xlsx"
+paulolol <- tempfile(fileext = ".xlsx")
+req <- httr::GET(github_link, 
+          # write result to disk
+           write_disk(path = paulolol))
+
 ```
 
 # Importing Your Data into R
@@ -98,6 +101,7 @@ Now that you have {readr} loaded, you can read in some csv data.
 Let's start with a file named `scurvy.csv` in a `data` folder on GitHub. You will need to glue together the url_stem and "data/scurvy.csv" to get the full web address. Run the code chunk below to see the url_stem and the dataset.
 
 ```{r}
+url_stem <- "https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/"
 url_stem
 read_csv(glue(url_stem, 'data/scurvy.csv'))
 ```
@@ -298,7 +302,7 @@ You can also set the range argument to only read in a particular range of cells,
 Below is an example of how to read in an Excel worksheet.
 
 ```{r, error=TRUE}
-read_excel(path = 'data/paulolol.xlsx',
+read_excel(paulolol, # path = "paulolol.xlsx" has been saved to paulolol
            sheet = 1,
            skip = 1)
 
@@ -306,13 +310,13 @@ read_excel(path = 'data/paulolol.xlsx',
 
 ### Test yourself on strep_tb
 
-- which argument in read_excel lets you skip rows of commentary? 
+- which argument in read_excel lets you jump past initial rows of commentary? 
 
-`r webex::mcq(c('sheet', answer = 'skip', 'path'))`
+`r webex::mcq(c("jump", 'sheet', answer = 'skip', 'path'))`
 
 - which argument in read_excel lets you pick which spreadsheet tab to read? 
 
-`r webex::mcq(c(answer = 'sheet', 'skip', 'path'))`
+`r webex::mcq(c("pick", answer = 'sheet', 'skip', 'path'))`
 
 - How many missing (NA) values are in this dataset (as run with skip =1)?
 
@@ -320,7 +324,7 @@ read_excel(path = 'data/paulolol.xlsx',
 
 - what should the **range** argument be to read in these data cleanly? 
 
-`r webex::mcq(c(answer = 'A3:F8', 'A1:L30', 'B4:K15'))`
+`r webex::mcq(c("B2:F8", answer = 'A4:F11', 'A1:L30', 'B4:K15'))`
 
 ## Bringing in data from other Statistical Programs (SAS, Stata, SPSS) with the {haven} package
 
