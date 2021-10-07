@@ -911,17 +911,17 @@ strep_tb %>%
 ## # A tibble: 11 × 3
 ##    radiologic_6m                rad_num improved
 ##    <fct>                          <dbl> <lgl>   
-##  1 2_Considerable_deterioration       2 FALSE   
-##  2 5_Moderate_improvement             5 TRUE    
+##  1 1_Death                            1 FALSE   
+##  2 1_Death                            1 FALSE   
 ##  3 5_Moderate_improvement             5 TRUE    
 ##  4 6_Considerable_improvement         6 TRUE    
-##  5 3_Moderate_deterioration           3 FALSE   
+##  5 1_Death                            1 FALSE   
 ##  6 2_Considerable_deterioration       2 FALSE   
-##  7 1_Death                            1 FALSE   
-##  8 6_Considerable_improvement         6 TRUE    
+##  7 6_Considerable_improvement         6 TRUE    
+##  8 1_Death                            1 FALSE   
 ##  9 1_Death                            1 FALSE   
-## 10 6_Considerable_improvement         6 TRUE    
-## 11 5_Moderate_improvement             5 TRUE
+## 10 2_Considerable_deterioration       2 FALSE   
+## 11 3_Moderate_deterioration           3 FALSE
 ```
 
 

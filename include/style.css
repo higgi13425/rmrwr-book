@@ -241,28 +241,28 @@ div.warning, div.tip, div.tryit, div.challenge, div.explore {
 }
 
 div.warning {
-  background-image: url("images/warning.png");
+  background-image: url("images_included/warning.png");
   background-color: #f7f7f7; /* gray97 background */
 }
 
 div.tip {
-  background-image: url("images/tip.png");
+  background-image: url("images_included/tip.png");
   background-color: #fff7bc; /* warm yellow background */
 }
 
 div.tryit {
-  background-image: url("images/tryit.png");
+  background-image: url("images_included/tryit.png");
   background-color: #edf8fb; /* light blue background */
 }
 
 div.challenge {
-  background-image: url("images/challenge.png");
+  background-image: url("images_included/challenge.png");
   color: #4b0082; /* indigo text */
   background-color: #ffe1ff; /* thistle background */
 }
 
 div.explore {
-  background-image: url("images/explore.png");
+  background-image: url("images_included/explore.png");
   background-color: #d0faee; /* green card background */
 }
 
