@@ -35,7 +35,7 @@ Search for The Big 5 in the pipe below
 You should end up with 4 columns of 10 rows, sorted by efficiency, when all of the bugs have been fixed.
 
 
-```r
+`````r
 mtcars %>% 
   filter(cyl >4) %>% 
   select(mpg, hp, displ) %>% 
@@ -43,17 +43,14 @@ mtcars %>%
   filtre(efficiency > 0.5) %>% 
   arrange(desc(efficiency) %<% 
   slice(1:10)
-```
+````
+`````
 
 ```
-## Error: <text>:8:0: unexpected end of input
-## 6:   arrange(desc(efficiency) %<% 
-## 7:   slice(1:10)
-##   ^
+## Error: attempt to use zero-length variable name
 ```
 
-
-```r
+`````r
 mtcars %>% 
   filter(cyl >4) %>% 
   select(mpg, hp, displ) %>% # watch for typos in object names
@@ -61,17 +58,14 @@ mtcars %>%
   filter(efficiency > 0.5) %>%  # watch for typos
   arrange(desc(efficiency) %<% # watch for mistyped pipes
   slice(1:10)
-```
+````
+`````
 
 ```
-## Error: <text>:8:0: unexpected end of input
-## 6:   arrange(desc(efficiency) %<% # watch for mistyped pipes
-## 7:   slice(1:10)
-##   ^
+## Error: attempt to use zero-length variable name
 ```
 
-
-```r
+`````r
 mtcars %>% 
   filter(cyl >4) %>% 
   select(mpg, hp, displ) %>% 
@@ -79,12 +73,7 @@ mtcars %>%
   filter(efficiency > 0.5) %>%  
   arrange(desc(efficiency)) %>% # watch for missing closing parentheses
   slice(1:10)
-```
-
-```
-## Error: Can't subset columns that don't exist.
-## x Column `displ` doesn't exist.
-```
+````
 ## Systematic Hunting For Bugs in Pipes
 
 What if it is not one of the Big 5 Pipe Bugs, and you need to hunt systematically?
@@ -118,7 +107,11 @@ If that works, try running the first 3 lines, by deleting the hashtag on line 2,
 Use this approach to run successively more lines of the pipe in the code chunk below.    
 <br>
 In which line of the pipe below do you hit the first error (bug)?
+`````
 
+```
+## Error: attempt to use zero-length variable name
+```
 
 ```r
 iris %>% 

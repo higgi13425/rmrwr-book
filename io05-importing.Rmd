@@ -14,7 +14,7 @@ library(readxl)
 library(skimr)
 library(here)
 library(glue)
-library(webex)
+library(webexercises)
 library(httr)
 
 github_raw_link <- "https://github.com/higgi13425/rmrwr-book/raw/master/data/paulolol.xlsx"
@@ -140,7 +140,7 @@ You can now print this out at any time by typing `scurvy_data` into the Console,
 
 - How many limes did the British seamen in the citrus arm receive each day? 
 
-`r webex::mcq(c('3', '2', answer = 'zero', '1.5'))`
+`r webexercises::mcq(c('3', '2', answer = 'zero', '1.5'))`
 
 You can also start with the `scurvy_data` object, and *do* things to this data object, like summarize it, or graph it, or calculate total_symptom_score in a data pipeline.
 Once you have assigned your data to an object, it will stick around in that R session for later use.
@@ -312,19 +312,19 @@ read_excel(paulolol_xlsx,
 
 - which argument in read_excel lets you jump past initial rows of commentary? 
 
-`r webex::mcq(c("jump", 'sheet', answer = 'skip', 'path'))`
+`r webexercises::mcq(c("jump", 'sheet', answer = 'skip', 'path'))`
 
 - which argument in read_excel lets you pick which spreadsheet tab to read? 
 
-`r webex::mcq(c("pick", answer = 'sheet', 'skip', 'path'))`
+`r webexercises::mcq(c("pick", answer = 'sheet', 'skip', 'path'))`
 
 - How many missing (NA) values are in this dataset (as run with skip =1)?
 
-`r webex::fitb('15')`
+`r webexercises::fitb('15')`
 
 - what should the **range** argument be to read in these data cleanly? 
 
-`r webex::mcq(c("B2:F8", answer = 'A4:F11', 'A1:L30', 'B4:K15'))`
+`r webexercises::mcq(c("B2:F8", answer = 'A4:F11', 'A1:L30', 'B4:K15'))`
 
 ## Bringing in data from other Statistical Programs (SAS, Stata, SPSS) with the {haven} package
 
@@ -399,15 +399,15 @@ glimpse(----)
 
 - which variable is the logical data type? 
 
-`r webex::mcq(c('baseline_esr', answer = 'improved', 'patient_id'))`
+`r webexercises::mcq(c('baseline_esr', answer = 'improved', 'patient_id'))`
 
 - which variable is the dbl numeric data type?
 
-`r webex::mcq(c('arm', 'patient_id', answer = 'rad_num'))`
+`r webexercises::mcq(c('arm', 'patient_id', answer = 'rad_num'))`
 
 - How many observations are in this dataset?
 
-`r webex::fitb('107')`
+`r webexercises::fitb('107')`
 
 
 ### Examining Structure with *str()*
@@ -435,15 +435,15 @@ Another extra detail provided by str() is that it tells you some of the levels o
 
 - what is the dose of cider? 
 
-`r webex::mcq(c('25 drops', answer = '1 quart per day', 'one-half rood'))`
+`r webexercises::mcq(c('25 drops', answer = '1 quart per day', 'one-half rood'))`
 
 - how many levels of gum_rot are there?
 
-`r webex::fitb('4')`
+`r webexercises::fitb('4')`
 
 - Which numeric value indicates 'fit for duty'?
 
-`r webex::fitb('1')`
+`r webexercises::fitb('1')`
 
 
 Note that you can also use *str()* and *glimpse()* on a single variable.
@@ -496,11 +496,11 @@ It is actually much easier to see the full width and height of a data set by scr
 
 - What function (and argument) let you print all the columns of a tibble?
 
-`r webex::mcq(c(answer = 'print(x, width=Inf)', 'filter(starts_with("width"))','sum(na.rm=TRUE)'))`
+`r webexercises::mcq(c(answer = 'print(x, width=Inf)', 'filter(starts_with("width"))','sum(na.rm=TRUE)'))`
 
 - What function (and argument) let you print all the *rows* of a tibble?
 
-`r webex::mcq(c('filter(ends_with("all"))','median(na.rm=TRUE)', answer = 'print(x, n=Inf)'))`
+`r webexercises::mcq(c('filter(ends_with("all"))','median(na.rm=TRUE)', answer = 'print(x, n=Inf)'))`
 
 If you just want a quick view of a few critical columns of your data, you can obtain this with the *select()* function, as in the code chunk below.
 Note that if you want to look at a random sample of your dataset, rather than the head or tail, you can use *sample_frac()* or *sample_n()* to do this. This sampling can be helpful if your data are sorted, or the head and tail rows are not representative of the whole dataset.
@@ -532,15 +532,15 @@ skimr::skim(strep_tb)
 
 - How many females participated in the strep_tb study? 
 
-`r webex::mcq(c('52', answer = '59', '48'))`
+`r webexercises::mcq(c('52', answer = '59', '48'))`
 
 - What proportion of subjects in strep_tb were improved? 
 
-`r webex::mcq(c('0.493', answer = '50.514', '0.55'))`
+`r webexercises::mcq(c('0.493', answer = '50.514', '0.55'))`
 
 - What is the mean value for rad_num in strep_tb? 
 
-`r webex::mcq(c(answer = '3.93', '1.89', '4.7'))`
+`r webexercises::mcq(c(answer = '3.93', '1.89', '4.7'))`
 
 
 A fancier approach is taken by the DataExplorer package, which can create a full html report with correlations and PCA analysis. Copy and run the chunk below to see what the Data Profiling Report looks like.
@@ -553,11 +553,11 @@ DataExplorer::create_report(strep_tb)
 
 - What percentage of the baseline_esr values were missing? 
 
-`r webex::mcq(c('9.3%', '0.09%', answer = '0.93%', '1%'))`
+`r webexercises::mcq(c('9.3%', '0.09%', answer = '0.93%', '1%'))`
 
 - How many total data points ('observations') are there in the strep_tb dataset? 
 
-`r webex::mcq(c('10,000', answer = '1,391', '107'))`
+`r webexercises::mcq(c('10,000', answer = '1,391', '107'))`
 
 You can choose which you prefer, the simpler approach of {skimr} vs the fancier reports of {DataExplorer.}
 

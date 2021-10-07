@@ -120,7 +120,7 @@ clear.
 
 <!---FLIPBOOK EX 1-->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe1" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_1_num.html#1" scrolling="no" allowfullscreen loading="lazy">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe1" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_1_num.html#1" scrolling="no" allowfullscreen loading="lazy" data-external="1" data-external="1">
 </iframe>
 
 <!---FLIPBOOK EX 1-->
@@ -151,7 +151,7 @@ copy the hint so that you can paste it into the Exercise box.
 
 <!---LEARNR TUTORIAL EX 1-->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe2" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter1/" scrolling="yes">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe2" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter1/" data-external="1" scrolling="yes" data-external="1">
 
 </iframe>
 
@@ -179,7 +179,7 @@ and you can use parentheses as well, to control the order of operations.
 
 <!---FLIPBOOK -->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe3" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_2_boolean.html#1" scrolling="no" allowfullscreen loading="lazy">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe3" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_2_boolean.html#1" scrolling="no" allowfullscreen loading="lazy" data-external="1" data-external="1">
 </iframe>
 
 <!---FLIPBOOK  -->
@@ -208,7 +208,7 @@ copy the hint so that you can paste it into the Exercise box.
 
 <!---LEARNR TUTORIAL EX 2-->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe4" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter2/" scrolling="yes">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe4" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter2/" data-external="1" scrolling="yes" data-external="1">
 
 </iframe>
 
@@ -231,7 +231,7 @@ The typical formats for string filtering are
 
 <!---FLIPBOOK -->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe5" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_3_string.html#1" scrolling="no" allowfullscreen loading="lazy">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe5" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_3_string.html#1" scrolling="no" allowfullscreen loading="lazy" data-external="1">
 </iframe>
 
 <!---FLIPBOOK  -->
@@ -261,7 +261,7 @@ copy the hint so that you can paste it into the Exercise box.
 
 <!---LEARNR TUTORIAL EX 3-->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe6" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter3/" scrolling="yes">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe6" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter3/" scrolling="yes" data-external="1">
 
 </iframe>
 
@@ -287,7 +287,7 @@ The typical formats for date filtering are
 <!---FLIPBOOK -->
 
 <<<<<<< Updated upstream
-<iframe style="margin:0 auto; border: solid black;" id="myIframe7" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_4_dates.html#1" scrolling="no" allowfullscreen loading="lazy">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe7" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_4_dates.html#1" scrolling="no" data-external="1" allowfullscreen loading="lazy">
 
 </iframe>
 
@@ -316,7 +316,7 @@ copy the hint so that you can paste it into the Exercise box.
 
 <!---LEARNR TUTORIAL EX 4-->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter4/" scrolling="yes">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter4/" data-external="1" scrolling="yes">
 
 </iframe>
 
@@ -374,7 +374,7 @@ assumptions involved are very important.
 
 <!---FLIPBOOK -->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe9" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_5_na.html#1" scrolling="no" allowfullscreen loading="lazy">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe9" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_5_na.html#1" data-external="1" scrolling="no" allowfullscreen loading="lazy">
 </iframe>
 
 <!---FLIPBOOK  -->
@@ -392,7 +392,7 @@ You saw several examples of filtering missing data, including
 
 <!---LEARNR TUTORIAL EX 5-->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter5/" scrolling="yes">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter5/" data-external="1" scrolling="yes">
 
 </iframe>
 
@@ -415,7 +415,7 @@ Common formats for this include
 
 <!---FLIPBOOK -->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe11" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_6_dupes.html#1" scrolling="no" allowfullscreen loading="lazy">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe11" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_6_dupes.html#1" scrolling="no" data-external="1" allowfullscreen loading="lazy">
 </iframe>
 
 <!---FLIPBOOK  -->
@@ -435,7 +435,7 @@ You saw several examples of filtering duplicate data, including
 
 <!---LEARNR TUTORIAL EX 6-->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter6/" scrolling="yes">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter6/" data-external="1" scrolling="yes">
 
 </iframe>
 
@@ -461,7 +461,7 @@ Common formats for this include
 
 <!---FLIPBOOK -->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe13" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_7_slice.html#1" scrolling="no" allowfullscreen loading="lazy">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe13" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_7_slice.html#1" scrolling="no" data-external="1" allowfullscreen loading="lazy">
 </iframe>
 
 <!---FLIPBOOK  -->
@@ -477,7 +477,7 @@ You saw several examples of slicing data, including
 
 <!---LEARNR TUTORIAL EX 7-->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter7/" scrolling="yes">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter7/" data-external="1" scrolling="yes">
 
 </iframe>
 
@@ -497,7 +497,7 @@ Common formats for this include
 
 <!---FLIPBOOK -->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe15" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_8_sample.html#1" scrolling="no" allowfullscreen loading="lazy">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe15" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_8_sample.html#1" scrolling="no" allowfullscreen data-external="1" data-external="1" loading="lazy">
 </iframe>
 
 <!---FLIPBOOK  -->
@@ -513,7 +513,7 @@ You saw several examples of sampling data, including
 
 <!---LEARNR TUTORIAL EX 8-->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter8/" scrolling="yes">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter8/" data-external="1" scrolling="yes">
 
 </iframe>
 
@@ -568,7 +568,7 @@ The RYouWithMe series from RLadiesSyndey post on filtering
 
 <!---FLIPBOOK -->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe15" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_9_demo_tabset.html#1" scrolling="no" allowfullscreen loading="lazy">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe15" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_9_demo_tabset.html#1" scrolling="no" allowfullscreen data-external="1" loading="lazy">
 </iframe>
 
 <!---FLIPBOOK  -->

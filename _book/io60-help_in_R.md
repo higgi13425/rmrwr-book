@@ -233,7 +233,7 @@ emerg_dept
 ```
 
 ```
-## # A tibble: 50 x 6
+## # A tibble: 50 × 6
 ##    period     org_code type  attendances breaches admissions
 ##    <date>     <fct>    <fct>       <dbl>    <dbl>      <dbl>
 ##  1 2018-07-01 RRK      1           32209     6499      11332
@@ -267,7 +267,7 @@ data
 ```
 
 ```
-## # A tibble: 10 x 4
+## # A tibble: 10 × 4
 ##    org_code attendances breaches admissions
 ##    <fct>          <dbl>    <dbl>      <dbl>
 ##  1 RRK            32209     6499      11332

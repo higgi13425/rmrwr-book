@@ -195,7 +195,7 @@ Give it a try below. See if you can figure out what each line of code is doing.
 <iframe style="margin:0 auto; border: solid black;" 
 id="myIframe8" 
 width = "763" height = "432" src="https://higgi13425.github.io/mini_flipbooks/ttest_flipbook.html#1" 
-scrolling="no"></iframe> 
+scrolling="no" data-external="1"></iframe> 
 
 <!-------------> 
 

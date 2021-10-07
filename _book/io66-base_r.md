@@ -162,7 +162,7 @@ licorice %>%
 ```
 
 ```
-## # A tibble: 235 x 19
+## # A tibble: 235 × 19
 ##      `1` purple   `3`   `4`   `5`   `6`   `7`   `8`   `9`
 ##    <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
 ##  1     0      3  33.0    67     2     1     0     1     2

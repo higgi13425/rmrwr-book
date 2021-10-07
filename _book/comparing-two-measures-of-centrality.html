@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 12 Comparing Two Measures of Centrality | Reproducible Medical Research with R</title>
+  <title>Chapter 13 Comparing Two Measures of Centrality | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 12 Comparing Two Measures of Centrality | Reproducible Medical Research with R" />
+  <meta property="og:title" content="Chapter 13 Comparing Two Measures of Centrality | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rmrwr.netlify.com" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="higgi13425/rmrwr-book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 12 Comparing Two Measures of Centrality | Reproducible Medical Research with R" />
+  <meta name="twitter:title" content="Chapter 13 Comparing Two Measures of Centrality | Reproducible Medical Research with R" />
   
   <meta name="twitter:description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2021-07-22" />
+<meta name="date" content="2021-10-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +33,8 @@
   
 <link rel="prev" href="major-r-updates-where-are-my-packages.html"/>
 <link rel="next" href="sample-size-calculations-with-pwr.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -53,7 +53,7 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.3.9000/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
@@ -66,6 +66,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -324,186 +325,194 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6.5" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#references"><i class="fa fa-check"></i><b>6.5</b> References:</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><i class="fa fa-check"></i><b>7</b> Tips for Hashtag Debugging your Pipes and GGPlots</a>
+<li class="chapter" data-level="7" data-path="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html"><i class="fa fa-check"></i><b>7</b> The Building Blocks of R: data types, data structures, functions, and packages.</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#debugging"><i class="fa fa-check"></i><b>7.1</b> Debugging</a></li>
-<li class="chapter" data-level="7.2" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#the-quick-screen"><i class="fa fa-check"></i><b>7.2</b> The Quick Screen</a></li>
-<li class="chapter" data-level="7.3" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#systematic-hunting-for-bugs-in-pipes"><i class="fa fa-check"></i><b>7.3</b> Systematic Hunting For Bugs in Pipes</a></li>
-<li class="chapter" data-level="7.4" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#systematic-hunting-for-bugs-in-plots"><i class="fa fa-check"></i><b>7.4</b> Systematic Hunting For Bugs in Plots</a></li>
-<li class="chapter" data-level="7.5" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#hashtag-debugging"><i class="fa fa-check"></i><b>7.5</b> Hashtag Debugging</a></li>
-<li class="chapter" data-level="7.6" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#pipe-2"><i class="fa fa-check"></i><b>7.6</b> Pipe 2</a></li>
-<li class="chapter" data-level="7.7" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#plot-2"><i class="fa fa-check"></i><b>7.7</b> Plot 2</a></li>
-<li class="chapter" data-level="7.8" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#plot3"><i class="fa fa-check"></i><b>7.8</b> Plot3</a></li>
-<li class="chapter" data-level="7.9" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#pipe-3"><i class="fa fa-check"></i><b>7.9</b> Pipe 3</a></li>
+<li class="chapter" data-level="7.1" data-path="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#data-types"><i class="fa fa-check"></i><b>7.1</b> Data Types</a></li>
+<li class="chapter" data-level="7.2" data-path="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#data-structures"><i class="fa fa-check"></i><b>7.2</b> Data Structures</a></li>
+<li class="chapter" data-level="7.3" data-path="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#examining-data-types-and-data-structures"><i class="fa fa-check"></i><b>7.3</b> Examining Data Types and Data Structures</a></li>
+<li class="chapter" data-level="7.4" data-path="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#functions"><i class="fa fa-check"></i><b>7.4</b> Functions</a></li>
+<li class="chapter" data-level="7.5" data-path="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#packages"><i class="fa fa-check"></i><b>7.5</b> Packages</a></li>
+<li class="chapter" data-level="7.6" data-path="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#the-building-blocks-of-r"><i class="fa fa-check"></i><b>7.6</b> The Building Blocks of R</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html"><i class="fa fa-check"></i><b>8</b> Finding Help in R</a>
+<li class="chapter" data-level="8" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><i class="fa fa-check"></i><b>8</b> Tips for Hashtag Debugging your Pipes and GGPlots</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#programming-in-r"><i class="fa fa-check"></i><b>8.1</b> Programming in R</a></li>
-<li class="chapter" data-level="8.2" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#starting-with-help"><i class="fa fa-check"></i><b>8.2</b> Starting with Help!</a></li>
-<li class="chapter" data-level="8.3" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#the-magic-of-vignettes"><i class="fa fa-check"></i><b>8.3</b> The Magic of Vignettes</a></li>
-<li class="chapter" data-level="8.4" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#googling-the-error-message"><i class="fa fa-check"></i><b>8.4</b> Googling the Error Message</a></li>
-<li class="chapter" data-level="8.5" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#you-know-what-you-want-to-do-but-dont-know-what-package-or-function-to-use"><i class="fa fa-check"></i><b>8.5</b> You Know What You Want to Do, but Don’t Know What Package or Function to Use</a>
-<ul>
-<li class="chapter" data-level="8.5.1" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#cran-task-views"><i class="fa fa-check"></i><b>8.5.1</b> CRAN Task Views</a></li>
-<li class="chapter" data-level="8.5.2" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#google-is-your-friend"><i class="fa fa-check"></i><b>8.5.2</b> Google is Your Friend</a></li>
+<li class="chapter" data-level="8.1" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#debugging"><i class="fa fa-check"></i><b>8.1</b> Debugging</a></li>
+<li class="chapter" data-level="8.2" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#the-quick-screen"><i class="fa fa-check"></i><b>8.2</b> The Quick Screen</a></li>
+<li class="chapter" data-level="8.3" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#systematic-hunting-for-bugs-in-plots"><i class="fa fa-check"></i><b>8.3</b> Systematic Hunting For Bugs in Plots</a></li>
+<li class="chapter" data-level="8.4" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#hashtag-debugging"><i class="fa fa-check"></i><b>8.4</b> Hashtag Debugging</a></li>
+<li class="chapter" data-level="8.5" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#pipe-2"><i class="fa fa-check"></i><b>8.5</b> Pipe 2</a></li>
+<li class="chapter" data-level="8.6" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#plot-2"><i class="fa fa-check"></i><b>8.6</b> Plot 2</a></li>
+<li class="chapter" data-level="8.7" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#plot3"><i class="fa fa-check"></i><b>8.7</b> Plot3</a></li>
+<li class="chapter" data-level="8.8" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#pipe-3"><i class="fa fa-check"></i><b>8.8</b> Pipe 3</a></li>
 </ul></li>
-<li class="chapter" data-level="8.6" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#seeking-advanced-help-with-a-minimal-reprex"><i class="fa fa-check"></i><b>8.6</b> Seeking Advanced Help with a Minimal REPREX</a></li>
+<li class="chapter" data-level="9" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html"><i class="fa fa-check"></i><b>9</b> Finding Help in R</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#programming-in-r"><i class="fa fa-check"></i><b>9.1</b> Programming in R</a></li>
+<li class="chapter" data-level="9.2" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#starting-with-help"><i class="fa fa-check"></i><b>9.2</b> Starting with Help!</a></li>
+<li class="chapter" data-level="9.3" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#the-magic-of-vignettes"><i class="fa fa-check"></i><b>9.3</b> The Magic of Vignettes</a></li>
+<li class="chapter" data-level="9.4" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#googling-the-error-message"><i class="fa fa-check"></i><b>9.4</b> Googling the Error Message</a></li>
+<li class="chapter" data-level="9.5" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#you-know-what-you-want-to-do-but-dont-know-what-package-or-function-to-use"><i class="fa fa-check"></i><b>9.5</b> You Know What You Want to Do, but Don’t Know What Package or Function to Use</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#cran-task-views"><i class="fa fa-check"></i><b>9.5.1</b> CRAN Task Views</a></li>
+<li class="chapter" data-level="9.5.2" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#google-is-your-friend"><i class="fa fa-check"></i><b>9.5.2</b> Google is Your Friend</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html"><i class="fa fa-check"></i><b>9</b> The Basics of Base R</a>
-<ul>
-<li class="chapter" data-level="9.1" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#dimensions-of-data-rectangles"><i class="fa fa-check"></i><b>9.1</b> Dimensions of Data Rectangles</a></li>
-<li class="chapter" data-level="9.2" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#naming-columns"><i class="fa fa-check"></i><b>9.2</b> Naming columns</a></li>
-<li class="chapter" data-level="9.3" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#concatenation"><i class="fa fa-check"></i><b>9.3</b> Concatenation</a></li>
-<li class="chapter" data-level="9.4" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#sequences"><i class="fa fa-check"></i><b>9.4</b> Sequences</a></li>
-<li class="chapter" data-level="9.5" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#constants"><i class="fa fa-check"></i><b>9.5</b> Constants</a></li>
-<li class="chapter" data-level="9.6" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#fancier-sequences"><i class="fa fa-check"></i><b>9.6</b> Fancier Sequences</a></li>
-<li class="chapter" data-level="9.7" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#mathematical-functions"><i class="fa fa-check"></i><b>9.7</b> Mathematical functions</a></li>
-<li class="chapter" data-level="9.8" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#handling-missing-data-nas"><i class="fa fa-check"></i><b>9.8</b> Handling missing data (NAs)</a></li>
-<li class="chapter" data-level="9.9" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#cutting-continuous-data-into-levels"><i class="fa fa-check"></i><b>9.9</b> Cutting Continuous data into Levels</a></li>
+<li class="chapter" data-level="9.6" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#seeking-advanced-help-with-a-minimal-reprex"><i class="fa fa-check"></i><b>9.6</b> Seeking Advanced Help with a Minimal REPREX</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html"><i class="fa fa-check"></i><b>10</b> Updating R, RStudio, and Your Packages</a>
+<li class="chapter" data-level="10" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html"><i class="fa fa-check"></i><b>10</b> The Basics of Base R</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-1"><i class="fa fa-check"></i><b>10.1</b> Installing Packages</a>
-<ul>
-<li class="chapter" data-level="10.1.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-from-github"><i class="fa fa-check"></i><b>10.1.1</b> Installing Packages from Github</a></li>
-<li class="chapter" data-level="10.1.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#problems-with-installing-packages"><i class="fa fa-check"></i><b>10.1.2</b> Problems with Installing Packages</a></li>
+<li class="chapter" data-level="10.1" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#dimensions-of-data-rectangles"><i class="fa fa-check"></i><b>10.1</b> Dimensions of Data Rectangles</a></li>
+<li class="chapter" data-level="10.2" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#naming-columns"><i class="fa fa-check"></i><b>10.2</b> Naming columns</a></li>
+<li class="chapter" data-level="10.3" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#concatenation"><i class="fa fa-check"></i><b>10.3</b> Concatenation</a></li>
+<li class="chapter" data-level="10.4" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#sequences"><i class="fa fa-check"></i><b>10.4</b> Sequences</a></li>
+<li class="chapter" data-level="10.5" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#constants"><i class="fa fa-check"></i><b>10.5</b> Constants</a></li>
+<li class="chapter" data-level="10.6" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#fancier-sequences"><i class="fa fa-check"></i><b>10.6</b> Fancier Sequences</a></li>
+<li class="chapter" data-level="10.7" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#mathematical-functions"><i class="fa fa-check"></i><b>10.7</b> Mathematical functions</a></li>
+<li class="chapter" data-level="10.8" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#handling-missing-data-nas"><i class="fa fa-check"></i><b>10.8</b> Handling missing data (NAs)</a></li>
+<li class="chapter" data-level="10.9" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#cutting-continuous-data-into-levels"><i class="fa fa-check"></i><b>10.9</b> Cutting Continuous data into Levels</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#loading-packages-with-library-1"><i class="fa fa-check"></i><b>10.2</b> Loading Packages with Library</a></li>
-<li class="chapter" data-level="10.3" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-r"><i class="fa fa-check"></i><b>10.3</b> Updating R</a></li>
-<li class="chapter" data-level="10.4" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-rstudio"><i class="fa fa-check"></i><b>10.4</b> Updating RStudio</a></li>
-<li class="chapter" data-level="10.5" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-your-packages"><i class="fa fa-check"></i><b>10.5</b> Updating Your Packages</a></li>
+<li class="chapter" data-level="11" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html"><i class="fa fa-check"></i><b>11</b> Updating R, RStudio, and Your Packages</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-1"><i class="fa fa-check"></i><b>11.1</b> Installing Packages</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-from-github"><i class="fa fa-check"></i><b>11.1.1</b> Installing Packages from Github</a></li>
+<li class="chapter" data-level="11.1.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#problems-with-installing-packages"><i class="fa fa-check"></i><b>11.1.2</b> Problems with Installing Packages</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html"><i class="fa fa-check"></i><b>11</b> Major R Updates (Where Are My Packages?)</a></li>
-<li class="chapter" data-level="12" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html"><i class="fa fa-check"></i><b>12</b> Comparing Two Measures of Centrality</a>
-<ul>
-<li class="chapter" data-level="12.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#common-problem"><i class="fa fa-check"></i><b>12.1</b> Common Problem</a>
-<ul>
-<li class="chapter" data-level="12.1.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#how-skewed-is-too-skewed"><i class="fa fa-check"></i><b>12.1.1</b> How Skewed is Too Skewed?</a></li>
-<li class="chapter" data-level="12.1.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#visualize-the-distribution-of-data-variables-in-ggplot"><i class="fa fa-check"></i><b>12.1.2</b> Visualize the Distribution of data variables in ggplot</a></li>
-<li class="chapter" data-level="12.1.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#visualize-the-distribution-of-datalen-in-ggplot"><i class="fa fa-check"></i><b>12.1.3</b> Visualize the Distribution of data$len in ggplot</a></li>
-<li class="chapter" data-level="12.1.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-shapiro-wilk"><i class="fa fa-check"></i><b>12.1.4</b> Results of Shapiro-Wilk</a></li>
-<li class="chapter" data-level="12.1.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#try-it-yourself-1"><i class="fa fa-check"></i><b>12.1.5</b> Try it yourself</a></li>
-<li class="chapter" data-level="12.1.6" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#mammal-sleep-hours"><i class="fa fa-check"></i><b>12.1.6</b> Mammal sleep hours</a></li>
+<li class="chapter" data-level="11.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#loading-packages-with-library-1"><i class="fa fa-check"></i><b>11.2</b> Loading Packages with Library</a></li>
+<li class="chapter" data-level="11.3" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-r"><i class="fa fa-check"></i><b>11.3</b> Updating R</a></li>
+<li class="chapter" data-level="11.4" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-rstudio"><i class="fa fa-check"></i><b>11.4</b> Updating RStudio</a></li>
+<li class="chapter" data-level="11.5" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-your-packages"><i class="fa fa-check"></i><b>11.5</b> Updating Your Packages</a></li>
 </ul></li>
-<li class="chapter" data-level="12.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#one-sample-t-test"><i class="fa fa-check"></i><b>12.2</b> One Sample T test</a>
+<li class="chapter" data-level="12" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html"><i class="fa fa-check"></i><b>12</b> Major R Updates (Where Are My Packages?)</a></li>
+<li class="chapter" data-level="13" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html"><i class="fa fa-check"></i><b>13</b> Comparing Two Measures of Centrality</a>
 <ul>
-<li class="chapter" data-level="12.2.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#how-to-do-one-sample-t-test"><i class="fa fa-check"></i><b>12.2.1</b> How to do One Sample T test</a></li>
-<li class="chapter" data-level="12.2.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#interpreting-the-one-sample-t-test"><i class="fa fa-check"></i><b>12.2.2</b> Interpreting the One Sample T test</a></li>
-<li class="chapter" data-level="12.2.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#what-are-the-arguments-of-the-t.test-function"><i class="fa fa-check"></i><b>12.2.3</b> What are the arguments of the t.test function?</a></li>
+<li class="chapter" data-level="13.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#common-problem"><i class="fa fa-check"></i><b>13.1</b> Common Problem</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#how-skewed-is-too-skewed"><i class="fa fa-check"></i><b>13.1.1</b> How Skewed is Too Skewed?</a></li>
+<li class="chapter" data-level="13.1.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#visualize-the-distribution-of-data-variables-in-ggplot"><i class="fa fa-check"></i><b>13.1.2</b> Visualize the Distribution of data variables in ggplot</a></li>
+<li class="chapter" data-level="13.1.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#visualize-the-distribution-of-datalen-in-ggplot"><i class="fa fa-check"></i><b>13.1.3</b> Visualize the Distribution of data$len in ggplot</a></li>
+<li class="chapter" data-level="13.1.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-shapiro-wilk"><i class="fa fa-check"></i><b>13.1.4</b> Results of Shapiro-Wilk</a></li>
+<li class="chapter" data-level="13.1.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#try-it-yourself-1"><i class="fa fa-check"></i><b>13.1.5</b> Try it yourself</a></li>
+<li class="chapter" data-level="13.1.6" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#mammal-sleep-hours"><i class="fa fa-check"></i><b>13.1.6</b> Mammal sleep hours</a></li>
 </ul></li>
-<li class="chapter" data-level="12.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#insert-flipbook-for-ttest-here"><i class="fa fa-check"></i><b>12.3</b> Insert flipbook for ttest here</a>
+<li class="chapter" data-level="13.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#one-sample-t-test"><i class="fa fa-check"></i><b>13.2</b> One Sample T test</a>
 <ul>
-<li class="chapter" data-level="12.3.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#flipbook-time"><i class="fa fa-check"></i><b>12.3.1</b> Flipbook Time!</a></li>
+<li class="chapter" data-level="13.2.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#how-to-do-one-sample-t-test"><i class="fa fa-check"></i><b>13.2.1</b> How to do One Sample T test</a></li>
+<li class="chapter" data-level="13.2.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#interpreting-the-one-sample-t-test"><i class="fa fa-check"></i><b>13.2.2</b> Interpreting the One Sample T test</a></li>
+<li class="chapter" data-level="13.2.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#what-are-the-arguments-of-the-t.test-function"><i class="fa fa-check"></i><b>13.2.3</b> What are the arguments of the t.test function?</a></li>
 </ul></li>
-<li class="chapter" data-level="12.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#fine-but-what-about-2-groups"><i class="fa fa-check"></i><b>12.4</b> Fine, but what about 2 groups?</a>
+<li class="chapter" data-level="13.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#insert-flipbook-for-ttest-here"><i class="fa fa-check"></i><b>13.3</b> Insert flipbook for ttest here</a>
 <ul>
-<li class="chapter" data-level="12.4.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#setting-up-2-group-t-test"><i class="fa fa-check"></i><b>12.4.1</b> Setting up 2 group t test</a></li>
-<li class="chapter" data-level="12.4.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-the-2-group-t-test"><i class="fa fa-check"></i><b>12.4.2</b> Results of the 2 group t test</a></li>
-<li class="chapter" data-level="12.4.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#interpreting-the-2-group-t-test"><i class="fa fa-check"></i><b>12.4.3</b> Interpreting the 2 group t test</a></li>
-<li class="chapter" data-level="12.4.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#group-t-test-with-wide-data"><i class="fa fa-check"></i><b>12.4.4</b> 2 group t test with wide data</a></li>
-<li class="chapter" data-level="12.4.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-2-group-t-test-with-wide-data"><i class="fa fa-check"></i><b>12.4.5</b> Results of 2 group t test with wide data</a></li>
+<li class="chapter" data-level="13.3.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#flipbook-time"><i class="fa fa-check"></i><b>13.3.1</b> Flipbook Time!</a></li>
 </ul></li>
-<li class="chapter" data-level="12.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#assumptions-of-students-t-test"><i class="fa fa-check"></i><b>12.5</b> 3 Assumptions of Student’s t test</a>
+<li class="chapter" data-level="13.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#fine-but-what-about-2-groups"><i class="fa fa-check"></i><b>13.4</b> Fine, but what about 2 groups?</a>
 <ul>
-<li class="chapter" data-level="12.5.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#testing-assumptions-of-students-t-test"><i class="fa fa-check"></i><b>12.5.1</b> Testing Assumptions of Student’s t test</a></li>
+<li class="chapter" data-level="13.4.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#setting-up-2-group-t-test"><i class="fa fa-check"></i><b>13.4.1</b> Setting up 2 group t test</a></li>
+<li class="chapter" data-level="13.4.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-the-2-group-t-test"><i class="fa fa-check"></i><b>13.4.2</b> Results of the 2 group t test</a></li>
+<li class="chapter" data-level="13.4.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#interpreting-the-2-group-t-test"><i class="fa fa-check"></i><b>13.4.3</b> Interpreting the 2 group t test</a></li>
+<li class="chapter" data-level="13.4.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#group-t-test-with-wide-data"><i class="fa fa-check"></i><b>13.4.4</b> 2 group t test with wide data</a></li>
+<li class="chapter" data-level="13.4.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-2-group-t-test-with-wide-data"><i class="fa fa-check"></i><b>13.4.5</b> Results of 2 group t test with wide data</a></li>
 </ul></li>
-<li class="chapter" data-level="12.6" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#getting-results-out-of-t.test"><i class="fa fa-check"></i><b>12.6</b> Getting results out of t.test</a>
+<li class="chapter" data-level="13.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#assumptions-of-students-t-test"><i class="fa fa-check"></i><b>13.5</b> 3 Assumptions of Student’s t test</a>
 <ul>
-<li class="chapter" data-level="12.6.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#getting-results-out-of-t.test-1"><i class="fa fa-check"></i><b>12.6.1</b> Getting results out of t.test</a></li>
+<li class="chapter" data-level="13.5.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#testing-assumptions-of-students-t-test"><i class="fa fa-check"></i><b>13.5.1</b> Testing Assumptions of Student’s t test</a></li>
 </ul></li>
-<li class="chapter" data-level="12.7" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#reporting-the-results-from-t.test-using-inline-code"><i class="fa fa-check"></i><b>12.7</b> Reporting the results from t.test using inline code</a>
+<li class="chapter" data-level="13.6" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#getting-results-out-of-t.test"><i class="fa fa-check"></i><b>13.6</b> Getting results out of t.test</a>
 <ul>
-<li class="chapter" data-level="12.7.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#for-next-time"><i class="fa fa-check"></i><b>12.7.1</b> For Next Time</a></li>
+<li class="chapter" data-level="13.6.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#getting-results-out-of-t.test-1"><i class="fa fa-check"></i><b>13.6.1</b> Getting results out of t.test</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html"><i class="fa fa-check"></i><b>13</b> Sample Size Calculations with <code>{pwr}</code></a>
+<li class="chapter" data-level="13.7" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#reporting-the-results-from-t.test-using-inline-code"><i class="fa fa-check"></i><b>13.7</b> Reporting the results from t.test using inline code</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-a-continuous-endpoint-t-test"><i class="fa fa-check"></i><b>13.1</b> Sample Size for a Continuous Endpoint (t-test)</a></li>
-<li class="chapter" data-level="13.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#one-sample-t-test-for-lowering-creatinine"><i class="fa fa-check"></i><b>13.2</b> One Sample t-test for Lowering Creatinine</a></li>
-<li class="chapter" data-level="13.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#paired-t-tests-before-vs-after-or-truly-paired"><i class="fa fa-check"></i><b>13.3</b> Paired t-tests (before vs after, or truly paired)</a></li>
-<li class="chapter" data-level="13.4" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-t-tests-with-unequal-study-arm-sizes"><i class="fa fa-check"></i><b>13.4</b> 2 Sample t tests with Unequal Study Arm Sizes</a></li>
-<li class="chapter" data-level="13.5" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#testing-multiple-options-and-plotting-results"><i class="fa fa-check"></i><b>13.5</b> Testing Multiple Options and Plotting Results</a></li>
-<li class="chapter" data-level="13.6" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#your-turn"><i class="fa fa-check"></i><b>13.6</b> Your Turn</a></li>
-<li class="chapter" data-level="13.6.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-1-fev1-in-copd"><i class="fa fa-check"></i><b>13.6.1</b> Scenario 1: FEV1 in COPD</a></li>
-<li class="chapter" data-level="13.6.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-2-bnp-in-chf"><i class="fa fa-check"></i><b>13.6.2</b> Scenario 2: BNP in CHF</a></li>
-<li class="chapter" data-level="13.6.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-3-barthel-index-in-stroke"><i class="fa fa-check"></i><b>13.6.3</b> Scenario 3: Barthel Index in Stroke</a></li>
-<li class="chapter" data-level="13.7" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-sizes-for-proportions"><i class="fa fa-check"></i><b>13.7</b> Sample Sizes for Proportions</a></li>
-<li class="chapter" data-level="13.8" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-two-proportions-equal-n"><i class="fa fa-check"></i><b>13.8</b> Sample size for two proportions, equal n</a></li>
-<li class="chapter" data-level="13.9" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-two-proportions-unequal-arms"><i class="fa fa-check"></i><b>13.9</b> Sample size for two proportions, unequal arms</a></li>
-<li class="chapter" data-level="13.10" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#your-turn-1"><i class="fa fa-check"></i><b>13.10</b> Your Turn</a></li>
-<li class="chapter" data-level="13.10.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-1-mortality-on-renal-dialysis"><i class="fa fa-check"></i><b>13.10.1</b> Scenario 1: Mortality on Renal Dialysis</a></li>
-<li class="chapter" data-level="13.10.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-2-intestinal-anastomosis-in-crohns-disease"><i class="fa fa-check"></i><b>13.10.2</b> Scenario 2: Intestinal anastomosis in Crohn’s disease</a></li>
-<li class="chapter" data-level="13.10.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-3-metformin-in-donuts"><i class="fa fa-check"></i><b>13.10.3</b> Scenario 3: Metformin in Donuts</a></li>
-<li class="chapter" data-level="13.11" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-chi-square"><i class="fa fa-check"></i><b>13.11</b> add chi square</a></li>
-<li class="chapter" data-level="13.12" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-correlation-test"><i class="fa fa-check"></i><b>13.12</b> add correlation test</a></li>
-<li class="chapter" data-level="13.13" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-anova"><i class="fa fa-check"></i><b>13.13</b> add anova</a></li>
-<li class="chapter" data-level="13.14" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-linear-model"><i class="fa fa-check"></i><b>13.14</b> add linear model</a></li>
-<li class="chapter" data-level="13.15" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-note-on-guessing-effect-sizes---cohen-small-medium-large"><i class="fa fa-check"></i><b>13.15</b> add note on guessing effect sizes - cohen small, medium, large</a></li>
-<li class="chapter" data-level="13.16" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#explore-more"><i class="fa fa-check"></i><b>13.16</b> Explore More</a></li>
-</ul></li>
-<li class="chapter" data-level="14" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html"><i class="fa fa-check"></i><b>14</b> Randomization for Clinical Trials with R</a>
-<ul>
-<li class="chapter" data-level="14.1" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#printing-these-on-cards"><i class="fa fa-check"></i><b>14.1</b> Printing these on Cards</a></li>
-<li class="chapter" data-level="14.2" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#now-try-this-yourself"><i class="fa fa-check"></i><b>14.2</b> Now, try this yourself</a></li>
-<li class="chapter" data-level="14.3" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#now-freestyle"><i class="fa fa-check"></i><b>14.3</b> Now Freestyle</a></li>
-</ul></li>
-<li class="chapter" data-level="15" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html"><i class="fa fa-check"></i><b>15</b> Univariate ggplots to Visualize Distributions</a>
-<ul>
-<li class="chapter" data-level="15.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#histograms"><i class="fa fa-check"></i><b>15.1</b> HIstograms</a>
-<ul>
-<li class="chapter" data-level="15.1.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#comparisons-of-distributions-with-histograms"><i class="fa fa-check"></i><b>15.1.1</b> Comparisons of Distributions with Histograms</a></li>
-<li class="chapter" data-level="15.1.2" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#histograms-and-categories"><i class="fa fa-check"></i><b>15.1.2</b> Histograms and Categories</a></li>
-</ul></li>
-<li class="chapter" data-level="15.2" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#density-plots"><i class="fa fa-check"></i><b>15.2</b> Density Plots</a>
-<ul>
-<li class="chapter" data-level="15.2.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#comparisons-with-density-plots"><i class="fa fa-check"></i><b>15.2.1</b> Comparisons with Density plots</a></li>
-</ul></li>
-<li class="chapter" data-level="15.3" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#comparing-distributions-across-categories"><i class="fa fa-check"></i><b>15.3</b> Comparing Distributions Across Categories</a></li>
-<li class="chapter" data-level="15.4" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#boxplots"><i class="fa fa-check"></i><b>15.4</b> Boxplots</a></li>
-<li class="chapter" data-level="15.5" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#violin-plots"><i class="fa fa-check"></i><b>15.5</b> Violin Plots</a></li>
-<li class="chapter" data-level="15.6" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#ridgeline-plots"><i class="fa fa-check"></i><b>15.6</b> Ridgeline Plots</a>
-<ul>
-<li class="chapter" data-level="15.6.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-plots"><i class="fa fa-check"></i><b>15.6.1</b> Including Plots</a></li>
-<li class="chapter" data-level="15.6.2" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-points"><i class="fa fa-check"></i><b>15.6.2</b> Including Points</a></li>
-<li class="chapter" data-level="15.6.3" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-points-1"><i class="fa fa-check"></i><b>15.6.3</b> Including Points</a></li>
-<li class="chapter" data-level="15.6.4" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-points-2"><i class="fa fa-check"></i><b>15.6.4</b> Including Points</a></li>
-<li class="chapter" data-level="15.6.5" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-points-3"><i class="fa fa-check"></i><b>15.6.5</b> Including Points</a></li>
+<li class="chapter" data-level="13.7.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#for-next-time"><i class="fa fa-check"></i><b>13.7.1</b> For Next Time</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html"><i class="fa fa-check"></i><b>16</b> Helping out with ggplot</a>
+<li class="chapter" data-level="14" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html"><i class="fa fa-check"></i><b>14</b> Sample Size Calculations with <code>{pwr}</code></a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#ggxgghelp"><i class="fa fa-check"></i><b>16.1</b> ggx::gghelp()</a></li>
-<li class="chapter" data-level="16.2" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#getting-more-help-with-theming-with-ggthemeassist"><i class="fa fa-check"></i><b>16.2</b> Getting more help with theming with ggThemeAssist</a></li>
-<li class="chapter" data-level="16.3" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#website-helpers-for-ggplot"><i class="fa fa-check"></i><b>16.3</b> Website helpers for ggplot</a></li>
-<li class="chapter" data-level="16.4" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#getting-even-more-help-with-esquisse"><i class="fa fa-check"></i><b>16.4</b> Getting Even more help with esquisse</a>
+<li class="chapter" data-level="14.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-a-continuous-endpoint-t-test"><i class="fa fa-check"></i><b>14.1</b> Sample Size for a Continuous Endpoint (t-test)</a></li>
+<li class="chapter" data-level="14.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#one-sample-t-test-for-lowering-creatinine"><i class="fa fa-check"></i><b>14.2</b> One Sample t-test for Lowering Creatinine</a></li>
+<li class="chapter" data-level="14.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#paired-t-tests-before-vs-after-or-truly-paired"><i class="fa fa-check"></i><b>14.3</b> Paired t-tests (before vs after, or truly paired)</a></li>
+<li class="chapter" data-level="14.4" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-t-tests-with-unequal-study-arm-sizes"><i class="fa fa-check"></i><b>14.4</b> 2 Sample t tests with Unequal Study Arm Sizes</a></li>
+<li class="chapter" data-level="14.5" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#testing-multiple-options-and-plotting-results"><i class="fa fa-check"></i><b>14.5</b> Testing Multiple Options and Plotting Results</a></li>
+<li class="chapter" data-level="14.6" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#your-turn"><i class="fa fa-check"></i><b>14.6</b> Your Turn</a></li>
+<li class="chapter" data-level="14.6.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-1-fev1-in-copd"><i class="fa fa-check"></i><b>14.6.1</b> Scenario 1: FEV1 in COPD</a></li>
+<li class="chapter" data-level="14.6.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-2-bnp-in-chf"><i class="fa fa-check"></i><b>14.6.2</b> Scenario 2: BNP in CHF</a></li>
+<li class="chapter" data-level="14.6.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-3-barthel-index-in-stroke"><i class="fa fa-check"></i><b>14.6.3</b> Scenario 3: Barthel Index in Stroke</a></li>
+<li class="chapter" data-level="14.7" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-sizes-for-proportions"><i class="fa fa-check"></i><b>14.7</b> Sample Sizes for Proportions</a></li>
+<li class="chapter" data-level="14.8" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-two-proportions-equal-n"><i class="fa fa-check"></i><b>14.8</b> Sample size for two proportions, equal n</a></li>
+<li class="chapter" data-level="14.9" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-two-proportions-unequal-arms"><i class="fa fa-check"></i><b>14.9</b> Sample size for two proportions, unequal arms</a></li>
+<li class="chapter" data-level="14.10" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#your-turn-1"><i class="fa fa-check"></i><b>14.10</b> Your Turn</a></li>
+<li class="chapter" data-level="14.10.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-1-mortality-on-renal-dialysis"><i class="fa fa-check"></i><b>14.10.1</b> Scenario 1: Mortality on Renal Dialysis</a></li>
+<li class="chapter" data-level="14.10.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-2-intestinal-anastomosis-in-crohns-disease"><i class="fa fa-check"></i><b>14.10.2</b> Scenario 2: Intestinal anastomosis in Crohn’s disease</a></li>
+<li class="chapter" data-level="14.10.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-3-metformin-in-donuts"><i class="fa fa-check"></i><b>14.10.3</b> Scenario 3: Metformin in Donuts</a></li>
+<li class="chapter" data-level="14.11" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-chi-square"><i class="fa fa-check"></i><b>14.11</b> add chi square</a></li>
+<li class="chapter" data-level="14.12" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-correlation-test"><i class="fa fa-check"></i><b>14.12</b> add correlation test</a></li>
+<li class="chapter" data-level="14.13" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-anova"><i class="fa fa-check"></i><b>14.13</b> add anova</a></li>
+<li class="chapter" data-level="14.14" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-linear-model"><i class="fa fa-check"></i><b>14.14</b> add linear model</a></li>
+<li class="chapter" data-level="14.15" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-note-on-guessing-effect-sizes---cohen-small-medium-large"><i class="fa fa-check"></i><b>14.15</b> add note on guessing effect sizes - cohen small, medium, large</a></li>
+<li class="chapter" data-level="14.16" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#explore-more"><i class="fa fa-check"></i><b>14.16</b> Explore More</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html"><i class="fa fa-check"></i><b>15</b> Randomization for Clinical Trials with R</a>
 <ul>
-<li class="chapter" data-level="16.4.1" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#acknowledgement"><i class="fa fa-check"></i><b>16.4.1</b> Acknowledgement</a></li>
+<li class="chapter" data-level="15.1" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#printing-these-on-cards"><i class="fa fa-check"></i><b>15.1</b> Printing these on Cards</a></li>
+<li class="chapter" data-level="15.2" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#now-try-this-yourself"><i class="fa fa-check"></i><b>15.2</b> Now, try this yourself</a></li>
+<li class="chapter" data-level="15.3" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#now-freestyle"><i class="fa fa-check"></i><b>15.3</b> Now Freestyle</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html"><i class="fa fa-check"></i><b>16</b> Univariate ggplots to Visualize Distributions</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#histograms"><i class="fa fa-check"></i><b>16.1</b> HIstograms</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#comparisons-of-distributions-with-histograms"><i class="fa fa-check"></i><b>16.1.1</b> Comparisons of Distributions with Histograms</a></li>
+<li class="chapter" data-level="16.1.2" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#histograms-and-categories"><i class="fa fa-check"></i><b>16.1.2</b> Histograms and Categories</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#density-plots"><i class="fa fa-check"></i><b>16.2</b> Density Plots</a>
+<ul>
+<li class="chapter" data-level="16.2.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#comparisons-with-density-plots"><i class="fa fa-check"></i><b>16.2.1</b> Comparisons with Density plots</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#comparing-distributions-across-categories"><i class="fa fa-check"></i><b>16.3</b> Comparing Distributions Across Categories</a></li>
+<li class="chapter" data-level="16.4" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#boxplots"><i class="fa fa-check"></i><b>16.4</b> Boxplots</a></li>
+<li class="chapter" data-level="16.5" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#violin-plots"><i class="fa fa-check"></i><b>16.5</b> Violin Plots</a></li>
+<li class="chapter" data-level="16.6" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#ridgeline-plots"><i class="fa fa-check"></i><b>16.6</b> Ridgeline Plots</a>
+<ul>
+<li class="chapter" data-level="16.6.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-plots"><i class="fa fa-check"></i><b>16.6.1</b> Including Plots</a></li>
+<li class="chapter" data-level="16.6.2" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-points"><i class="fa fa-check"></i><b>16.6.2</b> Including Points</a></li>
+<li class="chapter" data-level="16.6.3" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-points-1"><i class="fa fa-check"></i><b>16.6.3</b> Including Points</a></li>
+<li class="chapter" data-level="16.6.4" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-points-2"><i class="fa fa-check"></i><b>16.6.4</b> Including Points</a></li>
+<li class="chapter" data-level="16.6.5" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-points-3"><i class="fa fa-check"></i><b>16.6.5</b> Including Points</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>17</b> Functions</a>
+<li class="chapter" data-level="17" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html"><i class="fa fa-check"></i><b>17</b> Helping out with ggplot</a>
 <ul>
-<li class="chapter" data-level="17.1" data-path="functions.html"><a href="functions.html#dont-repeat-yourself"><i class="fa fa-check"></i><b>17.1</b> Don’t repeat yourself</a></li>
-<li class="chapter" data-level="17.2" data-path="functions.html"><a href="functions.html#your-turn-2"><i class="fa fa-check"></i><b>17.2</b> Your Turn</a></li>
-<li class="chapter" data-level="17.3" data-path="functions.html"><a href="functions.html#freestyle"><i class="fa fa-check"></i><b>17.3</b> Freestyle</a></li>
-<li class="chapter" data-level="17.4" data-path="functions.html"><a href="functions.html#read-more"><i class="fa fa-check"></i><b>17.4</b> Read More</a></li>
+<li class="chapter" data-level="17.1" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#ggxgghelp"><i class="fa fa-check"></i><b>17.1</b> ggx::gghelp()</a></li>
+<li class="chapter" data-level="17.2" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#getting-more-help-with-theming-with-ggthemeassist"><i class="fa fa-check"></i><b>17.2</b> Getting more help with theming with ggThemeAssist</a></li>
+<li class="chapter" data-level="17.3" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#website-helpers-for-ggplot"><i class="fa fa-check"></i><b>17.3</b> Website helpers for ggplot</a></li>
+<li class="chapter" data-level="17.4" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#getting-even-more-help-with-esquisse"><i class="fa fa-check"></i><b>17.4</b> Getting Even more help with esquisse</a>
+<ul>
+<li class="chapter" data-level="17.4.1" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#acknowledgement"><i class="fa fa-check"></i><b>17.4.1</b> Acknowledgement</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="cmd-line.html"><a href="cmd-line.html"><i class="fa fa-check"></i><b>18</b> Running R from the UNIX Command Line</a>
-<ul>
-<li class="chapter" data-level="18.1" data-path="cmd-line.html"><a href="cmd-line.html#what-is-the-unix-command-line"><i class="fa fa-check"></i><b>18.1</b> What is the UNIX Command line?</a></li>
-<li class="chapter" data-level="18.2" data-path="cmd-line.html"><a href="cmd-line.html#why-run-r-from-the-command-line"><i class="fa fa-check"></i><b>18.2</b> Why run R from the command line?</a></li>
-<li class="chapter" data-level="18.3" data-path="cmd-line.html"><a href="cmd-line.html#how-do-you-get-started"><i class="fa fa-check"></i><b>18.3</b> How do you get started?</a>
-<ul>
-<li class="chapter" data-level="18.3.1" data-path="cmd-line.html"><a href="cmd-line.html#on-a-mac"><i class="fa fa-check"></i><b>18.3.1</b> On a Mac</a></li>
-<li class="chapter" data-level="18.3.2" data-path="cmd-line.html"><a href="cmd-line.html#on-a-windows-pc"><i class="fa fa-check"></i><b>18.3.2</b> On a Windows PC</a></li>
 </ul></li>
-<li class="chapter" data-level="18.4" data-path="cmd-line.html"><a href="cmd-line.html#the-yawning-blackness-of-the-terminal-window"><i class="fa fa-check"></i><b>18.4</b> The Yawning Blackness of the Terminal Window</a></li>
-<li class="chapter" data-level="18.5" data-path="cmd-line.html"><a href="cmd-line.html#where-are-we"><i class="fa fa-check"></i><b>18.5</b> Where Are We?</a></li>
-<li class="chapter" data-level="18.6" data-path="cmd-line.html"><a href="cmd-line.html#cleaning-up"><i class="fa fa-check"></i><b>18.6</b> Cleaning Up</a></li>
-<li class="chapter" data-level="18.7" data-path="cmd-line.html"><a href="cmd-line.html#other-helpful-file-commands"><i class="fa fa-check"></i><b>18.7</b> Other helpful file commands</a></li>
-<li class="chapter" data-level="18.8" data-path="cmd-line.html"><a href="cmd-line.html#what-about-r"><i class="fa fa-check"></i><b>18.8</b> What about R?</a></li>
-<li class="chapter" data-level="18.9" data-path="cmd-line.html"><a href="cmd-line.html#what-about-just-a-few-lines-of-r"><i class="fa fa-check"></i><b>18.9</b> What about just a few lines of R?</a></li>
-<li class="chapter" data-level="18.10" data-path="cmd-line.html"><a href="cmd-line.html#running-an-r-script-from-the-terminal"><i class="fa fa-check"></i><b>18.10</b> Running an R Script from the Terminal</a></li>
-<li class="chapter" data-level="18.11" data-path="cmd-line.html"><a href="cmd-line.html#rendering-an-rmarkdown-file-from-the-terminal"><i class="fa fa-check"></i><b>18.11</b> Rendering an Rmarkdown file from the Terminal</a></li>
+<li class="chapter" data-level="18" data-path="functions-1.html"><a href="functions-1.html"><i class="fa fa-check"></i><b>18</b> Functions</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="functions-1.html"><a href="functions-1.html#dont-repeat-yourself"><i class="fa fa-check"></i><b>18.1</b> Don’t repeat yourself</a></li>
+<li class="chapter" data-level="18.2" data-path="functions-1.html"><a href="functions-1.html#your-turn-2"><i class="fa fa-check"></i><b>18.2</b> Your Turn</a></li>
+<li class="chapter" data-level="18.3" data-path="functions-1.html"><a href="functions-1.html#freestyle"><i class="fa fa-check"></i><b>18.3</b> Freestyle</a></li>
+<li class="chapter" data-level="18.4" data-path="functions-1.html"><a href="functions-1.html#read-more"><i class="fa fa-check"></i><b>18.4</b> Read More</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="cmd-line.html"><a href="cmd-line.html"><i class="fa fa-check"></i><b>19</b> Running R from the UNIX Command Line</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="cmd-line.html"><a href="cmd-line.html#what-is-the-unix-command-line"><i class="fa fa-check"></i><b>19.1</b> What is the UNIX Command line?</a></li>
+<li class="chapter" data-level="19.2" data-path="cmd-line.html"><a href="cmd-line.html#why-run-r-from-the-command-line"><i class="fa fa-check"></i><b>19.2</b> Why run R from the command line?</a></li>
+<li class="chapter" data-level="19.3" data-path="cmd-line.html"><a href="cmd-line.html#how-do-you-get-started"><i class="fa fa-check"></i><b>19.3</b> How do you get started?</a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="cmd-line.html"><a href="cmd-line.html#on-a-mac"><i class="fa fa-check"></i><b>19.3.1</b> On a Mac</a></li>
+<li class="chapter" data-level="19.3.2" data-path="cmd-line.html"><a href="cmd-line.html#on-a-windows-pc"><i class="fa fa-check"></i><b>19.3.2</b> On a Windows PC</a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="cmd-line.html"><a href="cmd-line.html#the-yawning-blackness-of-the-terminal-window"><i class="fa fa-check"></i><b>19.4</b> The Yawning Blackness of the Terminal Window</a></li>
+<li class="chapter" data-level="19.5" data-path="cmd-line.html"><a href="cmd-line.html#where-are-we"><i class="fa fa-check"></i><b>19.5</b> Where Are We?</a></li>
+<li class="chapter" data-level="19.6" data-path="cmd-line.html"><a href="cmd-line.html#cleaning-up"><i class="fa fa-check"></i><b>19.6</b> Cleaning Up</a></li>
+<li class="chapter" data-level="19.7" data-path="cmd-line.html"><a href="cmd-line.html#other-helpful-file-commands"><i class="fa fa-check"></i><b>19.7</b> Other helpful file commands</a></li>
+<li class="chapter" data-level="19.8" data-path="cmd-line.html"><a href="cmd-line.html#what-about-r"><i class="fa fa-check"></i><b>19.8</b> What about R?</a></li>
+<li class="chapter" data-level="19.9" data-path="cmd-line.html"><a href="cmd-line.html#what-about-just-a-few-lines-of-r"><i class="fa fa-check"></i><b>19.9</b> What about just a few lines of R?</a></li>
+<li class="chapter" data-level="19.10" data-path="cmd-line.html"><a href="cmd-line.html#running-an-r-script-from-the-terminal"><i class="fa fa-check"></i><b>19.10</b> Running an R Script from the Terminal</a></li>
+<li class="chapter" data-level="19.11" data-path="cmd-line.html"><a href="cmd-line.html#rendering-an-rmarkdown-file-from-the-terminal"><i class="fa fa-check"></i><b>19.11</b> Rendering an Rmarkdown file from the Terminal</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="title-holder.html"><a href="title-holder.html"><i class="fa fa-check"></i>Title holder</a></li>
 <li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
@@ -527,8 +536,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="comparing-two-measures-of-centrality" class="section level1" number="12">
-<h1><span class="header-section-number">Chapter 12</span> Comparing Two Measures of Centrality</h1>
+<div id="comparing-two-measures-of-centrality" class="section level1" number="13">
+<h1><span class="header-section-number">Chapter 13</span> Comparing Two Measures of Centrality</h1>
 <p><br>
 A common question in medical research is whether one group had a better outcome than another group. These outcomes can be measured with dichotomous outcomes like death or hospitalization,
 but continuous outcomes like systolic blood pressure, endoscopic score, or ejection fraction are more commonly available, and provide more statistical power, and usually require a smaller sample size. <br>
@@ -539,24 +548,24 @@ The most common comparison of two groups with a continuous outcome is to look at
 Let’s start by looking at the cytomegalovirus data set. This includes data on 64 patients who received bone marrow stem cell transplant, and looks at their time to activation of CMV (cytomegalovirus). In the code chunk below, we group the data by donor cmv status (<code>donor.cmv</code>), and look at the mean time to CMV activation (<code>time.to.cmv</code> variable). Run the code (using the green arrow at the top right of the code chunk below) to see the difference in time to CMV activation in months between groups.</p>
 <p>Try out some other grouping variables in the <code>group_by</code> statement, in place of <code>donor.cmv</code>.
 Consider variables like race, sex, and recipient.cmv. Edit the code and run it again with the green arrow at the top right. <br></p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="comparing-two-measures-of-centrality.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="co"># insert libraries in each chunk as if independent</span></span>
-<span id="cb242-2"><a href="comparing-two-measures-of-centrality.html#cb242-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb242-3"><a href="comparing-two-measures-of-centrality.html#cb242-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb242-4"><a href="comparing-two-measures-of-centrality.html#cb242-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb242-5"><a href="comparing-two-measures-of-centrality.html#cb242-5" aria-hidden="true" tabindex="-1"></a>cytomegalovirus <span class="sc">%&gt;%</span> </span>
-<span id="cb242-6"><a href="comparing-two-measures-of-centrality.html#cb242-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span> </span>
-<span id="cb242-7"><a href="comparing-two-measures-of-centrality.html#cb242-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_time2cmv =</span> <span class="fu">mean</span>(time.to.cmv)) <span class="ot">-&gt;</span></span>
-<span id="cb242-8"><a href="comparing-two-measures-of-centrality.html#cb242-8" aria-hidden="true" tabindex="-1"></a>summ</span>
-<span id="cb242-9"><a href="comparing-two-measures-of-centrality.html#cb242-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb242-10"><a href="comparing-two-measures-of-centrality.html#cb242-10" aria-hidden="true" tabindex="-1"></a>summ</span></code></pre></div>
-<pre><code>## # A tibble: 2 x 2
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="comparing-two-measures-of-centrality.html#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="co"># insert libraries in each chunk as if independent</span></span>
+<span id="cb292-2"><a href="comparing-two-measures-of-centrality.html#cb292-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb292-3"><a href="comparing-two-measures-of-centrality.html#cb292-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb292-4"><a href="comparing-two-measures-of-centrality.html#cb292-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb292-5"><a href="comparing-two-measures-of-centrality.html#cb292-5" aria-hidden="true" tabindex="-1"></a>cytomegalovirus <span class="sc">%&gt;%</span> </span>
+<span id="cb292-6"><a href="comparing-two-measures-of-centrality.html#cb292-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span> </span>
+<span id="cb292-7"><a href="comparing-two-measures-of-centrality.html#cb292-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_time2cmv =</span> <span class="fu">mean</span>(time.to.cmv)) <span class="ot">-&gt;</span></span>
+<span id="cb292-8"><a href="comparing-two-measures-of-centrality.html#cb292-8" aria-hidden="true" tabindex="-1"></a>summ</span>
+<span id="cb292-9"><a href="comparing-two-measures-of-centrality.html#cb292-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb292-10"><a href="comparing-two-measures-of-centrality.html#cb292-10" aria-hidden="true" tabindex="-1"></a>summ</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
 ##     sex mean_time2cmv
 ##   &lt;dbl&gt;         &lt;dbl&gt;
 ## 1     0          13.7
 ## 2     1          12.7</code></pre>
 <p>That seems like a big difference for donor.cmv, between 13.7303333 months and 12.7441176 months. And it makes theoretical sense that having a CMV positive donor is more likely to be associated with early activation of CMV in the recipient. But is it a significant difference, one that would be very unlikely to happen by chance? That depends on things like the number of people in each group, and the standard deviation in each group. That is the kind of question you can answer with a t-test, or for particularly skewed data like hospital length of stay or medical charges, a Wilcoxon test.</p>
-<div id="common-problem" class="section level2" number="12.1">
-<h2><span class="header-section-number">12.1</span> Common Problem</h2>
+<div id="common-problem" class="section level2" number="13.1">
+<h2><span class="header-section-number">13.1</span> Common Problem</h2>
 <ul>
 <li>Comparing two groups
 <ul>
@@ -567,16 +576,16 @@ Consider variables like race, sex, and recipient.cmv. Edit the code and run it a
 <li>Are the means significantly different?</li>
 <li>Or the medians (if not normally distributed)?</li>
 </ul>
-<div id="how-skewed-is-too-skewed" class="section level3" number="12.1.1">
-<h3><span class="header-section-number">12.1.1</span> How Skewed is Too Skewed?</h3>
+<div id="how-skewed-is-too-skewed" class="section level3" number="13.1.1">
+<h3><span class="header-section-number">13.1.1</span> How Skewed is Too Skewed?</h3>
 <ul>
 <li>Formal test of normality = Shapiro-Wilk test</li>
 <li>Use base data set called ToothGrowth</li>
 </ul>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="comparing-two-measures-of-centrality.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb244-2"><a href="comparing-two-measures-of-centrality.html#cb244-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb244-3"><a href="comparing-two-measures-of-centrality.html#cb244-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> cytomegalovirus</span>
-<span id="cb244-4"><a href="comparing-two-measures-of-centrality.html#cb244-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="comparing-two-measures-of-centrality.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb294-2"><a href="comparing-two-measures-of-centrality.html#cb294-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb294-3"><a href="comparing-two-measures-of-centrality.html#cb294-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> cytomegalovirus</span>
+<span id="cb294-4"><a href="comparing-two-measures-of-centrality.html#cb294-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code></pre></div>
 <pre><code>##   ID age sex race                    diagnosis
 ## 1  1  61   1    0       acute myeloid leukemia
 ## 2  2  62   1    1         non-Hodgkin lymphoma
@@ -620,52 +629,52 @@ Consider variables like race, sex, and recipient.cmv. Edit the code and run it a
 ## 5          4.37
 ## 6          6.87</code></pre>
 </div>
-<div id="visualize-the-distribution-of-data-variables-in-ggplot" class="section level3" number="12.1.2">
-<h3><span class="header-section-number">12.1.2</span> Visualize the Distribution of data variables in ggplot</h3>
+<div id="visualize-the-distribution-of-data-variables-in-ggplot" class="section level3" number="13.1.2">
+<h3><span class="header-section-number">13.1.2</span> Visualize the Distribution of data variables in ggplot</h3>
 <ul>
 <li>Use geom_histogram or geom_density (pick one or the other)</li>
 <li>look at the distribution of CD3.dose or time.to.cmv</li>
 <li>Bonus points: facet by sex or race or donor.cmv</li>
 <li>Your turn to try it</li>
 </ul>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="comparing-two-measures-of-centrality.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb246-2"><a href="comparing-two-measures-of-centrality.html#cb246-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb246-3"><a href="comparing-two-measures-of-centrality.html#cb246-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb246-4"><a href="comparing-two-measures-of-centrality.html#cb246-4" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
-<span id="cb246-5"><a href="comparing-two-measures-of-centrality.html#cb246-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(time.to.cmv)) <span class="sc">+</span></span>
-<span id="cb246-6"><a href="comparing-two-measures-of-centrality.html#cb246-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
-<span id="cb246-7"><a href="comparing-two-measures-of-centrality.html#cb246-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>sex) <span class="sc">+</span></span>
-<span id="cb246-8"><a href="comparing-two-measures-of-centrality.html#cb246-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="comparing-two-measures-of-centrality.html#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb296-2"><a href="comparing-two-measures-of-centrality.html#cb296-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb296-3"><a href="comparing-two-measures-of-centrality.html#cb296-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb296-4"><a href="comparing-two-measures-of-centrality.html#cb296-4" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb296-5"><a href="comparing-two-measures-of-centrality.html#cb296-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(time.to.cmv)) <span class="sc">+</span></span>
+<span id="cb296-6"><a href="comparing-two-measures-of-centrality.html#cb296-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
+<span id="cb296-7"><a href="comparing-two-measures-of-centrality.html#cb296-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>sex) <span class="sc">+</span></span>
+<span id="cb296-8"><a href="comparing-two-measures-of-centrality.html#cb296-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>()</span></code></pre></div>
 <p><img src="io30-ttest_files/figure-html/density-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="comparing-two-measures-of-centrality.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb247-2"><a href="comparing-two-measures-of-centrality.html#cb247-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb247-3"><a href="comparing-two-measures-of-centrality.html#cb247-3" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb247-4"><a href="comparing-two-measures-of-centrality.html#cb247-4" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
-<span id="cb247-5"><a href="comparing-two-measures-of-centrality.html#cb247-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(time.to.cmv)) <span class="sc">+</span></span>
-<span id="cb247-6"><a href="comparing-two-measures-of-centrality.html#cb247-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
-<span id="cb247-7"><a href="comparing-two-measures-of-centrality.html#cb247-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>race)</span></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="comparing-two-measures-of-centrality.html#cb297-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb297-2"><a href="comparing-two-measures-of-centrality.html#cb297-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb297-3"><a href="comparing-two-measures-of-centrality.html#cb297-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb297-4"><a href="comparing-two-measures-of-centrality.html#cb297-4" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb297-5"><a href="comparing-two-measures-of-centrality.html#cb297-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(time.to.cmv)) <span class="sc">+</span></span>
+<span id="cb297-6"><a href="comparing-two-measures-of-centrality.html#cb297-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb297-7"><a href="comparing-two-measures-of-centrality.html#cb297-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>race)</span></code></pre></div>
 <p><img src="io30-ttest_files/figure-html/histogram-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
-<div id="visualize-the-distribution-of-datalen-in-ggplot" class="section level3" number="12.1.3">
-<h3><span class="header-section-number">12.1.3</span> Visualize the Distribution of data$len in ggplot</h3>
+<div id="visualize-the-distribution-of-datalen-in-ggplot" class="section level3" number="13.1.3">
+<h3><span class="header-section-number">13.1.3</span> Visualize the Distribution of data$len in ggplot</h3>
 <ul>
 <li>The OJ group is left skewed</li>
 <li>May be problematic for using means</li>
 <li>formally test with Shapiro-Wilk</li>
 </ul>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="comparing-two-measures-of-centrality.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb248-2"><a href="comparing-two-measures-of-centrality.html#cb248-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb248-3"><a href="comparing-two-measures-of-centrality.html#cb248-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb248-4"><a href="comparing-two-measures-of-centrality.html#cb248-4" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>time.to.cmv <span class="sc">%&gt;%</span> </span>
-<span id="cb248-5"><a href="comparing-two-measures-of-centrality.html#cb248-5" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="comparing-two-measures-of-centrality.html#cb298-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb298-2"><a href="comparing-two-measures-of-centrality.html#cb298-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb298-3"><a href="comparing-two-measures-of-centrality.html#cb298-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb298-4"><a href="comparing-two-measures-of-centrality.html#cb298-4" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>time.to.cmv <span class="sc">%&gt;%</span> </span>
+<span id="cb298-5"><a href="comparing-two-measures-of-centrality.html#cb298-5" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>()</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  .
 ## W = 0.68261, p-value = 0.0000000001762</code></pre>
 </div>
-<div id="results-of-shapiro-wilk" class="section level3" number="12.1.4">
-<h3><span class="header-section-number">12.1.4</span> Results of Shapiro-Wilk</h3>
+<div id="results-of-shapiro-wilk" class="section level3" number="13.1.4">
+<h3><span class="header-section-number">13.1.4</span> Results of Shapiro-Wilk</h3>
 <ul>
 <li>p-value = 0.1091</li>
 <li>p not &lt; 0.05</li>
@@ -679,27 +688,27 @@ Consider variables like race, sex, and recipient.cmv. Edit the code and run it a
 </ul></li>
 </ul>
 </div>
-<div id="try-it-yourself-1" class="section level3" number="12.1.5">
-<h3><span class="header-section-number">12.1.5</span> Try it yourself</h3>
+<div id="try-it-yourself-1" class="section level3" number="13.1.5">
+<h3><span class="header-section-number">13.1.5</span> Try it yourself</h3>
 <ul>
 <li>use df &lt;- msleep</li>
 </ul>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="comparing-two-measures-of-centrality.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb250-2"><a href="comparing-two-measures-of-centrality.html#cb250-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb250-3"><a href="comparing-two-measures-of-centrality.html#cb250-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb250-4"><a href="comparing-two-measures-of-centrality.html#cb250-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> msleep </span>
-<span id="cb250-5"><a href="comparing-two-measures-of-centrality.html#cb250-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df<span class="sc">$</span>sleep_total)</span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="comparing-two-measures-of-centrality.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb300-2"><a href="comparing-two-measures-of-centrality.html#cb300-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb300-3"><a href="comparing-two-measures-of-centrality.html#cb300-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb300-4"><a href="comparing-two-measures-of-centrality.html#cb300-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> msleep </span>
+<span id="cb300-5"><a href="comparing-two-measures-of-centrality.html#cb300-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df<span class="sc">$</span>sleep_total)</span></code></pre></div>
 <pre><code>## [1] 12.1 17.0 14.4 14.9  4.0 14.4</code></pre>
 <ul>
 <li>test the normality of total sleep hours in mammals</li>
 </ul>
 </div>
-<div id="mammal-sleep-hours" class="section level3" number="12.1.6">
-<h3><span class="header-section-number">12.1.6</span> Mammal sleep hours</h3>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="comparing-two-measures-of-centrality.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb252-2"><a href="comparing-two-measures-of-centrality.html#cb252-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb252-3"><a href="comparing-two-measures-of-centrality.html#cb252-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb252-4"><a href="comparing-two-measures-of-centrality.html#cb252-4" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(df<span class="sc">$</span>sleep_total)</span></code></pre></div>
+<div id="mammal-sleep-hours" class="section level3" number="13.1.6">
+<h3><span class="header-section-number">13.1.6</span> Mammal sleep hours</h3>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="comparing-two-measures-of-centrality.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb302-2"><a href="comparing-two-measures-of-centrality.html#cb302-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb302-3"><a href="comparing-two-measures-of-centrality.html#cb302-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb302-4"><a href="comparing-two-measures-of-centrality.html#cb302-4" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(df<span class="sc">$</span>sleep_total)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -711,8 +720,8 @@ Consider variables like race, sex, and recipient.cmv. Edit the code and run it a
 </ul>
 </div>
 </div>
-<div id="one-sample-t-test" class="section level2" number="12.2">
-<h2><span class="header-section-number">12.2</span> One Sample T test</h2>
+<div id="one-sample-t-test" class="section level2" number="13.2">
+<h2><span class="header-section-number">13.2</span> One Sample T test</h2>
 <ul>
 <li>univariate test
 <ul>
@@ -721,19 +730,19 @@ Consider variables like race, sex, and recipient.cmv. Edit the code and run it a
 </ul></li>
 <li>can use t test because shapiro.test is NS</li>
 </ul>
-<div id="how-to-do-one-sample-t-test" class="section level3" number="12.2.1">
-<h3><span class="header-section-number">12.2.1</span> How to do One Sample T test</h3>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="comparing-two-measures-of-centrality.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb254-2"><a href="comparing-two-measures-of-centrality.html#cb254-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb254-3"><a href="comparing-two-measures-of-centrality.html#cb254-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb254-4"><a href="comparing-two-measures-of-centrality.html#cb254-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(df<span class="sc">$</span>sleep_total, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,</span>
-<span id="cb254-5"><a href="comparing-two-measures-of-centrality.html#cb254-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">mu =</span> <span class="dv">8</span>)</span></code></pre></div>
+<div id="how-to-do-one-sample-t-test" class="section level3" number="13.2.1">
+<h3><span class="header-section-number">13.2.1</span> How to do One Sample T test</h3>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="comparing-two-measures-of-centrality.html#cb304-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb304-2"><a href="comparing-two-measures-of-centrality.html#cb304-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb304-3"><a href="comparing-two-measures-of-centrality.html#cb304-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb304-4"><a href="comparing-two-measures-of-centrality.html#cb304-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(df<span class="sc">$</span>sleep_total, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,</span>
+<span id="cb304-5"><a href="comparing-two-measures-of-centrality.html#cb304-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">mu =</span> <span class="dv">8</span>)</span></code></pre></div>
 <ul>
 <li>Try it out, see if you can interpret results</li>
 </ul>
 </div>
-<div id="interpreting-the-one-sample-t-test" class="section level3" number="12.2.2">
-<h3><span class="header-section-number">12.2.2</span> Interpreting the One Sample T test</h3>
+<div id="interpreting-the-one-sample-t-test" class="section level3" number="13.2.2">
+<h3><span class="header-section-number">13.2.2</span> Interpreting the One Sample T test</h3>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -753,8 +762,8 @@ Consider variables like race, sex, and recipient.cmv. Edit the code and run it a
 </ul></li>
 </ul>
 </div>
-<div id="what-are-the-arguments-of-the-t.test-function" class="section level3" number="12.2.3">
-<h3><span class="header-section-number">12.2.3</span> What are the arguments of the t.test function?</h3>
+<div id="what-are-the-arguments-of-the-t.test-function" class="section level3" number="13.2.3">
+<h3><span class="header-section-number">13.2.3</span> What are the arguments of the t.test function?</h3>
 <ul>
 <li>x = vector of continuous numerical data</li>
 <li>y= NULL - optional 2nd vector of continuous numerical data</li>
@@ -767,8 +776,8 @@ Consider variables like race, sex, and recipient.cmv. Edit the code and run it a
 </ul>
 </div>
 </div>
-<div id="insert-flipbook-for-ttest-here" class="section level2" number="12.3">
-<h2><span class="header-section-number">12.3</span> Insert flipbook for ttest here</h2>
+<div id="insert-flipbook-for-ttest-here" class="section level2" number="13.3">
+<h2><span class="header-section-number">13.3</span> Insert flipbook for ttest here</h2>
 <p>Below is a flipbook.<br>
 It illustrates a bit of how to do a t-test. <br>
 click on it and you can use the arrow keys to proceed forward and back through the slides, as you add lines of code and more results occur.</p>
@@ -776,24 +785,24 @@ click on it and you can use the arrow keys to proceed forward and back through t
 When the title slide appears, you can step through each line of the code to see what it does. The right/left and/or up/down arrows will let you move forward and backward in the code.</p>
 <p>You can use the arrow keys to go through it one step at a time (forward or backward, depending on which arrow key you use), to see what each line of code actually does.</p>
 <p>Give it a try below. See if you can figure out what each line of code is doing.</p>
-<div id="flipbook-time" class="section level3" number="12.3.1">
-<h3><span class="header-section-number">12.3.1</span> Flipbook Time!</h3>
+<div id="flipbook-time" class="section level3" number="13.3.1">
+<h3><span class="header-section-number">13.3.1</span> Flipbook Time!</h3>
 <!---FLIPBOOK EX 1-->
-<iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/ttest_flipbook.html#1" scrolling="no">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/ttest_flipbook.html#1" scrolling="no" data-external="1">
 </iframe>
 <!------------->
 <p>This is t-testing in action.</p>
 </div>
 </div>
-<div id="fine-but-what-about-2-groups" class="section level2" number="12.4">
-<h2><span class="header-section-number">12.4</span> Fine, but what about 2 groups?</h2>
+<div id="fine-but-what-about-2-groups" class="section level2" number="13.4">
+<h2><span class="header-section-number">13.4</span> Fine, but what about 2 groups?</h2>
 <ul>
 <li>consider df$vore</li>
 </ul>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="comparing-two-measures-of-centrality.html#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb256-2"><a href="comparing-two-measures-of-centrality.html#cb256-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb256-3"><a href="comparing-two-measures-of-centrality.html#cb256-3" aria-hidden="true" tabindex="-1"></a>prostate <span class="ot">&lt;-</span> medicaldata<span class="sc">::</span>blood_storage</span>
-<span id="cb256-4"><a href="comparing-two-measures-of-centrality.html#cb256-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tabyl</span>(prostate<span class="sc">$</span>AA)</span></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="comparing-two-measures-of-centrality.html#cb306-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb306-2"><a href="comparing-two-measures-of-centrality.html#cb306-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb306-3"><a href="comparing-two-measures-of-centrality.html#cb306-3" aria-hidden="true" tabindex="-1"></a>prostate <span class="ot">&lt;-</span> medicaldata<span class="sc">::</span>blood_storage</span>
+<span id="cb306-4"><a href="comparing-two-measures-of-centrality.html#cb306-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tabyl</span>(prostate<span class="sc">$</span>AA)</span></code></pre></div>
 <pre><code>##  prostate$AA   n   percent
 ##            0 261 0.8259494
 ##            1  55 0.1740506</code></pre>
@@ -804,38 +813,38 @@ When the title slide appears, you can step through each line of the code to see 
 <li>normal, so can use t test for 2 groups</li>
 </ul></li>
 </ul>
-<div id="setting-up-2-group-t-test" class="section level3" number="12.4.1">
-<h3><span class="header-section-number">12.4.1</span> Setting up 2 group t test</h3>
+<div id="setting-up-2-group-t-test" class="section level3" number="13.4.1">
+<h3><span class="header-section-number">13.4.1</span> Setting up 2 group t test</h3>
 <ul>
 <li>formula interface: outcome ~ groupvar</li>
 </ul>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="comparing-two-measures-of-centrality.html#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb258-2"><a href="comparing-two-measures-of-centrality.html#cb258-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb258-3"><a href="comparing-two-measures-of-centrality.html#cb258-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb258-4"><a href="comparing-two-measures-of-centrality.html#cb258-4" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb258-5"><a href="comparing-two-measures-of-centrality.html#cb258-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(vore <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;herbi&quot;</span>, <span class="st">&quot;carni&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb258-6"><a href="comparing-two-measures-of-centrality.html#cb258-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t.test</span>(<span class="at">formula =</span> sleep_total <span class="sc">~</span> vore, <span class="at">data =</span> .)</span></code></pre></div>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="comparing-two-measures-of-centrality.html#cb308-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb308-2"><a href="comparing-two-measures-of-centrality.html#cb308-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb308-3"><a href="comparing-two-measures-of-centrality.html#cb308-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb308-4"><a href="comparing-two-measures-of-centrality.html#cb308-4" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb308-5"><a href="comparing-two-measures-of-centrality.html#cb308-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(vore <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;herbi&quot;</span>, <span class="st">&quot;carni&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb308-6"><a href="comparing-two-measures-of-centrality.html#cb308-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t.test</span>(<span class="at">formula =</span> sleep_total <span class="sc">~</span> vore, <span class="at">data =</span> .)</span></code></pre></div>
 <ul>
 <li>Try it yourself</li>
 <li>What do the results mean?</li>
 </ul>
 </div>
-<div id="results-of-the-2-group-t-test" class="section level3" number="12.4.2">
-<h3><span class="header-section-number">12.4.2</span> Results of the 2 group t test</h3>
+<div id="results-of-the-2-group-t-test" class="section level3" number="13.4.2">
+<h3><span class="header-section-number">13.4.2</span> Results of the 2 group t test</h3>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
 ## data:  sleep_total by vore
 ## t = 0.63232, df = 39.31, p-value = 0.5308
-## alternative hypothesis: true difference in means is not equal to 0
+## alternative hypothesis: true difference in means between group carni and group herbi is not equal to 0
 ## 95 percent confidence interval:
 ##  -1.911365  3.650509
 ## sample estimates:
 ## mean in group carni mean in group herbi 
 ##           10.378947            9.509375</code></pre>
 </div>
-<div id="interpreting-the-2-group-t-test" class="section level3" number="12.4.3">
-<h3><span class="header-section-number">12.4.3</span> Interpreting the 2 group t test</h3>
+<div id="interpreting-the-2-group-t-test" class="section level3" number="13.4.3">
+<h3><span class="header-section-number">13.4.3</span> Interpreting the 2 group t test</h3>
 <ul>
 <li>Welch t-test (not Student)
 <ul>
@@ -851,23 +860,23 @@ When the title slide appears, you can step through each line of the code to see 
 <li>Carnivores sleep a little more, but not a lot</li>
 </ul>
 </div>
-<div id="group-t-test-with-wide-data" class="section level3" number="12.4.4">
-<h3><span class="header-section-number">12.4.4</span> 2 group t test with wide data</h3>
+<div id="group-t-test-with-wide-data" class="section level3" number="13.4.4">
+<h3><span class="header-section-number">13.4.4</span> 2 group t test with wide data</h3>
 <ul>
 <li>You want to compare column A with column B (data are not tidy)</li>
 <li>Do mammals spend more time awake than asleep?</li>
 </ul>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="comparing-two-measures-of-centrality.html#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb260-2"><a href="comparing-two-measures-of-centrality.html#cb260-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb260-3"><a href="comparing-two-measures-of-centrality.html#cb260-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb260-4"><a href="comparing-two-measures-of-centrality.html#cb260-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> df<span class="sc">$</span>sleep_total, <span class="at">y =</span> df<span class="sc">$</span>awake, <span class="at">data =</span> msleep)</span></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="comparing-two-measures-of-centrality.html#cb310-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb310-2"><a href="comparing-two-measures-of-centrality.html#cb310-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb310-3"><a href="comparing-two-measures-of-centrality.html#cb310-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb310-4"><a href="comparing-two-measures-of-centrality.html#cb310-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> df<span class="sc">$</span>sleep_total, <span class="at">y =</span> df<span class="sc">$</span>awake, <span class="at">data =</span> msleep)</span></code></pre></div>
 </div>
-<div id="results-of-2-group-t-test-with-wide-data" class="section level3" number="12.4.5">
-<h3><span class="header-section-number">12.4.5</span> Results of 2 group t test with wide data</h3>
-<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="comparing-two-measures-of-centrality.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb261-2"><a href="comparing-two-measures-of-centrality.html#cb261-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb261-3"><a href="comparing-two-measures-of-centrality.html#cb261-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb261-4"><a href="comparing-two-measures-of-centrality.html#cb261-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> df<span class="sc">$</span>sleep_total, <span class="at">y =</span> df<span class="sc">$</span>awake, <span class="at">data =</span> msleep)</span></code></pre></div>
+<div id="results-of-2-group-t-test-with-wide-data" class="section level3" number="13.4.5">
+<h3><span class="header-section-number">13.4.5</span> Results of 2 group t test with wide data</h3>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="comparing-two-measures-of-centrality.html#cb311-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb311-2"><a href="comparing-two-measures-of-centrality.html#cb311-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb311-3"><a href="comparing-two-measures-of-centrality.html#cb311-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb311-4"><a href="comparing-two-measures-of-centrality.html#cb311-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> df<span class="sc">$</span>sleep_total, <span class="at">y =</span> df<span class="sc">$</span>awake, <span class="at">data =</span> msleep)</span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -881,8 +890,8 @@ When the title slide appears, you can step through each line of the code to see 
 ##  10.43373  13.56747</code></pre>
 </div>
 </div>
-<div id="assumptions-of-students-t-test" class="section level2" number="12.5">
-<h2><span class="header-section-number">12.5</span> 3 Assumptions of Student’s t test</h2>
+<div id="assumptions-of-students-t-test" class="section level2" number="13.5">
+<h2><span class="header-section-number">13.5</span> 3 Assumptions of Student’s t test</h2>
 <ol style="list-style-type: decimal">
 <li>Sample is normally distributed (test with Shapiro)</li>
 <li>Variances are homogeneous (homoskedasticity) (test with Levene)</li>
@@ -893,8 +902,8 @@ When the title slide appears, you can step through each line of the code to see 
 <li>not paired like spouse and partner</li>
 <li>not paired like measurements pre and post Rx</li>
 </ul>
-<div id="testing-assumptions-of-students-t-test" class="section level3" number="12.5.1">
-<h3><span class="header-section-number">12.5.1</span> Testing Assumptions of Student’s t test</h3>
+<div id="testing-assumptions-of-students-t-test" class="section level3" number="13.5.1">
+<h3><span class="header-section-number">13.5.1</span> Testing Assumptions of Student’s t test</h3>
 <ul>
 <li>Normality - test with Shapiro
 <ul>
@@ -913,25 +922,25 @@ When the title slide appears, you can step through each line of the code to see 
 </ul>
 </div>
 </div>
-<div id="getting-results-out-of-t.test" class="section level2" number="12.6">
-<h2><span class="header-section-number">12.6</span> Getting results out of t.test</h2>
+<div id="getting-results-out-of-t.test" class="section level2" number="13.6">
+<h2><span class="header-section-number">13.6</span> Getting results out of t.test</h2>
 <ul>
 <li>Use the tidy function from the broom package</li>
 <li>Do carnivores have bigger brains than insectivores?</li>
 </ul>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="comparing-two-measures-of-centrality.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb263-2"><a href="comparing-two-measures-of-centrality.html#cb263-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb263-3"><a href="comparing-two-measures-of-centrality.html#cb263-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
-<span id="cb263-4"><a href="comparing-two-measures-of-centrality.html#cb263-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb263-5"><a href="comparing-two-measures-of-centrality.html#cb263-5" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb263-6"><a href="comparing-two-measures-of-centrality.html#cb263-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(vore <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;carni&quot;</span>, <span class="st">&quot;insecti&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb263-7"><a href="comparing-two-measures-of-centrality.html#cb263-7" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">formula =</span> brainwt <span class="sc">~</span> vore, <span class="at">data =</span> .) <span class="sc">%&gt;%</span> </span>
-<span id="cb263-8"><a href="comparing-two-measures-of-centrality.html#cb263-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="ot">-&gt;</span></span>
-<span id="cb263-9"><a href="comparing-two-measures-of-centrality.html#cb263-9" aria-hidden="true" tabindex="-1"></a>result</span>
-<span id="cb263-10"><a href="comparing-two-measures-of-centrality.html#cb263-10" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div>
-<div id="getting-results-out-of-t.test-1" class="section level3" number="12.6.1">
-<h3><span class="header-section-number">12.6.1</span> Getting results out of t.test</h3>
-<pre><code>## # A tibble: 1 x 10
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="comparing-two-measures-of-centrality.html#cb313-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb313-2"><a href="comparing-two-measures-of-centrality.html#cb313-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb313-3"><a href="comparing-two-measures-of-centrality.html#cb313-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb313-4"><a href="comparing-two-measures-of-centrality.html#cb313-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb313-5"><a href="comparing-two-measures-of-centrality.html#cb313-5" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb313-6"><a href="comparing-two-measures-of-centrality.html#cb313-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(vore <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;carni&quot;</span>, <span class="st">&quot;insecti&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb313-7"><a href="comparing-two-measures-of-centrality.html#cb313-7" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">formula =</span> brainwt <span class="sc">~</span> vore, <span class="at">data =</span> .) <span class="sc">%&gt;%</span> </span>
+<span id="cb313-8"><a href="comparing-two-measures-of-centrality.html#cb313-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="ot">-&gt;</span></span>
+<span id="cb313-9"><a href="comparing-two-measures-of-centrality.html#cb313-9" aria-hidden="true" tabindex="-1"></a>result</span>
+<span id="cb313-10"><a href="comparing-two-measures-of-centrality.html#cb313-10" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div>
+<div id="getting-results-out-of-t.test-1" class="section level3" number="13.6.1">
+<h3><span class="header-section-number">13.6.1</span> Getting results out of t.test</h3>
+<pre><code>## # A tibble: 1 × 10
 ##   estimate estimate1 estimate2 statistic p.value parameter
 ##      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;
 ## 1   0.0577    0.0793    0.0216      1.20   0.253        12
@@ -939,8 +948,8 @@ When the title slide appears, you can step through each line of the code to see 
 ## #   method &lt;chr&gt;, alternative &lt;chr&gt;</code></pre>
 </div>
 </div>
-<div id="reporting-the-results-from-t.test-using-inline-code" class="section level2" number="12.7">
-<h2><span class="header-section-number">12.7</span> Reporting the results from t.test using inline code</h2>
+<div id="reporting-the-results-from-t.test-using-inline-code" class="section level2" number="13.7">
+<h2><span class="header-section-number">13.7</span> Reporting the results from t.test using inline code</h2>
 <ul>
 <li>use backticks before and after, start with r
 <ul>
@@ -957,8 +966,8 @@ When the title slide appears, you can step through each line of the code to see 
 <li>The confidence interval was from -0.05 to 0.16</li>
 </ul></li>
 </ul>
-<div id="for-next-time" class="section level3" number="12.7.1">
-<h3><span class="header-section-number">12.7.1</span> For Next Time</h3>
+<div id="for-next-time" class="section level3" number="13.7.1">
+<h3><span class="header-section-number">13.7.1</span> For Next Time</h3>
 <ul>
 <li>Skewness and Kurtosis</li>
 <li>Review Normality
@@ -1127,6 +1136,10 @@ gitbook.start({
 "text": null
 },
 "download": ["rmrwr.pdf", "rmrwr.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

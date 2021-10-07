@@ -36,7 +36,7 @@ summ
 ```
 
 ```
-## # A tibble: 2 x 2
+## # A tibble: 2 × 2
 ##     sex mean_time2cmv
 ##   <dbl>         <dbl>
 ## 1     0          13.7
@@ -281,7 +281,7 @@ Give it a try below. See if you can figure out what each line of code is doing.
 <iframe style="margin:0 auto; border: solid black;" 
 id="myIframe8" 
 width = "763" height = "432" src="https://higgi13425.github.io/mini_flipbooks/ttest_flipbook.html#1" 
-scrolling="no"></iframe> 
+scrolling="no" data-external="1"></iframe> 
 
 <!-------------> 
 
@@ -328,7 +328,7 @@ df %>%
 ## 
 ## data:  sleep_total by vore
 ## t = 0.63232, df = 39.31, p-value = 0.5308
-## alternative hypothesis: true difference in means is not equal to 0
+## alternative hypothesis: true difference in means between group carni and group herbi is not equal to 0
 ## 95 percent confidence interval:
 ##  -1.911365  3.650509
 ## sample estimates:
@@ -419,7 +419,7 @@ result
 
 
 ```
-## # A tibble: 1 x 10
+## # A tibble: 1 × 10
 ##   estimate estimate1 estimate2 statistic p.value parameter
 ##      <dbl>     <dbl>     <dbl>     <dbl>   <dbl>     <dbl>
 ## 1   0.0577    0.0793    0.0216      1.20   0.253        12

@@ -244,7 +244,7 @@ covid %>%
 ```
 
 ```
-## # A tibble: 5 x 2
+## # A tibble: 5 × 2
 ##   patient_class        data               
 ##   <chr>                <list>             
 ## 1 observation          <tibble [28 × 16]> 
@@ -268,7 +268,7 @@ covid %>%
 ```
 
 ```
-## # A tibble: 5 x 3
+## # A tibble: 5 × 3
 ##   patient_class        data                plots 
 ##   <chr>                <list>              <list>
 ## 1 observation          <tibble [28 × 16]>  <gg>  
@@ -497,6 +497,7 @@ This version of the pipeline should run for all values of rbc_age_group.
 
 Now try this on your own - and use the outline mode to jump back and forth to previous code chunks to make this easier.
 
+**NOTE - need to FIX, Infert REMOVED**
 1.  Make a plot of age (on the y axis) vs by parity (x axis) in the **infert** dataset with violin and jitter plots, as in the prostate example prostate-plot-1. This should be filtered for education == "0-5yrs". Edit to make appropriate axis labels as appropriate.
 2.  Make a non-hard-coded version, by editing the filter statement with .data and .env variables, and edit the title with glue as in prostate-plot-2.
 3.  Make this into a function, make_infert_plots, as in prostate-plot-3. Try this with different values for education.

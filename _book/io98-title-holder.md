@@ -1,7 +1,7 @@
 ---
 title: "Reproducible Medical Research with R"
 author: "Peter D.R. Higgins, MD, PhD, MSc"
-date: "2021-07-22"
+date: "2021-10-07"
 output: html_document
 ---
 # Title holder {-}

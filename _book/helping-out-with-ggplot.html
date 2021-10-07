@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 16 Helping out with ggplot | Reproducible Medical Research with R</title>
+  <title>Chapter 17 Helping out with ggplot | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 16 Helping out with ggplot | Reproducible Medical Research with R" />
+  <meta property="og:title" content="Chapter 17 Helping out with ggplot | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rmrwr.netlify.com" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="higgi13425/rmrwr-book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 16 Helping out with ggplot | Reproducible Medical Research with R" />
+  <meta name="twitter:title" content="Chapter 17 Helping out with ggplot | Reproducible Medical Research with R" />
   
   <meta name="twitter:description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2021-07-22" />
+<meta name="date" content="2021-10-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,9 +32,9 @@
   
   
 <link rel="prev" href="univariate-ggplots-to-visualize-distributions.html"/>
-<link rel="next" href="functions.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<link rel="next" href="functions-1.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -53,7 +53,7 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.3.9000/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
@@ -66,6 +66,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -324,186 +325,194 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6.5" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html#references"><i class="fa fa-check"></i><b>6.5</b> References:</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><i class="fa fa-check"></i><b>7</b> Tips for Hashtag Debugging your Pipes and GGPlots</a>
+<li class="chapter" data-level="7" data-path="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html"><i class="fa fa-check"></i><b>7</b> The Building Blocks of R: data types, data structures, functions, and packages.</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#debugging"><i class="fa fa-check"></i><b>7.1</b> Debugging</a></li>
-<li class="chapter" data-level="7.2" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#the-quick-screen"><i class="fa fa-check"></i><b>7.2</b> The Quick Screen</a></li>
-<li class="chapter" data-level="7.3" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#systematic-hunting-for-bugs-in-pipes"><i class="fa fa-check"></i><b>7.3</b> Systematic Hunting For Bugs in Pipes</a></li>
-<li class="chapter" data-level="7.4" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#systematic-hunting-for-bugs-in-plots"><i class="fa fa-check"></i><b>7.4</b> Systematic Hunting For Bugs in Plots</a></li>
-<li class="chapter" data-level="7.5" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#hashtag-debugging"><i class="fa fa-check"></i><b>7.5</b> Hashtag Debugging</a></li>
-<li class="chapter" data-level="7.6" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#pipe-2"><i class="fa fa-check"></i><b>7.6</b> Pipe 2</a></li>
-<li class="chapter" data-level="7.7" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#plot-2"><i class="fa fa-check"></i><b>7.7</b> Plot 2</a></li>
-<li class="chapter" data-level="7.8" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#plot3"><i class="fa fa-check"></i><b>7.8</b> Plot3</a></li>
-<li class="chapter" data-level="7.9" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#pipe-3"><i class="fa fa-check"></i><b>7.9</b> Pipe 3</a></li>
+<li class="chapter" data-level="7.1" data-path="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#data-types"><i class="fa fa-check"></i><b>7.1</b> Data Types</a></li>
+<li class="chapter" data-level="7.2" data-path="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#data-structures"><i class="fa fa-check"></i><b>7.2</b> Data Structures</a></li>
+<li class="chapter" data-level="7.3" data-path="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#examining-data-types-and-data-structures"><i class="fa fa-check"></i><b>7.3</b> Examining Data Types and Data Structures</a></li>
+<li class="chapter" data-level="7.4" data-path="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#functions"><i class="fa fa-check"></i><b>7.4</b> Functions</a></li>
+<li class="chapter" data-level="7.5" data-path="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#packages"><i class="fa fa-check"></i><b>7.5</b> Packages</a></li>
+<li class="chapter" data-level="7.6" data-path="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#the-building-blocks-of-r"><i class="fa fa-check"></i><b>7.6</b> The Building Blocks of R</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html"><i class="fa fa-check"></i><b>8</b> Finding Help in R</a>
+<li class="chapter" data-level="8" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><i class="fa fa-check"></i><b>8</b> Tips for Hashtag Debugging your Pipes and GGPlots</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#programming-in-r"><i class="fa fa-check"></i><b>8.1</b> Programming in R</a></li>
-<li class="chapter" data-level="8.2" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#starting-with-help"><i class="fa fa-check"></i><b>8.2</b> Starting with Help!</a></li>
-<li class="chapter" data-level="8.3" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#the-magic-of-vignettes"><i class="fa fa-check"></i><b>8.3</b> The Magic of Vignettes</a></li>
-<li class="chapter" data-level="8.4" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#googling-the-error-message"><i class="fa fa-check"></i><b>8.4</b> Googling the Error Message</a></li>
-<li class="chapter" data-level="8.5" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#you-know-what-you-want-to-do-but-dont-know-what-package-or-function-to-use"><i class="fa fa-check"></i><b>8.5</b> You Know What You Want to Do, but Don’t Know What Package or Function to Use</a>
-<ul>
-<li class="chapter" data-level="8.5.1" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#cran-task-views"><i class="fa fa-check"></i><b>8.5.1</b> CRAN Task Views</a></li>
-<li class="chapter" data-level="8.5.2" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#google-is-your-friend"><i class="fa fa-check"></i><b>8.5.2</b> Google is Your Friend</a></li>
+<li class="chapter" data-level="8.1" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#debugging"><i class="fa fa-check"></i><b>8.1</b> Debugging</a></li>
+<li class="chapter" data-level="8.2" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#the-quick-screen"><i class="fa fa-check"></i><b>8.2</b> The Quick Screen</a></li>
+<li class="chapter" data-level="8.3" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#systematic-hunting-for-bugs-in-plots"><i class="fa fa-check"></i><b>8.3</b> Systematic Hunting For Bugs in Plots</a></li>
+<li class="chapter" data-level="8.4" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#hashtag-debugging"><i class="fa fa-check"></i><b>8.4</b> Hashtag Debugging</a></li>
+<li class="chapter" data-level="8.5" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#pipe-2"><i class="fa fa-check"></i><b>8.5</b> Pipe 2</a></li>
+<li class="chapter" data-level="8.6" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#plot-2"><i class="fa fa-check"></i><b>8.6</b> Plot 2</a></li>
+<li class="chapter" data-level="8.7" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#plot3"><i class="fa fa-check"></i><b>8.7</b> Plot3</a></li>
+<li class="chapter" data-level="8.8" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#pipe-3"><i class="fa fa-check"></i><b>8.8</b> Pipe 3</a></li>
 </ul></li>
-<li class="chapter" data-level="8.6" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#seeking-advanced-help-with-a-minimal-reprex"><i class="fa fa-check"></i><b>8.6</b> Seeking Advanced Help with a Minimal REPREX</a></li>
+<li class="chapter" data-level="9" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html"><i class="fa fa-check"></i><b>9</b> Finding Help in R</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#programming-in-r"><i class="fa fa-check"></i><b>9.1</b> Programming in R</a></li>
+<li class="chapter" data-level="9.2" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#starting-with-help"><i class="fa fa-check"></i><b>9.2</b> Starting with Help!</a></li>
+<li class="chapter" data-level="9.3" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#the-magic-of-vignettes"><i class="fa fa-check"></i><b>9.3</b> The Magic of Vignettes</a></li>
+<li class="chapter" data-level="9.4" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#googling-the-error-message"><i class="fa fa-check"></i><b>9.4</b> Googling the Error Message</a></li>
+<li class="chapter" data-level="9.5" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#you-know-what-you-want-to-do-but-dont-know-what-package-or-function-to-use"><i class="fa fa-check"></i><b>9.5</b> You Know What You Want to Do, but Don’t Know What Package or Function to Use</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#cran-task-views"><i class="fa fa-check"></i><b>9.5.1</b> CRAN Task Views</a></li>
+<li class="chapter" data-level="9.5.2" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#google-is-your-friend"><i class="fa fa-check"></i><b>9.5.2</b> Google is Your Friend</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html"><i class="fa fa-check"></i><b>9</b> The Basics of Base R</a>
-<ul>
-<li class="chapter" data-level="9.1" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#dimensions-of-data-rectangles"><i class="fa fa-check"></i><b>9.1</b> Dimensions of Data Rectangles</a></li>
-<li class="chapter" data-level="9.2" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#naming-columns"><i class="fa fa-check"></i><b>9.2</b> Naming columns</a></li>
-<li class="chapter" data-level="9.3" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#concatenation"><i class="fa fa-check"></i><b>9.3</b> Concatenation</a></li>
-<li class="chapter" data-level="9.4" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#sequences"><i class="fa fa-check"></i><b>9.4</b> Sequences</a></li>
-<li class="chapter" data-level="9.5" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#constants"><i class="fa fa-check"></i><b>9.5</b> Constants</a></li>
-<li class="chapter" data-level="9.6" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#fancier-sequences"><i class="fa fa-check"></i><b>9.6</b> Fancier Sequences</a></li>
-<li class="chapter" data-level="9.7" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#mathematical-functions"><i class="fa fa-check"></i><b>9.7</b> Mathematical functions</a></li>
-<li class="chapter" data-level="9.8" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#handling-missing-data-nas"><i class="fa fa-check"></i><b>9.8</b> Handling missing data (NAs)</a></li>
-<li class="chapter" data-level="9.9" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#cutting-continuous-data-into-levels"><i class="fa fa-check"></i><b>9.9</b> Cutting Continuous data into Levels</a></li>
+<li class="chapter" data-level="9.6" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html#seeking-advanced-help-with-a-minimal-reprex"><i class="fa fa-check"></i><b>9.6</b> Seeking Advanced Help with a Minimal REPREX</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html"><i class="fa fa-check"></i><b>10</b> Updating R, RStudio, and Your Packages</a>
+<li class="chapter" data-level="10" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html"><i class="fa fa-check"></i><b>10</b> The Basics of Base R</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-1"><i class="fa fa-check"></i><b>10.1</b> Installing Packages</a>
-<ul>
-<li class="chapter" data-level="10.1.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-from-github"><i class="fa fa-check"></i><b>10.1.1</b> Installing Packages from Github</a></li>
-<li class="chapter" data-level="10.1.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#problems-with-installing-packages"><i class="fa fa-check"></i><b>10.1.2</b> Problems with Installing Packages</a></li>
+<li class="chapter" data-level="10.1" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#dimensions-of-data-rectangles"><i class="fa fa-check"></i><b>10.1</b> Dimensions of Data Rectangles</a></li>
+<li class="chapter" data-level="10.2" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#naming-columns"><i class="fa fa-check"></i><b>10.2</b> Naming columns</a></li>
+<li class="chapter" data-level="10.3" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#concatenation"><i class="fa fa-check"></i><b>10.3</b> Concatenation</a></li>
+<li class="chapter" data-level="10.4" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#sequences"><i class="fa fa-check"></i><b>10.4</b> Sequences</a></li>
+<li class="chapter" data-level="10.5" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#constants"><i class="fa fa-check"></i><b>10.5</b> Constants</a></li>
+<li class="chapter" data-level="10.6" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#fancier-sequences"><i class="fa fa-check"></i><b>10.6</b> Fancier Sequences</a></li>
+<li class="chapter" data-level="10.7" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#mathematical-functions"><i class="fa fa-check"></i><b>10.7</b> Mathematical functions</a></li>
+<li class="chapter" data-level="10.8" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#handling-missing-data-nas"><i class="fa fa-check"></i><b>10.8</b> Handling missing data (NAs)</a></li>
+<li class="chapter" data-level="10.9" data-path="the-basics-of-base-r.html"><a href="the-basics-of-base-r.html#cutting-continuous-data-into-levels"><i class="fa fa-check"></i><b>10.9</b> Cutting Continuous data into Levels</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#loading-packages-with-library-1"><i class="fa fa-check"></i><b>10.2</b> Loading Packages with Library</a></li>
-<li class="chapter" data-level="10.3" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-r"><i class="fa fa-check"></i><b>10.3</b> Updating R</a></li>
-<li class="chapter" data-level="10.4" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-rstudio"><i class="fa fa-check"></i><b>10.4</b> Updating RStudio</a></li>
-<li class="chapter" data-level="10.5" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-your-packages"><i class="fa fa-check"></i><b>10.5</b> Updating Your Packages</a></li>
+<li class="chapter" data-level="11" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html"><i class="fa fa-check"></i><b>11</b> Updating R, RStudio, and Your Packages</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-1"><i class="fa fa-check"></i><b>11.1</b> Installing Packages</a>
+<ul>
+<li class="chapter" data-level="11.1.1" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#installing-packages-from-github"><i class="fa fa-check"></i><b>11.1.1</b> Installing Packages from Github</a></li>
+<li class="chapter" data-level="11.1.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#problems-with-installing-packages"><i class="fa fa-check"></i><b>11.1.2</b> Problems with Installing Packages</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html"><i class="fa fa-check"></i><b>11</b> Major R Updates (Where Are My Packages?)</a></li>
-<li class="chapter" data-level="12" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html"><i class="fa fa-check"></i><b>12</b> Comparing Two Measures of Centrality</a>
-<ul>
-<li class="chapter" data-level="12.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#common-problem"><i class="fa fa-check"></i><b>12.1</b> Common Problem</a>
-<ul>
-<li class="chapter" data-level="12.1.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#how-skewed-is-too-skewed"><i class="fa fa-check"></i><b>12.1.1</b> How Skewed is Too Skewed?</a></li>
-<li class="chapter" data-level="12.1.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#visualize-the-distribution-of-data-variables-in-ggplot"><i class="fa fa-check"></i><b>12.1.2</b> Visualize the Distribution of data variables in ggplot</a></li>
-<li class="chapter" data-level="12.1.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#visualize-the-distribution-of-datalen-in-ggplot"><i class="fa fa-check"></i><b>12.1.3</b> Visualize the Distribution of data$len in ggplot</a></li>
-<li class="chapter" data-level="12.1.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-shapiro-wilk"><i class="fa fa-check"></i><b>12.1.4</b> Results of Shapiro-Wilk</a></li>
-<li class="chapter" data-level="12.1.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#try-it-yourself-1"><i class="fa fa-check"></i><b>12.1.5</b> Try it yourself</a></li>
-<li class="chapter" data-level="12.1.6" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#mammal-sleep-hours"><i class="fa fa-check"></i><b>12.1.6</b> Mammal sleep hours</a></li>
+<li class="chapter" data-level="11.2" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#loading-packages-with-library-1"><i class="fa fa-check"></i><b>11.2</b> Loading Packages with Library</a></li>
+<li class="chapter" data-level="11.3" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-r"><i class="fa fa-check"></i><b>11.3</b> Updating R</a></li>
+<li class="chapter" data-level="11.4" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-rstudio"><i class="fa fa-check"></i><b>11.4</b> Updating RStudio</a></li>
+<li class="chapter" data-level="11.5" data-path="updating-r-rstudio-and-your-packages.html"><a href="updating-r-rstudio-and-your-packages.html#updating-your-packages"><i class="fa fa-check"></i><b>11.5</b> Updating Your Packages</a></li>
 </ul></li>
-<li class="chapter" data-level="12.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#one-sample-t-test"><i class="fa fa-check"></i><b>12.2</b> One Sample T test</a>
+<li class="chapter" data-level="12" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html"><i class="fa fa-check"></i><b>12</b> Major R Updates (Where Are My Packages?)</a></li>
+<li class="chapter" data-level="13" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html"><i class="fa fa-check"></i><b>13</b> Comparing Two Measures of Centrality</a>
 <ul>
-<li class="chapter" data-level="12.2.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#how-to-do-one-sample-t-test"><i class="fa fa-check"></i><b>12.2.1</b> How to do One Sample T test</a></li>
-<li class="chapter" data-level="12.2.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#interpreting-the-one-sample-t-test"><i class="fa fa-check"></i><b>12.2.2</b> Interpreting the One Sample T test</a></li>
-<li class="chapter" data-level="12.2.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#what-are-the-arguments-of-the-t.test-function"><i class="fa fa-check"></i><b>12.2.3</b> What are the arguments of the t.test function?</a></li>
+<li class="chapter" data-level="13.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#common-problem"><i class="fa fa-check"></i><b>13.1</b> Common Problem</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#how-skewed-is-too-skewed"><i class="fa fa-check"></i><b>13.1.1</b> How Skewed is Too Skewed?</a></li>
+<li class="chapter" data-level="13.1.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#visualize-the-distribution-of-data-variables-in-ggplot"><i class="fa fa-check"></i><b>13.1.2</b> Visualize the Distribution of data variables in ggplot</a></li>
+<li class="chapter" data-level="13.1.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#visualize-the-distribution-of-datalen-in-ggplot"><i class="fa fa-check"></i><b>13.1.3</b> Visualize the Distribution of data$len in ggplot</a></li>
+<li class="chapter" data-level="13.1.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-shapiro-wilk"><i class="fa fa-check"></i><b>13.1.4</b> Results of Shapiro-Wilk</a></li>
+<li class="chapter" data-level="13.1.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#try-it-yourself-1"><i class="fa fa-check"></i><b>13.1.5</b> Try it yourself</a></li>
+<li class="chapter" data-level="13.1.6" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#mammal-sleep-hours"><i class="fa fa-check"></i><b>13.1.6</b> Mammal sleep hours</a></li>
 </ul></li>
-<li class="chapter" data-level="12.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#insert-flipbook-for-ttest-here"><i class="fa fa-check"></i><b>12.3</b> Insert flipbook for ttest here</a>
+<li class="chapter" data-level="13.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#one-sample-t-test"><i class="fa fa-check"></i><b>13.2</b> One Sample T test</a>
 <ul>
-<li class="chapter" data-level="12.3.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#flipbook-time"><i class="fa fa-check"></i><b>12.3.1</b> Flipbook Time!</a></li>
+<li class="chapter" data-level="13.2.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#how-to-do-one-sample-t-test"><i class="fa fa-check"></i><b>13.2.1</b> How to do One Sample T test</a></li>
+<li class="chapter" data-level="13.2.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#interpreting-the-one-sample-t-test"><i class="fa fa-check"></i><b>13.2.2</b> Interpreting the One Sample T test</a></li>
+<li class="chapter" data-level="13.2.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#what-are-the-arguments-of-the-t.test-function"><i class="fa fa-check"></i><b>13.2.3</b> What are the arguments of the t.test function?</a></li>
 </ul></li>
-<li class="chapter" data-level="12.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#fine-but-what-about-2-groups"><i class="fa fa-check"></i><b>12.4</b> Fine, but what about 2 groups?</a>
+<li class="chapter" data-level="13.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#insert-flipbook-for-ttest-here"><i class="fa fa-check"></i><b>13.3</b> Insert flipbook for ttest here</a>
 <ul>
-<li class="chapter" data-level="12.4.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#setting-up-2-group-t-test"><i class="fa fa-check"></i><b>12.4.1</b> Setting up 2 group t test</a></li>
-<li class="chapter" data-level="12.4.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-the-2-group-t-test"><i class="fa fa-check"></i><b>12.4.2</b> Results of the 2 group t test</a></li>
-<li class="chapter" data-level="12.4.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#interpreting-the-2-group-t-test"><i class="fa fa-check"></i><b>12.4.3</b> Interpreting the 2 group t test</a></li>
-<li class="chapter" data-level="12.4.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#group-t-test-with-wide-data"><i class="fa fa-check"></i><b>12.4.4</b> 2 group t test with wide data</a></li>
-<li class="chapter" data-level="12.4.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-2-group-t-test-with-wide-data"><i class="fa fa-check"></i><b>12.4.5</b> Results of 2 group t test with wide data</a></li>
+<li class="chapter" data-level="13.3.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#flipbook-time"><i class="fa fa-check"></i><b>13.3.1</b> Flipbook Time!</a></li>
 </ul></li>
-<li class="chapter" data-level="12.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#assumptions-of-students-t-test"><i class="fa fa-check"></i><b>12.5</b> 3 Assumptions of Student’s t test</a>
+<li class="chapter" data-level="13.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#fine-but-what-about-2-groups"><i class="fa fa-check"></i><b>13.4</b> Fine, but what about 2 groups?</a>
 <ul>
-<li class="chapter" data-level="12.5.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#testing-assumptions-of-students-t-test"><i class="fa fa-check"></i><b>12.5.1</b> Testing Assumptions of Student’s t test</a></li>
+<li class="chapter" data-level="13.4.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#setting-up-2-group-t-test"><i class="fa fa-check"></i><b>13.4.1</b> Setting up 2 group t test</a></li>
+<li class="chapter" data-level="13.4.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-the-2-group-t-test"><i class="fa fa-check"></i><b>13.4.2</b> Results of the 2 group t test</a></li>
+<li class="chapter" data-level="13.4.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#interpreting-the-2-group-t-test"><i class="fa fa-check"></i><b>13.4.3</b> Interpreting the 2 group t test</a></li>
+<li class="chapter" data-level="13.4.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#group-t-test-with-wide-data"><i class="fa fa-check"></i><b>13.4.4</b> 2 group t test with wide data</a></li>
+<li class="chapter" data-level="13.4.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-2-group-t-test-with-wide-data"><i class="fa fa-check"></i><b>13.4.5</b> Results of 2 group t test with wide data</a></li>
 </ul></li>
-<li class="chapter" data-level="12.6" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#getting-results-out-of-t.test"><i class="fa fa-check"></i><b>12.6</b> Getting results out of t.test</a>
+<li class="chapter" data-level="13.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#assumptions-of-students-t-test"><i class="fa fa-check"></i><b>13.5</b> 3 Assumptions of Student’s t test</a>
 <ul>
-<li class="chapter" data-level="12.6.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#getting-results-out-of-t.test-1"><i class="fa fa-check"></i><b>12.6.1</b> Getting results out of t.test</a></li>
+<li class="chapter" data-level="13.5.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#testing-assumptions-of-students-t-test"><i class="fa fa-check"></i><b>13.5.1</b> Testing Assumptions of Student’s t test</a></li>
 </ul></li>
-<li class="chapter" data-level="12.7" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#reporting-the-results-from-t.test-using-inline-code"><i class="fa fa-check"></i><b>12.7</b> Reporting the results from t.test using inline code</a>
+<li class="chapter" data-level="13.6" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#getting-results-out-of-t.test"><i class="fa fa-check"></i><b>13.6</b> Getting results out of t.test</a>
 <ul>
-<li class="chapter" data-level="12.7.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#for-next-time"><i class="fa fa-check"></i><b>12.7.1</b> For Next Time</a></li>
+<li class="chapter" data-level="13.6.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#getting-results-out-of-t.test-1"><i class="fa fa-check"></i><b>13.6.1</b> Getting results out of t.test</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html"><i class="fa fa-check"></i><b>13</b> Sample Size Calculations with <code>{pwr}</code></a>
+<li class="chapter" data-level="13.7" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#reporting-the-results-from-t.test-using-inline-code"><i class="fa fa-check"></i><b>13.7</b> Reporting the results from t.test using inline code</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-a-continuous-endpoint-t-test"><i class="fa fa-check"></i><b>13.1</b> Sample Size for a Continuous Endpoint (t-test)</a></li>
-<li class="chapter" data-level="13.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#one-sample-t-test-for-lowering-creatinine"><i class="fa fa-check"></i><b>13.2</b> One Sample t-test for Lowering Creatinine</a></li>
-<li class="chapter" data-level="13.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#paired-t-tests-before-vs-after-or-truly-paired"><i class="fa fa-check"></i><b>13.3</b> Paired t-tests (before vs after, or truly paired)</a></li>
-<li class="chapter" data-level="13.4" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-t-tests-with-unequal-study-arm-sizes"><i class="fa fa-check"></i><b>13.4</b> 2 Sample t tests with Unequal Study Arm Sizes</a></li>
-<li class="chapter" data-level="13.5" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#testing-multiple-options-and-plotting-results"><i class="fa fa-check"></i><b>13.5</b> Testing Multiple Options and Plotting Results</a></li>
-<li class="chapter" data-level="13.6" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#your-turn"><i class="fa fa-check"></i><b>13.6</b> Your Turn</a></li>
-<li class="chapter" data-level="13.6.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-1-fev1-in-copd"><i class="fa fa-check"></i><b>13.6.1</b> Scenario 1: FEV1 in COPD</a></li>
-<li class="chapter" data-level="13.6.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-2-bnp-in-chf"><i class="fa fa-check"></i><b>13.6.2</b> Scenario 2: BNP in CHF</a></li>
-<li class="chapter" data-level="13.6.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-3-barthel-index-in-stroke"><i class="fa fa-check"></i><b>13.6.3</b> Scenario 3: Barthel Index in Stroke</a></li>
-<li class="chapter" data-level="13.7" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-sizes-for-proportions"><i class="fa fa-check"></i><b>13.7</b> Sample Sizes for Proportions</a></li>
-<li class="chapter" data-level="13.8" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-two-proportions-equal-n"><i class="fa fa-check"></i><b>13.8</b> Sample size for two proportions, equal n</a></li>
-<li class="chapter" data-level="13.9" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-two-proportions-unequal-arms"><i class="fa fa-check"></i><b>13.9</b> Sample size for two proportions, unequal arms</a></li>
-<li class="chapter" data-level="13.10" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#your-turn-1"><i class="fa fa-check"></i><b>13.10</b> Your Turn</a></li>
-<li class="chapter" data-level="13.10.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-1-mortality-on-renal-dialysis"><i class="fa fa-check"></i><b>13.10.1</b> Scenario 1: Mortality on Renal Dialysis</a></li>
-<li class="chapter" data-level="13.10.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-2-intestinal-anastomosis-in-crohns-disease"><i class="fa fa-check"></i><b>13.10.2</b> Scenario 2: Intestinal anastomosis in Crohn’s disease</a></li>
-<li class="chapter" data-level="13.10.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-3-metformin-in-donuts"><i class="fa fa-check"></i><b>13.10.3</b> Scenario 3: Metformin in Donuts</a></li>
-<li class="chapter" data-level="13.11" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-chi-square"><i class="fa fa-check"></i><b>13.11</b> add chi square</a></li>
-<li class="chapter" data-level="13.12" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-correlation-test"><i class="fa fa-check"></i><b>13.12</b> add correlation test</a></li>
-<li class="chapter" data-level="13.13" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-anova"><i class="fa fa-check"></i><b>13.13</b> add anova</a></li>
-<li class="chapter" data-level="13.14" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-linear-model"><i class="fa fa-check"></i><b>13.14</b> add linear model</a></li>
-<li class="chapter" data-level="13.15" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-note-on-guessing-effect-sizes---cohen-small-medium-large"><i class="fa fa-check"></i><b>13.15</b> add note on guessing effect sizes - cohen small, medium, large</a></li>
-<li class="chapter" data-level="13.16" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#explore-more"><i class="fa fa-check"></i><b>13.16</b> Explore More</a></li>
-</ul></li>
-<li class="chapter" data-level="14" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html"><i class="fa fa-check"></i><b>14</b> Randomization for Clinical Trials with R</a>
-<ul>
-<li class="chapter" data-level="14.1" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#printing-these-on-cards"><i class="fa fa-check"></i><b>14.1</b> Printing these on Cards</a></li>
-<li class="chapter" data-level="14.2" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#now-try-this-yourself"><i class="fa fa-check"></i><b>14.2</b> Now, try this yourself</a></li>
-<li class="chapter" data-level="14.3" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#now-freestyle"><i class="fa fa-check"></i><b>14.3</b> Now Freestyle</a></li>
-</ul></li>
-<li class="chapter" data-level="15" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html"><i class="fa fa-check"></i><b>15</b> Univariate ggplots to Visualize Distributions</a>
-<ul>
-<li class="chapter" data-level="15.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#histograms"><i class="fa fa-check"></i><b>15.1</b> HIstograms</a>
-<ul>
-<li class="chapter" data-level="15.1.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#comparisons-of-distributions-with-histograms"><i class="fa fa-check"></i><b>15.1.1</b> Comparisons of Distributions with Histograms</a></li>
-<li class="chapter" data-level="15.1.2" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#histograms-and-categories"><i class="fa fa-check"></i><b>15.1.2</b> Histograms and Categories</a></li>
-</ul></li>
-<li class="chapter" data-level="15.2" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#density-plots"><i class="fa fa-check"></i><b>15.2</b> Density Plots</a>
-<ul>
-<li class="chapter" data-level="15.2.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#comparisons-with-density-plots"><i class="fa fa-check"></i><b>15.2.1</b> Comparisons with Density plots</a></li>
-</ul></li>
-<li class="chapter" data-level="15.3" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#comparing-distributions-across-categories"><i class="fa fa-check"></i><b>15.3</b> Comparing Distributions Across Categories</a></li>
-<li class="chapter" data-level="15.4" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#boxplots"><i class="fa fa-check"></i><b>15.4</b> Boxplots</a></li>
-<li class="chapter" data-level="15.5" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#violin-plots"><i class="fa fa-check"></i><b>15.5</b> Violin Plots</a></li>
-<li class="chapter" data-level="15.6" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#ridgeline-plots"><i class="fa fa-check"></i><b>15.6</b> Ridgeline Plots</a>
-<ul>
-<li class="chapter" data-level="15.6.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-plots"><i class="fa fa-check"></i><b>15.6.1</b> Including Plots</a></li>
-<li class="chapter" data-level="15.6.2" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-points"><i class="fa fa-check"></i><b>15.6.2</b> Including Points</a></li>
-<li class="chapter" data-level="15.6.3" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-points-1"><i class="fa fa-check"></i><b>15.6.3</b> Including Points</a></li>
-<li class="chapter" data-level="15.6.4" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-points-2"><i class="fa fa-check"></i><b>15.6.4</b> Including Points</a></li>
-<li class="chapter" data-level="15.6.5" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-points-3"><i class="fa fa-check"></i><b>15.6.5</b> Including Points</a></li>
+<li class="chapter" data-level="13.7.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#for-next-time"><i class="fa fa-check"></i><b>13.7.1</b> For Next Time</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html"><i class="fa fa-check"></i><b>16</b> Helping out with ggplot</a>
+<li class="chapter" data-level="14" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html"><i class="fa fa-check"></i><b>14</b> Sample Size Calculations with <code>{pwr}</code></a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#ggxgghelp"><i class="fa fa-check"></i><b>16.1</b> ggx::gghelp()</a></li>
-<li class="chapter" data-level="16.2" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#getting-more-help-with-theming-with-ggthemeassist"><i class="fa fa-check"></i><b>16.2</b> Getting more help with theming with ggThemeAssist</a></li>
-<li class="chapter" data-level="16.3" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#website-helpers-for-ggplot"><i class="fa fa-check"></i><b>16.3</b> Website helpers for ggplot</a></li>
-<li class="chapter" data-level="16.4" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#getting-even-more-help-with-esquisse"><i class="fa fa-check"></i><b>16.4</b> Getting Even more help with esquisse</a>
+<li class="chapter" data-level="14.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-a-continuous-endpoint-t-test"><i class="fa fa-check"></i><b>14.1</b> Sample Size for a Continuous Endpoint (t-test)</a></li>
+<li class="chapter" data-level="14.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#one-sample-t-test-for-lowering-creatinine"><i class="fa fa-check"></i><b>14.2</b> One Sample t-test for Lowering Creatinine</a></li>
+<li class="chapter" data-level="14.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#paired-t-tests-before-vs-after-or-truly-paired"><i class="fa fa-check"></i><b>14.3</b> Paired t-tests (before vs after, or truly paired)</a></li>
+<li class="chapter" data-level="14.4" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-t-tests-with-unequal-study-arm-sizes"><i class="fa fa-check"></i><b>14.4</b> 2 Sample t tests with Unequal Study Arm Sizes</a></li>
+<li class="chapter" data-level="14.5" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#testing-multiple-options-and-plotting-results"><i class="fa fa-check"></i><b>14.5</b> Testing Multiple Options and Plotting Results</a></li>
+<li class="chapter" data-level="14.6" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#your-turn"><i class="fa fa-check"></i><b>14.6</b> Your Turn</a></li>
+<li class="chapter" data-level="14.6.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-1-fev1-in-copd"><i class="fa fa-check"></i><b>14.6.1</b> Scenario 1: FEV1 in COPD</a></li>
+<li class="chapter" data-level="14.6.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-2-bnp-in-chf"><i class="fa fa-check"></i><b>14.6.2</b> Scenario 2: BNP in CHF</a></li>
+<li class="chapter" data-level="14.6.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-3-barthel-index-in-stroke"><i class="fa fa-check"></i><b>14.6.3</b> Scenario 3: Barthel Index in Stroke</a></li>
+<li class="chapter" data-level="14.7" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-sizes-for-proportions"><i class="fa fa-check"></i><b>14.7</b> Sample Sizes for Proportions</a></li>
+<li class="chapter" data-level="14.8" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-two-proportions-equal-n"><i class="fa fa-check"></i><b>14.8</b> Sample size for two proportions, equal n</a></li>
+<li class="chapter" data-level="14.9" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-two-proportions-unequal-arms"><i class="fa fa-check"></i><b>14.9</b> Sample size for two proportions, unequal arms</a></li>
+<li class="chapter" data-level="14.10" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#your-turn-1"><i class="fa fa-check"></i><b>14.10</b> Your Turn</a></li>
+<li class="chapter" data-level="14.10.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-1-mortality-on-renal-dialysis"><i class="fa fa-check"></i><b>14.10.1</b> Scenario 1: Mortality on Renal Dialysis</a></li>
+<li class="chapter" data-level="14.10.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-2-intestinal-anastomosis-in-crohns-disease"><i class="fa fa-check"></i><b>14.10.2</b> Scenario 2: Intestinal anastomosis in Crohn’s disease</a></li>
+<li class="chapter" data-level="14.10.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-3-metformin-in-donuts"><i class="fa fa-check"></i><b>14.10.3</b> Scenario 3: Metformin in Donuts</a></li>
+<li class="chapter" data-level="14.11" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-chi-square"><i class="fa fa-check"></i><b>14.11</b> add chi square</a></li>
+<li class="chapter" data-level="14.12" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-correlation-test"><i class="fa fa-check"></i><b>14.12</b> add correlation test</a></li>
+<li class="chapter" data-level="14.13" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-anova"><i class="fa fa-check"></i><b>14.13</b> add anova</a></li>
+<li class="chapter" data-level="14.14" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-linear-model"><i class="fa fa-check"></i><b>14.14</b> add linear model</a></li>
+<li class="chapter" data-level="14.15" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-note-on-guessing-effect-sizes---cohen-small-medium-large"><i class="fa fa-check"></i><b>14.15</b> add note on guessing effect sizes - cohen small, medium, large</a></li>
+<li class="chapter" data-level="14.16" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#explore-more"><i class="fa fa-check"></i><b>14.16</b> Explore More</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html"><i class="fa fa-check"></i><b>15</b> Randomization for Clinical Trials with R</a>
 <ul>
-<li class="chapter" data-level="16.4.1" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#acknowledgement"><i class="fa fa-check"></i><b>16.4.1</b> Acknowledgement</a></li>
+<li class="chapter" data-level="15.1" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#printing-these-on-cards"><i class="fa fa-check"></i><b>15.1</b> Printing these on Cards</a></li>
+<li class="chapter" data-level="15.2" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#now-try-this-yourself"><i class="fa fa-check"></i><b>15.2</b> Now, try this yourself</a></li>
+<li class="chapter" data-level="15.3" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#now-freestyle"><i class="fa fa-check"></i><b>15.3</b> Now Freestyle</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html"><i class="fa fa-check"></i><b>16</b> Univariate ggplots to Visualize Distributions</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#histograms"><i class="fa fa-check"></i><b>16.1</b> HIstograms</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#comparisons-of-distributions-with-histograms"><i class="fa fa-check"></i><b>16.1.1</b> Comparisons of Distributions with Histograms</a></li>
+<li class="chapter" data-level="16.1.2" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#histograms-and-categories"><i class="fa fa-check"></i><b>16.1.2</b> Histograms and Categories</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#density-plots"><i class="fa fa-check"></i><b>16.2</b> Density Plots</a>
+<ul>
+<li class="chapter" data-level="16.2.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#comparisons-with-density-plots"><i class="fa fa-check"></i><b>16.2.1</b> Comparisons with Density plots</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#comparing-distributions-across-categories"><i class="fa fa-check"></i><b>16.3</b> Comparing Distributions Across Categories</a></li>
+<li class="chapter" data-level="16.4" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#boxplots"><i class="fa fa-check"></i><b>16.4</b> Boxplots</a></li>
+<li class="chapter" data-level="16.5" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#violin-plots"><i class="fa fa-check"></i><b>16.5</b> Violin Plots</a></li>
+<li class="chapter" data-level="16.6" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#ridgeline-plots"><i class="fa fa-check"></i><b>16.6</b> Ridgeline Plots</a>
+<ul>
+<li class="chapter" data-level="16.6.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-plots"><i class="fa fa-check"></i><b>16.6.1</b> Including Plots</a></li>
+<li class="chapter" data-level="16.6.2" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-points"><i class="fa fa-check"></i><b>16.6.2</b> Including Points</a></li>
+<li class="chapter" data-level="16.6.3" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-points-1"><i class="fa fa-check"></i><b>16.6.3</b> Including Points</a></li>
+<li class="chapter" data-level="16.6.4" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-points-2"><i class="fa fa-check"></i><b>16.6.4</b> Including Points</a></li>
+<li class="chapter" data-level="16.6.5" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-points-3"><i class="fa fa-check"></i><b>16.6.5</b> Including Points</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>17</b> Functions</a>
+<li class="chapter" data-level="17" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html"><i class="fa fa-check"></i><b>17</b> Helping out with ggplot</a>
 <ul>
-<li class="chapter" data-level="17.1" data-path="functions.html"><a href="functions.html#dont-repeat-yourself"><i class="fa fa-check"></i><b>17.1</b> Don’t repeat yourself</a></li>
-<li class="chapter" data-level="17.2" data-path="functions.html"><a href="functions.html#your-turn-2"><i class="fa fa-check"></i><b>17.2</b> Your Turn</a></li>
-<li class="chapter" data-level="17.3" data-path="functions.html"><a href="functions.html#freestyle"><i class="fa fa-check"></i><b>17.3</b> Freestyle</a></li>
-<li class="chapter" data-level="17.4" data-path="functions.html"><a href="functions.html#read-more"><i class="fa fa-check"></i><b>17.4</b> Read More</a></li>
+<li class="chapter" data-level="17.1" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#ggxgghelp"><i class="fa fa-check"></i><b>17.1</b> ggx::gghelp()</a></li>
+<li class="chapter" data-level="17.2" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#getting-more-help-with-theming-with-ggthemeassist"><i class="fa fa-check"></i><b>17.2</b> Getting more help with theming with ggThemeAssist</a></li>
+<li class="chapter" data-level="17.3" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#website-helpers-for-ggplot"><i class="fa fa-check"></i><b>17.3</b> Website helpers for ggplot</a></li>
+<li class="chapter" data-level="17.4" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#getting-even-more-help-with-esquisse"><i class="fa fa-check"></i><b>17.4</b> Getting Even more help with esquisse</a>
+<ul>
+<li class="chapter" data-level="17.4.1" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#acknowledgement"><i class="fa fa-check"></i><b>17.4.1</b> Acknowledgement</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="cmd-line.html"><a href="cmd-line.html"><i class="fa fa-check"></i><b>18</b> Running R from the UNIX Command Line</a>
-<ul>
-<li class="chapter" data-level="18.1" data-path="cmd-line.html"><a href="cmd-line.html#what-is-the-unix-command-line"><i class="fa fa-check"></i><b>18.1</b> What is the UNIX Command line?</a></li>
-<li class="chapter" data-level="18.2" data-path="cmd-line.html"><a href="cmd-line.html#why-run-r-from-the-command-line"><i class="fa fa-check"></i><b>18.2</b> Why run R from the command line?</a></li>
-<li class="chapter" data-level="18.3" data-path="cmd-line.html"><a href="cmd-line.html#how-do-you-get-started"><i class="fa fa-check"></i><b>18.3</b> How do you get started?</a>
-<ul>
-<li class="chapter" data-level="18.3.1" data-path="cmd-line.html"><a href="cmd-line.html#on-a-mac"><i class="fa fa-check"></i><b>18.3.1</b> On a Mac</a></li>
-<li class="chapter" data-level="18.3.2" data-path="cmd-line.html"><a href="cmd-line.html#on-a-windows-pc"><i class="fa fa-check"></i><b>18.3.2</b> On a Windows PC</a></li>
 </ul></li>
-<li class="chapter" data-level="18.4" data-path="cmd-line.html"><a href="cmd-line.html#the-yawning-blackness-of-the-terminal-window"><i class="fa fa-check"></i><b>18.4</b> The Yawning Blackness of the Terminal Window</a></li>
-<li class="chapter" data-level="18.5" data-path="cmd-line.html"><a href="cmd-line.html#where-are-we"><i class="fa fa-check"></i><b>18.5</b> Where Are We?</a></li>
-<li class="chapter" data-level="18.6" data-path="cmd-line.html"><a href="cmd-line.html#cleaning-up"><i class="fa fa-check"></i><b>18.6</b> Cleaning Up</a></li>
-<li class="chapter" data-level="18.7" data-path="cmd-line.html"><a href="cmd-line.html#other-helpful-file-commands"><i class="fa fa-check"></i><b>18.7</b> Other helpful file commands</a></li>
-<li class="chapter" data-level="18.8" data-path="cmd-line.html"><a href="cmd-line.html#what-about-r"><i class="fa fa-check"></i><b>18.8</b> What about R?</a></li>
-<li class="chapter" data-level="18.9" data-path="cmd-line.html"><a href="cmd-line.html#what-about-just-a-few-lines-of-r"><i class="fa fa-check"></i><b>18.9</b> What about just a few lines of R?</a></li>
-<li class="chapter" data-level="18.10" data-path="cmd-line.html"><a href="cmd-line.html#running-an-r-script-from-the-terminal"><i class="fa fa-check"></i><b>18.10</b> Running an R Script from the Terminal</a></li>
-<li class="chapter" data-level="18.11" data-path="cmd-line.html"><a href="cmd-line.html#rendering-an-rmarkdown-file-from-the-terminal"><i class="fa fa-check"></i><b>18.11</b> Rendering an Rmarkdown file from the Terminal</a></li>
+<li class="chapter" data-level="18" data-path="functions-1.html"><a href="functions-1.html"><i class="fa fa-check"></i><b>18</b> Functions</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="functions-1.html"><a href="functions-1.html#dont-repeat-yourself"><i class="fa fa-check"></i><b>18.1</b> Don’t repeat yourself</a></li>
+<li class="chapter" data-level="18.2" data-path="functions-1.html"><a href="functions-1.html#your-turn-2"><i class="fa fa-check"></i><b>18.2</b> Your Turn</a></li>
+<li class="chapter" data-level="18.3" data-path="functions-1.html"><a href="functions-1.html#freestyle"><i class="fa fa-check"></i><b>18.3</b> Freestyle</a></li>
+<li class="chapter" data-level="18.4" data-path="functions-1.html"><a href="functions-1.html#read-more"><i class="fa fa-check"></i><b>18.4</b> Read More</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="cmd-line.html"><a href="cmd-line.html"><i class="fa fa-check"></i><b>19</b> Running R from the UNIX Command Line</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="cmd-line.html"><a href="cmd-line.html#what-is-the-unix-command-line"><i class="fa fa-check"></i><b>19.1</b> What is the UNIX Command line?</a></li>
+<li class="chapter" data-level="19.2" data-path="cmd-line.html"><a href="cmd-line.html#why-run-r-from-the-command-line"><i class="fa fa-check"></i><b>19.2</b> Why run R from the command line?</a></li>
+<li class="chapter" data-level="19.3" data-path="cmd-line.html"><a href="cmd-line.html#how-do-you-get-started"><i class="fa fa-check"></i><b>19.3</b> How do you get started?</a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="cmd-line.html"><a href="cmd-line.html#on-a-mac"><i class="fa fa-check"></i><b>19.3.1</b> On a Mac</a></li>
+<li class="chapter" data-level="19.3.2" data-path="cmd-line.html"><a href="cmd-line.html#on-a-windows-pc"><i class="fa fa-check"></i><b>19.3.2</b> On a Windows PC</a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="cmd-line.html"><a href="cmd-line.html#the-yawning-blackness-of-the-terminal-window"><i class="fa fa-check"></i><b>19.4</b> The Yawning Blackness of the Terminal Window</a></li>
+<li class="chapter" data-level="19.5" data-path="cmd-line.html"><a href="cmd-line.html#where-are-we"><i class="fa fa-check"></i><b>19.5</b> Where Are We?</a></li>
+<li class="chapter" data-level="19.6" data-path="cmd-line.html"><a href="cmd-line.html#cleaning-up"><i class="fa fa-check"></i><b>19.6</b> Cleaning Up</a></li>
+<li class="chapter" data-level="19.7" data-path="cmd-line.html"><a href="cmd-line.html#other-helpful-file-commands"><i class="fa fa-check"></i><b>19.7</b> Other helpful file commands</a></li>
+<li class="chapter" data-level="19.8" data-path="cmd-line.html"><a href="cmd-line.html#what-about-r"><i class="fa fa-check"></i><b>19.8</b> What about R?</a></li>
+<li class="chapter" data-level="19.9" data-path="cmd-line.html"><a href="cmd-line.html#what-about-just-a-few-lines-of-r"><i class="fa fa-check"></i><b>19.9</b> What about just a few lines of R?</a></li>
+<li class="chapter" data-level="19.10" data-path="cmd-line.html"><a href="cmd-line.html#running-an-r-script-from-the-terminal"><i class="fa fa-check"></i><b>19.10</b> Running an R Script from the Terminal</a></li>
+<li class="chapter" data-level="19.11" data-path="cmd-line.html"><a href="cmd-line.html#rendering-an-rmarkdown-file-from-the-terminal"><i class="fa fa-check"></i><b>19.11</b> Rendering an Rmarkdown file from the Terminal</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="title-holder.html"><a href="title-holder.html"><i class="fa fa-check"></i>Title holder</a></li>
 <li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
@@ -527,44 +536,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="helping-out-with-ggplot" class="section level1" number="16">
-<h1><span class="header-section-number">Chapter 16</span> Helping out with ggplot</h1>
+<div id="helping-out-with-ggplot" class="section level1" number="17">
+<h1><span class="header-section-number">Chapter 17</span> Helping out with ggplot</h1>
 <p>The {ggplot} package is extremely powerful, and has many extension packages that augment that power for data visualization. But the number of options, particularly for theming, can get overwhelming. This is especially true if you are not using {ggplot} every day. Medical day (and night) jobs can get in the way of great data visualizations.</p>
 <p>But there are several helper packages to make your life easier, including {ggx}, {ggThemeAssist}, and {esquisse}.</p>
-<div id="ggxgghelp" class="section level2" number="16.1">
-<h2><span class="header-section-number">16.1</span> ggx::gghelp()</h2>
+<div id="ggxgghelp" class="section level2" number="17.1">
+<h2><span class="header-section-number">17.1</span> ggx::gghelp()</h2>
 <p>Let’s start with {ggx}.</p>
 <p>The <em>gghelp()</em> function in this simple package converts natural language queries (in quotes) into a ggplot command string. It can be helpful for styling axes, labels, font size, title, and legends. It is limited by its library of commands and range of styling, but can be helpful in a pinch. Try a few questions below, and make your own.</p>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="helping-out-with-ggplot.html#cb336-1" aria-hidden="true" tabindex="-1"></a>ggx<span class="sc">::</span><span class="fu">gghelp</span>(<span class="st">&quot;how do I remove the legend&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="helping-out-with-ggplot.html#cb386-1" aria-hidden="true" tabindex="-1"></a>ggx<span class="sc">::</span><span class="fu">gghelp</span>(<span class="st">&quot;how do I remove the legend&quot;</span>)</span></code></pre></div>
 <pre><code>## Registered S3 method overwritten by &#39;sets&#39;:
 ##   method        from   
 ##   print.element ggplot2</code></pre>
 <pre><code>## theme(legend.position = &quot;none&quot;)</code></pre>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="helping-out-with-ggplot.html#cb339-1" aria-hidden="true" tabindex="-1"></a>ggx<span class="sc">::</span><span class="fu">gghelp</span>(<span class="st">&quot;how do I increase the font size of the title&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="helping-out-with-ggplot.html#cb389-1" aria-hidden="true" tabindex="-1"></a>ggx<span class="sc">::</span><span class="fu">gghelp</span>(<span class="st">&quot;how do I increase the font size of the title&quot;</span>)</span></code></pre></div>
 <pre><code>## theme(axis.title.x=element_text(size=rel(2)))</code></pre>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="helping-out-with-ggplot.html#cb341-1" aria-hidden="true" tabindex="-1"></a>ggx<span class="sc">::</span><span class="fu">gghelp</span>(<span class="st">&quot;change the x axis label to &#39;systolic blood pressure&#39;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="helping-out-with-ggplot.html#cb391-1" aria-hidden="true" tabindex="-1"></a>ggx<span class="sc">::</span><span class="fu">gghelp</span>(<span class="st">&quot;change the x axis label to &#39;systolic blood pressure&#39;&quot;</span>)</span></code></pre></div>
 <pre><code>## xlab(&#39;systolic blood pressure&#39;)</code></pre>
 </div>
-<div id="getting-more-help-with-theming-with-ggthemeassist" class="section level2" number="16.2">
-<h2><span class="header-section-number">16.2</span> Getting more help with theming with ggThemeAssist</h2>
+<div id="getting-more-help-with-theming-with-ggthemeassist" class="section level2" number="17.2">
+<h2><span class="header-section-number">17.2</span> Getting more help with theming with ggThemeAssist</h2>
 <p>ggThemeAssist is an RStudio add-in that you install when you install the {ggThemeAssist} package. It is used after you have your basic plot in place, with the right geom, and the x and y variables in place.</p>
 <p>Let’s start you out with a simple plot from the {medicaldata} package. This plots the fentanyl requirements for anesthesia in the <code>supraclavicular</code> dataset comparing high and low BMI, age, and gender effects. Run this code block to see what the basic plot looks like.</p>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="helping-out-with-ggplot.html#cb343-1" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> medicaldata<span class="sc">::</span>supraclavicular <span class="sc">%&gt;%</span> </span>
-<span id="cb343-2"><a href="helping-out-with-ggplot.html#cb343-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(bmi)) <span class="sc">%&gt;%</span> </span>
-<span id="cb343-3"><a href="helping-out-with-ggplot.html#cb343-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gender_cat =</span> <span class="fu">case_when</span>(gender <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">&quot;Male&quot;</span>,</span>
-<span id="cb343-4"><a href="helping-out-with-ggplot.html#cb343-4" aria-hidden="true" tabindex="-1"></a>                             gender <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">&quot;Female&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb343-5"><a href="helping-out-with-ggplot.html#cb343-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bmi_cat =</span> <span class="fu">case_when</span>(bmi <span class="sc">&lt;</span><span class="dv">30</span> <span class="sc">~</span> <span class="st">&quot;low&quot;</span>,</span>
-<span id="cb343-6"><a href="helping-out-with-ggplot.html#cb343-6" aria-hidden="true" tabindex="-1"></a>                             bmi <span class="sc">&gt;=</span> <span class="dv">30</span> <span class="sc">~</span> <span class="st">&quot;high&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb343-7"><a href="helping-out-with-ggplot.html#cb343-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>age, <span class="at">y =</span> fentanyl, <span class="at">col =</span> gender_cat)) <span class="sc">+</span></span>
-<span id="cb343-8"><a href="helping-out-with-ggplot.html#cb343-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb343-9"><a href="helping-out-with-ggplot.html#cb343-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(. <span class="sc">~</span> bmi_cat) </span>
-<span id="cb343-10"><a href="helping-out-with-ggplot.html#cb343-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb343-11"><a href="helping-out-with-ggplot.html#cb343-11" aria-hidden="true" tabindex="-1"></a>plot1 <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;serif&quot;</span>), </span>
-<span id="cb343-12"><a href="helping-out-with-ggplot.html#cb343-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;antiquewhite&quot;</span>), </span>
-<span id="cb343-13"><a href="helping-out-with-ggplot.html#cb343-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;white&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb343-14"><a href="helping-out-with-ggplot.html#cb343-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Fentanyl Requirements&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Age&quot;</span>, </span>
-<span id="cb343-15"><a href="helping-out-with-ggplot.html#cb343-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Fentanyl in mcg&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;Gender&quot;</span>, </span>
-<span id="cb343-16"><a href="helping-out-with-ggplot.html#cb343-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;by BMI and Age&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="helping-out-with-ggplot.html#cb393-1" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> medicaldata<span class="sc">::</span>supraclavicular <span class="sc">%&gt;%</span> </span>
+<span id="cb393-2"><a href="helping-out-with-ggplot.html#cb393-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(bmi)) <span class="sc">%&gt;%</span> </span>
+<span id="cb393-3"><a href="helping-out-with-ggplot.html#cb393-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gender_cat =</span> <span class="fu">case_when</span>(gender <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">&quot;Male&quot;</span>,</span>
+<span id="cb393-4"><a href="helping-out-with-ggplot.html#cb393-4" aria-hidden="true" tabindex="-1"></a>                             gender <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">&quot;Female&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb393-5"><a href="helping-out-with-ggplot.html#cb393-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bmi_cat =</span> <span class="fu">case_when</span>(bmi <span class="sc">&lt;</span><span class="dv">30</span> <span class="sc">~</span> <span class="st">&quot;low&quot;</span>,</span>
+<span id="cb393-6"><a href="helping-out-with-ggplot.html#cb393-6" aria-hidden="true" tabindex="-1"></a>                             bmi <span class="sc">&gt;=</span> <span class="dv">30</span> <span class="sc">~</span> <span class="st">&quot;high&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb393-7"><a href="helping-out-with-ggplot.html#cb393-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>age, <span class="at">y =</span> fentanyl, <span class="at">col =</span> gender_cat)) <span class="sc">+</span></span>
+<span id="cb393-8"><a href="helping-out-with-ggplot.html#cb393-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb393-9"><a href="helping-out-with-ggplot.html#cb393-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(. <span class="sc">~</span> bmi_cat) </span>
+<span id="cb393-10"><a href="helping-out-with-ggplot.html#cb393-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb393-11"><a href="helping-out-with-ggplot.html#cb393-11" aria-hidden="true" tabindex="-1"></a>plot1 <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;serif&quot;</span>), </span>
+<span id="cb393-12"><a href="helping-out-with-ggplot.html#cb393-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;antiquewhite&quot;</span>), </span>
+<span id="cb393-13"><a href="helping-out-with-ggplot.html#cb393-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;white&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb393-14"><a href="helping-out-with-ggplot.html#cb393-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Fentanyl Requirements&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Age&quot;</span>, </span>
+<span id="cb393-15"><a href="helping-out-with-ggplot.html#cb393-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Fentanyl in mcg&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;Gender&quot;</span>, </span>
+<span id="cb393-16"><a href="helping-out-with-ggplot.html#cb393-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;by BMI and Age&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning: Removed 1 rows containing missing values
 ## (geom_point).</code></pre>
 <p><img src="io67-ggplot_helpers_files/figure-html/first-plot-1.png" width="672" /></p>
@@ -586,8 +595,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Open these up and experiment. You will see the results as you change options. When you are happy with the result, click on the Done button in the top right. This will add all of your thematic changes as valid R code to the existing plot object.</p>
 </div>
-<div id="website-helpers-for-ggplot" class="section level2" number="16.3">
-<h2><span class="header-section-number">16.3</span> Website helpers for ggplot</h2>
+<div id="website-helpers-for-ggplot" class="section level2" number="17.3">
+<h2><span class="header-section-number">17.3</span> Website helpers for ggplot</h2>
 <p>Several websites provide quick help for ggplot needs, and are worth bookmarking.</p>
 <p>The Aesthetics Helper, at <a href="https://ggplot2tor.com/aesthetics/" class="uri">https://ggplot2tor.com/aesthetics/</a>, provides a quick guide to which aesthetics are required (green), and which other aesthetics are available (optional, in orange) to map variables in your dataset to components of a plot for each geom.</p>
 <p>The Guide to Scales, at <a href="https://ggplot2tor.com/scales" class="uri">https://ggplot2tor.com/scales</a>, helps you find the proper names of scales in ggplot2, by selecting your variable type and (if needed) the aesthetic for the scale. Then by clicking on one of the available scales, you can get example code with appropriate syntax for multiple arguments. This can be very helpful in preventing frustration with not having the scales quite right.</p>
@@ -596,8 +605,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Cedric Scherer has a lengthy free tutorial with lots of great examples at <a href="https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/" class="uri">https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/</a></p>
 <p>There is also a gallery of all the many extension packages people have built as add-ons to ggplot, often for specific and specialized plotting needs. Take a loot at <a href="https://exts.ggplot2.tidyverse.org/gallery/" class="uri">https://exts.ggplot2.tidyverse.org/gallery/</a> Packages ggridges, ggalluvial, ggmosaic, ggdist, gghalves, and ComplexUpset have proven quite popular. Take a look at all the options for extending ggplot.</p>
 </div>
-<div id="getting-even-more-help-with-esquisse" class="section level2" number="16.4">
-<h2><span class="header-section-number">16.4</span> Getting Even more help with esquisse</h2>
+<div id="getting-even-more-help-with-esquisse" class="section level2" number="17.4">
+<h2><span class="header-section-number">17.4</span> Getting Even more help with esquisse</h2>
 <p>{esquisse} is an RStudio add-in that you install when you install the {esquisse} package. It is used to create plots from scratch in ggplot.</p>
 <p>A nice website on how to get started can be found at: <a href="https://cran.r-project.org/web/packages/esquisse/vignettes/get-started.html" class="uri">https://cran.r-project.org/web/packages/esquisse/vignettes/get-started.html</a></p>
 <p>But the two ways to get started are to either:</p>
@@ -625,8 +634,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>{esquisse} can get you started on good plots, and remind you of ggplot options you may have forgotten (or never knew) about. There are a number of fancy plots and extensions it can not do, and it will not clean your data for you, or reorder factors. But it can be really helpful if you are not plotting very often or if you are just getting started with ggplot.</p>
 
-<div id="acknowledgement" class="section level3" number="16.4.1">
-<h3><span class="header-section-number">16.4.1</span> Acknowledgement</h3>
+<div id="acknowledgement" class="section level3" number="17.4.1">
+<h3><span class="header-section-number">17.4.1</span> Acknowledgement</h3>
 <p>This chapter is inspired by a lesson from Claus Wilke at <a href="https://wilkelab.org/SDS375/slides/functional-programming.html#38">https://wilkelab.org/SDS375/slides/functional-programming</a></p>
 </div>
 </div>
@@ -739,7 +748,7 @@ window.onload = function() {
         </div>
       </div>
 <a href="univariate-ggplots-to-visualize-distributions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="functions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="functions-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -783,6 +792,10 @@ gitbook.start({
 "text": null
 },
 "download": ["rmrwr.pdf", "rmrwr.epub"],
+"search": {
+"engine": "lunr",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

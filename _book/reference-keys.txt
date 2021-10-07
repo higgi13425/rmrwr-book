@@ -126,10 +126,16 @@ errors-beyond-this-list
 when-things-get-weird
 restart-your-r-session-shift-cmd-f10
 references
+the-building-blocks-of-r-data-types-data-structures-functions-and-packages.
+data-types
+data-structures
+examining-data-types-and-data-structures
+functions
+packages
+the-building-blocks-of-r
 tips-for-hashtag-debugging-your-pipes-and-ggplots
 debugging
 the-quick-screen
-systematic-hunting-for-bugs-in-pipes
 systematic-hunting-for-bugs-in-plots
 hashtag-debugging
 pipe-2
@@ -246,7 +252,7 @@ getting-more-help-with-theming-with-ggthemeassist
 website-helpers-for-ggplot
 getting-even-more-help-with-esquisse
 acknowledgement
-functions
+functions-1
 dont-repeat-yourself
 your-turn-2
 freestyle

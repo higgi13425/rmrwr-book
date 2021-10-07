@@ -25,7 +25,7 @@ scurvy %>% select(study_id:treatment)
 ```
 
 ```
-## # A tibble: 12 x 2
+## # A tibble: 12 × 2
 ##    study_id treatment           
 ##    <chr>    <fct>               
 ##  1 001      cider               
@@ -135,21 +135,21 @@ read_csv(glue(url_stem, 'data/scurvy.csv'))
 ```
 
 ```
-## # A tibble: 12 x 8
-##    study_id treatment    dosing_regimen_for_scur… gum_rot_d6
-##    <chr>    <chr>        <chr>                    <chr>     
-##  1 001      cider        1 quart per day          2_moderate
-##  2 002      cider        1 quart per day          2_moderate
-##  3 003      dilute_sulf… 25 drops of elixir of v… 1_mild    
-##  4 004      dilute_sulf… 25 drops of elixir of v… 2_moderate
-##  5 005      vinegar      two spoonfuls, three ti… 3_severe  
-##  6 006      vinegar      two spoonfuls, three ti… 3_severe  
-##  7 007      sea_water    half pint daily          3_severe  
-##  8 008      sea_water    half pint daily          3_severe  
-##  9 009      citrus       two lemons and an orang… 1_mild    
-## 10 010      citrus       two lemons and an orang… 0_none    
-## 11 011      purgative_m… a nutmeg-sized paste of… 3_severe  
-## 12 012      purgative_m… a nutmeg-sized paste of… 3_severe  
+## # A tibble: 12 × 8
+##    study_id treatment            dosing_regimen_… gum_rot_d6
+##    <chr>    <chr>                <chr>            <chr>     
+##  1 001      cider                1 quart per day  2_moderate
+##  2 002      cider                1 quart per day  2_moderate
+##  3 003      dilute_sulfuric_acid 25 drops of eli… 1_mild    
+##  4 004      dilute_sulfuric_acid 25 drops of eli… 2_moderate
+##  5 005      vinegar              two spoonfuls, … 3_severe  
+##  6 006      vinegar              two spoonfuls, … 3_severe  
+##  7 007      sea_water            half pint daily  3_severe  
+##  8 008      sea_water            half pint daily  3_severe  
+##  9 009      citrus               two lemons and … 1_mild    
+## 10 010      citrus               two lemons and … 0_none    
+## 11 011      purgative_mixture    a nutmeg-sized … 3_severe  
+## 12 012      purgative_mixture    a nutmeg-sized … 3_severe  
 ## # … with 4 more variables: skin_sores_d6 <chr>,
 ## #   weakness_of_the_knees_d6 <chr>, lassitude_d6 <chr>,
 ## #   fit_for_duty_d6 <chr>
@@ -206,7 +206,7 @@ You can now print this out at any time by typing `scurvy_data` into the Console,
 
 - How many limes did the British seamen in the citrus arm receive each day? 
 
-<select class='webex-solveme' data-answer='["zero"]'> <option></option> <option>3</option> <option>2</option> <option>zero</option> <option>1.5</option></select>
+<select class='webex-select'><option value='blank'></option><option value=''>3</option><option value=''>2</option><option value='answer'>zero</option><option value=''>1.5</option></select>
 
 You can also start with the `scurvy_data` object, and *do* things to this data object, like summarize it, or graph it, or calculate total_symptom_score in a data pipeline.
 Once you have assigned your data to an object, it will stick around in that R session for later use.
@@ -258,22 +258,22 @@ col_names = c("pat_id", "arm", "dose", "gums", "skin", "weak", "lass", "fit"))
 ```
 
 ```
-## # A tibble: 13 x 8
-##    pat_id  arm     dose      gums   skin  weak   lass  fit  
-##    <chr>   <chr>   <chr>     <chr>  <chr> <chr>  <chr> <chr>
-##  1 study_… treatm… dosing_r… gum_r… skin… weakn… lass… fit_…
-##  2 001     cider   1 quart … 2_mod… 2_mo… 2_mod… 2_mo… 0_no 
-##  3 002     cider   1 quart … 2_mod… 1_mi… 2_mod… 3_se… 0_no 
-##  4 003     dilute… 25 drops… 1_mild 3_se… 3_sev… 3_se… 0_no 
-##  5 004     dilute… 25 drops… 2_mod… 3_se… 3_sev… 3_se… 0_no 
-##  6 005     vinegar two spoo… 3_sev… 3_se… 3_sev… 3_se… 0_no 
-##  7 006     vinegar two spoo… 3_sev… 3_se… 3_sev… 3_se… 0_no 
-##  8 007     sea_wa… half pin… 3_sev… 3_se… 3_sev… 3_se… 0_no 
-##  9 008     sea_wa… half pin… 3_sev… 3_se… 3_sev… 3_se… 0_no 
-## 10 009     citrus  two lemo… 1_mild 1_mi… 0_none 1_mi… 0_no 
-## 11 010     citrus  two lemo… 0_none 0_no… 0_none 0_no… 1_yes
-## 12 011     purgat… a nutmeg… 3_sev… 3_se… 3_sev… 3_se… 0_no 
-## 13 012     purgat… a nutmeg… 3_sev… 3_se… 3_sev… 3_se… 0_no
+## # A tibble: 13 × 8
+##    pat_id   arm    dose      gums   skin  weak   lass  fit  
+##    <chr>    <chr>  <chr>     <chr>  <chr> <chr>  <chr> <chr>
+##  1 study_id treat… dosing_r… gum_r… skin… weakn… lass… fit_…
+##  2 001      cider  1 quart … 2_mod… 2_mo… 2_mod… 2_mo… 0_no 
+##  3 002      cider  1 quart … 2_mod… 1_mi… 2_mod… 3_se… 0_no 
+##  4 003      dilut… 25 drops… 1_mild 3_se… 3_sev… 3_se… 0_no 
+##  5 004      dilut… 25 drops… 2_mod… 3_se… 3_sev… 3_se… 0_no 
+##  6 005      vineg… two spoo… 3_sev… 3_se… 3_sev… 3_se… 0_no 
+##  7 006      vineg… two spoo… 3_sev… 3_se… 3_sev… 3_se… 0_no 
+##  8 007      sea_w… half pin… 3_sev… 3_se… 3_sev… 3_se… 0_no 
+##  9 008      sea_w… half pin… 3_sev… 3_se… 3_sev… 3_se… 0_no 
+## 10 009      citrus two lemo… 1_mild 1_mi… 0_none 1_mi… 0_no 
+## 11 010      citrus two lemo… 0_none 0_no… 0_none 0_no… 1_yes
+## 12 011      purga… a nutmeg… 3_sev… 3_se… 3_sev… 3_se… 0_no 
+## 13 012      purga… a nutmeg… 3_sev… 3_se… 3_sev… 3_se… 0_no
 ```
 
 In this case, when we set our own **col_names**, there are now **13** rows of data, and the original column headers are now listed as the first row of data.
@@ -305,7 +305,7 @@ read_csv(file = glue(url_stem, 'data/scurvy.csv'),
 ```
 
 ```
-## # A tibble: 12 x 8
+## # A tibble: 12 × 8
 ##    pat_id arm     dose        gums   skin  weak  lass  fit  
 ##    <chr>  <chr>   <chr>       <chr>  <chr> <chr> <chr> <chr>
 ##  1 001    cider   1 quart pe… 2_mod… 2_mo… 2_mo… 2_mo… 0_no 
@@ -498,7 +498,7 @@ read_excel(paulolol_xlsx,
 ```
 
 ```
-## # A tibble: 14 x 6
+## # A tibble: 14 × 6
 ##    `Data for my stud… ...2      ...3   ...4    ...5  ...6   
 ##    <chr>              <chr>     <chr>  <chr>   <chr> <chr>  
 ##  1 Paul Investigator… <NA>      <NA>   <NA>    <NA>  <NA>   
@@ -521,11 +521,11 @@ read_excel(paulolol_xlsx,
 
 - which argument in read_excel lets you jump past initial rows of commentary? 
 
-<select class='webex-solveme' data-answer='["skip"]'> <option></option> <option>jump</option> <option>sheet</option> <option>skip</option> <option>path</option></select>
+<select class='webex-select'><option value='blank'></option><option value=''>jump</option><option value=''>sheet</option><option value='answer'>skip</option><option value=''>path</option></select>
 
 - which argument in read_excel lets you pick which spreadsheet tab to read? 
 
-<select class='webex-solveme' data-answer='["sheet"]'> <option></option> <option>pick</option> <option>sheet</option> <option>skip</option> <option>path</option></select>
+<select class='webex-select'><option value='blank'></option><option value=''>pick</option><option value='answer'>sheet</option><option value=''>skip</option><option value=''>path</option></select>
 
 - How many missing (NA) values are in this dataset (as run with skip =1)?
 
@@ -533,7 +533,7 @@ read_excel(paulolol_xlsx,
 
 - what should the **range** argument be to read in these data cleanly? 
 
-<select class='webex-solveme' data-answer='["A4:F11"]'> <option></option> <option>B2:F8</option> <option>A4:F11</option> <option>A1:L30</option> <option>B4:K15</option></select>
+<select class='webex-select'><option value='blank'></option><option value=''>B2:F8</option><option value='answer'>A4:F11</option><option value=''>A1:L30</option><option value=''>B4:K15</option></select>
 
 ## Bringing in data from other Statistical Programs (SAS, Stata, SPSS) with the {haven} package
 
@@ -551,7 +551,7 @@ haven::read_sas(glue(url_stem, "data/blood_storage.sas7bdat"))
 ```
 
 ```
-## # A tibble: 316 x 20
+## # A tibble: 316 × 20
 ##    rbc_age_group median_rbc_age   age    aa fam_hx p_vol
 ##            <dbl>          <dbl> <dbl> <dbl>  <dbl> <dbl>
 ##  1             3             25  72.1     0      0  54  
@@ -652,11 +652,11 @@ glimpse(----)
 
 - which variable is the logical data type? 
 
-<select class='webex-solveme' data-answer='["improved"]'> <option></option> <option>baseline_esr</option> <option>improved</option> <option>patient_id</option></select>
+<select class='webex-select'><option value='blank'></option><option value=''>baseline_esr</option><option value='answer'>improved</option><option value=''>patient_id</option></select>
 
 - which variable is the dbl numeric data type?
 
-<select class='webex-solveme' data-answer='["rad_num"]'> <option></option> <option>arm</option> <option>patient_id</option> <option>rad_num</option></select>
+<select class='webex-select'><option value='blank'></option><option value=''>arm</option><option value=''>patient_id</option><option value='answer'>rad_num</option></select>
 
 - How many observations are in this dataset?
 
@@ -701,7 +701,7 @@ Another extra detail provided by str() is that it tells you some of the levels o
 
 - what is the dose of cider? 
 
-<select class='webex-solveme' data-answer='["1 quart per day"]'> <option></option> <option>25 drops</option> <option>1 quart per day</option> <option>one-half rood</option></select>
+<select class='webex-select'><option value='blank'></option><option value=''>25 drops</option><option value='answer'>1 quart per day</option><option value=''>one-half rood</option></select>
 
 - how many levels of gum_rot are there?
 
@@ -769,15 +769,15 @@ head(scurvy)
 ```
 
 ```
-## # A tibble: 6 x 8
-##   study_id treatment     dosing_regimen_for_scur… gum_rot_d6
-##   <chr>    <fct>         <chr>                    <fct>     
-## 1 001      cider         1 quart per day          2_moderate
-## 2 002      cider         1 quart per day          2_moderate
-## 3 003      dilute_sulfu… 25 drops of elixir of v… 1_mild    
-## 4 004      dilute_sulfu… 25 drops of elixir of v… 2_moderate
-## 5 005      vinegar       two spoonfuls, three ti… 3_severe  
-## 6 006      vinegar       two spoonfuls, three ti… 3_severe  
+## # A tibble: 6 × 8
+##   study_id treatment            dosing_regimen_f… gum_rot_d6
+##   <chr>    <fct>                <chr>             <fct>     
+## 1 001      cider                1 quart per day   2_moderate
+## 2 002      cider                1 quart per day   2_moderate
+## 3 003      dilute_sulfuric_acid 25 drops of elix… 1_mild    
+## 4 004      dilute_sulfuric_acid 25 drops of elix… 2_moderate
+## 5 005      vinegar              two spoonfuls, t… 3_severe  
+## 6 006      vinegar              two spoonfuls, t… 3_severe  
 ## # … with 4 more variables: skin_sores_d6 <fct>,
 ## #   weakness_of_the_knees_d6 <fct>, lassitude_d6 <fct>,
 ## #   fit_for_duty_d6 <fct>
@@ -788,7 +788,7 @@ tail(strep_tb)
 ```
 
 ```
-## # A tibble: 6 x 13
+## # A tibble: 6 × 13
 ##   patient_id arm          dose_strep_g dose_PAS_g gender
 ##   <chr>      <fct>               <dbl>      <dbl> <fct> 
 ## 1 0100       Streptomycin            2          0 M     
@@ -848,7 +848,7 @@ print(tail(strep_tb), width = Inf)
 ```
 
 ```
-## # A tibble: 6 x 13
+## # A tibble: 6 × 13
 ##   patient_id arm          dose_strep_g dose_PAS_g gender
 ##   <chr>      <fct>               <dbl>      <dbl> <fct> 
 ## 1 0100       Streptomycin            2          0 M     
@@ -889,11 +889,11 @@ It is actually much easier to see the full width and height of a data set by scr
 
 - What function (and argument) let you print all the columns of a tibble?
 
-<select class='webex-solveme' data-answer='["print(x, width=Inf)"]'> <option></option> <option>print(x, width=Inf)</option> <option>filter(starts_with("width"))</option> <option>sum(na.rm=TRUE)</option></select>
+<select class='webex-select'><option value='blank'></option><option value='answer'>print(x, width=Inf)</option><option value=''>filter(starts_with("width"))</option><option value=''>sum(na.rm=TRUE)</option></select>
 
 - What function (and argument) let you print all the *rows* of a tibble?
 
-<select class='webex-solveme' data-answer='["print(x, n=Inf)"]'> <option></option> <option>filter(ends_with("all"))</option> <option>median(na.rm=TRUE)</option> <option>print(x, n=Inf)</option></select>
+<select class='webex-select'><option value='blank'></option><option value=''>filter(ends_with("all"))</option><option value=''>median(na.rm=TRUE)</option><option value='answer'>print(x, n=Inf)</option></select>
 
 If you just want a quick view of a few critical columns of your data, you can obtain this with the *select()* function, as in the code chunk below.
 Note that if you want to look at a random sample of your dataset, rather than the head or tail, you can use *sample_frac()* or *sample_n()* to do this. This sampling can be helpful if your data are sorted, or the head and tail rows are not representative of the whole dataset.
@@ -908,20 +908,20 @@ strep_tb %>%
 ```
 
 ```
-## # A tibble: 11 x 3
+## # A tibble: 11 × 3
 ##    radiologic_6m                rad_num improved
 ##    <fct>                          <dbl> <lgl>   
-##  1 3_Moderate_deterioration           3 FALSE   
-##  2 2_Considerable_deterioration       2 FALSE   
-##  3 1_Death                            1 FALSE   
-##  4 5_Moderate_improvement             5 TRUE    
-##  5 5_Moderate_improvement             5 TRUE    
-##  6 5_Moderate_improvement             5 TRUE    
-##  7 5_Moderate_improvement             5 TRUE    
-##  8 2_Considerable_deterioration       2 FALSE   
-##  9 3_Moderate_deterioration           3 FALSE   
+##  1 2_Considerable_deterioration       2 FALSE   
+##  2 5_Moderate_improvement             5 TRUE    
+##  3 5_Moderate_improvement             5 TRUE    
+##  4 6_Considerable_improvement         6 TRUE    
+##  5 3_Moderate_deterioration           3 FALSE   
+##  6 2_Considerable_deterioration       2 FALSE   
+##  7 1_Death                            1 FALSE   
+##  8 6_Considerable_improvement         6 TRUE    
+##  9 1_Death                            1 FALSE   
 ## 10 6_Considerable_improvement         6 TRUE    
-## 11 1_Death                            1 FALSE
+## 11 5_Moderate_improvement             5 TRUE
 ```
 
 
@@ -998,15 +998,15 @@ Table: (\#tab:unnamed-chunk-22)Data summary
 
 - How many females participated in the strep_tb study? 
 
-<select class='webex-solveme' data-answer='["59"]'> <option></option> <option>52</option> <option>59</option> <option>48</option></select>
+<select class='webex-select'><option value='blank'></option><option value=''>52</option><option value='answer'>59</option><option value=''>48</option></select>
 
 - What proportion of subjects in strep_tb were improved? 
 
-<select class='webex-solveme' data-answer='["50.514"]'> <option></option> <option>0.493</option> <option>50.514</option> <option>0.55</option></select>
+<select class='webex-select'><option value='blank'></option><option value=''>0.493</option><option value='answer'>50.514</option><option value=''>0.55</option></select>
 
 - What is the mean value for rad_num in strep_tb? 
 
-<select class='webex-solveme' data-answer='["3.93"]'> <option></option> <option>3.93</option> <option>1.89</option> <option>4.7</option></select>
+<select class='webex-select'><option value='blank'></option><option value='answer'>3.93</option><option value=''>1.89</option><option value=''>4.7</option></select>
 
 
 A fancier approach is taken by the DataExplorer package, which can create a full html report with correlations and PCA analysis. Copy and run the chunk below to see what the Data Profiling Report looks like.
@@ -1016,166 +1016,15 @@ A fancier approach is taken by the DataExplorer package, which can create a full
 DataExplorer::create_report(strep_tb)
 ```
 
-```
-## 
-## 
-## processing file: report.rmd
-```
-
-```
-##   |                                                          |                                                  |   0%  |                                                          |.                                                 |   2%
-##    inline R code fragments
-## 
-##   |                                                          |..                                                |   5%
-## label: global_options (with options) 
-## List of 1
-##  $ include: logi FALSE
-## 
-##   |                                                          |....                                              |   7%
-##   ordinary text without R code
-## 
-##   |                                                          |.....                                             |  10%
-## label: introduce
-##   |                                                          |......                                            |  12%
-##   ordinary text without R code
-## 
-##   |                                                          |.......                                           |  14%
-## label: plot_intro
-```
-
-```
-##   |                                                          |........                                          |  17%
-##   ordinary text without R code
-## 
-##   |                                                          |..........                                        |  19%
-## label: data_structure
-##   |                                                          |...........                                       |  21%
-##   ordinary text without R code
-## 
-##   |                                                          |............                                      |  24%
-## label: missing_profile
-```
-
-```
-##   |                                                          |.............                                     |  26%
-##   ordinary text without R code
-## 
-##   |                                                          |..............                                    |  29%
-## label: univariate_distribution_header
-##   |                                                          |...............                                   |  31%
-##   ordinary text without R code
-## 
-##   |                                                          |.................                                 |  33%
-## label: plot_histogram
-```
-
-```
-##   |                                                          |..................                                |  36%
-##   ordinary text without R code
-## 
-##   |                                                          |...................                               |  38%
-## label: plot_density
-##   |                                                          |....................                              |  40%
-##   ordinary text without R code
-## 
-##   |                                                          |.....................                             |  43%
-## label: plot_frequency_bar
-```
-
-```
-##   |                                                          |.......................                           |  45%
-##   ordinary text without R code
-## 
-##   |                                                          |........................                          |  48%
-## label: plot_response_bar
-##   |                                                          |.........................                         |  50%
-##   ordinary text without R code
-## 
-##   |                                                          |..........................                        |  52%
-## label: plot_with_bar
-##   |                                                          |...........................                       |  55%
-##   ordinary text without R code
-## 
-##   |                                                          |.............................                     |  57%
-## label: plot_normal_qq
-```
-
-```
-##   |                                                          |..............................                    |  60%
-##   ordinary text without R code
-## 
-##   |                                                          |...............................                   |  62%
-## label: plot_response_qq
-##   |                                                          |................................                  |  64%
-##   ordinary text without R code
-## 
-##   |                                                          |.................................                 |  67%
-## label: plot_by_qq
-##   |                                                          |...................................               |  69%
-##   ordinary text without R code
-## 
-##   |                                                          |....................................              |  71%
-## label: correlation_analysis
-```
-
-```
-##   |                                                          |.....................................             |  74%
-##   ordinary text without R code
-## 
-##   |                                                          |......................................            |  76%
-## label: principal_component_analysis
-```
-
-```
-##   |                                                          |.......................................           |  79%
-##   ordinary text without R code
-## 
-##   |                                                          |........................................          |  81%
-## label: bivariate_distribution_header
-##   |                                                          |..........................................        |  83%
-##   ordinary text without R code
-## 
-##   |                                                          |...........................................       |  86%
-## label: plot_response_boxplot
-##   |                                                          |............................................      |  88%
-##   ordinary text without R code
-## 
-##   |                                                          |.............................................     |  90%
-## label: plot_by_boxplot
-##   |                                                          |..............................................    |  93%
-##   ordinary text without R code
-## 
-##   |                                                          |................................................  |  95%
-## label: plot_response_scatterplot
-##   |                                                          |................................................. |  98%
-##   ordinary text without R code
-## 
-##   |                                                          |..................................................| 100%
-## label: plot_by_scatterplot
-```
-
-```
-## output file: /Users/peterhiggins/Documents/RCode/rmrwr-book/report.knit.md
-```
-
-```
-## /usr/local/bin/pandoc +RTS -K512m -RTS /Users/peterhiggins/Documents/RCode/rmrwr-book/report.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output /Users/peterhiggins/Documents/RCode/rmrwr-book/report.html --lua-filter /Library/Frameworks/R.framework/Versions/4.0/Resources/library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /Library/Frameworks/R.framework/Versions/4.0/Resources/library/rmarkdown/rmarkdown/lua/latex-div.lua --self-contained --variable bs3=TRUE --standalone --section-divs --table-of-contents --toc-depth 6 --template /Library/Frameworks/R.framework/Versions/4.0/Resources/library/rmarkdown/rmd/h/default.html --no-highlight --variable highlightjs=1 --variable theme=yeti --include-in-header /var/folders/93/s18zkv2d4f556fxbjvb8yglc0000gp/T//RtmpKWdTBp/rmarkdown-str13adf3c399d.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
-```
-
-```
-## 
-## Output created: report.html
-```
-
 ### Test yourself on the `create_report()` results
 
 - What percentage of the baseline_esr values were missing? 
 
-<select class='webex-solveme' data-answer='["0.93%"]'> <option></option> <option>9.3%</option> <option>0.09%</option> <option>0.93%</option> <option>1%</option></select>
+<select class='webex-select'><option value='blank'></option><option value=''>9.3%</option><option value=''>0.09%</option><option value='answer'>0.93%</option><option value=''>1%</option></select>
 
 - How many total data points ('observations') are there in the strep_tb dataset? 
 
-<select class='webex-solveme' data-answer='["1,391"]'> <option></option> <option>10,000</option> <option>1,391</option> <option>107</option></select>
+<select class='webex-select'><option value='blank'></option><option value=''>10,000</option><option value='answer'>1,391</option><option value=''>107</option></select>
 
 You can choose which you prefer, the simpler approach of {skimr} vs the fancier reports of {DataExplorer.}
 
@@ -1188,17 +1037,19 @@ You can choose which you prefer, the simpler approach of {skimr} vs the fancier 
 ## What are the variable types?
 
 | Variable Type | Long form | Abbreviation|
-|---------------|-----------|-------------|
+|---------------|-----------|:-----------:|
 |Logical (TRUE/FALSE)| col_logical()|  l  |
 |Integer  |    col_integer()  |   i  |
+|Double  |    col_double()  |   d  |
+|Character  |    col_character()  |   c  |
+|Factor (nominal or ordinal)  |    col_factor(levels, ordered)  |   f  |
+|Date  |    col_date(format)  |   D  |
+|Time  |    col_time(format)  |  t  |
+|Date & Time  |    col_datetime(format)  |  T  |
+|Number  |    col_number()  |  n  |
+|Don't import  |    col_skip()  |  -  |
+|Default Guessing  |    col_guess()  |  ?  |
 
-- Numeric - integer and double 
-- Character - string 
-- Logical - TRUE/FALSE 
-- Dates - an unholy formatting mess 
-- Factors - categorical variables 
-  - nominal factors (no order) 
-  - ordinal factors (with a meaningful order)
 
 ## Controlling Parsing
 
@@ -1224,7 +1075,7 @@ read_excel(path = 'data/paulolol.xlsx',
 ```
 
 ```
-## # A tibble: 8 x 6
+## # A tibble: 8 × 6
 ##   pat_id SBP_start SBP_end HR_start HR_end treatment
 ##    <dbl>     <dbl>   <dbl>    <dbl>  <dbl> <chr>    
 ## 1      1       145     120       92     78 paulolol 
@@ -1256,7 +1107,7 @@ read_excel(path = 'data/paulolol2.xlsx',
 ```
 
 ```
-## # A tibble: 8 x 6
+## # A tibble: 8 × 6
 ##   pat_id SBP_start SBP_end HR_start HR_end treatment
 ##    <dbl>     <dbl>   <dbl>    <dbl>  <dbl> <chr>    
 ## 1      1       145     120       92     78 paulolol 

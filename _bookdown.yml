@@ -12,6 +12,7 @@ rmd_files:
 - io05-importing.Rmd
 - io06a-filter.Rmd
 - io65-error_messages.Rmd
+- io09-building-blocks.Rmd
 - io59-hashtag_debugging.Rmd
 - io60-help_in_R.Rmd
 - io66-base_r.Rmd
