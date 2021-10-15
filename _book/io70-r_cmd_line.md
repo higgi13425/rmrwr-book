@@ -76,7 +76,7 @@ whoami;date
 
 ```
 ## peterhiggins
-## Thu Oct  7 09:13:01 EDT 2021
+## Fri Oct 15 08:47:27 EDT 2021
 ```
 :::
 
@@ -171,6 +171,7 @@ ls
 ## Advice for participants in webinars.docx
 ## Animation of NSAID.pptx
 ## Applicant Research Design Task T32.docx
+## Autoimmune Summit.pptx
 ## BKochar_Frailty.pdf
 ## BM recommendation.docx
 ## Base R Notes.docx
@@ -524,6 +525,7 @@ ls
 ## zwift_training_pacepartner.xlsx
 ## {"Attachments"-[{"__type"-"F.textClipping
 ## ~$ Severe UC Protocol.docx
+## ~$Autoimmune Summit.pptx
 ## ~$T Review Higgins.docx
 ## ~$sk List 2020-5.docx
 ## ~$sk List 2020.docx

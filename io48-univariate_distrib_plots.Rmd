@@ -1,5 +1,5 @@
 ---
-title: "Univariate ggplots to visualize Distributions"
+title: "Bivariate ggplot2 ScatterPlots to visualize Relationships Between Variables"
 author: "Peter Higgins"
 date: "4/29/2021"
 output:
@@ -38,7 +38,7 @@ When you first encounter a new dataset, it is often helpful to start with Data E
 
 DEV has specific goals, which include identifying variables with problematic values (NA, outliers), unexpected distributions (sometimes bimodal), and less-than-helpful variable names or data types. In this chapter, we will look at investigating single continuous variables, looking for outliers, multi-modal distributions, and making comparisons across categories.
 
-## HIstograms
+## Histograms
 
 One of the most helpful ways to get started is to explore your continuous variables with the humble histogram or dotplot. These geoms in ggplot2 allow you to see a distribution of a single variable, and are a good way to get started with ggplot. Let's start by looking at the distribution of the number of colon polyps found in participants in a clinical trial. You just need to map a variable (in this case, *number12m*) to the x aesthetic, and you are good to go.
 
@@ -92,7 +92,7 @@ When you have a continuous variable that could vary across several categories of
 
 -   A mirror histogram can work well for 2 categories. You filter the data by value within the geom, and set the y value to ..density.. for one category value, and to negative -..density.. for the other category value, as seen below. The ..density.. variable is a value ggplot calculates in the background with a stat function.
 
-  ```{r mirror-histogram}
+```{r mirror-histogram}
     medicaldata::polyps %>% 
      ggplot(aes(x = number12m)) + 
       geom_histogram(fill = "red",

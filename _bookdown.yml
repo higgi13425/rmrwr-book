@@ -22,6 +22,7 @@ rmd_files:
 - io69-sample_size.Rmd
 - io66-blockrand.rmd
 - io48-univariate_distrib_plots.Rmd
+- io48b-bivariate-scatter-plots.Rmd
 - io67-ggplot_helpers.Rmd
 - io71-functions_plots.Rmd
 - io70-r_cmd_line.Rmd

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Title holder | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
-  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Title holder | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2021-10-07" />
+<meta name="date" content="2021-10-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +33,9 @@
   
 <link rel="prev" href="cmd-line.html"/>
 <link rel="next" href="references-1.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/header-attrs-2.11.3/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,10 +51,9 @@
 
 
 
-
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
@@ -458,7 +458,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="16" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html"><i class="fa fa-check"></i><b>16</b> Univariate ggplots to Visualize Distributions</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#histograms"><i class="fa fa-check"></i><b>16.1</b> HIstograms</a>
+<li class="chapter" data-level="16.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#histograms"><i class="fa fa-check"></i><b>16.1</b> Histograms</a>
 <ul>
 <li class="chapter" data-level="16.1.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#comparisons-of-distributions-with-histograms"><i class="fa fa-check"></i><b>16.1.1</b> Comparisons of Distributions with Histograms</a></li>
 <li class="chapter" data-level="16.1.2" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#histograms-and-categories"><i class="fa fa-check"></i><b>16.1.2</b> Histograms and Categories</a></li>
@@ -479,40 +479,58 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.6.5" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-points-3"><i class="fa fa-check"></i><b>16.6.5</b> Including Points</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html"><i class="fa fa-check"></i><b>17</b> Helping out with ggplot</a>
+<li class="chapter" data-level="17" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><i class="fa fa-check"></i><b>17</b> Bivariate ggplot2 Scatterplots to Visualize Relationships Between Variables</a>
 <ul>
-<li class="chapter" data-level="17.1" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#ggxgghelp"><i class="fa fa-check"></i><b>17.1</b> ggx::gghelp()</a></li>
-<li class="chapter" data-level="17.2" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#getting-more-help-with-theming-with-ggthemeassist"><i class="fa fa-check"></i><b>17.2</b> Getting more help with theming with ggThemeAssist</a></li>
-<li class="chapter" data-level="17.3" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#website-helpers-for-ggplot"><i class="fa fa-check"></i><b>17.3</b> Website helpers for ggplot</a></li>
-<li class="chapter" data-level="17.4" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#getting-even-more-help-with-esquisse"><i class="fa fa-check"></i><b>17.4</b> Getting Even more help with esquisse</a>
+<li class="chapter" data-level="17.1" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#packages-used-in-this-chapter"><i class="fa fa-check"></i><b>17.1</b> Packages used in this Chapter</a></li>
+<li class="chapter" data-level="17.2" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#data-exploration-and-validation-dev"><i class="fa fa-check"></i><b>17.2</b> Data Exploration and Validation (DEV)</a></li>
+<li class="chapter" data-level="17.3" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#scatterplots"><i class="fa fa-check"></i><b>17.3</b> Scatterplots</a>
 <ul>
-<li class="chapter" data-level="17.4.1" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#acknowledgement"><i class="fa fa-check"></i><b>17.4.1</b> Acknowledgement</a></li>
+<li class="chapter" data-level="17.3.1" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#micro-quiz"><i class="fa fa-check"></i><b>17.3.1</b> Micro-quiz!</a></li>
+</ul></li>
+<li class="chapter" data-level="17.4" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#mapping-more-variables"><i class="fa fa-check"></i><b>17.4</b> Mapping More Variables</a></li>
+<li class="chapter" data-level="17.5" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#inheritance-and-layering-in-ggplot2"><i class="fa fa-check"></i><b>17.5</b> Inheritance and Layering in ggplot2</a></li>
+<li class="chapter" data-level="17.6" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#aesthetic-mapping-micro-quiz"><i class="fa fa-check"></i><b>17.6</b> Aesthetic mapping Micro-Quiz!</a></li>
+<li class="chapter" data-level="17.7" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#controlling-point-shape-size-and-color-manually"><i class="fa fa-check"></i><b>17.7</b> Controlling Point Shape, Size, and Color Manually</a>
+<ul>
+<li class="chapter" data-level="17.7.1" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#manual-shapes"><i class="fa fa-check"></i><b>17.7.1</b> Manual Shapes</a></li>
+<li class="chapter" data-level="17.7.2" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#manual-sizes"><i class="fa fa-check"></i><b>17.7.2</b> Manual Sizes</a></li>
+<li class="chapter" data-level="17.7.3" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#manual-color"><i class="fa fa-check"></i><b>17.7.3</b> Manual Color</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="functions-1.html"><a href="functions-1.html"><i class="fa fa-check"></i><b>18</b> Functions</a>
+<li class="chapter" data-level="18" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html"><i class="fa fa-check"></i><b>18</b> Helping out with ggplot</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="functions-1.html"><a href="functions-1.html#dont-repeat-yourself"><i class="fa fa-check"></i><b>18.1</b> Don’t repeat yourself</a></li>
-<li class="chapter" data-level="18.2" data-path="functions-1.html"><a href="functions-1.html#your-turn-2"><i class="fa fa-check"></i><b>18.2</b> Your Turn</a></li>
-<li class="chapter" data-level="18.3" data-path="functions-1.html"><a href="functions-1.html#freestyle"><i class="fa fa-check"></i><b>18.3</b> Freestyle</a></li>
-<li class="chapter" data-level="18.4" data-path="functions-1.html"><a href="functions-1.html#read-more"><i class="fa fa-check"></i><b>18.4</b> Read More</a></li>
+<li class="chapter" data-level="18.1" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#ggxgghelp"><i class="fa fa-check"></i><b>18.1</b> ggx::gghelp()</a></li>
+<li class="chapter" data-level="18.2" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#getting-more-help-with-theming-with-ggthemeassist"><i class="fa fa-check"></i><b>18.2</b> Getting more help with theming with ggThemeAssist</a></li>
+<li class="chapter" data-level="18.3" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#website-helpers-for-ggplot"><i class="fa fa-check"></i><b>18.3</b> Website helpers for ggplot</a></li>
+<li class="chapter" data-level="18.4" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#getting-even-more-help-with-esquisse"><i class="fa fa-check"></i><b>18.4</b> Getting Even more help with esquisse</a>
+<ul>
+<li class="chapter" data-level="18.4.1" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#acknowledgement"><i class="fa fa-check"></i><b>18.4.1</b> Acknowledgement</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="cmd-line.html"><a href="cmd-line.html"><i class="fa fa-check"></i><b>19</b> Running R from the UNIX Command Line</a>
-<ul>
-<li class="chapter" data-level="19.1" data-path="cmd-line.html"><a href="cmd-line.html#what-is-the-unix-command-line"><i class="fa fa-check"></i><b>19.1</b> What is the UNIX Command line?</a></li>
-<li class="chapter" data-level="19.2" data-path="cmd-line.html"><a href="cmd-line.html#why-run-r-from-the-command-line"><i class="fa fa-check"></i><b>19.2</b> Why run R from the command line?</a></li>
-<li class="chapter" data-level="19.3" data-path="cmd-line.html"><a href="cmd-line.html#how-do-you-get-started"><i class="fa fa-check"></i><b>19.3</b> How do you get started?</a>
-<ul>
-<li class="chapter" data-level="19.3.1" data-path="cmd-line.html"><a href="cmd-line.html#on-a-mac"><i class="fa fa-check"></i><b>19.3.1</b> On a Mac</a></li>
-<li class="chapter" data-level="19.3.2" data-path="cmd-line.html"><a href="cmd-line.html#on-a-windows-pc"><i class="fa fa-check"></i><b>19.3.2</b> On a Windows PC</a></li>
 </ul></li>
-<li class="chapter" data-level="19.4" data-path="cmd-line.html"><a href="cmd-line.html#the-yawning-blackness-of-the-terminal-window"><i class="fa fa-check"></i><b>19.4</b> The Yawning Blackness of the Terminal Window</a></li>
-<li class="chapter" data-level="19.5" data-path="cmd-line.html"><a href="cmd-line.html#where-are-we"><i class="fa fa-check"></i><b>19.5</b> Where Are We?</a></li>
-<li class="chapter" data-level="19.6" data-path="cmd-line.html"><a href="cmd-line.html#cleaning-up"><i class="fa fa-check"></i><b>19.6</b> Cleaning Up</a></li>
-<li class="chapter" data-level="19.7" data-path="cmd-line.html"><a href="cmd-line.html#other-helpful-file-commands"><i class="fa fa-check"></i><b>19.7</b> Other helpful file commands</a></li>
-<li class="chapter" data-level="19.8" data-path="cmd-line.html"><a href="cmd-line.html#what-about-r"><i class="fa fa-check"></i><b>19.8</b> What about R?</a></li>
-<li class="chapter" data-level="19.9" data-path="cmd-line.html"><a href="cmd-line.html#what-about-just-a-few-lines-of-r"><i class="fa fa-check"></i><b>19.9</b> What about just a few lines of R?</a></li>
-<li class="chapter" data-level="19.10" data-path="cmd-line.html"><a href="cmd-line.html#running-an-r-script-from-the-terminal"><i class="fa fa-check"></i><b>19.10</b> Running an R Script from the Terminal</a></li>
-<li class="chapter" data-level="19.11" data-path="cmd-line.html"><a href="cmd-line.html#rendering-an-rmarkdown-file-from-the-terminal"><i class="fa fa-check"></i><b>19.11</b> Rendering an Rmarkdown file from the Terminal</a></li>
+<li class="chapter" data-level="19" data-path="functions-1.html"><a href="functions-1.html"><i class="fa fa-check"></i><b>19</b> Functions</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="functions-1.html"><a href="functions-1.html#dont-repeat-yourself"><i class="fa fa-check"></i><b>19.1</b> Don’t repeat yourself</a></li>
+<li class="chapter" data-level="19.2" data-path="functions-1.html"><a href="functions-1.html#your-turn-2"><i class="fa fa-check"></i><b>19.2</b> Your Turn</a></li>
+<li class="chapter" data-level="19.3" data-path="functions-1.html"><a href="functions-1.html#freestyle"><i class="fa fa-check"></i><b>19.3</b> Freestyle</a></li>
+<li class="chapter" data-level="19.4" data-path="functions-1.html"><a href="functions-1.html#read-more"><i class="fa fa-check"></i><b>19.4</b> Read More</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="cmd-line.html"><a href="cmd-line.html"><i class="fa fa-check"></i><b>20</b> Running R from the UNIX Command Line</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="cmd-line.html"><a href="cmd-line.html#what-is-the-unix-command-line"><i class="fa fa-check"></i><b>20.1</b> What is the UNIX Command line?</a></li>
+<li class="chapter" data-level="20.2" data-path="cmd-line.html"><a href="cmd-line.html#why-run-r-from-the-command-line"><i class="fa fa-check"></i><b>20.2</b> Why run R from the command line?</a></li>
+<li class="chapter" data-level="20.3" data-path="cmd-line.html"><a href="cmd-line.html#how-do-you-get-started"><i class="fa fa-check"></i><b>20.3</b> How do you get started?</a>
+<ul>
+<li class="chapter" data-level="20.3.1" data-path="cmd-line.html"><a href="cmd-line.html#on-a-mac"><i class="fa fa-check"></i><b>20.3.1</b> On a Mac</a></li>
+<li class="chapter" data-level="20.3.2" data-path="cmd-line.html"><a href="cmd-line.html#on-a-windows-pc"><i class="fa fa-check"></i><b>20.3.2</b> On a Windows PC</a></li>
+</ul></li>
+<li class="chapter" data-level="20.4" data-path="cmd-line.html"><a href="cmd-line.html#the-yawning-blackness-of-the-terminal-window"><i class="fa fa-check"></i><b>20.4</b> The Yawning Blackness of the Terminal Window</a></li>
+<li class="chapter" data-level="20.5" data-path="cmd-line.html"><a href="cmd-line.html#where-are-we"><i class="fa fa-check"></i><b>20.5</b> Where Are We?</a></li>
+<li class="chapter" data-level="20.6" data-path="cmd-line.html"><a href="cmd-line.html#cleaning-up"><i class="fa fa-check"></i><b>20.6</b> Cleaning Up</a></li>
+<li class="chapter" data-level="20.7" data-path="cmd-line.html"><a href="cmd-line.html#other-helpful-file-commands"><i class="fa fa-check"></i><b>20.7</b> Other helpful file commands</a></li>
+<li class="chapter" data-level="20.8" data-path="cmd-line.html"><a href="cmd-line.html#what-about-r"><i class="fa fa-check"></i><b>20.8</b> What about R?</a></li>
+<li class="chapter" data-level="20.9" data-path="cmd-line.html"><a href="cmd-line.html#what-about-just-a-few-lines-of-r"><i class="fa fa-check"></i><b>20.9</b> What about just a few lines of R?</a></li>
+<li class="chapter" data-level="20.10" data-path="cmd-line.html"><a href="cmd-line.html#running-an-r-script-from-the-terminal"><i class="fa fa-check"></i><b>20.10</b> Running an R Script from the Terminal</a></li>
+<li class="chapter" data-level="20.11" data-path="cmd-line.html"><a href="cmd-line.html#rendering-an-rmarkdown-file-from-the-terminal"><i class="fa fa-check"></i><b>20.11</b> Rendering an Rmarkdown file from the Terminal</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="title-holder.html"><a href="title-holder.html"><i class="fa fa-check"></i>Title holder</a></li>
 <li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
@@ -545,9 +563,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 /* update total correct if #webex-total_correct exists */
 update_total_correct = function() {
   if (t = document.getElementById("webex-total_correct")) {
-    t.innerHTML =
-      document.getElementsByClassName("webex-correct").length + " of " +
-      document.getElementsByClassName("webex-solveme").length + " correct";
+    var correct = document.getElementsByClassName("webex-correct").length;
+    var solvemes = document.getElementsByClassName("webex-solveme").length;
+    var radiogroups = document.getElementsByClassName("webex-radiogroup").length;
+    var selects = document.getElementsByClassName("webex-select").length;
+
+    t.innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
   }
 }
 
@@ -573,9 +594,14 @@ solveme_func = function(e) {
     my_answer = my_answer.replace(/ /g, "")
   }
 
-  if (my_answer !== "" & real_answers.includes(my_answer)) {
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
     cl.add("webex-correct");
+    cl.remove("webex-incorrect");
   } else {
+    cl.add("webex-incorrect");
     cl.remove("webex-correct");
   }
 
@@ -601,7 +627,46 @@ solveme_func = function(e) {
   update_total_correct();
 }
 
+/* function for checking select answers */
+select_func = function(e) {
+  var cl = this.classList
+
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
 window.onload = function() {
+  console.log("onload");
   /* set up solution buttons */
   var buttons = document.getElementsByTagName("button");
 
@@ -638,6 +703,18 @@ window.onload = function() {
     solveme[i].onchange = solveme_func;
   }
 
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+  }
+
   update_total_correct();
 }
 
@@ -652,7 +729,6 @@ window.onload = function() {
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -693,7 +769,7 @@ gitbook.start({
 },
 "download": ["rmrwr.pdf", "rmrwr.epub"],
 "search": {
-"engine": "lunr",
+"engine": "fuse",
 "options": null
 },
 "toc": {
