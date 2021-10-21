@@ -76,7 +76,7 @@ whoami;date
 
 ```
 ## peterhiggins
-## Fri Oct 15 08:47:27 EDT 2021
+## Thu Oct 21 18:21:07 EDT 2021
 ```
 :::
 
@@ -218,6 +218,7 @@ ls
 ## Draft Postop IBD Surgery Care Protocols v2_SERedit.docx
 ## ECCO 2016 Amsterdam Schedule.docx
 ## ECCO 2019 UC PRO SS Abstract D1f_JP_UA_YO_AM_PDRH.docx
+## ECCO 2022 abstract^LN2 UPA-UC P3 Disease DurationExtent_v3.0_18Oct2021_PDRH.docx
 ## ECCO2016Lycera30937.pptx
 ## Editing your Rprofile.docx
 ## Effect of medications on the recurrence of cancer in IBD patients.docx
@@ -311,6 +312,7 @@ ls
 ## K105_Melmed_PROs in Practice_MB_bb_JLS.pptx
 ## K23 Aims - Shirley Cohen-Mekelburg 11.14.19.docx
 ## K23_morph_measurements_MockupManuscript_21JAN2019.docx
+## K_R_NIH_biosketches_2022.pptx
 ## Kelli Porzondek_Performance_Review_Sep_2021.docx
 ## Learning R discussion Jeremy Louissaint.docx
 ## Letter to Frank Hamilton.docx
@@ -493,6 +495,7 @@ ls
 ## learnr app diagram.jpg
 ## learnr app diagram.pptx
 ## letter Lowrimore.docx
+## medicaldata_NHS_R_2021.pptx
 ## medicaldata_Rmedicine21.pdf
 ## medicaldata_Rmedicine21.pptx
 ## medicaldata_image_hex.ai
@@ -525,7 +528,7 @@ ls
 ## zwift_training_pacepartner.xlsx
 ## {"Attachments"-[{"__type"-"F.textClipping
 ## ~$ Severe UC Protocol.docx
-## ~$Autoimmune Summit.pptx
+## ~$Jun2021_ibdTrials.pptx
 ## ~$T Review Higgins.docx
 ## ~$sk List 2020-5.docx
 ## ~$sk List 2020.docx

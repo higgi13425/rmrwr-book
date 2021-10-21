@@ -197,11 +197,6 @@ There are 25 point shapes available in R, which can be seen here, with the help 
 ggpubr::show_point_shapes()
 ```
 
-```
-## Scale for 'y' is already present. Adding another scale
-## for 'y', which will replace the existing scale.
-```
-
 <img src="io48b-bivariate-scatter-plots_files/figure-html/point-shapes-1.png" width="672" />
 
 Notice that the shapes 21-25 have an outline color, and can be filled with a different color, while shapes 1-20 only have a single color option.

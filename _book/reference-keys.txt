@@ -258,6 +258,12 @@ controlling-point-shape-size-and-color-manually
 manual-shapes
 manual-sizes
 manual-color
+customizing-plot-scales
+a-basic-scatterplot
+but-what-if-you-want-the-scale-for-risk-to-start-at-0
+but-this-axis-does-not-really-start-at-exactly-0
+control-the-limits-and-the-breaks
+continuous-vs.-discrete-plots-and-scales
 helping-out-with-ggplot
 ggxgghelp
 getting-more-help-with-theming-with-ggthemeassist
