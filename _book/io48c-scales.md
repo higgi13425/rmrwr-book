@@ -99,11 +99,6 @@ indo_rct %>%
   scale_x_continuous(limits = c(15,90))
 ```
 
-```
-## Warning: Removed 1 rows containing missing values
-## (geom_point).
-```
-
 <img src="io48c-scales_files/figure-html/scatter-2-solution-1.png" width="672" />
 
 </div>
@@ -361,3 +356,17 @@ The legend position is based on the proportion of the x axis (0-1) and the y axi
 - You can set the names of each level of a discrete color legend within the `scale_color_discrete()` function with the <input class='webex-solveme nospaces' size='6' data-answer='["labels"]'/> argument.
 
 - You can set each color of a discrete color legend within the `scale_color_discrete()` function with the `values` <select class='webex-select'><option value='blank'></option><option value='answer'>TRUE</option><option value=''>FALSE</option></select> argument.
+
+### More Examples with Flipbooks
+
+<!---FLIPBOOK EX 2--> 
+
+<iframe style="margin:0 auto; border: solid black;" 
+id="myIframe12" width="763" height="432"
+src="https://higgi13425.github.io/mini_flipbooks/scales2_microflip.html#1" 
+scrolling="no" data-external="1" 
+allowfullscreen
+loading="lazy">
+</iframe>
+
+<!-------------> 
