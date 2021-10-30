@@ -4,13 +4,14 @@ bookdown::gitbook:
   includes:
     after_body: include/webex.js
   css: [include/webex.css, include/style.css]
+  url: 'https://bookdown.org/pdr_higgins/rmrwr/'
   config:
     toc:
+      collapse: section
       before: |
         <li><a href="./">RMRWR</a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-    edit: https://github.com/rstudio/bookdown-demo/edit/master/%s
     download: ["pdf", "epub"]
 bookdown::pdf_book:
   includes:

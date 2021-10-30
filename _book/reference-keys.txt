@@ -259,6 +259,7 @@ manual-shapes
 manual-sizes
 manual-color
 customizing-plot-scales
+a-flipbook-of-where-we-are-going-with-scales
 a-basic-scatterplot
 but-what-if-you-want-the-scale-for-risk-to-start-at-0
 but-this-axis-does-not-really-start-at-exactly-0
@@ -289,3 +290,10 @@ what-about-r
 what-about-just-a-few-lines-of-r
 running-an-r-script-from-the-terminal
 rendering-an-rmarkdown-file-from-the-terminal
+bibliography-book.bib-packages.bib
+your-turn-to-debug-a-plot
+goals-for-this-chapter-3
+packages-needed-for-this-chapter-2
+test-what-you-have-learned
+using-scales-to-customize-a-legend
+test-what-you-have-learned-1

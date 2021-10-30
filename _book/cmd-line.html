@@ -24,7 +24,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2021-10-21" />
+<meta name="date" content="2021-10-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,12 +54,12 @@
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -499,11 +499,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="18" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html"><i class="fa fa-check"></i><b>18</b> Customizing Plot Scales</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#a-basic-scatterplot"><i class="fa fa-check"></i><b>18.1</b> A Basic Scatterplot</a></li>
-<li class="chapter" data-level="18.2" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#but-what-if-you-want-the-scale-for-risk-to-start-at-0"><i class="fa fa-check"></i><b>18.2</b> But what if you want the scale for risk to start at 0?</a></li>
-<li class="chapter" data-level="18.3" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#but-this-axis-does-not-really-start-at-exactly-0"><i class="fa fa-check"></i><b>18.3</b> But this axis does not really start at Exactly 0</a></li>
-<li class="chapter" data-level="18.4" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#control-the-limits-and-the-breaks"><i class="fa fa-check"></i><b>18.4</b> Control the Limits and the Breaks</a></li>
-<li class="chapter" data-level="18.5" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#continuous-vs.-discrete-plots-and-scales"><i class="fa fa-check"></i><b>18.5</b> Continuous vs. Discrete Plots and Scales</a></li>
+<li class="chapter" data-level="18.1" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#a-flipbook-of-where-we-are-going-with-scales"><i class="fa fa-check"></i><b>18.1</b> A Flipbook of Where We Are Going With Scales</a></li>
+<li class="chapter" data-level="18.2" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#a-basic-scatterplot"><i class="fa fa-check"></i><b>18.2</b> A Basic Scatterplot</a></li>
+<li class="chapter" data-level="18.3" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#but-what-if-you-want-the-scale-for-risk-to-start-at-0"><i class="fa fa-check"></i><b>18.3</b> But what if you want the scale for risk to start at 0?</a></li>
+<li class="chapter" data-level="18.4" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#but-this-axis-does-not-really-start-at-exactly-0"><i class="fa fa-check"></i><b>18.4</b> But this axis does not really start at Exactly 0</a></li>
+<li class="chapter" data-level="18.5" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#control-the-limits-and-the-breaks"><i class="fa fa-check"></i><b>18.5</b> Control the Limits and the Breaks</a></li>
+<li class="chapter" data-level="18.6" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#continuous-vs.-discrete-plots-and-scales"><i class="fa fa-check"></i><b>18.6</b> Continuous vs. Discrete Plots and Scales</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html"><i class="fa fa-check"></i><b>19</b> Helping out with ggplot</a>
 <ul>
@@ -622,7 +623,7 @@ You can string together two commands with a semicolon between them. <br></p>
 <p>Try the following:</p>
 <div class="sourceCode" id="cb449"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb449-1"><a href="cmd-line.html#cb449-1" aria-hidden="true" tabindex="-1"></a><span class="fu">whoami</span><span class="kw">;</span><span class="fu">date</span></span></code></pre></div>
 <pre><code>## peterhiggins
-## Thu Oct 21 18:21:07 EDT 2021</code></pre>
+## Fri Oct 29 18:59:08 EDT 2021</code></pre>
 </div>
 <p>OK, fine. This is sort of helpful. It was really important when you were on a terminal and paying by the minute for time on a mainframe back in 1969. And, on occasion, if you will need to use an entire computer cluster to run a script (or scripts) on a lot of data, you will likely have to use some of this command line knowledge. You can even schedule jobs (scripts) to run when your time is scheduled on the cluster with <code>cron</code> and <code>crontab</code>.
 <br><br>
@@ -652,6 +653,8 @@ We can move up and down the folders of the directory paths with the <code>cd</co
 <span id="cb454-2"><a href="cmd-line.html#cb454-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
 <pre><code>## (19) Higgins-Peter_Efficacy-and-Safety-of-Upadacitinib-recorded.mp4
 ## (19) Higgins-Peter_Efficacy-and-Safety-of-Upadacitinib-recorded.pptx
+## (19) Higgins-Peter_Efficacy-and-Safety-of-Upadacitinib-with-BackupBioIR.pdf
+## (19) Higgins-Peter_Efficacy-and-Safety-of-Upadacitinib-with-BackupBioIR.pptx
 ## 1FQ_Crohn&#39;s Disease_23Oct2020 (002).doc
 ## 2 - AbbVie UC Core - Unmet Need_C2 (14) 738 PM ET.pptx
 ## 2 - AbbVie UC Core - Unmet Need_C2 (14) 954PM ET.pptx
@@ -666,6 +669,7 @@ We can move up and down the folders of the directory paths with the <code>cd</co
 ## 203ClareScenes080119 copy.pdf
 ## A is for Allspice.2.0.docx
 ## A is for Allspice.docx
+## ABT combo proposal Bcl2:JAK
 ## ABT263_HIO_report_toWord.docx
 ## ACG U-ACHIEVE and U-ACCOMPLISH.docx
 ## ACG21_P19_Efficacy and Safety of Upadacitinib Induction Therapy in Patients With Moderately to Severely Active Ulcerative Col_vSub.pptx
@@ -714,6 +718,7 @@ We can move up and down the folders of the directory paths with the <code>cd</co
 ## CDC_proposal1.1.docx
 ## CLARE STOCKS.docx
 ## COVID Trials Feasibility
+## CYSIF.pdf
 ## CaltechCampus Tour &amp; Information Session.webarchive
 ## Cancel Appt Epic.ppt
 ## Causal.png
@@ -739,6 +744,7 @@ We can move up and down the folders of the directory paths with the <code>cd</co
 ## Draft Postop IBD Surgery Care Protocols v2_SERedit.docx
 ## ECCO 2016 Amsterdam Schedule.docx
 ## ECCO 2019 UC PRO SS Abstract D1f_JP_UA_YO_AM_PDRH.docx
+## ECCO 2022 UPA-UC Ext ind resp abstract_29Oct2021_PDRH.docx
 ## ECCO 2022 abstract^LN2 UPA-UC P3 Disease DurationExtent_v3.0_18Oct2021_PDRH.docx
 ## ECCO2016Lycera30937.pptx
 ## Editing your Rprofile.docx
@@ -765,12 +771,15 @@ We can move up and down the folders of the directory paths with the <code>cd</co
 ## General format for Chapters in RMRWR.docx
 ## General thoughts about query letters.docx
 ## Getting Started with REDCap.docx
+## Gibson-Doherty_Editorial_2020_Article_FastAndCuriousAnAlgorithmicApp.pdf
+## Gibson_accel_IFX.pdf
 ## Git for MDs_2.pptx
 ## GitHub
 ## Github for MDs_1.pptx
 ## Github for MDs_3.pptx
 ## Glover_RPG_Review_PDRH.docx
 ## GoToMeeting Chats
+## Govani2020_Article_UseOfAcceleratedInductionStrat.pdf
 ## GradPartyHigginsInvites.xlsx
 ## HPI-5016 IBD Patient Contact Info.xlsx
 ## HS movie.docx
@@ -785,9 +794,11 @@ We can move up and down the folders of the directory paths with the <code>cd</co
 ## Higgins-Peter_Efficacy-and-Safety-of-Upadacitinib-recorded.mp4
 ## Higgins-peter.jpg
 ## HigginsACGMidwest2019_PerioperativeIBD.pptx
+## Higgins_ACG2021.docx
 ## Higgins_LOS_IBDBiobank_Shah_Nusrat_2019.docx
 ## Higgins_UM_CME_Pregnancy in IBD.pptx
 ## Higginslab server.pptx
+## How To Assign PRO questionnaires -  Inpatient ASUC.docx
 ## How To Log in to IBD Server.docx
 ## How To Log in to RStudio Server for HigginsLab.docx
 ## How To Log in to RStudio Server for Shiny.docx
@@ -827,6 +838,7 @@ We can move up and down the folders of the directory paths with the <code>cd</co
 ## JDix_Study_update.docx
 ## Jessica Sheehan Rec Letter Fellowship.docx
 ## Jessica Sheehan Rec Letter Fellowship.pdf
+## Jun2021_ibdTrials [Autosaved].pptx
 ## Jun2021_ibdTrials.pptx
 ## K Award Institutional Letter of Commitment.pptx
 ## K Candidate Section.pptx
@@ -936,11 +948,13 @@ We can move up and down the folders of the directory paths with the <code>cd</co
 ## Sean Resume.docx
 ## Sean Summer Priorities 2016.docx
 ## SecureIBD.pptx
+## SevereUC_Tofa_Presentation_IBD_Forum.pptx
 ## ShareRmd.html
 ## Sherman Prize Nominee Questions.docx
 ## Shoreline West Tour Information.docx
 ## Short PA slides.pptx
 ## Shotwave thread.docx
+## Should we accel IFX - survey.pdf
 ## Signing Clinical Research Infusion Orders.pdf
 ## SingleCell_DDW_2021_ISS.pdf
 ## SkinCancer.IBD.Gentics_Yanhua_PDRH.docx
@@ -965,6 +979,7 @@ We can move up and down the folders of the directory paths with the <code>cd</co
 ## Tidymodels.docx
 ## Timelines for K submission.pdf
 ## Timelines for K submission.pptx
+## Tips for Submitting DDW Abstracts for 2022.docx
 ## Tofa Inpatient
 ## Tofa in ICI Figure Legends_Final Draft_V2.docx
 ## Tofa inpatient induction Protocol_02NOV2018_PHforEdits.docx
@@ -1042,6 +1057,7 @@ We can move up and down the folders of the directory paths with the <code>cd</co
 ## tidyr_pivot.png
 ## tidyr_pivot.xcf
 ## tofa_checkpoint.pdf
+## twitter.com.webarchive
 ## ucla1.jpg
 ## untidy_sheets.pptx
 ## user_testing_learnr tutorials.pptx
@@ -1491,8 +1507,8 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/io70-r_cmd_line.Rmd",
-"text": "Edit"
+"link": null,
+"text": null
 },
 "history": {
 "link": null,
@@ -1508,7 +1524,7 @@ gitbook.start({
 "options": null
 },
 "toc": {
-"collapse": "subsection"
+"collapse": "section"
 }
 });
 });

@@ -76,7 +76,7 @@ whoami;date
 
 ```
 ## peterhiggins
-## Thu Oct 21 18:21:07 EDT 2021
+## Fri Oct 29 18:59:08 EDT 2021
 ```
 :::
 
@@ -131,6 +131,8 @@ ls
 ```
 ## (19) Higgins-Peter_Efficacy-and-Safety-of-Upadacitinib-recorded.mp4
 ## (19) Higgins-Peter_Efficacy-and-Safety-of-Upadacitinib-recorded.pptx
+## (19) Higgins-Peter_Efficacy-and-Safety-of-Upadacitinib-with-BackupBioIR.pdf
+## (19) Higgins-Peter_Efficacy-and-Safety-of-Upadacitinib-with-BackupBioIR.pptx
 ## 1FQ_Crohn's Disease_23Oct2020 (002).doc
 ## 2 - AbbVie UC Core - Unmet Need_C2 (14) 738 PM ET.pptx
 ## 2 - AbbVie UC Core - Unmet Need_C2 (14) 954PM ET.pptx
@@ -145,6 +147,7 @@ ls
 ## 203ClareScenes080119 copy.pdf
 ## A is for Allspice.2.0.docx
 ## A is for Allspice.docx
+## ABT combo proposal Bcl2:JAK
 ## ABT263_HIO_report_toWord.docx
 ## ACG U-ACHIEVE and U-ACCOMPLISH.docx
 ## ACG21_P19_Efficacy and Safety of Upadacitinib Induction Therapy in Patients With Moderately to Severely Active Ulcerative Col_vSub.pptx
@@ -193,6 +196,7 @@ ls
 ## CDC_proposal1.1.docx
 ## CLARE STOCKS.docx
 ## COVID Trials Feasibility
+## CYSIF.pdf
 ## CaltechCampus Tour & Information Session.webarchive
 ## Cancel Appt Epic.ppt
 ## Causal.png
@@ -218,6 +222,7 @@ ls
 ## Draft Postop IBD Surgery Care Protocols v2_SERedit.docx
 ## ECCO 2016 Amsterdam Schedule.docx
 ## ECCO 2019 UC PRO SS Abstract D1f_JP_UA_YO_AM_PDRH.docx
+## ECCO 2022 UPA-UC Ext ind resp abstract_29Oct2021_PDRH.docx
 ## ECCO 2022 abstract^LN2 UPA-UC P3 Disease DurationExtent_v3.0_18Oct2021_PDRH.docx
 ## ECCO2016Lycera30937.pptx
 ## Editing your Rprofile.docx
@@ -244,12 +249,15 @@ ls
 ## General format for Chapters in RMRWR.docx
 ## General thoughts about query letters.docx
 ## Getting Started with REDCap.docx
+## Gibson-Doherty_Editorial_2020_Article_FastAndCuriousAnAlgorithmicApp.pdf
+## Gibson_accel_IFX.pdf
 ## Git for MDs_2.pptx
 ## GitHub
 ## Github for MDs_1.pptx
 ## Github for MDs_3.pptx
 ## Glover_RPG_Review_PDRH.docx
 ## GoToMeeting Chats
+## Govani2020_Article_UseOfAcceleratedInductionStrat.pdf
 ## GradPartyHigginsInvites.xlsx
 ## HPI-5016 IBD Patient Contact Info.xlsx
 ## HS movie.docx
@@ -264,9 +272,11 @@ ls
 ## Higgins-Peter_Efficacy-and-Safety-of-Upadacitinib-recorded.mp4
 ## Higgins-peter.jpg
 ## HigginsACGMidwest2019_PerioperativeIBD.pptx
+## Higgins_ACG2021.docx
 ## Higgins_LOS_IBDBiobank_Shah_Nusrat_2019.docx
 ## Higgins_UM_CME_Pregnancy in IBD.pptx
 ## Higginslab server.pptx
+## How To Assign PRO questionnaires -  Inpatient ASUC.docx
 ## How To Log in to IBD Server.docx
 ## How To Log in to RStudio Server for HigginsLab.docx
 ## How To Log in to RStudio Server for Shiny.docx
@@ -306,6 +316,7 @@ ls
 ## JDix_Study_update.docx
 ## Jessica Sheehan Rec Letter Fellowship.docx
 ## Jessica Sheehan Rec Letter Fellowship.pdf
+## Jun2021_ibdTrials [Autosaved].pptx
 ## Jun2021_ibdTrials.pptx
 ## K Award Institutional Letter of Commitment.pptx
 ## K Candidate Section.pptx
@@ -415,11 +426,13 @@ ls
 ## Sean Resume.docx
 ## Sean Summer Priorities 2016.docx
 ## SecureIBD.pptx
+## SevereUC_Tofa_Presentation_IBD_Forum.pptx
 ## ShareRmd.html
 ## Sherman Prize Nominee Questions.docx
 ## Shoreline West Tour Information.docx
 ## Short PA slides.pptx
 ## Shotwave thread.docx
+## Should we accel IFX - survey.pdf
 ## Signing Clinical Research Infusion Orders.pdf
 ## SingleCell_DDW_2021_ISS.pdf
 ## SkinCancer.IBD.Gentics_Yanhua_PDRH.docx
@@ -444,6 +457,7 @@ ls
 ## Tidymodels.docx
 ## Timelines for K submission.pdf
 ## Timelines for K submission.pptx
+## Tips for Submitting DDW Abstracts for 2022.docx
 ## Tofa Inpatient
 ## Tofa in ICI Figure Legends_Final Draft_V2.docx
 ## Tofa inpatient induction Protocol_02NOV2018_PHforEdits.docx
@@ -521,6 +535,7 @@ ls
 ## tidyr_pivot.png
 ## tidyr_pivot.xcf
 ## tofa_checkpoint.pdf
+## twitter.com.webarchive
 ## ucla1.jpg
 ## untidy_sheets.pptx
 ## user_testing_learnr tutorials.pptx

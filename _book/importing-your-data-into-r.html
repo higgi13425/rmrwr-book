@@ -24,7 +24,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2021-10-21" />
+<meta name="date" content="2021-10-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,12 +54,12 @@
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -499,11 +499,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="18" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html"><i class="fa fa-check"></i><b>18</b> Customizing Plot Scales</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#a-basic-scatterplot"><i class="fa fa-check"></i><b>18.1</b> A Basic Scatterplot</a></li>
-<li class="chapter" data-level="18.2" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#but-what-if-you-want-the-scale-for-risk-to-start-at-0"><i class="fa fa-check"></i><b>18.2</b> But what if you want the scale for risk to start at 0?</a></li>
-<li class="chapter" data-level="18.3" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#but-this-axis-does-not-really-start-at-exactly-0"><i class="fa fa-check"></i><b>18.3</b> But this axis does not really start at Exactly 0</a></li>
-<li class="chapter" data-level="18.4" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#control-the-limits-and-the-breaks"><i class="fa fa-check"></i><b>18.4</b> Control the Limits and the Breaks</a></li>
-<li class="chapter" data-level="18.5" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#continuous-vs.-discrete-plots-and-scales"><i class="fa fa-check"></i><b>18.5</b> Continuous vs. Discrete Plots and Scales</a></li>
+<li class="chapter" data-level="18.1" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#a-flipbook-of-where-we-are-going-with-scales"><i class="fa fa-check"></i><b>18.1</b> A Flipbook of Where We Are Going With Scales</a></li>
+<li class="chapter" data-level="18.2" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#a-basic-scatterplot"><i class="fa fa-check"></i><b>18.2</b> A Basic Scatterplot</a></li>
+<li class="chapter" data-level="18.3" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#but-what-if-you-want-the-scale-for-risk-to-start-at-0"><i class="fa fa-check"></i><b>18.3</b> But what if you want the scale for risk to start at 0?</a></li>
+<li class="chapter" data-level="18.4" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#but-this-axis-does-not-really-start-at-exactly-0"><i class="fa fa-check"></i><b>18.4</b> But this axis does not really start at Exactly 0</a></li>
+<li class="chapter" data-level="18.5" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#control-the-limits-and-the-breaks"><i class="fa fa-check"></i><b>18.5</b> Control the Limits and the Breaks</a></li>
+<li class="chapter" data-level="18.6" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#continuous-vs.-discrete-plots-and-scales"><i class="fa fa-check"></i><b>18.6</b> Continuous vs. Discrete Plots and Scales</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html"><i class="fa fa-check"></i><b>19</b> Helping out with ggplot</a>
 <ul>
@@ -835,9 +836,9 @@ You can choose as data types:</p>
 <li>col_number() (handles #s with commas)</li>
 <li>col_double() (to specify decimal #s)</li>
 <li>col_logical() (only TRUE and FALSE)</li>
-<li>col_date(format = "") - may need to define format</li>
-<li>col_time(format = "“) - col_datetime(format =”")</li>
-<li>col_factor(levels = "", ordered = TRUE) - you may want to set levels and ordered if ordinal.</li>
+<li>col_date(format = ““) - may need to define format</li>
+<li>col_time(format = ““) - col_datetime(format =”“)</li>
+<li>col_factor(levels = ““, ordered = TRUE) - you may want to set levels and ordered if ordinal.</li>
 <li>col_guess() - is the default</li>
 <li>col_skip() if you want to skip a column</li>
 </ul>
@@ -913,22 +914,22 @@ Below is an example of how to read in an Excel worksheet.</p>
 ## * `` -&gt; ...5
 ## * `` -&gt; ...6</code></pre>
 <pre><code>## # A tibble: 14 × 6
-##    `Data for my stud… ...2      ...3   ...4    ...5  ...6   
-##    &lt;chr&gt;              &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;  
-##  1 Paul Investigator… &lt;NA&gt;      &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;  &lt;NA&gt;   
-##  2 44338              &lt;NA&gt;      &lt;NA&gt;   &lt;NA&gt;    &lt;NA&gt;  &lt;NA&gt;   
-##  3 pat_id             SBP_start SBP_e… HR_sta… HR_e… treatm…
-##  4 1                  145       120    92      78    paulol…
-##  5 2                  147       148    88      87    placebo
-##  6 3                  158       139    96      80    paulol…
-##  7 4                  167       166    87      88    placebo
-##  8 5                  154       131    84      72    paulol…
-##  9 6                  178       177    99      97    placebo
-## 10 7                  151       134    101     86    paulol…
-## 11 8                  149       148    92      93    placebo
-## 12 &lt;NA&gt;               &lt;NA&gt;      &lt;NA&gt;   sbp     hr    &lt;NA&gt;   
-## 13 &lt;NA&gt;               mean pau… &lt;NA&gt;   131     79    &lt;NA&gt;   
-## 14 &lt;NA&gt;               mean pla… &lt;NA&gt;   159.75  91.25 &lt;NA&gt;</code></pre>
+##    `Data for my study`  ...2      ...3   ...4   ...5  ...6  
+##    &lt;chr&gt;                &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; 
+##  1 Paul Investigator MD &lt;NA&gt;      &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt;  
+##  2 44338                &lt;NA&gt;      &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;  &lt;NA&gt;  
+##  3 pat_id               SBP_start SBP_e… HR_st… HR_e… treat…
+##  4 1                    145       120    92     78    paulo…
+##  5 2                    147       148    88     87    place…
+##  6 3                    158       139    96     80    paulo…
+##  7 4                    167       166    87     88    place…
+##  8 5                    154       131    84     72    paulo…
+##  9 6                    178       177    99     97    place…
+## 10 7                    151       134    101    86    paulo…
+## 11 8                    149       148    92     93    place…
+## 12 &lt;NA&gt;                 &lt;NA&gt;      &lt;NA&gt;   sbp    hr    &lt;NA&gt;  
+## 13 &lt;NA&gt;                 mean pau… &lt;NA&gt;   131    79    &lt;NA&gt;  
+## 14 &lt;NA&gt;                 mean pla… &lt;NA&gt;   159.75 91.25 &lt;NA&gt;</code></pre>
 <div id="test-yourself-on-strep_tb" class="section level3" number="4.2.1">
 <h3><span class="header-section-number">4.2.1</span> Test yourself on strep_tb</h3>
 <ul>
@@ -1217,19 +1218,19 @@ See how this is used by running the code chunk below, which uses a 10% random sa
 <span id="cb67-3"><a href="importing-your-data-into-r.html#cb67-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_frac</span>(<span class="fl">0.1</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb67-4"><a href="importing-your-data-into-r.html#cb67-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(radiologic_6m, rad_num, improved)</span></code></pre></div>
 <pre><code>## # A tibble: 11 × 3
-##    radiologic_6m                rad_num improved
-##    &lt;fct&gt;                          &lt;dbl&gt; &lt;lgl&gt;   
-##  1 3_Moderate_deterioration           3 FALSE   
-##  2 6_Considerable_improvement         6 TRUE    
-##  3 6_Considerable_improvement         6 TRUE    
-##  4 6_Considerable_improvement         6 TRUE    
-##  5 3_Moderate_deterioration           3 FALSE   
-##  6 5_Moderate_improvement             5 TRUE    
-##  7 1_Death                            1 FALSE   
-##  8 1_Death                            1 FALSE   
-##  9 2_Considerable_deterioration       2 FALSE   
-## 10 6_Considerable_improvement         6 TRUE    
-## 11 3_Moderate_deterioration           3 FALSE</code></pre>
+##    radiologic_6m              rad_num improved
+##    &lt;fct&gt;                        &lt;dbl&gt; &lt;lgl&gt;   
+##  1 1_Death                          1 FALSE   
+##  2 4_No_change                      4 FALSE   
+##  3 6_Considerable_improvement       6 TRUE    
+##  4 3_Moderate_deterioration         3 FALSE   
+##  5 5_Moderate_improvement           5 TRUE    
+##  6 6_Considerable_improvement       6 TRUE    
+##  7 5_Moderate_improvement           5 TRUE    
+##  8 3_Moderate_deterioration         3 FALSE   
+##  9 5_Moderate_improvement           5 TRUE    
+## 10 5_Moderate_improvement           5 TRUE    
+## 11 5_Moderate_improvement           5 TRUE</code></pre>
 </div>
 </div>
 <div id="more-exploration-with-skimr-and-dataexplorer" class="section level2" number="4.6">
@@ -1623,7 +1624,7 @@ Show Me Solution 1
 ## 8      8       149     148       92     93 placebo</code></pre>
 </div>
 <ol start="2" style="list-style-type: decimal">
-<li>Our intrepid Investigator has inserted a chart in place of his data table on sheet 1, and moved the data table to a 2nd sheet named ‘data’, and placed in the top left corner, at the suggestion of his harried statistician, in a new file with the path of ’data/paulolol2.xlsx"</li>
+<li>Our intrepid Investigator has inserted a chart in place of his data table on sheet 1, and moved the data table to a 2nd sheet named ‘data’, and placed in the top left corner, at the suggestion of his harried statistician, in a new file with the path of ’data/paulolol2.xlsx”</li>
 </ol>
 <ul>
 <li>Try reading this file in with read_excel()</li>
@@ -1858,8 +1859,8 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/io05-importing.Rmd",
-"text": "Edit"
+"link": null,
+"text": null
 },
 "history": {
 "link": null,
@@ -1875,7 +1876,7 @@ gitbook.start({
 "options": null
 },
 "toc": {
-"collapse": "subsection"
+"collapse": "section"
 }
 });
 });

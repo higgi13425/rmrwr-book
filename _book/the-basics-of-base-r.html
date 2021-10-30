@@ -24,7 +24,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2021-10-21" />
+<meta name="date" content="2021-10-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,12 +54,12 @@
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -499,11 +499,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="18" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html"><i class="fa fa-check"></i><b>18</b> Customizing Plot Scales</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#a-basic-scatterplot"><i class="fa fa-check"></i><b>18.1</b> A Basic Scatterplot</a></li>
-<li class="chapter" data-level="18.2" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#but-what-if-you-want-the-scale-for-risk-to-start-at-0"><i class="fa fa-check"></i><b>18.2</b> But what if you want the scale for risk to start at 0?</a></li>
-<li class="chapter" data-level="18.3" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#but-this-axis-does-not-really-start-at-exactly-0"><i class="fa fa-check"></i><b>18.3</b> But this axis does not really start at Exactly 0</a></li>
-<li class="chapter" data-level="18.4" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#control-the-limits-and-the-breaks"><i class="fa fa-check"></i><b>18.4</b> Control the Limits and the Breaks</a></li>
-<li class="chapter" data-level="18.5" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#continuous-vs.-discrete-plots-and-scales"><i class="fa fa-check"></i><b>18.5</b> Continuous vs. Discrete Plots and Scales</a></li>
+<li class="chapter" data-level="18.1" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#a-flipbook-of-where-we-are-going-with-scales"><i class="fa fa-check"></i><b>18.1</b> A Flipbook of Where We Are Going With Scales</a></li>
+<li class="chapter" data-level="18.2" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#a-basic-scatterplot"><i class="fa fa-check"></i><b>18.2</b> A Basic Scatterplot</a></li>
+<li class="chapter" data-level="18.3" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#but-what-if-you-want-the-scale-for-risk-to-start-at-0"><i class="fa fa-check"></i><b>18.3</b> But what if you want the scale for risk to start at 0?</a></li>
+<li class="chapter" data-level="18.4" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#but-this-axis-does-not-really-start-at-exactly-0"><i class="fa fa-check"></i><b>18.4</b> But this axis does not really start at Exactly 0</a></li>
+<li class="chapter" data-level="18.5" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#control-the-limits-and-the-breaks"><i class="fa fa-check"></i><b>18.5</b> Control the Limits and the Breaks</a></li>
+<li class="chapter" data-level="18.6" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#continuous-vs.-discrete-plots-and-scales"><i class="fa fa-check"></i><b>18.6</b> Continuous vs. Discrete Plots and Scales</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html"><i class="fa fa-check"></i><b>19</b> Helping out with ggplot</a>
 <ul>
@@ -899,7 +900,7 @@ This is because we did set the names, and printed the result out to the console,
 ##          59         130          46</code></pre>
 <div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="the-basics-of-base-r.html#cb285-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(C_factor3)</span></code></pre></div>
 <pre><code>##  Factor w/ 3 levels &quot;(15.6,22.5]&quot;,..: 3 2 2 2 3 3 2 3 1 2 ...</code></pre>
-<p>This creates a new variable (C_factor), which is a factor with 3 levels. The levels are stored as 1, 2, 3, and range from 15.6-22.5 for 1, above 22.5-29.4 for 2, and above 29.4 to 36.4 for 3. The interval notation uses the square bracket for including the listed number, and parentheses for starting just after the listed number. It is a good practice to develop a standard way of naming these created variables, which are related to the original variable, are factors, and have a certain number of levels. One helpful shorthand is to take the original variable name, and to add the suffix “_f4<em>"</em> for a factor with 4 levels. A dichotomized variable would be <em>"</em>varname_f2”</p>
+<p>This creates a new variable (C_factor), which is a factor with 3 levels. The levels are stored as 1, 2, 3, and range from 15.6-22.5 for 1, above 22.5-29.4 for 2, and above 29.4 to 36.4 for 3. The interval notation uses the square bracket for including the listed number, and parentheses for starting just after the listed number. It is a good practice to develop a standard way of naming these created variables, which are related to the original variable, are factors, and have a certain number of levels. One helpful shorthand is to take the original variable name, and to add the suffix “_f4<em>”</em> for a factor with 4 levels. A dichotomized variable would be <em>”</em>varname_f2”</p>
 
 </div>
 </div>
@@ -1101,8 +1102,8 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/io66-base_r.Rmd",
-"text": "Edit"
+"link": null,
+"text": null
 },
 "history": {
 "link": null,
@@ -1118,7 +1119,7 @@ gitbook.start({
 "options": null
 },
 "toc": {
-"collapse": "subsection"
+"collapse": "section"
 }
 });
 });

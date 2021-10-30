@@ -499,22 +499,22 @@ read_excel(paulolol_xlsx,
 
 ```
 ## # A tibble: 14 × 6
-##    `Data for my stud… ...2      ...3   ...4    ...5  ...6   
-##    <chr>              <chr>     <chr>  <chr>   <chr> <chr>  
-##  1 Paul Investigator… <NA>      <NA>   <NA>    <NA>  <NA>   
-##  2 44338              <NA>      <NA>   <NA>    <NA>  <NA>   
-##  3 pat_id             SBP_start SBP_e… HR_sta… HR_e… treatm…
-##  4 1                  145       120    92      78    paulol…
-##  5 2                  147       148    88      87    placebo
-##  6 3                  158       139    96      80    paulol…
-##  7 4                  167       166    87      88    placebo
-##  8 5                  154       131    84      72    paulol…
-##  9 6                  178       177    99      97    placebo
-## 10 7                  151       134    101     86    paulol…
-## 11 8                  149       148    92      93    placebo
-## 12 <NA>               <NA>      <NA>   sbp     hr    <NA>   
-## 13 <NA>               mean pau… <NA>   131     79    <NA>   
-## 14 <NA>               mean pla… <NA>   159.75  91.25 <NA>
+##    `Data for my study`  ...2      ...3   ...4   ...5  ...6  
+##    <chr>                <chr>     <chr>  <chr>  <chr> <chr> 
+##  1 Paul Investigator MD <NA>      <NA>   <NA>   <NA>  <NA>  
+##  2 44338                <NA>      <NA>   <NA>   <NA>  <NA>  
+##  3 pat_id               SBP_start SBP_e… HR_st… HR_e… treat…
+##  4 1                    145       120    92     78    paulo…
+##  5 2                    147       148    88     87    place…
+##  6 3                    158       139    96     80    paulo…
+##  7 4                    167       166    87     88    place…
+##  8 5                    154       131    84     72    paulo…
+##  9 6                    178       177    99     97    place…
+## 10 7                    151       134    101    86    paulo…
+## 11 8                    149       148    92     93    place…
+## 12 <NA>                 <NA>      <NA>   sbp    hr    <NA>  
+## 13 <NA>                 mean pau… <NA>   131    79    <NA>  
+## 14 <NA>                 mean pla… <NA>   159.75 91.25 <NA>
 ```
 
 ### Test yourself on strep_tb
@@ -909,19 +909,19 @@ strep_tb %>%
 
 ```
 ## # A tibble: 11 × 3
-##    radiologic_6m                rad_num improved
-##    <fct>                          <dbl> <lgl>   
-##  1 3_Moderate_deterioration           3 FALSE   
-##  2 6_Considerable_improvement         6 TRUE    
-##  3 6_Considerable_improvement         6 TRUE    
-##  4 6_Considerable_improvement         6 TRUE    
-##  5 3_Moderate_deterioration           3 FALSE   
-##  6 5_Moderate_improvement             5 TRUE    
-##  7 1_Death                            1 FALSE   
-##  8 1_Death                            1 FALSE   
-##  9 2_Considerable_deterioration       2 FALSE   
-## 10 6_Considerable_improvement         6 TRUE    
-## 11 3_Moderate_deterioration           3 FALSE
+##    radiologic_6m              rad_num improved
+##    <fct>                        <dbl> <lgl>   
+##  1 1_Death                          1 FALSE   
+##  2 4_No_change                      4 FALSE   
+##  3 6_Considerable_improvement       6 TRUE    
+##  4 3_Moderate_deterioration         3 FALSE   
+##  5 5_Moderate_improvement           5 TRUE    
+##  6 6_Considerable_improvement       6 TRUE    
+##  7 5_Moderate_improvement           5 TRUE    
+##  8 3_Moderate_deterioration         3 FALSE   
+##  9 5_Moderate_improvement           5 TRUE    
+## 10 5_Moderate_improvement           5 TRUE    
+## 11 5_Moderate_improvement           5 TRUE
 ```
 
 
