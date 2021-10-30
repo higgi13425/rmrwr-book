@@ -99,6 +99,11 @@ indo_rct %>%
   scale_x_continuous(limits = c(15,90))
 ```
 
+```
+## Warning: Removed 1 rows containing missing values
+## (geom_point).
+```
+
 <img src="io48c-scales_files/figure-html/scatter-2-solution-1.png" width="672" />
 
 </div>
@@ -370,3 +375,23 @@ loading="lazy">
 </iframe>
 
 <!-------------> 
+
+
+:::challenge
+
+Now try some challenging code exercises using scales in the learnr app below.
+
+Use your knowledge to try to do these without hints, but press the Hints button if needed. In each case, the 2nd hint is the solution.
+:::
+<!---SHINY APP--> 
+
+<iframe style="margin:0 auto; border: solid black;" 
+id="myIframe13" width="763" height="432"
+src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_scales/" 
+scrolling="yes" data-external="1" 
+allowfullscreen
+loading="lazy">
+</iframe>
+
+<!-------------> 
+

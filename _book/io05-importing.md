@@ -913,14 +913,14 @@ strep_tb %>%
 ##    <fct>                          <dbl> <lgl>   
 ##  1 6_Considerable_improvement         6 TRUE    
 ##  2 2_Considerable_deterioration       2 FALSE   
-##  3 1_Death                            1 FALSE   
+##  3 2_Considerable_deterioration       2 FALSE   
 ##  4 5_Moderate_improvement             5 TRUE    
-##  5 1_Death                            1 FALSE   
-##  6 2_Considerable_deterioration       2 FALSE   
+##  5 5_Moderate_improvement             5 TRUE    
+##  6 5_Moderate_improvement             5 TRUE    
 ##  7 1_Death                            1 FALSE   
 ##  8 5_Moderate_improvement             5 TRUE    
-##  9 6_Considerable_improvement         6 TRUE    
-## 10 1_Death                            1 FALSE   
+##  9 5_Moderate_improvement             5 TRUE    
+## 10 6_Considerable_improvement         6 TRUE    
 ## 11 6_Considerable_improvement         6 TRUE
 ```
 
