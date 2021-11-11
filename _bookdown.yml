@@ -26,6 +26,7 @@ rmd_files:
 - io48c-scales.Rmd
 - io67-ggplot_helpers.Rmd
 - io71-functions_plots.Rmd
+- io56b-Rmd-citations-Zotero.Rmd
 - io70-r_cmd_line.Rmd
 - io98-title-holder.Rmd
 - io99-references.Rmd

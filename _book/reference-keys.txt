@@ -282,6 +282,17 @@ dont-repeat-yourself
 your-turn-2
 freestyle
 read-more
+adding-citations-to-your-rmarkdown
+goals-for-this-chapter-4
+packages-needed-for-this-chapter-3
+getting-set-up-for-citations
+installing-the-zotero-connector
+registration-for-zotero
+building-your-first-zotero-collection
+adding-references-to-your-zotero-collection
+inserting-references-into-documents-rmarkdown
+formatting-your-bibliography
+inserting-references-into-documents-ms-word
 cmd-line
 what-is-the-unix-command-line
 why-run-r-from-the-command-line

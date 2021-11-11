@@ -76,7 +76,7 @@ whoami;date
 
 ```
 ## peterhiggins
-## Sat Oct 30 17:06:36 EDT 2021
+## Thu Nov 11 18:14:00 EST 2021
 ```
 :::
 
@@ -191,6 +191,7 @@ ls
 ## CB6 and JAK_stat.pptx
 ## CC360_The Risk of SARS.R1.docx
 ## CC360_The Risk of SARS.docx
+## CCC_2022
 ## CCF IBD Webcast 2020 Draft Deck_For Review.pptx
 ## CCFA EIC Candidate Interview Questions (candidates) jobin[1].doc
 ## CDC_proposal1.1.docx
@@ -274,6 +275,8 @@ ls
 ## HigginsACGMidwest2019_PerioperativeIBD.pptx
 ## Higgins_ACG2021.docx
 ## Higgins_LOS_IBDBiobank_Shah_Nusrat_2019.docx
+## Higgins_LOS_KNewmanF32_letterhead_sig.docx
+## Higgins_LOS_KNewmanF32_letterhead_sig.pdf
 ## Higgins_UM_CME_Pregnancy in IBD.pptx
 ## Higginslab server.pptx
 ## How To Assign PRO questionnaires -  Inpatient ASUC.docx
@@ -351,6 +354,7 @@ ls
 ## Michigan Medicine Model for COVID-19 Clinical Trial Oversight DRAFT (KSB 04.17.20)-AL-PDRH.docx
 ## Microsoft User Data
 ## MultidisciplinaryIBDClinicPHv2.docx
+## NoStairs.docx
 ## NordicTrackTC9iTreadmillManual.pdf
 ## Notes on Spatial data workshop.docx
 ## Oct2019payPDRH.PDF
@@ -440,6 +444,7 @@ ls
 ## Social Media for GI.pptx
 ## Source Code PT1.docx
 ## Specific Aims.pdf
+## Stairs.docx
 ## Stelara paper.docx
 ## Stelara paper_revised_PDRH_KCC.docx
 ## Structure of Aim 3.docx
@@ -447,6 +452,7 @@ ls
 ## TOPPIC ML draft v5SCM_YL_AKW_PDRH.docx
 ## TabaCrohn IBD J club.docx
 ## Tables.docx
+## Takeda Grants_Letter of Request_IBD School Videos_Medication Series_2018_.docx
 ## Takeda_IBD School Videos_Submission.pdf
 ## Task List 2020-2.docx
 ## Task List 2020-5.docx
@@ -585,13 +591,16 @@ ls
 ## Getting Started in RStudio.pptx
 ## Higgins Microbiota for IBD Patient Ed.pptx
 ## HigginsDec2018AJG_SmokingStatus.pptx
+## IBD and PTSD.pptx
 ## IBDUpdate.pptx
 ## Integrated Slide Deck Dearborn 2016.04.12.pptx
 ## MER Stress Management Dearborn 4-14.pptx
 ## MichiganMedicine-IBDTemplate.potx
 ## PDRH RCR 2020.pptx
+## PDR_Higgins_DeficienciesInIBD_AIBD2021.pptx
 ## PennThioMTX2017Higgins.pptx
 ## Pregnancy in IBD.pptx
+## Presentation1.pptx
 ## Regenbogen CRS for GI CME Course2016.pptx
 ## Senior Slide Show.pptx
 ## Social Media for GI.pptx
