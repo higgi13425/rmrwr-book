@@ -20,7 +20,7 @@ In this chapter, we will explain several ways to find help in R, moving from the
 ## Starting with Help!
 
 The simplest approach to getting help in R is to use the _help()_ function. In the console, you can type _help("lm")_ or _help("geom\_boxplot")_ or  _help("filter")_ to make the reference materials appear in the Help tab in the lower right quadrant of RStudio. Note that there may be more than one match - in which case it will show you a list. The search for _help("filter")_ is a good example, as many packages have function that includes _'filter'_ in the name. 
-In the code block below, use _help('filter')_ to find the details on the _filter_ function from the _dplyr_ package.
+In the code block below, use _help('filter')_ to find the details on the _filter()_ function from the {dplyr} package.
 
 
 ```r
@@ -75,7 +75,8 @@ Try googling a few others, like
 - ggpubr
 - RVerbalExpressions
 - sf
-- quanteda
+- gtsummary
+- arsenal
 
 ## Googling the Error Message
 
@@ -98,7 +99,8 @@ Run the code block below to generate an error, then google the error message and
 
 
 ```
-## Error: stat_smooth requires the following missing aesthetics: x and y
+## Error in `check_required_aesthetics()`:
+## ! stat_smooth requires the following missing aesthetics: x and y
 ```
 
 <img src="io60-help_in_R_files/figure-html/ggplot-1.png" width="672" />
@@ -156,11 +158,60 @@ In a new script you need to:
   library(tidyverse) <br>
   covers any data wrangling and ggplot2
   <br>
-2. Include your data. This should be a minimal or 'toy' dataset. Be **SURE** you are not including any fields that are Protected Health Information (PHI) or identifiers. You can 
+2. Include your data. This should be a minimal or 'toy' dataset. Be **SURE** you are not including any fields that are Protected Health Information (PHI) or identifiers. You can do this one of several ways:
   a. use a built-in dataset (https://www.rdocumentation.org/packages/datasets/versions/3.6.1)  and _select()_ a few key variables and _filter()_ down to a reasonable number of rows (or use _head()_ to get 6 rows), or 
   b. take your own data and select only the columns needed and use filter() or head() for a minimal number of rows. **Make sure** not to use any Protected Health Information (PHI).Then use _dput()_ to add the data to the reprex and assign it to an object
-  c. build a toy dataset from scratch with data.frame
+  
+
+```r
+medicaldata::blood_storage %>% 
+  select(Recurrence, PVol, TVol, AA, FamHx) %>% 
+  head() ->
+small_blood
+
+dput(small_blood)
+```
+
+```
+## structure(list(Recurrence = c(1, 1, 0, 0, 0, 0), PVol = c(54, 
+## 43.2, 102.7, 46, 60, 45.9), TVol = c(3, 3, 1, 1, 2, 2), AA = c(0, 
+## 0, 0, 0, 0, 0), FamHx = c(0, 0, 0, 0, 0, 0)), row.names = c(NA, 
+## 6L), class = "data.frame")
+```
+
+```r
+# output of data will show up in the console
+# copy this and assign it to an object to start your reprex.
+# as below
+
+dataset <- structure(list(Recurrence = c(1, 1, 0, 0, 0, 0), PVol = c(54, 
+43.2, 102.7, 46, 60, 45.9), TVol = c(3, 3, 1, 1, 2, 2), AA = c(0, 
+0, 0, 0, 0, 0), FamHx = c(0, 0, 0, 0, 0, 0)), row.names = c(NA, 
+6L), class = "data.frame")
+```
+  
+
+  c. build a toy dataset from scratch with `tibble:tribble()`.
+  Each ~tilde_var gives you a variable name, each separated by commas,
+  and each value is separated by a comma.
+  And, remember not to put a comma after the last value (a common mistake).
+  
+
+```r
+dataset <- tibble::tribble(
+  ~pat_id, ~sbp, ~dbp, ~hr,
+  001, 147, 92, 84,
+  002, 158, 99, 88,
+  003, 137, 84, 67,
+  004, 129, 92, 73
+)
+```
+
   d. Use the _datapasta_ package to copy in some data from a website or spreadsheet
+  
+  Install the package, copy a (small) amount of data.
+  Use the add-in to paste your data, usually as a data frame or a tribble (you can choose either).
+  Remember to assign it to an object like `dataset`.
 
 #### Built in datasets
 In the code chunk below, examine the built-in dataset, infert.
@@ -307,9 +358,18 @@ df
 
 #### Fun with Datapasta Example
 _datapasta_ is a package for pasting data. It is super-helpful when you just want to quickly get a bit of data from a website or a spreadsheet. <br>
-Go to the website, https://en.wikipedia.org/wiki/Health_insurance_coverage_in_the_United_States, and find the large table named, "Percent uninsured (all persons) by state, 1999–2014". Carefully copy the table without the title line.
-Then use the Addins dropdown to "Paste as Tribble" into your code file. Assign the resulting tibble to an object named ins_data.  You will get funny names for the columns. Change these with names(ins_data), and assign state and 1999:2014 to the names.
-Filter to get rid of DC and United states. You should end up with 50 rows.
+
+- install the package {datapasta}, if you don't have it already
+- run `library(datapasta)`
+- Go to the website, https://en.wikipedia.org/wiki/Health_insurance_coverage_in_the_United_States, and find the large table named, "Percent uninsured (all persons) by state, 1999–2014". Carefully copy the table without the title line.
+- Then use the Addins dropdown to "Paste as Tribble" into your code file. Assign the resulting tibble to an object named ins_data.  You will get funny names for the columns. 
+- Change these with names(ins_data), and assign state and 1999:2014 to the names.
+`names(ins_data) <- c('state', c(1999:2014))`
+- Then filter to get rid of DC and `United States`. 
+You should end up with 50 rows.
+
+
+<div class='webex-solution'><button>Show/Hide Solution</button>
 
 
 ```r
@@ -372,15 +432,19 @@ ins_data <- tibble::tribble(
 names(ins_data) <- c("state", c(1999:2014))
 
 ins_data %>% slice(2:45) %>% bind_rows(slice(ins_data, 47:53)) %>%
-  filter(state != "District of Columbia") ->
+  filter(state != "District of Columbia") %>% 
+  filter(state != "United States") ->
   ins_data
 ```
+
+</div>
 
 
 3. include your minimal code - just enough to reproduce the problem, and no more.
 
 Now you need to
 - run this minimal code in a new script window to make sure it reproduces the problem and gets the same error.
+- consider adding an illustration of what you **want or expect** to output to look like
 - Install the reprex package
 
 ```r
@@ -389,7 +453,7 @@ Now you need to
 - Select all of the code in your new script window, including libraries, data, and code
 - copy this with Ctrl-C (Windows) or Cmd-C (Mac)
 - go to the Console, type in "reprex()" and enter
-- your REPREX will be generated and will show up in your Viewer tab. This is now on your Clipboard.
+- your REPREX will be generated and will show up in your Viewer tab. This is now **also** on your Clipboard.
 - Go to [RStudio Community](https://community.rstudio.com) and start a new topic.
 - Type in an introduction to your problem, state clearly what you are trying to do, and where you are stuck.
 - Paste in the reprex.
@@ -398,5 +462,11 @@ Now you need to
 - Wait for helpful answers.
 
 
+You can also email a reprex to a friend, so that they can give it a try.
+
+:::challenge
+Try making your own reprex, and emailing it to a friend.
+See if they can find/solve the problem.
+:::
 
 

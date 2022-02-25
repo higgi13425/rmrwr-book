@@ -1,4 +1,3 @@
-
 ---
 title: "Tips for Hashtag Debugging your Pipes and GGPlots"
 author: "Peter Higgins"

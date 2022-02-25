@@ -13,16 +13,16 @@ library(tidyverse)
 # Running R from the UNIX Command Line {#cmd-line}
 
 ## What is the UNIX Command line?
-The command line is a simple Terminal window with a prompt at which you can type commands, And do primitive but powerful things to your files. The UNIX computing environment was developed in the 1960s, and is still beloved and fetishized by brogrammers, who believe you are not truly a programmmer if you can't code from the command line. This is silly.
+The command line is a very basic Terminal window with a prompt at which you can type commands, And do primitive but powerful things to your files. The UNIX computing environment was developed in the 1960s, and is still beloved and fetishized by brogrammers, who believe you are not truly a programmmer if you can't code from the command line. This is silly.
 <br><br>
-The major attraction to UNIX in the 1960s is that it was much better than punch cards.  Which isn't saying much. We have had 60 years of software advancement and user interface improvements, so we really should not have to put up with the inherent user hostility of the UNIX environment.
+The major attraction to UNIX in the 1960s is that it was much better than punch cards.  Which isn't saying much. We have had 60 years of software advancement and user interface improvements, so we (most of time) should not have to put up with the inherent user hostility of the UNIX environment.
 <br><br>
 UNIX is an early operating system, which is built around a 'kernel' which executes operating system commands, and a 'shell' which interprets your commands and sends them to the kernel for execution. The most common shell these days is named 'bash', which is a silly recursive brogrammer joke. You will sometimes see references to shell scripts or shell or bash programming. These are the same thing as command line programming.
 <br><br>
 UNIX is a common under-the-hood language across many computers today, as the Apple iOS is built on top of UNIX, and the various versions of the LinuxOS are built on a UNIX-like kernel, with a similar command shell. 
 <br><br>
 The command line is often the least common denominator between different pieces of open-source software that were not designed to work together. It can occasionally be helpful to build a data pipeline from mismatched parts.
- However, there is a lot of low-quality user-hostile command line work involved to get it done, often referred to as "command-line bullshittery". This is a common bottleneck that slows scientific productivity, and there is a vigorous discussion of it on the interwebs [here](https://pg.ucsd.edu/command-line-bullshittery.htm) and [here (counterpoint)](https://medium.com/@eytanadar/on-the-value-of-command-line-bullshittery-94dc19ec8c61). Essentially, some argue that it is largely a waste of time and effort, while others see it as a valuable learning experience, like doing least squares regression by hand with a pencil.
+ However, there is a lot of low-quality user-hostile command line work involved to get it done, commonly referred to as "command-line bullshittery". This is a common bottleneck that slows scientific productivity, and there is a vigorous discussion of it on the interwebs [here](https://pg.ucsd.edu/command-line-bullshittery.htm) and [here (a counterpoint)](https://medium.com/@eytanadar/on-the-value-of-command-line-bullshittery-94dc19ec8c61). Essentially, some argue that it is largely a waste of time and effort, while others see it as a valuable learning experience, like doing least squares regression by hand with a pencil.
 <br><br>
 Running R from the command line is a bit like spending a day tuning your car's engine by yourself. There is a case to be made that this will improve the efficiency and performance of your car, but it is also usually more efficient to pay someone else to do it, unless you are a car expert with a lot of free time.
 
@@ -32,7 +32,7 @@ You can run R from the command line. It has none of the bells and whistles, nor 
 <br><br>
 Running R from the command line allows you to do powerful things, like process multiple files at once, which can be handy when you have multiple files of sequencing data from distinct observations, or you have a multistep data wrangling pipeline with several slow steps. For many years, this was the only way to easily apply code across multiple files to build a complex data pipeline.
 <br><br>
-This is much less true today, with tools to handle file paths like the {here} and {fs} packages, run Python scripts from R with the {reticulate} package, run C++ scripts with Rcpp, and run bash, python, SQL, D3, and Stan scripts from Rmarkdown. You can use the {drake} package to manage multi-step data pipelines in different languages (similar to _make_). But some labs have been doing things at the command line for years, and find it hard to change.
+This is much less true today, with tools to handle file paths like the {here} and {fs} packages, run Python scripts from R with the {reticulate} package, run C++ scripts with Rcpp, and run bash, python, SQL, D3, and Stan scripts from Rmarkdown. You can use the {targets} package to manage multi-step data pipelines in different languages (similar to _make_). But some labs have been doing things at the command line for years, and find it hard to change.
 
 ## How do you get started?
 First, you need to open a terminal window.
@@ -53,7 +53,7 @@ No user interface for you!
 <br><br>
 
 :::tryit
-Let's start with a simple one, which can't do any harm. Run the command below:<br>
+Let's start with a introductory command, which can't do any harm. Run the command below:<br>
 `whoami`
 
 ```{bash}
@@ -61,7 +61,7 @@ whoami
 ```
 :::
 
-Remember that UNIX started out as an operating system for terminals, and knowing who was logged in was a helpful thing.
+Remember that UNIX started out as an operating system for terminals, and knowing who was logged in was a helpful thing, especially if the person logged in was being charged for mainframe time by the minute.
 <br><br>
 You can string together two commands with a semicolon between them. <br>
 
@@ -103,7 +103,7 @@ cd ..
 ```
 :::
 
-It changes the directory `up` one level closer to the root directory. It is straightforward to go up the directory tree, as each folder only has one `parent`. But it is tricky to go down the directory tree, as there are many possible branches/children, and you do not inherently know the names of these branches. We need to list the contents of your current directory with `ls` to know what is there. 
+`cd ..` changes the directory `up` one level closer to the root directory. Note that there is a **required** space between `cd` and the `..`. You can also go directly to the root directory with `cd /`. It is straightforward to go up the directory tree, as each folder only has one `parent`. But it is tricky to go down the directory tree, as there are many possible branches/children, and you do not inherently know the names of these branches. We need to list the contents of your current directory with `ls` to know what is there. 
 
 :::tryit
 Try the `ls` command in your Terminal window
@@ -122,7 +122,7 @@ ls -l
 ```
 
 The full listing will give you more details, including read & write permissions, file size, date last saved, etc. <br>
-Many commands have options, or flags, that modify what they do.
+Many UNIX commands have options, or flags, that modify what they do.
 <br><br>
 Find a folder inside of your Documents folder. We will now go `down` a level in the directory tree. In my case, I will use the `Powerpoint` folder. <br>
 In your Terminal window:
@@ -150,9 +150,9 @@ ls
 ```
 :::
 
-You have now made a new directory (folder) within the previous directory, named `new_files`. Verify this in your Documents folder.<br> 
-You can now change to this directory <br>
-and list the contents (it should be empty).<br>
+You have now made a new directory (folder) within the previous directory (`pwd` = present working directory), named `new_files`. Verify this in your Documents folder.<br> 
+You can now make changes to this directory <br>
+and list the contents (it should currently be empty).<br>
 
 
 :::tryit
@@ -220,7 +220,7 @@ Copy the path to the current directory from the Terminal.<br>
 Switch back to the Rmarkdown document.<br>
 Select one of the R code chunks (note the {r} at the top) and delete it.<br>
 Now click on the Insert dropdown at the top of the document, and insert a Bash chunk.<br>
-Now add UNIX commands (separated by a semicolon), like
+Now you can add UNIX commands (separated by a semicolon) to this code chunk, like
 
 ```{bash, eval = FALSE}
 cd (paste in path here);
@@ -254,7 +254,7 @@ rmdir new_files
 :::
 
 Verify all of this in your Documents window.<br>
-This is great. But you can imagine a situation in which you mistakenly `rm` a file (or directory) that you actually needed. Unlike your usual user interface, when a file is removed at the command line, it is gone. It is not in the trash folder. It is gone. There is something to be said for modern user interfaces, which are built for humans, who occasionally make mistakes. Sometimes we do want files or folders back.
+This is great. But you can imagine a situation in which you mistakenly `rm` a file (or directory) that you actually needed. Unlike your usual user interface, when a file is removed at the command line, it is gone. It is not in the trash folder. It is **really** gone. There is something to be said for modern user interfaces, which are built for humans, who occasionally make mistakes. Sometimes we do want files or folders back.
 
 ## Other helpful file commands
 Here are some file commands worth knowing
@@ -282,7 +282,7 @@ Now you can run R in interactive mode with available datasets, or your own datas
 
 
 :::tryit
-Try a few simple commands with the mtcars dataset.<br>
+Try a few standard tidyverse commands with the mtcars dataset.<br>
 Give the examples below a try.<br>     
 
 You can use `q()` to quit back to the terminal (and reply "n" to **not** save the workplace image).
@@ -298,7 +298,7 @@ mtcars %>%
 ## What about just a few lines of R?
 Sometimes you will want to call R, run some code, and be done with R.<br>
 You can call R, run a few lines, and quit in one go.<br>
-Just add the flag `-e` (for _evaluate_) to the call to R,<br>
+You can add the flag `-e` (for _evaluate_) to the call to R,<br>
 and put the R commands in quotes.<br>
 
 :::tryit
@@ -313,9 +313,10 @@ or this example - note that single or double quotes does not matter - as long as
 :::tryit
 Try this
 ```{bash, eval = FALSE}
-R -e 'install(palmerpenguins)'
+R -e 'install.packages(palmerpenguins)'
 ```
 :::
+
 You can also string together several commands with the semicolon between them. 
 
 :::tryit
@@ -327,7 +328,7 @@ R -e 'library(palmerpenguins);data(penguins);tail(penguins)'
 :::
 ## Running an R Script from the Terminal
 Now we are stepping up a level - you have an R script that you have carefully created and saved as the `myscript.R` file. How do you run this from the Terminal?<br>
-This is easy - just call the `Rscript` command with your file name. 
+This is straightforward - you can call the `Rscript` command with your file name. 
 
 :::tryit
 Pick out a short R file you have written, make sure you are in the right directory where the file is, and use it as in the example below.
@@ -336,10 +337,10 @@ Pick out a short R file you have written, make sure you are in the right directo
 Rscript myscript.R
 ```
 :::
-This launches R, runs your script, saves resulting output (if your script includes save or ggsave commands), closes R, and sends you back to the Terminal. Very simple.
+This launches R, runs your script, saves resulting output (if your script includes save or ggsave commands), closes R, and sends you back to the Terminal. Very nice!
 
 ## Rendering an Rmarkdown file from the Terminal
-This is a little different, as you can't just run an Rmarkdown file. Normally you would use the dropdown button to knit your file from Rstudio. But you can use the `rmarkdown::render` command to render your files to HTML, PDF, Word, Powerpoint, etc. Pick out a simple Rmd file like `output_file.Rmd` below, make sure you are in the right directory where the file is, and try something like the example below. <br>
+This is a little different, as you can't just run an Rmarkdown file. Normally you would use the dropdown button to knit your file from Rstudio. But you can use the `rmarkdown::render` command to render your files to HTML, PDF, Word, Powerpoint, etc. Pick out a small Rmd file like `output_file.Rmd` below, make sure you are in the right directory where the file is, and try something like the example below. <br>
 Note that this is one case where nesting different types of quotes (single vs. double) can come in handy.<br>
 It helps to use single quotes around your filename and double quotes around the `rmarkown::render` command.
 

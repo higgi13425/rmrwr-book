@@ -82,7 +82,6 @@ CRAN Mirror maintains an up to date copy of all of the R versions and
 packages on CRAN. If you use the nearest CRAN mirror, you will generally
 get faster downloads.
 
-\
 At this point, you might be wondering what a package is...\
 A package is a set of functions and/or data that you can download to
 upgrade and add features to R. It is like a downloadable upgrade to a
@@ -149,8 +148,10 @@ to save it.
 
 ![install4](images/installrsave.png){width="281"}
 
-Now, go to your Downloads folder in Windows, and double click on the R
-installation file (R-N.N.N-win.exe). Click Yes to allow this to install.
+Now, go to your Downloads folder in Windows, and double click on the the
+latest version of the R installation file (something like
+R-N.N.N-win.exe. Recent versions have looked something like
+R-4.1.2.exe). Click Yes to allow this to install.
 
 ![install5exe](images/installrexe.png)
 
@@ -209,7 +210,7 @@ below can help guide you.
 Opening the exe file will open a classic year 2000-era terminal window,
 called Rterm, with 64 bit if that is what your computer uses. The
 version number should match what you downloaded. The messaging should
-end with a "\>" prompt.
+end with a ">" prompt.
 
 ![install_term](images/windowsrterm.png)
 
@@ -233,8 +234,10 @@ computed the result and displayed it.
 The installation for Mac is very similar, but the windows look a bit
 different. If you are working with Windows, jump ahead at this point to
 Installing RStudio in section 2.7. At the Download Version page, you
-click on the Mac Download. You will then click on the link for
-R-N.N.N.pkg, and allow downloads from CRAN.
+click on the Mac Download. You will then click on the link for the
+latest version of R, which will look something like R-N.N.N.pkg (recent
+versions have been something like R-4.1.2.pkg), and allow downloads from
+CRAN.
 
 ![install_path](images/installrpkgmac.png)
 
@@ -272,7 +275,7 @@ down to the R file. Double click on this to run it.
 
 You should get this 2000-era terminal window named R Console. The
 version number should match what you downloaded, and the messaging
-should end with a "\>" prompt. At this prompt, type in
+should end with a ">" prompt. At this prompt, type in
 
 paste("Two to the seventh power is", 2\^7)
 
@@ -376,7 +379,7 @@ Within the Console window of RStudio, an instance of R is started up.
 Check that the version number matches the version of R that you
 downloaded.
 
-Now run a test at the prompt ("\>") in the Console window. Type in
+Now run a test at the prompt (">") in the Console window. Type in
 
 `paste("Three to the 5th power is", 3^5)`
 
@@ -424,7 +427,7 @@ Pin your RStudio to the Dock.
 Double Click to run RStudio.
 
 RStudio will open an instance of R inside the Console pane of RStudio
-with the version number of R that you installed, and a "\>" prompt.
+with the version number of R that you installed, and a ">" prompt.
 
 ### Testing the Mac Installation of RStudio
 
@@ -455,12 +458,12 @@ Global Settings for optimal R and RStudio use.
     future projects easy to find.
 
 Once this **Rcode folder** is in place, switch back to RStudio. In the
-RStudio Menus, go to Tools/Global Options. A new Global Options window
-will open up. Click on the General tab on the left. At the top, there is
-a small window for identifying your Default working directory. Click on
-the Browse button, and browse to your new "Rcode" folder and select it.
-From now on, your R files and Projects will all be in one place and easy
-to find.
+top bar of RStudio Menus, go to Tools/Global Options. A new Global
+Options window will open up. Click on the General tab on the left. At
+the top, there is a small window for identifying your Default working
+directory. Click on the Browse button, and browse to your new "Rcode"
+folder and select it. From now on, your R files and Projects will all be
+in one place and easy to find.
 
 2.  In the same General tab, de-select the first 3 options
 
@@ -471,7 +474,7 @@ to find.
 3.  In the same General tab, find Save workspace to .RData on exit.
     Click on the dropdown menu to select "Never"
 
-These tune-ups (\#2 and \#3) to your RStudio will mean you will always
+These tune-ups (#2 and #3) to your RStudio will mean you will always
 start with a clean workspace in a new RStudio session, which will avoid
 a lot of potential problems later.
 
@@ -495,13 +498,14 @@ nicer Viewer tab.
     this point, but it is good to know that these options are available.
     Any changes here are entirely optional (and cosmetic) at this point.
 
-7.  in the RStudio menus, select Code, then check/select two options to
-    turn these on:
+7.  in the RStudio menus, select Tools/Global Options/Code, then
+    check/select two options to turn these on:
 
--   Soft Wrap Long Lines - so that your code does not get too wide
--   Rainbow Parentheses - color-codes parentheses so that you can keep
-    track of whether you have closed all of your open parentheses (a
-    common source of errors)
+-   In the Editing tab - select Soft Wrap Long Lines - so that your code
+    does not get too wide
+-   In the Display tab - select Rainbow Parentheses - color-codes
+    parentheses so that you can keep track of whether you have closed
+    all of your open parentheses (a common source of errors)
 
 Now your RStudio installation is tuned and ready to go!
 
@@ -563,8 +567,8 @@ At the Terminal prompt (\$), type
 
 `brew install git`
 
-and this will quickly install. You will be prompted to click
-**Continue** buttons to complete the installation.
+and this will quickly install. You will be returned to the Terminal
+prompt (\$) when installation is complete.
 
 3.  Check your installation.
 
@@ -573,7 +577,7 @@ and this will quickly install. You will be prompted to click
     `git --version`
 
     and this should return a result like "git version 2.29.2", depending
-    on the version number.
+    on the most recent version number.
 
 ### Installing Git on Windows
 
@@ -622,22 +626,23 @@ For other distributions of Linux, follow the instructions at
 
 When you first open the RStudio IDE (Integrated Development
 Environment), there will be a left side pane, with tabs for Console,
-Terminal, Rmarkdown, and Jobs.
+Terminal, and Jobs. This is called the **Console pane**.
 
 Just for fun, go to the RStudio menus, and choose File/New File/RScript.
 This will open a new pane at the top left, which we will call the top
-left pane, or the Source pane. This pane will contain tabs for each
+left pane, or the **Source pane**. This pane will contain tabs for each
 active script or document, along with tabs for any datasets you have
 opened up to have a look at.
 
-The Console pane, with tabs for Console, Terminal, Rmarkdown, and Jobs,
-has now been pushed to the lower left quadrant. You will use the Console
+The Console pane, with tabs for Console, Terminal, and Jobs, has now
+been pushed to the lower left quadrant. You will use the Console pane
 for interactive programming, and as a "sandbox" to test out new code.
 When your code works and is good enough to save, you will move it to the
 Source pane and save it to a Script or an Rmarkdown document. Any code
 that is not saved to Source will be lost (actually it will be somewhere
 in the History, but it can be a pain to find the version that works
-later - it is best to save the good stuff to a Script or .Rmd).
+later - it is best to save the good stuff to an R Script or .Rmd
+(rmarkdown) document).
 
 The top right pane includes tabs for your Environment (objects, like
 datasets, functions, and variables you have defined), History (saving

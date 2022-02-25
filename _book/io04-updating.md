@@ -28,26 +28,35 @@ If you Google a bit for ways to do things in R, you will find many packages that
 
 Notice that the package_name has to be in quotes. These can be single or double quotes. The package_name and install.packages() are _case_sensitive_ like all objects and functions in R, so that something like `Install.Packages` will not work.
 
-Once the package is installed, you keep that in your R library associated with your current major version of R. You will need to update & reinstall packages each time you update a major version of R. R versions are designated with R version #.#.#  A change in the third number indicates a minor version change. A change in the first or 2nd number (from R 3.6.2 to 4.0.0, or 4.0.2 to 4.1.0) is a major version upgrade which will require re-installation of packages.
+Once the package is installed, you keep that in your R library associated with your current major version of R. You will need to update & reinstall packages each time you update a major version of R. R versions are designated with R version #.#.#  A change in the third number indicates a *patch level* change. A change in the first number (from R 3.6.2 to 4.0.0) is a major version change, while a change in the middle number (4.0.2 to 4.1.0) is a minor version change. Any major or minor version upgrade will require re-installation of your add-on packages into a version-specific package library.
 
-Let's practice installing a package. Run the code below to install the _tidyverse_ package.
+Let's practice installing a package. Run the code below to install the _remotes()_ package.
 
 
 ```r
-install.packages("tidyverse")
+install.packages("remotes")
 ```
 
 ### Installing Packages from Github
-Some packages are still in development. These are often in repositories on github, rather than on the CRAN servers. To install these packages, you need to know path to the repository. You can install the _medicaldata_ package from Github. Run the code below to install this package.
+Some packages are still in development. These are often in repositories on GitHub, rather than on the CRAN servers. To install these packages, you need to know path to the repository. You can install the development version of the _medicaldata_ package from Github (the stable version is on CRAN). Run the code below to install this package (this assumes that you already have the remotes package installed).
 
 
 ```r
-devtools::install_github("higgi13425/medicaldata")
+remotes::install_github("higgi13425/medicaldata")
 ```
 
-In contrast to install.packages, the _library()_ function can work with quotes around the package_name, but they are not required. This is because these packages are already installed in your R library, and are known quantities. In general, known objects in your R environment do not require quotes, and novel things like packages do require quotes.
+In contrast to install.packages, the _library()_ function can work with quotes around the package_name, but they are not required. This is because these packages are already installed in your R library, and are known quantities. In general, known objects in your R Environment pane (dataframes, vectors) do not require quotes, and novel things like new packages (or variables hidden inside of a data frame) do require quotes or a $ - though the tidyverse packages work around this quote issue for variables inside of a data frame.
 
-If you re-run `print(.packages)` at this point, you will not have any more packages. This is because you have installed new packages, but not loaded them.
+If you re-run `print(.packages)` at this point, you will not have any more packages. This is because you have installed new packages, but not loaded them with `library()`.
+
+Notice that you were able to use the {remotes} package function, _install_github()_ above, without loading the package with `library(remotes)`, because you explicitly called the function with its package name, as in `remotes::install_github()`.
+
+:::tryit
+Try installing a few more packages, like "janitor", or "gtsummary".
+These should now show up with `installed.packages()`.
+Then use `library()` to load these packages,
+and see that the output of `print(.packages)` has changed.
+:::
 
 ### Problems with Installing Packages
 
@@ -58,11 +67,41 @@ Sometimes you may run into a problem installing a package which was developed fo
 
 #### Installing from Source vs Binaries
 
+When you install or update a package that is in rapid development, you may get this message:
+
+`There are binary versions available but the source
+  versions are later:
+               binary source needs_compilation
+tidyr           1.1.4  1.2.0              TRUE`
+
+This means that the latest version (in this case, 1.2.0), is available, but it has to be compiled and built from source code, which is a bit slower. It is faster to install from binary files, which tend to be available on CRAN (built by the CRAN volunteer maintainer team) a little bit later. When the binary version of a package is not yet available, you will be asked to decide - you can install the source code version (installs slower, but you get the very latest version), or the binary version (installs fast, but a version behind). Most of the time, unless you have a very slow internet connection, you want to install from the **source** version. The compilation part is what slows the installation. Usually, you want to answer Yes to the question 
+`Do you want to install from sources the packages which need compilation? (Yes/no/cancel)`
+
+Why do some packages need to be compiled from source (~ 25%) and others (~75%) don't? 
+Usually it is because the ones that need to be compiled include another language (like C or C++, rather than pure R) which needs to be compiled. These additional languages are usually used to improve processing speed of the resulting functions.
+
+
 #### Dependencies
 Some packages are dependent on *specific* versions of other packages, and will ask you to update the other packages during installation. As a general rule, you should say 'yes' to all packages. If you are worried about over-writing an existing package in a way that would break your code in a different project, then that project needs its own project-specific library, which you can create with the {renv} package.
 
 #### Extra-R Dependencies
-Sometimes packages require (depend upon) software that is not part of the R ecosystem. These will generally give you messages during the install process asking you to install this helper software. Common helper software includes things like Fortran and RJava. Sometimes you will need to go to websites, or use software like Homebrew (on the Mac) to install these extra helper pieces of software. A bit of googling will usually help with the specific package requirements.
+Sometimes packages require (depend upon) software that is not part of the R ecosystem. These will generally give you messages during the install process asking you to install this helper software. Common helper software packages include things like `gtk+`, `freetype`, and `proj`. Sometimes you will need to go to websites, or use software like Homebrew (on the Mac) to install these extra helper pieces of software. If you have never used Homebrew, here is a basic [guide](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-homebrew-on-macos) to get you started. The Homebrew page is [here](https://brew.sh). You can search on the Homebrew page and usually find the packages you need. They can be installed (via your Terminal Application (in Utilties) with something like `brew install packagename`. A bit of googling with the error message as the search term will usually help you find the specific package name. Once the external-to-R package is installed, you can go back and install the R package that depends on the external software package.
+
+#### Package Installation Failed
+
+Sometimes you will get a message like:
+
+`Warning in install.packages : installation of package "ragg" had non-zero exit status`
+
+  This means that the package installation failed. Sometimes it is because there is a problem with the package, but more often there is a missing dependency.  Often you can figure this out by scrolling upward. You will often find messages telling you that 
+  `fatal error: 'ft2build.h' file not found`
+
+Suggesting that you need a file named 'ft2build.h'. You will likely need to web search for this error to find out how to fix it, usually by downloading and installing a piece of software that the problematic package needs in order to run.
+
+Another example - 
+`configure: error: Install libtiff-dev or equivalent first (or set PKG_MODULE if non-standard) ERROR: configuration failed for package 'tiff'`
+
+You are missing a piece of software external to R called *libtiff-dev*. The error message is fairly helpful.
 
 ## Loading Packages with Library
 
@@ -85,6 +124,13 @@ library(tidyverse)
 library(medicaldata)
 # the {medicaldata} package can be installed with remotes::install_github('higgi13425/medicaldata')
 ```
+
+#### Explicitly Managing Function Conflicts
+
+You can also manage conflicts between identically-named functions from different packages in R with the {conflicted} package, which identifies conflicts when you have called a function without explicitly naming the package that it is from.
+You load `library(conflicted)` and it will watch out for conflicts and send an error when you call a function in an ambiguous way.
+
+If you don't want to always explicitly specify between `dplyr::filter`, `base::filter` and `rstatix::filter`, you can set your default version of a function right after you load your libraries, with `conflicted::conflict_prefer("filter", "dplyr")`, which tells R that you want to use the `dplyr` version of `filter` by default, and that you will specify if you want to use `base::filter` or `rstatix::filter`.
 
 ## Updating R
 Every once in a while, you will want to update your version of R. Usually this occurs with a major version upgrade, when something important changes. You may not rush into this, as it means re-installing all of your packages, but eventually it is worth it to be up to date. 

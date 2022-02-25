@@ -120,15 +120,9 @@ read_csv(glue(url_stem, 'data/scurvy.csv'))
 
 ```
 ## Rows: 12 Columns: 8
-```
-
-```
 ## ── Column specification ────────────────────────────────────
 ## Delimiter: ","
 ## chr (8): study_id, treatment, dosing_regimen_for_scurvy,...
-```
-
-```
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
@@ -183,15 +177,9 @@ scurvy_data <- read_csv(glue(url_stem, 'data/scurvy.csv'))
 
 ```
 ## Rows: 12 Columns: 8
-```
-
-```
 ## ── Column specification ────────────────────────────────────
 ## Delimiter: ","
 ## chr (8): study_id, treatment, dosing_regimen_for_scurvy,...
-```
-
-```
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
@@ -243,15 +231,9 @@ col_names = c("pat_id", "arm", "dose", "gums", "skin", "weak", "lass", "fit"))
 
 ```
 ## Rows: 13 Columns: 8
-```
-
-```
 ## ── Column specification ────────────────────────────────────
 ## Delimiter: ","
 ## chr (8): pat_id, arm, dose, gums, skin, weak, lass, fit
-```
-
-```
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
@@ -259,21 +241,21 @@ col_names = c("pat_id", "arm", "dose", "gums", "skin", "weak", "lass", "fit"))
 
 ```
 ## # A tibble: 13 × 8
-##    pat_id   arm    dose      gums   skin  weak   lass  fit  
-##    <chr>    <chr>  <chr>     <chr>  <chr> <chr>  <chr> <chr>
-##  1 study_id treat… dosing_r… gum_r… skin… weakn… lass… fit_…
-##  2 001      cider  1 quart … 2_mod… 2_mo… 2_mod… 2_mo… 0_no 
-##  3 002      cider  1 quart … 2_mod… 1_mi… 2_mod… 3_se… 0_no 
-##  4 003      dilut… 25 drops… 1_mild 3_se… 3_sev… 3_se… 0_no 
-##  5 004      dilut… 25 drops… 2_mod… 3_se… 3_sev… 3_se… 0_no 
-##  6 005      vineg… two spoo… 3_sev… 3_se… 3_sev… 3_se… 0_no 
-##  7 006      vineg… two spoo… 3_sev… 3_se… 3_sev… 3_se… 0_no 
-##  8 007      sea_w… half pin… 3_sev… 3_se… 3_sev… 3_se… 0_no 
-##  9 008      sea_w… half pin… 3_sev… 3_se… 3_sev… 3_se… 0_no 
-## 10 009      citrus two lemo… 1_mild 1_mi… 0_none 1_mi… 0_no 
-## 11 010      citrus two lemo… 0_none 0_no… 0_none 0_no… 1_yes
-## 12 011      purga… a nutmeg… 3_sev… 3_se… 3_sev… 3_se… 0_no 
-## 13 012      purga… a nutmeg… 3_sev… 3_se… 3_sev… 3_se… 0_no
+##    pat_id   arm          dose  gums  skin  weak  lass  fit  
+##    <chr>    <chr>        <chr> <chr> <chr> <chr> <chr> <chr>
+##  1 study_id treatment    dosi… gum_… skin… weak… lass… fit_…
+##  2 001      cider        1 qu… 2_mo… 2_mo… 2_mo… 2_mo… 0_no 
+##  3 002      cider        1 qu… 2_mo… 1_mi… 2_mo… 3_se… 0_no 
+##  4 003      dilute_sulf… 25 d… 1_mi… 3_se… 3_se… 3_se… 0_no 
+##  5 004      dilute_sulf… 25 d… 2_mo… 3_se… 3_se… 3_se… 0_no 
+##  6 005      vinegar      two … 3_se… 3_se… 3_se… 3_se… 0_no 
+##  7 006      vinegar      two … 3_se… 3_se… 3_se… 3_se… 0_no 
+##  8 007      sea_water    half… 3_se… 3_se… 3_se… 3_se… 0_no 
+##  9 008      sea_water    half… 3_se… 3_se… 3_se… 3_se… 0_no 
+## 10 009      citrus       two … 1_mi… 1_mi… 0_no… 1_mi… 0_no 
+## 11 010      citrus       two … 0_no… 0_no… 0_no… 0_no… 1_yes
+## 12 011      purgative_m… a nu… 3_se… 3_se… 3_se… 3_se… 0_no 
+## 13 012      purgative_m… a nu… 3_se… 3_se… 3_se… 3_se… 0_no
 ```
 
 In this case, when we set our own **col_names**, there are now **13** rows of data, and the original column headers are now listed as the first row of data.
@@ -290,15 +272,9 @@ read_csv(file = glue(url_stem, 'data/scurvy.csv'),
 
 ```
 ## Rows: 12 Columns: 8
-```
-
-```
 ## ── Column specification ────────────────────────────────────
 ## Delimiter: ","
 ## chr (8): pat_id, arm, dose, gums, skin, weak, lass, fit
-```
-
-```
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
@@ -306,20 +282,20 @@ read_csv(file = glue(url_stem, 'data/scurvy.csv'),
 
 ```
 ## # A tibble: 12 × 8
-##    pat_id arm     dose        gums   skin  weak  lass  fit  
-##    <chr>  <chr>   <chr>       <chr>  <chr> <chr> <chr> <chr>
-##  1 001    cider   1 quart pe… 2_mod… 2_mo… 2_mo… 2_mo… 0_no 
-##  2 002    cider   1 quart pe… 2_mod… 1_mi… 2_mo… 3_se… 0_no 
-##  3 003    dilute… 25 drops o… 1_mild 3_se… 3_se… 3_se… 0_no 
-##  4 004    dilute… 25 drops o… 2_mod… 3_se… 3_se… 3_se… 0_no 
-##  5 005    vinegar two spoonf… 3_sev… 3_se… 3_se… 3_se… 0_no 
-##  6 006    vinegar two spoonf… 3_sev… 3_se… 3_se… 3_se… 0_no 
-##  7 007    sea_wa… half pint … 3_sev… 3_se… 3_se… 3_se… 0_no 
-##  8 008    sea_wa… half pint … 3_sev… 3_se… 3_se… 3_se… 0_no 
-##  9 009    citrus  two lemons… 1_mild 1_mi… 0_no… 1_mi… 0_no 
-## 10 010    citrus  two lemons… 0_none 0_no… 0_no… 0_no… 1_yes
-## 11 011    purgat… a nutmeg-s… 3_sev… 3_se… 3_se… 3_se… 0_no 
-## 12 012    purgat… a nutmeg-s… 3_sev… 3_se… 3_se… 3_se… 0_no
+##    pat_id arm            dose  gums  skin  weak  lass  fit  
+##    <chr>  <chr>          <chr> <chr> <chr> <chr> <chr> <chr>
+##  1 001    cider          1 qu… 2_mo… 2_mo… 2_mo… 2_mo… 0_no 
+##  2 002    cider          1 qu… 2_mo… 1_mi… 2_mo… 3_se… 0_no 
+##  3 003    dilute_sulfur… 25 d… 1_mi… 3_se… 3_se… 3_se… 0_no 
+##  4 004    dilute_sulfur… 25 d… 2_mo… 3_se… 3_se… 3_se… 0_no 
+##  5 005    vinegar        two … 3_se… 3_se… 3_se… 3_se… 0_no 
+##  6 006    vinegar        two … 3_se… 3_se… 3_se… 3_se… 0_no 
+##  7 007    sea_water      half… 3_se… 3_se… 3_se… 3_se… 0_no 
+##  8 008    sea_water      half… 3_se… 3_se… 3_se… 3_se… 0_no 
+##  9 009    citrus         two … 1_mi… 1_mi… 0_no… 1_mi… 0_no 
+## 10 010    citrus         two … 0_no… 0_no… 0_no… 0_no… 1_yes
+## 11 011    purgative_mix… a nu… 3_se… 3_se… 3_se… 3_se… 0_no 
+## 12 012    purgative_mix… a nu… 3_se… 3_se… 3_se… 3_se… 0_no
 ```
 
 Now we don't have extra column names as data, and we are back to 12 rows.
@@ -499,22 +475,22 @@ read_excel(paulolol_xlsx,
 
 ```
 ## # A tibble: 14 × 6
-##    `Data for my study`  ...2      ...3   ...4   ...5  ...6  
-##    <chr>                <chr>     <chr>  <chr>  <chr> <chr> 
-##  1 Paul Investigator MD <NA>      <NA>   <NA>   <NA>  <NA>  
-##  2 44338                <NA>      <NA>   <NA>   <NA>  <NA>  
-##  3 pat_id               SBP_start SBP_e… HR_st… HR_e… treat…
-##  4 1                    145       120    92     78    paulo…
-##  5 2                    147       148    88     87    place…
-##  6 3                    158       139    96     80    paulo…
-##  7 4                    167       166    87     88    place…
-##  8 5                    154       131    84     72    paulo…
-##  9 6                    178       177    99     97    place…
-## 10 7                    151       134    101    86    paulo…
-## 11 8                    149       148    92     93    place…
-## 12 <NA>                 <NA>      <NA>   sbp    hr    <NA>  
-## 13 <NA>                 mean pau… <NA>   131    79    <NA>  
-## 14 <NA>                 mean pla… <NA>   159.75 91.25 <NA>
+##    `Data for my study`  ...2         ...3  ...4  ...5  ...6 
+##    <chr>                <chr>        <chr> <chr> <chr> <chr>
+##  1 Paul Investigator MD <NA>         <NA>  <NA>  <NA>  <NA> 
+##  2 44338                <NA>         <NA>  <NA>  <NA>  <NA> 
+##  3 pat_id               SBP_start    SBP_… HR_s… HR_e… trea…
+##  4 1                    145          120   92    78    paul…
+##  5 2                    147          148   88    87    plac…
+##  6 3                    158          139   96    80    paul…
+##  7 4                    167          166   87    88    plac…
+##  8 5                    154          131   84    72    paul…
+##  9 6                    178          177   99    97    plac…
+## 10 7                    151          134   101   86    paul…
+## 11 8                    149          148   92    93    plac…
+## 12 <NA>                 <NA>         <NA>  sbp   hr    <NA> 
+## 13 <NA>                 mean paulol… <NA>  131   79    <NA> 
+## 14 <NA>                 mean placebo <NA>  159.… 91.25 <NA>
 ```
 
 ### Test yourself on strep_tb
@@ -909,19 +885,19 @@ strep_tb %>%
 
 ```
 ## # A tibble: 11 × 3
-##    radiologic_6m                rad_num improved
-##    <fct>                          <dbl> <lgl>   
-##  1 3_Moderate_deterioration           3 FALSE   
-##  2 3_Moderate_deterioration           3 FALSE   
-##  3 1_Death                            1 FALSE   
-##  4 6_Considerable_improvement         6 TRUE    
-##  5 6_Considerable_improvement         6 TRUE    
-##  6 4_No_change                        4 FALSE   
-##  7 3_Moderate_deterioration           3 FALSE   
-##  8 2_Considerable_deterioration       2 FALSE   
-##  9 6_Considerable_improvement         6 TRUE    
-## 10 3_Moderate_deterioration           3 FALSE   
-## 11 2_Considerable_deterioration       2 FALSE
+##    radiologic_6m              rad_num improved
+##    <fct>                        <dbl> <lgl>   
+##  1 6_Considerable_improvement       6 TRUE    
+##  2 3_Moderate_deterioration         3 FALSE   
+##  3 5_Moderate_improvement           5 TRUE    
+##  4 5_Moderate_improvement           5 TRUE    
+##  5 5_Moderate_improvement           5 TRUE    
+##  6 1_Death                          1 FALSE   
+##  7 1_Death                          1 FALSE   
+##  8 3_Moderate_deterioration         3 FALSE   
+##  9 6_Considerable_improvement       6 TRUE    
+## 10 1_Death                          1 FALSE   
+## 11 4_No_change                      4 FALSE
 ```
 
 

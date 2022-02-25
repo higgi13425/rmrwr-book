@@ -10,16 +10,16 @@ output: html_document
 # Running R from the UNIX Command Line {#cmd-line}
 
 ## What is the UNIX Command line?
-The command line is a simple Terminal window with a prompt at which you can type commands, And do primitive but powerful things to your files. The UNIX computing environment was developed in the 1960s, and is still beloved and fetishized by brogrammers, who believe you are not truly a programmmer if you can't code from the command line. This is silly.
+The command line is a very basic Terminal window with a prompt at which you can type commands, And do primitive but powerful things to your files. The UNIX computing environment was developed in the 1960s, and is still beloved and fetishized by brogrammers, who believe you are not truly a programmmer if you can't code from the command line. This is silly.
 <br><br>
-The major attraction to UNIX in the 1960s is that it was much better than punch cards.  Which isn't saying much. We have had 60 years of software advancement and user interface improvements, so we really should not have to put up with the inherent user hostility of the UNIX environment.
+The major attraction to UNIX in the 1960s is that it was much better than punch cards.  Which isn't saying much. We have had 60 years of software advancement and user interface improvements, so we (most of time) should not have to put up with the inherent user hostility of the UNIX environment.
 <br><br>
 UNIX is an early operating system, which is built around a 'kernel' which executes operating system commands, and a 'shell' which interprets your commands and sends them to the kernel for execution. The most common shell these days is named 'bash', which is a silly recursive brogrammer joke. You will sometimes see references to shell scripts or shell or bash programming. These are the same thing as command line programming.
 <br><br>
 UNIX is a common under-the-hood language across many computers today, as the Apple iOS is built on top of UNIX, and the various versions of the LinuxOS are built on a UNIX-like kernel, with a similar command shell. 
 <br><br>
 The command line is often the least common denominator between different pieces of open-source software that were not designed to work together. It can occasionally be helpful to build a data pipeline from mismatched parts.
- However, there is a lot of low-quality user-hostile command line work involved to get it done, often referred to as "command-line bullshittery". This is a common bottleneck that slows scientific productivity, and there is a vigorous discussion of it on the interwebs [here](https://pg.ucsd.edu/command-line-bullshittery.htm) and [here (counterpoint)](https://medium.com/@eytanadar/on-the-value-of-command-line-bullshittery-94dc19ec8c61). Essentially, some argue that it is largely a waste of time and effort, while others see it as a valuable learning experience, like doing least squares regression by hand with a pencil.
+ However, there is a lot of low-quality user-hostile command line work involved to get it done, commonly referred to as "command-line bullshittery". This is a common bottleneck that slows scientific productivity, and there is a vigorous discussion of it on the interwebs [here](https://pg.ucsd.edu/command-line-bullshittery.htm) and [here (a counterpoint)](https://medium.com/@eytanadar/on-the-value-of-command-line-bullshittery-94dc19ec8c61). Essentially, some argue that it is largely a waste of time and effort, while others see it as a valuable learning experience, like doing least squares regression by hand with a pencil.
 <br><br>
 Running R from the command line is a bit like spending a day tuning your car's engine by yourself. There is a case to be made that this will improve the efficiency and performance of your car, but it is also usually more efficient to pay someone else to do it, unless you are a car expert with a lot of free time.
 
@@ -29,7 +29,7 @@ You can run R from the command line. It has none of the bells and whistles, nor 
 <br><br>
 Running R from the command line allows you to do powerful things, like process multiple files at once, which can be handy when you have multiple files of sequencing data from distinct observations, or you have a multistep data wrangling pipeline with several slow steps. For many years, this was the only way to easily apply code across multiple files to build a complex data pipeline.
 <br><br>
-This is much less true today, with tools to handle file paths like the {here} and {fs} packages, run Python scripts from R with the {reticulate} package, run C++ scripts with Rcpp, and run bash, python, SQL, D3, and Stan scripts from Rmarkdown. You can use the {drake} package to manage multi-step data pipelines in different languages (similar to _make_). But some labs have been doing things at the command line for years, and find it hard to change.
+This is much less true today, with tools to handle file paths like the {here} and {fs} packages, run Python scripts from R with the {reticulate} package, run C++ scripts with Rcpp, and run bash, python, SQL, D3, and Stan scripts from Rmarkdown. You can use the {targets} package to manage multi-step data pipelines in different languages (similar to _make_). But some labs have been doing things at the command line for years, and find it hard to change.
 
 ## How do you get started?
 First, you need to open a terminal window.
@@ -50,7 +50,7 @@ No user interface for you!
 <br><br>
 
 :::tryit
-Let's start with a simple one, which can't do any harm. Run the command below:<br>
+Let's start with a introductory command, which can't do any harm. Run the command below:<br>
 `whoami`
 
 
@@ -63,7 +63,7 @@ whoami
 ```
 :::
 
-Remember that UNIX started out as an operating system for terminals, and knowing who was logged in was a helpful thing.
+Remember that UNIX started out as an operating system for terminals, and knowing who was logged in was a helpful thing, especially if the person logged in was being charged for mainframe time by the minute.
 <br><br>
 You can string together two commands with a semicolon between them. <br>
 
@@ -76,7 +76,7 @@ whoami;date
 
 ```
 ## peterhiggins
-## Thu Nov 11 18:14:00 EST 2021
+## Thu Feb 24 20:52:05 EST 2022
 ```
 :::
 
@@ -117,7 +117,7 @@ cd ..
 ```
 :::
 
-It changes the directory `up` one level closer to the root directory. It is straightforward to go up the directory tree, as each folder only has one `parent`. But it is tricky to go down the directory tree, as there are many possible branches/children, and you do not inherently know the names of these branches. We need to list the contents of your current directory with `ls` to know what is there. 
+`cd ..` changes the directory `up` one level closer to the root directory. Note that there is a **required** space between `cd` and the `..`. You can also go directly to the root directory with `cd /`. It is straightforward to go up the directory tree, as each folder only has one `parent`. But it is tricky to go down the directory tree, as there are many possible branches/children, and you do not inherently know the names of these branches. We need to list the contents of your current directory with `ls` to know what is there. 
 
 :::tryit
 Try the `ls` command in your Terminal window
@@ -136,7 +136,9 @@ ls
 ## 1FQ_Crohn's Disease_23Oct2020 (002).doc
 ## 2 - AbbVie UC Core - Unmet Need_C2 (14) 738 PM ET.pptx
 ## 2 - AbbVie UC Core - Unmet Need_C2 (14) 954PM ET.pptx
+## 2 - AbbVie UC Core - Unmet Need_C2 (7)  Dr. H_PDRH_15Nov.pptx
 ## 2 - AbbVie UC Core - Unmet Need_C2_PDRH_29Sep.pptx
+## 2012 resubmission
 ## 2020-Jun-05 AGA IMIBD meeting notest.docx
 ## 2020_Higgins_ClinResIBD_biosketch.doc
 ## 2021 AGA Invited Speaker Session Basic Hybrid Example.pdf
@@ -145,11 +147,13 @@ ls
 ## 2021.Biobanking Program_InVivo_PDRH-6.21.docx
 ## 2021.Higgins AGA Distinguished Clinician.CO.docx
 ## 203ClareScenes080119 copy.pdf
+## 2PM talks
 ## A is for Allspice.2.0.docx
 ## A is for Allspice.docx
 ## ABT combo proposal Bcl2:JAK
 ## ABT263_HIO_report_toWord.docx
 ## ACG U-ACHIEVE and U-ACCOMPLISH.docx
+## ACG abstracts
 ## ACG21_P19_Efficacy and Safety of Upadacitinib Induction Therapy in Patients With Moderately to Severely Active Ulcerative Col_vSub.pptx
 ## ACLS eCard Peter Higgins.pdf
 ## AGA DDW 2021
@@ -162,55 +166,84 @@ ls
 ## AIBD SoMe Higgins.pptx
 ## AIBD agreement.docx
 ## AIBD20Template.pptx
+## AJGeditorial w Fletcher MRI 2015
 ## AMAG DDW Clear draft_PDRH comments.docx
 ## APG1244_Milestone_report.docx
 ## ARead_RAC-Review_PHiggins.docx
+## AS Propsal outline.docx
 ## ASUC_UC_protocol_comments_2020.docx
+## ASatishchandran Propsal outline.docx
+## AXL_Helmsley_pre-proposal_Higgins.docx
+## AXL_fibrosis_Nov_2021.pptx
 ## A_Woodward_Score Sheet_PDRH.docx
 ## AbbVie_Contract_2021_K000013379_-_Peter_Higgins.pdf
 ## AbbVie_Contract_K000013378_-_Peter_Higgins_2021_adhoc.pdf
+## Abbott PtVideo 2010 Grant App
+## Abbott Talks
 ## Abbvie_DocuSign_Dr_Higgins_Invoice.docx.pdf
+## Abstract examples
 ## Accounts and Access (1) (1).docx
 ## Advice for participants in webinars.docx
+## Advice for young mentors.docx
 ## Animation of NSAID.pptx
 ## Applicant Research Design Task T32.docx
 ## Autoimmune Summit.pptx
+## Awais Chapter Stenosis
 ## BKochar_Frailty.pdf
 ## BM recommendation.docx
 ## Base R Notes.docx
 ## Beginners_GuideToR.pdf
 ## Best Practices Perils Excel
+## Biorepository rebuttal for P30 Core.docx
 ## Biosketch for K.pptx
 ## Biosketch_2020_Higgins_ClinResIBD_biosketch.doc
 ## Book1.csv
+## Brazil 2015
 ## Brazil.ItineraryNov2015.docx
 ## Butter BCS Chicken.docx
+## CADHUM
 ## CAS.K.candidate.background_SB_PDRH.docx
 ## CAS.T32.Project.Description-JS.docx
 ## CAS.career.goals.obj.development.training_PDRH.docx
 ## CB6 and JAK_stat.pptx
+## CB6 manuscript YF.docx
 ## CC360_The Risk of SARS.R1.docx
 ## CC360_The Risk of SARS.docx
 ## CCC_2022
+## CCC_AZ_UC Case 1_COMPLETE.pptx
 ## CCF IBD Webcast 2020 Draft Deck_For Review.pptx
 ## CCFA EIC Candidate Interview Questions (candidates) jobin[1].doc
+## CCFA Microbiota grant
+## CCFA Reviewing
+## CCFA SRA Microbiome 2011
 ## CDC_proposal1.1.docx
+## CIMI revise
 ## CLARE STOCKS.docx
 ## COVID Trials Feasibility
+## CTSU Protocol Checklist_v1_PDRH_Jan2022.docx
 ## CYSIF.pdf
 ## CaltechCampus Tour & Information Session.webarchive
 ## Cancel Appt Epic.ppt
 ## Causal.png
 ## CellDeath_DDW_2021_ISS.pdf
 ## Chu RPG Review_PDRH.docx
+## Clare Higgins Final
 ## Clare Investment Summary.docx
+## Cleaning Medical Data.docx
+## Cleveland.2010Trip
 ## Clinical Coordination and Intense Proactive Monitoring to Improve Utilization of Resources and Reduce Expenditures in High.docx
+## Clinical Research Alliance
+## Closing remarks.docx
 ## Council Conversations Author Chat Guide.docx
 ## Coursera_Programming in R Notes.docx
+## Cover Letter.docx
+## Cover Letter.pdf
 ## CoverLetterPlus.pptx
 ## Crash&Burn_ScriptV2_100318 copy.pdf
+## DDW 2012 MTP Immunomodulator Talk
 ## DDW 2022 AGA Space Grid.xlsx
 ## DDW JAK for UC.pptx
+## DDW2014SD16
 ## DDW2021 CB6 powerpoint.pptx
 ## DDW2021_CB6_Antifibrotic_Higgins.pdf
 ## DDW21_JAK_Higgins.pdf
@@ -218,33 +251,46 @@ ls
 ## DataCamp Courses by Topic.docx
 ## DeEscalationACG2016.pptx
 ## Demographics.pdf
-## Documents.Rproj
+## Documents
 ## DrHiggins IBD Data Request.xlsx
 ## Draft Postop IBD Surgery Care Protocols v2_SERedit.docx
 ## ECCO 2016 Amsterdam Schedule.docx
 ## ECCO 2019 UC PRO SS Abstract D1f_JP_UA_YO_AM_PDRH.docx
 ## ECCO 2022 UPA-UC Ext ind resp abstract_29Oct2021_PDRH.docx
 ## ECCO 2022 abstract^LN2 UPA-UC P3 Disease DurationExtent_v3.0_18Oct2021_PDRH.docx
+## ECCO IHA3
 ## ECCO2016Lycera30937.pptx
+## EDI statement.docx
+## EDI statement.pdf
 ## Editing your Rprofile.docx
 ## Effect of medications on the recurrence of cancer in IBD patients.docx
 ## Electrical engineering interview questions.docx
+## Endpoints in IBD talks
+## Europe Talks
+## Exploring Docker.docx
 ## FCP Sensor proposal draft.docx
 ## FDAtofaResponse.docx
 ## FFMI Kickstart-FinalReport 5-20-16-LJ.docx
 ## FITBITProtocol_28NOV2016_AbbVie.docx
 ## FITBITProtocol_4DEC2016_AbbVie.docx
 ## FMT_DDW_2021_ISS.pdf
+## Faculty Covering Kinnucan Inbox.xlsx
+## Falk Symposium Miami 3.09
 ## Feasibility and Pilot Studies.pptx
 ## Feb2021_ibdTrials.pptx
 ## FellowshipRec_Janson Jacob_Higgins_JB.docx
 ## FellowshipRec_Janson Jacob_Higgins_JB.pdf
+## Fibrosis
+## Fibrosis Symposium
+## Fibrosis lab talks
 ## FibrosisIBDCedars2016.pptx
 ## Figures-KC-JAMA.pptx
 ## Finance and Retirement Plans.docx
 ## Financial Priorities.docx
 ## Flexdashboard notes.docx
 ## GCPcitiCompletionReport8018282.pdf
+## GI T32 Competitive Renewal FINAL 05242017.docx
+## GREAT3 slides
 ## Garmin Notes.docx
 ## General Social Media Tips.docx
 ## General format for Chapters in RMRWR.docx
@@ -260,10 +306,12 @@ ls
 ## GoToMeeting Chats
 ## Govani2020_Article_UseOfAcceleratedInductionStrat.pdf
 ## GradPartyHigginsInvites.xlsx
+## GrandRounds
 ## HPI-5016 IBD Patient Contact Info.xlsx
 ## HS movie.docx
 ## Higgins AGA Webinar Slides.pptx
 ## Higgins Bio.docx
+## Higgins Biosketch 2022.docx
 ## Higgins New IBD.pptx
 ## Higgins Other Support 2021-2.docx
 ## Higgins Other Support 2021.docx
@@ -274,6 +322,7 @@ ls
 ## Higgins-peter.jpg
 ## HigginsACGMidwest2019_PerioperativeIBD.pptx
 ## Higgins_ACG2021.docx
+## Higgins_IBD_AtoZ.pptx
 ## Higgins_LOS_IBDBiobank_Shah_Nusrat_2019.docx
 ## Higgins_LOS_KNewmanF32_letterhead_sig.docx
 ## Higgins_LOS_KNewmanF32_letterhead_sig.pdf
@@ -285,19 +334,26 @@ ls
 ## How To Log in to RStudio Server for Shiny.docx
 ## IBD 2020 - Honorarium reimbursement Form.docx
 ## IBD Biobank Cryostor.pptx
+## IBD Center presentations
 ## IBD Clinical Trials for MDsDearborn2017.pptx
+## IBD Databank Talks on the Road
 ## IBD Insurance Pilot Results.docx
 ## IBD Insurance Survey for CCFA Partners Existing.docx
+## IBD J Club Miri extended induction.pptx
 ## IBD Journal Club 13Feb2017.docx
 ## IBD Journal Club July 11.docx
+## IBD Osteoporosis 1 27 2022_PDRH.docx
 ## IBD Plexus meeting 21 Sep 2015 notes.docx
+## IBD School
 ## IBD School 322 Script.docx
 ## IBD School 324 Script.docx
 ## IBD School 325 Script.docx
 ## IBD and biologics tweets.docx
 ## IBD inbox coverage.docx
+## IBD video scripts ppt
 ## IBDInsuranceSurvey3.docx
 ## IBDMentoringConferenceCall4AbstractsPH.docx
+## IBDSkinCa Copy.Data
 ## IBD_Deescalation_Apr_2019_PDRH.docx
 ## IBDforLansing2017.pptx
 ## IMG_0006.jpg
@@ -308,17 +364,23 @@ ls
 ## IMIBD Plenary Intro.pptx
 ## IMIBD_expanded_descriptors.xlsx
 ## INTERNAL_BUDGET_Abbvie_Nav_Rux_Sept_2021.xlsx
+## Ideas for CCC 2023.docx
 ## Introduction to Application Supplement Photoacoustic.docx
+## Invoice AV50559_Abbvie_PDRH_Dec2021.doc
+## Invoice AV50559_Abbvie_PDRH_Dec2021.pdf
 ## JAK_DDW_2021_ISS.pdf
 ## JAMA Review on CD.docx
 ## JAMA.CD.Highlights_PDRH.docx
 ## JAMA_KC_Second JAMA.docx
 ## JAMA_Review_on_CD_Revisions_Tracked_Changes with edits_PDRH.docx
 ## JB_V1 Career Goals and Objectives 7.8.2020_PDRH.docx
+## JB_V10 K23 Running Document.docx
 ## JB_V2 Candidate’s Background 7.7.2020_PDRH.docx
 ## JDix_Study_update.docx
 ## Jessica Sheehan Rec Letter Fellowship.docx
 ## Jessica Sheehan Rec Letter Fellowship.pdf
+## Jessie Pfizer materials.docx
+## Jessie Sheehan Projects
 ## Jun2021_ibdTrials [Autosaved].pptx
 ## Jun2021_ibdTrials.pptx
 ## K Award Institutional Letter of Commitment.pptx
@@ -326,6 +388,7 @@ ls
 ## K105_Melmed_PROs in Practice_MB_bb_JLS.pptx
 ## K23 Aims - Shirley Cohen-Mekelburg 11.14.19.docx
 ## K23_morph_measurements_MockupManuscript_21JAN2019.docx
+## KP pdfs
 ## K_R_NIH_biosketches_2022.pptx
 ## Kelli Porzondek_Performance_Review_Sep_2021.docx
 ## Learning R discussion Jeremy Louissaint.docx
@@ -336,6 +399,7 @@ ls
 ## Log in to IBD Server.docx
 ## Low Enrollers ACD.xlsx
 ## MCTSU QC Time to Activation (002).pptx
+## MDOutReachIBDSlides
 ## MEI_2020_PH_W9.pdf
 ## MEI_2021_PH_W9.pdf
 ## MEI_2021_W9.pdf
@@ -343,6 +407,7 @@ ls
 ## MIM-TESRIC PROTOCOL_Higgins_14Apr2020.docx
 ## MIM-TESRIC PROTOCOL_Higgins_26Aug2020.docx
 ## MM letterhead UMICH.docx
+## Machine Learning Seville
 ## Managment of CD.pptx
 ## Manuscript v1.docx
 ## Manuscript v2.PDRH.docx
@@ -352,10 +417,12 @@ ls
 ## Meta analysis TB vs CD version 3.5.docx
 ## Michigan Medicine Gastroenterology Social Media Initiative.docx
 ## Michigan Medicine Model for COVID-19 Clinical Trial Oversight DRAFT (KSB 04.17.20)-AL-PDRH.docx
+## Microbiota Forceps
 ## Microsoft User Data
 ## MultidisciplinaryIBDClinicPHv2.docx
 ## NoStairs.docx
 ## NordicTrackTC9iTreadmillManual.pdf
+## Noro paper
 ## Notes on Spatial data workshop.docx
 ## Oct2019payPDRH.PDF
 ## Odd college lists.docx
@@ -368,11 +435,15 @@ ls
 ## PDRH short bio.docx
 ## PHcv2019.docx
 ## PHcv2020.docx
+## PHcv2022.docx
+## PHcv2022.pdf
 ## PRO agenda videos VINDICO.docx
 ## PRO letter.docx
+## PROs and Endpoints
 ## PS_K grant aims 6-25_PDRH.docx
 ## PTM LOS From PDRH.docx
 ## PTM LOS From PDRH.pdf
+## Package List recruit
 ## Patient Reported Outcomes Plan.docx
 ## Pearson 5 Notes.docx
 ## Perils of Excel.pptx
@@ -393,10 +464,16 @@ ls
 ## PredictingIBD_DDW_2021_ISS.html
 ## PredictingIBD_DDW_2021_ISS.pdf
 ## Proposal for MCTSU Study Accrual Monitoring.docx
+## PtEdOnRoad
 ## Purdue Disclosure Form_Higgins.docx
+## Pyoderma Case
 ## Question 16.docx
 ## Quiros SRA- Higgins LoS draft_PDRH.docx
 ## Quiros SRA- Higgins LoS draft_PDRH.pdf
+## R01 Fibrosis 2012
+## R01 ML revision
+## R01 MachineLearn2010
+## R01.US.Revision
 ## RCode
 ## RMed21- Intro to Spatial.pptx
 ## RMed21-Opening remarks Day 1.pptx
@@ -404,10 +481,15 @@ ls
 ## Ramp up clinical research_PH.xlsx
 ## Ramping up human subject research - MM 6-1-20 _KDA_PDRH_suggestions.docx
 ## Recordings
+## Regueiro Chapter
 ## Reply_JAMA_Thiopurines.docx
+## Research Statement.docx
+## Research Statement.pdf
 ## Review Criteria for COVID Clinical Trials.docx
 ## Review guidelines_2017.docx
 ## Roasted Salted Cashews.docx
+## Ryan CDA
+## Ryan K
 ## S is for Saffron 3.0.docx
 ## S is for Saffron 3.1.docx
 ## S is for Saffron 3.2.docx
@@ -417,6 +499,10 @@ ls
 ## SEAN STOCKS.docx
 ## SIG_Template_IBD Program_FINAL.docx
 ## SPECIFIC AIMS 2_PDRH.docx
+## SPir abstract 2700
+## Scanner pictures
+## Scheduling Epic Schedule.pptx
+## Scheduling Epic Schedules.pptx
 ## Scoring Sheet_Albin_PDRHiggins.docx
 ## Scoring Sheet_Janda_PDRHiggins.docx
 ## Screenwriting Contests.docx
@@ -429,9 +515,13 @@ ls
 ## Sean Resume Tabular.docx
 ## Sean Resume.docx
 ## Sean Summer Priorities 2016.docx
+## Seattle Talk Dec 2012
 ## SecureIBD.pptx
+## Severe UC protocol
 ## SevereUC_Tofa_Presentation_IBD_Forum.pptx
+## Shail CT
 ## ShareRmd.html
+## Sheehan Pfizer IBD Fellowship.docx
 ## Sherman Prize Nominee Questions.docx
 ## Shoreline West Tour Information.docx
 ## Short PA slides.pptx
@@ -440,26 +530,38 @@ ls
 ## Signing Clinical Research Infusion Orders.pdf
 ## SingleCell_DDW_2021_ISS.pdf
 ## SkinCancer.IBD.Gentics_Yanhua_PDRH.docx
+## Slade UC review Walter
 ## SoMe_use_2020.png
 ## Social Media for GI.pptx
+## Soulfege t shirts
 ## Source Code PT1.docx
+## Specialty Pharmacist Referral Process_11162021.pptx
 ## Specific Aims.pdf
 ## Stairs.docx
 ## Stelara paper.docx
 ## Stelara paper_revised_PDRH_KCC.docx
 ## Structure of Aim 3.docx
+## Surgery Topics
+## Surveys
+## T32 Competitive Renewal 2017 FINAL WM.pdf
+## T32 summary statement.pdf
 ## T32_current_text_14June2019.docx
 ## TOPPIC ML draft v5SCM_YL_AKW_PDRH.docx
 ## TabaCrohn IBD J club.docx
 ## Tables.docx
+## Taiwan talks
 ## Takeda Grants_Letter of Request_IBD School Videos_Medication Series_2018_.docx
 ## Takeda_IBD School Videos_Submission.pdf
 ## Task List 2020-2.docx
 ## Task List 2020-5.docx
 ## Task List 2020.docx
 ## Task List 2021.docx
+## Task List 2022.docx
+## Tenure Plan
 ## Testing signatures with Adobe.pdf
 ## The Risk of SARS.R1.Markup.docx
+## Thiopurine talks Manitoba 2011
+## Thiopurines talks Vandy
 ## Tidymodels.docx
 ## Timelines for K submission.pdf
 ## Timelines for K submission.pptx
@@ -470,14 +572,21 @@ ls
 ## Tofa_Presentation_2_10_2021.pptx
 ## Toffee Separation Tips.docx
 ## UC CD Impact Manuscript Tables__19Feb2021_PDRH.docx
+## UC and CD Impact Manuscript_Draft 2_9Jan2022_PDRH.docx
 ## UC and CD Impact Manuscript_Draft1_19Feb2021_PDRH.docx
+## UC2.jpg
+## UCB Pt video 2010 Grant App
 ## UCRx_DDW_2021_ISS.pdf
 ## UC_protocol_comments_2020.docx
+## UEGW 2010
+## UEI stidham files
 ## UM IBD Clinical Trials IBD referral form.docx
 ## UM Severe UC Protocol.docx
 ## UPA_U_ACHIEVE 1st draft_PDRH.docx
 ## Upa ASUC Concept Page.docx
 ## Upa M14-234 SS3 maintenance  Q and A ECCO 2022.docx
+## Upa outpatient vs Prednisone_PDRH.docx
+## VINDICO IBD
 ## VINDICO_PRO.pptx
 ## VideoVisitSchedulingQuickApptsforProviders.pdf
 ## VincentChen_K specific aims 2020-10-25.docx
@@ -495,6 +604,7 @@ ls
 ## biomakers_fibrosisPDRH.docx
 ## blue_down_arrow - Gravit Designer.html
 ## bmj_imputation.pdf
+## bowel disease_2108_PDRH.docx
 ## cgh_factors_utilization.pdf
 ## clare_stocks_long_term.xlsx
 ## cycling core exercises.docx
@@ -510,6 +620,7 @@ ls
 ## hexStickers.jpg
 ## higgins2x3.jpg
 ## iBike Rides
+## imaging_stricture.xlsx
 ## introduce_clare.docx
 ## jama_cushing_crohn_review_2021.pdf
 ## learnr app diagram.jpg
@@ -536,6 +647,7 @@ ls
 ## signature.html
 ## signature.pdf
 ## signature.png
+## sorted_steno.xlsx
 ## stiff_bcl.R
 ## submitJanssen_IBD School Videos_12Jul2018.pdf
 ## tidyr_pivot.png
@@ -554,6 +666,7 @@ ls
 ## ~$sk List 2020-5.docx
 ## ~$sk List 2020.docx
 ## ~$sk List 2021.docx
+## ~$sk List 2022.docx
 ```
 :::
 
@@ -566,7 +679,7 @@ ls -l
 ```
 
 The full listing will give you more details, including read & write permissions, file size, date last saved, etc. <br>
-Many commands have options, or flags, that modify what they do.
+Many UNIX commands have options, or flags, that modify what they do.
 <br><br>
 Find a folder inside of your Documents folder. We will now go `down` a level in the directory tree. In my case, I will use the `Powerpoint` folder. <br>
 In your Terminal window:
@@ -584,21 +697,44 @@ ls
 ## 2016IBDClinTrialsforMDsDearborn.pptx
 ## 2016IntegratedDeckorMDsGB.pptx
 ## 2019 SCSG GI Symposium IBD SoA  -  Read-Only.pptx
+## ADTC Flowchart-draft-RWS_14FEB2015.docx
+## Acutely Ill IBD Patient protocol for ADTC-RWS.docx
 ## Annual Research Career Review 2021PH.pptx
 ## BE LGD Dearborn 2016.04.12.pptx
 ## CCF_Clinical_Trials.pptx
-## Feasibility and Pilot Studies.pptx
+## CP1_Higgins Intro.pptx
+## CP2_DiagnosingIBD_KC.pptx
+## CP3_FMT_MMM.pptx
+## CP4_SurgeryRegenbogen.pptx
+## CP5_NutritionIBD_EH.pptx
+## CP6_Infections2018.pptx
+## CP7_PsychologicalStress_Riehl IBDFlint2018.pptx
+## CP8_SteroidsWaljee.pptx
+## CP9_ClinicalTrials2018.pptx
+## ECCO 2022 UPA-UC ext duration oral_v2.0_3Feb2022_for QC.pptx
+## ECCO22_Template.pptx
+## Feasibility and Pilot Studies CTA.pptx
+## FibrosisIBDCedars2016.pdf
 ## Getting Started in RStudio.pptx
+## Higgins CCFA CTPROs in IBD.pptx
+## Higgins CCFACT2017FundingClinicalResearch.pptx
+## Higgins HK 2017IBD Nursing and Quality of Care.pptx
+## Higgins HK 2017The Gut Microbiota and the Pathophysiology of IBD.pptx
 ## Higgins Microbiota for IBD Patient Ed.pptx
 ## HigginsDec2018AJG_SmokingStatus.pptx
+## HigginsFALKMadridThioMtx2017.pptx
+## Higgins_CCC_2018_Refractory_Rising_Bar_v3.pptx
 ## IBD and PTSD.pptx
 ## IBDUpdate.pptx
+## IOIBD.Fibrosis.Higgins.2018.Amsterdam.pptx
 ## Integrated Slide Deck Dearborn 2016.04.12.pptx
 ## MER Stress Management Dearborn 4-14.pptx
 ## MichiganMedicine-IBDTemplate.potx
+## Outcome Measures CTA.pptx
 ## PDRH RCR 2020.pptx
 ## PDR_Higgins_DeficienciesInIBD_AIBD2021.pptx
 ## PennThioMTX2017Higgins.pptx
+## PragueRefractoryRisingBar2017.pptx
 ## Pregnancy in IBD.pptx
 ## Presentation1.pptx
 ## Regenbogen CRS for GI CME Course2016.pptx
@@ -606,10 +742,15 @@ ls
 ## Social Media for GI.pptx
 ## ThomsonRectalStumpComplicationsIBD2_13.pptx
 ## UEGweek2020.pptx
+## UMHS IBD ADTC Encounter Note-DRAFT-RWS_15FEV2015.docx
 ## UMHS Talk- Moving Beyond AntiTNF 4-2016 FINAL v2.pptx
 ## UMich COVID-19  IBD.pptx
+## Update on COVID and IBD.pptx
 ## Vertebrate Animals for K.pptx
 ## VirtualPtEdMar2020.v2.pptx
+## VirtualPtEdMar2022Jan.pptx
+## VirtualPtEd_2022_Deck.pptx
+## VirtualPtEd_2022_Feb.pptx
 ## Writers Room.pptx
 ## ibd_meds_surgery_metan.pptx
 ```
@@ -630,9 +771,9 @@ ls
 ```
 :::
 
-You have now made a new directory (folder) within the previous directory, named `new_files`. Verify this in your Documents folder.<br> 
-You can now change to this directory <br>
-and list the contents (it should be empty).<br>
+You have now made a new directory (folder) within the previous directory (`pwd` = present working directory), named `new_files`. Verify this in your Documents folder.<br> 
+You can now make changes to this directory <br>
+and list the contents (it should currently be empty).<br>
 
 
 :::tryit
@@ -705,7 +846,7 @@ Copy the path to the current directory from the Terminal.<br>
 Switch back to the Rmarkdown document.<br>
 Select one of the R code chunks (note the {r} at the top) and delete it.<br>
 Now click on the Insert dropdown at the top of the document, and insert a Bash chunk.<br>
-Now add UNIX commands (separated by a semicolon), like
+Now you can add UNIX commands (separated by a semicolon) to this code chunk, like
 
 
 ```bash
@@ -741,7 +882,7 @@ rmdir new_files
 :::
 
 Verify all of this in your Documents window.<br>
-This is great. But you can imagine a situation in which you mistakenly `rm` a file (or directory) that you actually needed. Unlike your usual user interface, when a file is removed at the command line, it is gone. It is not in the trash folder. It is gone. There is something to be said for modern user interfaces, which are built for humans, who occasionally make mistakes. Sometimes we do want files or folders back.
+This is great. But you can imagine a situation in which you mistakenly `rm` a file (or directory) that you actually needed. Unlike your usual user interface, when a file is removed at the command line, it is gone. It is not in the trash folder. It is **really** gone. There is something to be said for modern user interfaces, which are built for humans, who occasionally make mistakes. Sometimes we do want files or folders back.
 
 ## Other helpful file commands
 Here are some file commands worth knowing
@@ -770,7 +911,7 @@ Now you can run R in interactive mode with available datasets, or your own datas
 
 
 :::tryit
-Try a few simple commands with the mtcars dataset.<br>
+Try a few standard tidyverse commands with the mtcars dataset.<br>
 Give the examples below a try.<br>     
 
 You can use `q()` to quit back to the terminal (and reply "n" to **not** save the workplace image).
@@ -816,7 +957,7 @@ mtcars %>%
 ## What about just a few lines of R?
 Sometimes you will want to call R, run some code, and be done with R.<br>
 You can call R, run a few lines, and quit in one go.<br>
-Just add the flag `-e` (for _evaluate_) to the call to R,<br>
+You can add the flag `-e` (for _evaluate_) to the call to R,<br>
 and put the R commands in quotes.<br>
 
 :::tryit
@@ -833,9 +974,10 @@ or this example - note that single or double quotes does not matter - as long as
 Try this
 
 ```bash
-R -e 'install(palmerpenguins)'
+R -e 'install.packages(palmerpenguins)'
 ```
 :::
+
 You can also string together several commands with the semicolon between them. 
 
 :::tryit
@@ -848,7 +990,7 @@ R -e 'library(palmerpenguins);data(penguins);tail(penguins)'
 :::
 ## Running an R Script from the Terminal
 Now we are stepping up a level - you have an R script that you have carefully created and saved as the `myscript.R` file. How do you run this from the Terminal?<br>
-This is easy - just call the `Rscript` command with your file name. 
+This is straightforward - you can call the `Rscript` command with your file name. 
 
 :::tryit
 Pick out a short R file you have written, make sure you are in the right directory where the file is, and use it as in the example below.
@@ -858,10 +1000,10 @@ Pick out a short R file you have written, make sure you are in the right directo
 Rscript myscript.R
 ```
 :::
-This launches R, runs your script, saves resulting output (if your script includes save or ggsave commands), closes R, and sends you back to the Terminal. Very simple.
+This launches R, runs your script, saves resulting output (if your script includes save or ggsave commands), closes R, and sends you back to the Terminal. Very nice!
 
 ## Rendering an Rmarkdown file from the Terminal
-This is a little different, as you can't just run an Rmarkdown file. Normally you would use the dropdown button to knit your file from Rstudio. But you can use the `rmarkdown::render` command to render your files to HTML, PDF, Word, Powerpoint, etc. Pick out a simple Rmd file like `output_file.Rmd` below, make sure you are in the right directory where the file is, and try something like the example below. <br>
+This is a little different, as you can't just run an Rmarkdown file. Normally you would use the dropdown button to knit your file from Rstudio. But you can use the `rmarkdown::render` command to render your files to HTML, PDF, Word, Powerpoint, etc. Pick out a small Rmd file like `output_file.Rmd` below, make sure you are in the right directory where the file is, and try something like the example below. <br>
 Note that this is one case where nesting different types of quotes (single vs. double) can come in handy.<br>
 It helps to use single quotes around your filename and double quotes around the `rmarkown::render` command.
 

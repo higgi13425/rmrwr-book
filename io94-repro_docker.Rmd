@@ -1,0 +1,58 @@
+---
+title: "Advanced Reproducibility with Docker and Containerization"
+author: "Peter Higgins"
+date: "2/12/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(medicaldata)
+library(janitor)
+library(here)
+library(renv)
+```
+
+# Advanced Reproducibility With Containers
+
+One of the problems with using projects, project-specific packagelibraries with {renv}, with data shared in a public repository, and code shared on GitHub, is that it does not go far enough. It does not address the potential reproducibility issues of 
+
+- differences between different computers (operating systems, files available)
+- potential future versions of R that are not entirely backward-compatible
+
+These limitations can be addressed with 'containers'.
+
+Containers are a computer technology that allow you to encapsulate a *computing environment* into a downloadable file. This allows you to 'containerize'
+
+- a small operating system like Linux
+- a particular version of R
+- a particular version of RStudio
+- all of the particular packages in the versions you need
+- your code (which may import your data from a web repository if large)
+- and/or a small dataset
+
+into a downloadable Docker 'image' file on the internet (usually DockerHub).    
+
+You can then share this link with others, and they can download this 'image' and run the container on their computer, generating an instance of RStudio that runs your code on your data with the right version of R and the right versions of packages. 
+
+As you might expect, this takes a bit of software setup to get started. 
+
+## Getting Started with Docker
+
+- Install Docker
+    https://docs.docker.com/get-docker/ with the right version for your computerOS and processor (it may not work well for M1 or M2 MacOS)
+- if Windows, install Linux
+    this may/probably will require an extra step, installing the Linux kernel, which requires opening Windows PowerShell, and running wsl –install to install the Windows Subsystem for Linux.
+- set up DockerHub account
+    – hub.docker.com – sign up for a free account, which is a container registry, where we can store our docker images under your username repo. These can be public or private. Or we can have a separate container registry (i.e. on a local server behind a firewall). We push (docker push imagename) – while logged in from Terminal - images to a container registry for backup, versioning, and sharing.
+- log in
+    Log in to your dockerhub account in a browser – this will take you to your dashboard
+
+## Using Docker to Pull an Image and Run a Container
+
+Open a Terminal Window (MacOS) or Bash window (Windows)
+
+At the prompt, type (or paste) `docker pull dockerid/imagename`, or specifically, `docker pull phiggins0714/medical`and press enter to run this. This will pull the container image from DockerHub to your computer.
+
+Now run the container. At the prompt in your terminal window, type `docker run dockerid/imagename`, or specifically, `docker pull phiggins0714/medical`

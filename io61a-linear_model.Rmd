@@ -1,0 +1,236 @@
+
+---
+title: "Introduction to Linear Regression Models"
+author: "Peter Higgins"
+date: "1/30/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(medicaldata)
+library(broom)
+library(gt)
+library(gtsummary)
+library(flextable)
+library(ggthemes)
+library(ggrepel)
+library(RColorBrewer)
+library(dslabs)
+indo <- Indometh %>% 
+  mutate(outcome_var =1,
+         indep_var=0.5)
+data("murders")
+r <- murders %>%
+  summarize(pop=sum(population), tot=sum(total)) %>%
+  mutate(rate = tot/pop*10^6) %>% .$rate
+ds_theme_set()
+data("gapminder")
+data("us_contagious_diseases")
+the_disease <- "Measles"
+```
+
+## Getting Started
+
+This is an introduction to the basics of linear regression. This is based in part on [LSR Chapter 15](https://learningstatisticswithr.com/book/regression.html#regressiondiagnostics).  
+Some of the plotting ideas come from [Simon Jackson](https://drsimonj.svbtle.com/visualising-residuals)  
+
+and from [Raju Rimal](https://rpubs.com/therimalaya/43190) and  
+how to interpret residual plots from the [University of Virginia](https://data.library.virginia.edu/diagnostic-plots/)  
+
+Let's start by looking at the indomethacin pK dataset, indo. This is a modified version of the Indometh dataset, with two new constants, indep_var and outcome_var.
+The Indometh dataset has 3 variables, Subject, time, and conc. This is from a study of the pharmacokinetics of a single dose of intravenous indomethacin. Because indomethacin is cleared by 3 routes (renal, peripheral metabolism, and bile excretion), it has a short half-life, and the clearance is concentration dependent. Lets look the dataset and a summary of the dataset. Rund the code below to take a look.
+
+```{r indo}
+glimpse(indo)
+summary(indo)
+```
+So now we know that 
+- there are only three variables (plus outcome_var and indep_var)
+- time is probably in units of hours, with a maximum of 8
+- everyone took some drug, and the maximum concentration was 2.72, and the median concentration is lower than the mean
+
+## Jumping Into Regression
+
+Linear regression is run with the `lm()` function.
+Let's look at whether time from dosing can predict concentration, as we would expect.
+Pipe the indo dataset into a lm function. The lm function has 2 main arguments 
+
+1. formula
+2. data
+
+Edit the code below to set up conc as the dependent outcome variable (left of the formula tilde), and time as the independent (predictor) variable (to the right of the formula tilde).
+The 2nd argument, `data = .` means to use the incoming data from the pipe as the dataset for modeling.
+
+After editing, run the code below
+
+```{r lm_time}
+indo %>% 
+  lm(conc ~ time, data = .) ->
+model_time
+
+summary(model_time)
+
+```
+
+Let's interpret the output of the model summary, in 6 parts:
+
+1. The `Call:` just repeats the formula and data we entered into lm, in case we forgot
+2. The `Residuals` gives us a quick reality check - the residuals should be centered on zero, and normally distributed. So the `Median` should be close to zero, and the 1st and 3rd quartile should be roughly equal in absolute value. These look fairly reasonable, but there is a bit of mismatch between 1Q and 3Q, and between Min and Max.
+3. The `Coefficients` gives you an estimate for the intercept (the conc (indep_var) when time (dependent_var) = 0). There is also an estimate for the coefficient for `time`. The `conc` goes down an average of 0.18237 per unit of time (1 hour). The standard error (useful for calculating confidence intervals) and the t value and p value are provided for each estimate. `Time` is a significant predictor of `conc` (3 stars!).
+4. The resicula standard error is shown, for 64 degrees of freedom. This dataset has 66 observations. One degree of freedom is used to estimate the `Intercept`, and one to estimate the coefficient for `time`.
+5. The R-squared is 0.5048, which is literally the Pearson correlation squared. The adjusted R squared, which adjusts for the degrees of freedom, is 0.497. That means that this simple model explains about 49.7% of the variance in `conc`.
+6. The F statistic helps you estimate if the overall model is significantly different from random chance, which the p value shows is significant. 
+
+Adjusted R2 is not bad, 0.497  
+Time is highly significant.  
+Seems like a decent model, right?  
+
+
+## Diagnostics  
+Let's look at some diagnostics.
+Are the residuals normally distributed around zero (around the line of best fit?  
+As a quick look, the median residual in output above is close to zero.  
+But the 1Q and 3Q have different absolute values (almost 2 fold difference).   
+Hmm.  
+Let's take a closer look with a residuals plot made with ggplot2.
+Edit the code below so that
+In the aesthetics statement, you set x equal to **time**, and y equal to **conc**.
+In the geom_segment aes, you set xend equal to **time**, and yend equal to `.fitted`.
+```{r augment}
+indo %>% 
+  lm(conc ~ time, data = .)  %>% 
+  augment() ->
+df_time
+
+ggplot(df_time, aes(x = time, y = conc)) +
+  geom_smooth(method = "lm", se = FALSE, color = "lightblue") +
+  geom_segment(aes(xend = time, yend = conc), alpha = .2) +  # Note `.fitted`
+  geom_point(aes(alpha = abs(.resid))) +  # Note `.resid`
+  guides(alpha = 'none') +
+  geom_point(aes(y = .fitted), shape = 1, color="blue") +  # Note `.fitted`
+  theme_bw()
+```
+
+Take a look at the plot. The blue line is the regression line.
+The residuals should be normally distributed around the line.
+
+Note that all residuals are above the fitted line at early time points, then all below the fitted line in the middle, then above the line at late time points. **Not** looking normally distributed.  
+This is funky.  
+The distribution of the residuals does not look right
+
+## Stepping back 
+We kinda skipped the DEV (Data Exploration and Validation) step, and jumped right in.  
+Maybe this is **not** a linear relationship between time and concentration?  
+Let's go back and plot the raw data in a scatter plot.
+Set x=time, y= conc, and color = Subject in the code below.
+
+```{r scatter}
+indo %>% 
+  ggplot(aes(x=time, y=conc, color=conc)) +
+  geom_point() +
+  guides(color= 'none') +
+  theme_bw()
+```
+Okay, that is definitely not linear. 
+Not cubic or quadratic.  Certainly not a great candidate for a linear model.
+Maybe inverse?
+
+:::warning
+ALWAYS look at your data, plot your data for a reality check before beginning to model.
+Not everything is linear, or even monotonic.
+:::
+
+## Inverse Model  
+
+Let's add a variable for inverse time, and build a new model.
+In the code below, replace `indep_var` in the mutate function with 1/time.
+
+The the model (lm statement), change the independent variable to invtime.
+
+Then we will look at a summary of this new model.
+
+```{r inverse}
+indo %>% 
+  mutate(invtime = 1/time) ->
+inv
+
+inv %>% 
+  lm(conc ~ invtime, data = .) ->
+model_inv 
+
+model_inv %>% 
+  summary()
+
+```
+
+This looks better.  
+The median residual is close to zero, and the 1Q and 3Q residuals are close to equal.  
+The adjusted R2 is also much better, at 0.9043.  
+
+## Inverse Diagnostics   
+Let's check the same diagnostic plot on this one.
+Replace `indep_var` with invtime for x and xend in the code below.
+Then run the code.
+
+```{r diag_inv}
+indo %>% 
+  mutate(invtime = 1/time)  %>% 
+  lm(conc ~ invtime, data = .) %>% 
+ augment() ->
+df_invtime 
+
+ggplot(df_invtime, aes(x = invtime, y = conc)) +
+  geom_smooth(method = "lm", se = FALSE, color = "lightblue") +
+  geom_segment(aes(xend = invtime, yend = .fitted), alpha = .2) +  # Note `.fitted`
+  geom_point(aes(alpha = abs(.resid))) +  # Note `.resid`
+  guides(alpha = 'none') +
+  geom_point(aes(y = .fitted), shape = 1, color="blue") +  # Note `.fitted`
+  theme_bw() + 
+  labs(title = "Residuals vs. fitted line for Inverse Time Model")
+```
+
+Well, that certainly looks better.  
+Let's see if we can make a QQ plot to look at normality of residuals in a different way.  
+In the code below to set sample equal to .std.resid
+(the standardized residuals)
+The points should largely follow the reference line if the residuals are normally distributed.
+
+```{r qq, error=FALSE}
+df_invtime %>% 
+  ggplot(aes(sample=.std.resid)) +
+  stat_qq() +
+  geom_qq_line()+
+  xlab("Theoretical Quantiles") +
+  ylab("Standardized Residuals") +
+  ggtitle("Normal Q-Q") +
+  theme_bw()
+```
+Great.
+That looks reasonably close to the line
+Now let's take the output of this model and put it into a nice table.
+Take model_inv, 
+and pipe it into the tidy() function.
+Run to code to check the result.  
+
+Then pipe this into the gt() function to get a nicer looking table,
+Run this code.
+```{r table_coeff}
+indo %>% 
+  mutate(invtime = 1/time) %>% 
+  lm(conc ~ invtime, data = .) %>% 
+  tidy() %>% 
+  gt()
+
+```
+
+Here is another (more convenient) way to do this, with _tbl_regression()_ from the {gtsummary} package.
+
+```{r}
+indo %>% 
+  mutate(invtime = 1/time) %>% 
+  lm(conc ~ invtime, data = .) %>% 
+  gtsummary::tbl_regression()
+```
+
