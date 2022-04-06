@@ -12,7 +12,8 @@ library(broom)
 library(medicaldata)
 ```
 
-## Comparing Two Measures of Centrality
+# Comparing Two Measures of Centrality
+
 A common question in medical research is whether one group had a better outcome than another group. These outcomes can be measured with dichotomous outcomes like death or hospitalization,
 but continuous outcomes like systolic blood pressure, endoscopic score, or ejection fraction are more commonly available, and provide more statistical power, and usually require a smaller sample size. <br>
 There is a tendency in clinical research to focus on dichotomous outcomes, even to the point of converting continuous measures to dichotomous ones (aka "dichotomania", see Frank Harrell comments [here](http://biostat.mc.vanderbilt.edu/wiki/Main/CatContinuous)), for fear of detecting and acting upon a small change in a continuous outcome that is not clinically meaningful. <br>

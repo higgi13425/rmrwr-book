@@ -24,10 +24,6 @@ prostate <- medicaldata::blood_storage %>% janitor::clean_names() %>%
 
 ```
 
-### Acknowledgement
-
-This chapter is inspired by a lesson from Claus Wilke at [https://wilkelab.org/SDS375/slides/functional-programming](https://wilkelab.org/SDS375/slides/functional-programming.html#38)
-
 # Functions
 
 Nearly everything in R and the tidyverse is built on functions. Every command you write that ends with parentheses is a function. The parentheses contain arguments (unless you just use the defaults), which the function acts upon.
@@ -450,6 +446,10 @@ Now try this on your own - and use the outline mode to jump back and forth to pr
 6.  Now nest the data by education, and mutate up some plots with *make_infert_plots*, as in prostate-plot-6
 7.  Then pull these plots and print them out with walk, as in prostate-plot-7
 8.  Now make a nested and generalizable version for all values of education, using your *make_infert_plots2* function, as in prostate-plot-8
+
+### Acknowledgement
+
+This chapter is inspired by a lesson from Claus Wilke at [https://wilkelab.org/SDS375/slides/functional-programming](https://wilkelab.org/SDS375/slides/functional-programming.html#38)
 
 ## Read More
 

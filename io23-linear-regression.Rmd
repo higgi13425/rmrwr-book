@@ -1,36 +1,459 @@
 ---
-title: "Linear Regression and Broom"
+title: "Linear Regression and Broom for Tidying"
 author: "Peter Higgins"
 output: html_document
+editor_options: 
+  markdown: 
+    wrap: sentence
 ---
 
-# Linear Regression
+```{r setup, include=FALSE}
+library(tidyverse)
+library(medicaldata)
+library(broom)
+library(janitor)
+library(easystats)
+library(performance)
+library(insight)
+library(gtsummary)
+library(webexercises)
+```
+
+# Linear Regression and Broom for Tidying Models
+
+Linear regression allows you to:
+
+1.  estimate the effects of predictors (independent variables) on an outcome (dependent variable), assuming that there is a linear relationship
+
+2.  Make predictions about future cases (patients) with their measured predictors on this continuous outcome.
+
+Let's look at a simple linear model to predict annual health care expenses.
+![shinyapp linear regression](images/shinyapp_hc_expenses.png)
+```{r}
+library(tidyverse)
+library(mlbench)
+library(broom)
+library(cutpointr)
+library(janitor)
+library(easystats)
+library(medicaldata)
+
+dm_data <- data("PimaIndiansDiabetes2", package = "mlbench")
+
+# build model, all variables
+dm_mod <- glm(diabetes ~ ., 
+              data = PimaIndiansDiabetes2, 
+              family = "binomial")
+# output
+summary(dm_mod)
+#tidy version
+tidy(dm_mod)
+# model performance
+glance(dm_mod)
+
+# augment data with fitted predictions and residuals
+dm_data_plus <- augment(dm_mod) %>% 
+  mutate(pct_prob = 100 * plogis(.fitted)) %>% 
+  relocate(diabetes, .fitted, pct_prob) %>% 
+  arrange(-.fitted)
+
+# select a cut point for classification
+cp <- dm_data_plus %>% 
+  cutpointr(pct_prob, diabetes,
+            pos_class = "pos",
+            method= maximize_metric,
+            metric = sum_sens_spec)
+
+cp
+summary(cp)
+
+plot(cp)
+
+plot_metric(cp)
+
+# classify based on cut point
+dm_data_plus <- dm_data_plus %>% 
+  mutate(pred_yes_dm = 
+  case_when(pct_prob > cp$optimal_cutpoint ~ "pred_yes_dm", 
+            TRUE ~ "pred_no")) %>% 
+  relocate(pred_yes_dm, .after =pct_prob)
+
+# check confusion matrix
+dm_data_plus %>% 
+  tabyl(diabetes, pred_yes_dm) %>% 
+  adorn_totals("both") %>% 
+  adorn_percentages() %>% 
+  adorn_pct_formatting()
 
 
-#### Single outcome, multiple possible predictors
+#check model performance
+performance::check_model(dm_mod, panel = FALSE)
+# use panel = TRUE in Rmarkdown to get 2x3 panels for 6 plots
+# 
+performance::model_performance(dm_mod)
 
-##### Challenges
+#try a different model
+dm_mod2 <- glm(diabetes ~ glucose + mass + pedigree + age, 
+              data = PimaIndiansDiabetes2, 
+              family = "binomial")
 
-#### One predictor at a time – multiple univariate models – modelr and broom packages
+# build a really simple (NULL) model as a baseline
 
-##### Challenges
+dm_mod3 <- glm(diabetes ~ 1,
+                 data = PimaIndiansDiabetes2, 
+              family = "binomial")
 
-#### Choosing predictors for multivariate modeling – testing, dealing with collinearity
+summary(dm_mod3)
 
-##### Challenges
+# compare models
+# compare_performance(dm_mod, dm_mod2, dm_mod3, rank = TRUE)
 
-#### Multivariate modeling
+# plot(compare_performance(dm_mod, dm_mod2, dm_mod3, rank = TRUE)) + labs(subtitle = "Larger Area is Better")
 
-##### Challenges
+# plot(compare_performance(dm_mod, dm_mod2, rank = TRUE)) + labs(subtitle = "Larger Area is Better")
 
-#### Model fit checking
+#test_performance(dm_mod, dm_mod2, dm_mod3)
 
-##### Challenges
+# save model to RDS
+saveRDS(dm_mod, "dm_mod.RDS")
 
-#### presenting model results with RMarkdown
+```
 
-##### Challenges
+This is a simple web application that lets users who are not familiar with R use your model.
+
+They can enter values for the 3 predictor variables (gender, age, BMI) for a new patient, and predict their annual health insurance expenses in dollars.
+This web app produces a table with the inputs, and shows the output when you click the PREDICT button.
+Try it out here:
+
+[Model Predictions Shiny Web App](https://pdrhiggins.shinyapps.io/model_predict/).
+
+Enter different predictor data points, and recalculate the expenses.
+
+You can click on the About tab for an explanation of the model, and even explore the publicly shared underlying code on GitHub (link in the About tab).
+
+We will walk through how to build, test, and share your own models in this chapter.
+
+## Packages needed
+
+-   {tidyverse}
+-   {medicaldata}
+-   {broom}
+-   {easystats} you can install this one (Not on CRAN) with `install.packages("easystats", repos = "https://easystats.r-universe.dev")`
+-   {performance}
+-   {insight}
+-   {gtsummary}
+
+Note that the base modeling function lm() comes from the {stat} package, which loads by default when you start R.
+
+## Building a simple base model with {lm}
+
+The simplest model is called the null model, with no predictors.
+This model uses the mean value of the outcome to estimate it.
+
+In the blood_storage (prostate cancer) dataset in {medicaldata}, the mean time to recurrence is 32.92 months.
+
+To build a simple null model, you will need two main arguments to the lm() function:
+
+-   the **formula**
+
+-   the **data**
+
+The **formula** follows the format *dependent_variable* \~ *independent_variables.*
+
+Note that the **data** argument is not the first argument, so it does ***not*** automatically play well with pipes.\
+You can pipe in data if you make the data argument explicit, and set it to `data = .`
+
+Let's look at a simple example:
+
+Copy the code chunk below and run it in your RStudio Console.
+
+```{r null_model}
+medicaldata::blood_storage %>% 
+  lm(TimeToRecurrence ~ NULL, data = .)
+```
+
+The output tells you the `Call` - the model being run, and then all the coefficients.
+In the case of the NULL model, the only coefficient is the intercept.
+This intercept is equal to the mean value of the outcome variable, TimeToRecurrence, in months.
+With no other predictor variables, this is the best estimate available for time to recurrence.
+
+We can also output the results as a nice tibble, using the *tidy()* function from the {broom} package.
+
+```{r null_model_tidied}
+medicaldata::blood_storage  %>% 
+  lm(TimeToRecurrence ~ NULL, data = .) %>% 
+  broom::tidy()
+```
+
+This model has only one term, the intercept.
+It estimates every value of time to recurrence with the mean, 32.91.
+This is a pretty poor model, but is a place to start.\
+\
+Let's look at how good this model is, using another function from the {broom} package.
+We can *glance()* our model, again output into a nice tibble.
+
+```{r null_model_glance}
+medicaldata::blood_storage  %>% 
+  lm(TimeToRecurrence ~ NULL, data = .) %>% 
+  broom::glance()
+```
+
+The r.squared and adj.r.squared are both 0, so we are capturing none of the variation in the data with this null model.
+The log likelihood is -1502, and the AIC 3009, and BIC 3016 (these are both high because this is a crummy model).
+
+AIC is Akaike's Information Criterion, and estimates the out-of-sample prediction error and relative quality of a statistical model.
+A higher number indicates more information lost.
+Lower numbers for AIC = higher quality models.
+
+BIC is the Bayesian Information Criterion, which like AIC, penalizes models for the number of parameters to reduce overfitting.
+BIC also considers the number of observations in the data, which AIC does not.
+Lower values of BIC are better, and BIC is generally always higher than AIC, but absolute values do not matter, only relative values when comparing models on the same dataset for the same outcome.
+If we improve the model (with useful predictor variables), the BIC should go down.
+
+Let's add some predictors: Age, TVol (tumor volume), and sGS (surgical Gleason score), and see if we do better.
+
+```{r 3var_model_glance}
+medicaldata::blood_storage  %>% 
+  lm(TimeToRecurrence ~  Age + TVol + sGS, data = .) %>% 
+  broom::glance()
+```
+
+We are now explaining some (about 0.33% = 100\*the adjusted R-squared) of the variation with this predictor, and the log likelihood (-1472) got closer to zero, and the AIC (2954) and BIC (2972) were reduced, showing that this is a better model than the NULL model (though still not great).
+
+#### Key Takeaways
+
+-   use *lm()* to build the model
+
+-   argument: formula = outcome \~ predictor1 + predictor2 + ...
+
+-   argument: data = .
+    with the pipe
+
+-   tidy() from {broom} to see the model table of estimates
+
+-   glance() from {broom}to see measures of model accuracy
+
+#### Your turn with licorice!
+
+Pipe the licorice data into an lm() function, with a formula argument and the data = .
+argument.
+Use the outcome of pacu30min_throatPain.
+Use predictors like intraOp_surgerySize, treat, preOp_pain, preOp_gender, and preOp_smoking.
+
+Then pipe the result into the function tidy() to see the model, and (separately) into the function glance() to evaluate the model quality.
+
+Copy the code chunk below into RStudio as a start.
+Use *tidy()* to see the model table, and *glance()* to look at the performance of the model.
+
+```{r licorice model, error = TRUE, eval=FALSE}
+medicaldata::licorice_gargle %>%
+  lm(formula = pacu30min_throatPain ~ var1 + var2 + var3,
+ data = .) 
+
+```
+
+`r hide ('Show the solution')`
+
+```{r licorice model-solved}
+medicaldata::licorice_gargle %>%
+  lm(formula = pacu30min_throatPain ~ intraOp_surgerySize  +
+       treat + preOp_pain + preOp_gender + 
+       preOp_smoking,
+       data = .) %>% 
+  tidy()
+
+medicaldata::licorice_gargle %>%
+  lm(formula = pacu30min_throatPain ~ intraOp_surgerySize  +
+       treat + preOp_pain + preOp_gender + 
+       preOp_smoking,
+       data = .) %>% 
+  glance()
+```
+
+`r unhide()`
+
+#### Interpreting the Model Estimates
+
+For the full model with 5 predictors (shown in the hidden solution above - Click the button to show it), you get a tidied tibble with 6 rows and 5 columns.
+These are
+
+-   The first column is the `term` - these include the (Intercept) and each of the predictors you called in the model.
+-   the second column is the `estimate`. This is the point estimate of the effect of each predictor in the multivariable model. For the `intraOp_surgerySize` predictor, this is 0.316. This means that for each unit or level increase of `intraOp_surgerySize`, which is defined on a 1-3 scale from small to large, the `pacu_30min_throat pain` (on a 0-10 scale), increases by 0.316 points. So a large surgery (2 levels larger than small) will result in, on average, a `pacu_30min_throat pain` score 0.632 points higher than a small surgery.
+- similarly, the estimate for `preop_gender` is -0.265. This means that for each 1 point increase in the level of `preop_gender`, coded as 0=male, 1=female, the `pacu_30min_throat pain` score goes doen by -0.265 points. In this case, that means that the average `pacu_30min_throat pain` score in females was 0.265 points lower than in males.
+- the std.error column tells you about the variance of this estimate, and can help you calculate confidence intervals around the point estimated if needed.
+- the statistic is the t value for the estimate, which allows you to calculate p values with a t test. Values with a large absolute value (farther from zero) imply a stronger effect. Values of the statistic > 1.96 (absolute value) correspond to a p value < 0.05.
+- the p value is the significance of the estimate for that particular predictor variable. Low values (often < 0.05) are considered significant for traditional, historical reasons (it is an arbitrary cutoff).
+
+##### Check your work:
+
+For the full model with 5 predictors, the which predictor variable has the largest estimated effect on `pacu30min_throatpain`?
+
+`r mcq(c('intraOp_surgerySize', answer = 'preOp_pain', 'genderFemale', 'smoking', 'treatLicorice'))` 
+
+For the full model with 5 predictors, what is the BIC value (using the glance function)?
+
+`r mcq(c('-364', answer = '765', '309', '741', '7'))` 
+
+#### Your turn with supra!
+
+Use the **supraclavicular** dataset to build a model with the outcome `onset_sensory`, with predictors (independent variables) age, bmi, gender, and group.
+
+Output the regression table with *tidy()* and the model measures with *glance()* 
+
+Copy the code chunk below into RStudio as a start
+
+```{r supra model, error = TRUE, eval = FALSE}
+medicaldata::supraclavicular %>%
+  lm(formula = onset_sensory ~ var1,
+ data = .) %>% 
+  glance()
+
+```
+
+`r hide('Show Solution')`
+```{r supra model-solve}
+medicaldata::supraclavicular %>%
+  lm(formula = onset_sensory ~ age + bmi + gender + group,
+ data = .) %>% 
+  glance()
+
+```
+
+`r unhide()`
+
+##### For the full model with 4 predictors, what is the Adjusted R squared value?
+
+`r webexercises::mcq(c('0.036', '301.7', '-383.3', '0.48', answer = '-0.005'))`
+
+### Producing manuscript-quality tables with {gtsummary}
+
+Let's take your model above, and rather than pipe it into tidy() or glance(), pipe it into the *tbl_regression()* function from the {gtsummary} package.
+
+```{r supra tbl, error = TRUE}
+medicaldata::supraclavicular %>%
+  lm(formula = onset_sensory ~ age + bmi + gender + group,
+ data = .) %>% 
+  tbl_regression()
+
+```
+
+This produces a nice looking table, suitable for Rmarkdown documents, with output to Word or Powerpoint.
+You can even convert this to other formats:
+
+-   to a tibble with *as_tibble()*
+
+-   to a gt object with *as_gt()* then use gt formatting
+
+-   to a flextable object with *as_flextable()* then add formatting with flextable
+
+#### Takeaways for Linear Modeling
+
+-   start with data - pipe into model lm(formula, data = .)
+
+-   model can be piped into *tidy()* for an estimates table
+
+-   model can be piped into *glance()* for measures of the model
+
+-   model can be piped into *tbl_regression()* for a publication-quality table
+
+
+## Is Your Model Valid?
+
+Key assumptions of linear regression
+
+1.  Homogeneity of variance (homoscedasticity): The error variance should be constant
+
+2.  Linearity: the relationships between the predictors and the outcome variable should be linear
+
+3.  Independence: The errors associated with one observation are not correlated with the errors of any other observation
+
+4.  Normality: the errors should be normally distributed.
+    Technically normality is necessary only for hypothesis tests to be valid.
+
+These assumption can be checked easily with the {performance} package in the {easystats} meta-package ({tidyverse} is another meta-package of packages).
+
+In the code chunk below, we assign the model to the object name `supra_model`, and then run `check_model` from the {performance} package.
+
+```{r}
+supra_model <- medicaldata::supraclavicular %>%
+  lm(formula = onset_sensory ~ age + bmi + gender + group,
+ data = .) 
+
+performance::check_model(supra_model, panel = FALSE)
+```
+
+This produces a nice set of six plots in the Plots tab) with some guidance in the subtitles on how to interpret the plots.
+
+There is a less pretty version in base R, using `plot(model_name)`, which also works to produce four of these 6 plots.
+
+You can also formally test for heteroscedasticity.
+
+The variance of your residuals should be homogenous.
+
+```{r}
+check_heteroscedasticity(supra_model)
+```
+
+A green output that starts with `OK` for `check_heteroscedasticity`, indicating homoscedasticity (homgeneous residual variance), is good.
+
+## Making Predictions with Your Model
+
+We can use the linear model to make predictions about the individual observations in our data, or in future data.
+
+Let's start with adding model predictions to each observation in our dataset.
+This is often called the `training data` as it was the data the model was trained on.
+You can add predictions (fitted results) to your dataframe with the *augment()* function from the {broom} package.
+We `augment` this dataframe with the model predictions, and then `relocate` them to the beginning (leftmost columns) of the tibble.
+
+```{r}
+supra_data_plus <-  augment(supra_model) %>% 
+  relocate(onset_sensory, .fitted, .resid) %>% 
+  arrange(-.fitted)
+supra_data_plus
+```
+
+The dataframe `supra_data_plus` includes a prediction of the outcome (`.fitted`) for each observation.
+We can compare these predictions to the outcome (`onset_sensory`) and see how the residuals (`.resid`) are calculated (`onset_sensory minus .fitted`).
+The Cook's D variable (`.cooksd`) is a measure of how large the effect on the model would be if you deleted that particular observation.
+Large values for Cook's distance sugest that these observations are outliers that pull the model in one direction (have high leverage), and indicate an influential data point.
+Review any observation with a `.cooksd` \> 1 carefully.
+
+### Predictions from new data
+
+You can also input new observations (in a data frame) to the model, and predict the outcome for these observations.
+First, we need to create a dataframe that matches the predictor variables for the supra_model. You might get a dataframe of new observations from a colleague. It is important that this is in the same format, with *exactly* the same variable names as the original data.
+
+```{r}
+new_data <- tibble(age = c(27, 38, 51),
+                   bmi = c(30.4, 34.2, 41.1),
+                   gender = c(2, 1, 1),
+                   group = c(2, 1, 2))
+new_data
+```
+
+To make predictions with the new data, you use the base {stats} function predict(), with arguments for the model, and the new data.
+
+```{r}
+predict(object = supra_model, 
+        newdata = new_data)
+```
+
+This gives us predictions for each of the 3 rows of the `new_data` dataframe, of the outcome `onset_sensory`.
+
+
+## Choosing predictors for multivariate modeling -- testing, dealing with collinearity
+
+interactions
+
+### Challenges
 
 
 
+## presenting model results with RMarkdown
 
+### Challenges
+
+
+## presenting model results with a Shiny App
+
+### Challenges

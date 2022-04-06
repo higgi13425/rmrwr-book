@@ -81,8 +81,8 @@ mtcars %>%
 ```
 
 ```
-## Error in `stop_subscript()`:
-## ! Can't subset columns that don't exist.
+## Error in `select()`:
+## ! Can't subset columns past the end.
 ## x Column `displ` doesn't exist.
 ```
 ## Systematic Hunting For Bugs in Pipes

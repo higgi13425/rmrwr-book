@@ -466,11 +466,11 @@ read_excel(paulolol_xlsx,
 
 ```
 ## New names:
-## * `` -> ...2
-## * `` -> ...3
-## * `` -> ...4
-## * `` -> ...5
-## * `` -> ...6
+## • `` -> `...2`
+## • `` -> `...3`
+## • `` -> `...4`
+## • `` -> `...5`
+## • `` -> `...6`
 ```
 
 ```
@@ -885,19 +885,19 @@ strep_tb %>%
 
 ```
 ## # A tibble: 11 × 3
-##    radiologic_6m              rad_num improved
-##    <fct>                        <dbl> <lgl>   
-##  1 6_Considerable_improvement       6 TRUE    
-##  2 3_Moderate_deterioration         3 FALSE   
-##  3 5_Moderate_improvement           5 TRUE    
-##  4 5_Moderate_improvement           5 TRUE    
-##  5 5_Moderate_improvement           5 TRUE    
-##  6 1_Death                          1 FALSE   
-##  7 1_Death                          1 FALSE   
-##  8 3_Moderate_deterioration         3 FALSE   
-##  9 6_Considerable_improvement       6 TRUE    
-## 10 1_Death                          1 FALSE   
-## 11 4_No_change                      4 FALSE
+##    radiologic_6m                rad_num improved
+##    <fct>                          <dbl> <lgl>   
+##  1 3_Moderate_deterioration           3 FALSE   
+##  2 6_Considerable_improvement         6 TRUE    
+##  3 4_No_change                        4 FALSE   
+##  4 6_Considerable_improvement         6 TRUE    
+##  5 2_Considerable_deterioration       2 FALSE   
+##  6 5_Moderate_improvement             5 TRUE    
+##  7 5_Moderate_improvement             5 TRUE    
+##  8 3_Moderate_deterioration           3 FALSE   
+##  9 1_Death                            1 FALSE   
+## 10 6_Considerable_improvement         6 TRUE    
+## 11 5_Moderate_improvement             5 TRUE
 ```
 
 

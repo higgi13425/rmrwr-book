@@ -11,9 +11,7 @@ editor_options:
 ---
 
 
-<!-- Note this refers to the article at
-rmarkdown.rstudio.com/articles_docx.html
---->
+
 # Rmarkdown Output Options
 
 While HTML is convenient for rapid output and iteration, most end-products for medical research are either Word documents, PDFs, or PowerPoint slides.

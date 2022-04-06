@@ -140,9 +140,10 @@ which will look something like this.
 
 ![install3](images/installr3windows.png)
 
-Click on this link, and you will be able to save a file named
-R-N.N.N-win.exe (Ns depending on version number) to your Downloads
-folder. Click on the Save button
+Click on this link, and you will be able to save the latest version to a
+file named R-N.N.N-win.exe (N values vary depending on the latest
+version number, recent versions look like R-4.1.2-win.exe) to your
+Downloads folder. Click on the Save button
 
 to save it.
 
@@ -503,9 +504,10 @@ nicer Viewer tab.
 
 -   In the Editing tab - select Soft Wrap Long Lines - so that your code
     does not get too wide
--   In the Display tab - select Rainbow Parentheses - color-codes
-    parentheses so that you can keep track of whether you have closed
-    all of your open parentheses (a common source of errors)
+-   In the Display tab - select Rainbow Parentheses - this option
+    color-codes parentheses so that you can keep track of whether you
+    have closed all of your open parentheses (a common source of
+    errors). When your last close parenthesis is red, all is well.
 
 Now your RStudio installation is tuned and ready to go!
 
@@ -563,7 +565,7 @@ c\. Installing **git**
 Once you have **homebrew** installed, installing **git** is
 straightforward.
 
-At the Terminal prompt (\$), type
+At the Terminal prompt (the prompt looks like a dollar sign \$), type
 
 `brew install git`
 

@@ -25,12 +25,6 @@ ggx::gghelp("how do I remove the legend")
 ```
 
 ```
-## Registered S3 method overwritten by 'sets':
-##   method        from   
-##   print.element ggplot2
-```
-
-```
 ## theme(legend.position = "none")
 ```
 

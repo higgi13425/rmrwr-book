@@ -31,6 +31,9 @@ rmd_files:
 - io48c-scales.Rmd
 - io67-ggplot_helpers.Rmd
 - io71-functions_plots.Rmd
+- io23-linear-regression.Rmd
+- io23b-logistic-regression.Rmd
+- io23c-intro-shiny.Rmd
 - io56-intro_rmarkdown.Rmd
 - io56a-rmarkdown-output.Rmd
 - io56b-Rmd-citations-Zotero.Rmd

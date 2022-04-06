@@ -76,7 +76,7 @@ whoami;date
 
 ```
 ## peterhiggins
-## Thu Feb 24 20:52:05 EST 2022
+## Tue Apr  5 22:08:31 EDT 2022
 ```
 :::
 
@@ -244,7 +244,7 @@ ls
 ## DDW 2022 AGA Space Grid.xlsx
 ## DDW JAK for UC.pptx
 ## DDW2014SD16
-## DDW2021 CB6 powerpoint.pptx
+## DDW2021 CB6 powerpoint-2.pptx
 ## DDW2021_CB6_Antifibrotic_Higgins.pdf
 ## DDW21_JAK_Higgins.pdf
 ## Data workflow resources.docx
@@ -263,6 +263,7 @@ ls
 ## EDI statement.docx
 ## EDI statement.pdf
 ## Editing your Rprofile.docx
+## Efava.pptx
 ## Effect of medications on the recurrence of cancer in IBD patients.docx
 ## Electrical engineering interview questions.docx
 ## Endpoints in IBD talks
@@ -340,6 +341,7 @@ ls
 ## IBD Insurance Pilot Results.docx
 ## IBD Insurance Survey for CCFA Partners Existing.docx
 ## IBD J Club Miri extended induction.pptx
+## IBD J Club Tofa in TNFexp.pptx
 ## IBD Journal Club 13Feb2017.docx
 ## IBD Journal Club July 11.docx
 ## IBD Osteoporosis 1 27 2022_PDRH.docx
@@ -349,6 +351,7 @@ ls
 ## IBD School 324 Script.docx
 ## IBD School 325 Script.docx
 ## IBD and biologics tweets.docx
+## IBD in 20 years.pptx
 ## IBD inbox coverage.docx
 ## IBD video scripts ppt
 ## IBDInsuranceSurvey3.docx
@@ -403,6 +406,7 @@ ls
 ## MEI_2020_PH_W9.pdf
 ## MEI_2021_PH_W9.pdf
 ## MEI_2021_W9.pdf
+## MEI_2022_PDRH_W9.PDF
 ## MEI_ACH_Wire Transfer Form.docx
 ## MIM-TESRIC PROTOCOL_Higgins_14Apr2020.docx
 ## MIM-TESRIC PROTOCOL_Higgins_26Aug2020.docx
@@ -432,6 +436,7 @@ ls
 ## P2PEP2021_IBD_COVID.pptx
 ## P2PEP2021_Intro.pptx
 ## P2PEP2021_Spatial.pptx
+## PDRH endowed chair bio.docx
 ## PDRH short bio.docx
 ## PHcv2019.docx
 ## PHcv2020.docx
@@ -463,6 +468,7 @@ ls
 ## Prashant Rec Letter.pdf
 ## PredictingIBD_DDW_2021_ISS.html
 ## PredictingIBD_DDW_2021_ISS.pdf
+## Prj21015 UPA UC Other PROs manuscript D1 jp_JOL wz-di_JT_PDRH.docx
 ## Proposal for MCTSU Study Accrual Monitoring.docx
 ## PtEdOnRoad
 ## Purdue Disclosure Form_Higgins.docx
@@ -583,9 +589,11 @@ ls
 ## UM IBD Clinical Trials IBD referral form.docx
 ## UM Severe UC Protocol.docx
 ## UPA_U_ACHIEVE 1st draft_PDRH.docx
+## Untitled.docx
 ## Upa ASUC Concept Page.docx
 ## Upa M14-234 SS3 maintenance  Q and A ECCO 2022.docx
 ## Upa outpatient vs Prednisone_PDRH.docx
+## V8 Infliximab Outcomes_PDRH.docx
 ## VINDICO IBD
 ## VINDICO_PRO.pptx
 ## VideoVisitSchedulingQuickApptsforProviders.pdf
@@ -666,7 +674,6 @@ ls
 ## ~$sk List 2020-5.docx
 ## ~$sk List 2020.docx
 ## ~$sk List 2021.docx
-## ~$sk List 2022.docx
 ```
 :::
 
