@@ -368,10 +368,10 @@ the-user-interface-section-structure
 the-server-section-structure
 how-to-run-an-app
 how-to-stop-an-app
-building-a-very-simple-app
+building-a-very-simple-app-version-1
 the-ui-section
 the-server-section
-edit-this-app
+edit-this-app-version-2
 building-a-user-interface-for-inputs-and-outputs
 inputs
 shiny-input-widgets-for-your-user-interface-ui
@@ -382,8 +382,7 @@ building-a-functioning-server-section
 using-the-input-values-data
 wrangling-and-calculating
 rendering-to-html-outputs
-building-a-simple-shiny-app
-building-a-shiny-app-for-a-model
+building-a-simple-shiny-app-version-3
 publishing-your-shiny-app-on-the-web
 more-to-explore
 introduction-to-r-markdown

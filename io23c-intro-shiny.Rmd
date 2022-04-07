@@ -11,6 +11,7 @@ editor_options:
 library(tidyverse)
 library(shiny)
 library(medicaldata)
+library(webexercises)
 ```
 
 # A Gentle Introduction to Shiny
@@ -140,7 +141,7 @@ You can stop your app by:
 
 -   Clicking in the Console pane, then pressing Esc (or Ctrl-C if using the command line).
 
-## Building a Very Simple App
+## Building a Very Simple App (Version 1)
 
 We will build a simple app to illustrate the flow of information between the ui and the server.
 Open up RStudio, in a new session.
@@ -174,7 +175,7 @@ It uses `input$bins` from the ui and the *faithful* dataset to create the histog
 Note that the ui section uses quotes to refer to variables and the server section uses `$ format` to refer to variables.
 This means that the "bins" input in the ui appears in the server as `input$bins`, and the `output$distPlot` in the server section appears as "distPlot" in the ui mainPanel.
 
-## Edit this App
+## Edit this App (Version 2)
 
 Go back to your app.R session of RStudio.
 Notice that the Console pane does not have an active R prompt (`>`).
@@ -187,8 +188,7 @@ Edit the title to "Medical Textbooks".
 
 Now replace `sliderInput` with `selectInput`.
 Change the inputID from "bins" to "book".
-Change the label from "Number of bins:" to "Select a Textbook:" 
-Delete the min, max, and value arguments.
+Change the label from "Number of bins:" to "Select a Textbook:" Delete the min, max, and value arguments.
 Add a choices argument, with `choices = list("Textbook of Surgery", "Textbook of Gastroenterology", "Diseases of the Liver and Biliary System")`.
 Double check that all your parentheses still match, and that you still have a comma between `sidebarPanel` and `mainPanel`.
 Now Run the app again.
@@ -216,6 +216,7 @@ Then paste the following into the `renderText` between the paren/curly brace com
         ) {author = "Sheila Sherlock"
         }
       author  
+      })
 
 This R code checks the input phrase, and assigns a particular value for `author` based on the phrase, much like a `case_when` function, but using the `if/else if` construction.
 Then it *returns* the value for the new variable, author.
@@ -239,6 +240,8 @@ Now we have accepted input in the ui, processed in in the server, and displayed 
 Our app is ready to run - click the Run App arrow.
 
 This should run a **very** simple Shiny app that reacts to user input and changes the output in the mainPanel to identify the correct computer for each computer catchphrase.
+
+Save this for a (later) Version 3.
 
 Hopefully, this exercise helped you understand the flow of information from the ui to the server and back to the ui.
 
@@ -315,34 +318,136 @@ Each type of output from the server has a different typeOutput function used in 
 Be sure to use the right typeOutput function.
 Several examples are shown below.
 
-+------------------------------------+---------------------------+
-| Server rendering & assignment      | UI Output function        |
-+====================================+===========================+
-| renderText() -> output\$prediction | textOutput("prediction")  |
-+------------------------------------+---------------------------+
-| renderPrint() -> output\$model     | textOutput("model")       |
-+------------------------------------+---------------------------+
-| renderPlot() -> output\$plot1      | plotOutput("plot1")       |
-+------------------------------------+---------------------------+
-| renderTable() -> output\$table1    | tableOutput("table1")     |
-+------------------------------------+---------------------------+
-| renderDataTable() -> output\$dt    | dataTableOutput("dt")     |
-+------------------------------------+---------------------------+
++------------------------------------+--------------------------+
+| Server rendering & assignment      | UI Output function       |
++====================================+==========================+
+| renderText() -> output\$prediction | textOutput("prediction") |
++------------------------------------+--------------------------+
+| renderPrint() -> output\$model     | textOutput("model")      |
++------------------------------------+--------------------------+
+| renderPlot() -> output\$plot1      | plotOutput("plot1")      |
++------------------------------------+--------------------------+
+| renderTable() -> output\$table1    | tableOutput("table1")    |
++------------------------------------+--------------------------+
+| renderDataTable() -> output\$dt    | dataTableOutput("dt")    |
++------------------------------------+--------------------------+
 
 Note that renderText can only handle character strings, while renderPrint can handle any printed output.
 A data table differs from a regular table in that it will show a page of data at a time, rather than a whole dataset, and will allow users to page through the data or sort it.
 
 ## Building a Functioning Server Section
 
+The server section defaults are straightforward, and are the bread of the sandwich that you will build for data processing.
+
+The default content is
+
+```{r, eval=FALSE}
+server <- function(input, output) {
+  
+}
+```
+
+and all of the data import, data processing, rendering of objects to HTML, and assigning outputs to `output$ID` happens between the curly braces.
+
 ### Using the input values & Data
+
+Data values from the user in the ui section are each assigned an inputID in quotes, like "height_cm", or "weight_kg".
+
+These can be accessed in the server section with `input$height_cm` or `input$weight_kg`.
 
 ### Wrangling and Calculating
 
+You can calculate with input values, and mutate to create new variables.
+
+-   What does the server section below calculate?
+-   how would you access it in the ui section?
+
+```{r, eval=FALSE}
+server <- function(input, output) {
+  output$bc_ratio <- renderText({
+    bc_ratio <- input$bun_mg-dl/input$creat_mg_dl
+    bc_ratio
+  })
+}
+```
+
+`r hide('Show Answers')` 1.
+This calculates the Blood Urea Nitrogen to Creatinine ratio
+
+2.  textOutput("bc_ratio")
+
+`r unhide()`
+
 ### Rendering to HTML Outputs
 
-## Building a Simple Shiny App
+Each output you create has to be rendered to HTML.
+This will require (after wrangling and calculating the output, and returning the value) using a `render` function in the server section.
 
-## Building a Shiny App for a Model
+Each `render` function is for a distinct type of object, and wraps around your output with parentheses AND curly braces.
+
+| **render function** | **creates**                                     |
+|:--------------------|:------------------------------------------------|
+| `renderDataTable`   | DataTable                                       |
+| `renderImage`       | images (saved as a link to a source file)       |
+| `renderPlot`        | plots                                           |
+| `renderPrint`       | any printed output                              |
+| `renderTable`       | data frame, matrix, other table like structures |
+| `renderText`        | character strings                               |
+| `renderUI`          | a Shiny tag object or HTML                      |
+
+: Render Functions for the Server Section
+
+## Building a Simple Shiny App (Version 3)
+
+We are now going to edit your shiny app to calculate BMI \[Body Mass Index = weight in kg/(height in meters)^2\].
+
+Re-open the Shiny app file, `app.R`.
+Your *serverPanel* should still have a *selectInput* with 3 choices.
+
+Delete this and replace it with a `numericInput()` for weight, and a `sliderInput()` for height, as shown below
+
+```{r, eval=FALSE}
+
+  sidebarPanel( numericInput(
+    inputID = "weight_kg",
+    label = "Enter weight in kilograms",
+    value = 70),
+    sliderInput(
+    inputID = "height_m",
+    label = "Enter height in meters",
+    value = 1.7, min = 0.5, max = 2.7)
+  )
+
+```
+
+Now scroll down to the server section.
+You can delete the `if else` section in renderText between the parenthesis/curly brace pairs.
+
+Change the name of the `output$name` to `output$bmi`.
+Then in the renderText section, calculate the BMI, as shown below.
+
+```{r, eval=FALSE}
+server <- function(input, output) {
+  output$bmi <- renderText({
+    bmi <- input$weight_kg/(input$height_m)^2
+    bmi
+  })
+}
+```
+
+This will take the input values from the user and calculate BMI, then render it as text, and then assign it to `output$bmi`.
+
+Now let's scroll back up to the *mainPanel* in the ui section.
+Your mainPanel should currently be set up to display the bc_ratio.
+Replace the header (h3) with "The Body Mass index is:".
+
+Then change the textOutput argument to "bmi".
+
+Then change the titlePanel (scroll up) to "BMI Calculator".
+
+Now your BMI app should be ready to run.
+
+Give this a shot, and troubleshoot if needed.
 
 ## Publishing Your Shiny App on the Web
 

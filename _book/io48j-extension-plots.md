@@ -187,11 +187,6 @@ indo_rct %>%
   scale_x_continuous(limits = c(15,90))
 ```
 
-```
-## Warning: Removed 1 rows containing missing values
-## (geom_point).
-```
-
 <img src="io48j-extension-plots_files/figure-html/scatter-2-solution-1.png" width="672" />
 
 </div>
