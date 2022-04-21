@@ -436,3 +436,13 @@ If all went well, you should now have a logistic model Shiny app that predicts (
 
 
 ## Building a Shiny App for the Random Forest Model
+
+
+:::tryit
+## Challenge Yourself
+
+1. How would you use the linear model predictions to plot these predictions compared to all of the other observations in the dataset? (Hint: augment the dataset with broom::augment predictions for each observation, then plot these with gray dots, and use the input data to make a new prediction plotted with a colored dot)
+
+2. How would you add confidence intervals to your predictions, and how would you add these to your displayed output in the mainPanel?
+
+:::

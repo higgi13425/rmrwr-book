@@ -277,11 +277,7 @@ You will use the first argument to this function to assign the inputID.
 This is a short helpful name for this variable, like "age", or "creatinine".
 These are assigned with quotes in the user interface section.
 
-For example, you might use <br>
-`numericInput(inputID = "age",` <br>
-`label = "Type in the age",` <br>
-`min =1, max = 100, value = 35)` <br>
-The same variables will be referred to in the server section as `input$age` or `input$creatinine`.
+For example, you might use <br> `numericInput(inputID = "age",` <br> `label = "Type in the age",` <br> `min =1, max = 100, value = 35)` <br> The same variables will be referred to in the server section as `input$age` or `input$creatinine`.
 
 The arguments for each input function in the user interface are a lot alike.
 These include:
@@ -317,19 +313,13 @@ Each type of output from the server has a different typeOutput function used in 
 Be sure to use the right typeOutput function.
 Several examples are shown below.
 
-+------------------------------------+--------------------------+
 | Server rendering & assignment      | UI Output function       |
-+====================================+==========================+
+|------------------------------------|--------------------------|
 | renderText() -> output\$prediction | textOutput("prediction") |
-+------------------------------------+--------------------------+
 | renderPrint() -> output\$model     | textOutput("model")      |
-+------------------------------------+--------------------------+
 | renderPlot() -> output\$plot1      | plotOutput("plot1")      |
-+------------------------------------+--------------------------+
 | renderTable() -> output\$table1    | tableOutput("table1")    |
-+------------------------------------+--------------------------+
 | renderDataTable() -> output\$dt    | dataTableOutput("dt")    |
-+------------------------------------+--------------------------+
 
 Note that renderText can only handle character strings, while renderPrint can handle any printed output.
 A data table differs from a regular table in that it will show a page of data at a time, rather than a whole dataset, and will allow users to page through the data or sort it.
@@ -404,8 +394,7 @@ Each `render` function is for a distinct type of object, and wraps around your o
 
 ## Building a Simple Shiny App (Version 3)
 
-We are now going to edit your shiny app to calculate BMI, using the formula: <br> 
-`[Body Mass Index = weight in kg/(height in meters)^2]`.
+We are now going to edit your shiny app to calculate BMI, using the formula: <br> `[Body Mass Index = weight in kg/(height in meters)^2]`.
 
 Re-open the Shiny app file, `app.R`.
 Your *serverPanel* should still have a *selectInput* with 3 choices.
