@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2022-04-06" />
+<meta name="date" content="2022-04-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -826,8 +826,8 @@ includes both text content as well as the output of any embedded R code
 chunks within the document. You can embed an R code chunk like this
 (which will run and produce output below. In this case, showing the
 contents of the covid_testing dataset.):</p>
-<div class="sourceCode" id="cb638"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb638-1"><a href="introduction-to-r-markdown.html#cb638-1" aria-hidden="true" tabindex="-1"></a>covid <span class="ot">&lt;-</span> medicaldata<span class="sc">::</span>covid_testing</span>
-<span id="cb638-2"><a href="introduction-to-r-markdown.html#cb638-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(covid)</span></code></pre></div>
+<div class="sourceCode" id="cb640"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb640-1"><a href="introduction-to-r-markdown.html#cb640-1" aria-hidden="true" tabindex="-1"></a>covid <span class="ot">&lt;-</span> medicaldata<span class="sc">::</span>covid_testing</span>
+<span id="cb640-2"><a href="introduction-to-r-markdown.html#cb640-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(covid)</span></code></pre></div>
 <pre><code>## Rows: 15,524
 ## Columns: 17
 ## $ subject_id      &lt;dbl&gt; 1412, 533, 9134, 8518, 8967, 11048…
@@ -914,7 +914,7 @@ closing brace, and add a space, then a name for the code chunk. If the
 chunk name contains multiple words, connect these with hyphens, as in
 the code chunk below. Avoid spaces, periods, and underscores in chunk
 names.</p>
-<div class="sourceCode" id="cb640"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb640-1"><a href="introduction-to-r-markdown.html#cb640-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(covid)</span></code></pre></div>
+<div class="sourceCode" id="cb642"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb642-1"><a href="introduction-to-r-markdown.html#cb642-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(covid)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 17
 ##   subject_id fake_first_name fake_last_name gender pan_day
 ##        &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;          &lt;chr&gt;    &lt;dbl&gt;
@@ -973,13 +973,13 @@ chunks, including the setup chunk</td>
 <div id="including-plots-1" class="section level2 hasAnchor" number="29.4">
 <h2><span class="header-section-number">29.4</span> Including Plots<a href="introduction-to-r-markdown.html#including-plots-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You can also embed plots using code chunks, for example:</p>
-<div class="sourceCode" id="cb642"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb642-1"><a href="introduction-to-r-markdown.html#cb642-1" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
-<span id="cb642-2"><a href="introduction-to-r-markdown.html#cb642-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb642-3"><a href="introduction-to-r-markdown.html#cb642-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> pan_day, <span class="at">y =</span> ct_result) <span class="sc">+</span></span>
-<span id="cb642-4"><a href="introduction-to-r-markdown.html#cb642-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb642-5"><a href="introduction-to-r-markdown.html#cb642-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;COVID Testing in First 100 Days of Pandemic&quot;</span>,</span>
-<span id="cb642-6"><a href="introduction-to-r-markdown.html#cb642-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Pandemic Day, 2020&quot;</span>,</span>
-<span id="cb642-7"><a href="introduction-to-r-markdown.html#cb642-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Cycle Threshold </span><span class="sc">\n</span><span class="st">45 is a Negative Test&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb644"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb644-1"><a href="introduction-to-r-markdown.html#cb644-1" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
+<span id="cb644-2"><a href="introduction-to-r-markdown.html#cb644-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb644-3"><a href="introduction-to-r-markdown.html#cb644-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> pan_day, <span class="at">y =</span> ct_result) <span class="sc">+</span></span>
+<span id="cb644-4"><a href="introduction-to-r-markdown.html#cb644-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb644-5"><a href="introduction-to-r-markdown.html#cb644-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;COVID Testing in First 100 Days of Pandemic&quot;</span>,</span>
+<span id="cb644-6"><a href="introduction-to-r-markdown.html#cb644-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Pandemic Day, 2020&quot;</span>,</span>
+<span id="cb644-7"><a href="introduction-to-r-markdown.html#cb644-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Cycle Threshold </span><span class="sc">\n</span><span class="st">45 is a Negative Test&quot;</span>)</span></code></pre></div>
 <p><img src="io56-intro_rmarkdown_files/figure-html/plot-1.png" width="672" /></p>
 <p>Note that the <code>echo = FALSE</code> parameter was added to the top of the
 <code>plot</code> code chunk to prevent printing of the R code that generated the
@@ -988,21 +988,21 @@ plot. This is an example of a chunk option.</p>
 <div id="including-tables" class="section level2 hasAnchor" number="29.5">
 <h2><span class="header-section-number">29.5</span> Including Tables<a href="introduction-to-r-markdown.html#including-tables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You can also use code chunks to include tables in your document.</p>
-<div class="sourceCode" id="cb643"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb643-1"><a href="introduction-to-r-markdown.html#cb643-1" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
-<span id="cb643-2"><a href="introduction-to-r-markdown.html#cb643-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(demo_group, gender) <span class="sc">%&gt;%</span> </span>
-<span id="cb643-3"><a href="introduction-to-r-markdown.html#cb643-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb643-4"><a href="introduction-to-r-markdown.html#cb643-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">&quot;Demographics of COVID Testing&quot;</span>,</span>
-<span id="cb643-5"><a href="introduction-to-r-markdown.html#cb643-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">subtitle =</span> <span class="st">&quot;By Group and Gender&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb643-6"><a href="introduction-to-r-markdown.html#cb643-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(<span class="at">source_note =</span> <span class="st">&quot;From CHOP, 2020&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb643-7"><a href="introduction-to-r-markdown.html#cb643-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(<span class="at">demo_group =</span> <span class="st">&quot;Group&quot;</span>,</span>
-<span id="cb643-8"><a href="introduction-to-r-markdown.html#cb643-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">gender =</span> <span class="st">&quot;Gender&quot;</span>,</span>
-<span id="cb643-9"><a href="introduction-to-r-markdown.html#cb643-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">n =</span> <span class="st">&quot;Count&quot;</span>)</span></code></pre></div>
-<div id="ybymgfaecp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div class="sourceCode" id="cb645"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb645-1"><a href="introduction-to-r-markdown.html#cb645-1" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
+<span id="cb645-2"><a href="introduction-to-r-markdown.html#cb645-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(demo_group, gender) <span class="sc">%&gt;%</span> </span>
+<span id="cb645-3"><a href="introduction-to-r-markdown.html#cb645-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb645-4"><a href="introduction-to-r-markdown.html#cb645-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">&quot;Demographics of COVID Testing&quot;</span>,</span>
+<span id="cb645-5"><a href="introduction-to-r-markdown.html#cb645-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">subtitle =</span> <span class="st">&quot;By Group and Gender&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb645-6"><a href="introduction-to-r-markdown.html#cb645-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(<span class="at">source_note =</span> <span class="st">&quot;From CHOP, 2020&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb645-7"><a href="introduction-to-r-markdown.html#cb645-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(<span class="at">demo_group =</span> <span class="st">&quot;Group&quot;</span>,</span>
+<span id="cb645-8"><a href="introduction-to-r-markdown.html#cb645-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">gender =</span> <span class="st">&quot;Gender&quot;</span>,</span>
+<span id="cb645-9"><a href="introduction-to-r-markdown.html#cb645-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">n =</span> <span class="st">&quot;Count&quot;</span>)</span></code></pre></div>
+<div id="cbabqynikt" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ybymgfaecp .gt_table {
+#cbabqynikt .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1027,7 +1027,7 @@ plot. This is an example of a chunk option.</p>
   border-left-color: #D3D3D3;
 }
 
-#ybymgfaecp .gt_heading {
+#cbabqynikt .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1039,7 +1039,7 @@ plot. This is an example of a chunk option.</p>
   border-right-color: #D3D3D3;
 }
 
-#ybymgfaecp .gt_title {
+#cbabqynikt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1051,7 +1051,7 @@ plot. This is an example of a chunk option.</p>
   border-bottom-width: 0;
 }
 
-#ybymgfaecp .gt_subtitle {
+#cbabqynikt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1063,13 +1063,13 @@ plot. This is an example of a chunk option.</p>
   border-top-width: 0;
 }
 
-#ybymgfaecp .gt_bottom_border {
+#cbabqynikt .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ybymgfaecp .gt_col_headings {
+#cbabqynikt .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1084,7 +1084,7 @@ plot. This is an example of a chunk option.</p>
   border-right-color: #D3D3D3;
 }
 
-#ybymgfaecp .gt_col_heading {
+#cbabqynikt .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1104,7 +1104,7 @@ plot. This is an example of a chunk option.</p>
   overflow-x: hidden;
 }
 
-#ybymgfaecp .gt_column_spanner_outer {
+#cbabqynikt .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1116,15 +1116,15 @@ plot. This is an example of a chunk option.</p>
   padding-right: 4px;
 }
 
-#ybymgfaecp .gt_column_spanner_outer:first-child {
+#cbabqynikt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ybymgfaecp .gt_column_spanner_outer:last-child {
+#cbabqynikt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ybymgfaecp .gt_column_spanner {
+#cbabqynikt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1136,7 +1136,7 @@ plot. This is an example of a chunk option.</p>
   width: 100%;
 }
 
-#ybymgfaecp .gt_group_heading {
+#cbabqynikt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1161,7 +1161,7 @@ plot. This is an example of a chunk option.</p>
   vertical-align: middle;
 }
 
-#ybymgfaecp .gt_empty_group_heading {
+#cbabqynikt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1176,15 +1176,15 @@ plot. This is an example of a chunk option.</p>
   vertical-align: middle;
 }
 
-#ybymgfaecp .gt_from_md > :first-child {
+#cbabqynikt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ybymgfaecp .gt_from_md > :last-child {
+#cbabqynikt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ybymgfaecp .gt_row {
+#cbabqynikt .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1203,7 +1203,7 @@ plot. This is an example of a chunk option.</p>
   overflow-x: hidden;
 }
 
-#ybymgfaecp .gt_stub {
+#cbabqynikt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1216,7 +1216,7 @@ plot. This is an example of a chunk option.</p>
   padding-right: 5px;
 }
 
-#ybymgfaecp .gt_stub_row_group {
+#cbabqynikt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1230,11 +1230,11 @@ plot. This is an example of a chunk option.</p>
   vertical-align: top;
 }
 
-#ybymgfaecp .gt_row_group_first td {
+#cbabqynikt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ybymgfaecp .gt_summary_row {
+#cbabqynikt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1244,16 +1244,16 @@ plot. This is an example of a chunk option.</p>
   padding-right: 5px;
 }
 
-#ybymgfaecp .gt_first_summary_row {
+#cbabqynikt .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ybymgfaecp .gt_first_summary_row.thick {
+#cbabqynikt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ybymgfaecp .gt_last_summary_row {
+#cbabqynikt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1263,7 +1263,7 @@ plot. This is an example of a chunk option.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#ybymgfaecp .gt_grand_summary_row {
+#cbabqynikt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1273,7 +1273,7 @@ plot. This is an example of a chunk option.</p>
   padding-right: 5px;
 }
 
-#ybymgfaecp .gt_first_grand_summary_row {
+#cbabqynikt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1283,11 +1283,11 @@ plot. This is an example of a chunk option.</p>
   border-top-color: #D3D3D3;
 }
 
-#ybymgfaecp .gt_striped {
+#cbabqynikt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ybymgfaecp .gt_table_body {
+#cbabqynikt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1296,7 +1296,7 @@ plot. This is an example of a chunk option.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#ybymgfaecp .gt_footnotes {
+#cbabqynikt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1310,7 +1310,7 @@ plot. This is an example of a chunk option.</p>
   border-right-color: #D3D3D3;
 }
 
-#ybymgfaecp .gt_footnote {
+#cbabqynikt .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -1319,7 +1319,7 @@ plot. This is an example of a chunk option.</p>
   padding-right: 5px;
 }
 
-#ybymgfaecp .gt_sourcenotes {
+#cbabqynikt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1333,7 +1333,7 @@ plot. This is an example of a chunk option.</p>
   border-right-color: #D3D3D3;
 }
 
-#ybymgfaecp .gt_sourcenote {
+#cbabqynikt .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1341,60 +1341,60 @@ plot. This is an example of a chunk option.</p>
   padding-right: 5px;
 }
 
-#ybymgfaecp .gt_left {
+#cbabqynikt .gt_left {
   text-align: left;
 }
 
-#ybymgfaecp .gt_center {
+#cbabqynikt .gt_center {
   text-align: center;
 }
 
-#ybymgfaecp .gt_right {
+#cbabqynikt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ybymgfaecp .gt_font_normal {
+#cbabqynikt .gt_font_normal {
   font-weight: normal;
 }
 
-#ybymgfaecp .gt_font_bold {
+#cbabqynikt .gt_font_bold {
   font-weight: bold;
 }
 
-#ybymgfaecp .gt_font_italic {
+#cbabqynikt .gt_font_italic {
   font-style: italic;
 }
 
-#ybymgfaecp .gt_super {
+#cbabqynikt .gt_super {
   font-size: 65%;
 }
 
-#ybymgfaecp .gt_footnote_marks {
+#cbabqynikt .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#ybymgfaecp .gt_asterisk {
+#cbabqynikt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ybymgfaecp .gt_slash_mark {
+#cbabqynikt .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#ybymgfaecp .gt_fraction_numerator {
+#cbabqynikt .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#ybymgfaecp .gt_fraction_denominator {
+#cbabqynikt .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -1484,7 +1484,7 @@ like this:</p>
 <p>You can also insert an image using a code chunk and the knitr function
 <code>include_image()</code>, like this, which gives you more options to control
 figure size, alignment, height, and width with code chunk options:</p>
-<div class="sourceCode" id="cb644"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb644-1"><a href="introduction-to-r-markdown.html#cb644-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&#39;images/datasaurus-dozen.png&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb646"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb646-1"><a href="introduction-to-r-markdown.html#cb646-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&#39;images/datasaurus-dozen.png&#39;</span>)</span></code></pre></div>
 <p>(note that echo = TRUE and eval=FALSE as code chunk options means that
 this code is shown, but not run)</p>
 <p>An example shown below is an image of the “datasaurus dozen” used to
@@ -1684,9 +1684,9 @@ two types of code:</p>
 <li>data to be loaded in the background</li>
 </ul>
 <p>and often looks something like this:</p>
-<div class="sourceCode" id="cb645"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb645-1"><a href="introduction-to-r-markdown.html#cb645-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb645-2"><a href="introduction-to-r-markdown.html#cb645-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb645-3"><a href="introduction-to-r-markdown.html#cb645-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data/my_data_file.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb647"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb647-1"><a href="introduction-to-r-markdown.html#cb647-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb647-2"><a href="introduction-to-r-markdown.html#cb647-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb647-3"><a href="introduction-to-r-markdown.html#cb647-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data/my_data_file.csv&quot;</span>))</span></code></pre></div>
 <p>(note that for display purposes, I am using the chunk options
 <code>eval = FALSE, echo = TRUE</code>, while in a real setup chunk, I would use
 <code>include = FALSE</code>, which runs the code but does not display the code nor
@@ -1844,13 +1844,13 @@ study.</p>
 as illustrated below (note that these would be surrounded by single
 back-ticks)</p>
 The mean cycle threshold in this study was
-<div id="radio_DRKLBGEJIW" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_DRKLBGEJIW" value="answer"></input> <span>r covid %&gt;% mean(ct_result, na.rm = TRUE) %&gt;% format(digits = 5)</span></label><label><input type="radio" autocomplete="off" name="radio_DRKLBGEJIW" value=""></input> <span>r covid %&gt;% median(ct_result, na.rm = TRUE) %&gt;% format(digits = 7)</span></label><label><input type="radio" autocomplete="off" name="radio_DRKLBGEJIW" value=""></input> <span>r covid %&gt;% sd(ct_result, na.rm=TRUE) %&gt;% format(digits =3)</span></label>
+<div id="radio_SQPTAVWTAD" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SQPTAVWTAD" value="answer"></input> <span>r covid %&gt;% mean(ct_result, na.rm = TRUE) %&gt;% format(digits = 5)</span></label><label><input type="radio" autocomplete="off" name="radio_SQPTAVWTAD" value=""></input> <span>r covid %&gt;% median(ct_result, na.rm = TRUE) %&gt;% format(digits = 7)</span></label><label><input type="radio" autocomplete="off" name="radio_SQPTAVWTAD" value=""></input> <span>r covid %&gt;% sd(ct_result, na.rm=TRUE) %&gt;% format(digits =3)</span></label>
 </div>
 <p><br></p>
 The standard deviation of the cycle threshold in this study was
-<div id="radio_MGZUUSNQHU" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_MGZUUSNQHU" value=""></input> <span>r covid %&gt;% mean(ct_result, na.rm = TRUE) %&gt;% format(digits = 5)</span></label><label><input type="radio" autocomplete="off" name="radio_MGZUUSNQHU" value=""></input> <span>r covid %&gt;% median(ct_result, na.rm = TRUE) %&gt;% format(digits = 7)</span></label><label><input type="radio" autocomplete="off" name="radio_MGZUUSNQHU" value="answer"></input> <span>r covid %&gt;% sd(ct_result, na.rm=TRUE) %&gt;% format(digits =3)</span></label>
+<div id="radio_KYTVOSISKL" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KYTVOSISKL" value=""></input> <span>r covid %&gt;% mean(ct_result, na.rm = TRUE) %&gt;% format(digits = 5)</span></label><label><input type="radio" autocomplete="off" name="radio_KYTVOSISKL" value=""></input> <span>r covid %&gt;% median(ct_result, na.rm = TRUE) %&gt;% format(digits = 7)</span></label><label><input type="radio" autocomplete="off" name="radio_KYTVOSISKL" value="answer"></input> <span>r covid %&gt;% sd(ct_result, na.rm=TRUE) %&gt;% format(digits =3)</span></label>
 </div>
 <p><br></p>
 <p>Correct answers should produce this output when knit:</p>

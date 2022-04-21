@@ -235,12 +235,12 @@ covid %>%
 ```
 
 ```{=html}
-<div id="ybymgfaecp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="cbabqynikt" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ybymgfaecp .gt_table {
+#cbabqynikt .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -265,7 +265,7 @@ covid %>%
   border-left-color: #D3D3D3;
 }
 
-#ybymgfaecp .gt_heading {
+#cbabqynikt .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -277,7 +277,7 @@ covid %>%
   border-right-color: #D3D3D3;
 }
 
-#ybymgfaecp .gt_title {
+#cbabqynikt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -289,7 +289,7 @@ covid %>%
   border-bottom-width: 0;
 }
 
-#ybymgfaecp .gt_subtitle {
+#cbabqynikt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -301,13 +301,13 @@ covid %>%
   border-top-width: 0;
 }
 
-#ybymgfaecp .gt_bottom_border {
+#cbabqynikt .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ybymgfaecp .gt_col_headings {
+#cbabqynikt .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -322,7 +322,7 @@ covid %>%
   border-right-color: #D3D3D3;
 }
 
-#ybymgfaecp .gt_col_heading {
+#cbabqynikt .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -342,7 +342,7 @@ covid %>%
   overflow-x: hidden;
 }
 
-#ybymgfaecp .gt_column_spanner_outer {
+#cbabqynikt .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -354,15 +354,15 @@ covid %>%
   padding-right: 4px;
 }
 
-#ybymgfaecp .gt_column_spanner_outer:first-child {
+#cbabqynikt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ybymgfaecp .gt_column_spanner_outer:last-child {
+#cbabqynikt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ybymgfaecp .gt_column_spanner {
+#cbabqynikt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -374,7 +374,7 @@ covid %>%
   width: 100%;
 }
 
-#ybymgfaecp .gt_group_heading {
+#cbabqynikt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -399,7 +399,7 @@ covid %>%
   vertical-align: middle;
 }
 
-#ybymgfaecp .gt_empty_group_heading {
+#cbabqynikt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -414,15 +414,15 @@ covid %>%
   vertical-align: middle;
 }
 
-#ybymgfaecp .gt_from_md > :first-child {
+#cbabqynikt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ybymgfaecp .gt_from_md > :last-child {
+#cbabqynikt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ybymgfaecp .gt_row {
+#cbabqynikt .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -441,7 +441,7 @@ covid %>%
   overflow-x: hidden;
 }
 
-#ybymgfaecp .gt_stub {
+#cbabqynikt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -454,7 +454,7 @@ covid %>%
   padding-right: 5px;
 }
 
-#ybymgfaecp .gt_stub_row_group {
+#cbabqynikt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -468,11 +468,11 @@ covid %>%
   vertical-align: top;
 }
 
-#ybymgfaecp .gt_row_group_first td {
+#cbabqynikt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ybymgfaecp .gt_summary_row {
+#cbabqynikt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -482,16 +482,16 @@ covid %>%
   padding-right: 5px;
 }
 
-#ybymgfaecp .gt_first_summary_row {
+#cbabqynikt .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ybymgfaecp .gt_first_summary_row.thick {
+#cbabqynikt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ybymgfaecp .gt_last_summary_row {
+#cbabqynikt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -501,7 +501,7 @@ covid %>%
   border-bottom-color: #D3D3D3;
 }
 
-#ybymgfaecp .gt_grand_summary_row {
+#cbabqynikt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -511,7 +511,7 @@ covid %>%
   padding-right: 5px;
 }
 
-#ybymgfaecp .gt_first_grand_summary_row {
+#cbabqynikt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -521,11 +521,11 @@ covid %>%
   border-top-color: #D3D3D3;
 }
 
-#ybymgfaecp .gt_striped {
+#cbabqynikt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ybymgfaecp .gt_table_body {
+#cbabqynikt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -534,7 +534,7 @@ covid %>%
   border-bottom-color: #D3D3D3;
 }
 
-#ybymgfaecp .gt_footnotes {
+#cbabqynikt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -548,7 +548,7 @@ covid %>%
   border-right-color: #D3D3D3;
 }
 
-#ybymgfaecp .gt_footnote {
+#cbabqynikt .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -557,7 +557,7 @@ covid %>%
   padding-right: 5px;
 }
 
-#ybymgfaecp .gt_sourcenotes {
+#cbabqynikt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -571,7 +571,7 @@ covid %>%
   border-right-color: #D3D3D3;
 }
 
-#ybymgfaecp .gt_sourcenote {
+#cbabqynikt .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -579,60 +579,60 @@ covid %>%
   padding-right: 5px;
 }
 
-#ybymgfaecp .gt_left {
+#cbabqynikt .gt_left {
   text-align: left;
 }
 
-#ybymgfaecp .gt_center {
+#cbabqynikt .gt_center {
   text-align: center;
 }
 
-#ybymgfaecp .gt_right {
+#cbabqynikt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ybymgfaecp .gt_font_normal {
+#cbabqynikt .gt_font_normal {
   font-weight: normal;
 }
 
-#ybymgfaecp .gt_font_bold {
+#cbabqynikt .gt_font_bold {
   font-weight: bold;
 }
 
-#ybymgfaecp .gt_font_italic {
+#cbabqynikt .gt_font_italic {
   font-style: italic;
 }
 
-#ybymgfaecp .gt_super {
+#cbabqynikt .gt_super {
   font-size: 65%;
 }
 
-#ybymgfaecp .gt_footnote_marks {
+#cbabqynikt .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#ybymgfaecp .gt_asterisk {
+#cbabqynikt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ybymgfaecp .gt_slash_mark {
+#cbabqynikt .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#ybymgfaecp .gt_fraction_numerator {
+#cbabqynikt .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#ybymgfaecp .gt_fraction_denominator {
+#cbabqynikt .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -1083,12 +1083,12 @@ as illustrated below (note that these would be surrounded by single
 back-ticks)
 
 The mean cycle threshold in this study was
-<div class='webex-radiogroup' id='radio_DRKLBGEJIW'><label><input type="radio" autocomplete="off" name="radio_DRKLBGEJIW" value="answer"></input> <span>r covid %>%  mean(ct_result, na.rm = TRUE) %>% format(digits = 5)</span></label><label><input type="radio" autocomplete="off" name="radio_DRKLBGEJIW" value=""></input> <span>r covid %>% median(ct_result, na.rm = TRUE) %>% format(digits = 7)</span></label><label><input type="radio" autocomplete="off" name="radio_DRKLBGEJIW" value=""></input> <span>r covid %>%  sd(ct_result, na.rm=TRUE) %>% format(digits =3)</span></label></div>
+<div class='webex-radiogroup' id='radio_SQPTAVWTAD'><label><input type="radio" autocomplete="off" name="radio_SQPTAVWTAD" value="answer"></input> <span>r covid %>%  mean(ct_result, na.rm = TRUE) %>% format(digits = 5)</span></label><label><input type="radio" autocomplete="off" name="radio_SQPTAVWTAD" value=""></input> <span>r covid %>% median(ct_result, na.rm = TRUE) %>% format(digits = 7)</span></label><label><input type="radio" autocomplete="off" name="radio_SQPTAVWTAD" value=""></input> <span>r covid %>%  sd(ct_result, na.rm=TRUE) %>% format(digits =3)</span></label></div>
 
 <br>
 
 The standard deviation of the cycle threshold in this study was
-<div class='webex-radiogroup' id='radio_MGZUUSNQHU'><label><input type="radio" autocomplete="off" name="radio_MGZUUSNQHU" value=""></input> <span>r covid %>%  mean(ct_result, na.rm = TRUE) %>% format(digits = 5)</span></label><label><input type="radio" autocomplete="off" name="radio_MGZUUSNQHU" value=""></input> <span>r covid %>% median(ct_result, na.rm = TRUE) %>% format(digits = 7)</span></label><label><input type="radio" autocomplete="off" name="radio_MGZUUSNQHU" value="answer"></input> <span>r covid %>%  sd(ct_result, na.rm=TRUE) %>% format(digits =3)</span></label></div>
+<div class='webex-radiogroup' id='radio_KYTVOSISKL'><label><input type="radio" autocomplete="off" name="radio_KYTVOSISKL" value=""></input> <span>r covid %>%  mean(ct_result, na.rm = TRUE) %>% format(digits = 5)</span></label><label><input type="radio" autocomplete="off" name="radio_KYTVOSISKL" value=""></input> <span>r covid %>% median(ct_result, na.rm = TRUE) %>% format(digits = 7)</span></label><label><input type="radio" autocomplete="off" name="radio_KYTVOSISKL" value="answer"></input> <span>r covid %>%  sd(ct_result, na.rm=TRUE) %>% format(digits =3)</span></label></div>
 
 
 <br>
