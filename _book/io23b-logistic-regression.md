@@ -134,14 +134,14 @@ check_model(prostate_model, panel = FALSE)
 ```
 
 ```
-## $HOMOGENEITY
+## $PP_CHECK
 ```
 
 <img src="io23b-logistic-regression_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 
 ```
 ## 
-## $VIF
+## $BINNED_RESID
 ```
 
 <img src="io23b-logistic-regression_files/figure-html/unnamed-chunk-3-2.png" width="672" />
@@ -155,10 +155,17 @@ check_model(prostate_model, panel = FALSE)
 
 ```
 ## 
-## $QQ
+## $VIF
 ```
 
 <img src="io23b-logistic-regression_files/figure-html/unnamed-chunk-3-4.png" width="672" />
+
+```
+## 
+## $QQ
+```
+
+<img src="io23b-logistic-regression_files/figure-html/unnamed-chunk-3-5.png" width="672" />
 
 This generates graphs with nice subtitles to help you interpret the output. Big deviations should make you worry about one or more of the model assumptions, and may require rescaling one of your predictors.
 
@@ -420,9 +427,9 @@ predict(model, newdata = slice_sample(prostate, prop = 0.03), type = "response")
 
 ```
 ##          1          2          3          4          5 
-## 0.12143477 0.04058836 0.09409879 0.09409879 0.09409879 
+## 0.52579385 0.25338133 0.09409879 0.04058836 0.12143477 
 ##          6          7          8          9 
-## 0.04058836 0.25338133 0.09409879 0.09409879
+## 0.09409879 0.52579385 0.04058836 0.25338133
 ```
 
 Let’s see how this works with another dataset, from which we will use predictors to classify diabetes cases. We will start by loading the data into dm_data, and building an “all predictors” model, by specifying the formula predictors as “.” - this means to use all other variables (except the outcome variable) as predictors. Look at the model output for problems.
@@ -784,14 +791,14 @@ performance::check_model(dm_mod, panel = FALSE)
 ```
 
 ```
-## $HOMOGENEITY
+## $PP_CHECK
 ```
 
 <img src="io23b-logistic-regression_files/figure-html/unnamed-chunk-30-1.png" width="672" />
 
 ```
 ## 
-## $VIF
+## $BINNED_RESID
 ```
 
 <img src="io23b-logistic-regression_files/figure-html/unnamed-chunk-30-2.png" width="672" />
@@ -805,10 +812,17 @@ performance::check_model(dm_mod, panel = FALSE)
 
 ```
 ## 
-## $QQ
+## $VIF
 ```
 
 <img src="io23b-logistic-regression_files/figure-html/unnamed-chunk-30-4.png" width="672" />
+
+```
+## 
+## $QQ
+```
+
+<img src="io23b-logistic-regression_files/figure-html/unnamed-chunk-30-5.png" width="672" />
 
 
 

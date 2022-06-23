@@ -239,14 +239,14 @@ performance::check_model(dm_mod, panel = FALSE)
 ```
 
 ```
-## $HOMOGENEITY
+## $PP_CHECK
 ```
 
 <img src="io23-linear-regression_files/figure-html/unnamed-chunk-1-3.png" width="672" />
 
 ```
 ## 
-## $VIF
+## $BINNED_RESID
 ```
 
 <img src="io23-linear-regression_files/figure-html/unnamed-chunk-1-4.png" width="672" />
@@ -260,10 +260,17 @@ performance::check_model(dm_mod, panel = FALSE)
 
 ```
 ## 
-## $QQ
+## $VIF
 ```
 
 <img src="io23-linear-regression_files/figure-html/unnamed-chunk-1-6.png" width="672" />
+
+```
+## 
+## $QQ
+```
+
+<img src="io23-linear-regression_files/figure-html/unnamed-chunk-1-7.png" width="672" />
 
 ```r
 # use panel = TRUE in Rmarkdown to get 2x3 panels for 6 plots
@@ -638,12 +645,12 @@ medicaldata::supraclavicular %>%
 ```
 
 ```{=html}
-<div id="vnubqgaize" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="xeujopedat" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#vnubqgaize .gt_table {
+#xeujopedat .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -668,7 +675,7 @@ medicaldata::supraclavicular %>%
   border-left-color: #D3D3D3;
 }
 
-#vnubqgaize .gt_heading {
+#xeujopedat .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -680,7 +687,7 @@ medicaldata::supraclavicular %>%
   border-right-color: #D3D3D3;
 }
 
-#vnubqgaize .gt_title {
+#xeujopedat .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -692,7 +699,7 @@ medicaldata::supraclavicular %>%
   border-bottom-width: 0;
 }
 
-#vnubqgaize .gt_subtitle {
+#xeujopedat .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -704,13 +711,13 @@ medicaldata::supraclavicular %>%
   border-top-width: 0;
 }
 
-#vnubqgaize .gt_bottom_border {
+#xeujopedat .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vnubqgaize .gt_col_headings {
+#xeujopedat .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -725,7 +732,7 @@ medicaldata::supraclavicular %>%
   border-right-color: #D3D3D3;
 }
 
-#vnubqgaize .gt_col_heading {
+#xeujopedat .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -745,7 +752,7 @@ medicaldata::supraclavicular %>%
   overflow-x: hidden;
 }
 
-#vnubqgaize .gt_column_spanner_outer {
+#xeujopedat .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -757,15 +764,15 @@ medicaldata::supraclavicular %>%
   padding-right: 4px;
 }
 
-#vnubqgaize .gt_column_spanner_outer:first-child {
+#xeujopedat .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vnubqgaize .gt_column_spanner_outer:last-child {
+#xeujopedat .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vnubqgaize .gt_column_spanner {
+#xeujopedat .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -777,7 +784,7 @@ medicaldata::supraclavicular %>%
   width: 100%;
 }
 
-#vnubqgaize .gt_group_heading {
+#xeujopedat .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -802,7 +809,7 @@ medicaldata::supraclavicular %>%
   vertical-align: middle;
 }
 
-#vnubqgaize .gt_empty_group_heading {
+#xeujopedat .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -817,15 +824,15 @@ medicaldata::supraclavicular %>%
   vertical-align: middle;
 }
 
-#vnubqgaize .gt_from_md > :first-child {
+#xeujopedat .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vnubqgaize .gt_from_md > :last-child {
+#xeujopedat .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vnubqgaize .gt_row {
+#xeujopedat .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -844,7 +851,7 @@ medicaldata::supraclavicular %>%
   overflow-x: hidden;
 }
 
-#vnubqgaize .gt_stub {
+#xeujopedat .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -857,7 +864,7 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#vnubqgaize .gt_stub_row_group {
+#xeujopedat .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -871,11 +878,11 @@ medicaldata::supraclavicular %>%
   vertical-align: top;
 }
 
-#vnubqgaize .gt_row_group_first td {
+#xeujopedat .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vnubqgaize .gt_summary_row {
+#xeujopedat .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -885,16 +892,16 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#vnubqgaize .gt_first_summary_row {
+#xeujopedat .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vnubqgaize .gt_first_summary_row.thick {
+#xeujopedat .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vnubqgaize .gt_last_summary_row {
+#xeujopedat .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -904,7 +911,7 @@ medicaldata::supraclavicular %>%
   border-bottom-color: #D3D3D3;
 }
 
-#vnubqgaize .gt_grand_summary_row {
+#xeujopedat .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -914,7 +921,7 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#vnubqgaize .gt_first_grand_summary_row {
+#xeujopedat .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -924,11 +931,11 @@ medicaldata::supraclavicular %>%
   border-top-color: #D3D3D3;
 }
 
-#vnubqgaize .gt_striped {
+#xeujopedat .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vnubqgaize .gt_table_body {
+#xeujopedat .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -937,7 +944,7 @@ medicaldata::supraclavicular %>%
   border-bottom-color: #D3D3D3;
 }
 
-#vnubqgaize .gt_footnotes {
+#xeujopedat .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -951,7 +958,7 @@ medicaldata::supraclavicular %>%
   border-right-color: #D3D3D3;
 }
 
-#vnubqgaize .gt_footnote {
+#xeujopedat .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -960,7 +967,7 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#vnubqgaize .gt_sourcenotes {
+#xeujopedat .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -974,7 +981,7 @@ medicaldata::supraclavicular %>%
   border-right-color: #D3D3D3;
 }
 
-#vnubqgaize .gt_sourcenote {
+#xeujopedat .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -982,60 +989,69 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#vnubqgaize .gt_left {
+#xeujopedat .gt_left {
   text-align: left;
 }
 
-#vnubqgaize .gt_center {
+#xeujopedat .gt_center {
   text-align: center;
 }
 
-#vnubqgaize .gt_right {
+#xeujopedat .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vnubqgaize .gt_font_normal {
+#xeujopedat .gt_font_normal {
   font-weight: normal;
 }
 
-#vnubqgaize .gt_font_bold {
+#xeujopedat .gt_font_bold {
   font-weight: bold;
 }
 
-#vnubqgaize .gt_font_italic {
+#xeujopedat .gt_font_italic {
   font-style: italic;
 }
 
-#vnubqgaize .gt_super {
+#xeujopedat .gt_super {
   font-size: 65%;
 }
 
-#vnubqgaize .gt_footnote_marks {
+#xeujopedat .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#xeujopedat .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#vnubqgaize .gt_asterisk {
+#xeujopedat .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vnubqgaize .gt_slash_mark {
+#xeujopedat .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#vnubqgaize .gt_fraction_numerator {
+#xeujopedat .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#vnubqgaize .gt_fraction_denominator {
+#xeujopedat .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -1126,21 +1142,21 @@ performance::check_model(supra_model, panel = FALSE)
 ```
 
 ```
-## $NCV
+## $PP_CHECK
 ```
 
 <img src="io23-linear-regression_files/figure-html/unnamed-chunk-2-1.png" width="672" />
 
 ```
 ## 
-## $HOMOGENEITY
+## $NCV
 ```
 
 <img src="io23-linear-regression_files/figure-html/unnamed-chunk-2-2.png" width="672" />
 
 ```
 ## 
-## $VIF
+## $HOMOGENEITY
 ```
 
 <img src="io23-linear-regression_files/figure-html/unnamed-chunk-2-3.png" width="672" />
@@ -1154,14 +1170,14 @@ performance::check_model(supra_model, panel = FALSE)
 
 ```
 ## 
-## $QQ
+## $VIF
 ```
 
 <img src="io23-linear-regression_files/figure-html/unnamed-chunk-2-5.png" width="672" />
 
 ```
 ## 
-## $NORM
+## $QQ
 ```
 
 <img src="io23-linear-regression_files/figure-html/unnamed-chunk-2-6.png" width="672" />

@@ -12,6 +12,20 @@ editor_options:
 # Sharing Models with Shiny
 
 In this chapter we will practice Sharing your predictive models with Shiny Apps for research or clinical use.
+
+### Packages Needed for this Chapter
+
+This chapter will require {tidyverse}. {medicaldata}, {shiny}, and {mlbench} packages. You may already have these packages installed. If not, these can be installed with the code below if you copy the code chunk to your RStudio Console pane and run these installation functions.
+
+
+```r
+# Install the packages below if you do not have these already installed.
+install.packages('tidyverse')
+install.packages('medicaldata')
+install.packages('shiny')
+install.packages('mlbench')
+```
+
 We will walk through how to do this for a few example models.
 
 ## Setting up and Saving Models
@@ -28,6 +42,9 @@ We will then save this linear model to an RDS file, using the `saveRDS()` functi
 
 
 ```r
+library(tidyverse)
+library(medicaldata)
+library(shiny)
 supra_linear_model <- medicaldata::supraclavicular %>%
   lm(formula = onset_sensory ~ age + bmi + gender + group,
  data = .) 
@@ -44,6 +61,8 @@ We will then save this logistic model to an RDS file, using the `saveRDS()` func
 
 
 ```r
+library(mlbench)
+library(shiny)
 data("PimaIndiansDiabetes2")
 dm_logit_mod <- glm(diabetes ~ glucose + mass + pedigree + age, 
               data = PimaIndiansDiabetes2, 
@@ -64,6 +83,8 @@ We will then save this random forest model to an RDS file, using the `saveRDS()`
 
 
 ```r
+library(tidymodels)
+library(mlbench)
 data("PimaIndiansDiabetes2")
 set.seed(123)
 splits <- initial_split(PimaIndiansDiabetes2 %>% na.omit(), strata = diabetes)
@@ -118,6 +139,15 @@ Now go to your file manager for your computer, and find the file named "linear_m
 Now your Shiny app will have access to the model.
 
 We will now edit the "Old Faithful" Shiny app to turn it into the Linear Model Shiny app that we want. Having the structure in place and editing piece by piece is pretty helpful. Let's go step by step.
+
+:::warning
+Editing and coding in Shiny apps can be frustrating at first, as the structure is very particular, and a bit persnickety. Every comma, parenthesis, and curly brace is there for a reason, and it is very easy to get these wrong. It is very helpful to
+1. Have the rainbow parentheses option turned on in your version of RStudio. You can turn this on with Tools/Global Options/Code/Display and select the checkbox for Rainbow Parentheses. When this is on, paired parentheses are color-matched, and when you reach the red close-parenthesis, you know you have closed all of the open expressions. 
+2. Watch your commas - you will need one between each input, but no comma after the last input.
+3. Watch the red dot Xs at the left side of your code. Hover over these to help figure out what is wrong, and how to fix it.
+4. If you are totally stuck, there are several Solution buttons to bail you out.
+5. Don't get down on yourself if you are struggling with Shiny - the syntax is hard when you are getting started, and the details of parentheses, curly braces, and commas are fairly unforgiving. Keep plugging away - you will get this working!
+:::
 
 
 1. Find and run the app.R file in the linear-model folder. This should produce the "Old Faithful" histogram, where x is the waiting time in minutes to the next eruption.

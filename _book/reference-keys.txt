@@ -386,6 +386,7 @@ building-a-simple-shiny-app-version-3
 publishing-your-shiny-app-on-the-web
 more-to-explore
 sharing-models-with-shiny
+packages-needed-for-this-chapter-5
 setting-up-and-saving-models
 linear-model
 logistic-model
@@ -449,7 +450,7 @@ images-in-powerpoint
 plots-in-powerpoint
 adding-citations-to-your-rmarkdown
 goals-for-this-chapter-6
-packages-needed-for-this-chapter-5
+packages-needed-for-this-chapter-6
 getting-set-up-for-citations
 installing-the-zotero-connector
 registration-for-zotero
