@@ -1,0 +1,115 @@
+---
+title: "Mutating Joins to Combine Data Sources"
+author: "Peter Higgins"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(webexercises)
+
+birthdays <- read.csv("https://raw.githubusercontent.com/higgi13425/medicaldata/master/data-raw/join_data/birthdays.csv") %>% select(-X)
+
+hometowns <- read.csv("https://raw.githubusercontent.com/higgi13425/medicaldata/master/data-raw/join_data/hometowns.csv") %>% select(-X)
+
+```
+
+## What are Joins?
+
+Joins (sometimes called merge operations) are used to join together
+different datasets. This can be really helpful for joining together data
+from different data sources, like different forms in REDCap
+(demographics, vitals, visit 1 data), or the results of a data query
+from your electronic medical record, or national or state-level data
+available from sources like the CDC or a state health department. By
+linking these data you can find new connections, and gain a new
+understanding of disease, social determinants of health, or geographic
+factors.
+
+## What are Mutating Joins?
+
+These are joins between a base dataset (x) and a new dataset (y) that
+add new variables to the base dataset, like a *mutate()* function in
+dplyr. Typically you would start with a dataset that includes one row
+for each observation, and often one row for each participant.
+
+There are four types of mutating joins:
+
+-   **left join** - all variables from the base dataset (x) are
+    retained, and new variables from new dataset (y) that match the
+    observations (rows) in dataset x on the key (unique id) variable are
+    added.
+
+-   **right join** - all variables from the new dataset (y) are
+    retained, and new variables from the base dataset (x) that match the
+    observations (rows) in dataset y on the key (unique id) variable are
+    added.
+
+-   **inner join** - includes all rows in **both** dataset (x) and
+    dataset (y), requiring matching on the key (unique id) variable.
+
+-   **outer join** - includes all rows in **either** dataset (x) or
+    dataset (y), matching on the key (unique id) variable when matches
+    are present, and filling in NAs in missing columns if no match is
+    present.
+
+## Let's Start with Left Joins
+
+The left join is the most common mutating join, as it allows you to
+start with a base dataset and add matching variables from other sources.
+
+-   **left join** - all variables from the base dataset (x) are
+    retained, and new variables from new dataset (y) that match the
+    observations (rows) in dataset x on the key (unique id) variable are
+    added.
+
+Let's start with a simple left join with two small and simple "toy"
+datasets on famous physicians. Start by running a glimpse() function on
+each dataset in the code chunk below.
+
+```{r glimpse}
+glimpse(birthdays)
+glimpse(hometowns)
+```
+
+We have two small datasets, with 3 rows each and 2 variables each.
+Across the toy datasets, data are provided on 4 famous physicians, so
+that each dataset is missing one physician from the other dataset.
+
+The 3 main arguments of the left_join() function include
+
+-   **x** (base dataset, or left dataset)
+
+-   **y** (new dataset, or right dataset)
+
+-   **by** (variable to match, known as the key, or unique id - must be
+    unique to each observation)
+
+Let's see how it works. Run the code chunk below.
+
+```{r}
+left_join(hometowns, birthdays)
+```
+
+This produces a new dataset with 3 columns - name, hometown, and date of
+birth. You could assign this dataset to a new object, and add more data
+from a 3rd, or even a 4th dataset, as long as each has a matching unique
+key variable.
+
+![left join animation]("/images/left-join.gif")
+
+::: challenge
+## Quick Quiz
+Which variable in this left_join is the key variable that is used to join these two datasets?
+\`r webexercises::mcq(c(answer = 'name', 'hometown', 'dob'))\`
+
+Why does Hippocrates have an NA for date of birth?
+`r webexercises::mcq(c('Hippocrates does not appear in the `hometown` dataset', answer = 'Hippocrates does not appear in the `birthdays` dataset', 'Hippocrates had a fear of candles', ' Hippocrates always told everyone he was 29'))`
+:::
+
+
