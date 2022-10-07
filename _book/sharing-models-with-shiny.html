@@ -848,11 +848,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="packages-needed-for-this-chapter-5" class="section level3 hasAnchor" number="30.0.1">
 <h3><span class="header-section-number">30.0.1</span> Packages Needed for this Chapter<a href="sharing-models-with-shiny.html#packages-needed-for-this-chapter-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This chapter will require {tidyverse}. {medicaldata}, {shiny}, and {mlbench} packages. You may already have these packages installed. If not, these can be installed with the code below if you copy the code chunk to your RStudio Console pane and run these installation functions.</p>
-<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb675-1"><a href="sharing-models-with-shiny.html#cb675-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the packages below if you do not have these already installed.</span></span>
-<span id="cb675-2"><a href="sharing-models-with-shiny.html#cb675-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tidyverse&#39;</span>)</span>
-<span id="cb675-3"><a href="sharing-models-with-shiny.html#cb675-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;medicaldata&#39;</span>)</span>
-<span id="cb675-4"><a href="sharing-models-with-shiny.html#cb675-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;shiny&#39;</span>)</span>
-<span id="cb675-5"><a href="sharing-models-with-shiny.html#cb675-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;mlbench&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb680"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb680-1"><a href="sharing-models-with-shiny.html#cb680-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the packages below if you do not have these already installed.</span></span>
+<span id="cb680-2"><a href="sharing-models-with-shiny.html#cb680-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tidyverse&#39;</span>)</span>
+<span id="cb680-3"><a href="sharing-models-with-shiny.html#cb680-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;medicaldata&#39;</span>)</span>
+<span id="cb680-4"><a href="sharing-models-with-shiny.html#cb680-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;shiny&#39;</span>)</span>
+<span id="cb680-5"><a href="sharing-models-with-shiny.html#cb680-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;mlbench&#39;</span>)</span></code></pre></div>
 <p>We will walk through how to do this for a few example models.</p>
 </div>
 <div id="setting-up-and-saving-models" class="section level2 hasAnchor" number="30.1">
@@ -864,28 +864,28 @@ When needed, we can move these model objects (model.RDS) to the folder where the
 <p>We will use one of the {medicaldata} datasets to build a linear model.
 We will use the <code>supraclavicular</code> dataset to model the onset of sensory function after anesthesia in minutes, using treatment group as the main predictor, adjusted for age, bmi, and gender.</p>
 <p>We will then save this linear model to an RDS file, using the <code>saveRDS()</code> function.</p>
-<div class="sourceCode" id="cb676"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb676-1"><a href="sharing-models-with-shiny.html#cb676-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb676-2"><a href="sharing-models-with-shiny.html#cb676-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb676-3"><a href="sharing-models-with-shiny.html#cb676-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb676-4"><a href="sharing-models-with-shiny.html#cb676-4" aria-hidden="true" tabindex="-1"></a>supra_linear_model <span class="ot">&lt;-</span> medicaldata<span class="sc">::</span>supraclavicular <span class="sc">%&gt;%</span></span>
-<span id="cb676-5"><a href="sharing-models-with-shiny.html#cb676-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(<span class="at">formula =</span> onset_sensory <span class="sc">~</span> age <span class="sc">+</span> bmi <span class="sc">+</span> gender <span class="sc">+</span> group,</span>
-<span id="cb676-6"><a href="sharing-models-with-shiny.html#cb676-6" aria-hidden="true" tabindex="-1"></a> <span class="at">data =</span> .) </span>
-<span id="cb676-7"><a href="sharing-models-with-shiny.html#cb676-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb676-8"><a href="sharing-models-with-shiny.html#cb676-8" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(supra_linear_model, <span class="st">&quot;linear_model.RDS&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb681"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb681-1"><a href="sharing-models-with-shiny.html#cb681-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb681-2"><a href="sharing-models-with-shiny.html#cb681-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb681-3"><a href="sharing-models-with-shiny.html#cb681-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb681-4"><a href="sharing-models-with-shiny.html#cb681-4" aria-hidden="true" tabindex="-1"></a>supra_linear_model <span class="ot">&lt;-</span> medicaldata<span class="sc">::</span>supraclavicular <span class="sc">%&gt;%</span></span>
+<span id="cb681-5"><a href="sharing-models-with-shiny.html#cb681-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(<span class="at">formula =</span> onset_sensory <span class="sc">~</span> age <span class="sc">+</span> bmi <span class="sc">+</span> gender <span class="sc">+</span> group,</span>
+<span id="cb681-6"><a href="sharing-models-with-shiny.html#cb681-6" aria-hidden="true" tabindex="-1"></a> <span class="at">data =</span> .) </span>
+<span id="cb681-7"><a href="sharing-models-with-shiny.html#cb681-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb681-8"><a href="sharing-models-with-shiny.html#cb681-8" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(supra_linear_model, <span class="st">&quot;linear_model.RDS&quot;</span>)</span></code></pre></div>
 </div>
 <div id="logistic-model" class="section level3 hasAnchor" number="30.1.2">
 <h3><span class="header-section-number">30.1.2</span> Logistic Model<a href="sharing-models-with-shiny.html#logistic-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We will use the Pima Indian dataset from {mlbench} to build a logistic model.
 We will classify individuals for the outcome of type 2 diabetes with 4 predictor variables.</p>
 <p>We will then save this logistic model to an RDS file, using the <code>saveRDS()</code> function.</p>
-<div class="sourceCode" id="cb677"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb677-1"><a href="sharing-models-with-shiny.html#cb677-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mlbench)</span>
-<span id="cb677-2"><a href="sharing-models-with-shiny.html#cb677-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb677-3"><a href="sharing-models-with-shiny.html#cb677-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;PimaIndiansDiabetes2&quot;</span>)</span>
-<span id="cb677-4"><a href="sharing-models-with-shiny.html#cb677-4" aria-hidden="true" tabindex="-1"></a>dm_logit_mod <span class="ot">&lt;-</span> <span class="fu">glm</span>(diabetes <span class="sc">~</span> glucose <span class="sc">+</span> mass <span class="sc">+</span> pedigree <span class="sc">+</span> age, </span>
-<span id="cb677-5"><a href="sharing-models-with-shiny.html#cb677-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">data =</span> PimaIndiansDiabetes2, </span>
-<span id="cb677-6"><a href="sharing-models-with-shiny.html#cb677-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>)</span>
-<span id="cb677-7"><a href="sharing-models-with-shiny.html#cb677-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb677-8"><a href="sharing-models-with-shiny.html#cb677-8" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(dm_logit_mod, <span class="st">&quot;logit_model.RDS&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb682"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb682-1"><a href="sharing-models-with-shiny.html#cb682-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mlbench)</span>
+<span id="cb682-2"><a href="sharing-models-with-shiny.html#cb682-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb682-3"><a href="sharing-models-with-shiny.html#cb682-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;PimaIndiansDiabetes2&quot;</span>)</span>
+<span id="cb682-4"><a href="sharing-models-with-shiny.html#cb682-4" aria-hidden="true" tabindex="-1"></a>dm_logit_mod <span class="ot">&lt;-</span> <span class="fu">glm</span>(diabetes <span class="sc">~</span> glucose <span class="sc">+</span> mass <span class="sc">+</span> pedigree <span class="sc">+</span> age, </span>
+<span id="cb682-5"><a href="sharing-models-with-shiny.html#cb682-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">data =</span> PimaIndiansDiabetes2, </span>
+<span id="cb682-6"><a href="sharing-models-with-shiny.html#cb682-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>)</span>
+<span id="cb682-7"><a href="sharing-models-with-shiny.html#cb682-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb682-8"><a href="sharing-models-with-shiny.html#cb682-8" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(dm_logit_mod, <span class="st">&quot;logit_model.RDS&quot;</span>)</span></code></pre></div>
 </div>
 <div id="random-forest-model" class="section level3 hasAnchor" number="30.1.3">
 <h3><span class="header-section-number">30.1.3</span> Random Forest Model<a href="sharing-models-with-shiny.html#random-forest-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -893,36 +893,36 @@ We will classify individuals for the outcome of type 2 diabetes with 4 predictor
 <p>This approach requires more steps, but is more flexible, as you can swap out the engine and its parameters, the pre-processing recipe, and (if needed) tune hyperparameters in the pipeline, allowing you to easily create and compare several versions of models.</p>
 <p>We will again predict the outcome of diabetes with all of the predictor variables available.</p>
 <p>We will then save this random forest model to an RDS file, using the <code>saveRDS()</code> function.</p>
-<div class="sourceCode" id="cb678"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb678-1"><a href="sharing-models-with-shiny.html#cb678-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
-<span id="cb678-2"><a href="sharing-models-with-shiny.html#cb678-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mlbench)</span>
-<span id="cb678-3"><a href="sharing-models-with-shiny.html#cb678-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;PimaIndiansDiabetes2&quot;</span>)</span>
-<span id="cb678-4"><a href="sharing-models-with-shiny.html#cb678-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb678-5"><a href="sharing-models-with-shiny.html#cb678-5" aria-hidden="true" tabindex="-1"></a>splits <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(PimaIndiansDiabetes2 <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>(), <span class="at">strata =</span> diabetes)</span>
-<span id="cb678-6"><a href="sharing-models-with-shiny.html#cb678-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb678-7"><a href="sharing-models-with-shiny.html#cb678-7" aria-hidden="true" tabindex="-1"></a>dm_training <span class="ot">&lt;-</span> <span class="fu">training</span>(splits)</span>
-<span id="cb678-8"><a href="sharing-models-with-shiny.html#cb678-8" aria-hidden="true" tabindex="-1"></a>dm_testing <span class="ot">&lt;-</span> <span class="fu">testing</span>(splits)</span>
-<span id="cb678-9"><a href="sharing-models-with-shiny.html#cb678-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb678-10"><a href="sharing-models-with-shiny.html#cb678-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb678-11"><a href="sharing-models-with-shiny.html#cb678-11" aria-hidden="true" tabindex="-1"></a>dm_rf_mod <span class="ot">&lt;-</span> <span class="fu">rand_forest</span>(<span class="at">mtry =</span> <span class="dv">4</span>, <span class="at">min_n =</span> <span class="dv">2</span>, <span class="at">trees =</span> <span class="dv">500</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb678-12"><a href="sharing-models-with-shiny.html#cb678-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">&quot;ranger&quot;</span>, <span class="at">num.threads =</span> <span class="dv">8</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb678-13"><a href="sharing-models-with-shiny.html#cb678-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">&quot;classification&quot;</span>)</span>
-<span id="cb678-14"><a href="sharing-models-with-shiny.html#cb678-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb678-15"><a href="sharing-models-with-shiny.html#cb678-15" aria-hidden="true" tabindex="-1"></a>rf_recipe <span class="ot">&lt;-</span> <span class="fu">recipe</span>(diabetes <span class="sc">~</span> ., <span class="at">data =</span> dm_training) <span class="sc">%&gt;%</span> </span>
-<span id="cb678-16"><a href="sharing-models-with-shiny.html#cb678-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_zv</span>(<span class="fu">all_predictors</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb678-17"><a href="sharing-models-with-shiny.html#cb678-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_predictors</span>())</span>
-<span id="cb678-18"><a href="sharing-models-with-shiny.html#cb678-18" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb678-19"><a href="sharing-models-with-shiny.html#cb678-19" aria-hidden="true" tabindex="-1"></a>rf_workflow <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb678-20"><a href="sharing-models-with-shiny.html#cb678-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(dm_rf_mod) <span class="sc">%&gt;%</span> </span>
-<span id="cb678-21"><a href="sharing-models-with-shiny.html#cb678-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(rf_recipe)</span>
-<span id="cb678-22"><a href="sharing-models-with-shiny.html#cb678-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb678-23"><a href="sharing-models-with-shiny.html#cb678-23" aria-hidden="true" tabindex="-1"></a>rf_fit <span class="ot">&lt;-</span> rf_workflow <span class="sc">%&gt;%</span> </span>
-<span id="cb678-24"><a href="sharing-models-with-shiny.html#cb678-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(<span class="at">data =</span> dm_training)</span>
-<span id="cb678-25"><a href="sharing-models-with-shiny.html#cb678-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb678-26"><a href="sharing-models-with-shiny.html#cb678-26" aria-hidden="true" tabindex="-1"></a><span class="co"># predict(rf_fit, dm_testing, type = &quot;prob&quot;)</span></span>
-<span id="cb678-27"><a href="sharing-models-with-shiny.html#cb678-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb678-28"><a href="sharing-models-with-shiny.html#cb678-28" aria-hidden="true" tabindex="-1"></a><span class="co"># augment(rf_fit, dm_testing)</span></span>
-<span id="cb678-29"><a href="sharing-models-with-shiny.html#cb678-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb678-30"><a href="sharing-models-with-shiny.html#cb678-30" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(rf_fit, <span class="st">&quot;rf_model.RDS&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb683"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb683-1"><a href="sharing-models-with-shiny.html#cb683-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb683-2"><a href="sharing-models-with-shiny.html#cb683-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mlbench)</span>
+<span id="cb683-3"><a href="sharing-models-with-shiny.html#cb683-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;PimaIndiansDiabetes2&quot;</span>)</span>
+<span id="cb683-4"><a href="sharing-models-with-shiny.html#cb683-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb683-5"><a href="sharing-models-with-shiny.html#cb683-5" aria-hidden="true" tabindex="-1"></a>splits <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(PimaIndiansDiabetes2 <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>(), <span class="at">strata =</span> diabetes)</span>
+<span id="cb683-6"><a href="sharing-models-with-shiny.html#cb683-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb683-7"><a href="sharing-models-with-shiny.html#cb683-7" aria-hidden="true" tabindex="-1"></a>dm_training <span class="ot">&lt;-</span> <span class="fu">training</span>(splits)</span>
+<span id="cb683-8"><a href="sharing-models-with-shiny.html#cb683-8" aria-hidden="true" tabindex="-1"></a>dm_testing <span class="ot">&lt;-</span> <span class="fu">testing</span>(splits)</span>
+<span id="cb683-9"><a href="sharing-models-with-shiny.html#cb683-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb683-10"><a href="sharing-models-with-shiny.html#cb683-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb683-11"><a href="sharing-models-with-shiny.html#cb683-11" aria-hidden="true" tabindex="-1"></a>dm_rf_mod <span class="ot">&lt;-</span> <span class="fu">rand_forest</span>(<span class="at">mtry =</span> <span class="dv">4</span>, <span class="at">min_n =</span> <span class="dv">2</span>, <span class="at">trees =</span> <span class="dv">500</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb683-12"><a href="sharing-models-with-shiny.html#cb683-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">&quot;ranger&quot;</span>, <span class="at">num.threads =</span> <span class="dv">8</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb683-13"><a href="sharing-models-with-shiny.html#cb683-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">&quot;classification&quot;</span>)</span>
+<span id="cb683-14"><a href="sharing-models-with-shiny.html#cb683-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb683-15"><a href="sharing-models-with-shiny.html#cb683-15" aria-hidden="true" tabindex="-1"></a>rf_recipe <span class="ot">&lt;-</span> <span class="fu">recipe</span>(diabetes <span class="sc">~</span> ., <span class="at">data =</span> dm_training) <span class="sc">%&gt;%</span> </span>
+<span id="cb683-16"><a href="sharing-models-with-shiny.html#cb683-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_zv</span>(<span class="fu">all_predictors</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb683-17"><a href="sharing-models-with-shiny.html#cb683-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_predictors</span>())</span>
+<span id="cb683-18"><a href="sharing-models-with-shiny.html#cb683-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb683-19"><a href="sharing-models-with-shiny.html#cb683-19" aria-hidden="true" tabindex="-1"></a>rf_workflow <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb683-20"><a href="sharing-models-with-shiny.html#cb683-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(dm_rf_mod) <span class="sc">%&gt;%</span> </span>
+<span id="cb683-21"><a href="sharing-models-with-shiny.html#cb683-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(rf_recipe)</span>
+<span id="cb683-22"><a href="sharing-models-with-shiny.html#cb683-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb683-23"><a href="sharing-models-with-shiny.html#cb683-23" aria-hidden="true" tabindex="-1"></a>rf_fit <span class="ot">&lt;-</span> rf_workflow <span class="sc">%&gt;%</span> </span>
+<span id="cb683-24"><a href="sharing-models-with-shiny.html#cb683-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(<span class="at">data =</span> dm_training)</span>
+<span id="cb683-25"><a href="sharing-models-with-shiny.html#cb683-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb683-26"><a href="sharing-models-with-shiny.html#cb683-26" aria-hidden="true" tabindex="-1"></a><span class="co"># predict(rf_fit, dm_testing, type = &quot;prob&quot;)</span></span>
+<span id="cb683-27"><a href="sharing-models-with-shiny.html#cb683-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb683-28"><a href="sharing-models-with-shiny.html#cb683-28" aria-hidden="true" tabindex="-1"></a><span class="co"># augment(rf_fit, dm_testing)</span></span>
+<span id="cb683-29"><a href="sharing-models-with-shiny.html#cb683-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb683-30"><a href="sharing-models-with-shiny.html#cb683-30" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(rf_fit, <span class="st">&quot;rf_model.RDS&quot;</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="building-a-shiny-app-for-the-linear-model" class="section level2 hasAnchor" number="30.2">
@@ -972,39 +972,39 @@ We will need to move the file <code>linear.RDS</code> to this folder to have acc
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="sharing-models-with-shiny.html#cb679-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb679-2"><a href="sharing-models-with-shiny.html#cb679-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb679-3"><a href="sharing-models-with-shiny.html#cb679-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Application title</span></span>
-<span id="cb679-4"><a href="sharing-models-with-shiny.html#cb679-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">titlePanel</span>(<span class="st">&quot;Linear Model Predictions for Supraclavicular Anesthesia&quot;</span>),</span>
-<span id="cb679-5"><a href="sharing-models-with-shiny.html#cb679-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb679-6"><a href="sharing-models-with-shiny.html#cb679-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sidebar with a slider input for number of bins</span></span>
-<span id="cb679-7"><a href="sharing-models-with-shiny.html#cb679-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sidebarLayout</span>(</span>
-<span id="cb679-8"><a href="sharing-models-with-shiny.html#cb679-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">sidebarPanel</span>(</span>
-<span id="cb679-9"><a href="sharing-models-with-shiny.html#cb679-9" aria-hidden="true" tabindex="-1"></a>          <span class="fu">h3</span>(<span class="st">&quot;Input Values&quot;</span>),</span>
-<span id="cb679-10"><a href="sharing-models-with-shiny.html#cb679-10" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sliderInput</span>(<span class="st">&quot;bmi&quot;</span>,</span>
-<span id="cb679-11"><a href="sharing-models-with-shiny.html#cb679-11" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;Select the BMI:&quot;</span>,</span>
-<span id="cb679-12"><a href="sharing-models-with-shiny.html#cb679-12" aria-hidden="true" tabindex="-1"></a>                        <span class="at">min =</span> <span class="dv">19</span>,</span>
-<span id="cb679-13"><a href="sharing-models-with-shiny.html#cb679-13" aria-hidden="true" tabindex="-1"></a>                        <span class="at">max =</span> <span class="dv">44</span>,</span>
-<span id="cb679-14"><a href="sharing-models-with-shiny.html#cb679-14" aria-hidden="true" tabindex="-1"></a>                        <span class="at">value =</span> <span class="dv">32</span>),</span>
-<span id="cb679-15"><a href="sharing-models-with-shiny.html#cb679-15" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sliderInput</span>(<span class="st">&quot;age&quot;</span>,</span>
-<span id="cb679-16"><a href="sharing-models-with-shiny.html#cb679-16" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;Select the Age:&quot;</span>,</span>
-<span id="cb679-17"><a href="sharing-models-with-shiny.html#cb679-17" aria-hidden="true" tabindex="-1"></a>                        <span class="at">min =</span> <span class="dv">18</span>,</span>
-<span id="cb679-18"><a href="sharing-models-with-shiny.html#cb679-18" aria-hidden="true" tabindex="-1"></a>                        <span class="at">max =</span> <span class="dv">74</span>,</span>
-<span id="cb679-19"><a href="sharing-models-with-shiny.html#cb679-19" aria-hidden="true" tabindex="-1"></a>                        <span class="at">value =</span> <span class="dv">40</span>),</span>
-<span id="cb679-20"><a href="sharing-models-with-shiny.html#cb679-20" aria-hidden="true" tabindex="-1"></a>            <span class="fu">selectInput</span>(<span class="st">&quot;group&quot;</span>,</span>
-<span id="cb679-21"><a href="sharing-models-with-shiny.html#cb679-21" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;Select the Group:&quot;</span>,</span>
-<span id="cb679-22"><a href="sharing-models-with-shiny.html#cb679-22" aria-hidden="true" tabindex="-1"></a>                        <span class="at">choices =</span> <span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">2</span>)),</span>
-<span id="cb679-23"><a href="sharing-models-with-shiny.html#cb679-23" aria-hidden="true" tabindex="-1"></a>            <span class="fu">selectInput</span>(<span class="st">&quot;gender&quot;</span>,</span>
-<span id="cb679-24"><a href="sharing-models-with-shiny.html#cb679-24" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;Select the Gender:&quot;</span>,</span>
-<span id="cb679-25"><a href="sharing-models-with-shiny.html#cb679-25" aria-hidden="true" tabindex="-1"></a>                        <span class="at">choices =</span> <span class="fu">list</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span>
-<span id="cb679-26"><a href="sharing-models-with-shiny.html#cb679-26" aria-hidden="true" tabindex="-1"></a>        ),</span>
-<span id="cb679-27"><a href="sharing-models-with-shiny.html#cb679-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb679-28"><a href="sharing-models-with-shiny.html#cb679-28" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Show a plot of the generated distribution</span></span>
-<span id="cb679-29"><a href="sharing-models-with-shiny.html#cb679-29" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mainPanel</span>(</span>
-<span id="cb679-30"><a href="sharing-models-with-shiny.html#cb679-30" aria-hidden="true" tabindex="-1"></a>           <span class="fu">plotOutput</span>(<span class="st">&quot;distPlot&quot;</span>)</span>
-<span id="cb679-31"><a href="sharing-models-with-shiny.html#cb679-31" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb679-32"><a href="sharing-models-with-shiny.html#cb679-32" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb679-33"><a href="sharing-models-with-shiny.html#cb679-33" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb684"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb684-1"><a href="sharing-models-with-shiny.html#cb684-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb684-2"><a href="sharing-models-with-shiny.html#cb684-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb684-3"><a href="sharing-models-with-shiny.html#cb684-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Application title</span></span>
+<span id="cb684-4"><a href="sharing-models-with-shiny.html#cb684-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">titlePanel</span>(<span class="st">&quot;Linear Model Predictions for Supraclavicular Anesthesia&quot;</span>),</span>
+<span id="cb684-5"><a href="sharing-models-with-shiny.html#cb684-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb684-6"><a href="sharing-models-with-shiny.html#cb684-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sidebar with a slider input for number of bins</span></span>
+<span id="cb684-7"><a href="sharing-models-with-shiny.html#cb684-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sidebarLayout</span>(</span>
+<span id="cb684-8"><a href="sharing-models-with-shiny.html#cb684-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">sidebarPanel</span>(</span>
+<span id="cb684-9"><a href="sharing-models-with-shiny.html#cb684-9" aria-hidden="true" tabindex="-1"></a>          <span class="fu">h3</span>(<span class="st">&quot;Input Values&quot;</span>),</span>
+<span id="cb684-10"><a href="sharing-models-with-shiny.html#cb684-10" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sliderInput</span>(<span class="st">&quot;bmi&quot;</span>,</span>
+<span id="cb684-11"><a href="sharing-models-with-shiny.html#cb684-11" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;Select the BMI:&quot;</span>,</span>
+<span id="cb684-12"><a href="sharing-models-with-shiny.html#cb684-12" aria-hidden="true" tabindex="-1"></a>                        <span class="at">min =</span> <span class="dv">19</span>,</span>
+<span id="cb684-13"><a href="sharing-models-with-shiny.html#cb684-13" aria-hidden="true" tabindex="-1"></a>                        <span class="at">max =</span> <span class="dv">44</span>,</span>
+<span id="cb684-14"><a href="sharing-models-with-shiny.html#cb684-14" aria-hidden="true" tabindex="-1"></a>                        <span class="at">value =</span> <span class="dv">32</span>),</span>
+<span id="cb684-15"><a href="sharing-models-with-shiny.html#cb684-15" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sliderInput</span>(<span class="st">&quot;age&quot;</span>,</span>
+<span id="cb684-16"><a href="sharing-models-with-shiny.html#cb684-16" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;Select the Age:&quot;</span>,</span>
+<span id="cb684-17"><a href="sharing-models-with-shiny.html#cb684-17" aria-hidden="true" tabindex="-1"></a>                        <span class="at">min =</span> <span class="dv">18</span>,</span>
+<span id="cb684-18"><a href="sharing-models-with-shiny.html#cb684-18" aria-hidden="true" tabindex="-1"></a>                        <span class="at">max =</span> <span class="dv">74</span>,</span>
+<span id="cb684-19"><a href="sharing-models-with-shiny.html#cb684-19" aria-hidden="true" tabindex="-1"></a>                        <span class="at">value =</span> <span class="dv">40</span>),</span>
+<span id="cb684-20"><a href="sharing-models-with-shiny.html#cb684-20" aria-hidden="true" tabindex="-1"></a>            <span class="fu">selectInput</span>(<span class="st">&quot;group&quot;</span>,</span>
+<span id="cb684-21"><a href="sharing-models-with-shiny.html#cb684-21" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;Select the Group:&quot;</span>,</span>
+<span id="cb684-22"><a href="sharing-models-with-shiny.html#cb684-22" aria-hidden="true" tabindex="-1"></a>                        <span class="at">choices =</span> <span class="fu">list</span>(<span class="dv">1</span>,<span class="dv">2</span>)),</span>
+<span id="cb684-23"><a href="sharing-models-with-shiny.html#cb684-23" aria-hidden="true" tabindex="-1"></a>            <span class="fu">selectInput</span>(<span class="st">&quot;gender&quot;</span>,</span>
+<span id="cb684-24"><a href="sharing-models-with-shiny.html#cb684-24" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;Select the Gender:&quot;</span>,</span>
+<span id="cb684-25"><a href="sharing-models-with-shiny.html#cb684-25" aria-hidden="true" tabindex="-1"></a>                        <span class="at">choices =</span> <span class="fu">list</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span>
+<span id="cb684-26"><a href="sharing-models-with-shiny.html#cb684-26" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb684-27"><a href="sharing-models-with-shiny.html#cb684-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb684-28"><a href="sharing-models-with-shiny.html#cb684-28" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Show a plot of the generated distribution</span></span>
+<span id="cb684-29"><a href="sharing-models-with-shiny.html#cb684-29" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mainPanel</span>(</span>
+<span id="cb684-30"><a href="sharing-models-with-shiny.html#cb684-30" aria-hidden="true" tabindex="-1"></a>           <span class="fu">plotOutput</span>(<span class="st">&quot;distPlot&quot;</span>)</span>
+<span id="cb684-31"><a href="sharing-models-with-shiny.html#cb684-31" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb684-32"><a href="sharing-models-with-shiny.html#cb684-32" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb684-33"><a href="sharing-models-with-shiny.html#cb684-33" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <p>Now we have the inputs all set in the sidebarPanel. Let’s take these 4 inputs (and the model) to the server section, and set it up to make predictions.</p>
 </div>
@@ -1019,56 +1019,56 @@ before the final curly brace <code>}</code> - leave that one in place.</p>
 <li><p>For step 1, we will read in the model. Copy this line of code into the server section: <code>model &lt;- readRDS("linear_model.RDS")</code>. This just reads the model object in, and stores it in the variable <code>model</code>. No inputs yet. Run the app again to make sure it works.</p></li>
 <li><p>For step 2, we will read in the input values, and store them as a dataframe. These have to be wrapped in <code>reactive({ })</code> as they are reacting to inputs. Paste this code chunk into the server section next:</p></li>
 </ol>
-<div class="sourceCode" id="cb680"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb680-1"><a href="sharing-models-with-shiny.html#cb680-1" aria-hidden="true" tabindex="-1"></a>input_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb680-2"><a href="sharing-models-with-shiny.html#cb680-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">data.frame</span>(<span class="at">bmi =</span> input<span class="sc">$</span>bmi,</span>
-<span id="cb680-3"><a href="sharing-models-with-shiny.html#cb680-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">age =</span> input<span class="sc">$</span>age,</span>
-<span id="cb680-4"><a href="sharing-models-with-shiny.html#cb680-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">group =</span> <span class="fu">as.double</span>(input<span class="sc">$</span>group),</span>
-<span id="cb680-5"><a href="sharing-models-with-shiny.html#cb680-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">gender =</span> <span class="fu">as.double</span>(input<span class="sc">$</span>gender))</span>
-<span id="cb680-6"><a href="sharing-models-with-shiny.html#cb680-6" aria-hidden="true" tabindex="-1"></a>      })</span></code></pre></div>
+<div class="sourceCode" id="cb685"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb685-1"><a href="sharing-models-with-shiny.html#cb685-1" aria-hidden="true" tabindex="-1"></a>input_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb685-2"><a href="sharing-models-with-shiny.html#cb685-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">data.frame</span>(<span class="at">bmi =</span> input<span class="sc">$</span>bmi,</span>
+<span id="cb685-3"><a href="sharing-models-with-shiny.html#cb685-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">age =</span> input<span class="sc">$</span>age,</span>
+<span id="cb685-4"><a href="sharing-models-with-shiny.html#cb685-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">group =</span> <span class="fu">as.double</span>(input<span class="sc">$</span>group),</span>
+<span id="cb685-5"><a href="sharing-models-with-shiny.html#cb685-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">gender =</span> <span class="fu">as.double</span>(input<span class="sc">$</span>gender))</span>
+<span id="cb685-6"><a href="sharing-models-with-shiny.html#cb685-6" aria-hidden="true" tabindex="-1"></a>      })</span></code></pre></div>
 <p>Notice that the drop-down choice values have to be converted to doubles, which is their data type in the original dataset for modeling. This creates a function <em>input_df()</em> that we can use in the prediction step. Run the app again to make sure it works.</p>
 <ol start="3" style="list-style-type: decimal">
 <li>For step 3, we will make the predictions. We will use the model and <em>input_df</em>. Again, this is reactive to the input values, so we will wrap the predict() function in <code>reactive({ })</code>. We will use <code>input_df()</code> with parentheses, like a function, as it had reactive inputs. Then we will assign this result to pred. Paste the code chunk below into the server section next.</li>
 </ol>
-<div class="sourceCode" id="cb681"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb681-1"><a href="sharing-models-with-shiny.html#cb681-1" aria-hidden="true" tabindex="-1"></a>    pred <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb681-2"><a href="sharing-models-with-shiny.html#cb681-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">predict</span>(model, <span class="fu">input_df</span>())</span>
-<span id="cb681-3"><a href="sharing-models-with-shiny.html#cb681-3" aria-hidden="true" tabindex="-1"></a>      })</span></code></pre></div>
+<div class="sourceCode" id="cb686"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb686-1"><a href="sharing-models-with-shiny.html#cb686-1" aria-hidden="true" tabindex="-1"></a>    pred <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb686-2"><a href="sharing-models-with-shiny.html#cb686-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">predict</span>(model, <span class="fu">input_df</span>())</span>
+<span id="cb686-3"><a href="sharing-models-with-shiny.html#cb686-3" aria-hidden="true" tabindex="-1"></a>      })</span></code></pre></div>
 <p>Run the app again to make sure it works.</p>
 <ol start="4" style="list-style-type: decimal">
 <li>For step 4, we will render the prediction to HTML text for display in the mainPanel of the ui, and assign it to <code>output$pred</code>. Again, because <code>pred</code> had reactive inputs, we use it as <code>pred()</code> inside the <code>renderText({ })</code> function.</li>
 </ol>
-<div class="sourceCode" id="cb682"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb682-1"><a href="sharing-models-with-shiny.html#cb682-1" aria-hidden="true" tabindex="-1"></a>    output<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">renderText</span>({<span class="fu">pred</span>()})</span></code></pre></div>
+<div class="sourceCode" id="cb687"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb687-1"><a href="sharing-models-with-shiny.html#cb687-1" aria-hidden="true" tabindex="-1"></a>    output<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">renderText</span>({<span class="fu">pred</span>()})</span></code></pre></div>
 <p>Run the app again to make sure it works. Now you should have an output$pred to display in the ui.</p>
 <p>If your version of the server section is not working, check the Solution button below and compare it to your code for the ui section. You should have 4 distinct entries in the server section - the model, the input_df, pred, and output$pred.</p>
 <div class="webex-solution">
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb683"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb683-1"><a href="sharing-models-with-shiny.html#cb683-1" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb683-2"><a href="sharing-models-with-shiny.html#cb683-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb683-3"><a href="sharing-models-with-shiny.html#cb683-3" aria-hidden="true" tabindex="-1"></a>    model <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;linear_model.RDS&quot;</span>)</span>
-<span id="cb683-4"><a href="sharing-models-with-shiny.html#cb683-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb683-5"><a href="sharing-models-with-shiny.html#cb683-5" aria-hidden="true" tabindex="-1"></a>    input_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb683-6"><a href="sharing-models-with-shiny.html#cb683-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">data.frame</span>(<span class="at">bmi =</span> input<span class="sc">$</span>bmi,</span>
-<span id="cb683-7"><a href="sharing-models-with-shiny.html#cb683-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">age =</span> input<span class="sc">$</span>age,</span>
-<span id="cb683-8"><a href="sharing-models-with-shiny.html#cb683-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">group =</span> <span class="fu">as.double</span>(input<span class="sc">$</span>group),</span>
-<span id="cb683-9"><a href="sharing-models-with-shiny.html#cb683-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">gender =</span> <span class="fu">as.double</span>(input<span class="sc">$</span>gender))</span>
-<span id="cb683-10"><a href="sharing-models-with-shiny.html#cb683-10" aria-hidden="true" tabindex="-1"></a>      })</span>
-<span id="cb683-11"><a href="sharing-models-with-shiny.html#cb683-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb683-12"><a href="sharing-models-with-shiny.html#cb683-12" aria-hidden="true" tabindex="-1"></a>    pred <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb683-13"><a href="sharing-models-with-shiny.html#cb683-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">predict</span>(model, <span class="fu">input_df</span>())</span>
-<span id="cb683-14"><a href="sharing-models-with-shiny.html#cb683-14" aria-hidden="true" tabindex="-1"></a>      })</span>
-<span id="cb683-15"><a href="sharing-models-with-shiny.html#cb683-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb683-16"><a href="sharing-models-with-shiny.html#cb683-16" aria-hidden="true" tabindex="-1"></a>    output<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">renderText</span>({<span class="fu">pred</span>()})</span>
-<span id="cb683-17"><a href="sharing-models-with-shiny.html#cb683-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb683-18"><a href="sharing-models-with-shiny.html#cb683-18" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb688"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb688-1"><a href="sharing-models-with-shiny.html#cb688-1" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb688-2"><a href="sharing-models-with-shiny.html#cb688-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb688-3"><a href="sharing-models-with-shiny.html#cb688-3" aria-hidden="true" tabindex="-1"></a>    model <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;linear_model.RDS&quot;</span>)</span>
+<span id="cb688-4"><a href="sharing-models-with-shiny.html#cb688-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb688-5"><a href="sharing-models-with-shiny.html#cb688-5" aria-hidden="true" tabindex="-1"></a>    input_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb688-6"><a href="sharing-models-with-shiny.html#cb688-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">data.frame</span>(<span class="at">bmi =</span> input<span class="sc">$</span>bmi,</span>
+<span id="cb688-7"><a href="sharing-models-with-shiny.html#cb688-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">age =</span> input<span class="sc">$</span>age,</span>
+<span id="cb688-8"><a href="sharing-models-with-shiny.html#cb688-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">group =</span> <span class="fu">as.double</span>(input<span class="sc">$</span>group),</span>
+<span id="cb688-9"><a href="sharing-models-with-shiny.html#cb688-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">gender =</span> <span class="fu">as.double</span>(input<span class="sc">$</span>gender))</span>
+<span id="cb688-10"><a href="sharing-models-with-shiny.html#cb688-10" aria-hidden="true" tabindex="-1"></a>      })</span>
+<span id="cb688-11"><a href="sharing-models-with-shiny.html#cb688-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb688-12"><a href="sharing-models-with-shiny.html#cb688-12" aria-hidden="true" tabindex="-1"></a>    pred <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb688-13"><a href="sharing-models-with-shiny.html#cb688-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">predict</span>(model, <span class="fu">input_df</span>())</span>
+<span id="cb688-14"><a href="sharing-models-with-shiny.html#cb688-14" aria-hidden="true" tabindex="-1"></a>      })</span>
+<span id="cb688-15"><a href="sharing-models-with-shiny.html#cb688-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb688-16"><a href="sharing-models-with-shiny.html#cb688-16" aria-hidden="true" tabindex="-1"></a>    output<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">renderText</span>({<span class="fu">pred</span>()})</span>
+<span id="cb688-17"><a href="sharing-models-with-shiny.html#cb688-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb688-18"><a href="sharing-models-with-shiny.html#cb688-18" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 </div>
 <div id="editing-the-mainpanel-in-the-ui-section-to-display-your-prediction" class="section level3 hasAnchor" number="30.2.4">
 <h3><span class="header-section-number">30.2.4</span> Editing the mainPanel in the ui section to display your Prediction<a href="sharing-models-with-shiny.html#editing-the-mainpanel-in-the-ui-section-to-display-your-prediction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Now we just have to show the text in <code>output$pred</code>. Scroll up to the ui section, and find the mainPanel. We will just put in some introductory text, followed by a blank line (line break), and then use a textOutput() function to show the prediction (“pred”). Copy and paste the code chunk below into the mainPanel.</p>
-<div class="sourceCode" id="cb684"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb684-1"><a href="sharing-models-with-shiny.html#cb684-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">h3</span>(<span class="st">&quot;The predicted onset of sensory perception in minutes is:&quot;</span>),</span>
-<span id="cb684-2"><a href="sharing-models-with-shiny.html#cb684-2" aria-hidden="true" tabindex="-1"></a>          <span class="fu">br</span>(),</span>
-<span id="cb684-3"><a href="sharing-models-with-shiny.html#cb684-3" aria-hidden="true" tabindex="-1"></a>          <span class="fu">textOutput</span>(<span class="st">&quot;pred&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb689"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb689-1"><a href="sharing-models-with-shiny.html#cb689-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">h3</span>(<span class="st">&quot;The predicted onset of sensory perception in minutes is:&quot;</span>),</span>
+<span id="cb689-2"><a href="sharing-models-with-shiny.html#cb689-2" aria-hidden="true" tabindex="-1"></a>          <span class="fu">br</span>(),</span>
+<span id="cb689-3"><a href="sharing-models-with-shiny.html#cb689-3" aria-hidden="true" tabindex="-1"></a>          <span class="fu">textOutput</span>(<span class="st">&quot;pred&quot;</span>)</span></code></pre></div>
 <p>Now run the app.R one more time.</p>
 <p>If all went well, you should now have a linear model Shiny app that predicts (with default values) the return of sensory function after supraclavicular anesthesia in 10.63524 minutes. You can test different inputs to see their effects on the predicted time of onset of sensory function.</p>
 </div>
@@ -1110,43 +1110,43 @@ We will need to move the file <code>logit_model.RDS</code> to this folder to hav
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb685"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb685-1"><a href="sharing-models-with-shiny.html#cb685-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define UI for application that draws a histogram</span></span>
-<span id="cb685-2"><a href="sharing-models-with-shiny.html#cb685-2" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb685-3"><a href="sharing-models-with-shiny.html#cb685-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb685-4"><a href="sharing-models-with-shiny.html#cb685-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Application title</span></span>
-<span id="cb685-5"><a href="sharing-models-with-shiny.html#cb685-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">titlePanel</span>(<span class="st">&quot;Logistic Model Predictions for Diabetes&quot;</span>),</span>
-<span id="cb685-6"><a href="sharing-models-with-shiny.html#cb685-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb685-7"><a href="sharing-models-with-shiny.html#cb685-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sidebar with a slider input for number of bins</span></span>
-<span id="cb685-8"><a href="sharing-models-with-shiny.html#cb685-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sidebarLayout</span>(</span>
-<span id="cb685-9"><a href="sharing-models-with-shiny.html#cb685-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">sidebarPanel</span>(</span>
-<span id="cb685-10"><a href="sharing-models-with-shiny.html#cb685-10" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sliderInput</span>(<span class="st">&quot;glucose&quot;</span>,</span>
-<span id="cb685-11"><a href="sharing-models-with-shiny.html#cb685-11" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;Enter the glucose value:&quot;</span>,</span>
-<span id="cb685-12"><a href="sharing-models-with-shiny.html#cb685-12" aria-hidden="true" tabindex="-1"></a>                        <span class="at">min =</span> <span class="dv">44</span>,</span>
-<span id="cb685-13"><a href="sharing-models-with-shiny.html#cb685-13" aria-hidden="true" tabindex="-1"></a>                        <span class="at">max =</span> <span class="dv">199</span>,</span>
-<span id="cb685-14"><a href="sharing-models-with-shiny.html#cb685-14" aria-hidden="true" tabindex="-1"></a>                        <span class="at">value =</span> <span class="dv">125</span>),</span>
-<span id="cb685-15"><a href="sharing-models-with-shiny.html#cb685-15" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sliderInput</span>(<span class="st">&quot;mass&quot;</span>,</span>
-<span id="cb685-16"><a href="sharing-models-with-shiny.html#cb685-16" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;Enter the BMI:&quot;</span>,</span>
-<span id="cb685-17"><a href="sharing-models-with-shiny.html#cb685-17" aria-hidden="true" tabindex="-1"></a>                        <span class="at">min =</span> <span class="dv">18</span>,</span>
-<span id="cb685-18"><a href="sharing-models-with-shiny.html#cb685-18" aria-hidden="true" tabindex="-1"></a>                        <span class="at">max =</span> <span class="dv">67</span>,</span>
-<span id="cb685-19"><a href="sharing-models-with-shiny.html#cb685-19" aria-hidden="true" tabindex="-1"></a>                        <span class="at">value =</span> <span class="dv">42</span>),</span>
-<span id="cb685-20"><a href="sharing-models-with-shiny.html#cb685-20" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sliderInput</span>(<span class="st">&quot;age&quot;</span>,</span>
-<span id="cb685-21"><a href="sharing-models-with-shiny.html#cb685-21" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;Enter the age in years:&quot;</span>,</span>
-<span id="cb685-22"><a href="sharing-models-with-shiny.html#cb685-22" aria-hidden="true" tabindex="-1"></a>                        <span class="at">min =</span> <span class="dv">21</span>,</span>
-<span id="cb685-23"><a href="sharing-models-with-shiny.html#cb685-23" aria-hidden="true" tabindex="-1"></a>                        <span class="at">max =</span> <span class="dv">81</span>,</span>
-<span id="cb685-24"><a href="sharing-models-with-shiny.html#cb685-24" aria-hidden="true" tabindex="-1"></a>                        <span class="at">value =</span> <span class="dv">51</span>),</span>
-<span id="cb685-25"><a href="sharing-models-with-shiny.html#cb685-25" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sliderInput</span>(<span class="st">&quot;pedigree&quot;</span>,</span>
-<span id="cb685-26"><a href="sharing-models-with-shiny.html#cb685-26" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;Enter the pedigree score:&quot;</span>,</span>
-<span id="cb685-27"><a href="sharing-models-with-shiny.html#cb685-27" aria-hidden="true" tabindex="-1"></a>                        <span class="at">min =</span> <span class="fl">0.8</span>,</span>
-<span id="cb685-28"><a href="sharing-models-with-shiny.html#cb685-28" aria-hidden="true" tabindex="-1"></a>                        <span class="at">max =</span> <span class="fl">2.4</span>,</span>
-<span id="cb685-29"><a href="sharing-models-with-shiny.html#cb685-29" aria-hidden="true" tabindex="-1"></a>                        <span class="at">value =</span> <span class="fl">1.6</span>)</span>
-<span id="cb685-30"><a href="sharing-models-with-shiny.html#cb685-30" aria-hidden="true" tabindex="-1"></a>        ),</span>
-<span id="cb685-31"><a href="sharing-models-with-shiny.html#cb685-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb685-32"><a href="sharing-models-with-shiny.html#cb685-32" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Show a plot of the generated distribution</span></span>
-<span id="cb685-33"><a href="sharing-models-with-shiny.html#cb685-33" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mainPanel</span>(</span>
-<span id="cb685-34"><a href="sharing-models-with-shiny.html#cb685-34" aria-hidden="true" tabindex="-1"></a>           <span class="fu">plotOutput</span>(<span class="st">&quot;distPlot&quot;</span>)</span>
-<span id="cb685-35"><a href="sharing-models-with-shiny.html#cb685-35" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb685-36"><a href="sharing-models-with-shiny.html#cb685-36" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb685-37"><a href="sharing-models-with-shiny.html#cb685-37" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb690"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb690-1"><a href="sharing-models-with-shiny.html#cb690-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define UI for application that draws a histogram</span></span>
+<span id="cb690-2"><a href="sharing-models-with-shiny.html#cb690-2" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb690-3"><a href="sharing-models-with-shiny.html#cb690-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb690-4"><a href="sharing-models-with-shiny.html#cb690-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Application title</span></span>
+<span id="cb690-5"><a href="sharing-models-with-shiny.html#cb690-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">titlePanel</span>(<span class="st">&quot;Logistic Model Predictions for Diabetes&quot;</span>),</span>
+<span id="cb690-6"><a href="sharing-models-with-shiny.html#cb690-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb690-7"><a href="sharing-models-with-shiny.html#cb690-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sidebar with a slider input for number of bins</span></span>
+<span id="cb690-8"><a href="sharing-models-with-shiny.html#cb690-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sidebarLayout</span>(</span>
+<span id="cb690-9"><a href="sharing-models-with-shiny.html#cb690-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">sidebarPanel</span>(</span>
+<span id="cb690-10"><a href="sharing-models-with-shiny.html#cb690-10" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sliderInput</span>(<span class="st">&quot;glucose&quot;</span>,</span>
+<span id="cb690-11"><a href="sharing-models-with-shiny.html#cb690-11" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;Enter the glucose value:&quot;</span>,</span>
+<span id="cb690-12"><a href="sharing-models-with-shiny.html#cb690-12" aria-hidden="true" tabindex="-1"></a>                        <span class="at">min =</span> <span class="dv">44</span>,</span>
+<span id="cb690-13"><a href="sharing-models-with-shiny.html#cb690-13" aria-hidden="true" tabindex="-1"></a>                        <span class="at">max =</span> <span class="dv">199</span>,</span>
+<span id="cb690-14"><a href="sharing-models-with-shiny.html#cb690-14" aria-hidden="true" tabindex="-1"></a>                        <span class="at">value =</span> <span class="dv">125</span>),</span>
+<span id="cb690-15"><a href="sharing-models-with-shiny.html#cb690-15" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sliderInput</span>(<span class="st">&quot;mass&quot;</span>,</span>
+<span id="cb690-16"><a href="sharing-models-with-shiny.html#cb690-16" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;Enter the BMI:&quot;</span>,</span>
+<span id="cb690-17"><a href="sharing-models-with-shiny.html#cb690-17" aria-hidden="true" tabindex="-1"></a>                        <span class="at">min =</span> <span class="dv">18</span>,</span>
+<span id="cb690-18"><a href="sharing-models-with-shiny.html#cb690-18" aria-hidden="true" tabindex="-1"></a>                        <span class="at">max =</span> <span class="dv">67</span>,</span>
+<span id="cb690-19"><a href="sharing-models-with-shiny.html#cb690-19" aria-hidden="true" tabindex="-1"></a>                        <span class="at">value =</span> <span class="dv">42</span>),</span>
+<span id="cb690-20"><a href="sharing-models-with-shiny.html#cb690-20" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sliderInput</span>(<span class="st">&quot;age&quot;</span>,</span>
+<span id="cb690-21"><a href="sharing-models-with-shiny.html#cb690-21" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;Enter the age in years:&quot;</span>,</span>
+<span id="cb690-22"><a href="sharing-models-with-shiny.html#cb690-22" aria-hidden="true" tabindex="-1"></a>                        <span class="at">min =</span> <span class="dv">21</span>,</span>
+<span id="cb690-23"><a href="sharing-models-with-shiny.html#cb690-23" aria-hidden="true" tabindex="-1"></a>                        <span class="at">max =</span> <span class="dv">81</span>,</span>
+<span id="cb690-24"><a href="sharing-models-with-shiny.html#cb690-24" aria-hidden="true" tabindex="-1"></a>                        <span class="at">value =</span> <span class="dv">51</span>),</span>
+<span id="cb690-25"><a href="sharing-models-with-shiny.html#cb690-25" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sliderInput</span>(<span class="st">&quot;pedigree&quot;</span>,</span>
+<span id="cb690-26"><a href="sharing-models-with-shiny.html#cb690-26" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;Enter the pedigree score:&quot;</span>,</span>
+<span id="cb690-27"><a href="sharing-models-with-shiny.html#cb690-27" aria-hidden="true" tabindex="-1"></a>                        <span class="at">min =</span> <span class="fl">0.8</span>,</span>
+<span id="cb690-28"><a href="sharing-models-with-shiny.html#cb690-28" aria-hidden="true" tabindex="-1"></a>                        <span class="at">max =</span> <span class="fl">2.4</span>,</span>
+<span id="cb690-29"><a href="sharing-models-with-shiny.html#cb690-29" aria-hidden="true" tabindex="-1"></a>                        <span class="at">value =</span> <span class="fl">1.6</span>)</span>
+<span id="cb690-30"><a href="sharing-models-with-shiny.html#cb690-30" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb690-31"><a href="sharing-models-with-shiny.html#cb690-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb690-32"><a href="sharing-models-with-shiny.html#cb690-32" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Show a plot of the generated distribution</span></span>
+<span id="cb690-33"><a href="sharing-models-with-shiny.html#cb690-33" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mainPanel</span>(</span>
+<span id="cb690-34"><a href="sharing-models-with-shiny.html#cb690-34" aria-hidden="true" tabindex="-1"></a>           <span class="fu">plotOutput</span>(<span class="st">&quot;distPlot&quot;</span>)</span>
+<span id="cb690-35"><a href="sharing-models-with-shiny.html#cb690-35" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb690-36"><a href="sharing-models-with-shiny.html#cb690-36" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb690-37"><a href="sharing-models-with-shiny.html#cb690-37" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <p>Now we have the inputs all set in the sidebarPanel. Let’s take these 4 inputs (and the model) to the server section, and set it up to make predictions.</p>
 </div>
@@ -1161,45 +1161,45 @@ before the final curly brace <code>}</code> - leave that one in place.</p>
 <li><p>For step 1, we will read in the model. Copy this line of code into the server section: <code>model &lt;- readRDS("logit_model.RDS")</code>. This just reads the model object in, and stores it in the variable <code>model</code>. No inputs yet. Run the app again to make sure it works.</p></li>
 <li><p>For step 2, we will read in the input values, and store them as a dataframe. These have to be wrapped in <code>reactive({ })</code> as they are reacting to inputs. Paste this code chunk into the server section next:</p></li>
 </ol>
-<div class="sourceCode" id="cb686"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb686-1"><a href="sharing-models-with-shiny.html#cb686-1" aria-hidden="true" tabindex="-1"></a>input_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb686-2"><a href="sharing-models-with-shiny.html#cb686-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">data.frame</span>(<span class="at">glucose =</span> input<span class="sc">$</span>glucose)</span>
-<span id="cb686-3"><a href="sharing-models-with-shiny.html#cb686-3" aria-hidden="true" tabindex="-1"></a>      })</span></code></pre></div>
+<div class="sourceCode" id="cb691"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb691-1"><a href="sharing-models-with-shiny.html#cb691-1" aria-hidden="true" tabindex="-1"></a>input_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb691-2"><a href="sharing-models-with-shiny.html#cb691-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">data.frame</span>(<span class="at">glucose =</span> input<span class="sc">$</span>glucose)</span>
+<span id="cb691-3"><a href="sharing-models-with-shiny.html#cb691-3" aria-hidden="true" tabindex="-1"></a>      })</span></code></pre></div>
 <p>Now add 3 more lines to the data.frame() function, for <code>input$mass</code>, <code>input$age</code>, and <code>input$pedigree</code>. Assign these to the correct variable names, and use commas in the right places to complete the input_df. This creates a function <em>input_df()</em> that we can use in the prediction step. Run the app again to make sure it works.</p>
 <ol start="3" style="list-style-type: decimal">
 <li>For step 3, we will make the predictions. We will use the model and <em>input_df</em>. Again, this is reactive to the input values, so we will wrap the predict() function in <code>reactive({ })</code>. We will use <code>input_df()</code> with parentheses, like a function, as it had reactive inputs. To get probabilities (rather than logit units, the default prediction), we need to add the argument <code>type = "response"</code>. Then we will assign this result to pred. Paste the code chunk below into the server section next.</li>
 </ol>
-<div class="sourceCode" id="cb687"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb687-1"><a href="sharing-models-with-shiny.html#cb687-1" aria-hidden="true" tabindex="-1"></a>    pred <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb687-2"><a href="sharing-models-with-shiny.html#cb687-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">predict</span>(model, <span class="fu">input_df</span>(), <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span>
-<span id="cb687-3"><a href="sharing-models-with-shiny.html#cb687-3" aria-hidden="true" tabindex="-1"></a>      })</span></code></pre></div>
+<div class="sourceCode" id="cb692"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb692-1"><a href="sharing-models-with-shiny.html#cb692-1" aria-hidden="true" tabindex="-1"></a>    pred <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb692-2"><a href="sharing-models-with-shiny.html#cb692-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">predict</span>(model, <span class="fu">input_df</span>(), <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span>
+<span id="cb692-3"><a href="sharing-models-with-shiny.html#cb692-3" aria-hidden="true" tabindex="-1"></a>      })</span></code></pre></div>
 <p>Run the app again to make sure it works.</p>
 <ol start="4" style="list-style-type: decimal">
 <li>For step 4, we will render the prediction to HTML text for display in the mainPanel of the ui, and assign it to <code>output$pred</code>. Again, because <code>pred</code> had reactive inputs, we use it as <code>pred()</code> inside the <code>renderText({ })</code> function.</li>
 </ol>
-<div class="sourceCode" id="cb688"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb688-1"><a href="sharing-models-with-shiny.html#cb688-1" aria-hidden="true" tabindex="-1"></a>    output<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">renderText</span>({<span class="fu">pred</span>()})</span></code></pre></div>
+<div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb693-1"><a href="sharing-models-with-shiny.html#cb693-1" aria-hidden="true" tabindex="-1"></a>    output<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">renderText</span>({<span class="fu">pred</span>()})</span></code></pre></div>
 <p>Run the app again to make sure it works. Now you should have an output$pred to display in the ui.</p>
 <p>If your version of the server section is not working, check the Solution button below and compare it to your code for the ui section. You should have 4 distinct entries in the server section - the model, the input_df, pred, and output$pred.</p>
 <div class="webex-solution">
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb689"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb689-1"><a href="sharing-models-with-shiny.html#cb689-1" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb689-2"><a href="sharing-models-with-shiny.html#cb689-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb689-3"><a href="sharing-models-with-shiny.html#cb689-3" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;logit_model.RDS&quot;</span>)</span>
-<span id="cb689-4"><a href="sharing-models-with-shiny.html#cb689-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb689-5"><a href="sharing-models-with-shiny.html#cb689-5" aria-hidden="true" tabindex="-1"></a>  input_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb689-6"><a href="sharing-models-with-shiny.html#cb689-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(<span class="at">glucose =</span> input<span class="sc">$</span>glucose,</span>
-<span id="cb689-7"><a href="sharing-models-with-shiny.html#cb689-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">mass =</span> input<span class="sc">$</span>mass,</span>
-<span id="cb689-8"><a href="sharing-models-with-shiny.html#cb689-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">age =</span> input<span class="sc">$</span>age,</span>
-<span id="cb689-9"><a href="sharing-models-with-shiny.html#cb689-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">pedigree =</span> input<span class="sc">$</span>pedigree)</span>
-<span id="cb689-10"><a href="sharing-models-with-shiny.html#cb689-10" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb689-11"><a href="sharing-models-with-shiny.html#cb689-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb689-12"><a href="sharing-models-with-shiny.html#cb689-12" aria-hidden="true" tabindex="-1"></a>  pred <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb689-13"><a href="sharing-models-with-shiny.html#cb689-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">predict</span>(model, <span class="fu">input_df</span>(), <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span>
-<span id="cb689-14"><a href="sharing-models-with-shiny.html#cb689-14" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb689-15"><a href="sharing-models-with-shiny.html#cb689-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb689-16"><a href="sharing-models-with-shiny.html#cb689-16" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">renderText</span>({<span class="fu">pred</span>()})</span>
-<span id="cb689-17"><a href="sharing-models-with-shiny.html#cb689-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb689-18"><a href="sharing-models-with-shiny.html#cb689-18" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb694"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb694-1"><a href="sharing-models-with-shiny.html#cb694-1" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb694-2"><a href="sharing-models-with-shiny.html#cb694-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb694-3"><a href="sharing-models-with-shiny.html#cb694-3" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;logit_model.RDS&quot;</span>)</span>
+<span id="cb694-4"><a href="sharing-models-with-shiny.html#cb694-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb694-5"><a href="sharing-models-with-shiny.html#cb694-5" aria-hidden="true" tabindex="-1"></a>  input_df <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb694-6"><a href="sharing-models-with-shiny.html#cb694-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(<span class="at">glucose =</span> input<span class="sc">$</span>glucose,</span>
+<span id="cb694-7"><a href="sharing-models-with-shiny.html#cb694-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">mass =</span> input<span class="sc">$</span>mass,</span>
+<span id="cb694-8"><a href="sharing-models-with-shiny.html#cb694-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">age =</span> input<span class="sc">$</span>age,</span>
+<span id="cb694-9"><a href="sharing-models-with-shiny.html#cb694-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">pedigree =</span> input<span class="sc">$</span>pedigree)</span>
+<span id="cb694-10"><a href="sharing-models-with-shiny.html#cb694-10" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb694-11"><a href="sharing-models-with-shiny.html#cb694-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb694-12"><a href="sharing-models-with-shiny.html#cb694-12" aria-hidden="true" tabindex="-1"></a>  pred <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb694-13"><a href="sharing-models-with-shiny.html#cb694-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">predict</span>(model, <span class="fu">input_df</span>(), <span class="at">type =</span> <span class="st">&quot;response&quot;</span>)</span>
+<span id="cb694-14"><a href="sharing-models-with-shiny.html#cb694-14" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb694-15"><a href="sharing-models-with-shiny.html#cb694-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb694-16"><a href="sharing-models-with-shiny.html#cb694-16" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>pred <span class="ot">&lt;-</span> <span class="fu">renderText</span>({<span class="fu">pred</span>()})</span>
+<span id="cb694-17"><a href="sharing-models-with-shiny.html#cb694-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb694-18"><a href="sharing-models-with-shiny.html#cb694-18" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 </div>
 <div id="editing-the-mainpanel-in-the-ui-section-to-display-your-prediction-1" class="section level3 hasAnchor" number="30.3.4">
@@ -1210,11 +1210,11 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb690"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb690-1"><a href="sharing-models-with-shiny.html#cb690-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mainPanel</span>(</span>
-<span id="cb690-2"><a href="sharing-models-with-shiny.html#cb690-2" aria-hidden="true" tabindex="-1"></a>          <span class="fu">h3</span>(<span class="st">&quot;The predicted probability of type 2 diabetes is:&quot;</span>),</span>
-<span id="cb690-3"><a href="sharing-models-with-shiny.html#cb690-3" aria-hidden="true" tabindex="-1"></a>          <span class="fu">br</span>(),</span>
-<span id="cb690-4"><a href="sharing-models-with-shiny.html#cb690-4" aria-hidden="true" tabindex="-1"></a>          <span class="fu">textOutput</span>(<span class="st">&quot;pred&quot;</span>)</span>
-<span id="cb690-5"><a href="sharing-models-with-shiny.html#cb690-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb695"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb695-1"><a href="sharing-models-with-shiny.html#cb695-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mainPanel</span>(</span>
+<span id="cb695-2"><a href="sharing-models-with-shiny.html#cb695-2" aria-hidden="true" tabindex="-1"></a>          <span class="fu">h3</span>(<span class="st">&quot;The predicted probability of type 2 diabetes is:&quot;</span>),</span>
+<span id="cb695-3"><a href="sharing-models-with-shiny.html#cb695-3" aria-hidden="true" tabindex="-1"></a>          <span class="fu">br</span>(),</span>
+<span id="cb695-4"><a href="sharing-models-with-shiny.html#cb695-4" aria-hidden="true" tabindex="-1"></a>          <span class="fu">textOutput</span>(<span class="st">&quot;pred&quot;</span>)</span>
+<span id="cb695-5"><a href="sharing-models-with-shiny.html#cb695-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <p>Now run the app.R one more time.</p>
 <p>If all went well, you should now have a logistic model Shiny app that predicts (with default values) the probability of type 2 diabetes as 0.8304044. You can test different inputs to see their effects on the predicted probability of type 2 diabetes.</p>

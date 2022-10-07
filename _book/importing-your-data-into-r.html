@@ -846,27 +846,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 5</span> Importing Your Data into R<a href="importing-your-data-into-r.html#importing-your-data-into-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>For most of this book, we will be using datasets from the {medicaldata} package.
 These are easy to load.
-You just type into the Console pane <code>medicaldata::scurvy</code> and you get James Lind’s scurvy dataset (actually, a reconstruction of what it might have looked like for his 12 participants).
-If you want to save this data to an object in your work environment, you just need to assign this to a named object, like <code>scurvy</code>, like so:</p>
+If you type into the Console pane <code>medicaldata::scurvy</code> , you will get James Lind’s scurvy dataset (actually, a reconstruction of what it might have looked like for his 12 participants).
+If you want to save this data to an object in your work environment, you just need to assign this to a named object, like <code>scurvy</code>, like so, with an assignment arrow, componsed of a less than sign (&lt;) and a hyphen (-):</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="importing-your-data-into-r.html#cb11-1" aria-hidden="true" tabindex="-1"></a>scurvy <span class="ot">&lt;-</span> medicaldata<span class="sc">::</span>scurvy</span>
 <span id="cb11-2"><a href="importing-your-data-into-r.html#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="importing-your-data-into-r.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># now print the columns for id and treatment</span></span>
-<span id="cb11-4"><a href="importing-your-data-into-r.html#cb11-4" aria-hidden="true" tabindex="-1"></a>scurvy <span class="sc">%&gt;%</span> <span class="fu">select</span>(study_id<span class="sc">:</span>treatment)</span></code></pre></div>
-<pre><code>## # A tibble: 12 × 2
-##    study_id treatment           
-##    &lt;chr&gt;    &lt;fct&gt;               
-##  1 001      cider               
-##  2 002      cider               
-##  3 003      dilute_sulfuric_acid
-##  4 004      dilute_sulfuric_acid
-##  5 005      vinegar             
-##  6 006      vinegar             
-##  7 007      sea_water           
-##  8 008      sea_water           
-##  9 009      citrus              
-## 10 010      citrus              
-## 11 011      purgative_mixture   
-## 12 012      purgative_mixture</code></pre>
+<span id="cb11-4"><a href="importing-your-data-into-r.html#cb11-4" aria-hidden="true" tabindex="-1"></a>scurvy <span class="sc">%&gt;%</span> </span>
+<span id="cb11-5"><a href="importing-your-data-into-r.html#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(study_id<span class="sc">:</span>treatment) <span class="sc">|&gt;</span>  <span class="co">#this selects columns</span></span>
+<span id="cb11-6"><a href="importing-your-data-into-r.html#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_tail</span>(<span class="at">n =</span> <span class="dv">7</span>) <span class="co">#slices last seven rows</span></span></code></pre></div>
+<pre><code>## # A tibble: 7 × 2
+##   study_id treatment        
+##   &lt;chr&gt;    &lt;fct&gt;            
+## 1 006      vinegar          
+## 2 007      sea_water        
+## 3 008      sea_water        
+## 4 009      citrus           
+## 5 010      citrus           
+## 6 011      purgative_mixture
+## 7 012      purgative_mixture</code></pre>
 <p>There are a number of medical datasets to explore and learn with, within the {medicaldata} package.</p>
 <p>However, at some point, you will want to use R to work on your <strong>own</strong> data.
 You may already be itching to get started on your own data.
@@ -877,17 +874,17 @@ As you go through the different chapters, use the example data and exercises to 
 <p>Reproducibility and Raw Data<br>
 It is an important principle to <em>always</em> save an untouched copy of your raw data.
 You can copy it to a new object, and experiment with modifying it, cleaning it, making plots, etc., but <em>always</em> leave the original data file untouched.
-You want to create a completely reproducible, step-by-step trail from your raw data to your finished analysis and final report, and you can only do that if you preserve the original raw data.
+You want to create a completely reproducible, step-by-step, scripted trail from your raw data to your finished analysis and final report, and you can only do that if you preserve the original raw data.
 That is the cornerstone of your analysis.
 It is tempting to fix minor data entry errors, or other aspects of the raw data.
-Do not do this - leave all errors intact in your raw data, and explicitly make edits with explanations of - who made the edit - when it was made - what was changed - why it was made - provide a justification, and identify source documents to support the rationale. Every edit should be documented in your code, with who, when, what, and why.</p>
+Do not do this - leave all errors intact in your raw data, and explicitly make edits with explanations of - who made the edit - when it was made - what was changed - and why it was made. You should provide a justification for each change, and identify source documents to support the rationale. Every edit should be documented in your code, with who, when, what, and why.</p>
 </div>
 <p>Now, on to the fun part.
 Let’s read in some data!</p>
 <div id="reading-data-with-the-readr-package" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> Reading data with the {readr} package<a href="importing-your-data-into-r.html#reading-data-with-the-readr-package" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Many of the standard data formats can be read with functions in the {readr} package.
-These include:</p>
+<p>Many of the standard data formats can be read with functions in the {readr} package. This package is part of the {tidyverse} meta-package.
+These functions include:</p>
 <ul>
 <li>read_csv() for comma-separated values (*.csv) files</li>
 <li>read_tsv() for tab-separated values (*.tsv) files</li>
@@ -898,27 +895,34 @@ These include:</p>
 </ul>
 <p>Let’s read a csv file.
 First, make sure that you have the {readr} package loaded (or the {tidyverse} meta-package, which includes {readr}).
-You can load {readr} with the <code>library()</code> function.</p>
+You can load {readr} with the <code>library()</code> function, if you have already installed this package.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="importing-your-data-into-r.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb13-2"><a href="importing-your-data-into-r.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or you can use</span></span>
-<span id="cb13-3"><a href="importing-your-data-into-r.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># which will load 8 packages, including readr</span></span></code></pre></div>
+<span id="cb13-3"><a href="importing-your-data-into-r.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># which will load 8 packages, including readr</span></span>
+<span id="cb13-4"><a href="importing-your-data-into-r.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># the other 7 packages are ggplot, tibble, tidyr, dplyr, purrr, stringr, and forcats</span></span></code></pre></div>
 <p>Note that this will <em>not</em> work if you do not already have the {readr} package installed on your computer.
 You will get an error, like this: <code>Error in library(readr) : there is no package called 'readr'</code></p>
-<p>This is not a problem - you just have to install the package first.
+<p>This is not a big problem - but you have to install the package first, before you can load it.
 You only need to do this once, like buying a book, and putting it in your personal library.
 Each time you use the package, you have to pull the book off the shelf, with <code>library(packagename)</code>.
 To install the {readr} package, we can install the whole {tidyverse} package, which will come in handy later.
-Just enter the following in your Console pane:</p>
+Just enter the following in your Console pane to install the {tidyverse} meta-package:</p>
 <p><code>install.packages('tidyverse')</code></p>
 <p>Note that quotes around ‘tidyverse’ are required, as tidyverse is not yet a known object or package in your working environment.
 Once the {tidyverse} package is installed, you can use <code>library(tidyverse)</code> without quotes, as it is a known (installed) package.</p>
-<p>OK, after that detour, we should be all caught up - you should be able to run <code>library(tidyverse)</code> or <code>library(readr)</code> without an error.
+<p>We will also want to use the {glue} package shortly to access files on the web. Practice installing this package. Copy and run the code chunk below in your RStudio Console panel to install and load the {glue} package.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="importing-your-data-into-r.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;glue&#39;</span>)</span></code></pre></div>
+<pre><code>## 
+## The downloaded binary packages are in
+##  /var/folders/93/s18zkv2d4f556fxbjvb8yglc0000gp/T//Rtmpo0zGrA/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="importing-your-data-into-r.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glue)</span></code></pre></div>
+<p>OK, after that detour, we should be all caught up - you should be able to run <code>library(tidyverse)</code> or <code>library(readr)</code> or <code>library(glue)</code> without an error.
 Now that you have {readr} loaded, you can read in some csv data.
-Let’s start with a file named <code>scurvy.csv</code> in a <code>data</code> folder on GitHub. You will need to glue together the url_stem and “data/scurvy.csv” to get the full web address. Run the code chunk below to see the url_stem and the dataset.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="importing-your-data-into-r.html#cb14-1" aria-hidden="true" tabindex="-1"></a>url_stem <span class="ot">&lt;-</span> <span class="st">&quot;https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/&quot;</span></span>
-<span id="cb14-2"><a href="importing-your-data-into-r.html#cb14-2" aria-hidden="true" tabindex="-1"></a>url_stem</span></code></pre></div>
+Let’s start with a file named <code>scurvy.csv</code> in a <code>data</code> folder on GitHub. You will need to glue together the url_stem (the first part of the path to the web address) and “data/scurvy.csv” (the folder and file name) to get the full web address. Copy and run the code chunk below to see the url_stem and the dataset.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="importing-your-data-into-r.html#cb17-1" aria-hidden="true" tabindex="-1"></a>url_stem <span class="ot">&lt;-</span> <span class="st">&quot;https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/&quot;</span></span>
+<span id="cb17-2"><a href="importing-your-data-into-r.html#cb17-2" aria-hidden="true" tabindex="-1"></a>url_stem</span></code></pre></div>
 <pre><code>## [1] &quot;https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/&quot;</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="importing-your-data-into-r.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="fu">glue</span>(url_stem, <span class="st">&#39;data/scurvy.csv&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="importing-your-data-into-r.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="fu">glue</span>(url_stem, <span class="st">&#39;data/scurvy.csv&#39;</span>))</span></code></pre></div>
 <pre><code>## Rows: 12 Columns: 8
 ## ── Column specification ────────────────────────────────────
 ## Delimiter: &quot;,&quot;
@@ -949,22 +953,27 @@ Let’s start with a file named <code>scurvy.csv</code> in a <code>data</code> f
 ## # ℹ Use `colnames()` to see all variable names</code></pre>
 <p>Let’s look at what was extracted from the csv file.
 This starts after the url_stem (web address) is printed out.</p>
-<p>The Console pane has a print out of the Column specification, followed by the data in rectangular format.
-In the Column specification, the delimiter between items of data is identified (a comma), and a listing of variables with the <code>character</code> (chr) data type is printed. There are no non-character data types in this particular dataset.
+<p>The Console pane has a</p>
+<ol style="list-style-type: decimal">
+<li><p>the number of rows (12) and columns (8) in the dataset.</p></li>
+<li><p>The Column specification, followed by</p></li>
+<li><p>the data in rectangular format.</p></li>
+</ol>
+<p>In the Column specification, the delimiter between items of data is identified (a comma), and a listing of variables with the <code>character</code> (chr) data type is printed. There are no non-character data types in this particular dataset.
 The ‘guessing’ of what data type is appropriate for each variable is done ‘automagically’, as the read_csv() function reads the first 1000 rows, then guesses what data type is present in each column (variable).
 It is often conservative, and in this case, made all of these columns into character variables (also called strings).
-You could argue that the col_character() assignment should be numeric for the study_id variable, or that the Likert scales used for outcomes like gum_rot_d6 and skin_sores_d6 should be coded as ordinal variables, known as ordered factors in R.
+You could argue that the col_character() assignment should be numeric for the study_id variable, or that the Likert scales used for outcomes like gum_rot_d6 and skin_sores_d6 should be coded as ordinal variables, known as ordered <strong>factors</strong> in R.
 You will learn to control these data types during data import with the <code>spec()</code> argument.</p>
-<p>The second piece of output is the data itself.
+<p>The last piece of output is the data rectangle itself.
 This is first identified as a ‘tibble’, which is a type of data table, with 12 rows and 8 columns, in <code># A tibble: 12 x 8</code>.
 This is followed by a header row of variable names, and just below that is the data type (<code>&lt;chr&gt;</code> for character) for each column.
-Then, on the left are gray row numbers (not actually part of the data set), followed by (to the right) rows of data.
-A tibble, by default, only prints out 10 rows of data, and no more columns than will fill your current console window.
-The other columns are listed in order at the bottom of the tibble in gray type.</p>
+Then, on the left are gray row numbers (which are not actually part of the data set), followed by (to the right) rows of data.
+A tibble, by default, only prints out only as many rows of data than will fill the console, and no more columns than will fill the width of your current console window.
+The other columns (variable names) are listed in order at the bottom of the tibble in gray type.</p>
 <p>Now, by simply reading in the data, you can look at it, but you can’t do anything with it, as you have not saved it as an object in your working Environment.
 If you want to do things with this data, and make them last, you have to <em>assign</em> the data to an object, and give it a name.
-To do this, you need to use an assignment arrow, as below</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="importing-your-data-into-r.html#cb19-1" aria-hidden="true" tabindex="-1"></a>scurvy_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">glue</span>(url_stem, <span class="st">&#39;data/scurvy.csv&#39;</span>))</span></code></pre></div>
+To do this, you need to use an assignment arrow, as below, where the data is assigned to the object, <code>scurvy_data</code>.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="importing-your-data-into-r.html#cb22-1" aria-hidden="true" tabindex="-1"></a>scurvy_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">glue</span>(url_stem, <span class="st">&#39;data/scurvy.csv&#39;</span>))</span></code></pre></div>
 <pre><code>## Rows: 12 Columns: 8
 ## ── Column specification ────────────────────────────────────
 ## Delimiter: &quot;,&quot;
@@ -975,15 +984,18 @@ To do this, you need to use an assignment arrow, as below</p>
 <p>Now this is saved to <code>scurvy_data</code> in your working Environment.
 You can look in the Environment tab (top right pane in RStudio) and see that scurvy_data has now appeared in the Data section, with 12 observations of 8 variables.
 This is not a file written (saved) to disk, but this dataset is now available in the working environment as an assigned data object.
-You can now print this out at any time by typing <code>scurvy_data</code> into the Console, or into a script. Try this out in the Console pane.</p>
+You can click on the blue arrow next to <code>scurvy_data</code> to show the variable names and variable types for this dataset.
+You can also click on the name <code>scurvy_data</code> to open up a Viewer window in the top left (Source) pane. You can scroll around to inspect all of the data. You can also get this view by typing <code>View(scurvy_data)</code> into the Console pane.
+You can also print out the data at any time by typing <code>scurvy_data</code> into the Console, or into a script. Try this out in the Console pane.</p>
 <div id="test-yourself-on-scurvy" class="section level3 hasAnchor" number="5.1.1">
 <h3><span class="header-section-number">5.1.1</span> Test yourself on scurvy<a href="importing-your-data-into-r.html#test-yourself-on-scurvy" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Inspect the data in the Viewer, and find the answer.</p>
 <ul>
 <li>How many limes did the British seamen in the citrus arm receive each day?</li>
 </ul>
 <p><select class='webex-select'><option value='blank'></option><option value=''>3</option><option value=''>2</option><option value='answer'>zero</option><option value=''>1.5</option></select></p>
 <p>You can also start with the <code>scurvy_data</code> object, and <em>do</em> things to this data object, like summarize it, or graph it, or calculate total_symptom_score in a data pipeline.
-Once you have assigned your data to an object, it will stick around in that R session for later use.</p>
+Once you have assigned your data to an object, it will stick around in that R session for later use. Your changes will disappear when you close the session, unless you save it to disk, with functions like <code>save()</code> or <code>write_csv()</code>.</p>
 <p>The csv (comma separated values) format is a very common data format, and most data management programs have a way to export <code>*.csv</code> files.
 The csv format is simple, is not owned by anyone, and works across platforms.
 However, it can occasionally be tricky if you have commas in the middle of a variable like <code>degree</code>, with entries like ‘md, phd’ in a column that is mostly ‘md’.
@@ -1004,9 +1016,9 @@ On occasion, though, you will want to take control of some of the other argument
 </div>
 <p>When your data has no column names (headers), read_csv will (by default) assume that the first row of the data is the column names.
 To fix this, add the argument, <strong>col_names</strong> = FALSE.
-You can also assign your own <strong>col_names</strong> by setting a vector, like c(“patient_id”, “treatment”, “outcome”) to col_names, as below</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="importing-your-data-into-r.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="at">file =</span> <span class="fu">glue</span>(url_stem, <span class="st">&#39;data/scurvy.csv&#39;</span>), </span>
-<span id="cb21-2"><a href="importing-your-data-into-r.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">&quot;pat_id&quot;</span>, <span class="st">&quot;arm&quot;</span>, <span class="st">&quot;dose&quot;</span>, <span class="st">&quot;gums&quot;</span>, <span class="st">&quot;skin&quot;</span>, <span class="st">&quot;weak&quot;</span>, <span class="st">&quot;lass&quot;</span>, <span class="st">&quot;fit&quot;</span>))</span></code></pre></div>
+You can also assign your own <strong>col_names</strong> by setting a vector, like c(“patient_id”, “treatment”, “outcome”) [note that <code>c()</code> concatenates data items into a vector] equal to to col_names, as below. Copy and run this code chunk in your RStudio Console pane to see how the output is different.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="importing-your-data-into-r.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="at">file =</span> <span class="fu">glue</span>(url_stem, <span class="st">&#39;data/scurvy.csv&#39;</span>), </span>
+<span id="cb24-2"><a href="importing-your-data-into-r.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">&quot;pat_id&quot;</span>, <span class="st">&quot;arm&quot;</span>, <span class="st">&quot;dose&quot;</span>, <span class="st">&quot;gums&quot;</span>, <span class="st">&quot;skin&quot;</span>, <span class="st">&quot;weak&quot;</span>, <span class="st">&quot;lass&quot;</span>, <span class="st">&quot;fit&quot;</span>))</span></code></pre></div>
 <pre><code>## Rows: 13 Columns: 8
 ## ── Column specification ────────────────────────────────────
 ## Delimiter: &quot;,&quot;
@@ -1030,13 +1042,13 @@ You can also assign your own <strong>col_names</strong> by setting a vector, lik
 ## 11 010      citrus       two … 0_no… 0_no… 0_no… 0_no… 1_yes
 ## 12 011      purgative_m… a nu… 3_se… 3_se… 3_se… 3_se… 0_no 
 ## 13 012      purgative_m… a nu… 3_se… 3_se… 3_se… 3_se… 0_no</code></pre>
-<p>In this case, when we set our own <strong>col_names</strong>, there are now <strong>13</strong> rows of data, and the original column headers are now listed as the first row of data.
+<p>In this case, when we set our own <strong>col_names</strong>, there are now <strong>13</strong> rows in our data rectangle, and the original column headers are now listed as the first row of data.
 We can fix this with the <strong>skip</strong> argument within the parentheses of the <code>read_csv()</code> function, which has a default of 0.
 We can skip as many lines as we want, which can be helpful if you have an Excel file with a lot of blank lines or commentary at the top of the spreadsheet.
 When we set skip = 1 in this case, we get a cleaner dataset, without variable names as data.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="importing-your-data-into-r.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="at">file =</span> <span class="fu">glue</span>(url_stem, <span class="st">&#39;data/scurvy.csv&#39;</span>), </span>
-<span id="cb24-2"><a href="importing-your-data-into-r.html#cb24-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">&quot;pat_id&quot;</span>, <span class="st">&quot;arm&quot;</span>, <span class="st">&quot;dose&quot;</span>, <span class="st">&quot;gums&quot;</span>, <span class="st">&quot;skin&quot;</span>, <span class="st">&quot;weak&quot;</span>, <span class="st">&quot;lass&quot;</span>, <span class="st">&quot;fit&quot;</span>),</span>
-<span id="cb24-3"><a href="importing-your-data-into-r.html#cb24-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">skip =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="importing-your-data-into-r.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="at">file =</span> <span class="fu">glue</span>(url_stem, <span class="st">&#39;data/scurvy.csv&#39;</span>), </span>
+<span id="cb27-2"><a href="importing-your-data-into-r.html#cb27-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">&quot;pat_id&quot;</span>, <span class="st">&quot;arm&quot;</span>, <span class="st">&quot;dose&quot;</span>, <span class="st">&quot;gums&quot;</span>, <span class="st">&quot;skin&quot;</span>, <span class="st">&quot;weak&quot;</span>, <span class="st">&quot;lass&quot;</span>, <span class="st">&quot;fit&quot;</span>),</span>
+<span id="cb27-3"><a href="importing-your-data-into-r.html#cb27-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">skip =</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## Rows: 12 Columns: 8
 ## ── Column specification ────────────────────────────────────
 ## Delimiter: &quot;,&quot;
@@ -1062,13 +1074,11 @@ When we set skip = 1 in this case, we get a cleaner dataset, without variable na
 <p>Now we don’t have extra column names as data, and we are back to 12 rows.
 Also note that in this code chunk, we put each argument to the function on its own line, with commas between them.
 This is a good practice, to make your code more readable.
-You can also set <strong>n_max</strong> to a particular number of rows to be read in (the default is infinity, or <code>Inf</code>) You might want a smaller number if you have a very large dataset and limited computer memory.
+More arguments to <code>read_csv()</code>: you can also set <strong>n_max</strong> to a particular number of rows to be read in (the default is infinity, or <code>Inf</code>) You might want a smaller number if you have a very large dataset and limited computer memory.
 Another important argument (option) for both read_csv and read_tsv is <strong>col_types</strong>, which lets you take control of the column types during the data</p>
-<p>What if you want to take more control of the import process with read_xxx()?
-You can add a col_types argument to the read_csv() function.
-You can copy the Column specifications from the first attempt at importing, and then make some edits. You can get the column specifications as guessed by {readr} by running the <code>spec()</code> function on the scurvy_data object.
+<p>What if you want to take more control of the import process with <code>r</code>ead_csv()<code>? You can add a</code>col_types<code>argument to the</code>read_csv()<code>function. You can copy the Column specifications from the first attempt at importing, and then make some edits. You can get the column specifications as guessed by {readr} by running the</code>spec()` function on the scurvy_data object.
 Try this out in the code chunk below.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="importing-your-data-into-r.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">spec</span>(scurvy_data)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="importing-your-data-into-r.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">spec</span>(scurvy_data)</span></code></pre></div>
 <pre><code>## cols(
 ##   study_id = col_character(),
 ##   treatment = col_character(),
@@ -1086,20 +1096,20 @@ I have added the col_types argument to <em>read_csv()</em>, and set it equal to 
 Then I edited study_id to <code>col_integer()</code>, and treatment to <code>col_factor()</code>.
 Run the code chunk below to see how this works.
 The <code>glimpse</code> function will give an overview of the new <code>scurvy_cols</code> object that I assigned the data to.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="importing-your-data-into-r.html#cb29-1" aria-hidden="true" tabindex="-1"></a>scurvy_cols <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
-<span id="cb29-2"><a href="importing-your-data-into-r.html#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="fu">glue</span>(url_stem, <span class="st">&#39;data/scurvy.csv&#39;</span>),</span>
-<span id="cb29-3"><a href="importing-your-data-into-r.html#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">col_types =</span> <span class="fu">cols</span>(</span>
-<span id="cb29-4"><a href="importing-your-data-into-r.html#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">study_id =</span> <span class="fu">col_integer</span>(),</span>
-<span id="cb29-5"><a href="importing-your-data-into-r.html#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">treatment =</span> <span class="fu">col_factor</span>(),</span>
-<span id="cb29-6"><a href="importing-your-data-into-r.html#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">dosing_regimen_for_scurvy =</span> <span class="fu">col_character</span>(),</span>
-<span id="cb29-7"><a href="importing-your-data-into-r.html#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">gum_rot_d6 =</span> <span class="fu">col_character</span>(),</span>
-<span id="cb29-8"><a href="importing-your-data-into-r.html#cb29-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">skin_sores_d6 =</span> <span class="fu">col_character</span>(),</span>
-<span id="cb29-9"><a href="importing-your-data-into-r.html#cb29-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">weakness_of_the_knees_d6 =</span> <span class="fu">col_character</span>(),</span>
-<span id="cb29-10"><a href="importing-your-data-into-r.html#cb29-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">lassitude_d6 =</span> <span class="fu">col_character</span>(),</span>
-<span id="cb29-11"><a href="importing-your-data-into-r.html#cb29-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">fit_for_duty_d6 =</span> <span class="fu">col_character</span>()</span>
-<span id="cb29-12"><a href="importing-your-data-into-r.html#cb29-12" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb29-13"><a href="importing-your-data-into-r.html#cb29-13" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb29-14"><a href="importing-your-data-into-r.html#cb29-14" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(scurvy_cols)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="importing-your-data-into-r.html#cb32-1" aria-hidden="true" tabindex="-1"></a>scurvy_cols <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
+<span id="cb32-2"><a href="importing-your-data-into-r.html#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="fu">glue</span>(url_stem, <span class="st">&#39;data/scurvy.csv&#39;</span>),</span>
+<span id="cb32-3"><a href="importing-your-data-into-r.html#cb32-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">col_types =</span> <span class="fu">cols</span>(</span>
+<span id="cb32-4"><a href="importing-your-data-into-r.html#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">study_id =</span> <span class="fu">col_integer</span>(),</span>
+<span id="cb32-5"><a href="importing-your-data-into-r.html#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">treatment =</span> <span class="fu">col_factor</span>(),</span>
+<span id="cb32-6"><a href="importing-your-data-into-r.html#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">dosing_regimen_for_scurvy =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb32-7"><a href="importing-your-data-into-r.html#cb32-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">gum_rot_d6 =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb32-8"><a href="importing-your-data-into-r.html#cb32-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">skin_sores_d6 =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb32-9"><a href="importing-your-data-into-r.html#cb32-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">weakness_of_the_knees_d6 =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb32-10"><a href="importing-your-data-into-r.html#cb32-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">lassitude_d6 =</span> <span class="fu">col_character</span>(),</span>
+<span id="cb32-11"><a href="importing-your-data-into-r.html#cb32-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">fit_for_duty_d6 =</span> <span class="fu">col_character</span>()</span>
+<span id="cb32-12"><a href="importing-your-data-into-r.html#cb32-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb32-13"><a href="importing-your-data-into-r.html#cb32-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb32-14"><a href="importing-your-data-into-r.html#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(scurvy_cols)</span></code></pre></div>
 <pre><code>## Rows: 12
 ## Columns: 8
 ## $ study_id                  &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, …
@@ -1126,15 +1136,15 @@ You can choose as data types:</p>
 </ul>
 <p>The read_csv() guesses may be fine, but you can take more control if needed.</p>
 <p>This <em>col_types()</em> approach gives you fine control of each column.
-But it is a lot of typing.
+But it is a lot of typing (even with copy-paste from <code>spec()</code>).
 Sometimes you want to set all the column types with a lot less typing, and you don’t need to set levels for factors, or formats for dates.
 You can do this by setting col_types to a string, in which each letter specifies the column type for each column.
 Run the example below by clicking on the green arrow at the top right of the code chunk, in which I use i for col_integer, c for col_character, and f for col_factor.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="importing-your-data-into-r.html#cb31-1" aria-hidden="true" tabindex="-1"></a>scurvy_cols2 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
-<span id="cb31-2"><a href="importing-your-data-into-r.html#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="fu">glue</span>(url_stem, <span class="st">&#39;data/scurvy.csv&#39;</span>),</span>
-<span id="cb31-3"><a href="importing-your-data-into-r.html#cb31-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">col_types =</span> <span class="st">&quot;ifcffff&quot;</span>)</span>
-<span id="cb31-4"><a href="importing-your-data-into-r.html#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-5"><a href="importing-your-data-into-r.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(scurvy_cols2)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="importing-your-data-into-r.html#cb34-1" aria-hidden="true" tabindex="-1"></a>scurvy_cols2 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
+<span id="cb34-2"><a href="importing-your-data-into-r.html#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="fu">glue</span>(url_stem, <span class="st">&#39;data/scurvy.csv&#39;</span>),</span>
+<span id="cb34-3"><a href="importing-your-data-into-r.html#cb34-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">col_types =</span> <span class="st">&quot;ifcffff&quot;</span>)</span>
+<span id="cb34-4"><a href="importing-your-data-into-r.html#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-5"><a href="importing-your-data-into-r.html#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(scurvy_cols2)</span></code></pre></div>
 <pre><code>## Rows: 12
 ## Columns: 8
 ## $ study_id                  &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, …
@@ -1151,14 +1161,16 @@ Run the example below by clicking on the green arrow at the top right of the cod
 The file <code>strep_tb.tsv</code> is located in the same GitHub folder, and you can use the same url_stem.</p>
 <p>In the example code chunk below, there are several blanks.
 Copy this code chunk (use the copy button in the top right of the code chunk - hover to find it) to your RStudio Console pane.
-Edit it to make the two changes listed, and run the code chunk as directed below.</p>
-<ul>
+Edit it to make the three changes listed, and run the code chunk as directed below.</p>
+<ol style="list-style-type: decimal">
 <li>Fill in the second part of the read_xxx() function correctly to read this file</li>
 <li>Fill in the correct file name to complete the path</li>
-</ul>
-<p>This version of the code chunk will read in every column as the character data type.
-This is OK, but not quite right.
-Now edit the <code>col_types</code> string to make:</p>
+</ol>
+<p>This version of the code chunk will read in every column (all 13 variables) as the character data type.
+This is OK, but not quite right.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Now edit the <code>col_types</code> string to make:</li>
+</ol>
 <ul>
 <li>both doses numeric (n or d) (variables 3,4)</li>
 <li><code>gender</code> a factor (f) (var 5)</li>
@@ -1167,11 +1179,34 @@ Now edit the <code>col_types</code> string to make:</p>
 <li><code>rad_num</code> into an integer (i) (var 12)</li>
 <li><code>improved</code> into a logical (l) (var 13)</li>
 </ul>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="importing-your-data-into-r.html#cb33-1" aria-hidden="true" tabindex="-1"></a>strep_tb_cols <span class="ot">&lt;-</span> read_<span class="sc">---</span>(</span>
-<span id="cb33-2"><a href="importing-your-data-into-r.html#cb33-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">file =</span> <span class="fu">glue</span>(url_stem, <span class="st">&#39;data/----.tsv&#39;</span>),</span>
-<span id="cb33-3"><a href="importing-your-data-into-r.html#cb33-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">col_types =</span> <span class="st">&quot;ccccccccccccc&quot;</span>)</span>
-<span id="cb33-4"><a href="importing-your-data-into-r.html#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-5"><a href="importing-your-data-into-r.html#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(strep_tb_cols)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="importing-your-data-into-r.html#cb36-1" aria-hidden="true" tabindex="-1"></a>strep_tb_cols <span class="ot">&lt;-</span> read_<span class="sc">---</span>(</span>
+<span id="cb36-2"><a href="importing-your-data-into-r.html#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">file =</span> <span class="fu">glue</span>(url_stem, <span class="st">&#39;data/----.tsv&#39;</span>),</span>
+<span id="cb36-3"><a href="importing-your-data-into-r.html#cb36-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">col_types =</span> <span class="st">&quot;ccccccccccccc&quot;</span>)</span>
+<span id="cb36-4"><a href="importing-your-data-into-r.html#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="importing-your-data-into-r.html#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(strep_tb_cols)</span></code></pre></div>
+<div class="webex-solution">
+<button>
+Show the Solution
+</button>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="importing-your-data-into-r.html#cb37-1" aria-hidden="true" tabindex="-1"></a>strep_tb_cols <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(</span>
+<span id="cb37-2"><a href="importing-your-data-into-r.html#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">file =</span> <span class="fu">glue</span>(url_stem, <span class="st">&#39;data/strep_tb.tsv&#39;</span>),</span>
+<span id="cb37-3"><a href="importing-your-data-into-r.html#cb37-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">col_types =</span> <span class="st">&quot;ccddfffff--il&quot;</span>)</span>
+<span id="cb37-4"><a href="importing-your-data-into-r.html#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="importing-your-data-into-r.html#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(strep_tb_cols)</span></code></pre></div>
+<pre><code>## Rows: 107
+## Columns: 11
+## $ patient_id          &lt;chr&gt; &quot;0001&quot;, &quot;0002&quot;, &quot;0003&quot;, &quot;0004&quot;…
+## $ arm                 &lt;chr&gt; &quot;Control&quot;, &quot;Control&quot;, &quot;Control…
+## $ dose_strep_g        &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+## $ dose_PAS_g          &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+## $ gender              &lt;fct&gt; M, F, F, M, F, M, F, M, F, M, …
+## $ baseline_condition  &lt;fct&gt; 1_Good, 1_Good, 1_Good, 1_Good…
+## $ baseline_temp       &lt;fct&gt; 1_98-98.9F, 3_100-100.9F, 1_98…
+## $ baseline_esr        &lt;fct&gt; 2_11-20, 2_11-20, 3_21-50, 3_2…
+## $ baseline_cavitation &lt;fct&gt; yes, no, no, no, no, no, yes, …
+## $ rad_num             &lt;int&gt; 6, 5, 5, 5, 5, 6, 5, 5, 5, 5, …
+## $ improved            &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, …</code></pre>
+</div>
 </div>
 </div>
 <div id="reading-excel-files-with-readxl" class="section level2 hasAnchor" number="5.2">
@@ -1186,9 +1221,9 @@ In addition, read_excel() has a <strong>sheet</strong> argument, which lets you 
 The default is the first worksheet, but you can set this to sheet = 4 for the 4th worksheet from the left, or sheet = “raw_data” to get the correct worksheet.
 You can also set the range argument to only read in a particular range of cells, like range = “B2:G14”.
 Below is an example of how to read in an Excel worksheet.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="importing-your-data-into-r.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(paulolol_xlsx, </span>
-<span id="cb34-2"><a href="importing-your-data-into-r.html#cb34-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">sheet =</span> <span class="dv">1</span>,</span>
-<span id="cb34-3"><a href="importing-your-data-into-r.html#cb34-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">skip =</span> <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="importing-your-data-into-r.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(paulolol_xlsx, </span>
+<span id="cb39-2"><a href="importing-your-data-into-r.html#cb39-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">sheet =</span> <span class="dv">1</span>,</span>
+<span id="cb39-3"><a href="importing-your-data-into-r.html#cb39-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">skip =</span> <span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## New names:
 ## • `` -&gt; `...2`
 ## • `` -&gt; `...3`
@@ -1237,7 +1272,7 @@ Below is an example of how to read in an Excel worksheet.</p>
 <p>It is common to have the occasional collaborator who still uses one of the older proprietary statistical packages. They will send you files with filenames like <code>data.sas7bdat</code> (SAS), <code>data.dta</code> (Stata), or <code>data.sav</code> (SPSS).</p>
 <p>The {haven} package makes reding in these data files straightforward.</p>
 <p>** Set up **</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="importing-your-data-into-r.html#cb37-1" aria-hidden="true" tabindex="-1"></a>haven<span class="sc">::</span><span class="fu">read_sas</span>(<span class="fu">glue</span>(url_stem, <span class="st">&quot;data/blood_storage.sas7bdat&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="importing-your-data-into-r.html#cb42-1" aria-hidden="true" tabindex="-1"></a>haven<span class="sc">::</span><span class="fu">read_sas</span>(<span class="fu">glue</span>(url_stem, <span class="st">&quot;data/blood_storage.sas7bdat&quot;</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 316 × 20
 ##    rbc_age_…¹ media…²   age    aa fam_hx p_vol t_vol t_stage
 ##         &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
@@ -1274,7 +1309,7 @@ Try to use the same <code>import()</code> function to read</p>
 <li>paulolol.xlsx</li>
 <li>blood_storage.sas7bdat</li>
 </ul>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="importing-your-data-into-r.html#cb39-1" aria-hidden="true" tabindex="-1"></a>rio<span class="sc">::</span><span class="fu">import</span>(<span class="fu">glue</span>(url_stem, <span class="st">&quot;data/filename&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="importing-your-data-into-r.html#cb44-1" aria-hidden="true" tabindex="-1"></a>rio<span class="sc">::</span><span class="fu">import</span>(<span class="fu">glue</span>(url_stem, <span class="st">&quot;data/filename&quot;</span>))</span></code></pre></div>
 <pre><code>## Error in remote_to_local(file, format = format): Unrecognized file format. Try specifying with the format argument.</code></pre>
 <p>It can be very convenient to use {rio} for unusual file types.</p>
 </div>
@@ -1288,7 +1323,7 @@ There are several helpful functions and packages to get you started in exploring
 Let’s try this with the scurvy dataset, which we have already assigned to the object <code>scurvy</code> in the working Environment.
 Just put the object name as an argument within the <em>glimpse()</em> function (inside the parentheses), as below.
 Run the code chunk below to get the glimpse() output.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="importing-your-data-into-r.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(scurvy)</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="importing-your-data-into-r.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(scurvy)</span></code></pre></div>
 <pre><code>## Rows: 12
 ## Columns: 8
 ## $ study_id                  &lt;chr&gt; &quot;001&quot;, &quot;002&quot;, &quot;003&quot;, &quot;00…
@@ -1307,7 +1342,7 @@ We can see that study_id and dosing_regimen_for_scurvy are both of the <code>cha
 <h3><span class="header-section-number">5.5.2</span> Try this out yourself.<a href="importing-your-data-into-r.html#try-this-out-yourself." class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>What can you learn about the strep_tb dataset with <em>glimpse()</em>?
 Edit the code chunk below to find out about strep_tb.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="importing-your-data-into-r.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(<span class="sc">----</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="importing-your-data-into-r.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(<span class="sc">----</span>)</span></code></pre></div>
 </div>
 <div id="test-yourself-on-strep_tb-1" class="section level3 hasAnchor" number="5.5.3">
 <h3><span class="header-section-number">5.5.3</span> Test yourself on strep_tb<a href="importing-your-data-into-r.html#test-yourself-on-strep_tb-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1332,7 +1367,7 @@ A common source of errors is trying to run a function that requires a particular
 Sometimes just checking the data structure will reveal the source of an error.</p>
 <p>The <em>str()</em> function does largely what <em>glimpse()</em> does, but provides a bit more detail, with less attractive formatting.
 Run the code chunk below to see the output of <em>str()</em>.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="importing-your-data-into-r.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(scurvy)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="importing-your-data-into-r.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(scurvy)</span></code></pre></div>
 <pre><code>## tibble [12 × 8] (S3: tbl_df/tbl/data.frame)
 ##  $ study_id                 : chr [1:12] &quot;001&quot; &quot;002&quot; &quot;003&quot; &quot;004&quot; ...
 ##  $ treatment                : Factor w/ 6 levels &quot;cider&quot;,&quot;citrus&quot;,..: 1 1 3 3 6 6 5 5 2 2 ...
@@ -1369,16 +1404,16 @@ Try this with the strep_tb dataset variable <code>patient_id</code> by running t
 Imagine that you wanted to get the mean of <code>patient_id</code>.
 You got a <strong>warning</strong> that pointed out that the <code>argument is not numeric or logical</code>.
 So you run <em>str()</em> to find out the data structure of this variable.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="importing-your-data-into-r.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(strep_tb<span class="sc">$</span>patient_id)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="importing-your-data-into-r.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(strep_tb<span class="sc">$</span>patient_id)</span></code></pre></div>
 <pre><code>## Warning in mean.default(strep_tb$patient_id): argument is
 ## not numeric or logical: returning NA</code></pre>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="importing-your-data-into-r.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(strep_tb<span class="sc">$</span>patient_id)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="importing-your-data-into-r.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(strep_tb<span class="sc">$</span>patient_id)</span></code></pre></div>
 <pre><code>##  chr [1:107] &quot;0001&quot; &quot;0002&quot; &quot;0003&quot; &quot;0004&quot; &quot;0005&quot; &quot;0006&quot; ...</code></pre>
 <p>This shows you that patient_id is actually a character variable.
 If you wanted to find the mean value, you would have to change it to numeric (with <em>as.numeric()</em> first).
 The glimpse() function provides identical output to str() for a variable in a table.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="importing-your-data-into-r.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(strep_tb<span class="sc">$</span>patient_id)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="importing-your-data-into-r.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(strep_tb<span class="sc">$</span>patient_id)</span></code></pre></div>
 <pre><code>##  chr [1:107] &quot;0001&quot; &quot;0002&quot; &quot;0003&quot; &quot;0004&quot; &quot;0005&quot; &quot;0006&quot; ...</code></pre>
 <p>You can choose whether you prefer the details of <em>str()</em> or the nicer formatting of <em>glimpse()</em> for yourself.</p>
 </div>
@@ -1388,7 +1423,7 @@ The glimpse() function provides identical output to str() for a variable in a ta
 This is where the base R functions <em>head()</em> and <em>tail()</em> can be helpful.
 As you might have guessed, these functions give you a quick view of the head (top 6 rows) and tail (last 6 rows) of your data.
 Try this out with scurvy or strep_tb.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="importing-your-data-into-r.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(scurvy)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="importing-your-data-into-r.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(scurvy)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 8
 ##   study_id treatment dosin…¹ gum_r…² skin_…³ weakn…⁴ lassi…⁵
 ##   &lt;chr&gt;    &lt;fct&gt;     &lt;chr&gt;   &lt;fct&gt;   &lt;fct&gt;   &lt;fct&gt;   &lt;fct&gt;  
@@ -1403,7 +1438,7 @@ Try this out with scurvy or strep_tb.</p>
 ## #   ²​gum_rot_d6, ³​skin_sores_d6, ⁴​weakness_of_the_knees_d6,
 ## #   ⁵​lassitude_d6
 ## # ℹ Use `colnames()` to see all variable names</code></pre>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="importing-your-data-into-r.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(strep_tb)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="importing-your-data-into-r.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(strep_tb)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 13
 ##   patient_id arm      dose_…¹ dose_…² gender basel…³ basel…⁴
 ##   &lt;chr&gt;      &lt;fct&gt;      &lt;dbl&gt;   &lt;dbl&gt; &lt;fct&gt;  &lt;fct&gt;   &lt;fct&gt;  
@@ -1422,7 +1457,7 @@ Try this out with scurvy or strep_tb.</p>
 <p>Note that since these are tibbles, they will only print the columns that will fit into your Console pane.
 You can see all variables and the whole width (though it will wrap around to new lines) by either (1) converting these to a data frame first, to avoid tibble behavior, or (2) by using print, which has a width argument that allows you to control the number of columns (it also has an <em>n</em> argument that lets you print all rows).
 Run the code chunk below to see how this is different.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="importing-your-data-into-r.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">as.data.frame</span>(scurvy))</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="importing-your-data-into-r.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">as.data.frame</span>(scurvy))</span></code></pre></div>
 <pre><code>##   study_id            treatment
 ## 1      001                cider
 ## 2      002                cider
@@ -1451,7 +1486,7 @@ Run the code chunk below to see how this is different.</p>
 ## 4     3_severe            0_no
 ## 5     3_severe            0_no
 ## 6     3_severe            0_no</code></pre>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="importing-your-data-into-r.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">tail</span>(strep_tb), <span class="at">width =</span> <span class="cn">Inf</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="importing-your-data-into-r.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">tail</span>(strep_tb), <span class="at">width =</span> <span class="cn">Inf</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 13
 ##   patient_id arm          dose_strep_g dose_PAS_g gender
 ##   &lt;chr&gt;      &lt;fct&gt;               &lt;dbl&gt;      &lt;dbl&gt; &lt;fct&gt; 
@@ -1500,23 +1535,23 @@ Run the code chunk below to see how this is different.</p>
 <p>If you just want a quick view of a few critical columns of your data, you can obtain this with the <em>select()</em> function, as in the code chunk below.
 Note that if you want to look at a random sample of your dataset, rather than the head or tail, you can use <em>sample_frac()</em> or <em>sample_n()</em> to do this. This sampling can be helpful if your data are sorted, or the head and tail rows are not representative of the whole dataset.
 See how this is used by running the code chunk below, which uses a 10% random sample of strep_tb to check that the mutate steps to generate the variables <code>rad_num</code> and <code>improved</code> worked correctly.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="importing-your-data-into-r.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check that radiologic_6m, rad_num, and improved all match</span></span>
-<span id="cb61-2"><a href="importing-your-data-into-r.html#cb61-2" aria-hidden="true" tabindex="-1"></a>strep_tb <span class="sc">%&gt;%</span> </span>
-<span id="cb61-3"><a href="importing-your-data-into-r.html#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_frac</span>(<span class="fl">0.1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb61-4"><a href="importing-your-data-into-r.html#cb61-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(radiologic_6m, rad_num, improved)</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="importing-your-data-into-r.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co">#check that radiologic_6m, rad_num, and improved all match</span></span>
+<span id="cb66-2"><a href="importing-your-data-into-r.html#cb66-2" aria-hidden="true" tabindex="-1"></a>strep_tb <span class="sc">%&gt;%</span> </span>
+<span id="cb66-3"><a href="importing-your-data-into-r.html#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_frac</span>(<span class="fl">0.1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb66-4"><a href="importing-your-data-into-r.html#cb66-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(radiologic_6m, rad_num, improved)</span></code></pre></div>
 <pre><code>## # A tibble: 11 × 3
 ##    radiologic_6m                rad_num improved
 ##    &lt;fct&gt;                          &lt;dbl&gt; &lt;lgl&gt;   
 ##  1 5_Moderate_improvement             5 TRUE    
-##  2 1_Death                            1 FALSE   
-##  3 3_Moderate_deterioration           3 FALSE   
-##  4 6_Considerable_improvement         6 TRUE    
-##  5 1_Death                            1 FALSE   
-##  6 6_Considerable_improvement         6 TRUE    
-##  7 4_No_change                        4 FALSE   
-##  8 3_Moderate_deterioration           3 FALSE   
-##  9 4_No_change                        4 FALSE   
-## 10 2_Considerable_deterioration       2 FALSE   
+##  2 4_No_change                        4 FALSE   
+##  3 5_Moderate_improvement             5 TRUE    
+##  4 3_Moderate_deterioration           3 FALSE   
+##  5 5_Moderate_improvement             5 TRUE    
+##  6 3_Moderate_deterioration           3 FALSE   
+##  7 3_Moderate_deterioration           3 FALSE   
+##  8 6_Considerable_improvement         6 TRUE    
+##  9 6_Considerable_improvement         6 TRUE    
+## 10 6_Considerable_improvement         6 TRUE    
 ## 11 2_Considerable_deterioration       2 FALSE</code></pre>
 </div>
 </div>
@@ -1529,9 +1564,9 @@ See how this is used by running the code chunk below, which uses a 10% random sa
 </ul>
 <p>You can get a more detailed look at a dataset with the {skimr} package, which has the <code>skim()</code> function, gives you a quick look at each variable in the dataset, with simple output in the Console. Try this out with the <strong>strep_tb</strong> dataset.
 Run the code chunk below, applying the <code>skim()</code> function to the strep_tb dataset.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="importing-your-data-into-r.html#cb63-1" aria-hidden="true" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(strep_tb)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="importing-your-data-into-r.html#cb68-1" aria-hidden="true" tabindex="-1"></a>skimr<span class="sc">::</span><span class="fu">skim</span>(strep_tb)</span></code></pre></div>
 <table>
-<caption><span id="tab:unnamed-chunk-22">Table 5.1: </span>Data summary</caption>
+<caption><span id="tab:unnamed-chunk-23">Table 5.1: </span>Data summary</caption>
 <tbody>
 <tr class="odd">
 <td align="left">Name</td>
@@ -1811,7 +1846,7 @@ Run the code chunk below, applying the <code>skim()</code> function to the strep
 </ul>
 <p><select class='webex-select'><option value='blank'></option><option value='answer'>3.93</option><option value=''>1.89</option><option value=''>4.7</option></select></p>
 <p>A fancier approach is taken by the DataExplorer package, which can create a full html report with correlations and PCA analysis. Copy and run the chunk below to see what the Data Profiling Report looks like.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="importing-your-data-into-r.html#cb64-1" aria-hidden="true" tabindex="-1"></a>DataExplorer<span class="sc">::</span><span class="fu">create_report</span>(strep_tb)</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="importing-your-data-into-r.html#cb69-1" aria-hidden="true" tabindex="-1"></a>DataExplorer<span class="sc">::</span><span class="fu">create_report</span>(strep_tb)</span></code></pre></div>
 </div>
 <div id="test-yourself-on-the-create_report-results" class="section level3 hasAnchor" number="5.6.2">
 <h3><span class="header-section-number">5.6.2</span> Test yourself on the <code>create_report()</code> results<a href="importing-your-data-into-r.html#test-yourself-on-the-create_report-results" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1926,9 +1961,9 @@ Run the code chunk below, applying the <code>skim()</code> function to the strep
 <button>
 Show Me Solution 1
 </button>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="importing-your-data-into-r.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">&#39;data/paulolol.xlsx&#39;</span>,</span>
-<span id="cb65-2"><a href="importing-your-data-into-r.html#cb65-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">skip =</span> <span class="dv">3</span>,</span>
-<span id="cb65-3"><a href="importing-your-data-into-r.html#cb65-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">n_max =</span> <span class="dv">8</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="importing-your-data-into-r.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">&#39;data/paulolol.xlsx&#39;</span>,</span>
+<span id="cb70-2"><a href="importing-your-data-into-r.html#cb70-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">skip =</span> <span class="dv">3</span>,</span>
+<span id="cb70-3"><a href="importing-your-data-into-r.html#cb70-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">n_max =</span> <span class="dv">8</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 8 × 6
 ##   pat_id SBP_start SBP_end HR_start HR_end treatment
 ##    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    
@@ -1953,8 +1988,8 @@ Show Me Solution 1
 <button>
 Show Me Solution 2
 </button>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="importing-your-data-into-r.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">&#39;data/paulolol2.xlsx&#39;</span>,</span>
-<span id="cb67-2"><a href="importing-your-data-into-r.html#cb67-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">sheet =</span> <span class="st">&#39;data&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="importing-your-data-into-r.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">&#39;data/paulolol2.xlsx&#39;</span>,</span>
+<span id="cb72-2"><a href="importing-your-data-into-r.html#cb72-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">sheet =</span> <span class="st">&#39;data&#39;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 8 × 6
 ##   pat_id SBP_start SBP_end HR_start HR_end treatment
 ##    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;    

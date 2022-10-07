@@ -1129,9 +1129,9 @@ A data table differs from a regular table in that it will show a page of data at
 <h2><span class="header-section-number">29.9</span> Building a Functioning Server Section<a href="a-gentle-introduction-to-shiny.html#building-a-functioning-server-section" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The server section defaults are straightforward, and are the bread of the sandwich that you will build for data processing.</p>
 <p>The default content is</p>
-<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb671-1"><a href="a-gentle-introduction-to-shiny.html#cb671-1" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb671-2"><a href="a-gentle-introduction-to-shiny.html#cb671-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb671-3"><a href="a-gentle-introduction-to-shiny.html#cb671-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb676"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb676-1"><a href="a-gentle-introduction-to-shiny.html#cb676-1" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb676-2"><a href="a-gentle-introduction-to-shiny.html#cb676-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb676-3"><a href="a-gentle-introduction-to-shiny.html#cb676-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>and all of the data import, data processing, rendering of objects to HTML, and assigning outputs to <code>output$ID</code> happens between the curly braces.</p>
 <div id="using-the-input-values-data" class="section level3 hasAnchor" number="29.9.1">
 <h3><span class="header-section-number">29.9.1</span> Using the input values &amp; Data<a href="a-gentle-introduction-to-shiny.html#using-the-input-values-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1145,12 +1145,12 @@ A data table differs from a regular table in that it will show a page of data at
 <li>What does the server section below calculate?</li>
 <li>how would you access it in the ui section?</li>
 </ul>
-<div class="sourceCode" id="cb672"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb672-1"><a href="a-gentle-introduction-to-shiny.html#cb672-1" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb672-2"><a href="a-gentle-introduction-to-shiny.html#cb672-2" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>bc_ratio <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
-<span id="cb672-3"><a href="a-gentle-introduction-to-shiny.html#cb672-3" aria-hidden="true" tabindex="-1"></a>    bc_ratio <span class="ot">&lt;-</span> input<span class="sc">$</span>bun_mg<span class="sc">-</span>dl<span class="sc">/</span>input<span class="sc">$</span>creat_mg_dl</span>
-<span id="cb672-4"><a href="a-gentle-introduction-to-shiny.html#cb672-4" aria-hidden="true" tabindex="-1"></a>    bc_ratio</span>
-<span id="cb672-5"><a href="a-gentle-introduction-to-shiny.html#cb672-5" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb672-6"><a href="a-gentle-introduction-to-shiny.html#cb672-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb677"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb677-1"><a href="a-gentle-introduction-to-shiny.html#cb677-1" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb677-2"><a href="a-gentle-introduction-to-shiny.html#cb677-2" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>bc_ratio <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb677-3"><a href="a-gentle-introduction-to-shiny.html#cb677-3" aria-hidden="true" tabindex="-1"></a>    bc_ratio <span class="ot">&lt;-</span> input<span class="sc">$</span>bun_mg<span class="sc">-</span>dl<span class="sc">/</span>input<span class="sc">$</span>creat_mg_dl</span>
+<span id="cb677-4"><a href="a-gentle-introduction-to-shiny.html#cb677-4" aria-hidden="true" tabindex="-1"></a>    bc_ratio</span>
+<span id="cb677-5"><a href="a-gentle-introduction-to-shiny.html#cb677-5" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb677-6"><a href="a-gentle-introduction-to-shiny.html#cb677-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <div class="webex-solution">
 <button>
 Show Answers
@@ -1217,25 +1217,25 @@ This will require (after wrangling and calculating the output, and returning the
 <p>Re-open the Shiny app file, <code>app.R</code>.
 Your <em>serverPanel</em> should still have a <em>selectInput</em> with 3 choices.</p>
 <p>Delete this and replace it with a <code>numericInput()</code> for weight, and a <code>sliderInput()</code> for height, as shown below</p>
-<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb673-1"><a href="a-gentle-introduction-to-shiny.html#cb673-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sidebarPanel</span>( <span class="fu">numericInput</span>(</span>
-<span id="cb673-2"><a href="a-gentle-introduction-to-shiny.html#cb673-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">inputID =</span> <span class="st">&quot;weight_kg&quot;</span>,</span>
-<span id="cb673-3"><a href="a-gentle-introduction-to-shiny.html#cb673-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;Enter weight in kilograms&quot;</span>,</span>
-<span id="cb673-4"><a href="a-gentle-introduction-to-shiny.html#cb673-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">value =</span> <span class="dv">70</span>),</span>
-<span id="cb673-5"><a href="a-gentle-introduction-to-shiny.html#cb673-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sliderInput</span>(</span>
-<span id="cb673-6"><a href="a-gentle-introduction-to-shiny.html#cb673-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">inputID =</span> <span class="st">&quot;height_m&quot;</span>,</span>
-<span id="cb673-7"><a href="a-gentle-introduction-to-shiny.html#cb673-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;Enter height in meters&quot;</span>,</span>
-<span id="cb673-8"><a href="a-gentle-introduction-to-shiny.html#cb673-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">value =</span> <span class="fl">1.7</span>, <span class="at">min =</span> <span class="fl">0.5</span>, <span class="at">max =</span> <span class="fl">2.7</span>)</span>
-<span id="cb673-9"><a href="a-gentle-introduction-to-shiny.html#cb673-9" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb678"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb678-1"><a href="a-gentle-introduction-to-shiny.html#cb678-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sidebarPanel</span>( <span class="fu">numericInput</span>(</span>
+<span id="cb678-2"><a href="a-gentle-introduction-to-shiny.html#cb678-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">inputID =</span> <span class="st">&quot;weight_kg&quot;</span>,</span>
+<span id="cb678-3"><a href="a-gentle-introduction-to-shiny.html#cb678-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;Enter weight in kilograms&quot;</span>,</span>
+<span id="cb678-4"><a href="a-gentle-introduction-to-shiny.html#cb678-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">value =</span> <span class="dv">70</span>),</span>
+<span id="cb678-5"><a href="a-gentle-introduction-to-shiny.html#cb678-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sliderInput</span>(</span>
+<span id="cb678-6"><a href="a-gentle-introduction-to-shiny.html#cb678-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">inputID =</span> <span class="st">&quot;height_m&quot;</span>,</span>
+<span id="cb678-7"><a href="a-gentle-introduction-to-shiny.html#cb678-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;Enter height in meters&quot;</span>,</span>
+<span id="cb678-8"><a href="a-gentle-introduction-to-shiny.html#cb678-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">value =</span> <span class="fl">1.7</span>, <span class="at">min =</span> <span class="fl">0.5</span>, <span class="at">max =</span> <span class="fl">2.7</span>)</span>
+<span id="cb678-9"><a href="a-gentle-introduction-to-shiny.html#cb678-9" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 <p>Now scroll down to the server section.
 You can delete the <code>if else</code> section in renderText between the parenthesis/curly brace pairs.</p>
 <p>Change the name of the <code>output$name</code> to <code>output$bmi</code>.
 Then in the renderText section, calculate the BMI, as shown below.</p>
-<div class="sourceCode" id="cb674"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb674-1"><a href="a-gentle-introduction-to-shiny.html#cb674-1" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb674-2"><a href="a-gentle-introduction-to-shiny.html#cb674-2" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>bmi <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
-<span id="cb674-3"><a href="a-gentle-introduction-to-shiny.html#cb674-3" aria-hidden="true" tabindex="-1"></a>    bmi <span class="ot">&lt;-</span> input<span class="sc">$</span>weight_kg<span class="sc">/</span>(input<span class="sc">$</span>height_m)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb674-4"><a href="a-gentle-introduction-to-shiny.html#cb674-4" aria-hidden="true" tabindex="-1"></a>    bmi</span>
-<span id="cb674-5"><a href="a-gentle-introduction-to-shiny.html#cb674-5" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb674-6"><a href="a-gentle-introduction-to-shiny.html#cb674-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="a-gentle-introduction-to-shiny.html#cb679-1" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb679-2"><a href="a-gentle-introduction-to-shiny.html#cb679-2" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>bmi <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb679-3"><a href="a-gentle-introduction-to-shiny.html#cb679-3" aria-hidden="true" tabindex="-1"></a>    bmi <span class="ot">&lt;-</span> input<span class="sc">$</span>weight_kg<span class="sc">/</span>(input<span class="sc">$</span>height_m)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb679-4"><a href="a-gentle-introduction-to-shiny.html#cb679-4" aria-hidden="true" tabindex="-1"></a>    bmi</span>
+<span id="cb679-5"><a href="a-gentle-introduction-to-shiny.html#cb679-5" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb679-6"><a href="a-gentle-introduction-to-shiny.html#cb679-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>This will take the input values from the user and calculate BMI, then render it as text, and then assign it to <code>output$bmi</code>.</p>
 <p>Now let’s scroll back up to the <em>mainPanel</em> in the ui section.
 Your mainPanel should currently be set up to display the bc_ratio.

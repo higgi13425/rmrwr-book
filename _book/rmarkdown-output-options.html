@@ -877,14 +877,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Have the file in the same folder as the *.Rmd document, or in a nearby folder, preferably in the same project.</li>
 <li>Change the <code>output:</code> field of your YAML header to look like this:</li>
 </ol>
-<div class="sourceCode" id="cb699"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb699-1"><a href="rmarkdown-output-options.html#cb699-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb699-2"><a href="rmarkdown-output-options.html#cb699-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;My Title&quot;</span></span>
-<span id="cb699-3"><a href="rmarkdown-output-options.html#cb699-3" aria-hidden="true" tabindex="-1"></a>author<span class="sc">:</span> Me</span>
-<span id="cb699-4"><a href="rmarkdown-output-options.html#cb699-4" aria-hidden="true" tabindex="-1"></a>date<span class="sc">:</span> January <span class="dv">7</span>, <span class="dv">2027</span></span>
-<span id="cb699-5"><a href="rmarkdown-output-options.html#cb699-5" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> </span>
-<span id="cb699-6"><a href="rmarkdown-output-options.html#cb699-6" aria-hidden="true" tabindex="-1"></a>  word_document<span class="sc">:</span></span>
-<span id="cb699-7"><a href="rmarkdown-output-options.html#cb699-7" aria-hidden="true" tabindex="-1"></a>    reference_docx<span class="sc">:</span> my<span class="sc">-</span>styles.docx</span>
-<span id="cb699-8"><a href="rmarkdown-output-options.html#cb699-8" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb704"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb704-1"><a href="rmarkdown-output-options.html#cb704-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb704-2"><a href="rmarkdown-output-options.html#cb704-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;My Title&quot;</span></span>
+<span id="cb704-3"><a href="rmarkdown-output-options.html#cb704-3" aria-hidden="true" tabindex="-1"></a>author<span class="sc">:</span> Me</span>
+<span id="cb704-4"><a href="rmarkdown-output-options.html#cb704-4" aria-hidden="true" tabindex="-1"></a>date<span class="sc">:</span> January <span class="dv">7</span>, <span class="dv">2027</span></span>
+<span id="cb704-5"><a href="rmarkdown-output-options.html#cb704-5" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> </span>
+<span id="cb704-6"><a href="rmarkdown-output-options.html#cb704-6" aria-hidden="true" tabindex="-1"></a>  word_document<span class="sc">:</span></span>
+<span id="cb704-7"><a href="rmarkdown-output-options.html#cb704-7" aria-hidden="true" tabindex="-1"></a>    reference_docx<span class="sc">:</span> my<span class="sc">-</span>styles.docx</span>
+<span id="cb704-8"><a href="rmarkdown-output-options.html#cb704-8" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
 <p>Note that the placement of the new-lines (returns), colons, and indents are critical to make this output format work. And if your <code>reference.docx</code> template is in a folder within your project, you need to put the path - i.e. <code>styles-template/reference.docx</code> if it is in the <code>styles-template</code> folder.</p>
 <div id="making-a-styles-reference-file-for-microsoft-word" class="section level3 hasAnchor" number="32.1.1">
 <h3><span class="header-section-number">32.1.1</span> Making a Styles Reference File for Microsoft Word<a href="rmarkdown-output-options.html#making-a-styles-reference-file-for-microsoft-word" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -942,8 +942,8 @@ in the same folder where your Rmarkdown document lives.</p>
 <h3><span class="header-section-number">32.2.1</span> LaTeX and tinytex<a href="rmarkdown-output-options.html#latex-and-tinytex" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>First, you need a translator for all of the things PDFs can do. A complete version uses TeX or LaTeX to get all kinds of typesetting functions. Most of the time, you need a much smaller subset of TeX, which is where the {<a href="https://yihui.org/tinytex/">tinytex</a>} package comes in handy.</p>
 <p>To use {tinytex}, copy the code chunk below, and run it in your local RStudio console (once only).</p>
-<div class="sourceCode" id="cb700"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb700-1"><a href="rmarkdown-output-options.html#cb700-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tinytex&#39;</span>)</span>
-<span id="cb700-2"><a href="rmarkdown-output-options.html#cb700-2" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb705"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb705-1"><a href="rmarkdown-output-options.html#cb705-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tinytex&#39;</span>)</span>
+<span id="cb705-2"><a href="rmarkdown-output-options.html#cb705-2" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span></code></pre></div>
 <p>More details on how to use and maintain {tinytex} can be found <a href="https://yihui.org/tinytex/">here</a>.</p>
 </div>
 <div id="knitting-to-pdf" class="section level3 hasAnchor" number="32.2.2">
@@ -960,14 +960,14 @@ in the same folder where your Rmarkdown document lives.</p>
 <h2><span class="header-section-number">32.3</span> Microsoft Powerpoint Output from Rmarkdown<a href="rmarkdown-output-options.html#microsoft-powerpoint-output-from-rmarkdown" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To get Powerpoint output, you can simply change the <code>output:</code> key to <code>powerpoint_presentation</code>.</p>
 <p>You can even add a formatted powerpoint template (like <code>my-styles.pptx</code>) to get the fonts and colors and headings the way you like them (remember to use the indents, like this:</p>
-<div class="sourceCode" id="cb701"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb701-1"><a href="rmarkdown-output-options.html#cb701-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb701-2"><a href="rmarkdown-output-options.html#cb701-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;My Title&quot;</span></span>
-<span id="cb701-3"><a href="rmarkdown-output-options.html#cb701-3" aria-hidden="true" tabindex="-1"></a>author<span class="sc">:</span> Me</span>
-<span id="cb701-4"><a href="rmarkdown-output-options.html#cb701-4" aria-hidden="true" tabindex="-1"></a>date<span class="sc">:</span> January <span class="dv">7</span>, <span class="dv">2027</span></span>
-<span id="cb701-5"><a href="rmarkdown-output-options.html#cb701-5" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> </span>
-<span id="cb701-6"><a href="rmarkdown-output-options.html#cb701-6" aria-hidden="true" tabindex="-1"></a>  powerpoint_presentatino<span class="sc">:</span></span>
-<span id="cb701-7"><a href="rmarkdown-output-options.html#cb701-7" aria-hidden="true" tabindex="-1"></a>    reference_docx<span class="sc">:</span> my<span class="sc">-</span>styles.pptx</span>
-<span id="cb701-8"><a href="rmarkdown-output-options.html#cb701-8" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb706"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb706-1"><a href="rmarkdown-output-options.html#cb706-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb706-2"><a href="rmarkdown-output-options.html#cb706-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;My Title&quot;</span></span>
+<span id="cb706-3"><a href="rmarkdown-output-options.html#cb706-3" aria-hidden="true" tabindex="-1"></a>author<span class="sc">:</span> Me</span>
+<span id="cb706-4"><a href="rmarkdown-output-options.html#cb706-4" aria-hidden="true" tabindex="-1"></a>date<span class="sc">:</span> January <span class="dv">7</span>, <span class="dv">2027</span></span>
+<span id="cb706-5"><a href="rmarkdown-output-options.html#cb706-5" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> </span>
+<span id="cb706-6"><a href="rmarkdown-output-options.html#cb706-6" aria-hidden="true" tabindex="-1"></a>  powerpoint_presentatino<span class="sc">:</span></span>
+<span id="cb706-7"><a href="rmarkdown-output-options.html#cb706-7" aria-hidden="true" tabindex="-1"></a>    reference_docx<span class="sc">:</span> my<span class="sc">-</span>styles.pptx</span>
+<span id="cb706-8"><a href="rmarkdown-output-options.html#cb706-8" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
 <p>A simple Powerpoint template can be found [here](<a href="https://github.com/mfherman/mattherman/blob/master/static/ppt/template-no-title.pptx" class="uri">https://github.com/mfherman/mattherman/blob/master/static/ppt/template-no-title.pptx</a>.</p>
 <p>But the knitted result often won’t be quite right out of the gate, as slides, unlike word documents, need explicit separators between slides.</p>
 <p>You will create a new slide each time you insert a Level1/2 Heading, or (more commonly) each time you have <em>3 or more dashes</em> on a single line.</p>
@@ -991,7 +991,7 @@ in the same folder where your Rmarkdown document lives.</p>
 <h3><span class="header-section-number">32.3.2</span> Images in Powerpoint<a href="rmarkdown-output-options.html#images-in-powerpoint" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You can add a code chunk and create a plot on a slide with code in the code chunk, using fig.width and fig.height chunk options to control the dimensions of the plot.</p>
 <p>You can include a graphic (picture, other plot, etc.) in a code chunk with <code>knitr::include_graphics("path/to/filename")</code>, with a code chunk like this:</p>
-<div class="sourceCode" id="cb702"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb702-1"><a href="rmarkdown-output-options.html#cb702-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">here</span>(<span class="st">&quot;images/echocardiogram.jpg&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb707"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb707-1"><a href="rmarkdown-output-options.html#cb707-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="fu">here</span>(<span class="st">&quot;images/echocardiogram.jpg&quot;</span>))</span></code></pre></div>
 <p>This is often helpful if you have already created your images or graphics, and just need to pull them into powerpoint from a folder.</p>
 <p>You can use chunk options like <code>fig.width=12</code> and <code>fig.height=7</code> to control the size of the image on the slide.</p>
 <p>Note that if you are using these options frequently, it may be easier to set these globally (for the whole presentation) in the <code>setup</code> chunk, as options in <code>knitr:opts_chunk$set()</code>, rather than in each code chunk.</p>

@@ -13,33 +13,30 @@ editor_options:
 
 For most of this book, we will be using datasets from the {medicaldata} package.
 These are easy to load.
-You just type into the Console pane `medicaldata::scurvy` and you get James Lind's scurvy dataset (actually, a reconstruction of what it might have looked like for his 12 participants).
-If you want to save this data to an object in your work environment, you just need to assign this to a named object, like `scurvy`, like so:
+If you type into the Console pane `medicaldata::scurvy` , you will get James Lind's scurvy dataset (actually, a reconstruction of what it might have looked like for his 12 participants).
+If you want to save this data to an object in your work environment, you just need to assign this to a named object, like `scurvy`, like so, with an assignment arrow, componsed of a less than sign (<) and a hyphen (-):
 
 
 ```r
 scurvy <- medicaldata::scurvy
 
 # now print the columns for id and treatment
-scurvy %>% select(study_id:treatment)
+scurvy %>% 
+  select(study_id:treatment) |>  #this selects columns
+  slice_tail(n = 7) #slices last seven rows
 ```
 
 ```
-## # A tibble: 12 × 2
-##    study_id treatment           
-##    <chr>    <fct>               
-##  1 001      cider               
-##  2 002      cider               
-##  3 003      dilute_sulfuric_acid
-##  4 004      dilute_sulfuric_acid
-##  5 005      vinegar             
-##  6 006      vinegar             
-##  7 007      sea_water           
-##  8 008      sea_water           
-##  9 009      citrus              
-## 10 010      citrus              
-## 11 011      purgative_mixture   
-## 12 012      purgative_mixture
+## # A tibble: 7 × 2
+##   study_id treatment        
+##   <chr>    <fct>            
+## 1 006      vinegar          
+## 2 007      sea_water        
+## 3 008      sea_water        
+## 4 009      citrus           
+## 5 010      citrus           
+## 6 011      purgative_mixture
+## 7 012      purgative_mixture
 ```
 
 There are a number of medical datasets to explore and learn with, within the {medicaldata} package.
@@ -54,10 +51,10 @@ As you go through the different chapters, use the example data and exercises to 
 Reproducibility and Raw Data<br>
 It is an important principle to *always* save an untouched copy of your raw data.
 You can copy it to a new object, and experiment with modifying it, cleaning it, making plots, etc., but *always* leave the original data file untouched.
-You want to create a completely reproducible, step-by-step trail from your raw data to your finished analysis and final report, and you can only do that if you preserve the original raw data.
+You want to create a completely reproducible, step-by-step, scripted trail from your raw data to your finished analysis and final report, and you can only do that if you preserve the original raw data.
 That is the cornerstone of your analysis.
 It is tempting to fix minor data entry errors, or other aspects of the raw data.
-Do not do this - leave all errors intact in your raw data, and explicitly make edits with explanations of - who made the edit - when it was made - what was changed - why it was made - provide a justification, and identify source documents to support the rationale. Every edit should be documented in your code, with who, when, what, and why.
+Do not do this - leave all errors intact in your raw data, and explicitly make edits with explanations of - who made the edit - when it was made - what was changed -  and why it was made. You should provide a justification for each change, and identify source documents to support the rationale. Every edit should be documented in your code, with who, when, what, and why.
 :::
 
 Now, on to the fun part.
@@ -65,8 +62,8 @@ Let's read in some data!
 
 ## Reading data with the {readr} package
 
-Many of the standard data formats can be read with functions in the {readr} package.
-These include:
+Many of the standard data formats can be read with functions in the {readr} package. This package is part of the {tidyverse} meta-package.
+These functions include:
 
 -   read_csv() for comma-separated values (\*.csv) files
 -   read_tsv() for tab-separated values (\*.tsv) files
@@ -77,32 +74,51 @@ These include:
 
 Let's read a csv file.
 First, make sure that you have the {readr} package loaded (or the {tidyverse} meta-package, which includes {readr}).
-You can load {readr} with the `library()` function.
+You can load {readr} with the `library()` function, if you have already installed this package.
 
 
 ```r
 library(readr)
 # or you can use
 library(tidyverse) # which will load 8 packages, including readr
+# the other 7 packages are ggplot, tibble, tidyr, dplyr, purrr, stringr, and forcats
 ```
 
 Note that this will *not* work if you do not already have the {readr} package installed on your computer.
 You will get an error, like this: `Error in library(readr) : there is no package called 'readr'`
 
-This is not a problem - you just have to install the package first.
+This is not a big problem - but you have to install the package first, before you can load it.
 You only need to do this once, like buying a book, and putting it in your personal library.
 Each time you use the package, you have to pull the book off the shelf, with `library(packagename)`.
 To install the {readr} package, we can install the whole {tidyverse} package, which will come in handy later.
-Just enter the following in your Console pane:
+Just enter the following in your Console pane to install the {tidyverse} meta-package:
 
 `install.packages('tidyverse')`
 
 Note that quotes around 'tidyverse' are required, as tidyverse is not yet a known object or package in your working environment.
 Once the {tidyverse} package is installed, you can use `library(tidyverse)` without quotes, as it is a known (installed) package.
 
-OK, after that detour, we should be all caught up - you should be able to run `library(tidyverse)` or `library(readr)` without an error.
+We will also want to use the {glue} package shortly to access files on the web. Practice installing this package. Copy and run the code chunk below in your RStudio Console panel to install and load the {glue} package.
+
+
+```r
+install.packages('glue')
+```
+
+```
+## 
+## The downloaded binary packages are in
+## 	/var/folders/93/s18zkv2d4f556fxbjvb8yglc0000gp/T//Rtmpo0zGrA/downloaded_packages
+```
+
+```r
+library(glue)
+```
+
+
+OK, after that detour, we should be all caught up - you should be able to run `library(tidyverse)` or `library(readr)` or `library(glue)` without an error.
 Now that you have {readr} loaded, you can read in some csv data.
-Let's start with a file named `scurvy.csv` in a `data` folder on GitHub. You will need to glue together the url_stem and "data/scurvy.csv" to get the full web address. Run the code chunk below to see the url_stem and the dataset.
+Let's start with a file named `scurvy.csv` in a `data` folder on GitHub. You will need to glue together the url_stem (the first part of the path to the web address) and "data/scurvy.csv" (the folder and file name) to get the full web address. Copy and run the code chunk below to see the url_stem and the dataset.
 
 
 ```r
@@ -155,23 +171,30 @@ read_csv(glue(url_stem, 'data/scurvy.csv'))
 Let's look at what was extracted from the csv file.
 This starts after the url_stem (web address) is printed out.
 
-The Console pane has a print out of the Column specification, followed by the data in rectangular format.
+The Console pane has a 
+
+1) the number of rows (12) and columns (8) in the dataset.
+
+2) The Column specification, followed by 
+
+3) the data in rectangular format.
+
 In the Column specification, the delimiter between items of data is identified (a comma), and a listing of variables with the `character` (chr) data type is printed. There are no non-character data types in this particular dataset.
 The 'guessing' of what data type is appropriate for each variable is done 'automagically', as the read_csv() function reads the first 1000 rows, then guesses what data type is present in each column (variable).
 It is often conservative, and in this case, made all of these columns into character variables (also called strings).
-You could argue that the col_character() assignment should be numeric for the study_id variable, or that the Likert scales used for outcomes like gum_rot_d6 and skin_sores_d6 should be coded as ordinal variables, known as ordered factors in R.
+You could argue that the col_character() assignment should be numeric for the study_id variable, or that the Likert scales used for outcomes like gum_rot_d6 and skin_sores_d6 should be coded as ordinal variables, known as ordered **factors** in R.
 You will learn to control these data types during data import with the `spec()` argument.
 
-The second piece of output is the data itself.
+The last piece of output is the data rectangle itself.
 This is first identified as a 'tibble', which is a type of data table, with 12 rows and 8 columns, in `# A tibble: 12 x 8`.
 This is followed by a header row of variable names, and just below that is the data type (`<chr>` for character) for each column.
-Then, on the left are gray row numbers (not actually part of the data set), followed by (to the right) rows of data.
-A tibble, by default, only prints out 10 rows of data, and no more columns than will fill your current console window.
-The other columns are listed in order at the bottom of the tibble in gray type.
+Then, on the left are gray row numbers (which are not actually part of the data set), followed by (to the right) rows of data.
+A tibble, by default, only prints out only as many rows of data than will fill the console, and no more columns than will fill the width of your current console window.
+The other columns (variable names) are listed in order at the bottom of the tibble in gray type.
 
 Now, by simply reading in the data, you can look at it, but you can't do anything with it, as you have not saved it as an object in your working Environment.
 If you want to do things with this data, and make them last, you have to *assign* the data to an object, and give it a name.
-To do this, you need to use an assignment arrow, as below
+To do this, you need to use an assignment arrow, as below, where the data is assigned to the object, `scurvy_data`.
 
 
 ```r
@@ -191,16 +214,20 @@ scurvy_data <- read_csv(glue(url_stem, 'data/scurvy.csv'))
 Now this is saved to `scurvy_data` in your working Environment.
 You can look in the Environment tab (top right pane in RStudio) and see that scurvy_data has now appeared in the Data section, with 12 observations of 8 variables.
 This is not a file written (saved) to disk, but this dataset is now available in the working environment as an assigned data object.
-You can now print this out at any time by typing `scurvy_data` into the Console, or into a script. Try this out in the Console pane.
+You can click on the blue arrow next to `scurvy_data` to show the variable names and variable types for this dataset.
+You can also click on the name `scurvy_data` to open up a Viewer window in the top left (Source) pane. You can scroll around to inspect all of the data. You can also get this view by typing `View(scurvy_data)` into the Console pane. 
+You can also print out the data at any time by typing `scurvy_data` into the Console, or into a script. Try this out in the Console pane.
 
 ### Test yourself on scurvy
+
+Inspect the data in the Viewer, and find the answer.
 
 - How many limes did the British seamen in the citrus arm receive each day? 
 
 <select class='webex-select'><option value='blank'></option><option value=''>3</option><option value=''>2</option><option value='answer'>zero</option><option value=''>1.5</option></select>
 
 You can also start with the `scurvy_data` object, and *do* things to this data object, like summarize it, or graph it, or calculate total_symptom_score in a data pipeline.
-Once you have assigned your data to an object, it will stick around in that R session for later use.
+Once you have assigned your data to an object, it will stick around in that R session for later use. Your changes will disappear when you close the session, unless you save it to disk, with functions like `save()` or `write_csv()`.
 
 The csv (comma separated values) format is a very common data format, and most data management programs have a way to export `*.csv` files.
 The csv format is simple, is not owned by anyone, and works across platforms.
@@ -224,7 +251,7 @@ and can get pretty complicated to keep track of. One particularly nice feature o
 
 When your data has no column names (headers), read_csv will (by default) assume that the first row of the data is the column names.
 To fix this, add the argument, **col_names** = FALSE.
-You can also assign your own **col_names** by setting a vector, like c("patient_id", "treatment", "outcome") to col_names, as below
+You can also assign your own **col_names** by setting a vector, like c("patient_id", "treatment", "outcome") [note that `c()` concatenates data items into a vector] equal to to col_names, as below. Copy and run this code chunk in your RStudio Console pane to see how the output is different.
 
 
 ```r
@@ -261,7 +288,7 @@ col_names = c("pat_id", "arm", "dose", "gums", "skin", "weak", "lass", "fit"))
 ## 13 012      purgative_m… a nu… 3_se… 3_se… 3_se… 3_se… 0_no
 ```
 
-In this case, when we set our own **col_names**, there are now **13** rows of data, and the original column headers are now listed as the first row of data.
+In this case, when we set our own **col_names**, there are now **13** rows in our data rectangle, and the original column headers are now listed as the first row of data.
 We can fix this with the **skip** argument within the parentheses of the `read_csv()` function, which has a default of 0.
 We can skip as many lines as we want, which can be helpful if you have an Excel file with a lot of blank lines or commentary at the top of the spreadsheet.
 When we set skip = 1 in this case, we get a cleaner dataset, without variable names as data.
@@ -304,11 +331,11 @@ read_csv(file = glue(url_stem, 'data/scurvy.csv'),
 Now we don't have extra column names as data, and we are back to 12 rows.
 Also note that in this code chunk, we put each argument to the function on its own line, with commas between them.
 This is a good practice, to make your code more readable.
-You can also set **n_max** to a particular number of rows to be read in (the default is infinity, or `Inf`) You might want a smaller number if you have a very large dataset and limited computer memory.
+More arguments to `read_csv()`: you can also set **n_max** to a particular number of rows to be read in (the default is infinity, or `Inf`) You might want a smaller number if you have a very large dataset and limited computer memory.
 Another important argument (option) for both read_csv and read_tsv is **col_types**, which lets you take control of the column types during the data
 
-What if you want to take more control of the import process with read_xxx()?
-You can add a col_types argument to the read_csv() function.
+What if you want to take more control of the import process with `r`ead_csv()`?
+You can add a `col_types` argument to the `read_csv()` function.
 You can copy the Column specifications from the first attempt at importing, and then make some edits. You can get the column specifications as guessed by {readr} by running the `spec()` function on the scurvy_data object.
 Try this out in the code chunk below.
 
@@ -386,7 +413,7 @@ You can choose as data types:
 The read_csv() guesses may be fine, but you can take more control if needed.
 
 This *col_types()* approach gives you fine control of each column.
-But it is a lot of typing.
+But it is a lot of typing (even with copy-paste from `spec()`).
 Sometimes you want to set all the column types with a lot less typing, and you don't need to set levels for factors, or formats for dates.
 You can do this by setting col_types to a string, in which each letter specifies the column type for each column.
 Run the example below by clicking on the green arrow at the top right of the code chunk, in which I use i for col_integer, c for col_character, and f for col_factor.
@@ -420,14 +447,15 @@ The file `strep_tb.tsv` is located in the same GitHub folder, and you can use th
 
 In the example code chunk below, there are several blanks.
 Copy this code chunk (use the copy button in the top right of the code chunk - hover to find it) to your RStudio Console pane.
-Edit it to make the two changes listed, and run the code chunk as directed below.
+Edit it to make the three changes listed, and run the code chunk as directed below.
 
--   Fill in the second part of the read_xxx() function correctly to read this file
--   Fill in the correct file name to complete the path
+1)   Fill in the second part of the read_xxx() function correctly to read this file
+2)   Fill in the correct file name to complete the path
 
-This version of the code chunk will read in every column as the character data type.
+This version of the code chunk will read in every column (all 13 variables) as the character data type.
 This is OK, but not quite right.
-Now edit the `col_types` string to make:
+
+3) Now edit the `col_types` string to make:
 
 -   both doses numeric (n or d) (variables 3,4)
 -   `gender` a factor (f) (var 5)
@@ -444,6 +472,37 @@ strep_tb_cols <- read_---(
 
 glimpse(strep_tb_cols)
 ```
+
+
+<div class='webex-solution'><button>Show the Solution</button>
+
+
+```r
+strep_tb_cols <- read_tsv(
+    file = glue(url_stem, 'data/strep_tb.tsv'),
+      col_types = "ccddfffff--il")
+
+glimpse(strep_tb_cols)
+```
+
+```
+## Rows: 107
+## Columns: 11
+## $ patient_id          <chr> "0001", "0002", "0003", "0004"…
+## $ arm                 <chr> "Control", "Control", "Control…
+## $ dose_strep_g        <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+## $ dose_PAS_g          <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+## $ gender              <fct> M, F, F, M, F, M, F, M, F, M, …
+## $ baseline_condition  <fct> 1_Good, 1_Good, 1_Good, 1_Good…
+## $ baseline_temp       <fct> 1_98-98.9F, 3_100-100.9F, 1_98…
+## $ baseline_esr        <fct> 2_11-20, 2_11-20, 3_21-50, 3_2…
+## $ baseline_cavitation <fct> yes, no, no, no, no, no, yes, …
+## $ rad_num             <int> 6, 5, 5, 5, 5, 6, 5, 5, 5, 5, …
+## $ improved            <lgl> TRUE, TRUE, TRUE, TRUE, TRUE, …
+```
+
+</div>
+
 
 ## Reading Excel Files with readxl
 
@@ -896,15 +955,15 @@ strep_tb %>%
 ##    radiologic_6m                rad_num improved
 ##    <fct>                          <dbl> <lgl>   
 ##  1 5_Moderate_improvement             5 TRUE    
-##  2 1_Death                            1 FALSE   
-##  3 3_Moderate_deterioration           3 FALSE   
-##  4 6_Considerable_improvement         6 TRUE    
-##  5 1_Death                            1 FALSE   
-##  6 6_Considerable_improvement         6 TRUE    
-##  7 4_No_change                        4 FALSE   
-##  8 3_Moderate_deterioration           3 FALSE   
-##  9 4_No_change                        4 FALSE   
-## 10 2_Considerable_deterioration       2 FALSE   
+##  2 4_No_change                        4 FALSE   
+##  3 5_Moderate_improvement             5 TRUE    
+##  4 3_Moderate_deterioration           3 FALSE   
+##  5 5_Moderate_improvement             5 TRUE    
+##  6 3_Moderate_deterioration           3 FALSE   
+##  7 3_Moderate_deterioration           3 FALSE   
+##  8 6_Considerable_improvement         6 TRUE    
+##  9 6_Considerable_improvement         6 TRUE    
+## 10 6_Considerable_improvement         6 TRUE    
 ## 11 2_Considerable_deterioration       2 FALSE
 ```
 
@@ -925,7 +984,7 @@ skimr::skim(strep_tb)
 ```
 
 
-Table: (\#tab:unnamed-chunk-22)Data summary
+Table: (\#tab:unnamed-chunk-23)Data summary
 
 |                         |         |
 |:------------------------|:--------|
