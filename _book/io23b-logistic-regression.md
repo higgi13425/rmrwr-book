@@ -238,10 +238,11 @@ prostate %>%
 
 ```
 ## # A tibble: 1 × 8
-##   null.deviance df.null logLik   AIC   BIC deviance
-##           <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>
-## 1          289.     315  -142.  288.  296.     284.
-## # … with 2 more variables: df.residual <int>, nobs <int>
+##   null.de…¹ df.null logLik   AIC   BIC devia…² df.re…³  nobs
+##       <dbl>   <int>  <dbl> <dbl> <dbl>   <dbl>   <int> <int>
+## 1      289.     315  -142.  288.  296.    284.     314   316
+## # … with abbreviated variable names ¹​null.deviance,
+## #   ²​deviance, ³​df.residual
 ```
 
 ```r
@@ -254,10 +255,11 @@ prostate %>%
 
 ```
 ## # A tibble: 1 × 8
-##   null.deviance df.null logLik   AIC   BIC deviance
-##           <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>
-## 1          282.     313  -123.  253.  264.     247.
-## # … with 2 more variables: df.residual <int>, nobs <int>
+##   null.de…¹ df.null logLik   AIC   BIC devia…² df.re…³  nobs
+##       <dbl>   <int>  <dbl> <dbl> <dbl>   <dbl>   <int> <int>
+## 1      282.     313  -123.  253.  264.    247.     311   314
+## # … with abbreviated variable names ¹​null.deviance,
+## #   ²​deviance, ³​df.residual
 ```
 
 You can see that adding the baseline Gleason score improves the model, as it lowers both AIC and BIC. This is not surprising, as it was a significant predictor.
@@ -275,21 +277,22 @@ augment(model)
 
 ```
 ## # A tibble: 314 × 10
-##    .rownames recurrence fam_hx  b_gs .fitted .resid
-##    <chr>          <dbl>  <dbl> <dbl>   <dbl>  <dbl>
-##  1 1                  1      0     3   0.103  1.13 
-##  2 2                  1      0     2  -1.08   1.66 
-##  3 3                  0      0     3   0.103 -1.22 
-##  4 4                  0      0     1  -2.26  -0.445
-##  5 5                  0      0     2  -1.08  -0.764
-##  6 6                  0      0     1  -2.26  -0.445
-##  7 7                  0      0     1  -2.26  -0.445
-##  8 8                  1      0     1  -2.26   2.17 
-##  9 9                  0      0     1  -2.26  -0.445
-## 10 10                 0      0     2  -1.08  -0.764
-## # … with 304 more rows, and 4 more variables:
-## #   .std.resid <dbl>, .hat <dbl>, .sigma <dbl>,
-## #   .cooksd <dbl>
+##    .rownames recurrence fam_hx  b_gs .fitted .resid .std.r…¹
+##    <chr>          <dbl>  <dbl> <dbl>   <dbl>  <dbl>    <dbl>
+##  1 1                  1      0     3   0.103  1.13     1.15 
+##  2 2                  1      0     2  -1.08   1.66     1.66 
+##  3 3                  0      0     3   0.103 -1.22    -1.24 
+##  4 4                  0      0     1  -2.26  -0.445   -0.446
+##  5 5                  0      0     2  -1.08  -0.764   -0.767
+##  6 6                  0      0     1  -2.26  -0.445   -0.446
+##  7 7                  0      0     1  -2.26  -0.445   -0.446
+##  8 8                  1      0     1  -2.26   2.17     2.18 
+##  9 9                  0      0     1  -2.26  -0.445   -0.446
+## 10 10                 0      0     2  -1.08  -0.764   -0.767
+## # … with 304 more rows, 3 more variables: .hat <dbl>,
+## #   .sigma <dbl>, .cooksd <dbl>, and abbreviated variable
+## #   name ¹​.std.resid
+## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 ```
 
 Note that the fitted data are both positive and negative, with a range within +/- 4. This should tell you that they are in logit (log-odds) units (ln(p/1-p)), in which 0 is a 50% probability of either outcome.
@@ -427,9 +430,9 @@ predict(model, newdata = slice_sample(prostate, prop = 0.03), type = "response")
 
 ```
 ##          1          2          3          4          5 
-## 0.52579385 0.25338133 0.09409879 0.04058836 0.12143477 
+## 0.04058836 0.04058836 0.25338133 0.25338133 0.09409879 
 ##          6          7          8          9 
-## 0.09409879 0.52579385 0.04058836 0.25338133
+## 0.25338133 0.09409879 0.25338133 0.52579385
 ```
 
 Let’s see how this works with another dataset, from which we will use predictors to classify diabetes cases. We will start by loading the data into dm_data, and building an “all predictors” model, by specifying the formula predictors as “.” - this means to use all other variables (except the outcome variable) as predictors. Look at the model output for problems.
@@ -599,10 +602,11 @@ glance(dm_mod)
 
 ```
 ## # A tibble: 1 × 8
-##   null.deviance df.null logLik   AIC   BIC deviance
-##           <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>
-## 1          498.     391  -172.  362.  398.     344.
-## # … with 2 more variables: df.residual <int>, nobs <int>
+##   null.de…¹ df.null logLik   AIC   BIC devia…² df.re…³  nobs
+##       <dbl>   <int>  <dbl> <dbl> <dbl>   <dbl>   <int> <int>
+## 1      498.     391  -172.  362.  398.    344.     383   392
+## # … with abbreviated variable names ¹​null.deviance,
+## #   ²​deviance, ³​df.residual
 ```
 
 OK, let’s make some predictions, and convert these to percent probability (0-100 range).
@@ -619,23 +623,24 @@ dm_data_plus
 
 ```
 ## # A tibble: 392 × 17
-##    diabetes .fitted pct_prob .rownames pregnant glucose
-##    <fct>      <dbl>    <dbl> <chr>        <dbl>   <dbl>
-##  1 pos         5.23     99.5 446              0     180
-##  2 neg         3.85     97.9 229              4     197
-##  3 pos         3.61     97.4 547              5     187
-##  4 pos         3.37     96.7 207              8     196
-##  5 pos         3.27     96.3 160             17     163
-##  6 neg         3.18     96.0 488              0     173
-##  7 pos         3.02     95.3 44               9     171
-##  8 pos         2.86     94.6 371              3     173
-##  9 neg         2.58     93.0 745             13     153
-## 10 pos         2.50     92.4 260             11     155
-## # … with 382 more rows, and 11 more variables:
-## #   pressure <dbl>, triceps <dbl>, insulin <dbl>,
-## #   mass <dbl>, pedigree <dbl>, age <dbl>, .resid <dbl>,
-## #   .std.resid <dbl>, .hat <dbl>, .sigma <dbl>,
-## #   .cooksd <dbl>
+##    diabetes .fitted pct_prob .rown…¹ pregn…² glucose press…³
+##    <fct>      <dbl>    <dbl> <chr>     <dbl>   <dbl>   <dbl>
+##  1 pos         5.23     99.5 446           0     180      78
+##  2 neg         3.85     97.9 229           4     197      70
+##  3 pos         3.61     97.4 547           5     187      76
+##  4 pos         3.37     96.7 207           8     196      76
+##  5 pos         3.27     96.3 160          17     163      72
+##  6 neg         3.18     96.0 488           0     173      78
+##  7 pos         3.02     95.3 44            9     171     110
+##  8 pos         2.86     94.6 371           3     173      82
+##  9 neg         2.58     93.0 745          13     153      88
+## 10 pos         2.50     92.4 260          11     155      76
+## # … with 382 more rows, 10 more variables: triceps <dbl>,
+## #   insulin <dbl>, mass <dbl>, pedigree <dbl>, age <dbl>,
+## #   .resid <dbl>, .std.resid <dbl>, .hat <dbl>,
+## #   .sigma <dbl>, .cooksd <dbl>, and abbreviated variable
+## #   names ¹​.rownames, ²​pregnant, ³​pressure
+## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 ```
 
 ```r
@@ -867,10 +872,11 @@ glance(dm_mod2)
 
 ```
 ## # A tibble: 1 × 8
-##   null.deviance df.null logLik   AIC   BIC deviance
-##           <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>
-## 1          975.     751  -365.  738.  756.     730.
-## # … with 2 more variables: df.residual <int>, nobs <int>
+##   null.de…¹ df.null logLik   AIC   BIC devia…² df.re…³  nobs
+##       <dbl>   <int>  <dbl> <dbl> <dbl>   <dbl>   <int> <int>
+## 1      975.     751  -365.  738.  756.    730.     748   752
+## # … with abbreviated variable names ¹​null.deviance,
+## #   ²​deviance, ³​df.residual
 ```
 
 

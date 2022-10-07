@@ -14,6 +14,7 @@ rmd_files:
 - io06a-filter.Rmd
 - io05a-columns.Rmd
 - io92-mutating_new_variables.Rmd
+- io80-mutating_joins.Rmd
 - io65-error_messages.Rmd
 - io09-building-blocks.Rmd
 - io59-hashtag_debugging.Rmd

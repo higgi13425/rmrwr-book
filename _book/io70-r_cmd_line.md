@@ -76,7 +76,7 @@ whoami;date
 
 ```
 ## peterhiggins
-## Thu Apr 28 20:58:18 EDT 2022
+## Thu Oct  6 20:09:09 EDT 2022
 ```
 :::
 
@@ -155,6 +155,7 @@ ls
 ## ACG U-ACHIEVE and U-ACCOMPLISH.docx
 ## ACG abstracts
 ## ACG21_P19_Efficacy and Safety of Upadacitinib Induction Therapy in Patients With Moderately to Severely Active Ulcerative Col_vSub.pptx
+## ACG_slideformat_ACG22_White_Background.pptx
 ## ACLS eCard Peter Higgins.pdf
 ## AGA DDW 2021
 ## AGA IMIBD
@@ -180,6 +181,7 @@ ls
 ## AbbVie_Contract_K000013378_-_Peter_Higgins_2021_adhoc.pdf
 ## Abbott PtVideo 2010 Grant App
 ## Abbott Talks
+## Abbvie 2021.xlsx
 ## Abbvie_DocuSign_Dr_Higgins_Invoice.docx.pdf
 ## Abstract examples
 ## Accounts and Access (1) (1).docx
@@ -187,13 +189,20 @@ ls
 ## Advice for young mentors.docx
 ## Animation of NSAID.pptx
 ## Applicant Research Design Task T32.docx
+## Ashley_Simone letter rec.docx
 ## Autoimmune Summit.pptx
 ## Awais Chapter Stenosis
+## B2. US Accomplishments.docx
+## B4_IBD_pdrh.docx
+## B4_IBD_pdrh.pdf
 ## BKochar_Frailty.pdf
 ## BM recommendation.docx
 ## Base R Notes.docx
 ## Beginners_GuideToR.pdf
 ## Best Practices Perils Excel
+## Big data with Arrow and DuckDB with cameo.pptx
+## Big data with Arrow and DuckDB with demo.pptx
+## Big data with Arrow and DuckDB.pptx
 ## Biorepository rebuttal for P30 Core.docx
 ## Biosketch for K.pptx
 ## Biosketch_2020_Higgins_ClinResIBD_biosketch.doc
@@ -209,7 +218,6 @@ ls
 ## CB6 manuscript YF.docx
 ## CC360_The Risk of SARS.R1.docx
 ## CC360_The Risk of SARS.docx
-## CCC_2022
 ## CCC_AZ_UC Case 1_COMPLETE.pptx
 ## CCF IBD Webcast 2020 Draft Deck_For Review.pptx
 ## CCFA EIC Candidate Interview Questions (candidates) jobin[1].doc
@@ -220,6 +228,7 @@ ls
 ## CIMI revise
 ## CLARE STOCKS.docx
 ## COVID Trials Feasibility
+## COVID_MPox_P2PEP22.pptx
 ## CTSU Protocol Checklist_v1_PDRH_Jan2022.docx
 ## CYSIF.pdf
 ## CaltechCampus Tour & Information Session.webarchive
@@ -234,6 +243,7 @@ ls
 ## Clinical Coordination and Intense Proactive Monitoring to Improve Utilization of Resources and Reduce Expenditures in High.docx
 ## Clinical Research Alliance
 ## Closing remarks.docx
+## Copy of Crohns Colitis Congress 2023 Pediatric Session Agenda 07.17.2022_pdrh.xlsx
 ## Council Conversations Author Chat Guide.docx
 ## Coursera_Programming in R Notes.docx
 ## Cover Letter.docx
@@ -266,6 +276,7 @@ ls
 ## Efava.pptx
 ## Effect of medications on the recurrence of cancer in IBD patients.docx
 ## Electrical engineering interview questions.docx
+## Employee Evaluations
 ## Endpoints in IBD talks
 ## Europe Talks
 ## Exploring Docker.docx
@@ -289,6 +300,7 @@ ls
 ## Finance and Retirement Plans.docx
 ## Financial Priorities.docx
 ## Flexdashboard notes.docx
+## Future_IBD_P2PEP22.pptx
 ## GCPcitiCompletionReport8018282.pdf
 ## GI T32 Competitive Renewal FINAL 05242017.docx
 ## GREAT3 slides
@@ -316,17 +328,22 @@ ls
 ## Higgins New IBD.pptx
 ## Higgins Other Support 2021-2.docx
 ## Higgins Other Support 2021.docx
+## Higgins Other Support.docx
 ## Higgins Refractory Proctitis.pptx
 ## Higgins biosketch2015KRao.doc
 ## Higgins biosketch2016KRao.doc
 ## Higgins-Peter_Efficacy-and-Safety-of-Upadacitinib-recorded.mp4
 ## Higgins-peter.jpg
 ## HigginsACGMidwest2019_PerioperativeIBD.pptx
+## HigginsP_FY22_CY21 Faculty Eval_pdrh.docx
 ## Higgins_ACG2021.docx
+## Higgins_Assessment_Promotion_AReinink_letterhead_sig.docx
+## Higgins_Assessment_Promotion_AReinink_letterhead_sig.pdf
 ## Higgins_IBD_AtoZ.pptx
 ## Higgins_LOS_IBDBiobank_Shah_Nusrat_2019.docx
 ## Higgins_LOS_KNewmanF32_letterhead_sig.docx
 ## Higgins_LOS_KNewmanF32_letterhead_sig.pdf
+## Higgins_Peter-The-Janus-Kinase-Inhibitors-Two-Faces-for-Efficacy-and-Safety.pptx
 ## Higgins_UM_CME_Pregnancy in IBD.pptx
 ## Higginslab server.pptx
 ## How To Assign PRO questionnaires -  Inpatient ASUC.docx
@@ -336,6 +353,7 @@ ls
 ## IBD 2020 - Honorarium reimbursement Form.docx
 ## IBD Biobank Cryostor.pptx
 ## IBD Center presentations
+## IBD Clinical Chief Position.docx
 ## IBD Clinical Trials for MDsDearborn2017.pptx
 ## IBD Databank Talks on the Road
 ## IBD House Call and Readmission Data .xlsx
@@ -345,6 +363,7 @@ ls
 ## IBD J Club Tofa in TNFexp.pptx
 ## IBD Journal Club 13Feb2017.docx
 ## IBD Journal Club July 11.docx
+## IBD Options.pptx
 ## IBD Osteoporosis 1 27 2022_PDRH.docx
 ## IBD Plexus meeting 21 Sep 2015 notes.docx
 ## IBD School
@@ -368,10 +387,10 @@ ls
 ## IMIBD Plenary Intro.pptx
 ## IMIBD_expanded_descriptors.xlsx
 ## INTERNAL_BUDGET_Abbvie_Nav_Rux_Sept_2021.xlsx
-## Ideas for CCC 2023.docx
 ## Introduction to Application Supplement Photoacoustic.docx
 ## Invoice AV50559_Abbvie_PDRH_Dec2021.doc
 ## Invoice AV50559_Abbvie_PDRH_Dec2021.pdf
+## Invoice_6.2.22_AV53797_PDRH.docx
 ## JAK_DDW_2021_ISS.pdf
 ## JAMA Review on CD.docx
 ## JAMA.CD.Highlights_PDRH.docx
@@ -485,6 +504,7 @@ ls
 ## RMed21- Intro to Spatial.pptx
 ## RMed21-Opening remarks Day 1.pptx
 ## RMed21-Opening remarks Day 2.pptx
+## RPPR Checklist .docx
 ## Ramp up clinical research_PH.xlsx
 ## Ramping up human subject research - MM 6-1-20 _KDA_PDRH_suggestions.docx
 ## Recordings
@@ -510,7 +530,9 @@ ls
 ## Scanner pictures
 ## Scheduling Epic Schedule.pptx
 ## Scheduling Epic Schedules.pptx
+## Scoring Sheet Ames_pdrh.docx
 ## Scoring Sheet_Albin_PDRHiggins.docx
+## Scoring Sheet_Hayek_pdrh.docx
 ## Scoring Sheet_Janda_PDRHiggins.docx
 ## Screenwriting Contests.docx
 ## Sean Common App academic honors list.docx
@@ -526,6 +548,7 @@ ls
 ## SecureIBD.pptx
 ## Severe UC protocol
 ## SevereUC_Tofa_Presentation_IBD_Forum.pptx
+## SevereUC_Tofa_Presentation_Pfizer.pptx
 ## Shail CT
 ## ShareRmd.html
 ## Sheehan Pfizer IBD Fellowship.docx
@@ -551,6 +574,7 @@ ls
 ## Surgery Topics
 ## Surveys
 ## T32 Competitive Renewal 2017 FINAL WM.pdf
+## T32 Fellowship Annual Orientation 2022.pptx
 ## T32 summary statement.pdf
 ## T32_current_text_14June2019.docx
 ## TOPPIC ML draft v5SCM_YL_AKW_PDRH.docx
@@ -578,6 +602,7 @@ ls
 ## Tofa inpatient induction Protocol_02NOV2018_PHforEdits.docx
 ## Tofa_Presentation_2_10_2021.pptx
 ## Toffee Separation Tips.docx
+## Topics to Discuss with Bill.docx
 ## UC CD Impact Manuscript Tables__19Feb2021_PDRH.docx
 ## UC and CD Impact Manuscript_Draft 2_9Jan2022_PDRH.docx
 ## UC and CD Impact Manuscript_Draft1_19Feb2021_PDRH.docx
@@ -590,8 +615,12 @@ ls
 ## UM IBD Clinical Trials IBD referral form.docx
 ## UM Severe UC Protocol.docx
 ## UPA_U_ACHIEVE 1st draft_PDRH.docx
+## US_R01 outcomes I.1.docx
+## US_R01 outcomes I.1_Dillman.docx
 ## Untitled.docx
 ## Upa ASUC Concept Page.docx
+## Upa IBD J Club.pdf
+## Upa IBD J Club.pptx
 ## Upa M14-234 SS3 maintenance  Q and A ECCO 2022.docx
 ## Upa outpatient vs Prednisone_PDRH.docx
 ## V8 Infliximab Outcomes_PDRH.docx
@@ -603,6 +632,7 @@ ls
 ## Walk Letter of Reference.docx
 ## Walk Letter of Reference.pdf
 ## WebEx
+## Weekly Clinical T32 Seminar 2023.docx
 ## Why not excel.docx
 ## Zoom
 ## Zwift
@@ -617,6 +647,7 @@ ls
 ## cgh_factors_utilization.pdf
 ## clare_stocks_long_term.xlsx
 ## cycling core exercises.docx
+## draft letter to patients.docx
 ## draft_tokenization letter Risa_Uste.docx
 ## early-career-faculty_Dec-2020.xlsx
 ## epic cancel_reschedule appointments.ppt
@@ -666,10 +697,12 @@ ls
 ## ucla1.jpg
 ## untidy_sheets.pptx
 ## user_testing_learnr tutorials.pptx
+## weiser_topics.docx
 ## wga_min20.pdf
 ## zwift_training_pacepartner.xlsx
 ## {"Attachments"-[{"__type"-"F.textClipping
 ## ~$ Severe UC Protocol.docx
+## ~$Big data with Arrow and DuckDB with demo.pptx
 ## ~$Jun2021_ibdTrials.pptx
 ## ~$T Review Higgins.docx
 ## ~$sk List 2020-5.docx

@@ -448,7 +448,7 @@ A successful result means that you are ready to roll in RStudio and R!
 
 ![ready](images/ready_to_R.png)
 
-### Critical Setup - Tuning Your RStudio Installation
+### Critical Setup - Tuning Up Your RStudio Installation
 
 You now have \~ 7 adjustments that you need to make in your RStudio
 Global Settings for optimal R and RStudio use.
@@ -482,7 +482,7 @@ a lot of potential problems later.
 4.  In the same General tab, at the top, click on the Advanced tab. Then
     select the box for
 
--   Show full path to project in window title This will show your
+-   Show full path to project in window title.  This will show your
     working directory at the top of your Console Pane. This can prevent
     confusion and problems later.
 
@@ -500,14 +500,15 @@ nicer Viewer tab.
     Any changes here are entirely optional (and cosmetic) at this point.
 
 7.  in the RStudio menus, select Tools/Global Options/Code, then
-    check/select two options to turn these on:
+    check/select three options to turn these on:
 
--   In the Editing tab - select Soft Wrap Long Lines - so that your code
-    does not get too wide
+-   In the Editing tab - select Soft Wrap Long Lines - so that your code does not get too wide
+- In the Editing tab - select Use Native Pipe Operator, |> (requires R > 4.1+) to get the modern pipe operator
 -   In the Display tab - select Rainbow Parentheses - this option
     color-codes parentheses so that you can keep track of whether you
     have closed all of your open parentheses (a common source of
     errors). When your last close parenthesis is red, all is well.
+
 
 Now your RStudio installation is tuned and ready to go!
 

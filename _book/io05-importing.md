@@ -130,23 +130,26 @@ read_csv(glue(url_stem, 'data/scurvy.csv'))
 
 ```
 ## # A tibble: 12 × 8
-##    study_id treatment            dosing_regimen_… gum_rot_d6
-##    <chr>    <chr>                <chr>            <chr>     
-##  1 001      cider                1 quart per day  2_moderate
-##  2 002      cider                1 quart per day  2_moderate
-##  3 003      dilute_sulfuric_acid 25 drops of eli… 1_mild    
-##  4 004      dilute_sulfuric_acid 25 drops of eli… 2_moderate
-##  5 005      vinegar              two spoonfuls, … 3_severe  
-##  6 006      vinegar              two spoonfuls, … 3_severe  
-##  7 007      sea_water            half pint daily  3_severe  
-##  8 008      sea_water            half pint daily  3_severe  
-##  9 009      citrus               two lemons and … 1_mild    
-## 10 010      citrus               two lemons and … 0_none    
-## 11 011      purgative_mixture    a nutmeg-sized … 3_severe  
-## 12 012      purgative_mixture    a nutmeg-sized … 3_severe  
-## # … with 4 more variables: skin_sores_d6 <chr>,
-## #   weakness_of_the_knees_d6 <chr>, lassitude_d6 <chr>,
-## #   fit_for_duty_d6 <chr>
+##    study_id treatm…¹ dosin…² gum_r…³ skin_…⁴ weakn…⁵ lassi…⁶
+##    <chr>    <chr>    <chr>   <chr>   <chr>   <chr>   <chr>  
+##  1 001      cider    1 quar… 2_mode… 2_mode… 2_mode… 2_mode…
+##  2 002      cider    1 quar… 2_mode… 1_mild  2_mode… 3_seve…
+##  3 003      dilute_… 25 dro… 1_mild  3_seve… 3_seve… 3_seve…
+##  4 004      dilute_… 25 dro… 2_mode… 3_seve… 3_seve… 3_seve…
+##  5 005      vinegar  two sp… 3_seve… 3_seve… 3_seve… 3_seve…
+##  6 006      vinegar  two sp… 3_seve… 3_seve… 3_seve… 3_seve…
+##  7 007      sea_wat… half p… 3_seve… 3_seve… 3_seve… 3_seve…
+##  8 008      sea_wat… half p… 3_seve… 3_seve… 3_seve… 3_seve…
+##  9 009      citrus   two le… 1_mild  1_mild  0_none  1_mild 
+## 10 010      citrus   two le… 0_none  0_none  0_none  0_none 
+## 11 011      purgati… a nutm… 3_seve… 3_seve… 3_seve… 3_seve…
+## 12 012      purgati… a nutm… 3_seve… 3_seve… 3_seve… 3_seve…
+## # … with 1 more variable: fit_for_duty_d6 <chr>, and
+## #   abbreviated variable names ¹​treatment,
+## #   ²​dosing_regimen_for_scurvy, ³​gum_rot_d6,
+## #   ⁴​skin_sores_d6, ⁵​weakness_of_the_knees_d6,
+## #   ⁶​lassitude_d6
+## # ℹ Use `colnames()` to see all variable names
 ```
 
 Let's look at what was extracted from the csv file.
@@ -528,25 +531,26 @@ haven::read_sas(glue(url_stem, "data/blood_storage.sas7bdat"))
 
 ```
 ## # A tibble: 316 × 20
-##    rbc_age_group median_rbc_age   age    aa fam_hx p_vol
-##            <dbl>          <dbl> <dbl> <dbl>  <dbl> <dbl>
-##  1             3             25  72.1     0      0  54  
-##  2             3             25  73.6     0      0  43.2
-##  3             3             25  67.5     0      0 103. 
-##  4             2             15  65.8     0      0  46  
-##  5             2             15  63.2     0      0  60  
-##  6             3             25  65.4     0      0  45.9
-##  7             3             25  65.5     1      0  42.6
-##  8             1             10  67.1     0      0  40.7
-##  9             1             10  63.9     0      0  45  
-## 10             2             15  63       1      0  67.6
-## # … with 306 more rows, and 14 more variables: t_vol <dbl>,
-## #   t_stage <dbl>, b_gs <dbl>, bn <dbl>,
-## #   organ_confined <dbl>, preop_psa <dbl>,
+##    rbc_age_…¹ media…²   age    aa fam_hx p_vol t_vol t_stage
+##         <dbl>   <dbl> <dbl> <dbl>  <dbl> <dbl> <dbl>   <dbl>
+##  1          3      25  72.1     0      0  54       3       1
+##  2          3      25  73.6     0      0  43.2     3       2
+##  3          3      25  67.5     0      0 103.      1       1
+##  4          2      15  65.8     0      0  46       1       1
+##  5          2      15  63.2     0      0  60       2       1
+##  6          3      25  65.4     0      0  45.9     2       1
+##  7          3      25  65.5     1      0  42.6     2       1
+##  8          1      10  67.1     0      0  40.7     3       1
+##  9          1      10  63.9     0      0  45       2       1
+## 10          2      15  63       1      0  67.6     2       1
+## # … with 306 more rows, 12 more variables: b_gs <dbl>,
+## #   bn <dbl>, organ_confined <dbl>, preop_psa <dbl>,
 ## #   preop_therapy <dbl>, units <dbl>, s_gs <dbl>,
 ## #   any_adj_therapy <dbl>, adj_rad_therapy <dbl>,
 ## #   recurrence <dbl>, censor <dbl>,
-## #   time_to_recurrence <dbl>
+## #   time_to_recurrence <dbl>, and abbreviated variable
+## #   names ¹​rbc_age_group, ²​median_rbc_age
+## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 ```
 
 ** write files, add examples for Stata, SPSS **
@@ -746,17 +750,19 @@ head(scurvy)
 
 ```
 ## # A tibble: 6 × 8
-##   study_id treatment            dosing_regimen_f… gum_rot_d6
-##   <chr>    <fct>                <chr>             <fct>     
-## 1 001      cider                1 quart per day   2_moderate
-## 2 002      cider                1 quart per day   2_moderate
-## 3 003      dilute_sulfuric_acid 25 drops of elix… 1_mild    
-## 4 004      dilute_sulfuric_acid 25 drops of elix… 2_moderate
-## 5 005      vinegar              two spoonfuls, t… 3_severe  
-## 6 006      vinegar              two spoonfuls, t… 3_severe  
-## # … with 4 more variables: skin_sores_d6 <fct>,
-## #   weakness_of_the_knees_d6 <fct>, lassitude_d6 <fct>,
-## #   fit_for_duty_d6 <fct>
+##   study_id treatment dosin…¹ gum_r…² skin_…³ weakn…⁴ lassi…⁵
+##   <chr>    <fct>     <chr>   <fct>   <fct>   <fct>   <fct>  
+## 1 001      cider     1 quar… 2_mode… 2_mode… 2_mode… 2_mode…
+## 2 002      cider     1 quar… 2_mode… 1_mild  2_mode… 3_seve…
+## 3 003      dilute_s… 25 dro… 1_mild  3_seve… 3_seve… 3_seve…
+## 4 004      dilute_s… 25 dro… 2_mode… 3_seve… 3_seve… 3_seve…
+## 5 005      vinegar   two sp… 3_seve… 3_seve… 3_seve… 3_seve…
+## 6 006      vinegar   two sp… 3_seve… 3_seve… 3_seve… 3_seve…
+## # … with 1 more variable: fit_for_duty_d6 <fct>, and
+## #   abbreviated variable names ¹​dosing_regimen_for_scurvy,
+## #   ²​gum_rot_d6, ³​skin_sores_d6, ⁴​weakness_of_the_knees_d6,
+## #   ⁵​lassitude_d6
+## # ℹ Use `colnames()` to see all variable names
 ```
 
 ```r
@@ -765,18 +771,20 @@ tail(strep_tb)
 
 ```
 ## # A tibble: 6 × 13
-##   patient_id arm          dose_strep_g dose_PAS_g gender
-##   <chr>      <fct>               <dbl>      <dbl> <fct> 
-## 1 0100       Streptomycin            2          0 M     
-## 2 0101       Streptomycin            2          0 F     
-## 3 0104       Streptomycin            2          0 M     
-## 4 0105       Streptomycin            2          0 F     
-## 5 0106       Streptomycin            2          0 F     
-## 6 0107       Streptomycin            2          0 F     
-## # … with 8 more variables: baseline_condition <fct>,
-## #   baseline_temp <fct>, baseline_esr <fct>,
+##   patient_id arm      dose_…¹ dose_…² gender basel…³ basel…⁴
+##   <chr>      <fct>      <dbl>   <dbl> <fct>  <fct>   <fct>  
+## 1 0100       Strepto…       2       0 M      3_Poor  2_99-9…
+## 2 0101       Strepto…       2       0 F      3_Poor  4_100F+
+## 3 0104       Strepto…       2       0 M      3_Poor  4_100F+
+## 4 0105       Strepto…       2       0 F      3_Poor  4_100F+
+## 5 0106       Strepto…       2       0 F      3_Poor  4_100F+
+## 6 0107       Strepto…       2       0 F      3_Poor  4_100F+
+## # … with 6 more variables: baseline_esr <fct>,
 ## #   baseline_cavitation <fct>, strep_resistance <fct>,
-## #   radiologic_6m <fct>, rad_num <dbl>, improved <lgl>
+## #   radiologic_6m <fct>, rad_num <dbl>, improved <lgl>, and
+## #   abbreviated variable names ¹​dose_strep_g, ²​dose_PAS_g,
+## #   ³​baseline_condition, ⁴​baseline_temp
+## # ℹ Use `colnames()` to see all variable names
 ```
 
 Note that since these are tibbles, they will only print the columns that will fit into your Console pane.
@@ -885,19 +893,19 @@ strep_tb %>%
 
 ```
 ## # A tibble: 11 × 3
-##    radiologic_6m              rad_num improved
-##    <fct>                        <dbl> <lgl>   
-##  1 6_Considerable_improvement       6 TRUE    
-##  2 5_Moderate_improvement           5 TRUE    
-##  3 6_Considerable_improvement       6 TRUE    
-##  4 3_Moderate_deterioration         3 FALSE   
-##  5 3_Moderate_deterioration         3 FALSE   
-##  6 6_Considerable_improvement       6 TRUE    
-##  7 5_Moderate_improvement           5 TRUE    
-##  8 1_Death                          1 FALSE   
-##  9 5_Moderate_improvement           5 TRUE    
-## 10 1_Death                          1 FALSE   
-## 11 1_Death                          1 FALSE
+##    radiologic_6m                rad_num improved
+##    <fct>                          <dbl> <lgl>   
+##  1 5_Moderate_improvement             5 TRUE    
+##  2 1_Death                            1 FALSE   
+##  3 3_Moderate_deterioration           3 FALSE   
+##  4 6_Considerable_improvement         6 TRUE    
+##  5 1_Death                            1 FALSE   
+##  6 6_Considerable_improvement         6 TRUE    
+##  7 4_No_change                        4 FALSE   
+##  8 3_Moderate_deterioration           3 FALSE   
+##  9 4_No_change                        4 FALSE   
+## 10 2_Considerable_deterioration       2 FALSE   
+## 11 2_Considerable_deterioration       2 FALSE
 ```
 
 

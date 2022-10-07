@@ -7,19 +7,7 @@ editor_options:
     wrap: 72
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
 
-library(tidyverse)
-library(webexercises)
-
-birthdays <- read.csv("https://raw.githubusercontent.com/higgi13425/medicaldata/master/data-raw/join_data/birthdays.csv") %>% select(-X)
-
-hometowns <- read.csv("https://raw.githubusercontent.com/higgi13425/medicaldata/master/data-raw/join_data/hometowns.csv") %>% select(-X)
-
-
-
-```
 
 # Mutating Joins to Combine Data Sources
 
@@ -67,7 +55,8 @@ There are four types of mutating joins:
 To get started, let's download two toy datasets - Copy and run the code
 chunk below to assign these to birthdays and hometowns.
 
-```{r}
+
+```r
 birthdays <- read.csv("https://raw.githubusercontent.com/higgi13425/medicaldata/master/data-raw/join_data/birthdays.csv") %>% select(-X)
 
 hometowns <- read.csv("https://raw.githubusercontent.com/higgi13425/medicaldata/master/data-raw/join_data/hometowns.csv") %>% select(-X)
@@ -85,9 +74,27 @@ Let's start with a simple left join with these two small and simple
 "toy" datasets about famous physicians. Start by copying and running a
 glimpse() function on each dataset from the code chunk below.
 
-```{r glimpse}
+
+```r
 glimpse(birthdays)
+```
+
+```
+## Rows: 3
+## Columns: 2
+## $ name <chr> "Rudolf Virchow", "Virginia Apgar", "William …
+## $ dob  <chr> "10/13/1821", "6/7/1909", "7/12/1849"
+```
+
+```r
 glimpse(hometowns)
+```
+
+```
+## Rows: 3
+## Columns: 2
+## $ name     <chr> "Rudolf Virchow", "Virginia Apgar", "Hipp…
+## $ hometown <chr> "Berlin", "Westfield, NJ", "Kos"
 ```
 
 We now have two small datasets, with 3 rows each and 2 variables each.
@@ -121,8 +128,20 @@ Let's see how it works. Run the code chunk below. The hometowns dataset
 is `x`, or the base/left dataset, and the birthdays dataset is the `y`,
 or new/right dataset. Notice that we don't specify a variable for `by`.
 
-```{r}
+
+```r
 left_join(x = hometowns, y = birthdays)
+```
+
+```
+## Joining, by = "name"
+```
+
+```
+##             name      hometown        dob
+## 1 Rudolf Virchow        Berlin 10/13/1821
+## 2 Virginia Apgar Westfield, NJ   6/7/1909
+## 3    Hippocrates           Kos       <NA>
 ```
 
 This produces a new dataset with 3 columns - name, hometown, and date of
@@ -136,10 +155,10 @@ each has a matching unique key variable.
 
 Which variable in the left_join above is the key unique variable present
 in both datasets that is used to join these two datasets?
-`r webexercises::mcq(c(answer = 'name', 'hometown', 'dob'))`
+<select class='webex-select'><option value='blank'></option><option value='answer'>name</option><option value=''>hometown</option><option value=''>dob</option></select>
 
 Why does Hippocrates have an NA for date of birth?
-`r webexercises::mcq(c('Hippocrates does not appear in the _hometown_ dataset', answer = 'Hippocrates does not appear in the _birthdays_ dataset', 'Hippocrates had a fear of candles', ' Hippocrates always told everyone he was 29'))`
+<select class='webex-select'><option value='blank'></option><option value=''>Hippocrates does not appear in the _hometown_ dataset</option><option value='answer'>Hippocrates does not appear in the _birthdays_ dataset</option><option value=''>Hippocrates had a fear of candles</option><option value=''> Hippocrates always told everyone he was 29</option></select>
 :::
 
 This is great - **left_join()** figured out how to match up the
@@ -151,8 +170,16 @@ In this case, the common variable to the two datasets is "name". You
 specify this with the `by` variable in quotes, as in the below code
 chunk
 
-```{r}
+
+```r
 left_join(x = hometowns, y = birthdays, by = "name")
+```
+
+```
+##             name      hometown        dob
+## 1 Rudolf Virchow        Berlin 10/13/1821
+## 2 Virginia Apgar Westfield, NJ   6/7/1909
+## 3    Hippocrates           Kos       <NA>
 ```
 
 This gets complicated when the *intended* matching variable does not
@@ -185,7 +212,8 @@ It is important to:
 Sometimes your variable names will be just a bit off. Read in this new
 version of hometowns2 by copying and running the code below.
 
-```{r}
+
+```r
 hometowns2 <- read.csv("https://raw.githubusercontent.com/higgi13425/medicaldata/master/data-raw/join_data/hometowns2.csv") %>% select(-X)
 ```
 
@@ -193,8 +221,15 @@ Now write your own left join of hometowns2 and birthdays using the code
 below as a starting point. Remember to *glimpse( )* the new dataset
 first.
 
-```{r, error=TRUE}
+
+```r
 left_join(x = hometowns2, y = birthdays, by = "name")
+```
+
+```
+## Error in `left_join()`:
+## ! Join columns must be present in data.
+## ✖ Problem with `name`.
 ```
 
 ## Right Join in Action
@@ -217,8 +252,20 @@ Let's see how it works. Run the code chunk below. The hometowns dataset
 is `x`, or the base/left dataset, and the birthdays dataset is the `y`,
 or new/right dataset. Notice that we don't specify a variable for `by`.
 
-```{r}
+
+```r
 right_join(x = hometowns, y = birthdays)
+```
+
+```
+## Joining, by = "name"
+```
+
+```
+##             name      hometown        dob
+## 1 Rudolf Virchow        Berlin 10/13/1821
+## 2 Virginia Apgar Westfield, NJ   6/7/1909
+## 3  William Osler          <NA>  7/12/1849
 ```
 
 This produces a new dataset with 3 columns - name, hometown, and date of
@@ -247,12 +294,24 @@ the join. But if we pipe it into a *left_join()*, hometowns will by default
 become the base (x) dataset, as it comes first. If we want to keep birthdays
 as the base (x) dataset, we can use a *right_join()*. This will result in a table in which everyone has a known birthday, but not necessarily a known hometown. 
 
-```{r}
+
+```r
 hometowns2 <- read.csv("https://raw.githubusercontent.com/higgi13425/medicaldata/master/data-raw/join_data/hometowns2.csv") %>% 
   select(-X) %>% 
   purrr::set_names(c("name", "hometown"))
 hometowns2 %>% 
   right_join(birthdays)
+```
+
+```
+## Joining, by = "name"
+```
+
+```
+##             name      hometown        dob
+## 1 Rudolf Virchow        Berlin 10/13/1821
+## 2 Virginia Apgar Westfield, NJ   6/7/1909
+## 3  William Osler          <NA>  7/12/1849
 ```
 
 ## Inner Joins
@@ -268,9 +327,27 @@ For birthdays and hometowns, what do
 you predict the result will be?
 Look at the datasets below (run the glimpse code) and take a guess.
 
-```{r}
+
+```r
 glimpse(birthdays)
+```
+
+```
+## Rows: 3
+## Columns: 2
+## $ name <chr> "Rudolf Virchow", "Virginia Apgar", "William …
+## $ dob  <chr> "10/13/1821", "6/7/1909", "7/12/1849"
+```
+
+```r
 glimpse(hometowns)
+```
+
+```
+## Rows: 3
+## Columns: 2
+## $ name     <chr> "Rudolf Virchow", "Virginia Apgar", "Hipp…
+## $ hometown <chr> "Berlin", "Westfield, NJ", "Kos"
 ```
 
 
@@ -278,20 +355,35 @@ glimpse(hometowns)
 ## Quick Quiz
 
 How many rows will result if you inner_join birthdays with hometowns?
-`r webexercises::mcq(c('4', '3', answer = '2', '1'))`
+<select class='webex-select'><option value='blank'></option><option value=''>4</option><option value=''>3</option><option value='answer'>2</option><option value=''>1</option></select>
 
 Which physicians will appear in this resulting table?
-`r webexercises::mcq(c('Osler and Hippocrates', 'Apgar, Virchow, and Osler', answer = 'Apgar and Virchow', 'Virchow and Hippocrates'))`
+<select class='webex-select'><option value='blank'></option><option value=''>Osler and Hippocrates</option><option value=''>Apgar, Virchow, and Osler</option><option value='answer'>Apgar and Virchow</option><option value=''>Virchow and Hippocrates</option></select>
 :::
 
 ## Now Let's take a Look at the result
 
-`r hide("Click to Reveal")`
-```{r}
+
+<div class='webex-solution'><button>Click to Reveal</button>
+
+
+```r
 inner_join(birthdays, hometowns)
 ```
+
+```
+## Joining, by = "name"
+```
+
+```
+##             name        dob      hometown
+## 1 Rudolf Virchow 10/13/1821        Berlin
+## 2 Virginia Apgar   6/7/1909 Westfield, NJ
+```
 The inner_join requires full matches, so only Virchow and Apgar, who appear in both datasets, appear in the inner_join. 
-`r unhide()`
+
+</div>
+
 
 ## Full Joins
 
@@ -305,9 +397,27 @@ For birthdays and hometowns, what do
 you predict the result will be?
 Look at the datasets below (run the glimpse code) and take a guess.
 
-```{r}
+
+```r
 glimpse(birthdays)
+```
+
+```
+## Rows: 3
+## Columns: 2
+## $ name <chr> "Rudolf Virchow", "Virginia Apgar", "William …
+## $ dob  <chr> "10/13/1821", "6/7/1909", "7/12/1849"
+```
+
+```r
 glimpse(hometowns)
+```
+
+```
+## Rows: 3
+## Columns: 2
+## $ name     <chr> "Rudolf Virchow", "Virginia Apgar", "Hipp…
+## $ hometown <chr> "Berlin", "Westfield, NJ", "Kos"
 ```
 
 
@@ -315,16 +425,33 @@ glimpse(hometowns)
 ## Quick Quiz
 
 How many rows will result if you full_join birthdays with hometowns?
-`r webexercises::mcq(c(answer = '4', '3', '2', '1'))`
+<select class='webex-select'><option value='blank'></option><option value='answer'>4</option><option value=''>3</option><option value=''>2</option><option value=''>1</option></select>
 
 Which physicians will appear in this resulting table?
-`r webexercises::mcq(c('Osler and Hippocrates', answer = 'Apgar, Osler, Hippocrates and Virchow', 'Apgar, Virchow, and Osler', 'Virchow and Hippocrates'))`
+<select class='webex-select'><option value='blank'></option><option value=''>Osler and Hippocrates</option><option value='answer'>Apgar, Osler, Hippocrates and Virchow</option><option value=''>Apgar, Virchow, and Osler</option><option value=''>Virchow and Hippocrates</option></select>
 :::
 
 ## Now Let's take a Look at the result
-`r hide("Click to Reveal")`
-```{r}
+
+<div class='webex-solution'><button>Click to Reveal</button>
+
+
+```r
 full_join(birthdays, hometowns)
 ```
+
+```
+## Joining, by = "name"
+```
+
+```
+##             name        dob      hometown
+## 1 Rudolf Virchow 10/13/1821        Berlin
+## 2 Virginia Apgar   6/7/1909 Westfield, NJ
+## 3  William Osler  7/12/1849          <NA>
+## 4    Hippocrates       <NA>           Kos
+```
 The full_join does not require matches, so all observations from both datasets, appear in the full_join result. 
-`r unhide()`
+
+</div>
+

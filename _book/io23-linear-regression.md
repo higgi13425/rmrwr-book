@@ -124,10 +124,11 @@ glance(dm_mod)
 
 ```
 ## # A tibble: 1 × 8
-##   null.deviance df.null logLik   AIC   BIC deviance
-##           <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>
-## 1          498.     391  -172.  362.  398.     344.
-## # … with 2 more variables: df.residual <int>, nobs <int>
+##   null.de…¹ df.null logLik   AIC   BIC devia…² df.re…³  nobs
+##       <dbl>   <int>  <dbl> <dbl> <dbl>   <dbl>   <int> <int>
+## 1      498.     391  -172.  362.  398.    344.     383   392
+## # … with abbreviated variable names ¹​null.deviance,
+## #   ²​deviance, ³​df.residual
 ```
 
 ```r
@@ -443,12 +444,13 @@ medicaldata::blood_storage  %>%
 
 ```
 ## # A tibble: 1 × 12
-##   r.squared adj.r.squared sigma statistic p.value    df
-##       <dbl>         <dbl> <dbl>     <dbl>   <dbl> <dbl>
-## 1         0             0  28.6        NA      NA    NA
-## # … with 6 more variables: logLik <dbl>, AIC <dbl>,
-## #   BIC <dbl>, deviance <dbl>, df.residual <int>,
-## #   nobs <int>
+##   r.squared adj.r…¹ sigma stati…² p.value    df logLik   AIC
+##       <dbl>   <dbl> <dbl>   <dbl>   <dbl> <dbl>  <dbl> <dbl>
+## 1         0       0  28.6      NA      NA    NA -1502. 3009.
+## # … with 4 more variables: BIC <dbl>, deviance <dbl>,
+## #   df.residual <int>, nobs <int>, and abbreviated variable
+## #   names ¹​adj.r.squared, ²​statistic
+## # ℹ Use `colnames()` to see all variable names
 ```
 
 The r.squared and adj.r.squared are both 0, so we are capturing none of the variation in the data with this null model.
@@ -474,12 +476,13 @@ medicaldata::blood_storage  %>%
 
 ```
 ## # A tibble: 1 × 12
-##   r.squared adj.r.squared sigma statistic p.value    df
-##       <dbl>         <dbl> <dbl>     <dbl>   <dbl> <dbl>
-## 1    0.0130       0.00334  28.5      1.34   0.260     3
-## # … with 6 more variables: logLik <dbl>, AIC <dbl>,
-## #   BIC <dbl>, deviance <dbl>, df.residual <int>,
-## #   nobs <int>
+##   r.squared adj.r…¹ sigma stati…² p.value    df logLik   AIC
+##       <dbl>   <dbl> <dbl>   <dbl>   <dbl> <dbl>  <dbl> <dbl>
+## 1    0.0130 0.00334  28.5    1.34   0.260     3 -1472. 2954.
+## # … with 4 more variables: BIC <dbl>, deviance <dbl>,
+## #   df.residual <int>, nobs <int>, and abbreviated variable
+## #   names ¹​adj.r.squared, ²​statistic
+## # ℹ Use `colnames()` to see all variable names
 ```
 
 We are now explaining some (about 0.33% = 100\*the adjusted R-squared) of the variation with this predictor, and the log likelihood (-1472) got closer to zero, and the AIC (2954) and BIC (2972) were reduced, showing that this is a better model than the NULL model (though still not great).
@@ -553,12 +556,13 @@ medicaldata::licorice_gargle %>%
 
 ```
 ## # A tibble: 1 × 12
-##   r.squared adj.r.squared sigma statistic    p.value    df
-##       <dbl>         <dbl> <dbl>     <dbl>      <dbl> <dbl>
-## 1     0.143         0.124  1.17      7.59 0.00000130     5
-## # … with 6 more variables: logLik <dbl>, AIC <dbl>,
-## #   BIC <dbl>, deviance <dbl>, df.residual <int>,
-## #   nobs <int>
+##   r.squared adj.r…¹ sigma stati…² p.value    df logLik   AIC
+##       <dbl>   <dbl> <dbl>   <dbl>   <dbl> <dbl>  <dbl> <dbl>
+## 1     0.143   0.124  1.17    7.59 1.30e-6     5  -364.  741.
+## # … with 4 more variables: BIC <dbl>, deviance <dbl>,
+## #   df.residual <int>, nobs <int>, and abbreviated variable
+## #   names ¹​adj.r.squared, ²​statistic
+## # ℹ Use `colnames()` to see all variable names
 ```
 
 
@@ -616,12 +620,13 @@ medicaldata::supraclavicular %>%
 
 ```
 ## # A tibble: 1 × 12
-##   r.squared adj.r.squared sigma statistic p.value    df
-##       <dbl>         <dbl> <dbl>     <dbl>   <dbl> <dbl>
-## 1    0.0356      -0.00504  11.5     0.876   0.481     4
-## # … with 6 more variables: logLik <dbl>, AIC <dbl>,
-## #   BIC <dbl>, deviance <dbl>, df.residual <int>,
-## #   nobs <int>
+##   r.squa…¹ adj.r.…² sigma stati…³ p.value    df logLik   AIC
+##      <dbl>    <dbl> <dbl>   <dbl>   <dbl> <dbl>  <dbl> <dbl>
+## 1   0.0356 -0.00504  11.5   0.876   0.481     4  -383.  779.
+## # … with 4 more variables: BIC <dbl>, deviance <dbl>,
+## #   df.residual <int>, nobs <int>, and abbreviated variable
+## #   names ¹​r.squared, ²​adj.r.squared, ³​statistic
+## # ℹ Use `colnames()` to see all variable names
 ```
 
 
@@ -645,12 +650,12 @@ medicaldata::supraclavicular %>%
 ```
 
 ```{=html}
-<div id="xeujopedat" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="uhpbhbjdwr" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#xeujopedat .gt_table {
+#uhpbhbjdwr .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -675,7 +680,7 @@ medicaldata::supraclavicular %>%
   border-left-color: #D3D3D3;
 }
 
-#xeujopedat .gt_heading {
+#uhpbhbjdwr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -687,7 +692,7 @@ medicaldata::supraclavicular %>%
   border-right-color: #D3D3D3;
 }
 
-#xeujopedat .gt_title {
+#uhpbhbjdwr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -699,7 +704,7 @@ medicaldata::supraclavicular %>%
   border-bottom-width: 0;
 }
 
-#xeujopedat .gt_subtitle {
+#uhpbhbjdwr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -711,13 +716,13 @@ medicaldata::supraclavicular %>%
   border-top-width: 0;
 }
 
-#xeujopedat .gt_bottom_border {
+#uhpbhbjdwr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xeujopedat .gt_col_headings {
+#uhpbhbjdwr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -732,7 +737,7 @@ medicaldata::supraclavicular %>%
   border-right-color: #D3D3D3;
 }
 
-#xeujopedat .gt_col_heading {
+#uhpbhbjdwr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -752,7 +757,7 @@ medicaldata::supraclavicular %>%
   overflow-x: hidden;
 }
 
-#xeujopedat .gt_column_spanner_outer {
+#uhpbhbjdwr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -764,15 +769,15 @@ medicaldata::supraclavicular %>%
   padding-right: 4px;
 }
 
-#xeujopedat .gt_column_spanner_outer:first-child {
+#uhpbhbjdwr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xeujopedat .gt_column_spanner_outer:last-child {
+#uhpbhbjdwr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xeujopedat .gt_column_spanner {
+#uhpbhbjdwr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -784,7 +789,7 @@ medicaldata::supraclavicular %>%
   width: 100%;
 }
 
-#xeujopedat .gt_group_heading {
+#uhpbhbjdwr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -809,7 +814,7 @@ medicaldata::supraclavicular %>%
   vertical-align: middle;
 }
 
-#xeujopedat .gt_empty_group_heading {
+#uhpbhbjdwr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -824,15 +829,15 @@ medicaldata::supraclavicular %>%
   vertical-align: middle;
 }
 
-#xeujopedat .gt_from_md > :first-child {
+#uhpbhbjdwr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xeujopedat .gt_from_md > :last-child {
+#uhpbhbjdwr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xeujopedat .gt_row {
+#uhpbhbjdwr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -851,7 +856,7 @@ medicaldata::supraclavicular %>%
   overflow-x: hidden;
 }
 
-#xeujopedat .gt_stub {
+#uhpbhbjdwr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -864,7 +869,7 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#xeujopedat .gt_stub_row_group {
+#uhpbhbjdwr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -878,11 +883,11 @@ medicaldata::supraclavicular %>%
   vertical-align: top;
 }
 
-#xeujopedat .gt_row_group_first td {
+#uhpbhbjdwr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xeujopedat .gt_summary_row {
+#uhpbhbjdwr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -892,16 +897,16 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#xeujopedat .gt_first_summary_row {
+#uhpbhbjdwr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xeujopedat .gt_first_summary_row.thick {
+#uhpbhbjdwr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xeujopedat .gt_last_summary_row {
+#uhpbhbjdwr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -911,7 +916,7 @@ medicaldata::supraclavicular %>%
   border-bottom-color: #D3D3D3;
 }
 
-#xeujopedat .gt_grand_summary_row {
+#uhpbhbjdwr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -921,7 +926,7 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#xeujopedat .gt_first_grand_summary_row {
+#uhpbhbjdwr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -931,11 +936,11 @@ medicaldata::supraclavicular %>%
   border-top-color: #D3D3D3;
 }
 
-#xeujopedat .gt_striped {
+#uhpbhbjdwr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xeujopedat .gt_table_body {
+#uhpbhbjdwr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -944,7 +949,7 @@ medicaldata::supraclavicular %>%
   border-bottom-color: #D3D3D3;
 }
 
-#xeujopedat .gt_footnotes {
+#uhpbhbjdwr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -958,7 +963,7 @@ medicaldata::supraclavicular %>%
   border-right-color: #D3D3D3;
 }
 
-#xeujopedat .gt_footnote {
+#uhpbhbjdwr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -967,7 +972,7 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#xeujopedat .gt_sourcenotes {
+#uhpbhbjdwr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -981,7 +986,7 @@ medicaldata::supraclavicular %>%
   border-right-color: #D3D3D3;
 }
 
-#xeujopedat .gt_sourcenote {
+#uhpbhbjdwr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -989,36 +994,36 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#xeujopedat .gt_left {
+#uhpbhbjdwr .gt_left {
   text-align: left;
 }
 
-#xeujopedat .gt_center {
+#uhpbhbjdwr .gt_center {
   text-align: center;
 }
 
-#xeujopedat .gt_right {
+#uhpbhbjdwr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xeujopedat .gt_font_normal {
+#uhpbhbjdwr .gt_font_normal {
   font-weight: normal;
 }
 
-#xeujopedat .gt_font_bold {
+#uhpbhbjdwr .gt_font_bold {
   font-weight: bold;
 }
 
-#xeujopedat .gt_font_italic {
+#uhpbhbjdwr .gt_font_italic {
   font-style: italic;
 }
 
-#xeujopedat .gt_super {
+#uhpbhbjdwr .gt_super {
   font-size: 65%;
 }
 
-#xeujopedat .gt_two_val_uncert {
+#uhpbhbjdwr .gt_two_val_uncert {
   display: inline-block;
   line-height: 1em;
   text-align: right;
@@ -1027,31 +1032,31 @@ medicaldata::supraclavicular %>%
   margin-left: 0.1em;
 }
 
-#xeujopedat .gt_footnote_marks {
+#uhpbhbjdwr .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#xeujopedat .gt_asterisk {
+#uhpbhbjdwr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xeujopedat .gt_slash_mark {
+#uhpbhbjdwr .gt_slash_mark {
   font-size: 0.7em;
   line-height: 0.7em;
   vertical-align: 0.15em;
 }
 
-#xeujopedat .gt_fraction_numerator {
+#uhpbhbjdwr .gt_fraction_numerator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: 0.45em;
 }
 
-#xeujopedat .gt_fraction_denominator {
+#uhpbhbjdwr .gt_fraction_denominator {
   font-size: 0.6em;
   line-height: 0.6em;
   vertical-align: -0.05em;
@@ -1220,21 +1225,22 @@ supra_data_plus
 
 ```
 ## # A tibble: 100 × 12
-##    onset_sensory .fitted .resid .rownames   age   bmi gender
-##            <dbl>   <dbl>  <dbl> <chr>     <dbl> <dbl>  <dbl>
-##  1            19    16.5   2.46 52           18  22.1      1
-##  2            10    16.5  -6.51 99           19  24.4      1
-##  3            14    16.5  -2.50 24           19  25.1      1
-##  4             4    16.5 -12.5  6            21  22.0      1
-##  5             8    16.3  -8.30 87           28  30.4      1
-##  6             9    16.3  -7.27 74           31  21.0      1
-##  7             6    16.3 -10.3  19           28  39.8      1
-##  8            39    16.2  22.8  39           31  29.6      1
-##  9            38    16.2  21.8  48           32  24.4      1
-## 10             3    16.2 -13.2  43           32  35.4      1
-## # … with 90 more rows, and 5 more variables: group <dbl>,
-## #   .hat <dbl>, .sigma <dbl>, .cooksd <dbl>,
-## #   .std.resid <dbl>
+##    onset_s…¹ .fitted .resid .rown…²   age   bmi gender group
+##        <dbl>   <dbl>  <dbl> <chr>   <dbl> <dbl>  <dbl> <dbl>
+##  1        19    16.5   2.46 52         18  22.1      1     2
+##  2        10    16.5  -6.51 99         19  24.4      1     2
+##  3        14    16.5  -2.50 24         19  25.1      1     2
+##  4         4    16.5 -12.5  6          21  22.0      1     2
+##  5         8    16.3  -8.30 87         28  30.4      1     2
+##  6         9    16.3  -7.27 74         31  21.0      1     2
+##  7         6    16.3 -10.3  19         28  39.8      1     2
+##  8        39    16.2  22.8  39         31  29.6      1     2
+##  9        38    16.2  21.8  48         32  24.4      1     2
+## 10         3    16.2 -13.2  43         32  35.4      1     2
+## # … with 90 more rows, 4 more variables: .hat <dbl>,
+## #   .sigma <dbl>, .cooksd <dbl>, .std.resid <dbl>, and
+## #   abbreviated variable names ¹​onset_sensory, ²​.rownames
+## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 ```
 
 The dataframe `supra_data_plus` includes a prediction of the outcome (`.fitted`) for each observation.

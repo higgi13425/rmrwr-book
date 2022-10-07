@@ -298,6 +298,7 @@ emerg_dept
 ##  9 2018-07-01 RXF      1           18828     2731       3981
 ## 10 2018-07-01 RQM      1           18560     1064       4130
 ## # … with 40 more rows
+## # ℹ Use `print(n = ...)` to see more rows
 ```
 
 

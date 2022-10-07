@@ -280,6 +280,7 @@ structures, and these include
      9 Biggs Darklighter  <chr [1]>
     10 Obi-Wan Kenobi     <chr [6]>
     # … with 77 more rows
+    # ℹ Use `print(n = ...)` to see more rows
     ```
     
     ```r
@@ -342,6 +343,7 @@ structures, and these include
      9 Biggs Darklighter  <chr [1]>
     10 Obi-Wan Kenobi     <chr [6]>
     # … with 77 more rows
+    # ℹ Use `print(n = ...)` to see more rows
     ```
     
     ```r
@@ -366,6 +368,7 @@ structures, and these include
      9 C-3PO          Revenge of the Sith    
     10 C-3PO          Return of the Jedi     
     # … with 163 more rows
+    # ℹ Use `print(n = ...)` to see more rows
     ```
     
     ```r
@@ -1060,7 +1063,7 @@ sd
 function (x, na.rm = FALSE) 
 sqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x), 
     na.rm = na.rm))
-<bytecode: 0x7fdd2ef13768>
+<bytecode: 0x108086b00>
 <environment: namespace:stats>
 ```
 :::
@@ -1191,7 +1194,7 @@ version of R.
 ```
 
 ```
-[1] "/Library/Frameworks/R.framework/Versions/4.1/Resources/library"
+[1] "/Library/Frameworks/R.framework/Versions/4.2-arm64/Resources/library"
 ```
 
 ## The Building Blocks of R

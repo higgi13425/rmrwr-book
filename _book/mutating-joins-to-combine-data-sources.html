@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Wrangling Rows in R with Filter | Reproducible Medical Research with R</title>
+  <title>Chapter 9 Mutating Joins to Combine Data Sources | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
   <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Wrangling Rows in R with Filter | Reproducible Medical Research with R" />
+  <meta property="og:title" content="Chapter 9 Mutating Joins to Combine Data Sources | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
   <meta name="github-repo" content="higgi13425/rmrwr-book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Wrangling Rows in R with Filter | Reproducible Medical Research with R" />
+  <meta name="twitter:title" content="Chapter 9 Mutating Joins to Combine Data Sources | Reproducible Medical Research with R" />
   
   <meta name="twitter:description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="importing-your-data-into-r.html"/>
-<link rel="next" href="wrangling-columns-in-r-with-select-rename-and-relocate.html"/>
+<link rel="prev" href="using-mutate-to-make-new-variables-columns.html"/>
+<link rel="next" href="interpreting-error-messages.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -842,622 +842,322 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="wrangling-rows-in-r-with-filter" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">Chapter 6</span> Wrangling Rows in R with Filter<a href="wrangling-rows-in-r-with-filter.html#wrangling-rows-in-r-with-filter" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>In this chapter, we will introduce you ways to wrangle rows in R. You
-will often want to focus your analysis on particular <strong>observations</strong>,
-or rows, in your dataset. This chapter will show you how to include the
-rows you want, and exclude the rows you don’t want. The main function in
-the tidyverse for doing this is <em>filter()</em>. The <em>filter()</em> function uses
-logical statements, or conditions, to decide whether to keep or exclude
-rows in your dataset.</p>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
-<img src="images/allison_horst_dplyr_filter.jpg" alt="Artwork by Allison Horst, https://www.allisonhorst.com" width="2275" />
-<p class="caption">
-Figure 6.1: Artwork by Allison Horst, <a href="https://www.allisonhorst.com" class="uri">https://www.allisonhorst.com</a>
-</p>
+<div id="mutating-joins-to-combine-data-sources" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Chapter 9</span> Mutating Joins to Combine Data Sources<a href="mutating-joins-to-combine-data-sources.html#mutating-joins-to-combine-data-sources" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="what-are-joins" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> What are Joins?<a href="mutating-joins-to-combine-data-sources.html#what-are-joins" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Joins (sometimes called merge operations) are used to join together
+different datasets. This can be really helpful for joining together data
+from different data sources, like different forms in REDCap
+(demographics, vitals, visit 1 data), or the results of a data query
+from your electronic medical record, or national or state-level data
+available from sources like the CDC or a state health department. By
+linking these data you can find new connections, and gain a new
+understanding of disease, social determinants of health, or geographic
+factors.</p>
 </div>
-<div id="goals-for-this-chapter-2" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> Goals for this Chapter<a href="wrangling-rows-in-r-with-filter.html#goals-for-this-chapter-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="what-are-mutating-joins" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> What are Mutating Joins?<a href="mutating-joins-to-combine-data-sources.html#what-are-mutating-joins" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>These are joins between a base dataset (x) and a new dataset (y) that
+add new variables to the base dataset, like a <em>mutate()</em> function in
+dplyr. Typically you would start with a dataset that includes one row
+for each observation, and often one row for each participant.</p>
+<p>There are four types of mutating joins:</p>
 <ul>
-<li>Understand logical statements</li>
-<li>Filter rows based on numeric values</li>
-<li>Filter rows based on string values and <em>regex</em></li>
-<li>Filter rows based on dates</li>
-<li>Combine filters with boolean logic symbols, like AND (&amp;) and OR(|)</li>
-<li>Filter on missing (NA) values</li>
-<li>Filter rows for duplicates/distinct observations</li>
-<li>Slicing rows based on row number/position</li>
-<li>Sampling rows as random samples</li>
+<li><p><strong>left join</strong> - all variables from the base dataset (x) are
+retained, and new variables from new dataset (y) that match the
+observations (rows) in dataset x on the key (unique id) variable are
+added.</p></li>
+<li><p><strong>right join</strong> - all variables from the new dataset (y) are
+retained, and new variables from the base dataset (x) that match the
+observations (rows) in dataset y on the key (unique id) variable are
+added.</p></li>
+<li><p><strong>inner join</strong> - includes all rows in <strong>both</strong> dataset (x) and
+dataset (y), requiring matching on the key (unique id) variable.</p></li>
+<li><p><strong>full join</strong> - includes all rows in <strong>either</strong> dataset (x) or
+dataset (y), matching on the key (unique id) variable when matches
+are present, and filling in NAs in missing columns if no match is
+present.</p></li>
 </ul>
 </div>
-<div id="packages-needed-for-this-chapter-1" class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> Packages needed for this Chapter<a href="wrangling-rows-in-r-with-filter.html#packages-needed-for-this-chapter-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>{tidyverse}</p>
-<p>{lubridate}</p>
-<p>{medicaldata}</p>
-</div>
-<div id="pathway-for-this-chapter-1" class="section level2 hasAnchor" number="6.3">
-<h2><span class="header-section-number">6.3</span> Pathway for this Chapter<a href="wrangling-rows-in-r-with-filter.html#pathway-for-this-chapter-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This Chapter is part of the <strong>DATA WRANGLING</strong> pathway. Chapters in this
-pathway include</p>
+<div id="lets-start-with-left-joins" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> Let’s Start with Left Joins<a href="mutating-joins-to-combine-data-sources.html#lets-start-with-left-joins" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To get started, let’s download two toy datasets - Copy and run the code
+chunk below to assign these to birthdays and hometowns.</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="mutating-joins-to-combine-data-sources.html#cb88-1" aria-hidden="true" tabindex="-1"></a>birthdays <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/higgi13425/medicaldata/master/data-raw/join_data/birthdays.csv&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>X)</span>
+<span id="cb88-2"><a href="mutating-joins-to-combine-data-sources.html#cb88-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-3"><a href="mutating-joins-to-combine-data-sources.html#cb88-3" aria-hidden="true" tabindex="-1"></a>hometowns <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/higgi13425/medicaldata/master/data-raw/join_data/hometowns.csv&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>X)</span></code></pre></div>
+<p>The left join is the most common mutating join, as it allows you to
+start with a base dataset and add matching variables from other sources.</p>
 <ul>
-<li>What is Tidy Data?</li>
-<li>Filtering Rows</li>
-<li>Counting, Grouping, and Summarizing Rows</li>
-<li>Arranging and Ranking Rows</li>
-<li>Selecting Columns</li>
-<li>Mutating to Make New Variables</li>
-<li>Rearranging Untidy data with {tidyr} and {pivotr}</li>
+<li><strong>left join</strong> - all variables from the base dataset (x) are
+retained, and new variables from new dataset (y) that match the
+observations (rows) in dataset x on the key (unique id) variable are
+added.</li>
+</ul>
+<p>Let’s start with a simple left join with these two small and simple
+“toy” datasets about famous physicians. Start by copying and running a
+glimpse() function on each dataset from the code chunk below.</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="mutating-joins-to-combine-data-sources.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(birthdays)</span></code></pre></div>
+<pre><code>## Rows: 3
+## Columns: 2
+## $ name &lt;chr&gt; &quot;Rudolf Virchow&quot;, &quot;Virginia Apgar&quot;, &quot;William …
+## $ dob  &lt;chr&gt; &quot;10/13/1821&quot;, &quot;6/7/1909&quot;, &quot;7/12/1849&quot;</code></pre>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="mutating-joins-to-combine-data-sources.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(hometowns)</span></code></pre></div>
+<pre><code>## Rows: 3
+## Columns: 2
+## $ name     &lt;chr&gt; &quot;Rudolf Virchow&quot;, &quot;Virginia Apgar&quot;, &quot;Hipp…
+## $ hometown &lt;chr&gt; &quot;Berlin&quot;, &quot;Westfield, NJ&quot;, &quot;Kos&quot;</code></pre>
+<p>We now have two small datasets, with 3 rows each and 2 variables each.
+Across the toy datasets, data are provided on 4 famous physicians, so
+that each dataset is missing one physician from the other dataset.</p>
+<p>The 3 main arguments of the left_join() function include</p>
+<ul>
+<li><p><strong>x</strong> (base dataset, or left dataset)</p></li>
+<li><p><strong>y</strong> (new dataset, or right dataset)</p></li>
+<li><p><strong>by</strong> (variable to match, known as the key, or unique id - must be
+unique to each observation). The dplyr functions are often smart
+enough to figure the keyid variable out on their own.</p></li>
 </ul>
 </div>
-<div id="logical-statements-in-r" class="section level2 hasAnchor" number="6.4">
-<h2><span class="header-section-number">6.4</span> Logical Statements in R<a href="wrangling-rows-in-r-with-filter.html#logical-statements-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Logical statements in R are important for defining something that is
-TRUE or FALSE for each row, or observation, in your data. A typical
-logical statement involves a variable, and some criteria to test each
-observation of that variable, resulting in a TRUE or FALSE for each row.
-Typical examples of logical statements include:</p>
+<div id="left-join-in-action" class="section level2 hasAnchor" number="9.4">
+<h2><span class="header-section-number">9.4</span> Left Join in Action<a href="mutating-joins-to-combine-data-sources.html#left-join-in-action" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The animation below illustrates how a left_join works. The colored
+numbers represent the unique key variable, and the gray boxes represent
+the unique values from datasets x and y. Notice that observation 4 in
+dataset y, because it does not have a match in dataset x, does not end
+up in the final dataset.</p>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/left-join.gif" alt="" />
+<p class="caption">left join animation by Garrick Aden-Buie from the <code>tidyexplain</code>
+repo</p>
+</div>
+</div>
+<div id="left-join-in-practice" class="section level2 hasAnchor" number="9.5">
+<h2><span class="header-section-number">9.5</span> Left Join in Practice<a href="mutating-joins-to-combine-data-sources.html#left-join-in-practice" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s see how it works. Run the code chunk below. The hometowns dataset
+is <code>x</code>, or the base/left dataset, and the birthdays dataset is the <code>y</code>,
+or new/right dataset. Notice that we don’t specify a variable for <code>by</code>.</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="mutating-joins-to-combine-data-sources.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(<span class="at">x =</span> hometowns, <span class="at">y =</span> birthdays)</span></code></pre></div>
+<pre><code>## Joining, by = &quot;name&quot;</code></pre>
+<pre><code>##             name      hometown        dob
+## 1 Rudolf Virchow        Berlin 10/13/1821
+## 2 Virginia Apgar Westfield, NJ   6/7/1909
+## 3    Hippocrates           Kos       &lt;NA&gt;</code></pre>
+<p>This produces a new dataset with 3 columns - name, hometown, and date of
+birth. The <code>left_join</code> function figures out which is the key id variable
+to match datasets on its own. You could assign this dataset to a new
+object, and add more data from a 3rd, or even a 4th dataset, as long as
+each has a matching unique key variable.</p>
+</div>
+<div id="quick-quiz" class="section level2 hasAnchor challenge" number="9.6">
+<h2><span class="header-section-number">9.6</span> Quick Quiz<a href="mutating-joins-to-combine-data-sources.html#quick-quiz" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Which variable in the left_join above is the key unique variable present
+in both datasets that is used to join these two datasets?
+<select class='webex-select'><option value='blank'></option><option value='answer'>name</option><option value=''>hometown</option><option value=''>dob</option></select></p>
+<p>Why does Hippocrates have an NA for date of birth?
+<select class='webex-select'><option value='blank'></option><option value=''>Hippocrates does not appear in the <em>hometown</em> dataset</option><option value='answer'>Hippocrates does not appear in the <em>birthdays</em> dataset</option><option value=''>Hippocrates had a fear of candles</option><option value=''> Hippocrates always told everyone he was 29</option></select></p>
+</div>
+<p>This is great - <strong>left_join()</strong> figured out how to match up the
+observations on its own. But sometimes it is not obvious how to match up
+observations.</p>
+<p>To play it safe, you should specify the matching unique key id variable.
+In this case, the common variable to the two datasets is “name”. You
+specify this with the <code>by</code> variable in quotes, as in the below code
+chunk</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="mutating-joins-to-combine-data-sources.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(<span class="at">x =</span> hometowns, <span class="at">y =</span> birthdays, <span class="at">by =</span> <span class="st">&quot;name&quot;</span>)</span></code></pre></div>
+<pre><code>##             name      hometown        dob
+## 1 Rudolf Virchow        Berlin 10/13/1821
+## 2 Virginia Apgar Westfield, NJ   6/7/1909
+## 3    Hippocrates           Kos       &lt;NA&gt;</code></pre>
+<p>This gets complicated when the <em>intended</em> matching variable does not
+quite match.</p>
+<div class="warning">
+<p>A common “gotcha” when joining datasets is not having an <strong>exact match</strong>
+of the intended <em>by</em> variable.</p>
+<p>Common scenarios include:</p>
 <ul>
-<li><p><code>sbp &gt; 140</code></p></li>
-<li><p><code>troponin_i &gt; 9.0</code></p></li>
-<li><p><code>creatinine &gt;= 2.5</code></p></li>
-<li><p><code>gfr &lt;= 60</code></p>
-<p>Each of these examples tests each row in the database with the
-stated criterion, and results in a vector of TRUE or FALSE values
-for each row (observation) of the variable in the logical statement.
-The <em>filter()</em> function will act on these TRUE and FALSE values to
-include (TRUE) or exclude (FALSE) the observations from the result.</p></li>
+<li>mismatched spelling or capitalization of the variable name</li>
+<li>mismatch in the variable data type: integers and numbers <strong>look</strong>
+the same, but if they are not the same data type, the join will
+fail.</li>
+</ul>
+<p>It is important to:</p>
+<ul>
+<li><strong>glimpse()</strong> both datasets, and check the <em>name</em> of the intended
+<em>by</em> variable in both datasets.</li>
+<li><strong>glimpse()</strong> both datasets, and check the <em>data type</em> of the
+intended <em>by</em> variable in both datasets.</li>
+<li><strong>predict</strong> the number of rows and columns in the resulting dataset
+after the join - if it is way off, something is wrong (a <em>really</em>
+important reality check)</li>
 </ul>
 </div>
-<div id="filtering-on-numbers---starting-with-a-flipbook" class="section level2 hasAnchor" number="6.5">
-<h2><span class="header-section-number">6.5</span> Filtering on Numbers - Starting with A Flipbook<a href="wrangling-rows-in-r-with-filter.html#filtering-on-numbers---starting-with-a-flipbook" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This flipbook will show you step-by-step examples of how to filter rows
-of observations based on logical statements involving numbers. In each
-logical statement, a variable will be compared with a numeric value via
-a mathematical operator. These operators can include comparisons with</p>
-<ul>
-<li><p>greater than (&gt;)</p></li>
-<li><p>greater than or equal to (&gt;=)</p></li>
-<li><p>less than (&lt;)</p></li>
-<li><p>less than or equal to (&lt;=)</p></li>
-<li><p>equal to (==) <strong>notice</strong> two equals signs to test equality</p></li>
-<li><p>near() - an equality test that works with tiny decimal differences</p></li>
-</ul>
-<p>The general format for <em>filter</em> statements is:</p>
-<p>filter(variable [comparison operator] value), like</p>
-<p>filter(sbp &gt; 140) will keep only rows with systolic blood pressure
-values greater than 140.</p>
-<p>If you have not used a flipbook before, you can <strong>click</strong> on the frame
-below to activate it, then use the <strong>right and left arrow keys</strong> to move
-forward and back through the examples.</p>
-<p>With each forward step in the code on the left, examine the resulting
-output on the right. Make sure you understand how the output was
-produced.</p>
-<p>In many of the examples, a <em>select()</em> function is used to reduce the
-number of columns before the <em>filter()</em> step to make the results more
-clear.</p>
-<!---FLIPBOOK EX 1-->
-<iframe style="margin:0 auto; border: solid black;" id="myIframe1" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_1_num.html#1" scrolling="no" allowfullscreen loading="lazy" data-external="1" data-external="1">
-</iframe>
-<!---FLIPBOOK EX 1-->
-<p>You saw several examples of filtering, including</p>
-<table>
-<colgroup>
-<col width="46%" />
-<col width="53%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Example</th>
-<th>Code</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>equality to a value</td>
-<td>filter(recurrence == 1)</td>
-</tr>
-<tr class="even">
-<td>greater than a value</td>
-<td>filter(preop_psa &gt; 20)</td>
-</tr>
-<tr class="odd">
-<td>near a value</td>
-<td>filter(near(preop_psa, 10))</td>
-</tr>
-<tr class="even">
-<td>near a value with a set tolerance</td>
-<td>filter(near(preop_psa, 17, tol = 1.5))</td>
-</tr>
-<tr class="odd">
-<td>between 2 values</td>
-<td>filter(between(preop_psa, 10, 13))</td>
-</tr>
-<tr class="even">
-<td>in a list of values</td>
-<td>filter(preop_psa %in% c(10,13,17))</td>
-</tr>
-</tbody>
-</table>
-<div id="your-turn---learnr-exercises" class="section level3 hasAnchor" number="6.5.1">
-<h3><span class="header-section-number">6.5.1</span> Your Turn - learnr exercises<a href="wrangling-rows-in-r-with-filter.html#your-turn---learnr-exercises" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Try this out yourself, with interactive coding exercises below, written
-with the {learnr} package.</p>
-<p>For each exercise, you can type in the code required,by the
-instructions, then click on the blue <code>Run Code</code> button at the top right
-of the exercise to test your code. Watch out for a red x in the left
-margin - that identifies a coding error - hover over it for an
-explanation of what is wrong. If you get stuck, you can click on the
-Hint button to get a hint, and if needed, the <code>Copy Clipboard</code> button to
-copy the hint so that you can paste it into the Exercise box.</p>
-<!---LEARNR TUTORIAL EX 1-->
-<iframe style="margin:0 auto; border: solid black;" id="myIframe2" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter1/" data-external="1" scrolling="yes" data-external="1">
-</iframe>
-<!---LEARNR TUTORIAL EX 1-->
+<div id="problem-variable-names" class="section level2 hasAnchor" number="9.7">
+<h2><span class="header-section-number">9.7</span> Problem variable names<a href="mutating-joins-to-combine-data-sources.html#problem-variable-names" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sometimes your variable names will be just a bit off. Read in this new
+version of hometowns2 by copying and running the code below.</p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="mutating-joins-to-combine-data-sources.html#cb98-1" aria-hidden="true" tabindex="-1"></a>hometowns2 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/higgi13425/medicaldata/master/data-raw/join_data/hometowns2.csv&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>X)</span></code></pre></div>
+<p>Now write your own left join of hometowns2 and birthdays using the code
+below as a starting point. Remember to <em>glimpse( )</em> the new dataset
+first.</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="mutating-joins-to-combine-data-sources.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(<span class="at">x =</span> hometowns2, <span class="at">y =</span> birthdays, <span class="at">by =</span> <span class="st">&quot;name&quot;</span>)</span></code></pre></div>
+<pre><code>## Error in `left_join()`:
+## ! Join columns must be present in data.
+## ✖ Problem with `name`.</code></pre>
+</div>
+<div id="right-join-in-action" class="section level2 hasAnchor" number="9.8">
+<h2><span class="header-section-number">9.8</span> Right Join in Action<a href="mutating-joins-to-combine-data-sources.html#right-join-in-action" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The animation below illustrates how a right_join works. The colored
+numbers represent the unique key variable, and the gray boxes represent
+the unique values from datasets x and y. Notice that observation 3 in
+dataset x, because it does not have a match in dataset y, does not end
+up in the final dataset. In a right join, the y dataset is considered
+the base dataset, and the matching observations from the x dataset are
+added. This is not very different from a left_join, but occurs in a
+different order.</p>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/right-join.gif" alt="" />
+<p class="caption">right join animation by Garrick Aden-Buie from the <code>tidyexplain</code>
+repo</p>
 </div>
 </div>
-<div id="filtering-on-multiple-criteria-with-boolean-logic" class="section level2 hasAnchor" number="6.6">
-<h2><span class="header-section-number">6.6</span> Filtering on Multiple Criteria with Boolean Logic<a href="wrangling-rows-in-r-with-filter.html#filtering-on-multiple-criteria-with-boolean-logic" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>You can use multiple filters on your data, and combine these with the
-boolean symbols</p>
-<ul>
-<li><p>AND (symbol &amp;)</p></li>
-<li><p>OR (symbol | ) - the vertical line, often on the keyboard above the
-backslash character ( \ )</p></li>
-<li><p>XOR - exclusive OR, so that the whole logical statement is true if
-either statement A is true, or statement B is true, but NOT if both
-are true. parentheses and combinations thereof.</p></li>
-<li><p>NEGATION - an exclamation point ( ! ) placed before an equals sign
-or a variable in a logical statement makes it mean the
-<strong><em>opposite</em></strong>.</p></li>
-</ul>
-<p>and you can use parentheses as well, to control the order of operations.</p>
-<!---FLIPBOOK -->
-<iframe style="margin:0 auto; border: solid black;" id="myIframe3" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_2_boolean.html#1" scrolling="no" allowfullscreen loading="lazy" data-external="1" data-external="1">
-</iframe>
-<!---FLIPBOOK  -->
-<p>You saw several examples of filtering, including</p>
-<table>
-<thead>
-<tr class="header">
-<th>Example</th>
-<th>Code</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>AND</td>
-<td>filter(age &gt; 65 &amp; t_vol&gt;1)</td>
-</tr>
-<tr class="even">
-<td>OR</td>
-<td>filter(age &gt; 69 | t_vol &gt; 1)</td>
-</tr>
-<tr class="odd">
-<td>exclusive OR (XOR)</td>
-<td>filter(xor(age &gt; 69, t_vol &gt; 1))</td>
-</tr>
-<tr class="even">
-<td>AND with negation (!)</td>
-<td>filter(age &gt; 64 &amp; aa != 1)</td>
-</tr>
-</tbody>
-</table>
-<div id="your-turn---learnr-exercises-1" class="section level3 hasAnchor" number="6.6.1">
-<h3><span class="header-section-number">6.6.1</span> Your Turn - learnr exercises<a href="wrangling-rows-in-r-with-filter.html#your-turn---learnr-exercises-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Try this out yourself, with interactive coding exercises below, written
-with the {learnr} package.</p>
-<p>For each exercise, you can type in the code required,by the
-instructions, then click on the blue <code>Run Code</code> button at the top right
-of the exercise to test your code. Watch out for a red x in the left
-margin - that identifies a coding error - hover over it for an
-explanation of what is wrong. If you get stuck, you can click on the
-Hint button to get a hint, and if needed, the <code>Copy Clipboard</code> button to
-copy the hint so that you can paste it into the Exercise box.</p>
-<!---LEARNR TUTORIAL EX 2-->
-<iframe style="margin:0 auto; border: solid black;" id="myIframe4" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter2/" data-external="1" scrolling="yes" data-external="1">
-</iframe>
-<!---LEARNR TUTORIAL EX 2-->
+<div id="right-join-in-practice" class="section level2 hasAnchor" number="9.9">
+<h2><span class="header-section-number">9.9</span> Right Join in Practice<a href="mutating-joins-to-combine-data-sources.html#right-join-in-practice" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s see how it works. Run the code chunk below. The hometowns dataset
+is <code>x</code>, or the base/left dataset, and the birthdays dataset is the <code>y</code>,
+or new/right dataset. Notice that we don’t specify a variable for <code>by</code>.</p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="mutating-joins-to-combine-data-sources.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">right_join</span>(<span class="at">x =</span> hometowns, <span class="at">y =</span> birthdays)</span></code></pre></div>
+<pre><code>## Joining, by = &quot;name&quot;</code></pre>
+<pre><code>##             name      hometown        dob
+## 1 Rudolf Virchow        Berlin 10/13/1821
+## 2 Virginia Apgar Westfield, NJ   6/7/1909
+## 3  William Osler          &lt;NA&gt;  7/12/1849</code></pre>
+<p>This produces a new dataset with 3 columns - name, hometown, and date of
+birth. Notice that this result id <strong>different</strong> from the <code>left_join</code>
+result above. William Osler appears (without a hometown, as he was born
+in the wilds of Ontario), and Hippocrates does not. Which dataset is the
+base dataset affects the result of the join.</p>
+<p>The <code>right_join</code> function figures out which is the key id variable to
+match datasets on its own. You could assign this dataset to a new
+object, and add more data from a 3rd, or even a 4th dataset, as long as
+each has a matching unique key variable.</p>
+<p>Most people entirely use <em>left_join()</em>, rather than <em>right_join()</em>, for
+the sake of consistency. The main time you might want to use a
+<em>right_join()(</em>) is when you have a base dataset, and you want to add
+some variables from a new dataset, but the new dataset needs some
+wrangling and selecting variables first. In this case, you can do your
+wrangling of the new dataset, then <em>right_join()</em> it to your base
+dataset. This will add the new variables to the base dataset.</p>
+<p>A simple example is shown below. We want to add the dataset hometowns2
+to the dataset <em>birthdays</em>, but we first have to remove an extra variable (X), and fix
+the “Name” variable name. Then we can pipe the resulting dataset into
+the join. But if we pipe it into a <em>left_join()</em>, hometowns will by default
+become the base (x) dataset, as it comes first. If we want to keep birthdays
+as the base (x) dataset, we can use a <em>right_join()</em>. This will result in a table in which everyone has a known birthday, but not necessarily a known hometown.</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="mutating-joins-to-combine-data-sources.html#cb104-1" aria-hidden="true" tabindex="-1"></a>hometowns2 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/higgi13425/medicaldata/master/data-raw/join_data/hometowns2.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb104-2"><a href="mutating-joins-to-combine-data-sources.html#cb104-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>X) <span class="sc">%&gt;%</span> </span>
+<span id="cb104-3"><a href="mutating-joins-to-combine-data-sources.html#cb104-3" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">set_names</span>(<span class="fu">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;hometown&quot;</span>))</span>
+<span id="cb104-4"><a href="mutating-joins-to-combine-data-sources.html#cb104-4" aria-hidden="true" tabindex="-1"></a>hometowns2 <span class="sc">%&gt;%</span> </span>
+<span id="cb104-5"><a href="mutating-joins-to-combine-data-sources.html#cb104-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(birthdays)</span></code></pre></div>
+<pre><code>## Joining, by = &quot;name&quot;</code></pre>
+<pre><code>##             name      hometown        dob
+## 1 Rudolf Virchow        Berlin 10/13/1821
+## 2 Virginia Apgar Westfield, NJ   6/7/1909
+## 3  William Osler          &lt;NA&gt;  7/12/1849</code></pre>
+</div>
+<div id="inner-joins" class="section level2 hasAnchor" number="9.10">
+<h2><span class="header-section-number">9.10</span> Inner Joins<a href="mutating-joins-to-combine-data-sources.html#inner-joins" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The inner join only keeps observations for which there is a matching
+observation in <strong>both</strong> datasets. Think of the inner_join as the intersection of the two sets.
+Here is an animation of what this looks like</p>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/inner-join.gif" alt="" />
+<p class="caption">inner join animation by Garrick Aden-Buie from the <code>tidyexplain</code>
+repo</p>
+</div>
+<p>For birthdays and hometowns, what do
+you predict the result will be?
+Look at the datasets below (run the glimpse code) and take a guess.</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="mutating-joins-to-combine-data-sources.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(birthdays)</span></code></pre></div>
+<pre><code>## Rows: 3
+## Columns: 2
+## $ name &lt;chr&gt; &quot;Rudolf Virchow&quot;, &quot;Virginia Apgar&quot;, &quot;William …
+## $ dob  &lt;chr&gt; &quot;10/13/1821&quot;, &quot;6/7/1909&quot;, &quot;7/12/1849&quot;</code></pre>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="mutating-joins-to-combine-data-sources.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(hometowns)</span></code></pre></div>
+<pre><code>## Rows: 3
+## Columns: 2
+## $ name     &lt;chr&gt; &quot;Rudolf Virchow&quot;, &quot;Virginia Apgar&quot;, &quot;Hipp…
+## $ hometown &lt;chr&gt; &quot;Berlin&quot;, &quot;Westfield, NJ&quot;, &quot;Kos&quot;</code></pre>
+</div>
+<div id="quick-quiz-1" class="section level2 hasAnchor challenge" number="9.11">
+<h2><span class="header-section-number">9.11</span> Quick Quiz<a href="mutating-joins-to-combine-data-sources.html#quick-quiz-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>How many rows will result if you inner_join birthdays with hometowns?
+<select class='webex-select'><option value='blank'></option><option value=''>4</option><option value=''>3</option><option value='answer'>2</option><option value=''>1</option></select></p>
+<p>Which physicians will appear in this resulting table?
+<select class='webex-select'><option value='blank'></option><option value=''>Osler and Hippocrates</option><option value=''>Apgar, Virchow, and Osler</option><option value='answer'>Apgar and Virchow</option><option value=''>Virchow and Hippocrates</option></select></p>
+</div>
+<div id="now-lets-take-a-look-at-the-result" class="section level2 hasAnchor" number="9.12">
+<h2><span class="header-section-number">9.12</span> Now Let’s take a Look at the result<a href="mutating-joins-to-combine-data-sources.html#now-lets-take-a-look-at-the-result" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="webex-solution">
+<button>
+Click to Reveal
+</button>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="mutating-joins-to-combine-data-sources.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inner_join</span>(birthdays, hometowns)</span></code></pre></div>
+<pre><code>## Joining, by = &quot;name&quot;</code></pre>
+<pre><code>##             name        dob      hometown
+## 1 Rudolf Virchow 10/13/1821        Berlin
+## 2 Virginia Apgar   6/7/1909 Westfield, NJ</code></pre>
+<p>The inner_join requires full matches, so only Virchow and Apgar, who appear in both datasets, appear in the inner_join.</p>
 </div>
 </div>
-<div id="filtering-strings" class="section level2 hasAnchor" number="6.7">
-<h2><span class="header-section-number">6.7</span> Filtering Strings<a href="wrangling-rows-in-r-with-filter.html#filtering-strings" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>You can use == to test exact equality of strings, but you can also use
-str_detect from the {stringr} package for more flexible matching, and
-combine it with the magic of regex (regex ~ Regular expressions) to do
-complicated filtering on character string variables in datasets.</p>
-<p>The typical formats for string filtering are</p>
-<ul>
-<li><p>filter(variable == “string”) for an exact match, or</p></li>
-<li><p>filter(str_detect(variable, pattern = “string”)) [<strong>note</strong> two
-parentheses at the end to completely close the parentheses with
-str_detect]</p></li>
-</ul>
-<!---FLIPBOOK -->
-<iframe style="margin:0 auto; border: solid black;" id="myIframe5" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_3_string.html#1" scrolling="no" allowfullscreen loading="lazy" data-external="1">
-</iframe>
-<!---FLIPBOOK  -->
-<p>You saw several examples of filtering strings, including</p>
-<table>
-<colgroup>
-<col width="27%" />
-<col width="72%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Example</th>
-<th>Code</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>matches “oma”</td>
-<td>filter(str_detect(diagnosis, “oma”))</td>
-</tr>
-<tr class="even">
-<td>negated match</td>
-<td>filter(!str_detect(diagnosis, pattern = “Hodgkin”))</td>
-</tr>
-<tr class="odd">
-<td>regex for wild card</td>
-<td>filter(str_detect(diagnosis, pattern = “lympho.+ic”))</td>
-</tr>
-<tr class="even">
-<td>regex wild card</td>
-<td>filter(str_detect(diagnosis, “myelo.*”))</td>
-</tr>
-<tr class="odd">
-<td>exact match</td>
-<td>filter(diagnosis == “myelofibrosis”)</td>
-</tr>
-</tbody>
-</table>
-<div id="your-turn---learnr-exercises-2" class="section level3 hasAnchor" number="6.7.1">
-<h3><span class="header-section-number">6.7.1</span> Your Turn - learnr exercises<a href="wrangling-rows-in-r-with-filter.html#your-turn---learnr-exercises-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Try matching strings yourself, in the interactive coding exercises
-below, written with the {learnr} package.</p>
-<p>For each exercise, you can type in the code required,by the
-instructions, then click on the blue <code>Run Code</code> button at the top right
-of the exercise to test your code. Watch out for a red x in the left
-margin - that identifies a coding error - hover over it for an
-explanation of what is wrong. If you get stuck, you can click on the
-Hint button to get a hint, and if needed, the <code>Copy Clipboard</code> button to
-copy the hint so that you can paste it into the Exercise box.</p>
-<!---LEARNR TUTORIAL EX 3-->
-<iframe style="margin:0 auto; border: solid black;" id="myIframe6" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter3/" scrolling="yes" data-external="1">
-</iframe>
-<!---LEARNR TUTORIAL EX 3-->
+<div id="full-joins" class="section level2 hasAnchor" number="9.13">
+<h2><span class="header-section-number">9.13</span> Full Joins<a href="mutating-joins-to-combine-data-sources.html#full-joins" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The full (aka outer) join keeps <em>all</em> observations for from <strong>both</strong> datasets, whether or not there is a match. Think of the full_join as the union of the two sets.
+Here is an animation of what this looks like</p>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/full-join.gif" alt="" />
+<p class="caption">full join animation by Garrick Aden-Buie from the <code>tidyexplain</code>
+repo</p>
 </div>
+<p>For birthdays and hometowns, what do
+you predict the result will be?
+Look at the datasets below (run the glimpse code) and take a guess.</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="mutating-joins-to-combine-data-sources.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(birthdays)</span></code></pre></div>
+<pre><code>## Rows: 3
+## Columns: 2
+## $ name &lt;chr&gt; &quot;Rudolf Virchow&quot;, &quot;Virginia Apgar&quot;, &quot;William …
+## $ dob  &lt;chr&gt; &quot;10/13/1821&quot;, &quot;6/7/1909&quot;, &quot;7/12/1849&quot;</code></pre>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="mutating-joins-to-combine-data-sources.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(hometowns)</span></code></pre></div>
+<pre><code>## Rows: 3
+## Columns: 2
+## $ name     &lt;chr&gt; &quot;Rudolf Virchow&quot;, &quot;Virginia Apgar&quot;, &quot;Hipp…
+## $ hometown &lt;chr&gt; &quot;Berlin&quot;, &quot;Westfield, NJ&quot;, &quot;Kos&quot;</code></pre>
 </div>
-<div id="filtering-dates" class="section level2 hasAnchor" number="6.8">
-<h2><span class="header-section-number">6.8</span> Filtering Dates<a href="wrangling-rows-in-r-with-filter.html#filtering-dates" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>You can use the {lubridate} package to format strings for logical tests,
-and filter your observations by date, month, year, etc. Dates are
-commonly formatted in ISO 8601 format, or YYYY-MM-DD, for 4-digit year,
-2-digit month, and 2-digit day. The {lubridate} package can convert
-these to dates if the ymd() function is applied to a string formatted
-this way.</p>
-<p>The typical formats for date filtering are</p>
-<ul>
-<li><p>filter(date == ymd(“2002-10-06”)) for an exact match, or</p></li>
-<li><p>filter(between(datevar, ymd(“2020-01-01”, ymd(“2020-06-30”))</p></li>
-<li><p>filter(datevar &gt; today() - years(1)) for the past year</p></li>
-</ul>
-<!---FLIPBOOK -->
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream
-<iframe style="margin:0 auto; border: solid black;" id="myIframe7" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_4_dates.html#1" scrolling="no" data-external="1" allowfullscreen loading="lazy"></p>
-</iframe>
-<!---FLIPBOOK  -->
-<p>You saw several examples of filtering dates, including</p>
-<table>
-<colgroup>
-<col width="36%" />
-<col width="63%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Example</th>
-<th>Code</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>between 2 dates</td>
-<td>filter(between(fake_date, ymd(“2020-03-01”), ymd(“2020-03-31”)</td>
-</tr>
-<tr class="even">
-<td>24 months prior to today</td>
-<td>filter(fake_agvhd_date &gt; today() - months(24))</td>
-</tr>
-<tr class="odd">
-<td>filter to weekdays 1 or 7 (weekend)</td>
-<td>filter(wday(fake_bmt_date) %<strong>in</strong>% c(1,7))</td>
-</tr>
-</tbody>
-</table>
-<div id="your-turn---learnr-exercises-3" class="section level3 hasAnchor" number="6.8.1">
-<h3><span class="header-section-number">6.8.1</span> Your Turn - learnr exercises<a href="wrangling-rows-in-r-with-filter.html#your-turn---learnr-exercises-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Try matching dates yourself, in the interactive coding exercises below,
-written with the {learnr} package.</p>
-<p>For each exercise, you can type in the code required,by the
-instructions, then click on the blue <code>Run Code</code> button at the top right
-of the exercise to test your code. Watch out for a red x in the left
-margin - that identifies a coding error - hover over it for an
-explanation of what is wrong. If you get stuck, you can click on the
-Hint button to get a hint, and if needed, the <code>Copy Clipboard</code> button to
-copy the hint so that you can paste it into the Exercise box.</p>
-<!---LEARNR TUTORIAL EX 4-->
-<iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter4/" data-external="1" scrolling="yes">
-</iframe>
-<!---LEARNR TUTORIAL EX 4-->
+<div id="quick-quiz-2" class="section level2 hasAnchor challenge" number="9.14">
+<h2><span class="header-section-number">9.14</span> Quick Quiz<a href="mutating-joins-to-combine-data-sources.html#quick-quiz-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>How many rows will result if you full_join birthdays with hometowns?
+<select class='webex-select'><option value='blank'></option><option value='answer'>4</option><option value=''>3</option><option value=''>2</option><option value=''>1</option></select></p>
+<p>Which physicians will appear in this resulting table?
+<select class='webex-select'><option value='blank'></option><option value=''>Osler and Hippocrates</option><option value='answer'>Apgar, Osler, Hippocrates and Virchow</option><option value=''>Apgar, Virchow, and Osler</option><option value=''>Virchow and Hippocrates</option></select></p>
 </div>
+<div id="now-lets-take-a-look-at-the-result-1" class="section level2 hasAnchor" number="9.15">
+<h2><span class="header-section-number">9.15</span> Now Let’s take a Look at the result<a href="mutating-joins-to-combine-data-sources.html#now-lets-take-a-look-at-the-result-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="webex-solution">
+<button>
+Click to Reveal
+</button>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="mutating-joins-to-combine-data-sources.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">full_join</span>(birthdays, hometowns)</span></code></pre></div>
+<pre><code>## Joining, by = &quot;name&quot;</code></pre>
+<pre><code>##             name        dob      hometown
+## 1 Rudolf Virchow 10/13/1821        Berlin
+## 2 Virginia Apgar   6/7/1909 Westfield, NJ
+## 3  William Osler  7/12/1849          &lt;NA&gt;
+## 4    Hippocrates       &lt;NA&gt;           Kos</code></pre>
+<p>The full_join does not require matches, so all observations from both datasets, appear in the full_join result.</p>
 </div>
-<div id="filtering-out-or-identifying-missing-data" class="section level2 hasAnchor" number="6.9">
-<h2><span class="header-section-number">6.9</span> Filtering Out or Identifying Missing Data<a href="wrangling-rows-in-r-with-filter.html#filtering-out-or-identifying-missing-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>You can use the is.na(), drop_na() and negation with ! to help identify
-and filter out (or in) the missing data, or observations that are
-incomplete. Common formats for this include</p>
-<ul>
-<li><p>is.na(variable) - filters for observations where the variable is
-missing</p></li>
-<li><p>!is.na(variable) - filters for observations where the variable is
-<strong>not</strong> missing</p></li>
-<li><p>janitor::remove_empty(“rows”) - removes completely empty rows
-(helpful if you are importing a messy dataset)</p></li>
-<li><p>drop_na() - without filter, this drops any observations with at
-least one NA value in the row.</p></li>
-<li><p>drop_na(variable1, variable2) - without filter, this drops any
-observations with at least one NA value iin the variable1 or
-variable2 columns.</p></li>
-</ul>
-<div id="working-with-missing-data" class="section level3 hasAnchor" number="6.9.1">
-<h3><span class="header-section-number">6.9.1</span> Working with Missing data<a href="wrangling-rows-in-r-with-filter.html#working-with-missing-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A common need when doing DEV (Data Exploration and Validation) is to
-find your missing datapoints, so that you can figure out <strong>why</strong> they
-are missing, and whether you can fix this using other records, including
-the medical record.</p>
-<p>Another common scenario, when you can’t find or fix missing data, is
-that you want to drop observations which are missing in a particular
-variable.</p>
-<p>Sometimes you will need to drop whole empty rows, which usually happens
-because of poor formatting of the data (often in a spreadsheet).</p>
-<p>Sometimes you will need to drop observations that have missing data in
-any field, which is important in modeling. Linear and logistic models
-generally only run on complete cases, where all predictors and outcomes
-are non-missing.</p>
-<p>You can also impute missing data points, if there are not too many
-(&lt;10%), and these are truly missing completely at random (MCAR), which
-is often <strong>not</strong> the case. Usually there is a bias, so that particular
-types of study participants have more missing data than others. The
-packages {missForest} and {mice} can be helpful for imputation when MCAR
-assumptions are met. Imputation is beyond the scope of this chapter, and
-should generally be done in consultation with a statistician, as the
-assumptions involved are very important.</p>
-<!---FLIPBOOK -->
-<iframe style="margin:0 auto; border: solid black;" id="myIframe9" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_5_na.html#1" data-external="1" scrolling="no" allowfullscreen loading="lazy">
-</iframe>
-<!---FLIPBOOK  -->
-<p>You saw several examples of filtering missing data, including</p>
-<table>
-<colgroup>
-<col width="63%" />
-<col width="36%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Example</th>
-<th>Code</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>filtering for the missing observations in a variable</td>
-<td>fi lter(is.na(fake_date))</td>
-</tr>
-<tr class="even">
-<td>filter for the non-missing data in a variable</td>
-<td>filter (!is.na(fake_dx_date))</td>
-</tr>
-<tr class="odd">
-<td>removing empty rows</td>
-<td>remove_empty(“rows”)</td>
-</tr>
-<tr class="even">
-<td>removing incomplete cases</td>
-<td>drop_na()</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="your-turn---learnr-exercises-4" class="section level3 hasAnchor" number="6.9.2">
-<h3><span class="header-section-number">6.9.2</span> Your Turn - learnr exercises<a href="wrangling-rows-in-r-with-filter.html#your-turn---learnr-exercises-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<!---LEARNR TUTORIAL EX 5-->
-<iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter5/" data-external="1" scrolling="yes">
-</iframe>
-<!---LEARNR TUTORIAL EX 5-->
-</div>
-</div>
-<div id="filtering-out-duplicate-observations" class="section level2 hasAnchor" number="6.10">
-<h2><span class="header-section-number">6.10</span> Filtering Out Duplicate observations<a href="wrangling-rows-in-r-with-filter.html#filtering-out-duplicate-observations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>You can use the <em>distinct()</em> function and the {janitor} package to help
-you find duplicated observations/rows for fixing or removal from your
-dataset.</p>
-<p>Common formats for this include</p>
-<ul>
-<li><p>distinct(dataset) - filters for rows that are distinct from all the
-other rows (non-duplicates).</p></li>
-<li><p>janitor::get_dupes(dataset) - filters for observations that are
-duplicated in all variables, counts them, and displays them in
-duplicated groups.</p></li>
-</ul>
-<!---FLIPBOOK -->
-<iframe style="margin:0 auto; border: solid black;" id="myIframe11" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_6_dupes.html#1" scrolling="no" data-external="1" allowfullscreen loading="lazy">
-</iframe>
-<!---FLIPBOOK  -->
-<p>You saw several examples of filtering duplicate data, including</p>
-<table style="width:83%;">
-<colgroup>
-<col width="48%" />
-<col width="34%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Example</th>
-<th>Code</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>distinct observations</td>
-<td>distinct(dataset)</td>
-</tr>
-<tr class="even">
-<td>finding duplicates</td>
-<td>get_dupes(dataset)</td>
-</tr>
-<tr class="odd">
-<td>making the complementary dataset</td>
-<td>dataset_whole %&gt;%<br />
-anti_join(data_subset)</td>
-</tr>
-</tbody>
-</table>
-<!---LEARNR TUTORIAL EX 6-->
-<iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter6/" data-external="1" scrolling="yes">
-</iframe>
-<!---LEARNR TUTORIAL EX 6-->
-</div>
-<div id="slicing-data-by-row" class="section level2 hasAnchor" number="6.11">
-<h2><span class="header-section-number">6.11</span> Slicing Data by Row<a href="wrangling-rows-in-r-with-filter.html#slicing-data-by-row" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>You can use the <em>slice()</em> family of functions to cut out a chunk of your
-observations/rows by position in the dataset..</p>
-<p>Common formats for this include</p>
-<ul>
-<li><p>slice(X:Y) - filters for rows X to Y by position (row number).</p></li>
-<li><p>slice_max(variable, n = N) - filters for observations with the
-maximum N values for a single variable.</p></li>
-<li><p>slice_min(variable, prop = 0.0N) - filters for observations with the
-minimum proportion of 0.0N values for a single variable.</p></li>
-<li><p>slice_head and slice_tail - filter for observations by position in
-the top (or bottom) N or top/bottom proportion.</p></li>
-</ul>
-<!---FLIPBOOK -->
-<iframe style="margin:0 auto; border: solid black;" id="myIframe13" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_7_slice.html#1" scrolling="no" data-external="1" allowfullscreen loading="lazy">
-</iframe>
-<!---FLIPBOOK  -->
-<p>You saw several examples of slicing data, including</p>
-<table>
-<thead>
-<tr class="header">
-<th>Example</th>
-<th>Code</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>slice by position</td>
-<td>slice(100:200)</td>
-</tr>
-<tr class="even">
-<td>slice by top values in variable</td>
-<td>slice_max(age, n=20)</td>
-</tr>
-<tr class="odd">
-<td>slice by bottom values in variable</td>
-<td>slice_min(pan_day, prop = 0.01)</td>
-</tr>
-<tr class="even">
-<td>slice by top or bottom position</td>
-<td>slice_tail(prop = 0.01)</td>
-</tr>
-</tbody>
-</table>
-<!---LEARNR TUTORIAL EX 7-->
-<iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter7/" data-external="1" scrolling="yes">
-</iframe>
-<!---LEARNR TUTORIAL EX 7-->
-</div>
-<div id="randomly-sampling-your-rows" class="section level2 hasAnchor" number="6.12">
-<h2><span class="header-section-number">6.12</span> Randomly Sampling Your Rows<a href="wrangling-rows-in-r-with-filter.html#randomly-sampling-your-rows" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>You can use the <em>slice_sample()</em> function to take a random subset of
-large datasets, or to build randomly selected training and testing sets
-fo modeling.</p>
-<p>Common formats for this include</p>
-<ul>
-<li><p>slice_sample(prop = 0.N) - randomly samples N % of your rows.</p></li>
-<li><p>slice_sample(n = N) - randomly samples N of your rows.</p></li>
-</ul>
-<!---FLIPBOOK -->
-<iframe style="margin:0 auto; border: solid black;" id="myIframe15" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_8_sample.html#1" scrolling="no" allowfullscreen data-external="1" data-external="1" loading="lazy">
-</iframe>
-<!---FLIPBOOK  -->
-<p>You saw several examples of sampling data, including</p>
-<table>
-<thead>
-<tr class="header">
-<th>Example</th>
-<th>Code</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>sampling a proportion</td>
-<td>slice_sample(prop = 0.3)</td>
-</tr>
-<tr class="even">
-<td>sampling N rows</td>
-<td>slice_sample(n = 50)</td>
-</tr>
-</tbody>
-</table>
-<div id="your-turn---learnr-exercises-5" class="section level3 hasAnchor" number="6.12.1">
-<h3><span class="header-section-number">6.12.1</span> Your Turn - learnr exercises<a href="wrangling-rows-in-r-with-filter.html#your-turn---learnr-exercises-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<!---LEARNR TUTORIAL EX 8-->
-<iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter8/" data-external="1" scrolling="yes">
-</iframe>
-<!---LEARNR TUTORIAL EX 8-->
-</div>
-</div>
-<div id="further-challenges" class="section level2 hasAnchor challenge" number="6.13">
-<h2><span class="header-section-number">6.13</span> Further Challenges<a href="wrangling-rows-in-r-with-filter.html#further-challenges" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Try filtering on your own computer.</p>
-<p>Install R and Rstudio, as in Chapter
-<a href="getting-started-and-installing-your-tools.html#getting-started-and-installing-your-tools">2</a>.</p>
-<p>Then make sure you have the following packages installed, as in the
-Installing Packages chapter:</p>
-<ul>
-<li><p>tidyverse</p></li>
-<li><p>medicaldata</p></li>
-</ul>
-<p>Read in data from the medicaldata datasets with data(name)</p>
-<p>Then try some of the following challenges</p>
-<ul>
-<li><p>filter the <strong>cytomegalovirus</strong> dataset for rows with time to acute
-gvhd &lt; 6 months and CD3 dose &gt; 4</p></li>
-<li><p>filter the <strong>opt</strong> dataset for Birthweight between 2500 grams and
-3500 grams, or Apgar &gt;=6</p></li>
-<li><p>filter the <strong>covid_testing</strong> dataset for females tested in the first
-30 days of the pandemic with positive results</p></li>
-</ul>
-</div>
-<div id="explore-more-about-filtering" class="section level2 hasAnchor explore" number="6.14">
-<h2><span class="header-section-number">6.14</span> Explore More about Filtering<a href="wrangling-rows-in-r-with-filter.html#explore-more-about-filtering" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Some helpful resources include:</p>
-<p>Suzan Baert’s blog series on dplyr, part 3 about filtering is found
-<a href="https://suzan.rbind.io/2018/02/dplyr-tutorial-3/">here</a>.</p>
-<p>The tidyverse guide to filtering, found
-<a href="https://dplyr.tidyverse.org/reference/filter.html">here</a>.</p>
-<p>A blog post on filtering by Michael Toth, found
-<a href="https://michaeltoth.me/how-to-filter-in-r-a-detailed-introduction-to-the-dplyr-filter-function.html">here</a>.</p>
-<p>The RYouWithMe series from RLadiesSyndey post on filtering
-<a href="https://rladiessydney.org/courses/ryouwithme/02-cleanitup-2/">here</a>.</p>
-</div>
-<!---FLIPBOOK -->
-<iframe style="margin:0 auto; border: solid black;" id="myIframe15" width="763" height="432" src="https://higgi13425.github.io/mini_flipbooks/filter_microflip_9_demo_tabset.html#1" scrolling="no" allowfullscreen data-external="1" loading="lazy">
-</iframe>
-<!---FLIPBOOK  -->
 
+</div>
 </div>
 <script>
 
@@ -1625,8 +1325,8 @@ window.onload = function() {
           </div>
         </div>
       </div>
-<a href="importing-your-data-into-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="wrangling-columns-in-r-with-select-rename-and-relocate.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="using-mutate-to-make-new-variables-columns.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="interpreting-error-messages.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
