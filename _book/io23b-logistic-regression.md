@@ -133,40 +133,6 @@ You can do this in base R with `plot(model)`, but there is a prettier version in
 check_model(prostate_model, panel = FALSE)
 ```
 
-```
-## $PP_CHECK
-```
-
-<img src="io23b-logistic-regression_files/figure-html/unnamed-chunk-3-1.png" width="672" />
-
-```
-## 
-## $BINNED_RESID
-```
-
-<img src="io23b-logistic-regression_files/figure-html/unnamed-chunk-3-2.png" width="672" />
-
-```
-## 
-## $OUTLIERS
-```
-
-<img src="io23b-logistic-regression_files/figure-html/unnamed-chunk-3-3.png" width="672" />
-
-```
-## 
-## $VIF
-```
-
-<img src="io23b-logistic-regression_files/figure-html/unnamed-chunk-3-4.png" width="672" />
-
-```
-## 
-## $QQ
-```
-
-<img src="io23b-logistic-regression_files/figure-html/unnamed-chunk-3-5.png" width="672" />
-
 This generates graphs with nice subtitles to help you interpret the output. Big deviations should make you worry about one or more of the model assumptions, and may require rescaling one of your predictors.
 
 If all is well, you want to look at how your model predictors actually predict the outcome. You make a nicer looking regression table with the tidy() function from the {broom} package.
@@ -292,7 +258,6 @@ augment(model)
 ## # … with 304 more rows, 3 more variables: .hat <dbl>,
 ## #   .sigma <dbl>, .cooksd <dbl>, and abbreviated variable
 ## #   name ¹​.std.resid
-## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 ```
 
 Note that the fitted data are both positive and negative, with a range within +/- 4. This should tell you that they are in logit (log-odds) units (ln(p/1-p)), in which 0 is a 50% probability of either outcome.
@@ -430,9 +395,9 @@ predict(model, newdata = slice_sample(prostate, prop = 0.03), type = "response")
 
 ```
 ##          1          2          3          4          5 
-## 0.04058836 0.25338133 0.09409879 0.04058836 0.04058836 
+## 0.09409879 0.25338133 0.09409879 0.09409879 0.09409879 
 ##          6          7          8          9 
-## 0.09409879 0.09409879 0.25338133 0.09409879
+## 0.25338133 0.25338133 0.52579385 0.52579385
 ```
 
 Let’s see how this works with another dataset, from which we will use predictors to classify diabetes cases. We will start by loading the data into dm_data, and building an “all predictors” model, by specifying the formula predictors as “.” - this means to use all other variables (except the outcome variable) as predictors. Look at the model output for problems.
@@ -477,9 +442,11 @@ visdat::vis_miss(dm_data)
 
 ```
 ## Warning: `gather_()` was deprecated in tidyr 1.2.0.
-## Please use `gather()` instead.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
+## ℹ Please use `gather()` instead.
+## ℹ The deprecated feature was likely used in the visdat
+##   package.
+##   Please report the issue at
+##   <]8;;https://github.com/ropensci/visdat/issueshttps://github.com/ropensci/visdat/issues]8;;>.
 ```
 
 <img src="io23b-logistic-regression_files/figure-html/unnamed-chunk-17-1.png" width="672" />
@@ -640,7 +607,6 @@ dm_data_plus
 ## #   .resid <dbl>, .std.resid <dbl>, .hat <dbl>,
 ## #   .sigma <dbl>, .cooksd <dbl>, and abbreviated variable
 ## #   names ¹​.rownames, ²​pregnant, ³​pressure
-## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 ```
 
 ```r
@@ -710,9 +676,9 @@ cp
 ##   neg_class prevalence outcome  predictor data              
 ##   <fct>          <dbl> <chr>    <chr>     <list>            
 ## 1 neg         0.331633 diabetes pct_prob  <tibble [392 × 2]>
-##   roc_curve                  boot 
-##   <list>                     <lgl>
-## 1 <roc_cutpointr [393 × 10]> NA
+##   roc_curve             boot 
+##   <list>                <lgl>
+## 1 <rc_ctpnt [393 × 10]> NA
 ```
 
 
@@ -794,40 +760,6 @@ You can also check model assumptions, and model performance, even against compet
 #check model assumptions
 performance::check_model(dm_mod, panel = FALSE)
 ```
-
-```
-## $PP_CHECK
-```
-
-<img src="io23b-logistic-regression_files/figure-html/unnamed-chunk-30-1.png" width="672" />
-
-```
-## 
-## $BINNED_RESID
-```
-
-<img src="io23b-logistic-regression_files/figure-html/unnamed-chunk-30-2.png" width="672" />
-
-```
-## 
-## $OUTLIERS
-```
-
-<img src="io23b-logistic-regression_files/figure-html/unnamed-chunk-30-3.png" width="672" />
-
-```
-## 
-## $VIF
-```
-
-<img src="io23b-logistic-regression_files/figure-html/unnamed-chunk-30-4.png" width="672" />
-
-```
-## 
-## $QQ
-```
-
-<img src="io23b-logistic-regression_files/figure-html/unnamed-chunk-30-5.png" width="672" />
 
 
 

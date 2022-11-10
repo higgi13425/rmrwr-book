@@ -103,8 +103,6 @@ Run the code block below to generate an error, then google the error message and
 ## ! stat_smooth requires the following missing aesthetics: x and y
 ```
 
-<img src="io60-help_in_R_files/figure-html/ggplot-1.png" width="672" />
-
 The problem is that the ggplot function does not include the aesthetics layer around x and y - 
 aes(x, y) is required inside the _ggplot()_ function to tell ggplot that the variables time and conc should be mapped to x and y. 
 
@@ -298,7 +296,6 @@ emerg_dept
 ##  9 2018-07-01 RXF      1           18828     2731       3981
 ## 10 2018-07-01 RQM      1           18560     1064       4130
 ## # … with 40 more rows
-## # ℹ Use `print(n = ...)` to see more rows
 ```
 
 

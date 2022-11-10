@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 24 Customizing Plot Scales | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 24 Customizing Plot Scales | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2022-10-06" />
+<meta name="date" content="2022-11-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -59,8 +59,8 @@
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
-<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
-<link href="libs/tabwid-1.0.0/scrool.css" rel="stylesheet" />
+<link href="libs/tabwid-1.1.0/tabwid.css" rel="stylesheet" />
+<link href="libs/tabwid-1.1.0/scrool.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -252,7 +252,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#reading-excel-files-with-readxl"><i class="fa fa-check"></i><b>5.2</b> Reading Excel Files with readxl</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#test-yourself-on-strep_tb"><i class="fa fa-check"></i><b>5.2.1</b> Test yourself on strep_tb</a></li>
+<li class="chapter" data-level="5.2.1" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#test-yourself-on-read_excel"><i class="fa fa-check"></i><b>5.2.1</b> Test yourself on read_excel()</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#bringing-in-data-from-other-statistical-programs-sas-stata-spss-with-the-haven-package"><i class="fa fa-check"></i><b>5.3</b> Bringing in data from other Statistical Programs (SAS, Stata, SPSS) with the {haven} package</a></li>
 <li class="chapter" data-level="5.4" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#other-strange-file-types-with-rio"><i class="fa fa-check"></i><b>5.4</b> Other strange file types with rio</a></li>
@@ -260,7 +260,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="5.5.1" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#taking-a-glimpse-with-glimpse"><i class="fa fa-check"></i><b>5.5.1</b> Taking a glimpse with <em>glimpse()</em></a></li>
 <li class="chapter" data-level="5.5.2" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#try-this-out-yourself."><i class="fa fa-check"></i><b>5.5.2</b> Try this out yourself.</a></li>
-<li class="chapter" data-level="5.5.3" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#test-yourself-on-strep_tb-1"><i class="fa fa-check"></i><b>5.5.3</b> Test yourself on strep_tb</a></li>
+<li class="chapter" data-level="5.5.3" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#test-yourself-on-strep_tb"><i class="fa fa-check"></i><b>5.5.3</b> Test yourself on strep_tb</a></li>
 <li class="chapter" data-level="5.5.4" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#examining-structure-with-str"><i class="fa fa-check"></i><b>5.5.4</b> Examining Structure with <em>str()</em></a></li>
 <li class="chapter" data-level="5.5.5" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#test-yourself-on-the-scurvy-dataset"><i class="fa fa-check"></i><b>5.5.5</b> Test yourself on the scurvy dataset</a></li>
 <li class="chapter" data-level="5.5.6" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#examining-a-bit-of-data-with-head-and-tail"><i class="fa fa-check"></i><b>5.5.6</b> Examining a bit of data with <em>head()</em> and <em>tail()</em></a></li>
@@ -856,12 +856,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="packages-needed-for-this-chapter-4" class="section level2 hasAnchor" number="24.2">
 <h2><span class="header-section-number">24.2</span> Packages Needed for this chapter<a href="customizing-plot-scales.html#packages-needed-for-this-chapter-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You will need {tidyverse}, {medicaldata}, and {scales}</p>
-<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="customizing-plot-scales.html#cb476-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&#39;tidyverse&#39;)</span></span>
-<span id="cb476-2"><a href="customizing-plot-scales.html#cb476-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&#39;medicaldata&#39;)</span></span>
-<span id="cb476-3"><a href="customizing-plot-scales.html#cb476-3" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&#39;scales&#39;)</span></span>
-<span id="cb476-4"><a href="customizing-plot-scales.html#cb476-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb476-5"><a href="customizing-plot-scales.html#cb476-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb476-6"><a href="customizing-plot-scales.html#cb476-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span></code></pre></div>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="customizing-plot-scales.html#cb480-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&#39;tidyverse&#39;)</span></span>
+<span id="cb480-2"><a href="customizing-plot-scales.html#cb480-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&#39;medicaldata&#39;)</span></span>
+<span id="cb480-3"><a href="customizing-plot-scales.html#cb480-3" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&#39;scales&#39;)</span></span>
+<span id="cb480-4"><a href="customizing-plot-scales.html#cb480-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb480-5"><a href="customizing-plot-scales.html#cb480-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb480-6"><a href="customizing-plot-scales.html#cb480-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span></code></pre></div>
 </div>
 <div id="a-flipbook-of-where-we-are-going-with-scales" class="section level2 hasAnchor" number="24.3">
 <h2><span class="header-section-number">24.3</span> A Flipbook of Where We Are Going With Scales<a href="customizing-plot-scales.html#a-flipbook-of-where-we-are-going-with-scales" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -875,11 +875,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="a-basic-scatterplot" class="section level2 hasAnchor" number="24.4">
 <h2><span class="header-section-number">24.4</span> A Basic Scatterplot<a href="customizing-plot-scales.html#a-basic-scatterplot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let’s start with a scatterplot of age vs risk of PEP in the indo_rct dataset</p>
-<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="customizing-plot-scales.html#cb477-1" aria-hidden="true" tabindex="-1"></a>indo_rct <span class="ot">&lt;-</span> medicaldata<span class="sc">::</span>indo_rct</span>
-<span id="cb477-2"><a href="customizing-plot-scales.html#cb477-2" aria-hidden="true" tabindex="-1"></a>indo_rct <span class="sc">%&gt;%</span> </span>
-<span id="cb477-3"><a href="customizing-plot-scales.html#cb477-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb477-4"><a href="customizing-plot-scales.html#cb477-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> risk, <span class="at">color =</span> outcome) <span class="sc">+</span> </span>
-<span id="cb477-5"><a href="customizing-plot-scales.html#cb477-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="customizing-plot-scales.html#cb481-1" aria-hidden="true" tabindex="-1"></a>indo_rct <span class="ot">&lt;-</span> medicaldata<span class="sc">::</span>indo_rct</span>
+<span id="cb481-2"><a href="customizing-plot-scales.html#cb481-2" aria-hidden="true" tabindex="-1"></a>indo_rct <span class="sc">%&gt;%</span> </span>
+<span id="cb481-3"><a href="customizing-plot-scales.html#cb481-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb481-4"><a href="customizing-plot-scales.html#cb481-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> risk, <span class="at">color =</span> outcome) <span class="sc">+</span> </span>
+<span id="cb481-5"><a href="customizing-plot-scales.html#cb481-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>()</span></code></pre></div>
 <p><img src="io48c-scales_files/figure-html/scatter-1-1.png" width="672" /></p>
 <p>The axes cover the whole range by default, whith a bit of space added at the edges. This occurs because the default for <em>scale_(x|y)<em>continuous* for continuous variables adds 5% at either end so that points are not right at the edge.
 Similarly, the scale</em></em>_discrete function for discrete variables adds 0.6 of a category to the width to either side.</p>
@@ -887,11 +887,11 @@ Similarly, the scale</em></em>_discrete function for discrete variables adds 0.6
 <div id="but-what-if-you-want-the-scale-for-risk-to-start-at-0" class="section level2 hasAnchor" number="24.5">
 <h2><span class="header-section-number">24.5</span> But what if you want the scale for risk to start at 0?<a href="customizing-plot-scales.html#but-what-if-you-want-the-scale-for-risk-to-start-at-0" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You can do this, by taking control of the scales. In this case, the <code>scale_y_continuous()</code> function.</p>
-<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="customizing-plot-scales.html#cb478-1" aria-hidden="true" tabindex="-1"></a>indo_rct <span class="sc">%&gt;%</span> </span>
-<span id="cb478-2"><a href="customizing-plot-scales.html#cb478-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb478-3"><a href="customizing-plot-scales.html#cb478-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> risk, <span class="at">color =</span> outcome) <span class="sc">+</span> </span>
-<span id="cb478-4"><a href="customizing-plot-scales.html#cb478-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
-<span id="cb478-5"><a href="customizing-plot-scales.html#cb478-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">6</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="customizing-plot-scales.html#cb482-1" aria-hidden="true" tabindex="-1"></a>indo_rct <span class="sc">%&gt;%</span> </span>
+<span id="cb482-2"><a href="customizing-plot-scales.html#cb482-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb482-3"><a href="customizing-plot-scales.html#cb482-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> risk, <span class="at">color =</span> outcome) <span class="sc">+</span> </span>
+<span id="cb482-4"><a href="customizing-plot-scales.html#cb482-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
+<span id="cb482-5"><a href="customizing-plot-scales.html#cb482-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">6</span>))</span></code></pre></div>
 <p><img src="io48c-scales_files/figure-html/scatter-2-1.png" width="672" /></p>
 <div class="tryit">
 <p>Now try this yourself. Copy the code above (click on the copy icon in the top right of the code chunk), paste it into your RStudio IDE, and edit to:</p>
@@ -902,12 +902,12 @@ Similarly, the scale</em></em>_discrete function for discrete variables adds 0.6
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="customizing-plot-scales.html#cb479-1" aria-hidden="true" tabindex="-1"></a>indo_rct <span class="sc">%&gt;%</span> </span>
-<span id="cb479-2"><a href="customizing-plot-scales.html#cb479-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb479-3"><a href="customizing-plot-scales.html#cb479-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> risk, <span class="at">color =</span> outcome) <span class="sc">+</span> </span>
-<span id="cb479-4"><a href="customizing-plot-scales.html#cb479-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
-<span id="cb479-5"><a href="customizing-plot-scales.html#cb479-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">6</span>)) <span class="sc">+</span></span>
-<span id="cb479-6"><a href="customizing-plot-scales.html#cb479-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">15</span>,<span class="dv">90</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="customizing-plot-scales.html#cb483-1" aria-hidden="true" tabindex="-1"></a>indo_rct <span class="sc">%&gt;%</span> </span>
+<span id="cb483-2"><a href="customizing-plot-scales.html#cb483-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb483-3"><a href="customizing-plot-scales.html#cb483-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> risk, <span class="at">color =</span> outcome) <span class="sc">+</span> </span>
+<span id="cb483-4"><a href="customizing-plot-scales.html#cb483-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
+<span id="cb483-5"><a href="customizing-plot-scales.html#cb483-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">6</span>)) <span class="sc">+</span></span>
+<span id="cb483-6"><a href="customizing-plot-scales.html#cb483-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">15</span>,<span class="dv">90</span>))</span></code></pre></div>
 <pre><code>## Warning: Removed 1 rows containing missing values
 ## (geom_point).</code></pre>
 <p><img src="io48c-scales_files/figure-html/scatter-2-solution-1.png" width="672" /></p>
@@ -917,11 +917,11 @@ Solution
 <div id="but-this-axis-does-not-really-start-at-exactly-0" class="section level2 hasAnchor" number="24.6">
 <h2><span class="header-section-number">24.6</span> But this axis does not really start at Exactly 0<a href="customizing-plot-scales.html#but-this-axis-does-not-really-start-at-exactly-0" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You can see that the x- and y-axes extend a bit past 0. This is because there is a default expansion of the scales (5% for continuous variables). You can control this default with the <code>expand()</code> function. Let’s see how this works to make the y-axis start at exactly zero. You can set the expansion term as a multiplier (<code>mult</code>) or an additive (<code>add</code>).</p>
-<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="customizing-plot-scales.html#cb481-1" aria-hidden="true" tabindex="-1"></a>indo_rct <span class="sc">%&gt;%</span> </span>
-<span id="cb481-2"><a href="customizing-plot-scales.html#cb481-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb481-3"><a href="customizing-plot-scales.html#cb481-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> risk, <span class="at">color =</span> outcome) <span class="sc">+</span> </span>
-<span id="cb481-4"><a href="customizing-plot-scales.html#cb481-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
-<span id="cb481-5"><a href="customizing-plot-scales.html#cb481-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">6</span>), <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">mult =</span><span class="dv">0</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="customizing-plot-scales.html#cb485-1" aria-hidden="true" tabindex="-1"></a>indo_rct <span class="sc">%&gt;%</span> </span>
+<span id="cb485-2"><a href="customizing-plot-scales.html#cb485-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb485-3"><a href="customizing-plot-scales.html#cb485-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> risk, <span class="at">color =</span> outcome) <span class="sc">+</span> </span>
+<span id="cb485-4"><a href="customizing-plot-scales.html#cb485-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
+<span id="cb485-5"><a href="customizing-plot-scales.html#cb485-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">6</span>), <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">mult =</span><span class="dv">0</span>)) </span></code></pre></div>
 <p><img src="io48c-scales_files/figure-html/scatter-3-1.png" width="672" /></p>
 <div class="tryit">
 <p>Now try this yourself. Copy the code above (click on the copy icon in the top right of the code chunk), paste it into your RStudio IDE, and edit to:</p>
@@ -934,13 +934,13 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="customizing-plot-scales.html#cb482-1" aria-hidden="true" tabindex="-1"></a>indo_rct <span class="sc">%&gt;%</span> </span>
-<span id="cb482-2"><a href="customizing-plot-scales.html#cb482-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb482-3"><a href="customizing-plot-scales.html#cb482-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> risk, <span class="at">color =</span> outcome) <span class="sc">+</span> </span>
-<span id="cb482-4"><a href="customizing-plot-scales.html#cb482-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
-<span id="cb482-5"><a href="customizing-plot-scales.html#cb482-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">6</span>)) <span class="sc">+</span></span>
-<span id="cb482-6"><a href="customizing-plot-scales.html#cb482-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">85</span>),</span>
-<span id="cb482-7"><a href="customizing-plot-scales.html#cb482-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">mult =</span> <span class="dv">0</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="customizing-plot-scales.html#cb486-1" aria-hidden="true" tabindex="-1"></a>indo_rct <span class="sc">%&gt;%</span> </span>
+<span id="cb486-2"><a href="customizing-plot-scales.html#cb486-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb486-3"><a href="customizing-plot-scales.html#cb486-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> risk, <span class="at">color =</span> outcome) <span class="sc">+</span> </span>
+<span id="cb486-4"><a href="customizing-plot-scales.html#cb486-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
+<span id="cb486-5"><a href="customizing-plot-scales.html#cb486-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">6</span>)) <span class="sc">+</span></span>
+<span id="cb486-6"><a href="customizing-plot-scales.html#cb486-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">85</span>),</span>
+<span id="cb486-7"><a href="customizing-plot-scales.html#cb486-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">mult =</span> <span class="dv">0</span>))</span></code></pre></div>
 <pre><code>## Warning: Removed 1 rows containing missing values
 ## (geom_point).</code></pre>
 <p><img src="io48c-scales_files/figure-html/scatter-3-solution-1.png" width="672" /></p>
@@ -950,12 +950,12 @@ Solution
 <div id="control-the-limits-and-the-breaks" class="section level2 hasAnchor" number="24.7">
 <h2><span class="header-section-number">24.7</span> Control the Limits and the Breaks<a href="customizing-plot-scales.html#control-the-limits-and-the-breaks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You can see that ggplot picks sensible breaks, but the defaults might not always work for you. Let’s change the risk scale to breaks of 0.5, using the <code>breaks</code> argument. Note that using the <code>limits</code> argument also lets you establish the limits of the y-axis.</p>
-<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb484-1"><a href="customizing-plot-scales.html#cb484-1" aria-hidden="true" tabindex="-1"></a>indo_rct <span class="sc">%&gt;%</span> </span>
-<span id="cb484-2"><a href="customizing-plot-scales.html#cb484-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb484-3"><a href="customizing-plot-scales.html#cb484-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> risk, <span class="at">color =</span> outcome) <span class="sc">+</span> </span>
-<span id="cb484-4"><a href="customizing-plot-scales.html#cb484-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb484-5"><a href="customizing-plot-scales.html#cb484-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">6</span>),</span>
-<span id="cb484-6"><a href="customizing-plot-scales.html#cb484-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">6</span>, <span class="at">by =</span> <span class="fl">0.5</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="customizing-plot-scales.html#cb488-1" aria-hidden="true" tabindex="-1"></a>indo_rct <span class="sc">%&gt;%</span> </span>
+<span id="cb488-2"><a href="customizing-plot-scales.html#cb488-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb488-3"><a href="customizing-plot-scales.html#cb488-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> risk, <span class="at">color =</span> outcome) <span class="sc">+</span> </span>
+<span id="cb488-4"><a href="customizing-plot-scales.html#cb488-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb488-5"><a href="customizing-plot-scales.html#cb488-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">6</span>),</span>
+<span id="cb488-6"><a href="customizing-plot-scales.html#cb488-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">6</span>, <span class="at">by =</span> <span class="fl">0.5</span>)) </span></code></pre></div>
 <p><img src="io48c-scales_files/figure-html/scatter-4-1.png" width="672" /></p>
 <div class="tryit">
 <p>Now try this yourself. Copy the code above (click on the copy icon in the top right of the code chunk), paste it into your RStudio IDE, and edit to:</p>
@@ -967,14 +967,14 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="customizing-plot-scales.html#cb485-1" aria-hidden="true" tabindex="-1"></a>indo_rct <span class="sc">%&gt;%</span> </span>
-<span id="cb485-2"><a href="customizing-plot-scales.html#cb485-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb485-3"><a href="customizing-plot-scales.html#cb485-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> risk, <span class="at">color =</span> outcome) <span class="sc">+</span> </span>
-<span id="cb485-4"><a href="customizing-plot-scales.html#cb485-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
-<span id="cb485-5"><a href="customizing-plot-scales.html#cb485-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">6</span>)) <span class="sc">+</span></span>
-<span id="cb485-6"><a href="customizing-plot-scales.html#cb485-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">95</span>), </span>
-<span id="cb485-7"><a href="customizing-plot-scales.html#cb485-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">mult =</span> <span class="dv">0</span>),</span>
-<span id="cb485-8"><a href="customizing-plot-scales.html#cb485-8" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">90</span>, <span class="at">by =</span> <span class="dv">10</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="customizing-plot-scales.html#cb489-1" aria-hidden="true" tabindex="-1"></a>indo_rct <span class="sc">%&gt;%</span> </span>
+<span id="cb489-2"><a href="customizing-plot-scales.html#cb489-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb489-3"><a href="customizing-plot-scales.html#cb489-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> risk, <span class="at">color =</span> outcome) <span class="sc">+</span> </span>
+<span id="cb489-4"><a href="customizing-plot-scales.html#cb489-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
+<span id="cb489-5"><a href="customizing-plot-scales.html#cb489-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">6</span>)) <span class="sc">+</span></span>
+<span id="cb489-6"><a href="customizing-plot-scales.html#cb489-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">95</span>), </span>
+<span id="cb489-7"><a href="customizing-plot-scales.html#cb489-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">mult =</span> <span class="dv">0</span>),</span>
+<span id="cb489-8"><a href="customizing-plot-scales.html#cb489-8" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">90</span>, <span class="at">by =</span> <span class="dv">10</span>))</span></code></pre></div>
 <p><img src="io48c-scales_files/figure-html/scatter-4-solution-1.png" width="672" />
 Notice that the y axis has the default 5% multiplier, but the x axis does not, so it has limits exactly at 0 and 95.</p>
 </div>
@@ -992,25 +992,25 @@ Notice that the y axis has the default 5% multiplier, but the x axis does not, s
 <div id="continuous-vs.-discrete-plots-and-scales" class="section level2 hasAnchor" number="24.9">
 <h2><span class="header-section-number">24.9</span> Continuous vs. Discrete Plots and Scales<a href="customizing-plot-scales.html#continuous-vs.-discrete-plots-and-scales" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You can see below that ggplot picks sensible spacing and breaks for a discrete scale, but the defaults might not always work for you.</p>
-<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb486-1"><a href="customizing-plot-scales.html#cb486-1" aria-hidden="true" tabindex="-1"></a>indo_rct <span class="sc">%&gt;%</span> </span>
-<span id="cb486-2"><a href="customizing-plot-scales.html#cb486-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb486-3"><a href="customizing-plot-scales.html#cb486-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> rx, <span class="at">y =</span> risk, <span class="at">color =</span> outcome) <span class="sc">+</span> </span>
-<span id="cb486-4"><a href="customizing-plot-scales.html#cb486-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
-<span id="cb486-5"><a href="customizing-plot-scales.html#cb486-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.85</span>, <span class="fl">0.5</span>)) <span class="sc">+</span></span>
-<span id="cb486-6"><a href="customizing-plot-scales.html#cb486-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="fl">0.5</span>,<span class="dv">6</span>),</span>
-<span id="cb486-7"><a href="customizing-plot-scales.html#cb486-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">0.5</span>, <span class="dv">6</span>, <span class="at">by =</span> <span class="fl">0.5</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="customizing-plot-scales.html#cb490-1" aria-hidden="true" tabindex="-1"></a>indo_rct <span class="sc">%&gt;%</span> </span>
+<span id="cb490-2"><a href="customizing-plot-scales.html#cb490-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb490-3"><a href="customizing-plot-scales.html#cb490-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> rx, <span class="at">y =</span> risk, <span class="at">color =</span> outcome) <span class="sc">+</span> </span>
+<span id="cb490-4"><a href="customizing-plot-scales.html#cb490-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
+<span id="cb490-5"><a href="customizing-plot-scales.html#cb490-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.85</span>, <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb490-6"><a href="customizing-plot-scales.html#cb490-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="fl">0.5</span>,<span class="dv">6</span>),</span>
+<span id="cb490-7"><a href="customizing-plot-scales.html#cb490-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">0.5</span>, <span class="dv">6</span>, <span class="at">by =</span> <span class="fl">0.5</span>)) </span></code></pre></div>
 <p><img src="io48c-scales_files/figure-html/scatter-5a-1.png" width="672" /></p>
 <p>Let’s expand the x axis to the righ to make room for a legend in the plot on the right, using the <code>expand</code> argument. We can change the axis <code>name</code> and <code>position</code> as well.</p>
-<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="customizing-plot-scales.html#cb487-1" aria-hidden="true" tabindex="-1"></a>indo_rct <span class="sc">%&gt;%</span> </span>
-<span id="cb487-2"><a href="customizing-plot-scales.html#cb487-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb487-3"><a href="customizing-plot-scales.html#cb487-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> rx, <span class="at">y =</span> risk, <span class="at">color =</span> outcome) <span class="sc">+</span> </span>
-<span id="cb487-4"><a href="customizing-plot-scales.html#cb487-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
-<span id="cb487-5"><a href="customizing-plot-scales.html#cb487-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.85</span>, <span class="fl">0.5</span>)) <span class="sc">+</span></span>
-<span id="cb487-6"><a href="customizing-plot-scales.html#cb487-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="fl">0.5</span>,<span class="dv">6</span>),</span>
-<span id="cb487-7"><a href="customizing-plot-scales.html#cb487-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">0.5</span>, <span class="dv">6</span>, <span class="at">by =</span> <span class="fl">0.5</span>)) <span class="sc">+</span></span>
-<span id="cb487-8"><a href="customizing-plot-scales.html#cb487-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">add =</span><span class="fu">c</span>(<span class="fl">0.6</span>,<span class="fl">1.5</span>)),</span>
-<span id="cb487-9"><a href="customizing-plot-scales.html#cb487-9" aria-hidden="true" tabindex="-1"></a>                   <span class="at">name =</span> <span class="st">&quot;Treatment&quot;</span>,</span>
-<span id="cb487-10"><a href="customizing-plot-scales.html#cb487-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">position =</span> <span class="st">&quot;top&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="customizing-plot-scales.html#cb491-1" aria-hidden="true" tabindex="-1"></a>indo_rct <span class="sc">%&gt;%</span> </span>
+<span id="cb491-2"><a href="customizing-plot-scales.html#cb491-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb491-3"><a href="customizing-plot-scales.html#cb491-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> rx, <span class="at">y =</span> risk, <span class="at">color =</span> outcome) <span class="sc">+</span> </span>
+<span id="cb491-4"><a href="customizing-plot-scales.html#cb491-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
+<span id="cb491-5"><a href="customizing-plot-scales.html#cb491-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.85</span>, <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb491-6"><a href="customizing-plot-scales.html#cb491-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="fl">0.5</span>,<span class="dv">6</span>),</span>
+<span id="cb491-7"><a href="customizing-plot-scales.html#cb491-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">0.5</span>, <span class="dv">6</span>, <span class="at">by =</span> <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb491-8"><a href="customizing-plot-scales.html#cb491-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">add =</span><span class="fu">c</span>(<span class="fl">0.6</span>,<span class="fl">1.5</span>)),</span>
+<span id="cb491-9"><a href="customizing-plot-scales.html#cb491-9" aria-hidden="true" tabindex="-1"></a>                   <span class="at">name =</span> <span class="st">&quot;Treatment&quot;</span>,</span>
+<span id="cb491-10"><a href="customizing-plot-scales.html#cb491-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">position =</span> <span class="st">&quot;top&quot;</span>) </span></code></pre></div>
 <p><img src="io48c-scales_files/figure-html/scatter-5b-1.png" width="672" /></p>
 <div class="tryit">
 <p>Now try this yourself. Copy the code above (click on the copy icon in the top right of the code chunk), paste it into your RStudio IDE, and edit to:</p>
@@ -1026,16 +1026,16 @@ Notice that the y axis has the default 5% multiplier, but the x axis does not, s
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="customizing-plot-scales.html#cb488-1" aria-hidden="true" tabindex="-1"></a>indo_rct <span class="sc">%&gt;%</span> </span>
-<span id="cb488-2"><a href="customizing-plot-scales.html#cb488-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb488-3"><a href="customizing-plot-scales.html#cb488-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> rx, <span class="at">y =</span> risk, <span class="at">color =</span> outcome) <span class="sc">+</span> </span>
-<span id="cb488-4"><a href="customizing-plot-scales.html#cb488-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
-<span id="cb488-5"><a href="customizing-plot-scales.html#cb488-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.15</span>, <span class="fl">0.5</span>)) <span class="sc">+</span></span>
-<span id="cb488-6"><a href="customizing-plot-scales.html#cb488-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="fl">0.5</span>,<span class="dv">6</span>),</span>
-<span id="cb488-7"><a href="customizing-plot-scales.html#cb488-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">0.5</span>, <span class="dv">6</span>, <span class="at">by =</span> <span class="fl">0.5</span>)) <span class="sc">+</span></span>
-<span id="cb488-8"><a href="customizing-plot-scales.html#cb488-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">add =</span><span class="fu">c</span>(<span class="fl">1.5</span>, <span class="fl">0.6</span>)),</span>
-<span id="cb488-9"><a href="customizing-plot-scales.html#cb488-9" aria-hidden="true" tabindex="-1"></a>                   <span class="at">name =</span> <span class="st">&quot;Suppository&quot;</span>,</span>
-<span id="cb488-10"><a href="customizing-plot-scales.html#cb488-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">position =</span> <span class="st">&quot;bottom&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="customizing-plot-scales.html#cb492-1" aria-hidden="true" tabindex="-1"></a>indo_rct <span class="sc">%&gt;%</span> </span>
+<span id="cb492-2"><a href="customizing-plot-scales.html#cb492-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb492-3"><a href="customizing-plot-scales.html#cb492-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> rx, <span class="at">y =</span> risk, <span class="at">color =</span> outcome) <span class="sc">+</span> </span>
+<span id="cb492-4"><a href="customizing-plot-scales.html#cb492-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
+<span id="cb492-5"><a href="customizing-plot-scales.html#cb492-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.15</span>, <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb492-6"><a href="customizing-plot-scales.html#cb492-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="fl">0.5</span>,<span class="dv">6</span>),</span>
+<span id="cb492-7"><a href="customizing-plot-scales.html#cb492-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">0.5</span>, <span class="dv">6</span>, <span class="at">by =</span> <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb492-8"><a href="customizing-plot-scales.html#cb492-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">add =</span><span class="fu">c</span>(<span class="fl">1.5</span>, <span class="fl">0.6</span>)),</span>
+<span id="cb492-9"><a href="customizing-plot-scales.html#cb492-9" aria-hidden="true" tabindex="-1"></a>                   <span class="at">name =</span> <span class="st">&quot;Suppository&quot;</span>,</span>
+<span id="cb492-10"><a href="customizing-plot-scales.html#cb492-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">position =</span> <span class="st">&quot;bottom&quot;</span>) </span></code></pre></div>
 <p><img src="io48c-scales_files/figure-html/scatter-5-solution-1.png" width="672" />
 The legend position is based on the proportion of the x axis (0-1) and the y axis (0-1), so that legend.position (0,0) is the bottom left, and legend.position (1,1) is the top right.</p>
 </div>
@@ -1044,19 +1044,19 @@ The legend position is based on the proportion of the x axis (0-1) and the y axi
 <div id="using-scales-to-customize-a-legend" class="section level2 hasAnchor" number="24.10">
 <h2><span class="header-section-number">24.10</span> Using Scales to Customize a Legend<a href="customizing-plot-scales.html#using-scales-to-customize-a-legend" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Legends are also scales, for discrete or continuous scales. You can use scales_(color|size|shape|alpha)_nnn functions to customize them. Let’s see an example below.</p>
-<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="customizing-plot-scales.html#cb489-1" aria-hidden="true" tabindex="-1"></a>medicaldata<span class="sc">::</span>indo_rct <span class="sc">%&gt;%</span> </span>
-<span id="cb489-2"><a href="customizing-plot-scales.html#cb489-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb489-3"><a href="customizing-plot-scales.html#cb489-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> rx, <span class="at">y =</span> risk, <span class="at">color =</span> outcome) <span class="sc">+</span> </span>
-<span id="cb489-4"><a href="customizing-plot-scales.html#cb489-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
-<span id="cb489-5"><a href="customizing-plot-scales.html#cb489-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.85</span>, <span class="fl">0.5</span>)) <span class="sc">+</span></span>
-<span id="cb489-6"><a href="customizing-plot-scales.html#cb489-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="fl">0.5</span>,<span class="dv">6</span>),</span>
-<span id="cb489-7"><a href="customizing-plot-scales.html#cb489-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">0.5</span>, <span class="dv">6</span>, <span class="at">by =</span> <span class="fl">0.5</span>)) <span class="sc">+</span></span>
-<span id="cb489-8"><a href="customizing-plot-scales.html#cb489-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_discrete</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">add =</span><span class="fu">c</span>(<span class="fl">0.6</span>,<span class="fl">1.5</span>)),</span>
-<span id="cb489-9"><a href="customizing-plot-scales.html#cb489-9" aria-hidden="true" tabindex="-1"></a>                     <span class="at">name =</span> <span class="st">&quot;Treatment&quot;</span>,</span>
-<span id="cb489-10"><a href="customizing-plot-scales.html#cb489-10" aria-hidden="true" tabindex="-1"></a>                     <span class="at">position =</span> <span class="st">&quot;top&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb489-11"><a href="customizing-plot-scales.html#cb489-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="st">&quot;Post-ERCP</span><span class="sc">\n</span><span class="st">Pancreatitis&quot;</span>, </span>
-<span id="cb489-12"><a href="customizing-plot-scales.html#cb489-12" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>),</span>
-<span id="cb489-13"><a href="customizing-plot-scales.html#cb489-13" aria-hidden="true" tabindex="-1"></a>                        <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;dodgerblue&quot;</span>, <span class="st">&quot;red&quot;</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="customizing-plot-scales.html#cb493-1" aria-hidden="true" tabindex="-1"></a>medicaldata<span class="sc">::</span>indo_rct <span class="sc">%&gt;%</span> </span>
+<span id="cb493-2"><a href="customizing-plot-scales.html#cb493-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb493-3"><a href="customizing-plot-scales.html#cb493-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> rx, <span class="at">y =</span> risk, <span class="at">color =</span> outcome) <span class="sc">+</span> </span>
+<span id="cb493-4"><a href="customizing-plot-scales.html#cb493-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
+<span id="cb493-5"><a href="customizing-plot-scales.html#cb493-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.85</span>, <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb493-6"><a href="customizing-plot-scales.html#cb493-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="fl">0.5</span>,<span class="dv">6</span>),</span>
+<span id="cb493-7"><a href="customizing-plot-scales.html#cb493-7" aria-hidden="true" tabindex="-1"></a>                       <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">0.5</span>, <span class="dv">6</span>, <span class="at">by =</span> <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb493-8"><a href="customizing-plot-scales.html#cb493-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_discrete</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">add =</span><span class="fu">c</span>(<span class="fl">0.6</span>,<span class="fl">1.5</span>)),</span>
+<span id="cb493-9"><a href="customizing-plot-scales.html#cb493-9" aria-hidden="true" tabindex="-1"></a>                     <span class="at">name =</span> <span class="st">&quot;Treatment&quot;</span>,</span>
+<span id="cb493-10"><a href="customizing-plot-scales.html#cb493-10" aria-hidden="true" tabindex="-1"></a>                     <span class="at">position =</span> <span class="st">&quot;top&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb493-11"><a href="customizing-plot-scales.html#cb493-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="st">&quot;Post-ERCP</span><span class="sc">\n</span><span class="st">Pancreatitis&quot;</span>, </span>
+<span id="cb493-12"><a href="customizing-plot-scales.html#cb493-12" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;no&quot;</span>, <span class="st">&quot;yes&quot;</span>),</span>
+<span id="cb493-13"><a href="customizing-plot-scales.html#cb493-13" aria-hidden="true" tabindex="-1"></a>                        <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;dodgerblue&quot;</span>, <span class="st">&quot;red&quot;</span>)) </span></code></pre></div>
 <p><img src="io48c-scales_files/figure-html/scales-6-1.png" width="672" /></p>
 <div class="tryit">
 <p>Now try this yourself. Copy the code above (click on the copy icon in the top right of the code chunk), paste it into your RStudio IDE, and edit to:</p>
@@ -1071,19 +1071,19 @@ The legend position is based on the proportion of the x axis (0-1) and the y axi
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="customizing-plot-scales.html#cb490-1" aria-hidden="true" tabindex="-1"></a>medicaldata<span class="sc">::</span>indo_rct <span class="sc">%&gt;%</span> </span>
-<span id="cb490-2"><a href="customizing-plot-scales.html#cb490-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb490-3"><a href="customizing-plot-scales.html#cb490-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> rx, <span class="at">y =</span> risk, <span class="at">color =</span> outcome) <span class="sc">+</span> </span>
-<span id="cb490-4"><a href="customizing-plot-scales.html#cb490-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
-<span id="cb490-5"><a href="customizing-plot-scales.html#cb490-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.15</span>, <span class="fl">0.5</span>)) <span class="sc">+</span></span>
-<span id="cb490-6"><a href="customizing-plot-scales.html#cb490-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="fl">0.5</span>,<span class="dv">6</span>),</span>
-<span id="cb490-7"><a href="customizing-plot-scales.html#cb490-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">0.5</span>, <span class="dv">6</span>, <span class="at">by =</span> <span class="fl">0.5</span>)) <span class="sc">+</span></span>
-<span id="cb490-8"><a href="customizing-plot-scales.html#cb490-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">add =</span><span class="fu">c</span>(<span class="fl">1.5</span>, <span class="fl">0.6</span>)),</span>
-<span id="cb490-9"><a href="customizing-plot-scales.html#cb490-9" aria-hidden="true" tabindex="-1"></a>                   <span class="at">name =</span> <span class="st">&quot;Suppository&quot;</span>,</span>
-<span id="cb490-10"><a href="customizing-plot-scales.html#cb490-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">position =</span> <span class="st">&quot;bottom&quot;</span>)  <span class="sc">+</span> </span>
-<span id="cb490-11"><a href="customizing-plot-scales.html#cb490-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="st">&quot;PEP&quot;</span>, </span>
-<span id="cb490-12"><a href="customizing-plot-scales.html#cb490-12" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;good&quot;</span>, <span class="st">&quot;BAD&quot;</span>),</span>
-<span id="cb490-13"><a href="customizing-plot-scales.html#cb490-13" aria-hidden="true" tabindex="-1"></a>                        <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;darkorchid&quot;</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="customizing-plot-scales.html#cb494-1" aria-hidden="true" tabindex="-1"></a>medicaldata<span class="sc">::</span>indo_rct <span class="sc">%&gt;%</span> </span>
+<span id="cb494-2"><a href="customizing-plot-scales.html#cb494-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb494-3"><a href="customizing-plot-scales.html#cb494-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> rx, <span class="at">y =</span> risk, <span class="at">color =</span> outcome) <span class="sc">+</span> </span>
+<span id="cb494-4"><a href="customizing-plot-scales.html#cb494-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
+<span id="cb494-5"><a href="customizing-plot-scales.html#cb494-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.15</span>, <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb494-6"><a href="customizing-plot-scales.html#cb494-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="fl">0.5</span>,<span class="dv">6</span>),</span>
+<span id="cb494-7"><a href="customizing-plot-scales.html#cb494-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">0.5</span>, <span class="dv">6</span>, <span class="at">by =</span> <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb494-8"><a href="customizing-plot-scales.html#cb494-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">add =</span><span class="fu">c</span>(<span class="fl">1.5</span>, <span class="fl">0.6</span>)),</span>
+<span id="cb494-9"><a href="customizing-plot-scales.html#cb494-9" aria-hidden="true" tabindex="-1"></a>                   <span class="at">name =</span> <span class="st">&quot;Suppository&quot;</span>,</span>
+<span id="cb494-10"><a href="customizing-plot-scales.html#cb494-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">position =</span> <span class="st">&quot;bottom&quot;</span>)  <span class="sc">+</span> </span>
+<span id="cb494-11"><a href="customizing-plot-scales.html#cb494-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">name =</span> <span class="st">&quot;PEP&quot;</span>, </span>
+<span id="cb494-12"><a href="customizing-plot-scales.html#cb494-12" aria-hidden="true" tabindex="-1"></a>                        <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;good&quot;</span>, <span class="st">&quot;BAD&quot;</span>),</span>
+<span id="cb494-13"><a href="customizing-plot-scales.html#cb494-13" aria-hidden="true" tabindex="-1"></a>                        <span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;darkorchid&quot;</span>)) </span></code></pre></div>
 <p><img src="io48c-scales_files/figure-html/scales-6-solution-1.png" width="672" />
 The legend position is based on the proportion of the x axis (0-1) and the y axis (0-1), so that legend.position (0,0) is the bottom left, and legend.position (1,1) is the top right.</p>
 </div>
@@ -1343,7 +1343,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

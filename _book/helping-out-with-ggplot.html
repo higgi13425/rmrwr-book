@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 25 Helping out with ggplot | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 25 Helping out with ggplot | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2022-10-06" />
+<meta name="date" content="2022-11-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -59,8 +59,8 @@
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
-<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
-<link href="libs/tabwid-1.0.0/scrool.css" rel="stylesheet" />
+<link href="libs/tabwid-1.1.0/tabwid.css" rel="stylesheet" />
+<link href="libs/tabwid-1.1.0/scrool.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -252,7 +252,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#reading-excel-files-with-readxl"><i class="fa fa-check"></i><b>5.2</b> Reading Excel Files with readxl</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#test-yourself-on-strep_tb"><i class="fa fa-check"></i><b>5.2.1</b> Test yourself on strep_tb</a></li>
+<li class="chapter" data-level="5.2.1" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#test-yourself-on-read_excel"><i class="fa fa-check"></i><b>5.2.1</b> Test yourself on read_excel()</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#bringing-in-data-from-other-statistical-programs-sas-stata-spss-with-the-haven-package"><i class="fa fa-check"></i><b>5.3</b> Bringing in data from other Statistical Programs (SAS, Stata, SPSS) with the {haven} package</a></li>
 <li class="chapter" data-level="5.4" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#other-strange-file-types-with-rio"><i class="fa fa-check"></i><b>5.4</b> Other strange file types with rio</a></li>
@@ -260,7 +260,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="5.5.1" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#taking-a-glimpse-with-glimpse"><i class="fa fa-check"></i><b>5.5.1</b> Taking a glimpse with <em>glimpse()</em></a></li>
 <li class="chapter" data-level="5.5.2" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#try-this-out-yourself."><i class="fa fa-check"></i><b>5.5.2</b> Try this out yourself.</a></li>
-<li class="chapter" data-level="5.5.3" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#test-yourself-on-strep_tb-1"><i class="fa fa-check"></i><b>5.5.3</b> Test yourself on strep_tb</a></li>
+<li class="chapter" data-level="5.5.3" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#test-yourself-on-strep_tb"><i class="fa fa-check"></i><b>5.5.3</b> Test yourself on strep_tb</a></li>
 <li class="chapter" data-level="5.5.4" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#examining-structure-with-str"><i class="fa fa-check"></i><b>5.5.4</b> Examining Structure with <em>str()</em></a></li>
 <li class="chapter" data-level="5.5.5" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#test-yourself-on-the-scurvy-dataset"><i class="fa fa-check"></i><b>5.5.5</b> Test yourself on the scurvy dataset</a></li>
 <li class="chapter" data-level="5.5.6" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#examining-a-bit-of-data-with-head-and-tail"><i class="fa fa-check"></i><b>5.5.6</b> Examining a bit of data with <em>head()</em> and <em>tail()</em></a></li>
@@ -850,33 +850,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">25.1</span> ggx::gghelp()<a href="helping-out-with-ggplot.html#ggxgghelp" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let’s start with {ggx}.</p>
 <p>The <em>gghelp()</em> function in this simple package converts natural language queries (in quotes) into a ggplot command string. It can be helpful for styling axes, labels, font size, title, and legends. It is limited by its library of commands and range of styling, but can be helpful in a pinch. Try a few questions below, and make your own.</p>
-<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="helping-out-with-ggplot.html#cb491-1" aria-hidden="true" tabindex="-1"></a>ggx<span class="sc">::</span><span class="fu">gghelp</span>(<span class="st">&quot;how do I remove the legend&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="helping-out-with-ggplot.html#cb495-1" aria-hidden="true" tabindex="-1"></a>ggx<span class="sc">::</span><span class="fu">gghelp</span>(<span class="st">&quot;how do I remove the legend&quot;</span>)</span></code></pre></div>
 <pre><code>## theme(legend.position = &quot;none&quot;)</code></pre>
-<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="helping-out-with-ggplot.html#cb493-1" aria-hidden="true" tabindex="-1"></a>ggx<span class="sc">::</span><span class="fu">gghelp</span>(<span class="st">&quot;how do I increase the font size of the title&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="helping-out-with-ggplot.html#cb497-1" aria-hidden="true" tabindex="-1"></a>ggx<span class="sc">::</span><span class="fu">gghelp</span>(<span class="st">&quot;how do I increase the font size of the title&quot;</span>)</span></code></pre></div>
 <pre><code>## theme(axis.title.x=element_text(size=rel(2)))</code></pre>
-<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="helping-out-with-ggplot.html#cb495-1" aria-hidden="true" tabindex="-1"></a>ggx<span class="sc">::</span><span class="fu">gghelp</span>(<span class="st">&quot;change the x axis label to &#39;systolic blood pressure&#39;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="helping-out-with-ggplot.html#cb499-1" aria-hidden="true" tabindex="-1"></a>ggx<span class="sc">::</span><span class="fu">gghelp</span>(<span class="st">&quot;change the x axis label to &#39;systolic blood pressure&#39;&quot;</span>)</span></code></pre></div>
 <pre><code>## xlab(&#39;systolic blood pressure&#39;)</code></pre>
 </div>
 <div id="getting-more-help-with-theming-with-ggthemeassist" class="section level2 hasAnchor" number="25.2">
 <h2><span class="header-section-number">25.2</span> Getting more help with theming with ggThemeAssist<a href="helping-out-with-ggplot.html#getting-more-help-with-theming-with-ggthemeassist" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>ggThemeAssist is an RStudio add-in that you install when you install the {ggThemeAssist} package. It is used after you have your basic plot in place, with the right geom, and the x and y variables in place.</p>
 <p>Let’s start you out with a simple plot from the {medicaldata} package. This plots the fentanyl requirements for anesthesia in the <code>supraclavicular</code> dataset comparing high and low BMI, age, and gender effects. Run this code block to see what the basic plot looks like.</p>
-<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="helping-out-with-ggplot.html#cb497-1" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> medicaldata<span class="sc">::</span>supraclavicular <span class="sc">%&gt;%</span> </span>
-<span id="cb497-2"><a href="helping-out-with-ggplot.html#cb497-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(bmi)) <span class="sc">%&gt;%</span> </span>
-<span id="cb497-3"><a href="helping-out-with-ggplot.html#cb497-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gender_cat =</span> <span class="fu">case_when</span>(gender <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">&quot;Male&quot;</span>,</span>
-<span id="cb497-4"><a href="helping-out-with-ggplot.html#cb497-4" aria-hidden="true" tabindex="-1"></a>                             gender <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">&quot;Female&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb497-5"><a href="helping-out-with-ggplot.html#cb497-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bmi_cat =</span> <span class="fu">case_when</span>(bmi <span class="sc">&lt;</span><span class="dv">30</span> <span class="sc">~</span> <span class="st">&quot;low&quot;</span>,</span>
-<span id="cb497-6"><a href="helping-out-with-ggplot.html#cb497-6" aria-hidden="true" tabindex="-1"></a>                             bmi <span class="sc">&gt;=</span> <span class="dv">30</span> <span class="sc">~</span> <span class="st">&quot;high&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb497-7"><a href="helping-out-with-ggplot.html#cb497-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>age, <span class="at">y =</span> fentanyl, <span class="at">col =</span> gender_cat)) <span class="sc">+</span></span>
-<span id="cb497-8"><a href="helping-out-with-ggplot.html#cb497-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb497-9"><a href="helping-out-with-ggplot.html#cb497-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(. <span class="sc">~</span> bmi_cat) </span>
-<span id="cb497-10"><a href="helping-out-with-ggplot.html#cb497-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb497-11"><a href="helping-out-with-ggplot.html#cb497-11" aria-hidden="true" tabindex="-1"></a>plot1 <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;serif&quot;</span>), </span>
-<span id="cb497-12"><a href="helping-out-with-ggplot.html#cb497-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;antiquewhite&quot;</span>), </span>
-<span id="cb497-13"><a href="helping-out-with-ggplot.html#cb497-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;white&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb497-14"><a href="helping-out-with-ggplot.html#cb497-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Fentanyl Requirements&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Age&quot;</span>, </span>
-<span id="cb497-15"><a href="helping-out-with-ggplot.html#cb497-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Fentanyl in mcg&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;Gender&quot;</span>, </span>
-<span id="cb497-16"><a href="helping-out-with-ggplot.html#cb497-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;by BMI and Age&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb501-1"><a href="helping-out-with-ggplot.html#cb501-1" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> medicaldata<span class="sc">::</span>supraclavicular <span class="sc">%&gt;%</span> </span>
+<span id="cb501-2"><a href="helping-out-with-ggplot.html#cb501-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(bmi)) <span class="sc">%&gt;%</span> </span>
+<span id="cb501-3"><a href="helping-out-with-ggplot.html#cb501-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gender_cat =</span> <span class="fu">case_when</span>(gender <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">&quot;Male&quot;</span>,</span>
+<span id="cb501-4"><a href="helping-out-with-ggplot.html#cb501-4" aria-hidden="true" tabindex="-1"></a>                             gender <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">&quot;Female&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb501-5"><a href="helping-out-with-ggplot.html#cb501-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bmi_cat =</span> <span class="fu">case_when</span>(bmi <span class="sc">&lt;</span><span class="dv">30</span> <span class="sc">~</span> <span class="st">&quot;low&quot;</span>,</span>
+<span id="cb501-6"><a href="helping-out-with-ggplot.html#cb501-6" aria-hidden="true" tabindex="-1"></a>                             bmi <span class="sc">&gt;=</span> <span class="dv">30</span> <span class="sc">~</span> <span class="st">&quot;high&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb501-7"><a href="helping-out-with-ggplot.html#cb501-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>age, <span class="at">y =</span> fentanyl, <span class="at">col =</span> gender_cat)) <span class="sc">+</span></span>
+<span id="cb501-8"><a href="helping-out-with-ggplot.html#cb501-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb501-9"><a href="helping-out-with-ggplot.html#cb501-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(. <span class="sc">~</span> bmi_cat) </span>
+<span id="cb501-10"><a href="helping-out-with-ggplot.html#cb501-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb501-11"><a href="helping-out-with-ggplot.html#cb501-11" aria-hidden="true" tabindex="-1"></a>plot1 <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;serif&quot;</span>), </span>
+<span id="cb501-12"><a href="helping-out-with-ggplot.html#cb501-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;antiquewhite&quot;</span>), </span>
+<span id="cb501-13"><a href="helping-out-with-ggplot.html#cb501-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;white&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb501-14"><a href="helping-out-with-ggplot.html#cb501-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Fentanyl Requirements&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Age&quot;</span>, </span>
+<span id="cb501-15"><a href="helping-out-with-ggplot.html#cb501-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Fentanyl in mcg&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;Gender&quot;</span>, </span>
+<span id="cb501-16"><a href="helping-out-with-ggplot.html#cb501-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;by BMI and Age&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning: Removed 1 rows containing missing values
 ## (geom_point).</code></pre>
 <p><img src="io67-ggplot_helpers_files/figure-html/first-plot-1.png" width="672" /></p>
@@ -1166,7 +1166,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

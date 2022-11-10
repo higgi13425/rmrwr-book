@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Introduction to Reproducibility | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Introduction to Reproducibility | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2022-10-06" />
+<meta name="date" content="2022-11-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -59,8 +59,8 @@
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
-<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
-<link href="libs/tabwid-1.0.0/scrool.css" rel="stylesheet" />
+<link href="libs/tabwid-1.1.0/tabwid.css" rel="stylesheet" />
+<link href="libs/tabwid-1.1.0/scrool.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -252,7 +252,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#reading-excel-files-with-readxl"><i class="fa fa-check"></i><b>5.2</b> Reading Excel Files with readxl</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#test-yourself-on-strep_tb"><i class="fa fa-check"></i><b>5.2.1</b> Test yourself on strep_tb</a></li>
+<li class="chapter" data-level="5.2.1" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#test-yourself-on-read_excel"><i class="fa fa-check"></i><b>5.2.1</b> Test yourself on read_excel()</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#bringing-in-data-from-other-statistical-programs-sas-stata-spss-with-the-haven-package"><i class="fa fa-check"></i><b>5.3</b> Bringing in data from other Statistical Programs (SAS, Stata, SPSS) with the {haven} package</a></li>
 <li class="chapter" data-level="5.4" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#other-strange-file-types-with-rio"><i class="fa fa-check"></i><b>5.4</b> Other strange file types with rio</a></li>
@@ -260,7 +260,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="5.5.1" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#taking-a-glimpse-with-glimpse"><i class="fa fa-check"></i><b>5.5.1</b> Taking a glimpse with <em>glimpse()</em></a></li>
 <li class="chapter" data-level="5.5.2" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#try-this-out-yourself."><i class="fa fa-check"></i><b>5.5.2</b> Try this out yourself.</a></li>
-<li class="chapter" data-level="5.5.3" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#test-yourself-on-strep_tb-1"><i class="fa fa-check"></i><b>5.5.3</b> Test yourself on strep_tb</a></li>
+<li class="chapter" data-level="5.5.3" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#test-yourself-on-strep_tb"><i class="fa fa-check"></i><b>5.5.3</b> Test yourself on strep_tb</a></li>
 <li class="chapter" data-level="5.5.4" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#examining-structure-with-str"><i class="fa fa-check"></i><b>5.5.4</b> Examining Structure with <em>str()</em></a></li>
 <li class="chapter" data-level="5.5.5" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#test-yourself-on-the-scurvy-dataset"><i class="fa fa-check"></i><b>5.5.5</b> Test yourself on the scurvy dataset</a></li>
 <li class="chapter" data-level="5.5.6" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#examining-a-bit-of-data-with-head-and-tail"><i class="fa fa-check"></i><b>5.5.6</b> Examining a bit of data with <em>head()</em> and <em>tail()</em></a></li>
@@ -1210,7 +1210,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

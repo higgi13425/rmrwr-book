@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 16 Major R Updates (Where Are My Packages?) | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 16 Major R Updates (Where Are My Packages?) | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2022-10-06" />
+<meta name="date" content="2022-11-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -59,8 +59,8 @@
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
-<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
-<link href="libs/tabwid-1.0.0/scrool.css" rel="stylesheet" />
+<link href="libs/tabwid-1.1.0/tabwid.css" rel="stylesheet" />
+<link href="libs/tabwid-1.1.0/scrool.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -252,7 +252,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#reading-excel-files-with-readxl"><i class="fa fa-check"></i><b>5.2</b> Reading Excel Files with readxl</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#test-yourself-on-strep_tb"><i class="fa fa-check"></i><b>5.2.1</b> Test yourself on strep_tb</a></li>
+<li class="chapter" data-level="5.2.1" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#test-yourself-on-read_excel"><i class="fa fa-check"></i><b>5.2.1</b> Test yourself on read_excel()</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#bringing-in-data-from-other-statistical-programs-sas-stata-spss-with-the-haven-package"><i class="fa fa-check"></i><b>5.3</b> Bringing in data from other Statistical Programs (SAS, Stata, SPSS) with the {haven} package</a></li>
 <li class="chapter" data-level="5.4" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#other-strange-file-types-with-rio"><i class="fa fa-check"></i><b>5.4</b> Other strange file types with rio</a></li>
@@ -260,7 +260,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="5.5.1" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#taking-a-glimpse-with-glimpse"><i class="fa fa-check"></i><b>5.5.1</b> Taking a glimpse with <em>glimpse()</em></a></li>
 <li class="chapter" data-level="5.5.2" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#try-this-out-yourself."><i class="fa fa-check"></i><b>5.5.2</b> Try this out yourself.</a></li>
-<li class="chapter" data-level="5.5.3" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#test-yourself-on-strep_tb-1"><i class="fa fa-check"></i><b>5.5.3</b> Test yourself on strep_tb</a></li>
+<li class="chapter" data-level="5.5.3" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#test-yourself-on-strep_tb"><i class="fa fa-check"></i><b>5.5.3</b> Test yourself on strep_tb</a></li>
 <li class="chapter" data-level="5.5.4" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#examining-structure-with-str"><i class="fa fa-check"></i><b>5.5.4</b> Examining Structure with <em>str()</em></a></li>
 <li class="chapter" data-level="5.5.5" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#test-yourself-on-the-scurvy-dataset"><i class="fa fa-check"></i><b>5.5.5</b> Test yourself on the scurvy dataset</a></li>
 <li class="chapter" data-level="5.5.6" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#examining-a-bit-of-data-with-head-and-tail"><i class="fa fa-check"></i><b>5.5.6</b> Examining a bit of data with <em>head()</em> and <em>tail()</em></a></li>
@@ -887,14 +887,14 @@ This will take a bit of work and time, maybe an hour if you have a lot of packag
 Copy this code chunk below into your Console pane in RStudio and run it.
 Then reopen RStudio, go to the Files tab, click on Home , and check your root (home) directory for the <code>installed.packages.rda</code> file.
 You can click on this file to load it into your Environment tab (answer yes to load). In your Environment tab, it should look like a character vector with the names of all of your packages in quotes.</p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="major-r-updates-where-are-my-packages.html#cb347-1" aria-hidden="true" tabindex="-1"></a>tmp <span class="ot">=</span> <span class="fu">installed.packages</span>() </span>
-<span id="cb347-2"><a href="major-r-updates-where-are-my-packages.html#cb347-2" aria-hidden="true" tabindex="-1"></a><span class="co"># save list to tmp as a matrix object</span></span>
-<span id="cb347-3"><a href="major-r-updates-where-are-my-packages.html#cb347-3" aria-hidden="true" tabindex="-1"></a>installedpackages <span class="ot">=</span> <span class="fu">as.vector</span>(tmp[<span class="fu">is.na</span>(tmp[,<span class="st">&quot;Priority&quot;</span>]), <span class="dv">1</span>]) </span>
-<span id="cb347-4"><a href="major-r-updates-where-are-my-packages.html#cb347-4" aria-hidden="true" tabindex="-1"></a><span class="co"># filter for all rows where the &quot;Priority&quot; column is NA, and select just (column 1) the package names in quotes, and then assign this vector to the installedpackages object</span></span>
-<span id="cb347-5"><a href="major-r-updates-where-are-my-packages.html#cb347-5" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(installedpackages, <span class="at">file=</span><span class="st">&quot;~/installed_packages.rda&quot;</span>) <span class="co"># save this vector as an *.rda file in your root (home) directory</span></span>
-<span id="cb347-6"><a href="major-r-updates-where-are-my-packages.html#cb347-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(tmp)</span>
-<span id="cb347-7"><a href="major-r-updates-where-are-my-packages.html#cb347-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(installedpackages)</span>
-<span id="cb347-8"><a href="major-r-updates-where-are-my-packages.html#cb347-8" aria-hidden="true" tabindex="-1"></a><span class="co"># remove the tmp matrix and the installedpackages vector from your Environment</span></span></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="major-r-updates-where-are-my-packages.html#cb350-1" aria-hidden="true" tabindex="-1"></a>tmp <span class="ot">=</span> <span class="fu">installed.packages</span>() </span>
+<span id="cb350-2"><a href="major-r-updates-where-are-my-packages.html#cb350-2" aria-hidden="true" tabindex="-1"></a><span class="co"># save list to tmp as a matrix object</span></span>
+<span id="cb350-3"><a href="major-r-updates-where-are-my-packages.html#cb350-3" aria-hidden="true" tabindex="-1"></a>installedpackages <span class="ot">=</span> <span class="fu">as.vector</span>(tmp[<span class="fu">is.na</span>(tmp[,<span class="st">&quot;Priority&quot;</span>]), <span class="dv">1</span>]) </span>
+<span id="cb350-4"><a href="major-r-updates-where-are-my-packages.html#cb350-4" aria-hidden="true" tabindex="-1"></a><span class="co"># filter for all rows where the &quot;Priority&quot; column is NA, and select just (column 1) the package names in quotes, and then assign this vector to the installedpackages object</span></span>
+<span id="cb350-5"><a href="major-r-updates-where-are-my-packages.html#cb350-5" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(installedpackages, <span class="at">file=</span><span class="st">&quot;~/installed_packages.rda&quot;</span>) <span class="co"># save this vector as an *.rda file in your root (home) directory</span></span>
+<span id="cb350-6"><a href="major-r-updates-where-are-my-packages.html#cb350-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(tmp)</span>
+<span id="cb350-7"><a href="major-r-updates-where-are-my-packages.html#cb350-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(installedpackages)</span>
+<span id="cb350-8"><a href="major-r-updates-where-are-my-packages.html#cb350-8" aria-hidden="true" tabindex="-1"></a><span class="co"># remove the tmp matrix and the installedpackages vector from your Environment</span></span></code></pre></div>
 </div>
 <div id="upgrading-r-and-rstudio" class="section level2 hasAnchor" number="16.3">
 <h2><span class="header-section-number">16.3</span> Upgrading R (and RStudio)<a href="major-r-updates-where-are-my-packages.html#upgrading-r-and-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -917,13 +917,13 @@ This will take a while, especially if you have a lot of packages installed.</p>
 - For each count, it installs the package at position [count] in the vector
 - Then it goes to the next [count] value, and installs the next package in the vector
 - Until it reaches the full length of the vector (installs the last package), and then stops.</p>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="major-r-updates-where-are-my-packages.html#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;~/installed_packages.rda&quot;</span>)</span>
-<span id="cb348-2"><a href="major-r-updates-where-are-my-packages.html#cb348-2" aria-hidden="true" tabindex="-1"></a><span class="co"># loads vector into your Environment pane</span></span>
-<span id="cb348-3"><a href="major-r-updates-where-are-my-packages.html#cb348-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb348-4"><a href="major-r-updates-where-are-my-packages.html#cb348-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (count <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(installedpackages)) {</span>
-<span id="cb348-5"><a href="major-r-updates-where-are-my-packages.html#cb348-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(installedpackages[count])</span>
-<span id="cb348-6"><a href="major-r-updates-where-are-my-packages.html#cb348-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb348-7"><a href="major-r-updates-where-are-my-packages.html#cb348-7" aria-hidden="true" tabindex="-1"></a><span class="co"># For each package in this vector of length [count], install them one by one until the last one is installed.</span></span></code></pre></div>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="major-r-updates-where-are-my-packages.html#cb351-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;~/installed_packages.rda&quot;</span>)</span>
+<span id="cb351-2"><a href="major-r-updates-where-are-my-packages.html#cb351-2" aria-hidden="true" tabindex="-1"></a><span class="co"># loads vector into your Environment pane</span></span>
+<span id="cb351-3"><a href="major-r-updates-where-are-my-packages.html#cb351-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb351-4"><a href="major-r-updates-where-are-my-packages.html#cb351-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (count <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(installedpackages)) {</span>
+<span id="cb351-5"><a href="major-r-updates-where-are-my-packages.html#cb351-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(installedpackages[count])</span>
+<span id="cb351-6"><a href="major-r-updates-where-are-my-packages.html#cb351-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb351-7"><a href="major-r-updates-where-are-my-packages.html#cb351-7" aria-hidden="true" tabindex="-1"></a><span class="co"># For each package in this vector of length [count], install them one by one until the last one is installed.</span></span></code></pre></div>
 </div>
 </div>
 <div id="now-check-your-list-of-packages" class="section level2 hasAnchor" number="16.4">
@@ -1169,7 +1169,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -426,7 +426,6 @@ result
 ## # … with 3 more variables: conf.high <dbl>, method <chr>,
 ## #   alternative <chr>, and abbreviated variable names
 ## #   ¹​estimate2, ²​statistic, ³​parameter, ⁴​conf.low
-## # ℹ Use `colnames()` to see all variable names
 ```
 ## Reporting the results from t.test using inline code
 - use backticks before and after, start with r

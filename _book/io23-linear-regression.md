@@ -165,9 +165,9 @@ cp
 ##   neg_class prevalence outcome  predictor data              
 ##   <fct>          <dbl> <chr>    <chr>     <list>            
 ## 1 neg         0.331633 diabetes pct_prob  <tibble [392 × 2]>
-##   roc_curve                  boot 
-##   <list>                     <lgl>
-## 1 <roc_cutpointr [393 × 10]> NA
+##   roc_curve             boot 
+##   <list>                <lgl>
+## 1 <rc_ctpnt [393 × 10]> NA
 ```
 
 ```r
@@ -237,43 +237,6 @@ dm_data_plus %>%
 ```r
 #check model performance
 performance::check_model(dm_mod, panel = FALSE)
-```
-
-```
-## $PP_CHECK
-```
-
-<img src="io23-linear-regression_files/figure-html/unnamed-chunk-1-3.png" width="672" />
-
-```
-## 
-## $BINNED_RESID
-```
-
-<img src="io23-linear-regression_files/figure-html/unnamed-chunk-1-4.png" width="672" />
-
-```
-## 
-## $OUTLIERS
-```
-
-<img src="io23-linear-regression_files/figure-html/unnamed-chunk-1-5.png" width="672" />
-
-```
-## 
-## $VIF
-```
-
-<img src="io23-linear-regression_files/figure-html/unnamed-chunk-1-6.png" width="672" />
-
-```
-## 
-## $QQ
-```
-
-<img src="io23-linear-regression_files/figure-html/unnamed-chunk-1-7.png" width="672" />
-
-```r
 # use panel = TRUE in Rmarkdown to get 2x3 panels for 6 plots
 # 
 performance::model_performance(dm_mod)
@@ -450,7 +413,6 @@ medicaldata::blood_storage  %>%
 ## # … with 4 more variables: BIC <dbl>, deviance <dbl>,
 ## #   df.residual <int>, nobs <int>, and abbreviated variable
 ## #   names ¹​adj.r.squared, ²​statistic
-## # ℹ Use `colnames()` to see all variable names
 ```
 
 The r.squared and adj.r.squared are both 0, so we are capturing none of the variation in the data with this null model.
@@ -482,7 +444,6 @@ medicaldata::blood_storage  %>%
 ## # … with 4 more variables: BIC <dbl>, deviance <dbl>,
 ## #   df.residual <int>, nobs <int>, and abbreviated variable
 ## #   names ¹​adj.r.squared, ²​statistic
-## # ℹ Use `colnames()` to see all variable names
 ```
 
 We are now explaining some (about 0.33% = 100\*the adjusted R-squared) of the variation with this predictor, and the log likelihood (-1472) got closer to zero, and the AIC (2954) and BIC (2972) were reduced, showing that this is a better model than the NULL model (though still not great).
@@ -562,7 +523,6 @@ medicaldata::licorice_gargle %>%
 ## # … with 4 more variables: BIC <dbl>, deviance <dbl>,
 ## #   df.residual <int>, nobs <int>, and abbreviated variable
 ## #   names ¹​adj.r.squared, ²​statistic
-## # ℹ Use `colnames()` to see all variable names
 ```
 
 
@@ -626,7 +586,6 @@ medicaldata::supraclavicular %>%
 ## # … with 4 more variables: BIC <dbl>, deviance <dbl>,
 ## #   df.residual <int>, nobs <int>, and abbreviated variable
 ## #   names ¹​r.squared, ²​adj.r.squared, ³​statistic
-## # ℹ Use `colnames()` to see all variable names
 ```
 
 
@@ -650,12 +609,12 @@ medicaldata::supraclavicular %>%
 ```
 
 ```{=html}
-<div id="rsmrcpbltd" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="lpfjityqar" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#rsmrcpbltd .gt_table {
+#lpfjityqar .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -680,7 +639,7 @@ medicaldata::supraclavicular %>%
   border-left-color: #D3D3D3;
 }
 
-#rsmrcpbltd .gt_heading {
+#lpfjityqar .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -692,7 +651,7 @@ medicaldata::supraclavicular %>%
   border-right-color: #D3D3D3;
 }
 
-#rsmrcpbltd .gt_title {
+#lpfjityqar .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -704,7 +663,7 @@ medicaldata::supraclavicular %>%
   border-bottom-width: 0;
 }
 
-#rsmrcpbltd .gt_subtitle {
+#lpfjityqar .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -716,13 +675,13 @@ medicaldata::supraclavicular %>%
   border-top-width: 0;
 }
 
-#rsmrcpbltd .gt_bottom_border {
+#lpfjityqar .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rsmrcpbltd .gt_col_headings {
+#lpfjityqar .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -737,7 +696,7 @@ medicaldata::supraclavicular %>%
   border-right-color: #D3D3D3;
 }
 
-#rsmrcpbltd .gt_col_heading {
+#lpfjityqar .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -757,7 +716,7 @@ medicaldata::supraclavicular %>%
   overflow-x: hidden;
 }
 
-#rsmrcpbltd .gt_column_spanner_outer {
+#lpfjityqar .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -769,15 +728,15 @@ medicaldata::supraclavicular %>%
   padding-right: 4px;
 }
 
-#rsmrcpbltd .gt_column_spanner_outer:first-child {
+#lpfjityqar .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rsmrcpbltd .gt_column_spanner_outer:last-child {
+#lpfjityqar .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rsmrcpbltd .gt_column_spanner {
+#lpfjityqar .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -789,7 +748,7 @@ medicaldata::supraclavicular %>%
   width: 100%;
 }
 
-#rsmrcpbltd .gt_group_heading {
+#lpfjityqar .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -814,7 +773,7 @@ medicaldata::supraclavicular %>%
   vertical-align: middle;
 }
 
-#rsmrcpbltd .gt_empty_group_heading {
+#lpfjityqar .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -829,15 +788,15 @@ medicaldata::supraclavicular %>%
   vertical-align: middle;
 }
 
-#rsmrcpbltd .gt_from_md > :first-child {
+#lpfjityqar .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rsmrcpbltd .gt_from_md > :last-child {
+#lpfjityqar .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rsmrcpbltd .gt_row {
+#lpfjityqar .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -856,7 +815,7 @@ medicaldata::supraclavicular %>%
   overflow-x: hidden;
 }
 
-#rsmrcpbltd .gt_stub {
+#lpfjityqar .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -869,7 +828,7 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#rsmrcpbltd .gt_stub_row_group {
+#lpfjityqar .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -883,11 +842,11 @@ medicaldata::supraclavicular %>%
   vertical-align: top;
 }
 
-#rsmrcpbltd .gt_row_group_first td {
+#lpfjityqar .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rsmrcpbltd .gt_summary_row {
+#lpfjityqar .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -897,16 +856,16 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#rsmrcpbltd .gt_first_summary_row {
+#lpfjityqar .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rsmrcpbltd .gt_first_summary_row.thick {
+#lpfjityqar .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rsmrcpbltd .gt_last_summary_row {
+#lpfjityqar .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -916,7 +875,7 @@ medicaldata::supraclavicular %>%
   border-bottom-color: #D3D3D3;
 }
 
-#rsmrcpbltd .gt_grand_summary_row {
+#lpfjityqar .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -926,7 +885,7 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#rsmrcpbltd .gt_first_grand_summary_row {
+#lpfjityqar .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -936,11 +895,11 @@ medicaldata::supraclavicular %>%
   border-top-color: #D3D3D3;
 }
 
-#rsmrcpbltd .gt_striped {
+#lpfjityqar .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rsmrcpbltd .gt_table_body {
+#lpfjityqar .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -949,7 +908,7 @@ medicaldata::supraclavicular %>%
   border-bottom-color: #D3D3D3;
 }
 
-#rsmrcpbltd .gt_footnotes {
+#lpfjityqar .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -963,7 +922,7 @@ medicaldata::supraclavicular %>%
   border-right-color: #D3D3D3;
 }
 
-#rsmrcpbltd .gt_footnote {
+#lpfjityqar .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -972,7 +931,7 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#rsmrcpbltd .gt_sourcenotes {
+#lpfjityqar .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -986,7 +945,7 @@ medicaldata::supraclavicular %>%
   border-right-color: #D3D3D3;
 }
 
-#rsmrcpbltd .gt_sourcenote {
+#lpfjityqar .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -994,82 +953,75 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#rsmrcpbltd .gt_left {
+#lpfjityqar .gt_left {
   text-align: left;
 }
 
-#rsmrcpbltd .gt_center {
+#lpfjityqar .gt_center {
   text-align: center;
 }
 
-#rsmrcpbltd .gt_right {
+#lpfjityqar .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rsmrcpbltd .gt_font_normal {
+#lpfjityqar .gt_font_normal {
   font-weight: normal;
 }
 
-#rsmrcpbltd .gt_font_bold {
+#lpfjityqar .gt_font_bold {
   font-weight: bold;
 }
 
-#rsmrcpbltd .gt_font_italic {
+#lpfjityqar .gt_font_italic {
   font-style: italic;
 }
 
-#rsmrcpbltd .gt_super {
+#lpfjityqar .gt_super {
   font-size: 65%;
 }
 
-#rsmrcpbltd .gt_two_val_uncert {
-  display: inline-block;
-  line-height: 1em;
-  text-align: right;
-  font-size: 60%;
-  vertical-align: -0.25em;
-  margin-left: 0.1em;
-}
-
-#rsmrcpbltd .gt_footnote_marks {
+#lpfjityqar .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#rsmrcpbltd .gt_asterisk {
+#lpfjityqar .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rsmrcpbltd .gt_slash_mark {
-  font-size: 0.7em;
-  line-height: 0.7em;
-  vertical-align: 0.15em;
+#lpfjityqar .gt_indent_1 {
+  text-indent: 5px;
 }
 
-#rsmrcpbltd .gt_fraction_numerator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: 0.45em;
+#lpfjityqar .gt_indent_2 {
+  text-indent: 10px;
 }
 
-#rsmrcpbltd .gt_fraction_denominator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: -0.05em;
+#lpfjityqar .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#lpfjityqar .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#lpfjityqar .gt_indent_5 {
+  text-indent: 25px;
 }
 </style>
 <table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"><strong>Characteristic</strong></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Beta</strong></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>95% CI</strong><sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>p-value</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col"><strong>Characteristic</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col"><strong>Beta</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col"><strong>95% CI</strong><sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col"><strong>p-value</strong></th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
@@ -1146,47 +1098,6 @@ supra_model <- medicaldata::supraclavicular %>%
 performance::check_model(supra_model, panel = FALSE)
 ```
 
-```
-## $PP_CHECK
-```
-
-<img src="io23-linear-regression_files/figure-html/unnamed-chunk-2-1.png" width="672" />
-
-```
-## 
-## $NCV
-```
-
-<img src="io23-linear-regression_files/figure-html/unnamed-chunk-2-2.png" width="672" />
-
-```
-## 
-## $HOMOGENEITY
-```
-
-<img src="io23-linear-regression_files/figure-html/unnamed-chunk-2-3.png" width="672" />
-
-```
-## 
-## $OUTLIERS
-```
-
-<img src="io23-linear-regression_files/figure-html/unnamed-chunk-2-4.png" width="672" />
-
-```
-## 
-## $VIF
-```
-
-<img src="io23-linear-regression_files/figure-html/unnamed-chunk-2-5.png" width="672" />
-
-```
-## 
-## $QQ
-```
-
-<img src="io23-linear-regression_files/figure-html/unnamed-chunk-2-6.png" width="672" />
-
 This produces a nice set of six plots in the Plots tab) with some guidance in the subtitles on how to interpret the plots.
 
 There is a less pretty version in base R, using `plot(model_name)`, which also works to produce four of these 6 plots.
@@ -1240,7 +1151,6 @@ supra_data_plus
 ## # … with 90 more rows, 4 more variables: .hat <dbl>,
 ## #   .sigma <dbl>, .cooksd <dbl>, .std.resid <dbl>, and
 ## #   abbreviated variable names ¹​onset_sensory, ²​.rownames
-## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 ```
 
 The dataframe `supra_data_plus` includes a prediction of the outcome (`.fitted`) for each observation.

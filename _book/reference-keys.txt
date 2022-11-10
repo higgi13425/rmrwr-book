@@ -1,4 +1,4 @@
-tab:unnamed-chunk-23
+tab:unnamed-chunk-25
 fig:unnamed-chunk-1
 preface
 who-this-book-is-for
@@ -74,13 +74,13 @@ test-yourself-on-scurvy
 what-is-a-path
 try-it-yourself
 reading-excel-files-with-readxl
-test-yourself-on-strep_tb
+test-yourself-on-read_excel
 bringing-in-data-from-other-statistical-programs-sas-stata-spss-with-the-haven-package
 other-strange-file-types-with-rio
 data-exploration-with-glimpse-str-and-headtail
 taking-a-glimpse-with-glimpse
 try-this-out-yourself.
-test-yourself-on-strep_tb-1
+test-yourself-on-strep_tb
 examining-structure-with-str
 test-yourself-on-the-scurvy-dataset
 examining-a-bit-of-data-with-head-and-tail

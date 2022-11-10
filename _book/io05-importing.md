@@ -14,7 +14,7 @@ editor_options:
 For most of this book, we will be using datasets from the {medicaldata} package.
 These are easy to load.
 If you type into the Console pane `medicaldata::scurvy` , you will get James Lind's scurvy dataset (actually, a reconstruction of what it might have looked like for his 12 participants).
-If you want to save this data to an object in your work environment, you just need to assign this to a named object, like `scurvy`, like so, with an assignment arrow, componsed of a less than sign (<) and a hyphen (-):
+If you want to save this data to an object in your work environment, you just need to assign this to a named object, like `scurvy`, like so, with an assignment arrow, composed of a less than sign (<) and a hyphen (-):
 
 
 ```r
@@ -54,7 +54,14 @@ You can copy it to a new object, and experiment with modifying it, cleaning it, 
 You want to create a completely reproducible, step-by-step, scripted trail from your raw data to your finished analysis and final report, and you can only do that if you preserve the original raw data.
 That is the cornerstone of your analysis.
 It is tempting to fix minor data entry errors, or other aspects of the raw data.
-Do not do this - leave all errors intact in your raw data, and explicitly make edits with explanations of - who made the edit - when it was made - what was changed -  and why it was made. You should provide a justification for each change, and identify source documents to support the rationale. Every edit should be documented in your code, with who, when, what, and why.
+Do not do this - leave all errors intact in your raw data, and explicitly make edits with explanations of 
+
+- who made the edit 
+- when it was made 
+- what was changed 
+- and why the edit was made. 
+
+You should provide a justification for each change, and identify source documents to support the rationale. Every edit should be documented in your code, with who, when, what, and why.
 :::
 
 Now, on to the fun part.
@@ -103,15 +110,6 @@ We will also want to use the {glue} package shortly to access files on the web. 
 
 ```r
 install.packages('glue')
-```
-
-```
-## 
-## The downloaded binary packages are in
-## 	/var/folders/93/s18zkv2d4f556fxbjvb8yglc0000gp/T//Rtmpo0zGrA/downloaded_packages
-```
-
-```r
 library(glue)
 ```
 
@@ -165,7 +163,6 @@ read_csv(glue(url_stem, 'data/scurvy.csv'))
 ## #   ²​dosing_regimen_for_scurvy, ³​gum_rot_d6,
 ## #   ⁴​skin_sores_d6, ⁵​weakness_of_the_knees_d6,
 ## #   ⁶​lassitude_d6
-## # ℹ Use `colnames()` to see all variable names
 ```
 
 Let's look at what was extracted from the csv file.
@@ -182,14 +179,14 @@ The Console pane has a
 In the Column specification, the delimiter between items of data is identified (a comma), and a listing of variables with the `character` (chr) data type is printed. There are no non-character data types in this particular dataset.
 The 'guessing' of what data type is appropriate for each variable is done 'automagically', as the read_csv() function reads the first 1000 rows, then guesses what data type is present in each column (variable).
 It is often conservative, and in this case, made all of these columns into character variables (also called strings).
-You could argue that the col_character() assignment should be numeric for the study_id variable, or that the Likert scales used for outcomes like gum_rot_d6 and skin_sores_d6 should be coded as ordinal variables, known as ordered **factors** in R.
+You could argue that the col_character() assignment should be numeric for the study_id variable, or that the Likert scales used for outcomes like gum_rot_d6 and skin_sores_d6 should be coded as ordinal categorical variables, known as ordered **factors** in R.
 You will learn to control these data types during data import with the `spec()` argument.
 
 The last piece of output is the data rectangle itself.
 This is first identified as a 'tibble', which is a type of data table, with 12 rows and 8 columns, in `# A tibble: 12 x 8`.
 This is followed by a header row of variable names, and just below that is the data type (`<chr>` for character) for each column.
 Then, on the left are gray row numbers (which are not actually part of the data set), followed by (to the right) rows of data.
-A tibble, by default, only prints out only as many rows of data than will fill the console, and no more columns than will fill the width of your current console window.
+A tibble, by default, only prints out only as many rows of data as will fill the console, and no more columns than will fill the width of your current console window.
 The other columns (variable names) are listed in order at the bottom of the tibble in gray type.
 
 Now, by simply reading in the data, you can look at it, but you can't do anything with it, as you have not saved it as an object in your working Environment.
@@ -212,15 +209,15 @@ scurvy_data <- read_csv(glue(url_stem, 'data/scurvy.csv'))
 ```
 
 Now this is saved to `scurvy_data` in your working Environment.
-You can look in the Environment tab (top right pane in RStudio) and see that scurvy_data has now appeared in the Data section, with 12 observations of 8 variables.
+You can now look in the Environment tab (top right pane in RStudio) and see that scurvy_data has now appeared in the Data section, with 12 observations of 8 variables.
 This is not a file written (saved) to disk, but this dataset is now available in the working environment as an assigned data object.
 You can click on the blue arrow next to `scurvy_data` to show the variable names and variable types for this dataset.
 You can also click on the name `scurvy_data` to open up a Viewer window in the top left (Source) pane. You can scroll around to inspect all of the data. You can also get this view by typing `View(scurvy_data)` into the Console pane. 
-You can also print out the data at any time by typing `scurvy_data` into the Console, or into a script. Try this out in the Console pane.
+You can also print out the data to the Console pane at any time by typing `scurvy_data` into the Console, or into a script. Try this out in the Console pane.
 
 ### Test yourself on scurvy
 
-Inspect the data in the Viewer, and find the answer.
+Inspect the data in the Viewer, and find each answer.
 
 - How many limes did the British seamen in the citrus arm receive each day? 
 
@@ -233,7 +230,7 @@ The csv (comma separated values) format is a very common data format, and most d
 The csv format is simple, is not owned by anyone, and works across platforms.
 However, it can occasionally be tricky if you have commas in the middle of a variable like `degree`, with entries like 'md, phd' in a column that is mostly 'md'.
 The read_csv function is pretty smart, and usually gets the number of columns right, but this is something to watch out for.
-**Notice** that read_csv had no problem with the dosing of vinegar ("two spoonfuls, three times a day") in the scurvy dataset.
+**Notice** that read_csv had no problem with the dosing of vinegar ("two spoonfuls, three times a day") in the scurvy dataset, despite multiple commas.
 
 If you happen to come across a tab-separated values file, *read_tsv()* works the same way.
 Both of these functions have reasonable defaults, so that most of the time, you just have to use the path to your file (usually on your hard drive, rather than on the web) as the only argument.
@@ -507,20 +504,32 @@ glimpse(strep_tb_cols)
 ## Reading Excel Files with readxl
 
 While file types like \*.csv and \*.tsv are common, it is also common to use Microsoft Excel or an equivalent for data entry.
-There are a lot of reasons that this is not a good idea (see chapter XX and video at [link](https://www.youtube.com/watch?v=9f-hpJbjKZo)), but Excel is so ubiquitous, that it is often used for data entry.
+There are a lot of reasons that this is not a great idea (see the video at [link](https://www.youtube.com/watch?v=9f-hpJbjKZo)), but Excel is so ubiquitous that it is often used for data entry.
 
 Fortunately, the {readxl} package provides functions for reading excel files.
-The *read_xl()* function works nearly the same as *read_csv()*.
-But there are a few bonus arguments (options) that are really helpful.
+The *read_excel()* function works nearly the same as *read_csv()*.
+But there are a few bonus arguments (options) in *read_excel()* that are really helpful.
 
 The *read_excel()* function includes helpful arguments like **skip**, **col_names**, **col_types**, and **n_max**, much like *read_csv()*.
 In addition, read_excel() has a **sheet** argument, which lets you specify which sheet in an excel workbook you want to read.
-The default is the first worksheet, but you can set this to sheet = 4 for the 4th worksheet from the left, or sheet = "raw_data" to get the correct worksheet.
+The default is the first worksheet, but you can set this to sheet = 4 for the 4th worksheet from the left, or sheet = "raw_data" to get the correct worksheet named "raw_data".
 You can also set the range argument to only read in a particular range of cells, like range = "B2:G14".
-Below is an example of how to read in an Excel worksheet.
+Let's set up your local RStudio to read in a spreadsheet named **paulolol.xlsx**. Copy and run the code below in your local version of RStudio to prepare the file. This will pull an excel file from the web and write a copy to your local storage.
+
+```r
+library(httr) 
+github_raw_link <- "https://github.com/higgi13425/rmrwr-book/raw/master/data/paulolol.xlsx"
+paulolol_xlsx <- tempfile(fileext = ".xlsx")
+req <- httr::GET(github_raw_link, 
+          # write result to disk
+           write_disk(path = paulolol_xlsx))
+```
+
+Below is an example of how to read in this Excel worksheet. Copy and run this code locally, and see what you get in the Console for output.
 
 
 ```r
+library(readxl)
 read_excel(paulolol_xlsx, 
            sheet = 1,
            skip = 0)
@@ -555,7 +564,40 @@ read_excel(paulolol_xlsx,
 ## 14 <NA>                 mean placebo <NA>  159.… 91.25 <NA>
 ```
 
-### Test yourself on strep_tb
+You will notice that 
+
+1. a lot of the variable names became `..2` , `..3`, etc. 
+2. the first two rows have a lot of NAs (??).
+3. the last 3 rows have a lot of NAs, and some mean values(!?).
+
+This is because the person who created this spreadsheet did not make this a clean rectangle of data. This is a common problem with Excel. It is easy to add extra, descriptive header lines, and the variable names don't even appear until row 3. Further, the user calculated some mean values for sbp and hr in rows 12-14, which are being read in like regular observations (because while you can figure out what happened, Excel can't).
+
+This is a problem. We want a clean rectangle of data, with the true variable names at the top. There are actually only 8 rows of observations in this Excel spreadsheet.
+
+Try editing the skip and n_max arguments until you can read in a clean rectangle of data below. Copy the code hung 
+
+```r
+read_excel(paulolol_xlsx, 
+           sheet = 1,
+           skip = ___, 
+           n_max = ___)
+```
+
+
+<div class='webex-solution'><button>Show Solution</button>
+
+
+```r
+read_excel(paulolol_xlsx, 
+           sheet = 1,
+           skip = 3, 
+           n_max = 8)
+```
+
+</div>
+
+
+### Test yourself on read_excel()
 
 - which argument in read_excel lets you jump past initial rows of commentary? 
 
@@ -565,13 +607,13 @@ read_excel(paulolol_xlsx,
 
 <select class='webex-select'><option value='blank'></option><option value=''>pick</option><option value='answer'>sheet</option><option value=''>skip</option><option value=''>path</option></select>
 
-- How many missing (NA) values are in this dataset (as run with skip =1)?
+- How many missing (NA) values are in the paulolol dataset when run with skip = 1?
 
 <input class='webex-solveme nospaces' size='2' data-answer='["15"]'/>
 
-- what should the **range** argument be to read in these data cleanly? 
+- what should the **range** argument be to read in these data cleanly (without needing n_max or skip)? 
 
-<select class='webex-select'><option value='blank'></option><option value=''>B2:F8</option><option value='answer'>A4:F11</option><option value=''>A1:L30</option><option value=''>B4:K15</option></select>
+<select class='webex-select'><option value='blank'></option><option value=''>B2:F8</option><option value='answer'>A4:F12</option><option value=''>A1:L30</option><option value=''>B4:K15</option></select>
 
 ## Bringing in data from other Statistical Programs (SAS, Stata, SPSS) with the {haven} package
 
@@ -580,11 +622,14 @@ It is common to have the occasional collaborator who still uses one of the older
 The {haven} package makes reding in these data files straightforward. 
 
 
-** Set up **
-
+** Set up with web files**
+Copy and run the code chunk below to import a web file for SAS.
+The {haven} package provides functions like *read_sas()*, *read_dta()* and *read_sav()* to enable you to read proprietary file formats into R.
 
 
 ```r
+url_stem <- "https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/"
+
 haven::read_sas(glue(url_stem, "data/blood_storage.sas7bdat"))
 ```
 
@@ -609,10 +654,18 @@ haven::read_sas(glue(url_stem, "data/blood_storage.sas7bdat"))
 ## #   recurrence <dbl>, censor <dbl>,
 ## #   time_to_recurrence <dbl>, and abbreviated variable
 ## #   names ¹​rbc_age_group, ²​median_rbc_age
-## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 ```
 
 ** write files, add examples for Stata, SPSS **
+Similarly, you can read and write Stata files with *read_dta()* and *write_dta()*. Try out the example below.
+
+```r
+haven::read_dta(glue(url_stem, "data/blood_storage.dta"))
+```
+
+```
+## Error in open.connection(con, "rb"): HTTP error 404.
+```
 
 
 
@@ -680,10 +733,11 @@ We can see that study_id and dosing_regimen_for_scurvy are both of the `characte
 ### Try this out yourself.
 
 What can you learn about the strep_tb dataset with *glimpse()*?
-Edit the code chunk below to find out about strep_tb.
+Copy and edit the code chunk below in your local RStudio and run it to find out about the strep_tb dataset, using *glimpse()*.
 
 
 ```r
+library(tidyverse)
 glimpse(----)
 ```
 
@@ -691,11 +745,11 @@ glimpse(----)
 
 - which variable is the logical data type? 
 
-<select class='webex-select'><option value='blank'></option><option value=''>baseline_esr</option><option value='answer'>improved</option><option value=''>patient_id</option></select>
+<select class='webex-select'><option value='blank'></option><option value=''>baseline_esr</option><option value='answer'>improved</option><option value=''>patient_id</option><option value=''>baseline_condition</option></select>
 
 - which variable is the dbl numeric data type?
 
-<select class='webex-select'><option value='blank'></option><option value=''>arm</option><option value=''>patient_id</option><option value='answer'>rad_num</option></select>
+<select class='webex-select'><option value='blank'></option><option value=''>arm</option><option value=''>patient_id</option><option value='answer'>rad_num</option><option value=''>baseline_temp</option></select>
 
 - How many observations are in this dataset?
 
@@ -710,7 +764,7 @@ A common source of errors is trying to run a function that requires a particular
 Sometimes just checking the data structure will reveal the source of an error.
 
 The *str()* function does largely what *glimpse()* does, but provides a bit more detail, with less attractive formatting.
-Run the code chunk below to see the output of *str()*.
+Run the code chunk below to see the output of *str()* on the scurvy dataset.
 
 
 ```r
@@ -732,15 +786,15 @@ str(scurvy)
 The str() output starts by telling you that scurvy is a tibble, which is a modern sort of data table.
 A tibble will by default only print 10 rows of data, and only the number of columns that will fit in your Console pane.
 Then you see [12 x 8], which means that there are 12 rows and 8 columns - the default in R is to always list rows first, then columns (R x C notation).
-Then you learn that this is an S3 object, that is a tbl_df (tibble), and a tbl, and also a data.frame).
+Then you learn that this is an S3 object, that is a tbl_df (tibble), and also a tbl, and also a data.frame).
 Then you get a listing of each variable, data type, and a bit of the data, much like *glimpse()*.
-Another extra detail provided by str() is that it tells you some of the levels of each factor variable, and then shows these as integers (how the data is actually stored).
+Another extra detail provided by str() is that it tells you some of the levels of each factor variable, and then shows these as integers (note that the data for factors is actually stored as integers [in part to save storage space]).
 
 ### Test yourself on the scurvy dataset
 
 - what is the dose of cider? 
 
-<select class='webex-select'><option value='blank'></option><option value=''>25 drops</option><option value='answer'>1 quart per day</option><option value=''>one-half rood</option></select>
+<select class='webex-select'><option value='blank'></option><option value=''>25 drops</option><option value='answer'>1 quart per day</option><option value=''>one-half rood</option><option value=''>3 gtt</option></select>
 
 - how many levels of gum_rot are there?
 
@@ -781,7 +835,7 @@ str(strep_tb$patient_id)
 ```
 
 This shows you that patient_id is actually a character variable.
-If you wanted to find the mean value, you would have to change it to numeric (with *as.numeric()* first).
+If you wanted to find the mean value, you would have to change it to numeric (with *as.numeric()*) first.
 The glimpse() function provides identical output to str() for a variable in a table.
 
 
@@ -821,7 +875,6 @@ head(scurvy)
 ## #   abbreviated variable names ¹​dosing_regimen_for_scurvy,
 ## #   ²​gum_rot_d6, ³​skin_sores_d6, ⁴​weakness_of_the_knees_d6,
 ## #   ⁵​lassitude_d6
-## # ℹ Use `colnames()` to see all variable names
 ```
 
 ```r
@@ -843,7 +896,6 @@ tail(strep_tb)
 ## #   radiologic_6m <fct>, rad_num <dbl>, improved <lgl>, and
 ## #   abbreviated variable names ¹​dose_strep_g, ²​dose_PAS_g,
 ## #   ³​baseline_condition, ⁴​baseline_temp
-## # ℹ Use `colnames()` to see all variable names
 ```
 
 Note that since these are tibbles, they will only print the columns that will fit into your Console pane.
@@ -932,39 +984,38 @@ It is actually much easier to see the full width and height of a data set by scr
 
 - What function (and argument) let you print all the columns of a tibble?
 
-<select class='webex-select'><option value='blank'></option><option value='answer'>print(x, width=Inf)</option><option value=''>filter(starts_with("width"))</option><option value=''>sum(na.rm=TRUE)</option></select>
+<select class='webex-select'><option value='blank'></option><option value='answer'>print(x, width=Inf)</option><option value=''>filter(starts_with("width"))</option><option value=''>sum(na.rm=TRUE)</option><option value=''>print(wide)</option></select>
 
 - What function (and argument) let you print all the *rows* of a tibble?
 
-<select class='webex-select'><option value='blank'></option><option value=''>filter(ends_with("all"))</option><option value=''>median(na.rm=TRUE)</option><option value='answer'>print(x, n=Inf)</option></select>
+<select class='webex-select'><option value='blank'></option><option value=''>filter(ends_with("all"))</option><option value=''>median(na.rm=TRUE)</option><option value='answer'>print(x, n=Inf)</option><option value=''>print(long)</option></select>
 
 If you just want a quick view of a few critical columns of your data, you can obtain this with the *select()* function, as in the code chunk below.
-Note that if you want to look at a random sample of your dataset, rather than the head or tail, you can use *sample_frac()* or *sample_n()* to do this. This sampling can be helpful if your data are sorted, or the head and tail rows are not representative of the whole dataset.
+Note that if you want to look at a random sample of your dataset, rather than the head or tail, you can use *slice_sample()* to do this. This sampling can be helpful if your data are sorted, or the head and tail rows are not representative of the whole dataset.
 See how this is used by running the code chunk below, which uses a 10% random sample of strep_tb to check that the mutate steps to generate the variables `rad_num` and `improved` worked correctly.
 
 
 ```r
 #check that radiologic_6m, rad_num, and improved all match
 strep_tb %>% 
-  sample_frac(0.1) %>% 
+  slice_sample(prop = 0.1) %>% 
   select(radiologic_6m, rad_num, improved)
 ```
 
 ```
-## # A tibble: 11 × 3
-##    radiologic_6m                rad_num improved
-##    <fct>                          <dbl> <lgl>   
-##  1 5_Moderate_improvement             5 TRUE    
-##  2 4_No_change                        4 FALSE   
-##  3 5_Moderate_improvement             5 TRUE    
-##  4 3_Moderate_deterioration           3 FALSE   
-##  5 5_Moderate_improvement             5 TRUE    
-##  6 3_Moderate_deterioration           3 FALSE   
-##  7 3_Moderate_deterioration           3 FALSE   
-##  8 6_Considerable_improvement         6 TRUE    
-##  9 6_Considerable_improvement         6 TRUE    
-## 10 6_Considerable_improvement         6 TRUE    
-## 11 2_Considerable_deterioration       2 FALSE
+## # A tibble: 10 × 3
+##    radiologic_6m              rad_num improved
+##    <fct>                        <dbl> <lgl>   
+##  1 1_Death                          1 FALSE   
+##  2 6_Considerable_improvement       6 TRUE    
+##  3 3_Moderate_deterioration         3 FALSE   
+##  4 1_Death                          1 FALSE   
+##  5 4_No_change                      4 FALSE   
+##  6 6_Considerable_improvement       6 TRUE    
+##  7 1_Death                          1 FALSE   
+##  8 3_Moderate_deterioration         3 FALSE   
+##  9 5_Moderate_improvement           5 TRUE    
+## 10 1_Death                          1 FALSE
 ```
 
 
@@ -980,11 +1031,12 @@ Run the code chunk below, applying the `skim()` function to the strep_tb dataset
 
 
 ```r
+library(skimr)
 skimr::skim(strep_tb)
 ```
 
 
-Table: (\#tab:unnamed-chunk-23)Data summary
+Table: (\#tab:unnamed-chunk-25)Data summary
 
 |                         |         |
 |:------------------------|:--------|
@@ -1041,15 +1093,15 @@ Table: (\#tab:unnamed-chunk-23)Data summary
 
 - How many females participated in the strep_tb study? 
 
-<select class='webex-select'><option value='blank'></option><option value=''>52</option><option value='answer'>59</option><option value=''>48</option></select>
+<select class='webex-select'><option value='blank'></option><option value=''>52</option><option value='answer'>59</option><option value=''>48</option><option value=''>37</option></select>
 
 - What proportion of subjects in strep_tb were improved? 
 
-<select class='webex-select'><option value='blank'></option><option value=''>0.493</option><option value='answer'>50.514</option><option value=''>0.55</option></select>
+<select class='webex-select'><option value='blank'></option><option value=''>0.71</option><option value=''>0.493</option><option value='answer'>0.514</option><option value=''>0.55</option></select>
 
 - What is the mean value for rad_num in strep_tb? 
 
-<select class='webex-select'><option value='blank'></option><option value='answer'>3.93</option><option value=''>1.89</option><option value=''>4.7</option></select>
+<select class='webex-select'><option value='blank'></option><option value=''>7.44</option><option value='answer'>3.93</option><option value=''>1.89</option><option value=''>4.7</option></select>
 
 
 A fancier approach is taken by the DataExplorer package, which can create a full html report with correlations and PCA analysis. Copy and run the chunk below to see what the Data Profiling Report looks like.
@@ -1067,7 +1119,7 @@ DataExplorer::create_report(strep_tb)
 
 - How many total data points ('observations') are there in the strep_tb dataset? 
 
-<select class='webex-select'><option value='blank'></option><option value=''>10,000</option><option value='answer'>1,391</option><option value=''>107</option></select>
+<select class='webex-select'><option value='blank'></option><option value=''>10,000</option><option value='answer'>107</option><option value=''>1,391</option><option value=''>17</option></select>
 
 You can choose which you prefer, the simpler approach of {skimr} vs the fancier reports of {DataExplorer.}
 

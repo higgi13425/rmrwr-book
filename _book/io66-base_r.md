@@ -179,7 +179,6 @@ licorice %>%
 ## #   `11` <dbl>, `12` <dbl>, `13` <dbl>, `14` <dbl>,
 ## #   `15` <dbl>, `16` <dbl>, `17` <dbl>, `18` <dbl>,
 ## #   `19` <dbl>
-## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 ```
 
 

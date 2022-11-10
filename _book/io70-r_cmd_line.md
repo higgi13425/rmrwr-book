@@ -76,7 +76,7 @@ whoami;date
 
 ```
 ## peterhiggins
-## Thu Oct  6 20:54:22 EDT 2022
+## Thu Nov 10 15:49:18 EST 2022
 ```
 :::
 
@@ -146,6 +146,7 @@ ls
 ## 2021.Biobanking Program_InVivo_DRAFT-6.14.2021.docx
 ## 2021.Biobanking Program_InVivo_PDRH-6.21.docx
 ## 2021.Higgins AGA Distinguished Clinician.CO.docx
+## 2022.10.19_MH_CCC_V2_PDRH.docx
 ## 203ClareScenes080119 copy.pdf
 ## 2PM talks
 ## A is for Allspice.2.0.docx
@@ -250,6 +251,7 @@ ls
 ## Cover Letter.pdf
 ## CoverLetterPlus.pptx
 ## Crash&Burn_ScriptV2_100318 copy.pdf
+## Curacle CDA Higgins_20221011.docx
 ## DDW 2012 MTP Immunomodulator Talk
 ## DDW 2022 AGA Space Grid.xlsx
 ## DDW JAK for UC.pptx
@@ -341,6 +343,8 @@ ls
 ## Higgins_Assessment_Promotion_AReinink_letterhead_sig.pdf
 ## Higgins_IBD_AtoZ.pptx
 ## Higgins_LOS_IBDBiobank_Shah_Nusrat_2019.docx
+## Higgins_LOS_KNewmanAGA_PDRH.docx
+## Higgins_LOS_KNewmanAGA_PDRH.pdf
 ## Higgins_LOS_KNewmanF32_letterhead_sig.docx
 ## Higgins_LOS_KNewmanF32_letterhead_sig.pdf
 ## Higgins_Peter-The-Janus-Kinase-Inhibitors-Two-Faces-for-Efficacy-and-Safety.pptx
@@ -411,6 +415,7 @@ ls
 ## K105_Melmed_PROs in Practice_MB_bb_JLS.pptx
 ## K23 Aims - Shirley Cohen-Mekelburg 11.14.19.docx
 ## K23_morph_measurements_MockupManuscript_21JAN2019.docx
+## KCRN Higgins Consulting Agreement for Curacle 7Oct2022.docx
 ## KP pdfs
 ## K_R_NIH_biosketches_2022.pptx
 ## Kelli Porzondek_Performance_Review_Sep_2021.docx
@@ -644,6 +649,7 @@ ls
 ## blue_down_arrow - Gravit Designer.html
 ## bmj_imputation.pdf
 ## bowel disease_2108_PDRH.docx
+## ccf_verily.docx
 ## cgh_factors_utilization.pdf
 ## clare_stocks_long_term.xlsx
 ## cycling core exercises.docx
@@ -688,6 +694,7 @@ ls
 ## signature.pdf
 ## signature.png
 ## sorted_steno.xlsx
+## starting biologics.pptx
 ## stiff_bcl.R
 ## submitJanssen_IBD School Videos_12Jul2018.pdf
 ## tidyr_pivot.png

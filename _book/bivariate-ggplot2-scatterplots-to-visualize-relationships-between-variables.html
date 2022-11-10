@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 22 Bivariate ggplot2 Scatterplots to Visualize Relationships Between Variables | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 22 Bivariate ggplot2 Scatterplots to Visualize Relationships Between Variables | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2022-10-06" />
+<meta name="date" content="2022-11-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -59,8 +59,8 @@
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
-<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
-<link href="libs/tabwid-1.0.0/scrool.css" rel="stylesheet" />
+<link href="libs/tabwid-1.1.0/tabwid.css" rel="stylesheet" />
+<link href="libs/tabwid-1.1.0/scrool.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -252,7 +252,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#reading-excel-files-with-readxl"><i class="fa fa-check"></i><b>5.2</b> Reading Excel Files with readxl</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#test-yourself-on-strep_tb"><i class="fa fa-check"></i><b>5.2.1</b> Test yourself on strep_tb</a></li>
+<li class="chapter" data-level="5.2.1" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#test-yourself-on-read_excel"><i class="fa fa-check"></i><b>5.2.1</b> Test yourself on read_excel()</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#bringing-in-data-from-other-statistical-programs-sas-stata-spss-with-the-haven-package"><i class="fa fa-check"></i><b>5.3</b> Bringing in data from other Statistical Programs (SAS, Stata, SPSS) with the {haven} package</a></li>
 <li class="chapter" data-level="5.4" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#other-strange-file-types-with-rio"><i class="fa fa-check"></i><b>5.4</b> Other strange file types with rio</a></li>
@@ -260,7 +260,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="5.5.1" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#taking-a-glimpse-with-glimpse"><i class="fa fa-check"></i><b>5.5.1</b> Taking a glimpse with <em>glimpse()</em></a></li>
 <li class="chapter" data-level="5.5.2" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#try-this-out-yourself."><i class="fa fa-check"></i><b>5.5.2</b> Try this out yourself.</a></li>
-<li class="chapter" data-level="5.5.3" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#test-yourself-on-strep_tb-1"><i class="fa fa-check"></i><b>5.5.3</b> Test yourself on strep_tb</a></li>
+<li class="chapter" data-level="5.5.3" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#test-yourself-on-strep_tb"><i class="fa fa-check"></i><b>5.5.3</b> Test yourself on strep_tb</a></li>
 <li class="chapter" data-level="5.5.4" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#examining-structure-with-str"><i class="fa fa-check"></i><b>5.5.4</b> Examining Structure with <em>str()</em></a></li>
 <li class="chapter" data-level="5.5.5" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#test-yourself-on-the-scurvy-dataset"><i class="fa fa-check"></i><b>5.5.5</b> Test yourself on the scurvy dataset</a></li>
 <li class="chapter" data-level="5.5.6" data-path="importing-your-data-into-r.html"><a href="importing-your-data-into-r.html#examining-a-bit-of-data-with-head-and-tail"><i class="fa fa-check"></i><b>5.5.6</b> Examining a bit of data with <em>head()</em> and <em>tail()</em></a></li>
@@ -871,20 +871,20 @@ and <code>install.packages("packagename")</code> to install these if they are no
 </ul>
 <p>In this example, we will map the participant <code>age</code> to x, and the <code>baseline</code> number of polyps to y,
 and use <code>geom_point</code> as the geom.</p>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb447-1" aria-hidden="true" tabindex="-1"></a>medicaldata<span class="sc">::</span>polyps <span class="sc">%&gt;%</span> </span>
-<span id="cb447-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb447-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb447-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb447-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> baseline) <span class="sc">+</span> </span>
-<span id="cb447-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb447-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb450-1" aria-hidden="true" tabindex="-1"></a>medicaldata<span class="sc">::</span>polyps <span class="sc">%&gt;%</span> </span>
+<span id="cb450-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb450-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb450-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb450-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> baseline) <span class="sc">+</span> </span>
+<span id="cb450-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb450-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="io48b-bivariate-scatter-plots_files/figure-html/scatter-1-1.png" width="672" /></p>
 <p>Copy this code to your RStudio console, and run it to get this plot.</p>
 <p>This gives us a very basic scatterplot, with a y-axis range between 7 and 318 polyps (that would have been a looooong colonoscopy if you tried to remove all 318 polyps).</p>
 <p>Not a dramatic correlation, though you could imagine a downward slope with age if you fitted a linear regression line. Though this is likely pulled way up at age 18 by the participant with many polyps.</p>
 <p>Now try changing the code to map y to the number of polyps at 3 months (<code>number3m</code>). The code example below adds a linear regression line with <code>method = "lm"</code>. <code>lm</code> stands for linear model. Add a smoothing line to your code in the Console. Try <code>method = "loess"</code> for a different look, rather than forcing a linear relationship.</p>
-<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb448-1" aria-hidden="true" tabindex="-1"></a>polyps <span class="sc">%&gt;%</span> </span>
-<span id="cb448-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb448-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb448-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb448-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> baseline) <span class="sc">+</span> </span>
-<span id="cb448-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb448-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb448-5"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb448-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;loess&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb451-1" aria-hidden="true" tabindex="-1"></a>polyps <span class="sc">%&gt;%</span> </span>
+<span id="cb451-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb451-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb451-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb451-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> baseline) <span class="sc">+</span> </span>
+<span id="cb451-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb451-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb451-5"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb451-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;loess&#39;</span>)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="io48b-bivariate-scatter-plots_files/figure-html/scatter-2-1.png" width="672" /></p>
 <p>Does it matter whether you map x or y first, in the aes() function? Try swapping these to find out.</p>
@@ -905,11 +905,11 @@ and use <code>geom_point</code> as the geom.</p>
 <p>Try this by modifying the code below.
 Remember to put a comma between mappings, and to put your aesthetic mapping <em>inside</em> the <code>aes()</code> function.</p>
 <p>Then run the code chunk to generate a plot.</p>
-<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb450-1" aria-hidden="true" tabindex="-1"></a>polyps <span class="sc">%&gt;%</span> </span>
-<span id="cb450-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb450-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb450-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb450-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> number3m) <span class="sc">+</span> </span>
-<span id="cb450-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb450-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&#39;blue&#39;</span>) <span class="sc">+</span></span>
-<span id="cb450-5"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb450-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb453-1" aria-hidden="true" tabindex="-1"></a>polyps <span class="sc">%&gt;%</span> </span>
+<span id="cb453-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb453-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb453-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb453-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> number3m) <span class="sc">+</span> </span>
+<span id="cb453-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb453-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&#39;blue&#39;</span>) <span class="sc">+</span></span>
+<span id="cb453-5"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb453-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="io48b-bivariate-scatter-plots_files/figure-html/scatter-3-1.png" width="672" /></p>
 <p>If this did not work, put <code>, color = treatment</code> after <code>y = number3m</code> inside the <code>aes()</code> parentheses.</p>
@@ -923,10 +923,10 @@ Remember to put a comma between mappings, and to put your aesthetic mapping <em>
 <li>NOTE that a variable can be mapped to <strong>more than one</strong> visual property.</li>
 <li>BUT if you try to map more than one variable to a single visual property within the <code>aes()</code> function, the subsequent mappings will be ignored. The 1st mapping (within one aes) wins.</li>
 </ul>
-<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb452-1" aria-hidden="true" tabindex="-1"></a>polyps <span class="sc">%&gt;%</span> </span>
-<span id="cb452-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb452-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb452-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb452-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> number3m) <span class="sc">+</span> </span>
-<span id="cb452-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb452-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb455-1" aria-hidden="true" tabindex="-1"></a>polyps <span class="sc">%&gt;%</span> </span>
+<span id="cb455-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb455-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb455-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb455-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> number3m) <span class="sc">+</span> </span>
+<span id="cb455-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb455-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="io48b-bivariate-scatter-plots_files/figure-html/scatter-4-1.png" width="672" /></p>
 <div class="warning">
 <p>If you try to map a variable to a visual property <strong>outside</strong> of the <code>aes()</code> function, it will be treated as a constant, not a variable, which can lead to strange results. Try moving <code>color = treatment</code> to a spot inside of the <code>geom_point()</code> function parentheses. Or even better, try <code>color = 'blue'</code> to within geom_point(). What happens?</p>
@@ -938,20 +938,20 @@ Remember to put a comma between mappings, and to put your aesthetic mapping <em>
 <p>This layered structure allows you to map a visual property (aesthetic) once, in the ggplot layer, or in the aes() layer. All subsequent layers <code>inherit</code> these visual properties, unless you specify differently. So your geom_point() layer inherits the mappings from the aesthetic layer.
 But if you want to, you can over-write the inherited properties, by stating a different <code>aes()</code> mapping.</p>
 <p>See the example below - the color mapping in geom_point over-writes the color mapping in the aesthetic layer, because it is in a later layer. In this case, the last layer wins.</p>
-<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb453-1" aria-hidden="true" tabindex="-1"></a>polyps <span class="sc">%&gt;%</span> </span>
-<span id="cb453-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb453-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb453-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb453-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> number3m, <span class="at">color =</span> treatment) <span class="sc">+</span> </span>
-<span id="cb453-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb453-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> age))</span></code></pre></div>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb456-1" aria-hidden="true" tabindex="-1"></a>polyps <span class="sc">%&gt;%</span> </span>
+<span id="cb456-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb456-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb456-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb456-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> number3m, <span class="at">color =</span> treatment) <span class="sc">+</span> </span>
+<span id="cb456-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb456-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> age))</span></code></pre></div>
 <p><img src="io48b-bivariate-scatter-plots_files/figure-html/scatter-5-1.png" width="672" /></p>
 <p>You can choose to do this deliberately. In the case below, this is done to make a <strong>single</strong> regression line that is purple, rather than the default black color.</p>
 <p>Because the color in <code>geom_smooth()</code> is set to a constant, you only get one (overall) regression line.</p>
 <p>Also notice that the color of the points is a bit dimmer than the previous plot. This is because the geom_smooth gray confidence interval from the linear regression is covering most of the points. Test this out by moving the geom_point() layer to the line <strong>after</strong> geom_smooth(). This should bring these points to the front. Whatever layer is last in the code is plotted on top.</p>
 <p>You can also ‘lighten up’ the confidence interval by setting the alpha for <code>geom_smooth()</code> to 0.1 (on a 0 to 1 opacity scale)</p>
-<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb454-1" aria-hidden="true" tabindex="-1"></a>polyps <span class="sc">%&gt;%</span> </span>
-<span id="cb454-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb454-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb454-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb454-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> number3m, <span class="at">color =</span> treatment) <span class="sc">+</span> </span>
-<span id="cb454-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb454-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb454-5"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb454-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>, <span class="at">color =</span> <span class="st">&#39;purple&#39;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb457-1" aria-hidden="true" tabindex="-1"></a>polyps <span class="sc">%&gt;%</span> </span>
+<span id="cb457-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb457-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb457-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb457-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> number3m, <span class="at">color =</span> treatment) <span class="sc">+</span> </span>
+<span id="cb457-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb457-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb457-5"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb457-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>, <span class="at">color =</span> <span class="st">&#39;purple&#39;</span>) </span></code></pre></div>
 <p><img src="io48b-bivariate-scatter-plots_files/figure-html/scatter-6-1.png" width="672" /></p>
 </div>
 <div id="aesthetic-mapping-micro-quiz" class="section level2 hasAnchor" number="22.6">
@@ -966,28 +966,28 @@ But if you want to, you can over-write the inherited properties, by stating a di
 <div id="controlling-point-shape-size-and-color-manually" class="section level2 hasAnchor" number="22.7">
 <h2><span class="header-section-number">22.7</span> Controlling Point Shape, Size, and Color Manually<a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#controlling-point-shape-size-and-color-manually" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>There are 25 point shapes available in R, which can be seen here, with the help of the <em>show_point_shapes()</em> function from {ggpubr}:</p>
-<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb455-1" aria-hidden="true" tabindex="-1"></a>ggpubr<span class="sc">::</span><span class="fu">show_point_shapes</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb458-1" aria-hidden="true" tabindex="-1"></a>ggpubr<span class="sc">::</span><span class="fu">show_point_shapes</span>()</span></code></pre></div>
 <p><img src="io48b-bivariate-scatter-plots_files/figure-html/point-shapes-1.png" width="672" /></p>
 <p>Notice that the shapes 21-25 have an outline color, and can be filled with a different color, while shapes 1-20 only have a single color option.</p>
 <p>By default, ggplot2 selects shapes and colors for you automatically (in order, 1-25, for shapes, and in the order of the default color palette for colors), so that you don’t have to worry about specifying these.</p>
 <p>But if you want to take the wheel, you can have more control of the shape, size, and color of your scatterplot points with <em>scale</em> functions.</p>
 <p>Let’s try this with a scatterplot using the <strong>cmv</strong> dataset. We will look at the relationship between the CD34 cell dose at the time of bone marrow transplant, and the time to development of CMV.</p>
 <p>For our base plot, we will map donor cmv status to color. Since the donor.cmv variable is stored as a <code>double</code> it is continuous, but we actually want this as a dichtomous 0/1 variable, so we will recode this ‘on the fly’ in the aesthetic mapping as <code>factor(donor.cmv)</code> instead of just <code>donor.cmv</code>. You can remove <code>factor()</code> from the code below to how this helps.</p>
-<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb456-1" aria-hidden="true" tabindex="-1"></a>cmv <span class="sc">%&gt;%</span> </span>
-<span id="cb456-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb456-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb456-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb456-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> CD34.dose, <span class="at">x =</span> time.to.cmv, <span class="at">color =</span> <span class="fu">factor</span>(donor.cmv)) <span class="sc">+</span> </span>
-<span id="cb456-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb456-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()  <span class="sc">+</span></span>
-<span id="cb456-5"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb456-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb459-1" aria-hidden="true" tabindex="-1"></a>cmv <span class="sc">%&gt;%</span> </span>
+<span id="cb459-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb459-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb459-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb459-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> CD34.dose, <span class="at">x =</span> time.to.cmv, <span class="at">color =</span> <span class="fu">factor</span>(donor.cmv)) <span class="sc">+</span> </span>
+<span id="cb459-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb459-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()  <span class="sc">+</span></span>
+<span id="cb459-5"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb459-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>)</span></code></pre></div>
 <p><img src="io48b-bivariate-scatter-plots_files/figure-html/scatter-7-1.png" width="672" /></p>
 <p>These data show an interaction between cmv.donor status and the CD34.dose. In folks who receive a CMV+ donor BMT, higher doses of CD34 cells are associated with a delay in the onset of CMV, but this is not the case with CMV negative BMT donors.</p>
 <div id="manual-shapes" class="section level3 hasAnchor" number="22.7.1">
 <h3><span class="header-section-number">22.7.1</span> Manual Shapes<a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#manual-shapes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To control the point shapes, let’s replace the geom_smooth line with <code>scale_shape_manual()</code> and set the values to 22 and 25. We also have to set an aesthetic mapping for shape. Let’s map this to the donor.sex variable.</p>
-<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb457-1" aria-hidden="true" tabindex="-1"></a>cmv <span class="sc">%&gt;%</span> </span>
-<span id="cb457-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb457-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb457-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb457-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> CD34.dose, <span class="at">x =</span> time.to.cmv, <span class="at">color =</span> <span class="fu">factor</span>(donor.cmv), <span class="at">shape =</span> <span class="fu">factor</span>(donor.sex)) <span class="sc">+</span> </span>
-<span id="cb457-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb457-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()  <span class="sc">+</span></span>
-<span id="cb457-5"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb457-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">25</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb460-1" aria-hidden="true" tabindex="-1"></a>cmv <span class="sc">%&gt;%</span> </span>
+<span id="cb460-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb460-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb460-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb460-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> CD34.dose, <span class="at">x =</span> time.to.cmv, <span class="at">color =</span> <span class="fu">factor</span>(donor.cmv), <span class="at">shape =</span> <span class="fu">factor</span>(donor.sex)) <span class="sc">+</span> </span>
+<span id="cb460-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb460-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()  <span class="sc">+</span></span>
+<span id="cb460-5"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb460-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">25</span>))</span></code></pre></div>
 <p><img src="io48b-bivariate-scatter-plots_files/figure-html/scatter-8-1.png" width="672" /></p>
 <p>Again, because donor.sex is stored as a numeric variable, we have to make it into a dichotomous factor on the fly in order to map this variable to shapes.</p>
 <p>Note that when you use the fillable shapes (21-25), you can also map a fill aesthetic to different color properties, separate from the color outline of the shape.</p>
@@ -998,20 +998,20 @@ But if you want to, you can over-write the inherited properties, by stating a di
 <h3><span class="header-section-number">22.7.2</span> Manual Sizes<a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#manual-sizes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s manually control the sizes of points - use the same approach, with <code>scale_size_manual()</code>. We want to emphasize the points with donor.cmv = 1, to see how this relates to the outcome variable, cmv, which is mapped to color.</p>
 <p>Run the scatter plot below as an example, then edit the code to map size to <code>factor(donor.cmv)</code>. Then add a line of code for <code>scale_size_manual()</code>, and set the values to 1 and 4.</p>
-<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb458-1" aria-hidden="true" tabindex="-1"></a>cmv <span class="sc">%&gt;%</span> </span>
-<span id="cb458-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb458-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb458-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb458-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> age, <span class="at">x =</span> time.to.transplant, <span class="at">size =</span> CD8.dose, <span class="at">color =</span> <span class="fu">factor</span>(cmv)) <span class="sc">+</span></span>
-<span id="cb458-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb458-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb461-1" aria-hidden="true" tabindex="-1"></a>cmv <span class="sc">%&gt;%</span> </span>
+<span id="cb461-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb461-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb461-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb461-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> age, <span class="at">x =</span> time.to.transplant, <span class="at">size =</span> CD8.dose, <span class="at">color =</span> <span class="fu">factor</span>(cmv)) <span class="sc">+</span></span>
+<span id="cb461-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb461-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span></code></pre></div>
 <p><img src="io48b-bivariate-scatter-plots_files/figure-html/scatter-9-1.png" width="672" /></p>
 </div>
 <div id="manual-color" class="section level3 hasAnchor" number="22.7.3">
 <h3><span class="header-section-number">22.7.3</span> Manual Color<a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#manual-color" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s manually control the colors - use the same approach, with <code>scale_color_manual()</code>.
 Run the scatter plot below as an example, then edit the code to map color to <code>factor(donor.cmv)</code>. Then add a line of code for <code>scale_color_manual()</code>, and set the values to “green” and “red”.</p>
-<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb459-1" aria-hidden="true" tabindex="-1"></a>cmv <span class="sc">%&gt;%</span> </span>
-<span id="cb459-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb459-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb459-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb459-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> age, <span class="at">x =</span> time.to.transplant, <span class="at">color =</span> diagnosis) <span class="sc">+</span></span>
-<span id="cb459-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb459-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb462-1" aria-hidden="true" tabindex="-1"></a>cmv <span class="sc">%&gt;%</span> </span>
+<span id="cb462-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb462-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb462-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb462-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> age, <span class="at">x =</span> time.to.transplant, <span class="at">color =</span> diagnosis) <span class="sc">+</span></span>
+<span id="cb462-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb462-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span></code></pre></div>
 <p><img src="io48b-bivariate-scatter-plots_files/figure-html/scatter-10-1.png" width="672" /></p>
 
 </div>
@@ -1244,7 +1244,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
