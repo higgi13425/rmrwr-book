@@ -421,20 +421,26 @@ url_stem <- "https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/"
 haven::read_sas(glue(url_stem, "data/blood_storage.sas7bdat"))
 ```
 
-** write files, add examples for Stata, SPSS **
+
 Similarly, you can read and write Stata files with *read_dta()* and *write_dta()*. Try out the example below.
 ```{r, error=TRUE}
 haven::read_dta(glue(url_stem, "data/blood_storage.dta"))
 ```
 
+You can also read and write SPSS files with *read_sav()* and *write_sav()*. Try out the example below.
 
+```{r, error=TRUE}
+haven::read_sav(glue(url_stem, "data/strep_tb.sav"))
+```
+
+You can learn more about how to read and write other data file types at [haven](https://haven.tidyverse.org)
 
 
 ## Other strange file types with rio
 
-Once in a while, you will run into a strange data file that is not a csv or Excel or from a common statistical package (SAS, Stata, SPSS). These might include Systat, Minitab, RDA, or others.
+Once in a while, you will run into a strange data file that is not a csv or Excel or or a proprietary format from a common statistical package (SAS, Stata, SPSS). These might include data formats from Systat, Minitab, RDA, feather, or others.
 
-This is when the {rio} package comes to the rescue. The name, rio, stands for R input and output. The {rio} package looks at the file extension (like .csv, .xls, .dta) to guess the file type, and then applies the appropriate method to read in the data. The import() function in {rio} makes data import much easier. You don't always have the fine control seen in {readr}, but {rio} is an all-purpose tool that can get nearly any data format into R.
+This is when the {rio} package comes to the rescue. The name, rio, stands for R Input and Output. The {rio} package looks at the file extension (like .csv, .xls, .dta) to guess the file type, and then applies the appropriate method to read in the data. The import() function in {rio} makes data import much easier. You don't always have the fine control seen in {readr} or {readxl}, but {rio} is an all-purpose tool that can get nearly any data format into R.
 
 Try this out with the code chunk below.
 Just replace the *filename* in the code chunk with one of the files named below.
@@ -449,7 +455,7 @@ Try to use the same `import()` function to read
 rio::import(glue(url_stem, "data/filename"))
 ```
 
-It can be very convenient to use {rio} for unusual file types.
+It can be very convenient to use {rio} for unusual file types. You can read more about the [rio package](https://www.rdocumentation.org/packages/rio/versions/0.5.29)
 
 ## Data exploration with glimpse, str, and head/tail
 
@@ -540,8 +546,8 @@ You got a **warning** that pointed out that the `argument is not numeric or logi
 So you run *str()* to find out the data structure of this variable.
 
 ```{r}
-mean(strep_tb$patient_id)
-str(strep_tb$patient_id)
+mean(medicaldata::strep_tb$patient_id)
+str(medicaldata::strep_tb$patient_id)
 ```
 
 This shows you that patient_id is actually a character variable.
@@ -549,7 +555,7 @@ If you wanted to find the mean value, you would have to change it to numeric (wi
 The glimpse() function provides identical output to str() for a variable in a table.
 
 ```{r}
-glimpse(strep_tb$patient_id)
+glimpse(medicaldata::strep_tb$patient_id)
 ```
 
 You can choose whether you prefer the details of *str()* or the nicer formatting of *glimpse()* for yourself.
@@ -562,8 +568,8 @@ As you might have guessed, these functions give you a quick view of the head (to
 Try this out with scurvy or strep_tb.
 
 ```{r}
-head(scurvy)
-tail(strep_tb)
+head(medicaldata::scurvy)
+tail(medicaldata::strep_tb)
 
 ```
 
@@ -572,8 +578,8 @@ You can see all variables and the whole width (though it will wrap around to new
 Run the code chunk below to see how this is different.
 
 ```{r}
-head(as.data.frame(scurvy))
-print(tail(strep_tb), width = Inf)
+head(as.data.frame(medicaldata::scurvy))
+print(tail(medicaldata::strep_tb), width = Inf)
 ```
 
 It is actually much easier to see the full width and height of a data set by scrolling, which you can do when you *View()* a dataset in the RStudio viewer. Try this out in the Console pane, with `View(strep_tb)`.
@@ -594,7 +600,7 @@ See how this is used by running the code chunk below, which uses a 10% random sa
 
 ```{r}
 #check that radiologic_6m, rad_num, and improved all match
-strep_tb %>% 
+medicaldata::strep_tb %>% 
   slice_sample(prop = 0.1) %>% 
   select(radiologic_6m, rad_num, improved)
 ```
@@ -612,7 +618,7 @@ Run the code chunk below, applying the `skim()` function to the strep_tb dataset
 
 ```{r}
 library(skimr)
-skimr::skim(strep_tb)
+skimr::skim(medicaldata::strep_tb)
 ```
 
 ### Test yourself on the `skim()` results
@@ -633,7 +639,7 @@ skimr::skim(strep_tb)
 A fancier approach is taken by the DataExplorer package, which can create a full html report with correlations and PCA analysis. Copy and run the chunk below to see what the Data Profiling Report looks like.
 
 ```{r, eval=FALSE}
-DataExplorer::create_report(strep_tb)
+DataExplorer::create_report(medicaldata::strep_tb)
 ```
 
 ### Test yourself on the `create_report()` results
@@ -708,6 +714,7 @@ read_excel(path = 'data/paulolol2.xlsx',
 ## Future forms of data ingestion
 - https://www.datacamp.com/community/tutorials/r-data-import-tutorial?utm_source=adwords_ppc&utm_campaignid=1658343521&utm_adgroupid=63833880415&utm_device=c&utm_keyword=%2Bread%20%2Bdata%20%2Br&utm_matchtype=b&utm_network=g&utm_adpostion=&utm_creative=469789579368&utm_targetid=aud-392016246653:kwd-309793905111&utm_loc_interest_ms=&utm_loc_physical_ms=9016851&gclid=Cj0KCQjwxJqHBhC4ARIsAChq4auwh82WzCiJsUDzDOiaABetyowW0CXmTLbUFkQmnl1pn4Op9xcCcdQaAhMWEALw_wcB
 - reading data from the web with readr
-- reading data from Google Sheets with googlesheets
+- reading data from Google Sheets with {googlesheets}
+- reading data from REDCap, and tidying
 - reading data from web tables with rvest
 

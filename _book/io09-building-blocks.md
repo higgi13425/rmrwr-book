@@ -1060,7 +1060,7 @@ sd
 function (x, na.rm = FALSE) 
 sqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x), 
     na.rm = na.rm))
-<bytecode: 0x13ce0ffc0>
+<bytecode: 0x108aba398>
 <environment: namespace:stats>
 ```
 :::

@@ -887,14 +887,14 @@ This will take a bit of work and time, maybe an hour if you have a lot of packag
 Copy this code chunk below into your Console pane in RStudio and run it.
 Then reopen RStudio, go to the Files tab, click on Home , and check your root (home) directory for the <code>installed.packages.rda</code> file.
 You can click on this file to load it into your Environment tab (answer yes to load). In your Environment tab, it should look like a character vector with the names of all of your packages in quotes.</p>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="major-r-updates-where-are-my-packages.html#cb350-1" aria-hidden="true" tabindex="-1"></a>tmp <span class="ot">=</span> <span class="fu">installed.packages</span>() </span>
-<span id="cb350-2"><a href="major-r-updates-where-are-my-packages.html#cb350-2" aria-hidden="true" tabindex="-1"></a><span class="co"># save list to tmp as a matrix object</span></span>
-<span id="cb350-3"><a href="major-r-updates-where-are-my-packages.html#cb350-3" aria-hidden="true" tabindex="-1"></a>installedpackages <span class="ot">=</span> <span class="fu">as.vector</span>(tmp[<span class="fu">is.na</span>(tmp[,<span class="st">&quot;Priority&quot;</span>]), <span class="dv">1</span>]) </span>
-<span id="cb350-4"><a href="major-r-updates-where-are-my-packages.html#cb350-4" aria-hidden="true" tabindex="-1"></a><span class="co"># filter for all rows where the &quot;Priority&quot; column is NA, and select just (column 1) the package names in quotes, and then assign this vector to the installedpackages object</span></span>
-<span id="cb350-5"><a href="major-r-updates-where-are-my-packages.html#cb350-5" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(installedpackages, <span class="at">file=</span><span class="st">&quot;~/installed_packages.rda&quot;</span>) <span class="co"># save this vector as an *.rda file in your root (home) directory</span></span>
-<span id="cb350-6"><a href="major-r-updates-where-are-my-packages.html#cb350-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(tmp)</span>
-<span id="cb350-7"><a href="major-r-updates-where-are-my-packages.html#cb350-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(installedpackages)</span>
-<span id="cb350-8"><a href="major-r-updates-where-are-my-packages.html#cb350-8" aria-hidden="true" tabindex="-1"></a><span class="co"># remove the tmp matrix and the installedpackages vector from your Environment</span></span></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="major-r-updates-where-are-my-packages.html#cb352-1" aria-hidden="true" tabindex="-1"></a>tmp <span class="ot">=</span> <span class="fu">installed.packages</span>() </span>
+<span id="cb352-2"><a href="major-r-updates-where-are-my-packages.html#cb352-2" aria-hidden="true" tabindex="-1"></a><span class="co"># save list to tmp as a matrix object</span></span>
+<span id="cb352-3"><a href="major-r-updates-where-are-my-packages.html#cb352-3" aria-hidden="true" tabindex="-1"></a>installedpackages <span class="ot">=</span> <span class="fu">as.vector</span>(tmp[<span class="fu">is.na</span>(tmp[,<span class="st">&quot;Priority&quot;</span>]), <span class="dv">1</span>]) </span>
+<span id="cb352-4"><a href="major-r-updates-where-are-my-packages.html#cb352-4" aria-hidden="true" tabindex="-1"></a><span class="co"># filter for all rows where the &quot;Priority&quot; column is NA, and select just (column 1) the package names in quotes, and then assign this vector to the installedpackages object</span></span>
+<span id="cb352-5"><a href="major-r-updates-where-are-my-packages.html#cb352-5" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(installedpackages, <span class="at">file=</span><span class="st">&quot;~/installed_packages.rda&quot;</span>) <span class="co"># save this vector as an *.rda file in your root (home) directory</span></span>
+<span id="cb352-6"><a href="major-r-updates-where-are-my-packages.html#cb352-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(tmp)</span>
+<span id="cb352-7"><a href="major-r-updates-where-are-my-packages.html#cb352-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(installedpackages)</span>
+<span id="cb352-8"><a href="major-r-updates-where-are-my-packages.html#cb352-8" aria-hidden="true" tabindex="-1"></a><span class="co"># remove the tmp matrix and the installedpackages vector from your Environment</span></span></code></pre></div>
 </div>
 <div id="upgrading-r-and-rstudio" class="section level2 hasAnchor" number="16.3">
 <h2><span class="header-section-number">16.3</span> Upgrading R (and RStudio)<a href="major-r-updates-where-are-my-packages.html#upgrading-r-and-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -917,13 +917,13 @@ This will take a while, especially if you have a lot of packages installed.</p>
 - For each count, it installs the package at position [count] in the vector
 - Then it goes to the next [count] value, and installs the next package in the vector
 - Until it reaches the full length of the vector (installs the last package), and then stops.</p>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="major-r-updates-where-are-my-packages.html#cb351-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;~/installed_packages.rda&quot;</span>)</span>
-<span id="cb351-2"><a href="major-r-updates-where-are-my-packages.html#cb351-2" aria-hidden="true" tabindex="-1"></a><span class="co"># loads vector into your Environment pane</span></span>
-<span id="cb351-3"><a href="major-r-updates-where-are-my-packages.html#cb351-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb351-4"><a href="major-r-updates-where-are-my-packages.html#cb351-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (count <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(installedpackages)) {</span>
-<span id="cb351-5"><a href="major-r-updates-where-are-my-packages.html#cb351-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(installedpackages[count])</span>
-<span id="cb351-6"><a href="major-r-updates-where-are-my-packages.html#cb351-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb351-7"><a href="major-r-updates-where-are-my-packages.html#cb351-7" aria-hidden="true" tabindex="-1"></a><span class="co"># For each package in this vector of length [count], install them one by one until the last one is installed.</span></span></code></pre></div>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="major-r-updates-where-are-my-packages.html#cb353-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;~/installed_packages.rda&quot;</span>)</span>
+<span id="cb353-2"><a href="major-r-updates-where-are-my-packages.html#cb353-2" aria-hidden="true" tabindex="-1"></a><span class="co"># loads vector into your Environment pane</span></span>
+<span id="cb353-3"><a href="major-r-updates-where-are-my-packages.html#cb353-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb353-4"><a href="major-r-updates-where-are-my-packages.html#cb353-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (count <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(installedpackages)) {</span>
+<span id="cb353-5"><a href="major-r-updates-where-are-my-packages.html#cb353-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(installedpackages[count])</span>
+<span id="cb353-6"><a href="major-r-updates-where-are-my-packages.html#cb353-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb353-7"><a href="major-r-updates-where-are-my-packages.html#cb353-7" aria-hidden="true" tabindex="-1"></a><span class="co"># For each package in this vector of length [count], install them one by one until the last one is installed.</span></span></code></pre></div>
 </div>
 </div>
 <div id="now-check-your-list-of-packages" class="section level2 hasAnchor" number="16.4">

@@ -656,7 +656,7 @@ haven::read_sas(glue(url_stem, "data/blood_storage.sas7bdat"))
 ## #   names ¹​rbc_age_group, ²​median_rbc_age
 ```
 
-** write files, add examples for Stata, SPSS **
+
 Similarly, you can read and write Stata files with *read_dta()* and *write_dta()*. Try out the example below.
 
 ```r
@@ -664,17 +664,65 @@ haven::read_dta(glue(url_stem, "data/blood_storage.dta"))
 ```
 
 ```
-## Error in open.connection(con, "rb"): HTTP error 404.
+## # A tibble: 316 × 20
+##    rbc_age_…¹ media…²   age    aa fam_hx p_vol t_vol t_stage
+##         <dbl>   <dbl> <dbl> <dbl>  <dbl> <dbl> <dbl>   <dbl>
+##  1          3      25  72.1     0      0  54       3       1
+##  2          3      25  73.6     0      0  43.2     3       2
+##  3          3      25  67.5     0      0 103.      1       1
+##  4          2      15  65.8     0      0  46       1       1
+##  5          2      15  63.2     0      0  60       2       1
+##  6          3      25  65.4     0      0  45.9     2       1
+##  7          3      25  65.5     1      0  42.6     2       1
+##  8          1      10  67.1     0      0  40.7     3       1
+##  9          1      10  63.9     0      0  45       2       1
+## 10          2      15  63       1      0  67.6     2       1
+## # … with 306 more rows, 12 more variables: b_gs <dbl>,
+## #   bn <dbl>, organ_confined <dbl>, preop_psa <dbl>,
+## #   preop_therapy <dbl>, units <dbl>, s_gs <dbl>,
+## #   any_adj_therapy <dbl>, adj_rad_therapy <dbl>,
+## #   recurrence <dbl>, censor <dbl>,
+## #   time_to_recurrence <dbl>, and abbreviated variable
+## #   names ¹​rbc_age_group, ²​median_rbc_age
 ```
 
+You can also read and write SPSS files with *read_sav()* and *write_sav()*. Try out the example below.
 
+
+```r
+haven::read_sav(glue(url_stem, "data/strep_tb.sav"))
+```
+
+```
+## # A tibble: 107 × 13
+##    patient_id arm     dose_…¹ dose_…² gender basel…³ basel…⁴
+##    <chr>      <dbl+l>   <dbl>   <dbl> <dbl+> <dbl+l> <dbl+l>
+##  1 0001       2 [Con…       0       0 2 [M]  1 [1_G… 1 [1_9…
+##  2 0002       2 [Con…       0       0 1 [F]  1 [1_G… 3 [3_1…
+##  3 0003       2 [Con…       0       0 1 [F]  1 [1_G… 1 [1_9…
+##  4 0004       2 [Con…       0       0 2 [M]  1 [1_G… 1 [1_9…
+##  5 0005       2 [Con…       0       0 1 [F]  1 [1_G… 2 [2_9…
+##  6 0006       2 [Con…       0       0 2 [M]  1 [1_G… 3 [3_1…
+##  7 0007       2 [Con…       0       0 1 [F]  1 [1_G… 2 [2_9…
+##  8 0008       2 [Con…       0       0 2 [M]  1 [1_G… 2 [2_9…
+##  9 0009       2 [Con…       0       0 1 [F]  2 [2_F… 2 [2_9…
+## 10 0010       2 [Con…       0       0 2 [M]  2 [2_F… 4 [4_1…
+## # … with 97 more rows, 6 more variables:
+## #   baseline_esr <dbl+lbl>, baseline_cavitation <dbl+lbl>,
+## #   strep_resistance <dbl+lbl>, radiologic_6m <dbl+lbl>,
+## #   rad_num <dbl>, improved <dbl>, and abbreviated variable
+## #   names ¹​dose_strep_g, ²​dose_PAS_g, ³​baseline_condition,
+## #   ⁴​baseline_temp
+```
+
+You can learn more about how to read and write other data file types at [haven](https://haven.tidyverse.org)
 
 
 ## Other strange file types with rio
 
-Once in a while, you will run into a strange data file that is not a csv or Excel or from a common statistical package (SAS, Stata, SPSS). These might include Systat, Minitab, RDA, or others.
+Once in a while, you will run into a strange data file that is not a csv or Excel or or a proprietary format from a common statistical package (SAS, Stata, SPSS). These might include data formats from Systat, Minitab, RDA, feather, or others.
 
-This is when the {rio} package comes to the rescue. The name, rio, stands for R input and output. The {rio} package looks at the file extension (like .csv, .xls, .dta) to guess the file type, and then applies the appropriate method to read in the data. The import() function in {rio} makes data import much easier. You don't always have the fine control seen in {readr}, but {rio} is an all-purpose tool that can get nearly any data format into R.
+This is when the {rio} package comes to the rescue. The name, rio, stands for R Input and Output. The {rio} package looks at the file extension (like .csv, .xls, .dta) to guess the file type, and then applies the appropriate method to read in the data. The import() function in {rio} makes data import much easier. You don't always have the fine control seen in {readr} or {readxl}, but {rio} is an all-purpose tool that can get nearly any data format into R.
 
 Try this out with the code chunk below.
 Just replace the *filename* in the code chunk with one of the files named below.
@@ -694,7 +742,7 @@ rio::import(glue(url_stem, "data/filename"))
 ## Error in remote_to_local(file, format = format): Unrecognized file format. Try specifying with the format argument.
 ```
 
-It can be very convenient to use {rio} for unusual file types.
+It can be very convenient to use {rio} for unusual file types. You can read more about the [rio package](https://www.rdocumentation.org/packages/rio/versions/0.5.29)
 
 ## Data exploration with glimpse, str, and head/tail
 
@@ -814,12 +862,12 @@ So you run *str()* to find out the data structure of this variable.
 
 
 ```r
-mean(strep_tb$patient_id)
+mean(medicaldata::strep_tb$patient_id)
 ```
 
 ```
-## Warning in mean.default(strep_tb$patient_id): argument is
-## not numeric or logical: returning NA
+## Warning in mean.default(medicaldata::strep_tb$patient_id):
+## argument is not numeric or logical: returning NA
 ```
 
 ```
@@ -827,7 +875,7 @@ mean(strep_tb$patient_id)
 ```
 
 ```r
-str(strep_tb$patient_id)
+str(medicaldata::strep_tb$patient_id)
 ```
 
 ```
@@ -840,7 +888,7 @@ The glimpse() function provides identical output to str() for a variable in a ta
 
 
 ```r
-glimpse(strep_tb$patient_id)
+glimpse(medicaldata::strep_tb$patient_id)
 ```
 
 ```
@@ -858,7 +906,7 @@ Try this out with scurvy or strep_tb.
 
 
 ```r
-head(scurvy)
+head(medicaldata::scurvy)
 ```
 
 ```
@@ -878,7 +926,7 @@ head(scurvy)
 ```
 
 ```r
-tail(strep_tb)
+tail(medicaldata::strep_tb)
 ```
 
 ```
@@ -904,7 +952,7 @@ Run the code chunk below to see how this is different.
 
 
 ```r
-head(as.data.frame(scurvy))
+head(as.data.frame(medicaldata::scurvy))
 ```
 
 ```
@@ -939,7 +987,7 @@ head(as.data.frame(scurvy))
 ```
 
 ```r
-print(tail(strep_tb), width = Inf)
+print(tail(medicaldata::strep_tb), width = Inf)
 ```
 
 ```
@@ -997,25 +1045,25 @@ See how this is used by running the code chunk below, which uses a 10% random sa
 
 ```r
 #check that radiologic_6m, rad_num, and improved all match
-strep_tb %>% 
+medicaldata::strep_tb %>% 
   slice_sample(prop = 0.1) %>% 
   select(radiologic_6m, rad_num, improved)
 ```
 
 ```
 ## # A tibble: 10 × 3
-##    radiologic_6m              rad_num improved
-##    <fct>                        <dbl> <lgl>   
-##  1 1_Death                          1 FALSE   
-##  2 6_Considerable_improvement       6 TRUE    
-##  3 3_Moderate_deterioration         3 FALSE   
-##  4 1_Death                          1 FALSE   
-##  5 4_No_change                      4 FALSE   
-##  6 6_Considerable_improvement       6 TRUE    
-##  7 1_Death                          1 FALSE   
-##  8 3_Moderate_deterioration         3 FALSE   
-##  9 5_Moderate_improvement           5 TRUE    
-## 10 1_Death                          1 FALSE
+##    radiologic_6m                rad_num improved
+##    <fct>                          <dbl> <lgl>   
+##  1 6_Considerable_improvement         6 TRUE    
+##  2 5_Moderate_improvement             5 TRUE    
+##  3 2_Considerable_deterioration       2 FALSE   
+##  4 2_Considerable_deterioration       2 FALSE   
+##  5 2_Considerable_deterioration       2 FALSE   
+##  6 6_Considerable_improvement         6 TRUE    
+##  7 6_Considerable_improvement         6 TRUE    
+##  8 2_Considerable_deterioration       2 FALSE   
+##  9 6_Considerable_improvement         6 TRUE    
+## 10 3_Moderate_deterioration           3 FALSE
 ```
 
 
@@ -1032,25 +1080,25 @@ Run the code chunk below, applying the `skim()` function to the strep_tb dataset
 
 ```r
 library(skimr)
-skimr::skim(strep_tb)
+skimr::skim(medicaldata::strep_tb)
 ```
 
 
-Table: (\#tab:unnamed-chunk-25)Data summary
+Table: (\#tab:unnamed-chunk-26)Data summary
 
-|                         |         |
-|:------------------------|:--------|
-|Name                     |strep_tb |
-|Number of rows           |107      |
-|Number of columns        |13       |
-|_______________________  |         |
-|Column type frequency:   |         |
-|character                |1        |
-|factor                   |8        |
-|logical                  |1        |
-|numeric                  |3        |
-|________________________ |         |
-|Group variables          |None     |
+|                         |                      |
+|:------------------------|:---------------------|
+|Name                     |medicaldata::strep_tb |
+|Number of rows           |107                   |
+|Number of columns        |13                    |
+|_______________________  |                      |
+|Column type frequency:   |                      |
+|character                |1                     |
+|factor                   |8                     |
+|logical                  |1                     |
+|numeric                  |3                     |
+|________________________ |                      |
+|Group variables          |None                  |
 
 
 **Variable type: character**
@@ -1108,7 +1156,7 @@ A fancier approach is taken by the DataExplorer package, which can create a full
 
 
 ```r
-DataExplorer::create_report(strep_tb)
+DataExplorer::create_report(medicaldata::strep_tb)
 ```
 
 ### Test yourself on the `create_report()` results
@@ -1221,6 +1269,7 @@ read_excel(path = 'data/paulolol2.xlsx',
 ## Future forms of data ingestion
 - https://www.datacamp.com/community/tutorials/r-data-import-tutorial?utm_source=adwords_ppc&utm_campaignid=1658343521&utm_adgroupid=63833880415&utm_device=c&utm_keyword=%2Bread%20%2Bdata%20%2Br&utm_matchtype=b&utm_network=g&utm_adpostion=&utm_creative=469789579368&utm_targetid=aud-392016246653:kwd-309793905111&utm_loc_interest_ms=&utm_loc_physical_ms=9016851&gclid=Cj0KCQjwxJqHBhC4ARIsAChq4auwh82WzCiJsUDzDOiaABetyowW0CXmTLbUFkQmnl1pn4Op9xcCcdQaAhMWEALw_wcB
 - reading data from the web with readr
-- reading data from Google Sheets with googlesheets
+- reading data from Google Sheets with {googlesheets}
+- reading data from REDCap, and tidying
 - reading data from web tables with rvest
 
