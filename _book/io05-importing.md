@@ -1054,16 +1054,16 @@ medicaldata::strep_tb %>%
 ## # A tibble: 10 × 3
 ##    radiologic_6m                rad_num improved
 ##    <fct>                          <dbl> <lgl>   
-##  1 6_Considerable_improvement         6 TRUE    
-##  2 5_Moderate_improvement             5 TRUE    
-##  3 2_Considerable_deterioration       2 FALSE   
+##  1 4_No_change                        4 FALSE   
+##  2 6_Considerable_improvement         6 TRUE    
+##  3 4_No_change                        4 FALSE   
 ##  4 2_Considerable_deterioration       2 FALSE   
-##  5 2_Considerable_deterioration       2 FALSE   
+##  5 5_Moderate_improvement             5 TRUE    
 ##  6 6_Considerable_improvement         6 TRUE    
-##  7 6_Considerable_improvement         6 TRUE    
-##  8 2_Considerable_deterioration       2 FALSE   
+##  7 1_Death                            1 FALSE   
+##  8 6_Considerable_improvement         6 TRUE    
 ##  9 6_Considerable_improvement         6 TRUE    
-## 10 3_Moderate_deterioration           3 FALSE
+## 10 6_Considerable_improvement         6 TRUE
 ```
 
 
