@@ -255,7 +255,7 @@ murders %>%
 ```
 
 ```
-## Error in layer(data = data, mapping = mapping, stat = StatIdentity, geom = GeomAbline, : object 'darkgrey' not found
+## Error in list2(na.rm = na.rm, ...): object 'darkgrey' not found
 ```
 
 ```r

@@ -133,6 +133,10 @@ You can do this in base R with `plot(model)`, but there is a prettier version in
 check_model(prostate_model, panel = FALSE)
 ```
 
+```
+## Variable `Component` is not in your data frame :/
+```
+
 This generates graphs with nice subtitles to help you interpret the output. Big deviations should make you worry about one or more of the model assumptions, and may require rescaling one of your predictors.
 
 If all is well, you want to look at how your model predictors actually predict the outcome. You make a nicer looking regression table with the tidy() function from the {broom} package.
@@ -395,9 +399,9 @@ predict(model, newdata = slice_sample(prostate, prop = 0.03), type = "response")
 
 ```
 ##          1          2          3          4          5 
-## 0.52579385 0.25338133 0.52579385 0.09409879 0.25338133 
+## 0.25338133 0.09409879 0.09409879 0.09409879 0.25338133 
 ##          6          7          8          9 
-## 0.12143477 0.04058836 0.09409879 0.12143477
+## 0.09409879 0.25338133 0.09409879 0.04058836
 ```
 
 Let’s see how this works with another dataset, from which we will use predictors to classify diabetes cases. We will start by loading the data into dm_data, and building an “all predictors” model, by specifying the formula predictors as “.” - this means to use all other variables (except the outcome variable) as predictors. Look at the model output for problems.
@@ -536,6 +540,10 @@ summary(dm_mod)
 ```r
 # test model assumptions
 check_model(dm_mod)
+```
+
+```
+## Variable `Component` is not in your data frame :/
 ```
 
 <img src="io23b-logistic-regression_files/figure-html/unnamed-chunk-20-1.png" width="672" />
@@ -761,6 +769,10 @@ You can also check model assumptions, and model performance, even against compet
 performance::check_model(dm_mod, panel = FALSE)
 ```
 
+```
+## Variable `Component` is not in your data frame :/
+```
+
 
 
 ```r
@@ -773,9 +785,9 @@ performance::model_performance(dm_mod)
 ```
 ## # Indices of model performance
 ## 
-## AIC     |     BIC | Tjur's R2 |  RMSE | Sigma | Log_loss | Score_log | Score_spherical |   PCP
-## ----------------------------------------------------------------------------------------------
-## 362.021 | 397.763 |     0.364 | 0.376 | 0.948 |    0.439 |   -74.015 |           0.009 | 0.718
+## AIC     |    AICc |     BIC | Tjur's R2 |  RMSE | Sigma | Log_loss | Score_log | Score_spherical |   PCP
+## --------------------------------------------------------------------------------------------------------
+## 362.021 | 362.492 | 397.763 |     0.364 | 0.376 | 0.948 |    0.439 |   -74.015 |           0.009 | 0.718
 ```
 
 

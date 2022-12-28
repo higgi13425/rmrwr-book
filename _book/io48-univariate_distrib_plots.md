@@ -34,7 +34,7 @@ medicaldata::polyps %>%
 
 ```
 ## Warning: Removed 2 rows containing non-finite values
-## (stat_bin).
+## (`stat_bin()`).
 ```
 
 <img src="io48-univariate_distrib_plots_files/figure-html/histogram-1.png" width="672" />
@@ -53,7 +53,7 @@ polyps %>%
 
 ```
 ## Warning: Removed 2 rows containing non-finite values
-## (stat_bin).
+## (`stat_bin()`).
 ```
 
 <img src="io48-univariate_distrib_plots_files/figure-html/histogram2-1.png" width="672" />
@@ -74,8 +74,8 @@ medicaldata::polyps %>%
 ```
 
 ```
-## Warning: Removed 2 rows containing non-finite values
-## (stat_bindot).
+## Warning: Removed 2 rows containing missing values
+## (`stat_bindot()`).
 ```
 
 <img src="io48-univariate_distrib_plots_files/figure-html/dotplot-1.png" width="672" />
@@ -99,7 +99,7 @@ When you have a continuous variable that could vary across several categories of
   
   ```
   ## Warning: Removed 2 rows containing non-finite values
-  ## (stat_bin).
+  ## (`stat_bin()`).
   ```
   
   <img src="io48-univariate_distrib_plots_files/figure-html/unnamed-chunk-1-1.png" width="672" />
@@ -125,8 +125,14 @@ When you have a continuous variable that could vary across several categories of
 ```
 
 ```
+## Warning: The dot-dot notation (`..density..`) was deprecated in
+## ggplot2 3.4.0.
+## ℹ Please use `after_stat(density)` instead.
+```
+
+```
 ## Warning: Removed 2 rows containing non-finite values
-## (stat_bin).
+## (`stat_bin()`).
 ```
 
 <img src="io48-univariate_distrib_plots_files/figure-html/mirror-histogram-1.png" width="672" />
@@ -144,7 +150,7 @@ When you have a continuous variable that could vary across several categories of
 
 ```
 ## Warning: Removed 2 rows containing non-finite values
-## (stat_bin).
+## (`stat_bin()`).
 ```
 
 <img src="io48-univariate_distrib_plots_files/figure-html/unnamed-chunk-2-1.png" width="672" />
@@ -162,7 +168,7 @@ When you have a continuous variable that could vary across several categories of
   
   ```
   ## Warning: Removed 2 rows containing non-finite values
-  ## (stat_bin).
+  ## (`stat_bin()`).
   ```
   
   <img src="io48-univariate_distrib_plots_files/figure-html/unnamed-chunk-3-1.png" width="672" />
@@ -257,6 +263,12 @@ mockstudy %>%
   hrbrthemes::theme_ipsum()
 ```
 
+```
+## Warning: Using `size` aesthetic for lines was deprecated in ggplot2
+## 3.4.0.
+## ℹ Please use `linewidth` instead.
+```
+
 <img src="io48-univariate_distrib_plots_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
 ### Comparisons with Density plots
@@ -331,7 +343,7 @@ ggplot(aes(x = time.to.transplant, y = diagnosis)) + geom_density_ridges(scale =
 
 ```
 ## Warning: Removed 1 rows containing non-finite values
-## (stat_density_ridges).
+## (`stat_density_ridges()`).
 ```
 
 <img src="io48-univariate_distrib_plots_files/figure-html/plot-1.png" width="672" />
@@ -348,6 +360,11 @@ ggplot(aes(x = time.to.agvhd, y = diagnosis,
   geom_density_ridges_gradient(scale = 0.9) +
   scale_fill_viridis_c(name = "Days", option = "A") +
   labs(title = "Time to AGvHD in Days")
+```
+
+```
+## Warning: `stat(x)` was deprecated in ggplot2 3.4.0.
+## ℹ Please use `after_stat(x)` instead.
 ```
 
 ```

@@ -99,8 +99,12 @@ Run the code block below to generate an error, then google the error message and
 
 
 ```
-## Error in `check_required_aesthetics()`:
-## ! stat_smooth requires the following missing aesthetics: x and y
+## Error in `geom_smooth()`:
+## ! Problem while computing stat.
+## ℹ Error occurred in the 1st layer.
+## Caused by error in `compute_layer()`:
+## ! `stat_smooth()` requires the following missing
+##   aesthetics: x and y
 ```
 
 The problem is that the ggplot function does not include the aesthetics layer around x and y - 

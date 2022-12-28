@@ -72,7 +72,7 @@ plot1 + theme(axis.text.y = element_text(family = "serif"),
 
 ```
 ## Warning: Removed 1 rows containing missing values
-## (geom_point).
+## (`geom_point()`).
 ```
 
 <img src="io67-ggplot_helpers_files/figure-html/first-plot-1.png" width="672" />

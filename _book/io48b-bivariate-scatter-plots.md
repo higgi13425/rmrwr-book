@@ -68,7 +68,7 @@ polyps %>%
 ```
 
 ```
-## `geom_smooth()` using formula 'y ~ x'
+## `geom_smooth()` using formula = 'y ~ x'
 ```
 
 <img src="io48b-bivariate-scatter-plots_files/figure-html/scatter-2-1.png" width="672" />
@@ -106,7 +106,7 @@ polyps %>%
 ```
 
 ```
-## `geom_smooth()` using formula 'y ~ x'
+## `geom_smooth()` using formula = 'y ~ x'
 ```
 
 <img src="io48b-bivariate-scatter-plots_files/figure-html/scatter-3-1.png" width="672" />

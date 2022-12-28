@@ -237,6 +237,13 @@ dm_data_plus %>%
 ```r
 #check model performance
 performance::check_model(dm_mod, panel = FALSE)
+```
+
+```
+## Variable `Component` is not in your data frame :/
+```
+
+```r
 # use panel = TRUE in Rmarkdown to get 2x3 panels for 6 plots
 # 
 performance::model_performance(dm_mod)
@@ -245,9 +252,9 @@ performance::model_performance(dm_mod)
 ```
 ## # Indices of model performance
 ## 
-## AIC     |     BIC | Tjur's R2 |  RMSE | Sigma | Log_loss | Score_log | Score_spherical |   PCP
-## ----------------------------------------------------------------------------------------------
-## 362.021 | 397.763 |     0.364 | 0.376 | 0.948 |    0.439 |   -74.015 |           0.009 | 0.718
+## AIC     |    AICc |     BIC | Tjur's R2 |  RMSE | Sigma | Log_loss | Score_log | Score_spherical |   PCP
+## --------------------------------------------------------------------------------------------------------
+## 362.021 | 362.492 | 397.763 |     0.364 | 0.376 | 0.948 |    0.439 |   -74.015 |           0.009 | 0.718
 ```
 
 ```r
@@ -609,12 +616,12 @@ medicaldata::supraclavicular %>%
 ```
 
 ```{=html}
-<div id="jjuhoaxqai" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="wgluxwjozn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#jjuhoaxqai .gt_table {
+#wgluxwjozn .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -639,7 +646,7 @@ medicaldata::supraclavicular %>%
   border-left-color: #D3D3D3;
 }
 
-#jjuhoaxqai .gt_heading {
+#wgluxwjozn .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -651,7 +658,12 @@ medicaldata::supraclavicular %>%
   border-right-color: #D3D3D3;
 }
 
-#jjuhoaxqai .gt_title {
+#wgluxwjozn .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#wgluxwjozn .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -663,7 +675,7 @@ medicaldata::supraclavicular %>%
   border-bottom-width: 0;
 }
 
-#jjuhoaxqai .gt_subtitle {
+#wgluxwjozn .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -675,13 +687,13 @@ medicaldata::supraclavicular %>%
   border-top-width: 0;
 }
 
-#jjuhoaxqai .gt_bottom_border {
+#wgluxwjozn .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jjuhoaxqai .gt_col_headings {
+#wgluxwjozn .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -696,7 +708,7 @@ medicaldata::supraclavicular %>%
   border-right-color: #D3D3D3;
 }
 
-#jjuhoaxqai .gt_col_heading {
+#wgluxwjozn .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -716,7 +728,7 @@ medicaldata::supraclavicular %>%
   overflow-x: hidden;
 }
 
-#jjuhoaxqai .gt_column_spanner_outer {
+#wgluxwjozn .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -728,15 +740,15 @@ medicaldata::supraclavicular %>%
   padding-right: 4px;
 }
 
-#jjuhoaxqai .gt_column_spanner_outer:first-child {
+#wgluxwjozn .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jjuhoaxqai .gt_column_spanner_outer:last-child {
+#wgluxwjozn .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jjuhoaxqai .gt_column_spanner {
+#wgluxwjozn .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -748,7 +760,7 @@ medicaldata::supraclavicular %>%
   width: 100%;
 }
 
-#jjuhoaxqai .gt_group_heading {
+#wgluxwjozn .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -771,9 +783,10 @@ medicaldata::supraclavicular %>%
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: middle;
+  text-align: left;
 }
 
-#jjuhoaxqai .gt_empty_group_heading {
+#wgluxwjozn .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -788,15 +801,15 @@ medicaldata::supraclavicular %>%
   vertical-align: middle;
 }
 
-#jjuhoaxqai .gt_from_md > :first-child {
+#wgluxwjozn .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jjuhoaxqai .gt_from_md > :last-child {
+#wgluxwjozn .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jjuhoaxqai .gt_row {
+#wgluxwjozn .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -815,7 +828,7 @@ medicaldata::supraclavicular %>%
   overflow-x: hidden;
 }
 
-#jjuhoaxqai .gt_stub {
+#wgluxwjozn .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -828,7 +841,7 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#jjuhoaxqai .gt_stub_row_group {
+#wgluxwjozn .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -842,11 +855,11 @@ medicaldata::supraclavicular %>%
   vertical-align: top;
 }
 
-#jjuhoaxqai .gt_row_group_first td {
+#wgluxwjozn .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jjuhoaxqai .gt_summary_row {
+#wgluxwjozn .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -856,16 +869,16 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#jjuhoaxqai .gt_first_summary_row {
+#wgluxwjozn .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#jjuhoaxqai .gt_first_summary_row.thick {
+#wgluxwjozn .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jjuhoaxqai .gt_last_summary_row {
+#wgluxwjozn .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -875,7 +888,7 @@ medicaldata::supraclavicular %>%
   border-bottom-color: #D3D3D3;
 }
 
-#jjuhoaxqai .gt_grand_summary_row {
+#wgluxwjozn .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -885,7 +898,7 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#jjuhoaxqai .gt_first_grand_summary_row {
+#wgluxwjozn .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -895,11 +908,11 @@ medicaldata::supraclavicular %>%
   border-top-color: #D3D3D3;
 }
 
-#jjuhoaxqai .gt_striped {
+#wgluxwjozn .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jjuhoaxqai .gt_table_body {
+#wgluxwjozn .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -908,7 +921,7 @@ medicaldata::supraclavicular %>%
   border-bottom-color: #D3D3D3;
 }
 
-#jjuhoaxqai .gt_footnotes {
+#wgluxwjozn .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -922,7 +935,7 @@ medicaldata::supraclavicular %>%
   border-right-color: #D3D3D3;
 }
 
-#jjuhoaxqai .gt_footnote {
+#wgluxwjozn .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -931,7 +944,7 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#jjuhoaxqai .gt_sourcenotes {
+#wgluxwjozn .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -945,7 +958,7 @@ medicaldata::supraclavicular %>%
   border-right-color: #D3D3D3;
 }
 
-#jjuhoaxqai .gt_sourcenote {
+#wgluxwjozn .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -953,64 +966,64 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#jjuhoaxqai .gt_left {
+#wgluxwjozn .gt_left {
   text-align: left;
 }
 
-#jjuhoaxqai .gt_center {
+#wgluxwjozn .gt_center {
   text-align: center;
 }
 
-#jjuhoaxqai .gt_right {
+#wgluxwjozn .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jjuhoaxqai .gt_font_normal {
+#wgluxwjozn .gt_font_normal {
   font-weight: normal;
 }
 
-#jjuhoaxqai .gt_font_bold {
+#wgluxwjozn .gt_font_bold {
   font-weight: bold;
 }
 
-#jjuhoaxqai .gt_font_italic {
+#wgluxwjozn .gt_font_italic {
   font-style: italic;
 }
 
-#jjuhoaxqai .gt_super {
+#wgluxwjozn .gt_super {
   font-size: 65%;
 }
 
-#jjuhoaxqai .gt_footnote_marks {
+#wgluxwjozn .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#jjuhoaxqai .gt_asterisk {
+#wgluxwjozn .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jjuhoaxqai .gt_indent_1 {
+#wgluxwjozn .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jjuhoaxqai .gt_indent_2 {
+#wgluxwjozn .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jjuhoaxqai .gt_indent_3 {
+#wgluxwjozn .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jjuhoaxqai .gt_indent_4 {
+#wgluxwjozn .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jjuhoaxqai .gt_indent_5 {
+#wgluxwjozn .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1018,29 +1031,29 @@ medicaldata::supraclavicular %>%
   
   <thead class="gt_col_headings">
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col"><strong>Characteristic</strong></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col"><strong>Beta</strong></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col"><strong>95% CI</strong><sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col"><strong>p-value</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;Characteristic&lt;/strong&gt;"><strong>Characteristic</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;Beta&lt;/strong&gt;"><strong>Beta</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;95% CI&lt;/strong&gt;&lt;sup class=&quot;gt_footnote_marks&quot;&gt;1&lt;/sup&gt;"><strong>95% CI</strong><sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;p-value&lt;/strong&gt;"><strong>p-value</strong></th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr><td class="gt_row gt_left">age</td>
-<td class="gt_row gt_center">-0.02</td>
-<td class="gt_row gt_center">-0.20, 0.15</td>
-<td class="gt_row gt_center">0.8</td></tr>
-    <tr><td class="gt_row gt_left">bmi</td>
-<td class="gt_row gt_center">0.00</td>
-<td class="gt_row gt_center">-0.39, 0.38</td>
-<td class="gt_row gt_center">>0.9</td></tr>
-    <tr><td class="gt_row gt_left">gender</td>
-<td class="gt_row gt_center">3.0</td>
-<td class="gt_row gt_center">-1.9, 7.8</td>
-<td class="gt_row gt_center">0.2</td></tr>
-    <tr><td class="gt_row gt_left">group</td>
-<td class="gt_row gt_center">2.4</td>
-<td class="gt_row gt_center">-2.2, 7.1</td>
-<td class="gt_row gt_center">0.3</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">age</td>
+<td headers="estimate" class="gt_row gt_center">-0.02</td>
+<td headers="ci" class="gt_row gt_center">-0.20, 0.15</td>
+<td headers="p.value" class="gt_row gt_center">0.8</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">bmi</td>
+<td headers="estimate" class="gt_row gt_center">0.00</td>
+<td headers="ci" class="gt_row gt_center">-0.39, 0.38</td>
+<td headers="p.value" class="gt_row gt_center">>0.9</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">gender</td>
+<td headers="estimate" class="gt_row gt_center">3.0</td>
+<td headers="ci" class="gt_row gt_center">-1.9, 7.8</td>
+<td headers="p.value" class="gt_row gt_center">0.2</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">group</td>
+<td headers="estimate" class="gt_row gt_center">2.4</td>
+<td headers="ci" class="gt_row gt_center">-2.2, 7.1</td>
+<td headers="p.value" class="gt_row gt_center">0.3</td></tr>
   </tbody>
   
   <tfoot class="gt_footnotes">
@@ -1096,6 +1109,10 @@ supra_model <- medicaldata::supraclavicular %>%
  data = .) 
 
 performance::check_model(supra_model, panel = FALSE)
+```
+
+```
+## Variable `Component` is not in your data frame :/
 ```
 
 This produces a nice set of six plots in the Plots tab) with some guidance in the subtitles on how to interpret the plots.

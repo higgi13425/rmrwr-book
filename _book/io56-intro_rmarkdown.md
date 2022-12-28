@@ -236,12 +236,12 @@ covid %>%
 ```
 
 ```{=html}
-<div id="ridlbxittr" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="ucmwzcnpys" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ridlbxittr .gt_table {
+#ucmwzcnpys .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -266,7 +266,7 @@ covid %>%
   border-left-color: #D3D3D3;
 }
 
-#ridlbxittr .gt_heading {
+#ucmwzcnpys .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -278,7 +278,12 @@ covid %>%
   border-right-color: #D3D3D3;
 }
 
-#ridlbxittr .gt_title {
+#ucmwzcnpys .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ucmwzcnpys .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -290,7 +295,7 @@ covid %>%
   border-bottom-width: 0;
 }
 
-#ridlbxittr .gt_subtitle {
+#ucmwzcnpys .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -302,13 +307,13 @@ covid %>%
   border-top-width: 0;
 }
 
-#ridlbxittr .gt_bottom_border {
+#ucmwzcnpys .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ridlbxittr .gt_col_headings {
+#ucmwzcnpys .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -323,7 +328,7 @@ covid %>%
   border-right-color: #D3D3D3;
 }
 
-#ridlbxittr .gt_col_heading {
+#ucmwzcnpys .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -343,7 +348,7 @@ covid %>%
   overflow-x: hidden;
 }
 
-#ridlbxittr .gt_column_spanner_outer {
+#ucmwzcnpys .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -355,15 +360,15 @@ covid %>%
   padding-right: 4px;
 }
 
-#ridlbxittr .gt_column_spanner_outer:first-child {
+#ucmwzcnpys .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ridlbxittr .gt_column_spanner_outer:last-child {
+#ucmwzcnpys .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ridlbxittr .gt_column_spanner {
+#ucmwzcnpys .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -375,7 +380,7 @@ covid %>%
   width: 100%;
 }
 
-#ridlbxittr .gt_group_heading {
+#ucmwzcnpys .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -398,9 +403,10 @@ covid %>%
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: middle;
+  text-align: left;
 }
 
-#ridlbxittr .gt_empty_group_heading {
+#ucmwzcnpys .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -415,15 +421,15 @@ covid %>%
   vertical-align: middle;
 }
 
-#ridlbxittr .gt_from_md > :first-child {
+#ucmwzcnpys .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ridlbxittr .gt_from_md > :last-child {
+#ucmwzcnpys .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ridlbxittr .gt_row {
+#ucmwzcnpys .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -442,7 +448,7 @@ covid %>%
   overflow-x: hidden;
 }
 
-#ridlbxittr .gt_stub {
+#ucmwzcnpys .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -455,7 +461,7 @@ covid %>%
   padding-right: 5px;
 }
 
-#ridlbxittr .gt_stub_row_group {
+#ucmwzcnpys .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -469,11 +475,11 @@ covid %>%
   vertical-align: top;
 }
 
-#ridlbxittr .gt_row_group_first td {
+#ucmwzcnpys .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ridlbxittr .gt_summary_row {
+#ucmwzcnpys .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -483,16 +489,16 @@ covid %>%
   padding-right: 5px;
 }
 
-#ridlbxittr .gt_first_summary_row {
+#ucmwzcnpys .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ridlbxittr .gt_first_summary_row.thick {
+#ucmwzcnpys .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ridlbxittr .gt_last_summary_row {
+#ucmwzcnpys .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -502,7 +508,7 @@ covid %>%
   border-bottom-color: #D3D3D3;
 }
 
-#ridlbxittr .gt_grand_summary_row {
+#ucmwzcnpys .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -512,7 +518,7 @@ covid %>%
   padding-right: 5px;
 }
 
-#ridlbxittr .gt_first_grand_summary_row {
+#ucmwzcnpys .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -522,11 +528,11 @@ covid %>%
   border-top-color: #D3D3D3;
 }
 
-#ridlbxittr .gt_striped {
+#ucmwzcnpys .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ridlbxittr .gt_table_body {
+#ucmwzcnpys .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -535,7 +541,7 @@ covid %>%
   border-bottom-color: #D3D3D3;
 }
 
-#ridlbxittr .gt_footnotes {
+#ucmwzcnpys .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -549,7 +555,7 @@ covid %>%
   border-right-color: #D3D3D3;
 }
 
-#ridlbxittr .gt_footnote {
+#ucmwzcnpys .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -558,7 +564,7 @@ covid %>%
   padding-right: 5px;
 }
 
-#ridlbxittr .gt_sourcenotes {
+#ucmwzcnpys .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -572,7 +578,7 @@ covid %>%
   border-right-color: #D3D3D3;
 }
 
-#ridlbxittr .gt_sourcenote {
+#ucmwzcnpys .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -580,64 +586,64 @@ covid %>%
   padding-right: 5px;
 }
 
-#ridlbxittr .gt_left {
+#ucmwzcnpys .gt_left {
   text-align: left;
 }
 
-#ridlbxittr .gt_center {
+#ucmwzcnpys .gt_center {
   text-align: center;
 }
 
-#ridlbxittr .gt_right {
+#ucmwzcnpys .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ridlbxittr .gt_font_normal {
+#ucmwzcnpys .gt_font_normal {
   font-weight: normal;
 }
 
-#ridlbxittr .gt_font_bold {
+#ucmwzcnpys .gt_font_bold {
   font-weight: bold;
 }
 
-#ridlbxittr .gt_font_italic {
+#ucmwzcnpys .gt_font_italic {
   font-style: italic;
 }
 
-#ridlbxittr .gt_super {
+#ucmwzcnpys .gt_super {
   font-size: 65%;
 }
 
-#ridlbxittr .gt_footnote_marks {
+#ucmwzcnpys .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#ridlbxittr .gt_asterisk {
+#ucmwzcnpys .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ridlbxittr .gt_indent_1 {
+#ucmwzcnpys .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ridlbxittr .gt_indent_2 {
+#ucmwzcnpys .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ridlbxittr .gt_indent_3 {
+#ucmwzcnpys .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ridlbxittr .gt_indent_4 {
+#ucmwzcnpys .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ridlbxittr .gt_indent_5 {
+#ucmwzcnpys .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -652,39 +658,39 @@ covid %>%
   </thead>
   <thead class="gt_col_headings">
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Group</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">Gender</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">Count</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Group">Group</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Gender">Gender</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Count">Count</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr><td class="gt_row gt_left">client</td>
-<td class="gt_row gt_left">female</td>
-<td class="gt_row gt_right">314</td></tr>
-    <tr><td class="gt_row gt_left">client</td>
-<td class="gt_row gt_left">male</td>
-<td class="gt_row gt_right">290</td></tr>
-    <tr><td class="gt_row gt_left">misc adult</td>
-<td class="gt_row gt_left">female</td>
-<td class="gt_row gt_right">1214</td></tr>
-    <tr><td class="gt_row gt_left">misc adult</td>
-<td class="gt_row gt_left">male</td>
-<td class="gt_row gt_right">1227</td></tr>
-    <tr><td class="gt_row gt_left">other adult</td>
-<td class="gt_row gt_left">female</td>
-<td class="gt_row gt_right">126</td></tr>
-    <tr><td class="gt_row gt_left">other adult</td>
-<td class="gt_row gt_left">male</td>
-<td class="gt_row gt_right">97</td></tr>
-    <tr><td class="gt_row gt_left">patient</td>
-<td class="gt_row gt_left">female</td>
-<td class="gt_row gt_right">6178</td></tr>
-    <tr><td class="gt_row gt_left">patient</td>
-<td class="gt_row gt_left">male</td>
-<td class="gt_row gt_right">6077</td></tr>
-    <tr><td class="gt_row gt_left">unidentified</td>
-<td class="gt_row gt_left">male</td>
-<td class="gt_row gt_right">1</td></tr>
+    <tr><td headers="demo_group" class="gt_row gt_left">client</td>
+<td headers="gender" class="gt_row gt_left">female</td>
+<td headers="n" class="gt_row gt_right">314</td></tr>
+    <tr><td headers="demo_group" class="gt_row gt_left">client</td>
+<td headers="gender" class="gt_row gt_left">male</td>
+<td headers="n" class="gt_row gt_right">290</td></tr>
+    <tr><td headers="demo_group" class="gt_row gt_left">misc adult</td>
+<td headers="gender" class="gt_row gt_left">female</td>
+<td headers="n" class="gt_row gt_right">1214</td></tr>
+    <tr><td headers="demo_group" class="gt_row gt_left">misc adult</td>
+<td headers="gender" class="gt_row gt_left">male</td>
+<td headers="n" class="gt_row gt_right">1227</td></tr>
+    <tr><td headers="demo_group" class="gt_row gt_left">other adult</td>
+<td headers="gender" class="gt_row gt_left">female</td>
+<td headers="n" class="gt_row gt_right">126</td></tr>
+    <tr><td headers="demo_group" class="gt_row gt_left">other adult</td>
+<td headers="gender" class="gt_row gt_left">male</td>
+<td headers="n" class="gt_row gt_right">97</td></tr>
+    <tr><td headers="demo_group" class="gt_row gt_left">patient</td>
+<td headers="gender" class="gt_row gt_left">female</td>
+<td headers="n" class="gt_row gt_right">6178</td></tr>
+    <tr><td headers="demo_group" class="gt_row gt_left">patient</td>
+<td headers="gender" class="gt_row gt_left">male</td>
+<td headers="n" class="gt_row gt_right">6077</td></tr>
+    <tr><td headers="demo_group" class="gt_row gt_left">unidentified</td>
+<td headers="gender" class="gt_row gt_left">male</td>
+<td headers="n" class="gt_row gt_right">1</td></tr>
   </tbody>
   <tfoot class="gt_sourcenotes">
     <tr>
@@ -1086,12 +1092,12 @@ as illustrated below (note that these would be surrounded by single
 back-ticks)
 
 The mean cycle threshold in this study was
-<div class='webex-radiogroup' id='radio_PSSJMIUKLP'><label><input type="radio" autocomplete="off" name="radio_PSSJMIUKLP" value="answer"></input> <span>r covid %>%  mean(ct_result, na.rm = TRUE) %>% format(digits = 5)</span></label><label><input type="radio" autocomplete="off" name="radio_PSSJMIUKLP" value=""></input> <span>r covid %>% median(ct_result, na.rm = TRUE) %>% format(digits = 7)</span></label><label><input type="radio" autocomplete="off" name="radio_PSSJMIUKLP" value=""></input> <span>r covid %>%  sd(ct_result, na.rm=TRUE) %>% format(digits =3)</span></label></div>
+<div class='webex-radiogroup' id='radio_NBTVXNUWKA'><label><input type="radio" autocomplete="off" name="radio_NBTVXNUWKA" value="answer"></input> <span>r covid %>%  mean(ct_result, na.rm = TRUE) %>% format(digits = 5)</span></label><label><input type="radio" autocomplete="off" name="radio_NBTVXNUWKA" value=""></input> <span>r covid %>% median(ct_result, na.rm = TRUE) %>% format(digits = 7)</span></label><label><input type="radio" autocomplete="off" name="radio_NBTVXNUWKA" value=""></input> <span>r covid %>%  sd(ct_result, na.rm=TRUE) %>% format(digits =3)</span></label></div>
 
 <br>
 
 The standard deviation of the cycle threshold in this study was
-<div class='webex-radiogroup' id='radio_VUECYJXCAT'><label><input type="radio" autocomplete="off" name="radio_VUECYJXCAT" value=""></input> <span>r covid %>%  mean(ct_result, na.rm = TRUE) %>% format(digits = 5)</span></label><label><input type="radio" autocomplete="off" name="radio_VUECYJXCAT" value=""></input> <span>r covid %>% median(ct_result, na.rm = TRUE) %>% format(digits = 7)</span></label><label><input type="radio" autocomplete="off" name="radio_VUECYJXCAT" value="answer"></input> <span>r covid %>%  sd(ct_result, na.rm=TRUE) %>% format(digits =3)</span></label></div>
+<div class='webex-radiogroup' id='radio_FECLVOLDNQ'><label><input type="radio" autocomplete="off" name="radio_FECLVOLDNQ" value=""></input> <span>r covid %>%  mean(ct_result, na.rm = TRUE) %>% format(digits = 5)</span></label><label><input type="radio" autocomplete="off" name="radio_FECLVOLDNQ" value=""></input> <span>r covid %>% median(ct_result, na.rm = TRUE) %>% format(digits = 7)</span></label><label><input type="radio" autocomplete="off" name="radio_FECLVOLDNQ" value="answer"></input> <span>r covid %>%  sd(ct_result, na.rm=TRUE) %>% format(digits =3)</span></label></div>
 
 
 <br>

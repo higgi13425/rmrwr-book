@@ -166,6 +166,13 @@ ggplot(datafr,
   scale_fill_manual(values = c("#1a85ff", "#d41159" ))
 ```
 
+```
+## Warning: Using the `size` aesthetic in this geom was deprecated in
+## ggplot2 3.4.0.
+## ℹ Please use `linewidth` in the `default_aes` field and
+##   elsewhere instead.
+```
+
 <img src="io48j-extension-plots_files/figure-html/alluvial-1.png" width="672" />
 
 :::tryit
@@ -216,6 +223,12 @@ medicaldata::covid_testing %>%
   labs(y = "Percent Positive", x = "Demographic Category")
 ```
 
+```
+## Warning: Using the `size` aesthietic with geom_segment was
+## deprecated in ggplot2 3.4.0.
+## ℹ Please use the `linewidth` aesthetic instead.
+```
+
 <img src="io48j-extension-plots_files/figure-html/lollipop-1.png" width="672" />
 
 :::tryit
@@ -243,7 +256,7 @@ indo_rct %>%
 
 ```
 ## Warning: Removed 1 rows containing missing values
-## (geom_point).
+## (`geom_point()`).
 ```
 
 <img src="io48j-extension-plots_files/figure-html/scatter-3-solution-1.png" width="672" />
