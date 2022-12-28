@@ -40,8 +40,8 @@ rmd_files:
 - io56a-rmarkdown-output.Rmd
 - io56b-Rmd-citations-Zotero.Rmd
 - io70-r_cmd_line.Rmd
-- io98-title-holder.Rmd
-- io99-references.Rmd
+- io198-title-holder.Rmd
+- io199-references.Rmd
 
 # notes
 
