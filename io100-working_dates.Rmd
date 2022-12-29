@@ -19,32 +19,82 @@ library(webexercises)
 ```
 
 # Dates and Times in R
-The horrors of dates and times
-![Picture](images/rmarkdown_wizards-2.png)
-Many, many date formats around the world
-ISO 8601 is the standard
 
-GMT is close to, but not the same as UTC. Coordinated Universal Time has no daylight savings, while GMT does.
+The horrors of dates and times (especially times and time zones) is a
+bane of computing. Dates have changed by government fiat (Gregorian to
+Julian, etc.) several times in history, and time zones and daylight
+savings time practices change more frequently. ![Time
+zones](images/tzmath1.jpg) To add to the complications, there are many,
+many date formats around the world, with different countries and
+cultures mixing and matching days, months, and years willy-nilly to
+indicate a particular date. For this reason, there is an international
+standard, [ISO
+8601](https://en.wikipedia.org/wiki/ISO_8601 "link to ISO8601 wikipedia page"),
+for dates and times. The standard calls for listing all dates in
+YYYY-MM-DD format, with numbers for the 4 digit year, 2 digit month, and
+2 digit day, as in 2021-04-17 for April 17, 2021. All numbers are
+zero-padded (necessary zeroes added to the left) to maintain 4 or two
+digits as needed. **Use this format** whenever you can, for consistency
+and to avoid errors that will be painful later. **Insist** that all of
+your collaborators use ISO8601 format, and your life will be vastly
+improved.
 
-There are leap years, and leap seconds, to keep track of.
+Time in ISO8601 uses a 24 hour clock, and is formatted in two ways:
+the *basic format* is T[hh][mm][ss] and the *extended format* is
+T[hh]:[mm]:[ss]. Each number in a time is two digits, and is zero-padded
+when needed, so that one second after midnight is T00:00:01.
 
-January 30 + 1 month = NA, because there is no Feb 30.
+When possible, use only dates in your data analysis. Times are complex
+and surprisingly painful, due to unusual cases that frequently cause
+trouble. These include:
 
-There are more than 24 time zones, because of episodic local changes. For example, tz = "America/Detroit" is not quite the same as Eastern Standard Time, as Michigan had daylight savings from 1916-1968, not from 1969-72, then returned to DST in 1973 and thereafter.
+-   GMT (the time zone for Greenwich mean time) is close to, but not the
+    same as UTC. Coordinated Universal Time (UTC) has no daylight
+    savings, while GMT does.
 
-With all of the odd geopolitical time zone and DST variations, there are now more than 600 distinct valid time zones that R keeps track of, and you can print these with the base R function *OlsonNames()*. Arthur David Olson was the original maintainer of the time zone database, which is now managed by the Internet Assigned Numbers Authority (IANA), currently led by Paul Eggert at UCLA.
+-   There are leap years, and leap seconds, to keep track of.
+
+-   January 30 + 1 month = NA, because there is no Feb 30.
+
+-   There are more than 24 time zones, because of episodic local
+    changes. For example, tz = "America/Detroit" is not quite the same
+    as Eastern Standard Time, as Michigan had daylight savings from
+    1916-1968, not from 1969-72, then returned to DST in 1973 and
+    thereafter.
+
+-   With all of the odd geopolitical time zone and DST variations, there
+    are now more than 600 distinct valid time zones that R keeps track
+    of, and you can print these with the base R function *OlsonNames()*.
+    Arthur David Olson was the original maintainer of the time zone
+    database, which is now managed by the Internet Assigned Numbers
+    Authority (IANA), currently led by Paul Eggert at UCLA.
+
+Unless you absolutely need time stamps to track intervals of less than a
+day, I strongly urge you to convert all date-times to simple ISO8601
+dates.
+
+![TZ](images/tzmath2.jpg)
 
 ## Data Types for Dates and Times
 
-- Date
-- date-time <dttm>
-- POSIXct - calendar time (also called continuous time or count time, as it counts seconds)
-- POSIXlt
+Data for dates and times comes in several formats. - POSIXct - calendar
+time (also called continuous time or count time, as it counts seconds) -
+POSIXlt - local time (also called list time) - Date - date-time <dttm>
 
-What is POSIX - Portable Operating System Interface for uniX
-Used to make standards for UNIX across Operating systems.
+POSIX is probably unfamiliar to you - it stands for the Portable
+Operating System Interface for uniX used to make standards for UNIX
+across Operating systems.
 
-Dates use the reference point of 1970-01-01 T 0:00:00 UTC (midnight at the start of the year 1970 in coordinated universal time) as zero seconds. All dates after that are counted in seconds in POSIXct. Dates prior to 1970 are counted in negative seconds. POSIXct is very memory-efficient for storing dates, but not very human-readable.
+POSIX Dates use the reference point of 1970-01-01 T 0:00:00 UTC
+(midnight at the start of the year 1970 in coordinated universal time)
+as zero seconds. All dates after that are counted in seconds in POSIXct.
+Dates prior to 1970 are counted in negative seconds. POSIXct is very
+memory-efficient for storing dates, but not very human-readable.
+
+In the code chunk below, we will start with a ISO 8601 date, with a time
+zone. We will then print it out, and then show it as it is stored, are
+using the unclass function. Copy and run the code chunk to see the
+results.
 
 ```{r POSIXct}
 date1 <- as.POSIXct("2018-01-16 04:34:45", 
@@ -53,64 +103,79 @@ date1
 unclass(date1)
 ```
 
+You get a nicely formatted ISO8601 date when you print the date, but
+when it is unclassed, you get a large integer, which corresponds to the
+number of seconds since midnight, UTC on January 1, 1970. POSIXct dates
+are stored as integer seconds.
 
-![Knit button](images/knit_button.png)
+## Using POSIXlt
 
+POSIXlt is another version of the POSIX standard, but in a more
+human-readable format. The 'lt' stands for local time, but it is often
+thought of as list time, as the data of POSIXlt is stored in a list
+format of human-readable items.
 
-## Using POSIXlt 
+POSIXlt stores separate items in a list. The list includes 10 distinct
+items:
 
-POSIXlt is another version of the POSIX standard, but in a more human-readable format. Tje 'lt' stands for local time, but it is often thought of as list time, as the output is in list format.
+-   seconds (sec)
+-   minutes (min)
+-   hours (hour)
+-   day of month (mday)
+-   month (mon) - numeric, with January as zero, and December as 11
+-   year (year) - since 1900 as zero, so the year 2018 = 118
+-   weekday numeric (wday), with Sunday = 0, Saturday = 6
+-   daylight savings (isdst), 0 for no, 1 for yes
+-   time zone (zone)
+-   Offset from UTC in seconds (gmtoff)
 
-POSIXlt stores separeate items in a list. The list includes:
-- seconds (sec)
-- minutes (min)
-- hours (hour)
-- day of month (mday)
-- month (mon) - with January as zero, December as 11
-- year (year) - since 1900, so 2018 = 118
-- weekday numeric (wday), with Sunday = 0, Saturday = 6
-- is daylight savings (isdst), 0 for no, 1 for yes
-- time zone (zone)
-- Offset from UTC in seconds (gmtoff)
+In the code chunk below, we will start with the same ISO 8601 date, with
+a time zone. We will then print it out, and then show it as it is
+stored, are using the unclass function. We will then extract the month
+and year. Copy and run the code chunk to see the results.
 
 ```{r POSIXlt}
 date2 <- as.POSIXlt(date1)
 date2
 unclass(date2)
+date2$mon
+date2$year
 ```
 
+Again, we get a nicely formatted ISO8601 date when you print the date,
+but when it is unclassed, you get a list of date items. When we extract
+the month and year, these can be surprising (January = 0, Year 2018 =
+118). POSIXlt dates are stored as a list of date items.
 
 ## Formatting dates
-- as.Date
-- strptime
-- formatting codes
-- the parsedate package
+
+-   as.Date
+-   strptime
+-   formatting codes
+-   the parsedate package
 
 ### Code Chunk Icons
 
-
-+------------------------------+------------------------------------+
-| Icon                         | Uses                               |
-+==============================+====================================+
-| Settings Gear                | Allows you to                      |
-|                              |                                    |
-|                              | -   Name the code chunk            |
-|                              |                                    |
-|                              | -   Set options for this chunk     |
-+------------------------------+------------------------------------+
-| Run Chunks Above (down       | Runs all of the preceding code     |
-| arrow)                       | chunks, including the setup chunk  |
-+------------------------------+------------------------------------+
-| Run Chunk (rightward arrow)  | Runs the entire current chunk      |
-+------------------------------+------------------------------------+
++----------------------------+----------------------------------+
+| Icon                       | Uses                             |
++============================+==================================+
+| Settings Gear              | Allows you to                    |
+|                            |                                  |
+|                            | -   Name the code chunk          |
+|                            |                                  |
+|                            | -   Set options for this chunk   |
++----------------------------+----------------------------------+
+| Run Chunks Above (down     | Runs all of the preceding code   |
+| arrow)                     | chunks, including the setup      |
+|                            | chunk                            |
++----------------------------+----------------------------------+
+| Run Chunk (rightward       | Runs the entire current chunk    |
+| arrow)                     |                                  |
++----------------------------+----------------------------------+
 
 : Code Chunk Icons
 
-
-
 ## Including Plots
-
-
 
 ```{r plot, echo=TRUE, warning=FALSE}
 covid %>% 
@@ -122,10 +187,7 @@ covid %>%
        y = "Cycle Threshold \n45 is a Negative Test")
 ```
 
-
 ## Including Tables
-
-
 
 ```{r table, echo=TRUE, warning=FALSE}
 covid %>% 
@@ -139,73 +201,77 @@ covid %>%
              n = "Count")
 ```
 
-
 ## Other languages in code chunks
-
 
 ## Code Chunk Options
 
-
-
-
-+--------------+--------------+--------------------------+
-| Option       | Values       | Output                   |
-+==============+==============+==========================+
-| eval         | TRUE/FALSE   | Whether or not the code  |
-|              |              | is run.                  |
-+--------------+--------------+--------------------------+
-| echo         | TRUE/FALSE   | Show or hide the code    |
-+--------------+--------------+--------------------------+
-| include      | TRUE/FALSE   | Whether or not the       |
-|              |              | resulting output of a    |
-|              |              | code chunk is displayed  |
-|              |              | in the document. `FALSE` |
-|              |              | means that the code      |
-|              |              | *will* run, but will not |
-|              |              | display results.         |
-|              |              | `include = FALSE` is     |
-|              |              | often used for the setup |
-|              |              | chunk.                   |
-+--------------+--------------+--------------------------+
-| warning      | TRUE/FALSE   | Whether warnings         |
-|              |              | generated from your code |
-|              |              | will be displayed in the |
-|              |              | document.                |
-+--------------+--------------+--------------------------+
-| message      | TRUE/FALSE   | Whether messages         |
-|              |              | generated from your code |
-|              |              | will be displayed in the |
-|              |              | document.                |
-+--------------+--------------+--------------------------+
-| fig.align    | default,     | Where on the page the    |
-|              | left, right, | output figure should     |
-|              | center       | align. Text options      |
-|              |              | should be in quotes,     |
-|              |              | like\                    |
-|              |              | `fig.align = "right"`    |
-+--------------+--------------+--------------------------+
-| fig.width    | default = 7  | figure width in inches   |
-+--------------+--------------+--------------------------+
-| fig .height  | default = 7  | figure height in inches  |
-+--------------+--------------+--------------------------+
-| error        | TRUE/FALSE   | If `TRUE`, will not stop |
-|              |              | building the document if |
-|              |              | there is an error in a   |
-|              |              | code chunk.              |
-+--------------+--------------+--------------------------+
-| cache        | TRUE/FALSE   | If `TRUE`, will store    |
-|              |              | the results and not      |
-|              |              | re-run the chunk.        |
-|              |              | Helpful for long, slow   |
-|              |              | calculations. But watch  |
-|              |              | out for this if your     |
-|              |              | data change and your     |
-|              |              | results do not(!!).      |
-+--------------+--------------+--------------------------+
++---------------+---------------+---------------------+
+| Option        | Values        | Output              |
++===============+===============+=====================+
+| eval          | TRUE/FALSE    | Whether or not the  |
+|               |               | code is run.        |
++---------------+---------------+---------------------+
+| echo          | TRUE/FALSE    | Show or hide the    |
+|               |               | code                |
++---------------+---------------+---------------------+
+| include       | TRUE/FALSE    | Whether or not the  |
+|               |               | resulting output of |
+|               |               | a code chunk is     |
+|               |               | displayed in the    |
+|               |               | document. `FALSE`   |
+|               |               | means that the code |
+|               |               | *will* run, but     |
+|               |               | will not display    |
+|               |               | results.            |
+|               |               | `include = FALSE`   |
+|               |               | is often used for   |
+|               |               | the setup chunk.    |
++---------------+---------------+---------------------+
+| warning       | TRUE/FALSE    | Whether warnings    |
+|               |               | generated from your |
+|               |               | code will be        |
+|               |               | displayed in the    |
+|               |               | document.           |
++---------------+---------------+---------------------+
+| message       | TRUE/FALSE    | Whether messages    |
+|               |               | generated from your |
+|               |               | code will be        |
+|               |               | displayed in the    |
+|               |               | document.           |
++---------------+---------------+---------------------+
+| fig.align     | default,      | Where on the page   |
+|               | left, right,  | the output figure   |
+|               | center        | should align. Text  |
+|               |               | options should be   |
+|               |               | in quotes, like\    |
+|               |               | `f                  |
+|               |               | ig.align = "right"` |
++---------------+---------------+---------------------+
+| fig.width     | default = 7   | figure width in     |
+|               |               | inches              |
++---------------+---------------+---------------------+
+| fig .height   | default = 7   | figure height in    |
+|               |               | inches              |
++---------------+---------------+---------------------+
+| error         | TRUE/FALSE    | If `TRUE`, will not |
+|               |               | stop building the   |
+|               |               | document if there   |
+|               |               | is an error in a    |
+|               |               | code chunk.         |
++---------------+---------------+---------------------+
+| cache         | TRUE/FALSE    | If `TRUE`, will     |
+|               |               | store the results   |
+|               |               | and not re-run the  |
+|               |               | chunk. Helpful for  |
+|               |               | long, slow          |
+|               |               | calculations. But   |
+|               |               | watch out for this  |
+|               |               | if your data change |
+|               |               | and your results do |
+|               |               | not(!!).            |
++---------------+---------------+---------------------+
 
 : Code Chunk Options
-
-
 
 ::: tryit
 ## Try Out Other Chunk Options
@@ -221,9 +287,7 @@ Try adding different chunk options, including
 
 ## The `setup` chunk
 
-
 ## The Easy Button - Visual Markdown Editing
-
 
 The mean cycle threshold in this study was
 `r longmcq(c(answer = "r covid %>%  mean(ct_result, na.rm = TRUE) %>% format(digits = 5)", "r covid %>% median(ct_result, na.rm = TRUE) %>% format(digits = 7)", "r covid %>%  sd(ct_result, na.rm=TRUE) %>% format(digits =3)"))`
@@ -233,7 +297,6 @@ The standard deviation of the cycle threshold in this study was
 `r longmcq(c("r covid %>%  mean(ct_result, na.rm = TRUE) %>% format(digits = 5)", "r covid %>% median(ct_result, na.rm = TRUE) %>% format(digits = 7)", answer = "r covid %>%  sd(ct_result, na.rm=TRUE) %>% format(digits =3)"))`
 
 <br>
-
 
 :::
 
