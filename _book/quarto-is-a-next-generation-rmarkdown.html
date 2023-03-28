@@ -795,14 +795,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="33.8" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#organized-options-in-code-chunks-with-the-hash-pipe"><i class="fa fa-check"></i><b>33.8</b> Organized Options in Code Chunks with the Hash-Pipe #|</a></li>
 <li class="chapter" data-level="33.9" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#stating-global-options-in-your-yaml-header"><i class="fa fa-check"></i><b>33.9</b> Stating Global Options in Your YAML Header</a>
 <ul>
-<li class="chapter" data-level="33.9.1" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#code-options"><i class="fa fa-check"></i><b>33.9.1</b> Code options</a></li>
+<li class="chapter" data-level="33.9.1" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#code-options-and-code-folding"><i class="fa fa-check"></i><b>33.9.1</b> Code Options and Code Folding</a></li>
 <li class="chapter" data-level="33.9.2" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#parameters"><i class="fa fa-check"></i><b>33.9.2</b> Parameters</a></li>
 <li class="chapter" data-level="33.9.3" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#self-contained"><i class="fa fa-check"></i><b>33.9.3</b> Self-contained</a></li>
 </ul></li>
 <li class="chapter" data-level="33.10" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#figures-and-tables"><i class="fa fa-check"></i><b>33.10</b> Figures and Tables</a></li>
 <li class="chapter" data-level="33.11" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#inline-code-and-caching"><i class="fa fa-check"></i><b>33.11</b> Inline Code and Caching</a></li>
-<li class="chapter" data-level="33.12" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#citations-in-quarto"><i class="fa fa-check"></i><b>33.12</b> Citations in Quarto</a></li>
-<li class="chapter" data-level="33.13" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#exploring-further"><i class="fa fa-check"></i><b>33.13</b> Exploring further</a></li>
+<li class="chapter" data-level="33.12" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#quarto-at-the-command-line"><i class="fa fa-check"></i><b>33.12</b> Quarto at the Command Line</a></li>
+<li class="chapter" data-level="33.13" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#citations-in-quarto"><i class="fa fa-check"></i><b>33.13</b> Citations in Quarto</a></li>
+<li class="chapter" data-level="33.14" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#exploring-further"><i class="fa fa-check"></i><b>33.14</b> Exploring further</a></li>
 </ul></li>
 <li class="chapter" data-level="34" data-path="cmd-line.html"><a href="cmd-line.html"><i class="fa fa-check"></i><b>34</b> Running R from the UNIX Command Line</a>
 <ul>
@@ -889,8 +890,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="stating-global-options-in-your-yaml-header" class="section level2 hasAnchor" number="33.9">
 <h2><span class="header-section-number">33.9</span> Stating Global Options in Your YAML Header<a href="quarto-is-a-next-generation-rmarkdown.html#stating-global-options-in-your-yaml-header" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="code-options" class="section level3 hasAnchor" number="33.9.1">
-<h3><span class="header-section-number">33.9.1</span> Code options<a href="quarto-is-a-next-generation-rmarkdown.html#code-options" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="code-options-and-code-folding" class="section level3 hasAnchor" number="33.9.1">
+<h3><span class="header-section-number">33.9.1</span> Code Options and Code Folding<a href="quarto-is-a-next-generation-rmarkdown.html#code-options-and-code-folding" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To fold (hide) your code with an option for the user to click on a <code>Code button</code> to see it, set up your YAML chunk at the top of the qmd document with the html option of <code>code-fold: true</code>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="quarto-is-a-next-generation-rmarkdown.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb2-2"><a href="quarto-is-a-next-generation-rmarkdown.html#cb2-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;Quarto Document&quot;</span></span>
+<span id="cb2-3"><a href="quarto-is-a-next-generation-rmarkdown.html#cb2-3" aria-hidden="true" tabindex="-1"></a>format<span class="sc">:</span></span>
+<span id="cb2-4"><a href="quarto-is-a-next-generation-rmarkdown.html#cb2-4" aria-hidden="true" tabindex="-1"></a>  html<span class="sc">:</span></span>
+<span id="cb2-5"><a href="quarto-is-a-next-generation-rmarkdown.html#cb2-5" aria-hidden="true" tabindex="-1"></a>    code<span class="sc">-</span>fold<span class="sc">:</span> true</span>
+<span id="cb2-6"><a href="quarto-is-a-next-generation-rmarkdown.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
 </div>
 <div id="parameters" class="section level3 hasAnchor" number="33.9.2">
 <h3><span class="header-section-number">33.9.2</span> Parameters<a href="quarto-is-a-next-generation-rmarkdown.html#parameters" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -905,11 +913,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="inline-code-and-caching" class="section level2 hasAnchor" number="33.11">
 <h2><span class="header-section-number">33.11</span> Inline Code and Caching<a href="quarto-is-a-next-generation-rmarkdown.html#inline-code-and-caching" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="citations-in-quarto" class="section level2 hasAnchor" number="33.12">
-<h2><span class="header-section-number">33.12</span> Citations in Quarto<a href="quarto-is-a-next-generation-rmarkdown.html#citations-in-quarto" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="quarto-at-the-command-line" class="section level2 hasAnchor" number="33.12">
+<h2><span class="header-section-number">33.12</span> Quarto at the Command Line<a href="quarto-is-a-next-generation-rmarkdown.html#quarto-at-the-command-line" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>As you work on a *.qmd document (in this case, named <code>document.qmd</code>), you will want to preview it in an adjacent browser window. You can do this at the command line (Terminal) with <code>quarto preview document.qmd --to html</code> for the html version, or <code>quarto preview document.qmd --to docx</code> for the Microsoft Word version.</p>
+<p>To render your saved qmd document at the command line, you can use with <code>quarto render document.qmd --to html</code> for the html version, or <code>quarto render document.qmd --to docx</code> for the Microsoft Word version. The render commands will produce a final document.</p>
 </div>
-<div id="exploring-further" class="section level2 hasAnchor" number="33.13">
-<h2><span class="header-section-number">33.13</span> Exploring further<a href="quarto-is-a-next-generation-rmarkdown.html#exploring-further" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="citations-in-quarto" class="section level2 hasAnchor" number="33.13">
+<h2><span class="header-section-number">33.13</span> Citations in Quarto<a href="quarto-is-a-next-generation-rmarkdown.html#citations-in-quarto" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="exploring-further" class="section level2 hasAnchor" number="33.14">
+<h2><span class="header-section-number">33.14</span> Exploring further<a href="quarto-is-a-next-generation-rmarkdown.html#exploring-further" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li><p>The <a href="https://r4ds.hadley.nz/quarto.html">Quarto Chapter</a> in R for Data Science.</p></li>
 <li><p>The Quarto Getting Started Tutorials found (in left sidebar) <a href="https://quarto.org/docs/get-started/">here</a></p></li>

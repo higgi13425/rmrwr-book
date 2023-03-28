@@ -1,0 +1,98 @@
+---
+title: "Introduction to Quarto"
+author: "Peter Higgins"
+date: "10/21/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(medicaldata)
+library(webexercises)
+library(scales)
+```
+
+# Quarto is a Next-Generation RMarkdown
+
+## Goals for this Chapter
+
+-   introduce Quarto
+-   Install Quarto CLI
+-   Explore Quarto Features
+
+## Packages Needed for this chapter
+
+You will need {tidyverse}, {medicaldata}, and {rmarkdown}, and updated versions of R and RStudio. If needed, copy the block of code below into your RStudio and run the code to load these packages. You can remove the hashtags from the `install.packages` functions to install these packages if needed.
+
+```{r}
+# install.packages('tidyverse')
+# install.packages('medicaldata')
+# install.packages('scales')
+library(tidyverse)
+library(medicaldata)
+library(rmarkdown)
+```
+
+## Introducing Quarto
+
+Quarto is the next-generation version of RMarkdown. RMarkdown grew organically, with many spinoffs (blogdown, bookdown, posterdown), with great creativity. But there was not master plan in mind, and a fair number of hacky workarounds became standard. There was some inconsistency between implementations, there was no command-line interface, the approach was specific to R, and past decisions made some new features impossible to implement.
+
+So the folks at Posit (formerly RStudio) decided to rebuild RMarkdown from scratch with a coherent master plan, a command line interface, the ability to use many languages (including Python, bash, Julia, etc.), and pathways to more features that were not possible in RMarkdown. In many ways, Quarto documents (*.qmd) look a lot like rmd documents. There is a familiar YAML header, text and code chunks, formatting with markdown tags, and the ability to use Pandoc to render (instead of knit) documents to a variety of output formats.
+
+Let's take a moment to go to the [quarto page](https://quarto.org). Click on the **Get Started** button to go to the installation page.
+
+Now click on the *Download Quarto CLI* button to download the right version of quarto for your computer. Note that installing a current version of RStudio will also install the Quarto CLI, but it is not an R package.
+
+Installation is straightforward - go to your downloads folder, and click on the downloaded file to start the installation process. Once this is complete, and the original package moved to the trash, you are ready to open RStudio and work with Quarto documents and presentations.
+
+## A Tour of Quarto
+
+## Opening a New Quarto Document
+
+## The Visual Editor vs. Source Editor in Quarto
+
+## Adding Code Chunks
+
+## Organized Options in Code Chunks with the Hash-Pipe #|
+
+## Stating Global Options in Your YAML Header
+
+### Code Options and Code Folding
+
+
+To fold (hide) your code with an option for the user to click on a `Code button` to see it, set up your YAML chunk at the top of the qmd document with the html option of `code-fold: true`.
+
+```{r}
+#| eval: false
+#| echo: true
+---
+title: "Quarto Document"
+format:
+  html:
+    code-fold: true
+---
+```
+
+
+### Parameters
+
+### Self-contained
+
+## Figures and Tables
+
+## Inline Code and Caching
+
+## Quarto at the Command Line
+
+As you work on a *.qmd document (in this case, named `document.qmd`), you will want to preview it in an adjacent browser window. You can do this at the command line (Terminal) with `quarto preview document.qmd --to html` for the html version, or `quarto preview document.qmd --to docx` for the Microsoft Word version.
+
+To render your saved qmd document at the command line, you can use with `quarto render document.qmd --to html` for the html version, or `quarto render document.qmd --to docx` for the Microsoft Word version. The render commands will produce a final document.
+
+## Citations in Quarto
+
+## Exploring further
+
+1. The [Quarto Chapter](https://r4ds.hadley.nz/quarto.html) in R for Data Science.
+
+2. The Quarto Getting Started Tutorials found (in left sidebar) [here](https://quarto.org/docs/get-started/)

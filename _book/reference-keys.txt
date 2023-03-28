@@ -503,3 +503,5 @@ self-contained
 figures-and-tables
 inline-code-and-caching
 citations-in-quarto
+code-options-and-code-folding
+quarto-at-the-command-line
