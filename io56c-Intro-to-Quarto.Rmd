@@ -38,7 +38,7 @@ library(rmarkdown)
 
 Quarto is the next-generation version of RMarkdown. RMarkdown grew organically, with many spinoffs (blogdown, bookdown, posterdown), with great creativity. But there was not master plan in mind, and a fair number of hacky workarounds became standard. There was some inconsistency between implementations, there was no command-line interface, the approach was specific to R, and past decisions made some new features impossible to implement.
 
-So the folks at Posit (formerly RStudio) decided to rebuild RMarkdown from scratch with a coherent master plan, a command line interface, the ability to use many languages (including Python, bash, Julia, etc.), and pathways to more features that were not possible in RMarkdown. In many ways, Quarto documents (*.qmd) look a lot like rmd documents. There is a familiar YAML header, text and code chunks, formatting with markdown tags, and the ability to use Pandoc to render (instead of knit) documents to a variety of output formats.
+So the folks at Posit (formerly RStudio) decided to rebuild RMarkdown from scratch with a coherent master plan, a command line interface, the ability to use many languages (including Python, bash, Julia, etc.), and pathways to more features that were not possible in RMarkdown. In many ways, Quarto documents (\*.qmd) look a lot like rmd documents. There is a familiar YAML header, text and code chunks, formatting with markdown tags, and the ability to use Pandoc to render (instead of knit) documents to a variety of output formats.
 
 Let's take a moment to go to the [quarto page](https://quarto.org). Click on the **Get Started** button to go to the installation page.
 
@@ -48,34 +48,186 @@ Installation is straightforward - go to your downloads folder, and click on the 
 
 ## A Tour of Quarto
 
+Quarto is an authring framework that lets you create a variety of output documents, including HTML, MS Word, MS Powerpoint, and others, from a mix of text and code chunks. You can show (during analysis) or hide (for manuscript) code chunks, and show or hide the output. Quarto is a great way to document your background, analysis, and conclusions. It is also a useful format for collaborating and for code review. Think of it as an analytic notebook that can fold up your code and present results when needed.
+
+You can open a New File/Quarto Document, or a New File/Quarto Presentation. Your Document format options are HTML, PDF, or MS Word. The visual editor is on by default, which gives you and WYSIWYG (What You See Is What You Get) environment, like MS Word or Google Docs. You can also switch to the source editor for more control of formatting.
+
 ## Opening a New Quarto Document
+
+Try this yourself - in RStudio, open New File/Quarto Document, and select HTML as the format. Give it a title and author, then click the `Create` button.
+
+The default document starts with a YAML chunk, which controls the document output and global options, which looks something like this:
+
+```{r}
+#| error: true
+#| eval: false
+---
+title: "Prostate data"
+date: 2022-09-12
+format: html
+---
+```
+
+The rest of the document consists of explanatory text and code chunks. The explanatory text can be formatted in the Visual Editor (as in MS Word) or in the source editor with markdown tags for bold, italic, etc.
 
 ## The Visual Editor vs. Source Editor in Quarto
 
+When the Visual Editor is activated by its toggle button, you will see a toolbar at the top of your source pane that looks like this:
+
+![The Quarto Visual Editor](images/Visual%20Editor%20Quarto.png){fig-alt="Quarto Visual Editor"} This allows you to easily apply bold, italic, or code formatting, insert headers of several levels, bulleted or numbered lists, links, images, or tables. <br> The Source Editor toggle gives you a display that is not as pretty, but it shows all the markdown tags, and gives you finer control of formatting, and looks more like this:
+
+```{r}
+#|eval: false
+#|error: true
+
+## Text formatting
+
+*italic* **bold** ~~strikeout~~ `code`
+
+superscript^2^ subscript~2~
+
+[underline]{.underline} [small caps]{.smallcaps}
+
+## Headings
+
+# 1st Level Header
+
+## 2nd Level Header
+
+### 3rd Level Header
+
+## Lists
+
+-   Bulleted list item 1
+
+-   Item 2
+
+    -   Item 2a
+
+    -   Item 2b
+
+1.  Numbered list item 1
+
+2.  Item 2.
+    The numbers are incremented automatically in the output.
+
+## Links and images
+
+<http://example.com>
+
+[linked phrase](http://example.com)
+
+![optional caption text](path/quarto.png){fig-alt="Quarto logo"}
+
+## Tables
+
+| First Header | Second Header |
+|--------------|---------------|
+| Content Cell | Content Cell  |
+| Content Cell | Content Cell  |
+```
+
 ## Adding Code Chunks
 
-## Organized Options in Code Chunks with the Hash-Pipe #|
+To add a new code chunk, type Cmd/Ctrl + Option + I or choose the green C (chunk) icon at the top right of the source pane (left of the Run button), and select R from the dropdown menu, or you could manually type `{r} alone on a line at the top and` alone on a line at the bottom of the code chunk. Note that you can insert code chunks from a variety of languages.
+
+To insert new text, just type plain text, and format as desired. You can use the Outline toggle button to turn on or off the outline in the right sidebar of the Source pane. It uses your headings to create a nested outline.
+
+## Organized Options in Code Chunks with the Hash-Pipe #\|
+
+Previously in Rmarkdown, you could state options for your code chunk after the {r} header, inside of the curly braces. This could get a bit messy and sometimes hard to read. You can now add options to each code chunk with the hash-pipe operator (#\|) right after the {r} header, starting on the next line, with one option on each line. This looks something like:
+
+```{r}
+#| label: example-chunk
+#| error: true
+#| eval: false
+#| hide: true
+#| echo: true
+#| cache: true
+```
+
+Some of the popular options are
+
+| Option                | What it Does                                                                                                              |
+|-----------------------|-------------------------------------------------|
+| echo                  | Shows (true) or hides (false) code                                                                                        |
+| eval                  | whether or not to evaluate the code and show results                                                                      |
+| label                 | name of the chunk (must be unique in your qmd document)                                                                   |
+| include               | show chunk and output (true), or just run without any output (often used for the `setup` chunk to load libraries quietly) |
+| fig.width, fig.height | sets these, default unit is inches                                                                                        |
+| warning               | whether to show text warnings                                                                                             |
+| message               | whether to show text messages                                                                                             |
+| cache                 | Cache and use previous result (true) - helpful if long calculation you don't want to repeat                               |
+| fig.cap               | set the figure caption                                                                                                    |
+| results: hide         | hides printed output                                                                                                      |
+| fig-show: hide        | hides plots                                                                                                               |
+
+: Options for Code Chunks
+
+All of the possible options for a code chunk can be found [here](https://yihui.org/knitr/options/).
+
+Code chunks and their outcomes:
+
+| Option           | Run code | Show Code | Output | Plots | Messages | Warnings |
+|------------------|----------|-----------|--------|-------|----------|----------|
+| `eval: false`    | N        | Y         | N      | N     | N        | N        |
+| `include: false` | Y        | N         | N      | N     | N        | N        |
+| `echo: false`    | Y        | N         | Y      | Y     | Y        | Y        |
+| results: hide    | Y        | Y         | N      | Y     | Y        | Y        |
+| fig-show: hide   | Y        | Y         | Y      | N     | Y        | Y        |
+| message: false   | Y        | Y         | Y      | Y     | N        | Y        |
+| warning: false   | Y        | Y         | Y      | Y     | Y        | N        |
 
 ## Stating Global Options in Your YAML Header
 
 ### Code Options and Code Folding
 
+To add global code options for all code chunks, you can set the `execute` options in your YAML section to things like `echo: false`. Note that you need to add a return after `execute:` to make a new line, then keep the default indent when you add options like `eval: false` or `fig-show: hide`.
 
-To fold (hide) your code with an option for the user to click on a `Code button` to see it, set up your YAML chunk at the top of the qmd document with the html option of `code-fold: true`.
+<br>
+
+To fold (hide) your code with an option for the user to click on a `Code button` to see it, set up your YAML chunk at the top of the qmd document with the `format:` `html:` option of `code-fold: true`. Note that this requires the correct line breaks and indents to work.
 
 ```{r}
 #| eval: false
 #| echo: true
 ---
 title: "Quarto Document"
+execute: 
+  echo: false
 format:
   html:
     code-fold: true
 ---
 ```
 
-
 ### Parameters
+
+You can also render a quarto document to prepare a report for one subset of your data, and set the key parameter in the YAML chunk. For example, you can run an fuel economy report with a plot only for SUVs, as seen below.
+
+```{r}
+#| error: true
+---
+output: html_document
+params:
+  my_class: "suv"
+---
+
+#| label: setup
+#| include: false
+
+library(tidyverse)
+
+class <- mpg |> filter(class == params$my_class)
+
+# Fuel economy for `r params$my_class`s
+
+#| message: false
+
+ggplot(class, aes(x = displ, y = hwy)) + 
+  geom_point() + 
+  geom_smooth(se = FALSE)
+```
 
 ### Self-contained
 
@@ -85,7 +237,7 @@ format:
 
 ## Quarto at the Command Line
 
-As you work on a *.qmd document (in this case, named `document.qmd`), you will want to preview it in an adjacent browser window. You can do this at the command line (Terminal) with `quarto preview document.qmd --to html` for the html version, or `quarto preview document.qmd --to docx` for the Microsoft Word version.
+As you work on a \*.qmd document (in this case, named `document.qmd`), you will want to preview it in an adjacent browser window. You can do this at the command line (Terminal) with `quarto preview document.qmd --to html` for the html version, or `quarto preview document.qmd --to docx` for the Microsoft Word version.
 
 To render your saved qmd document at the command line, you can use with `quarto render document.qmd --to html` for the html version, or `quarto render document.qmd --to docx` for the Microsoft Word version. The render commands will produce a final document.
 
@@ -93,6 +245,6 @@ To render your saved qmd document at the command line, you can use with `quarto 
 
 ## Exploring further
 
-1. The [Quarto Chapter](https://r4ds.hadley.nz/quarto.html) in R for Data Science.
+1.  The Quarto Getting Started Tutorials found (in left sidebar) [here](https://quarto.org/docs/get-started/)
 
-2. The Quarto Getting Started Tutorials found (in left sidebar) [here](https://quarto.org/docs/get-started/)
+2.  The [Quarto Chapter](https://r4ds.hadley.nz/quarto.html) in R for Data Science.
