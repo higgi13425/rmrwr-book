@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 20 Randomization for Clinical Trials with R | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
-  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 20 Randomization for Clinical Trials with R | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2022-12-27" />
+<meta name="date" content="2023-03-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,14 +52,13 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.6.0/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.10.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
-<link href="libs/tabwid-1.1.2/tabwid.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -149,15 +148,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#who-this-book-is-for"><i class="fa fa-check"></i><b>1.1</b> Who This Book is For</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i><b>1.2</b> Prerequisites</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#the-spiral-of-success-structure"><i class="fa fa-check"></i><b>1.3</b> The Spiral of Success Structure</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#the-upward-spiral-of-success-structure"><i class="fa fa-check"></i><b>1.3</b> The (Upward) Spiral of Success Structure</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#motivation-for-this-book"><i class="fa fa-check"></i><b>1.4</b> Motivation for this Book</a></li>
 <li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#the-scientific-reproducibility-crisis"><i class="fa fa-check"></i><b>1.5</b> The Scientific Reproducibility Crisis</a></li>
-<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#features-of-a-bookdown-electronic-book"><i class="fa fa-check"></i><b>1.6</b> Features of a Bookdown electronic book</a>
-<ul>
-<li class="chapter" data-level="1.6.1" data-path="index.html"><a href="index.html#icons"><i class="fa fa-check"></i><b>1.6.1</b> Icons</a></li>
-<li class="chapter" data-level="1.6.2" data-path="index.html"><a href="index.html#sharing"><i class="fa fa-check"></i><b>1.6.2</b> Sharing</a></li>
-<li class="chapter" data-level="1.6.3" data-path="index.html"><a href="index.html#scrollingpaging"><i class="fa fa-check"></i><b>1.6.3</b> Scrolling/Paging</a></li>
-</ul></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#features-of-a-bookdown-electronic-book"><i class="fa fa-check"></i><b>1.6</b> Features of a Bookdown electronic book</a></li>
 <li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#what-this-book-is-not"><i class="fa fa-check"></i><b>1.7</b> What this Book is Not</a>
 <ul>
 <li class="chapter" data-level="1.7.1" data-path="index.html"><a href="index.html#this-book-is-not-a-statistics-text"><i class="fa fa-check"></i><b>1.7.1</b> This Book is Not A Statistics Text</a></li>
@@ -584,7 +578,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="23.6" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#lollipop-plots"><i class="fa fa-check"></i><b>23.6</b> Lollipop Plots</a></li>
 <li class="chapter" data-level="23.7" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#dumbbell-plots"><i class="fa fa-check"></i><b>23.7</b> Dumbbell Plots</a></li>
 <li class="chapter" data-level="23.8" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#test-what-you-have-learned"><i class="fa fa-check"></i><b>23.8</b> Test what you have learned</a></li>
-<li class="chapter" data-level="23.9" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#dumbbell-plots-with-ggalt-for-visualizing-change"><i class="fa fa-check"></i><b>23.9</b> Dumbbell Plots with ggalt For Visualizing Change</a></li>
+<li class="chapter" data-level="23.9" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#spaghetti-plots-with-summary-smoothed-lines-for-change-over-time"><i class="fa fa-check"></i><b>23.9</b> Spaghetti Plots with Summary Smoothed Lines for Change Over Time</a></li>
 <li class="chapter" data-level="23.10" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#direct-labeling-of-plots"><i class="fa fa-check"></i><b>23.10</b> Direct Labeling of Plots</a>
 <ul>
 <li class="chapter" data-level="23.10.1" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#geomtextpath"><i class="fa fa-check"></i><b>23.10.1</b> GeomTextPath</a></li>
@@ -871,66 +865,66 @@ Below, you will see how to do this for the biologic failure - low albumin stratu
 <span id="cb401-7"><a href="randomization-for-clinical-trials-with-r.html#cb401-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">block.prefix =</span> <span class="st">&quot;BfLA&quot;</span>) <span class="co"># stratum abbrev</span></span>
 <span id="cb401-8"><a href="randomization-for-clinical-trials-with-r.html#cb401-8" aria-hidden="true" tabindex="-1"></a>bfla</span></code></pre></div>
 <pre><code>##        id      stratum block.id block.size treatment
-## 1  BfLA01 Bfail.LowAlb   BfLA01          3    CS/Upa
-## 2  BfLA02 Bfail.LowAlb   BfLA01          3        CS
-## 3  BfLA03 Bfail.LowAlb   BfLA01          3   CS/Tofa
-## 4  BfLA04 Bfail.LowAlb   BfLA02          3   CS/Tofa
-## 5  BfLA05 Bfail.LowAlb   BfLA02          3        CS
-## 6  BfLA06 Bfail.LowAlb   BfLA02          3    CS/Upa
-## 7  BfLA07 Bfail.LowAlb   BfLA03          6    CS/Upa
-## 8  BfLA08 Bfail.LowAlb   BfLA03          6   CS/Tofa
-## 9  BfLA09 Bfail.LowAlb   BfLA03          6        CS
-## 10 BfLA10 Bfail.LowAlb   BfLA03          6        CS
-## 11 BfLA11 Bfail.LowAlb   BfLA03          6   CS/Tofa
-## 12 BfLA12 Bfail.LowAlb   BfLA03          6    CS/Upa
-## 13 BfLA13 Bfail.LowAlb   BfLA04          6        CS
-## 14 BfLA14 Bfail.LowAlb   BfLA04          6   CS/Tofa
-## 15 BfLA15 Bfail.LowAlb   BfLA04          6    CS/Upa
-## 16 BfLA16 Bfail.LowAlb   BfLA04          6    CS/Upa
-## 17 BfLA17 Bfail.LowAlb   BfLA04          6   CS/Tofa
-## 18 BfLA18 Bfail.LowAlb   BfLA04          6        CS
-## 19 BfLA19 Bfail.LowAlb   BfLA05          3    CS/Upa
-## 20 BfLA20 Bfail.LowAlb   BfLA05          3   CS/Tofa
-## 21 BfLA21 Bfail.LowAlb   BfLA05          3        CS
-## 22 BfLA22 Bfail.LowAlb   BfLA06          6    CS/Upa
-## 23 BfLA23 Bfail.LowAlb   BfLA06          6    CS/Upa
-## 24 BfLA24 Bfail.LowAlb   BfLA06          6   CS/Tofa
-## 25 BfLA25 Bfail.LowAlb   BfLA06          6        CS
-## 26 BfLA26 Bfail.LowAlb   BfLA06          6   CS/Tofa
-## 27 BfLA27 Bfail.LowAlb   BfLA06          6        CS
-## 28 BfLA28 Bfail.LowAlb   BfLA07          9   CS/Tofa
-## 29 BfLA29 Bfail.LowAlb   BfLA07          9    CS/Upa
-## 30 BfLA30 Bfail.LowAlb   BfLA07          9        CS
-## 31 BfLA31 Bfail.LowAlb   BfLA07          9    CS/Upa
-## 32 BfLA32 Bfail.LowAlb   BfLA07          9   CS/Tofa
-## 33 BfLA33 Bfail.LowAlb   BfLA07          9   CS/Tofa
-## 34 BfLA34 Bfail.LowAlb   BfLA07          9        CS
-## 35 BfLA35 Bfail.LowAlb   BfLA07          9        CS
-## 36 BfLA36 Bfail.LowAlb   BfLA07          9    CS/Upa
-## 37 BfLA37 Bfail.LowAlb   BfLA08          6   CS/Tofa
-## 38 BfLA38 Bfail.LowAlb   BfLA08          6        CS
-## 39 BfLA39 Bfail.LowAlb   BfLA08          6    CS/Upa
-## 40 BfLA40 Bfail.LowAlb   BfLA08          6        CS
-## 41 BfLA41 Bfail.LowAlb   BfLA08          6   CS/Tofa
-## 42 BfLA42 Bfail.LowAlb   BfLA08          6    CS/Upa
-## 43 BfLA43 Bfail.LowAlb   BfLA09          6    CS/Upa
-## 44 BfLA44 Bfail.LowAlb   BfLA09          6   CS/Tofa
-## 45 BfLA45 Bfail.LowAlb   BfLA09          6        CS
-## 46 BfLA46 Bfail.LowAlb   BfLA09          6    CS/Upa
-## 47 BfLA47 Bfail.LowAlb   BfLA09          6   CS/Tofa
-## 48 BfLA48 Bfail.LowAlb   BfLA09          6        CS
-## 49 BfLA49 Bfail.LowAlb   BfLA10          6        CS
-## 50 BfLA50 Bfail.LowAlb   BfLA10          6    CS/Upa
-## 51 BfLA51 Bfail.LowAlb   BfLA10          6    CS/Upa
-## 52 BfLA52 Bfail.LowAlb   BfLA10          6   CS/Tofa
-## 53 BfLA53 Bfail.LowAlb   BfLA10          6        CS
-## 54 BfLA54 Bfail.LowAlb   BfLA10          6   CS/Tofa
-## 55 BfLA55 Bfail.LowAlb   BfLA11          6    CS/Upa
-## 56 BfLA56 Bfail.LowAlb   BfLA11          6   CS/Tofa
-## 57 BfLA57 Bfail.LowAlb   BfLA11          6        CS
-## 58 BfLA58 Bfail.LowAlb   BfLA11          6        CS
-## 59 BfLA59 Bfail.LowAlb   BfLA11          6    CS/Upa
-## 60 BfLA60 Bfail.LowAlb   BfLA11          6   CS/Tofa</code></pre>
+## 1  BfLA01 Bfail.LowAlb   BfLA01          6   CS/Tofa
+## 2  BfLA02 Bfail.LowAlb   BfLA01          6        CS
+## 3  BfLA03 Bfail.LowAlb   BfLA01          6    CS/Upa
+## 4  BfLA04 Bfail.LowAlb   BfLA01          6   CS/Tofa
+## 5  BfLA05 Bfail.LowAlb   BfLA01          6        CS
+## 6  BfLA06 Bfail.LowAlb   BfLA01          6    CS/Upa
+## 7  BfLA07 Bfail.LowAlb   BfLA02          6   CS/Tofa
+## 8  BfLA08 Bfail.LowAlb   BfLA02          6        CS
+## 9  BfLA09 Bfail.LowAlb   BfLA02          6        CS
+## 10 BfLA10 Bfail.LowAlb   BfLA02          6    CS/Upa
+## 11 BfLA11 Bfail.LowAlb   BfLA02          6   CS/Tofa
+## 12 BfLA12 Bfail.LowAlb   BfLA02          6    CS/Upa
+## 13 BfLA13 Bfail.LowAlb   BfLA03          9        CS
+## 14 BfLA14 Bfail.LowAlb   BfLA03          9   CS/Tofa
+## 15 BfLA15 Bfail.LowAlb   BfLA03          9        CS
+## 16 BfLA16 Bfail.LowAlb   BfLA03          9    CS/Upa
+## 17 BfLA17 Bfail.LowAlb   BfLA03          9   CS/Tofa
+## 18 BfLA18 Bfail.LowAlb   BfLA03          9    CS/Upa
+## 19 BfLA19 Bfail.LowAlb   BfLA03          9   CS/Tofa
+## 20 BfLA20 Bfail.LowAlb   BfLA03          9        CS
+## 21 BfLA21 Bfail.LowAlb   BfLA03          9    CS/Upa
+## 22 BfLA22 Bfail.LowAlb   BfLA04          6   CS/Tofa
+## 23 BfLA23 Bfail.LowAlb   BfLA04          6   CS/Tofa
+## 24 BfLA24 Bfail.LowAlb   BfLA04          6        CS
+## 25 BfLA25 Bfail.LowAlb   BfLA04          6    CS/Upa
+## 26 BfLA26 Bfail.LowAlb   BfLA04          6        CS
+## 27 BfLA27 Bfail.LowAlb   BfLA04          6    CS/Upa
+## 28 BfLA28 Bfail.LowAlb   BfLA05          6   CS/Tofa
+## 29 BfLA29 Bfail.LowAlb   BfLA05          6        CS
+## 30 BfLA30 Bfail.LowAlb   BfLA05          6        CS
+## 31 BfLA31 Bfail.LowAlb   BfLA05          6    CS/Upa
+## 32 BfLA32 Bfail.LowAlb   BfLA05          6   CS/Tofa
+## 33 BfLA33 Bfail.LowAlb   BfLA05          6    CS/Upa
+## 34 BfLA34 Bfail.LowAlb   BfLA06          9    CS/Upa
+## 35 BfLA35 Bfail.LowAlb   BfLA06          9   CS/Tofa
+## 36 BfLA36 Bfail.LowAlb   BfLA06          9   CS/Tofa
+## 37 BfLA37 Bfail.LowAlb   BfLA06          9    CS/Upa
+## 38 BfLA38 Bfail.LowAlb   BfLA06          9        CS
+## 39 BfLA39 Bfail.LowAlb   BfLA06          9        CS
+## 40 BfLA40 Bfail.LowAlb   BfLA06          9    CS/Upa
+## 41 BfLA41 Bfail.LowAlb   BfLA06          9   CS/Tofa
+## 42 BfLA42 Bfail.LowAlb   BfLA06          9        CS
+## 43 BfLA43 Bfail.LowAlb   BfLA07          6   CS/Tofa
+## 44 BfLA44 Bfail.LowAlb   BfLA07          6        CS
+## 45 BfLA45 Bfail.LowAlb   BfLA07          6    CS/Upa
+## 46 BfLA46 Bfail.LowAlb   BfLA07          6    CS/Upa
+## 47 BfLA47 Bfail.LowAlb   BfLA07          6        CS
+## 48 BfLA48 Bfail.LowAlb   BfLA07          6   CS/Tofa
+## 49 BfLA49 Bfail.LowAlb   BfLA08          3        CS
+## 50 BfLA50 Bfail.LowAlb   BfLA08          3    CS/Upa
+## 51 BfLA51 Bfail.LowAlb   BfLA08          3   CS/Tofa
+## 52 BfLA52 Bfail.LowAlb   BfLA09          3   CS/Tofa
+## 53 BfLA53 Bfail.LowAlb   BfLA09          3    CS/Upa
+## 54 BfLA54 Bfail.LowAlb   BfLA09          3        CS
+## 55 BfLA55 Bfail.LowAlb   BfLA10          6   CS/Tofa
+## 56 BfLA56 Bfail.LowAlb   BfLA10          6        CS
+## 57 BfLA57 Bfail.LowAlb   BfLA10          6        CS
+## 58 BfLA58 Bfail.LowAlb   BfLA10          6   CS/Tofa
+## 59 BfLA59 Bfail.LowAlb   BfLA10          6    CS/Upa
+## 60 BfLA60 Bfail.LowAlb   BfLA10          6    CS/Upa</code></pre>
 <p>You can see the <code>id</code> for each participant, their <code>stratum</code>, the <code>block.id</code> for their permuted block, the <code>block.size</code>, and their assigned <code>treatment</code>. You can imagine this as a randomization list, or as assignments that you could print out on cards and seal in security envelopes for the time of randomization. Of course, this is only one of our four strata. We should do the same for the 3 other strata.</p>
 <div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="randomization-for-clinical-trials-with-r.html#cb403-1" aria-hidden="true" tabindex="-1"></a>bfha <span class="ot">&lt;-</span> <span class="fu">blockrand</span>(<span class="at">n =</span> <span class="dv">60</span>, </span>
 <span id="cb403-2"><a href="randomization-for-clinical-trials-with-r.html#cb403-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">num.levels =</span> <span class="dv">3</span>, <span class="co"># three treatments</span></span>
@@ -941,66 +935,72 @@ Below, you will see how to do this for the biologic failure - low albumin stratu
 <span id="cb403-7"><a href="randomization-for-clinical-trials-with-r.html#cb403-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">block.prefix =</span> <span class="st">&quot;BfHA&quot;</span>) <span class="co"># stratum abbrev</span></span>
 <span id="cb403-8"><a href="randomization-for-clinical-trials-with-r.html#cb403-8" aria-hidden="true" tabindex="-1"></a>bfha</span></code></pre></div>
 <pre><code>##        id     stratum block.id block.size treatment
-## 1  BfHA01 Bfail.HiAlb    BfHA1          6   CS/Tofa
-## 2  BfHA02 Bfail.HiAlb    BfHA1          6        CS
-## 3  BfHA03 Bfail.HiAlb    BfHA1          6        CS
-## 4  BfHA04 Bfail.HiAlb    BfHA1          6    CS/Upa
-## 5  BfHA05 Bfail.HiAlb    BfHA1          6   CS/Tofa
-## 6  BfHA06 Bfail.HiAlb    BfHA1          6    CS/Upa
-## 7  BfHA07 Bfail.HiAlb    BfHA2          9    CS/Upa
-## 8  BfHA08 Bfail.HiAlb    BfHA2          9    CS/Upa
-## 9  BfHA09 Bfail.HiAlb    BfHA2          9    CS/Upa
-## 10 BfHA10 Bfail.HiAlb    BfHA2          9   CS/Tofa
-## 11 BfHA11 Bfail.HiAlb    BfHA2          9        CS
-## 12 BfHA12 Bfail.HiAlb    BfHA2          9   CS/Tofa
-## 13 BfHA13 Bfail.HiAlb    BfHA2          9   CS/Tofa
-## 14 BfHA14 Bfail.HiAlb    BfHA2          9        CS
-## 15 BfHA15 Bfail.HiAlb    BfHA2          9        CS
-## 16 BfHA16 Bfail.HiAlb    BfHA3          6        CS
-## 17 BfHA17 Bfail.HiAlb    BfHA3          6   CS/Tofa
-## 18 BfHA18 Bfail.HiAlb    BfHA3          6    CS/Upa
-## 19 BfHA19 Bfail.HiAlb    BfHA3          6    CS/Upa
-## 20 BfHA20 Bfail.HiAlb    BfHA3          6        CS
-## 21 BfHA21 Bfail.HiAlb    BfHA3          6   CS/Tofa
-## 22 BfHA22 Bfail.HiAlb    BfHA4          6        CS
-## 23 BfHA23 Bfail.HiAlb    BfHA4          6    CS/Upa
-## 24 BfHA24 Bfail.HiAlb    BfHA4          6   CS/Tofa
-## 25 BfHA25 Bfail.HiAlb    BfHA4          6    CS/Upa
-## 26 BfHA26 Bfail.HiAlb    BfHA4          6        CS
-## 27 BfHA27 Bfail.HiAlb    BfHA4          6   CS/Tofa
-## 28 BfHA28 Bfail.HiAlb    BfHA5          9   CS/Tofa
-## 29 BfHA29 Bfail.HiAlb    BfHA5          9    CS/Upa
-## 30 BfHA30 Bfail.HiAlb    BfHA5          9        CS
-## 31 BfHA31 Bfail.HiAlb    BfHA5          9        CS
-## 32 BfHA32 Bfail.HiAlb    BfHA5          9   CS/Tofa
-## 33 BfHA33 Bfail.HiAlb    BfHA5          9        CS
-## 34 BfHA34 Bfail.HiAlb    BfHA5          9    CS/Upa
-## 35 BfHA35 Bfail.HiAlb    BfHA5          9   CS/Tofa
-## 36 BfHA36 Bfail.HiAlb    BfHA5          9    CS/Upa
-## 37 BfHA37 Bfail.HiAlb    BfHA6          3   CS/Tofa
-## 38 BfHA38 Bfail.HiAlb    BfHA6          3    CS/Upa
-## 39 BfHA39 Bfail.HiAlb    BfHA6          3        CS
-## 40 BfHA40 Bfail.HiAlb    BfHA7          6    CS/Upa
-## 41 BfHA41 Bfail.HiAlb    BfHA7          6   CS/Tofa
-## 42 BfHA42 Bfail.HiAlb    BfHA7          6        CS
-## 43 BfHA43 Bfail.HiAlb    BfHA7          6   CS/Tofa
-## 44 BfHA44 Bfail.HiAlb    BfHA7          6    CS/Upa
-## 45 BfHA45 Bfail.HiAlb    BfHA7          6        CS
-## 46 BfHA46 Bfail.HiAlb    BfHA8          9        CS
-## 47 BfHA47 Bfail.HiAlb    BfHA8          9   CS/Tofa
-## 48 BfHA48 Bfail.HiAlb    BfHA8          9    CS/Upa
-## 49 BfHA49 Bfail.HiAlb    BfHA8          9   CS/Tofa
-## 50 BfHA50 Bfail.HiAlb    BfHA8          9    CS/Upa
-## 51 BfHA51 Bfail.HiAlb    BfHA8          9        CS
-## 52 BfHA52 Bfail.HiAlb    BfHA8          9    CS/Upa
-## 53 BfHA53 Bfail.HiAlb    BfHA8          9        CS
-## 54 BfHA54 Bfail.HiAlb    BfHA8          9   CS/Tofa
-## 55 BfHA55 Bfail.HiAlb    BfHA9          6    CS/Upa
-## 56 BfHA56 Bfail.HiAlb    BfHA9          6   CS/Tofa
-## 57 BfHA57 Bfail.HiAlb    BfHA9          6        CS
-## 58 BfHA58 Bfail.HiAlb    BfHA9          6        CS
-## 59 BfHA59 Bfail.HiAlb    BfHA9          6   CS/Tofa
-## 60 BfHA60 Bfail.HiAlb    BfHA9          6    CS/Upa</code></pre>
+## 1  BfHA01 Bfail.HiAlb   BfHA01          3    CS/Upa
+## 2  BfHA02 Bfail.HiAlb   BfHA01          3   CS/Tofa
+## 3  BfHA03 Bfail.HiAlb   BfHA01          3        CS
+## 4  BfHA04 Bfail.HiAlb   BfHA02          9   CS/Tofa
+## 5  BfHA05 Bfail.HiAlb   BfHA02          9   CS/Tofa
+## 6  BfHA06 Bfail.HiAlb   BfHA02          9        CS
+## 7  BfHA07 Bfail.HiAlb   BfHA02          9    CS/Upa
+## 8  BfHA08 Bfail.HiAlb   BfHA02          9    CS/Upa
+## 9  BfHA09 Bfail.HiAlb   BfHA02          9        CS
+## 10 BfHA10 Bfail.HiAlb   BfHA02          9   CS/Tofa
+## 11 BfHA11 Bfail.HiAlb   BfHA02          9    CS/Upa
+## 12 BfHA12 Bfail.HiAlb   BfHA02          9        CS
+## 13 BfHA13 Bfail.HiAlb   BfHA03          9    CS/Upa
+## 14 BfHA14 Bfail.HiAlb   BfHA03          9    CS/Upa
+## 15 BfHA15 Bfail.HiAlb   BfHA03          9        CS
+## 16 BfHA16 Bfail.HiAlb   BfHA03          9   CS/Tofa
+## 17 BfHA17 Bfail.HiAlb   BfHA03          9   CS/Tofa
+## 18 BfHA18 Bfail.HiAlb   BfHA03          9        CS
+## 19 BfHA19 Bfail.HiAlb   BfHA03          9    CS/Upa
+## 20 BfHA20 Bfail.HiAlb   BfHA03          9   CS/Tofa
+## 21 BfHA21 Bfail.HiAlb   BfHA03          9        CS
+## 22 BfHA22 Bfail.HiAlb   BfHA04          9    CS/Upa
+## 23 BfHA23 Bfail.HiAlb   BfHA04          9        CS
+## 24 BfHA24 Bfail.HiAlb   BfHA04          9   CS/Tofa
+## 25 BfHA25 Bfail.HiAlb   BfHA04          9        CS
+## 26 BfHA26 Bfail.HiAlb   BfHA04          9    CS/Upa
+## 27 BfHA27 Bfail.HiAlb   BfHA04          9    CS/Upa
+## 28 BfHA28 Bfail.HiAlb   BfHA04          9   CS/Tofa
+## 29 BfHA29 Bfail.HiAlb   BfHA04          9        CS
+## 30 BfHA30 Bfail.HiAlb   BfHA04          9   CS/Tofa
+## 31 BfHA31 Bfail.HiAlb   BfHA05          3        CS
+## 32 BfHA32 Bfail.HiAlb   BfHA05          3    CS/Upa
+## 33 BfHA33 Bfail.HiAlb   BfHA05          3   CS/Tofa
+## 34 BfHA34 Bfail.HiAlb   BfHA06          3    CS/Upa
+## 35 BfHA35 Bfail.HiAlb   BfHA06          3   CS/Tofa
+## 36 BfHA36 Bfail.HiAlb   BfHA06          3        CS
+## 37 BfHA37 Bfail.HiAlb   BfHA07          3    CS/Upa
+## 38 BfHA38 Bfail.HiAlb   BfHA07          3   CS/Tofa
+## 39 BfHA39 Bfail.HiAlb   BfHA07          3        CS
+## 40 BfHA40 Bfail.HiAlb   BfHA08          3        CS
+## 41 BfHA41 Bfail.HiAlb   BfHA08          3    CS/Upa
+## 42 BfHA42 Bfail.HiAlb   BfHA08          3   CS/Tofa
+## 43 BfHA43 Bfail.HiAlb   BfHA09          3    CS/Upa
+## 44 BfHA44 Bfail.HiAlb   BfHA09          3   CS/Tofa
+## 45 BfHA45 Bfail.HiAlb   BfHA09          3        CS
+## 46 BfHA46 Bfail.HiAlb   BfHA10          9   CS/Tofa
+## 47 BfHA47 Bfail.HiAlb   BfHA10          9    CS/Upa
+## 48 BfHA48 Bfail.HiAlb   BfHA10          9        CS
+## 49 BfHA49 Bfail.HiAlb   BfHA10          9        CS
+## 50 BfHA50 Bfail.HiAlb   BfHA10          9   CS/Tofa
+## 51 BfHA51 Bfail.HiAlb   BfHA10          9        CS
+## 52 BfHA52 Bfail.HiAlb   BfHA10          9   CS/Tofa
+## 53 BfHA53 Bfail.HiAlb   BfHA10          9    CS/Upa
+## 54 BfHA54 Bfail.HiAlb   BfHA10          9    CS/Upa
+## 55 BfHA55 Bfail.HiAlb   BfHA11          3        CS
+## 56 BfHA56 Bfail.HiAlb   BfHA11          3    CS/Upa
+## 57 BfHA57 Bfail.HiAlb   BfHA11          3   CS/Tofa
+## 58 BfHA58 Bfail.HiAlb   BfHA12          9        CS
+## 59 BfHA59 Bfail.HiAlb   BfHA12          9    CS/Upa
+## 60 BfHA60 Bfail.HiAlb   BfHA12          9    CS/Upa
+## 61 BfHA61 Bfail.HiAlb   BfHA12          9   CS/Tofa
+## 62 BfHA62 Bfail.HiAlb   BfHA12          9        CS
+## 63 BfHA63 Bfail.HiAlb   BfHA12          9        CS
+## 64 BfHA64 Bfail.HiAlb   BfHA12          9   CS/Tofa
+## 65 BfHA65 Bfail.HiAlb   BfHA12          9    CS/Upa
+## 66 BfHA66 Bfail.HiAlb   BfHA12          9   CS/Tofa</code></pre>
 <div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="randomization-for-clinical-trials-with-r.html#cb405-1" aria-hidden="true" tabindex="-1"></a>bnha <span class="ot">&lt;-</span> <span class="fu">blockrand</span>(<span class="at">n =</span> <span class="dv">60</span>, </span>
 <span id="cb405-2"><a href="randomization-for-clinical-trials-with-r.html#cb405-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">num.levels =</span> <span class="dv">3</span>, </span>
 <span id="cb405-3"><a href="randomization-for-clinical-trials-with-r.html#cb405-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;CS&quot;</span>, <span class="st">&quot;CS/Tofa&quot;</span>, <span class="st">&quot;CS/Upa&quot;</span>),</span>
@@ -1010,66 +1010,75 @@ Below, you will see how to do this for the biologic failure - low albumin stratu
 <span id="cb405-7"><a href="randomization-for-clinical-trials-with-r.html#cb405-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">block.prefix =</span> <span class="st">&quot;BnHA&quot;</span>)</span>
 <span id="cb405-8"><a href="randomization-for-clinical-trials-with-r.html#cb405-8" aria-hidden="true" tabindex="-1"></a>bnha</span></code></pre></div>
 <pre><code>##        id      stratum block.id block.size treatment
-## 1  BnHA01 Bnaive.HiAlb    BnHA1          9        CS
-## 2  BnHA02 Bnaive.HiAlb    BnHA1          9   CS/Tofa
-## 3  BnHA03 Bnaive.HiAlb    BnHA1          9    CS/Upa
-## 4  BnHA04 Bnaive.HiAlb    BnHA1          9   CS/Tofa
-## 5  BnHA05 Bnaive.HiAlb    BnHA1          9    CS/Upa
-## 6  BnHA06 Bnaive.HiAlb    BnHA1          9        CS
-## 7  BnHA07 Bnaive.HiAlb    BnHA1          9        CS
-## 8  BnHA08 Bnaive.HiAlb    BnHA1          9    CS/Upa
-## 9  BnHA09 Bnaive.HiAlb    BnHA1          9   CS/Tofa
-## 10 BnHA10 Bnaive.HiAlb    BnHA2          3   CS/Tofa
-## 11 BnHA11 Bnaive.HiAlb    BnHA2          3        CS
-## 12 BnHA12 Bnaive.HiAlb    BnHA2          3    CS/Upa
-## 13 BnHA13 Bnaive.HiAlb    BnHA3          9   CS/Tofa
-## 14 BnHA14 Bnaive.HiAlb    BnHA3          9    CS/Upa
-## 15 BnHA15 Bnaive.HiAlb    BnHA3          9    CS/Upa
-## 16 BnHA16 Bnaive.HiAlb    BnHA3          9        CS
-## 17 BnHA17 Bnaive.HiAlb    BnHA3          9    CS/Upa
-## 18 BnHA18 Bnaive.HiAlb    BnHA3          9        CS
-## 19 BnHA19 Bnaive.HiAlb    BnHA3          9   CS/Tofa
-## 20 BnHA20 Bnaive.HiAlb    BnHA3          9   CS/Tofa
-## 21 BnHA21 Bnaive.HiAlb    BnHA3          9        CS
-## 22 BnHA22 Bnaive.HiAlb    BnHA4          3        CS
-## 23 BnHA23 Bnaive.HiAlb    BnHA4          3    CS/Upa
-## 24 BnHA24 Bnaive.HiAlb    BnHA4          3   CS/Tofa
-## 25 BnHA25 Bnaive.HiAlb    BnHA5         12   CS/Tofa
-## 26 BnHA26 Bnaive.HiAlb    BnHA5         12    CS/Upa
-## 27 BnHA27 Bnaive.HiAlb    BnHA5         12        CS
-## 28 BnHA28 Bnaive.HiAlb    BnHA5         12   CS/Tofa
-## 29 BnHA29 Bnaive.HiAlb    BnHA5         12        CS
-## 30 BnHA30 Bnaive.HiAlb    BnHA5         12    CS/Upa
-## 31 BnHA31 Bnaive.HiAlb    BnHA5         12    CS/Upa
-## 32 BnHA32 Bnaive.HiAlb    BnHA5         12    CS/Upa
-## 33 BnHA33 Bnaive.HiAlb    BnHA5         12   CS/Tofa
-## 34 BnHA34 Bnaive.HiAlb    BnHA5         12   CS/Tofa
-## 35 BnHA35 Bnaive.HiAlb    BnHA5         12        CS
-## 36 BnHA36 Bnaive.HiAlb    BnHA5         12        CS
-## 37 BnHA37 Bnaive.HiAlb    BnHA6          6    CS/Upa
-## 38 BnHA38 Bnaive.HiAlb    BnHA6          6   CS/Tofa
-## 39 BnHA39 Bnaive.HiAlb    BnHA6          6    CS/Upa
-## 40 BnHA40 Bnaive.HiAlb    BnHA6          6        CS
-## 41 BnHA41 Bnaive.HiAlb    BnHA6          6        CS
-## 42 BnHA42 Bnaive.HiAlb    BnHA6          6   CS/Tofa
-## 43 BnHA43 Bnaive.HiAlb    BnHA7          6   CS/Tofa
-## 44 BnHA44 Bnaive.HiAlb    BnHA7          6        CS
-## 45 BnHA45 Bnaive.HiAlb    BnHA7          6    CS/Upa
-## 46 BnHA46 Bnaive.HiAlb    BnHA7          6   CS/Tofa
-## 47 BnHA47 Bnaive.HiAlb    BnHA7          6    CS/Upa
-## 48 BnHA48 Bnaive.HiAlb    BnHA7          6        CS
-## 49 BnHA49 Bnaive.HiAlb    BnHA8         12        CS
-## 50 BnHA50 Bnaive.HiAlb    BnHA8         12    CS/Upa
-## 51 BnHA51 Bnaive.HiAlb    BnHA8         12    CS/Upa
-## 52 BnHA52 Bnaive.HiAlb    BnHA8         12    CS/Upa
-## 53 BnHA53 Bnaive.HiAlb    BnHA8         12   CS/Tofa
-## 54 BnHA54 Bnaive.HiAlb    BnHA8         12        CS
-## 55 BnHA55 Bnaive.HiAlb    BnHA8         12   CS/Tofa
-## 56 BnHA56 Bnaive.HiAlb    BnHA8         12    CS/Upa
-## 57 BnHA57 Bnaive.HiAlb    BnHA8         12   CS/Tofa
-## 58 BnHA58 Bnaive.HiAlb    BnHA8         12        CS
-## 59 BnHA59 Bnaive.HiAlb    BnHA8         12        CS
-## 60 BnHA60 Bnaive.HiAlb    BnHA8         12   CS/Tofa</code></pre>
+## 1  BnHA01 Bnaive.HiAlb   BnHA01          6   CS/Tofa
+## 2  BnHA02 Bnaive.HiAlb   BnHA01          6        CS
+## 3  BnHA03 Bnaive.HiAlb   BnHA01          6        CS
+## 4  BnHA04 Bnaive.HiAlb   BnHA01          6   CS/Tofa
+## 5  BnHA05 Bnaive.HiAlb   BnHA01          6    CS/Upa
+## 6  BnHA06 Bnaive.HiAlb   BnHA01          6    CS/Upa
+## 7  BnHA07 Bnaive.HiAlb   BnHA02         12        CS
+## 8  BnHA08 Bnaive.HiAlb   BnHA02         12        CS
+## 9  BnHA09 Bnaive.HiAlb   BnHA02         12   CS/Tofa
+## 10 BnHA10 Bnaive.HiAlb   BnHA02         12    CS/Upa
+## 11 BnHA11 Bnaive.HiAlb   BnHA02         12   CS/Tofa
+## 12 BnHA12 Bnaive.HiAlb   BnHA02         12    CS/Upa
+## 13 BnHA13 Bnaive.HiAlb   BnHA02         12   CS/Tofa
+## 14 BnHA14 Bnaive.HiAlb   BnHA02         12   CS/Tofa
+## 15 BnHA15 Bnaive.HiAlb   BnHA02         12    CS/Upa
+## 16 BnHA16 Bnaive.HiAlb   BnHA02         12    CS/Upa
+## 17 BnHA17 Bnaive.HiAlb   BnHA02         12        CS
+## 18 BnHA18 Bnaive.HiAlb   BnHA02         12        CS
+## 19 BnHA19 Bnaive.HiAlb   BnHA03          3    CS/Upa
+## 20 BnHA20 Bnaive.HiAlb   BnHA03          3   CS/Tofa
+## 21 BnHA21 Bnaive.HiAlb   BnHA03          3        CS
+## 22 BnHA22 Bnaive.HiAlb   BnHA04          6   CS/Tofa
+## 23 BnHA23 Bnaive.HiAlb   BnHA04          6    CS/Upa
+## 24 BnHA24 Bnaive.HiAlb   BnHA04          6        CS
+## 25 BnHA25 Bnaive.HiAlb   BnHA04          6    CS/Upa
+## 26 BnHA26 Bnaive.HiAlb   BnHA04          6        CS
+## 27 BnHA27 Bnaive.HiAlb   BnHA04          6   CS/Tofa
+## 28 BnHA28 Bnaive.HiAlb   BnHA05          6   CS/Tofa
+## 29 BnHA29 Bnaive.HiAlb   BnHA05          6    CS/Upa
+## 30 BnHA30 Bnaive.HiAlb   BnHA05          6   CS/Tofa
+## 31 BnHA31 Bnaive.HiAlb   BnHA05          6    CS/Upa
+## 32 BnHA32 Bnaive.HiAlb   BnHA05          6        CS
+## 33 BnHA33 Bnaive.HiAlb   BnHA05          6        CS
+## 34 BnHA34 Bnaive.HiAlb   BnHA06          9        CS
+## 35 BnHA35 Bnaive.HiAlb   BnHA06          9        CS
+## 36 BnHA36 Bnaive.HiAlb   BnHA06          9   CS/Tofa
+## 37 BnHA37 Bnaive.HiAlb   BnHA06          9    CS/Upa
+## 38 BnHA38 Bnaive.HiAlb   BnHA06          9   CS/Tofa
+## 39 BnHA39 Bnaive.HiAlb   BnHA06          9    CS/Upa
+## 40 BnHA40 Bnaive.HiAlb   BnHA06          9   CS/Tofa
+## 41 BnHA41 Bnaive.HiAlb   BnHA06          9        CS
+## 42 BnHA42 Bnaive.HiAlb   BnHA06          9    CS/Upa
+## 43 BnHA43 Bnaive.HiAlb   BnHA07          3    CS/Upa
+## 44 BnHA44 Bnaive.HiAlb   BnHA07          3   CS/Tofa
+## 45 BnHA45 Bnaive.HiAlb   BnHA07          3        CS
+## 46 BnHA46 Bnaive.HiAlb   BnHA08          9    CS/Upa
+## 47 BnHA47 Bnaive.HiAlb   BnHA08          9   CS/Tofa
+## 48 BnHA48 Bnaive.HiAlb   BnHA08          9        CS
+## 49 BnHA49 Bnaive.HiAlb   BnHA08          9   CS/Tofa
+## 50 BnHA50 Bnaive.HiAlb   BnHA08          9        CS
+## 51 BnHA51 Bnaive.HiAlb   BnHA08          9        CS
+## 52 BnHA52 Bnaive.HiAlb   BnHA08          9    CS/Upa
+## 53 BnHA53 Bnaive.HiAlb   BnHA08          9   CS/Tofa
+## 54 BnHA54 Bnaive.HiAlb   BnHA08          9    CS/Upa
+## 55 BnHA55 Bnaive.HiAlb   BnHA09          3    CS/Upa
+## 56 BnHA56 Bnaive.HiAlb   BnHA09          3   CS/Tofa
+## 57 BnHA57 Bnaive.HiAlb   BnHA09          3        CS
+## 58 BnHA58 Bnaive.HiAlb   BnHA10         12    CS/Upa
+## 59 BnHA59 Bnaive.HiAlb   BnHA10         12   CS/Tofa
+## 60 BnHA60 Bnaive.HiAlb   BnHA10         12        CS
+## 61 BnHA61 Bnaive.HiAlb   BnHA10         12        CS
+## 62 BnHA62 Bnaive.HiAlb   BnHA10         12   CS/Tofa
+## 63 BnHA63 Bnaive.HiAlb   BnHA10         12        CS
+## 64 BnHA64 Bnaive.HiAlb   BnHA10         12        CS
+## 65 BnHA65 Bnaive.HiAlb   BnHA10         12   CS/Tofa
+## 66 BnHA66 Bnaive.HiAlb   BnHA10         12   CS/Tofa
+## 67 BnHA67 Bnaive.HiAlb   BnHA10         12    CS/Upa
+## 68 BnHA68 Bnaive.HiAlb   BnHA10         12    CS/Upa
+## 69 BnHA69 Bnaive.HiAlb   BnHA10         12    CS/Upa</code></pre>
 <div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="randomization-for-clinical-trials-with-r.html#cb407-1" aria-hidden="true" tabindex="-1"></a>bnla <span class="ot">&lt;-</span> <span class="fu">blockrand</span>(<span class="at">n =</span> <span class="dv">60</span>, </span>
 <span id="cb407-2"><a href="randomization-for-clinical-trials-with-r.html#cb407-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">num.levels =</span> <span class="dv">3</span>, </span>
 <span id="cb407-3"><a href="randomization-for-clinical-trials-with-r.html#cb407-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;CS&quot;</span>, <span class="st">&quot;CS/Tofa&quot;</span>, <span class="st">&quot;CS/Upa&quot;</span>),</span>
@@ -1079,69 +1088,66 @@ Below, you will see how to do this for the biologic failure - low albumin stratu
 <span id="cb407-7"><a href="randomization-for-clinical-trials-with-r.html#cb407-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">block.prefix =</span> <span class="st">&quot;BnLA&quot;</span>)</span>
 <span id="cb407-8"><a href="randomization-for-clinical-trials-with-r.html#cb407-8" aria-hidden="true" tabindex="-1"></a>bnla</span></code></pre></div>
 <pre><code>##        id      stratum block.id block.size treatment
-## 1  BnLA01 Bnaive.LoAlb    BnLA1          6   CS/Tofa
-## 2  BnLA02 Bnaive.LoAlb    BnLA1          6    CS/Upa
-## 3  BnLA03 Bnaive.LoAlb    BnLA1          6        CS
-## 4  BnLA04 Bnaive.LoAlb    BnLA1          6        CS
-## 5  BnLA05 Bnaive.LoAlb    BnLA1          6   CS/Tofa
-## 6  BnLA06 Bnaive.LoAlb    BnLA1          6    CS/Upa
-## 7  BnLA07 Bnaive.LoAlb    BnLA2          6    CS/Upa
-## 8  BnLA08 Bnaive.LoAlb    BnLA2          6   CS/Tofa
-## 9  BnLA09 Bnaive.LoAlb    BnLA2          6    CS/Upa
-## 10 BnLA10 Bnaive.LoAlb    BnLA2          6   CS/Tofa
-## 11 BnLA11 Bnaive.LoAlb    BnLA2          6        CS
-## 12 BnLA12 Bnaive.LoAlb    BnLA2          6        CS
-## 13 BnLA13 Bnaive.LoAlb    BnLA3          3    CS/Upa
-## 14 BnLA14 Bnaive.LoAlb    BnLA3          3   CS/Tofa
-## 15 BnLA15 Bnaive.LoAlb    BnLA3          3        CS
-## 16 BnLA16 Bnaive.LoAlb    BnLA4          9    CS/Upa
-## 17 BnLA17 Bnaive.LoAlb    BnLA4          9        CS
-## 18 BnLA18 Bnaive.LoAlb    BnLA4          9   CS/Tofa
-## 19 BnLA19 Bnaive.LoAlb    BnLA4          9        CS
-## 20 BnLA20 Bnaive.LoAlb    BnLA4          9   CS/Tofa
-## 21 BnLA21 Bnaive.LoAlb    BnLA4          9   CS/Tofa
-## 22 BnLA22 Bnaive.LoAlb    BnLA4          9        CS
-## 23 BnLA23 Bnaive.LoAlb    BnLA4          9    CS/Upa
-## 24 BnLA24 Bnaive.LoAlb    BnLA4          9    CS/Upa
-## 25 BnLA25 Bnaive.LoAlb    BnLA5          9   CS/Tofa
-## 26 BnLA26 Bnaive.LoAlb    BnLA5          9    CS/Upa
-## 27 BnLA27 Bnaive.LoAlb    BnLA5          9        CS
-## 28 BnLA28 Bnaive.LoAlb    BnLA5          9    CS/Upa
-## 29 BnLA29 Bnaive.LoAlb    BnLA5          9        CS
+## 1  BnLA01 Bnaive.LoAlb    BnLA1          9    CS/Upa
+## 2  BnLA02 Bnaive.LoAlb    BnLA1          9   CS/Tofa
+## 3  BnLA03 Bnaive.LoAlb    BnLA1          9   CS/Tofa
+## 4  BnLA04 Bnaive.LoAlb    BnLA1          9    CS/Upa
+## 5  BnLA05 Bnaive.LoAlb    BnLA1          9        CS
+## 6  BnLA06 Bnaive.LoAlb    BnLA1          9        CS
+## 7  BnLA07 Bnaive.LoAlb    BnLA1          9        CS
+## 8  BnLA08 Bnaive.LoAlb    BnLA1          9    CS/Upa
+## 9  BnLA09 Bnaive.LoAlb    BnLA1          9   CS/Tofa
+## 10 BnLA10 Bnaive.LoAlb    BnLA2          9   CS/Tofa
+## 11 BnLA11 Bnaive.LoAlb    BnLA2          9    CS/Upa
+## 12 BnLA12 Bnaive.LoAlb    BnLA2          9        CS
+## 13 BnLA13 Bnaive.LoAlb    BnLA2          9    CS/Upa
+## 14 BnLA14 Bnaive.LoAlb    BnLA2          9   CS/Tofa
+## 15 BnLA15 Bnaive.LoAlb    BnLA2          9        CS
+## 16 BnLA16 Bnaive.LoAlb    BnLA2          9        CS
+## 17 BnLA17 Bnaive.LoAlb    BnLA2          9    CS/Upa
+## 18 BnLA18 Bnaive.LoAlb    BnLA2          9   CS/Tofa
+## 19 BnLA19 Bnaive.LoAlb    BnLA3          3   CS/Tofa
+## 20 BnLA20 Bnaive.LoAlb    BnLA3          3        CS
+## 21 BnLA21 Bnaive.LoAlb    BnLA3          3    CS/Upa
+## 22 BnLA22 Bnaive.LoAlb    BnLA4          6    CS/Upa
+## 23 BnLA23 Bnaive.LoAlb    BnLA4          6   CS/Tofa
+## 24 BnLA24 Bnaive.LoAlb    BnLA4          6        CS
+## 25 BnLA25 Bnaive.LoAlb    BnLA4          6        CS
+## 26 BnLA26 Bnaive.LoAlb    BnLA4          6    CS/Upa
+## 27 BnLA27 Bnaive.LoAlb    BnLA4          6   CS/Tofa
+## 28 BnLA28 Bnaive.LoAlb    BnLA5          9        CS
+## 29 BnLA29 Bnaive.LoAlb    BnLA5          9   CS/Tofa
 ## 30 BnLA30 Bnaive.LoAlb    BnLA5          9    CS/Upa
-## 31 BnLA31 Bnaive.LoAlb    BnLA5          9   CS/Tofa
-## 32 BnLA32 Bnaive.LoAlb    BnLA5          9        CS
-## 33 BnLA33 Bnaive.LoAlb    BnLA5          9   CS/Tofa
-## 34 BnLA34 Bnaive.LoAlb    BnLA6          9   CS/Tofa
-## 35 BnLA35 Bnaive.LoAlb    BnLA6          9    CS/Upa
-## 36 BnLA36 Bnaive.LoAlb    BnLA6          9    CS/Upa
-## 37 BnLA37 Bnaive.LoAlb    BnLA6          9   CS/Tofa
-## 38 BnLA38 Bnaive.LoAlb    BnLA6          9   CS/Tofa
-## 39 BnLA39 Bnaive.LoAlb    BnLA6          9        CS
-## 40 BnLA40 Bnaive.LoAlb    BnLA6          9    CS/Upa
-## 41 BnLA41 Bnaive.LoAlb    BnLA6          9        CS
-## 42 BnLA42 Bnaive.LoAlb    BnLA6          9        CS
-## 43 BnLA43 Bnaive.LoAlb    BnLA7          9        CS
-## 44 BnLA44 Bnaive.LoAlb    BnLA7          9   CS/Tofa
-## 45 BnLA45 Bnaive.LoAlb    BnLA7          9   CS/Tofa
-## 46 BnLA46 Bnaive.LoAlb    BnLA7          9        CS
-## 47 BnLA47 Bnaive.LoAlb    BnLA7          9        CS
-## 48 BnLA48 Bnaive.LoAlb    BnLA7          9    CS/Upa
-## 49 BnLA49 Bnaive.LoAlb    BnLA7          9    CS/Upa
-## 50 BnLA50 Bnaive.LoAlb    BnLA7          9   CS/Tofa
-## 51 BnLA51 Bnaive.LoAlb    BnLA7          9    CS/Upa
-## 52 BnLA52 Bnaive.LoAlb    BnLA8          6   CS/Tofa
-## 53 BnLA53 Bnaive.LoAlb    BnLA8          6        CS
-## 54 BnLA54 Bnaive.LoAlb    BnLA8          6        CS
-## 55 BnLA55 Bnaive.LoAlb    BnLA8          6    CS/Upa
-## 56 BnLA56 Bnaive.LoAlb    BnLA8          6    CS/Upa
-## 57 BnLA57 Bnaive.LoAlb    BnLA8          6   CS/Tofa
-## 58 BnLA58 Bnaive.LoAlb    BnLA9          6        CS
-## 59 BnLA59 Bnaive.LoAlb    BnLA9          6        CS
-## 60 BnLA60 Bnaive.LoAlb    BnLA9          6   CS/Tofa
-## 61 BnLA61 Bnaive.LoAlb    BnLA9          6    CS/Upa
-## 62 BnLA62 Bnaive.LoAlb    BnLA9          6   CS/Tofa
-## 63 BnLA63 Bnaive.LoAlb    BnLA9          6    CS/Upa</code></pre>
+## 31 BnLA31 Bnaive.LoAlb    BnLA5          9        CS
+## 32 BnLA32 Bnaive.LoAlb    BnLA5          9    CS/Upa
+## 33 BnLA33 Bnaive.LoAlb    BnLA5          9        CS
+## 34 BnLA34 Bnaive.LoAlb    BnLA5          9   CS/Tofa
+## 35 BnLA35 Bnaive.LoAlb    BnLA5          9    CS/Upa
+## 36 BnLA36 Bnaive.LoAlb    BnLA5          9   CS/Tofa
+## 37 BnLA37 Bnaive.LoAlb    BnLA6          6    CS/Upa
+## 38 BnLA38 Bnaive.LoAlb    BnLA6          6        CS
+## 39 BnLA39 Bnaive.LoAlb    BnLA6          6        CS
+## 40 BnLA40 Bnaive.LoAlb    BnLA6          6    CS/Upa
+## 41 BnLA41 Bnaive.LoAlb    BnLA6          6   CS/Tofa
+## 42 BnLA42 Bnaive.LoAlb    BnLA6          6   CS/Tofa
+## 43 BnLA43 Bnaive.LoAlb    BnLA7          3    CS/Upa
+## 44 BnLA44 Bnaive.LoAlb    BnLA7          3   CS/Tofa
+## 45 BnLA45 Bnaive.LoAlb    BnLA7          3        CS
+## 46 BnLA46 Bnaive.LoAlb    BnLA8          6    CS/Upa
+## 47 BnLA47 Bnaive.LoAlb    BnLA8          6        CS
+## 48 BnLA48 Bnaive.LoAlb    BnLA8          6   CS/Tofa
+## 49 BnLA49 Bnaive.LoAlb    BnLA8          6    CS/Upa
+## 50 BnLA50 Bnaive.LoAlb    BnLA8          6        CS
+## 51 BnLA51 Bnaive.LoAlb    BnLA8          6   CS/Tofa
+## 52 BnLA52 Bnaive.LoAlb    BnLA9          9    CS/Upa
+## 53 BnLA53 Bnaive.LoAlb    BnLA9          9   CS/Tofa
+## 54 BnLA54 Bnaive.LoAlb    BnLA9          9   CS/Tofa
+## 55 BnLA55 Bnaive.LoAlb    BnLA9          9        CS
+## 56 BnLA56 Bnaive.LoAlb    BnLA9          9    CS/Upa
+## 57 BnLA57 Bnaive.LoAlb    BnLA9          9        CS
+## 58 BnLA58 Bnaive.LoAlb    BnLA9          9   CS/Tofa
+## 59 BnLA59 Bnaive.LoAlb    BnLA9          9    CS/Upa
+## 60 BnLA60 Bnaive.LoAlb    BnLA9          9        CS</code></pre>
 <div id="printing-these-on-cards" class="section level2 hasAnchor" number="20.1">
 <h2><span class="header-section-number">20.1</span> Printing these on Cards<a href="randomization-for-clinical-trials-with-r.html#printing-these-on-cards" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Ideally, you will print out each randomization on a card, and seal it in a security envelope, with the outside of the envelope labeled with the id. You can do this with the <em>plotblockrand()</em> function. This function creates a pdf file of randomization cards for printing. These are designed so that the middle text will show in a standard letter sized envelope with a window, and the top text (the assignment) can be folded over to increase security (against anyone trying to peek through the security envelope to guess the assignment).</p>

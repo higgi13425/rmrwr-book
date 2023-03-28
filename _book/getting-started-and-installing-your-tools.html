@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Getting Started and Installing Your Tools | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
-  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Getting Started and Installing Your Tools | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2022-12-27" />
+<meta name="date" content="2023-03-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,14 +52,13 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.6.0/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.10.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
-<link href="libs/tabwid-1.1.2/tabwid.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -149,15 +148,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#who-this-book-is-for"><i class="fa fa-check"></i><b>1.1</b> Who This Book is For</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i><b>1.2</b> Prerequisites</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#the-spiral-of-success-structure"><i class="fa fa-check"></i><b>1.3</b> The Spiral of Success Structure</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#the-upward-spiral-of-success-structure"><i class="fa fa-check"></i><b>1.3</b> The (Upward) Spiral of Success Structure</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#motivation-for-this-book"><i class="fa fa-check"></i><b>1.4</b> Motivation for this Book</a></li>
 <li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#the-scientific-reproducibility-crisis"><i class="fa fa-check"></i><b>1.5</b> The Scientific Reproducibility Crisis</a></li>
-<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#features-of-a-bookdown-electronic-book"><i class="fa fa-check"></i><b>1.6</b> Features of a Bookdown electronic book</a>
-<ul>
-<li class="chapter" data-level="1.6.1" data-path="index.html"><a href="index.html#icons"><i class="fa fa-check"></i><b>1.6.1</b> Icons</a></li>
-<li class="chapter" data-level="1.6.2" data-path="index.html"><a href="index.html#sharing"><i class="fa fa-check"></i><b>1.6.2</b> Sharing</a></li>
-<li class="chapter" data-level="1.6.3" data-path="index.html"><a href="index.html#scrollingpaging"><i class="fa fa-check"></i><b>1.6.3</b> Scrolling/Paging</a></li>
-</ul></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#features-of-a-bookdown-electronic-book"><i class="fa fa-check"></i><b>1.6</b> Features of a Bookdown electronic book</a></li>
 <li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#what-this-book-is-not"><i class="fa fa-check"></i><b>1.7</b> What this Book is Not</a>
 <ul>
 <li class="chapter" data-level="1.7.1" data-path="index.html"><a href="index.html#this-book-is-not-a-statistics-text"><i class="fa fa-check"></i><b>1.7.1</b> This Book is Not A Statistics Text</a></li>
@@ -584,7 +578,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="23.6" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#lollipop-plots"><i class="fa fa-check"></i><b>23.6</b> Lollipop Plots</a></li>
 <li class="chapter" data-level="23.7" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#dumbbell-plots"><i class="fa fa-check"></i><b>23.7</b> Dumbbell Plots</a></li>
 <li class="chapter" data-level="23.8" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#test-what-you-have-learned"><i class="fa fa-check"></i><b>23.8</b> Test what you have learned</a></li>
-<li class="chapter" data-level="23.9" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#dumbbell-plots-with-ggalt-for-visualizing-change"><i class="fa fa-check"></i><b>23.9</b> Dumbbell Plots with ggalt For Visualizing Change</a></li>
+<li class="chapter" data-level="23.9" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#spaghetti-plots-with-summary-smoothed-lines-for-change-over-time"><i class="fa fa-check"></i><b>23.9</b> Spaghetti Plots with Summary Smoothed Lines for Change Over Time</a></li>
 <li class="chapter" data-level="23.10" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#direct-labeling-of-plots"><i class="fa fa-check"></i><b>23.10</b> Direct Labeling of Plots</a>
 <ul>
 <li class="chapter" data-level="23.10.1" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#geomtextpath"><i class="fa fa-check"></i><b>23.10.1</b> GeomTextPath</a></li>
@@ -883,9 +877,9 @@ include</p>
 <h2><span class="header-section-number">2.4</span> Installing R on your Computer<a href="getting-started-and-installing-your-tools.html#installing-r-on-your-computer" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>R is a statistical programming language, designed for non-programmers
 (statisticians). It is optimized to work with data in rectangular tables
-of rows (observations) and columns (variables). It is a very fast and
+of rows (observations) and columns (variables). It is a fast and
 powerful programming engine, but it is not terribly comfortable or
-convenient. R itself is not terribly user-friendly. It is a lot like a
+convenient. Base R itself is not terribly user-friendly. It is a lot like a
 drag racing car, which is basically a person with a steering wheel
 strapped to an airplane engine.</p>
 <div class="figure">
@@ -903,6 +897,9 @@ car, with a nice interior and a dashboard, and comfy leather seats.</p>
 IDE (Integrated Developer Environment). I want you to install both the R
 statistical language and the RStudio IDE, in that order.<br />
 </p>
+<div class="warning">
+<p>Note that serious computer programmers do not consider R a fast coding language. R was designed by statisticians for managing data and running models, and is not optimizedW like languages like C++ and Julia for modern computers. If you have really big data, R will slow down, and using R packages like {arrow} and {data.table} will dramatically increase the speed of R.</p>
+</div>
 <p>Let’s start with installing R.<br />
 R is free and available for download on the web. Click on the following
 link to go to the <a href="https://r-project.org/">r-project website</a> to get
@@ -916,23 +913,23 @@ You might be wondering what CRAN and CRAN Mirrors are. Nothing to do
 with cranberries, fortunately. CRAN is the Comprehensive R Archive
 Network. Each site (mirror) in the network contains an archive of all R
 versions and packages, and the sites are scattered over the globe. A
-CRAN Mirror maintains an up to date copy of all of the R versions and
+CRAN Mirror maintains an up-to-date copy of all of the R versions and
 packages on CRAN. If you use the nearest CRAN mirror, you will generally
 get faster downloads.</p>
 <p>At this point, you might be wondering what a package is…<br />
 A package is a set of functions and/or data that you can download to
 upgrade and add features to R. It is like a downloadable upgrade to a
-Tesla vehicle that lets you play the video game <em>Witcher 3</em> on your
+Tesla vehicle that lets you play the video game <em>The Witcher 3</em> on your
 console, but more useful.</p>
 <p><img src="images/dash-tesla.png" width="600" /></p>
 <p>Another useful analogy for packages is that they are like apps for a
 smartphone. When you buy a new smartphone, it only comes with the basic
 apps that allow it to work as a phone, and a few other things, like a
 notepad and a calculator.</p>
-<p>If you want to do cool things with your smartphone, you download apps
+<p>If you want to do cool things with your smartphone, you download additional apps
 that allow your smartphone to have new capabilities. That is what
 packages do for your installation of R.</p>
-<p><img src="images/smartphone.jpg" alt="tesla" /><br />
+<p><img src="images/smartphone.jpg" alt="smartphone" /><br />
 </p>
 <p>Now let’s get started. Click on the blue link that says “download R”.<br />
 This will take you to a page to select your local CRAN Mirror , from
@@ -972,7 +969,7 @@ like this:<br />
 <p class="caption">install2</p>
 </div>
 <p>You want to download both base and Rtools (you might need Rtools later
-to build packages). The base link will take you to the latest version,
+to build packages for Windows). The base link will take you to the latest version,
 which will look something like this.</p>
 <div class="figure">
 <img src="images/installr3windows.png" alt="" />
@@ -1332,7 +1329,7 @@ in one place and easy to find.</p>
 Click on the dropdown menu to select “Never”</li>
 </ol>
 <p>These tune-ups (#2 and #3) to your RStudio will mean you will always
-start with a clean workspace in a new RStudio session, which will avoid
+start with a clean workspace in a new RStudio session, which will help avoid
 a lot of potential problems later.</p>
 <ol start="4" style="list-style-type: decimal">
 <li>In the same General tab, at the top, click on the Advanced tab. Then

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 Mutating Joins to Combine Data Sources | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
-  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 Mutating Joins to Combine Data Sources | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2022-12-27" />
+<meta name="date" content="2023-03-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,14 +52,13 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.6.0/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.10.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
-<link href="libs/tabwid-1.1.2/tabwid.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -149,15 +148,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#who-this-book-is-for"><i class="fa fa-check"></i><b>1.1</b> Who This Book is For</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i><b>1.2</b> Prerequisites</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#the-spiral-of-success-structure"><i class="fa fa-check"></i><b>1.3</b> The Spiral of Success Structure</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#the-upward-spiral-of-success-structure"><i class="fa fa-check"></i><b>1.3</b> The (Upward) Spiral of Success Structure</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#motivation-for-this-book"><i class="fa fa-check"></i><b>1.4</b> Motivation for this Book</a></li>
 <li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#the-scientific-reproducibility-crisis"><i class="fa fa-check"></i><b>1.5</b> The Scientific Reproducibility Crisis</a></li>
-<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#features-of-a-bookdown-electronic-book"><i class="fa fa-check"></i><b>1.6</b> Features of a Bookdown electronic book</a>
-<ul>
-<li class="chapter" data-level="1.6.1" data-path="index.html"><a href="index.html#icons"><i class="fa fa-check"></i><b>1.6.1</b> Icons</a></li>
-<li class="chapter" data-level="1.6.2" data-path="index.html"><a href="index.html#sharing"><i class="fa fa-check"></i><b>1.6.2</b> Sharing</a></li>
-<li class="chapter" data-level="1.6.3" data-path="index.html"><a href="index.html#scrollingpaging"><i class="fa fa-check"></i><b>1.6.3</b> Scrolling/Paging</a></li>
-</ul></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#features-of-a-bookdown-electronic-book"><i class="fa fa-check"></i><b>1.6</b> Features of a Bookdown electronic book</a></li>
 <li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#what-this-book-is-not"><i class="fa fa-check"></i><b>1.7</b> What this Book is Not</a>
 <ul>
 <li class="chapter" data-level="1.7.1" data-path="index.html"><a href="index.html#this-book-is-not-a-statistics-text"><i class="fa fa-check"></i><b>1.7.1</b> This Book is Not A Statistics Text</a></li>
@@ -584,7 +578,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="23.6" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#lollipop-plots"><i class="fa fa-check"></i><b>23.6</b> Lollipop Plots</a></li>
 <li class="chapter" data-level="23.7" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#dumbbell-plots"><i class="fa fa-check"></i><b>23.7</b> Dumbbell Plots</a></li>
 <li class="chapter" data-level="23.8" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#test-what-you-have-learned"><i class="fa fa-check"></i><b>23.8</b> Test what you have learned</a></li>
-<li class="chapter" data-level="23.9" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#dumbbell-plots-with-ggalt-for-visualizing-change"><i class="fa fa-check"></i><b>23.9</b> Dumbbell Plots with ggalt For Visualizing Change</a></li>
+<li class="chapter" data-level="23.9" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#spaghetti-plots-with-summary-smoothed-lines-for-change-over-time"><i class="fa fa-check"></i><b>23.9</b> Spaghetti Plots with Summary Smoothed Lines for Change Over Time</a></li>
 <li class="chapter" data-level="23.10" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#direct-labeling-of-plots"><i class="fa fa-check"></i><b>23.10</b> Direct Labeling of Plots</a>
 <ul>
 <li class="chapter" data-level="23.10.1" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#geomtextpath"><i class="fa fa-check"></i><b>23.10.1</b> GeomTextPath</a></li>
@@ -938,7 +932,7 @@ repo</p>
 is <code>x</code>, or the base/left dataset, and the birthdays dataset is the <code>y</code>,
 or new/right dataset. Notice that we don’t specify a variable for <code>by</code>.</p>
 <div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="mutating-joins-to-combine-data-sources.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(<span class="at">x =</span> hometowns, <span class="at">y =</span> birthdays)</span></code></pre></div>
-<pre><code>## Joining, by = &quot;name&quot;</code></pre>
+<pre><code>## Joining with `by = join_by(name)`</code></pre>
 <pre><code>##             name      hometown        dob
 ## 1 Rudolf Virchow        Berlin 10/13/1821
 ## 2 Virginia Apgar Westfield, NJ   6/7/1909
@@ -1002,7 +996,7 @@ below as a starting point. Remember to <em>glimpse( )</em> the new dataset
 first.</p>
 <div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="mutating-joins-to-combine-data-sources.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(<span class="at">x =</span> hometowns2, <span class="at">y =</span> birthdays, <span class="at">by =</span> <span class="st">&quot;name&quot;</span>)</span></code></pre></div>
 <pre><code>## Error in `left_join()`:
-## ! Join columns must be present in data.
+## ! Join columns in `x` must be present in the data.
 ## ✖ Problem with `name`.</code></pre>
 </div>
 <div id="right-join-in-action" class="section level2 hasAnchor" number="9.8">
@@ -1027,7 +1021,7 @@ repo</p>
 is <code>x</code>, or the base/left dataset, and the birthdays dataset is the <code>y</code>,
 or new/right dataset. Notice that we don’t specify a variable for <code>by</code>.</p>
 <div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="mutating-joins-to-combine-data-sources.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">right_join</span>(<span class="at">x =</span> hometowns, <span class="at">y =</span> birthdays)</span></code></pre></div>
-<pre><code>## Joining, by = &quot;name&quot;</code></pre>
+<pre><code>## Joining with `by = join_by(name)`</code></pre>
 <pre><code>##             name      hometown        dob
 ## 1 Rudolf Virchow        Berlin 10/13/1821
 ## 2 Virginia Apgar Westfield, NJ   6/7/1909
@@ -1059,7 +1053,7 @@ as the base (x) dataset, we can use a <em>right_join()</em>. This will result in
 <span id="cb114-3"><a href="mutating-joins-to-combine-data-sources.html#cb114-3" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">set_names</span>(<span class="fu">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;hometown&quot;</span>))</span>
 <span id="cb114-4"><a href="mutating-joins-to-combine-data-sources.html#cb114-4" aria-hidden="true" tabindex="-1"></a>hometowns2 <span class="sc">%&gt;%</span> </span>
 <span id="cb114-5"><a href="mutating-joins-to-combine-data-sources.html#cb114-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(birthdays)</span></code></pre></div>
-<pre><code>## Joining, by = &quot;name&quot;</code></pre>
+<pre><code>## Joining with `by = join_by(name)`</code></pre>
 <pre><code>##             name      hometown        dob
 ## 1 Rudolf Virchow        Berlin 10/13/1821
 ## 2 Virginia Apgar Westfield, NJ   6/7/1909
@@ -1103,7 +1097,7 @@ Look at the datasets below (run the glimpse code) and take a guess.</p>
 Click to Reveal
 </button>
 <div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="mutating-joins-to-combine-data-sources.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inner_join</span>(birthdays, hometowns)</span></code></pre></div>
-<pre><code>## Joining, by = &quot;name&quot;</code></pre>
+<pre><code>## Joining with `by = join_by(name)`</code></pre>
 <pre><code>##             name        dob      hometown
 ## 1 Rudolf Virchow 10/13/1821        Berlin
 ## 2 Virginia Apgar   6/7/1909 Westfield, NJ</code></pre>
@@ -1147,7 +1141,7 @@ Look at the datasets below (run the glimpse code) and take a guess.</p>
 Click to Reveal
 </button>
 <div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="mutating-joins-to-combine-data-sources.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">full_join</span>(birthdays, hometowns)</span></code></pre></div>
-<pre><code>## Joining, by = &quot;name&quot;</code></pre>
+<pre><code>## Joining with `by = join_by(name)`</code></pre>
 <pre><code>##             name        dob      hometown
 ## 1 Rudolf Virchow 10/13/1821        Berlin
 ## 2 Virginia Apgar   6/7/1909 Westfield, NJ

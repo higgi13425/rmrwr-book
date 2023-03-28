@@ -25,6 +25,7 @@ I hope that this book is helpful to you.
 
 This is a book for anyone in the medical field interested in analyzing the data available to them to better understand health, disease, or the delivery of care.
 This could include nurses, dieticians, psychologists, and PhDs in related fields, as well as medical students, residents, fellows, or doctors in practice.\
+
 I expect that most learners will be using this book in their spare time at night and on weekends, as the health training curricula are already packed full of information, and there is no room to add skills in reproducible research to the standard curriculum.
 This book is designed for self-teaching, and many hints and solutions will be provided to avoid roadblocks and frustration.
 Many learners find themselves wanting to develop reproducible research skills after they have finished their training, and after they have become comfortable with their clinical role.
@@ -44,7 +45,7 @@ This is designed for physicians and others analyzing health data who are interes
 How to download and install R and RStudio will be addressed, step by step, in Chapter 2.
 <br>
 
-## The Spiral of Success Structure
+## The (Upward) Spiral of Success Structure
 
 This book is structured on the concept of a "spiral of success", with readers learning about topics like data visualization, data wrangling, data modeling, reproducible research, and communication of results in repeated passes.
 These will initially be at a superficial level, and at each pass of the spiral, will provide increasing depth and complexity.
@@ -67,30 +68,34 @@ Further, while learning from a textbook can be helpful, this e-book has the abil
 Informative **flipbook** demonstrations will show you what steps in R code do, and **learnr** exercises will give you a chance to do your own coding to solve problems, right within this e-book.
 
 More and more, all science is becoming data science.
-We are able to track patients, their test results, and even the individual pixels (voxels) of their CT scans electronically, and use those data points to develop new knowledge.
+We are able to track patients, their test results, and even the individual voxels of their CT scans electronically, and use those data points to develop new knowledge.
 While one could argue that health care workers should collect data and bring it to trained statisticians, this does not work nearly as well as you might expect.
 Most academic statisticians are incentivized to develop new statistical methods, and are not very interested (nor incentivized) to do the hand-holding required to wrangle messy clinical data into a manuscript.
 
 There also are simply not enough statisticians to meet the needs of medical science.
-Having clinicians on the front lines with some data science training makes a big difference, whether in 1854 in London (John Snow) or in 2014 in Flint, Michigan (Mona Hanna-Atisha).
+Having clinicians on the front lines with some data science training makes a big difference, whether in 1854 in London (John Snow, tracking a cholera outbreak to a water pump) or in 2014 in Flint, Michigan (Mona Hanna-Atisha, showing a rise in blood levels in children after a change i the water supply).
 Having more clinicians with some data science training will impact medical care, as they will identify local problems that would have otherwise never reached a statistician, and probably never been addressed with data otherwise.
 
 ## The Scientific Reproducibility Crisis
 
-Beginning as far back as 1989, with the David Baltimore case, and increasingly and publicly through the 2010s, there has been a rising tide of realization that a lot of taxpayer-funded science is done sloppily, and that our standards as scientists need to be higher.
+Beginning as far back as 1989, with the [David Baltimore case](https://bioethics.miami.edu/education/timelines-project/the-baltimore-case/index.html), in which NIH-funded cancer research was only documented on a pile of paper towels, there has been a rising tide of realization that a lot of taxpayer-funded science is done sloppily.
+Increasingly and publicly through the 2010s, there has been a realization that manuscripts don't document the scientific process well, and that our standards as scientists need to be higher.
 The line between carelessly-done science and outright fraud is a thin one, and the case can be made that doing science in a sloppy fashion defrauds the funders, as it leads to results that can not be reproduced by the authors nor replicated by others.
 Particularly in medicine, where incorrect findings can cause great harm, we should take special care to do scientific research which is well-documented, reproducible, and replicable.
-This topic as a motivating force for doing careful medical research will be expanded upon in Chapter 1.
+Several examples of science that was sloppily done vs outright fraud involved mis-use of spreadsheets or sloppy coding.
+[Anil Potti at Duke](https://www.science.org/content/blog-post/duke-potti-scandal-inside) made several errors in spreadsheets that led to claims that tumor multi-omics could guide chemotherapy which were clearly wrong and likely harmed patients in clinical trials.
+[Aboumatar and colleagues](https://jamanetwork.com/journals/jama/fullarticle/2752474) at Johns Hopkins published a study of an intervention for COPD in JAMA in 2018 that they claimed improved outcomes, but had to retract this paper in 2019 when they discovered that they had mis-coded the intervention, and that the intervention was actually harmful.
+The topic of coding correctly, and rooting out errors as a motivating force for doing careful medical research will be expanded upon in Chapter 1.
 
 ## Features of a Bookdown electronic book
 
-### Icons
+- Icons
 
-There are several icons at the top left, to the right of the clickable RMWR link, that can be helpful:
+There are several icons at the top left of the main column, to the right of the sidebar, that can be helpful:
 
 1\.
-The Table of Contents Sidebar - Click on the **'hamburger' menu icon** (three horizontal lines) or the `s` key to toggle the sidebar (table of contents) on and off.
-Within the sidebar, you can click on whichever chapter or subsection you want.
+The Table of Contents Sidebar - Click on the **'hamburger' menu icon** (three horizontal lines) or the `s` key to toggle the sidebar (table of contents, on the left) on and off.
+Within the sidebar, you can click on whichever chapter or subsection you want and go directly to it.
 
 2\.
 This book is Searchable - Click on the **magnifying glass** or use the `f` key to toggle the `Find` box and search for whatever you need to find.
@@ -101,11 +106,11 @@ You can change the font size, font, and background by clicking on the **A** icon
 4\.
 You can download the chapter with the download icon (downward arrow into a file tray) in PDF or EPUB formats.
 
-### Sharing
+- Sharing
 
-At the top right, there are several icons for sharing links to the current chapter through social media.
+At the top right of the main column, there are several icons for sharing links to the current chapter through social media.
 
-### Scrolling/Paging
+- Scrolling/Paging
 
 1.  You can scroll up and down within a chapter with your mouse, or use the up and down arrow keys.
 2.  You can page through chapters with the left and right arrow keys.
@@ -118,9 +123,10 @@ This is not an introduction to statistics.
 I am assuming that you have learned some statistics somewhere in secondary school, undergraduate studies, graduate school, or even medical school.
 There are lots of statisticians with Ph.D.s who can certainly teach statistics much more effectively than I can.
 While I have a master's degree in Clinical Research Design and Statistical Analysis (isn't that a mouthful!) from the University of Michigan, I will leave formal teaching of statistics to the pros.\
+
 If you need to brush up on your statistics, no worries.
 There are several excellent (and free!) e-books on that very topic, using R.
-Some good examples include (go ahead and click through the blue links to explore):
+Some good examples include (go ahead and click through the colored links to explore):
 
 1.  [Learning Statistics with R (LSR)](https://learningstatisticswithr-bookdown.netlify.com)
 2.  [Open Intro Statistics](https://www.openintro.org/book/os/)
@@ -142,34 +148,34 @@ The R computer language has expanded far beyond statistics, and allows you to do
 
 Keep an eye out for helpful Guideposts, which look like this:
 
-**Warnings**
+**Warnings** - These are common "gotchas" to watch out for
 
-::: {.warning}
-This is a common syntax error, especially for beginners.
+::: warning
+This indicates a common syntax error, especially for beginners.
 Watch out for this.
 :::
 
-**Tips**
+**Tips** - These are helpful items to remember
 
-::: {.tip}
+::: tip
 This is a helpful tip for debugging.
 :::
 
-**Try It Out**
+**Try It Out** - This is an example to apply what you have learned
 
-::: {.tryit}
+::: tryit
 Take what you have learned and try it yourself on your own computer.
 :::
 
-**Challenge** - take the next step and try a more challenging example.
+**Challenge** - These are usually at the end of a chapter, to try a more challenging example and consolidate what you have learned
 
-::: {.challenge}
-Try this more complicated example.
+::: challenge
+Take the next step, and try this more complicated example.
 :::
 
-**Explore More** - resources for learning more about a particular topic.
+**Explore More** - These are resources for learning more about a particular topic.
 
-::: {.explore}
+::: explore
 If you want to learn more about Shiny apps, go to <https://mastering-shiny.org> to see an entire book on the topic.
 :::
 
@@ -188,6 +194,7 @@ You will want to go through these *slowly*, and make sure that you understand wh
 You may even want to take notes, particularly on the function syntax, as you will likely coding exercises with these functions shortly after the flipbook demonstration.
 
 Take a look at the example of a flipbook below.\
+
 Activate it by clicking on it, and use the expand icon (4 arrows at the lower right) to make it full screen.
 You can step forward and backward through the pipeline of code with the right and left arrow keys.
 Watch the results of each step.
@@ -212,10 +219,13 @@ If you are stuck, you can click on the `Hint` button to see an example of correc
 If you would like, you can even copy this code to the clipboard with the `Copy` button and
 
 Take a look at the example of a learnr exercise below.\
-There is a dataset piped into a series of functions ('verbs'), with a blank.
-Fill in the blank with 'p_vol' (without the quotes), which stands for the variable, prostate volume.
+
+There is a dataset (prostate) piped into a function ('select'), with three blanks (3 arguments to this function).
+Fill in the blanks with the 3 listed variables (age, fam_hx, and t_stage are the variable names). 
 Then run your code with the `Run Code` button to get a result.
-Practice using the `Start Over` button, the `Hint` button (there may be more than one - usually the **last** one is the solution), and the `Copy To Clipboard` button.
+Practice using the `Start Over` button, the `Hint` button (there may be more than one - usually the **last** one is the solution), and the `Copy To Clipboard` button, then paste the solution in if you are stuck, and then `Run Code`.<br>
+<br>
+Then try out Exercise 2 to select columns related to Gleason Score.
 
 <!---LEARNR TUTORIAL EX 1-->
 
@@ -228,6 +238,7 @@ Practice using the `Start Over` button, the `Hint` button (there may be more tha
 When you get a table of data as a result from a code pipeline, it may have more columns (variables) than can be displayed easily.
 When this is the case, there will be a black arrow pointing rightward at the top right of the table of results.
 Click on this to scroll right and see more columns.\
+
 A table of data as a result from a code pipeline may also have more rows (observations) than can be displayed easily.
 When this is the case, the table will be paginated, with 10 rows per page.
 At the bottom right of the table, there will be a clickable listing of pages, along with `Previous` and `Next` buttons.

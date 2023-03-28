@@ -156,22 +156,20 @@ the month and year, these can be surprising (January = 0, Year 2018 =
 
 ### Code Chunk Icons
 
-+----------------------------+----------------------------------+
-| Icon                       | Uses                             |
-+============================+==================================+
-| Settings Gear              | Allows you to                    |
-|                            |                                  |
-|                            | -   Name the code chunk          |
-|                            |                                  |
-|                            | -   Set options for this chunk   |
-+----------------------------+----------------------------------+
-| Run Chunks Above (down     | Runs all of the preceding code   |
-| arrow)                     | chunks, including the setup      |
-|                            | chunk                            |
-+----------------------------+----------------------------------+
-| Run Chunk (rightward       | Runs the entire current chunk    |
-| arrow)                     |                                  |
-+----------------------------+----------------------------------+
++-------------------------------+-------------------------------------+
+| Icon                          | Uses                                |
++===============================+=====================================+
+| Settings Gear                 | Allows you to                       |
+|                               |                                     |
+|                               | -   Name the code chunk             |
+|                               |                                     |
+|                               | -   Set options for this chunk      |
++-------------------------------+-------------------------------------+
+| Run Chunks Above (down arrow) | Runs all of the preceding code      |
+|                               | chunks, including the setup chunk   |
++-------------------------------+-------------------------------------+
+| Run Chunk (rightward arrow)   | Runs the entire current chunk       |
++-------------------------------+-------------------------------------+
 
 : Code Chunk Icons
 
@@ -205,71 +203,60 @@ covid %>%
 
 ## Code Chunk Options
 
-+---------------+---------------+---------------------+
-| Option        | Values        | Output              |
-+===============+===============+=====================+
-| eval          | TRUE/FALSE    | Whether or not the  |
-|               |               | code is run.        |
-+---------------+---------------+---------------------+
-| echo          | TRUE/FALSE    | Show or hide the    |
-|               |               | code                |
-+---------------+---------------+---------------------+
-| include       | TRUE/FALSE    | Whether or not the  |
-|               |               | resulting output of |
-|               |               | a code chunk is     |
-|               |               | displayed in the    |
-|               |               | document. `FALSE`   |
-|               |               | means that the code |
-|               |               | *will* run, but     |
-|               |               | will not display    |
-|               |               | results.            |
-|               |               | `include = FALSE`   |
-|               |               | is often used for   |
-|               |               | the setup chunk.    |
-+---------------+---------------+---------------------+
-| warning       | TRUE/FALSE    | Whether warnings    |
-|               |               | generated from your |
-|               |               | code will be        |
-|               |               | displayed in the    |
-|               |               | document.           |
-+---------------+---------------+---------------------+
-| message       | TRUE/FALSE    | Whether messages    |
-|               |               | generated from your |
-|               |               | code will be        |
-|               |               | displayed in the    |
-|               |               | document.           |
-+---------------+---------------+---------------------+
-| fig.align     | default,      | Where on the page   |
-|               | left, right,  | the output figure   |
-|               | center        | should align. Text  |
-|               |               | options should be   |
-|               |               | in quotes, like\    |
-|               |               | `f                  |
-|               |               | ig.align = "right"` |
-+---------------+---------------+---------------------+
-| fig.width     | default = 7   | figure width in     |
-|               |               | inches              |
-+---------------+---------------+---------------------+
-| fig .height   | default = 7   | figure height in    |
-|               |               | inches              |
-+---------------+---------------+---------------------+
-| error         | TRUE/FALSE    | If `TRUE`, will not |
-|               |               | stop building the   |
-|               |               | document if there   |
-|               |               | is an error in a    |
-|               |               | code chunk.         |
-+---------------+---------------+---------------------+
-| cache         | TRUE/FALSE    | If `TRUE`, will     |
-|               |               | store the results   |
-|               |               | and not re-run the  |
-|               |               | chunk. Helpful for  |
-|               |               | long, slow          |
-|               |               | calculations. But   |
-|               |               | watch out for this  |
-|               |               | if your data change |
-|               |               | and your results do |
-|               |               | not(!!).            |
-+---------------+---------------+---------------------+
++-------------+--------------------------+--------------------------+
+| Option      | Values                   | Output                   |
++=============+==========================+==========================+
+| eval        | TRUE/FALSE               | Whether or not the code  |
+|             |                          | is run.                  |
++-------------+--------------------------+--------------------------+
+| echo        | TRUE/FALSE               | Show or hide the code    |
++-------------+--------------------------+--------------------------+
+| include     | TRUE/FALSE               | Whether or not the       |
+|             |                          | resulting output of a    |
+|             |                          | code chunk is displayed  |
+|             |                          | in the document. `FALSE` |
+|             |                          | means that the code      |
+|             |                          | *will* run, but will not |
+|             |                          | display results.         |
+|             |                          | `include = FALSE` is     |
+|             |                          | often used for the setup |
+|             |                          | chunk.                   |
++-------------+--------------------------+--------------------------+
+| warning     | TRUE/FALSE               | Whether warnings         |
+|             |                          | generated from your code |
+|             |                          | will be displayed in the |
+|             |                          | document.                |
++-------------+--------------------------+--------------------------+
+| message     | TRUE/FALSE               | Whether messages         |
+|             |                          | generated from your code |
+|             |                          | will be displayed in the |
+|             |                          | document.                |
++-------------+--------------------------+--------------------------+
+| fig.align   | default, left, right,    | Where on the page the    |
+|             | center                   | output figure should     |
+|             |                          | align. Text options      |
+|             |                          | should be in quotes,     |
+|             |                          | like\                    |
+|             |                          | `f ig.align = "right"`   |
++-------------+--------------------------+--------------------------+
+| fig.width   | default = 7              | figure width in inches   |
++-------------+--------------------------+--------------------------+
+| fig .height | default = 7              | figure height in inches  |
++-------------+--------------------------+--------------------------+
+| error       | TRUE/FALSE               | If `TRUE`, will not stop |
+|             |                          | building the document if |
+|             |                          | there is an error in a   |
+|             |                          | code chunk.              |
++-------------+--------------------------+--------------------------+
+| cache       | TRUE/FALSE               | If `TRUE`, will store    |
+|             |                          | the results and not      |
+|             |                          | re-run the chunk.        |
+|             |                          | Helpful for long, slow   |
+|             |                          | calculations. But watch  |
+|             |                          | out for this if your     |
+|             |                          | data change and your     |
+|             |                          | results do not(!!).      |
++-------------+--------------------------+--------------------------+
 
 : Code Chunk Options
 

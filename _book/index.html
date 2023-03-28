@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
-  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2022-12-27" />
+<meta name="date" content="2023-03-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,14 +52,13 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.6.0/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.10.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
-<link href="libs/tabwid-1.1.2/tabwid.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -149,15 +148,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#who-this-book-is-for"><i class="fa fa-check"></i><b>1.1</b> Who This Book is For</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i><b>1.2</b> Prerequisites</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#the-spiral-of-success-structure"><i class="fa fa-check"></i><b>1.3</b> The Spiral of Success Structure</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#the-upward-spiral-of-success-structure"><i class="fa fa-check"></i><b>1.3</b> The (Upward) Spiral of Success Structure</a></li>
 <li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#motivation-for-this-book"><i class="fa fa-check"></i><b>1.4</b> Motivation for this Book</a></li>
 <li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#the-scientific-reproducibility-crisis"><i class="fa fa-check"></i><b>1.5</b> The Scientific Reproducibility Crisis</a></li>
-<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#features-of-a-bookdown-electronic-book"><i class="fa fa-check"></i><b>1.6</b> Features of a Bookdown electronic book</a>
-<ul>
-<li class="chapter" data-level="1.6.1" data-path="index.html"><a href="index.html#icons"><i class="fa fa-check"></i><b>1.6.1</b> Icons</a></li>
-<li class="chapter" data-level="1.6.2" data-path="index.html"><a href="index.html#sharing"><i class="fa fa-check"></i><b>1.6.2</b> Sharing</a></li>
-<li class="chapter" data-level="1.6.3" data-path="index.html"><a href="index.html#scrollingpaging"><i class="fa fa-check"></i><b>1.6.3</b> Scrolling/Paging</a></li>
-</ul></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#features-of-a-bookdown-electronic-book"><i class="fa fa-check"></i><b>1.6</b> Features of a Bookdown electronic book</a></li>
 <li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#what-this-book-is-not"><i class="fa fa-check"></i><b>1.7</b> What this Book is Not</a>
 <ul>
 <li class="chapter" data-level="1.7.1" data-path="index.html"><a href="index.html#this-book-is-not-a-statistics-text"><i class="fa fa-check"></i><b>1.7.1</b> This Book is Not A Statistics Text</a></li>
@@ -584,7 +578,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="23.6" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#lollipop-plots"><i class="fa fa-check"></i><b>23.6</b> Lollipop Plots</a></li>
 <li class="chapter" data-level="23.7" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#dumbbell-plots"><i class="fa fa-check"></i><b>23.7</b> Dumbbell Plots</a></li>
 <li class="chapter" data-level="23.8" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#test-what-you-have-learned"><i class="fa fa-check"></i><b>23.8</b> Test what you have learned</a></li>
-<li class="chapter" data-level="23.9" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#dumbbell-plots-with-ggalt-for-visualizing-change"><i class="fa fa-check"></i><b>23.9</b> Dumbbell Plots with ggalt For Visualizing Change</a></li>
+<li class="chapter" data-level="23.9" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#spaghetti-plots-with-summary-smoothed-lines-for-change-over-time"><i class="fa fa-check"></i><b>23.9</b> Spaghetti Plots with Summary Smoothed Lines for Change Over Time</a></li>
 <li class="chapter" data-level="23.10" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#direct-labeling-of-plots"><i class="fa fa-check"></i><b>23.10</b> Direct Labeling of Plots</a>
 <ul>
 <li class="chapter" data-level="23.10.1" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#geomtextpath"><i class="fa fa-check"></i><b>23.10.1</b> GeomTextPath</a></li>
@@ -844,7 +838,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Reproducible Medical Research with R</h1>
 <p class="author"><em>Peter D.R. Higgins, MD, PhD, MSc</em></p>
-<p class="date"><em>2022-12-27</em></p>
+<p class="date"><em>2023-03-23</em></p>
 </div>
 <div id="preface" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Preface<a href="index.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -854,7 +848,8 @@ I hope that this book is helpful to you.</p>
 <h2><span class="header-section-number">1.1</span> Who This Book is For<a href="index.html#who-this-book-is-for" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This is a book for anyone in the medical field interested in analyzing the data available to them to better understand health, disease, or the delivery of care.
 This could include nurses, dieticians, psychologists, and PhDs in related fields, as well as medical students, residents, fellows, or doctors in practice.<br />
-I expect that most learners will be using this book in their spare time at night and on weekends, as the health training curricula are already packed full of information, and there is no room to add skills in reproducible research to the standard curriculum.
+</p>
+<p>I expect that most learners will be using this book in their spare time at night and on weekends, as the health training curricula are already packed full of information, and there is no room to add skills in reproducible research to the standard curriculum.
 This book is designed for self-teaching, and many hints and solutions will be provided to avoid roadblocks and frustration.
 Many learners find themselves wanting to develop reproducible research skills after they have finished their training, and after they have become comfortable with their clinical role.
 This is the time when they identify and want to address problems faced by patients in their practice with the data they have before them.
@@ -873,8 +868,8 @@ This is designed for physicians and others analyzing health data who are interes
 <p>How to download and install R and RStudio will be addressed, step by step, in Chapter 2.
 <br></p>
 </div>
-<div id="the-spiral-of-success-structure" class="section level2 hasAnchor" number="1.3">
-<h2><span class="header-section-number">1.3</span> The Spiral of Success Structure<a href="index.html#the-spiral-of-success-structure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="the-upward-spiral-of-success-structure" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> The (Upward) Spiral of Success Structure<a href="index.html#the-upward-spiral-of-success-structure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This book is structured on the concept of a “spiral of success”, with readers learning about topics like data visualization, data wrangling, data modeling, reproducible research, and communication of results in repeated passes.
 These will initially be at a superficial level, and at each pass of the spiral, will provide increasing depth and complexity.
 This means that the chapters on data wrangling will not all be together, nor the chapters on data visualization.
@@ -893,46 +888,50 @@ There are distinct needs for protecting health information, generating a descrip
 <p>Further, while learning from a textbook can be helpful, this e-book has the ability to include interactive features that are important for learning to write your own analysis code.
 Informative <strong>flipbook</strong> demonstrations will show you what steps in R code do, and <strong>learnr</strong> exercises will give you a chance to do your own coding to solve problems, right within this e-book.</p>
 <p>More and more, all science is becoming data science.
-We are able to track patients, their test results, and even the individual pixels (voxels) of their CT scans electronically, and use those data points to develop new knowledge.
+We are able to track patients, their test results, and even the individual voxels of their CT scans electronically, and use those data points to develop new knowledge.
 While one could argue that health care workers should collect data and bring it to trained statisticians, this does not work nearly as well as you might expect.
 Most academic statisticians are incentivized to develop new statistical methods, and are not very interested (nor incentivized) to do the hand-holding required to wrangle messy clinical data into a manuscript.</p>
 <p>There also are simply not enough statisticians to meet the needs of medical science.
-Having clinicians on the front lines with some data science training makes a big difference, whether in 1854 in London (John Snow) or in 2014 in Flint, Michigan (Mona Hanna-Atisha).
+Having clinicians on the front lines with some data science training makes a big difference, whether in 1854 in London (John Snow, tracking a cholera outbreak to a water pump) or in 2014 in Flint, Michigan (Mona Hanna-Atisha, showing a rise in blood levels in children after a change i the water supply).
 Having more clinicians with some data science training will impact medical care, as they will identify local problems that would have otherwise never reached a statistician, and probably never been addressed with data otherwise.</p>
 </div>
 <div id="the-scientific-reproducibility-crisis" class="section level2 hasAnchor" number="1.5">
 <h2><span class="header-section-number">1.5</span> The Scientific Reproducibility Crisis<a href="index.html#the-scientific-reproducibility-crisis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Beginning as far back as 1989, with the David Baltimore case, and increasingly and publicly through the 2010s, there has been a rising tide of realization that a lot of taxpayer-funded science is done sloppily, and that our standards as scientists need to be higher.
+<p>Beginning as far back as 1989, with the <a href="https://bioethics.miami.edu/education/timelines-project/the-baltimore-case/index.html">David Baltimore case</a>, in which NIH-funded cancer research was only documented on a pile of paper towels, there has been a rising tide of realization that a lot of taxpayer-funded science is done sloppily.
+Increasingly and publicly through the 2010s, there has been a realization that manuscripts don’t document the scientific process well, and that our standards as scientists need to be higher.
 The line between carelessly-done science and outright fraud is a thin one, and the case can be made that doing science in a sloppy fashion defrauds the funders, as it leads to results that can not be reproduced by the authors nor replicated by others.
 Particularly in medicine, where incorrect findings can cause great harm, we should take special care to do scientific research which is well-documented, reproducible, and replicable.
-This topic as a motivating force for doing careful medical research will be expanded upon in Chapter 1.</p>
+Several examples of science that was sloppily done vs outright fraud involved mis-use of spreadsheets or sloppy coding.
+<a href="https://www.science.org/content/blog-post/duke-potti-scandal-inside">Anil Potti at Duke</a> made several errors in spreadsheets that led to claims that tumor multi-omics could guide chemotherapy which were clearly wrong and likely harmed patients in clinical trials.
+<a href="https://jamanetwork.com/journals/jama/fullarticle/2752474">Aboumatar and colleagues</a> at Johns Hopkins published a study of an intervention for COPD in JAMA in 2018 that they claimed improved outcomes, but had to retract this paper in 2019 when they discovered that they had mis-coded the intervention, and that the intervention was actually harmful.
+The topic of coding correctly, and rooting out errors as a motivating force for doing careful medical research will be expanded upon in Chapter 1.</p>
 </div>
 <div id="features-of-a-bookdown-electronic-book" class="section level2 hasAnchor" number="1.6">
 <h2><span class="header-section-number">1.6</span> Features of a Bookdown electronic book<a href="index.html#features-of-a-bookdown-electronic-book" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="icons" class="section level3 hasAnchor" number="1.6.1">
-<h3><span class="header-section-number">1.6.1</span> Icons<a href="index.html#icons" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>There are several icons at the top left, to the right of the clickable RMWR link, that can be helpful:</p>
+<ul>
+<li>Icons</li>
+</ul>
+<p>There are several icons at the top left of the main column, to the right of the sidebar, that can be helpful:</p>
 <p>1.
-The Table of Contents Sidebar - Click on the <strong>‘hamburger’ menu icon</strong> (three horizontal lines) or the <code>s</code> key to toggle the sidebar (table of contents) on and off.
-Within the sidebar, you can click on whichever chapter or subsection you want.</p>
+The Table of Contents Sidebar - Click on the <strong>‘hamburger’ menu icon</strong> (three horizontal lines) or the <code>s</code> key to toggle the sidebar (table of contents, on the left) on and off.
+Within the sidebar, you can click on whichever chapter or subsection you want and go directly to it.</p>
 <p>2.
 This book is Searchable - Click on the <strong>magnifying glass</strong> or use the <code>f</code> key to toggle the <code>Find</code> box and search for whatever you need to find.</p>
 <p>3.
 You can change the font size, font, and background by clicking on the <strong>A</strong> icon.</p>
 <p>4.
 You can download the chapter with the download icon (downward arrow into a file tray) in PDF or EPUB formats.</p>
-</div>
-<div id="sharing" class="section level3 hasAnchor" number="1.6.2">
-<h3><span class="header-section-number">1.6.2</span> Sharing<a href="index.html#sharing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>At the top right, there are several icons for sharing links to the current chapter through social media.</p>
-</div>
-<div id="scrollingpaging" class="section level3 hasAnchor" number="1.6.3">
-<h3><span class="header-section-number">1.6.3</span> Scrolling/Paging<a href="index.html#scrollingpaging" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Sharing</li>
+</ul>
+<p>At the top right of the main column, there are several icons for sharing links to the current chapter through social media.</p>
+<ul>
+<li>Scrolling/Paging</li>
+</ul>
 <ol style="list-style-type: decimal">
 <li>You can scroll up and down within a chapter with your mouse, or use the up and down arrow keys.</li>
 <li>You can page through chapters with the left and right arrow keys.</li>
 </ol>
-</div>
 </div>
 <div id="what-this-book-is-not" class="section level2 hasAnchor" number="1.7">
 <h2><span class="header-section-number">1.7</span> What this Book is Not<a href="index.html#what-this-book-is-not" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -942,9 +941,10 @@ You can download the chapter with the download icon (downward arrow into a file 
 I am assuming that you have learned some statistics somewhere in secondary school, undergraduate studies, graduate school, or even medical school.
 There are lots of statisticians with Ph.D.s who can certainly teach statistics much more effectively than I can.
 While I have a master’s degree in Clinical Research Design and Statistical Analysis (isn’t that a mouthful!) from the University of Michigan, I will leave formal teaching of statistics to the pros.<br />
-If you need to brush up on your statistics, no worries.
+</p>
+<p>If you need to brush up on your statistics, no worries.
 There are several excellent (and free!) e-books on that very topic, using R.
-Some good examples include (go ahead and click through the blue links to explore):</p>
+Some good examples include (go ahead and click through the colored links to explore):</p>
 <ol style="list-style-type: decimal">
 <li><a href="https://learningstatisticswithr-bookdown.netlify.com">Learning Statistics with R (LSR)</a></li>
 <li><a href="https://www.openintro.org/book/os/">Open Intro Statistics</a></li>
@@ -966,24 +966,24 @@ The R computer language has expanded far beyond statistics, and allows you to do
 <div id="some-guideposts" class="section level2 hasAnchor" number="1.8">
 <h2><span class="header-section-number">1.8</span> Some Guideposts<a href="index.html#some-guideposts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Keep an eye out for helpful Guideposts, which look like this:</p>
-<p><strong>Warnings</strong></p>
+<p><strong>Warnings</strong> - These are common “gotchas” to watch out for</p>
 <div class="warning">
-<p>This is a common syntax error, especially for beginners.
+<p>This indicates a common syntax error, especially for beginners.
 Watch out for this.</p>
 </div>
-<p><strong>Tips</strong></p>
+<p><strong>Tips</strong> - These are helpful items to remember</p>
 <div class="tip">
 <p>This is a helpful tip for debugging.</p>
 </div>
-<p><strong>Try It Out</strong></p>
+<p><strong>Try It Out</strong> - This is an example to apply what you have learned</p>
 <div class="tryit">
 <p>Take what you have learned and try it yourself on your own computer.</p>
 </div>
-<p><strong>Challenge</strong> - take the next step and try a more challenging example.</p>
+<p><strong>Challenge</strong> - These are usually at the end of a chapter, to try a more challenging example and consolidate what you have learned</p>
 <div class="challenge">
-<p>Try this more complicated example.</p>
+<p>Take the next step, and try this more complicated example.</p>
 </div>
-<p><strong>Explore More</strong> - resources for learning more about a particular topic.</p>
+<p><strong>Explore More</strong> - These are resources for learning more about a particular topic.</p>
 <div class="explore">
 <p>If you want to learn more about Shiny apps, go to <a href="https://mastering-shiny.org" class="uri">https://mastering-shiny.org</a> to see an entire book on the topic.</p>
 </div>
@@ -1001,7 +1001,8 @@ Then use the left and right arrow keys to go forward and back in the code, one s
 You will want to go through these <em>slowly</em>, and make sure that you understand what is happening in each step.
 You may even want to take notes, particularly on the function syntax, as you will likely coding exercises with these functions shortly after the flipbook demonstration.</p>
 <p>Take a look at the example of a flipbook below.<br />
-Activate it by clicking on it, and use the expand icon (4 arrows at the lower right) to make it full screen.
+</p>
+<p>Activate it by clicking on it, and use the expand icon (4 arrows at the lower right) to make it full screen.
 You can step forward and backward through the pipeline of code with the right and left arrow keys.
 Watch the results of each step.</p>
 <!---FLIPBOOK EX 1-->
@@ -1020,10 +1021,13 @@ Rely on the text and your notes and the demonstrations to help you.
 If you are stuck, you can click on the <code>Hint</code> button to see an example of correct code, and compare it to your own.
 If you would like, you can even copy this code to the clipboard with the <code>Copy</code> button and</p>
 <p>Take a look at the example of a learnr exercise below.<br />
-There is a dataset piped into a series of functions (‘verbs’), with a blank.
-Fill in the blank with ‘p_vol’ (without the quotes), which stands for the variable, prostate volume.
+</p>
+<p>There is a dataset (prostate) piped into a function (‘select’), with three blanks (3 arguments to this function).
+Fill in the blanks with the 3 listed variables (age, fam_hx, and t_stage are the variable names).
 Then run your code with the <code>Run Code</code> button to get a result.
-Practice using the <code>Start Over</code> button, the <code>Hint</code> button (there may be more than one - usually the <strong>last</strong> one is the solution), and the <code>Copy To Clipboard</code> button.</p>
+Practice using the <code>Start Over</code> button, the <code>Hint</code> button (there may be more than one - usually the <strong>last</strong> one is the solution), and the <code>Copy To Clipboard</code> button, then paste the solution in if you are stuck, and then <code>Run Code</code>.<br>
+<br>
+Then try out Exercise 2 to select columns related to Gleason Score.</p>
 <!---LEARNR TUTORIAL EX 1-->
 <iframe style="margin:0 auto; border: solid black;" id="myIframe9" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_demo/" scrolling="yes">
 </iframe>
@@ -1031,7 +1035,8 @@ Practice using the <code>Start Over</code> button, the <code>Hint</code> button 
 <p>When you get a table of data as a result from a code pipeline, it may have more columns (variables) than can be displayed easily.
 When this is the case, there will be a black arrow pointing rightward at the top right of the table of results.
 Click on this to scroll right and see more columns.<br />
-A table of data as a result from a code pipeline may also have more rows (observations) than can be displayed easily.
+</p>
+<p>A table of data as a result from a code pipeline may also have more rows (observations) than can be displayed easily.
 When this is the case, the table will be paginated, with 10 rows per page.
 At the bottom right of the table, there will be a clickable listing of pages, along with <code>Previous</code> and <code>Next</code> buttons.
 Click on these buttons (or the page number buttons) to see more pages of data to inspect and check your results.</p>

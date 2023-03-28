@@ -134,7 +134,7 @@ left_join(x = hometowns, y = birthdays)
 ```
 
 ```
-## Joining, by = "name"
+## Joining with `by = join_by(name)`
 ```
 
 ```
@@ -228,7 +228,7 @@ left_join(x = hometowns2, y = birthdays, by = "name")
 
 ```
 ## Error in `left_join()`:
-## ! Join columns must be present in data.
+## ! Join columns in `x` must be present in the data.
 ## ✖ Problem with `name`.
 ```
 
@@ -258,7 +258,7 @@ right_join(x = hometowns, y = birthdays)
 ```
 
 ```
-## Joining, by = "name"
+## Joining with `by = join_by(name)`
 ```
 
 ```
@@ -304,7 +304,7 @@ hometowns2 %>%
 ```
 
 ```
-## Joining, by = "name"
+## Joining with `by = join_by(name)`
 ```
 
 ```
@@ -372,7 +372,7 @@ inner_join(birthdays, hometowns)
 ```
 
 ```
-## Joining, by = "name"
+## Joining with `by = join_by(name)`
 ```
 
 ```
@@ -441,7 +441,7 @@ full_join(birthdays, hometowns)
 ```
 
 ```
-## Joining, by = "name"
+## Joining with `by = join_by(name)`
 ```
 
 ```

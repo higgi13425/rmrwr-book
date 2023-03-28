@@ -76,7 +76,7 @@ whoami;date
 
 ```
 ## peterhiggins
-## Tue Dec 27 20:22:25 EST 2022
+## Thu Mar 23 08:21:16 EDT 2023
 ```
 :::
 
@@ -149,6 +149,7 @@ ls
 ## 2022.10.19_MH_CCC_V2_PDRH.docx
 ## 203ClareScenes080119 copy.pdf
 ## 2PM talks
+## A Disease Monitoring Smart Set_PDRH.pptx
 ## A is for Allspice.2.0.docx
 ## A is for Allspice.docx
 ## ABT combo proposal Bcl2:JAK
@@ -190,6 +191,7 @@ ls
 ## Advice for young mentors.docx
 ## Animation of NSAID.pptx
 ## Applicant Research Design Task T32.docx
+## Applying for Fellowship in Gastroenterology and Hepatology.docx
 ## Ashley_Simone letter rec.docx
 ## Autoimmune Summit.pptx
 ## Awais Chapter Stenosis
@@ -231,7 +233,10 @@ ls
 ## COVID Trials Feasibility
 ## COVID_MPox_P2PEP22.pptx
 ## CTSU Protocol Checklist_v1_PDRH_Jan2022.docx
+## CU104 UC Synopsis v0.4 15Nov2022_PDRH.docx
 ## CYSIF.pdf
+## CalenK08referenceLetter_PDRH_2023.docx
+## CalenK08referenceLetter_PDRH_2023.pdf
 ## CaltechCampus Tour & Information Session.webarchive
 ## Cancel Appt Epic.ppt
 ## Causal.png
@@ -299,6 +304,7 @@ ls
 ## Fibrosis Symposium
 ## Fibrosis lab talks
 ## FibrosisIBDCedars2016.pptx
+## Figures for PractGast_Higgins_ASUC_2023.pptx
 ## Figures-KC-JAMA.pptx
 ## Finance and Retirement Plans.docx
 ## Financial Priorities.docx
@@ -413,6 +419,7 @@ ls
 ## Jessica Sheehan Rec Letter Fellowship.pdf
 ## Jessie Pfizer materials.docx
 ## Jessie Sheehan Projects
+## Jordan_MH_Slides[72]  - PDRH.pptx
 ## Jun2021_ibdTrials [Autosaved].pptx
 ## Jun2021_ibdTrials.pptx
 ## K Award Institutional Letter of Commitment.pptx
@@ -511,6 +518,7 @@ ls
 ## R01 MachineLearn2010
 ## R01.US.Revision
 ## RCode
+## RMed 2023 Meeting 15 Mar.docx
 ## RMed21- Intro to Spatial.pptx
 ## RMed21-Opening remarks Day 1.pptx
 ## RMed21-Opening remarks Day 2.pptx
@@ -614,6 +622,7 @@ ls
 ## Tofa_Presentation_2_10_2021.pptx
 ## Toffee Separation Tips.docx
 ## Topics to Discuss with Bill.docx
+## Trip to Hawaii 2023 GUILD.docx
 ## UC CD Impact Manuscript Tables__19Feb2021_PDRH.docx
 ## UC and CD Impact Manuscript_Draft 2_9Jan2022_PDRH.docx
 ## UC and CD Impact Manuscript_Draft1_19Feb2021_PDRH.docx
@@ -682,6 +691,7 @@ ls
 ## medicaldata_Rmedicine21.pdf
 ## medicaldata_Rmedicine21.pptx
 ## medicaldata_image_hex.ai
+## messy_bp.xlsx
 ## mockstudy manuscript draft.docx
 ## nejm1966_beecher_ethics.pdf
 ## nejm_indomethacin.pdf
@@ -776,6 +786,7 @@ ls
 ## Higgins HK 2017IBD Nursing and Quality of Care.pptx
 ## Higgins HK 2017The Gut Microbiota and the Pathophysiology of IBD.pptx
 ## Higgins Microbiota for IBD Patient Ed.pptx
+## HigginsAI talk for DDW2019.pptx
 ## HigginsDec2018AJG_SmokingStatus.pptx
 ## HigginsFALKMadridThioMtx2017.pptx
 ## Higgins_CCC_2018_Refractory_Rising_Bar_v3.pptx
@@ -789,12 +800,16 @@ ls
 ## PDRH RCR 2020.pptx
 ## PDR_Higgins_DeficienciesInIBD_AIBD2021.pptx
 ## PennThioMTX2017Higgins.pptx
+## Pilot Feasibility Studies.pptx
 ## PragueRefractoryRisingBar2017.pptx
 ## Pregnancy in IBD.pptx
 ## Presentation1.pptx
 ## Regenbogen CRS for GI CME Course2016.pptx
 ## Senior Slide Show.pptx
 ## Social Media for GI.pptx
+## SuperRough AI.pptx
+## T32 Fellowship Annual Orientation 2023.pptx
+## T32 GI Fellowship Presentation 2023.pptx
 ## ThomsonRectalStumpComplicationsIBD2_13.pptx
 ## UEGweek2020.pptx
 ## UMHS IBD ADTC Encounter Note-DRAFT-RWS_15FEV2015.docx

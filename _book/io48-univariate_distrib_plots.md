@@ -128,6 +128,9 @@ When you have a continuous variable that could vary across several categories of
 ## Warning: The dot-dot notation (`..density..`) was deprecated in
 ## ggplot2 3.4.0.
 ## ℹ Please use `after_stat(density)` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where
+## this warning was generated.
 ```
 
 ```
@@ -267,6 +270,9 @@ mockstudy %>%
 ## Warning: Using `size` aesthetic for lines was deprecated in ggplot2
 ## 3.4.0.
 ## ℹ Please use `linewidth` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where
+## this warning was generated.
 ```
 
 <img src="io48-univariate_distrib_plots_files/figure-html/unnamed-chunk-7-1.png" width="672" />
@@ -365,6 +371,9 @@ ggplot(aes(x = time.to.agvhd, y = diagnosis,
 ```
 ## Warning: `stat(x)` was deprecated in ggplot2 3.4.0.
 ## ℹ Please use `after_stat(x)` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where
+## this warning was generated.
 ```
 
 ```

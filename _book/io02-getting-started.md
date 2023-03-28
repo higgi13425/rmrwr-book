@@ -46,9 +46,9 @@ include
 
 R is a statistical programming language, designed for non-programmers
 (statisticians). It is optimized to work with data in rectangular tables
-of rows (observations) and columns (variables). It is a very fast and
+of rows (observations) and columns (variables). It is a fast and
 powerful programming engine, but it is not terribly comfortable or
-convenient. R itself is not terribly user-friendly. It is a lot like a
+convenient. Base R itself is not terribly user-friendly. It is a lot like a
 drag racing car, which is basically a person with a steering wheel
 strapped to an airplane engine.
 
@@ -64,6 +64,10 @@ This equivalent of a comfy coding environment is provided by the RStudio
 IDE (Integrated Developer Environment). I want you to install both the R
 statistical language and the RStudio IDE, in that order.\
 
+:::warning
+Note that serious computer programmers do not consider R a fast coding language. R was designed by statisticians for managing data and running models, and is not optimizedW like languages like C++ and Julia for modern computers. If you have really big data, R will slow down, and using R packages like {arrow} and {data.table} will dramatically increase the speed of R.
+:::
+
 Let's start with installing R.\
 R is free and available for download on the web. Click on the following
 link to go to the [r-project website](https://r-project.org/) to get
@@ -78,14 +82,14 @@ You might be wondering what CRAN and CRAN Mirrors are. Nothing to do
 with cranberries, fortunately. CRAN is the Comprehensive R Archive
 Network. Each site (mirror) in the network contains an archive of all R
 versions and packages, and the sites are scattered over the globe. A
-CRAN Mirror maintains an up to date copy of all of the R versions and
+CRAN Mirror maintains an up-to-date copy of all of the R versions and
 packages on CRAN. If you use the nearest CRAN mirror, you will generally
 get faster downloads.
 
 At this point, you might be wondering what a package is...\
 A package is a set of functions and/or data that you can download to
 upgrade and add features to R. It is like a downloadable upgrade to a
-Tesla vehicle that lets you play the video game *Witcher 3* on your
+Tesla vehicle that lets you play the video game *The Witcher 3* on your
 console, but more useful.
 
 ![](images/dash-tesla.png){width="600"}
@@ -95,11 +99,11 @@ smartphone. When you buy a new smartphone, it only comes with the basic
 apps that allow it to work as a phone, and a few other things, like a
 notepad and a calculator.
 
-If you want to do cool things with your smartphone, you download apps
+If you want to do cool things with your smartphone, you download additional apps
 that allow your smartphone to have new capabilities. That is what
 packages do for your installation of R.
 
-![tesla](images/smartphone.jpg)\
+![smartphone](images/smartphone.jpg)\
 
 Now let's get started. Click on the blue link that says "download R".\
 This will take you to a page to select your local CRAN Mirror , from
@@ -135,7 +139,7 @@ like this:\
 ![install2](images/installr2.png)
 
 You want to download both base and Rtools (you might need Rtools later
-to build packages). The base link will take you to the latest version,
+to build packages for Windows). The base link will take you to the latest version,
 which will look something like this.
 
 ![install3](images/installr3windows.png)
@@ -476,7 +480,7 @@ in one place and easy to find.
     Click on the dropdown menu to select "Never"
 
 These tune-ups (#2 and #3) to your RStudio will mean you will always
-start with a clean workspace in a new RStudio session, which will avoid
+start with a clean workspace in a new RStudio session, which will help avoid
 a lot of potential problems later.
 
 4.  In the same General tab, at the top, click on the Advanced tab. Then

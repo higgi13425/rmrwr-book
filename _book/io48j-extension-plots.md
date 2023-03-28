@@ -15,8 +15,9 @@ The {ggplot2} package is made to be _extensible_ - so that other people can writ
  - learn how and why to use waffle plots
  - learn how and when to use alluvial plots
  - learn how and when to use lollipop plots
- -learn how and when to use dumbbell plots
- 
+ - learn how and when to use dumbbell plots
+ - learn how and when to use spaghetti plots
+  
 ## Packages Needed for this chapter
 
 You will need {tidyverse}, {medicaldata}, {waffle}, {ggalluvial}, {ggalt}, {ggrepel}, {ggforce}, {ggalt}, {ggtext}. {ggsignif}, {ggbump}, {survminer}, {ggcorrplot}, {plotROC}, {directlabels}, {geomtextpath}, {ggheatmap}, {ggQC}, {ggupset}, {plotly}, and {gganimate}.
@@ -127,8 +128,9 @@ Note that we have used colors in the title in place of a legend, by coloring the
 
 ## An Alluvial Plot
 
-An alluvial plot depicts flow, like a river, which can split off branches and re-unite streams. This king of plot can be helpful to show patient flow from one state to the next.
+An alluvial plot depicts flow, like a river, which can split off branches and re-unite streams. This kind of plot can be helpful to show patient flow from one state to the next. This requires the {ggalluvial} package, which you may need to install and then load with the library() function.
 
+The example below shows the flow of patients with chest pain from ED triage to hospitalization and an outcome of survived or died, stratified by gender.
 
 
 ```r
@@ -166,45 +168,185 @@ ggplot(datafr,
   scale_fill_manual(values = c("#1a85ff", "#d41159" ))
 ```
 
-```
-## Warning: Using the `size` aesthetic in this geom was deprecated in
-## ggplot2 3.4.0.
-## ℹ Please use `linewidth` in the `default_aes` field and
-##   elsewhere instead.
-```
-
 <img src="io48j-extension-plots_files/figure-html/alluvial-1.png" width="672" />
 
 :::tryit
 
-Now try this yourself. Copy the code above (click on the copy icon in the top right of the code chunk), paste it into your RStudio IDE, and edit to:
+Now try this yourself. Copy the code below (click on the copy icon in the top right of the code chunk), paste it into your RStudio IDE, and edit to:
 
-- change the x axis so that it starts at age 15, and ends at 90. Click on the `Solution` button to toggle showing or hiding the solution.
-
-
-<div class='webex-solution'><button>Solution</button>
+- show the additive effects of ethanol use, cirrhosis, and HCC on death rates. Code the outcome as Survived or Died.
 
 
 ```r
-indo_rct %>% 
-  ggplot() +
-  aes(x = age, y = risk, color = outcome) + 
-  geom_jitter() +
-  scale_y_continuous(limits = c(0,6)) +
-  scale_x_continuous(limits = c(15,90))
+datafr <- tibble::tribble(
+  ~Ethanol_Use, ~Cirrhosis, ~HCC, ~outcome, ~count,
+  "Yes", "Yes", "Yes", "Survived",  4,
+  "Yes", "Yes", "Yes", "Died", 28,
+  "Yes", "Yes", "No", "Survived", 12,
+  "Yes", "Yes", "No", "Died", 45,
+  "Yes", "No", "Yes", "Survived", 2,
+  "Yes", "No", "Yes", "Died", 4,
+  "Yes", "No", "No", "Survived", 57,
+  "Yes", "No", "No", "Died", 26,
+  "No", "Yes", "Yes", "Survived", 3,
+  "No", "Yes", "Yes", "Died", 10,
+  "No", "Yes", "No", "Survived", 32,
+  "No", "Yes", "No", "Died", 26,
+  "No", "No", "Yes", "Survived", 1,
+  "No", "No", "Yes", "Died", 3,
+  "No", "No", "No", "Survived", 297,
+  "No", "No", "No", "Died", 15
+  ) %>% 
+  mutate(Ethanol_Use = as_factor(Ethanol_Use),
+         Cirrhosis = as_factor(Cirrhosis),
+         HCC = as_factor(HCC),
+         outcome = as_factor(outcome))
+
+ggplot(datafr, 
+       aes(y = count, axis1 = ____, 
+           axis2 = ____,
+           axis3 = ____)) +
+  geom_alluvium(aes(fill = outcome), width = 1/12) +
+  geom_stratum(width =1/12, fill = "black", color = "grey") +
+  geom_label(stat = "stratum", aes(label = after_stat(stratum))) +
+  scale_x_discrete(limits = c("____", "____", "____"), expand = c(.10, .10)) +
+  ggtitle("Patients Presenting with Hepatitis C Infection") +
+  scale_fill_manual(values = c("#1a85ff", "#d41159" ))
 ```
 
-<img src="io48j-extension-plots_files/figure-html/scatter-2-solution-1.png" width="672" />
-
-</div>
-
+```
+## Error: <text>:26:32: unexpected input
+## 25: ggplot(datafr, 
+## 26:        aes(y = count, axis1 = __
+##                                    ^
+```
 
 :::
 
 
+<div class='webex-solution'><button>alluvial1-solution</button>
+
+
+
+```r
+datafr <- tibble::tribble(
+  ~Ethanol_Use, ~Cirrhosis, ~HCC, ~outcome, ~count,
+  "Yes", "Yes", "Yes", "Survived",  4,
+  "Yes", "Yes", "Yes", "Died", 28,
+  "Yes", "Yes", "No", "Survived", 12,
+  "Yes", "Yes", "No", "Died", 45,
+  "Yes", "No", "Yes", "Survived", 2,
+  "Yes", "No", "Yes", "Died", 4,
+  "Yes", "No", "No", "Survived", 57,
+  "Yes", "No", "No", "Died", 26,
+  "No", "Yes", "Yes", "Survived", 3,
+  "No", "Yes", "Yes", "Died", 10,
+  "No", "Yes", "No", "Survived", 32,
+  "No", "Yes", "No", "Died", 26,
+  "No", "No", "Yes", "Survived", 1,
+  "No", "No", "Yes", "Died", 3,
+  "No", "No", "No", "Survived", 297,
+  "No", "No", "No", "Died", 15
+  ) %>% 
+  mutate(Ethanol_Use = as_factor(Ethanol_Use),
+         Cirrhosis = as_factor(Cirrhosis),
+         HCC = as_factor(HCC),
+         outcome = as_factor(outcome))
+
+ggplot(datafr, 
+       aes(y = count, axis1 = Ethanol_Use, 
+           axis2 = Cirrhosis,
+           axis3 = HCC)) +
+  geom_alluvium(aes(fill = outcome), width = 1/12) +
+  geom_stratum(width =1/12, fill = "black", color = "grey") +
+  geom_label(stat = "stratum", aes(label = after_stat(stratum))) +
+  scale_x_discrete(limits = c("Ethanol_Use", "Cirrhosis", "HCC"), expand = c(.10, .10)) +
+  ggtitle("Patients Presenting with Hepatitis C Infection") +
+  scale_fill_manual(values = c("#1a85ff", "#d41159" ))
+```
+
+<img src="io48j-extension-plots_files/figure-html/alluvial1-solution-1.png" width="672" />
+
+
+</div>
+
+
+:::tryit
+
+Now try this again. Copy the code below (click on the copy icon in the top right of the code chunk), paste it into your RStudio IDE, and edit to:
+
+- show the progression of inpatients through therapies for Acute Severe Ulcerative colitis through the first 90 days of therapy. Code the outcome as Intact or Colectomy.
+- Use the examples above to build your alluvial plot
+
+
+```r
+datafr <- tibble::tribble(
+  ~Day_1_Therapy, ~Day_7_Therapy, ~Day_28_Therapy, ~Day_90_Therapy, ~outcome, ~count,
+  "IVCS + Upa", "Pred + Upa", "Upa", "Upa", "Intact", 19,
+ "IVCS + Upa", "Pred + Upa", "Upa", NA, "Colectomy", 3,
+  "IVCS + Upa", "Pred + Upa", NA, NA, "Colectomy", 4,
+  "IVCS + Upa", "Cyclo", "Cyclo + IFX", "IFX", "Intact", 12,
+  "IVCS + Upa", "IFX", "IFX + Aza", "IFX + Aza", "Intact", 9,
+   "Upa", "Upa", "Upa", "Upa", "Intact", 12,
+ "Upa", "Upa", "Upa", NA, "Colectomy", 5,
+  "Upa", "Upa", NA, NA, "Colectomy", 7,
+  "Upa", "Cyclo", "Cyclo + IFX", "IFX", "Intact", 9,
+  "Upa", "IFX", "IFX + Aza", "IFX + Aza", "Intact", 7
+  ) %>% 
+  mutate(Day_1_Therapy = as_factor(Day_1_Therapy),
+         Day_7_Therapy = as_factor(Day_7_Therapy),
+         Day_28_Therapy = as_factor(Day_28_Therapy),
+         Day_90_Therapy = as_factor(Day_90_Therapy),
+         outcome = as_factor(outcome))
+```
+:::
+
+
+<div class='webex-solution'><button>alluvial2-solution</button>
+
+
+
+```r
+datafr <- tibble::tribble(
+  ~Day_1_Therapy, ~Day_7_Therapy, ~Day_28_Therapy, ~Day_90_Therapy, ~outcome, ~count,
+  "IVCS + Upa", "Pred + Upa", "Upa", "Upa", "Intact", 19,
+ "IVCS + Upa", "Pred + Upa", "Upa", NA, "Colectomy", 3,
+  "IVCS + Upa", "Pred + Upa", NA, NA, "Colectomy", 4,
+  "IVCS + Upa", "Cyclo", "Cyclo + IFX", "IFX", "Intact", 12,
+  "IVCS + Upa", "IFX", "IFX + Aza", "IFX + Aza", "Intact", 9,
+   "Upa", "Upa", "Upa", "Upa", "Intact", 12,
+ "Upa", "Upa", "Upa", NA, "Colectomy", 5,
+  "Upa", "Upa", NA, NA, "Colectomy", 7,
+  "Upa", "Cyclo", "Cyclo + IFX", "IFX", "Intact", 9,
+  "Upa", "IFX", "IFX + Aza", "IFX + Aza", "Intact", 7
+  ) %>% 
+  mutate(Day_1_Therapy = as_factor(Day_1_Therapy),
+         Day_7_Therapy = as_factor(Day_7_Therapy),
+         Day_28_Therapy = as_factor(Day_28_Therapy),
+         Day_90_Therapy = as_factor(Day_90_Therapy),
+         outcome = as_factor(outcome))
+
+ggplot(datafr, 
+       aes(y = count, axis1 = Day_1_Therapy, 
+           axis2 = Day_7_Therapy,
+           axis3 = Day_28_Therapy,
+           axis4 = Day_90_Therapy)) +
+  geom_alluvium(aes(fill = outcome), width = 1/12) +
+  geom_stratum(width =1/12, fill = "black", color = "grey") +
+  geom_label(stat = "stratum", aes(label = after_stat(stratum))) +
+  scale_x_discrete(limits = c("Day_1_Rx", "Day_7_Rx", "Day_28_Rx", "Day_90_Rx"), expand = c(.18,0.1)) +
+  ggtitle("Patients Presenting with Acute Severe UC") +
+  scale_fill_manual(values = c("#1a85ff", "#d41159" )) 
+```
+
+<img src="io48j-extension-plots_files/figure-html/alluvial2-solution-1.png" width="672" />
+
+
+</div>
+
 ## Lollipop Plots
 
-While bar charts are quite popular for comparing continuous variables across categories, they have limitations. Humans are good at comparing length, but the bars add width, which is a distractions. Bar charts are also often used for counts, and it is not always clear whether a continuous or a discrete count variable is being plotted (a waffle chart can clear up discrete counts). For a continuous variable, you have a single point estimate (the end of the bar), and it is better to emphasize this estimate, without giving up the benefit of comparing lengths (which humans are good at). A lollipop plot emphasizes the continuous value, while de-emphasizing the width of a bar. Let's look at an example below.
+While bar charts are quite popular for comparing continuous variables across categories, they have limitations. Humans are good at comparing length, but the bars add width, which is a distraction. Bar charts are also often used for counts, and it is not always clear whether a continuous or a discrete count variable is being plotted (a waffle chart can clear up discrete counts). For a continuous variable, you have a single point estimate (the end of the bar), and it is better to emphasize this estimate, without giving up the benefit of comparing lengths (which humans are good at). A lollipop plot emphasizes the continuous value, while de-emphasizing the width of a bar. Let's look at an example below.
 
 
 ```r
@@ -224,9 +366,12 @@ medicaldata::covid_testing %>%
 ```
 
 ```
-## Warning: Using the `size` aesthietic with geom_segment was
-## deprecated in ggplot2 3.4.0.
+## Warning: Using the `size` aesthetic with geom_segment was deprecated
+## in ggplot2 3.4.0.
 ## ℹ Please use the `linewidth` aesthetic instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where
+## this warning was generated.
 ```
 
 <img src="io48j-extension-plots_files/figure-html/lollipop-1.png" width="672" />
@@ -267,62 +412,6 @@ indo_rct %>%
 :::
 
 ## Dumbbell Plots
-
-You can see that ggplot picks sensible breaks, but the defaults might not always work for you. Let's change the risk scale to breaks of 0.5, using the `breaks` argument. Note that using the `limits` argument also lets you establish the limits of the y-axis. 
-
-
-```r
-indo_rct %>% 
-  ggplot() +
-  aes(x = age, y = risk, color = outcome) + 
-  geom_point() +
-  scale_y_continuous(limits = c(0,6),
-                     breaks = seq(0, 6, by = 0.5)) 
-```
-
-<img src="io48j-extension-plots_files/figure-html/scatter-4-1.png" width="672" />
-
-:::tryit
-
-Now try this yourself. Copy the code above (click on the copy icon in the top right of the code chunk), paste it into your RStudio IDE, and edit to:
-
-- Change the x axis so that it starts at age 0, and ends at 95, with breaks at every decade from 10-90 (but not zero). 
-
-Click on the `Solution` button to toggle showing or hiding the solution.
-
-
-<div class='webex-solution'><button>Solution</button>
-
-
-```r
-indo_rct %>% 
-  ggplot() +
-  aes(x = age, y = risk, color = outcome) + 
-  geom_jitter() +
-  scale_y_continuous(limits = c(0,6)) +
-  scale_x_continuous(limits = c(0,95), 
-                     expand = expansion(mult = 0),
-                     breaks = seq(10, 90, by = 10))
-```
-
-<img src="io48j-extension-plots_files/figure-html/scatter-4-solution-1.png" width="672" />
-Notice that the y axis has the default 5% multiplier, but the x axis does not, so it has limits exactly at 0 and 95.
-
-</div>
-
-:::
-
-## Test what you have learned
-
-(correct answers will be green!)
-
-- You can set the start and end points of an axis with the `limits` argument <select class='webex-select'><option value='blank'></option><option value='answer'>TRUE</option><option value=''>FALSE</option></select>
-
-- You can set the ticks on an axis with the <select class='webex-select'><option value='blank'></option><option value='answer'>breaks</option><option value=''>ticks</option><option value=''>lines</option></select> argument in a scales function.
-
-- To expand the margin of a plot on one side by a specific amount, you use the <select class='webex-select'><option value='blank'></option><option value=''>mult</option><option value=''>sqrt</option><option value='answer'>add</option></select> argument in the expand argument within a scales function.
-
-## Dumbbell Plots with ggalt For Visualizing Change
 
 The Dumbbell Plot is a visualization that shows change between two points (usually 2 time points) in our data. It gets the name because of its dumbbell shape. It’s a great way to show changes in data between two points (think start and finish). 
 
@@ -374,7 +463,58 @@ ggplot(aes(x = month_1, xend = month_4, y = patient_class,
 
 <img src="io48j-extension-plots_files/figure-html/dumbbell-1.png" width="672" />
 
-Let's expand the x axis to the righ to make room for a legend in the plot on the right, using the `expand` argument. We can change the axis `name` and `position` as well.
+
+
+--
+
+
+
+You can see that ggplot picks sensible breaks, but the defaults might not always work for you. Let's change the risk scale to breaks of 0.5, using the `breaks` argument. Note that using the `limits` argument also lets you establish the limits of the y-axis. 
+
+
+```r
+indo_rct %>% 
+  ggplot() +
+  aes(x = age, y = risk, color = outcome) + 
+  geom_point() +
+  scale_y_continuous(limits = c(0,6),
+                     breaks = seq(0, 6, by = 0.5)) 
+```
+
+<img src="io48j-extension-plots_files/figure-html/scatter-4-1.png" width="672" />
+
+:::tryit
+
+Now try this yourself. Copy the code above (click on the copy icon in the top right of the code chunk), paste it into your RStudio IDE, and edit to:
+
+- Change the x axis so that it starts at age 0, and ends at 95, with breaks at every decade from 10-90 (but not zero). 
+
+Click on the `Solution` button to toggle showing or hiding the solution.
+
+
+<div class='webex-solution'><button>Solution</button>
+
+
+```r
+indo_rct %>% 
+  ggplot() +
+  aes(x = age, y = risk, color = outcome) + 
+  geom_jitter() +
+  scale_y_continuous(limits = c(0,6)) +
+  scale_x_continuous(limits = c(0,95), 
+                     expand = expansion(mult = 0),
+                     breaks = seq(10, 90, by = 10))
+```
+
+<img src="io48j-extension-plots_files/figure-html/scatter-4-solution-1.png" width="672" />
+Notice that the y axis has the default 5% multiplier, but the x axis does not, so it has limits exactly at 0 and 95.
+
+</div>
+
+:::
+
+
+Let's expand the x axis to the right to make room for a legend in the plot on the right, using the `expand` argument. We can change the axis `name` and `position` as well.
 
 
 ```r
@@ -427,6 +567,245 @@ The legend position is based on the proportion of the x axis (0-1) and the y axi
 </div>
 
 :::
+
+--
+
+## Test what you have learned
+
+(correct answers will be green!)
+
+- You can set the start and end points of an axis with the `limits` argument <select class='webex-select'><option value='blank'></option><option value='answer'>TRUE</option><option value=''>FALSE</option></select>
+
+- You can set the ticks on an axis with the <select class='webex-select'><option value='blank'></option><option value='answer'>breaks</option><option value=''>ticks</option><option value=''>lines</option></select> argument in a scales function.
+
+- To expand the margin of a plot on one side by a specific amount, you use the <select class='webex-select'><option value='blank'></option><option value=''>mult</option><option value=''>sqrt</option><option value='answer'>add</option></select> argument in the expand argument within a scales function.
+
+## Spaghetti Plots with Summary Smoothed Lines for Change Over Time
+
+The Spaghetti Plot is a visualization that shows change over multiple time points for longitudinal data, which lets you see change in each individual as a line. It gets the name because the result (with method = "lm") looks a bit like you scattered uncooked spaghetti (straight lines) on the plot. It’s a great way to show changes in data over multiple time points, and there are multiple variants, including summary smoothed lines. 
+
+Note that a bit of data wrangling needs to be done to produce the correct data format for geom_line(). You may need to pivot_longer() to get 1 row of data for each data point, and an id for each individual (multiple points making up a line. This id will often be a patient id (pat_id). We will read in some simulated data below for 4 time points. The variables are time point, the value, ses (2 categories), elderly (2 categories), and pat_id for 8 patients.
+
+The code below will illustrate the basic spaghetti plot.
+
+
+```r
+dat <- tibble::tribble(~time, ~value, ~ses, ~elderly, ~pat_id, 0,0,1,1,1, 1,3,1,1,1, 2,5,1,1,1, 3,8,1,1,1, 0,0,2,1,2, 1,4,2,1,2,  2,7,2,1,2, 3,9,2,1,2, 0,0,1,2,3, 1,5,1,2,3, 2,9,1,2,3, 3,11,1,2,3, 0,0,2,2,4, 1,5,2,2, 4, 2,9,2,2,4, 3,15,2,2,4, 0,0,1,1,5, 1,5,1,1,5, 2,6,1,1,5, 3,9,1,1,5, 0,0,2,1,6, 1,5,2,1,6,  2,8,2,1,6, 3,13,2,1,6, 0,0,1,2,7, 1,4,1,2,7, 2,8,1,2,7, 3,14,1,2,7, 0,0,2,2,8, 1,6,2,2,8, 2,8,2,2,8, 3,16,2,2,8)
+
+
+ggplot(dat, aes(x = time, y = value, 
+  group = factor(pat_id))) +
+  geom_smooth(formula = y ~ x, se = FALSE, 
+              method = "lm") +
+  xlab("Observation Time Point") +
+  ylab("Y") 
+```
+
+<img src="io48j-extension-plots_files/figure-html/spaghetti-1.png" width="672" />
+
+As you can see, a bit like spilled (uncooked) spaghetti, with a line for each patient. Each patient is the same (default) color. Note that it is **critical** to group y the patient id (group = factor(pat_id)) so that ggplot knows which points go together as a line. If you remove this bit of code for the group argument, you get chaos from *geom_smooth()* or *geom_line()*. We can also let each patient's line follow their actual values, rather than a fitted line, with a few modifications. Try this below.
+
+
+```r
+ggplot(dat, aes(x = time, y = value, 
+  group = factor(pat_id))) +
+  geom_point() +
+  geom_line() +
+  xlab("Observation Time Point") +
+  ylab("Y") 
+```
+
+<img src="io48j-extension-plots_files/figure-html/spaghetti2-1.png" width="672" />
+Now each patient is represented by a line (and points) with more detail than a fitted straight line.
+
+We can also chose to color these lines in two classes by ses (SocioEconomic Status) by setting color = factor(ses). We can make the legend neater by putting it inside the plot boundaries with theme (legend.position), and use the x and y range from 0 to 1 to position it as below.
+
+
+```r
+ggplot(dat, aes(x = time, y = value, 
+  group = factor(pat_id), color = factor(ses))) +
+  geom_point() +
+  geom_line() +
+  theme(legend.position = c(0.8, 0.2)) + 
+  xlab("Observation Time Point") +
+  ylab("Y") 
+```
+
+<img src="io48j-extension-plots_files/figure-html/spaghetti3-1.png" width="672" />
+
+If we want to summarize the overall pattern, we can use a *geom_smooth()* with the default loess smoothing. We set the color to "black", rather than the color of either SES group. We need to turn off the grouping with group = NULL to get a single summary line. Note the loess smoothing produces a curve.
+
+```r
+ggplot(dat, aes(x = time, y = value, 
+  group = factor(pat_id), color = factor(ses))) +
+  geom_point() +
+  geom_line() +
+  theme(legend.position = c(0.8, 0.2)) + 
+  xlab("Observation Time Point") +
+  ylab("Y") +
+  geom_smooth(formula = y ~ x, se=FALSE, size=2, method = "loess", color = "black", aes(group = NULL))
+```
+
+<img src="io48j-extension-plots_files/figure-html/spaghetti4-1.png" width="672" />
+
+If we want to get fancy, we can also make summary curves for each ses group, and facet the plot by elderly status, as below.
+
+```r
+elderly_labels <- c(
+ `1` = "Young",
+ `2` = "Old") 
+
+ggplot(dat, aes(x = time, y = value, 
+  group = factor(pat_id), color = factor(ses))) +
+  geom_point() +
+  geom_line() +
+  theme(legend.position = c(0.8, 0.2)) + 
+  xlab("Observation Time Point") +
+  ylab("Y") +
+  geom_smooth(se=FALSE, size=2, method = "loess",   aes(group = NULL, color = factor(ses))) +
+  facet_grid(~elderly)
+```
+
+<img src="io48j-extension-plots_files/figure-html/spaghetti5-1.png" width="672" />
+
+This gives us a plot faceted into two graphs, one for the elderly on the right, and the non-elderly on the left. Each individual is represented by points and a connected line. SES status is indicated by color, and a summary curve of each SES group is a thicker (size=1) loess curve.
+
+:::tryit
+
+Now try this yourself. Copy the code below (click on the copy icon in the top right of the code chunk), paste it into your RStudio IDE, and edit to: 
+(Note you only have to read in the data (dat) once, just copy and edit the ggplot thereafter)
+
+
+```r
+dat <- tibble::tribble(~ patid, ~week, ~crp, ~fcp, ~flare, ~dz_type, 1,1,0.7,191,1,"uc", 1,3,1.1,302,1,"uc", 1,8,1.5,507,1,"uc", 
+2,1,0.8,214,1,"cd", 2,3,1.2,412,1,"cd", 2,8,1.6,647,1,"cd",  
+       3,1,0.7,137,0,"uc", 3,3,0.5,101,0,"uc", 3,8,0.4,58,0,"uc", 
+      4,1,0.5,112,0,"cd", 4,3,0.3,81,0,"cd", 4,8,0.1,44,0,"cd",
+      5,1,0.6,119,0,"uc", 5,3,0.4,87,0,"uc", 5,8,0.3,57,0,"uc", 
+     6,1,0.7,216,0,"cd", 6,3,0.5,161,0,"cd", 6,8,0.3,92,0,"cd", 
+       7,1,0.9,267,1,"uc", 7,3,1.1,412,1,"uc", 7,8,1.9,692,1,"uc",
+  8,1,0.7,212,1,"cd",  8,3,1.1,342,1,"cd", 8,8,1.6,517,1,"cd", 
+  9,1,0.9,197,0,"uc", 9,3,0.6,134,0,"uc", 9,8,0.4,86,0,"uc", 
+10,1,0.5,143,0,"cd", 10,3,0.4,101,0,"cd", 10,8,0.3,64,0,"cd", 
+11,1,0.7,217,0,"uc", 11,3,0.4,153,0,"uc", 11,8,0.3,51,0,"uc")
+
+
+ggplot(dat, aes(x = week, y = crp, 
+                group = factor(patid),
+                color= factor(patid))) +
+  geom_smooth(formula = y ~ x, se = FALSE, 
+              method = "lm") +
+  xlab("Week") +
+  ylab("CRP") 
+```
+
+<img src="io48j-extension-plots_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+
+
+- (1) See the initial plot above for CRP with smooth lines for each patient, then try it for FCP.
+- (2) Now plot the CRP values, and change the grouping to patid without colors, and use geom_point() and geom_line() rather than geom_smooth to see the CRP trends in black.
+- (3) Now plot the CRP values, and add to the aes, color = factor(dz_type) OR color= factor(flare) to group = factor(patid)
+- (4) Now plot the FCP values, and add the geom_smooth with group = NULL and color = factor(flare). Also facet_grid by dz_type, and see if you can improve the default legend title and labels (might need to google these).
+
+Click on the `Solution` buttons below to toggle showing or hiding each solution.
+
+:::
+
+
+<div class='webex-solution'><button>Solution 1</button>
+
+
+
+```r
+ggplot(dat, aes(x = week, y = crp, 
+                group = factor(patid),
+                color= factor(patid))) +
+  geom_smooth(formula = y ~ x, se = FALSE, 
+              method = "lm") +
+  labs(x = "Week", y = "CRP", title = "CRP by week") +
+  scale_x_continuous(breaks = c(1,3,8)) +
+  expand_limits(x=0)
+```
+
+<img src="io48j-extension-plots_files/figure-html/spaghetti-solution1-1.png" width="672" />
+
+
+</div>
+
+
+
+<div class='webex-solution'><button>Solution 2</button>
+
+
+
+```r
+ggplot(dat, aes(x = week, y = crp, 
+                group = factor(patid))) +
+  geom_point() +
+  geom_line() +
+  labs(x = "Week", y = "CRP", title = "CRP by week") +
+  scale_x_continuous(breaks = c(1,3,8)) +
+  expand_limits(x=0)
+```
+
+<img src="io48j-extension-plots_files/figure-html/spaghetti-solution2-1.png" width="672" />
+
+
+</div>
+
+
+
+<div class='webex-solution'><button>Solution 3</button>
+
+
+
+```r
+ggplot(dat, aes(x = week, y = crp, 
+      group = factor(patid),
+      color = factor(flare))) +
+  geom_point() +
+  geom_line() +
+  labs(x = "Week", y = "CRP", title = "CRP by week") +
+  scale_x_continuous(breaks = c(1,3,8)) +
+  expand_limits(x=0) +
+  labs(color = "Flare")
+```
+
+<img src="io48j-extension-plots_files/figure-html/spaghetti-solution3-1.png" width="672" />
+
+
+</div>
+
+
+
+
+<div class='webex-solution'><button>Solution 4</button>
+
+
+
+```r
+ggplot(dat, aes(x = week, y = fcp, 
+                group = factor(patid),
+       color = factor(flare))) +
+  geom_point() +
+  geom_line() +
+  labs(x = "Week", y = "FCP", title = "FCP by week") +
+  scale_x_continuous(breaks = c(1,3,8)) +
+  expand_limits(x=0) +
+  geom_smooth(se=FALSE, size=2, method = "loess",   aes(group = NULL, color = factor(flare))) +
+  facet_grid(~dz_type)  +
+  labs(color = "Flare") +
+  scale_color_discrete(breaks = c("1", "0"),
+                      labels = c("Yes", "No"))
+```
+
+<img src="io48j-extension-plots_files/figure-html/spaghetti-solution4-1.png" width="672" />
+
+
+</div>
+
+
+
 
 ## Direct Labeling of Plots
 

@@ -247,21 +247,20 @@ augment(model)
 
 ```
 ## # A tibble: 314 × 10
-##    .rownames recurrence fam_hx  b_gs .fitted .resid .std.r…¹
-##    <chr>          <dbl>  <dbl> <dbl>   <dbl>  <dbl>    <dbl>
-##  1 1                  1      0     3   0.103  1.13     1.15 
-##  2 2                  1      0     2  -1.08   1.66     1.66 
-##  3 3                  0      0     3   0.103 -1.22    -1.24 
-##  4 4                  0      0     1  -2.26  -0.445   -0.446
-##  5 5                  0      0     2  -1.08  -0.764   -0.767
-##  6 6                  0      0     1  -2.26  -0.445   -0.446
-##  7 7                  0      0     1  -2.26  -0.445   -0.446
-##  8 8                  1      0     1  -2.26   2.17     2.18 
-##  9 9                  0      0     1  -2.26  -0.445   -0.446
-## 10 10                 0      0     2  -1.08  -0.764   -0.767
-## # … with 304 more rows, 3 more variables: .hat <dbl>,
-## #   .sigma <dbl>, .cooksd <dbl>, and abbreviated variable
-## #   name ¹​.std.resid
+##    .rownames recurrence fam_hx  b_gs .fitted .resid    .hat
+##    <chr>          <dbl>  <dbl> <dbl>   <dbl>  <dbl>   <dbl>
+##  1 1                  1      0     3   0.103  1.13  0.0244 
+##  2 2                  1      0     2  -1.08   1.66  0.00607
+##  3 3                  0      0     3   0.103 -1.22  0.0244 
+##  4 4                  0      0     1  -2.26  -0.445 0.00532
+##  5 5                  0      0     2  -1.08  -0.764 0.00607
+##  6 6                  0      0     1  -2.26  -0.445 0.00532
+##  7 7                  0      0     1  -2.26  -0.445 0.00532
+##  8 8                  1      0     1  -2.26   2.17  0.00532
+##  9 9                  0      0     1  -2.26  -0.445 0.00532
+## 10 10                 0      0     2  -1.08  -0.764 0.00607
+## # … with 304 more rows, and 3 more variables: .sigma <dbl>,
+## #   .cooksd <dbl>, .std.resid <dbl>
 ```
 
 Note that the fitted data are both positive and negative, with a range within +/- 4. This should tell you that they are in logit (log-odds) units (ln(p/1-p)), in which 0 is a 50% probability of either outcome.
@@ -399,9 +398,9 @@ predict(model, newdata = slice_sample(prostate, prop = 0.03), type = "response")
 
 ```
 ##          1          2          3          4          5 
-## 0.25338133 0.09409879 0.09409879 0.09409879 0.25338133 
+## 0.25338133 0.52579385 0.09409879 0.12143477 0.09409879 
 ##          6          7          8          9 
-## 0.09409879 0.25338133 0.09409879 0.04058836
+## 0.09409879 0.09409879 0.04058836 0.09409879
 ```
 
 Let’s see how this works with another dataset, from which we will use predictors to classify diabetes cases. We will start by loading the data into dm_data, and building an “all predictors” model, by specifying the formula predictors as “.” - this means to use all other variables (except the outcome variable) as predictors. Look at the model output for problems.
@@ -442,15 +441,6 @@ Did you notice that 376 observations were deleted due to missingness? We can use
 
 ```r
 visdat::vis_miss(dm_data)
-```
-
-```
-## Warning: `gather_()` was deprecated in tidyr 1.2.0.
-## ℹ Please use `gather()` instead.
-## ℹ The deprecated feature was likely used in the visdat
-##   package.
-##   Please report the issue at
-##   <]8;;https://github.com/ropensci/visdat/issueshttps://github.com/ropensci/visdat/issues]8;;>.
 ```
 
 <img src="io23b-logistic-regression_files/figure-html/unnamed-chunk-17-1.png" width="672" />
@@ -612,9 +602,9 @@ dm_data_plus
 ## 10 pos         2.50     92.4 260          11     155      76
 ## # … with 382 more rows, 10 more variables: triceps <dbl>,
 ## #   insulin <dbl>, mass <dbl>, pedigree <dbl>, age <dbl>,
-## #   .resid <dbl>, .std.resid <dbl>, .hat <dbl>,
-## #   .sigma <dbl>, .cooksd <dbl>, and abbreviated variable
-## #   names ¹​.rownames, ²​pregnant, ³​pressure
+## #   .resid <dbl>, .hat <dbl>, .sigma <dbl>, .cooksd <dbl>,
+## #   .std.resid <dbl>, and abbreviated variable names
+## #   ¹​.rownames, ²​pregnant, ³​pressure
 ```
 
 ```r

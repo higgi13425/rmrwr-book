@@ -234,7 +234,7 @@ div.warning, div.tip, div.tryit, div.challenge, div.explore {
   padding-left: 100px;
   background-size: 70px;
   background-repeat: no-repeat;
-  background-position: 15px center;
+  background-position: 15px top left;
   min-height: 120px;
   color: #00274c; /* blue text */
   background-color: #bed3ec; /* light blue background */
