@@ -468,6 +468,7 @@ packages-needed-for-this-chapter-6
 introducing-quarto
 a-tour-of-quarto
 opening-a-new-quarto-document
+annotating-code-in-quarto
 the-visual-editor-vs.-source-editor-in-quarto
 adding-code-chunks
 organized-options-in-code-chunks-with-the-hash-pipe
@@ -479,6 +480,7 @@ tables
 inline-code-and-caching
 quarto-at-the-command-line
 citations-in-quarto
+challenge-yourself-1
 exploring-further
 cmd-line
 what-is-the-unix-command-line
@@ -494,3 +496,5 @@ what-about-r
 what-about-just-a-few-lines-of-r
 running-an-r-script-from-the-terminal
 rendering-an-rmarkdown-file-from-the-terminal
+bibliography-book.bib-packages.bib
+your-turn-to-debug-a-plot

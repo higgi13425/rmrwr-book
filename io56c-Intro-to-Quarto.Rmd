@@ -32,7 +32,7 @@ You will need {tidyverse}, {medicaldata}, {rmarkdown}, {flextable), {gt}, and up
 # install.packages('medicaldata')
 # install.packages('rmarkdown')
 # install.packages('flextable')
-# # install.packages('gt')
+# install.packages('gt')
 library(tidyverse)
 library(medicaldata)
 library(rmarkdown)
@@ -75,6 +75,36 @@ format: html
 ```
 
 The rest of the document consists of explanatory text and code chunks. The explanatory text can be formatted in the Visual Editor (as in MS Word) or in the source editor with markdown tags for bold, italic, etc.
+
+## Annotating code in Quarto
+
+There are many times that you want to annotate code for collaborators or for your future self. This can be a bit clunky if mixed in with the code. Annotation of code can be done more neatly with Quarto.
+
+You first add the code-annotations style to the YAML header as shown below (options - below, hover, or select), <br>
+then add comments as numbers between angle brackets (you can apply the same number to more than one line),
+then detail the numbers with full comments below the code chunk, as shown below
+
+```{r}
+#| eval: false
+---
+# Add to YAML header
+code-annotations: hover
+---
+library(tidyverse)
+library(medicaldata)
+medicaldata::abm |>                         #<1>
+  mutate(gluc_ratio = csf_gluc/blood_gluc,  #<2>
+         wbc_ratio = csf_wbc/blood_wbc)     #<2>
+```
+1. Take the abm dataset, and then
+2. add new columns for glucose and wbc ratio
+
+Then, when you hover over the comment number, the text comment is shown.
+The select option requires clicking the number.
+
+This requires at least Quarto version >= 1.3, and when rendered, looks like this (with the annotation markers that you can hover over circled in red in this case):
+
+![Quarto code annotation](images/Quarto_code_annotation.png)
 
 ## The Visual Editor vs. Source Editor in Quarto
 
@@ -308,7 +338,8 @@ You can learn more about the many formatting options in {gt} [here](https://gt.r
 
 You can run R code and place the output into your text. much like Rmarkdown, by placing a single backtick before **r** and another single backtick after the code needed.
 
-For example, you can write out "my two-sided p value is `` `r 2*(1-pnorm(7, mean = 5, sd = 1.1))` ``," which shows the code as written. When this R code between the backticks is evaluated (when you render the document), the resulting p value is shown. This will read: <br> My two-sided p value is `r 2*(1-pnorm(7, mean = 5, sd = 1.1))`.
+For example, you can write out "my two-sided p value is `` `r
+2*(1-pnorm(7, mean = 5, sd = 1.1))` ``," which shows the code as written. When this R code between the backticks is evaluated (when you render the document), the resulting p value is shown. This will read: <br> My two-sided p value is `r 2*(1-pnorm(7, mean = 5, sd = 1.1))`.
 
 ## Quarto at the Command Line
 
@@ -340,8 +371,22 @@ csl: R/csl_files/gastroenterology.csl
 
 You can find many journal bibliography styles (and download them) at https://www.zotero.org/styles or  https://github.com/citation-style-language/styles.
 
+
+:::challenge
+## Challenge Yourself
+1. Create a new Quarto Document, and do a simple analysis of one of the {medicaldata} datasets with code chunks that generate a table and a figure, and add some text about your conclusions. Add some header text for the different sections. Try rendering this document (separately) to both HTML and MS Word.
+2. Experiment with the visual editor and the source editor. Insert a code chunk, a citation (try this DOI - 10.1016/j.cgh.2021.05.038), a table, and a horizontal line. Toggle back and forth to compare WYSIYG to markdown tags. Render the document and peek at the YAML and the end of the document to see how it handles the citation.
+3. With a quarto document open, toggle the Outline button at the top right of the Source pane, and see how your heading text becomes a nested outline.
+4. Experiment with the code chunk options in section 34.9, and render the chunks to see what the different options do.
+5. Take a code chunk that generates a plot, and experiment with the figure options in chapter sections 9 and 11. Render the document, and see if you get the output you expected.
+:::
+
+:::explore
 ## Exploring further
 
 1.  The Quarto Getting Started Tutorials found (in left sidebar) [here](https://quarto.org/docs/get-started/)
 
 2.  The [Quarto Chapter](https://r4ds.hadley.nz/quarto.html) in R for Data Science.
+
+3. The Quarto website is the definitive reference [here](https://quarto.org/)
+:::
