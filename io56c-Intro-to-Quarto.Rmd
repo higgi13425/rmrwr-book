@@ -11,6 +11,8 @@ library(tidyverse)
 library(medicaldata)
 library(webexercises)
 library(scales)
+library(flextable)
+library(gt)
 ```
 
 # Quarto is a Next-Generation RMarkdown
@@ -23,15 +25,19 @@ library(scales)
 
 ## Packages Needed for this chapter
 
-You will need {tidyverse}, {medicaldata}, and {rmarkdown}, and updated versions of R and RStudio. If needed, copy the block of code below into your RStudio and run the code to load these packages. You can remove the hashtags from the `install.packages` functions to install these packages if needed.
+You will need {tidyverse}, {medicaldata}, {rmarkdown}, {flextable), {gt}, and updated versions of R and RStudio. If needed, copy the block of code below into your RStudio and run the code to load these packages. You can remove the hashtags from the `install.packages` functions to install these packages if needed.
 
 ```{r}
 # install.packages('tidyverse')
 # install.packages('medicaldata')
-# install.packages('scales')
+# install.packages('rmarkdown')
+# install.packages('flextable')
+# # install.packages('gt')
 library(tidyverse)
 library(medicaldata)
 library(rmarkdown)
+library(flextable)
+library(gt)
 ```
 
 ## Introducing Quarto
@@ -48,7 +54,7 @@ Installation is straightforward - go to your downloads folder, and click on the 
 
 ## A Tour of Quarto
 
-Quarto is an authring framework that lets you create a variety of output documents, including HTML, MS Word, MS Powerpoint, and others, from a mix of text and code chunks. You can show (during analysis) or hide (for manuscript) code chunks, and show or hide the output. Quarto is a great way to document your background, analysis, and conclusions. It is also a useful format for collaborating and for code review. Think of it as an analytic notebook that can fold up your code and present results when needed.
+Quarto is an authoring framework that lets you create a variety of output documents, including HTML, MS Word, MS Powerpoint, and others, from a mix of text and code chunks. You can show (during analysis) or hide (for manuscript) code chunks, and show or hide the output. Quarto is a great way to document your background, analysis, and conclusions. It is also a useful format for collaborating and for code review. Think of it as an analytic notebook that can fold up your code and present results when needed.
 
 You can open a New File/Quarto Document, or a New File/Quarto Presentation. Your Document format options are HTML, PDF, or MS Word. The visual editor is on by default, which gives you and WYSIWYG (What You See Is What You Get) environment, like MS Word or Google Docs. You can also switch to the source editor for more control of formatting.
 
@@ -74,11 +80,11 @@ The rest of the document consists of explanatory text and code chunks. The expla
 
 When the Visual Editor is activated by its toggle button, you will see a toolbar at the top of your source pane that looks like this:
 
-![The Quarto Visual Editor](images/Visual%20Editor%20Quarto.png){fig-alt="Quarto Visual Editor"} This allows you to easily apply bold, italic, or code formatting, insert headers of several levels, bulleted or numbered lists, links, images, or tables. <br> The Source Editor toggle gives you a display that is not as pretty, but it shows all the markdown tags, and gives you finer control of formatting, and looks more like this:
+![The Quarto Visual Editor](images/Visual%20Editor%20Quarto.png){fig-alt="Quarto Visual Editor"} This allows you to easily apply bold, italic, or code formatting, insert headers of several levels, bulleted or numbered lists, links, images, or tables. <br> The Source Editor toggle button gives you a display that is not as pretty, but it shows all the markdown tags, and gives you finer control of formatting, and looks more like this:
 
 ```{r}
-#|eval: false
-#|error: true
+#| eval: false
+#| error: true
 
 ## Text formatting
 
@@ -129,9 +135,15 @@ superscript^2^ subscript~2~
 
 ## Adding Code Chunks
 
-To add a new code chunk, type Cmd/Ctrl + Option + I or choose the green C (chunk) icon at the top right of the source pane (left of the Run button), and select R from the dropdown menu, or you could manually type `{r} alone on a line at the top and` alone on a line at the bottom of the code chunk. Note that you can insert code chunks from a variety of languages.
+To add a new code chunk,
 
-To insert new text, just type plain text, and format as desired. You can use the Outline toggle button to turn on or off the outline in the right sidebar of the Source pane. It uses your headings to create a nested outline.
+-   type Cmd/Ctrl + Option + I or
+-   choose the green C (chunk) icon at the top right of the source pane (left of the Run button), and select R from the dropdown menu, or
+-   you could manually type 3 backticks (\`\`\`) then `{r}` alone on a line at the top and then 3 backticks (\`\`\`) alone on a line at the bottom of the code chunk.
+
+Note that you can insert code chunks from a variety of languages.
+
+To insert new text, just type plain text, and format as desired with markdown tags or the Visual Editor buttons. You can use the Outline toggle button to turn on or off the outline in the right sidebar of the Source pane. It uses your headings to create a nested outline.
 
 ## Organized Options in Code Chunks with the Hash-Pipe #\|
 
@@ -149,7 +161,7 @@ Previously in Rmarkdown, you could state options for your code chunk after the {
 Some of the popular options are
 
 | Option                | What it Does                                                                                                              |
-|-----------------------|-------------------------------------------------|
+|------------------------|-----------------------------------------------|
 | echo                  | Shows (true) or hides (false) code                                                                                        |
 | eval                  | whether or not to evaluate the code and show results                                                                      |
 | label                 | name of the chunk (must be unique in your qmd document)                                                                   |
@@ -170,13 +182,13 @@ Code chunks and their outcomes:
 
 | Option           | Run code | Show Code | Output | Plots | Messages | Warnings |
 |------------------|----------|-----------|--------|-------|----------|----------|
-| `eval: false`    | N        | Y         | N      | N     | N        | N        |
-| `include: false` | Y        | N         | N      | N     | N        | N        |
-| `echo: false`    | Y        | N         | Y      | Y     | Y        | Y        |
-| results: hide    | Y        | Y         | N      | Y     | Y        | Y        |
-| fig-show: hide   | Y        | Y         | Y      | N     | Y        | Y        |
-| message: false   | Y        | Y         | Y      | Y     | N        | Y        |
-| warning: false   | Y        | Y         | Y      | Y     | Y        | N        |
+| `eval: false`    | N        | **Y**     | N      | N     | N        | N        |
+| `include: false` | **Y**    | N         | N      | N     | N        | N        |
+| `echo: false`    | Y        | **N**     | Y      | Y     | Y        | Y        |
+| `results: hide`  | Y        | Y         | **N**  | Y     | Y        | Y        |
+| `fig-show: hide` | Y        | Y         | Y      | **N** | Y        | Y        |
+| `message: false` | Y        | Y         | Y      | Y     | **N**    | Y        |
+| `warning: false` | Y        | Y         | Y      | Y     | Y        | **N**    |
 
 ## Stating Global Options in Your YAML Header
 
@@ -206,8 +218,9 @@ format:
 You can also render a quarto document to prepare a report for one subset of your data, and set the key parameter in the YAML chunk. For example, you can run an fuel economy report with a plot only for SUVs, as seen below.
 
 ```{r}
-#| error: true
+#| eval: false
 ---
+title: "Report by Vehicle Class"
 output: html_document
 params:
   my_class: "suv"
@@ -215,33 +228,117 @@ params:
 
 #| label: setup
 #| include: false
-
 library(tidyverse)
-
 class <- mpg |> filter(class == params$my_class)
 
-# Fuel economy for `r params$my_class`s
-
-#| message: false
-
+# Fuel economy plot for `r params$my_class`
 ggplot(class, aes(x = displ, y = hwy)) + 
   geom_point() + 
   geom_smooth(se = FALSE)
 ```
 
-### Self-contained
+## Figures
 
-## Figures and Tables
+There are a number of options for controlling figure output. Figure sizing is controlled with:
+
+-   fig-width (width of figure created by R, in inches)
+
+-   fig-height (height of figure created by R, in inches)
+
+-   fig-asp (for aspect ratio - can only specify 2 of width, height, and aspect ratio), the ratio of height to width
+
+-   out-width - often set to 70% of the width of the page and centered with `fig.align`, out.width = "70%"
+
+-   out-height
+
+Other options:
+
+-   fig-cap: "Caption Goes Here"
+
+-   fig-alt: "Alternative text if the image is not shown"
+
+-   fig-align: "center", or "default", "left", "right"
+
+    -   layout-ncol: 2 - this creates 2 columns
+
+## Tables
+
+Markdown tables can be inserted in the Visual Editor with `Insert>Table`.
+
+You can also generate tables from your data with a code chunk. The default display is what you would normally see in the Console, with minimal formatting. You can pipe any table generated with a code chunk into a package for formatting tables and get much nicer HTML, Word, or PDF tables. The {`flextable`} package will work for any format, while the {`gt`} package is excellent for HTML and PDF. The knitr::kable() function will work for converting console output to HTML, and the {`kableExtra`} package will add nicer formatting. Other packages that can work well with tables include `reactable, stargazer, huxtable, tables,` and `ascii`.
+
+Here are two examples from the abm (bacterial menintgitis) dataset with flextable and gt, using conditional formatting to highlight high blood band count and low csf glucose.
+
+```{r}
+# Flextable
+medicaldata::abm |> 
+  select(csf_wbc, csf_gluc, blood_band_pct, gram) |> 
+  arrange(-csf_wbc) |> 
+  head(7) |> 
+  as_flextable() |> # i is row, j is column
+  bold(i = ~ csf_gluc < 25, j = ~ csf_gluc) |> 
+  color(color = "red",
+  i = ~ blood_band_pct > 5, j = ~ blood_band_pct)
+  
+```
+
+You can learn more about the many formatting options in {flextable} [here](https://davidgohel.github.io/flextable/index.html).
+
+```{r}
+# gt package
+medicaldata::abm |> 
+  select(csf_wbc, csf_gluc, blood_band_pct, gram) |> 
+  arrange(-csf_wbc) |> 
+  head(7) |> 
+  gt() |> 
+  tab_style(style = cell_text(weight = "bold"),
+    locations = cells_body(
+      columns = csf_gluc,
+      rows = csf_gluc < 25)) |> 
+  tab_style(style = cell_text(color = "red"),
+    locations = cells_body(
+      columns = blood_band_pct,
+      rows = blood_band_pct > 5)) 
+
+```
+
+You can learn more about the many formatting options in {gt} [here](https://gt.rstudio.com).
 
 ## Inline Code and Caching
 
+You can run R code and place the output into your text. much like Rmarkdown, by placing a single backtick before **r** and another single backtick after the code needed.
+
+For example, you can write out "my two-sided p value is `` `r 2*(1-pnorm(7, mean = 5, sd = 1.1))` ``," which shows the code as written. When this R code between the backticks is evaluated (when you render the document), the resulting p value is shown. This will read: <br> My two-sided p value is `r 2*(1-pnorm(7, mean = 5, sd = 1.1))`.
+
 ## Quarto at the Command Line
 
-As you work on a \*.qmd document (in this case, named `document.qmd`), you will want to preview it in an adjacent browser window. You can do this at the command line (Terminal) with `quarto preview document.qmd --to html` for the html version, or `quarto preview document.qmd --to docx` for the Microsoft Word version.
+As you work on a \*.qmd document (in this case, named `document.qmd`), you will want to preview it in an adjacent browser window. You can do this at the command line (Terminal in Mac, Run cmd in Windows) with
 
-To render your saved qmd document at the command line, you can use with `quarto render document.qmd --to html` for the html version, or `quarto render document.qmd --to docx` for the Microsoft Word version. The render commands will produce a final document.
+`quarto preview document.qmd --to html` for the html version, or
+
+`quarto preview document.qmd --to docx` for the Microsoft Word version.
+
+To render your saved qmd document from the command line, you can use with
+
+`quarto render document.qmd --to html` for the html version, or
+
+`quarto render document.qmd --to docx` for the Microsoft Word version. The render commands will produce a final document.
 
 ## Citations in Quarto
+
+Citations in Quarto work much like they do in Rmarkdown. In the Visual Editor, you can use Insert\>Citation. You can enter a DOI (Digital Object Identifier), pull a reference from a Zotero library, pull references with PubMed IDs, or get references from a bibliography file (a `*.bib` file in the same directory as your document). If you add a citation using one of the first three methods, the visual editor will automatically create a bibliography `*.bib` file for you and add the reference to it. It will also add a bibliography field (required to identify the file) to the document YAML. As you add more references, this file will get populated with their citations.
+
+When Quarto renders your file, it will build and append a bibliography to the end of your document. The bibliography will contain each of the cited references from your bibliography file, but it will not contain a section heading. As a result it is common practice to end your file with a section header for the bibliography, such as # References.
+
+You can change the style of your citations and bibliography by referencing a CSL (citation style language) file (with the full path to the file) in the csl field in the YAML header.
+
+```{r}
+#| eval: false
+bibliography: my_bibliography.bib
+csl: R/csl_files/gastroenterology.csl
+```
+
+You can find many journal bibliography styles (and download them) at https://www.zotero.org/styles or  https://github.com/citation-style-language/styles.
 
 ## Exploring further
 

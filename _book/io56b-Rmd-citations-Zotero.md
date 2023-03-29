@@ -51,7 +51,7 @@ library(scales)
 indo_rct <- medicaldata::indo_rct
 ```
 
- # Adding Citations to your RMarkdown
+# Adding Citations to your RMarkdown
 
  ## Goals for this Chapter
 

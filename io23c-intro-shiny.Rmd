@@ -207,16 +207,18 @@ After `renderText` there is now only an open parenthesis followed by an open cur
 If there is not much space between these, put in a few returns to open up some space.
 Then paste the following into the `renderText` between the paren/curly brace combinations:
 
-    output$name <- renderText({
-        if(input$book == "Textbook of Surgery"
-        ) {author = "David Sabiston"
-        } else if(input$book == "Textbook of Gastroenterology"
-        ) {author = "Tachi Yamada"
-        } else if (input$book == "Diseases of the Liver and Biliary System"
-        ) {author = "Sheila Sherlock"
-        }
-      author  
-      })
+```         
+output$name <- renderText({
+    if(input$book == "Textbook of Surgery"
+    ) {author = "David Sabiston"
+    } else if(input$book == "Textbook of Gastroenterology"
+    ) {author = "Tachi Yamada"
+    } else if (input$book == "Diseases of the Liver and Biliary System"
+    ) {author = "Sheila Sherlock"
+    }
+  author  
+  })
+```
 
 This R code checks the input phrase, and assigns a particular value for `author` based on the phrase, much like a `case_when` function, but using the `if/else if` construction.
 Then it *returns* the value for the new variable, author.
@@ -229,9 +231,11 @@ Find the mainPanel, and delete the plotOutput.
 
 Inside the parentheses for mainPanel, paste the following:
 
-    h3("Who Wrote It?"),
-    br(),
-    textOutput("name")
+```         
+h3("Who Wrote It?"),
+br(),
+textOutput("name")
+```
 
 This will print `Who Wrote It?` in header 3 format, followed by a line break, followed by the `name` from the server.
 
@@ -318,13 +322,13 @@ Each type of output from the server has a different typeOutput function used in 
 Be sure to use the right typeOutput function.
 Several examples are shown below.
 
-| Server rendering & assignment      | UI Output function       |
-|------------------------------------|--------------------------|
-| renderText() -> output\$prediction | textOutput("prediction") |
-| renderPrint() -> output\$model     | textOutput("model")      |
-| renderPlot() -> output\$plot1      | plotOutput("plot1")      |
-| renderTable() -> output\$table1    | tableOutput("table1")    |
-| renderDataTable() -> output\$dt    | dataTableOutput("dt")    |
+| Server rendering & assignment       | UI Output function       |
+|-------------------------------------|--------------------------|
+| renderText() -\> output\$prediction | textOutput("prediction") |
+| renderPrint() -\> output\$model     | textOutput("model")      |
+| renderPlot() -\> output\$plot1      | plotOutput("plot1")      |
+| renderTable() -\> output\$table1    | tableOutput("table1")    |
+| renderDataTable() -\> output\$dt    | dataTableOutput("dt")    |
 
 Note that renderText can only handle character strings, while renderPrint can handle any printed output.
 A data table differs from a regular table in that it will show a page of data at a time, rather than a whole dataset, and will allow users to page through the data or sort it.
