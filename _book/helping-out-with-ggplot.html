@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2023-03-29" />
+<meta name="date" content="2023-04-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -59,6 +59,8 @@
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
 
 <style type="text/css">
@@ -577,16 +579,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="23.5" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#an-alluvial-plot"><i class="fa fa-check"></i><b>23.5</b> An Alluvial Plot</a></li>
 <li class="chapter" data-level="23.6" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#lollipop-plots"><i class="fa fa-check"></i><b>23.6</b> Lollipop Plots</a></li>
 <li class="chapter" data-level="23.7" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#dumbbell-plots"><i class="fa fa-check"></i><b>23.7</b> Dumbbell Plots</a></li>
-<li class="chapter" data-level="23.8" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#test-what-you-have-learned"><i class="fa fa-check"></i><b>23.8</b> Test what you have learned</a></li>
-<li class="chapter" data-level="23.9" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#spaghetti-plots-with-summary-smoothed-lines-for-change-over-time"><i class="fa fa-check"></i><b>23.9</b> Spaghetti Plots with Summary Smoothed Lines for Change Over Time</a></li>
-<li class="chapter" data-level="23.10" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#direct-labeling-of-plots"><i class="fa fa-check"></i><b>23.10</b> Direct Labeling of Plots</a>
-<ul>
-<li class="chapter" data-level="23.10.1" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#geomtextpath"><i class="fa fa-check"></i><b>23.10.1</b> GeomTextPath</a></li>
-</ul></li>
-<li class="chapter" data-level="23.11" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#test-what-you-have-learned-1"><i class="fa fa-check"></i><b>23.11</b> Test what you have learned</a>
-<ul>
-<li class="chapter" data-level="23.11.1" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#more-examples-with-flipbooks"><i class="fa fa-check"></i><b>23.11.1</b> More Examples with Flipbooks</a></li>
-</ul></li>
+<li class="chapter" data-level="23.8" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#spaghetti-plots-with-summary-smoothed-lines-for-change-over-time"><i class="fa fa-check"></i><b>23.8</b> Spaghetti Plots with Summary Smoothed Lines for Change Over Time</a></li>
+<li class="chapter" data-level="23.9" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#swimmer-plots"><i class="fa fa-check"></i><b>23.9</b> Swimmer Plots</a></li>
 </ul></li>
 <li class="chapter" data-level="24" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html"><i class="fa fa-check"></i><b>24</b> Customizing Plot Scales</a>
 <ul>
@@ -597,12 +591,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="24.5" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#but-what-if-you-want-the-scale-for-risk-to-start-at-0"><i class="fa fa-check"></i><b>24.5</b> But what if you want the scale for risk to start at 0?</a></li>
 <li class="chapter" data-level="24.6" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#but-this-axis-does-not-really-start-at-exactly-0"><i class="fa fa-check"></i><b>24.6</b> But this axis does not really start at Exactly 0</a></li>
 <li class="chapter" data-level="24.7" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#control-the-limits-and-the-breaks"><i class="fa fa-check"></i><b>24.7</b> Control the Limits and the Breaks</a></li>
-<li class="chapter" data-level="24.8" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#test-what-you-have-learned-2"><i class="fa fa-check"></i><b>24.8</b> Test what you have learned</a></li>
+<li class="chapter" data-level="24.8" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#test-what-you-have-learned"><i class="fa fa-check"></i><b>24.8</b> Test what you have learned</a></li>
 <li class="chapter" data-level="24.9" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#continuous-vs.-discrete-plots-and-scales"><i class="fa fa-check"></i><b>24.9</b> Continuous vs. Discrete Plots and Scales</a></li>
 <li class="chapter" data-level="24.10" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#using-scales-to-customize-a-legend"><i class="fa fa-check"></i><b>24.10</b> Using Scales to Customize a Legend</a></li>
-<li class="chapter" data-level="24.11" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#test-what-you-have-learned-3"><i class="fa fa-check"></i><b>24.11</b> Test what you have learned</a>
+<li class="chapter" data-level="24.11" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#test-what-you-have-learned-1"><i class="fa fa-check"></i><b>24.11</b> Test what you have learned</a>
 <ul>
-<li class="chapter" data-level="24.11.1" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#more-examples-with-flipbooks-1"><i class="fa fa-check"></i><b>24.11.1</b> More Examples with Flipbooks</a></li>
+<li class="chapter" data-level="24.11.1" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#more-examples-with-flipbooks"><i class="fa fa-check"></i><b>24.11.1</b> More Examples with Flipbooks</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="25" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html"><i class="fa fa-check"></i><b>25</b> Helping out with ggplot</a>
@@ -851,33 +845,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">25.1</span> ggx::gghelp()<a href="helping-out-with-ggplot.html#ggxgghelp" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let’s start with {ggx}.</p>
 <p>The <em>gghelp()</em> function in this simple package converts natural language queries (in quotes) into a ggplot command string. It can be helpful for styling axes, labels, font size, title, and legends. It is limited by its library of commands and range of styling, but can be helpful in a pinch. Try a few questions below, and make your own.</p>
-<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb513-1"><a href="helping-out-with-ggplot.html#cb513-1" aria-hidden="true" tabindex="-1"></a>ggx<span class="sc">::</span><span class="fu">gghelp</span>(<span class="st">&quot;how do I remove the legend&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="helping-out-with-ggplot.html#cb524-1" aria-hidden="true" tabindex="-1"></a>ggx<span class="sc">::</span><span class="fu">gghelp</span>(<span class="st">&quot;how do I remove the legend&quot;</span>)</span></code></pre></div>
 <pre><code>## theme(legend.position = &quot;none&quot;)</code></pre>
-<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="helping-out-with-ggplot.html#cb515-1" aria-hidden="true" tabindex="-1"></a>ggx<span class="sc">::</span><span class="fu">gghelp</span>(<span class="st">&quot;how do I increase the font size of the title&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="helping-out-with-ggplot.html#cb526-1" aria-hidden="true" tabindex="-1"></a>ggx<span class="sc">::</span><span class="fu">gghelp</span>(<span class="st">&quot;how do I increase the font size of the title&quot;</span>)</span></code></pre></div>
 <pre><code>## theme(axis.title.x=element_text(size=rel(2)))</code></pre>
-<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="helping-out-with-ggplot.html#cb517-1" aria-hidden="true" tabindex="-1"></a>ggx<span class="sc">::</span><span class="fu">gghelp</span>(<span class="st">&quot;change the x axis label to &#39;systolic blood pressure&#39;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb528-1"><a href="helping-out-with-ggplot.html#cb528-1" aria-hidden="true" tabindex="-1"></a>ggx<span class="sc">::</span><span class="fu">gghelp</span>(<span class="st">&quot;change the x axis label to &#39;systolic blood pressure&#39;&quot;</span>)</span></code></pre></div>
 <pre><code>## xlab(&#39;systolic blood pressure&#39;)</code></pre>
 </div>
 <div id="getting-more-help-with-theming-with-ggthemeassist" class="section level2 hasAnchor" number="25.2">
 <h2><span class="header-section-number">25.2</span> Getting more help with theming with ggThemeAssist<a href="helping-out-with-ggplot.html#getting-more-help-with-theming-with-ggthemeassist" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>ggThemeAssist is an RStudio add-in that you install when you install the {ggThemeAssist} package. It is used after you have your basic plot in place, with the right geom, and the x and y variables in place.</p>
 <p>Let’s start you out with a simple plot from the {medicaldata} package. This plots the fentanyl requirements for anesthesia in the <code>supraclavicular</code> dataset comparing high and low BMI, age, and gender effects. Run this code block to see what the basic plot looks like.</p>
-<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="helping-out-with-ggplot.html#cb519-1" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> medicaldata<span class="sc">::</span>supraclavicular <span class="sc">%&gt;%</span> </span>
-<span id="cb519-2"><a href="helping-out-with-ggplot.html#cb519-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(bmi)) <span class="sc">%&gt;%</span> </span>
-<span id="cb519-3"><a href="helping-out-with-ggplot.html#cb519-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gender_cat =</span> <span class="fu">case_when</span>(gender <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">&quot;Male&quot;</span>,</span>
-<span id="cb519-4"><a href="helping-out-with-ggplot.html#cb519-4" aria-hidden="true" tabindex="-1"></a>                             gender <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">&quot;Female&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb519-5"><a href="helping-out-with-ggplot.html#cb519-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bmi_cat =</span> <span class="fu">case_when</span>(bmi <span class="sc">&lt;</span><span class="dv">30</span> <span class="sc">~</span> <span class="st">&quot;low&quot;</span>,</span>
-<span id="cb519-6"><a href="helping-out-with-ggplot.html#cb519-6" aria-hidden="true" tabindex="-1"></a>                             bmi <span class="sc">&gt;=</span> <span class="dv">30</span> <span class="sc">~</span> <span class="st">&quot;high&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb519-7"><a href="helping-out-with-ggplot.html#cb519-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>age, <span class="at">y =</span> fentanyl, <span class="at">col =</span> gender_cat)) <span class="sc">+</span></span>
-<span id="cb519-8"><a href="helping-out-with-ggplot.html#cb519-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb519-9"><a href="helping-out-with-ggplot.html#cb519-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(. <span class="sc">~</span> bmi_cat) </span>
-<span id="cb519-10"><a href="helping-out-with-ggplot.html#cb519-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb519-11"><a href="helping-out-with-ggplot.html#cb519-11" aria-hidden="true" tabindex="-1"></a>plot1 <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;serif&quot;</span>), </span>
-<span id="cb519-12"><a href="helping-out-with-ggplot.html#cb519-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;antiquewhite&quot;</span>), </span>
-<span id="cb519-13"><a href="helping-out-with-ggplot.html#cb519-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;white&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb519-14"><a href="helping-out-with-ggplot.html#cb519-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Fentanyl Requirements&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Age&quot;</span>, </span>
-<span id="cb519-15"><a href="helping-out-with-ggplot.html#cb519-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Fentanyl in mcg&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;Gender&quot;</span>, </span>
-<span id="cb519-16"><a href="helping-out-with-ggplot.html#cb519-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;by BMI and Age&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="helping-out-with-ggplot.html#cb530-1" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> medicaldata<span class="sc">::</span>supraclavicular <span class="sc">%&gt;%</span> </span>
+<span id="cb530-2"><a href="helping-out-with-ggplot.html#cb530-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(bmi)) <span class="sc">%&gt;%</span> </span>
+<span id="cb530-3"><a href="helping-out-with-ggplot.html#cb530-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gender_cat =</span> <span class="fu">case_when</span>(gender <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">&quot;Male&quot;</span>,</span>
+<span id="cb530-4"><a href="helping-out-with-ggplot.html#cb530-4" aria-hidden="true" tabindex="-1"></a>                             gender <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">&quot;Female&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb530-5"><a href="helping-out-with-ggplot.html#cb530-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">bmi_cat =</span> <span class="fu">case_when</span>(bmi <span class="sc">&lt;</span><span class="dv">30</span> <span class="sc">~</span> <span class="st">&quot;low&quot;</span>,</span>
+<span id="cb530-6"><a href="helping-out-with-ggplot.html#cb530-6" aria-hidden="true" tabindex="-1"></a>                             bmi <span class="sc">&gt;=</span> <span class="dv">30</span> <span class="sc">~</span> <span class="st">&quot;high&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb530-7"><a href="helping-out-with-ggplot.html#cb530-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>age, <span class="at">y =</span> fentanyl, <span class="at">col =</span> gender_cat)) <span class="sc">+</span></span>
+<span id="cb530-8"><a href="helping-out-with-ggplot.html#cb530-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb530-9"><a href="helping-out-with-ggplot.html#cb530-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(. <span class="sc">~</span> bmi_cat) </span>
+<span id="cb530-10"><a href="helping-out-with-ggplot.html#cb530-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb530-11"><a href="helping-out-with-ggplot.html#cb530-11" aria-hidden="true" tabindex="-1"></a>plot1 <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">&quot;serif&quot;</span>), </span>
+<span id="cb530-12"><a href="helping-out-with-ggplot.html#cb530-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;antiquewhite&quot;</span>), </span>
+<span id="cb530-13"><a href="helping-out-with-ggplot.html#cb530-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">&quot;white&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb530-14"><a href="helping-out-with-ggplot.html#cb530-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Fentanyl Requirements&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Age&quot;</span>, </span>
+<span id="cb530-15"><a href="helping-out-with-ggplot.html#cb530-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Fentanyl in mcg&quot;</span>, <span class="at">colour =</span> <span class="st">&quot;Gender&quot;</span>, </span>
+<span id="cb530-16"><a href="helping-out-with-ggplot.html#cb530-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">&quot;by BMI and Age&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning: Removed 1 rows containing missing values
 ## (`geom_point()`).</code></pre>
 <p><img src="io67-ggplot_helpers_files/figure-html/first-plot-1.png" width="672" /></p>

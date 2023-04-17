@@ -9,7 +9,7 @@ output: html_document
 
 # Extensions to ggplot
 
-The {ggplot2} package is made to be _extensible_ - so that other people can write packages that add new (often niche) geoms for specific purposes. This chapter is a short tour of some of the neat extensions people have written, and when and where they can be useful. Please check out the links to the individual packages to learn more, as we will frequently just scratch the surface of what is available.
+The {ggplot2} package is made to be _extensible_ - so that other people can write packages that add new (often niche) geoms for specific purposes. This chapter is a short tour of some of the neat extensions people have written, and when and where they can be useful. Some of these are distinct packages, and others are just cool ways to use ggplot. Please check out the links to the individual packages to learn more, as we will frequently just scratch the surface of what is available.
 
 ## Goals for this Chapter
  - learn how and why to use waffle plots
@@ -17,6 +17,7 @@ The {ggplot2} package is made to be _extensible_ - so that other people can writ
  - learn how and when to use lollipop plots
  - learn how and when to use dumbbell plots
  - learn how and when to use spaghetti plots
+ - learn how and when to use swimmer plots
   
 ## Packages Needed for this chapter
 
@@ -376,41 +377,6 @@ medicaldata::covid_testing %>%
 
 <img src="io48j-extension-plots_files/figure-html/lollipop-1.png" width="672" />
 
-:::tryit
-
-Now try this yourself. Copy the code above (click on the copy icon in the top right of the code chunk), paste it into your RStudio IDE, and edit to:
-
-- Change the x axis so that it starts at age 0, and ends at 85. 
-- Make the x-axis expansion multiplier zero (not the default of 0.05). 
-
-Click on the `Solution` button to toggle showing or hiding the solution.
-
-
-<div class='webex-solution'><button>Solution</button>
-
-
-```r
-indo_rct %>% 
-  ggplot() +
-  aes(x = age, y = risk, color = outcome) + 
-  geom_jitter() +
-  scale_y_continuous(limits = c(0,6)) +
-  scale_x_continuous(limits = c(0,85),
-          expand = expansion(mult = 0))
-```
-
-```
-## Warning: Removed 1 rows containing missing values
-## (`geom_point()`).
-```
-
-<img src="io48j-extension-plots_files/figure-html/scatter-3-solution-1.png" width="672" />
-
-
-</div>
-
-:::
-
 ## Dumbbell Plots
 
 The Dumbbell Plot is a visualization that shows change between two points (usually 2 time points) in our data. It gets the name because of its dumbbell shape. It’s a great way to show changes in data between two points (think start and finish). 
@@ -463,122 +429,68 @@ ggplot(aes(x = month_1, xend = month_4, y = patient_class,
 
 <img src="io48j-extension-plots_files/figure-html/dumbbell-1.png" width="672" />
 
+Now, this is a nice basic dumbbell plot. But you may want to make the direction of change from pre to post a bit more obvious with arrows.
 
-
---
-
-
-
-You can see that ggplot picks sensible breaks, but the defaults might not always work for you. Let's change the risk scale to breaks of 0.5, using the `breaks` argument. Note that using the `limits` argument also lets you establish the limits of the y-axis. 
+We will start with loading some packages and creating a dataset with a 'change' variable for the change in C-reactive protein between day 1 and day 5 of a hospitalization for acute severe ulcerative colitis.
 
 
 ```r
-indo_rct %>% 
-  ggplot() +
-  aes(x = age, y = risk, color = outcome) + 
-  geom_point() +
-  scale_y_continuous(limits = c(0,6),
-                     breaks = seq(0, 6, by = 0.5)) 
+library(tidyverse)
+library(ggtext)
+dat <- tibble::tribble(~id, ~crp1, ~crp5,
+                       "001", 47, 4,
+                       "002", 14, 58,
+                       "003", 34, 6,
+                       "004", 129, 12,
+                       "005", 81, 3,
+                       "006", 65, 7)
+
+dat %>% mutate(change = crp5-crp1) %>%
+  mutate(linedir = case_when(change<0 ~ -1,
+                             TRUE ~ 1)) -> dat
 ```
 
-<img src="io48j-extension-plots_files/figure-html/scatter-4-1.png" width="672" />
-
-:::tryit
-
-Now try this yourself. Copy the code above (click on the copy icon in the top right of the code chunk), paste it into your RStudio IDE, and edit to:
-
-- Change the x axis so that it starts at age 0, and ends at 95, with breaks at every decade from 10-90 (but not zero). 
-
-Click on the `Solution` button to toggle showing or hiding the solution.
-
-
-<div class='webex-solution'><button>Solution</button>
+To help plot the points, we will add a long version of this simple dataset, created with pivot_longer.
 
 
 ```r
-indo_rct %>% 
-  ggplot() +
-  aes(x = age, y = risk, color = outcome) + 
-  geom_jitter() +
-  scale_y_continuous(limits = c(0,6)) +
-  scale_x_continuous(limits = c(0,95), 
-                     expand = expansion(mult = 0),
-                     breaks = seq(10, 90, by = 10))
+dat_long <- dat %>% pivot_longer(starts_with("crp"), names_prefix = "crp", names_to = "day")
 ```
 
-<img src="io48j-extension-plots_files/figure-html/scatter-4-solution-1.png" width="672" />
-Notice that the y axis has the default 5% multiplier, but the x axis does not, so it has limits exactly at 0 and 95.
-
-</div>
-
-:::
-
-
-Let's expand the x axis to the right to make room for a legend in the plot on the right, using the `expand` argument. We can change the axis `name` and `position` as well.
+Now we will make the arrow plot (a fancier version of the dumbbell plot, with added directionality). We will use ggtext to help us turn our title into a color legend.
 
 
 ```r
-indo_rct %>% 
-  ggplot() +
-  aes(x = rx, y = risk, color = outcome) + 
-  geom_jitter() +
-  theme(legend.position = c(0.85, 0.5)) +
-  scale_y_continuous(limits = c(0.5,6),
-                     breaks = seq(0.5, 6, by = 0.5)) +
-  scale_x_discrete(expand = expansion(add =c(0.6,1.5)),
-                   name = "Treatment",
-                   position = "top") 
+#set custom colors
+custom_days <- c("#1e90ff", "#1874cd")
+custom_dir <- c("limegreen", "firebrick")
+
+ggplot() +
+  # geom segment will plot arrows from the dat dataset
+  geom_segment(data = dat, aes(x = crp1, xend = crp5,
+            y = parse_number(id), 
+            yend = parse_number(id), 
+            color = as_factor(linedir)), linewidth = 1.5,
+      arrow = arrow(angle = 25, length = unit(0.5, "cm"))) +
+   # geom point will plot the points from the dat_long dataset
+  geom_point(data = dat_long,
+          aes(x = value, y = parse_number(id), fill = day), size = 4, shape = 22) +
+  theme_linedraw(base_size = 14) +
+  theme(plot.title = element_markdown()) +
+  # notice how we color the text in the title - this is allowed by `element_markdown` in the theme for plot.title. This makes the text function as a legend for the plot
+  labs(x = "CRP in mg/L", y = "Patient ID",
+       title = "Change in CRP from <span style = 'color:#1e90ff;'>Day 1</span>  to <span style = 'color:#1874cd;'>Day 5</span>") +
+  scale_y_continuous(breaks = 1:6) +
+  scale_x_continuous(breaks = c(0,25,50,75,100,125,150)) +
+  theme(legend.position = "none") + # turn off the actual legend
+  scale_fill_manual(values = custom_days) +
+  scale_color_manual(values = custom_dir) +
+  coord_flip() # flip it so CRP goes up or down
 ```
 
-<img src="io48j-extension-plots_files/figure-html/scatter-5b-1.png" width="672" />
+<img src="io48j-extension-plots_files/figure-html/unnamed-chunk-4-1.png" width="672" />
 
-:::tryit
-
-Now try this yourself. Copy the code above (click on the copy icon in the top right of the code chunk), paste it into your RStudio IDE, and edit to:
-
-- Change the x axis so that you 
-- add 1.5 to the left side (add 1.5, 0.6), 
-- move the legend to the left (0.15, 0.5)
-- change the title to "Suppository"
-- move the title position to the bottom
-
-Click on the `Solution` button to toggle showing or hiding the solution.
-
-
-<div class='webex-solution'><button>Solution</button>
-
-
-```r
-indo_rct %>% 
-  ggplot() +
-  aes(x = rx, y = risk, color = outcome) + 
-  geom_jitter() +
-  theme(legend.position = c(0.15, 0.5)) +
-  scale_y_continuous(limits = c(0.5,6),
-                     breaks = seq(0.5, 6, by = 0.5)) +
-  scale_x_discrete(expand = expansion(add =c(1.5, 0.6)),
-                   name = "Suppository",
-                   position = "bottom") 
-```
-
-<img src="io48j-extension-plots_files/figure-html/scatter-5-solution-1.png" width="672" />
-The legend position is based on the proportion of the x axis (0-1) and the y axis (0-1), so that legend.position (0,0) is the bottom left, and legend.position (1,1) is the top right.
-
-</div>
-
-:::
-
---
-
-## Test what you have learned
-
-(correct answers will be green!)
-
-- You can set the start and end points of an axis with the `limits` argument <select class='webex-select'><option value='blank'></option><option value='answer'>TRUE</option><option value=''>FALSE</option></select>
-
-- You can set the ticks on an axis with the <select class='webex-select'><option value='blank'></option><option value='answer'>breaks</option><option value=''>ticks</option><option value=''>lines</option></select> argument in a scales function.
-
-- To expand the margin of a plot on one side by a specific amount, you use the <select class='webex-select'><option value='blank'></option><option value=''>mult</option><option value=''>sqrt</option><option value='answer'>add</option></select> argument in the expand argument within a scales function.
+This is another variant on the dumbbell plot that helps show directionality. We have used {ggtext} to format and color words in the title so that they can work as a legend. We have used custom colors for the arrows to show good (CRP going down) and bad (CRP rising) outcomes and directionalitywith the arrowheads.
 
 ## Spaghetti Plots with Summary Smoothed Lines for Change Over Time
 
@@ -699,7 +611,7 @@ ggplot(dat, aes(x = week, y = crp,
   ylab("CRP") 
 ```
 
-<img src="io48j-extension-plots_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+<img src="io48j-extension-plots_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 
 
 - (1) See the initial plot above for CRP with smooth lines for each patient, then try it for FCP.
@@ -805,112 +717,347 @@ ggplot(dat, aes(x = week, y = fcp,
 </div>
 
 
+## Swimmer Plots
 
+The Swimmer Plot is a visualization that shows treatment timelines, with each patient in their own "lane". It gets the name because it looks a bit like a pool at a swim meet, where you can see the progress of each patient over time. These can help visualize treatment or measurement patterns, clinical events, time-varying covariates, outcomes, and loss to follow-up in longitudinal data settings. These work well with a moderate number of patient courses (usually 10-50), and can be illuminating when new approaches to therapy are being tried in small numbers of patients, like a case series.
 
-## Direct Labeling of Plots
+Note that this is not done with a particular package, but with standard geom_line and geom_point, but with a lot of customization in ggplot worth learning about.
 
-Whilea legend can help a viewer interpret a plot, it requires a bit of cognitive work to look back and forth between the plot and the legend to sort things out. If you have a manageable number of categories, it can be more effective to add category labels directly to your plot.
-
-This can be done manually, with geom_label, or with a bit of help from {directlabel} or {geomtextpath}.
-
-
-### GeomTextPath
-
-This geom, from the {geomtextpath} package, allows you to put labels on a curved path, and can be helpful for labeling distributions.
-
-In this density plot example, x will map to your continous variable/distribution, while color and label will map to your categorical variable. This is an example of age distributions by the type of sphincter of oddi dysfunction (the muscular valve at the end of the common discharge pathway of the bile ducts and pancreatic ducts into the small intestine) in the indo_rct dataset. The patients with more severe SOD tend to be younger than those without SOD, and type 2 SOD has a bimodal distribution.
+This section borrows heavily from a nice blog post from statistician Kat Hoffman [here](https://www.khstats.com/blog/trt-timelines/multiple-vars.html#just-the-code). Note that a bit of data wrangling needs to be done to produce the correct data format for swimmer plots. We will read in some simulated data of COVID patients from spring 2020 from Kat Hoffman. The original data includes one row per day for each patient, with dichotomous outcomes for the events we are interested in: intubation status, use of steroids, the first day of severe hypoxia status, and death.
 
 
 ```r
-medicaldata::indo_rct %>% 
-    ggplot(aes(x = age, colour = type)) +
-    geom_textpath(aes(label = type), stat = "density",
-    size = 4, fontface = 2, hjust = 0.65, vjust = -0.1) +
-    theme(legend.position = "none")
+# install.packages(c("tidyverse","gt","RCurl","rmarkdown"))
+library(tidyverse)
+library(gt)
+library(rmarkdown)
+
+dat_long <- read_csv("https://raw.githubusercontent.com/kathoffman/steroids-trial-emulation/main/data/dat_trt_timeline.csv", col_types = list(id  = "c", steroids = "c", death = "c", severe = "c"))
+dat_long |> head()
 ```
 
-<img src="io48j-extension-plots_files/figure-html/geomtextpath-1.png" width="672" />
+```
+## # A tibble: 6 × 6
+##   id      day intubation_status steroids death severe
+##   <chr> <dbl> <chr>             <chr>    <chr> <chr> 
+## 1 797       0 Not intubated     0        0     0     
+## 2 797       1 Not intubated     0        0     0     
+## 3 797       2 Not intubated     0        0     1     
+## 4 797       3 Not intubated     0        0     0     
+## 5 797       4 Not intubated     0        0     0     
+## 6 797       5 Not intubated     0        0     0
+```
 
-:::tryit
-
-Now try this yourself. Copy the code above (click on the copy icon in the top right of the code chunk), paste it into your RStudio IDE, and edit to:
-
-- Change the legend 
-- make the title "PEP" 
-- change the labels to "good" and "BAD"
-- change the colors to "yellow" and "darkorchid"
-
-Click on the `Solution` button to toggle showing or hiding the solution.
-
-
-<div class='webex-solution'><button>Solution</button>
+We can use geom_line to plot the length of stay, with day on thex axis and lines colored by intubation status and grouped by patient id.
 
 
 ```r
-medicaldata::indo_rct %>% 
-  ggplot() +
-  aes(x = rx, y = risk, color = outcome) + 
-  geom_jitter() +
-  theme(legend.position = c(0.15, 0.5)) +
-  scale_y_continuous(limits = c(0.5,6),
-                     breaks = seq(0.5, 6, by = 0.5)) +
-  scale_x_discrete(expand = expansion(add =c(1.5, 0.6)),
-                   name = "Suppository",
-                   position = "bottom")  + 
-    scale_color_manual(name = "PEP", 
-                        labels = c("good", "BAD"),
-                        values = c("yellow", "darkorchid")) 
+dat_long |>
+  ggplot(aes(x=day, y=id, col = intubation_status, group=id)) +
+  geom_line() +
+  theme_bw()
 ```
 
-<img src="io48j-extension-plots_files/figure-html/scales-6-solution-1.png" width="672" />
-The legend position is based on the proportion of the x axis (0-1) and the y axis (0-1), so that legend.position (0,0) is the bottom left, and legend.position (1,1) is the top right.
+<img src="io48j-extension-plots_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
+While this is very simple, it gives you a quick look at how these 30 simulated patients did in the hospital.
+
+We can add steroid use by day as colored points with geom_point, in one added line of code, as seen below.
+
+
+```r
+dat_long |>
+  ggplot(aes(x=day, y=id, col = intubation_status, group=id)) +
+  geom_point(aes(x=day, y=id, col = steroids)) +
+  geom_line() +
+  theme_bw() 
+```
+
+<img src="io48j-extension-plots_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+
+This gets a bit messy, as we have different colors of points (steroids on/steroids off) obscuring the colors of the lines indicating intubation. It is time for a bit of data wrangling. <br>
+To help clarify things in data wrangling step 1, let's create new variables to specify on which day(s) steroids were used, the first day that severe hypoxia was present, and when death occurred. These variables will have lots of NA values when things did not occur - so that we won't plot points when the events did **not** occur (NA days), and will have days for the values when the events occurred, which makes these easier to plot on the x axis. These NAs will be removed (and generate a lot of warnings) when plotting, so I will use an option to turn off messages and warnings in this section.
+
+
+```r
+knitr::opts_chunk$set(message=F, warning=F)
+
+dat_swim <-
+  dat_long |>
+  mutate(severe_this_day = case_when(severe == 1 ~ day),
+         steroids_this_day = case_when(steroids == 1 ~ day),
+         death_this_day = case_when(death == 1 ~ day))
+```
+
+In in data wrangling step 2, it would also make it easier to read the plot if the patients were arranged by length of stay (max_day), so we will use fct_reorder() to make the patient ids (factors) ordered by length of stay.
+
+
+```r
+dat_swim <- 
+  dat_swim |>
+  group_by(id) |>
+  mutate(max_day = max(day)) |>
+  ungroup() |>
+  mutate(id = fct_reorder(factor(id), max_day))
+
+head(dat_swim) |> paged_table()
+```
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["id"],"name":[1],"type":["fct"],"align":["left"]},{"label":["day"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["intubation_status"],"name":[3],"type":["chr"],"align":["left"]},{"label":["steroids"],"name":[4],"type":["chr"],"align":["left"]},{"label":["death"],"name":[5],"type":["chr"],"align":["left"]},{"label":["severe"],"name":[6],"type":["chr"],"align":["left"]},{"label":["severe_this_day"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["steroids_this_day"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["death_this_day"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["max_day"],"name":[10],"type":["dbl"],"align":["right"]}],"data":[{"1":"797","2":"0","3":"Not intubated","4":"0","5":"0","6":"0","7":"NA","8":"NA","9":"NA","10":"16"},{"1":"797","2":"1","3":"Not intubated","4":"0","5":"0","6":"0","7":"NA","8":"NA","9":"NA","10":"16"},{"1":"797","2":"2","3":"Not intubated","4":"0","5":"0","6":"1","7":"2","8":"NA","9":"NA","10":"16"},{"1":"797","2":"3","3":"Not intubated","4":"0","5":"0","6":"0","7":"NA","8":"NA","9":"NA","10":"16"},{"1":"797","2":"4","3":"Not intubated","4":"0","5":"0","6":"0","7":"NA","8":"NA","9":"NA","10":"16"},{"1":"797","2":"5","3":"Not intubated","4":"0","5":"0","6":"0","7":"NA","8":"NA","9":"NA","10":"16"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
 </div>
 
-:::
-
-## Test what you have learned
-
-(multiple-choice, fill-in-the-blank, and TRUE/FALSE - correct answers will be green!)
-
-- You can take complete control of colors with `scale_color_` <select class='webex-select'><option value='blank'></option><option value=''>continuous</option><option value=''>discrete</option><option value='answer'>manual</option></select>
-
-- You can set the title of a color legend within the `scale_color_discrete()` function with the <input class='webex-solveme nospaces' size='4' data-answer='["name"]'/> argument.
-
-- You can set the names of each level of a discrete color legend within the `scale_color_discrete()` function with the <input class='webex-solveme nospaces' size='6' data-answer='["labels"]'/> argument.
-
-- You can set each color of a discrete color legend within the `scale_color_discrete()` function with the `values` <select class='webex-select'><option value='blank'></option><option value='answer'>TRUE</option><option value=''>FALSE</option></select> argument.
-
-### More Examples with Flipbooks
-
-<!---FLIPBOOK EX 2--> 
-
-<iframe style="margin:0 auto; border: solid black;" 
-id="myIframe12" width="763" height="432"
-src="https://higgi13425.github.io/mini_flipbooks/scales2_microflip.html#1" 
-scrolling="no" data-external="1" 
-allowfullscreen
-loading="lazy">
-</iframe>
-
-<!-------------> 
+After this data wrangling, now we can plot the data again, arranged by LOS and with only the steroid used days as visible points.
 
 
-:::challenge
+```r
+dat_swim |> 
+  ggplot() +
+  geom_line(aes(x=day, y=id, col = intubation_status, group=id)) +
+  geom_point(aes(x=steroids_this_day, y=id, col="Steroids", shape="Steroids")) +
+  theme_bw()
+```
 
-Now try some challenging code exercises using scales in the learnr app below.
+<img src="io48j-extension-plots_files/figure-html/unnamed-chunk-11-1.png" width="672" />
 
-Use your knowledge to try to do these without hints, but press the Hints button if needed. In each case, the 2nd hint is the solution.
-:::
-<!---SHINY APP--> 
+This is nicer to look at, though the legend is still a bit of a mess, and you can now clearly see that steroids were largely used for intubated patients at this point. It would look nicer if the lines were nearly as thick as the points, so that they are less obscured. Let's fix this with a larger geom_line size, and format the steroid points with a shape for contrast.
 
-<iframe style="margin:0 auto; border: solid black;" 
-id="myIframe13" width="763" height="432"
-src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_scales/" 
-scrolling="yes" data-external="1" 
-allowfullscreen
-loading="lazy">
-</iframe>
 
-<!-------------> 
+```r
+dat_swim |> 
+  ggplot() +
+  geom_line(aes(x=day, y=id, col = intubation_status, group=id),
+            size=1.8) +
+  geom_point(aes(x=steroids_this_day, y=id, col="Steroids"), stroke=2, shape=15) +
+  theme_bw()
+```
+
+<img src="io48j-extension-plots_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+
+Now we add important clinical events - we can add severe hypoxia events and death events to the plot, with additional point geoms with distinct shapes for each of these.
+
+
+```r
+dat_swim |> 
+  ggplot() +
+  geom_line(aes(x=day, y=id, col = intubation_status, group=id),
+            size=1.8) +
+  geom_point(aes(x=steroids_this_day, y=id, col="Steroids"), stroke=2, shape=15) +
+  theme_bw() +
+  geom_point(aes(x=severe_this_day, y=id, col="Severe hypoxia"), size=2, stroke=1.5, shape=21) +
+  geom_point(aes(x=death_this_day, y=id, col="Death"), size=2, stroke=1.5, shape=4) 
+```
+
+<img src="io48j-extension-plots_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+
+We can fine-tune the colors and improve the legend name below.
+We will save the plot as p, and add more to it in future steps.
+
+
+```r
+# define colors for all geometries with a color argument
+cols <- c("Severe hypoxia" = "#b24745", # red
+    "Intubated" = "#483d8b", # navy
+  "Not intubated" = "#74aaff", # light blue
+          "Steroids"="#ffd966", # gold
+          "Death" = "#000000") # black 
+
+p <- dat_swim |> 
+  ggplot() +
+  geom_line(aes(x=day, y=id, col = intubation_status, group=id),
+            size=1.8) +
+  geom_point(aes(x=steroids_this_day, y=id, col="Steroids"), stroke=2, shape=15) +
+  theme_bw() +
+  geom_point(aes(x=severe_this_day, y=id, col="Severe hypoxia"), size=2, stroke=1.5, shape=21) +
+  geom_point(aes(x=death_this_day, y=id, col="Death"), size=2, stroke=1.5, shape=4) +
+  scale_color_manual(values = cols, name="Patient Status") 
+p
+```
+
+<img src="io48j-extension-plots_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+
+This is really coming along. But the legend symbols are accurate for colors, but don't reflect the shapes we used, as we did not use aes() to create the shapes. To override the default shapes, lines, etc. in the legend, we need to use the guides() function, and override guide_legend(). This lets you manually specify the shapes. Let's start by first defining the corresponding shapes (with NA when we don't want a point), then overriding the shapes, and update our plot.
+
+
+```r
+shape_override <- c(4, NA, NA, 21, 15) # order matches `cols`:severe, intubation (yes/no), steroids, death, with the appropriate shapes
+
+# modify the color legend to include the correct shapes
+p + 
+  guides(color = guide_legend(
+        override.aes = list(
+        shape = shape_override) 
+        ))
+```
+
+<img src="io48j-extension-plots_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+
+That worked well. Now let's remove the lines though Death, Severe Hypoxia, and Steroids, by overriding the line type (1 for a standard line or NA for no line), then fine tune the stroke and size for each of these geom points. Note that for shapes 21-24 in R, you have to separately specify stroke (for outer line) and fill (if any), while shapes 1-20 just require a size.
+
+
+```r
+line_override <- c(NA,1,1,NA,NA) # order matches `cols`:severe, intubation (yes/no), steroids, death
+stroke_override <- c(1.2,1,1,1,1.4) # order matches `cols`:severe, intubation (yes/no), steroids, death
+size_override <- c(2.5,2.5,2.6,2.5,2) # order matches `cols`:severe, intubation (yes/no), steroids, death
+
+p <-
+  p +
+    guides(color = guide_legend(
+        override.aes = list(
+        shape = shape_override,
+        linetype = line_override,
+        stroke = stroke_override,
+        size = size_override)
+        ))
+p
+```
+
+<img src="io48j-extension-plots_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+
+Now the legend looks nice. Let's add a few more aesthetic tweaks, including title and better axis labels.
+
+
+```r
+p <- p +
+  labs(x="Days since hospitalization",y="Patient\nnumber",title="COVID Treatment Timeline for 30 Patients") +
+  scale_x_continuous(expand=c(0,0)) + # remove extra white space 
+  theme(# text=element_text(family="Poppins", size=11),
+        title = element_text(angle = 0, vjust=.5, size=12, face="bold"),
+        axis.title.y = element_text(angle = 0, vjust=.5, size=12, face="bold"),
+        axis.title.x = element_text(size=15, face="bold", vjust=-0.5, hjust=0),
+        axis.text.y = element_text(size=6, hjust=1.5),
+        axis.ticks.y = element_blank(),
+        legend.position = c(0.8, 0.3),
+        legend.title = element_text(colour="black", size=13, face=4),
+        legend.text = element_text(colour="black", size=10),
+        legend.background = element_rect(size=0.5, linetype="solid", colour ="gray30"),
+        panel.grid.minor = element_blank(),
+        panel.grid.major.x = element_blank()
+  ) 
+p
+```
+
+<img src="io48j-extension-plots_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+
+And we are done. You can see how this can illustrate the hospital course for a number of patients, and transmit a lot of longitudinal information quickly when the number of patients is not too long.
+
+Let's try another swimmer plot, using some simulated data from a study of patients after liver transplant. Some of these patients develop ascites (increased fluid in the abdominal peritoneal cavity) that requires large volume paracentesis to remove. If this becomes frequent, it can cause major fluid shifts and problems with kidney function. Sometimes taking the spleen out of the system with splenectomy (surgical removal) or SAE (splenic artery embolism) can reduce the need for large volume paracentesis. Let's look at this with a small dataset of 12 patients who developed ascites after liver transplantation and received SAE (splenic artery embolization). Run the code chunk below to read in the data. 
+
+In this code chunk, we do a bit of data wrangling as well, properly formatting the dates, and calculating the length of time in days before or after the SAE (splenic artery embolization). Note that the default units are seconds, so we need to divide by (3600*24) to get days.
+
+
+```r
+library(tidyverse)
+library(readxl)
+library(lubridate)
+
+swim_liver <- read_excel("~/Downloads/swimmer_liver.xlsx", sheet = 2) %>%
+  mutate(lvp_date = ymd(lvp_date),
+         sae_date = ymd(sae_date),
+         olt_date = ymd(olt_date),
+         eofu_date = ymd(eofu_date),
+    days_from_sae = int_length(interval(start = lvp_date, end = sae_date)/(3600*24)),
+    start = int_length(interval(start = sae_date, end = olt_date)/(3600*24)),
+    end = int_length(interval(start = sae_date, end = eofu_date)/(3600*24))) 
+```
+
+The key events are olt - orthotopic liver transplant, sae (splenic artery embolism), lvp (large volume paracentesis), and eofu (end of follow up). Each patient has an id and multiple events occur. Each patient also has a MELD score (meld = model for end-stage liver disease), which measures how sick they were before the liver transplant (higher scores are worse).  We will start by drawing the line segments from liver transplant to end of followup, colored by meld score at the time of transplant.
+
+
+```r
+swim_liver %>% 
+  ggplot() + 
+  geom_segment(aes(x = start, xend = end,
+                   y = fct_reorder(pat_id, meld),
+                   yend = fct_reorder(pat_id, meld), 
+                   color = meld)) +
+  geom_vline(xintercept = 0) +
+  theme_bw()
+```
+
+<img src="io48j-extension-plots_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+
+Now, let's add the large volume paracentesis events as points with geom_point.
+
+
+```r
+swim_liver %>% 
+  ggplot() + 
+  geom_segment(aes(x = start, xend = end,
+                   y = fct_reorder(pat_id, meld),
+                   yend = fct_reorder(pat_id, meld), 
+                   color = meld)) +
+  geom_point(aes(x=days_from_sae, 
+        y = fct_reorder(pat_id, meld), 
+        col = meld)) +
+  geom_vline(xintercept = 0) +
+  theme_bw() +
+  scale_color_continuous(low = "dodgerblue1", high = 'dodgerblue4') 
+```
+
+<img src="io48j-extension-plots_files/figure-html/unnamed-chunk-20-1.png" width="672" />
+
+Now we can increase the linewidth and the size of the points to make this clearer.
+
+
+```r
+swim_liver %>% 
+  ggplot() + 
+  geom_segment(aes(x = start, xend = end,
+                   y = fct_reorder(pat_id, meld),
+                   yend = fct_reorder(pat_id, meld), 
+                   color = meld), size = 2) +
+  geom_point(aes(x=days_from_sae, 
+        y = fct_reorder(pat_id, meld)), size =3) +
+  geom_vline(xintercept = 0) +
+  theme_bw() +
+  scale_color_continuous(low = "dodgerblue1", high = 'dodgerblue4') 
+```
+
+<img src="io48j-extension-plots_files/figure-html/unnamed-chunk-21-1.png" width="672" />
+
+
+The labels on axes and the legend are a bit of a mess still. We can clean this up and add red circles for the transplant events. We can move the legend inside the plot, and add some explanatory text as an annotation. It appears that the SAE (at day 0 in this pre-post swimmer plot) provides a lot of benefit to the mild to moderate MELD patients by reducing their need for large volume paracentesis. Those with severely high MELD scores don't seem to get as much benefit.
+
+
+```r
+swim_liver %>% 
+  ggplot() + 
+  geom_segment(aes(x = start, xend = end,
+                   y = fct_reorder(pat_id, meld),
+                   yend = fct_reorder(pat_id, meld), 
+                   color = meld), size = 2) +
+  geom_point(aes(x=days_from_sae, 
+        y = fct_reorder(pat_id, meld)), size =3) +
+    geom_point(aes(x = start, y = fct_reorder(pat_id, meld)),
+        shape =1, color = "red", stroke =2, size =3) +
+  geom_vline(xintercept = 0) +
+  annotate("text", x = -220, y= 12.5, label = "Red circles represent\nthe OLT date, \nEach black dot represents\none large volume\nparacentesis, \n Splenic Intervention at Day 0") +
+  theme_bw() +
+  scale_color_continuous(low = "dodgerblue1", high = 'dodgerblue4')  +
+  labs(x="Days Relative to Splenic Intervention",y="Patient\nnumber",title="Large Volume Paracentesis Timeline\nfor 12 Patients from OLT Date\nto End of FollowUp") +
+  theme(# text=element_text(family="Poppins", size=11),
+        title = element_text(angle = 0, vjust=.5, size=12, face="bold"),
+        axis.title.y = element_text(angle = 0, vjust=.5, size=12, face="bold"),
+        axis.title.x = element_text(size=15, face="bold", vjust=-0.5, hjust=0),
+        axis.text.y = element_text(size=10, hjust=1.5),
+        axis.ticks.y = element_blank(),
+        legend.position = c(0.1, 0.8),
+        legend.title = element_text(colour="black", size=13),
+        legend.text = element_text(colour="black", size=10),
+        legend.background = element_rect(size=0.5, linetype="solid", colour ="gray30"),
+        panel.grid.minor = element_blank(),
+        panel.grid.major.x = element_blank()
+  ) 
+```
+
+<img src="io48j-extension-plots_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+
+
+
+You can explore other (similar) approaches to swimmer plots, including the {swimmer} package [here](https://cran.r-project.org/web/packages/swimplot/vignettes/Introduction.to.swimplot.html) in a blog post by Jessica Weiss.
+
+
 
