@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 11 The Building Blocks of R: data types, data structures, functions, and packages. | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
-  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 11 The Building Blocks of R: data types, data structures, functions, and packages. | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2023-04-06" />
+<meta name="date" content="2023-09-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,12 +53,14 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.10.2/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 <link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
@@ -128,6 +130,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="include/webex.css" type="text/css" />
 <link rel="stylesheet" href="include/style.css" type="text/css" />
@@ -581,6 +587,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="23.7" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#dumbbell-plots"><i class="fa fa-check"></i><b>23.7</b> Dumbbell Plots</a></li>
 <li class="chapter" data-level="23.8" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#spaghetti-plots-with-summary-smoothed-lines-for-change-over-time"><i class="fa fa-check"></i><b>23.8</b> Spaghetti Plots with Summary Smoothed Lines for Change Over Time</a></li>
 <li class="chapter" data-level="23.9" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#swimmer-plots"><i class="fa fa-check"></i><b>23.9</b> Swimmer Plots</a></li>
+<li class="chapter" data-level="23.10" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#adding-significance-comparisons-with-ggsignif"><i class="fa fa-check"></i><b>23.10</b> Adding Significance Comparisons with {ggsignif}</a></li>
 </ul></li>
 <li class="chapter" data-level="24" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html"><i class="fa fa-check"></i><b>24</b> Customizing Plot Scales</a>
 <ul>
@@ -889,44 +896,44 @@ like <em>as.character()</em>, <em>as.logical()</em>, <em>as.integer()</em>, or <
 <p>Here are 4 examples of testing vectors with the <em>typeof()</em> function.
 Guess what the returned value will be before you run the code (click on
 the green arrow at the top right).</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you can test vectors with typeof </span></span>
-<span id="cb140-2"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb140-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb140-3"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb140-3" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="fl">1.7</span>,<span class="fl">5.3</span>,<span class="fl">9.2</span>)) </span></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb139-1" tabindex="-1"></a><span class="co"># you can test vectors with typeof </span></span>
+<span id="cb139-2"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb139-2" tabindex="-1"></a></span>
+<span id="cb139-3"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb139-3" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="fl">1.7</span>,<span class="fl">5.3</span>,<span class="fl">9.2</span>)) </span></code></pre></div>
 <pre><code>[1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="st">&#39;hypertension&#39;</span>, <span class="st">&quot;diabetes&quot;</span>, <span class="st">&quot;atherosclerosis&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb141-1" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="st">&#39;hypertension&#39;</span>, <span class="st">&quot;diabetes&quot;</span>, <span class="st">&quot;atherosclerosis&quot;</span>))</span></code></pre></div>
 <pre><code>[1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(2L, 4L))</span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb143-1" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(2L, 4L))</span></code></pre></div>
 <pre><code>[1] &quot;integer&quot;</code></pre>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb145-1" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>))</span></code></pre></div>
 <pre><code>[1] &quot;logical&quot;</code></pre>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(InsectSprays<span class="sc">$</span>spray)</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb147-1" tabindex="-1"></a><span class="fu">table</span>(InsectSprays<span class="sc">$</span>spray)</span></code></pre></div>
 <pre><code>
  A  B  C  D  E  F 
 12 12 12 12 12 12 </code></pre>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(InsectSprays<span class="sc">$</span>spray)</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb149-1" tabindex="-1"></a><span class="fu">typeof</span>(InsectSprays<span class="sc">$</span>spray)</span></code></pre></div>
 <pre><code>[1] &quot;integer&quot;</code></pre>
 <p>Here are 3 examples of coverting vectors from one type to another with
 <em>as.x()</em> functions. Guess what the returned value will be before you run
 the code (click on the green arrow at the top right).</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="co"># you can convert vectors with as.x</span></span>
-<span id="cb152-2"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb152-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb152-3"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb152-3" aria-hidden="true" tabindex="-1"></a>numeric <span class="ot">&lt;-</span> (<span class="fu">c</span>(<span class="fl">1.7</span>,<span class="fl">5.3</span>,<span class="fl">9.2</span>)) </span>
-<span id="cb152-4"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb152-4" aria-hidden="true" tabindex="-1"></a>newvec1 <span class="ot">&lt;-</span> <span class="fu">as.character</span>(numeric)</span>
-<span id="cb152-5"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb152-5" aria-hidden="true" tabindex="-1"></a>newvec1</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb151-1" tabindex="-1"></a><span class="co"># you can convert vectors with as.x</span></span>
+<span id="cb151-2"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb151-2" tabindex="-1"></a></span>
+<span id="cb151-3"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb151-3" tabindex="-1"></a>numeric <span class="ot">&lt;-</span> (<span class="fu">c</span>(<span class="fl">1.7</span>,<span class="fl">5.3</span>,<span class="fl">9.2</span>)) </span>
+<span id="cb151-4"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb151-4" tabindex="-1"></a>newvec1 <span class="ot">&lt;-</span> <span class="fu">as.character</span>(numeric)</span>
+<span id="cb151-5"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb151-5" tabindex="-1"></a>newvec1</span></code></pre></div>
 <pre><code>[1] &quot;1.7&quot; &quot;5.3&quot; &quot;9.2&quot;</code></pre>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(newvec1)</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb153-1" tabindex="-1"></a><span class="fu">typeof</span>(newvec1)</span></code></pre></div>
 <pre><code>[1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb156-1" aria-hidden="true" tabindex="-1"></a>logical <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)</span>
-<span id="cb156-2"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb156-2" aria-hidden="true" tabindex="-1"></a>newvec2 <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(logical)</span>
-<span id="cb156-3"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb156-3" aria-hidden="true" tabindex="-1"></a>newvec2</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb155-1" tabindex="-1"></a>logical <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb155-2"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb155-2" tabindex="-1"></a>newvec2 <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(logical)</span>
+<span id="cb155-3"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb155-3" tabindex="-1"></a>newvec2</span></code></pre></div>
 <pre><code>[1] 1 0 1</code></pre>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(newvec2)</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb157-1" tabindex="-1"></a><span class="fu">typeof</span>(newvec2)</span></code></pre></div>
 <pre><code>[1] &quot;integer&quot;</code></pre>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb160-1" aria-hidden="true" tabindex="-1"></a>character <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;2.4&quot;</span>, <span class="st">&quot;5.3&quot;</span>, <span class="st">&quot;7.2&quot;</span>)</span>
-<span id="cb160-2"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb160-2" aria-hidden="true" tabindex="-1"></a>newvec3 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(character)</span>
-<span id="cb160-3"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb160-3" aria-hidden="true" tabindex="-1"></a>newvec3</span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb159-1" tabindex="-1"></a>character <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;2.4&quot;</span>, <span class="st">&quot;5.3&quot;</span>, <span class="st">&quot;7.2&quot;</span>)</span>
+<span id="cb159-2"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb159-2" tabindex="-1"></a>newvec3 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(character)</span>
+<span id="cb159-3"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb159-3" tabindex="-1"></a>newvec3</span></code></pre></div>
 <pre><code>[1] 2.4 5.3 7.2</code></pre>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(newvec3)</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb161-1" tabindex="-1"></a><span class="fu">typeof</span>(newvec3)</span></code></pre></div>
 <pre><code>[1] &quot;double&quot;</code></pre>
 </div>
 <div id="data-structures" class="section level2 hasAnchor" number="11.2">
@@ -993,7 +1000,7 @@ row for each character. The column for which films they have
 appeared in is a <code>list</code> column. Each cell contains a character
 vectors of varying length, as each character has appeared in
 anywhere from 1 to 9 movies (as of 2021).</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb164-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">select</span>(name, films) </span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb163-1" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">select</span>(name, films) </span></code></pre></div>
 <pre><code># A tibble: 87 × 2
    name               films    
    &lt;chr&gt;              &lt;list&gt;   
@@ -1007,8 +1014,8 @@ anywhere from 1 to 9 movies (as of 2021).</p>
  8 R5-D4              &lt;chr [1]&gt;
  9 Biggs Darklighter  &lt;chr [1]&gt;
 10 Obi-Wan Kenobi     &lt;chr [6]&gt;
-# … with 77 more rows</code></pre>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb166-1" aria-hidden="true" tabindex="-1"></a>starwars<span class="sc">$</span>films <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
+# ℹ 77 more rows</code></pre>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb165-1" tabindex="-1"></a>starwars<span class="sc">$</span>films <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>[[1]]
 [1] &quot;The Empire Strikes Back&quot; &quot;Revenge of the Sith&quot;    
 [3] &quot;Return of the Jedi&quot;      &quot;A New Hope&quot;             
@@ -1042,7 +1049,7 @@ single value into a single cell. Sometimes this nested format can be
 helpful, and sometimes it is preferable to <em>unnest()</em> the data into
 a longer format.<br />
 </p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb168-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">select</span>(name, films)</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb167-1" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> <span class="fu">select</span>(name, films)</span></code></pre></div>
 <pre><code># A tibble: 87 × 2
    name               films    
    &lt;chr&gt;              &lt;list&gt;   
@@ -1056,11 +1063,11 @@ a longer format.<br />
  8 R5-D4              &lt;chr [1]&gt;
  9 Biggs Darklighter  &lt;chr [1]&gt;
 10 Obi-Wan Kenobi     &lt;chr [6]&gt;
-# … with 77 more rows</code></pre>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="co"># gives you a hidden list of films</span></span>
-<span id="cb170-2"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb170-2" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
-<span id="cb170-3"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb170-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, films) <span class="sc">%&gt;%</span> </span>
-<span id="cb170-4"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb170-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(<span class="at">cols =</span> <span class="fu">c</span>(films))</span></code></pre></div>
+# ℹ 77 more rows</code></pre>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb169-1" tabindex="-1"></a><span class="co"># gives you a hidden list of films</span></span>
+<span id="cb169-2"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb169-2" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb169-3"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb169-3" tabindex="-1"></a>  <span class="fu">select</span>(name, films) <span class="sc">%&gt;%</span> </span>
+<span id="cb169-4"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb169-4" tabindex="-1"></a>  <span class="fu">unnest</span>(<span class="at">cols =</span> <span class="fu">c</span>(films))</span></code></pre></div>
 <pre><code># A tibble: 173 × 2
    name           films                  
    &lt;chr&gt;          &lt;chr&gt;                  
@@ -1074,16 +1081,16 @@ a longer format.<br />
  8 C-3PO          The Phantom Menace     
  9 C-3PO          Revenge of the Sith    
 10 C-3PO          Return of the Jedi     
-# … with 163 more rows</code></pre>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="co"># unnest expands to multiple rows to show detail</span></span></code></pre></div>
+# ℹ 163 more rows</code></pre>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb171-1" tabindex="-1"></a><span class="co"># unnest expands to multiple rows to show detail</span></span></code></pre></div>
 <p>Lists can be useful for bundling togther related data of different
 types, like the results of a t-test.</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb173-1" aria-hidden="true" tabindex="-1"></a>t_test_output <span class="ot">&lt;-</span> <span class="fu">list</span> (</span>
-<span id="cb173-2"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb173-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Welch Two Sample t-test&quot;</span>,</span>
-<span id="cb173-3"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb173-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;data: height by gender&quot;</span>),</span>
-<span id="cb173-4"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb173-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">t =</span> <span class="sc">-</span><span class="fl">1.5596</span>, <span class="at">df =</span> <span class="fl">37.315</span>, <span class="at">p =</span> <span class="fl">0.1273</span>)</span>
-<span id="cb173-5"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb173-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb173-6"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb173-6" aria-hidden="true" tabindex="-1"></a>t_test_output</span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb172-1" tabindex="-1"></a>t_test_output <span class="ot">&lt;-</span> <span class="fu">list</span> (</span>
+<span id="cb172-2"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb172-2" tabindex="-1"></a>  <span class="st">&quot;Welch Two Sample t-test&quot;</span>,</span>
+<span id="cb172-3"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb172-3" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;data: height by gender&quot;</span>),</span>
+<span id="cb172-4"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb172-4" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">t =</span> <span class="sc">-</span><span class="fl">1.5596</span>, <span class="at">df =</span> <span class="fl">37.315</span>, <span class="at">p =</span> <span class="fl">0.1273</span>)</span>
+<span id="cb172-5"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb172-5" tabindex="-1"></a>)</span>
+<span id="cb172-6"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb172-6" tabindex="-1"></a>t_test_output</span></code></pre></div>
 <pre><code>[[1]]
 [1] &quot;Welch Two Sample t-test&quot;
 
@@ -1112,11 +1119,11 @@ list.<br />
 You can build a dataframe from a set of vectors (variables) by
 binding these together as columns/variables with the <code>tibble()</code>
 function.</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb175-1" aria-hidden="true" tabindex="-1"></a>pat_id <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>, <span class="dv">3</span>,<span class="dv">3</span>)</span>
-<span id="cb175-2"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb175-2" aria-hidden="true" tabindex="-1"></a>date <span class="ot">&lt;-</span> <span class="fu">c</span>(lubridate<span class="sc">::</span><span class="fu">ymd</span>(<span class="st">&quot;2020-11-07&quot;</span>, <span class="st">&quot;2020-12-03&quot;</span>, <span class="st">&quot;2020-12-02&quot;</span>, <span class="st">&quot;2020-12-15&quot;</span>, <span class="st">&quot;2020-11-09&quot;</span>, <span class="st">&quot;2020-12-02&quot;</span>))</span>
-<span id="cb175-3"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb175-3" aria-hidden="true" tabindex="-1"></a>crp <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.1</span>, <span class="fl">3.2</span>, <span class="fl">7.6</span>, <span class="fl">4.1</span>, <span class="fl">4.3</span>, <span class="fl">1.7</span>)</span>
-<span id="cb175-4"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb175-4" aria-hidden="true" tabindex="-1"></a>new_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(pat_id, date, crp)</span>
-<span id="cb175-5"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb175-5" aria-hidden="true" tabindex="-1"></a>new_df</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb174-1" tabindex="-1"></a>pat_id <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>, <span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb174-2"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb174-2" tabindex="-1"></a>date <span class="ot">&lt;-</span> <span class="fu">c</span>(lubridate<span class="sc">::</span><span class="fu">ymd</span>(<span class="st">&quot;2020-11-07&quot;</span>, <span class="st">&quot;2020-12-03&quot;</span>, <span class="st">&quot;2020-12-02&quot;</span>, <span class="st">&quot;2020-12-15&quot;</span>, <span class="st">&quot;2020-11-09&quot;</span>, <span class="st">&quot;2020-12-02&quot;</span>))</span>
+<span id="cb174-3"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb174-3" tabindex="-1"></a>crp <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.1</span>, <span class="fl">3.2</span>, <span class="fl">7.6</span>, <span class="fl">4.1</span>, <span class="fl">4.3</span>, <span class="fl">1.7</span>)</span>
+<span id="cb174-4"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb174-4" tabindex="-1"></a>new_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(pat_id, date, crp)</span>
+<span id="cb174-5"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb174-5" tabindex="-1"></a>new_df</span></code></pre></div>
 <pre><code># A tibble: 6 × 3
   pat_id date         crp
    &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt;
@@ -1134,7 +1141,7 @@ properties of a data frame underneath the additional features.
 You can convert a dataframe to a tibble with <code>tibble()</code>, or use
 tibble to build with vectors</li>
 </ul>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(new_df)</span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb176-1" tabindex="-1"></a><span class="fu">tibble</span>(new_df)</span></code></pre></div>
 <pre><code># A tibble: 6 × 3
   pat_id date         crp
    &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt;
@@ -1144,7 +1151,7 @@ tibble to build with vectors</li>
 4      2 2020-12-15   4.1
 5      3 2020-11-09   4.3
 6      3 2020-12-02   1.7</code></pre>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(pat_id, date, crp)</span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb178-1" tabindex="-1"></a><span class="fu">tibble</span>(pat_id, date, crp)</span></code></pre></div>
 <pre><code># A tibble: 6 × 3
   pat_id date         crp
    &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt;
@@ -1156,15 +1163,15 @@ tibble to build with vectors</li>
 6      3 2020-12-02   1.7</code></pre>
 <p>You can also build new row-wise tibbles with the <code>tribble()</code>
 function.</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tribble</span>(</span>
-<span id="cb181-2"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb181-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>pat_id, <span class="sc">~</span>date, <span class="sc">~</span>crp,</span>
-<span id="cb181-3"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb181-3" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span>, lubridate<span class="sc">::</span><span class="fu">ymd</span>(<span class="st">&quot;2020-12-04&quot;</span>), <span class="fl">5.1</span>,</span>
-<span id="cb181-4"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb181-4" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span>, lubridate<span class="sc">::</span><span class="fu">ymd</span>(<span class="st">&quot;2020-12-09&quot;</span>), <span class="fl">3.7</span>,</span>
-<span id="cb181-5"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb181-5" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span>, lubridate<span class="sc">::</span><span class="fu">ymd</span>(<span class="st">&quot;2020-11-23&quot;</span>), <span class="fl">3.6</span>,</span>
-<span id="cb181-6"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb181-6" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span>, lubridate<span class="sc">::</span><span class="fu">ymd</span>(<span class="st">&quot;2020-11-29&quot;</span>), <span class="fl">1.9</span>,</span>
-<span id="cb181-7"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb181-7" aria-hidden="true" tabindex="-1"></a>  <span class="dv">3</span>, lubridate<span class="sc">::</span><span class="fu">ymd</span>(<span class="st">&quot;2020-12-14&quot;</span>), <span class="fl">1.9</span>,</span>
-<span id="cb181-8"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb181-8" aria-hidden="true" tabindex="-1"></a>  <span class="dv">3</span>, lubridate<span class="sc">::</span><span class="fu">ymd</span>(<span class="st">&quot;2020-12-27&quot;</span>), <span class="fl">0.6</span></span>
-<span id="cb181-9"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb181-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb180-1" tabindex="-1"></a><span class="fu">tribble</span>(</span>
+<span id="cb180-2"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb180-2" tabindex="-1"></a>  <span class="sc">~</span>pat_id, <span class="sc">~</span>date, <span class="sc">~</span>crp,</span>
+<span id="cb180-3"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb180-3" tabindex="-1"></a>  <span class="dv">1</span>, lubridate<span class="sc">::</span><span class="fu">ymd</span>(<span class="st">&quot;2020-12-04&quot;</span>), <span class="fl">5.1</span>,</span>
+<span id="cb180-4"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb180-4" tabindex="-1"></a>  <span class="dv">1</span>, lubridate<span class="sc">::</span><span class="fu">ymd</span>(<span class="st">&quot;2020-12-09&quot;</span>), <span class="fl">3.7</span>,</span>
+<span id="cb180-5"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb180-5" tabindex="-1"></a>  <span class="dv">2</span>, lubridate<span class="sc">::</span><span class="fu">ymd</span>(<span class="st">&quot;2020-11-23&quot;</span>), <span class="fl">3.6</span>,</span>
+<span id="cb180-6"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb180-6" tabindex="-1"></a>  <span class="dv">2</span>, lubridate<span class="sc">::</span><span class="fu">ymd</span>(<span class="st">&quot;2020-11-29&quot;</span>), <span class="fl">1.9</span>,</span>
+<span id="cb180-7"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb180-7" tabindex="-1"></a>  <span class="dv">3</span>, lubridate<span class="sc">::</span><span class="fu">ymd</span>(<span class="st">&quot;2020-12-14&quot;</span>), <span class="fl">1.9</span>,</span>
+<span id="cb180-8"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb180-8" tabindex="-1"></a>  <span class="dv">3</span>, lubridate<span class="sc">::</span><span class="fu">ymd</span>(<span class="st">&quot;2020-12-27&quot;</span>), <span class="fl">0.6</span></span>
+<span id="cb180-9"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb180-9" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code># A tibble: 6 × 3
   pat_id date         crp
    &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt;
@@ -1204,14 +1211,14 @@ important to avoid using R function names (like <strong>data</strong> or <strong
 <strong>sum</strong>) as names for your objects. You can use either leftward arrows
 (Less than then dash key) <code>&lt;-</code> or rightward arrows <code>-&gt;</code> (dash key then
 greater than key) to assign data to an object.</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example 1</span></span>
-<span id="cb183-2"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb183-2" aria-hidden="true" tabindex="-1"></a>tall <span class="ot">&lt;-</span> starwars <span class="sc">%&gt;%</span> </span>
-<span id="cb183-3"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb183-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(height <span class="sc">&gt;</span> <span class="dv">200</span>)</span>
-<span id="cb183-4"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb183-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb183-5"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb183-5" aria-hidden="true" tabindex="-1"></a><span class="co"># example 2</span></span>
-<span id="cb183-6"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb183-6" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
-<span id="cb183-7"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb183-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(height <span class="sc">&lt;</span><span class="dv">70</span>) <span class="ot">-&gt;</span></span>
-<span id="cb183-8"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb183-8" aria-hidden="true" tabindex="-1"></a>short</span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb182-1" tabindex="-1"></a><span class="co"># example 1</span></span>
+<span id="cb182-2"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb182-2" tabindex="-1"></a>tall <span class="ot">&lt;-</span> starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb182-3"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb182-3" tabindex="-1"></a>  <span class="fu">filter</span>(height <span class="sc">&gt;</span> <span class="dv">200</span>)</span>
+<span id="cb182-4"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb182-4" tabindex="-1"></a></span>
+<span id="cb182-5"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb182-5" tabindex="-1"></a><span class="co"># example 2</span></span>
+<span id="cb182-6"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb182-6" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb182-7"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb182-7" tabindex="-1"></a>  <span class="fu">filter</span>(height <span class="sc">&lt;</span><span class="dv">70</span>) <span class="ot">-&gt;</span></span>
+<span id="cb182-8"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb182-8" tabindex="-1"></a>short</span></code></pre></div>
 <p>Leftward arrows are thought of as sort of like the title of a recipe. In
 the first example above, you can read this as, “I am going to make a
 tibble of tall characters. I will start with the <strong>starwars</strong> dataset,
@@ -1232,7 +1239,7 @@ data wrangling or plotting functions.</p>
 <p>The <code>str()</code> function, denoting structure, is a good place to start
 interrogating data structures.</p>
 <p>Try this out. Run <code>str(starwars)</code> in your RStudio console.</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(starwars)</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb183-1" tabindex="-1"></a><span class="fu">str</span>(starwars)</span></code></pre></div>
 <pre><code>tibble [87 × 14] (S3: tbl_df/tbl/data.frame)
  $ name      : chr [1:87] &quot;Luke Skywalker&quot; &quot;C-3PO&quot; &quot;R2-D2&quot; &quot;Darth Vader&quot; ...
  $ height    : int [1:87] 172 167 96 202 150 178 165 97 183 182 ...
@@ -1515,7 +1522,7 @@ the output shows each variable. The first 11 are either character or
 integer types. The last 3 (films, vehicles, starships) are all
 list-columns, and are more complicated.</p>
 <p>Note that <code>glimpse(starwars)</code> provides a prettier version of this output</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(starwars)</span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb185-1" tabindex="-1"></a><span class="fu">glimpse</span>(starwars)</span></code></pre></div>
 <pre><code>Rows: 87
 Columns: 14
 $ name       &lt;chr&gt; &quot;Luke Skywalker&quot;, &quot;C-3PO&quot;, &quot;R2-D2&quot;, &quot;Da…
@@ -1534,21 +1541,21 @@ $ vehicles   &lt;list&gt; &lt;&quot;Snowspeeder&quot;, &quot;Imperial Speeder Bi
 $ starships  &lt;list&gt; &lt;&quot;X-wing&quot;, &quot;Imperial shuttle&quot;&gt;, &lt;&gt;, &lt;&gt;…</code></pre>
 <p>If you want more detail about a given variable inside this dataframe,
 you can use <code>typeof()</code> or <code>class()</code>.</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(starwars<span class="sc">$</span>mass)</span></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb187-1" tabindex="-1"></a><span class="fu">typeof</span>(starwars<span class="sc">$</span>mass)</span></code></pre></div>
 <pre><code>[1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(starwars<span class="sc">$</span>mass)</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb189-1" tabindex="-1"></a><span class="fu">class</span>(starwars<span class="sc">$</span>mass)</span></code></pre></div>
 <pre><code>[1] &quot;numeric&quot;</code></pre>
 <p>For character variables, <code>typeof()</code> is the same as <code>class()</code>. But these
 are different for doubles and factors.</p>
 <p>Sometimes you want a quick look at all the variable names of a dataset.
 The functions <code>names()</code> or <code>colnames()</code> can quickly get you a vector of
 these names.</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(starwars)</span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb191-1" tabindex="-1"></a><span class="fu">names</span>(starwars)</span></code></pre></div>
 <pre><code> [1] &quot;name&quot;       &quot;height&quot;     &quot;mass&quot;       &quot;hair_color&quot;
  [5] &quot;skin_color&quot; &quot;eye_color&quot;  &quot;birth_year&quot; &quot;sex&quot;       
  [9] &quot;gender&quot;     &quot;homeworld&quot;  &quot;species&quot;    &quot;films&quot;     
 [13] &quot;vehicles&quot;   &quot;starships&quot; </code></pre>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(starwars)</span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb193-1" tabindex="-1"></a><span class="fu">colnames</span>(starwars)</span></code></pre></div>
 <pre><code> [1] &quot;name&quot;       &quot;height&quot;     &quot;mass&quot;       &quot;hair_color&quot;
  [5] &quot;skin_color&quot; &quot;eye_color&quot;  &quot;birth_year&quot; &quot;sex&quot;       
  [9] &quot;gender&quot;     &quot;homeworld&quot;  &quot;species&quot;    &quot;films&quot;     
@@ -1564,7 +1571,7 @@ column. When this is the case, the dplyr function
 <code>rownames_to_column(matrix_name)</code> is very helpful. The default name is
 <code>rowname</code>, but you can supply a better one. Run the example below in
 your Console pane.</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames_to_column</span>(mtcars, <span class="at">var =</span> <span class="st">&quot;make_model&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb195-1" tabindex="-1"></a><span class="fu">rownames_to_column</span>(mtcars, <span class="at">var =</span> <span class="st">&quot;make_model&quot;</span>)</span></code></pre></div>
 <pre><code>            make_model  mpg cyl  disp  hp drat    wt  qsec
 1            Mazda RX4 21.0   6 160.0 110 3.90 2.620 16.46
 2        Mazda RX4 Wag 21.0   6 160.0 110 3.90 2.875 17.02
@@ -1650,11 +1657,11 @@ needed.</p>
 <p>You can see the inner workings of a function by just entering it into
 the RStudio console without parentheses. For example, for sd (standard
 deviation).</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb198-1" aria-hidden="true" tabindex="-1"></a>sd</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb197-1" tabindex="-1"></a>sd</span></code></pre></div>
 <pre><code>function (x, na.rm = FALSE) 
 sqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x), 
     na.rm = na.rm))
-&lt;bytecode: 0x1565a5a90&gt;
+&lt;bytecode: 0x12c41f270&gt;
 &lt;environment: namespace:stats&gt;</code></pre>
 </div>
 <p>You can see the inner workings of the sd function. This function takes
@@ -1755,10 +1762,10 @@ have project-specific libraries. You can see the file paths to your
 available libraries with the function <em>.libPaths()</em>. This will print (to
 the Console) the path to your package library for your specific major
 version of R.</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="co"># You can check your own library path</span></span>
-<span id="cb200-2"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb200-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Run this function in your Rstudio Console to find the current library on your computer</span></span>
-<span id="cb200-3"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb200-3" aria-hidden="true" tabindex="-1"></a><span class="fu">.libPaths</span>()</span></code></pre></div>
-<pre><code>[1] &quot;/Library/Frameworks/R.framework/Versions/4.2-arm64/Resources/library&quot;</code></pre>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb199-1" tabindex="-1"></a><span class="co"># You can check your own library path</span></span>
+<span id="cb199-2"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb199-2" tabindex="-1"></a><span class="co"># Run this function in your Rstudio Console to find the current library on your computer</span></span>
+<span id="cb199-3"><a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#cb199-3" tabindex="-1"></a><span class="fu">.libPaths</span>()</span></code></pre></div>
+<pre><code>[1] &quot;/Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/library&quot;</code></pre>
 </div>
 <div id="the-building-blocks-of-r" class="section level2 hasAnchor" number="11.6">
 <h2><span class="header-section-number">11.6</span> The Building Blocks of R<a href="the-building-blocks-of-r-data-types-data-structures-functions-and-packages..html#the-building-blocks-of-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>

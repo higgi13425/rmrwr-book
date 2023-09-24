@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 26 Functions | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
-  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 26 Functions | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2023-04-06" />
+<meta name="date" content="2023-09-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,12 +53,14 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.10.2/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 <link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
@@ -128,6 +130,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="include/webex.css" type="text/css" />
 <link rel="stylesheet" href="include/style.css" type="text/css" />
@@ -581,6 +587,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="23.7" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#dumbbell-plots"><i class="fa fa-check"></i><b>23.7</b> Dumbbell Plots</a></li>
 <li class="chapter" data-level="23.8" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#spaghetti-plots-with-summary-smoothed-lines-for-change-over-time"><i class="fa fa-check"></i><b>23.8</b> Spaghetti Plots with Summary Smoothed Lines for Change Over Time</a></li>
 <li class="chapter" data-level="23.9" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#swimmer-plots"><i class="fa fa-check"></i><b>23.9</b> Swimmer Plots</a></li>
+<li class="chapter" data-level="23.10" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#adding-significance-comparisons-with-ggsignif"><i class="fa fa-check"></i><b>23.10</b> Adding Significance Comparisons with {ggsignif}</a></li>
 </ul></li>
 <li class="chapter" data-level="24" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html"><i class="fa fa-check"></i><b>24</b> Customizing Plot Scales</a>
 <ul>
@@ -841,21 +848,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 26</span> Functions<a href="functions-1.html#functions-1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Nearly everything in R and the tidyverse is built on functions. Every command you write that ends with parentheses is a function. The parentheses contain arguments (unless you just use the defaults), which the function acts upon.</p>
 <p>If you type a function into the console and forget the parentheses, you may be surprised at what you get back when you press the Enter key. Try this with the sd function by running the chunk below</p>
-<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb532-1"><a href="functions-1.html#cb532-1" aria-hidden="true" tabindex="-1"></a>sd</span></code></pre></div>
+<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="functions-1.html#cb540-1" tabindex="-1"></a>sd</span></code></pre></div>
 <p>At first this looks like computer gobbledygook, but if you look at it closely, the first line sets up the structure of the function and its arguments, and the second line defines the function as the square root of the variance of a vector that contains numbers. You are seeing the inner workings of the sd function.</p>
 <p>Other functions may be written in other languages (like C++) for more speed, but you can use R to write more R functions. When you try this for another function, like filter in the dplyr package, it is less informative. As you can see when you unpack the function below.</p>
-<div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb533-1"><a href="functions-1.html#cb533-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span>filter</span></code></pre></div>
+<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="functions-1.html#cb541-1" tabindex="-1"></a>dplyr<span class="sc">::</span>filter</span></code></pre></div>
 <div id="dont-repeat-yourself" class="section level2 hasAnchor" number="26.1">
 <h2><span class="header-section-number">26.1</span> Don’t repeat yourself<a href="functions-1.html#dont-repeat-yourself" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Functions are especially helpful when you do something repeatedly, or do the same thing on several variables or several datasets. Let’s start with a simple plot of Ct (COVID viral load) vs age for inpatients. Run the code chunk below.</p>
-<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="functions-1.html#cb534-1" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
-<span id="cb534-2"><a href="functions-1.html#cb534-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(patient_class <span class="sc">==</span> <span class="st">&quot;inpatient&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb534-3"><a href="functions-1.html#cb534-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb534-4"><a href="functions-1.html#cb534-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> ct_result) <span class="sc">+</span></span>
-<span id="cb534-5"><a href="functions-1.html#cb534-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb534-6"><a href="functions-1.html#cb534-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
-<span id="cb534-7"><a href="functions-1.html#cb534-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;viral load (in Ct)&quot;</span>,</span>
-<span id="cb534-8"><a href="functions-1.html#cb534-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Patient class: inpatient&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="functions-1.html#cb542-1" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
+<span id="cb542-2"><a href="functions-1.html#cb542-2" tabindex="-1"></a>  <span class="fu">filter</span>(patient_class <span class="sc">==</span> <span class="st">&quot;inpatient&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb542-3"><a href="functions-1.html#cb542-3" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb542-4"><a href="functions-1.html#cb542-4" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> ct_result) <span class="sc">+</span></span>
+<span id="cb542-5"><a href="functions-1.html#cb542-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb542-6"><a href="functions-1.html#cb542-6" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
+<span id="cb542-7"><a href="functions-1.html#cb542-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;viral load (in Ct)&quot;</span>,</span>
+<span id="cb542-8"><a href="functions-1.html#cb542-8" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Patient class: inpatient&quot;</span>)</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/covid-plot-1-1.png" width="672" /></p>
 <p>This is great, but you would like a similar plot for ER patients, observation patients, outpatients, etc. How do you do this without multiple copy-paste and careful edits of the key variables (often with errors)?</p>
 <p>First, you need to avoid hard-coding the specific values that change from plot to plot.</p>
@@ -864,16 +871,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>filter the data</li>
 <li>set the title (using the glue function)</li>
 </ol>
-<div class="sourceCode" id="cb535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb535-1"><a href="functions-1.html#cb535-1" aria-hidden="true" tabindex="-1"></a>patient_class_choice_env <span class="ot">=</span> <span class="st">&quot;inpatient&quot;</span></span>
-<span id="cb535-2"><a href="functions-1.html#cb535-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb535-3"><a href="functions-1.html#cb535-3" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
-<span id="cb535-4"><a href="functions-1.html#cb535-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(.data<span class="sc">$</span>patient_class <span class="sc">==</span> .env<span class="sc">$</span>patient_class_choice_env) <span class="sc">%&gt;%</span></span>
-<span id="cb535-5"><a href="functions-1.html#cb535-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb535-6"><a href="functions-1.html#cb535-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> ct_result) <span class="sc">+</span></span>
-<span id="cb535-7"><a href="functions-1.html#cb535-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb535-8"><a href="functions-1.html#cb535-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
-<span id="cb535-9"><a href="functions-1.html#cb535-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;viral load (in Ct)&quot;</span>,</span>
-<span id="cb535-10"><a href="functions-1.html#cb535-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Patient class: {patient_class_choice_env}&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb543-1"><a href="functions-1.html#cb543-1" tabindex="-1"></a>patient_class_choice_env <span class="ot">=</span> <span class="st">&quot;inpatient&quot;</span></span>
+<span id="cb543-2"><a href="functions-1.html#cb543-2" tabindex="-1"></a></span>
+<span id="cb543-3"><a href="functions-1.html#cb543-3" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
+<span id="cb543-4"><a href="functions-1.html#cb543-4" tabindex="-1"></a>  <span class="fu">filter</span>(.data<span class="sc">$</span>patient_class <span class="sc">==</span> .env<span class="sc">$</span>patient_class_choice_env) <span class="sc">%&gt;%</span></span>
+<span id="cb543-5"><a href="functions-1.html#cb543-5" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb543-6"><a href="functions-1.html#cb543-6" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> ct_result) <span class="sc">+</span></span>
+<span id="cb543-7"><a href="functions-1.html#cb543-7" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb543-8"><a href="functions-1.html#cb543-8" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
+<span id="cb543-9"><a href="functions-1.html#cb543-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;viral load (in Ct)&quot;</span>,</span>
+<span id="cb543-10"><a href="functions-1.html#cb543-10" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Patient class: {patient_class_choice_env}&quot;</span>))</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/covid-plot-2-1.png" width="672" /></p>
 <p>The use of variable pronouns is very important in the filter step.</p>
 <p>.data$patient_class means the variable “patient_class” in the currently in-use dataframe.</p>
@@ -882,16 +889,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>It is usually better to give these slightly different names. In this case, I have added the suffix, “choice_env” for the variable in the environment in which I have specified the value chosen.</p>
 <p>Let’s try another example.</p>
 <p>In the code chunk below, edit the patient_class_choice_env variable to the value “emergency”, and then run the code chunk.</p>
-<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="functions-1.html#cb536-1" aria-hidden="true" tabindex="-1"></a>patient_class_choice_env <span class="ot">=</span> <span class="st">&quot;emergency&quot;</span></span>
-<span id="cb536-2"><a href="functions-1.html#cb536-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb536-3"><a href="functions-1.html#cb536-3" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
-<span id="cb536-4"><a href="functions-1.html#cb536-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(.data<span class="sc">$</span>patient_class <span class="sc">==</span> .env<span class="sc">$</span>patient_class_choice_env) <span class="sc">%&gt;%</span></span>
-<span id="cb536-5"><a href="functions-1.html#cb536-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb536-6"><a href="functions-1.html#cb536-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> ct_result) <span class="sc">+</span></span>
-<span id="cb536-7"><a href="functions-1.html#cb536-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb536-8"><a href="functions-1.html#cb536-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
-<span id="cb536-9"><a href="functions-1.html#cb536-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;viral load (in Ct)&quot;</span>,</span>
-<span id="cb536-10"><a href="functions-1.html#cb536-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Patient class: {patient_class_choice_env}&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="functions-1.html#cb544-1" tabindex="-1"></a>patient_class_choice_env <span class="ot">=</span> <span class="st">&quot;emergency&quot;</span></span>
+<span id="cb544-2"><a href="functions-1.html#cb544-2" tabindex="-1"></a></span>
+<span id="cb544-3"><a href="functions-1.html#cb544-3" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
+<span id="cb544-4"><a href="functions-1.html#cb544-4" tabindex="-1"></a>  <span class="fu">filter</span>(.data<span class="sc">$</span>patient_class <span class="sc">==</span> .env<span class="sc">$</span>patient_class_choice_env) <span class="sc">%&gt;%</span></span>
+<span id="cb544-5"><a href="functions-1.html#cb544-5" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb544-6"><a href="functions-1.html#cb544-6" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> ct_result) <span class="sc">+</span></span>
+<span id="cb544-7"><a href="functions-1.html#cb544-7" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb544-8"><a href="functions-1.html#cb544-8" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
+<span id="cb544-9"><a href="functions-1.html#cb544-9" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;viral load (in Ct)&quot;</span>,</span>
+<span id="cb544-10"><a href="functions-1.html#cb544-10" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Patient class: {patient_class_choice_env}&quot;</span>))</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/covid-plot-3-1.png" width="672" /></p>
 <p>Fairly slick, right? You can edit and run through each value for patient_class.</p>
 <p>But what if you want to automate this, and just produce all the plots for all the possible values?</p>
@@ -900,72 +907,72 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Then, you wrap the code in curly braces, and preface it with “function(arguments)”</p>
 <p>Then you assign it to a function name.</p>
 <p>Examine, then run the example below.</p>
-<div class="sourceCode" id="cb537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb537-1"><a href="functions-1.html#cb537-1" aria-hidden="true" tabindex="-1"></a>make_covid_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(patient_class_choice_env) {</span>
-<span id="cb537-2"><a href="functions-1.html#cb537-2" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
-<span id="cb537-3"><a href="functions-1.html#cb537-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(.data<span class="sc">$</span>patient_class <span class="sc">==</span> .env<span class="sc">$</span>patient_class_choice_env) <span class="sc">%&gt;%</span> </span>
-<span id="cb537-4"><a href="functions-1.html#cb537-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb537-5"><a href="functions-1.html#cb537-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> ct_result) <span class="sc">+</span></span>
-<span id="cb537-6"><a href="functions-1.html#cb537-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb537-7"><a href="functions-1.html#cb537-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
-<span id="cb537-8"><a href="functions-1.html#cb537-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;viral load (in Ct)&quot;</span>,</span>
-<span id="cb537-9"><a href="functions-1.html#cb537-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Patient class: {patient_class_choice_env}&quot;</span>))</span>
-<span id="cb537-10"><a href="functions-1.html#cb537-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb537-11"><a href="functions-1.html#cb537-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb537-12"><a href="functions-1.html#cb537-12" aria-hidden="true" tabindex="-1"></a><span class="fu">make_covid_plot</span>(<span class="st">&quot;recurring outpatient&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="functions-1.html#cb545-1" tabindex="-1"></a>make_covid_plot <span class="ot">&lt;-</span> <span class="cf">function</span>(patient_class_choice_env) {</span>
+<span id="cb545-2"><a href="functions-1.html#cb545-2" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
+<span id="cb545-3"><a href="functions-1.html#cb545-3" tabindex="-1"></a>  <span class="fu">filter</span>(.data<span class="sc">$</span>patient_class <span class="sc">==</span> .env<span class="sc">$</span>patient_class_choice_env) <span class="sc">%&gt;%</span> </span>
+<span id="cb545-4"><a href="functions-1.html#cb545-4" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb545-5"><a href="functions-1.html#cb545-5" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> ct_result) <span class="sc">+</span></span>
+<span id="cb545-6"><a href="functions-1.html#cb545-6" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb545-7"><a href="functions-1.html#cb545-7" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
+<span id="cb545-8"><a href="functions-1.html#cb545-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;viral load (in Ct)&quot;</span>,</span>
+<span id="cb545-9"><a href="functions-1.html#cb545-9" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Patient class: {patient_class_choice_env}&quot;</span>))</span>
+<span id="cb545-10"><a href="functions-1.html#cb545-10" tabindex="-1"></a>}</span>
+<span id="cb545-11"><a href="functions-1.html#cb545-11" tabindex="-1"></a></span>
+<span id="cb545-12"><a href="functions-1.html#cb545-12" tabindex="-1"></a><span class="fu">make_covid_plot</span>(<span class="st">&quot;recurring outpatient&quot;</span>)</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/covid-plot-4-1.png" width="672" /></p>
 <p>Note that this creates a function object named <strong>make_covid_plot</strong> in your Environment pane.</p>
 <p>And you still have to call the function with the argument “recurring outpatient” to get one plot.</p>
 <p>Generally, you should write functions when you find yourself copy-pasting the same code several times.</p>
 <p>Each function should be no more than 20-30 lines. If longer, break it up into a couple of functions.</p>
 <p>You can do this repeatedly, over several values for patient_class. Try this below by editing the code chunk to make plots for “emergency” and “not applicable” patient classes.</p>
-<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="functions-1.html#cb538-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make_covid_plot</span>(<span class="st">&quot;outpatient&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="functions-1.html#cb546-1" tabindex="-1"></a><span class="fu">make_covid_plot</span>(<span class="st">&quot;outpatient&quot;</span>)</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="functions-1.html#cb539-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make_covid_plot</span>(<span class="st">&quot;observation&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb547-1"><a href="functions-1.html#cb547-1" tabindex="-1"></a><span class="fu">make_covid_plot</span>(<span class="st">&quot;observation&quot;</span>)</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/unnamed-chunk-2-2.png" width="672" /></p>
 <p>This is better, but it is still not completely automated.</p>
 <p>Let’s automate calling the function over several values with the <em>map</em> function.</p>
 <p><em>map</em> takes each element of the vector <strong>patient_class</strong> and uses it as input for <em>make_covid_plot()</em>.</p>
 <p><em>map</em> returns a list of created plots.</p>
 <p>We can return these with bracket references to items 1,2, and 3 in the list.</p>
-<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="functions-1.html#cb540-1" aria-hidden="true" tabindex="-1"></a>patient_class <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;emergency&quot;</span>, <span class="st">&quot;inpatient&quot;</span>, <span class="st">&quot;observation&quot;</span>)</span>
-<span id="cb540-2"><a href="functions-1.html#cb540-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb540-3"><a href="functions-1.html#cb540-3" aria-hidden="true" tabindex="-1"></a>plots <span class="ot">&lt;-</span> <span class="fu">map</span>(patient_class, make_covid_plot)</span>
-<span id="cb540-4"><a href="functions-1.html#cb540-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb540-5"><a href="functions-1.html#cb540-5" aria-hidden="true" tabindex="-1"></a>plots[[<span class="dv">1</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="functions-1.html#cb548-1" tabindex="-1"></a>patient_class <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;emergency&quot;</span>, <span class="st">&quot;inpatient&quot;</span>, <span class="st">&quot;observation&quot;</span>)</span>
+<span id="cb548-2"><a href="functions-1.html#cb548-2" tabindex="-1"></a></span>
+<span id="cb548-3"><a href="functions-1.html#cb548-3" tabindex="-1"></a>plots <span class="ot">&lt;-</span> <span class="fu">map</span>(patient_class, make_covid_plot)</span>
+<span id="cb548-4"><a href="functions-1.html#cb548-4" tabindex="-1"></a></span>
+<span id="cb548-5"><a href="functions-1.html#cb548-5" tabindex="-1"></a>plots[[<span class="dv">1</span>]]</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="functions-1.html#cb541-1" aria-hidden="true" tabindex="-1"></a>plots[[<span class="dv">2</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb549-1"><a href="functions-1.html#cb549-1" tabindex="-1"></a>plots[[<span class="dv">2</span>]]</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
-<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="functions-1.html#cb542-1" aria-hidden="true" tabindex="-1"></a>plots[[<span class="dv">3</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="functions-1.html#cb550-1" tabindex="-1"></a>plots[[<span class="dv">3</span>]]</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/unnamed-chunk-3-3.png" width="672" /></p>
 <p>We can make this simpler with the <em>walk</em> function.</p>
 <p>The <em>walk</em> function is like map, but it does not return values, only side effects (like printing). In this case, it is applying the <em>print</em> function to each element of the <strong>plots</strong> list.</p>
-<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb543-1"><a href="functions-1.html#cb543-1" aria-hidden="true" tabindex="-1"></a><span class="fu">walk</span>(plots, print)</span></code></pre></div>
+<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="functions-1.html#cb551-1" tabindex="-1"></a><span class="fu">walk</span>(plots, print)</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/unnamed-chunk-4-1.png" width="672" /><img src="io71-functions_plots_files/figure-html/unnamed-chunk-4-2.png" width="672" /><img src="io71-functions_plots_files/figure-html/unnamed-chunk-4-3.png" width="672" /></p>
 <p>We can automate this further, and not need to supply the vector of <strong>patient_class</strong> values. We can automate it by applying the <em>make_covid_plot</em> function to all available <strong>patient_class</strong> values.</p>
 <p>To demonstrate this, we need a more general function, with 2 arguments: one for the dataset, and one for for patient_class.</p>
 <p>We will test this on the “inpatient” class.</p>
 <p>The filtering operation will be moved outside of the function</p>
-<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="functions-1.html#cb544-1" aria-hidden="true" tabindex="-1"></a>make_covid_plot_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, patient_class) {</span>
-<span id="cb544-2"><a href="functions-1.html#cb544-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="co"># note data argument</span></span>
-<span id="cb544-3"><a href="functions-1.html#cb544-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># filtering now done outside of function</span></span>
-<span id="cb544-4"><a href="functions-1.html#cb544-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb544-5"><a href="functions-1.html#cb544-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> ct_result) <span class="sc">+</span></span>
-<span id="cb544-6"><a href="functions-1.html#cb544-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb544-7"><a href="functions-1.html#cb544-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
-<span id="cb544-8"><a href="functions-1.html#cb544-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;viral load (in Ct)&quot;</span>,</span>
-<span id="cb544-9"><a href="functions-1.html#cb544-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Patient class: {patient_class}&quot;</span>))</span>
-<span id="cb544-10"><a href="functions-1.html#cb544-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb544-11"><a href="functions-1.html#cb544-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb544-12"><a href="functions-1.html#cb544-12" aria-hidden="true" tabindex="-1"></a>data_inpatient <span class="ot">&lt;-</span> covid <span class="sc">%&gt;%</span> </span>
-<span id="cb544-13"><a href="functions-1.html#cb544-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(patient_class <span class="sc">==</span> <span class="st">&quot;inpatient&quot;</span>)</span>
-<span id="cb544-14"><a href="functions-1.html#cb544-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb544-15"><a href="functions-1.html#cb544-15" aria-hidden="true" tabindex="-1"></a><span class="fu">make_covid_plot_2</span>(data_inpatient,</span>
-<span id="cb544-16"><a href="functions-1.html#cb544-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">patient_class =</span> <span class="st">&quot;inpatient&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="functions-1.html#cb552-1" tabindex="-1"></a>make_covid_plot_2 <span class="ot">&lt;-</span> <span class="cf">function</span>(data, patient_class) {</span>
+<span id="cb552-2"><a href="functions-1.html#cb552-2" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="co"># note data argument</span></span>
+<span id="cb552-3"><a href="functions-1.html#cb552-3" tabindex="-1"></a>    <span class="co"># filtering now done outside of function</span></span>
+<span id="cb552-4"><a href="functions-1.html#cb552-4" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb552-5"><a href="functions-1.html#cb552-5" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> ct_result) <span class="sc">+</span></span>
+<span id="cb552-6"><a href="functions-1.html#cb552-6" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb552-7"><a href="functions-1.html#cb552-7" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>() <span class="sc">+</span></span>
+<span id="cb552-8"><a href="functions-1.html#cb552-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;viral load (in Ct)&quot;</span>,</span>
+<span id="cb552-9"><a href="functions-1.html#cb552-9" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Patient class: {patient_class}&quot;</span>))</span>
+<span id="cb552-10"><a href="functions-1.html#cb552-10" tabindex="-1"></a>}</span>
+<span id="cb552-11"><a href="functions-1.html#cb552-11" tabindex="-1"></a></span>
+<span id="cb552-12"><a href="functions-1.html#cb552-12" tabindex="-1"></a>data_inpatient <span class="ot">&lt;-</span> covid <span class="sc">%&gt;%</span> </span>
+<span id="cb552-13"><a href="functions-1.html#cb552-13" tabindex="-1"></a>  <span class="fu">filter</span>(patient_class <span class="sc">==</span> <span class="st">&quot;inpatient&quot;</span>)</span>
+<span id="cb552-14"><a href="functions-1.html#cb552-14" tabindex="-1"></a></span>
+<span id="cb552-15"><a href="functions-1.html#cb552-15" tabindex="-1"></a><span class="fu">make_covid_plot_2</span>(data_inpatient,</span>
+<span id="cb552-16"><a href="functions-1.html#cb552-16" tabindex="-1"></a>        <span class="at">patient_class =</span> <span class="st">&quot;inpatient&quot;</span>)</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/covid-plot-5-1.png" width="672" /></p>
 <p>Now we can try this in a tidy pipeline.</p>
 <p>We will first subset the data by nesting it with the <em>nest</em> function. Take a look at what this does</p>
-<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="functions-1.html#cb545-1" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
-<span id="cb545-2"><a href="functions-1.html#cb545-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span>patient_class)</span></code></pre></div>
+<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb553-1"><a href="functions-1.html#cb553-1" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
+<span id="cb553-2"><a href="functions-1.html#cb553-2" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span>patient_class)</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 2
 ##   patient_class        data               
 ##   &lt;chr&gt;                &lt;list&gt;             
@@ -977,9 +984,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We have essentially grouped the data in to 5 distinct tibbles (dataframes) in the list-column named <strong>data</strong>.</p>
 <p>These are dataframes in a column nested inside of a larger dataframe.</p>
 <p>Now we can make a plot from each of these smaller dataframes, using the <em>mutate</em> function and the <em>map</em> function, and our original <em>make_covid_plot</em> function.</p>
-<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb547-1"><a href="functions-1.html#cb547-1" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
-<span id="cb547-2"><a href="functions-1.html#cb547-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span>patient_class) <span class="sc">%&gt;%</span> </span>
-<span id="cb547-3"><a href="functions-1.html#cb547-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">plots =</span> <span class="fu">map</span>(patient_class, make_covid_plot)) </span></code></pre></div>
+<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="functions-1.html#cb555-1" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
+<span id="cb555-2"><a href="functions-1.html#cb555-2" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span>patient_class) <span class="sc">%&gt;%</span> </span>
+<span id="cb555-3"><a href="functions-1.html#cb555-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">plots =</span> <span class="fu">map</span>(patient_class, make_covid_plot)) </span></code></pre></div>
 <pre><code>## # A tibble: 5 × 3
 ##   patient_class        data                plots 
 ##   &lt;chr&gt;                &lt;list&gt;              &lt;list&gt;
@@ -990,40 +997,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 inpatient            &lt;tibble [111 × 16]&gt; &lt;gg&gt;</code></pre>
 <p>Now we have a column that contains the plots.</p>
 <p>We can pull these out of the dataframe into a vector with the <em>pull</em> function (because <em>walk</em> works on vectors), then <em>print</em> them to the Plots tab with the <em>walk</em> function.</p>
-<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb549-1"><a href="functions-1.html#cb549-1" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
-<span id="cb549-2"><a href="functions-1.html#cb549-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span>patient_class) <span class="sc">%&gt;%</span> </span>
-<span id="cb549-3"><a href="functions-1.html#cb549-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">plots =</span> <span class="fu">map</span>(patient_class, make_covid_plot)) <span class="sc">%&gt;%</span> </span>
-<span id="cb549-4"><a href="functions-1.html#cb549-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(plots) <span class="sc">%&gt;%</span> </span>
-<span id="cb549-5"><a href="functions-1.html#cb549-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">walk</span>(print)</span></code></pre></div>
+<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="functions-1.html#cb557-1" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
+<span id="cb557-2"><a href="functions-1.html#cb557-2" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span>patient_class) <span class="sc">%&gt;%</span> </span>
+<span id="cb557-3"><a href="functions-1.html#cb557-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">plots =</span> <span class="fu">map</span>(patient_class, make_covid_plot)) <span class="sc">%&gt;%</span> </span>
+<span id="cb557-4"><a href="functions-1.html#cb557-4" tabindex="-1"></a>  <span class="fu">pull</span>(plots) <span class="sc">%&gt;%</span> </span>
+<span id="cb557-5"><a href="functions-1.html#cb557-5" tabindex="-1"></a>  <span class="fu">walk</span>(print)</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/make-covid-plot8-1.png" width="672" /><img src="io71-functions_plots_files/figure-html/make-covid-plot8-2.png" width="672" /><img src="io71-functions_plots_files/figure-html/make-covid-plot8-3.png" width="672" /><img src="io71-functions_plots_files/figure-html/make-covid-plot8-4.png" width="672" /><img src="io71-functions_plots_files/figure-html/make-covid-plot8-5.png" width="672" /></p>
 <p>Note that we could also <em>walk</em> the <em>ggsave</em> function if we wanted to save these plots as tiffs or pdfs or png files.</p>
 <p>We can use our more generalizable function <em>make_covid_plot_2</em> in this pipeline if we use <em>map2</em>, which is like <em>map</em>, but for functions with 2 arguments. The arguments of the <em>map2</em> function include the two arguments (<strong>data</strong>, <strong>patient_class</strong>) for making plots, and then the function (<em>make_covid_plot_2</em>).</p>
-<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="functions-1.html#cb550-1" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
-<span id="cb550-2"><a href="functions-1.html#cb550-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span>patient_class) <span class="sc">%&gt;%</span> </span>
-<span id="cb550-3"><a href="functions-1.html#cb550-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">plots =</span> <span class="fu">map2</span>(data, patient_class, make_covid_plot_2)) <span class="sc">%&gt;%</span></span>
-<span id="cb550-4"><a href="functions-1.html#cb550-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(plots) <span class="sc">%&gt;%</span> </span>
-<span id="cb550-5"><a href="functions-1.html#cb550-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">walk</span>(print)</span></code></pre></div>
+<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="functions-1.html#cb558-1" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
+<span id="cb558-2"><a href="functions-1.html#cb558-2" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span>patient_class) <span class="sc">%&gt;%</span> </span>
+<span id="cb558-3"><a href="functions-1.html#cb558-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">plots =</span> <span class="fu">map2</span>(data, patient_class, make_covid_plot_2)) <span class="sc">%&gt;%</span></span>
+<span id="cb558-4"><a href="functions-1.html#cb558-4" tabindex="-1"></a>  <span class="fu">pull</span>(plots) <span class="sc">%&gt;%</span> </span>
+<span id="cb558-5"><a href="functions-1.html#cb558-5" tabindex="-1"></a>  <span class="fu">walk</span>(print)</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/make-covid-plot9-1.png" width="672" /><img src="io71-functions_plots_files/figure-html/make-covid-plot9-2.png" width="672" /><img src="io71-functions_plots_files/figure-html/make-covid-plot9-3.png" width="672" /><img src="io71-functions_plots_files/figure-html/make-covid-plot9-4.png" width="672" /><img src="io71-functions_plots_files/figure-html/make-covid-plot9-5.png" width="672" /></p>
 <p>This version of the pipeline will automatically process all patient classes in the dataset, whatever they are called, without us having to specify them.</p>
 </div>
 <div id="your-turn-2" class="section level2 hasAnchor" number="26.2">
 <h2><span class="header-section-number">26.2</span> Your Turn<a href="functions-1.html#your-turn-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let’s look at how to do this with the <strong>prostate</strong> dataset. We will start with a simple violin and jitter plot of time to recurrence by baseline Gleason score (bgs), in the subgroup where rbc_age_group = 1.</p>
-<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="functions-1.html#cb551-1" aria-hidden="true" tabindex="-1"></a>rbc_age_group <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb551-2"><a href="functions-1.html#cb551-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb551-3"><a href="functions-1.html#cb551-3" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
-<span id="cb551-4"><a href="functions-1.html#cb551-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(rbc_age_group <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb551-5"><a href="functions-1.html#cb551-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb551-6"><a href="functions-1.html#cb551-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> bgs, </span>
-<span id="cb551-7"><a href="functions-1.html#cb551-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> time_to_recurrence,</span>
-<span id="cb551-8"><a href="functions-1.html#cb551-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> bgs) <span class="sc">+</span></span>
-<span id="cb551-9"><a href="functions-1.html#cb551-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
-<span id="cb551-10"><a href="functions-1.html#cb551-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb551-11"><a href="functions-1.html#cb551-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb551-12"><a href="functions-1.html#cb551-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb551-13"><a href="functions-1.html#cb551-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Baseline Gleason Score&quot;</span>,</span>
-<span id="cb551-14"><a href="functions-1.html#cb551-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Time to Recurrence&#39;</span>,</span>
-<span id="cb551-15"><a href="functions-1.html#cb551-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Preop PSA by baseline Gleason Score for RBC Age: {rbc_age_group}&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="functions-1.html#cb559-1" tabindex="-1"></a>rbc_age_group <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb559-2"><a href="functions-1.html#cb559-2" tabindex="-1"></a></span>
+<span id="cb559-3"><a href="functions-1.html#cb559-3" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb559-4"><a href="functions-1.html#cb559-4" tabindex="-1"></a>  <span class="fu">filter</span>(rbc_age_group <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb559-5"><a href="functions-1.html#cb559-5" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb559-6"><a href="functions-1.html#cb559-6" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> bgs, </span>
+<span id="cb559-7"><a href="functions-1.html#cb559-7" tabindex="-1"></a>      <span class="at">y =</span> time_to_recurrence,</span>
+<span id="cb559-8"><a href="functions-1.html#cb559-8" tabindex="-1"></a>      <span class="at">fill =</span> bgs) <span class="sc">+</span></span>
+<span id="cb559-9"><a href="functions-1.html#cb559-9" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb559-10"><a href="functions-1.html#cb559-10" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb559-11"><a href="functions-1.html#cb559-11" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb559-12"><a href="functions-1.html#cb559-12" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb559-13"><a href="functions-1.html#cb559-13" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Baseline Gleason Score&quot;</span>,</span>
+<span id="cb559-14"><a href="functions-1.html#cb559-14" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Time to Recurrence&#39;</span>,</span>
+<span id="cb559-15"><a href="functions-1.html#cb559-15" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Preop PSA by baseline Gleason Score for RBC Age: {rbc_age_group}&quot;</span>))</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/prostate-plot-1-1.png" width="672" /></p>
 <p>We would like to make this plot for each level of rbc age (rbc_age_group).</p>
 <p>Let’s walk through the process of how to build this into a function, and how to <em>map</em> it across all the values of rbc_age_group.</p>
@@ -1032,21 +1039,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>and .env$var for an environment variable.</p>
 <p>Edit both sides of logic test in the filter statement in the code chunk below to eliminate hard coding the filter variable and the filter value.</p>
 <p>Then, check that this works for other values by changing the rbc_age_group environmental variable value to 2 or 3.</p>
-<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="functions-1.html#cb552-1" aria-hidden="true" tabindex="-1"></a>rbc_age_group <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb552-2"><a href="functions-1.html#cb552-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb552-3"><a href="functions-1.html#cb552-3" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
-<span id="cb552-4"><a href="functions-1.html#cb552-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(rbc_age_group <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb552-5"><a href="functions-1.html#cb552-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb552-6"><a href="functions-1.html#cb552-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> bgs, </span>
-<span id="cb552-7"><a href="functions-1.html#cb552-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> time_to_recurrence,</span>
-<span id="cb552-8"><a href="functions-1.html#cb552-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> bgs) <span class="sc">+</span></span>
-<span id="cb552-9"><a href="functions-1.html#cb552-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
-<span id="cb552-10"><a href="functions-1.html#cb552-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb552-11"><a href="functions-1.html#cb552-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb552-12"><a href="functions-1.html#cb552-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb552-13"><a href="functions-1.html#cb552-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Baseline Gleason Score&quot;</span>,</span>
-<span id="cb552-14"><a href="functions-1.html#cb552-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Preoperative PSA&#39;</span>,</span>
-<span id="cb552-15"><a href="functions-1.html#cb552-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Preop PSA by baseline Gleason Score for RBC Age: {rbc_age_group}&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="functions-1.html#cb560-1" tabindex="-1"></a>rbc_age_group <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb560-2"><a href="functions-1.html#cb560-2" tabindex="-1"></a></span>
+<span id="cb560-3"><a href="functions-1.html#cb560-3" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb560-4"><a href="functions-1.html#cb560-4" tabindex="-1"></a>  <span class="fu">filter</span>(rbc_age_group <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb560-5"><a href="functions-1.html#cb560-5" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb560-6"><a href="functions-1.html#cb560-6" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> bgs, </span>
+<span id="cb560-7"><a href="functions-1.html#cb560-7" tabindex="-1"></a>      <span class="at">y =</span> time_to_recurrence,</span>
+<span id="cb560-8"><a href="functions-1.html#cb560-8" tabindex="-1"></a>      <span class="at">fill =</span> bgs) <span class="sc">+</span></span>
+<span id="cb560-9"><a href="functions-1.html#cb560-9" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb560-10"><a href="functions-1.html#cb560-10" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb560-11"><a href="functions-1.html#cb560-11" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb560-12"><a href="functions-1.html#cb560-12" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb560-13"><a href="functions-1.html#cb560-13" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Baseline Gleason Score&quot;</span>,</span>
+<span id="cb560-14"><a href="functions-1.html#cb560-14" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Preoperative PSA&#39;</span>,</span>
+<span id="cb560-15"><a href="functions-1.html#cb560-15" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Preop PSA by baseline Gleason Score for RBC Age: {rbc_age_group}&quot;</span>))</span></code></pre></div>
 <p><img src="io71-functions_plots_files/figure-html/prostate-plot-2-1.png" width="672" /></p>
 <p>Now make this into a function, named <em>make_plot.</em> Edit the chunk below to turn it into a function by</p>
 <ol style="list-style-type: decimal">
@@ -1055,34 +1062,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>assigning the function to the name <em>make_plot</em></li>
 </ol>
 <p>Then run <em>make_plot</em>(1)</p>
-<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb553-1"><a href="functions-1.html#cb553-1" aria-hidden="true" tabindex="-1"></a>rbc_age_group <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb553-2"><a href="functions-1.html#cb553-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb553-3"><a href="functions-1.html#cb553-3" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb553-4"><a href="functions-1.html#cb553-4" aria-hidden="true" tabindex="-1"></a>  prostate <span class="sc">%&gt;%</span> </span>
-<span id="cb553-5"><a href="functions-1.html#cb553-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(.data<span class="sc">$</span>rbc_age_group <span class="sc">==</span> .env<span class="sc">$</span>rbc_age_group) <span class="sc">%&gt;%</span> </span>
-<span id="cb553-6"><a href="functions-1.html#cb553-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb553-7"><a href="functions-1.html#cb553-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> bgs, </span>
-<span id="cb553-8"><a href="functions-1.html#cb553-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> time_to_recurrence,</span>
-<span id="cb553-9"><a href="functions-1.html#cb553-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> bgs) <span class="sc">+</span></span>
-<span id="cb553-10"><a href="functions-1.html#cb553-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
-<span id="cb553-11"><a href="functions-1.html#cb553-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb553-12"><a href="functions-1.html#cb553-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb553-13"><a href="functions-1.html#cb553-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb553-14"><a href="functions-1.html#cb553-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Baseline Gleason Score&quot;</span>,</span>
-<span id="cb553-15"><a href="functions-1.html#cb553-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Preoperative PSA&#39;</span>,</span>
-<span id="cb553-16"><a href="functions-1.html#cb553-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Preop PSA by baseline Gleason Score for RBC Age: {rbc_age_group}&quot;</span>))</span>
-<span id="cb553-17"><a href="functions-1.html#cb553-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="functions-1.html#cb561-1" tabindex="-1"></a>rbc_age_group <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb561-2"><a href="functions-1.html#cb561-2" tabindex="-1"></a></span>
+<span id="cb561-3"><a href="functions-1.html#cb561-3" tabindex="-1"></a>{</span>
+<span id="cb561-4"><a href="functions-1.html#cb561-4" tabindex="-1"></a>  prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb561-5"><a href="functions-1.html#cb561-5" tabindex="-1"></a>  <span class="fu">filter</span>(.data<span class="sc">$</span>rbc_age_group <span class="sc">==</span> .env<span class="sc">$</span>rbc_age_group) <span class="sc">%&gt;%</span> </span>
+<span id="cb561-6"><a href="functions-1.html#cb561-6" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb561-7"><a href="functions-1.html#cb561-7" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> bgs, </span>
+<span id="cb561-8"><a href="functions-1.html#cb561-8" tabindex="-1"></a>      <span class="at">y =</span> time_to_recurrence,</span>
+<span id="cb561-9"><a href="functions-1.html#cb561-9" tabindex="-1"></a>      <span class="at">fill =</span> bgs) <span class="sc">+</span></span>
+<span id="cb561-10"><a href="functions-1.html#cb561-10" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb561-11"><a href="functions-1.html#cb561-11" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb561-12"><a href="functions-1.html#cb561-12" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb561-13"><a href="functions-1.html#cb561-13" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb561-14"><a href="functions-1.html#cb561-14" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Baseline Gleason Score&quot;</span>,</span>
+<span id="cb561-15"><a href="functions-1.html#cb561-15" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Preoperative PSA&#39;</span>,</span>
+<span id="cb561-16"><a href="functions-1.html#cb561-16" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Preop PSA by baseline Gleason Score for RBC Age: {rbc_age_group}&quot;</span>))</span>
+<span id="cb561-17"><a href="functions-1.html#cb561-17" tabindex="-1"></a>}</span></code></pre></div>
 <p>Now, let’s automate calling the function, with a vector of the values of rbc_age_group, and running the function over each of these with map(vector, function).</p>
 <p>Edit the vector and function in the code chunk below to use the <em>map</em> function to create a list of plots.</p>
 <p>Hint - the vector is provided, and your new function name is <em>make_plot.</em></p>
 <p>When it is working, simplify the plots1-3 by replacing them with <em>walk</em>(plots, print)</p>
-<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="functions-1.html#cb554-1" aria-hidden="true" tabindex="-1"></a>rbc_age_group <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
-<span id="cb554-2"><a href="functions-1.html#cb554-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb554-3"><a href="functions-1.html#cb554-3" aria-hidden="true" tabindex="-1"></a>plots <span class="ot">&lt;-</span> <span class="fu">map</span>(vector, func)</span>
-<span id="cb554-4"><a href="functions-1.html#cb554-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb554-5"><a href="functions-1.html#cb554-5" aria-hidden="true" tabindex="-1"></a>plots[[<span class="dv">1</span>]]</span>
-<span id="cb554-6"><a href="functions-1.html#cb554-6" aria-hidden="true" tabindex="-1"></a>plots[[<span class="dv">2</span>]]</span>
-<span id="cb554-7"><a href="functions-1.html#cb554-7" aria-hidden="true" tabindex="-1"></a>plots[[<span class="dv">3</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="functions-1.html#cb562-1" tabindex="-1"></a>rbc_age_group <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span></span>
+<span id="cb562-2"><a href="functions-1.html#cb562-2" tabindex="-1"></a></span>
+<span id="cb562-3"><a href="functions-1.html#cb562-3" tabindex="-1"></a>plots <span class="ot">&lt;-</span> <span class="fu">map</span>(vector, func)</span>
+<span id="cb562-4"><a href="functions-1.html#cb562-4" tabindex="-1"></a></span>
+<span id="cb562-5"><a href="functions-1.html#cb562-5" tabindex="-1"></a>plots[[<span class="dv">1</span>]]</span>
+<span id="cb562-6"><a href="functions-1.html#cb562-6" tabindex="-1"></a>plots[[<span class="dv">2</span>]]</span>
+<span id="cb562-7"><a href="functions-1.html#cb562-7" tabindex="-1"></a>plots[[<span class="dv">3</span>]]</span></code></pre></div>
 <p>Now let’s make this a more generalized function with 2 arguments - data, and rbc_age_group.</p>
 <p>Edit the code chunk below to create a new function, <em>make_plot2</em>. Remember to:</p>
 <ol style="list-style-type: decimal">
@@ -1093,45 +1100,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Replace the filter step with a separate (outside the function) filter step to filter for rbc_age_group ==1, that saves the result to data_prostate_1</li>
 <li>Then run <em>make_plot2</em></li>
 </ol>
-<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="functions-1.html#cb555-1" aria-hidden="true" tabindex="-1"></a>rbc_age_group <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb555-2"><a href="functions-1.html#cb555-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb555-3"><a href="functions-1.html#cb555-3" aria-hidden="true" tabindex="-1"></a>make_plot2 <span class="ot">&lt;-</span> <span class="cf">function</span>(arg1, arg2){</span>
-<span id="cb555-4"><a href="functions-1.html#cb555-4" aria-hidden="true" tabindex="-1"></a>  prostate <span class="sc">%&gt;%</span> </span>
-<span id="cb555-5"><a href="functions-1.html#cb555-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(.data<span class="sc">$</span>rbc_age_group <span class="sc">==</span> .env<span class="sc">$</span>rbc_age_group) <span class="sc">%&gt;%</span> </span>
-<span id="cb555-6"><a href="functions-1.html#cb555-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb555-7"><a href="functions-1.html#cb555-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> bgs, </span>
-<span id="cb555-8"><a href="functions-1.html#cb555-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> time_to_recurrence,</span>
-<span id="cb555-9"><a href="functions-1.html#cb555-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> bgs) <span class="sc">+</span></span>
-<span id="cb555-10"><a href="functions-1.html#cb555-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
-<span id="cb555-11"><a href="functions-1.html#cb555-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb555-12"><a href="functions-1.html#cb555-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb555-13"><a href="functions-1.html#cb555-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb555-14"><a href="functions-1.html#cb555-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Baseline Gleason Score&quot;</span>,</span>
-<span id="cb555-15"><a href="functions-1.html#cb555-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Preoperative PSA&#39;</span>,</span>
-<span id="cb555-16"><a href="functions-1.html#cb555-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Preop PSA by baseline Gleason Score for RBC Age: {rbc_age_group}&quot;</span>))</span>
-<span id="cb555-17"><a href="functions-1.html#cb555-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb555-18"><a href="functions-1.html#cb555-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb555-19"><a href="functions-1.html#cb555-19" aria-hidden="true" tabindex="-1"></a>data_prostate_1 <span class="ot">&lt;-</span> prostate <span class="sc">%&gt;%</span> <span class="fu">filter</span>(rbc_age_group <span class="sc">==</span> <span class="dv">1</span>)</span>
-<span id="cb555-20"><a href="functions-1.html#cb555-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb555-21"><a href="functions-1.html#cb555-21" aria-hidden="true" tabindex="-1"></a><span class="fu">make_plot2</span>(data_prostate_1, <span class="at">rbc_age_group =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="functions-1.html#cb563-1" tabindex="-1"></a>rbc_age_group <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb563-2"><a href="functions-1.html#cb563-2" tabindex="-1"></a></span>
+<span id="cb563-3"><a href="functions-1.html#cb563-3" tabindex="-1"></a>make_plot2 <span class="ot">&lt;-</span> <span class="cf">function</span>(arg1, arg2){</span>
+<span id="cb563-4"><a href="functions-1.html#cb563-4" tabindex="-1"></a>  prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb563-5"><a href="functions-1.html#cb563-5" tabindex="-1"></a>  <span class="fu">filter</span>(.data<span class="sc">$</span>rbc_age_group <span class="sc">==</span> .env<span class="sc">$</span>rbc_age_group) <span class="sc">%&gt;%</span> </span>
+<span id="cb563-6"><a href="functions-1.html#cb563-6" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb563-7"><a href="functions-1.html#cb563-7" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> bgs, </span>
+<span id="cb563-8"><a href="functions-1.html#cb563-8" tabindex="-1"></a>      <span class="at">y =</span> time_to_recurrence,</span>
+<span id="cb563-9"><a href="functions-1.html#cb563-9" tabindex="-1"></a>      <span class="at">fill =</span> bgs) <span class="sc">+</span></span>
+<span id="cb563-10"><a href="functions-1.html#cb563-10" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
+<span id="cb563-11"><a href="functions-1.html#cb563-11" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb563-12"><a href="functions-1.html#cb563-12" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb563-13"><a href="functions-1.html#cb563-13" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb563-14"><a href="functions-1.html#cb563-14" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Baseline Gleason Score&quot;</span>,</span>
+<span id="cb563-15"><a href="functions-1.html#cb563-15" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&#39;Preoperative PSA&#39;</span>,</span>
+<span id="cb563-16"><a href="functions-1.html#cb563-16" tabindex="-1"></a>       <span class="at">title =</span> <span class="fu">glue</span>(<span class="st">&quot;Preop PSA by baseline Gleason Score for RBC Age: {rbc_age_group}&quot;</span>))</span>
+<span id="cb563-17"><a href="functions-1.html#cb563-17" tabindex="-1"></a>}</span>
+<span id="cb563-18"><a href="functions-1.html#cb563-18" tabindex="-1"></a></span>
+<span id="cb563-19"><a href="functions-1.html#cb563-19" tabindex="-1"></a>data_prostate_1 <span class="ot">&lt;-</span> prostate <span class="sc">%&gt;%</span> <span class="fu">filter</span>(rbc_age_group <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb563-20"><a href="functions-1.html#cb563-20" tabindex="-1"></a></span>
+<span id="cb563-21"><a href="functions-1.html#cb563-21" tabindex="-1"></a><span class="fu">make_plot2</span>(data_prostate_1, <span class="at">rbc_age_group =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p>Now let’s try to use make_plot in a tidy pipeline in the chunk below. In the chunk below, you want to nest the data by <strong>rbc_age_group</strong>,</p>
 <p>and map the <em>make_plot</em> function over the values of <strong>rbc_age_group</strong>.</p>
 <p>Edit both of the var values in the code chunk below to <strong>rbc_age_group</strong>.</p>
 <p>Run it to see the nested tibbles and nested plots in your new dataframe.</p>
-<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="functions-1.html#cb556-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
-<span id="cb556-2"><a href="functions-1.html#cb556-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span>var) <span class="sc">%&gt;%</span> </span>
-<span id="cb556-3"><a href="functions-1.html#cb556-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">plots =</span> <span class="fu">map</span>(var, make_plot))</span></code></pre></div>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="functions-1.html#cb564-1" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb564-2"><a href="functions-1.html#cb564-2" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span>var) <span class="sc">%&gt;%</span> </span>
+<span id="cb564-3"><a href="functions-1.html#cb564-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">plots =</span> <span class="fu">map</span>(var, make_plot))</span></code></pre></div>
 <p>Now pull out the plots and print them with <em>pull</em> and <em>walk</em> by editing the code chunk below. Pipe this code into the <em>pull</em> and <em>walk</em> functions by adding two lines of code. Remember that the argument for <em>pull</em> is the <strong>plots</strong>column. Remember that the argument for <em>walk</em> is the <em>print</em> function.</p>
-<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="functions-1.html#cb557-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
-<span id="cb557-2"><a href="functions-1.html#cb557-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span>rbc_age_group) <span class="sc">%&gt;%</span> </span>
-<span id="cb557-3"><a href="functions-1.html#cb557-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">plots =</span> <span class="fu">map</span>(rbc_age_group, make_plot))</span></code></pre></div>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="functions-1.html#cb565-1" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb565-2"><a href="functions-1.html#cb565-2" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span>rbc_age_group) <span class="sc">%&gt;%</span> </span>
+<span id="cb565-3"><a href="functions-1.html#cb565-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">plots =</span> <span class="fu">map</span>(rbc_age_group, make_plot))</span></code></pre></div>
 <p>Now let’s make this even more generalizable with the <em>make_plot2</em> functiion, which has 2 arguments, for <strong>data</strong> and <strong>rbc_age_group</strong>.</p>
 <p>Edit the code chunk below to replace arg1 with the <strong>data</strong> column, and func with <em>make_plot2</em>. See if this runs</p>
-<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="functions-1.html#cb558-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
-<span id="cb558-2"><a href="functions-1.html#cb558-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span>rbc_age_group) <span class="sc">%&gt;%</span> </span>
-<span id="cb558-3"><a href="functions-1.html#cb558-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">plots =</span> <span class="fu">map2</span>(arg1, rbc_age_group, func)) <span class="sc">%&gt;%</span> </span>
-<span id="cb558-4"><a href="functions-1.html#cb558-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(plots) <span class="sc">%&gt;%</span> </span>
-<span id="cb558-5"><a href="functions-1.html#cb558-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">walk</span>(print)</span></code></pre></div>
+<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="functions-1.html#cb566-1" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb566-2"><a href="functions-1.html#cb566-2" tabindex="-1"></a>  <span class="fu">nest</span>(<span class="at">data =</span> <span class="sc">-</span>rbc_age_group) <span class="sc">%&gt;%</span> </span>
+<span id="cb566-3"><a href="functions-1.html#cb566-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">plots =</span> <span class="fu">map2</span>(arg1, rbc_age_group, func)) <span class="sc">%&gt;%</span> </span>
+<span id="cb566-4"><a href="functions-1.html#cb566-4" tabindex="-1"></a>  <span class="fu">pull</span>(plots) <span class="sc">%&gt;%</span> </span>
+<span id="cb566-5"><a href="functions-1.html#cb566-5" tabindex="-1"></a>  <span class="fu">walk</span>(print)</span></code></pre></div>
 <p>This version of the pipeline should run for all values of rbc_age_group.</p>
 </div>
 <div id="freestyle" class="section level2 hasAnchor" number="26.3">

@@ -76,7 +76,7 @@ whoami;date
 
 ```
 ## peterhiggins
-## Thu Apr  6 11:25:01 EDT 2023
+## Sun Sep 24 17:16:47 EDT 2023
 ```
 :::
 
@@ -241,6 +241,7 @@ ls
 ## Cancel Appt Epic.ppt
 ## Causal.png
 ## CellDeath_DDW_2021_ISS.pdf
+## Chat and links from R.docx
 ## Chu RPG Review_PDRH.docx
 ## Clare Higgins Final
 ## Clare Investment Summary.docx
@@ -259,6 +260,9 @@ ls
 ## Curacle CDA Higgins_20221011.docx
 ## DDW 2012 MTP Immunomodulator Talk
 ## DDW 2022 AGA Space Grid.xlsx
+## DDW 2023 Fibrosis Talk.pptx
+## DDW 2023 SoMe Talk- hellhole section.pptx
+## DDW 2023 SoMe Talk.pptx
 ## DDW JAK for UC.pptx
 ## DDW2014SD16
 ## DDW2021 CB6 powerpoint-2.pptx
@@ -346,6 +350,7 @@ ls
 ## Higgins-peter.jpg
 ## HigginsACGMidwest2019_PerioperativeIBD.pptx
 ## HigginsP_FY22_CY21 Faculty Eval_pdrh.docx
+## HigginsPeter_ CY 2022 Faculty Evaluation .docx
 ## Higgins_ACG2021.docx
 ## Higgins_Assessment_Promotion_AReinink_letterhead_sig.docx
 ## Higgins_Assessment_Promotion_AReinink_letterhead_sig.pdf
@@ -422,6 +427,7 @@ ls
 ## Jordan_MH_Slides[72]  - PDRH.pptx
 ## Jun2021_ibdTrials [Autosaved].pptx
 ## Jun2021_ibdTrials.pptx
+## Jun2023Vacation.docx
 ## K Award Institutional Letter of Commitment.pptx
 ## K Candidate Section.pptx
 ## K105_Melmed_PROs in Practice_MB_bb_JLS.pptx
@@ -435,7 +441,10 @@ ls
 ## Letter to Frank Hamilton.docx
 ## Library
 ## Lin_Reviewer Score_PDRH.docx
+## Links to publications of Peter DR Higgins with AbbVie since 2020.docx
 ## List of Useful R Packages.docx
+## LoR for Vitchapong Observer.doc
+## LoR for Vitchapong Observer.pdf
 ## Log in to IBD Server.docx
 ## Low Enrollers ACD.xlsx
 ## MCTSU QC Time to Activation (002).pptx
@@ -486,6 +495,7 @@ ls
 ## PTM LOS From PDRH.docx
 ## PTM LOS From PDRH.pdf
 ## Package List recruit
+## Pain in IBD.pptx
 ## Patient Reported Outcomes Plan.docx
 ## Pearson 5 Notes.docx
 ## Perils of Excel.pptx
@@ -513,6 +523,7 @@ ls
 ## Question 16.docx
 ## Quiros SRA- Higgins LoS draft_PDRH.docx
 ## Quiros SRA- Higgins LoS draft_PDRH.pdf
+## R-medicine2024 sponsor prospectus text.docx
 ## R01 Fibrosis 2012
 ## R01 ML revision
 ## R01 MachineLearn2010
@@ -523,6 +534,8 @@ ls
 ## RMed21-Opening remarks Day 1.pptx
 ## RMed21-Opening remarks Day 2.pptx
 ## RPPR Checklist .docx
+## R_Medicine 2023 - Friday intro slides.pptx
+## R_Medicine 2023 - Thursday intro slides.pptx
 ## Ramp up clinical research_PH.xlsx
 ## Ramping up human subject research - MM 6-1-20 _KDA_PDRH_suggestions.docx
 ## Recordings
@@ -543,6 +556,7 @@ ls
 ## SCM Mentor Letters.docx
 ## SEAN STOCKS.docx
 ## SIG_Template_IBD Program_FINAL.docx
+## SOP for Samples for IBD Biobank.docx
 ## SPECIFIC AIMS 2_PDRH.docx
 ## SPir abstract 2700
 ## Scanner pictures
@@ -634,6 +648,7 @@ ls
 ## UEI stidham files
 ## UM IBD Clinical Trials IBD referral form.docx
 ## UM Severe UC Protocol.docx
+## UM Severe UC Protocolv3.0.docx
 ## UPA_U_ACHIEVE 1st draft_PDRH.docx
 ## US_R01 outcomes I.1.docx
 ## US_R01 outcomes I.1_Dillman.docx
@@ -677,6 +692,7 @@ ls
 ## exercise1.xlsx
 ## exercise2.xlsx
 ## fellow graduation 2020.docx
+## flag_contest_submission_PDRH.pdf
 ## hershey_long_term.xlsx
 ## hexStickers.jpg
 ## higgins2x3.jpg
@@ -790,6 +806,10 @@ ls
 ## HigginsDec2018AJG_SmokingStatus.pptx
 ## HigginsFALKMadridThioMtx2017.pptx
 ## Higgins_CCC_2018_Refractory_Rising_Bar_v3.pptx
+## IBD Part 1 Higgins USMN.pptx
+## IBD Part 2 Higgins USMN.pptx
+## IBD Part 3 Higgins USMN.pptx
+## IBD Part 4 Higgins USMN.pptx
 ## IBD and PTSD.pptx
 ## IBDUpdate.pptx
 ## IOIBD.Fibrosis.Higgins.2018.Amsterdam.pptx
@@ -809,6 +829,7 @@ ls
 ## Social Media for GI.pptx
 ## SuperRough AI.pptx
 ## T32 Fellowship Annual Orientation 2023.pptx
+## T32 GI Clinical Pink Sheet analysis.pptx
 ## T32 GI Fellowship Presentation 2023.pptx
 ## ThomsonRectalStumpComplicationsIBD2_13.pptx
 ## UEGweek2020.pptx

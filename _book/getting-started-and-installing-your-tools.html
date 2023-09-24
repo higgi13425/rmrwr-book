@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Getting Started and Installing Your Tools | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
-  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Getting Started and Installing Your Tools | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2023-04-06" />
+<meta name="date" content="2023-09-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,12 +53,14 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.10.2/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 <link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
@@ -128,6 +130,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="include/webex.css" type="text/css" />
 <link rel="stylesheet" href="include/style.css" type="text/css" />
@@ -581,6 +587,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="23.7" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#dumbbell-plots"><i class="fa fa-check"></i><b>23.7</b> Dumbbell Plots</a></li>
 <li class="chapter" data-level="23.8" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#spaghetti-plots-with-summary-smoothed-lines-for-change-over-time"><i class="fa fa-check"></i><b>23.8</b> Spaghetti Plots with Summary Smoothed Lines for Change Over Time</a></li>
 <li class="chapter" data-level="23.9" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#swimmer-plots"><i class="fa fa-check"></i><b>23.9</b> Swimmer Plots</a></li>
+<li class="chapter" data-level="23.10" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#adding-significance-comparisons-with-ggsignif"><i class="fa fa-check"></i><b>23.10</b> Adding Significance Comparisons with {ggsignif}</a></li>
 </ul></li>
 <li class="chapter" data-level="24" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html"><i class="fa fa-check"></i><b>24</b> Customizing Plot Scales</a>
 <ul>
@@ -884,16 +891,16 @@ powerful programming engine, but it is not terribly comfortable or
 convenient. Base R itself is not terribly user-friendly. It is a lot like a
 drag racing car, which is basically a person with a steering wheel
 strapped to an airplane engine.</p>
-<div class="figure">
-<img src="images/drag.png" alt="" />
-<p class="caption">drag racer</p>
+<div class="float">
+<img src="images/drag.png" alt="drag racer" />
+<div class="figcaption">drag racer</div>
 </div>
 <p>Very aerodynamic and fast, but not comfortable for the long run (more
 than about 8 seconds). You will need something more like a production
 car, with a nice interior and a dashboard, and comfy leather seats.</p>
-<div class="figure">
-<img src="images/dashboard.png" width="600" alt="" />
-<p class="caption">dashboard</p>
+<div class="float">
+<img src="images/dashboard.png" width="600" alt="dashboard" />
+<div class="figcaption">dashboard</div>
 </div>
 <p>This equivalent of a comfy coding environment is provided by the RStudio
 IDE (Integrated Developer Environment). I want you to install both the R
@@ -936,22 +943,22 @@ packages do for your installation of R.</p>
 <p>Now let’s get started. Click on the blue link that says “download R”.<br />
 This will take you to a page to select your local CRAN Mirror , from
 which you will download R.</p>
-<div class="figure">
-<img src="images/cran-mirror.png" alt="" />
-<p class="caption">cran</p>
+<div class="float">
+<img src="images/cran-mirror.png" alt="cran" />
+<div class="figcaption">cran</div>
 </div>
 <p>Scroll down to your local country (yes, the USA is at the bottom), and a
 CRAN mirror near you. This is an example from the state of Michigan, in
 the USA.</p>
-<div class="figure">
-<img src="images/usa-mirrors.png" alt="" />
-<p class="caption">usa-mirrors</p>
+<div class="float">
+<img src="images/usa-mirrors.png" alt="usa-mirrors" />
+<div class="figcaption">usa-mirrors</div>
 </div>
 <p>Once you click on a CRAN Mirror site to select the location, you will be
 taken to the actual Download site.</p>
-<div class="figure">
-<img src="images/installr.png" alt="" />
-<p class="caption">install</p>
+<div class="float">
+<img src="images/installr.png" alt="install" />
+<div class="figcaption">install</div>
 </div>
 <p>Select the link for the operating system you want to use. We will walk
 through this with Windows first, then Mac. If you are using a Mac, skip
@@ -966,77 +973,77 @@ below in section 2.6.</p>
 <p>On Windows, once you have clicked through, your next screen will look
 like this:<br />
 </p>
-<div class="figure">
-<img src="images/installr2.png" alt="" />
-<p class="caption">install2</p>
+<div class="float">
+<img src="images/installr2.png" alt="install2" />
+<div class="figcaption">install2</div>
 </div>
 <p>You want to download both base and Rtools (you might need Rtools later
 to build packages for Windows). The base link will take you to the latest version,
 which will look something like this.</p>
-<div class="figure">
-<img src="images/installr3windows.png" alt="" />
-<p class="caption">install3</p>
+<div class="float">
+<img src="images/installr3windows.png" alt="install3" />
+<div class="figcaption">install3</div>
 </div>
 <p>Click on this link, and you will be able to save the latest version to a
 file named R-N.N.N-win.exe (N values vary depending on the latest
 version number, recent versions look like R-4.1.2-win.exe) to your
 Downloads folder. Click on the Save button</p>
 <p>to save it.</p>
-<div class="figure">
-<img src="images/installrsave.png" width="281" alt="" />
-<p class="caption">install4</p>
+<div class="float">
+<img src="images/installrsave.png" width="281" alt="install4" />
+<div class="figcaption">install4</div>
 </div>
 <p>Now, go to your Downloads folder in Windows, and double click on the the
 latest version of the R installation file (something like
 R-N.N.N-win.exe. Recent versions have looked something like
 R-4.1.2.exe). Click Yes to allow this to install.</p>
-<div class="figure">
-<img src="images/installrexe.png" alt="" />
-<p class="caption">install5exe</p>
+<div class="float">
+<img src="images/installrexe.png" alt="install5exe" />
+<div class="figcaption">install5exe</div>
 </div>
 <p>Now select your language option.</p>
-<div class="figure">
-<img src="images/installrEnglish.png" alt="" />
-<p class="caption">install_language</p>
+<div class="float">
+<img src="images/installrEnglish.png" alt="install_language" />
+<div class="figcaption">install_language</div>
 </div>
 <p>You will be asked to accept the GNU license - do so. Click Yes to allow
 this to install. Then select where to install - generally use the
 default- a local (often C) drive - we usually do not install on a shared
 network drive or in the cloud.</p>
-<div class="figure">
-<img src="images/installrDrive.png" alt="" />
-<p class="caption">install_drive</p>
+<div class="float">
+<img src="images/installrDrive.png" alt="install_drive" />
+<div class="figcaption">install_drive</div>
 </div>
 <p>Then select the Components - generally use the defaults, but newer
 computers can skip the 32 bit version.</p>
-<div class="figure">
-<img src="images/installrComponents.png" alt="" />
-<p class="caption">install_components</p>
+<div class="float">
+<img src="images/installrComponents.png" alt="install_components" />
+<div class="figcaption">install_components</div>
 </div>
 <p>In the next dialog box, accept the default startup options.</p>
-<div class="figure">
-<img src="images/installrdefaults.png" alt="" />
-<p class="caption">install_defaults</p>
+<div class="float">
+<img src="images/installrdefaults.png" alt="install_defaults" />
+<div class="figcaption">install_defaults</div>
 </div>
 <p>You can choose the start menu folder. The default R folder is fine.</p>
-<div class="figure">
-<img src="images/installrstartmenu.png" alt="" />
-<p class="caption">install_start</p>
+<div class="float">
+<img src="images/installrstartmenu.png" alt="install_start" />
+<div class="figcaption">install_start</div>
 </div>
 <p>If you want a shortcut icon for R on your desktop, you can leave this
 checked. But most people start RStudio, with R running within RStudio,
 rather than directly starting R. You can choose to create an R shortcut
 on your desktop in the next dialog box. You can delete it later if you
 don’t like it.</p>
-<div class="figure">
-<img src="images/installraddltasks.png" alt="" />
-<p class="caption">install_addltasks</p>
+<div class="float">
+<img src="images/installraddltasks.png" alt="install_addltasks" />
+<div class="figcaption">install_addltasks</div>
 </div>
 <p>Then the Setup Wizard will appear - click Finish, and the rest of the
 installation will occur.</p>
-<div class="figure">
-<img src="images/installrwizard.png" alt="" />
-<p class="caption">install_wizard</p>
+<div class="float">
+<img src="images/installrwizard.png" alt="install_wizard" />
+<div class="figcaption">install_wizard</div>
 </div>
 <div id="testing-r-on-windows" class="section level3 hasAnchor" number="2.5.1">
 <h3><span class="header-section-number">2.5.1</span> Testing R on Windows<a href="getting-started-and-installing-your-tools.html#testing-r-on-windows" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1048,21 +1055,21 @@ folder, and the current version folder within that one (R-N.N.N). Within
 that folder will be the bin folder, and within that will be your
 R-N.N.N.exe file. Double click on this to run it. The example paths
 below can help guide you.</p>
-<div class="figure">
-<img src="images/installwin-path2.png" alt="" />
-<p class="caption">install_path2</p>
+<div class="float">
+<img src="images/installwin-path2.png" alt="install_path2" />
+<div class="figcaption">install_path2</div>
 </div>
-<div class="figure">
-<img src="images/installrpath.png" alt="" />
-<p class="caption">install_path</p>
+<div class="float">
+<img src="images/installrpath.png" alt="install_path" />
+<div class="figcaption">install_path</div>
 </div>
 <p>Opening the exe file will open a classic year 2000-era terminal window,
 called Rterm, with 64 bit if that is what your computer uses. The
 version number should match what you downloaded. The messaging should
 end with a “&gt;” prompt.</p>
-<div class="figure">
-<img src="images/windowsrterm.png" alt="" />
-<p class="caption">install_term</p>
+<div class="float">
+<img src="images/windowsrterm.png" alt="install_term" />
+<div class="figcaption">install_term</div>
 </div>
 <p>At this prompt, type in:<br />
 </p>
@@ -1070,9 +1077,9 @@ end with a “&gt;” prompt.</p>
 <p>(don’t leave out the comma or the quotes) - then press the Enter key.</p>
 <p>This should produce the following:</p>
 <p>Two to the seventh power is 128</p>
-<div class="figure">
-<img src="images/windowstest.png" alt="" />
-<p class="caption">install_test</p>
+<div class="float">
+<img src="images/windowstest.png" alt="install_test" />
+<div class="figcaption">install_test</div>
 </div>
 <p>Note that you have explained what is being done in the text, and
 computed the result and displayed it.</p>
@@ -1087,36 +1094,36 @@ click on the Mac Download. You will then click on the link for the
 latest version of R, which will look something like R-N.N.N.pkg (recent
 versions have been something like R-4.1.2.pkg), and allow downloads from
 CRAN.</p>
-<div class="figure">
-<img src="images/installrpkgmac.png" alt="" />
-<p class="caption">install_path</p>
+<div class="float">
+<img src="images/installrpkgmac.png" alt="install_path" />
+<div class="figcaption">install_path</div>
 </div>
 <p>Then go to Finder, and navigate to the Downloads folder. Click on
 R-N.N.N.pkg You will then click on the link for R-N.N.N.pkg, and allow
 downloads from CRAN.</p>
-<div class="figure">
-<img src="images/installrdownloadsmac.png" alt="" />
-<p class="caption">install_downloadmac</p>
+<div class="float">
+<img src="images/installrdownloadsmac.png" alt="install_downloadmac" />
+<div class="figcaption">install_downloadmac</div>
 </div>
 <p>Click on Continue on 2 consecutive screens to download</p>
-<div class="figure">
-<img src="images/installrCont1mac.png" alt="" />
-<p class="caption">cont1_mac</p>
+<div class="float">
+<img src="images/installrCont1mac.png" alt="cont1_mac" />
+<div class="figcaption">cont1_mac</div>
 </div>
-<div class="figure">
-<img src="images/installrCont2mac.png" alt="" />
-<p class="caption">cont2_mac</p>
+<div class="float">
+<img src="images/installrCont2mac.png" alt="cont2_mac" />
+<div class="figcaption">cont2_mac</div>
 </div>
 <p>Then you need to agree with the License Agreement,</p>
-<div class="figure">
-<img src="images/installrmacLicense.png" alt="" />
-<p class="caption">mac_license</p>
+<div class="float">
+<img src="images/installrmacLicense.png" alt="mac_license" />
+<div class="figcaption">mac_license</div>
 </div>
 <p>then Click on Install, and provide your Mac password for permission to
 install.</p>
-<div class="figure">
-<img src="images/installrmac-install.png" alt="" />
-<p class="caption">cont1_mac</p>
+<div class="float">
+<img src="images/installrmac-install.png" alt="cont1_mac" />
+<div class="figcaption">cont1_mac</div>
 </div>
 <p>When the installation is complete, click on the Close button. Accept the
 prompt to move the installer file to the trash.</p>
@@ -1125,31 +1132,31 @@ prompt to move the installer file to the trash.</p>
 <p>If you chose to create an R desktop shortcut, double-click on this to
 start. If not, go to Finder, and then your Applications folder. Scroll
 down to the R file. Double click on this to run it.</p>
-<div class="figure">
-<img src="images/findrmac.png" alt="" />
-<p class="caption">findrmac</p>
+<div class="float">
+<img src="images/findrmac.png" alt="findrmac" />
+<div class="figcaption">findrmac</div>
 </div>
 <p>You should get this 2000-era terminal window named R Console. The
 version number should match what you downloaded, and the messaging
 should end with a “&gt;” prompt. At this prompt, type in</p>
 <p>paste(“Two to the seventh power is”, 2^7)</p>
 <p>(DON’T leave out the comma or the quotes)</p>
-<div class="figure">
-<img src="images/rconsolemac.png" alt="" />
-<p class="caption">rconsolemac</p>
+<div class="float">
+<img src="images/rconsolemac.png" alt="rconsolemac" />
+<div class="figcaption">rconsolemac</div>
 </div>
 <p>This should result in</p>
-<div class="figure">
-<img src="images/mactestR.png" alt="" />
-<p class="caption">mactestR</p>
+<div class="float">
+<img src="images/mactestR.png" alt="mactestR" />
+<div class="figcaption">mactestR</div>
 </div>
 </div>
 <div id="successful-testing" class="section level3 hasAnchor" number="2.6.2">
 <h3><span class="header-section-number">2.6.2</span> Successful testing!<a href="getting-started-and-installing-your-tools.html#successful-testing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Awesome. You are now Ready to R!</p>
-<div class="figure">
-<img src="images/ready2r.png" alt="" />
-<p class="caption">ready2R</p>
+<div class="float">
+<img src="images/ready2r.png" alt="ready2R" />
+<div class="figcaption">ready2R</div>
 </div>
 </div>
 </div>
@@ -1158,38 +1165,38 @@ should end with a “&gt;” prompt. At this prompt, type in</p>
 <p>Now that R is working, we will install RStudio. This is an IDE
 (Integrated Development Environment), with lots of bells and whistles to
 help you do reproducible medical research.</p>
-<div class="figure">
-<img src="images/teslax_dash.png" alt="" />
-<p class="caption">teslax_dash</p>
+<div class="float">
+<img src="images/teslax_dash.png" alt="teslax_dash" />
+<div class="figcaption">teslax_dash</div>
 </div>
 <p>This is a lot like adding a dashboard with polished walnut panels, a
 large video screen map, and heated car seats with Corinthian Leather.
 Not absolutely necessary, but nice to have.</p>
 <p>The RStudio IDE wraps around the R engine to make your experience more
 comfortable and efficient.</p>
-<div class="figure">
-<img src="images/camry_dash.png" alt="" />
-<p class="caption">camry_dash</p>
+<div class="float">
+<img src="images/camry_dash.png" alt="camry_dash" />
+<div class="figcaption">camry_dash</div>
 </div>
 <p>Fortunately, RStudio is a lot cheaper than any of these cars. In fact,
 it is free and open source. You can download it from the web at:</p>
 <p><a href="https://rstudio.com/products/rstudio/">rstudio</a></p>
 <p>Click on the RStudio Desktop icon to begin.</p>
-<div class="figure">
-<img src="images/rstudio_download.png" alt="" />
-<p class="caption">download</p>
+<div class="float">
+<img src="images/rstudio_download.png" alt="download" />
+<div class="figcaption">download</div>
 </div>
 <p>This will take you to a new site, where you will select the Open Source
 Edition of RStudio Desktop</p>
-<div class="figure">
-<img src="images/rstudio_opensource.png" alt="" />
-<p class="caption">open_source</p>
+<div class="float">
+<img src="images/rstudio_opensource.png" alt="open_source" />
+<div class="figcaption">open_source</div>
 </div>
 <p>This will take you to a new site, where you will select the Free Version
 of RStudio Desktop</p>
-<div class="figure">
-<img src="images/rstudio_free.png" alt="" />
-<p class="caption">free</p>
+<div class="float">
+<img src="images/rstudio_free.png" alt="free" />
+<div class="figcaption">free</div>
 </div>
 <p>Now select the right version for your Operating syxtem - Windows or Mac.</p>
 <p><br> <img src="images/rstudio_mac_win.png" alt="mac_win" /></p>
@@ -1199,31 +1206,31 @@ of RStudio Desktop</p>
 installation instructions.</p>
 <p>Now save the RStudio.N.N.N.exe file (Ns will be digits representing the
 version number) to your downloads folder.</p>
-<div class="figure">
-<img src="images/rstudio_winsave.png" alt="" />
-<p class="caption">winsave</p>
+<div class="float">
+<img src="images/rstudio_winsave.png" alt="winsave" />
+<div class="figcaption">winsave</div>
 </div>
 <p>Now go to your downloads folder, and double click on the
 RStudio.N.N.N.exe file.</p>
-<div class="figure">
-<img src="images/rstudio_winlaunch.png" alt="" />
-<p class="caption">winlaunch</p>
+<div class="float">
+<img src="images/rstudio_winlaunch.png" alt="winlaunch" />
+<div class="figcaption">winlaunch</div>
 </div>
 <p>Allow this app to make changes. Click Next to Continue, and Agree to the
 Install Location.</p>
-<div class="figure">
-<img src="images/rstudio_wininstall.png" alt="" />
-<p class="caption">wininstall</p>
+<div class="float">
+<img src="images/rstudio_wininstall.png" alt="wininstall" />
+<div class="figcaption">wininstall</div>
 </div>
 <p>Click Install to put RStudio in the default Start Menu Folder, and when
 done, click the Finish button.</p>
-<div class="figure">
-<img src="images/rstudio_winstall_start.png" alt="" />
-<p class="caption">winsave</p>
+<div class="float">
+<img src="images/rstudio_winstall_start.png" alt="winsave" />
+<div class="figcaption">winsave</div>
 </div>
-<div class="figure">
-<img src="images/winstall_finish.png" alt="" />
-<p class="caption">winfinish</p>
+<div class="float">
+<img src="images/winstall_finish.png" alt="winfinish" />
+<div class="figcaption">winfinish</div>
 </div>
 <p>Now select your preferred language option, accept the GNU license, Click
 Yes to allow this to install. Select where to install. This is generally
@@ -1244,9 +1251,9 @@ downloaded.</p>
 <p><strong>do not leave out the quotes or the comma</strong></p>
 <p>Then press the enter key</p>
 <p>and this should be your result:</p>
-<div class="figure">
-<img src="images/test_result35.png" alt="" />
-<p class="caption">test_result35</p>
+<div class="float">
+<img src="images/test_result35.png" alt="test_result35" />
+<div class="figcaption">test_result35</div>
 </div>
 <p>A successful result means that you are ready to roll in RStudio and R!</p>
 <p><img src="images/ready_to_R.png" alt="ready" /> <br></p>
@@ -1256,25 +1263,25 @@ downloaded.</p>
 <p>Start at this link: <a href="https://rstudio.com/products/rstudio/download/">RStudio
 Download</a></p>
 <p>Select the Free RStudio Desktop Version</p>
-<div class="figure">
-<img src="images/rstudio_mac_download.png" alt="" />
-<p class="caption">mac_download</p>
+<div class="float">
+<img src="images/rstudio_mac_download.png" alt="mac_download" />
+<div class="figcaption">mac_download</div>
 </div>
 <p>Then click on the big button to Download RStudio for Mac.</p>
-<div class="figure">
-<img src="images/rstudio_mac_download2.png" alt="" />
-<p class="caption">mac_download2</p>
+<div class="float">
+<img src="images/rstudio_mac_download2.png" alt="mac_download2" />
+<div class="figcaption">mac_download2</div>
 </div>
 <p>After the Download is complete, go to Finder and the Downloads Folder.
 Double click on the RStudio.N.N.N.dmg file in your Downloads folder.</p>
-<div class="figure">
-<img src="images/rstudio_mac_dmg.png" alt="" />
-<p class="caption">mac_dmg</p>
+<div class="float">
+<img src="images/rstudio_mac_dmg.png" alt="mac_dmg" />
+<div class="figcaption">mac_dmg</div>
 </div>
 <p>This will open a window that looks like this</p>
-<div class="figure">
-<img src="images/rstudio_mac_apps.png" alt="" />
-<p class="caption">mac_apps</p>
+<div class="float">
+<img src="images/rstudio_mac_apps.png" alt="mac_apps" />
+<div class="figcaption">mac_apps</div>
 </div>
 <p>Use your mouse to drag the RStudio icon into the Applications folder.</p>
 <p>Now go back to Finder, then into the Applications folder. Double click
@@ -1291,14 +1298,14 @@ with the version number of R that you installed, and a “&gt;” prompt.</p>
 <p><strong>do not leave out the quotes or the comma</strong></p>
 <p>Then press the enter key</p>
 <p>and this should be your result.</p>
-<div class="figure">
-<img src="images/test_result35.png" alt="" />
-<p class="caption">test_result35</p>
+<div class="float">
+<img src="images/test_result35.png" alt="test_result35" />
+<div class="figcaption">test_result35</div>
 </div>
 <p>A successful result means that you are ready to roll in RStudio and R!</p>
-<div class="figure">
-<img src="images/ready_to_R.png" alt="" />
-<p class="caption">ready</p>
+<div class="float">
+<img src="images/ready_to_R.png" alt="ready" />
+<div class="figcaption">ready</div>
 </div>
 </div>
 <div id="critical-setup---tuning-up-your-rstudio-installation" class="section level3 hasAnchor" number="2.7.5">

@@ -279,7 +279,7 @@ structures, and these include
      8 R5-D4              <chr [1]>
      9 Biggs Darklighter  <chr [1]>
     10 Obi-Wan Kenobi     <chr [6]>
-    # … with 77 more rows
+    # ℹ 77 more rows
     ```
     
     ```r
@@ -341,7 +341,7 @@ structures, and these include
      8 R5-D4              <chr [1]>
      9 Biggs Darklighter  <chr [1]>
     10 Obi-Wan Kenobi     <chr [6]>
-    # … with 77 more rows
+    # ℹ 77 more rows
     ```
     
     ```r
@@ -365,7 +365,7 @@ structures, and these include
      8 C-3PO          The Phantom Menace     
      9 C-3PO          Revenge of the Sith    
     10 C-3PO          Return of the Jedi     
-    # … with 163 more rows
+    # ℹ 163 more rows
     ```
     
     ```r
@@ -1060,7 +1060,7 @@ sd
 function (x, na.rm = FALSE) 
 sqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x), 
     na.rm = na.rm))
-<bytecode: 0x1565a5a90>
+<bytecode: 0x12c41f270>
 <environment: namespace:stats>
 ```
 :::
@@ -1191,7 +1191,7 @@ version of R.
 ```
 
 ```
-[1] "/Library/Frameworks/R.framework/Versions/4.2-arm64/Resources/library"
+[1] "/Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/library"
 ```
 
 ## The Building Blocks of R

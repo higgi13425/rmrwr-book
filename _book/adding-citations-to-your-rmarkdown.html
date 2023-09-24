@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 33 Adding Citations to your RMarkdown | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
-  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 33 Adding Citations to your RMarkdown | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2023-04-06" />
+<meta name="date" content="2023-09-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,12 +53,14 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.10.2/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 <link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
@@ -128,6 +130,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="include/webex.css" type="text/css" />
 <link rel="stylesheet" href="include/style.css" type="text/css" />
@@ -581,6 +587,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="23.7" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#dumbbell-plots"><i class="fa fa-check"></i><b>23.7</b> Dumbbell Plots</a></li>
 <li class="chapter" data-level="23.8" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#spaghetti-plots-with-summary-smoothed-lines-for-change-over-time"><i class="fa fa-check"></i><b>23.8</b> Spaghetti Plots with Summary Smoothed Lines for Change Over Time</a></li>
 <li class="chapter" data-level="23.9" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#swimmer-plots"><i class="fa fa-check"></i><b>23.9</b> Swimmer Plots</a></li>
+<li class="chapter" data-level="23.10" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#adding-significance-comparisons-with-ggsignif"><i class="fa fa-check"></i><b>23.10</b> Adding Significance Comparisons with {ggsignif}</a></li>
 </ul></li>
 <li class="chapter" data-level="24" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html"><i class="fa fa-check"></i><b>24</b> Customizing Plot Scales</a>
 <ul>
@@ -852,9 +859,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>You are probably familiar with some sort of commercial reference manager software, which can store and format references for manuscripts. Common products include EndNote and RefMan. RStudio markdown uses an open-source reference manager named Zotero. Zotero is free, and includes (separately) web browser extensions for Google Chrome, Firefox, and several other browsers. These “Zotero connectors” allow you to browse the web to a reference (i.e. browsing in PubMed), and allow you to save the reference to a Zotero library with a single click, without leaving your browser.</p>
 <p>We will start by downloading and installing Zotero and a web extension.</p>
 <p>Go to the Zotero web page <a href="https://www.zotero.org/download/">here</a> and download the most current version of Zotero for your computer system.</p>
-<div class="figure">
-<img src="images/Zotero_download.png" alt="" />
-<p class="caption">Zotero download page</p>
+<div class="float">
+<img src="images/Zotero_download.png" alt="Zotero download page" />
+<div class="figcaption">Zotero download page</div>
 </div>
 <p>Installation is straightforward - click on the downloaded file to start the installation process.</p>
 <p>### Installing the Zotero Connector</p>
@@ -865,24 +872,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>## Building your First Zotero Collection</p>
 <p>Open the Zotero Application.</p>
 <p>In the left pane is a listing of your Collections of references. Click on File/New Collection (or right click on My Library) to start a new collection of references. Give it a name related to some area of your research in which you already know a few relevant references. In the example below, I created a Collection for “Severe UC” (ulcerative colitis). This is stored within your <strong>My Library</strong> folder</p>
-<div class="figure">
-<img src="images/Zotero_collection.png" alt="" />
-<p class="caption">Zotero collections</p>
+<div class="float">
+<img src="images/Zotero_collection.png" alt="Zotero collections" />
+<div class="figcaption">Zotero collections</div>
 </div>
 <p>## Adding References to Your Zotero Collection</p>
 <p>Now you can go to <a href="https://pubmed.ncbi.nlm.nih.gov">PubMed</a> and search for some of your go-to references in this field.
 ## Inline Code and Caching</p>
 <p>In the example below, the Zotero Connector is able to sense that this is a reference, and the dog-eared page icon is active in the top right of the web browser (in this case, Google Chrome).</p>
 <p>If I click on the icon, this reference is saved to my default library (the first listed), or I can use the dropdown arrow to save it to a different library. Switch back to Zotero to see that the reference has been added to your library.</p>
-<div class="figure">
-<img src="images/Pubmed.png" alt="" />
-<p class="caption">Pubmed reference</p>
+<div class="float">
+<img src="images/Pubmed.png" alt="Pubmed reference" />
+<div class="figcaption">Pubmed reference</div>
 </div>
 <p>Flip back to Pubmed in the browser, and search for other helpful references, and add them to your collection. Aim for at least 5 distinct references (for now) that we can add to an rmarkdown document. Include one on some sort of methodology that you commonly use, and at least one of your own published articles.</p>
 <p>When you find helpful references, click on the Zotero Connector icon to add them to your Zotero collection.</p>
-<div class="figure">
-<img src="images/Pubmed2.png" alt="" />
-<p class="caption">Pubmed reference</p>
+<div class="float">
+<img src="images/Pubmed2.png" alt="Pubmed reference" />
+<div class="figcaption">Pubmed reference</div>
 </div>
 <p>::: tip
 Tip - you can export your MyBibliography from your Pubmed NCBI page in RIS or BibTeX format, and then import these (Zoetero File/Import) into your My Publications collection in Zotero to have these handy.
@@ -895,9 +902,9 @@ Tip - you can export your MyBibliography from your Pubmed NCBI page in RIS or Bi
 <p>Now open the file ‘manuscript.Rmd’.</p>
 <p>Your file will be in the top left pane by default, and there will be an icon at the top right that looks a little like a geometry compass, or possibly more like an Angstrom symbol (if you were chemistry major). Click on this link to make your document more like a word processor, where “what you see is what you get” (WYSIWYG). You can control styles, bold, italic, numbering, etc. from the RSVE menus, which are found in a ribbon below the main Knit menu. You can toggle this visual editor on and off to see the underlying rmarkdown symbols, code, etc. when needed.</p>
 <p>Now scroll down to the sentence, “Insert the second citation here.” Click between the last “e” and the period to prepare to insert a reference. Click on the Insert menu, and select “@ Citation”. This opens up a window to Zotero.</p>
-<div class="figure">
-<img src="images/Zotero_rmd.png" alt="" />
-<p class="caption">Zotero with Rmarkdown</p>
+<div class="float">
+<img src="images/Zotero_rmd.png" alt="Zotero with Rmarkdown" />
+<div class="figcaption">Zotero with Rmarkdown</div>
 </div>
 <p>In the left sidebar, select Zotero, then (within the <strong>My Library</strong> folder) the particular library that you created.</p>
 <p>Now select the reference that you want to use.</p>
@@ -905,9 +912,9 @@ Tip - you can export your MyBibliography from your Pubmed NCBI page in RIS or Bi
 <p>This will insert the reference into a <code>references.bib</code> file, which is the default bibliography file for each document. RStudio will create a new <code>references.bib</code> file if you don’t have one already.</p>
 <p>You can also insert citations with the @ toolbar button, or the shortcut Shift-Cmd-F8 (Mac)/ Shift-Ctrl-F8 (Windows).</p>
 <p>The citation will appear in the text like this:</p>
-<div class="figure">
-<img src="images/inserted_ref.png" alt="" />
-<p class="caption">Inserted Reference</p>
+<div class="float">
+<img src="images/inserted_ref.png" alt="Inserted Reference" />
+<div class="figcaption">Inserted Reference</div>
 </div>
 <p>You can click on the reference to see how it will be formatted in your bibliography. Insert 5 (or more) references into your document in the 5 locations where the text requests a reference.</p>
 <p>The storage and formatting of references works because of a few settings in the YAML header at the top of the document. The key one is <code>bibliography: references.bib</code>.</p>
@@ -921,37 +928,37 @@ Tip - you can export your MyBibliography from your Pubmed NCBI page in RIS or Bi
 <li><p>the-new-england-journal-of-medicine.csl</p></li>
 </ul>
 <p>When this new *.csl file is in place, you can change the bibiography style from the default by adding a line to the YAML header, just below the <code>bibliography: references.bib</code> line. Add a new line just below it with <code>csl: the-new-england-journal-of-medicine.csl</code> to set the format to the <em>NEJM</em>, or <code>csl: gastroenterology.csl</code> to set to the format of the journal <em>Gastroenterology</em>. See the formatting changes when you hover/click the references. Knit the manuscript with each of the csl formats. Now try knitting to the format of the other journal you downloaded.</p>
-<div class="figure">
-<img src="images/zotero_search.png" alt="" />
-<p class="caption">Zotero Search</p>
+<div class="float">
+<img src="images/zotero_search.png" alt="Zotero Search" />
+<div class="figcaption">Zotero Search</div>
 </div>
 <p>## Inserting References into Documents (MS Word)</p>
 <p>Zotero is bundled with a variety of plug-ins for word processors, which are added in the background. If you open your word processor, in this case, Microsoft Word, you will notice that you now have a Zotero tab on the ribbon menu.</p>
-<div class="figure">
-<img src="images/Zotero_word.png" alt="" />
-<p class="caption">Zotero in Word</p>
+<div class="float">
+<img src="images/Zotero_word.png" alt="Zotero in Word" />
+<div class="figcaption">Zotero in Word</div>
 </div>
 <p>Click on the Zotero menu tab, and you will have options to add a bibliography, or a particular citation.</p>
-<div class="figure">
-<img src="images/Zotero_insert.png" alt="" />
-<p class="caption">Zotero new citation</p>
+<div class="float">
+<img src="images/Zotero_insert.png" alt="Zotero new citation" />
+<div class="figcaption">Zotero new citation</div>
 </div>
 <p>The first time you try to add a citation or a bibliography, Zotero will ask you which journal to use as the default format. It has several examples available as defaults, but you will probably want to add formatting for journals specific to your specialty. You can change this later by clicking on Document Preferences within the Zotero menu.</p>
 <p>You can select one of the available styles, , click on the “Manage Styles” link below and to the right of the list of Citation Styles. This will bring up the Style Manager window shown below. Click on the “Get Additional Styles” button below the list of Styles.</p>
-<div class="figure">
-<img src="images/Citation_styles.png" alt="" />
-<p class="caption">Zotero new styles</p>
+<div class="float">
+<img src="images/Citation_styles.png" alt="Zotero new styles" />
+<div class="figcaption">Zotero new styles</div>
 </div>
 <p>This opens up the Zotero Style Repository. You can search for the Journal title that you want for your citation format.</p>
 <p><img src="images/Zotero_repo.png" alt="Zotero style repository" /> Once you have the formatting style sorted, you can start to insert footnotes or endnotes. A red search box will open. Start typing a search term, and options in your Zotero collection will pop up.</p>
-<div class="figure">
-<img src="images/Zotero_find.png" alt="" />
-<p class="caption">Zotero style repository</p>
+<div class="float">
+<img src="images/Zotero_find.png" alt="Zotero style repository" />
+<div class="figcaption">Zotero style repository</div>
 </div>
 <p>Click on one or more to select references. <img src="images/Zotero_ref.png" alt="Zotero reference" /> Then press the return key to insert the reference into your manuscript.</p>
-<div class="figure">
-<img src="images/Reference%20in%20Word.png" alt="" />
-<p class="caption">Zotero reference</p>
+<div class="float">
+<img src="images/Reference%20in%20Word.png" alt="Zotero reference" />
+<div class="figcaption">Zotero reference</div>
 </div>
 <p>If you like, you can change the formatting of all of the inserted references to a different style by clicking on Document Preferences in the Zotero menu.</p>
 

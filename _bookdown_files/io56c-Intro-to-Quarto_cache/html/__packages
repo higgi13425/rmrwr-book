@@ -1,10 +1,3 @@
-base
-methods
-datasets
-utils
-grDevices
-graphics
-stats
 tidyverse
 ggplot2
 tibble
@@ -19,3 +12,5 @@ medicaldata
 webexercises
 scales
 rmarkdown
+flextable
+gt

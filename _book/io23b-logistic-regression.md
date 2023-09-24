@@ -91,10 +91,6 @@ summary(prostate_model)
 ## glm(formula = recurrence ~ fam_hx + b_gs, family = binomial, 
 ##     data = .)
 ## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -1.2216  -0.5089  -0.4446  -0.2879   2.5315  
-## 
 ## Coefficients:
 ##             Estimate Std. Error z value            Pr(>|z|)
 ## (Intercept)  -3.4485     0.4347  -7.932 0.00000000000000215
@@ -131,10 +127,6 @@ You can do this in base R with `plot(model)`, but there is a prettier version in
 
 ```r
 check_model(prostate_model, panel = FALSE)
-```
-
-```
-## Variable `Component` is not in your data frame :/
 ```
 
 This generates graphs with nice subtitles to help you interpret the output. Big deviations should make you worry about one or more of the model assumptions, and may require rescaling one of your predictors.
@@ -208,11 +200,10 @@ prostate %>%
 
 ```
 ## # A tibble: 1 × 8
-##   null.de…¹ df.null logLik   AIC   BIC devia…² df.re…³  nobs
-##       <dbl>   <int>  <dbl> <dbl> <dbl>   <dbl>   <int> <int>
-## 1      289.     315  -142.  288.  296.    284.     314   316
-## # … with abbreviated variable names ¹​null.deviance,
-## #   ²​deviance, ³​df.residual
+##   null.deviance df.null logLik   AIC   BIC deviance
+##           <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>
+## 1          289.     315  -142.  288.  296.     284.
+## # ℹ 2 more variables: df.residual <int>, nobs <int>
 ```
 
 ```r
@@ -225,11 +216,10 @@ prostate %>%
 
 ```
 ## # A tibble: 1 × 8
-##   null.de…¹ df.null logLik   AIC   BIC devia…² df.re…³  nobs
-##       <dbl>   <int>  <dbl> <dbl> <dbl>   <dbl>   <int> <int>
-## 1      282.     313  -123.  253.  264.    247.     311   314
-## # … with abbreviated variable names ¹​null.deviance,
-## #   ²​deviance, ³​df.residual
+##   null.deviance df.null logLik   AIC   BIC deviance
+##           <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>
+## 1          282.     313  -123.  253.  264.     247.
+## # ℹ 2 more variables: df.residual <int>, nobs <int>
 ```
 
 You can see that adding the baseline Gleason score improves the model, as it lowers both AIC and BIC. This is not surprising, as it was a significant predictor.
@@ -259,8 +249,9 @@ augment(model)
 ##  8 8                  1      0     1  -2.26   2.17  0.00532
 ##  9 9                  0      0     1  -2.26  -0.445 0.00532
 ## 10 10                 0      0     2  -1.08  -0.764 0.00607
-## # … with 304 more rows, and 3 more variables: .sigma <dbl>,
-## #   .cooksd <dbl>, .std.resid <dbl>
+## # ℹ 304 more rows
+## # ℹ 3 more variables: .sigma <dbl>, .cooksd <dbl>,
+## #   .std.resid <dbl>
 ```
 
 Note that the fitted data are both positive and negative, with a range within +/- 4. This should tell you that they are in logit (log-odds) units (ln(p/1-p)), in which 0 is a 50% probability of either outcome.
@@ -398,9 +389,9 @@ predict(model, newdata = slice_sample(prostate, prop = 0.03), type = "response")
 
 ```
 ##          1          2          3          4          5 
-## 0.09409879 0.09409879 0.25338133 0.09409879 0.25338133 
+## 0.09409879 0.09409879 0.25338133 0.25338133 0.09409879 
 ##          6          7          8          9 
-## 0.09409879 0.04058836 0.25338133 0.25338133
+## 0.12143477 0.25338133 0.52579385 0.52579385
 ```
 
 Let’s see how this works with another dataset, from which we will use predictors to classify diabetes cases. We will start by loading the data into dm_data, and building an “all predictors” model, by specifying the formula predictors as “.” - this means to use all other variables (except the outcome variable) as predictors. Look at the model output for problems.
@@ -487,10 +478,6 @@ summary(dm_mod)
 ## Call:
 ## glm(formula = diabetes ~ ., family = "binomial", data = dm_data)
 ## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -2.7823  -0.6603  -0.3642   0.6409   2.5612  
-## 
 ## Coefficients:
 ##                Estimate  Std. Error z value
 ## (Intercept) -10.0407392   1.2176743  -8.246
@@ -532,10 +519,6 @@ summary(dm_mod)
 check_model(dm_mod)
 ```
 
-```
-## Variable `Component` is not in your data frame :/
-```
-
 <img src="io23b-logistic-regression_files/figure-html/unnamed-chunk-20-1.png" width="672" />
 
 
@@ -567,11 +550,10 @@ glance(dm_mod)
 
 ```
 ## # A tibble: 1 × 8
-##   null.de…¹ df.null logLik   AIC   BIC devia…² df.re…³  nobs
-##       <dbl>   <int>  <dbl> <dbl> <dbl>   <dbl>   <int> <int>
-## 1      498.     391  -172.  362.  398.    344.     383   392
-## # … with abbreviated variable names ¹​null.deviance,
-## #   ²​deviance, ³​df.residual
+##   null.deviance df.null logLik   AIC   BIC deviance
+##           <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>
+## 1          498.     391  -172.  362.  398.     344.
+## # ℹ 2 more variables: df.residual <int>, nobs <int>
 ```
 
 OK, let’s make some predictions, and convert these to percent probability (0-100 range).
@@ -588,23 +570,23 @@ dm_data_plus
 
 ```
 ## # A tibble: 392 × 17
-##    diabetes .fitted pct_prob .rown…¹ pregn…² glucose press…³
-##    <fct>      <dbl>    <dbl> <chr>     <dbl>   <dbl>   <dbl>
-##  1 pos         5.23     99.5 446           0     180      78
-##  2 neg         3.85     97.9 229           4     197      70
-##  3 pos         3.61     97.4 547           5     187      76
-##  4 pos         3.37     96.7 207           8     196      76
-##  5 pos         3.27     96.3 160          17     163      72
-##  6 neg         3.18     96.0 488           0     173      78
-##  7 pos         3.02     95.3 44            9     171     110
-##  8 pos         2.86     94.6 371           3     173      82
-##  9 neg         2.58     93.0 745          13     153      88
-## 10 pos         2.50     92.4 260          11     155      76
-## # … with 382 more rows, 10 more variables: triceps <dbl>,
+##    diabetes .fitted pct_prob .rownames pregnant glucose
+##    <fct>      <dbl>    <dbl> <chr>        <dbl>   <dbl>
+##  1 pos         5.23     99.5 446              0     180
+##  2 neg         3.85     97.9 229              4     197
+##  3 pos         3.61     97.4 547              5     187
+##  4 pos         3.37     96.7 207              8     196
+##  5 pos         3.27     96.3 160             17     163
+##  6 neg         3.18     96.0 488              0     173
+##  7 pos         3.02     95.3 44               9     171
+##  8 pos         2.86     94.6 371              3     173
+##  9 neg         2.58     93.0 745             13     153
+## 10 pos         2.50     92.4 260             11     155
+## # ℹ 382 more rows
+## # ℹ 11 more variables: pressure <dbl>, triceps <dbl>,
 ## #   insulin <dbl>, mass <dbl>, pedigree <dbl>, age <dbl>,
 ## #   .resid <dbl>, .hat <dbl>, .sigma <dbl>, .cooksd <dbl>,
-## #   .std.resid <dbl>, and abbreviated variable names
-## #   ¹​.rownames, ²​pregnant, ³​pressure
+## #   .std.resid <dbl>
 ```
 
 ```r
@@ -759,10 +741,6 @@ You can also check model assumptions, and model performance, even against compet
 performance::check_model(dm_mod, panel = FALSE)
 ```
 
-```
-## Variable `Component` is not in your data frame :/
-```
-
 
 
 ```r
@@ -777,7 +755,7 @@ performance::model_performance(dm_mod)
 ## 
 ## AIC     |    AICc |     BIC | Tjur's R2 |  RMSE | Sigma | Log_loss | Score_log | Score_spherical |   PCP
 ## --------------------------------------------------------------------------------------------------------
-## 362.021 | 362.492 | 397.763 |     0.364 | 0.376 | 0.948 |    0.439 |   -74.015 |           0.009 | 0.718
+## 362.021 | 362.492 | 397.763 |     0.364 | 0.376 | 1.000 |    0.439 |   -74.015 |           0.009 | 0.718
 ```
 
 
@@ -806,11 +784,10 @@ glance(dm_mod2)
 
 ```
 ## # A tibble: 1 × 8
-##   null.de…¹ df.null logLik   AIC   BIC devia…² df.re…³  nobs
-##       <dbl>   <int>  <dbl> <dbl> <dbl>   <dbl>   <int> <int>
-## 1      975.     751  -365.  738.  756.    730.     748   752
-## # … with abbreviated variable names ¹​null.deviance,
-## #   ²​deviance, ³​df.residual
+##   null.deviance df.null logLik   AIC   BIC deviance
+##           <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>
+## 1          975.     751  -365.  738.  756.     730.
+## # ℹ 2 more variables: df.residual <int>, nobs <int>
 ```
 
 
@@ -828,10 +805,6 @@ summary(dm_mod3)
 ## 
 ## Call:
 ## glm(formula = diabetes ~ 1, family = "binomial", data = dm_data)
-## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -0.9265  -0.9265  -0.9265   1.4511   1.4511  
 ## 
 ## Coefficients:
 ##             Estimate Std. Error z value            Pr(>|z|)

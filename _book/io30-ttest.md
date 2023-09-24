@@ -420,12 +420,11 @@ result
 
 ```
 ## # A tibble: 1 × 10
-##   estimate estimate1 estim…¹ stati…² p.value param…³ conf.…⁴
-##      <dbl>     <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>
-## 1   0.0577    0.0793  0.0216    1.20   0.253      12 -0.0471
-## # … with 3 more variables: conf.high <dbl>, method <chr>,
-## #   alternative <chr>, and abbreviated variable names
-## #   ¹​estimate2, ²​statistic, ³​parameter, ⁴​conf.low
+##   estimate estimate1 estimate2 statistic p.value parameter
+##      <dbl>     <dbl>     <dbl>     <dbl>   <dbl>     <dbl>
+## 1   0.0577    0.0793    0.0216      1.20   0.253        12
+## # ℹ 4 more variables: conf.low <dbl>, conf.high <dbl>,
+## #   method <chr>, alternative <chr>
 ```
 ## Reporting the results from t.test using inline code
 - use backticks before and after, start with r

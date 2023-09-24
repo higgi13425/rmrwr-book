@@ -579,7 +579,7 @@ Run the code chunk below to see how this is different.
 
 ```{r}
 head(as.data.frame(medicaldata::scurvy))
-print(tail(medicaldata::strep_tb), width = Inf)
+print(tail(medicaldata::strep_tb, width = Inf))
 ```
 
 It is actually much easier to see the full width and height of a data set by scrolling, which you can do when you *View()* a dataset in the RStudio viewer. Try this out in the Console pane, with `View(strep_tb)`.

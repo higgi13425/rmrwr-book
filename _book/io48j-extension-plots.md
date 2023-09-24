@@ -83,6 +83,7 @@ Let's start with a waffle plot of
 
 
 ```r
+library(waffle)
 indo_rct <- medicaldata::indo_rct
   scaler <- 1
 indo_data <- indo_rct %>% group_by(outcome, rx) %>% count() %>%
@@ -92,7 +93,7 @@ indo_data %>%
   #mutate(site = case_when(site == "1_UM" ~ "Michigan", site == "2_IU" ~ "Indiana", site == "3_UK" ~ "Kentucky", site == "4_Case" ~ "Case")) %>% 
   mutate(rx = str_sub(rx, 3L, 10L)) %>% 
   ggplot(aes(fill = outcome, values = n)) +
-  geom_waffle(color = "white", size=0.25, n_rows = 10, 
+  geom_waffle(color = "white", size=0.25, n_rows = 10, na.rm = TRUE,
               flip = TRUE, radius = unit(0.7, units = "mm")) +
   facet_wrap(~rx, nrow = 1, 
              strip.position = "bottom") +
@@ -731,7 +732,14 @@ This section borrows heavily from a nice blog post from statistician Kat Hoffman
 library(tidyverse)
 library(gt)
 library(rmarkdown)
+```
 
+```
+## Warning: package 'rmarkdown' was built under R version
+## 4.3.1
+```
+
+```r
 dat_long <- read_csv("https://raw.githubusercontent.com/kathoffman/steroids-trial-emulation/main/data/dat_trt_timeline.csv", col_types = list(id  = "c", steroids = "c", death = "c", severe = "c"))
 dat_long |> head()
 ```
@@ -952,15 +960,14 @@ In this code chunk, we do a bit of data wrangling as well, properly formatting t
 library(tidyverse)
 library(readxl)
 library(lubridate)
+library(openxlsx)
 
-swim_liver <- read_excel("~/Downloads/swimmer_liver.xlsx", sheet = 2) %>%
-  mutate(lvp_date = ymd(lvp_date),
-         sae_date = ymd(sae_date),
-         olt_date = ymd(olt_date),
-         eofu_date = ymd(eofu_date),
-    days_from_sae = int_length(interval(start = lvp_date, end = sae_date)/(3600*24)),
-    start = int_length(interval(start = sae_date, end = olt_date)/(3600*24)),
-    end = int_length(interval(start = sae_date, end = eofu_date)/(3600*24))) 
+swim_liver <- read.csv('data/swim_liver.csv') |> 
+  mutate(olt_date = mdy(olt_date),
+         sae_date = mdy(sae_date),
+         lvp_date = mdy(lvp_date),
+         eofu_date = mdy(eofu_date),
+         pat_id = factor(pat_id))
 ```
 
 The key events are olt - orthotopic liver transplant, sae (splenic artery embolism), lvp (large volume paracentesis), and eofu (end of follow up). Each patient has an id and multiple events occur. Each patient also has a MELD score (meld = model for end-stage liver disease), which measures how sick they were before the liver transplant (higher scores are worse).  We will start by drawing the line segments from liver transplant to end of followup, colored by meld score at the time of transplant.
@@ -970,8 +977,8 @@ The key events are olt - orthotopic liver transplant, sae (splenic artery emboli
 swim_liver %>% 
   ggplot() + 
   geom_segment(aes(x = start, xend = end,
-                   y = fct_reorder(pat_id, meld),
-                   yend = fct_reorder(pat_id, meld), 
+      y = fct_reorder(pat_id, meld),
+      yend = fct_reorder(pat_id, meld), 
                    color = meld)) +
   geom_vline(xintercept = 0) +
   theme_bw()
@@ -984,14 +991,15 @@ Now, let's add the large volume paracentesis events as points with geom_point.
 
 ```r
 swim_liver %>% 
+  filter(days_from_sae <= end) |> 
   ggplot() + 
   geom_segment(aes(x = start, xend = end,
-                   y = fct_reorder(pat_id, meld),
-                   yend = fct_reorder(pat_id, meld), 
+      y = fct_reorder(pat_id, meld),
+      yend = fct_reorder(pat_id, meld), 
                    color = meld)) +
   geom_point(aes(x=days_from_sae, 
-        y = fct_reorder(pat_id, meld), 
-        col = meld)) +
+        y = fct_reorder(pat_id, meld)),
+        color = "black") +
   geom_vline(xintercept = 0) +
   theme_bw() +
   scale_color_continuous(low = "dodgerblue1", high = 'dodgerblue4') 
@@ -1004,6 +1012,7 @@ Now we can increase the linewidth and the size of the points to make this cleare
 
 ```r
 swim_liver %>% 
+   filter(days_from_sae <= end) |> 
   ggplot() + 
   geom_segment(aes(x = start, xend = end,
                    y = fct_reorder(pat_id, meld),
@@ -1024,6 +1033,7 @@ The labels on axes and the legend are a bit of a mess still. We can clean this u
 
 ```r
 swim_liver %>% 
+   filter(days_from_sae <= end) |> 
   ggplot() + 
   geom_segment(aes(x = start, xend = end,
                    y = fct_reorder(pat_id, meld),
@@ -1034,17 +1044,17 @@ swim_liver %>%
     geom_point(aes(x = start, y = fct_reorder(pat_id, meld)),
         shape =1, color = "red", stroke =2, size =3) +
   geom_vline(xintercept = 0) +
-  annotate("text", x = -220, y= 12.5, label = "Red circles represent\nthe OLT date, \nEach black dot represents\none large volume\nparacentesis, \n Splenic Intervention at Day 0") +
+  annotate("text", x = -225, y= 11.5, label = "Red circles represent\nthe OLT date, \nEach black dot represents\none large volume\nparacentesis, \n Splenic Intervention at Day 0") +
   theme_bw() +
   scale_color_continuous(low = "dodgerblue1", high = 'dodgerblue4')  +
-  labs(x="Days Relative to Splenic Intervention",y="Patient\nnumber",title="Large Volume Paracentesis Timeline\nfor 12 Patients from OLT Date\nto End of FollowUp") +
+  labs(x="Days Relative to Splenic Intervention",y="Patient\nnumber",title="Large Volume Paracentesis\nTimeline for 12 Patients from OLT Date\nto End of FollowUp") +
   theme(# text=element_text(family="Poppins", size=11),
         title = element_text(angle = 0, vjust=.5, size=12, face="bold"),
         axis.title.y = element_text(angle = 0, vjust=.5, size=12, face="bold"),
         axis.title.x = element_text(size=15, face="bold", vjust=-0.5, hjust=0),
         axis.text.y = element_text(size=10, hjust=1.5),
         axis.ticks.y = element_blank(),
-        legend.position = c(0.1, 0.8),
+        legend.position = c(0.12, 0.6),
         legend.title = element_text(colour="black", size=13),
         legend.text = element_text(colour="black", size=10),
         legend.background = element_rect(size=0.5, linetype="solid", colour ="gray30"),
@@ -1055,9 +1065,147 @@ swim_liver %>%
 
 <img src="io48j-extension-plots_files/figure-html/unnamed-chunk-22-1.png" width="672" />
 
-
-
 You can explore other (similar) approaches to swimmer plots, including the {swimmer} package [here](https://cran.r-project.org/web/packages/swimplot/vignettes/Introduction.to.swimplot.html) in a blog post by Jessica Weiss.
 
 
+## Adding Significance Comparisons with {ggsignif}
+
+It is common to compare continuous outcomes across categories with scatter plots or box plots, but we often see comparison bars and p values added. This can be added to a ggplot with the {ggsignif} package. Let's load some libraries and some data in the code chunk below. Then we will do a basic boxplot.
+
+
+```r
+library(tidyverse)
+library(ggsignif)
+library(medicaldata)
+
+dat <- medicaldata::diabetes
+ggplot(dat) +
+  aes(x = fct_lump(as_factor(pregnancy_num), n = 3), y = `glucose_mg-dl`) +
+  geom_boxplot() +
+  labs(y = "Glucose in mg/dL",
+       x = "Pregnancy Number") +
+  theme_bw() 
+```
+
+<img src="io48j-extension-plots_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+
+There seems to be a downward trend of fasting serum glucose from 0 to 2 pregnancies, then a rise in glucose with >=3 pregnancies.
+Now imagine that you would like to know if the difference in mean glucose between 0 and 2 pregnancies, or 2 and more than 2, are significant. And you want to display it on your plot.
+You can use the geom_signif() geom from the {ggsignif} package. The arguments include the:
+- comparisons = list(c("cat1", "cat2")) # in quotes with names, or use the numbers of categories from left to right
+- y_position = NN # manually control where on y axis
+- tip_length = 1 (can use 0, 0.5, modify as needed
+- xmin and xmax - can set the width. If you have more than one comparison, can use a vector, i.e. xmin = c(0.1, 1.8)
+- annotation - can replace p value with "NS" or "**", or whatever you want
+- vjust = -0.2 (set a value to adjust the vertical justification of the annotation of p value - above or below the bar as needed)
+
+
+
+```r
+library(tidyverse)
+library(ggsignif)
+library(medicaldata)
+
+dat <- medicaldata::diabetes
+ggplot(dat) +
+  aes(x = fct_lump(as_factor(pregnancy_num), n = 3), y = `glucose_mg-dl`) +
+  geom_boxplot() +
+  labs(y = "Glucose in mg/dL",
+       x = "Pregnancy Number") +
+  theme_bw() +
+  geom_signif(y_position = 200,
+              comparison = list(c(1,3)),
+              tip_length = 0.005) +
+  geom_signif(y_position = 195,
+              comparison = list(c(1,2)),
+              tip_length = 0.01) +
+  geom_signif(y_position = 197,
+              comparison = list(c(3,4)),
+              tip_length = 0.02) +
+  geom_signif(y_position = 179,
+              comparison = list(c(2,3)),
+              tip_length = 0.02,
+              annotation = "NS") 
+```
+
+<img src="io48j-extension-plots_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+
+We can add specific pairwise comparisons and position their height (on the y axis) with geom_signif.
+
+You can learn more about 
+the {ggsignif} package at its [webpage](https://cran.r-project.org/web/packages/ggsignif/vignettes/intro.html).
+
+
+
+:::tryit
+
+Now try this yourself. Copy the code below (click on the copy icon in the top right of the code chunk), paste it into your RStudio IDE, and edit to:
+
+- compare spring to summer
+- compare summer to winter
+- put these at appropriate y_postions with appropriate tip_lengths - your choice
+
+
+```r
+library(tidyverse)
+library(ggsignif)
+library(medicaldata)
+
+dat <- medicaldata::abm |> 
+  mutate(season = case_when(month >5 &
+                  month <9 ~ "summer",
+                  month >2 &
+                  month <6 ~ "spring",
+                  month >8 &
+                  month <12 ~ "fall",
+                  TRUE ~ "winter"))
+ggplot(dat) +
+  aes(x = season, y = csf_gluc) +
+  geom_boxplot() +
+  labs(y = "CSF Glucose in mg/dL",
+       x = "Season") +
+  theme_bw()
+```
+
+<img src="io48j-extension-plots_files/figure-html/unnamed-chunk-25-1.png" width="672" />
+
+
+
+<div class='webex-solution'><button>Solution ggsignif</button>
+
+
+```r
+library(tidyverse)
+library(ggsignif)
+library(medicaldata)
+
+dat <- medicaldata::abm |> 
+  mutate(season = case_when(month >5 &
+                  month <9 ~ "summer",
+                  month >2 &
+                  month <6 ~ "spring",
+                  month >8 &
+                  month <12 ~ "fall",
+                  TRUE ~ "winter"))
+ggplot(dat) +
+  aes(x = season, y = csf_gluc) +
+  geom_boxplot() +
+  labs(y = "CSF Glucose in mg/dL",
+       x = "Season") +
+  theme_bw() +
+  geom_signif(y_position = 200,
+              comparison = list(c(2,3)),
+              tip_length = 0.005) +
+  geom_signif(y_position = 190,
+              comparison = list(c(3,4)),
+              tip_length = 0.01) 
+```
+
+<img src="io48j-extension-plots_files/figure-html/unnamed-chunk-26-1.png" width="672" />
+
+
+</div>
+
+
+:::
 

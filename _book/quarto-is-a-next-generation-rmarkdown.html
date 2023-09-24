@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 34 Quarto is a Next-Generation RMarkdown | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
-  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 34 Quarto is a Next-Generation RMarkdown | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2023-04-06" />
+<meta name="date" content="2023-09-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,12 +53,14 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.10.2/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 <link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
@@ -128,6 +130,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="include/webex.css" type="text/css" />
 <link rel="stylesheet" href="include/style.css" type="text/css" />
@@ -581,6 +587,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="23.7" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#dumbbell-plots"><i class="fa fa-check"></i><b>23.7</b> Dumbbell Plots</a></li>
 <li class="chapter" data-level="23.8" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#spaghetti-plots-with-summary-smoothed-lines-for-change-over-time"><i class="fa fa-check"></i><b>23.8</b> Spaghetti Plots with Summary Smoothed Lines for Change Over Time</a></li>
 <li class="chapter" data-level="23.9" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#swimmer-plots"><i class="fa fa-check"></i><b>23.9</b> Swimmer Plots</a></li>
+<li class="chapter" data-level="23.10" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#adding-significance-comparisons-with-ggsignif"><i class="fa fa-check"></i><b>23.10</b> Adding Significance Comparisons with {ggsignif}</a></li>
 </ul></li>
 <li class="chapter" data-level="24" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html"><i class="fa fa-check"></i><b>24</b> Customizing Plot Scales</a>
 <ul>
@@ -850,16 +857,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="packages-needed-for-this-chapter-6" class="section level2 hasAnchor" number="34.2">
 <h2><span class="header-section-number">34.2</span> Packages Needed for this chapter<a href="quarto-is-a-next-generation-rmarkdown.html#packages-needed-for-this-chapter-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You will need {tidyverse}, {medicaldata}, {rmarkdown}, {flextable), {gt}, and updated versions of R and RStudio. If needed, copy the block of code below into your RStudio and run the code to load these packages. You can remove the hashtags from the <code>install.packages</code> functions to install these packages if needed.</p>
-<div class="sourceCode" id="cb729"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb729-1"><a href="quarto-is-a-next-generation-rmarkdown.html#cb729-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&#39;tidyverse&#39;)</span></span>
-<span id="cb729-2"><a href="quarto-is-a-next-generation-rmarkdown.html#cb729-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&#39;medicaldata&#39;)</span></span>
-<span id="cb729-3"><a href="quarto-is-a-next-generation-rmarkdown.html#cb729-3" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&#39;rmarkdown&#39;)</span></span>
-<span id="cb729-4"><a href="quarto-is-a-next-generation-rmarkdown.html#cb729-4" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&#39;flextable&#39;)</span></span>
-<span id="cb729-5"><a href="quarto-is-a-next-generation-rmarkdown.html#cb729-5" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&#39;gt&#39;)</span></span>
-<span id="cb729-6"><a href="quarto-is-a-next-generation-rmarkdown.html#cb729-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb729-7"><a href="quarto-is-a-next-generation-rmarkdown.html#cb729-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb729-8"><a href="quarto-is-a-next-generation-rmarkdown.html#cb729-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rmarkdown)</span>
-<span id="cb729-9"><a href="quarto-is-a-next-generation-rmarkdown.html#cb729-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
-<span id="cb729-10"><a href="quarto-is-a-next-generation-rmarkdown.html#cb729-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span></code></pre></div>
+<div class="sourceCode" id="cb731"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb731-1"><a href="quarto-is-a-next-generation-rmarkdown.html#cb731-1" tabindex="-1"></a><span class="co"># install.packages(&#39;tidyverse&#39;)</span></span>
+<span id="cb731-2"><a href="quarto-is-a-next-generation-rmarkdown.html#cb731-2" tabindex="-1"></a><span class="co"># install.packages(&#39;medicaldata&#39;)</span></span>
+<span id="cb731-3"><a href="quarto-is-a-next-generation-rmarkdown.html#cb731-3" tabindex="-1"></a><span class="co"># install.packages(&#39;rmarkdown&#39;)</span></span>
+<span id="cb731-4"><a href="quarto-is-a-next-generation-rmarkdown.html#cb731-4" tabindex="-1"></a><span class="co"># install.packages(&#39;flextable&#39;)</span></span>
+<span id="cb731-5"><a href="quarto-is-a-next-generation-rmarkdown.html#cb731-5" tabindex="-1"></a><span class="co"># install.packages(&#39;gt&#39;)</span></span>
+<span id="cb731-6"><a href="quarto-is-a-next-generation-rmarkdown.html#cb731-6" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb731-7"><a href="quarto-is-a-next-generation-rmarkdown.html#cb731-7" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb731-8"><a href="quarto-is-a-next-generation-rmarkdown.html#cb731-8" tabindex="-1"></a><span class="fu">library</span>(rmarkdown)</span></code></pre></div>
+<pre><code>## Warning: package &#39;rmarkdown&#39; was built under R version
+## 4.3.1</code></pre>
+<div class="sourceCode" id="cb733"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb733-1"><a href="quarto-is-a-next-generation-rmarkdown.html#cb733-1" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
+<span id="cb733-2"><a href="quarto-is-a-next-generation-rmarkdown.html#cb733-2" tabindex="-1"></a><span class="fu">library</span>(gt)</span></code></pre></div>
 </div>
 <div id="introducing-quarto" class="section level2 hasAnchor" number="34.3">
 <h2><span class="header-section-number">34.3</span> Introducing Quarto<a href="quarto-is-a-next-generation-rmarkdown.html#introducing-quarto" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -878,11 +887,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">34.5</span> Opening a New Quarto Document<a href="quarto-is-a-next-generation-rmarkdown.html#opening-a-new-quarto-document" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Try this yourself - in RStudio, open New File/Quarto Document, and select HTML as the format. Give it a title and author, then click the <code>Create</code> button.</p>
 <p>The default document starts with a YAML chunk, which controls the document output and global options, which looks something like this:</p>
-<div class="sourceCode" id="cb730"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb730-1"><a href="quarto-is-a-next-generation-rmarkdown.html#cb730-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb730-2"><a href="quarto-is-a-next-generation-rmarkdown.html#cb730-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;Prostate data&quot;</span></span>
-<span id="cb730-3"><a href="quarto-is-a-next-generation-rmarkdown.html#cb730-3" aria-hidden="true" tabindex="-1"></a>date<span class="sc">:</span> <span class="dv">2022-09-12</span></span>
-<span id="cb730-4"><a href="quarto-is-a-next-generation-rmarkdown.html#cb730-4" aria-hidden="true" tabindex="-1"></a>format<span class="sc">:</span> html</span>
-<span id="cb730-5"><a href="quarto-is-a-next-generation-rmarkdown.html#cb730-5" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb734"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb734-1"><a href="quarto-is-a-next-generation-rmarkdown.html#cb734-1" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb734-2"><a href="quarto-is-a-next-generation-rmarkdown.html#cb734-2" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;Prostate data&quot;</span></span>
+<span id="cb734-3"><a href="quarto-is-a-next-generation-rmarkdown.html#cb734-3" tabindex="-1"></a>date<span class="sc">:</span> <span class="dv">2022-09-12</span></span>
+<span id="cb734-4"><a href="quarto-is-a-next-generation-rmarkdown.html#cb734-4" tabindex="-1"></a>format<span class="sc">:</span> html</span>
+<span id="cb734-5"><a href="quarto-is-a-next-generation-rmarkdown.html#cb734-5" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
 <p>The rest of the document consists of explanatory text and code chunks. The explanatory text can be formatted in the Visual Editor (as in MS Word) or in the source editor with markdown tags for bold, italic, etc.</p>
 </div>
 <div id="annotating-code-in-quarto" class="section level2 hasAnchor" number="34.6">
@@ -891,15 +900,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>You first add the code-annotations style to the YAML header as shown below (options - below, hover, or select), <br>
 then add comments as numbers between angle brackets (you can apply the same number to more than one line),
 then detail the numbers with full comments below the code chunk, as shown below</p>
-<div class="sourceCode" id="cb731"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb731-1"><a href="quarto-is-a-next-generation-rmarkdown.html#cb731-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb731-2"><a href="quarto-is-a-next-generation-rmarkdown.html#cb731-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Add to YAML header</span></span>
-<span id="cb731-3"><a href="quarto-is-a-next-generation-rmarkdown.html#cb731-3" aria-hidden="true" tabindex="-1"></a>code<span class="sc">-</span>annotations<span class="sc">:</span> hover</span>
-<span id="cb731-4"><a href="quarto-is-a-next-generation-rmarkdown.html#cb731-4" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb731-5"><a href="quarto-is-a-next-generation-rmarkdown.html#cb731-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb731-6"><a href="quarto-is-a-next-generation-rmarkdown.html#cb731-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb731-7"><a href="quarto-is-a-next-generation-rmarkdown.html#cb731-7" aria-hidden="true" tabindex="-1"></a>medicaldata<span class="sc">::</span>abm <span class="sc">|&gt;</span>                         <span class="co">#&lt;1&gt;</span></span>
-<span id="cb731-8"><a href="quarto-is-a-next-generation-rmarkdown.html#cb731-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gluc_ratio =</span> csf_gluc<span class="sc">/</span>blood_gluc,  <span class="co">#&lt;2&gt;</span></span>
-<span id="cb731-9"><a href="quarto-is-a-next-generation-rmarkdown.html#cb731-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">wbc_ratio =</span> csf_wbc<span class="sc">/</span>blood_wbc)     <span class="co">#&lt;2&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb735"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb735-1"><a href="quarto-is-a-next-generation-rmarkdown.html#cb735-1" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb735-2"><a href="quarto-is-a-next-generation-rmarkdown.html#cb735-2" tabindex="-1"></a><span class="co"># Add to YAML header</span></span>
+<span id="cb735-3"><a href="quarto-is-a-next-generation-rmarkdown.html#cb735-3" tabindex="-1"></a>code<span class="sc">-</span>annotations<span class="sc">:</span> hover</span>
+<span id="cb735-4"><a href="quarto-is-a-next-generation-rmarkdown.html#cb735-4" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb735-5"><a href="quarto-is-a-next-generation-rmarkdown.html#cb735-5" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb735-6"><a href="quarto-is-a-next-generation-rmarkdown.html#cb735-6" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb735-7"><a href="quarto-is-a-next-generation-rmarkdown.html#cb735-7" tabindex="-1"></a>medicaldata<span class="sc">::</span>abm <span class="sc">|&gt;</span>                         <span class="co">#&lt;1&gt;</span></span>
+<span id="cb735-8"><a href="quarto-is-a-next-generation-rmarkdown.html#cb735-8" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gluc_ratio =</span> csf_gluc<span class="sc">/</span>blood_gluc,  <span class="co">#&lt;2&gt;</span></span>
+<span id="cb735-9"><a href="quarto-is-a-next-generation-rmarkdown.html#cb735-9" tabindex="-1"></a>         <span class="at">wbc_ratio =</span> csf_wbc<span class="sc">/</span>blood_wbc)     <span class="co">#&lt;2&gt;</span></span></code></pre></div>
 <ol style="list-style-type: decimal">
 <li>Take the abm dataset, and then</li>
 <li>add new columns for glucose and wbc ratio</li>
@@ -907,60 +916,60 @@ then detail the numbers with full comments below the code chunk, as shown below<
 <p>Then, when you hover over the comment number, the text comment is shown.
 The select option requires clicking the number.</p>
 <p>This requires at least Quarto version &gt;= 1.3, and when rendered, looks like this (with the annotation markers that you can hover over circled in red in this case):</p>
-<div class="figure">
-<img src="images/Quarto_code_annotation.png" alt="" />
-<p class="caption">Quarto code annotation</p>
+<div class="float">
+<img src="images/Quarto_code_annotation.png" alt="Quarto code annotation" />
+<div class="figcaption">Quarto code annotation</div>
 </div>
 </div>
 <div id="the-visual-editor-vs.-source-editor-in-quarto" class="section level2 hasAnchor" number="34.7">
 <h2><span class="header-section-number">34.7</span> The Visual Editor vs. Source Editor in Quarto<a href="quarto-is-a-next-generation-rmarkdown.html#the-visual-editor-vs.-source-editor-in-quarto" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When the Visual Editor is activated by its toggle button, you will see a toolbar at the top of your source pane that looks like this:</p>
 <p><img src="images/Visual%20Editor%20Quarto.png" fig-alt="Quarto Visual Editor" alt="The Quarto Visual Editor" /> This allows you to easily apply bold, italic, or code formatting, insert headers of several levels, bulleted or numbered lists, links, images, or tables. <br> The Source Editor toggle button gives you a display that is not as pretty, but it shows all the markdown tags, and gives you finer control of formatting, and looks more like this:</p>
-<div class="sourceCode" id="cb732"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb732-1"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Text formatting</span></span>
-<span id="cb732-2"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb732-3"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-3" aria-hidden="true" tabindex="-1"></a><span class="sc">*</span>italic<span class="sc">*</span> <span class="er">**</span>bold<span class="sc">**</span> <span class="er">~~</span>strikeout<span class="sc">~</span><span class="er">~</span> <span class="st">`</span><span class="at">code</span><span class="st">`</span></span>
-<span id="cb732-4"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb732-5"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-5" aria-hidden="true" tabindex="-1"></a>superscript<span class="sc">^</span><span class="dv">2</span><span class="sc">^</span> subscript<span class="sc">~</span><span class="dv">2</span><span class="sc">~</span></span>
-<span id="cb732-6"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb732-7"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-7" aria-hidden="true" tabindex="-1"></a>[underline]{.underline} [small caps]{.smallcaps}</span>
-<span id="cb732-8"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb732-9"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Headings</span></span>
-<span id="cb732-10"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb732-11"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 1st Level Header</span></span>
-<span id="cb732-12"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb732-13"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 2nd Level Header</span></span>
-<span id="cb732-14"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb732-15"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-15" aria-hidden="true" tabindex="-1"></a><span class="do">### 3rd Level Header</span></span>
-<span id="cb732-16"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb732-17"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-17" aria-hidden="true" tabindex="-1"></a><span class="do">## Lists</span></span>
-<span id="cb732-18"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb732-19"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-19" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span>   Bulleted list item <span class="dv">1</span></span>
-<span id="cb732-20"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb732-21"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-21" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span>   Item <span class="dv">2</span></span>
-<span id="cb732-22"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb732-23"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-23" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span>   Item 2a</span>
-<span id="cb732-24"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb732-25"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-25" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span>   Item 2b</span>
-<span id="cb732-26"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb732-27"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-27" aria-hidden="true" tabindex="-1"></a><span class="fl">1.</span>  Numbered list item <span class="dv">1</span></span>
-<span id="cb732-28"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb732-29"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-29" aria-hidden="true" tabindex="-1"></a><span class="fl">2.</span>  Item <span class="fl">2.</span></span>
-<span id="cb732-30"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-30" aria-hidden="true" tabindex="-1"></a>    The numbers are incremented automatically <span class="cf">in</span> the output.</span>
-<span id="cb732-31"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb732-32"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-32" aria-hidden="true" tabindex="-1"></a><span class="do">## Links and images</span></span>
-<span id="cb732-33"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb732-34"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-34" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>http<span class="sc">:</span><span class="er">//</span>example.com<span class="sc">&gt;</span></span>
-<span id="cb732-35"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb732-36"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-36" aria-hidden="true" tabindex="-1"></a>[linked phrase](http<span class="sc">:</span><span class="er">//</span>example.com)</span>
-<span id="cb732-37"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb732-38"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-38" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>[optional caption text](path<span class="sc">/</span>quarto.png){fig<span class="sc">-</span>alt<span class="ot">=</span><span class="st">&quot;Quarto logo&quot;</span>}</span>
-<span id="cb732-39"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb732-40"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-40" aria-hidden="true" tabindex="-1"></a><span class="do">## Tables</span></span>
-<span id="cb732-41"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb732-42"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-42" aria-hidden="true" tabindex="-1"></a><span class="sc">|</span> First Header <span class="sc">|</span> Second Header <span class="sc">|</span></span>
-<span id="cb732-43"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-43" aria-hidden="true" tabindex="-1"></a><span class="er">|</span><span class="sc">--------------</span><span class="er">|</span><span class="sc">---------------</span><span class="er">|</span></span>
-<span id="cb732-44"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-44" aria-hidden="true" tabindex="-1"></a><span class="er">|</span> Content Cell <span class="sc">|</span> Content Cell  <span class="sc">|</span></span>
-<span id="cb732-45"><a href="quarto-is-a-next-generation-rmarkdown.html#cb732-45" aria-hidden="true" tabindex="-1"></a><span class="er">|</span> Content Cell <span class="sc">|</span> Content Cell  <span class="sc">|</span></span></code></pre></div>
+<div class="sourceCode" id="cb736"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb736-1"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-1" tabindex="-1"></a><span class="do">## Text formatting</span></span>
+<span id="cb736-2"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-2" tabindex="-1"></a></span>
+<span id="cb736-3"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-3" tabindex="-1"></a><span class="sc">*</span>italic<span class="sc">*</span> <span class="er">**</span>bold<span class="sc">**</span> <span class="er">~~</span>strikeout<span class="sc">~</span><span class="er">~</span> <span class="st">`</span><span class="at">code</span><span class="st">`</span></span>
+<span id="cb736-4"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-4" tabindex="-1"></a></span>
+<span id="cb736-5"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-5" tabindex="-1"></a>superscript<span class="sc">^</span><span class="dv">2</span><span class="sc">^</span> subscript<span class="sc">~</span><span class="dv">2</span><span class="sc">~</span></span>
+<span id="cb736-6"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-6" tabindex="-1"></a></span>
+<span id="cb736-7"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-7" tabindex="-1"></a>[underline]{.underline} [small caps]{.smallcaps}</span>
+<span id="cb736-8"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-8" tabindex="-1"></a></span>
+<span id="cb736-9"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-9" tabindex="-1"></a><span class="do">## Headings</span></span>
+<span id="cb736-10"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-10" tabindex="-1"></a></span>
+<span id="cb736-11"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-11" tabindex="-1"></a><span class="co"># 1st Level Header</span></span>
+<span id="cb736-12"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-12" tabindex="-1"></a></span>
+<span id="cb736-13"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-13" tabindex="-1"></a><span class="do">## 2nd Level Header</span></span>
+<span id="cb736-14"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-14" tabindex="-1"></a></span>
+<span id="cb736-15"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-15" tabindex="-1"></a><span class="do">### 3rd Level Header</span></span>
+<span id="cb736-16"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-16" tabindex="-1"></a></span>
+<span id="cb736-17"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-17" tabindex="-1"></a><span class="do">## Lists</span></span>
+<span id="cb736-18"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-18" tabindex="-1"></a></span>
+<span id="cb736-19"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-19" tabindex="-1"></a><span class="sc">-</span>   Bulleted list item <span class="dv">1</span></span>
+<span id="cb736-20"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-20" tabindex="-1"></a></span>
+<span id="cb736-21"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-21" tabindex="-1"></a><span class="sc">-</span>   Item <span class="dv">2</span></span>
+<span id="cb736-22"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-22" tabindex="-1"></a></span>
+<span id="cb736-23"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-23" tabindex="-1"></a>    <span class="sc">-</span>   Item 2a</span>
+<span id="cb736-24"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-24" tabindex="-1"></a></span>
+<span id="cb736-25"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-25" tabindex="-1"></a>    <span class="sc">-</span>   Item 2b</span>
+<span id="cb736-26"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-26" tabindex="-1"></a></span>
+<span id="cb736-27"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-27" tabindex="-1"></a><span class="fl">1.</span>  Numbered list item <span class="dv">1</span></span>
+<span id="cb736-28"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-28" tabindex="-1"></a></span>
+<span id="cb736-29"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-29" tabindex="-1"></a><span class="fl">2.</span>  Item <span class="fl">2.</span></span>
+<span id="cb736-30"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-30" tabindex="-1"></a>    The numbers are incremented automatically <span class="cf">in</span> the output.</span>
+<span id="cb736-31"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-31" tabindex="-1"></a></span>
+<span id="cb736-32"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-32" tabindex="-1"></a><span class="do">## Links and images</span></span>
+<span id="cb736-33"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-33" tabindex="-1"></a></span>
+<span id="cb736-34"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-34" tabindex="-1"></a><span class="sc">&lt;</span>http<span class="sc">:</span><span class="er">//</span>example.com<span class="sc">&gt;</span></span>
+<span id="cb736-35"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-35" tabindex="-1"></a></span>
+<span id="cb736-36"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-36" tabindex="-1"></a>[linked phrase](http<span class="sc">:</span><span class="er">//</span>example.com)</span>
+<span id="cb736-37"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-37" tabindex="-1"></a></span>
+<span id="cb736-38"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-38" tabindex="-1"></a><span class="sc">!</span>[optional caption text](path<span class="sc">/</span>quarto.png){fig<span class="sc">-</span>alt<span class="ot">=</span><span class="st">&quot;Quarto logo&quot;</span>}</span>
+<span id="cb736-39"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-39" tabindex="-1"></a></span>
+<span id="cb736-40"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-40" tabindex="-1"></a><span class="do">## Tables</span></span>
+<span id="cb736-41"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-41" tabindex="-1"></a></span>
+<span id="cb736-42"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-42" tabindex="-1"></a><span class="sc">|</span> First Header <span class="sc">|</span> Second Header <span class="sc">|</span></span>
+<span id="cb736-43"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-43" tabindex="-1"></a><span class="er">|</span><span class="sc">--------------</span><span class="er">|</span><span class="sc">---------------</span><span class="er">|</span></span>
+<span id="cb736-44"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-44" tabindex="-1"></a><span class="er">|</span> Content Cell <span class="sc">|</span> Content Cell  <span class="sc">|</span></span>
+<span id="cb736-45"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-45" tabindex="-1"></a><span class="er">|</span> Content Cell <span class="sc">|</span> Content Cell  <span class="sc">|</span></span></code></pre></div>
 </div>
 <div id="adding-code-chunks" class="section level2 hasAnchor" number="34.8">
 <h2><span class="header-section-number">34.8</span> Adding Code Chunks<a href="quarto-is-a-next-generation-rmarkdown.html#adding-code-chunks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -1133,34 +1142,34 @@ The select option requires clicking the number.</p>
 <p>To add global code options for all code chunks, you can set the <code>execute</code> options in your YAML section to things like <code>echo: false</code>. Note that you need to add a return after <code>execute:</code> to make a new line, then keep the default indent when you add options like <code>eval: false</code> or <code>fig-show: hide</code>.</p>
 <p><br></p>
 <p>To fold (hide) your code with an option for the user to click on a <code>Code button</code> to see it, set up your YAML chunk at the top of the qmd document with the <code>format:</code> <code>html:</code> option of <code>code-fold: true</code>. Note that this requires the correct line breaks and indents to work.</p>
-<div class="sourceCode" id="cb733"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb733-1"><a href="quarto-is-a-next-generation-rmarkdown.html#cb733-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb733-2"><a href="quarto-is-a-next-generation-rmarkdown.html#cb733-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;Quarto Document&quot;</span></span>
-<span id="cb733-3"><a href="quarto-is-a-next-generation-rmarkdown.html#cb733-3" aria-hidden="true" tabindex="-1"></a>execute<span class="sc">:</span> </span>
-<span id="cb733-4"><a href="quarto-is-a-next-generation-rmarkdown.html#cb733-4" aria-hidden="true" tabindex="-1"></a>  echo<span class="sc">:</span> false</span>
-<span id="cb733-5"><a href="quarto-is-a-next-generation-rmarkdown.html#cb733-5" aria-hidden="true" tabindex="-1"></a>format<span class="sc">:</span></span>
-<span id="cb733-6"><a href="quarto-is-a-next-generation-rmarkdown.html#cb733-6" aria-hidden="true" tabindex="-1"></a>  html<span class="sc">:</span></span>
-<span id="cb733-7"><a href="quarto-is-a-next-generation-rmarkdown.html#cb733-7" aria-hidden="true" tabindex="-1"></a>    code<span class="sc">-</span>fold<span class="sc">:</span> true</span>
-<span id="cb733-8"><a href="quarto-is-a-next-generation-rmarkdown.html#cb733-8" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb737"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb737-1"><a href="quarto-is-a-next-generation-rmarkdown.html#cb737-1" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb737-2"><a href="quarto-is-a-next-generation-rmarkdown.html#cb737-2" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;Quarto Document&quot;</span></span>
+<span id="cb737-3"><a href="quarto-is-a-next-generation-rmarkdown.html#cb737-3" tabindex="-1"></a>execute<span class="sc">:</span> </span>
+<span id="cb737-4"><a href="quarto-is-a-next-generation-rmarkdown.html#cb737-4" tabindex="-1"></a>  echo<span class="sc">:</span> false</span>
+<span id="cb737-5"><a href="quarto-is-a-next-generation-rmarkdown.html#cb737-5" tabindex="-1"></a>format<span class="sc">:</span></span>
+<span id="cb737-6"><a href="quarto-is-a-next-generation-rmarkdown.html#cb737-6" tabindex="-1"></a>  html<span class="sc">:</span></span>
+<span id="cb737-7"><a href="quarto-is-a-next-generation-rmarkdown.html#cb737-7" tabindex="-1"></a>    code<span class="sc">-</span>fold<span class="sc">:</span> true</span>
+<span id="cb737-8"><a href="quarto-is-a-next-generation-rmarkdown.html#cb737-8" tabindex="-1"></a><span class="sc">---</span></span></code></pre></div>
 </div>
 <div id="parameters" class="section level3 hasAnchor" number="34.10.2">
 <h3><span class="header-section-number">34.10.2</span> Parameters<a href="quarto-is-a-next-generation-rmarkdown.html#parameters" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You can also render a quarto document to prepare a report for one subset of your data, and set the key parameter in the YAML chunk. For example, you can run an fuel economy report with a plot only for SUVs, as seen below.</p>
-<div class="sourceCode" id="cb734"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb734-1"><a href="quarto-is-a-next-generation-rmarkdown.html#cb734-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb734-2"><a href="quarto-is-a-next-generation-rmarkdown.html#cb734-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;Report by Vehicle Class&quot;</span></span>
-<span id="cb734-3"><a href="quarto-is-a-next-generation-rmarkdown.html#cb734-3" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> html_document</span>
-<span id="cb734-4"><a href="quarto-is-a-next-generation-rmarkdown.html#cb734-4" aria-hidden="true" tabindex="-1"></a>params<span class="sc">:</span></span>
-<span id="cb734-5"><a href="quarto-is-a-next-generation-rmarkdown.html#cb734-5" aria-hidden="true" tabindex="-1"></a>  my_class<span class="sc">:</span> <span class="st">&quot;suv&quot;</span></span>
-<span id="cb734-6"><a href="quarto-is-a-next-generation-rmarkdown.html#cb734-6" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
-<span id="cb734-7"><a href="quarto-is-a-next-generation-rmarkdown.html#cb734-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb734-8"><a href="quarto-is-a-next-generation-rmarkdown.html#cb734-8" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: setup</span></span>
-<span id="cb734-9"><a href="quarto-is-a-next-generation-rmarkdown.html#cb734-9" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
-<span id="cb734-10"><a href="quarto-is-a-next-generation-rmarkdown.html#cb734-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb734-11"><a href="quarto-is-a-next-generation-rmarkdown.html#cb734-11" aria-hidden="true" tabindex="-1"></a>class <span class="ot">&lt;-</span> mpg <span class="sc">|&gt;</span> <span class="fu">filter</span>(class <span class="sc">==</span> params<span class="sc">$</span>my_class)</span>
-<span id="cb734-12"><a href="quarto-is-a-next-generation-rmarkdown.html#cb734-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb734-13"><a href="quarto-is-a-next-generation-rmarkdown.html#cb734-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Fuel economy plot for `r params$my_class`</span></span>
-<span id="cb734-14"><a href="quarto-is-a-next-generation-rmarkdown.html#cb734-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(class, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span> </span>
-<span id="cb734-15"><a href="quarto-is-a-next-generation-rmarkdown.html#cb734-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb734-16"><a href="quarto-is-a-next-generation-rmarkdown.html#cb734-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb738"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb738-1"><a href="quarto-is-a-next-generation-rmarkdown.html#cb738-1" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb738-2"><a href="quarto-is-a-next-generation-rmarkdown.html#cb738-2" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;Report by Vehicle Class&quot;</span></span>
+<span id="cb738-3"><a href="quarto-is-a-next-generation-rmarkdown.html#cb738-3" tabindex="-1"></a>output<span class="sc">:</span> html_document</span>
+<span id="cb738-4"><a href="quarto-is-a-next-generation-rmarkdown.html#cb738-4" tabindex="-1"></a>params<span class="sc">:</span></span>
+<span id="cb738-5"><a href="quarto-is-a-next-generation-rmarkdown.html#cb738-5" tabindex="-1"></a>  my_class<span class="sc">:</span> <span class="st">&quot;suv&quot;</span></span>
+<span id="cb738-6"><a href="quarto-is-a-next-generation-rmarkdown.html#cb738-6" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb738-7"><a href="quarto-is-a-next-generation-rmarkdown.html#cb738-7" tabindex="-1"></a></span>
+<span id="cb738-8"><a href="quarto-is-a-next-generation-rmarkdown.html#cb738-8" tabindex="-1"></a><span class="co">#| label: setup</span></span>
+<span id="cb738-9"><a href="quarto-is-a-next-generation-rmarkdown.html#cb738-9" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb738-10"><a href="quarto-is-a-next-generation-rmarkdown.html#cb738-10" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb738-11"><a href="quarto-is-a-next-generation-rmarkdown.html#cb738-11" tabindex="-1"></a>class <span class="ot">&lt;-</span> mpg <span class="sc">|&gt;</span> <span class="fu">filter</span>(class <span class="sc">==</span> params<span class="sc">$</span>my_class)</span>
+<span id="cb738-12"><a href="quarto-is-a-next-generation-rmarkdown.html#cb738-12" tabindex="-1"></a></span>
+<span id="cb738-13"><a href="quarto-is-a-next-generation-rmarkdown.html#cb738-13" tabindex="-1"></a><span class="co"># Fuel economy plot for `r params$my_class`</span></span>
+<span id="cb738-14"><a href="quarto-is-a-next-generation-rmarkdown.html#cb738-14" tabindex="-1"></a><span class="fu">ggplot</span>(class, <span class="fu">aes</span>(<span class="at">x =</span> displ, <span class="at">y =</span> hwy)) <span class="sc">+</span> </span>
+<span id="cb738-15"><a href="quarto-is-a-next-generation-rmarkdown.html#cb738-15" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb738-16"><a href="quarto-is-a-next-generation-rmarkdown.html#cb738-16" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="figures" class="section level2 hasAnchor" number="34.11">
@@ -1188,39 +1197,51 @@ The select option requires clicking the number.</p>
 <p>Markdown tables can be inserted in the Visual Editor with <code>Insert&gt;Table</code>.</p>
 <p>You can also generate tables from your data with a code chunk. The default display is what you would normally see in the Console, with minimal formatting. You can pipe any table generated with a code chunk into a package for formatting tables and get much nicer HTML, Word, or PDF tables. The {<code>flextable</code>} package will work for any format, while the {<code>gt</code>} package is excellent for HTML and PDF. The knitr::kable() function will work for converting console output to HTML, and the {<code>kableExtra</code>} package will add nicer formatting. Other packages that can work well with tables include <code>reactable, stargazer, huxtable, tables,</code> and <code>ascii</code>.</p>
 <p>Here are two examples from the abm (bacterial menintgitis) dataset with flextable and gt, using conditional formatting to highlight high blood band count and low csf glucose.</p>
-<div class="sourceCode" id="cb735"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb735-1"><a href="quarto-is-a-next-generation-rmarkdown.html#cb735-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Flextable</span></span>
-<span id="cb735-2"><a href="quarto-is-a-next-generation-rmarkdown.html#cb735-2" aria-hidden="true" tabindex="-1"></a>medicaldata<span class="sc">::</span>abm <span class="sc">|&gt;</span> </span>
-<span id="cb735-3"><a href="quarto-is-a-next-generation-rmarkdown.html#cb735-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(csf_wbc, csf_gluc, blood_band_pct, gram) <span class="sc">|&gt;</span> </span>
-<span id="cb735-4"><a href="quarto-is-a-next-generation-rmarkdown.html#cb735-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>csf_wbc) <span class="sc">|&gt;</span> </span>
-<span id="cb735-5"><a href="quarto-is-a-next-generation-rmarkdown.html#cb735-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">7</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb735-6"><a href="quarto-is-a-next-generation-rmarkdown.html#cb735-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_flextable</span>() <span class="sc">|&gt;</span> <span class="co"># i is row, j is column</span></span>
-<span id="cb735-7"><a href="quarto-is-a-next-generation-rmarkdown.html#cb735-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bold</span>(<span class="at">i =</span> <span class="sc">~</span> csf_gluc <span class="sc">&lt;</span> <span class="dv">25</span>, <span class="at">j =</span> <span class="sc">~</span> csf_gluc) <span class="sc">|&gt;</span> </span>
-<span id="cb735-8"><a href="quarto-is-a-next-generation-rmarkdown.html#cb735-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">color</span>(<span class="at">color =</span> <span class="st">&quot;red&quot;</span>,</span>
-<span id="cb735-9"><a href="quarto-is-a-next-generation-rmarkdown.html#cb735-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">i =</span> <span class="sc">~</span> blood_band_pct <span class="sc">&gt;</span> <span class="dv">5</span>, <span class="at">j =</span> <span class="sc">~</span> blood_band_pct)</span></code></pre></div>
-<div class="tabwid"><style>.cl-31d319c0{}.cl-31cf7464{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-31cf7478{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(153, 153, 153, 1.00);background-color:transparent;}.cl-31cf7479{font-family:'Helvetica';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-31cf7482{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(255, 0, 0, 1.00);background-color:transparent;}.cl-31d0e9ac{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-31d0f3ca{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-31d0f3d4{width:0.846in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-31d0f3d5{width:1.373in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-31d0f3d6{width:0.829in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-31d0f3de{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-31d0f3df{width:0.846in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-31d0f3e0{width:1.373in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-31d0f3e8{width:0.829in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-31d0f3e9{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-31d0f3ea{width:0.846in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-31d0f3f2{width:1.373in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-31d0f3f3{width:0.829in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-31d0f3fc{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-31d0f3fd{width:0.846in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-31d0f3fe{width:1.373in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-31d0f3ff{width:0.829in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-31d0f406{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-31d0f407{width:0.846in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-31d0f410{width:1.373in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-31d0f411{width:0.829in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-31d0f412{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-31d0f413{width:0.846in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-31d0f41a{width:1.373in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-31d0f41b{width:0.829in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-31d0f41c{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-31d0f424{width:0.846in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-31d0f425{width:1.373in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-31d0f426{width:0.829in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-31d319c0'><thead><tr style="overflow-wrap:break-word;"><th class="cl-31d0f3ca"><p class="cl-31d0e9ac"><span class="cl-31cf7464">csf_wbc</span></p></th><th class="cl-31d0f3d4"><p class="cl-31d0e9ac"><span class="cl-31cf7464">csf_gluc</span></p></th><th class="cl-31d0f3d5"><p class="cl-31d0e9ac"><span class="cl-31cf7464">blood_band_pct</span></p></th><th class="cl-31d0f3d6"><p class="cl-31d0e9ac"><span class="cl-31cf7464">gram</span></p></th></tr><tr style="overflow-wrap:break-word;"><th class="cl-31d0f3de"><p class="cl-31d0e9ac"><span class="cl-31cf7478">numeric</span></p></th><th class="cl-31d0f3df"><p class="cl-31d0e9ac"><span class="cl-31cf7478">numeric</span></p></th><th class="cl-31d0f3e0"><p class="cl-31d0e9ac"><span class="cl-31cf7478">numeric</span></p></th><th class="cl-31d0f3e8"><p class="cl-31d0e9ac"><span class="cl-31cf7478">numeric</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-31d0f3e9"><p class="cl-31d0e9ac"><span class="cl-31cf7464">100,000</span></p></td><td class="cl-31d0f3ea"><p class="cl-31d0e9ac"><span class="cl-31cf7479">24</span></p></td><td class="cl-31d0f3f2"><p class="cl-31d0e9ac"><span class="cl-31cf7482">8</span></p></td><td class="cl-31d0f3f3"><p class="cl-31d0e9ac"><span class="cl-31cf7464">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-31d0f3fc"><p class="cl-31d0e9ac"><span class="cl-31cf7464">78,900</span></p></td><td class="cl-31d0f3fd"><p class="cl-31d0e9ac"><span class="cl-31cf7479">14</span></p></td><td class="cl-31d0f3fe"><p class="cl-31d0e9ac"><span class="cl-31cf7464">1</span></p></td><td class="cl-31d0f3ff"><p class="cl-31d0e9ac"><span class="cl-31cf7464">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-31d0f3e9"><p class="cl-31d0e9ac"><span class="cl-31cf7464">50,000</span></p></td><td class="cl-31d0f3ea"><p class="cl-31d0e9ac"><span class="cl-31cf7464"></span></p></td><td class="cl-31d0f3f2"><p class="cl-31d0e9ac"><span class="cl-31cf7464">4</span></p></td><td class="cl-31d0f3f3"><p class="cl-31d0e9ac"><span class="cl-31cf7464">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-31d0f406"><p class="cl-31d0e9ac"><span class="cl-31cf7464">36,000</span></p></td><td class="cl-31d0f407"><p class="cl-31d0e9ac"><span class="cl-31cf7464">75</span></p></td><td class="cl-31d0f410"><p class="cl-31d0e9ac"><span class="cl-31cf7482">38</span></p></td><td class="cl-31d0f411"><p class="cl-31d0e9ac"><span class="cl-31cf7464">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-31d0f412"><p class="cl-31d0e9ac"><span class="cl-31cf7464">32,200</span></p></td><td class="cl-31d0f413"><p class="cl-31d0e9ac"><span class="cl-31cf7464"></span></p></td><td class="cl-31d0f41a"><p class="cl-31d0e9ac"><span class="cl-31cf7464">2</span></p></td><td class="cl-31d0f41b"><p class="cl-31d0e9ac"><span class="cl-31cf7464">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-31d0f412"><p class="cl-31d0e9ac"><span class="cl-31cf7464">28,000</span></p></td><td class="cl-31d0f413"><p class="cl-31d0e9ac"><span class="cl-31cf7479">15</span></p></td><td class="cl-31d0f41a"><p class="cl-31d0e9ac"><span class="cl-31cf7464">2</span></p></td><td class="cl-31d0f41b"><p class="cl-31d0e9ac"><span class="cl-31cf7464">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-31d0f41c"><p class="cl-31d0e9ac"><span class="cl-31cf7464">21,600</span></p></td><td class="cl-31d0f424"><p class="cl-31d0e9ac"><span class="cl-31cf7479">20</span></p></td><td class="cl-31d0f425"><p class="cl-31d0e9ac"><span class="cl-31cf7464">0</span></p></td><td class="cl-31d0f426"><p class="cl-31d0e9ac"><span class="cl-31cf7464">1</span></p></td></tr></tbody></table></div>
+<div class="sourceCode" id="cb739"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb739-1"><a href="quarto-is-a-next-generation-rmarkdown.html#cb739-1" tabindex="-1"></a><span class="co"># Flextable</span></span>
+<span id="cb739-2"><a href="quarto-is-a-next-generation-rmarkdown.html#cb739-2" tabindex="-1"></a>medicaldata<span class="sc">::</span>abm <span class="sc">|&gt;</span> </span>
+<span id="cb739-3"><a href="quarto-is-a-next-generation-rmarkdown.html#cb739-3" tabindex="-1"></a>  <span class="fu">select</span>(csf_wbc, csf_gluc, blood_band_pct, gram) <span class="sc">|&gt;</span> </span>
+<span id="cb739-4"><a href="quarto-is-a-next-generation-rmarkdown.html#cb739-4" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>csf_wbc) <span class="sc">|&gt;</span> </span>
+<span id="cb739-5"><a href="quarto-is-a-next-generation-rmarkdown.html#cb739-5" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">7</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb739-6"><a href="quarto-is-a-next-generation-rmarkdown.html#cb739-6" tabindex="-1"></a>  <span class="fu">as_flextable</span>() <span class="sc">|&gt;</span> <span class="co"># i is row, j is column</span></span>
+<span id="cb739-7"><a href="quarto-is-a-next-generation-rmarkdown.html#cb739-7" tabindex="-1"></a>  <span class="fu">bold</span>(<span class="at">i =</span> <span class="sc">~</span> csf_gluc <span class="sc">&lt;</span> <span class="dv">25</span>, <span class="at">j =</span> <span class="sc">~</span> csf_gluc) <span class="sc">|&gt;</span> </span>
+<span id="cb739-8"><a href="quarto-is-a-next-generation-rmarkdown.html#cb739-8" tabindex="-1"></a>  <span class="fu">color</span>(<span class="at">color =</span> <span class="st">&quot;red&quot;</span>,</span>
+<span id="cb739-9"><a href="quarto-is-a-next-generation-rmarkdown.html#cb739-9" tabindex="-1"></a>  <span class="at">i =</span> <span class="sc">~</span> blood_band_pct <span class="sc">&gt;</span> <span class="dv">5</span>, <span class="at">j =</span> <span class="sc">~</span> blood_band_pct)</span></code></pre></div>
+<div class="tabwid"><style>.cl-ab4c44ae{}.cl-ab48c3d8{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-ab48c3ec{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(153, 153, 153, 1.00);background-color:transparent;}.cl-ab48c3ed{font-family:'Helvetica';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-ab48c3ee{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(255, 0, 0, 1.00);background-color:transparent;}.cl-ab4a1878{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-ab4a21f6{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ab4a21f7{width:0.846in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ab4a21f8{width:1.373in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ab4a2200{width:0.829in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ab4a2201{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ab4a2202{width:0.846in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ab4a2203{width:1.373in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ab4a2204{width:0.829in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ab4a220a{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ab4a220b{width:0.846in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ab4a220c{width:1.373in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ab4a2214{width:0.829in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ab4a2215{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ab4a2216{width:0.846in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ab4a2217{width:1.373in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ab4a221e{width:0.829in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ab4a221f{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ab4a2220{width:0.846in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ab4a2221{width:1.373in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ab4a2228{width:0.829in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ab4a2229{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ab4a222a{width:0.846in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ab4a222b{width:1.373in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ab4a2232{width:0.829in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ab4a2233{width:0.837in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ab4a2234{width:0.846in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ab4a2235{width:1.373in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ab4a223c{width:0.829in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-ab4c44ae'><thead><tr style="overflow-wrap:break-word;"><th class="cl-ab4a21f6"><p class="cl-ab4a1878"><span class="cl-ab48c3d8">csf_wbc</span></p></th><th class="cl-ab4a21f7"><p class="cl-ab4a1878"><span class="cl-ab48c3d8">csf_gluc</span></p></th><th class="cl-ab4a21f8"><p class="cl-ab4a1878"><span class="cl-ab48c3d8">blood_band_pct</span></p></th><th class="cl-ab4a2200"><p class="cl-ab4a1878"><span class="cl-ab48c3d8">gram</span></p></th></tr><tr style="overflow-wrap:break-word;"><th class="cl-ab4a2201"><p class="cl-ab4a1878"><span class="cl-ab48c3ec">numeric</span></p></th><th class="cl-ab4a2202"><p class="cl-ab4a1878"><span class="cl-ab48c3ec">numeric</span></p></th><th class="cl-ab4a2203"><p class="cl-ab4a1878"><span class="cl-ab48c3ec">numeric</span></p></th><th class="cl-ab4a2204"><p class="cl-ab4a1878"><span class="cl-ab48c3ec">numeric</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-ab4a220a"><p class="cl-ab4a1878"><span class="cl-ab48c3d8">100,000</span></p></td><td class="cl-ab4a220b"><p class="cl-ab4a1878"><span class="cl-ab48c3ed">24</span></p></td><td class="cl-ab4a220c"><p class="cl-ab4a1878"><span class="cl-ab48c3ee">8</span></p></td><td class="cl-ab4a2214"><p class="cl-ab4a1878"><span class="cl-ab48c3d8">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ab4a2215"><p class="cl-ab4a1878"><span class="cl-ab48c3d8">78,900</span></p></td><td class="cl-ab4a2216"><p class="cl-ab4a1878"><span class="cl-ab48c3ed">14</span></p></td><td class="cl-ab4a2217"><p class="cl-ab4a1878"><span class="cl-ab48c3d8">1</span></p></td><td class="cl-ab4a221e"><p class="cl-ab4a1878"><span class="cl-ab48c3d8">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ab4a220a"><p class="cl-ab4a1878"><span class="cl-ab48c3d8">50,000</span></p></td><td class="cl-ab4a220b"><p class="cl-ab4a1878"><span class="cl-ab48c3d8"></span></p></td><td class="cl-ab4a220c"><p class="cl-ab4a1878"><span class="cl-ab48c3d8">4</span></p></td><td class="cl-ab4a2214"><p class="cl-ab4a1878"><span class="cl-ab48c3d8">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ab4a221f"><p class="cl-ab4a1878"><span class="cl-ab48c3d8">36,000</span></p></td><td class="cl-ab4a2220"><p class="cl-ab4a1878"><span class="cl-ab48c3d8">75</span></p></td><td class="cl-ab4a2221"><p class="cl-ab4a1878"><span class="cl-ab48c3ee">38</span></p></td><td class="cl-ab4a2228"><p class="cl-ab4a1878"><span class="cl-ab48c3d8">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ab4a2229"><p class="cl-ab4a1878"><span class="cl-ab48c3d8">32,200</span></p></td><td class="cl-ab4a222a"><p class="cl-ab4a1878"><span class="cl-ab48c3d8"></span></p></td><td class="cl-ab4a222b"><p class="cl-ab4a1878"><span class="cl-ab48c3d8">2</span></p></td><td class="cl-ab4a2232"><p class="cl-ab4a1878"><span class="cl-ab48c3d8">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ab4a2229"><p class="cl-ab4a1878"><span class="cl-ab48c3d8">28,000</span></p></td><td class="cl-ab4a222a"><p class="cl-ab4a1878"><span class="cl-ab48c3ed">15</span></p></td><td class="cl-ab4a222b"><p class="cl-ab4a1878"><span class="cl-ab48c3d8">2</span></p></td><td class="cl-ab4a2232"><p class="cl-ab4a1878"><span class="cl-ab48c3d8">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ab4a2233"><p class="cl-ab4a1878"><span class="cl-ab48c3d8">21,600</span></p></td><td class="cl-ab4a2234"><p class="cl-ab4a1878"><span class="cl-ab48c3ed">20</span></p></td><td class="cl-ab4a2235"><p class="cl-ab4a1878"><span class="cl-ab48c3d8">0</span></p></td><td class="cl-ab4a223c"><p class="cl-ab4a1878"><span class="cl-ab48c3d8">1</span></p></td></tr></tbody></table></div>
 <p>You can learn more about the many formatting options in {flextable} <a href="https://davidgohel.github.io/flextable/index.html">here</a>.</p>
-<div class="sourceCode" id="cb736"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb736-1"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-1" aria-hidden="true" tabindex="-1"></a><span class="co"># gt package</span></span>
-<span id="cb736-2"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-2" aria-hidden="true" tabindex="-1"></a>medicaldata<span class="sc">::</span>abm <span class="sc">|&gt;</span> </span>
-<span id="cb736-3"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(csf_wbc, csf_gluc, blood_band_pct, gram) <span class="sc">|&gt;</span> </span>
-<span id="cb736-4"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>csf_wbc) <span class="sc">|&gt;</span> </span>
-<span id="cb736-5"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">7</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb736-6"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb736-7"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(<span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">weight =</span> <span class="st">&quot;bold&quot;</span>),</span>
-<span id="cb736-8"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
-<span id="cb736-9"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> csf_gluc,</span>
-<span id="cb736-10"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">rows =</span> csf_gluc <span class="sc">&lt;</span> <span class="dv">25</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb736-11"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(<span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">&quot;red&quot;</span>),</span>
-<span id="cb736-12"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
-<span id="cb736-13"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">columns =</span> blood_band_pct,</span>
-<span id="cb736-14"><a href="quarto-is-a-next-generation-rmarkdown.html#cb736-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">rows =</span> blood_band_pct <span class="sc">&gt;</span> <span class="dv">5</span>)) </span></code></pre></div>
-<div id="hdcthktgke" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+<div class="sourceCode" id="cb740"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb740-1"><a href="quarto-is-a-next-generation-rmarkdown.html#cb740-1" tabindex="-1"></a><span class="co"># gt package</span></span>
+<span id="cb740-2"><a href="quarto-is-a-next-generation-rmarkdown.html#cb740-2" tabindex="-1"></a>medicaldata<span class="sc">::</span>abm <span class="sc">|&gt;</span> </span>
+<span id="cb740-3"><a href="quarto-is-a-next-generation-rmarkdown.html#cb740-3" tabindex="-1"></a>  <span class="fu">select</span>(csf_wbc, csf_gluc, blood_band_pct, gram) <span class="sc">|&gt;</span> </span>
+<span id="cb740-4"><a href="quarto-is-a-next-generation-rmarkdown.html#cb740-4" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>csf_wbc) <span class="sc">|&gt;</span> </span>
+<span id="cb740-5"><a href="quarto-is-a-next-generation-rmarkdown.html#cb740-5" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">7</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb740-6"><a href="quarto-is-a-next-generation-rmarkdown.html#cb740-6" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb740-7"><a href="quarto-is-a-next-generation-rmarkdown.html#cb740-7" tabindex="-1"></a>  <span class="fu">tab_style</span>(<span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">weight =</span> <span class="st">&quot;bold&quot;</span>),</span>
+<span id="cb740-8"><a href="quarto-is-a-next-generation-rmarkdown.html#cb740-8" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
+<span id="cb740-9"><a href="quarto-is-a-next-generation-rmarkdown.html#cb740-9" tabindex="-1"></a>      <span class="at">columns =</span> csf_gluc,</span>
+<span id="cb740-10"><a href="quarto-is-a-next-generation-rmarkdown.html#cb740-10" tabindex="-1"></a>      <span class="at">rows =</span> csf_gluc <span class="sc">&lt;</span> <span class="dv">25</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb740-11"><a href="quarto-is-a-next-generation-rmarkdown.html#cb740-11" tabindex="-1"></a>  <span class="fu">tab_style</span>(<span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">&quot;red&quot;</span>),</span>
+<span id="cb740-12"><a href="quarto-is-a-next-generation-rmarkdown.html#cb740-12" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
+<span id="cb740-13"><a href="quarto-is-a-next-generation-rmarkdown.html#cb740-13" tabindex="-1"></a>      <span class="at">columns =</span> blood_band_pct,</span>
+<span id="cb740-14"><a href="quarto-is-a-next-generation-rmarkdown.html#cb740-14" tabindex="-1"></a>      <span class="at">rows =</span> blood_band_pct <span class="sc">&gt;</span> <span class="dv">5</span>)) </span></code></pre></div>
+<div id="euuxvhzazt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#euuxvhzazt table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-#hdcthktgke .gt_table {
+#euuxvhzazt thead, #euuxvhzazt tbody, #euuxvhzazt tfoot, #euuxvhzazt tr, #euuxvhzazt td, #euuxvhzazt th {
+  border-style: none;
+}
+
+#euuxvhzazt p {
+  margin: 0;
+  padding: 0;
+}
+
+#euuxvhzazt .gt_table {
   display: table;
   border-collapse: collapse;
+  line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
@@ -1243,24 +1264,12 @@ The select option requires clicking the number.</p>
   border-left-color: #D3D3D3;
 }
 
-#hdcthktgke .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#hdcthktgke .gt_caption {
+#euuxvhzazt .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#hdcthktgke .gt_title {
+#euuxvhzazt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1272,25 +1281,37 @@ The select option requires clicking the number.</p>
   border-bottom-width: 0;
 }
 
-#hdcthktgke .gt_subtitle {
+#euuxvhzazt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
-  padding-top: 0;
-  padding-bottom: 6px;
+  padding-top: 3px;
+  padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#hdcthktgke .gt_bottom_border {
+#euuxvhzazt .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#euuxvhzazt .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#hdcthktgke .gt_col_headings {
+#euuxvhzazt .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1305,7 +1326,7 @@ The select option requires clicking the number.</p>
   border-right-color: #D3D3D3;
 }
 
-#hdcthktgke .gt_col_heading {
+#euuxvhzazt .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1325,7 +1346,7 @@ The select option requires clicking the number.</p>
   overflow-x: hidden;
 }
 
-#hdcthktgke .gt_column_spanner_outer {
+#euuxvhzazt .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1337,15 +1358,15 @@ The select option requires clicking the number.</p>
   padding-right: 4px;
 }
 
-#hdcthktgke .gt_column_spanner_outer:first-child {
+#euuxvhzazt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#hdcthktgke .gt_column_spanner_outer:last-child {
+#euuxvhzazt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#hdcthktgke .gt_column_spanner {
+#euuxvhzazt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1357,7 +1378,11 @@ The select option requires clicking the number.</p>
   width: 100%;
 }
 
-#hdcthktgke .gt_group_heading {
+#euuxvhzazt .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#euuxvhzazt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1383,7 +1408,7 @@ The select option requires clicking the number.</p>
   text-align: left;
 }
 
-#hdcthktgke .gt_empty_group_heading {
+#euuxvhzazt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1398,15 +1423,15 @@ The select option requires clicking the number.</p>
   vertical-align: middle;
 }
 
-#hdcthktgke .gt_from_md > :first-child {
+#euuxvhzazt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#hdcthktgke .gt_from_md > :last-child {
+#euuxvhzazt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#hdcthktgke .gt_row {
+#euuxvhzazt .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1425,7 +1450,7 @@ The select option requires clicking the number.</p>
   overflow-x: hidden;
 }
 
-#hdcthktgke .gt_stub {
+#euuxvhzazt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1438,7 +1463,7 @@ The select option requires clicking the number.</p>
   padding-right: 5px;
 }
 
-#hdcthktgke .gt_stub_row_group {
+#euuxvhzazt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1452,11 +1477,15 @@ The select option requires clicking the number.</p>
   vertical-align: top;
 }
 
-#hdcthktgke .gt_row_group_first td {
+#euuxvhzazt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#hdcthktgke .gt_summary_row {
+#euuxvhzazt .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#euuxvhzazt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1466,16 +1495,16 @@ The select option requires clicking the number.</p>
   padding-right: 5px;
 }
 
-#hdcthktgke .gt_first_summary_row {
+#euuxvhzazt .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#hdcthktgke .gt_first_summary_row.thick {
+#euuxvhzazt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#hdcthktgke .gt_last_summary_row {
+#euuxvhzazt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1485,7 +1514,7 @@ The select option requires clicking the number.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#hdcthktgke .gt_grand_summary_row {
+#euuxvhzazt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1495,7 +1524,7 @@ The select option requires clicking the number.</p>
   padding-right: 5px;
 }
 
-#hdcthktgke .gt_first_grand_summary_row {
+#euuxvhzazt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1505,11 +1534,21 @@ The select option requires clicking the number.</p>
   border-top-color: #D3D3D3;
 }
 
-#hdcthktgke .gt_striped {
+#euuxvhzazt .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#euuxvhzazt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#hdcthktgke .gt_table_body {
+#euuxvhzazt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1518,7 +1557,7 @@ The select option requires clicking the number.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#hdcthktgke .gt_footnotes {
+#euuxvhzazt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1532,30 +1571,8 @@ The select option requires clicking the number.</p>
   border-right-color: #D3D3D3;
 }
 
-#hdcthktgke .gt_footnote {
+#euuxvhzazt .gt_footnote {
   margin: 0px;
-  font-size: 90%;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#hdcthktgke .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#hdcthktgke .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1563,75 +1580,96 @@ The select option requires clicking the number.</p>
   padding-right: 5px;
 }
 
-#hdcthktgke .gt_left {
+#euuxvhzazt .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#euuxvhzazt .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#euuxvhzazt .gt_left {
   text-align: left;
 }
 
-#hdcthktgke .gt_center {
+#euuxvhzazt .gt_center {
   text-align: center;
 }
 
-#hdcthktgke .gt_right {
+#euuxvhzazt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#hdcthktgke .gt_font_normal {
+#euuxvhzazt .gt_font_normal {
   font-weight: normal;
 }
 
-#hdcthktgke .gt_font_bold {
+#euuxvhzazt .gt_font_bold {
   font-weight: bold;
 }
 
-#hdcthktgke .gt_font_italic {
+#euuxvhzazt .gt_font_italic {
   font-style: italic;
 }
 
-#hdcthktgke .gt_super {
+#euuxvhzazt .gt_super {
   font-size: 65%;
 }
 
-#hdcthktgke .gt_footnote_marks {
-  font-style: italic;
-  font-weight: normal;
+#euuxvhzazt .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
+  position: initial;
 }
 
-#hdcthktgke .gt_asterisk {
+#euuxvhzazt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#hdcthktgke .gt_indent_1 {
+#euuxvhzazt .gt_indent_1 {
   text-indent: 5px;
 }
 
-#hdcthktgke .gt_indent_2 {
+#euuxvhzazt .gt_indent_2 {
   text-indent: 10px;
 }
 
-#hdcthktgke .gt_indent_3 {
+#euuxvhzazt .gt_indent_3 {
   text-indent: 15px;
 }
 
-#hdcthktgke .gt_indent_4 {
+#euuxvhzazt .gt_indent_4 {
   text-indent: 20px;
 }
 
-#hdcthktgke .gt_indent_5 {
+#euuxvhzazt .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
-<table class="gt_table">
-  
-  <thead class="gt_col_headings">
-    <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="csf_wbc">csf_wbc</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="csf_gluc">csf_gluc</th>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Total Leukocytes in CSF [count/mm^3]">Total Leukocytes in CSF [count/mm^3]</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="CSF Glucose [mg/dl]">CSF Glucose [mg/dl]</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="blood_band_pct">blood_band_pct</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="gram">gram</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Gram Smear Result">Gram Smear Result</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
@@ -1689,8 +1727,8 @@ The select option requires clicking the number.</p>
 <p>Citations in Quarto work much like they do in Rmarkdown. In the Visual Editor, you can use Insert&gt;Citation. You can enter a DOI (Digital Object Identifier), pull a reference from a Zotero library, pull references with PubMed IDs, or get references from a bibliography file (a <code>*.bib</code> file in the same directory as your document). If you add a citation using one of the first three methods, the visual editor will automatically create a bibliography <code>*.bib</code> file for you and add the reference to it. It will also add a bibliography field (required to identify the file) to the document YAML. As you add more references, this file will get populated with their citations.</p>
 <p>When Quarto renders your file, it will build and append a bibliography to the end of your document. The bibliography will contain each of the cited references from your bibliography file, but it will not contain a section heading. As a result it is common practice to end your file with a section header for the bibliography, such as # References.</p>
 <p>You can change the style of your citations and bibliography by referencing a CSL (citation style language) file (with the full path to the file) in the csl field in the YAML header.</p>
-<div class="sourceCode" id="cb737"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb737-1"><a href="quarto-is-a-next-generation-rmarkdown.html#cb737-1" aria-hidden="true" tabindex="-1"></a>bibliography<span class="sc">:</span> my_bibliography.bib</span>
-<span id="cb737-2"><a href="quarto-is-a-next-generation-rmarkdown.html#cb737-2" aria-hidden="true" tabindex="-1"></a>csl<span class="sc">:</span> R<span class="sc">/</span>csl_files<span class="sc">/</span>gastroenterology.csl</span></code></pre></div>
+<div class="sourceCode" id="cb741"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb741-1"><a href="quarto-is-a-next-generation-rmarkdown.html#cb741-1" tabindex="-1"></a>bibliography<span class="sc">:</span> my_bibliography.bib</span>
+<span id="cb741-2"><a href="quarto-is-a-next-generation-rmarkdown.html#cb741-2" tabindex="-1"></a>csl<span class="sc">:</span> R<span class="sc">/</span>csl_files<span class="sc">/</span>gastroenterology.csl</span></code></pre></div>
 <p>You can find many journal bibliography styles (and download them) at <a href="https://www.zotero.org/styles" class="uri">https://www.zotero.org/styles</a> or <a href="https://github.com/citation-style-language/styles" class="uri">https://github.com/citation-style-language/styles</a>.</p>
 </div>
 <div id="challenge-yourself-1" class="section level2 hasAnchor challenge" number="34.16">

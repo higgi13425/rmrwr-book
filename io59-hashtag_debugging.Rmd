@@ -59,7 +59,7 @@ mtcars %>%
   filtre(efficiency > 0.5) %>% 
   arrange(desc(efficiency) %<% 
   slice(1:10)
-````
+```
 
 ```{r pipe-hunt-hint-1, error=TRUE}
 mtcars %>% 
@@ -69,7 +69,7 @@ mtcars %>%
   filter(efficiency > 0.5) %>%  # watch for typos
   arrange(desc(efficiency) %<% # watch for mistyped pipes
   slice(1:10)
-````
+```
 
 ```{r pipe-hunt-hint-2, error=TRUE}
 mtcars %>% 
@@ -79,7 +79,7 @@ mtcars %>%
   filter(efficiency > 0.5) %>%  
   arrange(desc(efficiency)) %>% # watch for missing closing parentheses
   slice(1:10)
-````
+```
 ## Systematic Hunting For Bugs in Pipes
 
 What if it is not one of the Big 5 Pipe Bugs, and you need to hunt systematically?

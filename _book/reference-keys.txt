@@ -321,6 +321,7 @@ lollipop-plots
 dumbbell-plots
 spaghetti-plots-with-summary-smoothed-lines-for-change-over-time
 swimmer-plots
+adding-significance-comparisons-with-ggsignif
 customizing-plot-scales
 goals-for-this-chapter-5
 packages-needed-for-this-chapter-4
@@ -492,5 +493,3 @@ what-about-r
 what-about-just-a-few-lines-of-r
 running-an-r-script-from-the-terminal
 rendering-an-rmarkdown-file-from-the-terminal
-bibliography-book.bib-packages.bib
-your-turn-to-debug-a-plot

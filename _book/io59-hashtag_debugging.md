@@ -255,7 +255,7 @@ murders %>%
 ```
 
 ```
-## Error in list2(na.rm = na.rm, ...): object 'darkgrey' not found
+## Error in eval(expr, envir, enclos): object 'darkgrey' not found
 ```
 
 ```r

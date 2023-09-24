@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 10 Interpreting Error Messages | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
-  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 Interpreting Error Messages | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2023-04-06" />
+<meta name="date" content="2023-09-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,12 +53,14 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.10.2/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 <link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
@@ -128,6 +130,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="include/webex.css" type="text/css" />
 <link rel="stylesheet" href="include/style.css" type="text/css" />
@@ -581,6 +587,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="23.7" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#dumbbell-plots"><i class="fa fa-check"></i><b>23.7</b> Dumbbell Plots</a></li>
 <li class="chapter" data-level="23.8" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#spaghetti-plots-with-summary-smoothed-lines-for-change-over-time"><i class="fa fa-check"></i><b>23.8</b> Spaghetti Plots with Summary Smoothed Lines for Change Over Time</a></li>
 <li class="chapter" data-level="23.9" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#swimmer-plots"><i class="fa fa-check"></i><b>23.9</b> Swimmer Plots</a></li>
+<li class="chapter" data-level="23.10" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#adding-significance-comparisons-with-ggsignif"><i class="fa fa-check"></i><b>23.10</b> Adding Significance Comparisons with {ggsignif}</a></li>
 </ul></li>
 <li class="chapter" data-level="24" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html"><i class="fa fa-check"></i><b>24</b> Customizing Plot Scales</a>
 <ul>
@@ -938,12 +945,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">10.2.1</span> Missing Parenthesis<a href="interpreting-error-messages.html#missing-parenthesis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This is a very common error. It is easy to lose track of how many sets of parentheses you have open in putting together a complicated function.</p>
 <p>Here is an example, where a closing parenthesis is missing from a <em>mutate()</em> function.</p>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="interpreting-error-messages.html#cb131-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
-<span id="cb131-2"><a href="interpreting-error-messages.html#cb131-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(t_vol, p_vol, age, aa) <span class="sc">%&gt;%</span> </span>
-<span id="cb131-3"><a href="interpreting-error-messages.html#cb131-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> t_vol<span class="sc">/</span>p_vol,</span>
-<span id="cb131-4"><a href="interpreting-error-messages.html#cb131-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">older_aa =</span> <span class="fu">case_when</span>(age <span class="sc">&gt;</span><span class="dv">65</span> <span class="sc">&amp;</span> aa <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb131-5"><a href="interpreting-error-messages.html#cb131-5" aria-hidden="true" tabindex="-1"></a>                              <span class="cn">TRUE</span> <span class="sc">~</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb131-6"><a href="interpreting-error-messages.html#cb131-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(older_aa <span class="sc">==</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="interpreting-error-messages.html#cb130-1" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb130-2"><a href="interpreting-error-messages.html#cb130-2" tabindex="-1"></a>  <span class="fu">select</span>(t_vol, p_vol, age, aa) <span class="sc">%&gt;%</span> </span>
+<span id="cb130-3"><a href="interpreting-error-messages.html#cb130-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> t_vol<span class="sc">/</span>p_vol,</span>
+<span id="cb130-4"><a href="interpreting-error-messages.html#cb130-4" tabindex="-1"></a>         <span class="at">older_aa =</span> <span class="fu">case_when</span>(age <span class="sc">&gt;</span><span class="dv">65</span> <span class="sc">&amp;</span> aa <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb130-5"><a href="interpreting-error-messages.html#cb130-5" tabindex="-1"></a>                              <span class="cn">TRUE</span> <span class="sc">~</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb130-6"><a href="interpreting-error-messages.html#cb130-6" tabindex="-1"></a>  <span class="fu">filter</span>(older_aa <span class="sc">==</span><span class="dv">1</span>)</span></code></pre></div>
 <p>In this case, no output is produced, and the console does not return to the <code>&gt;</code> prompt. Instead, it offers a <code>+</code> prompt - in effect, asking you for something more. If you type in an extra closing parenthesis (after the filter function), it will give you an error.</p>
 <p>The error you get is:</p>
 <blockquote>
@@ -960,12 +967,12 @@ It then fails on the next function - filter, and gives you a strange error messa
 <div id="an-extra-parenthesis" class="section level3 hasAnchor" number="10.2.2">
 <h3><span class="header-section-number">10.2.2</span> An Extra Parenthesis<a href="interpreting-error-messages.html#an-extra-parenthesis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>What if you go the other way, with an extra parenthesis after some misguided copy-paste adventures? Let’s see what happens.</p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="interpreting-error-messages.html#cb132-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
-<span id="cb132-2"><a href="interpreting-error-messages.html#cb132-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(t_vol, p_vol, age, aa) <span class="sc">%&gt;%</span> </span>
-<span id="cb132-3"><a href="interpreting-error-messages.html#cb132-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> t_vol<span class="sc">/</span>p_vol,</span>
-<span id="cb132-4"><a href="interpreting-error-messages.html#cb132-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">older_aa =</span> <span class="fu">case_when</span>(age <span class="sc">&gt;</span><span class="dv">65</span> <span class="sc">&amp;</span> aa <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb132-5"><a href="interpreting-error-messages.html#cb132-5" aria-hidden="true" tabindex="-1"></a>                              <span class="cn">TRUE</span> <span class="sc">~</span><span class="dv">0</span>))<span class="er">)</span> <span class="sc">%&gt;%</span> </span>
-<span id="cb132-6"><a href="interpreting-error-messages.html#cb132-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(older_aa <span class="sc">==</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="interpreting-error-messages.html#cb131-1" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb131-2"><a href="interpreting-error-messages.html#cb131-2" tabindex="-1"></a>  <span class="fu">select</span>(t_vol, p_vol, age, aa) <span class="sc">%&gt;%</span> </span>
+<span id="cb131-3"><a href="interpreting-error-messages.html#cb131-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> t_vol<span class="sc">/</span>p_vol,</span>
+<span id="cb131-4"><a href="interpreting-error-messages.html#cb131-4" tabindex="-1"></a>         <span class="at">older_aa =</span> <span class="fu">case_when</span>(age <span class="sc">&gt;</span><span class="dv">65</span> <span class="sc">&amp;</span> aa <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb131-5"><a href="interpreting-error-messages.html#cb131-5" tabindex="-1"></a>                              <span class="cn">TRUE</span> <span class="sc">~</span><span class="dv">0</span>))<span class="er">)</span> <span class="sc">%&gt;%</span> </span>
+<span id="cb131-6"><a href="interpreting-error-messages.html#cb131-6" tabindex="-1"></a>  <span class="fu">filter</span>(older_aa <span class="sc">==</span><span class="dv">1</span>)</span></code></pre></div>
 <p>In this code block, you will end up with two red closing parentheses, and when you click to the right of the final closing parenthesis, there will be no matching highlighted open parenthesis (note that the preceding closing parentheses both have matching highlighted open parentheses. Both of these are clues that this last one is an extra.</p>
 <p>The error you get from R is</p>
 <blockquote>
@@ -978,12 +985,12 @@ It then fails on the next function - filter, and gives you a strange error messa
 <h3><span class="header-section-number">10.2.3</span> Missing pipe <code>%&gt;%</code> in a data wrangling pipeline<a href="interpreting-error-messages.html#missing-pipe-in-a-data-wrangling-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This is a common error. It is easy to cut out one of your <code>%&gt;%</code> connectors when you are editing/debugging a data wrangling pipeline.</p>
 <p>Here is an example, where a <code>%&gt;%</code> is missing. Can you spot it?</p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="interpreting-error-messages.html#cb133-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
-<span id="cb133-2"><a href="interpreting-error-messages.html#cb133-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(t_vol, p_vol, age, aa)  </span>
-<span id="cb133-3"><a href="interpreting-error-messages.html#cb133-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> t_vol<span class="sc">/</span>p_vol,</span>
-<span id="cb133-4"><a href="interpreting-error-messages.html#cb133-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">older_aa =</span> <span class="fu">case_when</span>(age <span class="sc">&gt;</span><span class="dv">65</span> <span class="sc">&amp;</span> aa <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb133-5"><a href="interpreting-error-messages.html#cb133-5" aria-hidden="true" tabindex="-1"></a>                              <span class="cn">TRUE</span> <span class="sc">~</span><span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb133-6"><a href="interpreting-error-messages.html#cb133-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(older_aa <span class="sc">==</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="interpreting-error-messages.html#cb132-1" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb132-2"><a href="interpreting-error-messages.html#cb132-2" tabindex="-1"></a>  <span class="fu">select</span>(t_vol, p_vol, age, aa)  </span>
+<span id="cb132-3"><a href="interpreting-error-messages.html#cb132-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> t_vol<span class="sc">/</span>p_vol,</span>
+<span id="cb132-4"><a href="interpreting-error-messages.html#cb132-4" tabindex="-1"></a>         <span class="at">older_aa =</span> <span class="fu">case_when</span>(age <span class="sc">&gt;</span><span class="dv">65</span> <span class="sc">&amp;</span> aa <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb132-5"><a href="interpreting-error-messages.html#cb132-5" tabindex="-1"></a>                              <span class="cn">TRUE</span> <span class="sc">~</span><span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb132-6"><a href="interpreting-error-messages.html#cb132-6" tabindex="-1"></a>  <span class="fu">filter</span>(older_aa <span class="sc">==</span><span class="dv">1</span>)</span></code></pre></div>
 <p>In this case, the error you get is:</p>
 <blockquote>
 <p>Error in mutate(ratio = t_vol/p_vol, older_aa = case_when(age &gt; 65 &amp; aa == : object ‘t_vol’ not found</p>
@@ -999,12 +1006,12 @@ Check every data wrangling pipeline to make sure each step (except the last) end
 <h3><span class="header-section-number">10.2.4</span> Missing + in a ggplot pipeline<a href="interpreting-error-messages.html#missing-in-a-ggplot-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This is a common error. It is easy to cut out one of your + connectors when you are editing/debugging a ggplot.</p>
 <p>Here is an example, where a + is missing in the middle of a ggplot pipeline.</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="interpreting-error-messages.html#cb134-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
-<span id="cb134-2"><a href="interpreting-error-messages.html#cb134-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(t_vol, p_vol, age, aa) <span class="sc">%&gt;%</span> </span>
-<span id="cb134-3"><a href="interpreting-error-messages.html#cb134-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(t_vol), <span class="at">y =</span>p_vol)) </span>
-<span id="cb134-4"><a href="interpreting-error-messages.html#cb134-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb134-5"><a href="interpreting-error-messages.html#cb134-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;tumor volume&quot;</span>, <span class="at">y =</span> <span class="st">&quot;prostate volume&quot;</span>) <span class="sc">+</span></span>
-<span id="cb134-6"><a href="interpreting-error-messages.html#cb134-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="interpreting-error-messages.html#cb133-1" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb133-2"><a href="interpreting-error-messages.html#cb133-2" tabindex="-1"></a>  <span class="fu">select</span>(t_vol, p_vol, age, aa) <span class="sc">%&gt;%</span> </span>
+<span id="cb133-3"><a href="interpreting-error-messages.html#cb133-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(t_vol), <span class="at">y =</span>p_vol)) </span>
+<span id="cb133-4"><a href="interpreting-error-messages.html#cb133-4" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb133-5"><a href="interpreting-error-messages.html#cb133-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;tumor volume&quot;</span>, <span class="at">y =</span> <span class="st">&quot;prostate volume&quot;</span>) <span class="sc">+</span></span>
+<span id="cb133-6"><a href="interpreting-error-messages.html#cb133-6" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
 <p>In this case, you get a ggplot output, but without any boxplots. It is also missing your custom labels for the x and y axes, and the theme you wanted. Essentially, the code stops running after the initial ggplot() statement and the remaining lines of code are ignored. This can be pretty puzzling, as you do get a plot, but not what you intended. There is a partial plot in the Plots tab, but you get a somewhat helpful error in the Console.</p>
 <p>The error you get is:</p>
 <blockquote>
@@ -1021,12 +1028,12 @@ Check every ggplot pipeline to make sure each step (except the last) ends in a p
 <h3><span class="header-section-number">10.2.5</span> Pipe <code>%&gt;%</code> in Place of a <code>+</code><a href="interpreting-error-messages.html#pipe-in-place-of-a" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This is a common error. It is easy to start with your dataset, do some data wrangling steps with the pipe <code>%&gt;%</code> and keep piping out of habit, even after you start your ggplot. Unfortunately, once you start to ggplot, you have to use + as your code connector. Having a pipe instead will cause an error.</p>
 <p>Here is an example, where a <code>%&gt;%</code> is used instead of <code>+</code> in a ggplot pipeline. It usually happens at the beginning of the ggplot, when you are still in piping mode.</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="interpreting-error-messages.html#cb135-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
-<span id="cb135-2"><a href="interpreting-error-messages.html#cb135-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(t_vol, p_vol, age, aa) <span class="sc">%&gt;%</span> </span>
-<span id="cb135-3"><a href="interpreting-error-messages.html#cb135-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(t_vol), <span class="at">y =</span>p_vol)) <span class="sc">%&gt;%</span> </span>
-<span id="cb135-4"><a href="interpreting-error-messages.html#cb135-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb135-5"><a href="interpreting-error-messages.html#cb135-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;tumor volume&quot;</span>, <span class="at">y =</span> <span class="st">&quot;prostate volume&quot;</span>) <span class="sc">+</span></span>
-<span id="cb135-6"><a href="interpreting-error-messages.html#cb135-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="interpreting-error-messages.html#cb134-1" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb134-2"><a href="interpreting-error-messages.html#cb134-2" tabindex="-1"></a>  <span class="fu">select</span>(t_vol, p_vol, age, aa) <span class="sc">%&gt;%</span> </span>
+<span id="cb134-3"><a href="interpreting-error-messages.html#cb134-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(t_vol), <span class="at">y =</span>p_vol)) <span class="sc">%&gt;%</span> </span>
+<span id="cb134-4"><a href="interpreting-error-messages.html#cb134-4" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb134-5"><a href="interpreting-error-messages.html#cb134-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;tumor volume&quot;</span>, <span class="at">y =</span> <span class="st">&quot;prostate volume&quot;</span>) <span class="sc">+</span></span>
+<span id="cb134-6"><a href="interpreting-error-messages.html#cb134-6" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
 <p>In this case, you will not get a ggplot output, and you will get an error in the console.</p>
 <p>The error you get is:</p>
 <blockquote>
@@ -1039,13 +1046,13 @@ Check every ggplot pipeline to make sure each step (except the last) ends in a p
 <h3><span class="header-section-number">10.2.6</span> Missing Comma Within a Function()<a href="interpreting-error-messages.html#missing-comma-within-a-function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This is a common error. It is easy to start a series of arguments to a function, like multiple variables in a mutate step, and miss a comma between them.</p>
 <p>Here is an example, where a comma is missing in a series of mutate steps. Note that it is a good habit to put one mutate step on each line, with each line ending in a comma. This will help you find the missing comma if (no, when) you make this mistake.</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="interpreting-error-messages.html#cb136-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
-<span id="cb136-2"><a href="interpreting-error-messages.html#cb136-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(t_vol, p_vol, age, aa) <span class="sc">%&gt;%</span> </span>
-<span id="cb136-3"><a href="interpreting-error-messages.html#cb136-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> t_vol<span class="sc">/</span>p_vol,</span>
-<span id="cb136-4"><a href="interpreting-error-messages.html#cb136-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">older_aa =</span> <span class="fu">case_when</span>(age <span class="sc">&gt;</span><span class="dv">65</span> <span class="sc">&amp;</span> aa <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb136-5"><a href="interpreting-error-messages.html#cb136-5" aria-hidden="true" tabindex="-1"></a>                              <span class="cn">TRUE</span> <span class="sc">~</span><span class="dv">0</span>)</span>
-<span id="cb136-6"><a href="interpreting-error-messages.html#cb136-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">age_decade =</span> <span class="fu">floor</span>(age <span class="sc">/</span> <span class="dv">10</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb136-7"><a href="interpreting-error-messages.html#cb136-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(older_aa <span class="sc">==</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="interpreting-error-messages.html#cb135-1" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb135-2"><a href="interpreting-error-messages.html#cb135-2" tabindex="-1"></a>  <span class="fu">select</span>(t_vol, p_vol, age, aa) <span class="sc">%&gt;%</span> </span>
+<span id="cb135-3"><a href="interpreting-error-messages.html#cb135-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> t_vol<span class="sc">/</span>p_vol,</span>
+<span id="cb135-4"><a href="interpreting-error-messages.html#cb135-4" tabindex="-1"></a>         <span class="at">older_aa =</span> <span class="fu">case_when</span>(age <span class="sc">&gt;</span><span class="dv">65</span> <span class="sc">&amp;</span> aa <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb135-5"><a href="interpreting-error-messages.html#cb135-5" tabindex="-1"></a>                              <span class="cn">TRUE</span> <span class="sc">~</span><span class="dv">0</span>)</span>
+<span id="cb135-6"><a href="interpreting-error-messages.html#cb135-6" tabindex="-1"></a>         <span class="at">age_decade =</span> <span class="fu">floor</span>(age <span class="sc">/</span> <span class="dv">10</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb135-7"><a href="interpreting-error-messages.html#cb135-7" tabindex="-1"></a>  <span class="fu">filter</span>(older_aa <span class="sc">==</span><span class="dv">1</span>)</span></code></pre></div>
 <p>In this case, you will not get a tibble output, and you will get an error in the console.</p>
 <p>The error you get is:</p>
 <blockquote>
@@ -1059,14 +1066,14 @@ Check every ggplot pipeline to make sure each step (except the last) ends in a p
 <p>This is a common error. You may have created or modified a dataframe, but forgot to assign it to a new object name. Or maybe you did this assignment in a different session, but have not done it in your current session. Or maybe you made a typographical error in calling the object (“covvid” instead of “covid”). Either way, this object is not yet loaded into your computing environment (the Environment tab).</p>
 <p>In this example, we request data from the {medicaldata} package, but forget to assign it to an object.</p>
 <p>So it does not exist when we try to use it to start a pipeline. This does not work.</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="interpreting-error-messages.html#cb137-1" aria-hidden="true" tabindex="-1"></a>medicaldata<span class="sc">::</span>covid_testing</span>
-<span id="cb137-2"><a href="interpreting-error-messages.html#cb137-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb137-3"><a href="interpreting-error-messages.html#cb137-3" aria-hidden="true" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
-<span id="cb137-4"><a href="interpreting-error-messages.html#cb137-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(subject_id, age, result, ct_result, patient_class) <span class="sc">%&gt;%</span> </span>
-<span id="cb137-5"><a href="interpreting-error-messages.html#cb137-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">high_titer =</span> <span class="fu">case_when</span>(ct_result <span class="sc">&lt;</span> <span class="dv">18</span>,</span>
-<span id="cb137-6"><a href="interpreting-error-messages.html#cb137-6" aria-hidden="true" tabindex="-1"></a>                                    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">0</span>),</span>
-<span id="cb137-7"><a href="interpreting-error-messages.html#cb137-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">age_decade =</span> <span class="fu">floor</span>(age <span class="sc">/</span> <span class="dv">10</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb137-8"><a href="interpreting-error-messages.html#cb137-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(age <span class="sc">&gt;</span><span class="dv">50</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="interpreting-error-messages.html#cb136-1" tabindex="-1"></a>medicaldata<span class="sc">::</span>covid_testing</span>
+<span id="cb136-2"><a href="interpreting-error-messages.html#cb136-2" tabindex="-1"></a></span>
+<span id="cb136-3"><a href="interpreting-error-messages.html#cb136-3" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
+<span id="cb136-4"><a href="interpreting-error-messages.html#cb136-4" tabindex="-1"></a>  <span class="fu">select</span>(subject_id, age, result, ct_result, patient_class) <span class="sc">%&gt;%</span> </span>
+<span id="cb136-5"><a href="interpreting-error-messages.html#cb136-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">high_titer =</span> <span class="fu">case_when</span>(ct_result <span class="sc">&lt;</span> <span class="dv">18</span>,</span>
+<span id="cb136-6"><a href="interpreting-error-messages.html#cb136-6" tabindex="-1"></a>                                    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">0</span>),</span>
+<span id="cb136-7"><a href="interpreting-error-messages.html#cb136-7" tabindex="-1"></a>         <span class="at">age_decade =</span> <span class="fu">floor</span>(age <span class="sc">/</span> <span class="dv">10</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb136-8"><a href="interpreting-error-messages.html#cb136-8" tabindex="-1"></a>  <span class="fu">filter</span>(age <span class="sc">&gt;</span><span class="dv">50</span>)</span></code></pre></div>
 <p>In this case, you will not get a tibble output, and you will get an error in the console.</p>
 <p>The error you get is:</p>
 <blockquote>
@@ -1084,12 +1091,12 @@ fixes your data wrangling pipeline.</p>
 <li>To <strong>test</strong> a logical statement, like age == 60, or fam_hx == 1, or location == “Outpatient”. In all of these logical tests, you use <strong><em>two</em></strong> equals signs.</li>
 </ol>
 <p>It is very common to use one equals sign in a logical statement. This causes errors. Watch the last filter step below.</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="interpreting-error-messages.html#cb138-1" aria-hidden="true" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
-<span id="cb138-2"><a href="interpreting-error-messages.html#cb138-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(t_vol, p_vol, age, aa) <span class="sc">%&gt;%</span> </span>
-<span id="cb138-3"><a href="interpreting-error-messages.html#cb138-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> t_vol<span class="sc">/</span>p_vol,</span>
-<span id="cb138-4"><a href="interpreting-error-messages.html#cb138-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">older_aa =</span> <span class="fu">case_when</span>(age <span class="sc">&gt;</span><span class="dv">65</span> <span class="sc">&amp;</span> aa <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>, <span class="cn">TRUE</span> <span class="sc">~</span><span class="dv">0</span>),</span>
-<span id="cb138-5"><a href="interpreting-error-messages.html#cb138-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">age_decade =</span> <span class="fu">floor</span>(age <span class="sc">/</span> <span class="dv">10</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb138-6"><a href="interpreting-error-messages.html#cb138-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(older_aa <span class="sc">==</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="interpreting-error-messages.html#cb137-1" tabindex="-1"></a>prostate <span class="sc">%&gt;%</span> </span>
+<span id="cb137-2"><a href="interpreting-error-messages.html#cb137-2" tabindex="-1"></a>  <span class="fu">select</span>(t_vol, p_vol, age, aa) <span class="sc">%&gt;%</span> </span>
+<span id="cb137-3"><a href="interpreting-error-messages.html#cb137-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio =</span> t_vol<span class="sc">/</span>p_vol,</span>
+<span id="cb137-4"><a href="interpreting-error-messages.html#cb137-4" tabindex="-1"></a>         <span class="at">older_aa =</span> <span class="fu">case_when</span>(age <span class="sc">&gt;</span><span class="dv">65</span> <span class="sc">&amp;</span> aa <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>, <span class="cn">TRUE</span> <span class="sc">~</span><span class="dv">0</span>),</span>
+<span id="cb137-5"><a href="interpreting-error-messages.html#cb137-5" tabindex="-1"></a>         <span class="at">age_decade =</span> <span class="fu">floor</span>(age <span class="sc">/</span> <span class="dv">10</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb137-6"><a href="interpreting-error-messages.html#cb137-6" tabindex="-1"></a>  <span class="fu">filter</span>(older_aa <span class="sc">==</span><span class="dv">1</span>)</span></code></pre></div>
 <p>In this case, the error you receive is very helpful:</p>
 <blockquote>
 <p>Error: Problem with `filter()` input `..1`. x Input `..1` is named. ℹ This usually means that you’ve used `=` instead of `==`. ℹ Did you mean `older_aa == 1`?</p>
@@ -1104,8 +1111,8 @@ fixes your data wrangling pipeline.</p>
 <h3><span class="header-section-number">10.2.9</span> Non-numeric argument to a binary operator<a href="interpreting-error-messages.html#non-numeric-argument-to-a-binary-operator" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This happens when you try to do math on things that are not numbers. It usually occurs when you have a variable(column) that <em>looks</em> like it is numeric (it contains numbers), but somewhere along the way it became a character string variable. This often occurs when data are being entered into a spreadsheet, and one value in the column has characters in it. This often happens when you have a column of systolic blood pressures, and one value is entered as “this was not done”, or “102, but taken standing up”. Having comments, even if only one character string in a column in Excel <strong>makes the whole column</strong> into the character string data type.</p>
 <p>This is not apparent until you try to do math with this variable, as in</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="interpreting-error-messages.html#cb139-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
-<span id="cb139-2"><a href="interpreting-error-messages.html#cb139-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mean_art_pressure =</span> sbp<span class="sc">/</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span><span class="sc">*</span> dbp)</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="interpreting-error-messages.html#cb138-1" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb138-2"><a href="interpreting-error-messages.html#cb138-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mean_art_pressure =</span> sbp<span class="sc">/</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span><span class="sc">*</span> dbp)</span></code></pre></div>
 <p>This will give you the error:</p>
 <blockquote>
 <p>Error in mutate(mean_art_pressure: non-numeric argument to binary operator</p>

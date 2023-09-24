@@ -175,10 +175,10 @@ licorice %>%
 ##  8     0      2  31.1    61     2     1     0     1     1
 ##  9     0      3  21.2    83     1     1     0     1     1
 ## 10     0      3  27.2    69     2     3     0     1     2
-## # … with 225 more rows, and 10 more variables: `10` <dbl>,
-## #   `11` <dbl>, `12` <dbl>, `13` <dbl>, `14` <dbl>,
-## #   `15` <dbl>, `16` <dbl>, `17` <dbl>, `18` <dbl>,
-## #   `19` <dbl>
+## # ℹ 225 more rows
+## # ℹ 10 more variables: `10` <dbl>, `11` <dbl>, `12` <dbl>,
+## #   `13` <dbl>, `14` <dbl>, `15` <dbl>, `16` <dbl>,
+## #   `17` <dbl>, `18` <dbl>, `19` <dbl>
 ```
 
 

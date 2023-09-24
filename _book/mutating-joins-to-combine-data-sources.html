@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 Mutating Joins to Combine Data Sources | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
-  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 Mutating Joins to Combine Data Sources | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2023-04-06" />
+<meta name="date" content="2023-09-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,12 +53,14 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.10.2/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+<link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
+<script src="libs/tabwid-1.1.3/tabwid.js"></script>
 <link href="libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="libs/pagedtable-1.1/js/pagedtable.js"></script>
 
@@ -128,6 +130,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="include/webex.css" type="text/css" />
 <link rel="stylesheet" href="include/style.css" type="text/css" />
@@ -581,6 +587,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="23.7" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#dumbbell-plots"><i class="fa fa-check"></i><b>23.7</b> Dumbbell Plots</a></li>
 <li class="chapter" data-level="23.8" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#spaghetti-plots-with-summary-smoothed-lines-for-change-over-time"><i class="fa fa-check"></i><b>23.8</b> Spaghetti Plots with Summary Smoothed Lines for Change Over Time</a></li>
 <li class="chapter" data-level="23.9" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#swimmer-plots"><i class="fa fa-check"></i><b>23.9</b> Swimmer Plots</a></li>
+<li class="chapter" data-level="23.10" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#adding-significance-comparisons-with-ggsignif"><i class="fa fa-check"></i><b>23.10</b> Adding Significance Comparisons with {ggsignif}</a></li>
 </ul></li>
 <li class="chapter" data-level="24" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html"><i class="fa fa-check"></i><b>24</b> Customizing Plot Scales</a>
 <ul>
@@ -879,9 +886,9 @@ present.</p></li>
 <h2><span class="header-section-number">9.3</span> Let’s Start with Left Joins<a href="mutating-joins-to-combine-data-sources.html#lets-start-with-left-joins" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To get started, let’s download two toy datasets - Copy and run the code
 chunk below to assign these to birthdays and hometowns.</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="mutating-joins-to-combine-data-sources.html#cb98-1" aria-hidden="true" tabindex="-1"></a>birthdays <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/higgi13425/medicaldata/master/data-raw/join_data/birthdays.csv&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>X)</span>
-<span id="cb98-2"><a href="mutating-joins-to-combine-data-sources.html#cb98-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb98-3"><a href="mutating-joins-to-combine-data-sources.html#cb98-3" aria-hidden="true" tabindex="-1"></a>hometowns <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/higgi13425/medicaldata/master/data-raw/join_data/hometowns.csv&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>X)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="mutating-joins-to-combine-data-sources.html#cb97-1" tabindex="-1"></a>birthdays <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/higgi13425/medicaldata/master/data-raw/join_data/birthdays.csv&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>X)</span>
+<span id="cb97-2"><a href="mutating-joins-to-combine-data-sources.html#cb97-2" tabindex="-1"></a></span>
+<span id="cb97-3"><a href="mutating-joins-to-combine-data-sources.html#cb97-3" tabindex="-1"></a>hometowns <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/higgi13425/medicaldata/master/data-raw/join_data/hometowns.csv&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>X)</span></code></pre></div>
 <p>The left join is the most common mutating join, as it allows you to
 start with a base dataset and add matching variables from other sources.</p>
 <ul>
@@ -893,12 +900,12 @@ added.</li>
 <p>Let’s start with a simple left join with these two small and simple
 “toy” datasets about famous physicians. Start by copying and running a
 glimpse() function on each dataset from the code chunk below.</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="mutating-joins-to-combine-data-sources.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(birthdays)</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="mutating-joins-to-combine-data-sources.html#cb98-1" tabindex="-1"></a><span class="fu">glimpse</span>(birthdays)</span></code></pre></div>
 <pre><code>## Rows: 3
 ## Columns: 2
 ## $ name &lt;chr&gt; &quot;Rudolf Virchow&quot;, &quot;Virginia Apgar&quot;, &quot;William …
 ## $ dob  &lt;chr&gt; &quot;10/13/1821&quot;, &quot;6/7/1909&quot;, &quot;7/12/1849&quot;</code></pre>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="mutating-joins-to-combine-data-sources.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(hometowns)</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="mutating-joins-to-combine-data-sources.html#cb100-1" tabindex="-1"></a><span class="fu">glimpse</span>(hometowns)</span></code></pre></div>
 <pre><code>## Rows: 3
 ## Columns: 2
 ## $ name     &lt;chr&gt; &quot;Rudolf Virchow&quot;, &quot;Virginia Apgar&quot;, &quot;Hipp…
@@ -922,10 +929,10 @@ numbers represent the unique key variable, and the gray boxes represent
 the unique values from datasets x and y. Notice that observation 4 in
 dataset y, because it does not have a match in dataset x, does not end
 up in the final dataset.</p>
-<div class="figure">
-<img src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/left-join.gif" alt="" />
-<p class="caption">left join animation by Garrick Aden-Buie from the <code>tidyexplain</code>
-repo</p>
+<div class="float">
+<img src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/left-join.gif" alt="left join animation by Garrick Aden-Buie from the tidyexplain repo" />
+<div class="figcaption">left join animation by Garrick Aden-Buie from the <code>tidyexplain</code>
+repo</div>
 </div>
 </div>
 <div id="left-join-in-practice" class="section level2 hasAnchor" number="9.5">
@@ -933,7 +940,7 @@ repo</p>
 <p>Let’s see how it works. Run the code chunk below. The hometowns dataset
 is <code>x</code>, or the base/left dataset, and the birthdays dataset is the <code>y</code>,
 or new/right dataset. Notice that we don’t specify a variable for <code>by</code>.</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="mutating-joins-to-combine-data-sources.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(<span class="at">x =</span> hometowns, <span class="at">y =</span> birthdays)</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="mutating-joins-to-combine-data-sources.html#cb102-1" tabindex="-1"></a><span class="fu">left_join</span>(<span class="at">x =</span> hometowns, <span class="at">y =</span> birthdays)</span></code></pre></div>
 <pre><code>## Joining with `by = join_by(name)`</code></pre>
 <pre><code>##             name      hometown        dob
 ## 1 Rudolf Virchow        Berlin 10/13/1821
@@ -960,7 +967,7 @@ observations.</p>
 In this case, the common variable to the two datasets is “name”. You
 specify this with the <code>by</code> variable in quotes, as in the below code
 chunk</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="mutating-joins-to-combine-data-sources.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(<span class="at">x =</span> hometowns, <span class="at">y =</span> birthdays, <span class="at">by =</span> <span class="st">&quot;name&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="mutating-joins-to-combine-data-sources.html#cb105-1" tabindex="-1"></a><span class="fu">left_join</span>(<span class="at">x =</span> hometowns, <span class="at">y =</span> birthdays, <span class="at">by =</span> <span class="st">&quot;name&quot;</span>)</span></code></pre></div>
 <pre><code>##             name      hometown        dob
 ## 1 Rudolf Virchow        Berlin 10/13/1821
 ## 2 Virginia Apgar Westfield, NJ   6/7/1909
@@ -992,11 +999,11 @@ important reality check)</li>
 <h2><span class="header-section-number">9.7</span> Problem variable names<a href="mutating-joins-to-combine-data-sources.html#problem-variable-names" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Sometimes your variable names will be just a bit off. Read in this new
 version of hometowns2 by copying and running the code below.</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="mutating-joins-to-combine-data-sources.html#cb108-1" aria-hidden="true" tabindex="-1"></a>hometowns2 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/higgi13425/medicaldata/master/data-raw/join_data/hometowns2.csv&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>X)</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="mutating-joins-to-combine-data-sources.html#cb107-1" tabindex="-1"></a>hometowns2 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/higgi13425/medicaldata/master/data-raw/join_data/hometowns2.csv&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>X)</span></code></pre></div>
 <p>Now write your own left join of hometowns2 and birthdays using the code
 below as a starting point. Remember to <em>glimpse( )</em> the new dataset
 first.</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="mutating-joins-to-combine-data-sources.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(<span class="at">x =</span> hometowns2, <span class="at">y =</span> birthdays, <span class="at">by =</span> <span class="st">&quot;name&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="mutating-joins-to-combine-data-sources.html#cb108-1" tabindex="-1"></a><span class="fu">left_join</span>(<span class="at">x =</span> hometowns2, <span class="at">y =</span> birthdays, <span class="at">by =</span> <span class="st">&quot;name&quot;</span>)</span></code></pre></div>
 <pre><code>## Error in `left_join()`:
 ## ! Join columns in `x` must be present in the data.
 ## ✖ Problem with `name`.</code></pre>
@@ -1011,10 +1018,10 @@ up in the final dataset. In a right join, the y dataset is considered
 the base dataset, and the matching observations from the x dataset are
 added. This is not very different from a left_join, but occurs in a
 different order.</p>
-<div class="figure">
-<img src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/right-join.gif" alt="" />
-<p class="caption">right join animation by Garrick Aden-Buie from the <code>tidyexplain</code>
-repo</p>
+<div class="float">
+<img src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/right-join.gif" alt="right join animation by Garrick Aden-Buie from the tidyexplain repo" />
+<div class="figcaption">right join animation by Garrick Aden-Buie from the <code>tidyexplain</code>
+repo</div>
 </div>
 </div>
 <div id="right-join-in-practice" class="section level2 hasAnchor" number="9.9">
@@ -1022,7 +1029,7 @@ repo</p>
 <p>Let’s see how it works. Run the code chunk below. The hometowns dataset
 is <code>x</code>, or the base/left dataset, and the birthdays dataset is the <code>y</code>,
 or new/right dataset. Notice that we don’t specify a variable for <code>by</code>.</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="mutating-joins-to-combine-data-sources.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">right_join</span>(<span class="at">x =</span> hometowns, <span class="at">y =</span> birthdays)</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="mutating-joins-to-combine-data-sources.html#cb110-1" tabindex="-1"></a><span class="fu">right_join</span>(<span class="at">x =</span> hometowns, <span class="at">y =</span> birthdays)</span></code></pre></div>
 <pre><code>## Joining with `by = join_by(name)`</code></pre>
 <pre><code>##             name      hometown        dob
 ## 1 Rudolf Virchow        Berlin 10/13/1821
@@ -1050,11 +1057,11 @@ the “Name” variable name. Then we can pipe the resulting dataset into
 the join. But if we pipe it into a <em>left_join()</em>, hometowns will by default
 become the base (x) dataset, as it comes first. If we want to keep birthdays
 as the base (x) dataset, we can use a <em>right_join()</em>. This will result in a table in which everyone has a known birthday, but not necessarily a known hometown.</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="mutating-joins-to-combine-data-sources.html#cb114-1" aria-hidden="true" tabindex="-1"></a>hometowns2 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/higgi13425/medicaldata/master/data-raw/join_data/hometowns2.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb114-2"><a href="mutating-joins-to-combine-data-sources.html#cb114-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>X) <span class="sc">%&gt;%</span> </span>
-<span id="cb114-3"><a href="mutating-joins-to-combine-data-sources.html#cb114-3" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">set_names</span>(<span class="fu">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;hometown&quot;</span>))</span>
-<span id="cb114-4"><a href="mutating-joins-to-combine-data-sources.html#cb114-4" aria-hidden="true" tabindex="-1"></a>hometowns2 <span class="sc">%&gt;%</span> </span>
-<span id="cb114-5"><a href="mutating-joins-to-combine-data-sources.html#cb114-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(birthdays)</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="mutating-joins-to-combine-data-sources.html#cb113-1" tabindex="-1"></a>hometowns2 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/higgi13425/medicaldata/master/data-raw/join_data/hometowns2.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb113-2"><a href="mutating-joins-to-combine-data-sources.html#cb113-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>X) <span class="sc">%&gt;%</span> </span>
+<span id="cb113-3"><a href="mutating-joins-to-combine-data-sources.html#cb113-3" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">set_names</span>(<span class="fu">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;hometown&quot;</span>))</span>
+<span id="cb113-4"><a href="mutating-joins-to-combine-data-sources.html#cb113-4" tabindex="-1"></a>hometowns2 <span class="sc">%&gt;%</span> </span>
+<span id="cb113-5"><a href="mutating-joins-to-combine-data-sources.html#cb113-5" tabindex="-1"></a>  <span class="fu">right_join</span>(birthdays)</span></code></pre></div>
 <pre><code>## Joining with `by = join_by(name)`</code></pre>
 <pre><code>##             name      hometown        dob
 ## 1 Rudolf Virchow        Berlin 10/13/1821
@@ -1066,20 +1073,20 @@ as the base (x) dataset, we can use a <em>right_join()</em>. This will result in
 <p>The inner join only keeps observations for which there is a matching
 observation in <strong>both</strong> datasets. Think of the inner_join as the intersection of the two sets.
 Here is an animation of what this looks like</p>
-<div class="figure">
-<img src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/inner-join.gif" alt="" />
-<p class="caption">inner join animation by Garrick Aden-Buie from the <code>tidyexplain</code>
-repo</p>
+<div class="float">
+<img src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/inner-join.gif" alt="inner join animation by Garrick Aden-Buie from the tidyexplain repo" />
+<div class="figcaption">inner join animation by Garrick Aden-Buie from the <code>tidyexplain</code>
+repo</div>
 </div>
 <p>For birthdays and hometowns, what do
 you predict the result will be?
 Look at the datasets below (run the glimpse code) and take a guess.</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="mutating-joins-to-combine-data-sources.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(birthdays)</span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="mutating-joins-to-combine-data-sources.html#cb116-1" tabindex="-1"></a><span class="fu">glimpse</span>(birthdays)</span></code></pre></div>
 <pre><code>## Rows: 3
 ## Columns: 2
 ## $ name &lt;chr&gt; &quot;Rudolf Virchow&quot;, &quot;Virginia Apgar&quot;, &quot;William …
 ## $ dob  &lt;chr&gt; &quot;10/13/1821&quot;, &quot;6/7/1909&quot;, &quot;7/12/1849&quot;</code></pre>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="mutating-joins-to-combine-data-sources.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(hometowns)</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="mutating-joins-to-combine-data-sources.html#cb118-1" tabindex="-1"></a><span class="fu">glimpse</span>(hometowns)</span></code></pre></div>
 <pre><code>## Rows: 3
 ## Columns: 2
 ## $ name     &lt;chr&gt; &quot;Rudolf Virchow&quot;, &quot;Virginia Apgar&quot;, &quot;Hipp…
@@ -1098,7 +1105,7 @@ Look at the datasets below (run the glimpse code) and take a guess.</p>
 <button>
 Click to Reveal
 </button>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="mutating-joins-to-combine-data-sources.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inner_join</span>(birthdays, hometowns)</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="mutating-joins-to-combine-data-sources.html#cb120-1" tabindex="-1"></a><span class="fu">inner_join</span>(birthdays, hometowns)</span></code></pre></div>
 <pre><code>## Joining with `by = join_by(name)`</code></pre>
 <pre><code>##             name        dob      hometown
 ## 1 Rudolf Virchow 10/13/1821        Berlin
@@ -1110,20 +1117,20 @@ Click to Reveal
 <h2><span class="header-section-number">9.13</span> Full Joins<a href="mutating-joins-to-combine-data-sources.html#full-joins" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The full (aka outer) join keeps <em>all</em> observations for from <strong>both</strong> datasets, whether or not there is a match. Think of the full_join as the union of the two sets.
 Here is an animation of what this looks like</p>
-<div class="figure">
-<img src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/full-join.gif" alt="" />
-<p class="caption">full join animation by Garrick Aden-Buie from the <code>tidyexplain</code>
-repo</p>
+<div class="float">
+<img src="https://raw.githubusercontent.com/gadenbuie/tidyexplain/main/images/full-join.gif" alt="full join animation by Garrick Aden-Buie from the tidyexplain repo" />
+<div class="figcaption">full join animation by Garrick Aden-Buie from the <code>tidyexplain</code>
+repo</div>
 </div>
 <p>For birthdays and hometowns, what do
 you predict the result will be?
 Look at the datasets below (run the glimpse code) and take a guess.</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="mutating-joins-to-combine-data-sources.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(birthdays)</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="mutating-joins-to-combine-data-sources.html#cb123-1" tabindex="-1"></a><span class="fu">glimpse</span>(birthdays)</span></code></pre></div>
 <pre><code>## Rows: 3
 ## Columns: 2
 ## $ name &lt;chr&gt; &quot;Rudolf Virchow&quot;, &quot;Virginia Apgar&quot;, &quot;William …
 ## $ dob  &lt;chr&gt; &quot;10/13/1821&quot;, &quot;6/7/1909&quot;, &quot;7/12/1849&quot;</code></pre>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="mutating-joins-to-combine-data-sources.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(hometowns)</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="mutating-joins-to-combine-data-sources.html#cb125-1" tabindex="-1"></a><span class="fu">glimpse</span>(hometowns)</span></code></pre></div>
 <pre><code>## Rows: 3
 ## Columns: 2
 ## $ name     &lt;chr&gt; &quot;Rudolf Virchow&quot;, &quot;Virginia Apgar&quot;, &quot;Hipp…
@@ -1142,7 +1149,7 @@ Look at the datasets below (run the glimpse code) and take a guess.</p>
 <button>
 Click to Reveal
 </button>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="mutating-joins-to-combine-data-sources.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">full_join</span>(birthdays, hometowns)</span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="mutating-joins-to-combine-data-sources.html#cb127-1" tabindex="-1"></a><span class="fu">full_join</span>(birthdays, hometowns)</span></code></pre></div>
 <pre><code>## Joining with `by = join_by(name)`</code></pre>
 <pre><code>##             name        dob      hometown
 ## 1 Rudolf Virchow 10/13/1821        Berlin

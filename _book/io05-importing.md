@@ -144,25 +144,24 @@ read_csv(glue(url_stem, 'data/scurvy.csv'))
 
 ```
 ## # A tibble: 12 × 8
-##    study_id treatm…¹ dosin…² gum_r…³ skin_…⁴ weakn…⁵ lassi…⁶
-##    <chr>    <chr>    <chr>   <chr>   <chr>   <chr>   <chr>  
-##  1 001      cider    1 quar… 2_mode… 2_mode… 2_mode… 2_mode…
-##  2 002      cider    1 quar… 2_mode… 1_mild  2_mode… 3_seve…
-##  3 003      dilute_… 25 dro… 1_mild  3_seve… 3_seve… 3_seve…
-##  4 004      dilute_… 25 dro… 2_mode… 3_seve… 3_seve… 3_seve…
-##  5 005      vinegar  two sp… 3_seve… 3_seve… 3_seve… 3_seve…
-##  6 006      vinegar  two sp… 3_seve… 3_seve… 3_seve… 3_seve…
-##  7 007      sea_wat… half p… 3_seve… 3_seve… 3_seve… 3_seve…
-##  8 008      sea_wat… half p… 3_seve… 3_seve… 3_seve… 3_seve…
-##  9 009      citrus   two le… 1_mild  1_mild  0_none  1_mild 
-## 10 010      citrus   two le… 0_none  0_none  0_none  0_none 
-## 11 011      purgati… a nutm… 3_seve… 3_seve… 3_seve… 3_seve…
-## 12 012      purgati… a nutm… 3_seve… 3_seve… 3_seve… 3_seve…
-## # … with 1 more variable: fit_for_duty_d6 <chr>, and
-## #   abbreviated variable names ¹​treatment,
-## #   ²​dosing_regimen_for_scurvy, ³​gum_rot_d6,
-## #   ⁴​skin_sores_d6, ⁵​weakness_of_the_knees_d6,
-## #   ⁶​lassitude_d6
+##    study_id treatment      dosing_regimen_for_s…¹ gum_rot_d6
+##    <chr>    <chr>          <chr>                  <chr>     
+##  1 001      cider          1 quart per day        2_moderate
+##  2 002      cider          1 quart per day        2_moderate
+##  3 003      dilute_sulfur… 25 drops of elixir of… 1_mild    
+##  4 004      dilute_sulfur… 25 drops of elixir of… 2_moderate
+##  5 005      vinegar        two spoonfuls, three … 3_severe  
+##  6 006      vinegar        two spoonfuls, three … 3_severe  
+##  7 007      sea_water      half pint daily        3_severe  
+##  8 008      sea_water      half pint daily        3_severe  
+##  9 009      citrus         two lemons and an ora… 1_mild    
+## 10 010      citrus         two lemons and an ora… 0_none    
+## 11 011      purgative_mix… a nutmeg-sized paste … 3_severe  
+## 12 012      purgative_mix… a nutmeg-sized paste … 3_severe  
+## # ℹ abbreviated name: ¹​dosing_regimen_for_scurvy
+## # ℹ 4 more variables: skin_sores_d6 <chr>,
+## #   weakness_of_the_knees_d6 <chr>, lassitude_d6 <chr>,
+## #   fit_for_duty_d6 <chr>
 ```
 
 Let's look at what was extracted from the csv file.
@@ -635,25 +634,25 @@ haven::read_sas(glue(url_stem, "data/blood_storage.sas7bdat"))
 
 ```
 ## # A tibble: 316 × 20
-##    rbc_age_…¹ media…²   age    aa fam_hx p_vol t_vol t_stage
-##         <dbl>   <dbl> <dbl> <dbl>  <dbl> <dbl> <dbl>   <dbl>
-##  1          3      25  72.1     0      0  54       3       1
-##  2          3      25  73.6     0      0  43.2     3       2
-##  3          3      25  67.5     0      0 103.      1       1
-##  4          2      15  65.8     0      0  46       1       1
-##  5          2      15  63.2     0      0  60       2       1
-##  6          3      25  65.4     0      0  45.9     2       1
-##  7          3      25  65.5     1      0  42.6     2       1
-##  8          1      10  67.1     0      0  40.7     3       1
-##  9          1      10  63.9     0      0  45       2       1
-## 10          2      15  63       1      0  67.6     2       1
-## # … with 306 more rows, 12 more variables: b_gs <dbl>,
-## #   bn <dbl>, organ_confined <dbl>, preop_psa <dbl>,
-## #   preop_therapy <dbl>, units <dbl>, s_gs <dbl>,
-## #   any_adj_therapy <dbl>, adj_rad_therapy <dbl>,
-## #   recurrence <dbl>, censor <dbl>,
-## #   time_to_recurrence <dbl>, and abbreviated variable
-## #   names ¹​rbc_age_group, ²​median_rbc_age
+##    rbc_age_group median_rbc_age   age    aa fam_hx p_vol
+##            <dbl>          <dbl> <dbl> <dbl>  <dbl> <dbl>
+##  1             3             25  72.1     0      0  54  
+##  2             3             25  73.6     0      0  43.2
+##  3             3             25  67.5     0      0 103. 
+##  4             2             15  65.8     0      0  46  
+##  5             2             15  63.2     0      0  60  
+##  6             3             25  65.4     0      0  45.9
+##  7             3             25  65.5     1      0  42.6
+##  8             1             10  67.1     0      0  40.7
+##  9             1             10  63.9     0      0  45  
+## 10             2             15  63       1      0  67.6
+## # ℹ 306 more rows
+## # ℹ 14 more variables: t_vol <dbl>, t_stage <dbl>,
+## #   b_gs <dbl>, bn <dbl>, organ_confined <dbl>,
+## #   preop_psa <dbl>, preop_therapy <dbl>, units <dbl>,
+## #   s_gs <dbl>, any_adj_therapy <dbl>,
+## #   adj_rad_therapy <dbl>, recurrence <dbl>, censor <dbl>,
+## #   time_to_recurrence <dbl>
 ```
 
 
@@ -665,25 +664,25 @@ haven::read_dta(glue(url_stem, "data/blood_storage.dta"))
 
 ```
 ## # A tibble: 316 × 20
-##    rbc_age_…¹ media…²   age    aa fam_hx p_vol t_vol t_stage
-##         <dbl>   <dbl> <dbl> <dbl>  <dbl> <dbl> <dbl>   <dbl>
-##  1          3      25  72.1     0      0  54       3       1
-##  2          3      25  73.6     0      0  43.2     3       2
-##  3          3      25  67.5     0      0 103.      1       1
-##  4          2      15  65.8     0      0  46       1       1
-##  5          2      15  63.2     0      0  60       2       1
-##  6          3      25  65.4     0      0  45.9     2       1
-##  7          3      25  65.5     1      0  42.6     2       1
-##  8          1      10  67.1     0      0  40.7     3       1
-##  9          1      10  63.9     0      0  45       2       1
-## 10          2      15  63       1      0  67.6     2       1
-## # … with 306 more rows, 12 more variables: b_gs <dbl>,
-## #   bn <dbl>, organ_confined <dbl>, preop_psa <dbl>,
-## #   preop_therapy <dbl>, units <dbl>, s_gs <dbl>,
-## #   any_adj_therapy <dbl>, adj_rad_therapy <dbl>,
-## #   recurrence <dbl>, censor <dbl>,
-## #   time_to_recurrence <dbl>, and abbreviated variable
-## #   names ¹​rbc_age_group, ²​median_rbc_age
+##    rbc_age_group median_rbc_age   age    aa fam_hx p_vol
+##            <dbl>          <dbl> <dbl> <dbl>  <dbl> <dbl>
+##  1             3             25  72.1     0      0  54  
+##  2             3             25  73.6     0      0  43.2
+##  3             3             25  67.5     0      0 103. 
+##  4             2             15  65.8     0      0  46  
+##  5             2             15  63.2     0      0  60  
+##  6             3             25  65.4     0      0  45.9
+##  7             3             25  65.5     1      0  42.6
+##  8             1             10  67.1     0      0  40.7
+##  9             1             10  63.9     0      0  45  
+## 10             2             15  63       1      0  67.6
+## # ℹ 306 more rows
+## # ℹ 14 more variables: t_vol <dbl>, t_stage <dbl>,
+## #   b_gs <dbl>, bn <dbl>, organ_confined <dbl>,
+## #   preop_psa <dbl>, preop_therapy <dbl>, units <dbl>,
+## #   s_gs <dbl>, any_adj_therapy <dbl>,
+## #   adj_rad_therapy <dbl>, recurrence <dbl>, censor <dbl>,
+## #   time_to_recurrence <dbl>
 ```
 
 You can also read and write SPSS files with *read_sav()* and *write_sav()*. Try out the example below.
@@ -695,24 +694,24 @@ haven::read_sav(glue(url_stem, "data/strep_tb.sav"))
 
 ```
 ## # A tibble: 107 × 13
-##    patient_id arm     dose_…¹ dose_…² gender basel…³ basel…⁴
-##    <chr>      <dbl+l>   <dbl>   <dbl> <dbl+> <dbl+l> <dbl+l>
-##  1 0001       2 [Con…       0       0 2 [M]  1 [1_G… 1 [1_9…
-##  2 0002       2 [Con…       0       0 1 [F]  1 [1_G… 3 [3_1…
-##  3 0003       2 [Con…       0       0 1 [F]  1 [1_G… 1 [1_9…
-##  4 0004       2 [Con…       0       0 2 [M]  1 [1_G… 1 [1_9…
-##  5 0005       2 [Con…       0       0 1 [F]  1 [1_G… 2 [2_9…
-##  6 0006       2 [Con…       0       0 2 [M]  1 [1_G… 3 [3_1…
-##  7 0007       2 [Con…       0       0 1 [F]  1 [1_G… 2 [2_9…
-##  8 0008       2 [Con…       0       0 2 [M]  1 [1_G… 2 [2_9…
-##  9 0009       2 [Con…       0       0 1 [F]  2 [2_F… 2 [2_9…
-## 10 0010       2 [Con…       0       0 2 [M]  2 [2_F… 4 [4_1…
-## # … with 97 more rows, 6 more variables:
-## #   baseline_esr <dbl+lbl>, baseline_cavitation <dbl+lbl>,
+##    patient_id arm         dose_strep_g dose_PAS_g gender   
+##    <chr>      <dbl+lbl>          <dbl>      <dbl> <dbl+lbl>
+##  1 0001       2 [Control]            0          0 2 [M]    
+##  2 0002       2 [Control]            0          0 1 [F]    
+##  3 0003       2 [Control]            0          0 1 [F]    
+##  4 0004       2 [Control]            0          0 2 [M]    
+##  5 0005       2 [Control]            0          0 1 [F]    
+##  6 0006       2 [Control]            0          0 2 [M]    
+##  7 0007       2 [Control]            0          0 1 [F]    
+##  8 0008       2 [Control]            0          0 2 [M]    
+##  9 0009       2 [Control]            0          0 1 [F]    
+## 10 0010       2 [Control]            0          0 2 [M]    
+## # ℹ 97 more rows
+## # ℹ 8 more variables: baseline_condition <dbl+lbl>,
+## #   baseline_temp <dbl+lbl>, baseline_esr <dbl+lbl>,
+## #   baseline_cavitation <dbl+lbl>,
 ## #   strep_resistance <dbl+lbl>, radiologic_6m <dbl+lbl>,
-## #   rad_num <dbl>, improved <dbl>, and abbreviated variable
-## #   names ¹​dose_strep_g, ²​dose_PAS_g, ³​baseline_condition,
-## #   ⁴​baseline_temp
+## #   rad_num <dbl>, improved <dbl>
 ```
 
 You can learn more about how to read and write other data file types at [haven](https://haven.tidyverse.org)
@@ -866,12 +865,7 @@ mean(medicaldata::strep_tb$patient_id)
 ```
 
 ```
-## Warning in mean.default(medicaldata::strep_tb$patient_id):
-## argument is not numeric or logical: returning NA
-```
-
-```
-## [1] NA
+## [1] 54
 ```
 
 ```r
@@ -879,7 +873,7 @@ str(medicaldata::strep_tb$patient_id)
 ```
 
 ```
-##  chr [1:107] "0001" "0002" "0003" "0004" "0005" "0006" ...
+##  int [1:107] 1 2 3 4 5 6 7 8 9 10 ...
 ```
 
 This shows you that patient_id is actually a character variable.
@@ -892,7 +886,7 @@ glimpse(medicaldata::strep_tb$patient_id)
 ```
 
 ```
-##  chr [1:107] "0001" "0002" "0003" "0004" "0005" "0006" ...
+##  int [1:107] 1 2 3 4 5 6 7 8 9 10 ...
 ```
 
 You can choose whether you prefer the details of *str()* or the nicer formatting of *glimpse()* for yourself.
@@ -911,18 +905,18 @@ head(medicaldata::scurvy)
 
 ```
 ## # A tibble: 6 × 8
-##   study_id treatment dosin…¹ gum_r…² skin_…³ weakn…⁴ lassi…⁵
-##   <chr>    <fct>     <chr>   <fct>   <fct>   <fct>   <fct>  
-## 1 001      cider     1 quar… 2_mode… 2_mode… 2_mode… 2_mode…
-## 2 002      cider     1 quar… 2_mode… 1_mild  2_mode… 3_seve…
-## 3 003      dilute_s… 25 dro… 1_mild  3_seve… 3_seve… 3_seve…
-## 4 004      dilute_s… 25 dro… 2_mode… 3_seve… 3_seve… 3_seve…
-## 5 005      vinegar   two sp… 3_seve… 3_seve… 3_seve… 3_seve…
-## 6 006      vinegar   two sp… 3_seve… 3_seve… 3_seve… 3_seve…
-## # … with 1 more variable: fit_for_duty_d6 <fct>, and
-## #   abbreviated variable names ¹​dosing_regimen_for_scurvy,
-## #   ²​gum_rot_d6, ³​skin_sores_d6, ⁴​weakness_of_the_knees_d6,
-## #   ⁵​lassitude_d6
+##   study_id treatment       dosing_regimen_for_s…¹ gum_rot_d6
+##   <chr>    <fct>           <chr>                  <fct>     
+## 1 001      cider           1 quart per day        2_moderate
+## 2 002      cider           1 quart per day        2_moderate
+## 3 003      dilute_sulfuri… 25 drops of elixir of… 1_mild    
+## 4 004      dilute_sulfuri… 25 drops of elixir of… 2_moderate
+## 5 005      vinegar         two spoonfuls, three … 3_severe  
+## 6 006      vinegar         two spoonfuls, three … 3_severe  
+## # ℹ abbreviated name: ¹​dosing_regimen_for_scurvy
+## # ℹ 4 more variables: skin_sores_d6 <fct>,
+## #   weakness_of_the_knees_d6 <fct>, lassitude_d6 <fct>,
+## #   fit_for_duty_d6 <fct>
 ```
 
 ```r
@@ -930,20 +924,34 @@ tail(medicaldata::strep_tb)
 ```
 
 ```
-## # A tibble: 6 × 13
-##   patient_id arm      dose_…¹ dose_…² gender basel…³ basel…⁴
-##   <chr>      <fct>      <dbl>   <dbl> <fct>  <fct>   <fct>  
-## 1 0100       Strepto…       2       0 M      3_Poor  2_99-9…
-## 2 0101       Strepto…       2       0 F      3_Poor  4_100F+
-## 3 0104       Strepto…       2       0 M      3_Poor  4_100F+
-## 4 0105       Strepto…       2       0 F      3_Poor  4_100F+
-## 5 0106       Strepto…       2       0 F      3_Poor  4_100F+
-## 6 0107       Strepto…       2       0 F      3_Poor  4_100F+
-## # … with 6 more variables: baseline_esr <fct>,
-## #   baseline_cavitation <fct>, strep_resistance <fct>,
-## #   radiologic_6m <fct>, rad_num <dbl>, improved <lgl>, and
-## #   abbreviated variable names ¹​dose_strep_g, ²​dose_PAS_g,
-## #   ³​baseline_condition, ⁴​baseline_temp
+##     patient_id          arm dose_strep_g dose_PAS_g gender
+## 102        100 Streptomycin            2          0      M
+## 103        101 Streptomycin            2          0      F
+## 104        104 Streptomycin            2          0      M
+## 105        105 Streptomycin            2          0      F
+## 106        106 Streptomycin            2          0      F
+## 107        107 Streptomycin            2          0      F
+##     baseline_condition         baseline_temp baseline_esr
+## 102             3_Poor 2_99-99.9F/37.3-37.7C        4_51+
+## 103             3_Poor        4_>=101F/38.3C        4_51+
+## 104             3_Poor        4_>=101F/38.3C        4_51+
+## 105             3_Poor        4_>=101F/38.3C        4_51+
+## 106             3_Poor        4_>=101F/38.3C        4_51+
+## 107             3_Poor        4_>=101F/38.3C        4_51+
+##     baseline_cavitation strep_resistance
+## 102                 yes    3_resist_100+
+## 103                 yes    3_resist_100+
+## 104                 yes    3_resist_100+
+## 105                 yes    3_resist_100+
+## 106                 yes    3_resist_100+
+## 107                 yes    3_resist_100+
+##                    radiologic_6m rad_num improved
+## 102                  4_No_change       4    FALSE
+## 103 2_Considerable_deterioration       2    FALSE
+## 104       5_Moderate_improvement       5     TRUE
+## 105 2_Considerable_deterioration       2    FALSE
+## 106                      1_Death       1    FALSE
+## 107   6_Considerable_improvement       6     TRUE
 ```
 
 Note that since these are tibbles, they will only print the columns that will fit into your Console pane.
@@ -987,43 +995,38 @@ head(as.data.frame(medicaldata::scurvy))
 ```
 
 ```r
-print(tail(medicaldata::strep_tb), width = Inf)
+print(tail(medicaldata::strep_tb, width = Inf))
 ```
 
 ```
-## # A tibble: 6 × 13
-##   patient_id arm          dose_strep_g dose_PAS_g gender
-##   <chr>      <fct>               <dbl>      <dbl> <fct> 
-## 1 0100       Streptomycin            2          0 M     
-## 2 0101       Streptomycin            2          0 F     
-## 3 0104       Streptomycin            2          0 M     
-## 4 0105       Streptomycin            2          0 F     
-## 5 0106       Streptomycin            2          0 F     
-## 6 0107       Streptomycin            2          0 F     
-##   baseline_condition baseline_temp baseline_esr
-##   <fct>              <fct>         <fct>       
-## 1 3_Poor             2_99-99.9F    4_51+       
-## 2 3_Poor             4_100F+       4_51+       
-## 3 3_Poor             4_100F+       4_51+       
-## 4 3_Poor             4_100F+       4_51+       
-## 5 3_Poor             4_100F+       4_51+       
-## 6 3_Poor             4_100F+       4_51+       
-##   baseline_cavitation strep_resistance
-##   <fct>               <fct>           
-## 1 yes                 3_resist_100+   
-## 2 yes                 3_resist_100+   
-## 3 yes                 3_resist_100+   
-## 4 yes                 3_resist_100+   
-## 5 yes                 3_resist_100+   
-## 6 yes                 3_resist_100+   
-##   radiologic_6m                rad_num improved
-##   <fct>                          <dbl> <lgl>   
-## 1 4_No_change                        4 FALSE   
-## 2 2_Considerable_deterioration       2 FALSE   
-## 3 5_Moderate_improvement             5 TRUE    
-## 4 2_Considerable_deterioration       2 FALSE   
-## 5 1_Death                            1 FALSE   
-## 6 6_Considerable_improvement         6 TRUE
+##     patient_id          arm dose_strep_g dose_PAS_g gender
+## 102        100 Streptomycin            2          0      M
+## 103        101 Streptomycin            2          0      F
+## 104        104 Streptomycin            2          0      M
+## 105        105 Streptomycin            2          0      F
+## 106        106 Streptomycin            2          0      F
+## 107        107 Streptomycin            2          0      F
+##     baseline_condition         baseline_temp baseline_esr
+## 102             3_Poor 2_99-99.9F/37.3-37.7C        4_51+
+## 103             3_Poor        4_>=101F/38.3C        4_51+
+## 104             3_Poor        4_>=101F/38.3C        4_51+
+## 105             3_Poor        4_>=101F/38.3C        4_51+
+## 106             3_Poor        4_>=101F/38.3C        4_51+
+## 107             3_Poor        4_>=101F/38.3C        4_51+
+##     baseline_cavitation strep_resistance
+## 102                 yes    3_resist_100+
+## 103                 yes    3_resist_100+
+## 104                 yes    3_resist_100+
+## 105                 yes    3_resist_100+
+## 106                 yes    3_resist_100+
+## 107                 yes    3_resist_100+
+##                    radiologic_6m rad_num improved
+## 102                  4_No_change       4    FALSE
+## 103 2_Considerable_deterioration       2    FALSE
+## 104       5_Moderate_improvement       5     TRUE
+## 105 2_Considerable_deterioration       2    FALSE
+## 106                      1_Death       1    FALSE
+## 107   6_Considerable_improvement       6     TRUE
 ```
 
 It is actually much easier to see the full width and height of a data set by scrolling, which you can do when you *View()* a dataset in the RStudio viewer. Try this out in the Console pane, with `View(strep_tb)`.
@@ -1051,19 +1054,17 @@ medicaldata::strep_tb %>%
 ```
 
 ```
-## # A tibble: 10 × 3
-##    radiologic_6m                rad_num improved
-##    <fct>                          <dbl> <lgl>   
-##  1 3_Moderate_deterioration           3 FALSE   
-##  2 6_Considerable_improvement         6 TRUE    
-##  3 6_Considerable_improvement         6 TRUE    
-##  4 2_Considerable_deterioration       2 FALSE   
-##  5 2_Considerable_deterioration       2 FALSE   
-##  6 3_Moderate_deterioration           3 FALSE   
-##  7 6_Considerable_improvement         6 TRUE    
-##  8 6_Considerable_improvement         6 TRUE    
-##  9 2_Considerable_deterioration       2 FALSE   
-## 10 1_Death                            1 FALSE
+##                   radiologic_6m rad_num improved
+## 1    6_Considerable_improvement       6     TRUE
+## 2  2_Considerable_deterioration       2    FALSE
+## 3      3_Moderate_deterioration       3    FALSE
+## 4        5_Moderate_improvement       5     TRUE
+## 5      3_Moderate_deterioration       3    FALSE
+## 6    6_Considerable_improvement       6     TRUE
+## 7      3_Moderate_deterioration       3    FALSE
+## 8    6_Considerable_improvement       6     TRUE
+## 9    6_Considerable_improvement       6     TRUE
+## 10 2_Considerable_deterioration       2    FALSE
 ```
 
 
@@ -1093,33 +1094,25 @@ Table: (\#tab:unnamed-chunk-26)Data summary
 |Number of columns        |13                    |
 |_______________________  |                      |
 |Column type frequency:   |                      |
-|character                |1                     |
-|factor                   |8                     |
+|character                |8                     |
 |logical                  |1                     |
-|numeric                  |3                     |
+|numeric                  |4                     |
 |________________________ |                      |
 |Group variables          |None                  |
 
 
 **Variable type: character**
 
-|skim_variable | n_missing| complete_rate| min| max| empty| n_unique| whitespace|
-|:-------------|---------:|-------------:|---:|---:|-----:|--------:|----------:|
-|patient_id    |         0|             1|   4|   4|     0|      107|          0|
-
-
-**Variable type: factor**
-
-|skim_variable       | n_missing| complete_rate|ordered | n_unique|top_counts                         |
-|:-------------------|---------:|-------------:|:-------|--------:|:----------------------------------|
-|arm                 |         0|          1.00|FALSE   |        2|Str: 55, Con: 52                   |
-|gender              |         0|          1.00|FALSE   |        2|F: 59, M: 48                       |
-|baseline_condition  |         0|          1.00|FALSE   |        3|3_P: 54, 2_F: 37, 1_G: 16          |
-|baseline_temp       |         0|          1.00|FALSE   |        4|4_1: 43, 3_1: 32, 2_9: 25, 1_9: 7  |
-|baseline_esr        |         1|          0.99|FALSE   |        3|4_5: 65, 3_2: 36, 2_1: 5, 1_0: 0   |
-|baseline_cavitation |         0|          1.00|FALSE   |        2|yes: 62, no: 45                    |
-|strep_resistance    |         0|          1.00|FALSE   |        3|1_s: 65, 3_r: 34, 2_m: 8           |
-|radiologic_6m       |         0|          1.00|FALSE   |        6|6_C: 32, 5_M: 23, 1_D: 18, 3_M: 17 |
+|skim_variable       | n_missing| complete_rate| min| max| empty| n_unique| whitespace|
+|:-------------------|---------:|-------------:|---:|---:|-----:|--------:|----------:|
+|arm                 |         0|          1.00|   7|  12|     0|        2|          0|
+|gender              |         0|          1.00|   1|   1|     0|        2|          0|
+|baseline_condition  |         0|          1.00|   6|   6|     0|        3|          0|
+|baseline_temp       |         0|          1.00|  14|  34|     0|        6|          0|
+|baseline_esr        |         1|          0.99|   5|   7|     0|        3|          0|
+|baseline_cavitation |         0|          1.00|   2|   3|     0|        2|          0|
+|strep_resistance    |         0|          1.00|  10|  13|     0|        3|          0|
+|radiologic_6m       |         0|          1.00|   7|  28|     0|        6|          0|
 
 
 **Variable type: logical**
@@ -1131,11 +1124,12 @@ Table: (\#tab:unnamed-chunk-26)Data summary
 
 **Variable type: numeric**
 
-|skim_variable | n_missing| complete_rate| mean|   sd| p0| p25| p50| p75| p100|hist  |
-|:-------------|---------:|-------------:|----:|----:|--:|---:|---:|---:|----:|:-----|
-|dose_strep_g  |         0|             1| 1.03| 1.00|  0|   0|   2|   2|    2|▇▁▁▁▇ |
-|dose_PAS_g    |         0|             1| 0.00| 0.00|  0|   0|   0|   0|    0|▁▁▇▁▁ |
-|rad_num       |         0|             1| 3.93| 1.89|  1|   2|   5|   6|    6|▇▅▁▆▇ |
+|skim_variable | n_missing| complete_rate|  mean|    sd| p0|  p25| p50|  p75| p100|hist  |
+|:-------------|---------:|-------------:|-----:|-----:|--:|----:|---:|----:|----:|:-----|
+|patient_id    |         0|             1| 54.00| 31.03|  1| 27.5|  54| 80.5|  107|▇▇▇▇▇ |
+|dose_strep_g  |         0|             1|  1.03|  1.00|  0|  0.0|   2|  2.0|    2|▇▁▁▁▇ |
+|dose_PAS_g    |         0|             1|  0.00|  0.00|  0|  0.0|   0|  0.0|    0|▁▁▇▁▁ |
+|rad_num       |         0|             1|  3.93|  1.89|  1|  2.0|   5|  6.0|    6|▇▅▁▆▇ |
 
 ### Test yourself on the `skim()` results
 
