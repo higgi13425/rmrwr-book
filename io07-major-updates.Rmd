@@ -54,7 +54,7 @@ You can do this from scratch, and just install packages as you need them (which 
 You can see a dataframe of all your currently installed packages with the base R function `installed.packages()`. This will help us make a list of your packages for updating.
 If you are doing this from scratch, you may want to copy this to a word document for your future reference, and spend 10 minutes installing your favorite 30 packages or so (and all dependencies) to get started. This is a good way to do a bit of spring cleaning, and not just blindly reinstall every package you tried once and never used again. You can always install more as you need them.
 
-## Rebuilding ALl Packages in One (Automated) Step
+## Rebuilding All Packages in One (Automated) Step
 
 There is a slick package called {updater} which can handle the grunt work for you. It can be found at https://www.danieldsjoberg.com/updater/
 You may want to do this at the end of the day, as it will take 30-60 minutes to reinstall all of your packages.
