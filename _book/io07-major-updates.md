@@ -54,6 +54,95 @@ You can do this from scratch, and just install packages as you need them (which 
 You can see a dataframe of all your currently installed packages with the base R function `installed.packages()`. This will help us make a list of your packages for updating.
 If you are doing this from scratch, you may want to copy this to a word document for your future reference, and spend 10 minutes installing your favorite 30 packages or so (and all dependencies) to get started. This is a good way to do a bit of spring cleaning, and not just blindly reinstall every package you tried once and never used again. You can always install more as you need them.
 
+For folks who want to do some spring cleaning of their package library, here is a **starter list** of packages that are commonly used in the R community. You can copy and paste this into the Console to install them all at once. These packages (along with their dependencies, which also get installed) will cover around 85% of your everyday packages, and will get you started without having to stop frequently to install packages on day one of a new version of R.
+
+
+```r
+install.packages("pak")
+```
+
+```
+## 
+## The downloaded binary packages are in
+## 	/var/folders/93/s18zkv2d4f556fxbjvb8yglc0000gp/T//RtmpwzCkPN/downloaded_packages
+```
+
+```r
+pak::pak(c("tidyverse", "rstatix", "tidymodels", "readxl", "writexl", "shiny", "rmarkdown", "keyring", "broom", "duckplyr", "dtplyr", "data.table", "labelled", "ggfont", "extrafont", "flexdashboard", "flextable", "gtsummary", "googlesheets4", "REDCapTidieR", "janitor", "ggraph", "gganimate", "tidygraph", "janitor", "webexercises", "synthpop", "slider", "usethis", "testthat", "remotes", "devtools", "httr2", "dataExplorer", "naniar", "visdat", "randomForest", "xgboost", "glmnet", "caret", "ranger", "rpart", "lme4", "keyring", "scholar", "medicaldata", "NHSRdatasets", "lintr", "datapasta", "magick", "magrittr", "officer", "palmerpenguins", "pkgdown", "bookdown", "plotROC", "pwr", "waffle", "ragg", "RColorBrewer", "XML", "conflicted", "corrplot", "jsonlite", "DT", "kable", "kableExtra", "quarto"))
+```
+
+```
+## Error: ! error in pak subprocess
+## Caused by error: 
+## ! Could not solve package dependencies:
+## * tidyverse: dependency conflict
+## * rstatix: dependency conflict
+## * tidymodels: dependency conflict
+## * readxl: dependency conflict
+## * writexl: dependency conflict
+## * shiny: dependency conflict
+## * rmarkdown: dependency conflict
+## * keyring: dependency conflict
+## * broom: dependency conflict
+## * duckplyr: dependency conflict
+## * dtplyr: dependency conflict
+## * data.table: dependency conflict
+## * labelled: dependency conflict
+## * ggfont: Can't find package called ggfont.
+## * extrafont: dependency conflict
+## * flexdashboard: dependency conflict
+## * flextable: dependency conflict
+## * gtsummary: dependency conflict
+## * googlesheets4: dependency conflict
+## * REDCapTidieR: dependency conflict
+## * janitor: dependency conflict
+## * ggraph: dependency conflict
+## * gganimate: dependency conflict
+## * tidygraph: dependency conflict
+## * webexercises: dependency conflict
+## * synthpop: dependency conflict
+## * slider: dependency conflict
+## * usethis: dependency conflict
+## * testthat: dependency conflict
+## * remotes: dependency conflict
+## * devtools: dependency conflict
+## * httr2: dependency conflict
+## * dataExplorer: Can't find package called dataExplorer.
+## * naniar: dependency conflict
+## * visdat: dependency conflict
+## * randomForest: dependency conflict
+## * xgboost: dependency conflict
+## * glmnet: dependency conflict
+## * caret: dependency conflict
+## * ranger: dependency conflict
+## * rpart: dependency conflict
+## * lme4: dependency conflict
+## * scholar: dependency conflict
+## * medicaldata: dependency conflict
+## * NHSRdatasets: dependency conflict
+## * lintr: dependency conflict
+## * datapasta: dependency conflict
+## * magick: dependency conflict
+## * magrittr: dependency conflict
+## * officer: dependency conflict
+## * palmerpenguins: dependency conflict
+## * pkgdown: dependency conflict
+## * bookdown: dependency conflict
+## * plotROC: dependency conflict
+## * pwr: dependency conflict
+## * waffle: dependency conflict
+## * ragg: dependency conflict
+## * RColorBrewer: dependency conflict
+## * XML: dependency conflict
+## * conflicted: dependency conflict
+## * corrplot: dependency conflict
+## * jsonlite: dependency conflict
+## * DT: dependency conflict
+## * kable: Can't find package called kable.
+## * kableExtra: dependency conflict
+## * quarto: dependency conflict
+```
+
 ## Rebuilding All Packages in One (Automated) Step
 
 There is a slick package called {updater} which can handle the grunt work for you. It can be found at https://www.danieldsjoberg.com/updater/

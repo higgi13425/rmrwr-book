@@ -879,6 +879,81 @@ This will take a bit of work and time, maybe an hour if you have a lot of packag
 <p>You can do this from scratch, and just install packages as you need them (which is not a bad way to clean out packages you are not using), but a lot of people prefer to re-install all of their packages in an organized way, rather than just-in-time when they want to use them. It can be a little annoying for the first week after an upgrade to frequently have to stop and reinstall packages, but it usually only lasts about a week.</p>
 <p>You can see a dataframe of all your currently installed packages with the base R function <code>installed.packages()</code>. This will help us make a list of your packages for updating.
 If you are doing this from scratch, you may want to copy this to a word document for your future reference, and spend 10 minutes installing your favorite 30 packages or so (and all dependencies) to get started. This is a good way to do a bit of spring cleaning, and not just blindly reinstall every package you tried once and never used again. You can always install more as you need them.</p>
+<p>For folks who want to do some spring cleaning of their package library, here is a <strong>starter list</strong> of packages that are commonly used in the R community. You can copy and paste this into the Console to install them all at once. These packages (along with their dependencies, which also get installed) will cover around 85% of your everyday packages, and will get you started without having to stop frequently to install packages on day one of a new version of R.</p>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="major-r-updates-where-are-my-packages.html#cb351-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;pak&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## The downloaded binary packages are in
+##  /var/folders/93/s18zkv2d4f556fxbjvb8yglc0000gp/T//RtmpwzCkPN/downloaded_packages</code></pre>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="major-r-updates-where-are-my-packages.html#cb353-1" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pak</span>(<span class="fu">c</span>(<span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;rstatix&quot;</span>, <span class="st">&quot;tidymodels&quot;</span>, <span class="st">&quot;readxl&quot;</span>, <span class="st">&quot;writexl&quot;</span>, <span class="st">&quot;shiny&quot;</span>, <span class="st">&quot;rmarkdown&quot;</span>, <span class="st">&quot;keyring&quot;</span>, <span class="st">&quot;broom&quot;</span>, <span class="st">&quot;duckplyr&quot;</span>, <span class="st">&quot;dtplyr&quot;</span>, <span class="st">&quot;data.table&quot;</span>, <span class="st">&quot;labelled&quot;</span>, <span class="st">&quot;ggfont&quot;</span>, <span class="st">&quot;extrafont&quot;</span>, <span class="st">&quot;flexdashboard&quot;</span>, <span class="st">&quot;flextable&quot;</span>, <span class="st">&quot;gtsummary&quot;</span>, <span class="st">&quot;googlesheets4&quot;</span>, <span class="st">&quot;REDCapTidieR&quot;</span>, <span class="st">&quot;janitor&quot;</span>, <span class="st">&quot;ggraph&quot;</span>, <span class="st">&quot;gganimate&quot;</span>, <span class="st">&quot;tidygraph&quot;</span>, <span class="st">&quot;janitor&quot;</span>, <span class="st">&quot;webexercises&quot;</span>, <span class="st">&quot;synthpop&quot;</span>, <span class="st">&quot;slider&quot;</span>, <span class="st">&quot;usethis&quot;</span>, <span class="st">&quot;testthat&quot;</span>, <span class="st">&quot;remotes&quot;</span>, <span class="st">&quot;devtools&quot;</span>, <span class="st">&quot;httr2&quot;</span>, <span class="st">&quot;dataExplorer&quot;</span>, <span class="st">&quot;naniar&quot;</span>, <span class="st">&quot;visdat&quot;</span>, <span class="st">&quot;randomForest&quot;</span>, <span class="st">&quot;xgboost&quot;</span>, <span class="st">&quot;glmnet&quot;</span>, <span class="st">&quot;caret&quot;</span>, <span class="st">&quot;ranger&quot;</span>, <span class="st">&quot;rpart&quot;</span>, <span class="st">&quot;lme4&quot;</span>, <span class="st">&quot;keyring&quot;</span>, <span class="st">&quot;scholar&quot;</span>, <span class="st">&quot;medicaldata&quot;</span>, <span class="st">&quot;NHSRdatasets&quot;</span>, <span class="st">&quot;lintr&quot;</span>, <span class="st">&quot;datapasta&quot;</span>, <span class="st">&quot;magick&quot;</span>, <span class="st">&quot;magrittr&quot;</span>, <span class="st">&quot;officer&quot;</span>, <span class="st">&quot;palmerpenguins&quot;</span>, <span class="st">&quot;pkgdown&quot;</span>, <span class="st">&quot;bookdown&quot;</span>, <span class="st">&quot;plotROC&quot;</span>, <span class="st">&quot;pwr&quot;</span>, <span class="st">&quot;waffle&quot;</span>, <span class="st">&quot;ragg&quot;</span>, <span class="st">&quot;RColorBrewer&quot;</span>, <span class="st">&quot;XML&quot;</span>, <span class="st">&quot;conflicted&quot;</span>, <span class="st">&quot;corrplot&quot;</span>, <span class="st">&quot;jsonlite&quot;</span>, <span class="st">&quot;DT&quot;</span>, <span class="st">&quot;kable&quot;</span>, <span class="st">&quot;kableExtra&quot;</span>, <span class="st">&quot;quarto&quot;</span>))</span></code></pre></div>
+<pre><code>## Error: ! error in pak subprocess
+## Caused by error: 
+## ! Could not solve package dependencies:
+## * tidyverse: dependency conflict
+## * rstatix: dependency conflict
+## * tidymodels: dependency conflict
+## * readxl: dependency conflict
+## * writexl: dependency conflict
+## * shiny: dependency conflict
+## * rmarkdown: dependency conflict
+## * keyring: dependency conflict
+## * broom: dependency conflict
+## * duckplyr: dependency conflict
+## * dtplyr: dependency conflict
+## * data.table: dependency conflict
+## * labelled: dependency conflict
+## * ggfont: Can&#39;t find package called ggfont.
+## * extrafont: dependency conflict
+## * flexdashboard: dependency conflict
+## * flextable: dependency conflict
+## * gtsummary: dependency conflict
+## * googlesheets4: dependency conflict
+## * REDCapTidieR: dependency conflict
+## * janitor: dependency conflict
+## * ggraph: dependency conflict
+## * gganimate: dependency conflict
+## * tidygraph: dependency conflict
+## * webexercises: dependency conflict
+## * synthpop: dependency conflict
+## * slider: dependency conflict
+## * usethis: dependency conflict
+## * testthat: dependency conflict
+## * remotes: dependency conflict
+## * devtools: dependency conflict
+## * httr2: dependency conflict
+## * dataExplorer: Can&#39;t find package called dataExplorer.
+## * naniar: dependency conflict
+## * visdat: dependency conflict
+## * randomForest: dependency conflict
+## * xgboost: dependency conflict
+## * glmnet: dependency conflict
+## * caret: dependency conflict
+## * ranger: dependency conflict
+## * rpart: dependency conflict
+## * lme4: dependency conflict
+## * scholar: dependency conflict
+## * medicaldata: dependency conflict
+## * NHSRdatasets: dependency conflict
+## * lintr: dependency conflict
+## * datapasta: dependency conflict
+## * magick: dependency conflict
+## * magrittr: dependency conflict
+## * officer: dependency conflict
+## * palmerpenguins: dependency conflict
+## * pkgdown: dependency conflict
+## * bookdown: dependency conflict
+## * plotROC: dependency conflict
+## * pwr: dependency conflict
+## * waffle: dependency conflict
+## * ragg: dependency conflict
+## * RColorBrewer: dependency conflict
+## * XML: dependency conflict
+## * conflicted: dependency conflict
+## * corrplot: dependency conflict
+## * jsonlite: dependency conflict
+## * DT: dependency conflict
+## * kable: Can&#39;t find package called kable.
+## * kableExtra: dependency conflict
+## * quarto: dependency conflict</code></pre>
 </div>
 </div>
 <div id="rebuilding-all-packages-in-one-automated-step" class="section level2 hasAnchor" number="16.2">
