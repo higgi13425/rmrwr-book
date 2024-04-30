@@ -82,7 +82,7 @@ mtcars %>%
 
 ```
 ## Error in `select()`:
-## ! Can't subset columns that don't exist.
+## ! Can't select columns that don't exist.
 ## ✖ Column `displ` doesn't exist.
 ```
 ## Systematic Hunting For Bugs in Pipes

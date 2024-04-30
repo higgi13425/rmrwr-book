@@ -76,7 +76,7 @@ whoami;date
 
 ```
 ## peterhiggins
-## Sun Sep 24 17:16:47 EDT 2023
+## Tue Apr 30 06:45:20 EDT 2024
 ```
 :::
 
@@ -148,6 +148,7 @@ ls
 ## 2021.Higgins AGA Distinguished Clinician.CO.docx
 ## 2022.10.19_MH_CCC_V2_PDRH.docx
 ## 203ClareScenes080119 copy.pdf
+## 26NovEdits PDRH_Databank_Protocol v7_14Nov2016_Clean_.doc
 ## 2PM talks
 ## A Disease Monitoring Smart Set_PDRH.pptx
 ## A is for Allspice.2.0.docx
@@ -297,6 +298,7 @@ ls
 ## FITBITProtocol_28NOV2016_AbbVie.docx
 ## FITBITProtocol_4DEC2016_AbbVie.docx
 ## FMT_DDW_2021_ISS.pdf
+## Faculty CV Review PPB Nov 2023.docx
 ## Faculty CV Reviewer Template_PDRH.docx
 ## Faculty Covering Kinnucan Inbox.xlsx
 ## Falk Symposium Miami 3.09
@@ -324,6 +326,7 @@ ls
 ## Getting Started with REDCap.docx
 ## Gibson-Doherty_Editorial_2020_Article_FastAndCuriousAnAlgorithmicApp.pdf
 ## Gibson_accel_IFX.pdf
+## Git Fork and branch workflow.docx
 ## Git for MDs_2.pptx
 ## GitHub
 ## Github for MDs_1.pptx
@@ -363,6 +366,7 @@ ls
 ## Higgins_Peter-The-Janus-Kinase-Inhibitors-Two-Faces-for-Efficacy-and-Safety.pptx
 ## Higgins_UM_CME_Pregnancy in IBD.pptx
 ## Higginslab server.pptx
+## Histosonics article MLive 2023 .docx
 ## How To Assign PRO questionnaires -  Inpatient ASUC.docx
 ## How To Log in to IBD Server.docx
 ## How To Log in to RStudio Server for HigginsLab.docx
@@ -405,6 +409,7 @@ ls
 ## IMIBD Plenary Intro.pptx
 ## IMIBD_expanded_descriptors.xlsx
 ## INTERNAL_BUDGET_Abbvie_Nav_Rux_Sept_2021.xlsx
+## Ideas for CTA Phase 2.docx
 ## Introduction to Application Supplement Photoacoustic.docx
 ## Invoice 401 to Buhlmann.docx
 ## Invoice 401 to Buhlmann.pdf
@@ -437,6 +442,7 @@ ls
 ## KP pdfs
 ## K_R_NIH_biosketches_2022.pptx
 ## Kelli Porzondek_Performance_Review_Sep_2021.docx
+## LOI for CSI for RMed.docx
 ## Learning R discussion Jeremy Louissaint.docx
 ## Letter to Frank Hamilton.docx
 ## Library
@@ -454,6 +460,7 @@ ls
 ## MEI_2021_W9.pdf
 ## MEI_2022_PDRH_W9.PDF
 ## MEI_ACH_Wire Transfer Form.docx
+## MEI_W9_2024.pdf
 ## MIM-TESRIC PROTOCOL_Higgins_14Apr2020.docx
 ## MIM-TESRIC PROTOCOL_Higgins_26Aug2020.docx
 ## MM letterhead UMICH.docx
@@ -464,6 +471,8 @@ ls
 ## McDonald, Nancy.pdf
 ## Megan McLeod Rec Letter Residency.docx
 ## MentoringAgendaDraftPH.docx
+## Mertens_GUILD_LOR_PH.docx
+## Mertens_GUILD_LOR_PH.pdf
 ## Meta analysis TB vs CD version 3.5.docx
 ## Michigan Medicine Gastroenterology Social Media Initiative.docx
 ## Michigan Medicine Model for COVID-19 Clinical Trial Oversight DRAFT (KSB 04.17.20)-AL-PDRH.docx
@@ -528,6 +537,7 @@ ls
 ## R01 ML revision
 ## R01 MachineLearn2010
 ## R01.US.Revision
+## RAC Update form.docx
 ## RCode
 ## RMed 2023 Meeting 15 Mar.docx
 ## RMed21- Intro to Spatial.pptx
@@ -554,6 +564,7 @@ ls
 ## S is for Saffron.2.0.docx
 ## SAINI-LOK-HIGGINS_T32 GI Fellowship Research Presentation 08292021.pptx
 ## SCM Mentor Letters.docx
+## SDOH.png
 ## SEAN STOCKS.docx
 ## SIG_Template_IBD Program_FINAL.docx
 ## SOP for Samples for IBD Biobank.docx
@@ -684,6 +695,7 @@ ls
 ## clare_stocks_long_term.xlsx
 ## cycling core exercises.docx
 ## draft letter to patients.docx
+## draft_GUILD_abstract.docx
 ## draft_tokenization letter Risa_Uste.docx
 ## early-career-faculty_Dec-2020.xlsx
 ## epic cancel_reschedule appointments.ppt

@@ -217,9 +217,9 @@ updating-rstudio
 updating-your-packages
 major-r-updates-where-are-my-packages
 preparing-for-a-minor-or-major-r-upgrade
-saving-a-list-of-your-packages
-upgrading-r-and-rstudio
-reinstalling-your-list-of-packages
+installing-new-packages-from-scratch
+rebuilding-all-packages-in-one-automated-step
+checking-the-new-library-path
 now-check-your-list-of-packages
 updating-packages
 intermediate-steps-toward-reproducibility

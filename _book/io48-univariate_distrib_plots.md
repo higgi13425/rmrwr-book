@@ -33,8 +33,8 @@ medicaldata::polyps %>%
 ```
 
 ```
-## Warning: Removed 2 rows containing non-finite values
-## (`stat_bin()`).
+## Warning: Removed 2 rows containing non-finite outside the scale
+## range (`stat_bin()`).
 ```
 
 <img src="io48-univariate_distrib_plots_files/figure-html/histogram-1.png" width="672" />
@@ -52,8 +52,8 @@ polyps %>%
 ```
 
 ```
-## Warning: Removed 2 rows containing non-finite values
-## (`stat_bin()`).
+## Warning: Removed 2 rows containing non-finite outside the scale
+## range (`stat_bin()`).
 ```
 
 <img src="io48-univariate_distrib_plots_files/figure-html/histogram2-1.png" width="672" />
@@ -74,8 +74,8 @@ medicaldata::polyps %>%
 ```
 
 ```
-## Warning: Removed 2 rows containing missing values
-## (`stat_bindot()`).
+## Warning: Removed 2 rows containing missing values or values outside
+## the scale range (`stat_bindot()`).
 ```
 
 <img src="io48-univariate_distrib_plots_files/figure-html/dotplot-1.png" width="672" />
@@ -98,8 +98,8 @@ When you have a continuous variable that could vary across several categories of
   ```
   
   ```
-  ## Warning: Removed 2 rows containing non-finite values
-  ## (`stat_bin()`).
+  ## Warning: Removed 2 rows containing non-finite outside the scale
+  ## range (`stat_bin()`).
   ```
   
   <img src="io48-univariate_distrib_plots_files/figure-html/unnamed-chunk-1-1.png" width="672" />
@@ -134,8 +134,20 @@ When you have a continuous variable that could vary across several categories of
 ```
 
 ```
-## Warning: Removed 2 rows containing non-finite values
-## (`stat_bin()`).
+## Warning in geom_label(aes(x = 55, y = 0.03, label = "Placebo"), color = "red"): All aesthetics have length 1, but the data has 22 rows.
+## ℹ Please consider using `annotate()` or provide this layer
+##   with data containing a single row.
+```
+
+```
+## Warning in geom_label(aes(x = 20, y = -0.03, label = "Sulindac"), color = "#404080"): All aesthetics have length 1, but the data has 22 rows.
+## ℹ Please consider using `annotate()` or provide this layer
+##   with data containing a single row.
+```
+
+```
+## Warning: Removed 2 rows containing non-finite outside the scale
+## range (`stat_bin()`).
 ```
 
 <img src="io48-univariate_distrib_plots_files/figure-html/mirror-histogram-1.png" width="672" />
@@ -152,8 +164,8 @@ When you have a continuous variable that could vary across several categories of
 ```
 
 ```
-## Warning: Removed 2 rows containing non-finite values
-## (`stat_bin()`).
+## Warning: Removed 2 rows containing non-finite outside the scale
+## range (`stat_bin()`).
 ```
 
 <img src="io48-univariate_distrib_plots_files/figure-html/unnamed-chunk-2-1.png" width="672" />
@@ -170,8 +182,8 @@ When you have a continuous variable that could vary across several categories of
   ```
   
   ```
-  ## Warning: Removed 2 rows containing non-finite values
-  ## (`stat_bin()`).
+  ## Warning: Removed 2 rows containing non-finite outside the scale
+  ## range (`stat_bin()`).
   ```
   
   <img src="io48-univariate_distrib_plots_files/figure-html/unnamed-chunk-3-1.png" width="672" />
@@ -348,7 +360,7 @@ ggplot(aes(x = time.to.transplant, y = diagnosis)) + geom_density_ridges(scale =
 ```
 
 ```
-## Warning: Removed 1 rows containing non-finite values
+## Warning: Removed 1 row containing non-finite outside the scale range
 ## (`stat_density_ridges()`).
 ```
 

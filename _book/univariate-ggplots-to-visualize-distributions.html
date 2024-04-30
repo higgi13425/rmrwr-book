@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 21 Univariate ggplots to Visualize Distributions | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
-  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 21 Univariate ggplots to Visualize Distributions | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2023-09-24" />
+<meta name="date" content="2024-04-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,11 +52,12 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.2/plotly.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
@@ -437,12 +438,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="16" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html"><i class="fa fa-check"></i><b>16</b> Major R Updates (Where Are My Packages?)</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html#preparing-for-a-minor-or-major-r-upgrade"><i class="fa fa-check"></i><b>16.1</b> Preparing for a Minor or Major R Upgrade</a></li>
-<li class="chapter" data-level="16.2" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html#saving-a-list-of-your-packages"><i class="fa fa-check"></i><b>16.2</b> Saving a List of Your Packages</a></li>
-<li class="chapter" data-level="16.3" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html#upgrading-r-and-rstudio"><i class="fa fa-check"></i><b>16.3</b> Upgrading R (and RStudio)</a>
+<li class="chapter" data-level="16.1" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html#preparing-for-a-minor-or-major-r-upgrade"><i class="fa fa-check"></i><b>16.1</b> Preparing for a Minor or Major R Upgrade</a>
 <ul>
-<li class="chapter" data-level="16.3.1" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html#reinstalling-your-list-of-packages"><i class="fa fa-check"></i><b>16.3.1</b> Reinstalling your list of Packages</a></li>
+<li class="chapter" data-level="16.1.1" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html#installing-new-packages-from-scratch"><i class="fa fa-check"></i><b>16.1.1</b> Installing New Packages from Scratch</a></li>
 </ul></li>
+<li class="chapter" data-level="16.2" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html#rebuilding-all-packages-in-one-automated-step"><i class="fa fa-check"></i><b>16.2</b> Rebuilding ALl Packages in One (Automated) Step</a></li>
+<li class="chapter" data-level="16.3" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html#checking-the-new-library-path"><i class="fa fa-check"></i><b>16.3</b> Checking the new library path</a></li>
 <li class="chapter" data-level="16.4" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html#now-check-your-list-of-packages"><i class="fa fa-check"></i><b>16.4</b> Now Check your list of Packages</a></li>
 <li class="chapter" data-level="16.5" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html#updating-packages"><i class="fa fa-check"></i><b>16.5</b> Updating Packages</a></li>
 </ul></li>
@@ -851,36 +852,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="histograms" class="section level2 hasAnchor" number="21.1">
 <h2><span class="header-section-number">21.1</span> Histograms<a href="univariate-ggplots-to-visualize-distributions.html#histograms" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>One of the most helpful ways to get started is to explore your continuous variables with the humble histogram or dotplot. These geoms in ggplot2 allow you to see a distribution of a single variable, and are a good way to get started with ggplot. Let’s start by looking at the distribution of the number of colon polyps found in participants in a clinical trial. You just need to map a variable (in this case, <em>number12m</em>) to the x aesthetic, and you are good to go.</p>
-<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="univariate-ggplots-to-visualize-distributions.html#cb415-1" tabindex="-1"></a>medicaldata<span class="sc">::</span>polyps <span class="sc">%&gt;%</span> </span>
-<span id="cb415-2"><a href="univariate-ggplots-to-visualize-distributions.html#cb415-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb415-3"><a href="univariate-ggplots-to-visualize-distributions.html#cb415-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> number12m) <span class="sc">+</span> </span>
-<span id="cb415-4"><a href="univariate-ggplots-to-visualize-distributions.html#cb415-4" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="univariate-ggplots-to-visualize-distributions.html#cb413-1" tabindex="-1"></a>medicaldata<span class="sc">::</span>polyps <span class="sc">%&gt;%</span> </span>
+<span id="cb413-2"><a href="univariate-ggplots-to-visualize-distributions.html#cb413-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb413-3"><a href="univariate-ggplots-to-visualize-distributions.html#cb413-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> number12m) <span class="sc">+</span> </span>
+<span id="cb413-4"><a href="univariate-ggplots-to-visualize-distributions.html#cb413-4" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with
 ## `binwidth`.</code></pre>
-<pre><code>## Warning: Removed 2 rows containing non-finite values
-## (`stat_bin()`).</code></pre>
+<pre><code>## Warning: Removed 2 rows containing non-finite outside the scale
+## range (`stat_bin()`).</code></pre>
 <p><img src="io48-univariate_distrib_plots_files/figure-html/histogram-1.png" width="672" /></p>
 <p>This gives us a very basic histogram, with some participants with zero polyps, but many with much larger numbers.</p>
 <p>We also learn that <code>geom_histogram</code> is a bit grumpy, and complains that we have not picked a binwidth (or a number of bins). Since the distribution goes out to 60+ polyps, let’s pick a binwidth of 5 (or about 13 bins).</p>
-<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="univariate-ggplots-to-visualize-distributions.html#cb418-1" tabindex="-1"></a>polyps <span class="sc">%&gt;%</span> </span>
-<span id="cb418-2"><a href="univariate-ggplots-to-visualize-distributions.html#cb418-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb418-3"><a href="univariate-ggplots-to-visualize-distributions.html#cb418-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> number12m) <span class="sc">+</span></span>
-<span id="cb418-4"><a href="univariate-ggplots-to-visualize-distributions.html#cb418-4" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>)</span></code></pre></div>
-<pre><code>## Warning: Removed 2 rows containing non-finite values
-## (`stat_bin()`).</code></pre>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="univariate-ggplots-to-visualize-distributions.html#cb416-1" tabindex="-1"></a>polyps <span class="sc">%&gt;%</span> </span>
+<span id="cb416-2"><a href="univariate-ggplots-to-visualize-distributions.html#cb416-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb416-3"><a href="univariate-ggplots-to-visualize-distributions.html#cb416-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> number12m) <span class="sc">+</span></span>
+<span id="cb416-4"><a href="univariate-ggplots-to-visualize-distributions.html#cb416-4" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## Warning: Removed 2 rows containing non-finite outside the scale
+## range (`stat_bin()`).</code></pre>
 <p><img src="io48-univariate_distrib_plots_files/figure-html/histogram2-1.png" width="672" /></p>
 <p>Even with 13 bins, most bins contain only one or two participants. It would be more helpful to visualize each participant as a single dot, which you can do with a dotplot (geom_dotplot).</p>
-<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="univariate-ggplots-to-visualize-distributions.html#cb420-1" tabindex="-1"></a>medicaldata<span class="sc">::</span>polyps <span class="sc">%&gt;%</span> </span>
-<span id="cb420-2"><a href="univariate-ggplots-to-visualize-distributions.html#cb420-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb420-3"><a href="univariate-ggplots-to-visualize-distributions.html#cb420-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> number12m, <span class="at">fill =</span> treatment) <span class="sc">+</span></span>
-<span id="cb420-4"><a href="univariate-ggplots-to-visualize-distributions.html#cb420-4" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(<span class="at">binwidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb420-5"><a href="univariate-ggplots-to-visualize-distributions.html#cb420-5" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="cn">NULL</span>, <span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
-<span id="cb420-6"><a href="univariate-ggplots-to-visualize-distributions.html#cb420-6" tabindex="-1"></a>  <span class="co"># Make this ratio = (tallest column * binwidth * 1.5)</span></span>
-<span id="cb420-7"><a href="univariate-ggplots-to-visualize-distributions.html#cb420-7" tabindex="-1"></a>  <span class="fu">coord_fixed</span>(<span class="at">ratio =</span> <span class="dv">6</span>) <span class="sc">+</span></span>
-<span id="cb420-8"><a href="univariate-ggplots-to-visualize-distributions.html#cb420-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Distribution of Participants binned by number of Polyps&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;Colored by Treatment&quot;</span>) <span class="sc">+</span></span>
-<span id="cb420-9"><a href="univariate-ggplots-to-visualize-distributions.html#cb420-9" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>)</span></code></pre></div>
-<pre><code>## Warning: Removed 2 rows containing missing values
-## (`stat_bindot()`).</code></pre>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="univariate-ggplots-to-visualize-distributions.html#cb418-1" tabindex="-1"></a>medicaldata<span class="sc">::</span>polyps <span class="sc">%&gt;%</span> </span>
+<span id="cb418-2"><a href="univariate-ggplots-to-visualize-distributions.html#cb418-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb418-3"><a href="univariate-ggplots-to-visualize-distributions.html#cb418-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> number12m, <span class="at">fill =</span> treatment) <span class="sc">+</span></span>
+<span id="cb418-4"><a href="univariate-ggplots-to-visualize-distributions.html#cb418-4" tabindex="-1"></a>  <span class="fu">geom_dotplot</span>(<span class="at">binwidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb418-5"><a href="univariate-ggplots-to-visualize-distributions.html#cb418-5" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="cn">NULL</span>, <span class="at">breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span> </span>
+<span id="cb418-6"><a href="univariate-ggplots-to-visualize-distributions.html#cb418-6" tabindex="-1"></a>  <span class="co"># Make this ratio = (tallest column * binwidth * 1.5)</span></span>
+<span id="cb418-7"><a href="univariate-ggplots-to-visualize-distributions.html#cb418-7" tabindex="-1"></a>  <span class="fu">coord_fixed</span>(<span class="at">ratio =</span> <span class="dv">6</span>) <span class="sc">+</span></span>
+<span id="cb418-8"><a href="univariate-ggplots-to-visualize-distributions.html#cb418-8" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Distribution of Participants binned by number of Polyps&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;Colored by Treatment&quot;</span>) <span class="sc">+</span></span>
+<span id="cb418-9"><a href="univariate-ggplots-to-visualize-distributions.html#cb418-9" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: Removed 2 rows containing missing values or values outside
+## the scale range (`stat_bindot()`).</code></pre>
 <p><img src="io48-univariate_distrib_plots_files/figure-html/dotplot-1.png" width="672" /></p>
 <p>One of the nice things about geom_dotplot() is that it represents each participant as a dot, which is closer to reality than columns which look like they are portraying values, rather than counts. The y-axis is less helpful. It is showing the proportion of the total sample, which is sort of helpful, but this leaves a lot of empty space with no data most of the time.</p>
 <div id="comparisons-of-distributions-with-histograms" class="section level3 hasAnchor" number="21.1.1">
@@ -889,39 +890,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>You can set the fill aesthetic to the categorical variable. In this case, we will use the treatment variable. This is OK, as you can see the sulindac-treated patients are shifted to the left, but it is not great, as the counts are stacked, and this can make comparisons hard. Note that color = outline of bars color, as opposed to fill.</li>
 </ul>
-<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="univariate-ggplots-to-visualize-distributions.html#cb422-1" tabindex="-1"></a>  medicaldata<span class="sc">::</span>polyps <span class="sc">%&gt;%</span> </span>
-<span id="cb422-2"><a href="univariate-ggplots-to-visualize-distributions.html#cb422-2" tabindex="-1"></a>   <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb422-3"><a href="univariate-ggplots-to-visualize-distributions.html#cb422-3" tabindex="-1"></a>   <span class="fu">aes</span>(<span class="at">x =</span> number12m, <span class="at">fill =</span> treatment) <span class="sc">+</span></span>
-<span id="cb422-4"><a href="univariate-ggplots-to-visualize-distributions.html#cb422-4" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">15</span>,</span>
-<span id="cb422-5"><a href="univariate-ggplots-to-visualize-distributions.html#cb422-5" tabindex="-1"></a>                   <span class="at">color =</span> <span class="st">&quot;purple&quot;</span>) </span></code></pre></div>
-<pre><code>## Warning: Removed 2 rows containing non-finite values
-## (`stat_bin()`).</code></pre>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="univariate-ggplots-to-visualize-distributions.html#cb420-1" tabindex="-1"></a>  medicaldata<span class="sc">::</span>polyps <span class="sc">%&gt;%</span> </span>
+<span id="cb420-2"><a href="univariate-ggplots-to-visualize-distributions.html#cb420-2" tabindex="-1"></a>   <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb420-3"><a href="univariate-ggplots-to-visualize-distributions.html#cb420-3" tabindex="-1"></a>   <span class="fu">aes</span>(<span class="at">x =</span> number12m, <span class="at">fill =</span> treatment) <span class="sc">+</span></span>
+<span id="cb420-4"><a href="univariate-ggplots-to-visualize-distributions.html#cb420-4" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">15</span>,</span>
+<span id="cb420-5"><a href="univariate-ggplots-to-visualize-distributions.html#cb420-5" tabindex="-1"></a>                   <span class="at">color =</span> <span class="st">&quot;purple&quot;</span>) </span></code></pre></div>
+<pre><code>## Warning: Removed 2 rows containing non-finite outside the scale
+## range (`stat_bin()`).</code></pre>
 <p><img src="io48-univariate_distrib_plots_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <ul>
 <li>A mirror histogram can work well for 2 categories. You filter the data by value within the geom, and set the y value to ..density.. for one category value, and to negative -..density.. for the other category value, as seen below. The ..density.. variable is a value ggplot calculates in the background with a stat function.</li>
 </ul>
-<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="univariate-ggplots-to-visualize-distributions.html#cb424-1" tabindex="-1"></a>    medicaldata<span class="sc">::</span>polyps <span class="sc">%&gt;%</span> </span>
-<span id="cb424-2"><a href="univariate-ggplots-to-visualize-distributions.html#cb424-2" tabindex="-1"></a>     <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> number12m)) <span class="sc">+</span> </span>
-<span id="cb424-3"><a href="univariate-ggplots-to-visualize-distributions.html#cb424-3" tabindex="-1"></a>      <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;red&quot;</span>,</span>
-<span id="cb424-4"><a href="univariate-ggplots-to-visualize-distributions.html#cb424-4" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">y =</span> ..density..),</span>
-<span id="cb424-5"><a href="univariate-ggplots-to-visualize-distributions.html#cb424-5" tabindex="-1"></a>        <span class="at">data =</span> . <span class="sc">%&gt;%</span> </span>
-<span id="cb424-6"><a href="univariate-ggplots-to-visualize-distributions.html#cb424-6" tabindex="-1"></a>          <span class="fu">filter</span>(treatment <span class="sc">==</span> <span class="st">&#39;placebo&#39;</span>),</span>
-<span id="cb424-7"><a href="univariate-ggplots-to-visualize-distributions.html#cb424-7" tabindex="-1"></a>        <span class="at">bins =</span> <span class="dv">15</span>) <span class="sc">+</span></span>
-<span id="cb424-8"><a href="univariate-ggplots-to-visualize-distributions.html#cb424-8" tabindex="-1"></a>      <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">55</span>, <span class="at">y =</span> <span class="fl">0.03</span>, <span class="at">label =</span> <span class="st">&quot;Placebo&quot;</span>), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
-<span id="cb424-9"><a href="univariate-ggplots-to-visualize-distributions.html#cb424-9" tabindex="-1"></a>      <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;#404080&quot;</span>,</span>
-<span id="cb424-10"><a href="univariate-ggplots-to-visualize-distributions.html#cb424-10" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">y =</span> <span class="sc">-</span>..density..),</span>
-<span id="cb424-11"><a href="univariate-ggplots-to-visualize-distributions.html#cb424-11" tabindex="-1"></a>        <span class="at">data =</span> . <span class="sc">%&gt;%</span> </span>
-<span id="cb424-12"><a href="univariate-ggplots-to-visualize-distributions.html#cb424-12" tabindex="-1"></a>          <span class="fu">filter</span>(treatment <span class="sc">==</span> <span class="st">&#39;sulindac&#39;</span>),</span>
-<span id="cb424-13"><a href="univariate-ggplots-to-visualize-distributions.html#cb424-13" tabindex="-1"></a>        <span class="at">bins =</span> <span class="dv">15</span>) <span class="sc">+</span></span>
-<span id="cb424-14"><a href="univariate-ggplots-to-visualize-distributions.html#cb424-14" tabindex="-1"></a>      <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">20</span>, <span class="at">y =</span> <span class="sc">-</span><span class="fl">0.03</span>, <span class="at">label =</span> <span class="st">&quot;Sulindac&quot;</span>), <span class="at">color =</span> <span class="st">&quot;#404080&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="univariate-ggplots-to-visualize-distributions.html#cb422-1" tabindex="-1"></a>    medicaldata<span class="sc">::</span>polyps <span class="sc">%&gt;%</span> </span>
+<span id="cb422-2"><a href="univariate-ggplots-to-visualize-distributions.html#cb422-2" tabindex="-1"></a>     <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> number12m)) <span class="sc">+</span> </span>
+<span id="cb422-3"><a href="univariate-ggplots-to-visualize-distributions.html#cb422-3" tabindex="-1"></a>      <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;red&quot;</span>,</span>
+<span id="cb422-4"><a href="univariate-ggplots-to-visualize-distributions.html#cb422-4" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">y =</span> ..density..),</span>
+<span id="cb422-5"><a href="univariate-ggplots-to-visualize-distributions.html#cb422-5" tabindex="-1"></a>        <span class="at">data =</span> . <span class="sc">%&gt;%</span> </span>
+<span id="cb422-6"><a href="univariate-ggplots-to-visualize-distributions.html#cb422-6" tabindex="-1"></a>          <span class="fu">filter</span>(treatment <span class="sc">==</span> <span class="st">&#39;placebo&#39;</span>),</span>
+<span id="cb422-7"><a href="univariate-ggplots-to-visualize-distributions.html#cb422-7" tabindex="-1"></a>        <span class="at">bins =</span> <span class="dv">15</span>) <span class="sc">+</span></span>
+<span id="cb422-8"><a href="univariate-ggplots-to-visualize-distributions.html#cb422-8" tabindex="-1"></a>      <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">55</span>, <span class="at">y =</span> <span class="fl">0.03</span>, <span class="at">label =</span> <span class="st">&quot;Placebo&quot;</span>), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb422-9"><a href="univariate-ggplots-to-visualize-distributions.html#cb422-9" tabindex="-1"></a>      <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">&quot;#404080&quot;</span>,</span>
+<span id="cb422-10"><a href="univariate-ggplots-to-visualize-distributions.html#cb422-10" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">y =</span> <span class="sc">-</span>..density..),</span>
+<span id="cb422-11"><a href="univariate-ggplots-to-visualize-distributions.html#cb422-11" tabindex="-1"></a>        <span class="at">data =</span> . <span class="sc">%&gt;%</span> </span>
+<span id="cb422-12"><a href="univariate-ggplots-to-visualize-distributions.html#cb422-12" tabindex="-1"></a>          <span class="fu">filter</span>(treatment <span class="sc">==</span> <span class="st">&#39;sulindac&#39;</span>),</span>
+<span id="cb422-13"><a href="univariate-ggplots-to-visualize-distributions.html#cb422-13" tabindex="-1"></a>        <span class="at">bins =</span> <span class="dv">15</span>) <span class="sc">+</span></span>
+<span id="cb422-14"><a href="univariate-ggplots-to-visualize-distributions.html#cb422-14" tabindex="-1"></a>      <span class="fu">geom_label</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">20</span>, <span class="at">y =</span> <span class="sc">-</span><span class="fl">0.03</span>, <span class="at">label =</span> <span class="st">&quot;Sulindac&quot;</span>), <span class="at">color =</span> <span class="st">&quot;#404080&quot;</span>) </span></code></pre></div>
 <pre><code>## Warning: The dot-dot notation (`..density..`) was deprecated in
 ## ggplot2 3.4.0.
 ## ℹ Please use `after_stat(density)` instead.
 ## This warning is displayed once every 8 hours.
 ## Call `lifecycle::last_lifecycle_warnings()` to see where
 ## this warning was generated.</code></pre>
-<pre><code>## Warning: Removed 2 rows containing non-finite values
-## (`stat_bin()`).</code></pre>
+<pre><code>## Warning in geom_label(aes(x = 55, y = 0.03, label = &quot;Placebo&quot;), color = &quot;red&quot;): All aesthetics have length 1, but the data has 22 rows.
+## ℹ Please consider using `annotate()` or provide this layer
+##   with data containing a single row.</code></pre>
+<pre><code>## Warning in geom_label(aes(x = 20, y = -0.03, label = &quot;Sulindac&quot;), color = &quot;#404080&quot;): All aesthetics have length 1, but the data has 22 rows.
+## ℹ Please consider using `annotate()` or provide this layer
+##   with data containing a single row.</code></pre>
+<pre><code>## Warning: Removed 2 rows containing non-finite outside the scale
+## range (`stat_bin()`).</code></pre>
 <p><img src="io48-univariate_distrib_plots_files/figure-html/mirror-histogram-1.png" width="672" /></p>
 <ul>
 <li>You can do small multiples with facet_wrap</li>
@@ -931,8 +938,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb427-3"><a href="univariate-ggplots-to-visualize-distributions.html#cb427-3" tabindex="-1"></a>      <span class="fu">aes</span>(<span class="at">x =</span> number12m, <span class="at">fill =</span> treatment) <span class="sc">+</span></span>
 <span id="cb427-4"><a href="univariate-ggplots-to-visualize-distributions.html#cb427-4" tabindex="-1"></a>      <span class="fu">geom_histogram</span>(<span class="at">bins =</span><span class="dv">15</span>) <span class="sc">+</span></span>
 <span id="cb427-5"><a href="univariate-ggplots-to-visualize-distributions.html#cb427-5" tabindex="-1"></a>    <span class="fu">facet_grid</span>(. <span class="sc">~</span> treatment)</span></code></pre></div>
-<pre><code>## Warning: Removed 2 rows containing non-finite values
-## (`stat_bin()`).</code></pre>
+<pre><code>## Warning: Removed 2 rows containing non-finite outside the scale
+## range (`stat_bin()`).</code></pre>
 <p><img src="io48-univariate_distrib_plots_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <pre><code>Note for facet_wrap and facet_grid, the formula notation or the arguments is y \~ x, so that by putting treatment after the tilde, the treatments are compared on the x axis, or side by side. If you put the treatment categorical value in the first (y) position, they would be shown as top and bottom.</code></pre>
 <div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="univariate-ggplots-to-visualize-distributions.html#cb430-1" tabindex="-1"></a>  medicaldata<span class="sc">::</span>polyps <span class="sc">%&gt;%</span> </span>
@@ -940,8 +947,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb430-3"><a href="univariate-ggplots-to-visualize-distributions.html#cb430-3" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> number12m, <span class="at">fill =</span> treatment) <span class="sc">+</span></span>
 <span id="cb430-4"><a href="univariate-ggplots-to-visualize-distributions.html#cb430-4" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">bins =</span><span class="dv">15</span>) <span class="sc">+</span></span>
 <span id="cb430-5"><a href="univariate-ggplots-to-visualize-distributions.html#cb430-5" tabindex="-1"></a>    <span class="fu">facet_grid</span>(treatment <span class="sc">~</span> .)</span></code></pre></div>
-<pre><code>## Warning: Removed 2 rows containing non-finite values
-## (`stat_bin()`).</code></pre>
+<pre><code>## Warning: Removed 2 rows containing non-finite outside the scale
+## range (`stat_bin()`).</code></pre>
 <p><img src="io48-univariate_distrib_plots_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <ul>
 <li>While the viewer can generally make the comparisons with 2 categories, it can get more complicated with increasing numbers of categories.</li>
@@ -1054,7 +1061,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="univariate-ggplots-to-visualize-distributions.html#cb440-1" tabindex="-1"></a>cmv <span class="sc">%&gt;%</span> </span>
 <span id="cb440-2"><a href="univariate-ggplots-to-visualize-distributions.html#cb440-2" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> time.to.transplant, <span class="at">y =</span> diagnosis)) <span class="sc">+</span> <span class="fu">geom_density_ridges</span>(<span class="at">scale =</span> <span class="fl">0.9</span>) </span></code></pre></div>
 <pre><code>## Picking joint bandwidth of 8.96</code></pre>
-<pre><code>## Warning: Removed 1 rows containing non-finite values
+<pre><code>## Warning: Removed 1 row containing non-finite outside the scale range
 ## (`stat_density_ridges()`).</code></pre>
 <p><img src="io48-univariate_distrib_plots_files/figure-html/plot-1.png" width="672" /></p>
 <div id="including-plots" class="section level3 hasAnchor" number="21.6.1">

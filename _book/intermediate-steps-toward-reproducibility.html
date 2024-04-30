@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 17 Intermediate Steps Toward Reproducibility | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
-  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 17 Intermediate Steps Toward Reproducibility | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2023-09-24" />
+<meta name="date" content="2024-04-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,11 +52,12 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.2/plotly.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
@@ -437,12 +438,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="16" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html"><i class="fa fa-check"></i><b>16</b> Major R Updates (Where Are My Packages?)</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html#preparing-for-a-minor-or-major-r-upgrade"><i class="fa fa-check"></i><b>16.1</b> Preparing for a Minor or Major R Upgrade</a></li>
-<li class="chapter" data-level="16.2" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html#saving-a-list-of-your-packages"><i class="fa fa-check"></i><b>16.2</b> Saving a List of Your Packages</a></li>
-<li class="chapter" data-level="16.3" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html#upgrading-r-and-rstudio"><i class="fa fa-check"></i><b>16.3</b> Upgrading R (and RStudio)</a>
+<li class="chapter" data-level="16.1" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html#preparing-for-a-minor-or-major-r-upgrade"><i class="fa fa-check"></i><b>16.1</b> Preparing for a Minor or Major R Upgrade</a>
 <ul>
-<li class="chapter" data-level="16.3.1" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html#reinstalling-your-list-of-packages"><i class="fa fa-check"></i><b>16.3.1</b> Reinstalling your list of Packages</a></li>
+<li class="chapter" data-level="16.1.1" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html#installing-new-packages-from-scratch"><i class="fa fa-check"></i><b>16.1.1</b> Installing New Packages from Scratch</a></li>
 </ul></li>
+<li class="chapter" data-level="16.2" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html#rebuilding-all-packages-in-one-automated-step"><i class="fa fa-check"></i><b>16.2</b> Rebuilding ALl Packages in One (Automated) Step</a></li>
+<li class="chapter" data-level="16.3" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html#checking-the-new-library-path"><i class="fa fa-check"></i><b>16.3</b> Checking the new library path</a></li>
 <li class="chapter" data-level="16.4" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html#now-check-your-list-of-packages"><i class="fa fa-check"></i><b>16.4</b> Now Check your list of Packages</a></li>
 <li class="chapter" data-level="16.5" data-path="major-r-updates-where-are-my-packages.html"><a href="major-r-updates-where-are-my-packages.html#updating-packages"><i class="fa fa-check"></i><b>16.5</b> Updating Packages</a></li>
 </ul></li>
@@ -925,14 +926,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="figcaption">Computer Arson</div>
 </div>
 <p>In order to have a set of file paths that work on <strong>any</strong> computer that has a copy of your Project, you need to use the {here} package. Go ahead and install it now and load it <code>library(here)</code> if you don’t have it already.</p>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="intermediate-steps-toward-reproducibility.html#cb353-1" tabindex="-1"></a><span class="co"># install.packages(&quot;here&quot;)</span></span>
-<span id="cb353-2"><a href="intermediate-steps-toward-reproducibility.html#cb353-2" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb353-3"><a href="intermediate-steps-toward-reproducibility.html#cb353-3" tabindex="-1"></a><span class="fu">here</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="intermediate-steps-toward-reproducibility.html#cb351-1" tabindex="-1"></a><span class="co"># install.packages(&quot;here&quot;)</span></span>
+<span id="cb351-2"><a href="intermediate-steps-toward-reproducibility.html#cb351-2" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb351-3"><a href="intermediate-steps-toward-reproducibility.html#cb351-3" tabindex="-1"></a><span class="fu">here</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;/Users/peterhiggins/Documents/RCode/rmrwr-book&quot;</code></pre>
 <p>Then run the here() function in your Console pane. It will return the path to your current Project. It essentially figures out where your project directory is, and provides this as a home base. This can be used to reference other folders in your project in a relative way. For example, to list the files in your <code>data-raw</code> folder (aka directory, or dir), you can use the <code>{fs}</code> package and the <em>here()</em> function, as in:</p>
-<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="intermediate-steps-toward-reproducibility.html#cb355-1" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_ls</span>(<span class="fu">here</span>(<span class="st">&quot;data-raw&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="intermediate-steps-toward-reproducibility.html#cb353-1" tabindex="-1"></a>fs<span class="sc">::</span><span class="fu">dir_ls</span>(<span class="fu">here</span>(<span class="st">&quot;data-raw&quot;</span>))</span></code></pre></div>
 <p>The <em>here()</em> function supplies the file path details up to your RStudio Project folder, and then you can add any subfolder or filename details within the parentheses. Similarly, you can write your cleaned and merged data file to the <code>data-processed</code> folder with</p>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="intermediate-steps-toward-reproducibility.html#cb356-1" tabindex="-1"></a><span class="fu">write_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data-processed/03-merged_redcap_data-warehouse_data.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="intermediate-steps-toward-reproducibility.html#cb354-1" tabindex="-1"></a><span class="fu">write_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data-processed/03-merged_redcap_data-warehouse_data.csv&quot;</span>))</span></code></pre></div>
 <p>Which will write the csv file to the <code>data-processed</code> folder within your Project.</p>
 <p>Now when you share the Project with a collaborator, the file paths for reading and writing files will now all work.</p>
 <div class="tryit">

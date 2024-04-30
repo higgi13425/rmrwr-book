@@ -275,7 +275,7 @@ structures, and these include
      4 Darth Vader        <chr [4]>
      5 Leia Organa        <chr [5]>
      6 Owen Lars          <chr [3]>
-     7 Beru Whitesun lars <chr [3]>
+     7 Beru Whitesun Lars <chr [3]>
      8 R5-D4              <chr [1]>
      9 Biggs Darklighter  <chr [1]>
     10 Obi-Wan Kenobi     <chr [6]>
@@ -288,33 +288,33 @@ structures, and these include
     
     ```
     [[1]]
-    [1] "The Empire Strikes Back" "Revenge of the Sith"    
-    [3] "Return of the Jedi"      "A New Hope"             
+    [1] "A New Hope"              "The Empire Strikes Back"
+    [3] "Return of the Jedi"      "Revenge of the Sith"    
     [5] "The Force Awakens"      
     
     [[2]]
-    [1] "The Empire Strikes Back" "Attack of the Clones"   
-    [3] "The Phantom Menace"      "Revenge of the Sith"    
-    [5] "Return of the Jedi"      "A New Hope"             
+    [1] "A New Hope"              "The Empire Strikes Back"
+    [3] "Return of the Jedi"      "The Phantom Menace"     
+    [5] "Attack of the Clones"    "Revenge of the Sith"    
     
     [[3]]
-    [1] "The Empire Strikes Back" "Attack of the Clones"   
-    [3] "The Phantom Menace"      "Revenge of the Sith"    
-    [5] "Return of the Jedi"      "A New Hope"             
+    [1] "A New Hope"              "The Empire Strikes Back"
+    [3] "Return of the Jedi"      "The Phantom Menace"     
+    [5] "Attack of the Clones"    "Revenge of the Sith"    
     [7] "The Force Awakens"      
     
     [[4]]
-    [1] "The Empire Strikes Back" "Revenge of the Sith"    
-    [3] "Return of the Jedi"      "A New Hope"             
+    [1] "A New Hope"              "The Empire Strikes Back"
+    [3] "Return of the Jedi"      "Revenge of the Sith"    
     
     [[5]]
-    [1] "The Empire Strikes Back" "Revenge of the Sith"    
-    [3] "Return of the Jedi"      "A New Hope"             
+    [1] "A New Hope"              "The Empire Strikes Back"
+    [3] "Return of the Jedi"      "Revenge of the Sith"    
     [5] "The Force Awakens"      
     
     [[6]]
-    [1] "Attack of the Clones" "Revenge of the Sith" 
-    [3] "A New Hope"          
+    [1] "A New Hope"           "Attack of the Clones"
+    [3] "Revenge of the Sith" 
     ```
 
     Lists can be a bit clunky to work with, as they nest more than a
@@ -337,7 +337,7 @@ structures, and these include
      4 Darth Vader        <chr [4]>
      5 Leia Organa        <chr [5]>
      6 Owen Lars          <chr [3]>
-     7 Beru Whitesun lars <chr [3]>
+     7 Beru Whitesun Lars <chr [3]>
      8 R5-D4              <chr [1]>
      9 Biggs Darklighter  <chr [1]>
     10 Obi-Wan Kenobi     <chr [6]>
@@ -355,16 +355,16 @@ structures, and these include
     # A tibble: 173 × 2
        name           films                  
        <chr>          <chr>                  
-     1 Luke Skywalker The Empire Strikes Back
-     2 Luke Skywalker Revenge of the Sith    
+     1 Luke Skywalker A New Hope             
+     2 Luke Skywalker The Empire Strikes Back
      3 Luke Skywalker Return of the Jedi     
-     4 Luke Skywalker A New Hope             
+     4 Luke Skywalker Revenge of the Sith    
      5 Luke Skywalker The Force Awakens      
-     6 C-3PO          The Empire Strikes Back
-     7 C-3PO          Attack of the Clones   
-     8 C-3PO          The Phantom Menace     
-     9 C-3PO          Revenge of the Sith    
-    10 C-3PO          Return of the Jedi     
+     6 C-3PO          A New Hope             
+     7 C-3PO          The Empire Strikes Back
+     8 C-3PO          Return of the Jedi     
+     9 C-3PO          The Phantom Menace     
+    10 C-3PO          Attack of the Clones   
     # ℹ 163 more rows
     ```
     
@@ -596,27 +596,27 @@ tibble [87 × 14] (S3: tbl_df/tbl/data.frame)
  $ homeworld : chr [1:87] "Tatooine" "Tatooine" "Naboo" "Tatooine" ...
  $ species   : chr [1:87] "Human" "Droid" "Droid" "Human" ...
  $ films     :List of 87
-  ..$ : chr [1:5] "The Empire Strikes Back" "Revenge of the Sith" "Return of the Jedi" "A New Hope" ...
-  ..$ : chr [1:6] "The Empire Strikes Back" "Attack of the Clones" "The Phantom Menace" "Revenge of the Sith" ...
-  ..$ : chr [1:7] "The Empire Strikes Back" "Attack of the Clones" "The Phantom Menace" "Revenge of the Sith" ...
-  ..$ : chr [1:4] "The Empire Strikes Back" "Revenge of the Sith" "Return of the Jedi" "A New Hope"
-  ..$ : chr [1:5] "The Empire Strikes Back" "Revenge of the Sith" "Return of the Jedi" "A New Hope" ...
-  ..$ : chr [1:3] "Attack of the Clones" "Revenge of the Sith" "A New Hope"
-  ..$ : chr [1:3] "Attack of the Clones" "Revenge of the Sith" "A New Hope"
+  ..$ : chr [1:5] "A New Hope" "The Empire Strikes Back" "Return of the Jedi" "Revenge of the Sith" ...
+  ..$ : chr [1:6] "A New Hope" "The Empire Strikes Back" "Return of the Jedi" "The Phantom Menace" ...
+  ..$ : chr [1:7] "A New Hope" "The Empire Strikes Back" "Return of the Jedi" "The Phantom Menace" ...
+  ..$ : chr [1:4] "A New Hope" "The Empire Strikes Back" "Return of the Jedi" "Revenge of the Sith"
+  ..$ : chr [1:5] "A New Hope" "The Empire Strikes Back" "Return of the Jedi" "Revenge of the Sith" ...
+  ..$ : chr [1:3] "A New Hope" "Attack of the Clones" "Revenge of the Sith"
+  ..$ : chr [1:3] "A New Hope" "Attack of the Clones" "Revenge of the Sith"
   ..$ : chr "A New Hope"
   ..$ : chr "A New Hope"
-  ..$ : chr [1:6] "The Empire Strikes Back" "Attack of the Clones" "The Phantom Menace" "Revenge of the Sith" ...
-  ..$ : chr [1:3] "Attack of the Clones" "The Phantom Menace" "Revenge of the Sith"
-  ..$ : chr [1:2] "Revenge of the Sith" "A New Hope"
-  ..$ : chr [1:5] "The Empire Strikes Back" "Revenge of the Sith" "Return of the Jedi" "A New Hope" ...
-  ..$ : chr [1:4] "The Empire Strikes Back" "Return of the Jedi" "A New Hope" "The Force Awakens"
+  ..$ : chr [1:6] "A New Hope" "The Empire Strikes Back" "Return of the Jedi" "The Phantom Menace" ...
+  ..$ : chr [1:3] "The Phantom Menace" "Attack of the Clones" "Revenge of the Sith"
+  ..$ : chr [1:2] "A New Hope" "Revenge of the Sith"
+  ..$ : chr [1:5] "A New Hope" "The Empire Strikes Back" "Return of the Jedi" "Revenge of the Sith" ...
+  ..$ : chr [1:4] "A New Hope" "The Empire Strikes Back" "Return of the Jedi" "The Force Awakens"
   ..$ : chr "A New Hope"
-  ..$ : chr [1:3] "The Phantom Menace" "Return of the Jedi" "A New Hope"
-  ..$ : chr [1:3] "The Empire Strikes Back" "Return of the Jedi" "A New Hope"
+  ..$ : chr [1:3] "A New Hope" "Return of the Jedi" "The Phantom Menace"
+  ..$ : chr [1:3] "A New Hope" "The Empire Strikes Back" "Return of the Jedi"
   ..$ : chr "A New Hope"
-  ..$ : chr [1:5] "The Empire Strikes Back" "Attack of the Clones" "The Phantom Menace" "Revenge of the Sith" ...
-  ..$ : chr [1:5] "The Empire Strikes Back" "Attack of the Clones" "The Phantom Menace" "Revenge of the Sith" ...
-  ..$ : chr [1:3] "The Empire Strikes Back" "Attack of the Clones" "Return of the Jedi"
+  ..$ : chr [1:5] "The Empire Strikes Back" "Return of the Jedi" "The Phantom Menace" "Attack of the Clones" ...
+  ..$ : chr [1:5] "The Empire Strikes Back" "Return of the Jedi" "The Phantom Menace" "Attack of the Clones" ...
+  ..$ : chr [1:3] "The Empire Strikes Back" "Return of the Jedi" "Attack of the Clones"
   ..$ : chr "The Empire Strikes Back"
   ..$ : chr "The Empire Strikes Back"
   ..$ : chr [1:2] "The Empire Strikes Back" "Return of the Jedi"
@@ -627,31 +627,33 @@ tibble [87 × 14] (S3: tbl_df/tbl/data.frame)
   ..$ : chr "Return of the Jedi"
   ..$ : chr "Return of the Jedi"
   ..$ : chr "The Phantom Menace"
-  ..$ : chr [1:3] "Attack of the Clones" "The Phantom Menace" "Revenge of the Sith"
+  ..$ : chr [1:3] "The Phantom Menace" "Attack of the Clones" "Revenge of the Sith"
   ..$ : chr "The Phantom Menace"
-  ..$ : chr [1:2] "Attack of the Clones" "The Phantom Menace"
-  ..$ : chr "The Phantom Menace"
-  ..$ : chr "The Phantom Menace"
-  ..$ : chr "The Phantom Menace"
-  ..$ : chr [1:2] "Attack of the Clones" "The Phantom Menace"
+  ..$ : chr [1:3] "The Phantom Menace" "Attack of the Clones" "Revenge of the Sith"
+  ..$ : chr [1:2] "The Phantom Menace" "Attack of the Clones"
   ..$ : chr "The Phantom Menace"
   ..$ : chr "The Phantom Menace"
-  ..$ : chr [1:2] "Attack of the Clones" "The Phantom Menace"
+  ..$ : chr "The Phantom Menace"
+  ..$ : chr [1:2] "The Phantom Menace" "Attack of the Clones"
+  ..$ : chr "The Phantom Menace"
+  ..$ : chr "The Phantom Menace"
+  ..$ : chr [1:2] "The Phantom Menace" "Attack of the Clones"
   ..$ : chr "The Phantom Menace"
   ..$ : chr "Return of the Jedi"
-  ..$ : chr [1:3] "Attack of the Clones" "The Phantom Menace" "Revenge of the Sith"
+  ..$ : chr [1:3] "The Phantom Menace" "Attack of the Clones" "Revenge of the Sith"
   ..$ : chr "The Phantom Menace"
   ..$ : chr "The Phantom Menace"
   ..$ : chr "The Phantom Menace"
-  ..$ : chr [1:3] "Attack of the Clones" "The Phantom Menace" "Revenge of the Sith"
-  ..$ : chr [1:3] "Attack of the Clones" "The Phantom Menace" "Revenge of the Sith"
-  ..$ : chr [1:3] "Attack of the Clones" "The Phantom Menace" "Revenge of the Sith"
+  ..$ : chr "The Phantom Menace"
+  ..$ : chr [1:3] "The Phantom Menace" "Attack of the Clones" "Revenge of the Sith"
+  ..$ : chr [1:3] "The Phantom Menace" "Attack of the Clones" "Revenge of the Sith"
+  ..$ : chr [1:3] "The Phantom Menace" "Attack of the Clones" "Revenge of the Sith"
   ..$ : chr [1:2] "The Phantom Menace" "Revenge of the Sith"
   ..$ : chr [1:2] "The Phantom Menace" "Revenge of the Sith"
   ..$ : chr [1:2] "The Phantom Menace" "Revenge of the Sith"
   ..$ : chr "The Phantom Menace"
-  ..$ : chr [1:3] "Attack of the Clones" "The Phantom Menace" "Revenge of the Sith"
-  ..$ : chr [1:2] "Attack of the Clones" "The Phantom Menace"
+  ..$ : chr [1:3] "The Phantom Menace" "Attack of the Clones" "Revenge of the Sith"
+  ..$ : chr [1:2] "The Phantom Menace" "Attack of the Clones"
   ..$ : chr "Attack of the Clones"
   ..$ : chr "Attack of the Clones"
   ..$ : chr "Attack of the Clones"
@@ -667,14 +669,13 @@ tibble [87 × 14] (S3: tbl_df/tbl/data.frame)
   ..$ : chr "Attack of the Clones"
   ..$ : chr "Attack of the Clones"
   ..$ : chr "Attack of the Clones"
-  ..$ : chr "The Phantom Menace"
   ..$ : chr [1:2] "Attack of the Clones" "Revenge of the Sith"
   ..$ : chr "Attack of the Clones"
   ..$ : chr "Attack of the Clones"
   ..$ : chr [1:2] "Attack of the Clones" "Revenge of the Sith"
   ..$ : chr "Revenge of the Sith"
   ..$ : chr "Revenge of the Sith"
-  ..$ : chr [1:2] "Revenge of the Sith" "A New Hope"
+  ..$ : chr [1:2] "A New Hope" "Revenge of the Sith"
   ..$ : chr [1:2] "Attack of the Clones" "Revenge of the Sith"
   ..$ : chr "Revenge of the Sith"
   ..$ : chr "The Force Awakens"
@@ -682,7 +683,6 @@ tibble [87 × 14] (S3: tbl_df/tbl/data.frame)
   ..$ : chr "The Force Awakens"
   ..$ : chr "The Force Awakens"
   ..$ : chr "The Force Awakens"
-  ..$ : chr [1:3] "Attack of the Clones" "The Phantom Menace" "Revenge of the Sith"
  $ vehicles  :List of 87
   ..$ : chr [1:2] "Snowspeeder" "Imperial Speeder Bike"
   ..$ : chr(0) 
@@ -725,7 +725,9 @@ tibble [87 × 14] (S3: tbl_df/tbl/data.frame)
   ..$ : chr(0) 
   ..$ : chr(0) 
   ..$ : chr(0) 
+  ..$ : chr(0) 
   ..$ : chr "Sith speeder"
+  ..$ : chr(0) 
   ..$ : chr(0) 
   ..$ : chr(0) 
   ..$ : chr(0) 
@@ -759,9 +761,7 @@ tibble [87 × 14] (S3: tbl_df/tbl/data.frame)
   ..$ : chr(0) 
   ..$ : chr(0) 
   ..$ : chr(0) 
-  ..$ : chr(0) 
   ..$ : chr "Tsmeu-6 personal wheel bike"
-  ..$ : chr(0) 
   ..$ : chr(0) 
   ..$ : chr(0) 
   ..$ : chr(0) 
@@ -782,7 +782,7 @@ tibble [87 × 14] (S3: tbl_df/tbl/data.frame)
   ..$ : chr(0) 
   ..$ : chr "X-wing"
   ..$ : chr [1:5] "Jedi starfighter" "Trade Federation cruiser" "Naboo star skiff" "Jedi Interceptor" ...
-  ..$ : chr [1:3] "Trade Federation cruiser" "Jedi Interceptor" "Naboo fighter"
+  ..$ : chr [1:3] "Naboo fighter" "Trade Federation cruiser" "Jedi Interceptor"
   ..$ : chr(0) 
   ..$ : chr [1:2] "Millennium Falcon" "Imperial shuttle"
   ..$ : chr [1:2] "Millennium Falcon" "Imperial shuttle"
@@ -805,6 +805,7 @@ tibble [87 × 14] (S3: tbl_df/tbl/data.frame)
   ..$ : chr(0) 
   ..$ : chr(0) 
   ..$ : chr(0) 
+  ..$ : chr [1:3] "Naboo fighter" "H-type Nubian yacht" "Naboo star skiff"
   ..$ : chr(0) 
   ..$ : chr(0) 
   ..$ : chr(0) 
@@ -814,6 +815,7 @@ tibble [87 × 14] (S3: tbl_df/tbl/data.frame)
   ..$ : chr(0) 
   ..$ : chr(0) 
   ..$ : chr "Scimitar"
+  ..$ : chr(0) 
   ..$ : chr(0) 
   ..$ : chr(0) 
   ..$ : chr(0) 
@@ -847,7 +849,6 @@ tibble [87 × 14] (S3: tbl_df/tbl/data.frame)
   ..$ : chr(0) 
   ..$ : chr(0) 
   ..$ : chr(0) 
-  ..$ : chr(0) 
   ..$ : chr "Belbullab-22 starfighter"
   ..$ : chr(0) 
   ..$ : chr(0) 
@@ -855,10 +856,9 @@ tibble [87 × 14] (S3: tbl_df/tbl/data.frame)
   ..$ : chr(0) 
   ..$ : chr(0) 
   ..$ : chr(0) 
-  ..$ : chr "T-70 X-wing fighter"
+  ..$ : chr "X-wing"
   ..$ : chr(0) 
   ..$ : chr(0) 
-  ..$ : chr [1:3] "H-type Nubian yacht" "Naboo star skiff" "Naboo fighter"
 ```
 
 You can see from the output that this is a tibble, with 87 rows and 14
@@ -888,7 +888,7 @@ $ sex        <chr> "male", "none", "none", "male", "female…
 $ gender     <chr> "masculine", "masculine", "masculine", …
 $ homeworld  <chr> "Tatooine", "Tatooine", "Naboo", "Tatoo…
 $ species    <chr> "Human", "Droid", "Droid", "Human", "Hu…
-$ films      <list> <"The Empire Strikes Back", "Revenge o…
+$ films      <list> <"A New Hope", "The Empire Strikes Bac…
 $ vehicles   <list> <"Snowspeeder", "Imperial Speeder Bike…
 $ starships  <list> <"X-wing", "Imperial shuttle">, <>, <>…
 ```
@@ -1060,7 +1060,7 @@ sd
 function (x, na.rm = FALSE) 
 sqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x), 
     na.rm = na.rm))
-<bytecode: 0x12c41f270>
+<bytecode: 0x11738afc0>
 <environment: namespace:stats>
 ```
 :::
@@ -1191,7 +1191,7 @@ version of R.
 ```
 
 ```
-[1] "/Library/Frameworks/R.framework/Versions/4.3-arm64/Resources/library"
+[1] "/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library"
 ```
 
 ## The Building Blocks of R

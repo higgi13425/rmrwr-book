@@ -544,6 +544,16 @@ ggplot(dat, aes(x = time, y = value,
   ylab("Y") 
 ```
 
+```
+## Warning: A numeric `legend.position` argument in `theme()` was
+## deprecated in ggplot2 3.5.0.
+## ℹ Please use the `legend.position.inside` argument of
+##   `theme()` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where
+## this warning was generated.
+```
+
 <img src="io48j-extension-plots_files/figure-html/spaghetti3-1.png" width="672" />
 
 If we want to summarize the overall pattern, we can use a *geom_smooth()* with the default loess smoothing. We set the color to "black", rather than the color of either SES group. We need to turn off the grouping with group = NULL to get a single summary line. Note the loess smoothing produces a curve.
@@ -732,14 +742,7 @@ This section borrows heavily from a nice blog post from statistician Kat Hoffman
 library(tidyverse)
 library(gt)
 library(rmarkdown)
-```
 
-```
-## Warning: package 'rmarkdown' was built under R version
-## 4.3.1
-```
-
-```r
 dat_long <- read_csv("https://raw.githubusercontent.com/kathoffman/steroids-trial-emulation/main/data/dat_trt_timeline.csv", col_types = list(id  = "c", steroids = "c", death = "c", severe = "c"))
 dat_long |> head()
 ```
