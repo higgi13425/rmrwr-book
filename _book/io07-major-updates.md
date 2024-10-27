@@ -64,7 +64,7 @@ install.packages("pak")
 ```
 ## 
 ## The downloaded binary packages are in
-## 	/var/folders/93/s18zkv2d4f556fxbjvb8yglc0000gp/T//Rtmp0tU8b3/downloaded_packages
+## 	/var/folders/93/s18zkv2d4f556fxbjvb8yglc0000gp/T//Rtmpoj1m4Z/downloaded_packages
 ```
 
 ``` r
