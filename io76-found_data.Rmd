@@ -29,32 +29,29 @@ Several classic examples were intermittently published in the *Village Voice* in
 
 **Field of Butterflies**
 
-*Absolutely! If you don't get a little* <br> 
-*A few butterflies* <br> 
-*No matter what you do*  <br> 
-*On the first day of anything* <br> 
-*You're not human*
+*Absolutely! If you don't get a little* <br> *A few butterflies* <br> *No matter what you do* <br> *On the first day of anything* <br> *You're not human*
 
-It is **important** to check and validate any data you find on the web.
-It may be out of date, or simply wrong. Use reliable sources (The CDC, the Census Bureau, or KFF) as much as you can.
+::: warning
+It is **important** to check and validate any data you find on the web. It may be out of date, or simply wrong. Be careful to use reliable sources (The CDC, the Census Bureau, or sites like KFF) as often as you can.
+:::
 
 ## Found Data
 
 You might find data on population, income, or socioeconomic markers organized by geography (state, city, province), or other data that you can use to enrich your analysis.
 
-There are four major options to bring these found data onto your local computer and into your local project.
+There are **four major options** to bring these found data onto your local computer and into your local project.
 
 1)  Download the data, usually as a .csv or .xlsx file, and read it into R using read_csv() or read_excel(). **Look for a download button first**. A good example is the KFF (Kaiser Family Foundation) website, which has a lot of useful data on health care, and often has a download button for the data. One insurance example [**here**](https://www.kff.org/other/state-indicator/total-population/). Look for the download button (downward arrow into a file tray) at the top right of the data frame.
 
-2)  Particularly for small, one-off tables, copy the table and use the {datapasta} package to paste it into R. You may need to do a bit of data cleaning, but this is pretty straightforward, and you can save the table as a csv once it is cleaned, and just re-load this with `read_csv()` in the future.
+2)  Particularly for small, one-off tables, copy the table and use the `{datapasta}` package to paste it into R. You may need to do a bit of data cleaning, but this is pretty straightforward, and you can save the table as a csv once it is cleaned, and just re-load this with `read_csv()` in the future.
 
-3)  Use the rvest package to scrape the data from a website. This is a bit more advanced, but can be very useful if the data are updated frequently on a website, and fresh data are important.
+3)  Use the `{rvest}` package to scrape the data from a website. This is a bit more advanced, but can be very useful if the data are updated frequently on a website, and it is important (e.g. for a dashboard) to have the freshest, up-to-date data.
 
-4)  Look for a package that uses an API (Application Programming Interface) to this website, and can access the data (like {tidycensus} for US Census data)
+4)  Look for a package that uses an API (Application Programming Interface) to the data website, and you can use the package to access the data directly (like {tidycensus} for US Census data).
 
 ## Download Example
 
-You will find datasets that are really useful (and often really big) online, and you generally will want to download these along with the documentation to help you understand the data. Documentation often supplies details and meta-data about how the data were collected, organized, and cleaned. One good example from the Centers of Disease Control (CDC) in the US is the Social Vulnerability Index (SVI). This is a dataset that is updated every two years, and is used to help identify vulnerable communities that may need extra support in the event of a disaster. The data are available at the CDC website [**here**](https://www.atsdr.cdc.gov/placeandhealth/svi/data_documentation_download.html). You can choose a single state, or the whole US to download. You can also select the units of SVI as county or census tract. The documentation files for these datasets are also available in links on the right side of this page.
+You will find datasets that are really useful (and often really big) online, and you generally will want to download these along with the documentation to help you understand the data. Documentation often supplies details and meta-data about how the data were collected, organized, and cleaned. One good example from the Centers of Disease Control (CDC) in the US is the Social Vulnerability Index (SVI). This is a dataset that is updated every two years, and is used to help identify vulnerable communities that may need extra support in the event of a disaster. The data are available at the CDC website **here**. You can choose a single state, or the whole US to download. New data are available every 2 years. You can also select the SVI data in the US by county or census tract. The documentation files for these datasets are also available in links on the right side of this page. You can just download a table of the data, or include the shapefiles for the geographic units (counties, states, census tracts) that will allow you to create maps of the data.
 
 ## Datapasta (small table) Example
 
@@ -70,32 +67,33 @@ First, make sure you have loaded {datapasta}, by running the code chunk below.
 library(datapasta)
 ```
 
-1. Start by copying the table from the website (Ctrl-C / Cmd-C).
+1.  Start by copying the table from the website (Ctrl-C / Cmd-C).
 
-2. Recreate the code: `pop_data \<- **PASTE DATA HERE**` from the code chunk below in your local version of R Studio. 
+2.  Recreate the code: `pop_data <- paste_from_datapasta_here` from the code chunk below in your local version of R Studio.
 
-3. Delete the "**PASTE DATA HERE**" in your local R Studio and leave your cursor there. 
-4. Now go to the top of your RStudio window, and find the "Addins" dropdown. Click on this dropdown and find the DATAPASTA commands section. Use the 'Paste as data.frame' add-in to paste the data into R. 
+3.  Delete the "`paste_from_datapasta_here`" in your local R Studio and leave your cursor there.
 
-5. Paste it into the indicated spot in the code chunk below. 
+4.  Now go to the top of your RStudio window, and find the "Addins" dropdown. Click on this dropdown and find the DATAPASTA commands section. Use the 'Paste as data.frame' add-in to paste the data into R.
+
+5.  Paste it into the indicated spot in the code chunk below.
 
 6, Then run this code. This will create a data frame called `pop_data` with the data you pasted in, which will appear in your Environment tab.
 
 ```{r, error=TRUE, eval=FALSE}
-pop_data <- **PASTE DATA HERE**
+pop_data <- paste_from_datapasta_here
 ```
 
 Now you have the data in, but it is still a bit icky and in need of some data cleaning. Open up the pop_data dataframe by clicking on the name in the Environment tab, and look at the data. What needs to be cleaned up?
 
 `r hide("Click here to see the solution")`
 
-1.  The first row is the header, but the names are icky, and not in standard lower case snake_case. You can use the `janitor::clean_names()` function to fix this.
+1.  The first row is the header, but the names are icky, and not in standard lower case with underscores (snake_case). You can use the `janitor::clean_names()` function to fix this.
 
-2.  The state names have ranking numbers before them, which need to be removed. You can use the `mutate()` and `str_remove("\\d+\\. ")` function to remove these. Note the double backslashes in the `str_remove()` function to use escape characters for d (digits) and the period (all punctuation).
+2.  The state names have ranking numbers before them, which need to be removed. You can use the `mutate()` and `str_remove("\\d+\\. ")` function to remove these. Note the double backslashes in the `str_remove()` function to use escape characters for d (digits) and the period (used for all punctuation).
 
-3.  The population estimates include "(2023 est.) ", which also needs to be removed. Use the `mutate()` and `str_remove"\\(2023 est.\\) "` function to remove these. Note the double backslashes in the `str_remove()` function to use escape characters for parentheses.
+3.  The population estimates include "(2023 est.) ", which also needs to be removed. Use the `mutate()` and `str_remove("\\(2023 est.\\) ")` function to remove these. Note the double backslashes in the `str_remove()` function to use escape characters for parentheses.
 
-4.  The population census numbers include "(2020) ", which also needs to be removed, with `mutate()` and `str_remove("\\(2020\\) "` functions.
+4.  The population census numbers include "(2020) ", which also needs to be removed, with `mutate()` and `str_remove("\\(2020\\) ")` functions.
 
 5.  The population numbers are in a character format, and need to be converted to numeric. You can use the `dplyr::mutate()` and `as.numeric()` functions to convert these.
 
@@ -111,11 +109,11 @@ Take a look at the web page at [**US state poverty data**](https://en.wikipedia.
 
 Give this a try in your local RStudio, using the instructions below to scrape the US Census Bureau table. Check your solution by clicking on the "Click here to see the solutions" button below.
 
-1. Copy the US Census Bureau table by selecting and Cmd-C/Ctrl-C. Since the headers are a bit messy, skip these (we will set_names later).You may also choose to skip the summary line for the United States at the end (or filter it out later).
+1.  Copy the US Census Bureau table (the first table) by selecting and Cmd-C/Ctrl-C. Since the headers are a bit messy, skip these (we will use `purrr::set_names` later).You may also choose to skip the summary line for the United States at the end (or filter it out later).
 
-2. Go to your local RStudio, be sure {datapasta} is loaded, and select the Addin to paste a data.frame. Assign the data with the assignment arrow to a new data_poverty object.
+2.  Go to your local RStudio, be sure {datapasta} is loaded, and select the Addin to paste a data.frame. Assign the data with the assignment arrow to a new data_poverty object.
 
-3. Clean up the data as needed. You will need to set the names of the columns, remove the summary line for the US, remove the `%` symbol from the percentage with `str_remove()`, and then convert the numeric columns from character to numeric. See below for a data cleaning solution.
+3.  Clean up the data as needed. You will need to set the names of the columns, remove the summary line for the US, remove the `%` symbol from the percentage with `str_remove()`, and then convert the numeric columns from character to numeric. See below for a data cleaning solution.
 
 `r hide("Click here to see the solutions")`
 
@@ -184,7 +182,7 @@ library(rvest)
 
 The general workflow is to:
 
-1.  find a website with a useful table of data that is not in a viewport (dynamically generated by javascript). This is true for most tables, particularly on Wikipedia, and is generally true of any table that you can select to copy.
+1.  Find a website with a useful table of data that is not in a viewport (dynamically generated by javascript - these are ones that you can not select or copy). This is true for most tables, particularly on Wikipedia, and is generally true of any table that you can select to copy.
 2.  Copy the URL of the website and put it (in quotes) into the `read_html()` function. Assign this result to an object, like `webpage`.
 3.  Use the `html_nodes('table')` function to get a list of the nodes of the html that contain the tabular data you want. Generally, you will get a node for anything that looks like a table with cells on the webpage. Many of these will not be what you want. But if it clearly is a table or a 'wikitable', it will work.
 4.  You can then use the `html_table()` function to convert these nodes into a list of data frames.
@@ -205,29 +203,35 @@ tables <- wiki_page %>%
   html_nodes("table")
 ```
 
-Go ahead and inspect this by clicking on the tables object in the Environment tab. You will see a list of nodes, each of which is a table on the webpage. You can click on the blue arrow next to each one to see more detail about the header and body to help determine which one you want. As a general rule, a box or sidebar or 'nowraplinks' are not helpful. But if you see a wikitable with a header and body, that is likely the one you want. In this case, node 5 looks promising. Take a peek at the actual webpage and see if you can figure out what each of the other box, sidebar, or nowraplinks actually are.
+Go ahead and inspect this by clicking on the tables object in the Environment tab. You will see a list of nodes, each of which is a table on the webpage. You can click on the blue arrow to the left of each one to see more detail about the header and body to help determine which one you want. As a general rule, a box or sidebar or 'nowraplinks' are not helpful. But if you see a wikitable with a header and body, that is likely the one you want. In this case, node 5 looks promising. Take a peek at the actual webpage and see if you can figure out what each of the other box, sidebar, or nowraplinks actually are. If you are not sure, you can also convert all of these nodes to tables with `html_table()` and then decide which one you want. Copy and run the code chunk below to help you decide which of the 8 "tables" is useful.
+
+```{r}
+wiki_page %>% 
+  html_nodes("table") |> 
+  html_table()
+```
 
 Now we can pluck out table 5, convert it to an html_table, and then convert it to a tibble. We can then use the `set_names()` function to assign the column names, and assign this to a new object, like `data_ins`. Run the code chunk in your local RStudio and take a look at the resulting data_ins object.
 
 ```{r}
 library(tidyverse) 
 tables %>% 
-  pluck(5) |>  
   html_table() |> 
+  pluck(5) |>  
   as_tibble() |> 
   purrr::set_names(c('state', 1999:2014)) ->
 data_ins
 ```
 
-Note that we brought along a 'United States' weighted summary row from the original web table, which may or may not be something you want. You can use the `filter()` function to remove this row if you want.
+Open and inspect the `data_ins` object. Note that we brought along a 'United States' weighted summary row from the original web table, which may or may not be something you want. You can use the `filter()` function to remove this row if you want.
 
 ## Your Turn
 
-Take a look at the web page at "<https://en.wikipedia.org/wiki/List_of_epidemics_and_pandemics>" to find two interesting tables on pandemics. Inspect this web page a bit. You will see that there are two tables that are of interest. One is on the top 10 pandemics by death toll, and the other contains a long chronology of pandemics. Also, look out for other boxes and sidebars that {rvest} might consider as tables.
+Take a look at the web page at "<https://en.wikipedia.org/wiki/List_of_epidemics_and_pandemics>" to find two interesting tables on pandemics. Inspect this web page a bit. You will see that there are two tables that are of interest (out of 22 nodes identified by `html_nodes()`. The first is on the top 10 pandemics by death toll, and the second contains a long chronology of pandemics. Also, look out for other boxes and sidebars that {rvest} might consider as tables.
 
 Give this a try in your local RStudio, using the instructions below to scrape the 2 interesting tables. Check your solution by clicking on the "Click here to see the solutions" button below.
 
-Use the {rvest} package to scrape these two tables. Read the html from the URL and assign the result to an object called `wiki_pandemic`. Use the `html_nodes()` function with the argument `'table'` to find all the tables on the page. Use the `pluck()` function to extract the tables you want. Use the `html_table()` function to convert these nodes into a list of data frames. Use the `as_tibble()` function to convert these data frames into tibbles. Use the `set_names()` or `janitor::clean_names()` function to assign the column names. Assign these to the objects `pandemic_data` and `chron_pandemics`.
+Use the {rvest} package to scrape these two tables. Read the html from the URL and assign the result to an object called `wiki_pandemic`. Use the `html_nodes()` function with the argument `'table'` to find all the tables on the page. Use the `html_table()` function to convert this node into a list of data frames. Use the `pluck()` function to pick out the table you want (scrape these one at a time). Use the `as_tibble()` function to convert these data frames into tibbles. Use the `set_names()` or `janitor::clean_names()` function to assign the column names. Then scrape the second (chronology) table. Assign these to the objects `pandemic_data` and `chron_pandemics`.
 
 `r hide("Click here to see the solutions")`
 
@@ -262,6 +266,8 @@ To use {tidycensus}, you need to sign up for a (free) API KEY from the US Census
 
 For each of the thousands of variables collected by the US Census Bureau, you can get an estimate and a margin of error (MOE) by the geographical division you request (from national down to census block). The {tidycensus} package makes it easy to get these estimates and margins of error for a given geography. The `get_acs()` function is the workhorse of the package. It takes a geography, a list of variables, and a year as arguments, and returns a tibble with the estimates and margins of error for each variable from the American Community Survey (ACS).
 
+Note that the variables have icky names (`variable ids`) like "P001001" for total population. Finding the variables you want can be a bit of a project. See section 2.3 of the TidyCensus book **[here]**(<https://walker-data.com/census-r/an-introduction-to-tidycensus.html>) for strategies on how to load the list of variables into a dataset and then search for the concepts (income, population, etc) that you want. The Census Bureau explainer on variable ids can be found **[here]**(<https://www.census.gov/content/dam/Census/library/publications/2021/acs/acs_summary_file_handbook_2021_ch03.pdf>)
+
 Explore the tidycensus webpage a bit, especially the articles tab. This can be very helpful if you have US health data divided by a geographical unit. You may also want to map these data, and the {tigris} and {mapgl} packages can help you with that.
 
 We will save the deep dive on these for a later chapter.
@@ -281,5 +287,3 @@ Try to use the {datapasta} or the {rvest} approaches on the following webpages:
 5.  [**US state population data**](https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_population)
 
 6.  [**US state GDP data**](https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_GDP)
-
-

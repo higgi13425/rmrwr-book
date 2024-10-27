@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2024-10-20" />
+<meta name="date" content="2024-10-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -946,7 +946,7 @@ No user interface for you!
 <div class="tryit">
 <p>Let’s start with a introductory command, which can’t do any harm. Run the command below:<br>
 <code>whoami</code></p>
-<div class="sourceCode" id="cb829"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb829-1"><a href="cmd-line.html#cb829-1" tabindex="-1"></a><span class="fu">whoami</span></span></code></pre></div>
+<div class="sourceCode" id="cb830"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb830-1"><a href="cmd-line.html#cb830-1" tabindex="-1"></a><span class="fu">whoami</span></span></code></pre></div>
 <pre><code>## peterhiggins</code></pre>
 </div>
 <p>Remember that UNIX started out as an operating system for terminals, and knowing who was logged in was a helpful thing, especially if the person logged in was being charged for mainframe time by the minute.
@@ -954,9 +954,9 @@ No user interface for you!
 You can string together two commands with a semicolon between them. <br></p>
 <div class="tryit">
 <p>Try the following:</p>
-<div class="sourceCode" id="cb831"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb831-1"><a href="cmd-line.html#cb831-1" tabindex="-1"></a><span class="fu">whoami</span><span class="kw">;</span><span class="fu">date</span></span></code></pre></div>
+<div class="sourceCode" id="cb832"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb832-1"><a href="cmd-line.html#cb832-1" tabindex="-1"></a><span class="fu">whoami</span><span class="kw">;</span><span class="fu">date</span></span></code></pre></div>
 <pre><code>## peterhiggins
-## Sun Oct 20 16:32:31 EDT 2024</code></pre>
+## Sun Oct 27 12:38:00 EDT 2024</code></pre>
 </div>
 <p>OK, fine. This is sort of helpful. It was really important when you were on a terminal and paying by the minute for time on a mainframe back in 1969. And, on occasion, if you will need to use an entire computer cluster to run a script (or scripts) on a lot of data, you will likely have to use some of this command line knowledge. You can even schedule jobs (scripts) to run when your time is scheduled on the cluster with <code>cron</code> and <code>crontab</code>.
 <br><br>
@@ -968,7 +968,7 @@ At this point, it would be helpful to open a window with your Documents folder, 
 <p>OK, let’s start looking at files and directories. Start with the <code>pwd</code> command, which does <strong>not</strong> stand for password, but for <code>print working directory</code>.<br></p>
 <div class="tryit">
 <p>Run the code below in your Terminal window.</p>
-<div class="sourceCode" id="cb833"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb833-1"><a href="cmd-line.html#cb833-1" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre></div>
+<div class="sourceCode" id="cb834"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb834-1"><a href="cmd-line.html#cb834-1" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre></div>
 <pre><code>## /Users/peterhiggins/Documents/RCode/rmrwr-book</code></pre>
 </div>
 <p>You can see the full path to your current directory. This can be a bit obscure if you are just looking at your folder structure, particularly at the beginning of the path. Fortunately, the {here} package handles a lot of this for you when you are working in Rstudio projects. <br>
@@ -977,13 +977,13 @@ We can move up and down the folders of the directory paths with the <code>cd</co
 <br><br></p>
 <div class="tryit">
 <p>Try this command in your Terminal Window, and see if you can figure out what it does.</p>
-<div class="sourceCode" id="cb835"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb835-1"><a href="cmd-line.html#cb835-1" tabindex="-1"></a><span class="bu">cd</span> ..</span></code></pre></div>
+<div class="sourceCode" id="cb836"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb836-1"><a href="cmd-line.html#cb836-1" tabindex="-1"></a><span class="bu">cd</span> ..</span></code></pre></div>
 </div>
 <p><code>cd ..</code> changes the directory <code>up</code> one level closer to the root directory. Note that there is a <strong>required</strong> space between <code>cd</code> and the <code>..</code>. You can also go directly to the root directory with <code>cd /</code>. It is straightforward to go up the directory tree, as each folder only has one <code>parent</code>. But it is tricky to go down the directory tree, as there are many possible branches/children, and you do not inherently know the names of these branches. We need to list the contents of your current directory with <code>ls</code> to know what is there.</p>
 <div class="tryit">
 <p>Try the <code>ls</code> command in your Terminal window</p>
-<div class="sourceCode" id="cb836"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb836-1"><a href="cmd-line.html#cb836-1" tabindex="-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/<span class="kw">;</span></span>
-<span id="cb836-2"><a href="cmd-line.html#cb836-2" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+<div class="sourceCode" id="cb837"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb837-1"><a href="cmd-line.html#cb837-1" tabindex="-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/<span class="kw">;</span></span>
+<span id="cb837-2"><a href="cmd-line.html#cb837-2" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
 <pre><code>## (19) Higgins-Peter_Efficacy-and-Safety-of-Upadacitinib-recorded.mp4
 ## (19) Higgins-Peter_Efficacy-and-Safety-of-Upadacitinib-recorded.pptx
 ## (19) Higgins-Peter_Efficacy-and-Safety-of-Upadacitinib-with-BackupBioIR.pdf
@@ -1627,8 +1627,8 @@ We can move up and down the folders of the directory paths with the <code>cd</co
 ## ~$sk List 2021.docx</code></pre>
 </div>
 <p>You will see a listing of all files and folders in the current directory. You can get more details by adding the option (sometimes called a <code>flag</code>) <code>-l</code></p>
-<div class="sourceCode" id="cb838"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb838-1"><a href="cmd-line.html#cb838-1" tabindex="-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/<span class="kw">;</span></span>
-<span id="cb838-2"><a href="cmd-line.html#cb838-2" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span></span></code></pre></div>
+<div class="sourceCode" id="cb839"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb839-1"><a href="cmd-line.html#cb839-1" tabindex="-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/<span class="kw">;</span></span>
+<span id="cb839-2"><a href="cmd-line.html#cb839-2" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span></span></code></pre></div>
 <p>The full listing will give you more details, including read &amp; write permissions, file size, date last saved, etc. <br>
 Many UNIX commands have options, or flags, that modify what they do.
 <br><br>
@@ -1639,8 +1639,8 @@ In your Terminal window:</p>
 <li>change the directory to the Powerpoint directory</li>
 <li>list the contents of this folder</li>
 </ul>
-<div class="sourceCode" id="cb839"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb839-1"><a href="cmd-line.html#cb839-1" tabindex="-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/Powerpoint<span class="kw">;</span></span>
-<span id="cb839-2"><a href="cmd-line.html#cb839-2" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+<div class="sourceCode" id="cb840"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb840-1"><a href="cmd-line.html#cb840-1" tabindex="-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/Powerpoint<span class="kw">;</span></span>
+<span id="cb840-2"><a href="cmd-line.html#cb840-2" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
 <pre><code>## 2016IBDClinTrialsforMDsDearborn.pptx
 ## 2016IntegratedDeckorMDsGB.pptx
 ## 2019 SCSG GI Symposium IBD SoA  -  Read-Only.pptx
@@ -1716,17 +1716,17 @@ You moved to a new directory and listed it.<br>
 Now we will get fancy, and make a new directory within this directory with the <code>mkdir</code> command.<br></p>
 <div class="tryit">
 <p>Try this in your Terminal window:</p>
-<div class="sourceCode" id="cb841"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb841-1"><a href="cmd-line.html#cb841-1" tabindex="-1"></a><span class="bu">pwd</span><span class="kw">;</span></span>
-<span id="cb841-2"><a href="cmd-line.html#cb841-2" tabindex="-1"></a><span class="fu">mkdir</span> new_files<span class="kw">;</span></span>
-<span id="cb841-3"><a href="cmd-line.html#cb841-3" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+<div class="sourceCode" id="cb842"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb842-1"><a href="cmd-line.html#cb842-1" tabindex="-1"></a><span class="bu">pwd</span><span class="kw">;</span></span>
+<span id="cb842-2"><a href="cmd-line.html#cb842-2" tabindex="-1"></a><span class="fu">mkdir</span> new_files<span class="kw">;</span></span>
+<span id="cb842-3"><a href="cmd-line.html#cb842-3" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
 </div>
 <p>You have now made a new directory (folder) within the previous directory (<code>pwd</code> = present working directory), named <code>new_files</code>. Verify this in your Documents folder.<br>
 You can now make changes to this directory <br>
 and list the contents (it should currently be empty).<br></p>
 <div class="tryit">
 <p>Try this out in your Terminal Window (<strong>note</strong> edit the <code>cd</code> command to your own directory path).</p>
-<div class="sourceCode" id="cb842"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb842-1"><a href="cmd-line.html#cb842-1" tabindex="-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/Powerpoint/new_files<span class="kw">;</span></span>
-<span id="cb842-2"><a href="cmd-line.html#cb842-2" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+<div class="sourceCode" id="cb843"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb843-1"><a href="cmd-line.html#cb843-1" tabindex="-1"></a><span class="bu">cd</span> /Users/peterhiggins/Documents/Powerpoint/new_files<span class="kw">;</span></span>
+<span id="cb843-2"><a href="cmd-line.html#cb843-2" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
 </div>
 <p>Note that you can abbreviate the current directory with <code>.</code>, so that you could have also used <code>cd ./new_files</code>
 <br><br></p>
@@ -1734,27 +1734,27 @@ and list the contents (it should currently be empty).<br></p>
 Sometimes you need to create a new file, then write data to it.</p>
 <div class="tryit">
 <p>Try this out</p>
-<div class="sourceCode" id="cb843"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb843-1"><a href="cmd-line.html#cb843-1" tabindex="-1"></a><span class="fu">touch</span> file_name<span class="kw">;</span></span>
-<span id="cb843-2"><a href="cmd-line.html#cb843-2" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+<div class="sourceCode" id="cb844"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb844-1"><a href="cmd-line.html#cb844-1" tabindex="-1"></a><span class="fu">touch</span> file_name<span class="kw">;</span></span>
+<span id="cb844-2"><a href="cmd-line.html#cb844-2" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
 </div>
 <p>You can also create a file with data inside it with the <code>cat &gt;</code> command.</p>
 <div class="tryit">
 <p>Type in the following lines into your Terminal window. When complete, type control-D to be done and return to the Terminal prompt.
 <code>cat</code> stands for concatenate.</p>
-<div class="sourceCode" id="cb844"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb844-1"><a href="cmd-line.html#cb844-1" tabindex="-1"></a><span class="fu">cat</span> <span class="op">&gt;</span> file2.txt</span>
-<span id="cb844-2"><a href="cmd-line.html#cb844-2" tabindex="-1"></a><span class="ex">cat1</span></span>
-<span id="cb844-3"><a href="cmd-line.html#cb844-3" tabindex="-1"></a><span class="ex">cat2</span></span>
-<span id="cb844-4"><a href="cmd-line.html#cb844-4" tabindex="-1"></a><span class="ex">cat3</span></span></code></pre></div>
+<div class="sourceCode" id="cb845"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb845-1"><a href="cmd-line.html#cb845-1" tabindex="-1"></a><span class="fu">cat</span> <span class="op">&gt;</span> file2.txt</span>
+<span id="cb845-2"><a href="cmd-line.html#cb845-2" tabindex="-1"></a><span class="ex">cat1</span></span>
+<span id="cb845-3"><a href="cmd-line.html#cb845-3" tabindex="-1"></a><span class="ex">cat2</span></span>
+<span id="cb845-4"><a href="cmd-line.html#cb845-4" tabindex="-1"></a><span class="ex">cat3</span></span></code></pre></div>
 </div>
 <p>Now you can list the contents of this file with the <code>cat</code> command below.</p>
 <div class="tryit">
 <p>Give this a try</p>
-<div class="sourceCode" id="cb845"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb845-1"><a href="cmd-line.html#cb845-1" tabindex="-1"></a><span class="fu">cat</span> file2.txt</span></code></pre></div>
+<div class="sourceCode" id="cb846"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb846-1"><a href="cmd-line.html#cb846-1" tabindex="-1"></a><span class="fu">cat</span> file2.txt</span></code></pre></div>
 </div>
 <p>You can also list the directory of your <code>new_files</code> folder with ls to see the new folder contents.</p>
 <div class="tryit">
 <p>Try this</p>
-<div class="sourceCode" id="cb846"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb846-1"><a href="cmd-line.html#cb846-1" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
+<div class="sourceCode" id="cb847"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb847-1"><a href="cmd-line.html#cb847-1" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div>
 </div>
 <p>Note that you don’t need to use the Terminal to run bash commands. You can do this from an Rmarkdown file. <br>
 Take a moment to run <code>pwd</code> in your Terminal, to get the current directory.<br>
@@ -1766,10 +1766,10 @@ Switch back to the Rmarkdown document.<br>
 Select one of the R code chunks (note the {r} at the top) and delete it.<br>
 Now click on the Insert dropdown at the top of the document, and insert a Bash chunk.<br>
 Now you can add UNIX commands (separated by a semicolon) to this code chunk, like</p>
-<div class="sourceCode" id="cb847"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb847-1"><a href="cmd-line.html#cb847-1" tabindex="-1"></a><span class="bu">cd</span> <span class="er">(</span><span class="fu">paste</span> in path here<span class="kw">);</span></span>
-<span id="cb847-2"><a href="cmd-line.html#cb847-2" tabindex="-1"></a><span class="bu">pwd</span><span class="kw">;</span></span>
-<span id="cb847-3"><a href="cmd-line.html#cb847-3" tabindex="-1"></a><span class="fu">ls</span><span class="kw">;</span></span>
-<span id="cb847-4"><a href="cmd-line.html#cb847-4" tabindex="-1"></a><span class="fu">cat</span> file2.txt</span></code></pre></div>
+<div class="sourceCode" id="cb848"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb848-1"><a href="cmd-line.html#cb848-1" tabindex="-1"></a><span class="bu">cd</span> <span class="er">(</span><span class="fu">paste</span> in path here<span class="kw">);</span></span>
+<span id="cb848-2"><a href="cmd-line.html#cb848-2" tabindex="-1"></a><span class="bu">pwd</span><span class="kw">;</span></span>
+<span id="cb848-3"><a href="cmd-line.html#cb848-3" tabindex="-1"></a><span class="fu">ls</span><span class="kw">;</span></span>
+<span id="cb848-4"><a href="cmd-line.html#cb848-4" tabindex="-1"></a><span class="fu">cat</span> file2.txt</span></code></pre></div>
 <p>Then run this chunk. <br></p>
 </div>
 <p>Now you can run terminal commands directly from Rmarkdown!</p>
@@ -1785,10 +1785,10 @@ In order, we will
 - remove the directory with <code>rmdir new_files</code></p>
 <div class="tryit">
 <p>Give this a try</p>
-<div class="sourceCode" id="cb848"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb848-1"><a href="cmd-line.html#cb848-1" tabindex="-1"></a><span class="bu">pwd</span><span class="kw">;</span></span>
-<span id="cb848-2"><a href="cmd-line.html#cb848-2" tabindex="-1"></a><span class="fu">rm</span> file2.txt<span class="kw">;</span></span>
-<span id="cb848-3"><a href="cmd-line.html#cb848-3" tabindex="-1"></a><span class="bu">cd</span> ..<span class="kw">;</span></span>
-<span id="cb848-4"><a href="cmd-line.html#cb848-4" tabindex="-1"></a><span class="fu">rmdir</span> new_files</span></code></pre></div>
+<div class="sourceCode" id="cb849"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb849-1"><a href="cmd-line.html#cb849-1" tabindex="-1"></a><span class="bu">pwd</span><span class="kw">;</span></span>
+<span id="cb849-2"><a href="cmd-line.html#cb849-2" tabindex="-1"></a><span class="fu">rm</span> file2.txt<span class="kw">;</span></span>
+<span id="cb849-3"><a href="cmd-line.html#cb849-3" tabindex="-1"></a><span class="bu">cd</span> ..<span class="kw">;</span></span>
+<span id="cb849-4"><a href="cmd-line.html#cb849-4" tabindex="-1"></a><span class="fu">rmdir</span> new_files</span></code></pre></div>
 </div>
 <p>Verify all of this in your Documents window.<br>
 This is great. But you can imagine a situation in which you mistakenly <code>rm</code> a file (or directory) that you actually needed. Unlike your usual user interface, when a file is removed at the command line, it is gone. It is not in the trash folder. It is <strong>really</strong> gone. There is something to be said for modern user interfaces, which are built for humans, who occasionally make mistakes. Sometimes we do want files or folders back.</p>
@@ -1811,7 +1811,7 @@ This is great. But you can imagine a situation in which you mistakenly <code>rm<
 You can launch an R session from the Terminal Window (if you have R installed on your computer) by typing the letter <code>R</code> at the Terminal prompt</p>
 <div class="tryit">
 <p>Launch R</p>
-<div class="sourceCode" id="cb849"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb849-1"><a href="cmd-line.html#cb849-1" tabindex="-1"></a><span class="ex">R</span></span></code></pre></div>
+<div class="sourceCode" id="cb850"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb850-1"><a href="cmd-line.html#cb850-1" tabindex="-1"></a><span class="ex">R</span></span></code></pre></div>
 </div>
 <p>You get the usual R intro, including version number, and the <code>R&gt;</code> prompt.<br>
 Now you can run R in interactive mode with available datasets, or your own datasets.<br></p>
@@ -1819,7 +1819,7 @@ Now you can run R in interactive mode with available datasets, or your own datas
 <p>Try a few standard tidyverse commands with the mtcars dataset.<br>
 Give the examples below a try.<br></p>
 <p>You can use <code>q()</code> to quit back to the terminal (and reply “n” to <strong>not</strong> save the workplace image).</p>
-<div class="sourceCode" id="cb850"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb850-1"><a href="cmd-line.html#cb850-1" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code></pre></div>
+<div class="sourceCode" id="cb851"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb851-1"><a href="cmd-line.html#cb851-1" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code></pre></div>
 <pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am
 ## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1
 ## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1
@@ -1834,9 +1834,9 @@ Give the examples below a try.<br></p>
 ## Hornet 4 Drive       3    1
 ## Hornet Sportabout    3    2
 ## Valiant              3    1</code></pre>
-<div class="sourceCode" id="cb852"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb852-1"><a href="cmd-line.html#cb852-1" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb852-2"><a href="cmd-line.html#cb852-2" tabindex="-1"></a>  <span class="fu">filter</span>(mpg <span class="sc">&gt;</span> <span class="dv">25</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb852-3"><a href="cmd-line.html#cb852-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&#39;m&#39;</span>)<span class="sc">|</span><span class="fu">starts_with</span>(<span class="st">&#39;c&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb853"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb853-1"><a href="cmd-line.html#cb853-1" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb853-2"><a href="cmd-line.html#cb853-2" tabindex="-1"></a>  <span class="fu">filter</span>(mpg <span class="sc">&gt;</span> <span class="dv">25</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb853-3"><a href="cmd-line.html#cb853-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&#39;m&#39;</span>)<span class="sc">|</span><span class="fu">starts_with</span>(<span class="st">&#39;c&#39;</span>))</span></code></pre></div>
 <pre><code>##                 mpg cyl carb
 ## Fiat 128       32.4   4    1
 ## Honda Civic    30.4   4    2
@@ -1855,17 +1855,17 @@ and put the R commands in quotes.<br></p>
 <div class="tryit">
 <p>Try the example below
 (<strong>note</strong> that this will not work if you are still in R - be sure you are back in the terminal with the <code>%</code> or <code>$</code> prompt)</p>
-<div class="sourceCode" id="cb854"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb854-1"><a href="cmd-line.html#cb854-1" tabindex="-1"></a><span class="ex">R</span> <span class="at">-e</span> <span class="st">&quot;head(mtcars)&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb855"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb855-1"><a href="cmd-line.html#cb855-1" tabindex="-1"></a><span class="ex">R</span> <span class="at">-e</span> <span class="st">&quot;head(mtcars)&quot;</span></span></code></pre></div>
 </div>
 <p>or this example - note that single or double quotes does not matter - as long as they match.</p>
 <div class="tryit">
 <p>Try this</p>
-<div class="sourceCode" id="cb855"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb855-1"><a href="cmd-line.html#cb855-1" tabindex="-1"></a><span class="ex">R</span> <span class="at">-e</span> <span class="st">&#39;install.packages(palmerpenguins)&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb856"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb856-1"><a href="cmd-line.html#cb856-1" tabindex="-1"></a><span class="ex">R</span> <span class="at">-e</span> <span class="st">&#39;install.packages(palmerpenguins)&#39;</span></span></code></pre></div>
 </div>
 <p>You can also string together several commands with the semicolon between them.</p>
 <div class="tryit">
 <p>Try the example below.</p>
-<div class="sourceCode" id="cb856"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb856-1"><a href="cmd-line.html#cb856-1" tabindex="-1"></a><span class="ex">R</span> <span class="at">-e</span> <span class="st">&#39;library(palmerpenguins);data(penguins);tail(penguins)&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb857"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb857-1"><a href="cmd-line.html#cb857-1" tabindex="-1"></a><span class="ex">R</span> <span class="at">-e</span> <span class="st">&#39;library(palmerpenguins);data(penguins);tail(penguins)&#39;</span></span></code></pre></div>
 </div>
 </div>
 <div id="running-an-r-script-from-the-terminal" class="section level2 hasAnchor" number="38.10">
@@ -1874,7 +1874,7 @@ and put the R commands in quotes.<br></p>
 This is straightforward - you can call the <code>Rscript</code> command with your file name.</p>
 <div class="tryit">
 <p>Pick out a short R file you have written, make sure you are in the right directory where the file is, and use it as in the example below.</p>
-<div class="sourceCode" id="cb857"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb857-1"><a href="cmd-line.html#cb857-1" tabindex="-1"></a><span class="ex">Rscript</span> myscript.R</span></code></pre></div>
+<div class="sourceCode" id="cb858"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb858-1"><a href="cmd-line.html#cb858-1" tabindex="-1"></a><span class="ex">Rscript</span> myscript.R</span></code></pre></div>
 </div>
 <p>This launches R, runs your script, saves resulting output (if your script includes save or ggsave commands), closes R, and sends you back to the Terminal. Very nice!</p>
 </div>
@@ -1885,7 +1885,7 @@ Note that this is one case where nesting different types of quotes (single vs. 
 It helps to use single quotes around your filename and double quotes around the <code>rmarkown::render</code> command.</p>
 <div class="tryit">
 <p>Try it out</p>
-<div class="sourceCode" id="cb858"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb858-1"><a href="cmd-line.html#cb858-1" tabindex="-1"></a><span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">&quot;rmarkdown::render(&#39;output_file.Rmd&#39;)&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb859"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb859-1"><a href="cmd-line.html#cb859-1" tabindex="-1"></a><span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">&quot;rmarkdown::render(&#39;output_file.Rmd&#39;)&quot;</span></span></code></pre></div>
 </div>
 <p>So there you have it! <br>
 Just enough to get you started with R from the command line.
