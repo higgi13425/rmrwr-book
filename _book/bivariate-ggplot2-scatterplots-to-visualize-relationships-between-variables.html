@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 22 Bivariate ggplot2 Scatterplots to Visualize Relationships Between Variables | Reproducible Medical Research with R</title>
+  <title>Chapter 23 Bivariate ggplot2 Scatterplots to Visualize Relationships Between Variables | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
-  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 22 Bivariate ggplot2 Scatterplots to Visualize Relationships Between Variables | Reproducible Medical Research with R" />
+  <meta property="og:title" content="Chapter 23 Bivariate ggplot2 Scatterplots to Visualize Relationships Between Variables | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
   <meta name="github-repo" content="higgi13425/rmrwr-book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 22 Bivariate ggplot2 Scatterplots to Visualize Relationships Between Variables | Reproducible Medical Research with R" />
+  <meta name="twitter:title" content="Chapter 23 Bivariate ggplot2 Scatterplots to Visualize Relationships Between Variables | Reproducible Medical Research with R" />
   
   <meta name="twitter:description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2024-04-30" />
+<meta name="date" content="2024-10-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -68,7 +68,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -460,368 +460,419 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="17.3" data-path="intermediate-steps-toward-reproducibility.html"><a href="intermediate-steps-toward-reproducibility.html#sharing-code-on-github"><i class="fa fa-check"></i><b>17.3</b> Sharing code on GitHub</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html"><i class="fa fa-check"></i><b>18</b> Comparing Two Measures of Centrality</a>
+<li class="chapter" data-level="18" data-path="building-table-one-for-a-clinical-study.html"><a href="building-table-one-for-a-clinical-study.html"><i class="fa fa-check"></i><b>18</b> Building Table One for a Clinical Study</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#common-problem"><i class="fa fa-check"></i><b>18.1</b> Common Problem</a>
+<li class="chapter" data-level="18.1" data-path="building-table-one-for-a-clinical-study.html"><a href="building-table-one-for-a-clinical-study.html#packages-needed-for-this-chapter-3"><i class="fa fa-check"></i><b>18.1</b> Packages Needed for this Chapter:</a></li>
+<li class="chapter" data-level="18.2" data-path="building-table-one-for-a-clinical-study.html"><a href="building-table-one-for-a-clinical-study.html#pathway-for-this-chapter-3"><i class="fa fa-check"></i><b>18.2</b> Pathway for this Chapter</a></li>
+<li class="chapter" data-level="18.3" data-path="building-table-one-for-a-clinical-study.html"><a href="building-table-one-for-a-clinical-study.html#baseline-characteristics"><i class="fa fa-check"></i><b>18.3</b> Baseline Characteristics</a></li>
+<li class="chapter" data-level="18.4" data-path="building-table-one-for-a-clinical-study.html"><a href="building-table-one-for-a-clinical-study.html#building-your-table-1"><i class="fa fa-check"></i><b>18.4</b> Building Your Table 1</a>
 <ul>
-<li class="chapter" data-level="18.1.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#how-skewed-is-too-skewed"><i class="fa fa-check"></i><b>18.1.1</b> How Skewed is Too Skewed?</a></li>
-<li class="chapter" data-level="18.1.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#visualize-the-distribution-of-data-variables-in-ggplot"><i class="fa fa-check"></i><b>18.1.2</b> Visualize the Distribution of data variables in ggplot</a></li>
-<li class="chapter" data-level="18.1.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#visualize-the-distribution-of-datalen-in-ggplot"><i class="fa fa-check"></i><b>18.1.3</b> Visualize the Distribution of data$len in ggplot</a></li>
-<li class="chapter" data-level="18.1.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-shapiro-wilk"><i class="fa fa-check"></i><b>18.1.4</b> Results of Shapiro-Wilk</a></li>
-<li class="chapter" data-level="18.1.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#try-it-yourself-1"><i class="fa fa-check"></i><b>18.1.5</b> Try it yourself</a></li>
-<li class="chapter" data-level="18.1.6" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#mammal-sleep-hours"><i class="fa fa-check"></i><b>18.1.6</b> Mammal sleep hours</a></li>
+<li class="chapter" data-level="18.4.1" data-path="building-table-one-for-a-clinical-study.html"><a href="building-table-one-for-a-clinical-study.html#updating-variable-labels"><i class="fa fa-check"></i><b>18.4.1</b> Updating Variable Labels</a></li>
+<li class="chapter" data-level="18.4.2" data-path="building-table-one-for-a-clinical-study.html"><a href="building-table-one-for-a-clinical-study.html#updating-variable-values"><i class="fa fa-check"></i><b>18.4.2</b> Updating Variable Values</a></li>
+<li class="chapter" data-level="18.4.3" data-path="building-table-one-for-a-clinical-study.html"><a href="building-table-one-for-a-clinical-study.html#table-1-separated-by-treatment-arm"><i class="fa fa-check"></i><b>18.4.3</b> Table 1 separated by Treatment Arm</a></li>
+<li class="chapter" data-level="18.4.4" data-path="building-table-one-for-a-clinical-study.html"><a href="building-table-one-for-a-clinical-study.html#styling-our-table-1"><i class="fa fa-check"></i><b>18.4.4</b> Styling our Table 1</a></li>
+<li class="chapter" data-level="18.4.5" data-path="building-table-one-for-a-clinical-study.html"><a href="building-table-one-for-a-clinical-study.html#adding-a-column-spanner"><i class="fa fa-check"></i><b>18.4.5</b> Adding A Column Spanner</a></li>
+<li class="chapter" data-level="18.4.6" data-path="building-table-one-for-a-clinical-study.html"><a href="building-table-one-for-a-clinical-study.html#further-styling-our-table-1"><i class="fa fa-check"></i><b>18.4.6</b> Further Styling our Table 1</a></li>
+<li class="chapter" data-level="18.4.7" data-path="building-table-one-for-a-clinical-study.html"><a href="building-table-one-for-a-clinical-study.html#your-turn"><i class="fa fa-check"></i><b>18.4.7</b> Your Turn</a></li>
 </ul></li>
-<li class="chapter" data-level="18.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#one-sample-t-test"><i class="fa fa-check"></i><b>18.2</b> One Sample T test</a>
+<li class="chapter" data-level="18.5" data-path="building-table-one-for-a-clinical-study.html"><a href="building-table-one-for-a-clinical-study.html#try-this-with-a-new-dataset"><i class="fa fa-check"></i><b>18.5</b> Try this with a new dataset</a></li>
+<li class="chapter" data-level="18.6" data-path="building-table-one-for-a-clinical-study.html"><a href="building-table-one-for-a-clinical-study.html#making-modifications-to-the-trial-table"><i class="fa fa-check"></i><b>18.6</b> Making Modifications to the trial table</a></li>
+<li class="chapter" data-level="18.7" data-path="building-table-one-for-a-clinical-study.html"><a href="building-table-one-for-a-clinical-study.html#more-modifications-to-the-trial-table"><i class="fa fa-check"></i><b>18.7</b> More Modifications to the trial table</a></li>
+<li class="chapter" data-level="18.8" data-path="building-table-one-for-a-clinical-study.html"><a href="building-table-one-for-a-clinical-study.html#taking-control-of-the-stats"><i class="fa fa-check"></i><b>18.8</b> Taking Control of the Stats</a>
 <ul>
-<li class="chapter" data-level="18.2.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#how-to-do-one-sample-t-test"><i class="fa fa-check"></i><b>18.2.1</b> How to do One Sample T test</a></li>
-<li class="chapter" data-level="18.2.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#interpreting-the-one-sample-t-test"><i class="fa fa-check"></i><b>18.2.2</b> Interpreting the One Sample T test</a></li>
-<li class="chapter" data-level="18.2.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#what-are-the-arguments-of-the-t.test-function"><i class="fa fa-check"></i><b>18.2.3</b> What are the arguments of the t.test function?</a></li>
-</ul></li>
-<li class="chapter" data-level="18.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#insert-flipbook-for-ttest-here"><i class="fa fa-check"></i><b>18.3</b> Insert flipbook for ttest here</a>
-<ul>
-<li class="chapter" data-level="18.3.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#flipbook-time"><i class="fa fa-check"></i><b>18.3.1</b> Flipbook Time!</a></li>
-</ul></li>
-<li class="chapter" data-level="18.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#fine-but-what-about-2-groups"><i class="fa fa-check"></i><b>18.4</b> Fine, but what about 2 groups?</a>
-<ul>
-<li class="chapter" data-level="18.4.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#setting-up-2-group-t-test"><i class="fa fa-check"></i><b>18.4.1</b> Setting up 2 group t test</a></li>
-<li class="chapter" data-level="18.4.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-the-2-group-t-test"><i class="fa fa-check"></i><b>18.4.2</b> Results of the 2 group t test</a></li>
-<li class="chapter" data-level="18.4.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#interpreting-the-2-group-t-test"><i class="fa fa-check"></i><b>18.4.3</b> Interpreting the 2 group t test</a></li>
-<li class="chapter" data-level="18.4.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#group-t-test-with-wide-data"><i class="fa fa-check"></i><b>18.4.4</b> 2 group t test with wide data</a></li>
-<li class="chapter" data-level="18.4.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-2-group-t-test-with-wide-data"><i class="fa fa-check"></i><b>18.4.5</b> Results of 2 group t test with wide data</a></li>
-</ul></li>
-<li class="chapter" data-level="18.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#assumptions-of-students-t-test"><i class="fa fa-check"></i><b>18.5</b> 3 Assumptions of Student’s t test</a>
-<ul>
-<li class="chapter" data-level="18.5.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#testing-assumptions-of-students-t-test"><i class="fa fa-check"></i><b>18.5.1</b> Testing Assumptions of Student’s t test</a></li>
-</ul></li>
-<li class="chapter" data-level="18.6" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#getting-results-out-of-t.test"><i class="fa fa-check"></i><b>18.6</b> Getting results out of t.test</a>
-<ul>
-<li class="chapter" data-level="18.6.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#getting-results-out-of-t.test-1"><i class="fa fa-check"></i><b>18.6.1</b> Getting results out of t.test</a></li>
-</ul></li>
-<li class="chapter" data-level="18.7" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#reporting-the-results-from-t.test-using-inline-code"><i class="fa fa-check"></i><b>18.7</b> Reporting the results from t.test using inline code</a>
-<ul>
-<li class="chapter" data-level="18.7.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#for-next-time"><i class="fa fa-check"></i><b>18.7.1</b> For Next Time</a></li>
+<li class="chapter" data-level="18.8.1" data-path="building-table-one-for-a-clinical-study.html"><a href="building-table-one-for-a-clinical-study.html#your-turn-1"><i class="fa fa-check"></i><b>18.8.1</b> Your Turn</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html"><i class="fa fa-check"></i><b>19</b> Sample Size Calculations with <code>{pwr}</code></a>
+<li class="chapter" data-level="19" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html"><i class="fa fa-check"></i><b>19</b> Comparing Two Measures of Centrality</a>
 <ul>
-<li class="chapter" data-level="19.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-a-continuous-endpoint-t-test"><i class="fa fa-check"></i><b>19.1</b> Sample Size for a Continuous Endpoint (t-test)</a></li>
-<li class="chapter" data-level="19.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#one-sample-t-test-for-lowering-creatinine"><i class="fa fa-check"></i><b>19.2</b> One Sample t-test for Lowering Creatinine</a></li>
-<li class="chapter" data-level="19.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#paired-t-tests-before-vs-after-or-truly-paired"><i class="fa fa-check"></i><b>19.3</b> Paired t-tests (before vs after, or truly paired)</a></li>
-<li class="chapter" data-level="19.4" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-t-tests-with-unequal-study-arm-sizes"><i class="fa fa-check"></i><b>19.4</b> 2 Sample t tests with Unequal Study Arm Sizes</a></li>
-<li class="chapter" data-level="19.5" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#testing-multiple-options-and-plotting-results"><i class="fa fa-check"></i><b>19.5</b> Testing Multiple Options and Plotting Results</a></li>
-<li class="chapter" data-level="19.6" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#your-turn"><i class="fa fa-check"></i><b>19.6</b> Your Turn</a></li>
-<li class="chapter" data-level="19.6.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-1-fev1-in-copd"><i class="fa fa-check"></i><b>19.6.1</b> Scenario 1: FEV1 in COPD</a></li>
-<li class="chapter" data-level="19.6.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-2-bnp-in-chf"><i class="fa fa-check"></i><b>19.6.2</b> Scenario 2: BNP in CHF</a></li>
-<li class="chapter" data-level="19.6.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-3-barthel-index-in-stroke"><i class="fa fa-check"></i><b>19.6.3</b> Scenario 3: Barthel Index in Stroke</a></li>
-<li class="chapter" data-level="19.7" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-sizes-for-proportions"><i class="fa fa-check"></i><b>19.7</b> Sample Sizes for Proportions</a></li>
-<li class="chapter" data-level="19.8" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-two-proportions-equal-n"><i class="fa fa-check"></i><b>19.8</b> Sample size for two proportions, equal n</a></li>
-<li class="chapter" data-level="19.9" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-two-proportions-unequal-arms"><i class="fa fa-check"></i><b>19.9</b> Sample size for two proportions, unequal arms</a></li>
-<li class="chapter" data-level="19.10" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#your-turn-1"><i class="fa fa-check"></i><b>19.10</b> Your Turn</a></li>
-<li class="chapter" data-level="19.10.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-1-mortality-on-renal-dialysis"><i class="fa fa-check"></i><b>19.10.1</b> Scenario 1: Mortality on Renal Dialysis</a></li>
-<li class="chapter" data-level="19.10.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-2-intestinal-anastomosis-in-crohns-disease"><i class="fa fa-check"></i><b>19.10.2</b> Scenario 2: Intestinal anastomosis in Crohn’s disease</a></li>
-<li class="chapter" data-level="19.10.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-3-metformin-in-donuts"><i class="fa fa-check"></i><b>19.10.3</b> Scenario 3: Metformin in Donuts</a></li>
-<li class="chapter" data-level="19.11" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-chi-square"><i class="fa fa-check"></i><b>19.11</b> add chi square</a></li>
-<li class="chapter" data-level="19.12" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-correlation-test"><i class="fa fa-check"></i><b>19.12</b> add correlation test</a></li>
-<li class="chapter" data-level="19.13" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-anova"><i class="fa fa-check"></i><b>19.13</b> add anova</a></li>
-<li class="chapter" data-level="19.14" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-linear-model"><i class="fa fa-check"></i><b>19.14</b> add linear model</a></li>
-<li class="chapter" data-level="19.15" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-note-on-guessing-effect-sizes---cohen-small-medium-large"><i class="fa fa-check"></i><b>19.15</b> add note on guessing effect sizes - cohen small, medium, large</a></li>
-<li class="chapter" data-level="19.16" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#explore-more"><i class="fa fa-check"></i><b>19.16</b> Explore More</a></li>
+<li class="chapter" data-level="19.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#common-problem"><i class="fa fa-check"></i><b>19.1</b> Common Problem</a>
+<ul>
+<li class="chapter" data-level="19.1.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#how-skewed-is-too-skewed"><i class="fa fa-check"></i><b>19.1.1</b> How Skewed is Too Skewed?</a></li>
+<li class="chapter" data-level="19.1.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#visualize-the-distribution-of-data-variables-in-ggplot"><i class="fa fa-check"></i><b>19.1.2</b> Visualize the Distribution of data variables in ggplot</a></li>
+<li class="chapter" data-level="19.1.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#visualize-the-distribution-of-datalen-in-ggplot"><i class="fa fa-check"></i><b>19.1.3</b> Visualize the Distribution of data$len in ggplot</a></li>
+<li class="chapter" data-level="19.1.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-shapiro-wilk"><i class="fa fa-check"></i><b>19.1.4</b> Results of Shapiro-Wilk</a></li>
+<li class="chapter" data-level="19.1.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#try-it-yourself-1"><i class="fa fa-check"></i><b>19.1.5</b> Try it yourself</a></li>
+<li class="chapter" data-level="19.1.6" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#mammal-sleep-hours"><i class="fa fa-check"></i><b>19.1.6</b> Mammal sleep hours</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html"><i class="fa fa-check"></i><b>20</b> Randomization for Clinical Trials with R</a>
+<li class="chapter" data-level="19.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#one-sample-t-test"><i class="fa fa-check"></i><b>19.2</b> One Sample T test</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#printing-these-on-cards"><i class="fa fa-check"></i><b>20.1</b> Printing these on Cards</a></li>
-<li class="chapter" data-level="20.2" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#now-try-this-yourself"><i class="fa fa-check"></i><b>20.2</b> Now, try this yourself</a></li>
-<li class="chapter" data-level="20.3" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#now-freestyle"><i class="fa fa-check"></i><b>20.3</b> Now Freestyle</a></li>
+<li class="chapter" data-level="19.2.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#how-to-do-one-sample-t-test"><i class="fa fa-check"></i><b>19.2.1</b> How to do One Sample T test</a></li>
+<li class="chapter" data-level="19.2.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#interpreting-the-one-sample-t-test"><i class="fa fa-check"></i><b>19.2.2</b> Interpreting the One Sample T test</a></li>
+<li class="chapter" data-level="19.2.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#what-are-the-arguments-of-the-t.test-function"><i class="fa fa-check"></i><b>19.2.3</b> What are the arguments of the t.test function?</a></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html"><i class="fa fa-check"></i><b>21</b> Univariate ggplots to Visualize Distributions</a>
+<li class="chapter" data-level="19.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#insert-flipbook-for-ttest-here"><i class="fa fa-check"></i><b>19.3</b> Insert flipbook for ttest here</a>
 <ul>
-<li class="chapter" data-level="21.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#histograms"><i class="fa fa-check"></i><b>21.1</b> Histograms</a>
-<ul>
-<li class="chapter" data-level="21.1.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#comparisons-of-distributions-with-histograms"><i class="fa fa-check"></i><b>21.1.1</b> Comparisons of Distributions with Histograms</a></li>
-<li class="chapter" data-level="21.1.2" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#histograms-and-categories"><i class="fa fa-check"></i><b>21.1.2</b> Histograms and Categories</a></li>
+<li class="chapter" data-level="19.3.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#flipbook-time"><i class="fa fa-check"></i><b>19.3.1</b> Flipbook Time!</a></li>
 </ul></li>
-<li class="chapter" data-level="21.2" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#density-plots"><i class="fa fa-check"></i><b>21.2</b> Density Plots</a>
+<li class="chapter" data-level="19.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#fine-but-what-about-2-groups"><i class="fa fa-check"></i><b>19.4</b> Fine, but what about 2 groups?</a>
 <ul>
-<li class="chapter" data-level="21.2.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#comparisons-with-density-plots"><i class="fa fa-check"></i><b>21.2.1</b> Comparisons with Density plots</a></li>
+<li class="chapter" data-level="19.4.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#setting-up-2-group-t-test"><i class="fa fa-check"></i><b>19.4.1</b> Setting up 2 group t test</a></li>
+<li class="chapter" data-level="19.4.2" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-the-2-group-t-test"><i class="fa fa-check"></i><b>19.4.2</b> Results of the 2 group t test</a></li>
+<li class="chapter" data-level="19.4.3" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#interpreting-the-2-group-t-test"><i class="fa fa-check"></i><b>19.4.3</b> Interpreting the 2 group t test</a></li>
+<li class="chapter" data-level="19.4.4" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#group-t-test-with-wide-data"><i class="fa fa-check"></i><b>19.4.4</b> 2 group t test with wide data</a></li>
+<li class="chapter" data-level="19.4.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#results-of-2-group-t-test-with-wide-data"><i class="fa fa-check"></i><b>19.4.5</b> Results of 2 group t test with wide data</a></li>
 </ul></li>
-<li class="chapter" data-level="21.3" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#comparing-distributions-across-categories"><i class="fa fa-check"></i><b>21.3</b> Comparing Distributions Across Categories</a></li>
-<li class="chapter" data-level="21.4" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#boxplots"><i class="fa fa-check"></i><b>21.4</b> Boxplots</a></li>
-<li class="chapter" data-level="21.5" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#violin-plots"><i class="fa fa-check"></i><b>21.5</b> Violin Plots</a></li>
-<li class="chapter" data-level="21.6" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#ridgeline-plots"><i class="fa fa-check"></i><b>21.6</b> Ridgeline Plots</a>
+<li class="chapter" data-level="19.5" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#assumptions-of-students-t-test"><i class="fa fa-check"></i><b>19.5</b> 3 Assumptions of Student’s t test</a>
 <ul>
-<li class="chapter" data-level="21.6.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-plots"><i class="fa fa-check"></i><b>21.6.1</b> Including Plots</a></li>
-<li class="chapter" data-level="21.6.2" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-points"><i class="fa fa-check"></i><b>21.6.2</b> Including Points</a></li>
-<li class="chapter" data-level="21.6.3" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-points-1"><i class="fa fa-check"></i><b>21.6.3</b> Including Points</a></li>
-<li class="chapter" data-level="21.6.4" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-points-2"><i class="fa fa-check"></i><b>21.6.4</b> Including Points</a></li>
-<li class="chapter" data-level="21.6.5" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-points-3"><i class="fa fa-check"></i><b>21.6.5</b> Including Points</a></li>
+<li class="chapter" data-level="19.5.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#testing-assumptions-of-students-t-test"><i class="fa fa-check"></i><b>19.5.1</b> Testing Assumptions of Student’s t test</a></li>
+</ul></li>
+<li class="chapter" data-level="19.6" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#getting-results-out-of-t.test"><i class="fa fa-check"></i><b>19.6</b> Getting results out of t.test</a>
+<ul>
+<li class="chapter" data-level="19.6.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#getting-results-out-of-t.test-1"><i class="fa fa-check"></i><b>19.6.1</b> Getting results out of t.test</a></li>
+</ul></li>
+<li class="chapter" data-level="19.7" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#reporting-the-results-from-t.test-using-inline-code"><i class="fa fa-check"></i><b>19.7</b> Reporting the results from t.test using inline code</a>
+<ul>
+<li class="chapter" data-level="19.7.1" data-path="comparing-two-measures-of-centrality.html"><a href="comparing-two-measures-of-centrality.html#for-next-time"><i class="fa fa-check"></i><b>19.7.1</b> For Next Time</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><i class="fa fa-check"></i><b>22</b> Bivariate ggplot2 Scatterplots to Visualize Relationships Between Variables</a>
+<li class="chapter" data-level="20" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html"><i class="fa fa-check"></i><b>20</b> Sample Size Calculations with <code>{pwr}</code></a>
 <ul>
-<li class="chapter" data-level="22.1" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#packages-used-in-this-chapter"><i class="fa fa-check"></i><b>22.1</b> Packages used in this Chapter</a></li>
-<li class="chapter" data-level="22.2" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#data-exploration-and-validation-dev"><i class="fa fa-check"></i><b>22.2</b> Data Exploration and Validation (DEV)</a></li>
-<li class="chapter" data-level="22.3" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#scatterplots"><i class="fa fa-check"></i><b>22.3</b> Scatterplots</a>
-<ul>
-<li class="chapter" data-level="22.3.1" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#micro-quiz"><i class="fa fa-check"></i><b>22.3.1</b> Micro-quiz!</a></li>
+<li class="chapter" data-level="20.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-a-continuous-endpoint-t-test"><i class="fa fa-check"></i><b>20.1</b> Sample Size for a Continuous Endpoint (t-test)</a></li>
+<li class="chapter" data-level="20.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#one-sample-t-test-for-lowering-creatinine"><i class="fa fa-check"></i><b>20.2</b> One Sample t-test for Lowering Creatinine</a></li>
+<li class="chapter" data-level="20.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#paired-t-tests-before-vs-after-or-truly-paired"><i class="fa fa-check"></i><b>20.3</b> Paired t-tests (before vs after, or truly paired)</a></li>
+<li class="chapter" data-level="20.4" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-t-tests-with-unequal-study-arm-sizes"><i class="fa fa-check"></i><b>20.4</b> 2 Sample t tests with Unequal Study Arm Sizes</a></li>
+<li class="chapter" data-level="20.5" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#testing-multiple-options-and-plotting-results"><i class="fa fa-check"></i><b>20.5</b> Testing Multiple Options and Plotting Results</a></li>
+<li class="chapter" data-level="20.6" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#your-turn-2"><i class="fa fa-check"></i><b>20.6</b> Your Turn</a></li>
+<li class="chapter" data-level="20.6.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-1-fev1-in-copd"><i class="fa fa-check"></i><b>20.6.1</b> Scenario 1: FEV1 in COPD</a></li>
+<li class="chapter" data-level="20.6.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-2-bnp-in-chf"><i class="fa fa-check"></i><b>20.6.2</b> Scenario 2: BNP in CHF</a></li>
+<li class="chapter" data-level="20.6.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-3-barthel-index-in-stroke"><i class="fa fa-check"></i><b>20.6.3</b> Scenario 3: Barthel Index in Stroke</a></li>
+<li class="chapter" data-level="20.7" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-sizes-for-proportions"><i class="fa fa-check"></i><b>20.7</b> Sample Sizes for Proportions</a></li>
+<li class="chapter" data-level="20.8" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-two-proportions-equal-n"><i class="fa fa-check"></i><b>20.8</b> Sample size for two proportions, equal n</a></li>
+<li class="chapter" data-level="20.9" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-two-proportions-unequal-arms"><i class="fa fa-check"></i><b>20.9</b> Sample size for two proportions, unequal arms</a></li>
+<li class="chapter" data-level="20.10" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#your-turn-3"><i class="fa fa-check"></i><b>20.10</b> Your Turn</a></li>
+<li class="chapter" data-level="20.10.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-1-mortality-on-renal-dialysis"><i class="fa fa-check"></i><b>20.10.1</b> Scenario 1: Mortality on Renal Dialysis</a></li>
+<li class="chapter" data-level="20.10.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-2-intestinal-anastomosis-in-crohns-disease"><i class="fa fa-check"></i><b>20.10.2</b> Scenario 2: Intestinal anastomosis in Crohn’s disease</a></li>
+<li class="chapter" data-level="20.10.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-3-metformin-in-donuts"><i class="fa fa-check"></i><b>20.10.3</b> Scenario 3: Metformin in Donuts</a></li>
+<li class="chapter" data-level="20.11" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-chi-square"><i class="fa fa-check"></i><b>20.11</b> add chi square</a></li>
+<li class="chapter" data-level="20.12" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-correlation-test"><i class="fa fa-check"></i><b>20.12</b> add correlation test</a></li>
+<li class="chapter" data-level="20.13" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-anova"><i class="fa fa-check"></i><b>20.13</b> add anova</a></li>
+<li class="chapter" data-level="20.14" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-linear-model"><i class="fa fa-check"></i><b>20.14</b> add linear model</a></li>
+<li class="chapter" data-level="20.15" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-note-on-guessing-effect-sizes---cohen-small-medium-large"><i class="fa fa-check"></i><b>20.15</b> add note on guessing effect sizes - cohen small, medium, large</a></li>
+<li class="chapter" data-level="20.16" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#explore-more"><i class="fa fa-check"></i><b>20.16</b> Explore More</a></li>
 </ul></li>
-<li class="chapter" data-level="22.4" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#mapping-more-variables"><i class="fa fa-check"></i><b>22.4</b> Mapping More Variables</a></li>
-<li class="chapter" data-level="22.5" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#inheritance-and-layering-in-ggplot2"><i class="fa fa-check"></i><b>22.5</b> Inheritance and Layering in ggplot2</a></li>
-<li class="chapter" data-level="22.6" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#aesthetic-mapping-micro-quiz"><i class="fa fa-check"></i><b>22.6</b> Aesthetic mapping Micro-Quiz!</a></li>
-<li class="chapter" data-level="22.7" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#controlling-point-shape-size-and-color-manually"><i class="fa fa-check"></i><b>22.7</b> Controlling Point Shape, Size, and Color Manually</a>
+<li class="chapter" data-level="21" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html"><i class="fa fa-check"></i><b>21</b> Randomization for Clinical Trials with R</a>
 <ul>
-<li class="chapter" data-level="22.7.1" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#manual-shapes"><i class="fa fa-check"></i><b>22.7.1</b> Manual Shapes</a></li>
-<li class="chapter" data-level="22.7.2" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#manual-sizes"><i class="fa fa-check"></i><b>22.7.2</b> Manual Sizes</a></li>
-<li class="chapter" data-level="22.7.3" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#manual-color"><i class="fa fa-check"></i><b>22.7.3</b> Manual Color</a></li>
+<li class="chapter" data-level="21.1" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#printing-these-on-cards"><i class="fa fa-check"></i><b>21.1</b> Printing these on Cards</a></li>
+<li class="chapter" data-level="21.2" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#now-try-this-yourself"><i class="fa fa-check"></i><b>21.2</b> Now, try this yourself</a></li>
+<li class="chapter" data-level="21.3" data-path="randomization-for-clinical-trials-with-r.html"><a href="randomization-for-clinical-trials-with-r.html#now-freestyle"><i class="fa fa-check"></i><b>21.3</b> Now Freestyle</a></li>
 </ul></li>
+<li class="chapter" data-level="22" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html"><i class="fa fa-check"></i><b>22</b> Univariate ggplots to Visualize Distributions</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#histograms"><i class="fa fa-check"></i><b>22.1</b> Histograms</a>
+<ul>
+<li class="chapter" data-level="22.1.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#comparisons-of-distributions-with-histograms"><i class="fa fa-check"></i><b>22.1.1</b> Comparisons of Distributions with Histograms</a></li>
+<li class="chapter" data-level="22.1.2" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#histograms-and-categories"><i class="fa fa-check"></i><b>22.1.2</b> Histograms and Categories</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html"><i class="fa fa-check"></i><b>23</b> Extensions to ggplot</a>
+<li class="chapter" data-level="22.2" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#density-plots"><i class="fa fa-check"></i><b>22.2</b> Density Plots</a>
 <ul>
-<li class="chapter" data-level="23.1" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#goals-for-this-chapter-4"><i class="fa fa-check"></i><b>23.1</b> Goals for this Chapter</a></li>
-<li class="chapter" data-level="23.2" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#packages-needed-for-this-chapter-3"><i class="fa fa-check"></i><b>23.2</b> Packages Needed for this chapter</a></li>
-<li class="chapter" data-level="23.3" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#a-flipbook-of-where-we-are-going-with-ggplot-extensions"><i class="fa fa-check"></i><b>23.3</b> A Flipbook of Where We Are Going With ggplot Extensions</a>
-<ul>
-<li class="chapter" data-level="23.3.1" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#make-flipbook"><i class="fa fa-check"></i><b>23.3.1</b> MAKE FLIPBOOK</a></li>
+<li class="chapter" data-level="22.2.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#comparisons-with-density-plots"><i class="fa fa-check"></i><b>22.2.1</b> Comparisons with Density plots</a></li>
 </ul></li>
-<li class="chapter" data-level="23.4" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#a-waffle-plot"><i class="fa fa-check"></i><b>23.4</b> A Waffle Plot</a></li>
-<li class="chapter" data-level="23.5" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#an-alluvial-plot"><i class="fa fa-check"></i><b>23.5</b> An Alluvial Plot</a></li>
-<li class="chapter" data-level="23.6" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#lollipop-plots"><i class="fa fa-check"></i><b>23.6</b> Lollipop Plots</a></li>
-<li class="chapter" data-level="23.7" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#dumbbell-plots"><i class="fa fa-check"></i><b>23.7</b> Dumbbell Plots</a></li>
-<li class="chapter" data-level="23.8" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#spaghetti-plots-with-summary-smoothed-lines-for-change-over-time"><i class="fa fa-check"></i><b>23.8</b> Spaghetti Plots with Summary Smoothed Lines for Change Over Time</a></li>
-<li class="chapter" data-level="23.9" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#swimmer-plots"><i class="fa fa-check"></i><b>23.9</b> Swimmer Plots</a></li>
-<li class="chapter" data-level="23.10" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#adding-significance-comparisons-with-ggsignif"><i class="fa fa-check"></i><b>23.10</b> Adding Significance Comparisons with {ggsignif}</a></li>
-</ul></li>
-<li class="chapter" data-level="24" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html"><i class="fa fa-check"></i><b>24</b> Customizing Plot Scales</a>
+<li class="chapter" data-level="22.3" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#comparing-distributions-across-categories"><i class="fa fa-check"></i><b>22.3</b> Comparing Distributions Across Categories</a></li>
+<li class="chapter" data-level="22.4" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#boxplots"><i class="fa fa-check"></i><b>22.4</b> Boxplots</a></li>
+<li class="chapter" data-level="22.5" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#violin-plots"><i class="fa fa-check"></i><b>22.5</b> Violin Plots</a></li>
+<li class="chapter" data-level="22.6" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#ridgeline-plots"><i class="fa fa-check"></i><b>22.6</b> Ridgeline Plots</a>
 <ul>
-<li class="chapter" data-level="24.1" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#goals-for-this-chapter-5"><i class="fa fa-check"></i><b>24.1</b> Goals for this Chapter</a></li>
-<li class="chapter" data-level="24.2" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#packages-needed-for-this-chapter-4"><i class="fa fa-check"></i><b>24.2</b> Packages Needed for this chapter</a></li>
-<li class="chapter" data-level="24.3" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#a-flipbook-of-where-we-are-going-with-scales"><i class="fa fa-check"></i><b>24.3</b> A Flipbook of Where We Are Going With Scales</a></li>
-<li class="chapter" data-level="24.4" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#a-basic-scatterplot"><i class="fa fa-check"></i><b>24.4</b> A Basic Scatterplot</a></li>
-<li class="chapter" data-level="24.5" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#but-what-if-you-want-the-scale-for-risk-to-start-at-0"><i class="fa fa-check"></i><b>24.5</b> But what if you want the scale for risk to start at 0?</a></li>
-<li class="chapter" data-level="24.6" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#but-this-axis-does-not-really-start-at-exactly-0"><i class="fa fa-check"></i><b>24.6</b> But this axis does not really start at Exactly 0</a></li>
-<li class="chapter" data-level="24.7" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#control-the-limits-and-the-breaks"><i class="fa fa-check"></i><b>24.7</b> Control the Limits and the Breaks</a></li>
-<li class="chapter" data-level="24.8" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#test-what-you-have-learned"><i class="fa fa-check"></i><b>24.8</b> Test what you have learned</a></li>
-<li class="chapter" data-level="24.9" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#continuous-vs.-discrete-plots-and-scales"><i class="fa fa-check"></i><b>24.9</b> Continuous vs. Discrete Plots and Scales</a></li>
-<li class="chapter" data-level="24.10" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#using-scales-to-customize-a-legend"><i class="fa fa-check"></i><b>24.10</b> Using Scales to Customize a Legend</a></li>
-<li class="chapter" data-level="24.11" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#test-what-you-have-learned-1"><i class="fa fa-check"></i><b>24.11</b> Test what you have learned</a>
-<ul>
-<li class="chapter" data-level="24.11.1" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#more-examples-with-flipbooks"><i class="fa fa-check"></i><b>24.11.1</b> More Examples with Flipbooks</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="25" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html"><i class="fa fa-check"></i><b>25</b> Helping out with ggplot</a>
-<ul>
-<li class="chapter" data-level="25.1" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#ggxgghelp"><i class="fa fa-check"></i><b>25.1</b> ggx::gghelp()</a></li>
-<li class="chapter" data-level="25.2" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#getting-more-help-with-theming-with-ggthemeassist"><i class="fa fa-check"></i><b>25.2</b> Getting more help with theming with ggThemeAssist</a></li>
-<li class="chapter" data-level="25.3" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#website-helpers-for-ggplot"><i class="fa fa-check"></i><b>25.3</b> Website helpers for ggplot</a></li>
-<li class="chapter" data-level="25.4" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#getting-even-more-help-with-esquisse"><i class="fa fa-check"></i><b>25.4</b> Getting Even more help with esquisse</a></li>
-</ul></li>
-<li class="chapter" data-level="26" data-path="functions-1.html"><a href="functions-1.html"><i class="fa fa-check"></i><b>26</b> Functions</a>
-<ul>
-<li class="chapter" data-level="26.1" data-path="functions-1.html"><a href="functions-1.html#dont-repeat-yourself"><i class="fa fa-check"></i><b>26.1</b> Don’t repeat yourself</a></li>
-<li class="chapter" data-level="26.2" data-path="functions-1.html"><a href="functions-1.html#your-turn-2"><i class="fa fa-check"></i><b>26.2</b> Your Turn</a></li>
-<li class="chapter" data-level="26.3" data-path="functions-1.html"><a href="functions-1.html#freestyle"><i class="fa fa-check"></i><b>26.3</b> Freestyle</a>
-<ul>
-<li class="chapter" data-level="26.3.1" data-path="functions-1.html"><a href="functions-1.html#acknowledgement"><i class="fa fa-check"></i><b>26.3.1</b> Acknowledgement</a></li>
-</ul></li>
-<li class="chapter" data-level="26.4" data-path="functions-1.html"><a href="functions-1.html#read-more"><i class="fa fa-check"></i><b>26.4</b> Read More</a></li>
-</ul></li>
-<li class="chapter" data-level="27" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html"><i class="fa fa-check"></i><b>27</b> Linear Regression and Broom for Tidying Models</a>
-<ul>
-<li class="chapter" data-level="27.1" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#packages-needed"><i class="fa fa-check"></i><b>27.1</b> Packages needed</a></li>
-<li class="chapter" data-level="27.2" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#building-a-simple-base-model-with-lm"><i class="fa fa-check"></i><b>27.2</b> Building a simple base model with {lm}</a>
-<ul>
-<li class="chapter" data-level="27.2.1" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#producing-manuscript-quality-tables-with-gtsummary"><i class="fa fa-check"></i><b>27.2.1</b> Producing manuscript-quality tables with {gtsummary}</a></li>
-</ul></li>
-<li class="chapter" data-level="27.3" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#is-your-model-valid"><i class="fa fa-check"></i><b>27.3</b> Is Your Model Valid?</a></li>
-<li class="chapter" data-level="27.4" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#making-predictions-with-your-model"><i class="fa fa-check"></i><b>27.4</b> Making Predictions with Your Model</a>
-<ul>
-<li class="chapter" data-level="27.4.1" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#predictions-from-new-data"><i class="fa fa-check"></i><b>27.4.1</b> Predictions from new data</a></li>
-</ul></li>
-<li class="chapter" data-level="27.5" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#choosing-predictors-for-multivariate-modeling-testing-dealing-with-collinearity"><i class="fa fa-check"></i><b>27.5</b> Choosing predictors for multivariate modeling – testing, dealing with collinearity</a>
-<ul>
-<li class="chapter" data-level="27.5.1" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#challenges"><i class="fa fa-check"></i><b>27.5.1</b> Challenges</a></li>
-</ul></li>
-<li class="chapter" data-level="27.6" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#presenting-model-results-with-rmarkdown"><i class="fa fa-check"></i><b>27.6</b> presenting model results with RMarkdown</a>
-<ul>
-<li class="chapter" data-level="27.6.1" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#challenges-1"><i class="fa fa-check"></i><b>27.6.1</b> Challenges</a></li>
-</ul></li>
-<li class="chapter" data-level="27.7" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#presenting-model-results-with-a-shiny-app"><i class="fa fa-check"></i><b>27.7</b> presenting model results with a Shiny App</a>
-<ul>
-<li class="chapter" data-level="27.7.1" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#challenges-2"><i class="fa fa-check"></i><b>27.7.1</b> Challenges</a></li>
+<li class="chapter" data-level="22.6.1" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-plots"><i class="fa fa-check"></i><b>22.6.1</b> Including Plots</a></li>
+<li class="chapter" data-level="22.6.2" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-points"><i class="fa fa-check"></i><b>22.6.2</b> Including Points</a></li>
+<li class="chapter" data-level="22.6.3" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-points-1"><i class="fa fa-check"></i><b>22.6.3</b> Including Points</a></li>
+<li class="chapter" data-level="22.6.4" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-points-2"><i class="fa fa-check"></i><b>22.6.4</b> Including Points</a></li>
+<li class="chapter" data-level="22.6.5" data-path="univariate-ggplots-to-visualize-distributions.html"><a href="univariate-ggplots-to-visualize-distributions.html#including-points-3"><i class="fa fa-check"></i><b>22.6.5</b> Including Points</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="28" data-path="logistic-regression-and-broom-for-tidying-models.html"><a href="logistic-regression-and-broom-for-tidying-models.html"><i class="fa fa-check"></i><b>28</b> Logistic Regression and Broom for Tidying Models</a>
+<li class="chapter" data-level="23" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><i class="fa fa-check"></i><b>23</b> Bivariate ggplot2 Scatterplots to Visualize Relationships Between Variables</a>
 <ul>
-<li class="chapter" data-level="28.1" data-path="logistic-regression-and-broom-for-tidying-models.html"><a href="logistic-regression-and-broom-for-tidying-models.html#the-model-summary"><i class="fa fa-check"></i><b>28.1</b> The Model Summary</a></li>
-<li class="chapter" data-level="28.2" data-path="logistic-regression-and-broom-for-tidying-models.html"><a href="logistic-regression-and-broom-for-tidying-models.html#evaluating-your-model-assumptions"><i class="fa fa-check"></i><b>28.2</b> Evaluating your Model Assumptions</a></li>
-<li class="chapter" data-level="28.3" data-path="logistic-regression-and-broom-for-tidying-models.html"><a href="logistic-regression-and-broom-for-tidying-models.html#converting-between-logit-odds-ratios-and-probability"><i class="fa fa-check"></i><b>28.3</b> Converting between logit, odds ratios, and probability</a></li>
+<li class="chapter" data-level="23.1" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#packages-used-in-this-chapter"><i class="fa fa-check"></i><b>23.1</b> Packages used in this Chapter</a></li>
+<li class="chapter" data-level="23.2" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#data-exploration-and-validation-dev"><i class="fa fa-check"></i><b>23.2</b> Data Exploration and Validation (DEV)</a></li>
+<li class="chapter" data-level="23.3" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#scatterplots"><i class="fa fa-check"></i><b>23.3</b> Scatterplots</a>
+<ul>
+<li class="chapter" data-level="23.3.1" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#micro-quiz"><i class="fa fa-check"></i><b>23.3.1</b> Micro-quiz!</a></li>
 </ul></li>
-<li class="chapter" data-level="29" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html"><i class="fa fa-check"></i><b>29</b> A Gentle Introduction to Shiny</a>
+<li class="chapter" data-level="23.4" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#mapping-more-variables"><i class="fa fa-check"></i><b>23.4</b> Mapping More Variables</a></li>
+<li class="chapter" data-level="23.5" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#inheritance-and-layering-in-ggplot2"><i class="fa fa-check"></i><b>23.5</b> Inheritance and Layering in ggplot2</a></li>
+<li class="chapter" data-level="23.6" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#aesthetic-mapping-micro-quiz"><i class="fa fa-check"></i><b>23.6</b> Aesthetic mapping Micro-Quiz!</a></li>
+<li class="chapter" data-level="23.7" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#controlling-point-shape-size-and-color-manually"><i class="fa fa-check"></i><b>23.7</b> Controlling Point Shape, Size, and Color Manually</a>
 <ul>
-<li class="chapter" data-level="29.1" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#what-is-shiny"><i class="fa fa-check"></i><b>29.1</b> What is Shiny?</a></li>
-<li class="chapter" data-level="29.2" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#the-basic-structure-of-a-shiny-app"><i class="fa fa-check"></i><b>29.2</b> The Basic Structure of a Shiny App</a>
-<ul>
-<li class="chapter" data-level="29.2.1" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#the-weirdness-of-a-shiny-app"><i class="fa fa-check"></i><b>29.2.1</b> The weirdness of a Shiny app</a></li>
-</ul></li>
-<li class="chapter" data-level="29.3" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#the-user-interface-section-structure"><i class="fa fa-check"></i><b>29.3</b> The User Interface Section Structure</a></li>
-<li class="chapter" data-level="29.4" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#the-server-section-structure"><i class="fa fa-check"></i><b>29.4</b> The Server Section Structure</a></li>
-<li class="chapter" data-level="29.5" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#how-to-run-an-app"><i class="fa fa-check"></i><b>29.5</b> How to Run an App</a>
-<ul>
-<li class="chapter" data-level="29.5.1" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#how-to-stop-an-app"><i class="fa fa-check"></i><b>29.5.1</b> How to Stop an App</a></li>
-</ul></li>
-<li class="chapter" data-level="29.6" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#building-a-very-simple-app-version-1"><i class="fa fa-check"></i><b>29.6</b> Building a Very Simple App (Version 1)</a>
-<ul>
-<li class="chapter" data-level="29.6.1" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#the-ui-section"><i class="fa fa-check"></i><b>29.6.1</b> The ui section</a></li>
-<li class="chapter" data-level="29.6.2" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#the-server-section"><i class="fa fa-check"></i><b>29.6.2</b> The server section</a></li>
-</ul></li>
-<li class="chapter" data-level="29.7" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#edit-this-app-version-2"><i class="fa fa-check"></i><b>29.7</b> Edit this App (Version 2)</a></li>
-<li class="chapter" data-level="29.8" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#building-a-user-interface-for-inputs-and-outputs"><i class="fa fa-check"></i><b>29.8</b> Building a User Interface for Inputs and Outputs</a>
-<ul>
-<li class="chapter" data-level="29.8.1" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#inputs"><i class="fa fa-check"></i><b>29.8.1</b> Inputs</a></li>
-<li class="chapter" data-level="29.8.2" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#outputs"><i class="fa fa-check"></i><b>29.8.2</b> Outputs</a></li>
-</ul></li>
-<li class="chapter" data-level="29.9" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#building-a-functioning-server-section"><i class="fa fa-check"></i><b>29.9</b> Building a Functioning Server Section</a>
-<ul>
-<li class="chapter" data-level="29.9.1" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#using-the-input-values-data"><i class="fa fa-check"></i><b>29.9.1</b> Using the input values &amp; Data</a></li>
-<li class="chapter" data-level="29.9.2" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#wrangling-and-calculating"><i class="fa fa-check"></i><b>29.9.2</b> Wrangling and Calculating</a></li>
-<li class="chapter" data-level="29.9.3" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#rendering-to-html-outputs"><i class="fa fa-check"></i><b>29.9.3</b> Rendering to HTML Outputs</a></li>
-</ul></li>
-<li class="chapter" data-level="29.10" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#building-a-simple-shiny-app-version-3"><i class="fa fa-check"></i><b>29.10</b> Building a Simple Shiny App (Version 3)</a></li>
-<li class="chapter" data-level="29.11" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#publishing-your-shiny-app-on-the-web"><i class="fa fa-check"></i><b>29.11</b> Publishing Your Shiny App on the Web</a></li>
-<li class="chapter" data-level="29.12" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#more-to-explore"><i class="fa fa-check"></i><b>29.12</b> More to Explore</a></li>
-</ul></li>
-<li class="chapter" data-level="30" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html"><i class="fa fa-check"></i><b>30</b> Sharing Models with Shiny</a>
-<ul>
-<li class="chapter" data-level="30.0.1" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#packages-needed-for-this-chapter-5"><i class="fa fa-check"></i><b>30.0.1</b> Packages Needed for this Chapter</a></li>
-<li class="chapter" data-level="30.1" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#setting-up-and-saving-models"><i class="fa fa-check"></i><b>30.1</b> Setting up and Saving Models</a>
-<ul>
-<li class="chapter" data-level="30.1.1" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#linear-model"><i class="fa fa-check"></i><b>30.1.1</b> Linear Model</a></li>
-<li class="chapter" data-level="30.1.2" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#logistic-model"><i class="fa fa-check"></i><b>30.1.2</b> Logistic Model</a></li>
-<li class="chapter" data-level="30.1.3" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#random-forest-model"><i class="fa fa-check"></i><b>30.1.3</b> Random Forest Model</a></li>
-</ul></li>
-<li class="chapter" data-level="30.2" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#building-a-shiny-app-for-the-linear-model"><i class="fa fa-check"></i><b>30.2</b> Building a Shiny App for the Linear Model</a>
-<ul>
-<li class="chapter" data-level="30.2.1" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#the-default-shiny-app"><i class="fa fa-check"></i><b>30.2.1</b> The Default Shiny App</a></li>
-<li class="chapter" data-level="30.2.2" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#editing-the-ui-sidebarpanel-for-the-input-predictor-variables"><i class="fa fa-check"></i><b>30.2.2</b> Editing the <strong>ui</strong> <em>sidebarPanel</em> for the Input Predictor Variables</a></li>
-<li class="chapter" data-level="30.2.3" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#editing-the-server-section-to-make-predictions"><i class="fa fa-check"></i><b>30.2.3</b> Editing the <em>server</em> section to make Predictions</a></li>
-<li class="chapter" data-level="30.2.4" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#editing-the-mainpanel-in-the-ui-section-to-display-your-prediction"><i class="fa fa-check"></i><b>30.2.4</b> Editing the mainPanel in the ui section to display your Prediction</a></li>
-</ul></li>
-<li class="chapter" data-level="30.3" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#building-a-shiny-app-for-the-logistic-model"><i class="fa fa-check"></i><b>30.3</b> Building a Shiny App for the Logistic Model</a>
-<ul>
-<li class="chapter" data-level="30.3.1" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#the-default-shiny-app-1"><i class="fa fa-check"></i><b>30.3.1</b> The Default Shiny App</a></li>
-<li class="chapter" data-level="30.3.2" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#editing-the-ui-sidebarpanel-for-the-input-predictor-variables-1"><i class="fa fa-check"></i><b>30.3.2</b> Editing the <strong>ui</strong> <em>sidebarPanel</em> for the Input Predictor Variables</a></li>
-<li class="chapter" data-level="30.3.3" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#editing-the-server-section-to-make-predictions-1"><i class="fa fa-check"></i><b>30.3.3</b> Editing the <em>server</em> section to make Predictions</a></li>
-<li class="chapter" data-level="30.3.4" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#editing-the-mainpanel-in-the-ui-section-to-display-your-prediction-1"><i class="fa fa-check"></i><b>30.3.4</b> Editing the mainPanel in the ui section to display your Prediction</a></li>
-</ul></li>
-<li class="chapter" data-level="30.4" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#building-a-shiny-app-for-the-random-forest-model"><i class="fa fa-check"></i><b>30.4</b> Building a Shiny App for the Random Forest Model</a></li>
-<li class="chapter" data-level="30.5" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#challenge-yourself"><i class="fa fa-check"></i><b>30.5</b> Challenge Yourself</a></li>
-</ul></li>
-<li class="chapter" data-level="31" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html"><i class="fa fa-check"></i><b>31</b> Introduction to R Markdown</a>
-<ul>
-<li class="chapter" data-level="31.1" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#what-makes-an-rmarkdown-document"><i class="fa fa-check"></i><b>31.1</b> What Makes an Rmarkdown document?</a></li>
-<li class="chapter" data-level="31.2" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#trying-out-rmarkdown-with-a-mock-manuscript"><i class="fa fa-check"></i><b>31.2</b> Trying out RMarkdown with a Mock Manuscript</a></li>
-<li class="chapter" data-level="31.3" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#inserting-code-chunks"><i class="fa fa-check"></i><b>31.3</b> Inserting Code Chunks</a>
-<ul>
-<li class="chapter" data-level="31.3.1" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#code-chunk-icons"><i class="fa fa-check"></i><b>31.3.1</b> Code Chunk Icons</a></li>
-</ul></li>
-<li class="chapter" data-level="31.4" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#including-plots-1"><i class="fa fa-check"></i><b>31.4</b> Including Plots</a></li>
-<li class="chapter" data-level="31.5" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#including-tables"><i class="fa fa-check"></i><b>31.5</b> Including Tables</a></li>
-<li class="chapter" data-level="31.6" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#including-links-and-images"><i class="fa fa-check"></i><b>31.6</b> Including Links and Images</a>
-<ul>
-<li class="chapter" data-level="31.6.1" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#links"><i class="fa fa-check"></i><b>31.6.1</b> Links</a></li>
-<li class="chapter" data-level="31.6.2" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#images"><i class="fa fa-check"></i><b>31.6.2</b> Images</a></li>
-</ul></li>
-<li class="chapter" data-level="31.7" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#other-languages-in-code-chunks"><i class="fa fa-check"></i><b>31.7</b> Other languages in code chunks</a></li>
-<li class="chapter" data-level="31.8" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#code-chunk-options"><i class="fa fa-check"></i><b>31.8</b> Code Chunk Options</a></li>
-<li class="chapter" data-level="31.9" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#how-it-all-rmarkdown-knitr-pandoc-works"><i class="fa fa-check"></i><b>31.9</b> How It All (Rmarkdown + {knitr} + Pandoc) Works</a></li>
-<li class="chapter" data-level="31.10" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#knitting-and-editing-and-re-knitting-your-rmd-document"><i class="fa fa-check"></i><b>31.10</b> Knitting and Editing (and re-Knitting() Your Rmd document</a></li>
-<li class="chapter" data-level="31.11" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#try-out-other-chunk-options"><i class="fa fa-check"></i><b>31.11</b> Try Out Other Chunk Options</a></li>
-<li class="chapter" data-level="31.12" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#the-setup-chunk"><i class="fa fa-check"></i><b>31.12</b> The <code>setup</code> chunk</a></li>
-<li class="chapter" data-level="31.13" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#markdown-syntax"><i class="fa fa-check"></i><b>31.13</b> Markdown syntax</a></li>
-<li class="chapter" data-level="31.14" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#nd-header"><i class="fa fa-check"></i><b>31.14</b> 2nd Header</a>
-<ul>
-<li class="chapter" data-level="31.14.1" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#rd-header"><i class="fa fa-check"></i><b>31.14.1</b> 3rd Header</a></li>
-</ul></li>
-<li class="chapter" data-level="31.15" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#line-breaks-and-page-breaks"><i class="fa fa-check"></i><b>31.15</b> Line Breaks and Page Breaks</a></li>
-<li class="chapter" data-level="31.16" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#making-lists"><i class="fa fa-check"></i><b>31.16</b> Making Lists</a>
-<ul>
-<li class="chapter" data-level="31.16.1" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#ordered-lists"><i class="fa fa-check"></i><b>31.16.1</b> Ordered Lists</a></li>
-<li class="chapter" data-level="31.16.2" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#un-ordered-lists"><i class="fa fa-check"></i><b>31.16.2</b> Un-ordered lists</a></li>
-<li class="chapter" data-level="31.16.3" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#nested-lists"><i class="fa fa-check"></i><b>31.16.3</b> Nested Lists</a></li>
-</ul></li>
-<li class="chapter" data-level="31.17" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#the-easy-button---visual-markdown-editing"><i class="fa fa-check"></i><b>31.17</b> The Easy Button - Visual Markdown Editing</a>
-<ul>
-<li class="chapter" data-level="31.17.1" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#try-inserting-a-list-a-table-and-a-block-quote"><i class="fa fa-check"></i><b>31.17.1</b> Try inserting a list, a table and a block-quote</a></li>
-</ul></li>
-<li class="chapter" data-level="31.18" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#inline-code"><i class="fa fa-check"></i><b>31.18</b> Inline Code</a>
-<ul>
-<li class="chapter" data-level="31.18.1" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#try-inserting-some-in-line-r-code"><i class="fa fa-check"></i><b>31.18.1</b> Try inserting some in-line R code</a></li>
-</ul></li>
-<li class="chapter" data-level="31.19" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#a-quick-quiz"><i class="fa fa-check"></i><b>31.19</b> A Quick Quiz</a></li>
-</ul></li>
-<li class="chapter" data-level="32" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html"><i class="fa fa-check"></i><b>32</b> Rmarkdown Output Options</a>
-<ul>
-<li class="chapter" data-level="32.1" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#microsoft-word-output-from-rmarkdown"><i class="fa fa-check"></i><b>32.1</b> Microsoft Word Output from Rmarkdown</a>
-<ul>
-<li class="chapter" data-level="32.1.1" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#making-a-styles-reference-file-for-microsoft-word"><i class="fa fa-check"></i><b>32.1.1</b> Making a Styles Reference File for Microsoft Word</a></li>
-<li class="chapter" data-level="32.1.2" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#lets-practice-this."><i class="fa fa-check"></i><b>32.1.2</b> Let’s Practice This.</a></li>
-<li class="chapter" data-level="32.1.3" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#re-formatting-your-template"><i class="fa fa-check"></i><b>32.1.3</b> Re-formatting Your Template</a></li>
-<li class="chapter" data-level="32.1.4" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#using-your-new-styles-template"><i class="fa fa-check"></i><b>32.1.4</b> Using Your New Styles Template</a></li>
-<li class="chapter" data-level="32.1.5" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#now-you-are-ready"><i class="fa fa-check"></i><b>32.1.5</b> Now you are ready!</a></li>
-</ul></li>
-<li class="chapter" data-level="32.2" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#pdf-output-from-rmarkdown"><i class="fa fa-check"></i><b>32.2</b> PDF Output from RMarkdown</a>
-<ul>
-<li class="chapter" data-level="32.2.1" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#latex-and-tinytex"><i class="fa fa-check"></i><b>32.2.1</b> LaTeX and tinytex</a></li>
-<li class="chapter" data-level="32.2.2" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#knitting-to-pdf"><i class="fa fa-check"></i><b>32.2.2</b> Knitting to PDF</a></li>
-</ul></li>
-<li class="chapter" data-level="32.3" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#microsoft-powerpoint-output-from-rmarkdown"><i class="fa fa-check"></i><b>32.3</b> Microsoft Powerpoint Output from Rmarkdown</a>
-<ul>
-<li class="chapter" data-level="32.3.1" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#tables-in-powerpoint"><i class="fa fa-check"></i><b>32.3.1</b> Tables in Powerpoint</a></li>
-<li class="chapter" data-level="32.3.2" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#images-in-powerpoint"><i class="fa fa-check"></i><b>32.3.2</b> Images in Powerpoint</a></li>
-<li class="chapter" data-level="32.3.3" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#plots-in-powerpoint"><i class="fa fa-check"></i><b>32.3.3</b> Plots in Powerpoint</a></li>
+<li class="chapter" data-level="23.7.1" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#manual-shapes"><i class="fa fa-check"></i><b>23.7.1</b> Manual Shapes</a></li>
+<li class="chapter" data-level="23.7.2" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#manual-sizes"><i class="fa fa-check"></i><b>23.7.2</b> Manual Sizes</a></li>
+<li class="chapter" data-level="23.7.3" data-path="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#manual-color"><i class="fa fa-check"></i><b>23.7.3</b> Manual Color</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="33" data-path="adding-citations-to-your-rmarkdown.html"><a href="adding-citations-to-your-rmarkdown.html"><i class="fa fa-check"></i><b>33</b> Adding Citations to your RMarkdown</a></li>
-<li class="chapter" data-level="34" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html"><i class="fa fa-check"></i><b>34</b> Quarto is a Next-Generation RMarkdown</a>
+<li class="chapter" data-level="24" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html"><i class="fa fa-check"></i><b>24</b> Extensions to ggplot</a>
 <ul>
-<li class="chapter" data-level="34.1" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#goals-for-this-chapter-6"><i class="fa fa-check"></i><b>34.1</b> Goals for this Chapter</a></li>
-<li class="chapter" data-level="34.2" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#packages-needed-for-this-chapter-6"><i class="fa fa-check"></i><b>34.2</b> Packages Needed for this chapter</a></li>
-<li class="chapter" data-level="34.3" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#introducing-quarto"><i class="fa fa-check"></i><b>34.3</b> Introducing Quarto</a></li>
-<li class="chapter" data-level="34.4" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#a-tour-of-quarto"><i class="fa fa-check"></i><b>34.4</b> A Tour of Quarto</a></li>
-<li class="chapter" data-level="34.5" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#opening-a-new-quarto-document"><i class="fa fa-check"></i><b>34.5</b> Opening a New Quarto Document</a></li>
-<li class="chapter" data-level="34.6" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#annotating-code-in-quarto"><i class="fa fa-check"></i><b>34.6</b> Annotating code in Quarto</a></li>
-<li class="chapter" data-level="34.7" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#the-visual-editor-vs.-source-editor-in-quarto"><i class="fa fa-check"></i><b>34.7</b> The Visual Editor vs. Source Editor in Quarto</a></li>
-<li class="chapter" data-level="34.8" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#adding-code-chunks"><i class="fa fa-check"></i><b>34.8</b> Adding Code Chunks</a></li>
-<li class="chapter" data-level="34.9" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#organized-options-in-code-chunks-with-the-hash-pipe"><i class="fa fa-check"></i><b>34.9</b> Organized Options in Code Chunks with the Hash-Pipe #|</a></li>
-<li class="chapter" data-level="34.10" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#stating-global-options-in-your-yaml-header"><i class="fa fa-check"></i><b>34.10</b> Stating Global Options in Your YAML Header</a>
+<li class="chapter" data-level="24.1" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#goals-for-this-chapter-4"><i class="fa fa-check"></i><b>24.1</b> Goals for this Chapter</a></li>
+<li class="chapter" data-level="24.2" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#packages-needed-for-this-chapter-4"><i class="fa fa-check"></i><b>24.2</b> Packages Needed for this chapter</a></li>
+<li class="chapter" data-level="24.3" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#a-flipbook-of-where-we-are-going-with-ggplot-extensions"><i class="fa fa-check"></i><b>24.3</b> A Flipbook of Where We Are Going With ggplot Extensions</a>
 <ul>
-<li class="chapter" data-level="34.10.1" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#code-options-and-code-folding"><i class="fa fa-check"></i><b>34.10.1</b> Code Options and Code Folding</a></li>
-<li class="chapter" data-level="34.10.2" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#parameters"><i class="fa fa-check"></i><b>34.10.2</b> Parameters</a></li>
+<li class="chapter" data-level="24.3.1" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#make-flipbook"><i class="fa fa-check"></i><b>24.3.1</b> MAKE FLIPBOOK</a></li>
 </ul></li>
-<li class="chapter" data-level="34.11" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#figures"><i class="fa fa-check"></i><b>34.11</b> Figures</a></li>
-<li class="chapter" data-level="34.12" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#tables"><i class="fa fa-check"></i><b>34.12</b> Tables</a></li>
-<li class="chapter" data-level="34.13" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#inline-code-and-caching"><i class="fa fa-check"></i><b>34.13</b> Inline Code and Caching</a></li>
-<li class="chapter" data-level="34.14" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#quarto-at-the-command-line"><i class="fa fa-check"></i><b>34.14</b> Quarto at the Command Line</a></li>
-<li class="chapter" data-level="34.15" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#citations-in-quarto"><i class="fa fa-check"></i><b>34.15</b> Citations in Quarto</a></li>
-<li class="chapter" data-level="34.16" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#challenge-yourself-1"><i class="fa fa-check"></i><b>34.16</b> Challenge Yourself</a></li>
-<li class="chapter" data-level="34.17" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#exploring-further"><i class="fa fa-check"></i><b>34.17</b> Exploring further</a></li>
+<li class="chapter" data-level="24.4" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#a-waffle-plot"><i class="fa fa-check"></i><b>24.4</b> A Waffle Plot</a></li>
+<li class="chapter" data-level="24.5" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#an-alluvial-plot"><i class="fa fa-check"></i><b>24.5</b> An Alluvial Plot</a></li>
+<li class="chapter" data-level="24.6" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#lollipop-plots"><i class="fa fa-check"></i><b>24.6</b> Lollipop Plots</a></li>
+<li class="chapter" data-level="24.7" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#dumbbell-plots"><i class="fa fa-check"></i><b>24.7</b> Dumbbell Plots</a></li>
+<li class="chapter" data-level="24.8" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#spaghetti-plots-with-summary-smoothed-lines-for-change-over-time"><i class="fa fa-check"></i><b>24.8</b> Spaghetti Plots with Summary Smoothed Lines for Change Over Time</a></li>
+<li class="chapter" data-level="24.9" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#swimmer-plots"><i class="fa fa-check"></i><b>24.9</b> Swimmer Plots</a></li>
+<li class="chapter" data-level="24.10" data-path="extensions-to-ggplot.html"><a href="extensions-to-ggplot.html#adding-significance-comparisons-with-ggsignif"><i class="fa fa-check"></i><b>24.10</b> Adding Significance Comparisons with {ggsignif}</a></li>
 </ul></li>
-<li class="chapter" data-level="35" data-path="cmd-line.html"><a href="cmd-line.html"><i class="fa fa-check"></i><b>35</b> Running R from the UNIX Command Line</a>
+<li class="chapter" data-level="25" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html"><i class="fa fa-check"></i><b>25</b> Customizing Plot Scales</a>
 <ul>
-<li class="chapter" data-level="35.1" data-path="cmd-line.html"><a href="cmd-line.html#what-is-the-unix-command-line"><i class="fa fa-check"></i><b>35.1</b> What is the UNIX Command line?</a></li>
-<li class="chapter" data-level="35.2" data-path="cmd-line.html"><a href="cmd-line.html#why-run-r-from-the-command-line"><i class="fa fa-check"></i><b>35.2</b> Why run R from the command line?</a></li>
-<li class="chapter" data-level="35.3" data-path="cmd-line.html"><a href="cmd-line.html#how-do-you-get-started"><i class="fa fa-check"></i><b>35.3</b> How do you get started?</a>
+<li class="chapter" data-level="25.1" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#goals-for-this-chapter-5"><i class="fa fa-check"></i><b>25.1</b> Goals for this Chapter</a></li>
+<li class="chapter" data-level="25.2" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#packages-needed-for-this-chapter-5"><i class="fa fa-check"></i><b>25.2</b> Packages Needed for this chapter</a></li>
+<li class="chapter" data-level="25.3" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#a-flipbook-of-where-we-are-going-with-scales"><i class="fa fa-check"></i><b>25.3</b> A Flipbook of Where We Are Going With Scales</a></li>
+<li class="chapter" data-level="25.4" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#a-basic-scatterplot"><i class="fa fa-check"></i><b>25.4</b> A Basic Scatterplot</a></li>
+<li class="chapter" data-level="25.5" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#but-what-if-you-want-the-scale-for-risk-to-start-at-0"><i class="fa fa-check"></i><b>25.5</b> But what if you want the scale for risk to start at 0?</a></li>
+<li class="chapter" data-level="25.6" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#but-this-axis-does-not-really-start-at-exactly-0"><i class="fa fa-check"></i><b>25.6</b> But this axis does not really start at Exactly 0</a></li>
+<li class="chapter" data-level="25.7" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#control-the-limits-and-the-breaks"><i class="fa fa-check"></i><b>25.7</b> Control the Limits and the Breaks</a></li>
+<li class="chapter" data-level="25.8" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#test-what-you-have-learned"><i class="fa fa-check"></i><b>25.8</b> Test what you have learned</a></li>
+<li class="chapter" data-level="25.9" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#continuous-vs.-discrete-plots-and-scales"><i class="fa fa-check"></i><b>25.9</b> Continuous vs. Discrete Plots and Scales</a></li>
+<li class="chapter" data-level="25.10" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#using-scales-to-customize-a-legend"><i class="fa fa-check"></i><b>25.10</b> Using Scales to Customize a Legend</a></li>
+<li class="chapter" data-level="25.11" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#test-what-you-have-learned-1"><i class="fa fa-check"></i><b>25.11</b> Test what you have learned</a>
 <ul>
-<li class="chapter" data-level="35.3.1" data-path="cmd-line.html"><a href="cmd-line.html#on-a-mac"><i class="fa fa-check"></i><b>35.3.1</b> On a Mac</a></li>
-<li class="chapter" data-level="35.3.2" data-path="cmd-line.html"><a href="cmd-line.html#on-a-windows-pc"><i class="fa fa-check"></i><b>35.3.2</b> On a Windows PC</a></li>
+<li class="chapter" data-level="25.11.1" data-path="customizing-plot-scales.html"><a href="customizing-plot-scales.html#more-examples-with-flipbooks"><i class="fa fa-check"></i><b>25.11.1</b> More Examples with Flipbooks</a></li>
 </ul></li>
-<li class="chapter" data-level="35.4" data-path="cmd-line.html"><a href="cmd-line.html#the-yawning-blackness-of-the-terminal-window"><i class="fa fa-check"></i><b>35.4</b> The Yawning Blackness of the Terminal Window</a></li>
-<li class="chapter" data-level="35.5" data-path="cmd-line.html"><a href="cmd-line.html#where-are-we"><i class="fa fa-check"></i><b>35.5</b> Where Are We?</a></li>
-<li class="chapter" data-level="35.6" data-path="cmd-line.html"><a href="cmd-line.html#cleaning-up"><i class="fa fa-check"></i><b>35.6</b> Cleaning Up</a></li>
-<li class="chapter" data-level="35.7" data-path="cmd-line.html"><a href="cmd-line.html#other-helpful-file-commands"><i class="fa fa-check"></i><b>35.7</b> Other helpful file commands</a></li>
-<li class="chapter" data-level="35.8" data-path="cmd-line.html"><a href="cmd-line.html#what-about-r"><i class="fa fa-check"></i><b>35.8</b> What about R?</a></li>
-<li class="chapter" data-level="35.9" data-path="cmd-line.html"><a href="cmd-line.html#what-about-just-a-few-lines-of-r"><i class="fa fa-check"></i><b>35.9</b> What about just a few lines of R?</a></li>
-<li class="chapter" data-level="35.10" data-path="cmd-line.html"><a href="cmd-line.html#running-an-r-script-from-the-terminal"><i class="fa fa-check"></i><b>35.10</b> Running an R Script from the Terminal</a></li>
-<li class="chapter" data-level="35.11" data-path="cmd-line.html"><a href="cmd-line.html#rendering-an-rmarkdown-file-from-the-terminal"><i class="fa fa-check"></i><b>35.11</b> Rendering an Rmarkdown file from the Terminal</a></li>
+</ul></li>
+<li class="chapter" data-level="26" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html"><i class="fa fa-check"></i><b>26</b> Helping out with ggplot</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#ggxgghelp"><i class="fa fa-check"></i><b>26.1</b> ggx::gghelp()</a></li>
+<li class="chapter" data-level="26.2" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#getting-more-help-with-theming-with-ggthemeassist"><i class="fa fa-check"></i><b>26.2</b> Getting more help with theming with ggThemeAssist</a></li>
+<li class="chapter" data-level="26.3" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#website-helpers-for-ggplot"><i class="fa fa-check"></i><b>26.3</b> Website helpers for ggplot</a></li>
+<li class="chapter" data-level="26.4" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#getting-even-more-help-with-esquisse"><i class="fa fa-check"></i><b>26.4</b> Getting Even more help with esquisse</a></li>
+</ul></li>
+<li class="chapter" data-level="27" data-path="functions-1.html"><a href="functions-1.html"><i class="fa fa-check"></i><b>27</b> Functions</a>
+<ul>
+<li class="chapter" data-level="27.1" data-path="functions-1.html"><a href="functions-1.html#dont-repeat-yourself"><i class="fa fa-check"></i><b>27.1</b> Don’t repeat yourself</a></li>
+<li class="chapter" data-level="27.2" data-path="functions-1.html"><a href="functions-1.html#your-turn-4"><i class="fa fa-check"></i><b>27.2</b> Your Turn</a></li>
+<li class="chapter" data-level="27.3" data-path="functions-1.html"><a href="functions-1.html#freestyle"><i class="fa fa-check"></i><b>27.3</b> Freestyle</a>
+<ul>
+<li class="chapter" data-level="27.3.1" data-path="functions-1.html"><a href="functions-1.html#acknowledgement"><i class="fa fa-check"></i><b>27.3.1</b> Acknowledgement</a></li>
+</ul></li>
+<li class="chapter" data-level="27.4" data-path="functions-1.html"><a href="functions-1.html#read-more"><i class="fa fa-check"></i><b>27.4</b> Read More</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="using-found-web-data.html"><a href="using-found-web-data.html"><i class="fa fa-check"></i><b>28</b> Using Found (Web) Data</a>
+<ul>
+<li class="chapter" data-level="28.1" data-path="using-found-web-data.html"><a href="using-found-web-data.html#found-poetry"><i class="fa fa-check"></i><b>28.1</b> Found Poetry</a></li>
+<li class="chapter" data-level="28.2" data-path="using-found-web-data.html"><a href="using-found-web-data.html#found-data"><i class="fa fa-check"></i><b>28.2</b> Found Data</a></li>
+<li class="chapter" data-level="28.3" data-path="using-found-web-data.html"><a href="using-found-web-data.html#download-example"><i class="fa fa-check"></i><b>28.3</b> Download Example</a></li>
+<li class="chapter" data-level="28.4" data-path="using-found-web-data.html"><a href="using-found-web-data.html#datapasta-small-table-example"><i class="fa fa-check"></i><b>28.4</b> Datapasta (small table) Example</a></li>
+<li class="chapter" data-level="28.5" data-path="using-found-web-data.html"><a href="using-found-web-data.html#your-turn-5"><i class="fa fa-check"></i><b>28.5</b> Your Turn</a></li>
+<li class="chapter" data-level="28.6" data-path="using-found-web-data.html"><a href="using-found-web-data.html#rvest-example"><i class="fa fa-check"></i><b>28.6</b> {rvest} Example</a></li>
+<li class="chapter" data-level="28.7" data-path="using-found-web-data.html"><a href="using-found-web-data.html#your-turn-6"><i class="fa fa-check"></i><b>28.7</b> Your Turn</a></li>
+<li class="chapter" data-level="28.8" data-path="using-found-web-data.html"><a href="using-found-web-data.html#api-example-with-tidycensus"><i class="fa fa-check"></i><b>28.8</b> API example with {tidycensus}</a></li>
+<li class="chapter" data-level="28.9" data-path="using-found-web-data.html"><a href="using-found-web-data.html#challenges"><i class="fa fa-check"></i><b>28.9</b> Challenges</a></li>
+</ul></li>
+<li class="chapter" data-level="29" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html"><i class="fa fa-check"></i><b>29</b> Linear Regression and Broom for Tidying Models</a>
+<ul>
+<li class="chapter" data-level="29.1" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#packages-needed"><i class="fa fa-check"></i><b>29.1</b> Packages needed</a></li>
+<li class="chapter" data-level="29.2" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#building-a-simple-base-model-with-lm"><i class="fa fa-check"></i><b>29.2</b> Building a simple base model with {lm}</a>
+<ul>
+<li class="chapter" data-level="29.2.1" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#producing-manuscript-quality-tables-with-gtsummary"><i class="fa fa-check"></i><b>29.2.1</b> Producing manuscript-quality tables with {gtsummary}</a></li>
+</ul></li>
+<li class="chapter" data-level="29.3" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#is-your-model-valid"><i class="fa fa-check"></i><b>29.3</b> Is Your Model Valid?</a></li>
+<li class="chapter" data-level="29.4" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#making-predictions-with-your-model"><i class="fa fa-check"></i><b>29.4</b> Making Predictions with Your Model</a>
+<ul>
+<li class="chapter" data-level="29.4.1" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#predictions-from-new-data"><i class="fa fa-check"></i><b>29.4.1</b> Predictions from new data</a></li>
+</ul></li>
+<li class="chapter" data-level="29.5" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#choosing-predictors-for-multivariate-modeling-testing-dealing-with-collinearity"><i class="fa fa-check"></i><b>29.5</b> Choosing predictors for multivariate modeling – testing, dealing with collinearity</a>
+<ul>
+<li class="chapter" data-level="29.5.1" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#challenges-1"><i class="fa fa-check"></i><b>29.5.1</b> Challenges</a></li>
+</ul></li>
+<li class="chapter" data-level="29.6" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#presenting-model-results-with-rmarkdown"><i class="fa fa-check"></i><b>29.6</b> presenting model results with RMarkdown</a>
+<ul>
+<li class="chapter" data-level="29.6.1" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#challenges-2"><i class="fa fa-check"></i><b>29.6.1</b> Challenges</a></li>
+</ul></li>
+<li class="chapter" data-level="29.7" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#presenting-model-results-with-a-shiny-app"><i class="fa fa-check"></i><b>29.7</b> presenting model results with a Shiny App</a>
+<ul>
+<li class="chapter" data-level="29.7.1" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#challenges-3"><i class="fa fa-check"></i><b>29.7.1</b> Challenges</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="30" data-path="logistic-regression-and-broom-for-tidying-models.html"><a href="logistic-regression-and-broom-for-tidying-models.html"><i class="fa fa-check"></i><b>30</b> Logistic Regression and Broom for Tidying Models</a>
+<ul>
+<li class="chapter" data-level="30.1" data-path="logistic-regression-and-broom-for-tidying-models.html"><a href="logistic-regression-and-broom-for-tidying-models.html#the-model-summary"><i class="fa fa-check"></i><b>30.1</b> The Model Summary</a></li>
+<li class="chapter" data-level="30.2" data-path="logistic-regression-and-broom-for-tidying-models.html"><a href="logistic-regression-and-broom-for-tidying-models.html#evaluating-your-model-assumptions"><i class="fa fa-check"></i><b>30.2</b> Evaluating your Model Assumptions</a></li>
+<li class="chapter" data-level="30.3" data-path="logistic-regression-and-broom-for-tidying-models.html"><a href="logistic-regression-and-broom-for-tidying-models.html#converting-between-logit-odds-ratios-and-probability"><i class="fa fa-check"></i><b>30.3</b> Converting between logit, odds ratios, and probability</a></li>
+</ul></li>
+<li class="chapter" data-level="31" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html"><i class="fa fa-check"></i><b>31</b> Fast and Frugal Trees with the {FFTrees} Package</a>
+<ul>
+<li class="chapter" data-level="31.1" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#setup"><i class="fa fa-check"></i><b>31.1</b> Setup</a></li>
+<li class="chapter" data-level="31.2" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#the-breast-cancer-dataset"><i class="fa fa-check"></i><b>31.2</b> The Breast Cancer Dataset</a>
+<ul>
+<li class="chapter" data-level="31.2.1" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#data-inspection"><i class="fa fa-check"></i><b>31.2.1</b> Data Inspection</a></li>
+<li class="chapter" data-level="31.2.2" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#check-your-progress"><i class="fa fa-check"></i><b>31.2.2</b> Check Your Progress</a></li>
+</ul></li>
+<li class="chapter" data-level="31.3" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#building-a-fftrees-model-for-breast-cancer"><i class="fa fa-check"></i><b>31.3</b> Building a FFTrees Model for Breast Cancer</a></li>
+<li class="chapter" data-level="31.4" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#your-turn-with-heart-disease-data"><i class="fa fa-check"></i><b>31.4</b> Your Turn with Heart Disease Data</a>
+<ul>
+<li class="chapter" data-level="31.4.1" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#test-what-you-have-learned-2"><i class="fa fa-check"></i><b>31.4.1</b> Test what you have learned</a></li>
+</ul></li>
+<li class="chapter" data-level="31.5" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#your-turn-to-build-and-interpret-a-model"><i class="fa fa-check"></i><b>31.5</b> Your Turn to Build and Interpret a Model</a></li>
+<li class="chapter" data-level="31.6" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#now-build-your-fftrees-model-to-predict-improved-status-vs.-death"><i class="fa fa-check"></i><b>31.6</b> Now build your FFTrees model to predict improved status (vs. death)</a></li>
+</ul></li>
+<li class="chapter" data-level="32" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html"><i class="fa fa-check"></i><b>32</b> A Gentle Introduction to Shiny</a>
+<ul>
+<li class="chapter" data-level="32.1" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#what-is-shiny"><i class="fa fa-check"></i><b>32.1</b> What is Shiny?</a></li>
+<li class="chapter" data-level="32.2" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#the-basic-structure-of-a-shiny-app"><i class="fa fa-check"></i><b>32.2</b> The Basic Structure of a Shiny App</a>
+<ul>
+<li class="chapter" data-level="32.2.1" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#the-weirdness-of-a-shiny-app"><i class="fa fa-check"></i><b>32.2.1</b> The weirdness of a Shiny app</a></li>
+</ul></li>
+<li class="chapter" data-level="32.3" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#the-user-interface-section-structure"><i class="fa fa-check"></i><b>32.3</b> The User Interface Section Structure</a></li>
+<li class="chapter" data-level="32.4" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#the-server-section-structure"><i class="fa fa-check"></i><b>32.4</b> The Server Section Structure</a></li>
+<li class="chapter" data-level="32.5" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#how-to-run-an-app"><i class="fa fa-check"></i><b>32.5</b> How to Run an App</a>
+<ul>
+<li class="chapter" data-level="32.5.1" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#how-to-stop-an-app"><i class="fa fa-check"></i><b>32.5.1</b> How to Stop an App</a></li>
+</ul></li>
+<li class="chapter" data-level="32.6" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#building-a-very-simple-app-version-1"><i class="fa fa-check"></i><b>32.6</b> Building a Very Simple App (Version 1)</a>
+<ul>
+<li class="chapter" data-level="32.6.1" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#the-ui-section"><i class="fa fa-check"></i><b>32.6.1</b> The ui section</a></li>
+<li class="chapter" data-level="32.6.2" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#the-server-section"><i class="fa fa-check"></i><b>32.6.2</b> The server section</a></li>
+</ul></li>
+<li class="chapter" data-level="32.7" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#edit-this-app-version-2"><i class="fa fa-check"></i><b>32.7</b> Edit this App (Version 2)</a></li>
+<li class="chapter" data-level="32.8" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#building-a-user-interface-for-inputs-and-outputs"><i class="fa fa-check"></i><b>32.8</b> Building a User Interface for Inputs and Outputs</a>
+<ul>
+<li class="chapter" data-level="32.8.1" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#inputs"><i class="fa fa-check"></i><b>32.8.1</b> Inputs</a></li>
+<li class="chapter" data-level="32.8.2" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#outputs"><i class="fa fa-check"></i><b>32.8.2</b> Outputs</a></li>
+</ul></li>
+<li class="chapter" data-level="32.9" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#building-a-functioning-server-section"><i class="fa fa-check"></i><b>32.9</b> Building a Functioning Server Section</a>
+<ul>
+<li class="chapter" data-level="32.9.1" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#using-the-input-values-data"><i class="fa fa-check"></i><b>32.9.1</b> Using the input values &amp; Data</a></li>
+<li class="chapter" data-level="32.9.2" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#wrangling-and-calculating"><i class="fa fa-check"></i><b>32.9.2</b> Wrangling and Calculating</a></li>
+<li class="chapter" data-level="32.9.3" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#rendering-to-html-outputs"><i class="fa fa-check"></i><b>32.9.3</b> Rendering to HTML Outputs</a></li>
+</ul></li>
+<li class="chapter" data-level="32.10" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#building-a-simple-shiny-app-version-3"><i class="fa fa-check"></i><b>32.10</b> Building a Simple Shiny App (Version 3)</a></li>
+<li class="chapter" data-level="32.11" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#publishing-your-shiny-app-on-the-web"><i class="fa fa-check"></i><b>32.11</b> Publishing Your Shiny App on the Web</a></li>
+<li class="chapter" data-level="32.12" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#more-to-explore"><i class="fa fa-check"></i><b>32.12</b> More to Explore</a></li>
+</ul></li>
+<li class="chapter" data-level="33" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html"><i class="fa fa-check"></i><b>33</b> Sharing Models with Shiny</a>
+<ul>
+<li class="chapter" data-level="33.0.1" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#packages-needed-for-this-chapter-6"><i class="fa fa-check"></i><b>33.0.1</b> Packages Needed for this Chapter</a></li>
+<li class="chapter" data-level="33.1" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#setting-up-and-saving-models"><i class="fa fa-check"></i><b>33.1</b> Setting up and Saving Models</a>
+<ul>
+<li class="chapter" data-level="33.1.1" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#linear-model"><i class="fa fa-check"></i><b>33.1.1</b> Linear Model</a></li>
+<li class="chapter" data-level="33.1.2" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#logistic-model"><i class="fa fa-check"></i><b>33.1.2</b> Logistic Model</a></li>
+<li class="chapter" data-level="33.1.3" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#random-forest-model"><i class="fa fa-check"></i><b>33.1.3</b> Random Forest Model</a></li>
+</ul></li>
+<li class="chapter" data-level="33.2" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#building-a-shiny-app-for-the-linear-model"><i class="fa fa-check"></i><b>33.2</b> Building a Shiny App for the Linear Model</a>
+<ul>
+<li class="chapter" data-level="33.2.1" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#the-default-shiny-app"><i class="fa fa-check"></i><b>33.2.1</b> The Default Shiny App</a></li>
+<li class="chapter" data-level="33.2.2" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#editing-the-ui-sidebarpanel-for-the-input-predictor-variables"><i class="fa fa-check"></i><b>33.2.2</b> Editing the <strong>ui</strong> <em>sidebarPanel</em> for the Input Predictor Variables</a></li>
+<li class="chapter" data-level="33.2.3" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#editing-the-server-section-to-make-predictions"><i class="fa fa-check"></i><b>33.2.3</b> Editing the <em>server</em> section to make Predictions</a></li>
+<li class="chapter" data-level="33.2.4" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#editing-the-mainpanel-in-the-ui-section-to-display-your-prediction"><i class="fa fa-check"></i><b>33.2.4</b> Editing the mainPanel in the ui section to display your Prediction</a></li>
+</ul></li>
+<li class="chapter" data-level="33.3" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#building-a-shiny-app-for-the-logistic-model"><i class="fa fa-check"></i><b>33.3</b> Building a Shiny App for the Logistic Model</a>
+<ul>
+<li class="chapter" data-level="33.3.1" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#the-default-shiny-app-1"><i class="fa fa-check"></i><b>33.3.1</b> The Default Shiny App</a></li>
+<li class="chapter" data-level="33.3.2" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#editing-the-ui-sidebarpanel-for-the-input-predictor-variables-1"><i class="fa fa-check"></i><b>33.3.2</b> Editing the <strong>ui</strong> <em>sidebarPanel</em> for the Input Predictor Variables</a></li>
+<li class="chapter" data-level="33.3.3" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#editing-the-server-section-to-make-predictions-1"><i class="fa fa-check"></i><b>33.3.3</b> Editing the <em>server</em> section to make Predictions</a></li>
+<li class="chapter" data-level="33.3.4" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#editing-the-mainpanel-in-the-ui-section-to-display-your-prediction-1"><i class="fa fa-check"></i><b>33.3.4</b> Editing the mainPanel in the ui section to display your Prediction</a></li>
+</ul></li>
+<li class="chapter" data-level="33.4" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#building-a-shiny-app-for-the-random-forest-model"><i class="fa fa-check"></i><b>33.4</b> Building a Shiny App for the Random Forest Model</a></li>
+<li class="chapter" data-level="33.5" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#challenge-yourself"><i class="fa fa-check"></i><b>33.5</b> Challenge Yourself</a></li>
+</ul></li>
+<li class="chapter" data-level="34" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html"><i class="fa fa-check"></i><b>34</b> Introduction to R Markdown</a>
+<ul>
+<li class="chapter" data-level="34.1" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#what-makes-an-rmarkdown-document"><i class="fa fa-check"></i><b>34.1</b> What Makes an Rmarkdown document?</a></li>
+<li class="chapter" data-level="34.2" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#trying-out-rmarkdown-with-a-mock-manuscript"><i class="fa fa-check"></i><b>34.2</b> Trying out RMarkdown with a Mock Manuscript</a></li>
+<li class="chapter" data-level="34.3" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#inserting-code-chunks"><i class="fa fa-check"></i><b>34.3</b> Inserting Code Chunks</a>
+<ul>
+<li class="chapter" data-level="34.3.1" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#code-chunk-icons"><i class="fa fa-check"></i><b>34.3.1</b> Code Chunk Icons</a></li>
+</ul></li>
+<li class="chapter" data-level="34.4" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#including-plots-1"><i class="fa fa-check"></i><b>34.4</b> Including Plots</a></li>
+<li class="chapter" data-level="34.5" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#including-tables"><i class="fa fa-check"></i><b>34.5</b> Including Tables</a></li>
+<li class="chapter" data-level="34.6" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#including-links-and-images"><i class="fa fa-check"></i><b>34.6</b> Including Links and Images</a>
+<ul>
+<li class="chapter" data-level="34.6.1" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#links"><i class="fa fa-check"></i><b>34.6.1</b> Links</a></li>
+<li class="chapter" data-level="34.6.2" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#images"><i class="fa fa-check"></i><b>34.6.2</b> Images</a></li>
+</ul></li>
+<li class="chapter" data-level="34.7" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#other-languages-in-code-chunks"><i class="fa fa-check"></i><b>34.7</b> Other languages in code chunks</a></li>
+<li class="chapter" data-level="34.8" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#code-chunk-options"><i class="fa fa-check"></i><b>34.8</b> Code Chunk Options</a></li>
+<li class="chapter" data-level="34.9" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#how-it-all-rmarkdown-knitr-pandoc-works"><i class="fa fa-check"></i><b>34.9</b> How It All (Rmarkdown + {knitr} + Pandoc) Works</a></li>
+<li class="chapter" data-level="34.10" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#knitting-and-editing-and-re-knitting-your-rmd-document"><i class="fa fa-check"></i><b>34.10</b> Knitting and Editing (and re-Knitting() Your Rmd document</a></li>
+<li class="chapter" data-level="34.11" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#try-out-other-chunk-options"><i class="fa fa-check"></i><b>34.11</b> Try Out Other Chunk Options</a></li>
+<li class="chapter" data-level="34.12" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#the-setup-chunk"><i class="fa fa-check"></i><b>34.12</b> The <code>setup</code> chunk</a></li>
+<li class="chapter" data-level="34.13" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#markdown-syntax"><i class="fa fa-check"></i><b>34.13</b> Markdown syntax</a></li>
+<li class="chapter" data-level="34.14" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#nd-header"><i class="fa fa-check"></i><b>34.14</b> 2nd Header</a>
+<ul>
+<li class="chapter" data-level="34.14.1" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#rd-header"><i class="fa fa-check"></i><b>34.14.1</b> 3rd Header</a></li>
+</ul></li>
+<li class="chapter" data-level="34.15" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#line-breaks-and-page-breaks"><i class="fa fa-check"></i><b>34.15</b> Line Breaks and Page Breaks</a></li>
+<li class="chapter" data-level="34.16" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#making-lists"><i class="fa fa-check"></i><b>34.16</b> Making Lists</a>
+<ul>
+<li class="chapter" data-level="34.16.1" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#ordered-lists"><i class="fa fa-check"></i><b>34.16.1</b> Ordered Lists</a></li>
+<li class="chapter" data-level="34.16.2" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#un-ordered-lists"><i class="fa fa-check"></i><b>34.16.2</b> Un-ordered lists</a></li>
+<li class="chapter" data-level="34.16.3" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#nested-lists"><i class="fa fa-check"></i><b>34.16.3</b> Nested Lists</a></li>
+</ul></li>
+<li class="chapter" data-level="34.17" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#the-easy-button---visual-markdown-editing"><i class="fa fa-check"></i><b>34.17</b> The Easy Button - Visual Markdown Editing</a>
+<ul>
+<li class="chapter" data-level="34.17.1" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#try-inserting-a-list-a-table-and-a-block-quote"><i class="fa fa-check"></i><b>34.17.1</b> Try inserting a list, a table and a block-quote</a></li>
+</ul></li>
+<li class="chapter" data-level="34.18" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#inline-code"><i class="fa fa-check"></i><b>34.18</b> Inline Code</a>
+<ul>
+<li class="chapter" data-level="34.18.1" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#try-inserting-some-in-line-r-code"><i class="fa fa-check"></i><b>34.18.1</b> Try inserting some in-line R code</a></li>
+</ul></li>
+<li class="chapter" data-level="34.19" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#a-quick-quiz"><i class="fa fa-check"></i><b>34.19</b> A Quick Quiz</a></li>
+</ul></li>
+<li class="chapter" data-level="35" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html"><i class="fa fa-check"></i><b>35</b> Rmarkdown Output Options</a>
+<ul>
+<li class="chapter" data-level="35.1" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#microsoft-word-output-from-rmarkdown"><i class="fa fa-check"></i><b>35.1</b> Microsoft Word Output from Rmarkdown</a>
+<ul>
+<li class="chapter" data-level="35.1.1" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#making-a-styles-reference-file-for-microsoft-word"><i class="fa fa-check"></i><b>35.1.1</b> Making a Styles Reference File for Microsoft Word</a></li>
+<li class="chapter" data-level="35.1.2" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#lets-practice-this."><i class="fa fa-check"></i><b>35.1.2</b> Let’s Practice This.</a></li>
+<li class="chapter" data-level="35.1.3" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#re-formatting-your-template"><i class="fa fa-check"></i><b>35.1.3</b> Re-formatting Your Template</a></li>
+<li class="chapter" data-level="35.1.4" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#using-your-new-styles-template"><i class="fa fa-check"></i><b>35.1.4</b> Using Your New Styles Template</a></li>
+<li class="chapter" data-level="35.1.5" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#now-you-are-ready"><i class="fa fa-check"></i><b>35.1.5</b> Now you are ready!</a></li>
+</ul></li>
+<li class="chapter" data-level="35.2" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#pdf-output-from-rmarkdown"><i class="fa fa-check"></i><b>35.2</b> PDF Output from RMarkdown</a>
+<ul>
+<li class="chapter" data-level="35.2.1" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#latex-and-tinytex"><i class="fa fa-check"></i><b>35.2.1</b> LaTeX and tinytex</a></li>
+<li class="chapter" data-level="35.2.2" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#knitting-to-pdf"><i class="fa fa-check"></i><b>35.2.2</b> Knitting to PDF</a></li>
+</ul></li>
+<li class="chapter" data-level="35.3" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#microsoft-powerpoint-output-from-rmarkdown"><i class="fa fa-check"></i><b>35.3</b> Microsoft Powerpoint Output from Rmarkdown</a>
+<ul>
+<li class="chapter" data-level="35.3.1" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#tables-in-powerpoint"><i class="fa fa-check"></i><b>35.3.1</b> Tables in Powerpoint</a></li>
+<li class="chapter" data-level="35.3.2" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#images-in-powerpoint"><i class="fa fa-check"></i><b>35.3.2</b> Images in Powerpoint</a></li>
+<li class="chapter" data-level="35.3.3" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#plots-in-powerpoint"><i class="fa fa-check"></i><b>35.3.3</b> Plots in Powerpoint</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="36" data-path="adding-citations-to-your-rmarkdown.html"><a href="adding-citations-to-your-rmarkdown.html"><i class="fa fa-check"></i><b>36</b> Adding Citations to your RMarkdown</a></li>
+<li class="chapter" data-level="37" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html"><i class="fa fa-check"></i><b>37</b> Quarto is a Next-Generation RMarkdown</a>
+<ul>
+<li class="chapter" data-level="37.1" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#goals-for-this-chapter-6"><i class="fa fa-check"></i><b>37.1</b> Goals for this Chapter</a></li>
+<li class="chapter" data-level="37.2" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#packages-needed-for-this-chapter-7"><i class="fa fa-check"></i><b>37.2</b> Packages Needed for this chapter</a></li>
+<li class="chapter" data-level="37.3" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#introducing-quarto"><i class="fa fa-check"></i><b>37.3</b> Introducing Quarto</a></li>
+<li class="chapter" data-level="37.4" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#a-tour-of-quarto"><i class="fa fa-check"></i><b>37.4</b> A Tour of Quarto</a></li>
+<li class="chapter" data-level="37.5" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#opening-a-new-quarto-document"><i class="fa fa-check"></i><b>37.5</b> Opening a New Quarto Document</a></li>
+<li class="chapter" data-level="37.6" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#annotating-code-in-quarto"><i class="fa fa-check"></i><b>37.6</b> Annotating code in Quarto</a></li>
+<li class="chapter" data-level="37.7" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#the-visual-editor-vs.-source-editor-in-quarto"><i class="fa fa-check"></i><b>37.7</b> The Visual Editor vs. Source Editor in Quarto</a></li>
+<li class="chapter" data-level="37.8" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#adding-code-chunks"><i class="fa fa-check"></i><b>37.8</b> Adding Code Chunks</a></li>
+<li class="chapter" data-level="37.9" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#organized-options-in-code-chunks-with-the-hash-pipe"><i class="fa fa-check"></i><b>37.9</b> Organized Options in Code Chunks with the Hash-Pipe #|</a></li>
+<li class="chapter" data-level="37.10" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#stating-global-options-in-your-yaml-header"><i class="fa fa-check"></i><b>37.10</b> Stating Global Options in Your YAML Header</a>
+<ul>
+<li class="chapter" data-level="37.10.1" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#code-options-and-code-folding"><i class="fa fa-check"></i><b>37.10.1</b> Code Options and Code Folding</a></li>
+<li class="chapter" data-level="37.10.2" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#parameters"><i class="fa fa-check"></i><b>37.10.2</b> Parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="37.11" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#figures"><i class="fa fa-check"></i><b>37.11</b> Figures</a></li>
+<li class="chapter" data-level="37.12" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#tables"><i class="fa fa-check"></i><b>37.12</b> Tables</a></li>
+<li class="chapter" data-level="37.13" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#inline-code-and-caching"><i class="fa fa-check"></i><b>37.13</b> Inline Code and Caching</a></li>
+<li class="chapter" data-level="37.14" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#quarto-at-the-command-line"><i class="fa fa-check"></i><b>37.14</b> Quarto at the Command Line</a></li>
+<li class="chapter" data-level="37.15" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#citations-in-quarto"><i class="fa fa-check"></i><b>37.15</b> Citations in Quarto</a></li>
+<li class="chapter" data-level="37.16" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#challenge-yourself-1"><i class="fa fa-check"></i><b>37.16</b> Challenge Yourself</a></li>
+<li class="chapter" data-level="37.17" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#exploring-further"><i class="fa fa-check"></i><b>37.17</b> Exploring further</a></li>
+</ul></li>
+<li class="chapter" data-level="38" data-path="cmd-line.html"><a href="cmd-line.html"><i class="fa fa-check"></i><b>38</b> Running R from the UNIX Command Line</a>
+<ul>
+<li class="chapter" data-level="38.1" data-path="cmd-line.html"><a href="cmd-line.html#what-is-the-unix-command-line"><i class="fa fa-check"></i><b>38.1</b> What is the UNIX Command line?</a></li>
+<li class="chapter" data-level="38.2" data-path="cmd-line.html"><a href="cmd-line.html#why-run-r-from-the-command-line"><i class="fa fa-check"></i><b>38.2</b> Why run R from the command line?</a></li>
+<li class="chapter" data-level="38.3" data-path="cmd-line.html"><a href="cmd-line.html#how-do-you-get-started"><i class="fa fa-check"></i><b>38.3</b> How do you get started?</a>
+<ul>
+<li class="chapter" data-level="38.3.1" data-path="cmd-line.html"><a href="cmd-line.html#on-a-mac"><i class="fa fa-check"></i><b>38.3.1</b> On a Mac</a></li>
+<li class="chapter" data-level="38.3.2" data-path="cmd-line.html"><a href="cmd-line.html#on-a-windows-pc"><i class="fa fa-check"></i><b>38.3.2</b> On a Windows PC</a></li>
+</ul></li>
+<li class="chapter" data-level="38.4" data-path="cmd-line.html"><a href="cmd-line.html#the-yawning-blackness-of-the-terminal-window"><i class="fa fa-check"></i><b>38.4</b> The Yawning Blackness of the Terminal Window</a></li>
+<li class="chapter" data-level="38.5" data-path="cmd-line.html"><a href="cmd-line.html#where-are-we"><i class="fa fa-check"></i><b>38.5</b> Where Are We?</a></li>
+<li class="chapter" data-level="38.6" data-path="cmd-line.html"><a href="cmd-line.html#cleaning-up"><i class="fa fa-check"></i><b>38.6</b> Cleaning Up</a></li>
+<li class="chapter" data-level="38.7" data-path="cmd-line.html"><a href="cmd-line.html#other-helpful-file-commands"><i class="fa fa-check"></i><b>38.7</b> Other helpful file commands</a></li>
+<li class="chapter" data-level="38.8" data-path="cmd-line.html"><a href="cmd-line.html#what-about-r"><i class="fa fa-check"></i><b>38.8</b> What about R?</a></li>
+<li class="chapter" data-level="38.9" data-path="cmd-line.html"><a href="cmd-line.html#what-about-just-a-few-lines-of-r"><i class="fa fa-check"></i><b>38.9</b> What about just a few lines of R?</a></li>
+<li class="chapter" data-level="38.10" data-path="cmd-line.html"><a href="cmd-line.html#running-an-r-script-from-the-terminal"><i class="fa fa-check"></i><b>38.10</b> Running an R Script from the Terminal</a></li>
+<li class="chapter" data-level="38.11" data-path="cmd-line.html"><a href="cmd-line.html#rendering-an-rmarkdown-file-from-the-terminal"><i class="fa fa-check"></i><b>38.11</b> Rendering an Rmarkdown file from the Terminal</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="title-holder.html"><a href="title-holder.html"><i class="fa fa-check"></i>Title holder</a></li>
 <li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
@@ -845,10 +896,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables" class="section level1 hasAnchor" number="22">
-<h1><span class="header-section-number">Chapter 22</span> Bivariate ggplot2 Scatterplots to Visualize Relationships Between Variables<a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="packages-used-in-this-chapter" class="section level2 hasAnchor" number="22.1">
-<h2><span class="header-section-number">22.1</span> Packages used in this Chapter<a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#packages-used-in-this-chapter" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables" class="section level1 hasAnchor" number="23">
+<h1><span class="header-section-number">Chapter 23</span> Bivariate ggplot2 Scatterplots to Visualize Relationships Between Variables<a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="packages-used-in-this-chapter" class="section level2 hasAnchor" number="23.1">
+<h2><span class="header-section-number">23.1</span> Packages used in this Chapter<a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#packages-used-in-this-chapter" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Use <code>library(packagename)</code> to load these packages,
 and <code>install.packages("packagename")</code> to install these if they are not already installed.</p>
 <ul>
@@ -857,14 +908,14 @@ and <code>install.packages("packagename")</code> to install these if they are no
 <li>{ggpubr}</li>
 </ul>
 </div>
-<div id="data-exploration-and-validation-dev" class="section level2 hasAnchor" number="22.2">
-<h2><span class="header-section-number">22.2</span> Data Exploration and Validation (DEV)<a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#data-exploration-and-validation-dev" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="data-exploration-and-validation-dev" class="section level2 hasAnchor" number="23.2">
+<h2><span class="header-section-number">23.2</span> Data Exploration and Validation (DEV)<a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#data-exploration-and-validation-dev" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When you first encounter a new dataset, it is often helpful to start with Data Exploration and Validation (DEV) . Note that DEV is different from EDA (Exploratory Data Analysis), which involves rummaging through your data (often with plots) and generating new hypotheses, performing multiple tests, and essentially data mining.</p>
 <p>DEV has specific goals, which include identifying variables with problematic values (NA, outliers), unexpected distributions (sometimes bimodal), and less-than-helpful variable names or data types. In this chapter, we will look at investigating pairs of continuous variables, looking for relationships and correlations.</p>
 <p>We will also add some new skills to help you customize your scatter plots, and to learn to think conceptually about building up ggplots in layers.</p>
 </div>
-<div id="scatterplots" class="section level2 hasAnchor" number="22.3">
-<h2><span class="header-section-number">22.3</span> Scatterplots<a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#scatterplots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="scatterplots" class="section level2 hasAnchor" number="23.3">
+<h2><span class="header-section-number">23.3</span> Scatterplots<a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#scatterplots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>One of the most helpful ways to get started in exploring relationships between continuous variables is to explore pairs of continuous variables with a scatterplot. These are accomplished with geom_point() in ggplot2. A scatterplot allows you to see the relationship between two continuous variables, and is a good way to get started with ggplot. Let’s start by looking at the realtionship between the number of colon polyps found in participants in a clinical trial and their age. We start by building up layers</p>
 <ul>
 <li>data layer - tell R which dataset to use</li>
@@ -874,25 +925,25 @@ and <code>install.packages("packagename")</code> to install these if they are no
 </ul>
 <p>In this example, we will map the participant <code>age</code> to x, and the <code>baseline</code> number of polyps to y,
 and use <code>geom_point</code> as the geom.</p>
-<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb458-1" tabindex="-1"></a>medicaldata<span class="sc">::</span>polyps <span class="sc">%&gt;%</span> </span>
-<span id="cb458-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb458-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb458-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb458-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> baseline) <span class="sc">+</span> </span>
-<span id="cb458-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb458-4" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb482-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb482-1" tabindex="-1"></a>medicaldata<span class="sc">::</span>polyps <span class="sc">%&gt;%</span> </span>
+<span id="cb482-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb482-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb482-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb482-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> baseline) <span class="sc">+</span> </span>
+<span id="cb482-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb482-4" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="io48b-bivariate-scatter-plots_files/figure-html/scatter-1-1.png" width="672" /></p>
 <p>Copy this code to your RStudio console, and run it to get this plot.</p>
 <p>This gives us a very basic scatterplot, with a y-axis range between 7 and 318 polyps (that would have been a looooong colonoscopy if you tried to remove all 318 polyps).</p>
 <p>Not a dramatic correlation, though you could imagine a downward slope with age if you fitted a linear regression line. Though this is likely pulled way up at age 18 by the participant with many polyps.</p>
 <p>Now try changing the code to map y to the number of polyps at 3 months (<code>number3m</code>). The code example below adds a linear regression line with <code>method = "lm"</code>. <code>lm</code> stands for linear model. Add a smoothing line to your code in the Console. Try <code>method = "loess"</code> for a different look, rather than forcing a linear relationship.</p>
-<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb459-1" tabindex="-1"></a>polyps <span class="sc">%&gt;%</span> </span>
-<span id="cb459-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb459-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb459-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb459-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> baseline) <span class="sc">+</span> </span>
-<span id="cb459-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb459-4" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb459-5"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb459-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;loess&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb483-1" tabindex="-1"></a>polyps <span class="sc">%&gt;%</span> </span>
+<span id="cb483-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb483-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb483-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb483-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> baseline) <span class="sc">+</span> </span>
+<span id="cb483-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb483-4" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb483-5"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb483-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;loess&#39;</span>)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="io48b-bivariate-scatter-plots_files/figure-html/scatter-2-1.png" width="672" /></p>
 <p>Does it matter whether you map x or y first, in the aes() function? Try swapping these to find out.</p>
-<div id="micro-quiz" class="section level3 hasAnchor" number="22.3.1">
-<h3><span class="header-section-number">22.3.1</span> Micro-quiz!<a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#micro-quiz" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="micro-quiz" class="section level3 hasAnchor" number="23.3.1">
+<h3><span class="header-section-number">23.3.1</span> Micro-quiz!<a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#micro-quiz" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>(correct answers will be green!)</p>
 <ul>
 <li><p>X must always be mapped before Y in ggplot2 <code>aes()</code> functions <select class='webex-select'><option value='blank'></option><option value=''>TRUE</option><option value='answer'>FALSE</option></select></p></li>
@@ -901,18 +952,18 @@ and use <code>geom_point</code> as the geom.</p>
 </ul>
 </div>
 </div>
-<div id="mapping-more-variables" class="section level2 hasAnchor" number="22.4">
-<h2><span class="header-section-number">22.4</span> Mapping More Variables<a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#mapping-more-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="mapping-more-variables" class="section level2 hasAnchor" number="23.4">
+<h2><span class="header-section-number">23.4</span> Mapping More Variables<a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#mapping-more-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You can add more information to a plot by mapping additional variables, which can help you make comparisons.</p>
 <p>You can map the <code>treatment</code> variable (sulindac or placebo) to the color aesthetic for the points. You just add <code>color = varname</code> to map a new variable named (varname) to the color.</p>
 <p>Try this by modifying the code below.
 Remember to put a comma between mappings, and to put your aesthetic mapping <em>inside</em> the <code>aes()</code> function.</p>
 <p>Then run the code chunk to generate a plot.</p>
-<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb461-1" tabindex="-1"></a>polyps <span class="sc">%&gt;%</span> </span>
-<span id="cb461-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb461-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb461-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb461-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> number3m) <span class="sc">+</span> </span>
-<span id="cb461-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb461-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&#39;blue&#39;</span>) <span class="sc">+</span></span>
-<span id="cb461-5"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb461-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb485-1" tabindex="-1"></a>polyps <span class="sc">%&gt;%</span> </span>
+<span id="cb485-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb485-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb485-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb485-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> number3m) <span class="sc">+</span> </span>
+<span id="cb485-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb485-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">&#39;blue&#39;</span>) <span class="sc">+</span></span>
+<span id="cb485-5"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb485-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="io48b-bivariate-scatter-plots_files/figure-html/scatter-3-1.png" width="672" /></p>
 <p>If this did not work, put <code>, color = treatment</code> after <code>y = number3m</code> inside the <code>aes()</code> parentheses.</p>
@@ -926,39 +977,39 @@ Remember to put a comma between mappings, and to put your aesthetic mapping <em>
 <li>NOTE that a variable can be mapped to <strong>more than one</strong> visual property.</li>
 <li>BUT if you try to map more than one variable to a single visual property within the <code>aes()</code> function, the subsequent mappings will be ignored. The 1st mapping (within one aes) wins.</li>
 </ul>
-<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb463-1" tabindex="-1"></a>polyps <span class="sc">%&gt;%</span> </span>
-<span id="cb463-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb463-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb463-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb463-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> number3m) <span class="sc">+</span> </span>
-<span id="cb463-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb463-4" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb487-1" tabindex="-1"></a>polyps <span class="sc">%&gt;%</span> </span>
+<span id="cb487-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb487-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb487-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb487-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> number3m) <span class="sc">+</span> </span>
+<span id="cb487-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb487-4" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="io48b-bivariate-scatter-plots_files/figure-html/scatter-4-1.png" width="672" /></p>
 <div class="warning">
 <p>If you try to map a variable to a visual property <strong>outside</strong> of the <code>aes()</code> function, it will be treated as a constant, not a variable, which can lead to strange results. Try moving <code>color = treatment</code> to a spot inside of the <code>geom_point()</code> function parentheses. Or even better, try <code>color = 'blue'</code> to within geom_point(). What happens?</p>
 </div>
 </div>
-<div id="inheritance-and-layering-in-ggplot2" class="section level2 hasAnchor" number="22.5">
-<h2><span class="header-section-number">22.5</span> Inheritance and Layering in ggplot2<a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#inheritance-and-layering-in-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="inheritance-and-layering-in-ggplot2" class="section level2 hasAnchor" number="23.5">
+<h2><span class="header-section-number">23.5</span> Inheritance and Layering in ggplot2<a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#inheritance-and-layering-in-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Adding layers to a ggplot allows you to increase the complexity and customize a plot, building it up, layer by layer.</p>
 <p>This layered structure allows you to map a visual property (aesthetic) once, in the ggplot layer, or in the aes() layer. All subsequent layers <code>inherit</code> these visual properties, unless you specify differently. So your geom_point() layer inherits the mappings from the aesthetic layer.
 But if you want to, you can over-write the inherited properties, by stating a different <code>aes()</code> mapping.</p>
 <p>See the example below - the color mapping in geom_point over-writes the color mapping in the aesthetic layer, because it is in a later layer. In this case, the last layer wins.</p>
-<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb464-1" tabindex="-1"></a>polyps <span class="sc">%&gt;%</span> </span>
-<span id="cb464-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb464-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb464-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb464-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> number3m, <span class="at">color =</span> treatment) <span class="sc">+</span> </span>
-<span id="cb464-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb464-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> age))</span></code></pre></div>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb488-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb488-1" tabindex="-1"></a>polyps <span class="sc">%&gt;%</span> </span>
+<span id="cb488-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb488-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb488-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb488-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> number3m, <span class="at">color =</span> treatment) <span class="sc">+</span> </span>
+<span id="cb488-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb488-4" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> age))</span></code></pre></div>
 <p><img src="io48b-bivariate-scatter-plots_files/figure-html/scatter-5-1.png" width="672" /></p>
 <p>You can choose to do this deliberately. In the case below, this is done to make a <strong>single</strong> regression line that is purple, rather than the default black color.</p>
 <p>Because the color in <code>geom_smooth()</code> is set to a constant, you only get one (overall) regression line.</p>
 <p>Also notice that the color of the points is a bit dimmer than the previous plot. This is because the geom_smooth gray confidence interval from the linear regression is covering most of the points. Test this out by moving the geom_point() layer to the line <strong>after</strong> geom_smooth(). This should bring these points to the front. Whatever layer is last in the code is plotted on top.</p>
 <p>You can also ‘lighten up’ the confidence interval by setting the alpha for <code>geom_smooth()</code> to 0.1 (on a 0 to 1 opacity scale)</p>
-<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb465-1" tabindex="-1"></a>polyps <span class="sc">%&gt;%</span> </span>
-<span id="cb465-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb465-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb465-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb465-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> number3m, <span class="at">color =</span> treatment) <span class="sc">+</span> </span>
-<span id="cb465-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb465-4" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb465-5"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb465-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>, <span class="at">color =</span> <span class="st">&#39;purple&#39;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb489-1" tabindex="-1"></a>polyps <span class="sc">%&gt;%</span> </span>
+<span id="cb489-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb489-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb489-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb489-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> number3m, <span class="at">color =</span> treatment) <span class="sc">+</span> </span>
+<span id="cb489-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb489-4" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb489-5"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb489-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>, <span class="at">color =</span> <span class="st">&#39;purple&#39;</span>) </span></code></pre></div>
 <p><img src="io48b-bivariate-scatter-plots_files/figure-html/scatter-6-1.png" width="672" /></p>
 </div>
-<div id="aesthetic-mapping-micro-quiz" class="section level2 hasAnchor" number="22.6">
-<h2><span class="header-section-number">22.6</span> Aesthetic mapping Micro-Quiz!<a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#aesthetic-mapping-micro-quiz" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="aesthetic-mapping-micro-quiz" class="section level2 hasAnchor" number="23.6">
+<h2><span class="header-section-number">23.6</span> Aesthetic mapping Micro-Quiz!<a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#aesthetic-mapping-micro-quiz" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>(correct answers will be green!)</p>
 <ul>
 <li><p>Which one of the following is NOT a visual property that you can map a variable to in a scatterplot <select class='webex-select'><option value='blank'></option><option value=''>fill</option><option value=''>color</option><option value=''>shape</option><option value=''>alpha</option><option value='answer'>data</option><option value=''>size</option></select></p></li>
@@ -966,55 +1017,55 @@ But if you want to, you can over-write the inherited properties, by stating a di
 <li><p>You should assign visual properties to constant values, like <code>color = "blue"</code> or <code>size = 2</code> within <code>ggplot()</code> or the geom_point() function, but <strong>outside</strong> of an <code>aes()</code> function <select class='webex-select'><option value='blank'></option><option value='answer'>TRUE</option><option value=''>FALSE</option></select>.</p></li>
 </ul>
 </div>
-<div id="controlling-point-shape-size-and-color-manually" class="section level2 hasAnchor" number="22.7">
-<h2><span class="header-section-number">22.7</span> Controlling Point Shape, Size, and Color Manually<a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#controlling-point-shape-size-and-color-manually" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="controlling-point-shape-size-and-color-manually" class="section level2 hasAnchor" number="23.7">
+<h2><span class="header-section-number">23.7</span> Controlling Point Shape, Size, and Color Manually<a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#controlling-point-shape-size-and-color-manually" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>There are 25 point shapes available in R, which can be seen here, with the help of the <em>show_point_shapes()</em> function from {ggpubr}:</p>
-<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb466-1" tabindex="-1"></a>ggpubr<span class="sc">::</span><span class="fu">show_point_shapes</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb490-1" tabindex="-1"></a>ggpubr<span class="sc">::</span><span class="fu">show_point_shapes</span>()</span></code></pre></div>
 <p><img src="io48b-bivariate-scatter-plots_files/figure-html/point-shapes-1.png" width="672" /></p>
 <p>Notice that the shapes 21-25 have an outline color, and can be filled with a different color, while shapes 1-20 only have a single color option.</p>
 <p>By default, ggplot2 selects shapes and colors for you automatically (in order, 1-25, for shapes, and in the order of the default color palette for colors), so that you don’t have to worry about specifying these.</p>
 <p>But if you want to take the wheel, you can have more control of the shape, size, and color of your scatterplot points with <em>scale</em> functions.</p>
 <p>Let’s try this with a scatterplot using the <strong>cmv</strong> dataset. We will look at the relationship between the CD34 cell dose at the time of bone marrow transplant, and the time to development of CMV.</p>
 <p>For our base plot, we will map donor cmv status to color. Since the donor.cmv variable is stored as a <code>double</code> it is continuous, but we actually want this as a dichtomous 0/1 variable, so we will recode this ‘on the fly’ in the aesthetic mapping as <code>factor(donor.cmv)</code> instead of just <code>donor.cmv</code>. You can remove <code>factor()</code> from the code below to how this helps.</p>
-<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb467-1" tabindex="-1"></a>cmv <span class="sc">%&gt;%</span> </span>
-<span id="cb467-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb467-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb467-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb467-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> CD34.dose, <span class="at">x =</span> time.to.cmv, <span class="at">color =</span> <span class="fu">factor</span>(donor.cmv)) <span class="sc">+</span> </span>
-<span id="cb467-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb467-4" tabindex="-1"></a>  <span class="fu">geom_point</span>()  <span class="sc">+</span></span>
-<span id="cb467-5"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb467-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb491-1" tabindex="-1"></a>cmv <span class="sc">%&gt;%</span> </span>
+<span id="cb491-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb491-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb491-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb491-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> CD34.dose, <span class="at">x =</span> time.to.cmv, <span class="at">color =</span> <span class="fu">factor</span>(donor.cmv)) <span class="sc">+</span> </span>
+<span id="cb491-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb491-4" tabindex="-1"></a>  <span class="fu">geom_point</span>()  <span class="sc">+</span></span>
+<span id="cb491-5"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb491-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>)</span></code></pre></div>
 <p><img src="io48b-bivariate-scatter-plots_files/figure-html/scatter-7-1.png" width="672" /></p>
 <p>These data show an interaction between cmv.donor status and the CD34.dose. In folks who receive a CMV+ donor BMT, higher doses of CD34 cells are associated with a delay in the onset of CMV, but this is not the case with CMV negative BMT donors.</p>
-<div id="manual-shapes" class="section level3 hasAnchor" number="22.7.1">
-<h3><span class="header-section-number">22.7.1</span> Manual Shapes<a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#manual-shapes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="manual-shapes" class="section level3 hasAnchor" number="23.7.1">
+<h3><span class="header-section-number">23.7.1</span> Manual Shapes<a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#manual-shapes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To control the point shapes, let’s replace the geom_smooth line with <code>scale_shape_manual()</code> and set the values to 22 and 25. We also have to set an aesthetic mapping for shape. Let’s map this to the donor.sex variable.</p>
-<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb468-1" tabindex="-1"></a>cmv <span class="sc">%&gt;%</span> </span>
-<span id="cb468-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb468-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb468-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb468-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> CD34.dose, <span class="at">x =</span> time.to.cmv, <span class="at">color =</span> <span class="fu">factor</span>(donor.cmv), <span class="at">shape =</span> <span class="fu">factor</span>(donor.sex)) <span class="sc">+</span> </span>
-<span id="cb468-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb468-4" tabindex="-1"></a>  <span class="fu">geom_point</span>()  <span class="sc">+</span></span>
-<span id="cb468-5"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb468-5" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">25</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb492-1" tabindex="-1"></a>cmv <span class="sc">%&gt;%</span> </span>
+<span id="cb492-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb492-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb492-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb492-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> CD34.dose, <span class="at">x =</span> time.to.cmv, <span class="at">color =</span> <span class="fu">factor</span>(donor.cmv), <span class="at">shape =</span> <span class="fu">factor</span>(donor.sex)) <span class="sc">+</span> </span>
+<span id="cb492-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb492-4" tabindex="-1"></a>  <span class="fu">geom_point</span>()  <span class="sc">+</span></span>
+<span id="cb492-5"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb492-5" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">25</span>))</span></code></pre></div>
 <p><img src="io48b-bivariate-scatter-plots_files/figure-html/scatter-8-1.png" width="672" /></p>
 <p>Again, because donor.sex is stored as a numeric variable, we have to make it into a dichotomous factor on the fly in order to map this variable to shapes.</p>
 <p>Note that when you use the fillable shapes (21-25), you can also map a fill aesthetic to different color properties, separate from the color outline of the shape.</p>
 <p>You can also see that encoding <code>donor.sex</code> as 0 or 1 is not terribly helpful. It is often helpful to store data in <code>#_label</code> format, like 0_male, 1_female, to keep the encoding clear. You can extract the numeric portion with <code>parse_number()</code> if you want to do math on the variable later.</p>
 <p>If you have a lot of categories (like the 13 diagnosis categories in the cmv dataset), it can be easier to let ggplot handle the shapes, rather than having to specify 13 shapes.</p>
 </div>
-<div id="manual-sizes" class="section level3 hasAnchor" number="22.7.2">
-<h3><span class="header-section-number">22.7.2</span> Manual Sizes<a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#manual-sizes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="manual-sizes" class="section level3 hasAnchor" number="23.7.2">
+<h3><span class="header-section-number">23.7.2</span> Manual Sizes<a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#manual-sizes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s manually control the sizes of points - use the same approach, with <code>scale_size_manual()</code>. We want to emphasize the points with donor.cmv = 1, to see how this relates to the outcome variable, cmv, which is mapped to color.</p>
 <p>Run the scatter plot below as an example, then edit the code to map size to <code>factor(donor.cmv)</code>. Then add a line of code for <code>scale_size_manual()</code>, and set the values to 1 and 4.</p>
-<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb469-1" tabindex="-1"></a>cmv <span class="sc">%&gt;%</span> </span>
-<span id="cb469-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb469-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb469-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb469-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> age, <span class="at">x =</span> time.to.transplant, <span class="at">size =</span> CD8.dose, <span class="at">color =</span> <span class="fu">factor</span>(cmv)) <span class="sc">+</span></span>
-<span id="cb469-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb469-4" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb493-1" tabindex="-1"></a>cmv <span class="sc">%&gt;%</span> </span>
+<span id="cb493-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb493-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb493-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb493-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> age, <span class="at">x =</span> time.to.transplant, <span class="at">size =</span> CD8.dose, <span class="at">color =</span> <span class="fu">factor</span>(cmv)) <span class="sc">+</span></span>
+<span id="cb493-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb493-4" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span></code></pre></div>
 <p><img src="io48b-bivariate-scatter-plots_files/figure-html/scatter-9-1.png" width="672" /></p>
 </div>
-<div id="manual-color" class="section level3 hasAnchor" number="22.7.3">
-<h3><span class="header-section-number">22.7.3</span> Manual Color<a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#manual-color" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="manual-color" class="section level3 hasAnchor" number="23.7.3">
+<h3><span class="header-section-number">23.7.3</span> Manual Color<a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#manual-color" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s manually control the colors - use the same approach, with <code>scale_color_manual()</code>.
 Run the scatter plot below as an example, then edit the code to map color to <code>factor(donor.cmv)</code>. Then add a line of code for <code>scale_color_manual()</code>, and set the values to “green” and “red”.</p>
-<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb470-1" tabindex="-1"></a>cmv <span class="sc">%&gt;%</span> </span>
-<span id="cb470-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb470-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb470-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb470-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> age, <span class="at">x =</span> time.to.transplant, <span class="at">color =</span> diagnosis) <span class="sc">+</span></span>
-<span id="cb470-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb470-4" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb494-1" tabindex="-1"></a>cmv <span class="sc">%&gt;%</span> </span>
+<span id="cb494-2"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb494-2" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb494-3"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb494-3" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">y =</span> age, <span class="at">x =</span> time.to.transplant, <span class="at">color =</span> diagnosis) <span class="sc">+</span></span>
+<span id="cb494-4"><a href="bivariate-ggplot2-scatterplots-to-visualize-relationships-between-variables.html#cb494-4" tabindex="-1"></a>  <span class="fu">geom_point</span>() </span></code></pre></div>
 <p><img src="io48b-bivariate-scatter-plots_files/figure-html/scatter-10-1.png" width="672" /></p>
 
 </div>

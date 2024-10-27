@@ -20,7 +20,8 @@ Linear regression allows you to:
 Let's look at a simple linear model to predict annual health care expenses.
 ![shinyapp linear regression](images/shinyapp_hc_expenses.png)
 
-```r
+
+``` r
 library(tidyverse)
 library(mlbench)
 library(broom)
@@ -38,7 +39,7 @@ library(cutpointr)
 ##     auc
 ```
 
-```r
+``` r
 library(janitor)
 library(easystats)
 library(medicaldata)
@@ -93,7 +94,7 @@ summary(dm_mod)
 ## Number of Fisher Scoring iterations: 5
 ```
 
-```r
+``` r
 #tidy version
 tidy(dm_mod)
 ```
@@ -113,7 +114,7 @@ tidy(dm_mod)
 ## 9 age           0.0340     0.0184      1.85  6.47e- 2
 ```
 
-```r
+``` r
 # model performance
 glance(dm_mod)
 ```
@@ -126,7 +127,7 @@ glance(dm_mod)
 ## # ℹ 2 more variables: df.residual <int>, nobs <int>
 ```
 
-```r
+``` r
 # augment data with fitted predictions and residuals
 dm_data_plus <- augment(dm_mod) %>% 
   mutate(pct_prob = 100 * plogis(.fitted)) %>% 
@@ -145,7 +146,7 @@ cp <- dm_data_plus %>%
 ## Assuming the positive class has higher x values
 ```
 
-```r
+``` r
 cp
 ```
 
@@ -165,7 +166,7 @@ cp
 ## 1 <rc_ctpnt [393 × 10]> NA
 ```
 
-```r
+``` r
 summary(cp)
 ```
 
@@ -194,19 +195,19 @@ summary(cp)
 ##  80.93884 92.17256 99.46861 26.71998   0
 ```
 
-```r
+``` r
 plot(cp)
 ```
 
 <img src="io23-linear-regression_files/figure-html/unnamed-chunk-1-1.png" width="672" />
 
-```r
+``` r
 plot_metric(cp)
 ```
 
 <img src="io23-linear-regression_files/figure-html/unnamed-chunk-1-2.png" width="672" />
 
-```r
+``` r
 # classify based on cut point
 dm_data_plus <- dm_data_plus %>% 
   mutate(pred_yes_dm = 
@@ -229,9 +230,18 @@ dm_data_plus %>%
 ##     Total   55.6%       44.4% 100.0%
 ```
 
-```r
+``` r
 #check model performance
 performance::check_model(dm_mod, panel = FALSE)
+```
+
+```
+## Cannot simulate residuals for models of class `glm`.
+##   Please try `check_model(..., residual_type =
+##   "normal")` instead.
+```
+
+``` r
 # use panel = TRUE in Rmarkdown to get 2x3 panels for 6 plots
 # 
 performance::model_performance(dm_mod)
@@ -245,7 +255,7 @@ performance::model_performance(dm_mod)
 ## 362.021 | 362.492 | 397.763 |     0.364 | 0.376 | 1.000 |    0.439 |   -74.015 |           0.009 | 0.718
 ```
 
-```r
+``` r
 #try a different model
 dm_mod2 <- glm(diabetes ~ glucose + mass + pedigree + age, 
               data = PimaIndiansDiabetes2, 
@@ -283,7 +293,7 @@ summary(dm_mod3)
 ## Number of Fisher Scoring iterations: 4
 ```
 
-```r
+``` r
 # compare models
 # compare_performance(dm_mod, dm_mod2, dm_mod3, rank = TRUE)
 
@@ -346,7 +356,7 @@ Let's look at a simple example:
 Copy the code chunk below and run it in your RStudio Console.
 
 
-```r
+``` r
 medicaldata::blood_storage %>% 
   lm(TimeToRecurrence ~ NULL, data = .)
 ```
@@ -369,7 +379,7 @@ With no other predictor variables, this is the best estimate available for time 
 We can also output the results as a nice tibble, using the *tidy()* function from the {broom} package.
 
 
-```r
+``` r
 medicaldata::blood_storage  %>% 
   lm(TimeToRecurrence ~ NULL, data = .) %>% 
   broom::tidy()
@@ -385,12 +395,13 @@ medicaldata::blood_storage  %>%
 This model has only one term, the intercept.
 It estimates every value of time to recurrence with the mean, 32.91.
 This is a pretty poor model, but is a place to start.\
+
 \
 Let's look at how good this model is, using another function from the {broom} package.
 We can *glance()* our model, again output into a nice tibble.
 
 
-```r
+``` r
 medicaldata::blood_storage  %>% 
   lm(TimeToRecurrence ~ NULL, data = .) %>% 
   broom::glance()
@@ -420,7 +431,7 @@ If we improve the model (with useful predictor variables), the BIC should go dow
 Let's add some predictors: Age, TVol (tumor volume), and sGS (surgical Gleason score), and see if we do better.
 
 
-```r
+``` r
 medicaldata::blood_storage  %>% 
   lm(TimeToRecurrence ~  Age + TVol + sGS, data = .) %>% 
   broom::glance()
@@ -463,7 +474,7 @@ Copy the code chunk below into RStudio as a start.
 Use *tidy()* to see the model table, and *glance()* to look at the performance of the model.
 
 
-```r
+``` r
 medicaldata::licorice_gargle %>%
   lm(formula = pacu30min_throatPain ~ var1 + var2 + var3,
  data = .) 
@@ -474,7 +485,7 @@ medicaldata::licorice_gargle %>%
 
 
 
-```r
+``` r
 medicaldata::licorice_gargle %>%
   lm(formula = pacu30min_throatPain ~ intraOp_surgerySize  +
        treat + preOp_pain + preOp_gender + 
@@ -495,7 +506,7 @@ medicaldata::licorice_gargle %>%
 ## 6 preOp_smoking         0.0652    0.0956     0.682 0.496
 ```
 
-```r
+``` r
 medicaldata::licorice_gargle %>%
   lm(formula = pacu30min_throatPain ~ intraOp_surgerySize  +
        treat + preOp_pain + preOp_gender + 
@@ -524,20 +535,20 @@ These are
 
 -   The first column is the `term` - these include the (Intercept) and each of the predictors you called in the model.
 -   the second column is the `estimate`. This is the point estimate of the effect of each predictor in the multivariable model. For the `intraOp_surgerySize` predictor, this is 0.316. This means that for each unit or level increase of `intraOp_surgerySize`, which is defined on a 1-3 scale from small to large, the `pacu_30min_throat pain` (on a 0-10 scale), increases by 0.316 points. So a large surgery (2 levels larger than small) will result in, on average, a `pacu_30min_throat pain` score 0.632 points higher than a small surgery.
-- similarly, the estimate for `preop_gender` is -0.265. This means that for each 1 point increase in the level of `preop_gender`, coded as 0=male, 1=female, the `pacu_30min_throat pain` score goes doen by -0.265 points. In this case, that means that the average `pacu_30min_throat pain` score in females was 0.265 points lower than in males.
-- the std.error column tells you about the variance of this estimate, and can help you calculate confidence intervals around the point estimated if needed.
-- the statistic is the t value for the estimate, which allows you to calculate p values with a t test. Values with a large absolute value (farther from zero) imply a stronger effect. Values of the statistic > 1.96 (absolute value) correspond to a p value < 0.05.
-- the p value is the significance of the estimate for that particular predictor variable. Low values (often < 0.05) are considered significant for traditional, historical reasons (it is an arbitrary cutoff).
+-   similarly, the estimate for `preop_gender` is -0.265. This means that for each 1 point increase in the level of `preop_gender`, coded as 0=male, 1=female, the `pacu_30min_throat pain` score goes doen by -0.265 points. In this case, that means that the average `pacu_30min_throat pain` score in females was 0.265 points lower than in males.
+-   the std.error column tells you about the variance of this estimate, and can help you calculate confidence intervals around the point estimated if needed.
+-   the statistic is the t value for the estimate, which allows you to calculate p values with a t test. Values with a large absolute value (farther from zero) imply a stronger effect. Values of the statistic \> 1.96 (absolute value) correspond to a p value \< 0.05.
+-   the p value is the significance of the estimate for that particular predictor variable. Low values (often \< 0.05) are considered significant for traditional, historical reasons (it is an arbitrary cutoff).
 
 ##### Check your work:
 
 For the full model with 5 predictors, the which predictor variable has the largest estimated effect on `pacu30min_throatpain`?
 
-<select class='webex-select'><option value='blank'></option><option value=''>intraOp_surgerySize</option><option value='answer'>preOp_pain</option><option value=''>genderFemale</option><option value=''>smoking</option><option value=''>treatLicorice</option></select> 
+<select class='webex-select'><option value='blank'></option><option value=''>intraOp_surgerySize</option><option value='answer'>preOp_pain</option><option value=''>genderFemale</option><option value=''>smoking</option><option value=''>treatLicorice</option></select>
 
 For the full model with 5 predictors, what is the BIC value (using the glance function)?
 
-<select class='webex-select'><option value='blank'></option><option value=''>-364</option><option value='answer'>765</option><option value=''>309</option><option value=''>741</option><option value=''>7</option></select> 
+<select class='webex-select'><option value='blank'></option><option value=''>-364</option><option value='answer'>765</option><option value=''>309</option><option value=''>741</option><option value=''>7</option></select>
 
 #### Your turn with supra!
 
@@ -548,7 +559,7 @@ Output the regression table with *tidy()* and the model measures with *glance
 Copy the code chunk below into RStudio as a start
 
 
-```r
+``` r
 medicaldata::supraclavicular %>%
   lm(formula = onset_sensory ~ var1,
  data = .) %>% 
@@ -559,7 +570,8 @@ medicaldata::supraclavicular %>%
 <div class='webex-solution'><button>Show Solution</button>
 
 
-```r
+
+``` r
 medicaldata::supraclavicular %>%
   lm(formula = onset_sensory ~ age + bmi + gender + group,
  data = .) %>% 
@@ -588,7 +600,7 @@ medicaldata::supraclavicular %>%
 Let's take your model above, and rather than pipe it into tidy() or glance(), pipe it into the *tbl_regression()* function from the {gtsummary} package.
 
 
-```r
+``` r
 medicaldata::supraclavicular %>%
   lm(formula = onset_sensory ~ age + bmi + gender + group,
  data = .) %>% 
@@ -596,23 +608,23 @@ medicaldata::supraclavicular %>%
 ```
 
 ```{=html}
-<div id="unsaqgstuu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#unsaqgstuu table {
+<div id="wgeznnwsoh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wgeznnwsoh table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#unsaqgstuu thead, #unsaqgstuu tbody, #unsaqgstuu tfoot, #unsaqgstuu tr, #unsaqgstuu td, #unsaqgstuu th {
+#wgeznnwsoh thead, #wgeznnwsoh tbody, #wgeznnwsoh tfoot, #wgeznnwsoh tr, #wgeznnwsoh td, #wgeznnwsoh th {
   border-style: none;
 }
 
-#unsaqgstuu p {
+#wgeznnwsoh p {
   margin: 0;
   padding: 0;
 }
 
-#unsaqgstuu .gt_table {
+#wgeznnwsoh .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -638,12 +650,12 @@ medicaldata::supraclavicular %>%
   border-left-color: #D3D3D3;
 }
 
-#unsaqgstuu .gt_caption {
+#wgeznnwsoh .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#unsaqgstuu .gt_title {
+#wgeznnwsoh .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -655,7 +667,7 @@ medicaldata::supraclavicular %>%
   border-bottom-width: 0;
 }
 
-#unsaqgstuu .gt_subtitle {
+#wgeznnwsoh .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -667,7 +679,7 @@ medicaldata::supraclavicular %>%
   border-top-width: 0;
 }
 
-#unsaqgstuu .gt_heading {
+#wgeznnwsoh .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -679,13 +691,13 @@ medicaldata::supraclavicular %>%
   border-right-color: #D3D3D3;
 }
 
-#unsaqgstuu .gt_bottom_border {
+#wgeznnwsoh .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#unsaqgstuu .gt_col_headings {
+#wgeznnwsoh .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -700,7 +712,7 @@ medicaldata::supraclavicular %>%
   border-right-color: #D3D3D3;
 }
 
-#unsaqgstuu .gt_col_heading {
+#wgeznnwsoh .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -720,7 +732,7 @@ medicaldata::supraclavicular %>%
   overflow-x: hidden;
 }
 
-#unsaqgstuu .gt_column_spanner_outer {
+#wgeznnwsoh .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -732,15 +744,15 @@ medicaldata::supraclavicular %>%
   padding-right: 4px;
 }
 
-#unsaqgstuu .gt_column_spanner_outer:first-child {
+#wgeznnwsoh .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#unsaqgstuu .gt_column_spanner_outer:last-child {
+#wgeznnwsoh .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#unsaqgstuu .gt_column_spanner {
+#wgeznnwsoh .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -752,11 +764,11 @@ medicaldata::supraclavicular %>%
   width: 100%;
 }
 
-#unsaqgstuu .gt_spanner_row {
+#wgeznnwsoh .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#unsaqgstuu .gt_group_heading {
+#wgeznnwsoh .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -782,7 +794,7 @@ medicaldata::supraclavicular %>%
   text-align: left;
 }
 
-#unsaqgstuu .gt_empty_group_heading {
+#wgeznnwsoh .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -797,15 +809,15 @@ medicaldata::supraclavicular %>%
   vertical-align: middle;
 }
 
-#unsaqgstuu .gt_from_md > :first-child {
+#wgeznnwsoh .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#unsaqgstuu .gt_from_md > :last-child {
+#wgeznnwsoh .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#unsaqgstuu .gt_row {
+#wgeznnwsoh .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -824,7 +836,7 @@ medicaldata::supraclavicular %>%
   overflow-x: hidden;
 }
 
-#unsaqgstuu .gt_stub {
+#wgeznnwsoh .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -837,7 +849,7 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#unsaqgstuu .gt_stub_row_group {
+#wgeznnwsoh .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -851,15 +863,15 @@ medicaldata::supraclavicular %>%
   vertical-align: top;
 }
 
-#unsaqgstuu .gt_row_group_first td {
+#wgeznnwsoh .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#unsaqgstuu .gt_row_group_first th {
+#wgeznnwsoh .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#unsaqgstuu .gt_summary_row {
+#wgeznnwsoh .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -869,16 +881,16 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#unsaqgstuu .gt_first_summary_row {
+#wgeznnwsoh .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#unsaqgstuu .gt_first_summary_row.thick {
+#wgeznnwsoh .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#unsaqgstuu .gt_last_summary_row {
+#wgeznnwsoh .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -888,7 +900,7 @@ medicaldata::supraclavicular %>%
   border-bottom-color: #D3D3D3;
 }
 
-#unsaqgstuu .gt_grand_summary_row {
+#wgeznnwsoh .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -898,7 +910,7 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#unsaqgstuu .gt_first_grand_summary_row {
+#wgeznnwsoh .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -908,7 +920,7 @@ medicaldata::supraclavicular %>%
   border-top-color: #D3D3D3;
 }
 
-#unsaqgstuu .gt_last_grand_summary_row_top {
+#wgeznnwsoh .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -918,11 +930,11 @@ medicaldata::supraclavicular %>%
   border-bottom-color: #D3D3D3;
 }
 
-#unsaqgstuu .gt_striped {
+#wgeznnwsoh .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#unsaqgstuu .gt_table_body {
+#wgeznnwsoh .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -931,7 +943,7 @@ medicaldata::supraclavicular %>%
   border-bottom-color: #D3D3D3;
 }
 
-#unsaqgstuu .gt_footnotes {
+#wgeznnwsoh .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -945,7 +957,7 @@ medicaldata::supraclavicular %>%
   border-right-color: #D3D3D3;
 }
 
-#unsaqgstuu .gt_footnote {
+#wgeznnwsoh .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -954,7 +966,7 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#unsaqgstuu .gt_sourcenotes {
+#wgeznnwsoh .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -968,7 +980,7 @@ medicaldata::supraclavicular %>%
   border-right-color: #D3D3D3;
 }
 
-#unsaqgstuu .gt_sourcenote {
+#wgeznnwsoh .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -976,73 +988,82 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#unsaqgstuu .gt_left {
+#wgeznnwsoh .gt_left {
   text-align: left;
 }
 
-#unsaqgstuu .gt_center {
+#wgeznnwsoh .gt_center {
   text-align: center;
 }
 
-#unsaqgstuu .gt_right {
+#wgeznnwsoh .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#unsaqgstuu .gt_font_normal {
+#wgeznnwsoh .gt_font_normal {
   font-weight: normal;
 }
 
-#unsaqgstuu .gt_font_bold {
+#wgeznnwsoh .gt_font_bold {
   font-weight: bold;
 }
 
-#unsaqgstuu .gt_font_italic {
+#wgeznnwsoh .gt_font_italic {
   font-style: italic;
 }
 
-#unsaqgstuu .gt_super {
+#wgeznnwsoh .gt_super {
   font-size: 65%;
 }
 
-#unsaqgstuu .gt_footnote_marks {
+#wgeznnwsoh .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#unsaqgstuu .gt_asterisk {
+#wgeznnwsoh .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#unsaqgstuu .gt_indent_1 {
+#wgeznnwsoh .gt_indent_1 {
   text-indent: 5px;
 }
 
-#unsaqgstuu .gt_indent_2 {
+#wgeznnwsoh .gt_indent_2 {
   text-indent: 10px;
 }
 
-#unsaqgstuu .gt_indent_3 {
+#wgeznnwsoh .gt_indent_3 {
   text-indent: 15px;
 }
 
-#unsaqgstuu .gt_indent_4 {
+#wgeznnwsoh .gt_indent_4 {
   text-indent: 20px;
 }
 
-#unsaqgstuu .gt_indent_5 {
+#wgeznnwsoh .gt_indent_5 {
   text-indent: 25px;
+}
+
+#wgeznnwsoh .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#wgeznnwsoh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
 }
 </style>
 <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
   <thead>
     <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;Characteristic&lt;/strong&gt;"><strong>Characteristic</strong></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;Beta&lt;/strong&gt;"><strong>Beta</strong></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;95% CI&lt;/strong&gt;&lt;span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/span&gt;"><strong>95% CI</strong><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;p-value&lt;/strong&gt;"><strong>p-value</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="&lt;span class='gt_from_md'&gt;&lt;strong&gt;Characteristic&lt;/strong&gt;&lt;/span&gt;"><span class='gt_from_md'><strong>Characteristic</strong></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;span class='gt_from_md'&gt;&lt;strong&gt;Beta&lt;/strong&gt;&lt;/span&gt;"><span class='gt_from_md'><strong>Beta</strong></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;span class='gt_from_md'&gt;&lt;strong&gt;95% CI&lt;/strong&gt;&lt;/span&gt;&lt;span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/span&gt;"><span class='gt_from_md'><strong>95% CI</strong></span><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;"><sup>1</sup></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;span class='gt_from_md'&gt;&lt;strong&gt;p-value&lt;/strong&gt;&lt;/span&gt;"><span class='gt_from_md'><strong>p-value</strong></span></th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
@@ -1066,7 +1087,7 @@ medicaldata::supraclavicular %>%
   
   <tfoot class="gt_footnotes">
     <tr>
-      <td class="gt_footnote" colspan="4"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> CI = Confidence Interval</td>
+      <td class="gt_footnote" colspan="4"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;"><sup>1</sup></span> <span class='gt_from_md'>CI = Confidence Interval</span></td>
     </tr>
   </tfoot>
 </table>
@@ -1092,7 +1113,6 @@ You can even convert this to other formats:
 
 -   model can be piped into *tbl_regression()* for a publication-quality table
 
-
 ## Is Your Model Valid?
 
 Key assumptions of linear regression
@@ -1111,7 +1131,7 @@ These assumption can be checked easily with the {performance} package in the {ea
 In the code chunk below, we assign the model to the object name `supra_model`, and then run `check_model` from the {performance} package.
 
 
-```r
+``` r
 supra_model <- medicaldata::supraclavicular %>%
   lm(formula = onset_sensory ~ age + bmi + gender + group,
  data = .) 
@@ -1128,7 +1148,7 @@ You can also formally test for heteroscedasticity.
 The variance of your residuals should be homogenous.
 
 
-```r
+``` r
 check_heteroscedasticity(supra_model)
 ```
 
@@ -1148,7 +1168,7 @@ You can add predictions (fitted results) to your dataframe with the *augment()* 
 We `augment` this dataframe with the model predictions, and then `relocate` them to the beginning (leftmost columns) of the tibble.
 
 
-```r
+``` r
 supra_data_plus <-  augment(supra_model) %>% 
   relocate(onset_sensory, .fitted, .resid) %>% 
   arrange(-.fitted)
@@ -1183,10 +1203,12 @@ Review any observation with a `.cooksd` \> 1 carefully.
 ### Predictions from new data
 
 You can also input new observations (in a data frame) to the model, and predict the outcome for these observations.
-First, we need to create a dataframe that matches the predictor variables for the supra_model. You might get a dataframe of new observations from a colleague. It is important that this is in the same format, with *exactly* the same variable names as the original data.
+First, we need to create a dataframe that matches the predictor variables for the supra_model.
+You might get a dataframe of new observations from a colleague.
+It is important that this is in the same format, with *exactly* the same variable names as the original data.
 
 
-```r
+``` r
 new_data <- tibble(age = c(27, 38, 51),
                    bmi = c(30.4, 34.2, 41.1),
                    gender = c(2, 1, 1),
@@ -1206,7 +1228,7 @@ new_data
 To make predictions with the new data, you use the base {stats} function predict(), with arguments for the model, and the new data.
 
 
-```r
+``` r
 predict(object = supra_model, 
         newdata = new_data)
 ```
@@ -1218,19 +1240,15 @@ predict(object = supra_model,
 
 This gives us predictions for each of the 3 rows of the `new_data` dataframe, of the outcome `onset_sensory`.
 
-
 ## Choosing predictors for multivariate modeling -- testing, dealing with collinearity
 
 interactions
 
 ### Challenges
 
-
-
 ## presenting model results with RMarkdown
 
 ### Challenges
-
 
 ## presenting model results with a Shiny App
 

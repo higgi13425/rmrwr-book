@@ -14,7 +14,7 @@ The most important way to update R is to add _packages_. Each package adds new f
 When you open R, or start a new session, you have only the base version of R available, and it is pretty spartan. You can see how many packages you have available to you by starting RStudio and going to the menu Session/New Session, or Session/Restart R. Each of these will give you a clean workspace to start in. Once you have started a new session, or restarted R, run the following code:
 
 
-```r
+``` r
 print(.packages())
 ```
 
@@ -33,7 +33,7 @@ Once the package is installed, you keep that in your R library associated with y
 Let's practice installing a package. Run the code below to install the _remotes()_ package.
 
 
-```r
+``` r
 install.packages("remotes")
 ```
 
@@ -41,7 +41,7 @@ install.packages("remotes")
 Some packages are still in development. These are often in repositories on GitHub, rather than on the CRAN servers. To install these packages, you need to know path to the repository. You can install the development version of the _medicaldata_ package from Github (the stable version is on CRAN). Run the code below to install this package (this assumes that you already have the remotes package installed).
 
 
-```r
+``` r
 remotes::install_github("higgi13425/medicaldata")
 ```
 
@@ -108,7 +108,7 @@ You are missing a piece of software external to R called *libtiff-dev*. The erro
 Run the code chunk below to load both {tidyverse} and {medicaldata}. Note that the {tidyverse} package is actually a meta-package that contains 8 packages, and each one has its own version number.
 
 
-```r
+``` r
 library(tidyverse)
 library(medicaldata)
 ```
@@ -119,7 +119,7 @@ The other masked function is _lag()_. The function dplyr::lag() is masking stats
 Note that it is *good practice* to load all of your packages needed for an R script or an Rmarkdown (.Rmd) document at the **beginning** of the script or .Rmd. This allows someone else using your script or Rmd to check whether they have the needed packages installed, and install them if needed. In an Rmarkdown document, this is done in a special _setup_ code chunk near the top of the document. If some of these packages are not on CRAN, it is good practice to add a comment (a statement after a hashtag) on how to install this package. For example, in a setup chunk that loads {tidyverse} and {medicaldata}, it is a good idea to add a comment on how to install {medicaldata}, which is not yet on CRAN. See the example below
 
 
-```r
+``` r
 library(tidyverse)
 library(medicaldata)
 # the {medicaldata} package can be installed with remotes::install_github('higgi13425/medicaldata')

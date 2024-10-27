@@ -20,7 +20,7 @@ output: html_document
 You will need {tidyverse}, {medicaldata}, and {scales}
 
 
-```r
+``` r
 # install.packages('tidyverse')
 # install.packages('medicaldata')
 # install.packages('scales')
@@ -52,7 +52,7 @@ loading="lazy">
 Let's start with a scatterplot of age vs risk of PEP in the indo_rct dataset
 
 
-```r
+``` r
 indo_rct <- medicaldata::indo_rct
 indo_rct %>% 
   ggplot() +
@@ -70,7 +70,7 @@ Similarly, the scale_*_discrete function for discrete variables adds 0.6 of a ca
 You can do this, by taking control of the scales. In this case, the `scale_y_continuous()` function. 
 
 
-```r
+``` r
 indo_rct %>% 
   ggplot() +
   aes(x = age, y = risk, color = outcome) + 
@@ -90,7 +90,7 @@ Now try this yourself. Copy the code above (click on the copy icon in the top ri
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 indo_rct %>% 
   ggplot() +
   aes(x = age, y = risk, color = outcome) + 
@@ -117,7 +117,7 @@ indo_rct %>%
 You can see that the x- and y-axes extend a bit past 0. This is because there is a default expansion of the scales (5% for continuous variables). You can control this default with the `expand()` function. Let's see how this works to make the y-axis start at exactly zero. You can set the expansion term as a multiplier (`mult`) or an additive (`add`).
 
 
-```r
+``` r
 indo_rct %>% 
   ggplot() +
   aes(x = age, y = risk, color = outcome) + 
@@ -140,7 +140,7 @@ Click on the `Solution` button to toggle showing or hiding the solution.
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 indo_rct %>% 
   ggplot() +
   aes(x = age, y = risk, color = outcome) + 
@@ -167,7 +167,7 @@ indo_rct %>%
 You can see that ggplot picks sensible breaks, but the defaults might not always work for you. Let's change the risk scale to breaks of 0.5, using the `breaks` argument. Note that using the `limits` argument also lets you establish the limits of the y-axis. 
 
 
-```r
+``` r
 indo_rct %>% 
   ggplot() +
   aes(x = age, y = risk, color = outcome) + 
@@ -190,7 +190,7 @@ Click on the `Solution` button to toggle showing or hiding the solution.
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 indo_rct %>% 
   ggplot() +
   aes(x = age, y = risk, color = outcome) + 
@@ -223,7 +223,7 @@ Notice that the y axis has the default 5% multiplier, but the x axis does not, s
 You can see below that ggplot picks sensible spacing and breaks for a discrete scale, but the defaults might not always work for you. 
 
 
-```r
+``` r
 indo_rct %>% 
   ggplot() +
   aes(x = rx, y = risk, color = outcome) + 
@@ -248,7 +248,7 @@ indo_rct %>%
 Let's expand the x axis to the righ to make room for a legend in the plot on the right, using the `expand` argument. We can change the axis `name` and `position` as well.
 
 
-```r
+``` r
 indo_rct %>% 
   ggplot() +
   aes(x = rx, y = risk, color = outcome) + 
@@ -279,7 +279,7 @@ Click on the `Solution` button to toggle showing or hiding the solution.
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 indo_rct %>% 
   ggplot() +
   aes(x = rx, y = risk, color = outcome) + 
@@ -304,7 +304,7 @@ The legend position is based on the proportion of the x axis (0-1) and the y axi
 Legends are also scales, for discrete or continuous scales. You can use scales_(color|size|shape|alpha)_nnn functions to customize them. Let's see an example below.
 
 
-```r
+``` r
 medicaldata::indo_rct %>% 
     ggplot() +
     aes(x = rx, y = risk, color = outcome) + 
@@ -337,7 +337,7 @@ Click on the `Solution` button to toggle showing or hiding the solution.
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 medicaldata::indo_rct %>% 
   ggplot() +
   aes(x = rx, y = risk, color = outcome) + 

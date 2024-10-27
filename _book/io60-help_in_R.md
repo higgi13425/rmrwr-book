@@ -23,7 +23,7 @@ The simplest approach to getting help in R is to use the _help()_ function. In t
 In the code block below, use _help('filter')_ to find the details on the _filter()_ function from the {dplyr} package.
 
 
-```r
+``` r
 help()
 ```
 <br>
@@ -55,7 +55,7 @@ The _browseVignettes('package\_name')_ function can help you find the available 
 Edit the code block below to browse vignettes for the _tidyr_ package. Remember to use quotes. this will open a webpage list to read the vignette and see examples of the use of _tidyr_.
 
 
-```r
+``` r
 browseVignettes()
 ```
 
@@ -165,7 +165,7 @@ In a new script you need to:
   b. take your own data and select only the columns needed and use filter() or head() for a minimal number of rows. **Make sure** not to use any Protected Health Information (PHI).Then use _dput()_ to add the data to the reprex and assign it to an object
   
 
-```r
+``` r
 medicaldata::blood_storage %>% 
   select(Recurrence, PVol, TVol, AA, FamHx) %>% 
   head() ->
@@ -181,7 +181,7 @@ dput(small_blood)
 ## 6L), class = "data.frame")
 ```
 
-```r
+``` r
 # output of data will show up in the console
 # copy this and assign it to an object to start your reprex.
 # as below
@@ -199,7 +199,7 @@ dataset <- structure(list(Recurrence = c(1, 1, 0, 0, 0, 0), PVol = c(54,
   And, remember not to put a comma after the last value (a common mistake).
   
 
-```r
+``` r
 dataset <- tibble::tribble(
   ~pat_id, ~sbp, ~dbp, ~hr,
   001, 147, 92, 84,
@@ -221,7 +221,7 @@ Then select only education, age, and parity.
 Then use head() to get only 6 rows.
 Assign this to `data` and print it out
 
-```r
+``` r
 glimpse(datasets::infert)
 ```
 
@@ -239,7 +239,7 @@ glimpse(datasets::infert)
 ```
 
 
-```r
+``` r
 glimpse(datasets::infert)
 ```
 
@@ -256,7 +256,7 @@ glimpse(datasets::infert)
 ## $ pooled.stratum <dbl> 3, 1, 4, 2, 32, 36, 6, 22, 5, 19, 2…
 ```
 
-```r
+``` r
 data <- infert %>% 
   select(education, age, parity) %>% 
   head()
@@ -281,7 +281,7 @@ Then _arrange()_ to have the top attendances at the top,
 use _top_n(10)_ to get only the top 10 rows.
 Assign this to `data` and print it out
 
-```r
+``` r
 emerg_dept
 ```
 
@@ -303,7 +303,7 @@ emerg_dept
 ```
 
 
-```r
+``` r
 emerg_dept %>% 
   select(org_code, attendances:admissions) %>% 
   arrange(desc(attendances)) %>% 
@@ -315,7 +315,7 @@ data
 ## Selecting by admissions
 ```
 
-```r
+``` r
 data
 ```
 
@@ -340,7 +340,7 @@ Run the code below to build a toy dataset with patient_id, sbp, dbp.
 Then edit the code to add 4 values for heart rate and
 4 values for respiratory rate
 
-```r
+``` r
 df <- data.frame(
   patient_id = 1:4,
   sbp = c(151, 137, 129, 144),
@@ -374,7 +374,7 @@ You should end up with 50 rows.
 <div class='webex-solution'><button>Show/Hide Solution</button>
 
 
-```r
+``` r
 ins_data <- tibble::tribble(
                      ~V1,  ~V2,  ~V3,  ~V4,  ~V5,  ~V6,  ~V7,  ~V8,  ~V9, ~V10, ~V11, ~V12, ~V13, ~V14, ~V15, ~V16, ~V17,
               "Division", 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014,
@@ -449,7 +449,7 @@ Now you need to
 - consider adding an illustration of what you **want or expect** to output to look like
 - Install the reprex package
 
-```r
+``` r
 #install.packages('reprex')
 ```
 - Select all of the code in your new script window, including libraries, data, and code

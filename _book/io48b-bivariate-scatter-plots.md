@@ -41,7 +41,7 @@ In this example, we will map the participant `age` to x, and the `baseline` numb
 and use `geom_point` as the geom.
 
 
-```r
+``` r
 medicaldata::polyps %>% 
   ggplot() + 
   aes(x = age, y = baseline) + 
@@ -59,7 +59,7 @@ Not a dramatic correlation, though you could imagine a downward slope with age i
 Now try changing the code to map y to the number of polyps at 3 months (`number3m`). The code example below adds a linear regression line with `method = "lm"`. `lm` stands for linear model. Add a smoothing line to your code in the Console. Try `method = "loess"` for a different look, rather than forcing a linear relationship.
 
 
-```r
+``` r
 polyps %>% 
   ggplot() + 
   aes(x = age, y = baseline) + 
@@ -97,7 +97,7 @@ Remember to put a comma between mappings, and to put your aesthetic mapping *ins
 Then run the code chunk to generate a plot.
 
 
-```r
+``` r
 polyps %>% 
   ggplot() + 
   aes(x = age, y = number3m) + 
@@ -126,7 +126,7 @@ You can map the `treatment` variable to other aesthetics (visual properties) of 
 - BUT if you try to map more than one variable to a single visual property within the `aes()` function, the subsequent mappings will be ignored. The 1st mapping (within one aes) wins.
 
 
-```r
+``` r
 polyps %>% 
   ggplot() + 
   aes(x = age, y = number3m) + 
@@ -150,7 +150,7 @@ But if you want to, you can over-write the inherited properties, by stating a di
 See the example below - the color mapping in geom_point over-writes the color mapping in the aesthetic layer, because it is in a later layer. In this case, the last layer wins. 
 
 
-```r
+``` r
 polyps %>% 
   ggplot() + 
   aes(x = age, y = number3m, color = treatment) + 
@@ -169,7 +169,7 @@ Also notice that the color of the points is a bit dimmer than the previous plot.
 You can also 'lighten up' the confidence interval by setting the alpha for `geom_smooth()` to 0.1 (on a 0 to 1 opacity scale)
 
 
-```r
+``` r
 polyps %>% 
   ggplot() + 
   aes(x = age, y = number3m, color = treatment) + 
@@ -193,7 +193,7 @@ polyps %>%
 
 There are 25 point shapes available in R, which can be seen here, with the help of the _show_point_shapes()_ function from {ggpubr}:
 
-```r
+``` r
 ggpubr::show_point_shapes()
 ```
 
@@ -210,7 +210,7 @@ Let's try this with a scatterplot using the **cmv** dataset. We will look at the
 For our base plot, we will map donor cmv status to color. Since the donor.cmv variable is stored as a `double` it is continuous, but we actually want this as a dichtomous 0/1 variable, so we will recode this 'on the fly' in the aesthetic mapping as `factor(donor.cmv)` instead of just `donor.cmv`. You can remove `factor()` from the code below to how this helps.
 
 
-```r
+``` r
 cmv %>% 
   ggplot() + 
   aes(y = CD34.dose, x = time.to.cmv, color = factor(donor.cmv)) + 
@@ -226,7 +226,7 @@ These data show an interaction between cmv.donor status and the CD34.dose. In fo
 To control the point shapes, let's replace the geom_smooth line with `scale_shape_manual()` and set the values to 22 and 25. We also have to set an aesthetic mapping for shape. Let's map this to the donor.sex variable.
 
 
-```r
+``` r
 cmv %>% 
   ggplot() + 
   aes(y = CD34.dose, x = time.to.cmv, color = factor(donor.cmv), shape = factor(donor.sex)) + 
@@ -250,7 +250,7 @@ Let's manually control the sizes of points - use the same approach, with `scale_
 Run the scatter plot below as an example, then edit the code to map size to `factor(donor.cmv)`. Then add a line of code for `scale_size_manual()`, and set the values to 1 and 4.
 
 
-```r
+``` r
 cmv %>% 
   ggplot() + 
   aes(y = age, x = time.to.transplant, size = CD8.dose, color = factor(cmv)) +
@@ -265,7 +265,7 @@ Let's manually control the colors - use the same approach, with `scale_color_man
 Run the scatter plot below as an example, then edit the code to map color to `factor(donor.cmv)`. Then add a line of code for `scale_color_manual()`, and set the values to "green" and "red".
 
 
-```r
+``` r
 cmv %>% 
   ggplot() + 
   aes(y = age, x = time.to.transplant, color = diagnosis) +

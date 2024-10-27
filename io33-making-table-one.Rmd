@@ -1,0 +1,368 @@
+---
+title: "Building Table One for a Clinical Study"
+author: "Peter D.R. Higgins"
+output:
+  html_document:
+    df_print: paged
+editor_options:
+  markdown:
+    wrap: sentence
+---
+
+# Building Table One for a Clinical Study
+
+In most clinical research, whether in an epidemiologic study or in a clinical trial, 
+it is important to present a summary of the baseline characteristics of the 
+study sample. This is often referred to as a "Table 1" or "Table One". You 
+generally want to provide enough information about your study sample so that a reader
+can determine whether your study sample is similar to the population or the
+specific patient they are interested in. The reader should be able to determine if the
+study is generalizable to their popuation or their patient of interest.
+
+There are a number of R packates that can help you build a Table 1. These include 
+the appropriately named `{tableone}` package, the `{arsenal}` package, and the `{compareGroups}` package. But since 2020, the `{gtsummary}` package has become the most popular package for this purpose. This is in part because it is focused on clinical applications, and because it builds on the robust table infrastructure provided by 
+the `{gt}` package, which is a modern approach to building tables in R.
+
+In this chapter, we will focus on building a Table 1 using data from the `{medicaldata}` package, the `{gtsummary}` package, and the `{arsenal}` package. 
+The `{gtsummary}` package is also generally useful for producing other tables and 
+tables of regression results. 
+
+## Packages Needed for this Chapter:
+- `{gt}`
+- `{gtsummary}`
+- `{arsenal}`
+- `{medicaldata}`
+- `{tidyverse}`
+
+## Pathway for this Chapter
+```{r setup, include = FALSE}
+library(arsenal)
+library(tidyverse)
+library(gtsummary)
+library(medicaldata)
+library(webexercises)
+library(gt)
+data(mockstudy)
+data(trial)
+data("strep_tb")
+```
+
+Let's start by looking at the mockstudy data from the `{arsenal}` package.
+This is a mock study of treatment of cholangiocarcinoma with 3 different
+chemotherapy regimens.
+We will generate the dimensions, then `glimpse` the data.
+
+```{r inspect data}
+dim(mockstudy)
+glimpse(mockstudy)
+```
+
+## Baseline Characteristics
+For a Table One, you do not want outcomes like fu.time (followup time), but you do want particpant characteristics that were present at the start of the study. We also don't
+need trivial information like case numbers or patient IDs. Let's select
+for these with dplyr::select.
+
+```{r}
+mockstudy_baseline <- mockstudy %>% 
+  select(-fu.time, -fu.stat, -ps, -case, -mdquality.s, -age.ord)
+```
+
+## Building Your Table 1
+The main function for building a Table 1 with gtsummary is `tbl_summary()`.
+We can pipe the selected data into this function to get a first (ungrouped) version of the 
+table.
+```{r summarize, messages = FALSE}
+mockstudy_baseline |> 
+  tbl_summary()
+```
+
+### Updating Variable Labels
+This very quickly gives you a pretty version of a Table 1 that is publication-ready. However, you might not like the variable names that were easy to use in analysis.
+You might want longer or clearer versions for the table for publication. You can use the `tbl_summary()` function to rename variables. You can use the `label` argument to rename variables. Let's rename the variables Sex and Race in the table to make them more publication-ready.
+
+```{r summ2, messages = FALSE}
+mockstudy_baseline |> 
+  tbl_summary(label = list( sex ~ "Sex at Birth",
+                            race ~ "Race Identified by Participant"))
+```
+
+### Updating Variable Values
+The value for Race of "African-Am" is shorthand, but not great for publication.
+Let's fix this to "African-American" by using a `mutate()` function to change the value of`race` to "African-American" when it is "African-Am". We will do this **before** we pipe the data into `tbl_summary()`.
+
+```{r summ3, messages = FALSE}
+mockstudy_baseline |> 
+  mutate(race = case_when(race == "African-Am" ~ "African-American",
+                          .default = race)) |>
+  tbl_summary(label = list( sex ~ "Sex at Birth",
+                            race ~ "Race Identified by Participant"))
+```
+###  Table 1 separated by Treatment Arm
+Let's make a Table 1 that is now separated into distinct columns by Treatment Arm,
+allowing readers to compare the two groups and get a sense of whether the randomization
+was balanced. As we are making many comparisons on each characteristic of the participants,
+it is NOT appropriate to list p values for each comparison. We will use the    `tbl_summary(by = arm)` argument to separate the table by treatment arm.
+We will also `add_overall()` and `add_n()` as these are commonly used.
+
+```{r summ4, warnings = FALSE, messages = FALSE}
+mockstudy_baseline |> 
+  mutate(race = case_when(race == "African-Am" ~ "African-American",
+                          .default = race)) |>
+  tbl_summary(label = list( sex ~ "Sex at Birth",
+                            race ~ "Race Identified by Participant"),
+              by = arm) |> 
+  add_overall() |> 
+  add_n()
+```
+
+
+###  Styling our Table 1
+Let's redefine the Unknown values as Missing (within the tbl_summary function), 
+and bold the labels.
+
+```{r summ5, warnings = FALSE, messages = FALSE}
+mockstudy_baseline |> 
+  mutate(race = case_when(race == "African-Am" ~ "African-American",
+                          .default = race)) |>
+  tbl_summary(label = list( sex ~ "Sex at Birth",
+                            race ~ "Race Identified by Participant"),
+              by = arm,
+              missing_text = "Missing") |> 
+  add_overall() |> 
+  add_n() |> 
+  bold_labels() 
+  
+```
+
+###  Adding A Column Spanner
+You can add column spanners to your table to group variables together.
+In this case, it would make sense to identify and group the three treatment arms with a 
+column spanner.
+
+```{r summ6, warnings = FALSE, messages = FALSE}
+tbl <- mockstudy_baseline |> 
+  mutate(race = case_when(race == "African-Am" ~ "African-American",
+                          .default = race)) |>
+  tbl_summary(label = list( sex ~ "Sex at Birth",
+                            race ~ "Race Identified by Participant"),
+              by = arm,
+              missing_text = "Missing") |> 
+  add_overall() |> 
+  add_n() |> 
+  bold_labels() |>
+  modify_spanning_header(c("stat_1", "stat_2", "stat_3") ~ "**Treatment Received**") 
+
+tbl
+```
+
+Note that the standard column names for columns in `tbl_summary()`  are 
+
+- label
+- n
+- stat_0
+- stat_1
+- stat_2
+- stat_3, etc.
+
+Note that you can **confirm** these with `show_header_names()`
+and you can change these with `modify_header()` to take control of the line breaks
+with <br> and bolding with **.
+Let's take a look:
+
+```{r}
+show_header_names(tbl)
+tbl |> 
+  modify_header((update = list(
+      stat_0 ~ "**Overall**<br>N = 1,499",
+      stat_1 ~ "**A: IFL**<br>N = 428",
+      stat_2 ~ "**F: FOLFOX**<br>N = 691",
+      stat_3 ~ "**G: IROX**<br>N = 380")
+  ))
+```
+
+###  Further Styling our Table 1
+
+You can use {gtsummary} functions to modify header names, footnotes, captions, the number
+of digits in numbers, and the stats used.
+See the tutorial article [here](https://www.danieldsjoberg.com/gtsummary/articles/tbl_summary.html) for more information. The pdf cheatsheet is also downloadable at the same website under
+`Articles/cheat sheet`, and is very helpful.
+
+You can convert this table to a gt table with `as_gt()` and further style it,
+using all of the table styling functions available in the `{gt}` package. Lots of 
+details on how to style `{gt}` tables can be found in the `{gt}` package 
+[documentation](https://gt.rstudio.com/).
+
+### Your Turn
+In the last code block, we saved the table as the object `tbl`. Take this `tbl` 
+object and 
+
+- fix up the labels for `hgb`, `alk.phos`, and `ast` to be more publication-ready.
+- add a caption to the table that says "Baseline Characteristics of Participants in the Mock Study by Treatment Arm"
+- add a footnote to the table that says "Note: Missing values are indicated as 'Missing' in the table."
+- improve the value labels for 'Hawaii/Pacific', and 'Native-Am/Alaska' to be "Native Hawaiian or other Pacific Islander" and "American Indian or Alaska Native" respectively.
+- change the number of digits in the table to 2.
+- change the stats to show the mean and standard deviation for continuous variables, and the count and percent for categorical variables.
+- convert the table to a gt table and style it with the `gt` package. Add some color.
+
+The code block below starts with tbl, unmodified.
+Add a pipe and start fixing it up, with the goals above. Refer to the `{gtsummary}` and `{gt}` documentation for help. Click on the links below as needed.
+
+- gtsummary: [tbl_summary()](https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html)
+- gt: [gt()](https://gt.rstudio.com/reference/gt.html)
+
+```{r your-turn}
+tbl
+
+```
+
+## Try this with a new dataset
+
+Now we will use the `trial` dataset from the {gtsummary} package to create a Table 1.
+The `trial` dataset is a simulated dataset of a clinical trial with 200 observations and 6 variables.
+Run the code block below. Which are baseline variables for Table 1, and which are outcome variables?
+Use your R skills to:
+
+- select the baseline variables 
+- create a Table 1, divided by treatment (`trt`), and 
+- set the missing_text to "Missing".
+
+
+```{r trial-dim}
+trial
+
+```
+  
+`r hide(button_text = "Show code Solution")`
+
+```{r}
+trial |> 
+  select(age, marker, stage, grade, trt) |>
+  tbl_summary(by = trt, missing_text = "Missing")
+
+```
+
+
+`r unhide()`
+
+## Making Modifications to the trial table
+
+Let's do some basics, like adding a column for N, adding the overall column, and bolding the labels.
+
+`r hide(button_text = "Show code Solution")`
+
+```{r}
+trial |> 
+  select(age, marker, stage, grade, trt) |>
+  tbl_summary(by = trt, missing_text = "Missing") |> 
+  add_n() |>
+  add_overall() |>
+  bold_labels()
+
+```
+
+`r unhide()`
+
+
+## More Modifications to the trial table
+
+Let's change the Headers to make them have line breaks (and no commas), change 
+the label Characteristic to 'Participant Characteristic`, and add a column spanner for 
+the treatment arms. Use flanking double asterisks `**` to bold the headers as needed.
+
+`r hide(button_text = "Show code Solution")`
+
+```{r}
+trial |> 
+  select(age, marker, stage, grade, trt) |>
+  tbl_summary(by = trt, missing_text = "Missing") |> 
+  add_n() |>
+  add_overall() |>
+  bold_labels() |> 
+  modify_header(update = list(
+    label ~ "**Participant<br>Characteristic**",
+    stat_0 ~ "**Overall**<br>N = 200",
+    stat_1 ~ "**Drug A**<br>N = 98",
+    stat_2 ~ "**Drug B**<br>N = 102"
+  )) |>
+  modify_spanning_header(c("stat_1", "stat_2") ~ "**Treatment Arm**") 
+
+```
+
+`r unhide()`
+
+
+## Taking Control of the Stats
+
+You can take control of what statistics are shown.
+Let's see an example where you require mean and SD for all continuous variables
+in the table,
+set digits to 2,
+and show fractions and percentages for all categorical values.
+These changes are made within the `tbl_summary()` function.
+Note how the footnote changes to keep up.
+
+
+```{r}
+trial |> 
+  select(age, marker, stage, grade, trt) |>
+  tbl_summary(by = trt, missing_text = "Missing",
+               statistic = list(
+      all_continuous() ~ "{mean} ({sd})",
+      all_categorical() ~ "{n} / {N} ({p}%)"
+    ),
+    digits = all_continuous() ~ 2,
+    label = grade ~ "Tumor Grade",) |> 
+  add_n() |>
+  add_overall() |>
+  bold_labels() |> 
+  modify_header(update = list(
+    label ~ "**Participant<br>Characteristic**",
+    stat_0 ~ "**Overall**<br>N = 200",
+    stat_1 ~ "**Drug A**<br>N = 98",
+    stat_2 ~ "**Drug B**<br>N = 102"
+  )) |>
+  modify_spanning_header(c("stat_1", "stat_2") ~ "**Treatment Arm**") 
+  
+
+```
+
+### Your Turn
+The original streptomycin for tuberculosis trial never had a Table 1, because it
+was published in 1955, when these did not exist. Let's make one now. 
+Gender and the baseline_x variables in the strep_tb dataset will be the baseline variables.
+The `arm` variable will be the treatment variable.
+Use the `strep_tb` dataset from the {medicaldata} package to create a Table 1.
+You will need to run `data(strep_tb`) to load the dataset.
+Then pipe the `strep_tb` dataset into a select function, then into the `tbl_summary()` function.
+Improve the table from the baseline generic version. Add details and styling that you 
+think would be helpful to the reader, and make it publication-ready.
+Consider cleaning up some of the value labels with mutate statements.
+
+
+`r hide(button_text = "Show code Solution")`
+
+```{r}
+strep_tb |> 
+  select(gender, starts_with("baseline"), arm) |>
+  tbl_summary(by = arm, missing_text = "Missing",
+              label = list(
+                gender ~ "Gender",
+                baseline_condition ~ "Baseline Condition",
+                baseline_temp ~ "Baseline Temperature",
+                baseline_esr ~ "Baseline ESR",
+                baseline_cavitation ~ "Baseline Cavitation"
+              )) |> 
+  add_n() |>
+  add_overall() |>
+  bold_labels() |> 
+  modify_header(update = list(
+    label ~ "**Participant<br>Characteristic**",
+    stat_0 ~ "**Overall**<br>N = 107",
+    stat_1 ~ "**Control**<br>N = 52",
+    stat_2 ~ "**Streptomycin**<br>N = 55"
+  )) |>
+  modify_spanning_header(c("stat_1", "stat_2") ~ "**Treatment Arm**") 
+
+```
+
+`r unhide()`

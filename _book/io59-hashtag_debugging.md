@@ -34,7 +34,7 @@ Search for The Big 5 in the pipe below
 You should end up with 4 columns of 10 rows, sorted by efficiency, when all of the bugs have been fixed.
 
 
-```r
+``` r
 mtcars %>% 
   filter(cyl >4) %>% 
   select(mpg, hp, displ) %>% 
@@ -45,14 +45,14 @@ mtcars %>%
 ```
 
 ```
-## Error: <text>:8:0: unexpected end of input
+## Error in parse(text = input): <text>:8:0: unexpected end of input
 ## 6:   arrange(desc(efficiency) %<% 
 ## 7:   slice(1:10)
 ##   ^
 ```
 
 
-```r
+``` r
 mtcars %>% 
   filter(cyl >4) %>% 
   select(mpg, hp, displ) %>% # watch for typos in object names
@@ -63,14 +63,14 @@ mtcars %>%
 ```
 
 ```
-## Error: <text>:8:0: unexpected end of input
+## Error in parse(text = input): <text>:8:0: unexpected end of input
 ## 6:   arrange(desc(efficiency) %<% # watch for mistyped pipes
 ## 7:   slice(1:10)
 ##   ^
 ```
 
 
-```r
+``` r
 mtcars %>% 
   filter(cyl >4) %>% 
   select(mpg, hp, displ) %>% 
@@ -120,7 +120,7 @@ Use this approach to run successively more lines of the pipe in the code chunk b
 In which line of the pipe below do you hit the first error (bug)?
 
 
-```r
+``` r
 iris %>% 
   filter(Sepal.Length <5) %>% 
   select(Sepal.Length, Sepal.Width, Species) %>% 
@@ -129,18 +129,17 @@ iris %>%
   arrange(desc(Sepal.Area) %>% 
   slice(1:10) %>% 
   return()
-  
 ```
 
 ```
-## Error: <text>:10:0: unexpected end of input
+## Error in parse(text = input): <text>:10:0: unexpected end of input
 ## 8:   return()
 ## 9:   
 ##   ^
 ```
 
 
-```r
+``` r
 iris %>% 
   filter(Sepal.Length <5) %>% 
   select(Sepal.Length, Sepal.Width, Species) %>% 
@@ -149,11 +148,10 @@ iris %>%
   arrange(desc(Sepal.Area) %>% # watch for missing parentheses
   slice(1:10) %>% 
   return()
-  
 ```
 
 ```
-## Error: <text>:10:0: unexpected end of input
+## Error in parse(text = input): <text>:10:0: unexpected end of input
 ## 8:   return()
 ## 9:   
 ##   ^
@@ -215,7 +213,7 @@ Work through each step in the process.
 
 ## Pipe 2
 
-```r
+``` r
 starwars %>% 
   filter(height <180) %>% 
   select(name, height, mass, gender homeworld, species) %>% 
@@ -224,11 +222,10 @@ starwars %>%
   select(name, height, mass, bmi) %>% 
   arrange(dsc(bmi)) %>% 
   slice(1:15) 
-  
 ```
 
 ```
-## Error: <text>:3:37: unexpected symbol
+## Error in parse(text = input): <text>:3:37: unexpected symbol
 ## 2:   filter(height <180) %>% 
 ## 3:   select(name, height, mass, gender homeworld
 ##                                        ^
@@ -242,7 +239,7 @@ Work through each step in the process.
 
 ## Plot 2
 
-```r
+``` r
 murders %>% 
   ggplot(x = population/10^6, y = total, label = abb) +
   geom_abline(intercept = log10(r), lty=2, col=darkgrey) +
@@ -255,10 +252,10 @@ murders %>%
 ```
 
 ```
-## Error in eval(expr, envir, enclos): object 'darkgrey' not found
+## Error: object 'darkgrey' not found
 ```
 
-```r
+``` r
   ggtitle("US Gun Murders in 2010") +
   scale_color_discrete(name="Region")
 ```
@@ -276,7 +273,7 @@ marked as an important event.
 
 ## Plot3
 
-```r
+``` r
 us_contagious_diseases %>%
   filter(!state%in%c("Hawaii","Alaska") & disease ==  the_disease) %>%
   mutate(rate = count / population * 10000 * 52 / weeks_reporting) %>%
@@ -294,7 +291,7 @@ us_contagious_diseases %>%
 ```
 
 ```
-## Error: <text>:5:19: unexpected symbol
+## Error in parse(text = input): <text>:5:19: unexpected symbol
 ## 4:   mutate(state = reorder(state, rate) %>%
 ## 5:   ggplot(aes(year state
 ##                      ^
@@ -306,7 +303,7 @@ Use your skills to make this one work.
 
 ## Pipe 3
 
-```r
+``` r
 gapminder %>% 
   filter(year == 1965) %>% 
   filter(!is.na(infant_mortality) %>% 
@@ -316,11 +313,10 @@ gapminder %>%
   summarize(mean_adult_surv = mean(adult_survival),
             sd_adult_surv = stdev(adult_survival)) %>% 
   arrange(mean_adult_surv)
-  
 ```
 
 ```
-## Error: <text>:11:0: unexpected end of input
+## Error in parse(text = input): <text>:11:0: unexpected end of input
 ## 9:   arrange(mean_adult_surv)
 ## 10:   
 ##    ^

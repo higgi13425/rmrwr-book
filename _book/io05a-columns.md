@@ -99,7 +99,7 @@ You can also select variables by their column number, (though this can get ugly 
 :::tryit
 Copy the code block below to your RStudio Console, and run it to get started.
 
-```r
+``` r
 library(tidyverse)
 library(medicaldata) 
 medicaldata::blood_storage %>% 
@@ -123,7 +123,7 @@ Experiment for yourself to get specific groups of contiguous columns.
 You can select any non-contiguous columns by inserting a comma between the columns selected. You can even select one column at a time. For example
 
 
-```r
+``` r
 medicaldata::blood_storage %>% 
   select(1, bGS:sGS, 3, AA) %>% 
   head()
@@ -153,7 +153,7 @@ You can mix single columns, ranges of columns, column names vs. numbers, and eve
 Try this yourself, with the *cytomegalovirus* dataset. Copy the code chunk below and run it in your RStudio Console pane. Then edit it to select the ID, patient demographics, the prior treatment variables, and the dose variables.
 
 
-```r
+``` r
 medicaldata::cytomegalovirus %>% 
   select(everything()) %>% 
   head()
@@ -163,7 +163,7 @@ medicaldata::cytomegalovirus %>%
 <div class='webex-solution'><button>Show/Hide Solution</button>
 
 
-```r
+``` r
 medicaldata::cytomegalovirus %>% 
   select(ID, age:race, prior.radiation:prior.transplant,
          TNC.dose:TBI.dose) %>% 
@@ -188,7 +188,7 @@ You can select groups of columns with logical operators to combine selections. Y
 Try this yourself, with the *esoph_ca* dataset. Copy the code chunk below and run it in your RStudio Console pane. Then edit it to select all variables **except** the ncases and ncontrols, using the `!` symbol.
 
 
-```r
+``` r
   medicaldata::esoph_ca %>% 
   select(everything()) %>% 
   head()
@@ -198,7 +198,7 @@ Try this yourself, with the *esoph_ca* dataset. Copy the code chunk below and ru
 <div class='webex-solution'><button>Show/Hide Solution</button>
 
 
-```r
+``` r
   medicaldata::esoph_ca %>% 
   select(!ncases:ncontrols) %>% 
   head()
@@ -210,7 +210,7 @@ Try this yourself, with the *esoph_ca* dataset. Copy the code chunk below and ru
 Now try editing the code chunk below to select all of the variables that are not related to dose or any kind of graft versus host disease (end in `gvhd`) in the *cytomegalovirus* dataset. Use the `!` and the `|` symbols.
 
 
-```r
+``` r
 medicaldata::cytomegalovirus %>% 
   select(everything()) %>% 
   head()
@@ -220,7 +220,7 @@ medicaldata::cytomegalovirus %>%
 <div class='webex-solution'><button>Show/Hide Solution</button>
 
 
-```r
+``` r
 medicaldata::cytomegalovirus %>% 
   select(!c(TNC.dose:TBI.dose | agvhd:time.to.cgvhd)) %>% 
   head()

@@ -18,7 +18,7 @@ In this chapter we will practice Sharing your predictive models with Shiny Apps 
 This chapter will require {tidyverse}. {medicaldata}, {shiny}, and {mlbench} packages. You may already have these packages installed. If not, these can be installed with the code below if you copy the code chunk to your RStudio Console pane and run these installation functions.
 
 
-```r
+``` r
 # Install the packages below if you do not have these already installed.
 install.packages('tidyverse')
 install.packages('medicaldata')
@@ -41,7 +41,7 @@ We will use the `supraclavicular` dataset to model the onset of sensory function
 We will then save this linear model to an RDS file, using the `saveRDS()` function.
 
 
-```r
+``` r
 library(tidyverse)
 library(medicaldata)
 library(shiny)
@@ -60,7 +60,7 @@ We will classify individuals for the outcome of type 2 diabetes with 4 predictor
 We will then save this logistic model to an RDS file, using the `saveRDS()` function.
 
 
-```r
+``` r
 library(mlbench)
 library(shiny)
 data("PimaIndiansDiabetes2")
@@ -82,7 +82,7 @@ We will again predict the outcome of diabetes with all of the predictor variable
 We will then save this random forest model to an RDS file, using the `saveRDS()` function.
 
 
-```r
+``` r
 library(tidymodels)
 library(mlbench)
 data("PimaIndiansDiabetes2")
@@ -169,7 +169,7 @@ If your version is not working, check the Solution button below and compare it t
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 ui <- fluidPage(
 
     # Application title
@@ -226,7 +226,7 @@ The server section will generate predictions in 4 steps, two of which are reacti
 2. For step 2, we will read in the input values, and store them as a dataframe. These have to be wrapped in `reactive({ })` as they are reacting to inputs. Paste this code chunk into the server section next:
 
 
-```r
+``` r
 input_df <- reactive({
       data.frame(bmi = input$bmi,
                age = input$age,
@@ -239,7 +239,7 @@ Notice that the drop-down choice values have to be converted to doubles, which i
 3. For step 3, we will make the predictions. We will use the model and *input_df*. Again, this is reactive to the input values, so we will wrap the predict() function in `reactive({ })`. We will use `input_df()` with parentheses, like a function, as it had reactive inputs. Then we will assign this result to pred. Paste the code chunk below into the server section next.
 
 
-```r
+``` r
     pred <- reactive({
       predict(model, input_df())
       })
@@ -249,7 +249,7 @@ Run the app again to make sure it works.
 4. For step 4, we will render the prediction to HTML text for display in the mainPanel of the ui, and assign it to `output$pred`. Again, because `pred` had reactive inputs, we use it as `pred()` inside the `renderText({ })` function.
 
 
-```r
+``` r
     output$pred <- renderText({pred()})
 ```
 Run the app again to make sure it works. Now you should have an output$pred to display in the ui.
@@ -260,7 +260,7 @@ If your version of the server section is not working, check the Solution button 
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 server <- function(input, output) {
 
     model <- readRDS("linear_model.RDS")
@@ -290,7 +290,7 @@ server <- function(input, output) {
 Now we just have to show the text in `output$pred`. Scroll up to the ui section, and find the mainPanel. We will just put in some introductory text, followed by a blank line (line break), and then use a textOutput() function to show the prediction ("pred"). Copy and paste the code chunk below into the mainPanel.
 
 
-```r
+``` r
  h3("The predicted onset of sensory perception in minutes is:"),
           br(),
           textOutput("pred")
@@ -347,7 +347,7 @@ If you are having a hard time, compare your ui section code to the code chunk So
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 # Define UI for application that draws a histogram
 ui <- fluidPage(
 
@@ -408,7 +408,7 @@ The server section will generate predictions in 4 steps, two of which are reacti
 2. For step 2, we will read in the input values, and store them as a dataframe. These have to be wrapped in `reactive({ })` as they are reacting to inputs. Paste this code chunk into the server section next:
 
 
-```r
+``` r
 input_df <- reactive({
       data.frame(glucose = input$glucose)
       })
@@ -419,7 +419,7 @@ Now add 3 more lines to the data.frame() function, for `input$mass`, `input$age`
 3. For step 3, we will make the predictions. We will use the model and *input_df*. Again, this is reactive to the input values, so we will wrap the predict() function in `reactive({ })`. We will use `input_df()` with parentheses, like a function, as it had reactive inputs. To get probabilities (rather than logit units, the default prediction), we need to add the argument `type = "response"`. Then we will assign this result to pred. Paste the code chunk below into the server section next.
 
 
-```r
+``` r
     pred <- reactive({
       predict(model, input_df(), type = "response")
       })
@@ -429,7 +429,7 @@ Run the app again to make sure it works.
 4. For step 4, we will render the prediction to HTML text for display in the mainPanel of the ui, and assign it to `output$pred`. Again, because `pred` had reactive inputs, we use it as `pred()` inside the `renderText({ })` function.
 
 
-```r
+``` r
     output$pred <- renderText({pred()})
 ```
 Run the app again to make sure it works. Now you should have an output$pred to display in the ui.
@@ -440,7 +440,7 @@ If your version of the server section is not working, check the Solution button 
 <div class='webex-solution'><button>Solution</button>
 
 
-```r
+``` r
 server <- function(input, output) {
 
   model <- readRDS("logit_model.RDS")
@@ -476,7 +476,7 @@ If you are having a hard time, you can check the Solution below
 
 
 
-```r
+``` r
 mainPanel(
           h3("The predicted probability of type 2 diabetes is:"),
           br(),

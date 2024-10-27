@@ -105,7 +105,7 @@ This frustration has led reasonable people to threaten computer arson, and to pr
 In order to have a set of file paths that work on **any** computer that has a copy of your Project, you need to use the {here} package. Go ahead and install it now and load it `library(here)` if you don't have it already.
 
 
-```r
+``` r
 # install.packages("here")
 library(here)
 here()
@@ -118,14 +118,14 @@ here()
 Then run the here() function in your Console pane. It will return the path to your current Project. It essentially figures out where your project directory is, and provides this as a home base. This can be used to reference other folders in your project in a relative way. For example, to list the files in your `data-raw` folder (aka directory, or dir), you can use the `{fs}` package and the _here()_ function, as in:
 
 
-```r
+``` r
 fs::dir_ls(here("data-raw"))
 ```
 
 The _here()_ function supplies the file path details up to your RStudio Project folder, and then you can add any subfolder or filename details within the parentheses. Similarly, you can write your cleaned and merged data file to the `data-processed` folder with
 
 
-```r
+``` r
 write_csv(here("data-processed/03-merged_redcap_data-warehouse_data.csv"))
 ```
 

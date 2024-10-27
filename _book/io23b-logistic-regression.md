@@ -21,7 +21,7 @@ Let’s look at a simple logistic model to predict recurrence in prostate cancer
 
 
 
-```r
+``` r
 prostate <- medicaldata::blood_storage %>% 
   janitor::clean_names()
 
@@ -81,7 +81,7 @@ Let’s walk through what these mean:
 You can get more information from a summary of the model.
 
 
-```r
+``` r
 summary(prostate_model)
 ```
 
@@ -125,8 +125,14 @@ Now, in addition to estimates, we get standard errors for each estimate (which c
 You can do this in base R with `plot(model)`, but there is a prettier version in the {performance} package in the {easystats} meta-package. Just run the `check_model()` function on your model. You can set the argument panel = TRUE for a multipanel figure, or panel = FALSE for single figures in the Plots tab. Try it both ways to see which you prefer. If the multipanel seems too small, click on the Zoom button in the Plots tab to make it bigger.
 
 
-```r
+``` r
 check_model(prostate_model, panel = FALSE)
+```
+
+```
+## Cannot simulate residuals for models of class `glm`.
+##   Please try `check_model(..., residual_type =
+##   "normal")` instead.
 ```
 
 This generates graphs with nice subtitles to help you interpret the output. Big deviations should make you worry about one or more of the model assumptions, and may require rescaling one of your predictors.
@@ -134,7 +140,7 @@ This generates graphs with nice subtitles to help you interpret the output. Big 
 If all is well, you want to look at how your model predictors actually predict the outcome. You make a nicer looking regression table with the tidy() function from the {broom} package.
 
 
-```r
+``` r
 prostate_model %>% 
       broom::tidy()
 ```
@@ -159,7 +165,7 @@ One way is to look at the range of the estimates. Probabilities always have a ra
 You can see this by re-running broom::tidy() with the exp = TRUE option. This will exponentiate the logit, or log-odds estimates, to give us the estimates as odds ratios.
 
 
-```r
+``` r
 prostate_model %>% 
       broom::tidy(exp = TRUE)
 ```
@@ -190,7 +196,7 @@ Fortunately, R has functions to help us do this sort of conversion. You just hav
 We can look at the overall quality of the model with the glance() function in {broom}. Let’s look at 2 versions of the model, one with **fam_hx** only, and one with both predictors.
 
 
-```r
+``` r
 prostate %>% 
   glm(recurrence ~ fam_hx,
       data = .,
@@ -206,7 +212,7 @@ prostate %>%
 ## # ℹ 2 more variables: df.residual <int>, nobs <int>
 ```
 
-```r
+``` r
 prostate %>% 
   glm(recurrence ~ fam_hx + b_gs,
       data = .,
@@ -227,7 +233,7 @@ You can see that adding the baseline Gleason score improves the model, as it low
 You can add predicted (fitted) values and residuals for each observation in your dataset with `broom::augment()`
 
 
-```r
+``` r
 model <- prostate %>% 
   glm(recurrence ~ fam_hx + b_gs,
       data = .,
@@ -261,7 +267,7 @@ We can do a variety of other things with this model in base R. Let’s look at a
 If you just want the coefficients and a 95% confidence interval for each (in logit units), you can use the coef() and the confint() functions.
 
 
-```r
+``` r
 coef(model) # estimated coefficients for predictors
 ```
 
@@ -271,7 +277,7 @@ coef(model) # estimated coefficients for predictors
 ```
 
 
-```r
+``` r
 confint(model) # 95% confidence interval for coefficients
 ```
 
@@ -289,7 +295,7 @@ confint(model) # 95% confidence interval for coefficients
 If you would prefer these as odds ratios, you can exponentiate these.
 
 
-```r
+``` r
 exp(coef(model)) # show the odds ratios, rather than log-odds for coefficients
 ```
 
@@ -299,7 +305,7 @@ exp(coef(model)) # show the odds ratios, rather than log-odds for coefficients
 ```
 
 
-```r
+``` r
 exp(confint(model)) # 95% confidence interval for coefficients, now expressed as odds ratios
 ```
 
@@ -319,7 +325,7 @@ Notice that these are all now greater than zero, rather than from -4 to 4.
 You can also use functions to make predictions (fitted) from your data, or even from new data. The default output is in logit units, but if you use the “response” type argument in the predict() function, you get probabilities on a zero to 1 scale.
 
 
-```r
+``` r
 predict(model) %>% 
   head() # predictions for each observation 
 ```
@@ -331,14 +337,14 @@ predict(model) %>%
 ## -2.2645850
 ```
 
-```r
+``` r
 # in the prostate dataset on the logit scale 
 # from around -4 (very unlikely to have event) 
 # to +4 (very likely to have event)
 ```
 
 
-```r
+``` r
 predict(model, type = "response") %>% 
   head() # predictions for each observation in 
 ```
@@ -350,7 +356,7 @@ predict(model, type = "response") %>%
 ## 0.09409879
 ```
 
-```r
+``` r
 # the prostate dataset using 0-1 probabilities 
 # (can multiply by 100 to get percent probability 
 # if you prefer)
@@ -359,7 +365,7 @@ predict(model, type = "response") %>%
 You can then classify these probabilities as likely (>0.5) or unlikely (<=0.5) and compare these class predictions to the true recurrence outcomes. By calculating the mean of the observations that match, you can calculate an overall accuracy of your classification model.
 
 
-```r
+``` r
 probabilities <- predict(model, type = "response") 
 predicted.classes <- ifelse(probabilities > 0.5, 0, 1)
 # predictions as pos or neg
@@ -376,28 +382,28 @@ mean(predicted.classes == prostate$recurrence)
 ## [1] 0.193038
 ```
 
-```r
+``` r
 # calcuated accuracy
 ```
 
 You can even make predictions on new data (in this case, a random 3% sample of the original dataset)
 
 
-```r
+``` r
 predict(model, newdata = slice_sample(prostate, prop = 0.03), type = "response") 
 ```
 
 ```
 ##          1          2          3          4          5 
-## 0.12143477 0.09409879 0.09409879 0.09409879 0.09409879 
+## 0.09409879 0.04058836 0.25338133 0.09409879 0.09409879 
 ##          6          7          8          9 
-## 0.25338133 0.09409879 0.09409879 0.04058836
+## 0.09409879 0.09409879 0.25338133 0.09409879
 ```
 
 Let’s see how this works with another dataset, from which we will use predictors to classify diabetes cases. We will start by loading the data into dm_data, and building an “all predictors” model, by specifying the formula predictors as “.” - this means to use all other variables (except the outcome variable) as predictors. Look at the model output for problems.
 
 
-```r
+``` r
 data("PimaIndiansDiabetes2", package = "mlbench")
 dm_data <- PimaIndiansDiabetes2
 rm(PimaIndiansDiabetes2)
@@ -430,7 +436,7 @@ dm_mod
 Did you notice that 376 observations were deleted due to missingness? We can use the vis_miss() function from the {visdat} package to figure out which are the problem variables.
 
 
-```r
+``` r
 visdat::vis_miss(dm_data)
 ```
 
@@ -439,7 +445,7 @@ visdat::vis_miss(dm_data)
 It looks like triceps and insulin measurements were missing fairly often. Would a model without these measures be better? Let’s try.
 
 
-```r
+``` r
 dm_mod_miss <- glm(diabetes ~ glucose + pressure + mass + pedigree + age, 
               data = dm_data, 
               family = "binomial")
@@ -468,7 +474,7 @@ Apparently not. Even with all the missing data, the AIC of the reduced model is 
 Let’s look at how well the full model works, with our usual battery of model functions.
 
 
-```r
+``` r
 # output
 summary(dm_mod)
 ```
@@ -514,15 +520,21 @@ summary(dm_mod)
 ```
 
 
-```r
+``` r
 # test model assumptions
 check_model(dm_mod)
+```
+
+```
+## Cannot simulate residuals for models of class `glm`.
+##   Please try `check_model(..., residual_type =
+##   "normal")` instead.
 ```
 
 <img src="io23b-logistic-regression_files/figure-html/unnamed-chunk-20-1.png" width="672" />
 
 
-```r
+``` r
 # tidy version of estimates
 tidy(dm_mod)
 ```
@@ -543,7 +555,7 @@ tidy(dm_mod)
 ```
 
 
-```r
+``` r
 # model performance
 glance(dm_mod)
 ```
@@ -559,7 +571,7 @@ glance(dm_mod)
 OK, let’s make some predictions, and convert these to percent probability (0-100 range).
 
 
-```r
+``` r
 # augment data with fitted predictions and residuals
 dm_data_plus <- augment(dm_mod) %>% 
   mutate(pct_prob = 100 * plogis(.fitted)) %>% 
@@ -589,12 +601,12 @@ dm_data_plus
 ## #   .std.resid <dbl>
 ```
 
-```r
+``` r
 # arrange puts the high-probability cases first
 ```
 
 
-```r
+``` r
 set.seed(1234)
 dm_data_plus %>% 
   slice_sample(n=10) %>%  
@@ -617,7 +629,7 @@ dm_data_plus %>%
 ## 10 neg      -2.69        6.37 761
 ```
 
-```r
+``` r
 # a random sample of 10
 ```
 
@@ -628,7 +640,7 @@ A fancier way to classify based on your predictions is to pick an optimal cutpoi
 Here we start with `maximize_metric` and `sum_sens_spec`.
 
 
-```r
+``` r
 # select a cut point for classification
 cp <- dm_data_plus %>% 
   cutpointr(pct_prob, diabetes,
@@ -641,7 +653,7 @@ cp <- dm_data_plus %>%
 ## Assuming the positive class has higher x values
 ```
 
-```r
+``` r
 cp
 ```
 
@@ -662,7 +674,7 @@ cp
 ```
 
 
-```r
+``` r
 summary(cp)
 ```
 
@@ -692,14 +704,14 @@ summary(cp)
 ```
 
 
-```r
+``` r
 plot(cp)
 ```
 
 <img src="io23b-logistic-regression_files/figure-html/unnamed-chunk-27-1.png" width="672" />
 
 
-```r
+``` r
 plot_metric(cp)
 ```
 
@@ -708,7 +720,7 @@ plot_metric(cp)
 You can then use the cutpoint to classify observations, and see how accurate your model is.
 
 
-```r
+``` r
 # classify based on cut point
 dm_data_plus <- dm_data_plus %>% 
   mutate(pred_dm = 
@@ -736,14 +748,20 @@ dm_data_plus %>%
 You can also check model assumptions, and model performance, even against competing models. Let’s build some competing models below.
 
 
-```r
+``` r
 #check model assumptions
 performance::check_model(dm_mod, panel = FALSE)
 ```
 
+```
+## Cannot simulate residuals for models of class `glm`.
+##   Please try `check_model(..., residual_type =
+##   "normal")` instead.
+```
 
 
-```r
+
+``` r
 # use panel = TRUE in Rmarkdown 
 # to get 2x3 panels for 6 plots
 # 
@@ -759,7 +777,7 @@ performance::model_performance(dm_mod)
 ```
 
 
-```r
+``` r
 #try a simpler model
 dm_mod2 <- glm(diabetes ~ glucose + mass + pedigree, 
               data = dm_data, 
@@ -778,7 +796,7 @@ tidy(dm_mod2)
 ```
 
 
-```r
+``` r
 glance(dm_mod2)
 ```
 
@@ -791,7 +809,7 @@ glance(dm_mod2)
 ```
 
 
-```r
+``` r
 # build a really simple (NULL) model as a baseline
 
 dm_mod3 <- glm(diabetes ~ 1,
@@ -825,7 +843,7 @@ summary(dm_mod3)
 ```
 
 
-```r
+``` r
 # compare models
 
 # compare_performance(dm_mod, dm_mod2, dm_mod3, rank = TRUE)

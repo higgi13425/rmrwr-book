@@ -54,7 +54,7 @@ Let's start with a introductory command, which can't do any harm. Run the comman
 `whoami`
 
 
-```bash
+``` bash
 whoami
 ```
 
@@ -70,13 +70,13 @@ You can string together two commands with a semicolon between them. <br>
 :::tryit
 Try the following:
 
-```bash
+``` bash
 whoami;date
 ```
 
 ```
 ## peterhiggins
-## Tue Apr 30 08:44:39 EDT 2024
+## Sun Oct 20 16:32:31 EDT 2024
 ```
 :::
 
@@ -94,7 +94,7 @@ OK, let's start looking at files and directories. Start with the `pwd` command, 
 Run the code below in your Terminal window.
 
 
-```bash
+``` bash
 pwd
 ```
 
@@ -112,7 +112,7 @@ We can move up and down the folders of the directory paths with the `cd` command
 Try this command in your Terminal Window, and see if you can figure out what it does.
 
 
-```bash
+``` bash
 cd ..
 ```
 :::
@@ -123,7 +123,7 @@ cd ..
 Try the `ls` command in your Terminal window
 
 
-```bash
+``` bash
 cd /Users/peterhiggins/Documents/;
 ls
 ```
@@ -274,6 +274,7 @@ ls
 ## DeEscalationACG2016.pptx
 ## Demographics.pdf
 ## Documents
+## Documents.Rproj
 ## DrHiggins IBD Data Request.xlsx
 ## Draft Postop IBD Surgery Care Protocols v2_SERedit.docx
 ## ECCO 2016 Amsterdam Schedule.docx
@@ -355,6 +356,7 @@ ls
 ## HigginsP_FY22_CY21 Faculty Eval_pdrh.docx
 ## HigginsPeter_ CY 2022 Faculty Evaluation .docx
 ## Higgins_ACG2021.docx
+## Higgins_Annual_Review_2024.docx
 ## Higgins_Assessment_Promotion_AReinink_letterhead_sig.docx
 ## Higgins_Assessment_Promotion_AReinink_letterhead_sig.pdf
 ## Higgins_IBD_AtoZ.pptx
@@ -400,6 +402,7 @@ ls
 ## IBDMentoringConferenceCall4AbstractsPH.docx
 ## IBDSkinCa Copy.Data
 ## IBD_Deescalation_Apr_2019_PDRH.docx
+## IBD_Endo_PDRH.docx
 ## IBDforLansing2017.pptx
 ## IMG_0006.jpg
 ## IMG_0008.jpg
@@ -445,8 +448,10 @@ ls
 ## LOI for CSI for RMed.docx
 ## Learning R discussion Jeremy Louissaint.docx
 ## Letter to Frank Hamilton.docx
+## Letter_KNewman_K_MentorKamadaHiggins_PDRH_NK.docx
 ## Library
 ## Lin_Reviewer Score_PDRH.docx
+## Links to drop during talk.docx
 ## Links to publications of Peter DR Higgins with AbbVie since 2020.docx
 ## List of Useful R Packages.docx
 ## LoR for Vitchapong Observer.doc
@@ -546,8 +551,11 @@ ls
 ## RPPR Checklist .docx
 ## R_Medicine 2023 - Friday intro slides.pptx
 ## R_Medicine 2023 - Thursday intro slides.pptx
+## R_Medicine 2024 - Friday intro slides.pptx
+## R_Medicine 2024 - Thursday intro slides.pptx
 ## Ramp up clinical research_PH.xlsx
 ## Ramping up human subject research - MM 6-1-20 _KDA_PDRH_suggestions.docx
+## Rec_Letter_Simone_Ashley.docx
 ## Recordings
 ## Regueiro Chapter
 ## Reply_JAMA_Thiopurines.docx
@@ -631,6 +639,7 @@ ls
 ## Task List 2020.docx
 ## Task List 2021.docx
 ## Task List 2022.docx
+## Task List 2024.docx
 ## Tenure Plan
 ## Testing signatures with Adobe.pdf
 ## The Innovative IBD Center.docx
@@ -708,6 +717,7 @@ ls
 ## hershey_long_term.xlsx
 ## hexStickers.jpg
 ## higgins2x3.jpg
+## higgins_signature.docx
 ## iBike Rides
 ## imaging_stricture.xlsx
 ## introduce_clare.docx
@@ -766,7 +776,7 @@ ls
 You will see a listing of all files and folders in the current directory. You can get more details by adding the option (sometimes called a `flag`) `-l`
 
 
-```bash
+``` bash
 cd /Users/peterhiggins/Documents/;
 ls -l
 ```
@@ -781,7 +791,7 @@ In your Terminal window:
 - change the directory to the Powerpoint directory
 - list the contents of this folder
 
-```bash
+``` bash
 cd /Users/peterhiggins/Documents/Powerpoint;
 ls
 ```
@@ -867,7 +877,7 @@ Now we will get fancy, and make a new directory within this directory with the `
 Try this in your Terminal window:
 
 
-```bash
+``` bash
 pwd;
 mkdir new_files;
 ls
@@ -883,7 +893,7 @@ and list the contents (it should currently be empty).<br>
 Try this out in your Terminal Window (**note** edit the `cd` command to your own directory path).
 
 
-```bash
+``` bash
 cd /Users/peterhiggins/Documents/Powerpoint/new_files;
 ls
 ```
@@ -898,7 +908,7 @@ Sometimes you need to create a new file, then write data to it.
 :::tryit
 Try this out
 
-```bash
+``` bash
 touch file_name;
 ls
 ```
@@ -911,7 +921,7 @@ Type in the following lines into your Terminal window. When complete, type contr
 `cat` stands for concatenate.
 
 
-```bash
+``` bash
 cat > file2.txt
 cat1
 cat2
@@ -924,7 +934,7 @@ Now you can list the contents of this file with the `cat` command below.
 :::tryit
 Give this a try
 
-```bash
+``` bash
 cat file2.txt
 ```
 :::
@@ -934,7 +944,7 @@ You can also list the directory of your `new_files` folder with ls to see the ne
 :::tryit
 Try this
 
-```bash
+``` bash
 ls
 ```
 :::
@@ -952,7 +962,7 @@ Now click on the Insert dropdown at the top of the document, and insert a Bash c
 Now you can add UNIX commands (separated by a semicolon) to this code chunk, like
 
 
-```bash
+``` bash
 cd (paste in path here);
 pwd;
 ls;
@@ -976,7 +986,7 @@ In order, we will
 :::tryit
 Give this a try
 
-```bash
+``` bash
 pwd;
 rm file2.txt;
 cd ..;
@@ -1004,7 +1014,7 @@ You can launch an R session from the Terminal Window (if you have R installed on
 :::tryit
 Launch R
 
-```bash
+``` bash
 R
 ```
 :::
@@ -1019,7 +1029,7 @@ Give the examples below a try.<br>
 
 You can use `q()` to quit back to the terminal (and reply "n" to **not** save the workplace image).
 
-```r
+``` r
 head(mtcars)
 ```
 
@@ -1040,7 +1050,7 @@ head(mtcars)
 ## Valiant              3    1
 ```
 
-```r
+``` r
 mtcars %>% 
   filter(mpg > 25) %>% 
   select(starts_with('m')|starts_with('c'))
@@ -1067,7 +1077,7 @@ and put the R commands in quotes.<br>
 Try the example below
 (**note** that this will not work if you are still in R - be sure you are back in the terminal with the `%` or `$` prompt)
 
-```bash
+``` bash
 R -e "head(mtcars)"
 ```
 :::
@@ -1076,7 +1086,7 @@ or this example - note that single or double quotes does not matter - as long as
 :::tryit
 Try this
 
-```bash
+``` bash
 R -e 'install.packages(palmerpenguins)'
 ```
 :::
@@ -1087,7 +1097,7 @@ You can also string together several commands with the semicolon between them.
 Try the example below.
 
 
-```bash
+``` bash
 R -e 'library(palmerpenguins);data(penguins);tail(penguins)'
 ```
 :::
@@ -1099,7 +1109,7 @@ This is straightforward - you can call the `Rscript` command with your file name
 Pick out a short R file you have written, make sure you are in the right directory where the file is, and use it as in the example below.
 
 
-```bash
+``` bash
 Rscript myscript.R
 ```
 :::
@@ -1113,7 +1123,7 @@ It helps to use single quotes around your filename and double quotes around the 
 :::tryit
 Try it out
 
-```bash
+``` bash
 Rscript -e "rmarkdown::render('output_file.Rmd')"
 ```
 :::

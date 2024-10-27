@@ -23,6 +23,7 @@ rmd_files:
 - io04-updating.Rmd
 - io07-major-updates.Rmd
 - io81-intermed-reproducibility.Rmd
+- io33-making-table-one.Rmd
 - io30-ttest.Rmd
 - io69-sample_size.Rmd
 - io66-blockrand.rmd
@@ -32,8 +33,10 @@ rmd_files:
 - io48c-scales.Rmd
 - io67-ggplot_helpers.Rmd
 - io71-functions_plots.Rmd
+- io76-found_data.Rmd
 - io23-linear-regression.Rmd
 - io23b-logistic-regression.Rmd
+- io101-fftrees.Rmd
 - io23c-intro-shiny.Rmd
 - io24-sharing-shiny.Rmd
 - io56-intro_rmarkdown.Rmd

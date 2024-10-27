@@ -20,7 +20,7 @@ Let's start with {ggx}.
 The *gghelp()* function in this simple package converts natural language queries (in quotes) into a ggplot command string. It can be helpful for styling axes, labels, font size, title, and legends. It is limited by its library of commands and range of styling, but can be helpful in a pinch. Try a few questions below, and make your own.
 
 
-```r
+``` r
 ggx::gghelp("how do I remove the legend")
 ```
 
@@ -28,7 +28,7 @@ ggx::gghelp("how do I remove the legend")
 ## theme(legend.position = "none")
 ```
 
-```r
+``` r
 ggx::gghelp("how do I increase the font size of the title")
 ```
 
@@ -36,7 +36,7 @@ ggx::gghelp("how do I increase the font size of the title")
 ## theme(axis.title.x=element_text(size=rel(2)))
 ```
 
-```r
+``` r
 ggx::gghelp("change the x axis label to 'systolic blood pressure'")
 ```
 
@@ -51,7 +51,7 @@ ggThemeAssist is an RStudio add-in that you install when you install the {ggThem
 Let's start you out with a simple plot from the {medicaldata} package. This plots the fentanyl requirements for anesthesia in the `supraclavicular` dataset comparing high and low BMI, age, and gender effects. Run this code block to see what the basic plot looks like.
 
 
-```r
+``` r
 plot1 <- medicaldata::supraclavicular %>% 
   filter(!is.na(bmi)) %>% 
   mutate(gender_cat = case_when(gender == 1 ~ "Male",

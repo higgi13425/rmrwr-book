@@ -22,7 +22,7 @@ Try out some other grouping variables in the `group_by` statement, in place of `
 Consider variables like race, sex, and recipient.cmv. Edit the code and run it again with the green arrow at the top right. <br>
 
 
-```r
+``` r
 # insert libraries in each chunk as if independent
 library(tidyverse)
 library(medicaldata)
@@ -61,7 +61,7 @@ That seems like a big difference for donor.cmv, between 13.7303333 months and 12
 
 
 
-```r
+``` r
 library(tidyverse)
 library(medicaldata)
 data <- cytomegalovirus
@@ -122,7 +122,7 @@ head(data)
 
 
 
-```r
+``` r
 library(tidyverse)
 library(medicaldata)
 
@@ -136,7 +136,7 @@ ggplot(mapping = aes(time.to.cmv)) +
 <img src="io30-ttest_files/figure-html/density-1.png" width="672" style="display: block; margin: auto;" />
 
 
-```r
+``` r
 library(tidyverse)
 library(medicaldata)
  
@@ -154,7 +154,7 @@ ggplot(mapping = aes(time.to.cmv)) +
 - formally test with Shapiro-Wilk
 
 
-```r
+``` r
 library(tidyverse)
 library(medicaldata)
 
@@ -184,7 +184,7 @@ shapiro.test()
 - use df <- msleep
 
 
-```r
+``` r
 library(tidyverse)
 library(medicaldata)
 
@@ -199,7 +199,7 @@ head(df$sleep_total)
 
 ### Mammal sleep hours
 
-```r
+``` r
 library(tidyverse)
 library(medicaldata)
 
@@ -224,7 +224,7 @@ shapiro.test(df$sleep_total)
 
 ### How to do One Sample T test
 
-```r
+``` r
 library(tidyverse)
 library(medicaldata)
 
@@ -290,7 +290,7 @@ This is t-testing in action.
 ## Fine, but what about 2 groups?
 - consider df$vore
 
-```r
+``` r
 library(tidyverse)
 library(medicaldata)
 prostate <- medicaldata::blood_storage
@@ -309,7 +309,7 @@ tabyl(prostate$AA)
 ### Setting up 2 group t test
 - formula interface: outcome ~ groupvar 
 
-```r
+``` r
 library(tidyverse)
 library(medicaldata)
 
@@ -349,7 +349,7 @@ df %>%
 - You want to compare column A with column B (data are not tidy)
 - Do mammals spend more time awake than asleep?
 
-```r
+``` r
 library(tidyverse)
 library(medicaldata)
 
@@ -359,7 +359,7 @@ t.test(x = df$sleep_total, y = df$awake, data = msleep)
 ### Results of 2 group t test with wide data
 
 
-```r
+``` r
 library(tidyverse)
 library(medicaldata)
 
@@ -402,7 +402,7 @@ t.test(x = df$sleep_total, y = df$awake, data = msleep)
 - Use the tidy function from the broom package
 - Do carnivores have bigger brains than insectivores?
 
-```r
+``` r
 library(tidyverse)
 library(medicaldata)
 library(broom)

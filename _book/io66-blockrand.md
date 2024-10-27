@@ -43,7 +43,7 @@ You want to randomize 180 inpatients with severe ulcerative colitis to one of 3 
 Below, you will see how to do this for the biologic failure - low albumin stratum.
 
 
-```r
+``` r
 bfla <- blockrand(n = 60, 
                      num.levels = 3, # three treatments
                      levels = c("CS", "CS/Tofa", "CS/Upa"), # arm names
@@ -56,75 +56,72 @@ bfla
 
 ```
 ##        id      stratum block.id block.size treatment
-## 1  BfLA01 Bfail.LowAlb   BfLA01          9    CS/Upa
-## 2  BfLA02 Bfail.LowAlb   BfLA01          9   CS/Tofa
-## 3  BfLA03 Bfail.LowAlb   BfLA01          9    CS/Upa
-## 4  BfLA04 Bfail.LowAlb   BfLA01          9        CS
-## 5  BfLA05 Bfail.LowAlb   BfLA01          9    CS/Upa
-## 6  BfLA06 Bfail.LowAlb   BfLA01          9        CS
-## 7  BfLA07 Bfail.LowAlb   BfLA01          9        CS
-## 8  BfLA08 Bfail.LowAlb   BfLA01          9   CS/Tofa
-## 9  BfLA09 Bfail.LowAlb   BfLA01          9   CS/Tofa
-## 10 BfLA10 Bfail.LowAlb   BfLA02          6    CS/Upa
-## 11 BfLA11 Bfail.LowAlb   BfLA02          6        CS
-## 12 BfLA12 Bfail.LowAlb   BfLA02          6    CS/Upa
-## 13 BfLA13 Bfail.LowAlb   BfLA02          6   CS/Tofa
-## 14 BfLA14 Bfail.LowAlb   BfLA02          6        CS
-## 15 BfLA15 Bfail.LowAlb   BfLA02          6   CS/Tofa
-## 16 BfLA16 Bfail.LowAlb   BfLA03          3   CS/Tofa
-## 17 BfLA17 Bfail.LowAlb   BfLA03          3        CS
-## 18 BfLA18 Bfail.LowAlb   BfLA03          3    CS/Upa
-## 19 BfLA19 Bfail.LowAlb   BfLA04          6        CS
-## 20 BfLA20 Bfail.LowAlb   BfLA04          6    CS/Upa
-## 21 BfLA21 Bfail.LowAlb   BfLA04          6   CS/Tofa
-## 22 BfLA22 Bfail.LowAlb   BfLA04          6   CS/Tofa
-## 23 BfLA23 Bfail.LowAlb   BfLA04          6    CS/Upa
-## 24 BfLA24 Bfail.LowAlb   BfLA04          6        CS
-## 25 BfLA25 Bfail.LowAlb   BfLA05          9   CS/Tofa
-## 26 BfLA26 Bfail.LowAlb   BfLA05          9        CS
-## 27 BfLA27 Bfail.LowAlb   BfLA05          9    CS/Upa
-## 28 BfLA28 Bfail.LowAlb   BfLA05          9        CS
-## 29 BfLA29 Bfail.LowAlb   BfLA05          9   CS/Tofa
-## 30 BfLA30 Bfail.LowAlb   BfLA05          9   CS/Tofa
-## 31 BfLA31 Bfail.LowAlb   BfLA05          9    CS/Upa
-## 32 BfLA32 Bfail.LowAlb   BfLA05          9    CS/Upa
-## 33 BfLA33 Bfail.LowAlb   BfLA05          9        CS
-## 34 BfLA34 Bfail.LowAlb   BfLA06          6   CS/Tofa
-## 35 BfLA35 Bfail.LowAlb   BfLA06          6    CS/Upa
-## 36 BfLA36 Bfail.LowAlb   BfLA06          6        CS
-## 37 BfLA37 Bfail.LowAlb   BfLA06          6    CS/Upa
-## 38 BfLA38 Bfail.LowAlb   BfLA06          6        CS
-## 39 BfLA39 Bfail.LowAlb   BfLA06          6   CS/Tofa
-## 40 BfLA40 Bfail.LowAlb   BfLA07          3    CS/Upa
-## 41 BfLA41 Bfail.LowAlb   BfLA07          3        CS
-## 42 BfLA42 Bfail.LowAlb   BfLA07          3   CS/Tofa
-## 43 BfLA43 Bfail.LowAlb   BfLA08          6    CS/Upa
-## 44 BfLA44 Bfail.LowAlb   BfLA08          6   CS/Tofa
-## 45 BfLA45 Bfail.LowAlb   BfLA08          6        CS
-## 46 BfLA46 Bfail.LowAlb   BfLA08          6        CS
-## 47 BfLA47 Bfail.LowAlb   BfLA08          6   CS/Tofa
-## 48 BfLA48 Bfail.LowAlb   BfLA08          6    CS/Upa
-## 49 BfLA49 Bfail.LowAlb   BfLA09          9        CS
-## 50 BfLA50 Bfail.LowAlb   BfLA09          9   CS/Tofa
-## 51 BfLA51 Bfail.LowAlb   BfLA09          9   CS/Tofa
-## 52 BfLA52 Bfail.LowAlb   BfLA09          9   CS/Tofa
-## 53 BfLA53 Bfail.LowAlb   BfLA09          9    CS/Upa
-## 54 BfLA54 Bfail.LowAlb   BfLA09          9    CS/Upa
-## 55 BfLA55 Bfail.LowAlb   BfLA09          9        CS
-## 56 BfLA56 Bfail.LowAlb   BfLA09          9    CS/Upa
-## 57 BfLA57 Bfail.LowAlb   BfLA09          9        CS
-## 58 BfLA58 Bfail.LowAlb   BfLA10          6        CS
-## 59 BfLA59 Bfail.LowAlb   BfLA10          6        CS
-## 60 BfLA60 Bfail.LowAlb   BfLA10          6    CS/Upa
-## 61 BfLA61 Bfail.LowAlb   BfLA10          6   CS/Tofa
-## 62 BfLA62 Bfail.LowAlb   BfLA10          6   CS/Tofa
-## 63 BfLA63 Bfail.LowAlb   BfLA10          6    CS/Upa
+## 1  BfLA01 Bfail.LowAlb   BfLA01          6        CS
+## 2  BfLA02 Bfail.LowAlb   BfLA01          6   CS/Tofa
+## 3  BfLA03 Bfail.LowAlb   BfLA01          6    CS/Upa
+## 4  BfLA04 Bfail.LowAlb   BfLA01          6   CS/Tofa
+## 5  BfLA05 Bfail.LowAlb   BfLA01          6    CS/Upa
+## 6  BfLA06 Bfail.LowAlb   BfLA01          6        CS
+## 7  BfLA07 Bfail.LowAlb   BfLA02          3    CS/Upa
+## 8  BfLA08 Bfail.LowAlb   BfLA02          3        CS
+## 9  BfLA09 Bfail.LowAlb   BfLA02          3   CS/Tofa
+## 10 BfLA10 Bfail.LowAlb   BfLA03          3        CS
+## 11 BfLA11 Bfail.LowAlb   BfLA03          3    CS/Upa
+## 12 BfLA12 Bfail.LowAlb   BfLA03          3   CS/Tofa
+## 13 BfLA13 Bfail.LowAlb   BfLA04          3   CS/Tofa
+## 14 BfLA14 Bfail.LowAlb   BfLA04          3        CS
+## 15 BfLA15 Bfail.LowAlb   BfLA04          3    CS/Upa
+## 16 BfLA16 Bfail.LowAlb   BfLA05          9    CS/Upa
+## 17 BfLA17 Bfail.LowAlb   BfLA05          9   CS/Tofa
+## 18 BfLA18 Bfail.LowAlb   BfLA05          9        CS
+## 19 BfLA19 Bfail.LowAlb   BfLA05          9   CS/Tofa
+## 20 BfLA20 Bfail.LowAlb   BfLA05          9        CS
+## 21 BfLA21 Bfail.LowAlb   BfLA05          9        CS
+## 22 BfLA22 Bfail.LowAlb   BfLA05          9    CS/Upa
+## 23 BfLA23 Bfail.LowAlb   BfLA05          9   CS/Tofa
+## 24 BfLA24 Bfail.LowAlb   BfLA05          9    CS/Upa
+## 25 BfLA25 Bfail.LowAlb   BfLA06          3    CS/Upa
+## 26 BfLA26 Bfail.LowAlb   BfLA06          3   CS/Tofa
+## 27 BfLA27 Bfail.LowAlb   BfLA06          3        CS
+## 28 BfLA28 Bfail.LowAlb   BfLA07          6        CS
+## 29 BfLA29 Bfail.LowAlb   BfLA07          6    CS/Upa
+## 30 BfLA30 Bfail.LowAlb   BfLA07          6   CS/Tofa
+## 31 BfLA31 Bfail.LowAlb   BfLA07          6    CS/Upa
+## 32 BfLA32 Bfail.LowAlb   BfLA07          6        CS
+## 33 BfLA33 Bfail.LowAlb   BfLA07          6   CS/Tofa
+## 34 BfLA34 Bfail.LowAlb   BfLA08          6        CS
+## 35 BfLA35 Bfail.LowAlb   BfLA08          6   CS/Tofa
+## 36 BfLA36 Bfail.LowAlb   BfLA08          6    CS/Upa
+## 37 BfLA37 Bfail.LowAlb   BfLA08          6   CS/Tofa
+## 38 BfLA38 Bfail.LowAlb   BfLA08          6    CS/Upa
+## 39 BfLA39 Bfail.LowAlb   BfLA08          6        CS
+## 40 BfLA40 Bfail.LowAlb   BfLA09          3        CS
+## 41 BfLA41 Bfail.LowAlb   BfLA09          3   CS/Tofa
+## 42 BfLA42 Bfail.LowAlb   BfLA09          3    CS/Upa
+## 43 BfLA43 Bfail.LowAlb   BfLA10          6        CS
+## 44 BfLA44 Bfail.LowAlb   BfLA10          6   CS/Tofa
+## 45 BfLA45 Bfail.LowAlb   BfLA10          6    CS/Upa
+## 46 BfLA46 Bfail.LowAlb   BfLA10          6    CS/Upa
+## 47 BfLA47 Bfail.LowAlb   BfLA10          6   CS/Tofa
+## 48 BfLA48 Bfail.LowAlb   BfLA10          6        CS
+## 49 BfLA49 Bfail.LowAlb   BfLA11          6    CS/Upa
+## 50 BfLA50 Bfail.LowAlb   BfLA11          6        CS
+## 51 BfLA51 Bfail.LowAlb   BfLA11          6    CS/Upa
+## 52 BfLA52 Bfail.LowAlb   BfLA11          6        CS
+## 53 BfLA53 Bfail.LowAlb   BfLA11          6   CS/Tofa
+## 54 BfLA54 Bfail.LowAlb   BfLA11          6   CS/Tofa
+## 55 BfLA55 Bfail.LowAlb   BfLA12          6        CS
+## 56 BfLA56 Bfail.LowAlb   BfLA12          6   CS/Tofa
+## 57 BfLA57 Bfail.LowAlb   BfLA12          6   CS/Tofa
+## 58 BfLA58 Bfail.LowAlb   BfLA12          6    CS/Upa
+## 59 BfLA59 Bfail.LowAlb   BfLA12          6    CS/Upa
+## 60 BfLA60 Bfail.LowAlb   BfLA12          6        CS
 ```
 
 You can see the `id` for each participant, their `stratum`, the `block.id` for their permuted block, the `block.size`, and their assigned `treatment`. You can imagine this as a randomization list, or as assignments that you could print out on cards and seal in security envelopes for the time of randomization. Of course, this is only one of our four strata. We should do the same for the 3 other strata.
 
 
-```r
+``` r
 bfha <- blockrand(n = 60, 
                      num.levels = 3, # three treatments
                      levels = c("CS", "CS/Tofa", "CS/Upa"), # arm names
@@ -137,69 +134,69 @@ bfha
 
 ```
 ##        id     stratum block.id block.size treatment
-## 1  BfHA01 Bfail.HiAlb    BfHA1          9   CS/Tofa
-## 2  BfHA02 Bfail.HiAlb    BfHA1          9        CS
-## 3  BfHA03 Bfail.HiAlb    BfHA1          9    CS/Upa
-## 4  BfHA04 Bfail.HiAlb    BfHA1          9        CS
-## 5  BfHA05 Bfail.HiAlb    BfHA1          9    CS/Upa
-## 6  BfHA06 Bfail.HiAlb    BfHA1          9   CS/Tofa
-## 7  BfHA07 Bfail.HiAlb    BfHA1          9    CS/Upa
-## 8  BfHA08 Bfail.HiAlb    BfHA1          9   CS/Tofa
-## 9  BfHA09 Bfail.HiAlb    BfHA1          9        CS
-## 10 BfHA10 Bfail.HiAlb    BfHA2          6    CS/Upa
-## 11 BfHA11 Bfail.HiAlb    BfHA2          6    CS/Upa
-## 12 BfHA12 Bfail.HiAlb    BfHA2          6        CS
-## 13 BfHA13 Bfail.HiAlb    BfHA2          6        CS
-## 14 BfHA14 Bfail.HiAlb    BfHA2          6   CS/Tofa
-## 15 BfHA15 Bfail.HiAlb    BfHA2          6   CS/Tofa
-## 16 BfHA16 Bfail.HiAlb    BfHA3          9        CS
-## 17 BfHA17 Bfail.HiAlb    BfHA3          9   CS/Tofa
-## 18 BfHA18 Bfail.HiAlb    BfHA3          9    CS/Upa
-## 19 BfHA19 Bfail.HiAlb    BfHA3          9   CS/Tofa
-## 20 BfHA20 Bfail.HiAlb    BfHA3          9        CS
-## 21 BfHA21 Bfail.HiAlb    BfHA3          9    CS/Upa
-## 22 BfHA22 Bfail.HiAlb    BfHA3          9        CS
-## 23 BfHA23 Bfail.HiAlb    BfHA3          9   CS/Tofa
-## 24 BfHA24 Bfail.HiAlb    BfHA3          9    CS/Upa
-## 25 BfHA25 Bfail.HiAlb    BfHA4          9   CS/Tofa
-## 26 BfHA26 Bfail.HiAlb    BfHA4          9    CS/Upa
-## 27 BfHA27 Bfail.HiAlb    BfHA4          9        CS
-## 28 BfHA28 Bfail.HiAlb    BfHA4          9    CS/Upa
-## 29 BfHA29 Bfail.HiAlb    BfHA4          9   CS/Tofa
-## 30 BfHA30 Bfail.HiAlb    BfHA4          9    CS/Upa
-## 31 BfHA31 Bfail.HiAlb    BfHA4          9        CS
-## 32 BfHA32 Bfail.HiAlb    BfHA4          9        CS
-## 33 BfHA33 Bfail.HiAlb    BfHA4          9   CS/Tofa
-## 34 BfHA34 Bfail.HiAlb    BfHA5          3    CS/Upa
-## 35 BfHA35 Bfail.HiAlb    BfHA5          3        CS
-## 36 BfHA36 Bfail.HiAlb    BfHA5          3   CS/Tofa
-## 37 BfHA37 Bfail.HiAlb    BfHA6          9        CS
-## 38 BfHA38 Bfail.HiAlb    BfHA6          9        CS
-## 39 BfHA39 Bfail.HiAlb    BfHA6          9   CS/Tofa
-## 40 BfHA40 Bfail.HiAlb    BfHA6          9    CS/Upa
-## 41 BfHA41 Bfail.HiAlb    BfHA6          9    CS/Upa
-## 42 BfHA42 Bfail.HiAlb    BfHA6          9        CS
-## 43 BfHA43 Bfail.HiAlb    BfHA6          9   CS/Tofa
-## 44 BfHA44 Bfail.HiAlb    BfHA6          9    CS/Upa
-## 45 BfHA45 Bfail.HiAlb    BfHA6          9   CS/Tofa
-## 46 BfHA46 Bfail.HiAlb    BfHA7          6   CS/Tofa
-## 47 BfHA47 Bfail.HiAlb    BfHA7          6        CS
-## 48 BfHA48 Bfail.HiAlb    BfHA7          6        CS
-## 49 BfHA49 Bfail.HiAlb    BfHA7          6   CS/Tofa
-## 50 BfHA50 Bfail.HiAlb    BfHA7          6    CS/Upa
-## 51 BfHA51 Bfail.HiAlb    BfHA7          6    CS/Upa
-## 52 BfHA52 Bfail.HiAlb    BfHA8          9        CS
-## 53 BfHA53 Bfail.HiAlb    BfHA8          9   CS/Tofa
-## 54 BfHA54 Bfail.HiAlb    BfHA8          9        CS
-## 55 BfHA55 Bfail.HiAlb    BfHA8          9   CS/Tofa
-## 56 BfHA56 Bfail.HiAlb    BfHA8          9    CS/Upa
-## 57 BfHA57 Bfail.HiAlb    BfHA8          9   CS/Tofa
-## 58 BfHA58 Bfail.HiAlb    BfHA8          9    CS/Upa
-## 59 BfHA59 Bfail.HiAlb    BfHA8          9    CS/Upa
-## 60 BfHA60 Bfail.HiAlb    BfHA8          9        CS
+## 1  BfHA01 Bfail.HiAlb   BfHA01          6    CS/Upa
+## 2  BfHA02 Bfail.HiAlb   BfHA01          6        CS
+## 3  BfHA03 Bfail.HiAlb   BfHA01          6        CS
+## 4  BfHA04 Bfail.HiAlb   BfHA01          6   CS/Tofa
+## 5  BfHA05 Bfail.HiAlb   BfHA01          6   CS/Tofa
+## 6  BfHA06 Bfail.HiAlb   BfHA01          6    CS/Upa
+## 7  BfHA07 Bfail.HiAlb   BfHA02          3   CS/Tofa
+## 8  BfHA08 Bfail.HiAlb   BfHA02          3    CS/Upa
+## 9  BfHA09 Bfail.HiAlb   BfHA02          3        CS
+## 10 BfHA10 Bfail.HiAlb   BfHA03          9        CS
+## 11 BfHA11 Bfail.HiAlb   BfHA03          9   CS/Tofa
+## 12 BfHA12 Bfail.HiAlb   BfHA03          9   CS/Tofa
+## 13 BfHA13 Bfail.HiAlb   BfHA03          9    CS/Upa
+## 14 BfHA14 Bfail.HiAlb   BfHA03          9        CS
+## 15 BfHA15 Bfail.HiAlb   BfHA03          9   CS/Tofa
+## 16 BfHA16 Bfail.HiAlb   BfHA03          9    CS/Upa
+## 17 BfHA17 Bfail.HiAlb   BfHA03          9        CS
+## 18 BfHA18 Bfail.HiAlb   BfHA03          9    CS/Upa
+## 19 BfHA19 Bfail.HiAlb   BfHA04          3    CS/Upa
+## 20 BfHA20 Bfail.HiAlb   BfHA04          3        CS
+## 21 BfHA21 Bfail.HiAlb   BfHA04          3   CS/Tofa
+## 22 BfHA22 Bfail.HiAlb   BfHA05          9    CS/Upa
+## 23 BfHA23 Bfail.HiAlb   BfHA05          9   CS/Tofa
+## 24 BfHA24 Bfail.HiAlb   BfHA05          9        CS
+## 25 BfHA25 Bfail.HiAlb   BfHA05          9    CS/Upa
+## 26 BfHA26 Bfail.HiAlb   BfHA05          9        CS
+## 27 BfHA27 Bfail.HiAlb   BfHA05          9    CS/Upa
+## 28 BfHA28 Bfail.HiAlb   BfHA05          9   CS/Tofa
+## 29 BfHA29 Bfail.HiAlb   BfHA05          9        CS
+## 30 BfHA30 Bfail.HiAlb   BfHA05          9   CS/Tofa
+## 31 BfHA31 Bfail.HiAlb   BfHA06          3   CS/Tofa
+## 32 BfHA32 Bfail.HiAlb   BfHA06          3        CS
+## 33 BfHA33 Bfail.HiAlb   BfHA06          3    CS/Upa
+## 34 BfHA34 Bfail.HiAlb   BfHA07          9        CS
+## 35 BfHA35 Bfail.HiAlb   BfHA07          9        CS
+## 36 BfHA36 Bfail.HiAlb   BfHA07          9    CS/Upa
+## 37 BfHA37 Bfail.HiAlb   BfHA07          9   CS/Tofa
+## 38 BfHA38 Bfail.HiAlb   BfHA07          9    CS/Upa
+## 39 BfHA39 Bfail.HiAlb   BfHA07          9   CS/Tofa
+## 40 BfHA40 Bfail.HiAlb   BfHA07          9        CS
+## 41 BfHA41 Bfail.HiAlb   BfHA07          9   CS/Tofa
+## 42 BfHA42 Bfail.HiAlb   BfHA07          9    CS/Upa
+## 43 BfHA43 Bfail.HiAlb   BfHA08          9   CS/Tofa
+## 44 BfHA44 Bfail.HiAlb   BfHA08          9    CS/Upa
+## 45 BfHA45 Bfail.HiAlb   BfHA08          9    CS/Upa
+## 46 BfHA46 Bfail.HiAlb   BfHA08          9    CS/Upa
+## 47 BfHA47 Bfail.HiAlb   BfHA08          9        CS
+## 48 BfHA48 Bfail.HiAlb   BfHA08          9   CS/Tofa
+## 49 BfHA49 Bfail.HiAlb   BfHA08          9   CS/Tofa
+## 50 BfHA50 Bfail.HiAlb   BfHA08          9        CS
+## 51 BfHA51 Bfail.HiAlb   BfHA08          9        CS
+## 52 BfHA52 Bfail.HiAlb   BfHA09          6    CS/Upa
+## 53 BfHA53 Bfail.HiAlb   BfHA09          6    CS/Upa
+## 54 BfHA54 Bfail.HiAlb   BfHA09          6   CS/Tofa
+## 55 BfHA55 Bfail.HiAlb   BfHA09          6        CS
+## 56 BfHA56 Bfail.HiAlb   BfHA09          6   CS/Tofa
+## 57 BfHA57 Bfail.HiAlb   BfHA09          6        CS
+## 58 BfHA58 Bfail.HiAlb   BfHA10          3    CS/Upa
+## 59 BfHA59 Bfail.HiAlb   BfHA10          3        CS
+## 60 BfHA60 Bfail.HiAlb   BfHA10          3   CS/Tofa
 ```
 
-```r
+``` r
 bnha <- blockrand(n = 60, 
                      num.levels = 3, 
                      levels = c("CS", "CS/Tofa", "CS/Upa"),
@@ -212,69 +209,75 @@ bnha
 
 ```
 ##        id      stratum block.id block.size treatment
-## 1  BnHA01 Bnaive.HiAlb    BnHA1         12    CS/Upa
-## 2  BnHA02 Bnaive.HiAlb    BnHA1         12   CS/Tofa
-## 3  BnHA03 Bnaive.HiAlb    BnHA1         12        CS
-## 4  BnHA04 Bnaive.HiAlb    BnHA1         12   CS/Tofa
-## 5  BnHA05 Bnaive.HiAlb    BnHA1         12   CS/Tofa
-## 6  BnHA06 Bnaive.HiAlb    BnHA1         12        CS
-## 7  BnHA07 Bnaive.HiAlb    BnHA1         12        CS
-## 8  BnHA08 Bnaive.HiAlb    BnHA1         12    CS/Upa
-## 9  BnHA09 Bnaive.HiAlb    BnHA1         12    CS/Upa
-## 10 BnHA10 Bnaive.HiAlb    BnHA1         12    CS/Upa
-## 11 BnHA11 Bnaive.HiAlb    BnHA1         12        CS
-## 12 BnHA12 Bnaive.HiAlb    BnHA1         12   CS/Tofa
-## 13 BnHA13 Bnaive.HiAlb    BnHA2         12    CS/Upa
-## 14 BnHA14 Bnaive.HiAlb    BnHA2         12   CS/Tofa
-## 15 BnHA15 Bnaive.HiAlb    BnHA2         12        CS
-## 16 BnHA16 Bnaive.HiAlb    BnHA2         12   CS/Tofa
-## 17 BnHA17 Bnaive.HiAlb    BnHA2         12   CS/Tofa
-## 18 BnHA18 Bnaive.HiAlb    BnHA2         12   CS/Tofa
-## 19 BnHA19 Bnaive.HiAlb    BnHA2         12    CS/Upa
-## 20 BnHA20 Bnaive.HiAlb    BnHA2         12    CS/Upa
-## 21 BnHA21 Bnaive.HiAlb    BnHA2         12        CS
-## 22 BnHA22 Bnaive.HiAlb    BnHA2         12    CS/Upa
-## 23 BnHA23 Bnaive.HiAlb    BnHA2         12        CS
-## 24 BnHA24 Bnaive.HiAlb    BnHA2         12        CS
-## 25 BnHA25 Bnaive.HiAlb    BnHA3          6   CS/Tofa
-## 26 BnHA26 Bnaive.HiAlb    BnHA3          6   CS/Tofa
-## 27 BnHA27 Bnaive.HiAlb    BnHA3          6    CS/Upa
-## 28 BnHA28 Bnaive.HiAlb    BnHA3          6        CS
-## 29 BnHA29 Bnaive.HiAlb    BnHA3          6        CS
-## 30 BnHA30 Bnaive.HiAlb    BnHA3          6    CS/Upa
-## 31 BnHA31 Bnaive.HiAlb    BnHA4          6    CS/Upa
-## 32 BnHA32 Bnaive.HiAlb    BnHA4          6        CS
-## 33 BnHA33 Bnaive.HiAlb    BnHA4          6        CS
-## 34 BnHA34 Bnaive.HiAlb    BnHA4          6   CS/Tofa
-## 35 BnHA35 Bnaive.HiAlb    BnHA4          6    CS/Upa
-## 36 BnHA36 Bnaive.HiAlb    BnHA4          6   CS/Tofa
-## 37 BnHA37 Bnaive.HiAlb    BnHA5         12   CS/Tofa
-## 38 BnHA38 Bnaive.HiAlb    BnHA5         12    CS/Upa
-## 39 BnHA39 Bnaive.HiAlb    BnHA5         12        CS
-## 40 BnHA40 Bnaive.HiAlb    BnHA5         12    CS/Upa
-## 41 BnHA41 Bnaive.HiAlb    BnHA5         12    CS/Upa
-## 42 BnHA42 Bnaive.HiAlb    BnHA5         12    CS/Upa
-## 43 BnHA43 Bnaive.HiAlb    BnHA5         12        CS
-## 44 BnHA44 Bnaive.HiAlb    BnHA5         12   CS/Tofa
-## 45 BnHA45 Bnaive.HiAlb    BnHA5         12   CS/Tofa
-## 46 BnHA46 Bnaive.HiAlb    BnHA5         12   CS/Tofa
-## 47 BnHA47 Bnaive.HiAlb    BnHA5         12        CS
-## 48 BnHA48 Bnaive.HiAlb    BnHA5         12        CS
-## 49 BnHA49 Bnaive.HiAlb    BnHA6         12        CS
-## 50 BnHA50 Bnaive.HiAlb    BnHA6         12    CS/Upa
-## 51 BnHA51 Bnaive.HiAlb    BnHA6         12    CS/Upa
-## 52 BnHA52 Bnaive.HiAlb    BnHA6         12   CS/Tofa
-## 53 BnHA53 Bnaive.HiAlb    BnHA6         12    CS/Upa
-## 54 BnHA54 Bnaive.HiAlb    BnHA6         12   CS/Tofa
-## 55 BnHA55 Bnaive.HiAlb    BnHA6         12        CS
-## 56 BnHA56 Bnaive.HiAlb    BnHA6         12        CS
-## 57 BnHA57 Bnaive.HiAlb    BnHA6         12        CS
-## 58 BnHA58 Bnaive.HiAlb    BnHA6         12    CS/Upa
-## 59 BnHA59 Bnaive.HiAlb    BnHA6         12   CS/Tofa
-## 60 BnHA60 Bnaive.HiAlb    BnHA6         12   CS/Tofa
+## 1  BnHA01 Bnaive.HiAlb    BnHA1          3   CS/Tofa
+## 2  BnHA02 Bnaive.HiAlb    BnHA1          3        CS
+## 3  BnHA03 Bnaive.HiAlb    BnHA1          3    CS/Upa
+## 4  BnHA04 Bnaive.HiAlb    BnHA2          9        CS
+## 5  BnHA05 Bnaive.HiAlb    BnHA2          9    CS/Upa
+## 6  BnHA06 Bnaive.HiAlb    BnHA2          9        CS
+## 7  BnHA07 Bnaive.HiAlb    BnHA2          9   CS/Tofa
+## 8  BnHA08 Bnaive.HiAlb    BnHA2          9        CS
+## 9  BnHA09 Bnaive.HiAlb    BnHA2          9    CS/Upa
+## 10 BnHA10 Bnaive.HiAlb    BnHA2          9   CS/Tofa
+## 11 BnHA11 Bnaive.HiAlb    BnHA2          9    CS/Upa
+## 12 BnHA12 Bnaive.HiAlb    BnHA2          9   CS/Tofa
+## 13 BnHA13 Bnaive.HiAlb    BnHA3          6   CS/Tofa
+## 14 BnHA14 Bnaive.HiAlb    BnHA3          6   CS/Tofa
+## 15 BnHA15 Bnaive.HiAlb    BnHA3          6    CS/Upa
+## 16 BnHA16 Bnaive.HiAlb    BnHA3          6    CS/Upa
+## 17 BnHA17 Bnaive.HiAlb    BnHA3          6        CS
+## 18 BnHA18 Bnaive.HiAlb    BnHA3          6        CS
+## 19 BnHA19 Bnaive.HiAlb    BnHA4          3    CS/Upa
+## 20 BnHA20 Bnaive.HiAlb    BnHA4          3   CS/Tofa
+## 21 BnHA21 Bnaive.HiAlb    BnHA4          3        CS
+## 22 BnHA22 Bnaive.HiAlb    BnHA5         12        CS
+## 23 BnHA23 Bnaive.HiAlb    BnHA5         12    CS/Upa
+## 24 BnHA24 Bnaive.HiAlb    BnHA5         12    CS/Upa
+## 25 BnHA25 Bnaive.HiAlb    BnHA5         12        CS
+## 26 BnHA26 Bnaive.HiAlb    BnHA5         12        CS
+## 27 BnHA27 Bnaive.HiAlb    BnHA5         12    CS/Upa
+## 28 BnHA28 Bnaive.HiAlb    BnHA5         12   CS/Tofa
+## 29 BnHA29 Bnaive.HiAlb    BnHA5         12   CS/Tofa
+## 30 BnHA30 Bnaive.HiAlb    BnHA5         12    CS/Upa
+## 31 BnHA31 Bnaive.HiAlb    BnHA5         12   CS/Tofa
+## 32 BnHA32 Bnaive.HiAlb    BnHA5         12        CS
+## 33 BnHA33 Bnaive.HiAlb    BnHA5         12   CS/Tofa
+## 34 BnHA34 Bnaive.HiAlb    BnHA6          9        CS
+## 35 BnHA35 Bnaive.HiAlb    BnHA6          9        CS
+## 36 BnHA36 Bnaive.HiAlb    BnHA6          9   CS/Tofa
+## 37 BnHA37 Bnaive.HiAlb    BnHA6          9    CS/Upa
+## 38 BnHA38 Bnaive.HiAlb    BnHA6          9   CS/Tofa
+## 39 BnHA39 Bnaive.HiAlb    BnHA6          9    CS/Upa
+## 40 BnHA40 Bnaive.HiAlb    BnHA6          9    CS/Upa
+## 41 BnHA41 Bnaive.HiAlb    BnHA6          9   CS/Tofa
+## 42 BnHA42 Bnaive.HiAlb    BnHA6          9        CS
+## 43 BnHA43 Bnaive.HiAlb    BnHA7          6   CS/Tofa
+## 44 BnHA44 Bnaive.HiAlb    BnHA7          6        CS
+## 45 BnHA45 Bnaive.HiAlb    BnHA7          6    CS/Upa
+## 46 BnHA46 Bnaive.HiAlb    BnHA7          6        CS
+## 47 BnHA47 Bnaive.HiAlb    BnHA7          6   CS/Tofa
+## 48 BnHA48 Bnaive.HiAlb    BnHA7          6    CS/Upa
+## 49 BnHA49 Bnaive.HiAlb    BnHA8          6   CS/Tofa
+## 50 BnHA50 Bnaive.HiAlb    BnHA8          6    CS/Upa
+## 51 BnHA51 Bnaive.HiAlb    BnHA8          6    CS/Upa
+## 52 BnHA52 Bnaive.HiAlb    BnHA8          6        CS
+## 53 BnHA53 Bnaive.HiAlb    BnHA8          6        CS
+## 54 BnHA54 Bnaive.HiAlb    BnHA8          6   CS/Tofa
+## 55 BnHA55 Bnaive.HiAlb    BnHA9         12   CS/Tofa
+## 56 BnHA56 Bnaive.HiAlb    BnHA9         12        CS
+## 57 BnHA57 Bnaive.HiAlb    BnHA9         12   CS/Tofa
+## 58 BnHA58 Bnaive.HiAlb    BnHA9         12        CS
+## 59 BnHA59 Bnaive.HiAlb    BnHA9         12   CS/Tofa
+## 60 BnHA60 Bnaive.HiAlb    BnHA9         12        CS
+## 61 BnHA61 Bnaive.HiAlb    BnHA9         12    CS/Upa
+## 62 BnHA62 Bnaive.HiAlb    BnHA9         12        CS
+## 63 BnHA63 Bnaive.HiAlb    BnHA9         12    CS/Upa
+## 64 BnHA64 Bnaive.HiAlb    BnHA9         12    CS/Upa
+## 65 BnHA65 Bnaive.HiAlb    BnHA9         12    CS/Upa
+## 66 BnHA66 Bnaive.HiAlb    BnHA9         12   CS/Tofa
 ```
 
-```r
+``` r
 bnla <- blockrand(n = 60, 
                      num.levels = 3, 
                      levels = c("CS", "CS/Tofa", "CS/Upa"),
@@ -287,66 +290,72 @@ bnla
 
 ```
 ##        id      stratum block.id block.size treatment
-## 1  BnLA01 Bnaive.LoAlb   BnLA01          6   CS/Tofa
-## 2  BnLA02 Bnaive.LoAlb   BnLA01          6        CS
-## 3  BnLA03 Bnaive.LoAlb   BnLA01          6   CS/Tofa
-## 4  BnLA04 Bnaive.LoAlb   BnLA01          6    CS/Upa
-## 5  BnLA05 Bnaive.LoAlb   BnLA01          6    CS/Upa
-## 6  BnLA06 Bnaive.LoAlb   BnLA01          6        CS
-## 7  BnLA07 Bnaive.LoAlb   BnLA02          9    CS/Upa
+## 1  BnLA01 Bnaive.LoAlb   BnLA01          3    CS/Upa
+## 2  BnLA02 Bnaive.LoAlb   BnLA01          3   CS/Tofa
+## 3  BnLA03 Bnaive.LoAlb   BnLA01          3        CS
+## 4  BnLA04 Bnaive.LoAlb   BnLA02          9        CS
+## 5  BnLA05 Bnaive.LoAlb   BnLA02          9    CS/Upa
+## 6  BnLA06 Bnaive.LoAlb   BnLA02          9    CS/Upa
+## 7  BnLA07 Bnaive.LoAlb   BnLA02          9   CS/Tofa
 ## 8  BnLA08 Bnaive.LoAlb   BnLA02          9   CS/Tofa
 ## 9  BnLA09 Bnaive.LoAlb   BnLA02          9   CS/Tofa
 ## 10 BnLA10 Bnaive.LoAlb   BnLA02          9        CS
 ## 11 BnLA11 Bnaive.LoAlb   BnLA02          9    CS/Upa
 ## 12 BnLA12 Bnaive.LoAlb   BnLA02          9        CS
-## 13 BnLA13 Bnaive.LoAlb   BnLA02          9        CS
-## 14 BnLA14 Bnaive.LoAlb   BnLA02          9   CS/Tofa
-## 15 BnLA15 Bnaive.LoAlb   BnLA02          9    CS/Upa
-## 16 BnLA16 Bnaive.LoAlb   BnLA03          9    CS/Upa
-## 17 BnLA17 Bnaive.LoAlb   BnLA03          9   CS/Tofa
-## 18 BnLA18 Bnaive.LoAlb   BnLA03          9        CS
-## 19 BnLA19 Bnaive.LoAlb   BnLA03          9   CS/Tofa
-## 20 BnLA20 Bnaive.LoAlb   BnLA03          9    CS/Upa
-## 21 BnLA21 Bnaive.LoAlb   BnLA03          9        CS
-## 22 BnLA22 Bnaive.LoAlb   BnLA03          9        CS
-## 23 BnLA23 Bnaive.LoAlb   BnLA03          9   CS/Tofa
-## 24 BnLA24 Bnaive.LoAlb   BnLA03          9    CS/Upa
-## 25 BnLA25 Bnaive.LoAlb   BnLA04          3    CS/Upa
-## 26 BnLA26 Bnaive.LoAlb   BnLA04          3        CS
-## 27 BnLA27 Bnaive.LoAlb   BnLA04          3   CS/Tofa
-## 28 BnLA28 Bnaive.LoAlb   BnLA05          3   CS/Tofa
-## 29 BnLA29 Bnaive.LoAlb   BnLA05          3        CS
-## 30 BnLA30 Bnaive.LoAlb   BnLA05          3    CS/Upa
-## 31 BnLA31 Bnaive.LoAlb   BnLA06          6   CS/Tofa
-## 32 BnLA32 Bnaive.LoAlb   BnLA06          6    CS/Upa
-## 33 BnLA33 Bnaive.LoAlb   BnLA06          6        CS
-## 34 BnLA34 Bnaive.LoAlb   BnLA06          6   CS/Tofa
-## 35 BnLA35 Bnaive.LoAlb   BnLA06          6        CS
-## 36 BnLA36 Bnaive.LoAlb   BnLA06          6    CS/Upa
-## 37 BnLA37 Bnaive.LoAlb   BnLA07          6        CS
-## 38 BnLA38 Bnaive.LoAlb   BnLA07          6    CS/Upa
-## 39 BnLA39 Bnaive.LoAlb   BnLA07          6    CS/Upa
-## 40 BnLA40 Bnaive.LoAlb   BnLA07          6   CS/Tofa
-## 41 BnLA41 Bnaive.LoAlb   BnLA07          6        CS
-## 42 BnLA42 Bnaive.LoAlb   BnLA07          6   CS/Tofa
-## 43 BnLA43 Bnaive.LoAlb   BnLA08          9        CS
-## 44 BnLA44 Bnaive.LoAlb   BnLA08          9   CS/Tofa
-## 45 BnLA45 Bnaive.LoAlb   BnLA08          9    CS/Upa
-## 46 BnLA46 Bnaive.LoAlb   BnLA08          9        CS
-## 47 BnLA47 Bnaive.LoAlb   BnLA08          9   CS/Tofa
-## 48 BnLA48 Bnaive.LoAlb   BnLA08          9    CS/Upa
-## 49 BnLA49 Bnaive.LoAlb   BnLA08          9        CS
-## 50 BnLA50 Bnaive.LoAlb   BnLA08          9    CS/Upa
-## 51 BnLA51 Bnaive.LoAlb   BnLA08          9   CS/Tofa
-## 52 BnLA52 Bnaive.LoAlb   BnLA09          3   CS/Tofa
-## 53 BnLA53 Bnaive.LoAlb   BnLA09          3    CS/Upa
-## 54 BnLA54 Bnaive.LoAlb   BnLA09          3        CS
+## 13 BnLA13 Bnaive.LoAlb   BnLA03          6    CS/Upa
+## 14 BnLA14 Bnaive.LoAlb   BnLA03          6    CS/Upa
+## 15 BnLA15 Bnaive.LoAlb   BnLA03          6   CS/Tofa
+## 16 BnLA16 Bnaive.LoAlb   BnLA03          6   CS/Tofa
+## 17 BnLA17 Bnaive.LoAlb   BnLA03          6        CS
+## 18 BnLA18 Bnaive.LoAlb   BnLA03          6        CS
+## 19 BnLA19 Bnaive.LoAlb   BnLA04          6    CS/Upa
+## 20 BnLA20 Bnaive.LoAlb   BnLA04          6        CS
+## 21 BnLA21 Bnaive.LoAlb   BnLA04          6    CS/Upa
+## 22 BnLA22 Bnaive.LoAlb   BnLA04          6   CS/Tofa
+## 23 BnLA23 Bnaive.LoAlb   BnLA04          6        CS
+## 24 BnLA24 Bnaive.LoAlb   BnLA04          6   CS/Tofa
+## 25 BnLA25 Bnaive.LoAlb   BnLA05          3    CS/Upa
+## 26 BnLA26 Bnaive.LoAlb   BnLA05          3   CS/Tofa
+## 27 BnLA27 Bnaive.LoAlb   BnLA05          3        CS
+## 28 BnLA28 Bnaive.LoAlb   BnLA06          6        CS
+## 29 BnLA29 Bnaive.LoAlb   BnLA06          6    CS/Upa
+## 30 BnLA30 Bnaive.LoAlb   BnLA06          6   CS/Tofa
+## 31 BnLA31 Bnaive.LoAlb   BnLA06          6    CS/Upa
+## 32 BnLA32 Bnaive.LoAlb   BnLA06          6        CS
+## 33 BnLA33 Bnaive.LoAlb   BnLA06          6   CS/Tofa
+## 34 BnLA34 Bnaive.LoAlb   BnLA07          3   CS/Tofa
+## 35 BnLA35 Bnaive.LoAlb   BnLA07          3    CS/Upa
+## 36 BnLA36 Bnaive.LoAlb   BnLA07          3        CS
+## 37 BnLA37 Bnaive.LoAlb   BnLA08          6   CS/Tofa
+## 38 BnLA38 Bnaive.LoAlb   BnLA08          6   CS/Tofa
+## 39 BnLA39 Bnaive.LoAlb   BnLA08          6        CS
+## 40 BnLA40 Bnaive.LoAlb   BnLA08          6    CS/Upa
+## 41 BnLA41 Bnaive.LoAlb   BnLA08          6        CS
+## 42 BnLA42 Bnaive.LoAlb   BnLA08          6    CS/Upa
+## 43 BnLA43 Bnaive.LoAlb   BnLA09          9        CS
+## 44 BnLA44 Bnaive.LoAlb   BnLA09          9        CS
+## 45 BnLA45 Bnaive.LoAlb   BnLA09          9        CS
+## 46 BnLA46 Bnaive.LoAlb   BnLA09          9   CS/Tofa
+## 47 BnLA47 Bnaive.LoAlb   BnLA09          9    CS/Upa
+## 48 BnLA48 Bnaive.LoAlb   BnLA09          9    CS/Upa
+## 49 BnLA49 Bnaive.LoAlb   BnLA09          9   CS/Tofa
+## 50 BnLA50 Bnaive.LoAlb   BnLA09          9    CS/Upa
+## 51 BnLA51 Bnaive.LoAlb   BnLA09          9   CS/Tofa
+## 52 BnLA52 Bnaive.LoAlb   BnLA10          6   CS/Tofa
+## 53 BnLA53 Bnaive.LoAlb   BnLA10          6        CS
+## 54 BnLA54 Bnaive.LoAlb   BnLA10          6        CS
 ## 55 BnLA55 Bnaive.LoAlb   BnLA10          6   CS/Tofa
 ## 56 BnLA56 Bnaive.LoAlb   BnLA10          6    CS/Upa
 ## 57 BnLA57 Bnaive.LoAlb   BnLA10          6    CS/Upa
-## 58 BnLA58 Bnaive.LoAlb   BnLA10          6        CS
-## 59 BnLA59 Bnaive.LoAlb   BnLA10          6   CS/Tofa
-## 60 BnLA60 Bnaive.LoAlb   BnLA10          6        CS
+## 58 BnLA58 Bnaive.LoAlb   BnLA11          9        CS
+## 59 BnLA59 Bnaive.LoAlb   BnLA11          9    CS/Upa
+## 60 BnLA60 Bnaive.LoAlb   BnLA11          9   CS/Tofa
+## 61 BnLA61 Bnaive.LoAlb   BnLA11          9   CS/Tofa
+## 62 BnLA62 Bnaive.LoAlb   BnLA11          9    CS/Upa
+## 63 BnLA63 Bnaive.LoAlb   BnLA11          9    CS/Upa
+## 64 BnLA64 Bnaive.LoAlb   BnLA11          9        CS
+## 65 BnLA65 Bnaive.LoAlb   BnLA11          9        CS
+## 66 BnLA66 Bnaive.LoAlb   BnLA11          9   CS/Tofa
 ```
 
 ## Printing these on Cards
@@ -354,7 +363,7 @@ bnla
 Ideally, you will print out each randomization on a card, and seal it in a security envelope, with the outside of the envelope labeled with the id. You can do this with the *plotblockrand()* function. This function creates a pdf file of randomization cards for printing. These are designed so that the middle text will show in a standard letter sized envelope with a window, and the top text (the assignment) can be folded over to increase security (against anyone trying to peek through the security envelope to guess the assignment).
 
 
-```r
+``` r
 uc_study <- bind_rows(bfha, bfla, bnha, bnla) # bind together the four strata into one dataframe
 
 blockrand::plotblockrand(uc_study, # input dataframe
@@ -418,7 +427,7 @@ You can then paste it into your local version of RStudio, edit it, and run it.
 In the code block below, fill in the blanks to complete the code to make a dataframe for the `low_pam` stratum.
 
 
-```r
+``` r
 low_pam <- blockrand(n = __, 
                      num.levels = __, #eight treatments
   levels = c("abc", "abC", "aBc", "aBC",
@@ -433,7 +442,7 @@ low_pam
 Now that you have one stratum sorted, edit the code block below to create the `med_pam` and `high_pam` strata.
 
 
-```r
+``` r
 med_pam <- blockrand(n = __, 
                      num.levels = __, #eight treatments
   levels = c("abc", "abC", "aBc", "aBC",
@@ -466,7 +475,7 @@ Now try to
 Edit the code chunk below to produce the pdf file
 
 
-```r
+``` r
 cd_study <- bind_rows(__,__,__) # bind together the 3 strata into one dataframe
 
 blockrand::plotblockrand(__, # input dataframe
@@ -501,7 +510,7 @@ Your turn. Create randomization tables and a pdf file of cards for a study of 2 
 Edit the code block below for the first stratum
 
 
-```r
+``` r
 mhbh <- blockrand(n = __, # treatment arms
                      num.levels = __, # of treatments
   levels = c("placebo", "probiotic", "synbiotic"), # arm names
@@ -515,7 +524,7 @@ mhbh
 Edit the code block below for the remaining strata
 
 
-```r
+``` r
 mhbl <- blockrand(n = __, # treatment arms
                      num.levels = 3, # of treatments
   levels = c("placebo", "probiotic", "__"), # arm names
@@ -547,7 +556,7 @@ mlbh
 Edit the code block below to bind the strata together and print the cards
 
 
-```r
+``` r
 adenoma_study <- bind_rows(mlbl, mlbh, mhbh, mhbl) # bind together the strata into one dataframe
 
 blockrand::plotblockrand(__, # input dataframe

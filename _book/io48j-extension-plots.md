@@ -25,7 +25,7 @@ You will need {tidyverse}, {medicaldata}, {waffle}, {ggalluvial}, {ggalt}, {ggre
 
 
 
-```r
+``` r
 # install.packages('tidyverse')
 # install.packages('medicaldata')
 library(tidyverse)
@@ -82,7 +82,7 @@ In order to show outcomes for distinct individual participants, a waffle plot co
 Let's start with a waffle plot of 
 
 
-```r
+``` r
 library(waffle)
 indo_rct <- medicaldata::indo_rct
   scaler <- 1
@@ -135,7 +135,7 @@ An alluvial plot depicts flow, like a river, which can split off branches and re
 The example below shows the flow of patients with chest pain from ED triage to hospitalization and an outcome of survived or died, stratified by gender.
 
 
-```r
+``` r
 datafr <- tibble::tribble(
   ~gender, ~triage, ~next_day, ~outcome, ~count,
   "Male", "ER", "Hospitalized", "Survived", 211,
@@ -179,7 +179,7 @@ Now try this yourself. Copy the code below (click on the copy icon in the top ri
 - show the additive effects of ethanol use, cirrhosis, and HCC on death rates. Code the outcome as Survived or Died.
 
 
-```r
+``` r
 datafr <- tibble::tribble(
   ~Ethanol_Use, ~Cirrhosis, ~HCC, ~outcome, ~count,
   "Yes", "Yes", "Yes", "Survived",  4,
@@ -217,7 +217,7 @@ ggplot(datafr,
 ```
 
 ```
-## Error: <text>:26:32: unexpected input
+## Error in parse(text = input): <text>:26:32: unexpected input
 ## 25: ggplot(datafr, 
 ## 26:        aes(y = count, axis1 = __
 ##                                    ^
@@ -230,7 +230,7 @@ ggplot(datafr,
 
 
 
-```r
+``` r
 datafr <- tibble::tribble(
   ~Ethanol_Use, ~Cirrhosis, ~HCC, ~outcome, ~count,
   "Yes", "Yes", "Yes", "Survived",  4,
@@ -281,7 +281,7 @@ Now try this again. Copy the code below (click on the copy icon in the top right
 - Use the examples above to build your alluvial plot
 
 
-```r
+``` r
 datafr <- tibble::tribble(
   ~Day_1_Therapy, ~Day_7_Therapy, ~Day_28_Therapy, ~Day_90_Therapy, ~outcome, ~count,
   "IVCS + Upa", "Pred + Upa", "Upa", "Upa", "Intact", 19,
@@ -308,7 +308,7 @@ datafr <- tibble::tribble(
 
 
 
-```r
+``` r
 datafr <- tibble::tribble(
   ~Day_1_Therapy, ~Day_7_Therapy, ~Day_28_Therapy, ~Day_90_Therapy, ~outcome, ~count,
   "IVCS + Upa", "Pred + Upa", "Upa", "Upa", "Intact", 19,
@@ -351,7 +351,7 @@ ggplot(datafr,
 While bar charts are quite popular for comparing continuous variables across categories, they have limitations. Humans are good at comparing length, but the bars add width, which is a distraction. Bar charts are also often used for counts, and it is not always clear whether a continuous or a discrete count variable is being plotted (a waffle chart can clear up discrete counts). For a continuous variable, you have a single point estimate (the end of the bar), and it is better to emphasize this estimate, without giving up the benefit of comparing lengths (which humans are good at). A lollipop plot emphasizes the continuous value, while de-emphasizing the width of a bar. Let's look at an example below.
 
 
-```r
+``` r
 medicaldata::covid_testing %>% 
   mutate(positive = case_when(ct_result < 45 ~ 1,
                               ct_result >= 45 ~ 0)) %>% 
@@ -385,7 +385,7 @@ The Dumbbell Plot is a visualization that shows change between two points (usual
 Note that a bit of data wrangling needs to be done to produce the correct data format for geom_dumbbell(). You may need to pivot_wider() to get 2 columns of data on distinct dates (in this case, month 1 vs month 4). See the data wrangling below to get mean age for these 2 months.
 
 
-```r
+``` r
 medicaldata::covid_testing %>% 
   filter(!str_detect(patient_class, "surgery")) %>% 
   mutate(pan_month = ceiling((pan_day)/30)) %>% 
@@ -411,7 +411,7 @@ dumb_covid_data
 ## 6 outpatient              6.10   19.3
 ```
 
-```r
+``` r
 dumb_covid_data %>% 
 ggplot(aes(x = month_1, xend = month_4, y = patient_class,
            group = patient_class)) +
@@ -435,7 +435,7 @@ Now, this is a nice basic dumbbell plot. But you may want to make the direction 
 We will start with loading some packages and creating a dataset with a 'change' variable for the change in C-reactive protein between day 1 and day 5 of a hospitalization for acute severe ulcerative colitis.
 
 
-```r
+``` r
 library(tidyverse)
 library(ggtext)
 dat <- tibble::tribble(~id, ~crp1, ~crp5,
@@ -454,14 +454,14 @@ dat %>% mutate(change = crp5-crp1) %>%
 To help plot the points, we will add a long version of this simple dataset, created with pivot_longer.
 
 
-```r
+``` r
 dat_long <- dat %>% pivot_longer(starts_with("crp"), names_prefix = "crp", names_to = "day")
 ```
 
 Now we will make the arrow plot (a fancier version of the dumbbell plot, with added directionality). We will use ggtext to help us turn our title into a color legend.
 
 
-```r
+``` r
 #set custom colors
 custom_days <- c("#1e90ff", "#1874cd")
 custom_dir <- c("limegreen", "firebrick")
@@ -502,7 +502,7 @@ Note that a bit of data wrangling needs to be done to produce the correct data f
 The code below will illustrate the basic spaghetti plot.
 
 
-```r
+``` r
 dat <- tibble::tribble(~time, ~value, ~ses, ~elderly, ~pat_id, 0,0,1,1,1, 1,3,1,1,1, 2,5,1,1,1, 3,8,1,1,1, 0,0,2,1,2, 1,4,2,1,2,  2,7,2,1,2, 3,9,2,1,2, 0,0,1,2,3, 1,5,1,2,3, 2,9,1,2,3, 3,11,1,2,3, 0,0,2,2,4, 1,5,2,2, 4, 2,9,2,2,4, 3,15,2,2,4, 0,0,1,1,5, 1,5,1,1,5, 2,6,1,1,5, 3,9,1,1,5, 0,0,2,1,6, 1,5,2,1,6,  2,8,2,1,6, 3,13,2,1,6, 0,0,1,2,7, 1,4,1,2,7, 2,8,1,2,7, 3,14,1,2,7, 0,0,2,2,8, 1,6,2,2,8, 2,8,2,2,8, 3,16,2,2,8)
 
 
@@ -519,7 +519,7 @@ ggplot(dat, aes(x = time, y = value,
 As you can see, a bit like spilled (uncooked) spaghetti, with a line for each patient. Each patient is the same (default) color. Note that it is **critical** to group y the patient id (group = factor(pat_id)) so that ggplot knows which points go together as a line. If you remove this bit of code for the group argument, you get chaos from *geom_smooth()* or *geom_line()*. We can also let each patient's line follow their actual values, rather than a fitted line, with a few modifications. Try this below.
 
 
-```r
+``` r
 ggplot(dat, aes(x = time, y = value, 
   group = factor(pat_id))) +
   geom_point() +
@@ -534,7 +534,7 @@ Now each patient is represented by a line (and points) with more detail than a f
 We can also chose to color these lines in two classes by ses (SocioEconomic Status) by setting color = factor(ses). We can make the legend neater by putting it inside the plot boundaries with theme (legend.position), and use the x and y range from 0 to 1 to position it as below.
 
 
-```r
+``` r
 ggplot(dat, aes(x = time, y = value, 
   group = factor(pat_id), color = factor(ses))) +
   geom_point() +
@@ -558,7 +558,7 @@ ggplot(dat, aes(x = time, y = value,
 
 If we want to summarize the overall pattern, we can use a *geom_smooth()* with the default loess smoothing. We set the color to "black", rather than the color of either SES group. We need to turn off the grouping with group = NULL to get a single summary line. Note the loess smoothing produces a curve.
 
-```r
+``` r
 ggplot(dat, aes(x = time, y = value, 
   group = factor(pat_id), color = factor(ses))) +
   geom_point() +
@@ -573,7 +573,7 @@ ggplot(dat, aes(x = time, y = value,
 
 If we want to get fancy, we can also make summary curves for each ses group, and facet the plot by elderly status, as below.
 
-```r
+``` r
 elderly_labels <- c(
  `1` = "Young",
  `2` = "Old") 
@@ -599,7 +599,7 @@ Now try this yourself. Copy the code below (click on the copy icon in the top ri
 (Note you only have to read in the data (dat) once, just copy and edit the ggplot thereafter)
 
 
-```r
+``` r
 dat <- tibble::tribble(~ patid, ~week, ~crp, ~fcp, ~flare, ~dz_type, 1,1,0.7,191,1,"uc", 1,3,1.1,302,1,"uc", 1,8,1.5,507,1,"uc", 
 2,1,0.8,214,1,"cd", 2,3,1.2,412,1,"cd", 2,8,1.6,647,1,"cd",  
        3,1,0.7,137,0,"uc", 3,3,0.5,101,0,"uc", 3,8,0.4,58,0,"uc", 
@@ -639,7 +639,7 @@ Click on the `Solution` buttons below to toggle showing or hiding each solution.
 
 
 
-```r
+``` r
 ggplot(dat, aes(x = week, y = crp, 
                 group = factor(patid),
                 color= factor(patid))) +
@@ -661,7 +661,7 @@ ggplot(dat, aes(x = week, y = crp,
 
 
 
-```r
+``` r
 ggplot(dat, aes(x = week, y = crp, 
                 group = factor(patid))) +
   geom_point() +
@@ -682,7 +682,7 @@ ggplot(dat, aes(x = week, y = crp,
 
 
 
-```r
+``` r
 ggplot(dat, aes(x = week, y = crp, 
       group = factor(patid),
       color = factor(flare))) +
@@ -706,7 +706,7 @@ ggplot(dat, aes(x = week, y = crp,
 
 
 
-```r
+``` r
 ggplot(dat, aes(x = week, y = fcp, 
                 group = factor(patid),
        color = factor(flare))) +
@@ -737,7 +737,7 @@ Note that this is not done with a particular package, but with standard geom_lin
 This section borrows heavily from a nice blog post from statistician Kat Hoffman [here](https://www.khstats.com/blog/trt-timelines/multiple-vars.html#just-the-code). Note that a bit of data wrangling needs to be done to produce the correct data format for swimmer plots. We will read in some simulated data of COVID patients from spring 2020 from Kat Hoffman. The original data includes one row per day for each patient, with dichotomous outcomes for the events we are interested in: intubation status, use of steroids, the first day of severe hypoxia status, and death.
 
 
-```r
+``` r
 # install.packages(c("tidyverse","gt","RCurl","rmarkdown"))
 library(tidyverse)
 library(gt)
@@ -762,7 +762,7 @@ dat_long |> head()
 We can use geom_line to plot the length of stay, with day on thex axis and lines colored by intubation status and grouped by patient id.
 
 
-```r
+``` r
 dat_long |>
   ggplot(aes(x=day, y=id, col = intubation_status, group=id)) +
   geom_line() +
@@ -776,7 +776,7 @@ While this is very simple, it gives you a quick look at how these 30 simulated p
 We can add steroid use by day as colored points with geom_point, in one added line of code, as seen below.
 
 
-```r
+``` r
 dat_long |>
   ggplot(aes(x=day, y=id, col = intubation_status, group=id)) +
   geom_point(aes(x=day, y=id, col = steroids)) +
@@ -790,7 +790,7 @@ This gets a bit messy, as we have different colors of points (steroids on/steroi
 To help clarify things in data wrangling step 1, let's create new variables to specify on which day(s) steroids were used, the first day that severe hypoxia was present, and when death occurred. These variables will have lots of NA values when things did not occur - so that we won't plot points when the events did **not** occur (NA days), and will have days for the values when the events occurred, which makes these easier to plot on the x axis. These NAs will be removed (and generate a lot of warnings) when plotting, so I will use an option to turn off messages and warnings in this section.
 
 
-```r
+``` r
 knitr::opts_chunk$set(message=F, warning=F)
 
 dat_swim <-
@@ -803,7 +803,7 @@ dat_swim <-
 In in data wrangling step 2, it would also make it easier to read the plot if the patients were arranged by length of stay (max_day), so we will use fct_reorder() to make the patient ids (factors) ordered by length of stay.
 
 
-```r
+``` r
 dat_swim <- 
   dat_swim |>
   group_by(id) |>
@@ -823,7 +823,7 @@ head(dat_swim) |> paged_table()
 After this data wrangling, now we can plot the data again, arranged by LOS and with only the steroid used days as visible points.
 
 
-```r
+``` r
 dat_swim |> 
   ggplot() +
   geom_line(aes(x=day, y=id, col = intubation_status, group=id)) +
@@ -836,7 +836,7 @@ dat_swim |>
 This is nicer to look at, though the legend is still a bit of a mess, and you can now clearly see that steroids were largely used for intubated patients at this point. It would look nicer if the lines were nearly as thick as the points, so that they are less obscured. Let's fix this with a larger geom_line size, and format the steroid points with a shape for contrast.
 
 
-```r
+``` r
 dat_swim |> 
   ggplot() +
   geom_line(aes(x=day, y=id, col = intubation_status, group=id),
@@ -850,7 +850,7 @@ dat_swim |>
 Now we add important clinical events - we can add severe hypoxia events and death events to the plot, with additional point geoms with distinct shapes for each of these.
 
 
-```r
+``` r
 dat_swim |> 
   ggplot() +
   geom_line(aes(x=day, y=id, col = intubation_status, group=id),
@@ -867,7 +867,7 @@ We can fine-tune the colors and improve the legend name below.
 We will save the plot as p, and add more to it in future steps.
 
 
-```r
+``` r
 # define colors for all geometries with a color argument
 cols <- c("Severe hypoxia" = "#b24745", # red
     "Intubated" = "#483d8b", # navy
@@ -892,7 +892,7 @@ p
 This is really coming along. But the legend symbols are accurate for colors, but don't reflect the shapes we used, as we did not use aes() to create the shapes. To override the default shapes, lines, etc. in the legend, we need to use the guides() function, and override guide_legend(). This lets you manually specify the shapes. Let's start by first defining the corresponding shapes (with NA when we don't want a point), then overriding the shapes, and update our plot.
 
 
-```r
+``` r
 shape_override <- c(4, NA, NA, 21, 15) # order matches `cols`:severe, intubation (yes/no), steroids, death, with the appropriate shapes
 
 # modify the color legend to include the correct shapes
@@ -908,7 +908,7 @@ p +
 That worked well. Now let's remove the lines though Death, Severe Hypoxia, and Steroids, by overriding the line type (1 for a standard line or NA for no line), then fine tune the stroke and size for each of these geom points. Note that for shapes 21-24 in R, you have to separately specify stroke (for outer line) and fill (if any), while shapes 1-20 just require a size.
 
 
-```r
+``` r
 line_override <- c(NA,1,1,NA,NA) # order matches `cols`:severe, intubation (yes/no), steroids, death
 stroke_override <- c(1.2,1,1,1,1.4) # order matches `cols`:severe, intubation (yes/no), steroids, death
 size_override <- c(2.5,2.5,2.6,2.5,2) # order matches `cols`:severe, intubation (yes/no), steroids, death
@@ -930,7 +930,7 @@ p
 Now the legend looks nice. Let's add a few more aesthetic tweaks, including title and better axis labels.
 
 
-```r
+``` r
 p <- p +
   labs(x="Days since hospitalization",y="Patient\nnumber",title="COVID Treatment Timeline for 30 Patients") +
   scale_x_continuous(expand=c(0,0)) + # remove extra white space 
@@ -959,7 +959,7 @@ Let's try another swimmer plot, using some simulated data from a study of patien
 In this code chunk, we do a bit of data wrangling as well, properly formatting the dates, and calculating the length of time in days before or after the SAE (splenic artery embolization). Note that the default units are seconds, so we need to divide by (3600*24) to get days.
 
 
-```r
+``` r
 library(tidyverse)
 library(readxl)
 library(lubridate)
@@ -976,7 +976,7 @@ swim_liver <- read.csv('data/swim_liver.csv') |>
 The key events are olt - orthotopic liver transplant, sae (splenic artery embolism), lvp (large volume paracentesis), and eofu (end of follow up). Each patient has an id and multiple events occur. Each patient also has a MELD score (meld = model for end-stage liver disease), which measures how sick they were before the liver transplant (higher scores are worse).  We will start by drawing the line segments from liver transplant to end of followup, colored by meld score at the time of transplant.
 
 
-```r
+``` r
 swim_liver %>% 
   ggplot() + 
   geom_segment(aes(x = start, xend = end,
@@ -992,7 +992,7 @@ swim_liver %>%
 Now, let's add the large volume paracentesis events as points with geom_point.
 
 
-```r
+``` r
 swim_liver %>% 
   filter(days_from_sae <= end) |> 
   ggplot() + 
@@ -1013,7 +1013,7 @@ swim_liver %>%
 Now we can increase the linewidth and the size of the points to make this clearer.
 
 
-```r
+``` r
 swim_liver %>% 
    filter(days_from_sae <= end) |> 
   ggplot() + 
@@ -1034,7 +1034,7 @@ swim_liver %>%
 The labels on axes and the legend are a bit of a mess still. We can clean this up and add red circles for the transplant events. We can move the legend inside the plot, and add some explanatory text as an annotation. It appears that the SAE (at day 0 in this pre-post swimmer plot) provides a lot of benefit to the mild to moderate MELD patients by reducing their need for large volume paracentesis. Those with severely high MELD scores don't seem to get as much benefit.
 
 
-```r
+``` r
 swim_liver %>% 
    filter(days_from_sae <= end) |> 
   ggplot() + 
@@ -1076,7 +1076,7 @@ You can explore other (similar) approaches to swimmer plots, including the {swim
 It is common to compare continuous outcomes across categories with scatter plots or box plots, but we often see comparison bars and p values added. This can be added to a ggplot with the {ggsignif} package. Let's load some libraries and some data in the code chunk below. Then we will do a basic boxplot.
 
 
-```r
+``` r
 library(tidyverse)
 library(ggsignif)
 library(medicaldata)
@@ -1104,7 +1104,7 @@ You can use the geom_signif() geom from the {ggsignif} package. The arguments in
 
 
 
-```r
+``` r
 library(tidyverse)
 library(ggsignif)
 library(medicaldata)
@@ -1149,7 +1149,7 @@ Now try this yourself. Copy the code below (click on the copy icon in the top ri
 - put these at appropriate y_postions with appropriate tip_lengths - your choice
 
 
-```r
+``` r
 library(tidyverse)
 library(ggsignif)
 library(medicaldata)
@@ -1177,7 +1177,7 @@ ggplot(dat) +
 <div class='webex-solution'><button>Solution ggsignif</button>
 
 
-```r
+``` r
 library(tidyverse)
 library(ggsignif)
 library(medicaldata)

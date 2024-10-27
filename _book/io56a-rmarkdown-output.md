@@ -48,7 +48,7 @@ This is fixable, by using your own MS Word template document (aka style referenc
 2. Change the `output:` field of your YAML header to look like this:
 
 
-```r
+``` r
 ---
 title: "My Title"
 author: Me
@@ -141,7 +141,7 @@ First, you need a translator for all of the things PDFs can do. A complete versi
 To use {tinytex}, copy the code chunk below, and run it in your local RStudio console (once only).
 
 
-```r
+``` r
 install.packages('tinytex')
 tinytex::install_tinytex()
 ```
@@ -167,7 +167,7 @@ To get Powerpoint output, you can simply change the `output:` key to `powerpoint
 You can even add a formatted powerpoint template (like `my-styles.pptx`) to get the fonts and colors and headings the way you like them (remember to use the indents, like this:
 
 
-```r
+``` r
 ---
 title: "My Title"
 author: Me
@@ -210,7 +210,7 @@ You can add a code chunk and create a plot on a slide with code in the code chun
 You can include a graphic (picture, other plot, etc.) in a code chunk with `knitr::include_graphics("path/to/filename")`, with a code chunk like this:
 
 
-```r
+``` r
 knitr::include_graphics(here("images/echocardiogram.jpg"))
 ```
 

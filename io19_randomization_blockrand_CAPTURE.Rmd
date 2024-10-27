@@ -1,6 +1,8 @@
 ---
 title: "R Notebook"
 output: html_notebook
+editor_options: 
+  chunk_output_type: inline
 ---
 
 This is an example of use of the blockrand package to create a randomization of two assignments with 5 strata in a randomized permuted block design

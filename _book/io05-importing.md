@@ -17,7 +17,7 @@ If you type into the Console pane `medicaldata::scurvy` , you will get James Lin
 If you want to save this data to an object in your work environment, you just need to assign this to a named object, like `scurvy`, like so, with an assignment arrow, composed of a less than sign (<) and a hyphen (-):
 
 
-```r
+``` r
 scurvy <- medicaldata::scurvy
 
 # now print the columns for id and treatment
@@ -84,7 +84,7 @@ First, make sure that you have the {readr} package loaded (or the {tidyverse} me
 You can load {readr} with the `library()` function, if you have already installed this package.
 
 
-```r
+``` r
 library(readr)
 # or you can use
 library(tidyverse) # which will load 8 packages, including readr
@@ -108,7 +108,7 @@ Once the {tidyverse} package is installed, you can use `library(tidyverse)` with
 We will also want to use the {glue} package shortly to access files on the web. Practice installing this package. Copy and run the code chunk below in your RStudio Console panel to install and load the {glue} package.
 
 
-```r
+``` r
 install.packages('glue')
 library(glue)
 ```
@@ -119,7 +119,7 @@ Now that you have {readr} loaded, you can read in some csv data.
 Let's start with a file named `scurvy.csv` in a `data` folder on GitHub. You will need to glue together the url_stem (the first part of the path to the web address) and "data/scurvy.csv" (the folder and file name) to get the full web address. Copy and run the code chunk below to see the url_stem and the dataset.
 
 
-```r
+``` r
 url_stem <- "https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/"
 url_stem
 ```
@@ -128,7 +128,7 @@ url_stem
 ## [1] "https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/"
 ```
 
-```r
+``` r
 read_csv(glue(url_stem, 'data/scurvy.csv'))
 ```
 
@@ -193,7 +193,7 @@ If you want to do things with this data, and make them last, you have to *assign
 To do this, you need to use an assignment arrow, as below, where the data is assigned to the object, `scurvy_data`.
 
 
-```r
+``` r
 scurvy_data <- read_csv(glue(url_stem, 'data/scurvy.csv'))
 ```
 
@@ -250,7 +250,7 @@ To fix this, add the argument, **col_names** = FALSE.
 You can also assign your own **col_names** by setting a vector, like c("patient_id", "treatment", "outcome") [note that `c()` concatenates data items into a vector] equal to to col_names, as below. Copy and run this code chunk in your RStudio Console pane to see how the output is different.
 
 
-```r
+``` r
 read_csv(file = glue(url_stem, 'data/scurvy.csv'), 
 col_names = c("pat_id", "arm", "dose", "gums", "skin", "weak", "lass", "fit"))
 ```
@@ -290,7 +290,7 @@ We can skip as many lines as we want, which can be helpful if you have an Excel 
 When we set skip = 1 in this case, we get a cleaner dataset, without variable names as data.
 
 
-```r
+``` r
 read_csv(file = glue(url_stem, 'data/scurvy.csv'), 
          col_names = c("pat_id", "arm", "dose", "gums", "skin", "weak", "lass", "fit"),
          skip = 1)
@@ -336,7 +336,7 @@ You can copy the Column specifications from the first attempt at importing, and 
 Try this out in the code chunk below.
 
 
-```r
+``` r
 spec(scurvy_data)
 ```
 
@@ -362,7 +362,7 @@ Run the code chunk below to see how this works.
 The `glimpse` function will give an overview of the new `scurvy_cols` object that I assigned the data to.
 
 
-```r
+``` r
 scurvy_cols <- read_csv(
   file = glue(url_stem, 'data/scurvy.csv'),
     col_types = cols(
@@ -415,7 +415,7 @@ You can do this by setting col_types to a string, in which each letter specifies
 Run the example below by clicking on the green arrow at the top right of the code chunk, in which I use i for col_integer, c for col_character, and f for col_factor.
 
 
-```r
+``` r
 scurvy_cols2 <- read_csv(
   file = glue(url_stem, 'data/scurvy.csv'),
          col_types = "ifcffff")
@@ -461,7 +461,7 @@ This is OK, but not quite right.
 -   `improved` into a logical (l) (var 13)
 
 
-```r
+``` r
 strep_tb_cols <- read_---(
     file = glue(url_stem, 'data/----.tsv'),
       col_types = "ccccccccccccc")
@@ -473,7 +473,7 @@ glimpse(strep_tb_cols)
 <div class='webex-solution'><button>Show the Solution</button>
 
 
-```r
+``` r
 strep_tb_cols <- read_tsv(
     file = glue(url_stem, 'data/strep_tb.tsv'),
       col_types = "ccddfffff--il")
@@ -515,7 +515,7 @@ The default is the first worksheet, but you can set this to sheet = 4 for the 4t
 You can also set the range argument to only read in a particular range of cells, like range = "B2:G14".
 Let's set up your local RStudio to read in a spreadsheet named **paulolol.xlsx**. Copy and run the code below in your local version of RStudio to prepare the file. This will pull an excel file from the web and write a copy to your local storage.
 
-```r
+``` r
 library(httr) 
 github_raw_link <- "https://github.com/higgi13425/rmrwr-book/raw/master/data/paulolol.xlsx"
 paulolol_xlsx <- tempfile(fileext = ".xlsx")
@@ -527,7 +527,7 @@ req <- httr::GET(github_raw_link,
 Below is an example of how to read in this Excel worksheet. Copy and run this code locally, and see what you get in the Console for output.
 
 
-```r
+``` r
 library(readxl)
 read_excel(paulolol_xlsx, 
            sheet = 1,
@@ -575,7 +575,7 @@ This is a problem. We want a clean rectangle of data, with the true variable nam
 
 Try editing the skip and n_max arguments until you can read in a clean rectangle of data below. Copy the code hung 
 
-```r
+``` r
 read_excel(paulolol_xlsx, 
            sheet = 1,
            skip = ___, 
@@ -586,7 +586,7 @@ read_excel(paulolol_xlsx,
 <div class='webex-solution'><button>Show Solution</button>
 
 
-```r
+``` r
 read_excel(paulolol_xlsx, 
            sheet = 1,
            skip = 3, 
@@ -626,7 +626,7 @@ Copy and run the code chunk below to import a web file for SAS.
 The {haven} package provides functions like *read_sas()*, *read_dta()* and *read_sav()* to enable you to read proprietary file formats into R.
 
 
-```r
+``` r
 url_stem <- "https://raw.githubusercontent.com/higgi13425/rmrwr-book/master/"
 
 haven::read_sas(glue(url_stem, "data/blood_storage.sas7bdat"))
@@ -658,7 +658,7 @@ haven::read_sas(glue(url_stem, "data/blood_storage.sas7bdat"))
 
 Similarly, you can read and write Stata files with *read_dta()* and *write_dta()*. Try out the example below.
 
-```r
+``` r
 haven::read_dta(glue(url_stem, "data/blood_storage.dta"))
 ```
 
@@ -688,7 +688,7 @@ haven::read_dta(glue(url_stem, "data/blood_storage.dta"))
 You can also read and write SPSS files with *read_sav()* and *write_sav()*. Try out the example below.
 
 
-```r
+``` r
 haven::read_sav(glue(url_stem, "data/strep_tb.sav"))
 ```
 
@@ -733,7 +733,7 @@ Try to use the same `import()` function to read
 - blood_storage.sas7bdat
 
 
-```r
+``` r
 rio::import(glue(url_stem, "data/filename"))
 ```
 
@@ -756,7 +756,7 @@ Just put the object name as an argument within the *glimpse()* function (inside 
 Run the code chunk below to get the glimpse() output.
 
 
-```r
+``` r
 glimpse(scurvy)
 ```
 
@@ -783,7 +783,7 @@ What can you learn about the strep_tb dataset with *glimpse()*?
 Copy and edit the code chunk below in your local RStudio and run it to find out about the strep_tb dataset, using *glimpse()*.
 
 
-```r
+``` r
 library(tidyverse)
 glimpse(----)
 ```
@@ -814,7 +814,7 @@ The *str()* function does largely what *glimpse()* does, but provides a bit more
 Run the code chunk below to see the output of *str()* on the scurvy dataset.
 
 
-```r
+``` r
 str(scurvy)
 ```
 
@@ -860,7 +860,7 @@ You got a **warning** that pointed out that the `argument is not numeric or logi
 So you run *str()* to find out the data structure of this variable.
 
 
-```r
+``` r
 mean(medicaldata::strep_tb$patient_id)
 ```
 
@@ -868,7 +868,7 @@ mean(medicaldata::strep_tb$patient_id)
 ## [1] 54
 ```
 
-```r
+``` r
 str(medicaldata::strep_tb$patient_id)
 ```
 
@@ -881,7 +881,7 @@ If you wanted to find the mean value, you would have to change it to numeric (wi
 The glimpse() function provides identical output to str() for a variable in a table.
 
 
-```r
+``` r
 glimpse(medicaldata::strep_tb$patient_id)
 ```
 
@@ -899,7 +899,7 @@ As you might have guessed, these functions give you a quick view of the head (to
 Try this out with scurvy or strep_tb.
 
 
-```r
+``` r
 head(medicaldata::scurvy)
 ```
 
@@ -919,7 +919,7 @@ head(medicaldata::scurvy)
 ## #   fit_for_duty_d6 <fct>
 ```
 
-```r
+``` r
 tail(medicaldata::strep_tb)
 ```
 
@@ -959,7 +959,7 @@ You can see all variables and the whole width (though it will wrap around to new
 Run the code chunk below to see how this is different.
 
 
-```r
+``` r
 head(as.data.frame(medicaldata::scurvy))
 ```
 
@@ -994,7 +994,7 @@ head(as.data.frame(medicaldata::scurvy))
 ## 6     3_severe            0_no
 ```
 
-```r
+``` r
 print(tail(medicaldata::strep_tb, width = Inf))
 ```
 
@@ -1046,7 +1046,7 @@ Note that if you want to look at a random sample of your dataset, rather than th
 See how this is used by running the code chunk below, which uses a 10% random sample of strep_tb to check that the mutate steps to generate the variables `rad_num` and `improved` worked correctly.
 
 
-```r
+``` r
 #check that radiologic_6m, rad_num, and improved all match
 medicaldata::strep_tb %>% 
   slice_sample(prop = 0.1) %>% 
@@ -1055,16 +1055,16 @@ medicaldata::strep_tb %>%
 
 ```
 ##                   radiologic_6m rad_num improved
-## 1    6_Considerable_improvement       6     TRUE
-## 2  2_Considerable_deterioration       2    FALSE
-## 3      3_Moderate_deterioration       3    FALSE
-## 4        5_Moderate_improvement       5     TRUE
-## 5        5_Moderate_improvement       5     TRUE
-## 6      3_Moderate_deterioration       3    FALSE
-## 7      3_Moderate_deterioration       3    FALSE
-## 8    6_Considerable_improvement       6     TRUE
-## 9                       1_Death       1    FALSE
-## 10     3_Moderate_deterioration       3    FALSE
+## 1        5_Moderate_improvement       5     TRUE
+## 2                       1_Death       1    FALSE
+## 3  2_Considerable_deterioration       2    FALSE
+## 4                       1_Death       1    FALSE
+## 5    6_Considerable_improvement       6     TRUE
+## 6    6_Considerable_improvement       6     TRUE
+## 7        5_Moderate_improvement       5     TRUE
+## 8      3_Moderate_deterioration       3    FALSE
+## 9    6_Considerable_improvement       6     TRUE
+## 10 2_Considerable_deterioration       2    FALSE
 ```
 
 
@@ -1079,7 +1079,7 @@ You can get a more detailed look at a dataset with the {skimr} package, which ha
 Run the code chunk below, applying the `skim()` function to the strep_tb dataset.
 
 
-```r
+``` r
 library(skimr)
 skimr::skim(medicaldata::strep_tb)
 ```
@@ -1149,7 +1149,7 @@ Table: (\#tab:unnamed-chunk-26)Data summary
 A fancier approach is taken by the DataExplorer package, which can create a full html report with correlations and PCA analysis. Copy and run the chunk below to see what the Data Profiling Report looks like.
 
 
-```r
+``` r
 DataExplorer::create_report(medicaldata::strep_tb)
 ```
 
@@ -1205,7 +1205,7 @@ Solution to Challenge 1: paulolol.xlsx
 <div class='webex-solution'><button>Show Me Solution 1</button>
 
 
-```r
+``` r
 read_excel(path = 'data/paulolol.xlsx',
            skip = 3,
            n_max = 8)
@@ -1238,7 +1238,7 @@ Solution to Challenge 2: paulolol2.xlsx
 <div class='webex-solution'><button>Show Me Solution 2</button>
 
 
-```r
+``` r
 read_excel(path = 'data/paulolol2.xlsx',
            sheet = 'data')
 ```

@@ -335,7 +335,7 @@ The server section defaults are straightforward, and are the bread of the sandwi
 The default content is
 
 
-```r
+``` r
 server <- function(input, output) {
   
 }
@@ -357,7 +357,7 @@ You can calculate with input values, and mutate to create new variables.
 -   how would you access it in the ui section?
 
 
-```r
+``` r
 server <- function(input, output) {
   output$bc_ratio <- renderText({
     bc_ratio <- input$bun_mg-dl/input$creat_mg_dl
@@ -406,7 +406,7 @@ Your *serverPanel* should still have a *selectInput* with 3 choices.
 Delete this and replace it with a `numericInput()` for weight, and a `sliderInput()` for height, as shown below
 
 
-```r
+``` r
   sidebarPanel( numericInput(
     inputID = "weight_kg",
     label = "Enter weight in kilograms",
@@ -425,7 +425,7 @@ Change the name of the `output$name` to `output$bmi`.
 Then in the renderText section, calculate the BMI, as shown below.
 
 
-```r
+``` r
 server <- function(input, output) {
   output$bmi <- renderText({
     bmi <- input$weight_kg/(input$height_m)^2

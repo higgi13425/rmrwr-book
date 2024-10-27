@@ -18,7 +18,7 @@ Remember that you can copy each code chunk to the clipboard, then paste it into 
 :::
 
 
-```r
+``` r
 install.packages('pwr')
 library(pwr)
 ```
@@ -64,7 +64,7 @@ This is something that ***is*** intutitive, and experienced clinicians can do fa
 In our case, the difference is 2 and the range/4 (estimate of SD) is 3. So our effect size (Cohen's d) is 0.66. Plug in 0.66 for d in the code chunk below, and run this code chunk to get an estimate of the n in each arm of a 2 armed study with a two sample t-test of the primary endpoint.
 
 
-```r
+``` r
 pwr::pwr.t.test(n = NULL,
                 sig.level = 0.05, 
                 type = "two.sample", 
@@ -94,7 +94,7 @@ These are the remaining four arguments of the *pwr.t.test()* function. These are
 If you know any three of these, you can calculate the fourth. In order to do this, you set the one of these four arguments that you want to calculate equal to NULL, and specify the other 3. Imagine that we only have enough funds to run this study on 50 participants. What would our power be to detect a difference of 2 in Hgb A1c? You can set the power to NULL, and the n to 25 (remember that n is per arm), and run the chunk below.
 
 
-```r
+``` r
 pwr::pwr.t.test(n = __, # note that n is per arm
                 sig.level = 0.05, 
                 type = "two.sample", 
@@ -120,7 +120,7 @@ How many participants would Eddie Enema have to recruit to have 80% power to tes
 Check each of the argument values and run the chunk below to find out.
 
 
-```r
+``` r
 pwr::pwr.t.test(n = NULL, # note that n is per arm
                 sig.level = 0.05, 
                 type = "one.sample", 
@@ -150,7 +150,7 @@ The before-after (or baseline-postintervention) design is probably the most comm
 To see the difference between two-sample and paired designs, run the code chunk below, for a two-sample study with a Cohen's d of 0.8 and 80% power. Then change the type to "paired", and see the effect on sample size.
 
 
-```r
+``` r
 pwr::pwr.t.test(n = NULL, # note that n is per arm
                 sig.level = 0.05, 
                 type = "two.sample", 
@@ -170,7 +170,7 @@ This requires a slightly different function, the *pwr.t2n.test()* function. Let'
 We are proposing a study in which the expected reduction in systolic blood pressure is 10 mm Hg, with a standard deviation of 20 mm Hg. We choose an n1 of 40, and a power of 80%, then let the function determine n2.
 
 
-```r
+``` r
 pwr::pwr.t2n.test(n1 = 40,
                   n2 = NULL,
                 sig.level = 0.05,
@@ -192,7 +192,7 @@ d = (20-10)/20, and the program will calculate the d of 0.5 for you.
 We can also round up the ratio to 4:1 (160:40) and determine the resulting power.
 
 
-```r
+``` r
 pwr::pwr.t2n.test(n1 = c(40),
                   n2 = c(160),
                 sig.level = 0.05,
@@ -208,7 +208,7 @@ This provides a power of 80.3%.
 It can be helpful to compare multiple scenarios, varying the n or the estimated effect size, to examine trade-offs and potential scenarios when planning a trial. You can test multiple particular scenarios by listing the variables in a concatenated vector, as shown below for n1 and n2.
 
 
-```r
+``` r
 pwr::pwr.t2n.test(n1 = c(40, 60, 80),
                   n2 = c(80, 120, 160),
                 sig.level = 0.05,
@@ -230,7 +230,7 @@ You can also examine many scenarios, with the sequence function, seq(). For the 
 Note that the length of the sequences produced by seq() must match (or be a multiple of the other) if you are sequencing multiple arguments, so that there is a number for each scenario. If the lengths of the sequences are multiples of each other (8 and 4 in the example below), the shorter sequence (n2) will be silently "recycled" (used again in the same order) to produce a vector of matching length (8).
 
 
-```r
+``` r
 pwr::pwr.t2n.test(n1 = seq(from = 40, to = 75, by = 5),
                   n2 = seq(60, 120, 20),
                 sig.level = 0.05,
@@ -242,7 +242,7 @@ pwr::pwr.t2n.test(n1 = seq(from = 40, to = 75, by = 5),
 Sometimes it is helpful to look at multiple scenarios and plot the results. You can do this by leaving n = NULL, and plotting the results, as seen below. The null value will be varied across a reasonable range, and the results plotted, with an optimal value identified. The plot function will use ggplot2 if this package is loaded, or base R plotting if ggplot2 is not available. As you can see below, you can modify the ggplot2 plot of the results with standard ggplot2 functions.
 
 
-```r
+``` r
 results <- pwr::pwr.t2n.test(n1 = c(40),
                   n2 = NULL,
                 sig.level = 0.05,
@@ -277,7 +277,7 @@ Try calculating the sample size or power needed in the continuous outcome scenar
 You want to increase the FEV1 (forced expiratory volume in 1 second) of patients with COPD (chronic obstructive pulmonary disease) by 10% of predicted from baseline using weekly inhaled stem cells vs. placebo. Unfortunately, the standard deviation of FEV1 measurements is 20%. You want to have 80% power to detect this difference, with a 2-sided alpha of 0.05, with equal n in each of the two arms. Fill in the blanks in the code chunk below to calculate the sample size needed (n x number of arms). Remember that the effect size (Cohen's d) = change in endpoint (delta)/SD of the endpoint.
 
 
-```r
+``` r
 pwr::pwr.t.test(n = __, # note that n is per arm
                 sig.level = __, 
                 type = "__", 
@@ -293,7 +293,7 @@ You should get 128 participants (assuming no dropout) from 64 per arm. Cohen's d
 You want to decrease the BNP (brain natriuretic protein) of patients with CHF (congestive heart failure) by 300 pg/mL from baseline with a new oral intropic agent vs. placebo. BNP levels go up during worsening of heart failure, and a variety of effective treatments lower BNP, which can function as surrogate marker in clinical trials. The standard deviation of BNP measurements is estimated at 350 pg/mL. You want to have 80% power to detect this difference, with a 2-sided alpha of 0.05, with equal n in each of the two arms. Also consider an alternative scenario with a change in BNP of only 150 pg/mL. Remember that the effect size (Cohen's d) = change in endpoint (delta)/SD of the endpoint. Fill in the blanks in the code chunk below (2 scenarios) to calculate the sample size needed (n x number of arms) for both alternatives.
 
 
-```r
+``` r
 pwr::pwr.t.test(n = __, # note that n is per arm
                 sig.level = __, 
                 type = "two.__", 
@@ -318,7 +318,7 @@ Note that you can let R calculate the Cohen's d - just type in 300/350 and 150/3
 You want to increase the Barthel Activities of Daily Living Index of patients with stroke by 25 points from baseline with an intensive in-home PT and OPT intervention vs. usual care (which usually increases BADLI by only 5 points). You roughly estimate the standard deviation of Barthel index measurements as 38. You want to have 80% power to detect this difference, with a 2-sided alpha of 0.05, with equal n in each of the two arms. You want to consider multiple possible options for n, and plot these for a nice figure in your grant application. Fill in the blanks in the code chunk below to calculate **and plot** the sample size needed (n x number of arms).
 
 
-```r
+``` r
 results <- pwr::pwr.t.test(n = __, # note that n is per arm
                 sig.level = __, 
                 type = "two.__", 
@@ -343,7 +343,7 @@ Let's assume that patients discharged from your hospital after a myocardial infa
     We will also use a built-in function of {pwr}, the *ES.h()* function, to help us calculate the effect size. This function takes our two hypothesized proportions and calculates an effect size with an arcsine transformation.
 
 
-```r
+``` r
 pwr.p.test(h = ES.h(p1 = 0.95, p2 = 0.80),
            n = NULL,
            sig.level = 0.05,
@@ -379,7 +379,7 @@ For this, we need the *pwr.2p.test()* function for **two proportions**.
 You want to calculate the sample size for a study of a cardiac plexus parasympathetic nerve stimulator for pulmonary hypertension. You expect the baseline one year mortality to be 15% in high-risk patients, and expect to reduce this to 5% with this intervention. You will compare a sham (turned off) stimulator to an active stimulator in a 2 arm study. Use a 2-sided alpha of 0.05 and a power of 80%. Copy and edit the code chunk below to determine the sample size (n, rounded up) per arm, and the overall sample size (2n) fo the study.
 
 
-```r
+``` r
 pwr.p.test(h = ES.h(p1 = __, p2 = __),
            n = __,
            sig.level = __,
@@ -398,7 +398,7 @@ For this, we need the *pwr.2p2n.test()* function for **two proportions with uneq
 Imagine you want to enroll class IV CHF patients in a device trial in which they will be randomized 3:1 to a device (vs sham) that restores their serum sodium to 140 mmol/L and their albumin to 40 mg/dL each night. You expect to reduce 1 year mortality from 80% to 65% with this device. You want to know what your power will be if you enroll 300 in the device arm and 100 in the sham arm.
 
 
-```r
+``` r
 pwr.2p2n.test(h = ES.h(p1 = __, p2 = __),
            n1 = __,
            n2 = __, 
@@ -420,7 +420,7 @@ Try calculating the sample size or power needed in the proportional outcome scen
 You want to decrease the mortality of patients on renal dialysis, which averages 20% per year in your local dialysis center. You will randomize patients to a bundle of statin, aspirin, beta blocker, and weekly erythropoietin vs. usual care, and hope to reduce annual mortality to 10%. You want to have 80% power to detect this difference, with a 2-sided alpha of 0.05, with equal n in each of the two arms. Fill in the blanks in the code chunk below to calculate the sample size needed (n x number of arms).
 
 
-```r
+``` r
 pwr.p.test(h = ES.h(p1 = __, p2 = __),
            n = __,
            sig.level = .05,
@@ -435,7 +435,7 @@ You always round up first (to whole participants per arm), then multiply by the 
 You want to decrease 1-year endoscopic recurrence rate in Crohn's disease from 90% to 70%. A local surgeon claims that his new "slipknot anastomosis" technique will accomplish this, by reducing colonic backwash and thereby, reducing endoscopic recurrence. You want to have 80% power to detect this difference, with a 2-sided alpha of 0.05, with equal n in each of the two arms. Also consider an alternative, more conservative scenario with a endoscopic recurrence rate of 80% with the new method. Fill in the blanks in the code chunk below to calculate the sample size needed (n x number of arms) for both alternatives.
 
 
-```r
+``` r
 pwr.p.test(h = c(ES.h(p1 = 0.9, p2 = __)),
            n = NULL,
            sig.level = .05,
@@ -456,7 +456,7 @@ With the originally claimed recurrence proportion of 70%, you will need 30 parti
 Your local endocrinologist has identified consumption of glazed donuts as a major risk factor for development of type 2 diabetes in your region. She proposes to randomize participants to glazed donuts spiked with metformin vs usual donuts, expecting to reduce the 1 year proportion of prediabetics with a HgbA1c \> 7.0 from 25% to 10%. You want to have 80% power to detect this difference, with a 2-sided alpha of 0.05, with 2 times as many participants in the metformin donut arm. You want to consider multiple possible sample sizes (n = 25, 50, 75) for the control glazed donuts, with 2n (double the sample size in each scenario) for the metformin donuts group. Fill in the blanks in the code chunk below to calculate the resulting power for each of the three sample size scenarios.
 
 
-```r
+``` r
 pwr.2p2n.test(h = ES.h(p1 = __, p2 = __),
            n1 = seq(from = __, to = __, by = 25), 
            n2 = seq(from = __, to = __, by = 50),

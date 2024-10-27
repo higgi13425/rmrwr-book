@@ -1,0 +1,202 @@
+---
+title: "Extracting Clinical Study Data from REDCap"
+author: "Peter D.R. Higgins"
+output:
+  html_document:
+    df_print: paged
+editor_options:
+  markdown:
+    wrap: sentence
+---
+
+# Extracting Clinical Study Data from REDCap
+
+In your investigator-initiated clinical research, you will often collect data in 
+a HIPAA-compatible database like REDCap, which will protect Protected Health 
+Information (PHI) securely on the web. However, the usual downloads from REDCap
+have to be done manually and are a bit clunky. If you take one time measurements 
+(baseline, outcome), as well as repeated measurements over time (e.g. labs, BMI,
+depression score at each visit), the data will be downloaded as one giant rectangle
+with a lot of missing data, as well as a lot of repeated data.
+
+In this chapter, we will show you how to extract data from REDCap using the 
+`{REDCapTidier}` package, and then how to wrangle the data into a more usable 
+format. This will enable you to monitor your ongoing clinical research in near 
+real-time, by allowing daily or weekly updates of summary webpages that you can
+review and share with collaborators. This will allow you to identify problems
+early on, and correct course if needed. Inadequate recruitment and retention 
+often cause clinical studies to fail, but are often recognized too late, when
+limited funds are running out. Closely monitoring your trial will help you identify
+problems with data collection, early participant dropout, or other issues that 
+can be corrected early on.
+
+
+## Goals for this Chapter
+
+In this chapter, we will focus on extracting and cleaning data from a REDCap
+database from an ongoing clinical study. We will use the `{REDCapTidier}` package
+and a training database created with fake data for this purpose. 
+
+In applying this in practice, we will assume that you have:
+
+1. Ovtained IRB permission to run a clinical study
+2. Created a REDCap database for your study
+
+We will cover the following topics:
+
+1. Obtaining a REDCap API token
+2. Using the REDCapTidier package to extract data from REDCap
+3. Labeling the data fields
+4. Cleaning the data with the `{janitor}` package
+
+
+## Packages Needed for this Chapter:
+
+- `{tidyverse}`
+- `{REDCapTidieR}`
+- `{janitor}`
+
+
+## Pathway for this Chapter
+```{r setup, include = FALSE}
+library(tidyverse)
+library(webexercises)
+library(REDCapTidieR)
+library(janitor)
+```
+
+
+## Obtaining a REDCap API token
+
+Let's start by looking at your REDCap database.
+APi stands for Application Programming Interface. Many databases have a web API 
+to allow people to use programs to extract data from the database. This is
+a secure, permission-based way to extract data from a database.
+
+First we want to establish that you have API token access to your REDCap database.
+The API token is a long string of characters that you can generate in your REDCap 
+project. The person who built the database could have given you API access, or
+may not have. You can tell whether you have API Access by looking at the home 
+page of your REDCap database. Look for an API button in the left sidebar. If you
+don't see it, you don't have API access. If you do see it, click on it and see
+if you have a token. If you don't, you can generate one by clicking on the
+"Generate Token" button.
+
+- images here
+
+Look for API
+
+if no permission, ask the db creator for API permission
+
+once you have API permission, contact your local REDCap administrator to request 
+an API token. This is a long string of characters that you will use to access your
+REDCap database. 
+
+## Finding the web URL of your redcap production Database
+
+## Setting up a secure firewalled server as a location for your project and data
+
+## Using the REDCapTidier package to extract data from REDCap
+
+## Labeling the data fields
+
+## Cleaning the data with the `{janitor}` package
+
+
+
+
+
+### Your Turn
+In the last code block, we saved the table as the object `tbl`. Take this `tbl` 
+object and 
+
+- fix up the labels for `hgb`, `alk.phos`, and `ast` to be more publication-ready.
+- add a caption to the table that says "Baseline Characteristics of Participants in the Mock Study by Treatment Arm"
+- add a footnote to the table that says "Note: Missing values are indicated as 'Missing' in the table."
+- improve the value labels for 'Hawaii/Pacific', and 'Native-Am/Alaska' to be "Native Hawaiian or other Pacific Islander" and "American Indian or Alaska Native" respectively.
+- change the number of digits in the table to 2.
+- change the stats to show the mean and standard deviation for continuous variables, and the count and percent for categorical variables.
+- convert the table to a gt table and style it with the `gt` package. Add some color.
+
+The code block below starts with tbl, unmodified.
+Add a pipe and start fixing it up, with the goals above. Refer to the `{gtsummary}` and `{gt}` documentation for help. Click on the links below as needed.
+
+- gtsummary: [tbl_summary()](https://www.danieldsjoberg.com/gtsummary/reference/tbl_summary.html)
+- gt: [gt()](https://gt.rstudio.com/reference/gt.html)
+
+```{r your-turn}
+tbl
+
+```
+
+## Try this with a new dataset
+
+Now we will use the `trial` dataset from the {gtsummary} package to create a Table 1.
+The `trial` dataset is a simulated dataset of a clinical trial with 200 observations and 6 variables.
+Run the code block below. Which are baseline variables for Table 1, and which are outcome variables?
+Use your R skills to:
+
+- select the baseline variables 
+- create a Table 1, divided by treatment (`trt`), and 
+- set the missing_text to "Missing".
+
+
+```{r trial-dim}
+trial
+
+```
+  
+`r hide(button_text = "Show code Solution")`
+
+```{r}
+trial |> 
+  select(age, marker, stage, grade, trt) |>
+  tbl_summary(by = trt, missing_text = "Missing")
+
+```
+
+
+`r unhide()`
+
+
+
+### Your Turn
+
+
+
+`r hide(button_text = "Show code Solution")`
+
+```{r}
+strep_tb |> 
+  select(gender, starts_with("baseline"), arm) |>
+  tbl_summary(by = arm, missing_text = "Missing",
+              label = list(
+                gender ~ "Gender",
+                baseline_condition ~ "Baseline Condition",
+                baseline_temp ~ "Baseline Temperature",
+                baseline_esr ~ "Baseline ESR",
+                baseline_cavitation ~ "Baseline Cavitation"
+              )) |> 
+  add_n() |>
+  add_overall() |>
+  bold_labels() |> 
+  modify_header(update = list(
+    label ~ "**Participant<br>Characteristic**",
+    stat_0 ~ "**Overall**<br>N = 107",
+    stat_1 ~ "**Control**<br>N = 52",
+    stat_2 ~ "**Streptomycin**<br>N = 55"
+  )) |>
+  modify_spanning_header(c("stat_1", "stat_2") ~ "**Treatment Arm**") 
+
+```
+
+`r unhide()`
+
+
+## Summary
+
+You now know how to 
+1. Identify your REDCap URL and obtain an API token for your database
+2. Us the REDCapTidier package to extract data from REDCap
+3. Label the data fields
+4. Clean the data with the `{janitor}` package

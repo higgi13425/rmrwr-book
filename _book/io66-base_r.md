@@ -32,7 +32,7 @@ Whether you have a data.frame, a tibble, or a matrix, it can be helpful to know 
     You may want to know how many rows to loop over, or how many columns need names, but you will frequently need to access these numbers. The dim() function returns two numbers - the rows first, then the columns. Let's try this on the ***licorice*** dataset from the {medicaldata} package.
 
 
-```r
+``` r
 dim(licorice)
 ```
 
@@ -43,7 +43,7 @@ dim(licorice)
 This is great, as long as you know that the first number is the number of rows, and the 2nd number is the number of columns (standard notation is R x C, so rows first, columns second). But if you want to get the number of rows out, and store it in a variable, you need to use the brackets [n] notation. Brackets allow you to pull out the ***nth*** item in a vector or a list. Let's pull out the first item (the number of rows), and the second item (the number of columns) separately. We will store these in the 2 variables *rows* and *columns*, then print them out.
 
 
-```r
+``` r
 rows <- dim(licorice)[1]
 rows
 ```
@@ -52,7 +52,7 @@ rows
 ## [1] 235
 ```
 
-```r
+``` r
 columns <- dim(licorice)[2]
 columns
 ```
@@ -64,7 +64,7 @@ columns
 You can also do this more directly with the *nrow*() and *ncol*() functions.
 
 
-```r
+``` r
 rows <- nrow(licorice)
 rows
 ```
@@ -73,7 +73,7 @@ rows
 ## [1] 235
 ```
 
-```r
+``` r
 columns <- ncol(licorice)
 columns
 ```
@@ -85,7 +85,7 @@ columns
 A similar approach can give you the length of a vector with the *length*() function. Here we will check the length of the **treat** vector in the **licorice** tibble.
 
 
-```r
+``` r
 length(licorice$treat)
 ```
 
@@ -98,7 +98,7 @@ The *length*() function works a bit differently on dataframes or tibbles - it re
 :::
 
 
-```r
+``` r
 length(licorice)
 ```
 
@@ -111,7 +111,7 @@ length(licorice)
 Sometimes you want to take a quick look at the names of all of you columns in a dataframe. The *names*() function is a quick solution.
 
 
-```r
+``` r
 names(licorice)
 ```
 
@@ -131,7 +131,7 @@ names(licorice)
 You can also use *names*() to re-set the names if you want to change a bunch of column names, by assigning a vector of names (of the same length).
 
 
-```r
+``` r
 names(licorice) <- c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S")
 licorice[1:10, ]
 ```
@@ -153,7 +153,7 @@ licorice[1:10, ]
 Note that you can use the *set_names()* function in the {purrr} package to conveniently change variable/column names within a data pipeline, and the *rename()* function in the dplyr package to change particular variable/column names.
 
 
-```r
+``` r
 licorice %>% 
   purrr::set_names(1:19) %>% 
   dplyr::rename("purple" = 2) %>% 
@@ -182,7 +182,7 @@ licorice %>%
 ```
 
 
-```r
+``` r
 licorice[1:10, ]
 ```
 
@@ -214,7 +214,7 @@ Note also that we used the bracket notation above to print just the first 10 row
 We can use also use brackets to choose exactly which rows and columns we want.
 
 
-```r
+``` r
 licorice[4:7, c(2,5,10)]
 ```
 
@@ -235,7 +235,7 @@ One of the simplest, but most common early functions in R is c(). The c() functi
 You simply write the items, separated by commas, in order inside the parentheses of c(). Remember that strings need to be enclosed in matching quotes.
 
 
-```r
+``` r
 fib_numbers <- c(1, 1, 2, 3, 5, 8, 13, 21, 34)
 fruit_vec <- c("apple", "banana", "coconut", "dragonfruit", "elderberry")
 
@@ -246,7 +246,7 @@ fib_numbers
 ## [1]  1  1  2  3  5  8 13 21 34
 ```
 
-```r
+``` r
 fruit_vec
 ```
 
@@ -260,7 +260,7 @@ fruit_vec
 There are times when you want to create a sequence of numbers (i.e. 1 to 10, or 1 to 100), without manually concatenating a vector. The easiest way to do this is with the colon (:). You can assign 1:12 to an object, or 77:83, if you prefer.
 
 
-```r
+``` r
 1:12
 ```
 
@@ -268,7 +268,7 @@ There are times when you want to create a sequence of numbers (i.e. 1 to 10, or 
 ##  [1]  1  2  3  4  5  6  7  8  9 10 11 12
 ```
 
-```r
+``` r
 77:83
 ```
 
@@ -283,7 +283,7 @@ Note that base R has some handy constants that may help in making vectors - LETT
 You can select subsets of these with the bracket notation, i.e letters[1:13]. You can also format number for printing as strings with sprintf() (for print formatting) to include the desired number of decimals.
 
 
-```r
+``` r
 LETTERS[7:12]
 ```
 
@@ -291,7 +291,7 @@ LETTERS[7:12]
 ## [1] "G" "H" "I" "J" "K" "L"
 ```
 
-```r
+``` r
 letters[5:10]
 ```
 
@@ -299,7 +299,7 @@ letters[5:10]
 ## [1] "e" "f" "g" "h" "i" "j"
 ```
 
-```r
+``` r
 month.abb[10:12]
 ```
 
@@ -307,7 +307,7 @@ month.abb[10:12]
 ## [1] "Oct" "Nov" "Dec"
 ```
 
-```r
+``` r
 pi %>% sprintf(fmt = "%1.5f", .)
 ```
 
@@ -334,7 +334,7 @@ You will generally need at least 3 of these to describe a sequence, or *seq()* w
 See the examples below
 
 
-```r
+``` r
 # leaving out "length"
 seq(from = 2, to = 18, by = 2) 
 ```
@@ -343,7 +343,7 @@ seq(from = 2, to = 18, by = 2)
 ## [1]  2  4  6  8 10 12 14 16 18
 ```
 
-```r
+``` r
 # leaving out argument names
 seq(3, 18, length=6) 
 ```
@@ -352,7 +352,7 @@ seq(3, 18, length=6)
 ## [1]  3  6  9 12 15 18
 ```
 
-```r
+``` r
 # 'length' and 'to' do not match
 seq(from = 24, to = 4, by = -6) 
 ```
@@ -361,7 +361,7 @@ seq(from = 24, to = 4, by = -6)
 ## [1] 24 18 12  6
 ```
 
-```r
+``` r
 # leaving out "to"
 seq(from = 5, by = 5, length = 6) 
 ```
@@ -370,7 +370,7 @@ seq(from = 5, by = 5, length = 6)
 ## [1]  5 10 15 20 25 30
 ```
 
-```r
+``` r
 # leaving out "by"
 seq(from = 16, to = 128, length = 8) 
 ```
@@ -379,7 +379,7 @@ seq(from = 16, to = 128, length = 8)
 ## [1]  16  32  48  64  80  96 112 128
 ```
 
-```r
+``` r
 seq(from = 51, by = -3, length = 17)
 ```
 
@@ -387,7 +387,7 @@ seq(from = 51, by = -3, length = 17)
 ##  [1] 51 48 45 42 39 36 33 30 27 24 21 18 15 12  9  6  3
 ```
 
-```r
+``` r
 # using the seq_len() shortcut with n
 seq_len(14)
 ```
@@ -396,7 +396,7 @@ seq_len(14)
 ##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14
 ```
 
-```r
+``` r
 # using the seq_along() shortcut with a vector
 seq_along(7:23)
 ```
@@ -405,7 +405,7 @@ seq_along(7:23)
 ##  [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17
 ```
 
-```r
+``` r
 seq_along(licorice$C)
 ```
 
@@ -456,7 +456,7 @@ R has many mathematical functions, which can be used in a variety of calculation
 Examples are shown below
 
 
-```r
+``` r
 mean(1:20)
 ```
 
@@ -464,7 +464,7 @@ mean(1:20)
 ## [1] 10.5
 ```
 
-```r
+``` r
 median(licorice$C)
 ```
 
@@ -472,7 +472,7 @@ median(licorice$C)
 ## [1] 25.91
 ```
 
-```r
+``` r
 var(licorice$C)
 ```
 
@@ -480,7 +480,7 @@ var(licorice$C)
 ## [1] 18.24933
 ```
 
-```r
+``` r
 sd(licorice$C)
 ```
 
@@ -488,7 +488,7 @@ sd(licorice$C)
 ## [1] 4.271923
 ```
 
-```r
+``` r
 min(licorice$C)
 ```
 
@@ -496,7 +496,7 @@ min(licorice$C)
 ## [1] 15.6
 ```
 
-```r
+``` r
 max(licorice$C)
 ```
 
@@ -504,7 +504,7 @@ max(licorice$C)
 ## [1] 36.33
 ```
 
-```r
+``` r
 range(licorice$C)[2] # selects 2nd value in range (max)
 ```
 
@@ -512,7 +512,7 @@ range(licorice$C)[2] # selects 2nd value in range (max)
 ## [1] 36.33
 ```
 
-```r
+``` r
 rank(licorice$C)[1] # ranks first 10 values
 ```
 
@@ -520,7 +520,7 @@ rank(licorice$C)[1] # ranks first 10 values
 ## [1] 225
 ```
 
-```r
+``` r
 sum(licorice$C) # sum of values
 ```
 
@@ -533,7 +533,7 @@ sum(licorice$C) # sum of values
 R designates missing values as the symbol NA (not available). NAs propagate through calculations, so that if you have a vector with at least one NA, and you try to calculate the mean, it will return NA.
 
 
-```r
+``` r
 mean(licorice$J)
 ```
 
@@ -548,7 +548,7 @@ na.rm is an argument in a number of mathematical functions, in which **na** come
 Testing whether a value or values are missing (NA) is in the reverse order. You use the *is.na()* function, in which the verb comes first, and then followed by NA. You might reasonably think that you can just use a normal equality test for NA values, like
 
 
-```r
+``` r
 licorice$J == NA
 ```
 
@@ -574,7 +574,7 @@ but, because NAs propagate, you get just NAs, rather than TRUE or FALSE.
 You can use is.na() for this.
 
 
-```r
+``` r
 licorice$J %>% is.na()
 ```
 
@@ -613,7 +613,7 @@ There are a few TRUEs in there (value is NA), but they can be hard to count. The
 The anyNA() function can tell you if there are any missing values in a vector (or a variable/column in a dataframe).
 
 
-```r
+``` r
 licorice$J %>% is.na() %>% sum()
 ```
 
@@ -621,7 +621,7 @@ licorice$J %>% is.na() %>% sum()
 ## [1] 2
 ```
 
-```r
+``` r
 licorice$J %>% is.na() %>% which()
 ```
 
@@ -629,7 +629,7 @@ licorice$J %>% is.na() %>% which()
 ## [1] 113 123
 ```
 
-```r
+``` r
 licorice$C %>% anyNA()
 ```
 
@@ -637,7 +637,7 @@ licorice$C %>% anyNA()
 ## [1] FALSE
 ```
 
-```r
+``` r
 licorice$J %>% anyNA()
 ```
 
@@ -650,7 +650,7 @@ There are two missing values, in rows 113 and 123.
 The na.omit() function can remove all of the rows(cases, observations) from a dataframe that have at least one missing value in any column. This can be helpful for modeling, in which cases with missing data can cause problems. It is helpful to keep track of the number of rows before and after na.omit(), to know how many cases/observations/rows you are discarding.
 
 
-```r
+``` r
 nrow(licorice)
 ```
 
@@ -658,7 +658,7 @@ nrow(licorice)
 ## [1] 235
 ```
 
-```r
+``` r
 licorice %>% 
   na.omit() %>% 
   # modeling would happen here if not too many cases discarded
@@ -672,7 +672,7 @@ licorice %>%
 Note that this can also be done in the tidyverse with drop_na() in the {tidyr} package. You can include a particular column or columns as an argument in drop_na() to only drop observations if there are missing values in these particular columns.
 
 
-```r
+``` r
 licorice %>% 
   drop_na(H:J) %>% 
   nrow()
@@ -689,7 +689,7 @@ The code above takes the licorice dataset, looks for NA values in rows of (only)
 While there are good arguments for why **not** to do this (dichotomania, loss of granularity in data), it is common to cut continuous data into levels, like (mild, moderate, severe), or (normal weight, overweight, obese). This can, when there are already established standard levels, make the data easier to interpret. The cut() function in base R makes this easy to do.
 
 
-```r
+``` r
 C_factor3 <- cut(licorice$C, breaks = 3)
 table(C_factor3)
 ```
@@ -700,7 +700,7 @@ table(C_factor3)
 ##          59         130          46
 ```
 
-```r
+``` r
 str(C_factor3)
 ```
 

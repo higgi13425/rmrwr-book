@@ -89,7 +89,7 @@ This is a very common error. It is easy to lose track of how many sets of parent
 Here is an example, where a closing parenthesis is missing from a *mutate()* function.
 
 
-```r
+``` r
 prostate %>% 
   select(t_vol, p_vol, age, aa) %>% 
   mutate(ratio = t_vol/p_vol,
@@ -120,7 +120,7 @@ Parentheses that end on **red** are all **right**.
 What if you go the other way, with an extra parenthesis after some misguided copy-paste adventures? Let's see what happens.
 
 
-```r
+``` r
 prostate %>% 
   select(t_vol, p_vol, age, aa) %>% 
   mutate(ratio = t_vol/p_vol,
@@ -146,7 +146,7 @@ This is a common error. It is easy to cut out one of your `%>%` connectors when 
 Here is an example, where a `%>%` is missing. Can you spot it?
 
 
-```r
+``` r
 prostate %>% 
   select(t_vol, p_vol, age, aa)  
   mutate(ratio = t_vol/p_vol,
@@ -175,7 +175,7 @@ This is a common error. It is easy to cut out one of your + connectors when you 
 Here is an example, where a + is missing in the middle of a ggplot pipeline.
 
 
-```r
+``` r
 prostate %>% 
   select(t_vol, p_vol, age, aa) %>% 
   ggplot(aes(x = factor(t_vol), y =p_vol)) 
@@ -206,7 +206,7 @@ This is a common error. It is easy to start with your dataset, do some data wran
 Here is an example, where a `%>%` is used instead of `+` in a ggplot pipeline. It usually happens at the beginning of the ggplot, when you are still in piping mode.
 
 
-```r
+``` r
 prostate %>% 
   select(t_vol, p_vol, age, aa) %>% 
   ggplot(aes(x = factor(t_vol), y =p_vol)) %>% 
@@ -232,7 +232,7 @@ This is a common error. It is easy to start a series of arguments to a function,
 Here is an example, where a comma is missing in a series of mutate steps. Note that it is a good habit to put one mutate step on each line, with each line ending in a comma. This will help you find the missing comma if (no, when) you make this mistake.
 
 
-```r
+``` r
 prostate %>% 
   select(t_vol, p_vol, age, aa) %>% 
   mutate(ratio = t_vol/p_vol,
@@ -261,7 +261,7 @@ In this example, we request data from the {medicaldata} package, but forget to a
 So it does not exist when we try to use it to start a pipeline. This does not work.
 
 
-```r
+``` r
 medicaldata::covid_testing
 
 covid %>% 
@@ -293,7 +293,7 @@ This is a **very** common error. The equals sign is commonly used in two ways in
 It is very common to use one equals sign in a logical statement. This causes errors. Watch the last filter step below.
 
 
-```r
+``` r
 prostate %>% 
   select(t_vol, p_vol, age, aa) %>% 
   mutate(ratio = t_vol/p_vol,
@@ -321,7 +321,7 @@ This happens when you try to do math on things that are not numbers. It usually 
 This is not apparent until you try to do math with this variable, as in
 
 
-```r
+``` r
 data %>% 
   mutate(mean_art_pressure = sbp/3 + 2/3* dbp)
 ```

@@ -14,7 +14,7 @@ Nearly everything in R and the tidyverse is built on functions. Every command yo
 If you type a function into the console and forget the parentheses, you may be surprised at what you get back when you press the Enter key. Try this with the sd function by running the chunk below
 
 
-```r
+``` r
 sd
 ```
 
@@ -23,7 +23,7 @@ At first this looks like computer gobbledygook, but if you look at it closely, t
 Other functions may be written in other languages (like C++) for more speed, but you can use R to write more R functions. When you try this for another function, like filter in the dplyr package, it is less informative. As you can see when you unpack the function below.
 
 
-```r
+``` r
 dplyr::filter
 ```
 
@@ -32,7 +32,7 @@ dplyr::filter
 Functions are especially helpful when you do something repeatedly, or do the same thing on several variables or several datasets. Let's start with a simple plot of Ct (COVID viral load) vs age for inpatients. Run the code chunk below.
 
 
-```r
+``` r
 covid %>% 
   filter(patient_class == "inpatient") %>% 
   ggplot() +
@@ -55,7 +55,7 @@ In our next version of this plot, we will set an envronment variable (patient_cl
 2.  set the title (using the glue function)
 
 
-```r
+``` r
 patient_class_choice_env = "inpatient"
 
 covid %>% 
@@ -85,7 +85,7 @@ Let's try another example.
 In the code chunk below, edit the patient_class_choice_env variable to the value "emergency", and then run the code chunk.
 
 
-```r
+``` r
 patient_class_choice_env = "emergency"
 
 covid %>% 
@@ -115,7 +115,7 @@ Then you assign it to a function name.
 Examine, then run the example below.
 
 
-```r
+``` r
 make_covid_plot <- function(patient_class_choice_env) {
 covid %>% 
   filter(.data$patient_class == .env$patient_class_choice_env) %>% 
@@ -143,13 +143,13 @@ Each function should be no more than 20-30 lines. If longer, break it up into a 
 You can do this repeatedly, over several values for patient_class. Try this below by editing the code chunk to make plots for "emergency" and "not applicable" patient classes.
 
 
-```r
+``` r
 make_covid_plot("outpatient")
 ```
 
 <img src="io71-functions_plots_files/figure-html/unnamed-chunk-2-1.png" width="672" />
 
-```r
+``` r
 make_covid_plot("observation")
 ```
 
@@ -166,7 +166,7 @@ Let's automate calling the function over several values with the *map* function.
 We can return these with bracket references to items 1,2, and 3 in the list.
 
 
-```r
+``` r
 patient_class <- c("emergency", "inpatient", "observation")
 
 plots <- map(patient_class, make_covid_plot)
@@ -176,13 +176,13 @@ plots[[1]]
 
 <img src="io71-functions_plots_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 
-```r
+``` r
 plots[[2]]
 ```
 
 <img src="io71-functions_plots_files/figure-html/unnamed-chunk-3-2.png" width="672" />
 
-```r
+``` r
 plots[[3]]
 ```
 
@@ -193,7 +193,7 @@ We can make this simpler with the *walk* function.
 The *walk* function is like map, but it does not return values, only side effects (like printing). In this case, it is applying the *print* function to each element of the **plots** list.
 
 
-```r
+``` r
 walk(plots, print)
 ```
 
@@ -208,7 +208,7 @@ We will test this on the "inpatient" class.
 The filtering operation will be moved outside of the function
 
 
-```r
+``` r
 make_covid_plot_2 <- function(data, patient_class) {
 data %>% # note data argument
     # filtering now done outside of function
@@ -234,7 +234,7 @@ Now we can try this in a tidy pipeline.
 We will first subset the data by nesting it with the *nest* function. Take a look at what this does
 
 
-```r
+``` r
 covid %>% 
   nest(data = -patient_class)
 ```
@@ -257,7 +257,7 @@ These are dataframes in a column nested inside of a larger dataframe.
 Now we can make a plot from each of these smaller dataframes, using the *mutate* function and the *map* function, and our original *make_covid_plot* function.
 
 
-```r
+``` r
 covid %>% 
   nest(data = -patient_class) %>% 
   mutate(plots = map(patient_class, make_covid_plot)) 
@@ -279,7 +279,7 @@ Now we have a column that contains the plots.
 We can pull these out of the dataframe into a vector with the *pull* function (because *walk* works on vectors), then *print* them to the Plots tab with the *walk* function.
 
 
-```r
+``` r
 covid %>% 
   nest(data = -patient_class) %>% 
   mutate(plots = map(patient_class, make_covid_plot)) %>% 
@@ -294,7 +294,7 @@ Note that we could also *walk* the *ggsave* function if we wanted to save these 
 We can use our more generalizable function *make_covid_plot_2* in this pipeline if we use *map2*, which is like *map*, but for functions with 2 arguments. The arguments of the *map2* function include the two arguments (**data**, **patient_class**) for making plots, and then the function (*make_covid_plot_2*).
 
 
-```r
+``` r
 covid %>% 
   nest(data = -patient_class) %>% 
   mutate(plots = map2(data, patient_class, make_covid_plot_2)) %>%
@@ -311,7 +311,7 @@ This version of the pipeline will automatically process all patient classes in t
 Let's look at how to do this with the **prostate** dataset. We will start with a simple violin and jitter plot of time to recurrence by baseline Gleason score (bgs), in the subgroup where rbc_age_group = 1.
 
 
-```r
+``` r
 rbc_age_group = 1
 
 prostate %>% 
@@ -346,7 +346,7 @@ Edit both sides of logic test in the filter statement in the code chunk below to
 Then, check that this works for other values by changing the rbc_age_group environmental variable value to 2 or 3.
 
 
-```r
+``` r
 rbc_age_group = 1
 
 prostate %>% 
@@ -375,7 +375,7 @@ Now make this into a function, named *make_plot.* Edit the chunk below to turn i
 Then run *make_plot*(1)
 
 
-```r
+``` r
 rbc_age_group = 1
 
 {
@@ -404,7 +404,7 @@ Hint - the vector is provided, and your new function name is *make_plot.*
 When it is working, simplify the plots1-3 by replacing them with *walk*(plots, print)
 
 
-```r
+``` r
 rbc_age_group = 1:3
 
 plots <- map(vector, func)
@@ -426,7 +426,7 @@ Edit the code chunk below to create a new function, *make_plot2*. Remember to:
 6.  Then run *make_plot2*
 
 
-```r
+``` r
 rbc_age_group = 1
 
 make_plot2 <- function(arg1, arg2){
@@ -459,7 +459,7 @@ Edit both of the var values in the code chunk below to **rbc_age_group**.
 Run it to see the nested tibbles and nested plots in your new dataframe.
 
 
-```r
+``` r
 prostate %>% 
   nest(data = -var) %>% 
   mutate(plots = map(var, make_plot))
@@ -468,7 +468,7 @@ prostate %>%
 Now pull out the plots and print them with *pull* and *walk* by editing the code chunk below. Pipe this code into the *pull* and *walk* functions by adding two lines of code. Remember that the argument for *pull* is the **plots**column. Remember that the argument for *walk* is the *print* function.
 
 
-```r
+``` r
 prostate %>% 
   nest(data = -rbc_age_group) %>% 
   mutate(plots = map(rbc_age_group, make_plot))
@@ -479,7 +479,7 @@ Now let's make this even more generalizable with the *make_plot2* functiion, whi
 Edit the code chunk below to replace arg1 with the **data** column, and func with *make_plot2*. See if this runs
 
 
-```r
+``` r
 prostate %>% 
   nest(data = -rbc_age_group) %>% 
   mutate(plots = map2(arg1, rbc_age_group, func)) %>% 

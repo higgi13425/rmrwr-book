@@ -76,7 +76,7 @@ You may jump over to a browser window to google something from RStudio Community
 You can even save the results (a table, a figure) to a folder with functions like this in a code chunk.
 
 
-```r
+``` r
 save(table, file = "table.csv")
 
 ggsave(plot, filename = "figure1.jpg", device = "jpeg", width = 8, height = 5, units = "inches")

@@ -6,7 +6,7 @@
 ---
 
 
-```r
+``` r
 # install.packages('tidyverse')
 # install.packages('tidyverse')
 # install.packages('tidyverse')
@@ -28,7 +28,7 @@ library(tidyverse)
 ## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 ```
 
-```r
+``` r
 library(medicaldata)
 library(webexercises)
 library(scales)
@@ -47,7 +47,7 @@ library(scales)
 ##     col_factor
 ```
 
-```r
+``` r
 indo_rct <- medicaldata::indo_rct
 ```
 

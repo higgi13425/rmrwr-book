@@ -57,17 +57,17 @@ If you are doing this from scratch, you may want to copy this to a word document
 For folks who want to do some spring cleaning of their package library, here is a **starter list** of packages that are commonly used in the R community. You can copy and paste this into the Console to install them all at once. These packages (along with their dependencies, which also get installed) will cover around 85% of your everyday packages, and will get you started without having to stop frequently to install packages on day one of a new version of R.
 
 
-```r
+``` r
 install.packages("pak")
 ```
 
 ```
 ## 
 ## The downloaded binary packages are in
-## 	/var/folders/93/s18zkv2d4f556fxbjvb8yglc0000gp/T//RtmpwzCkPN/downloaded_packages
+## 	/var/folders/93/s18zkv2d4f556fxbjvb8yglc0000gp/T//RtmpQpFw63/downloaded_packages
 ```
 
-```r
+``` r
 pak::pak(c("tidyverse", "rstatix", "tidymodels", "readxl", "writexl", "shiny", "rmarkdown", "keyring", "broom", "duckplyr", "dtplyr", "data.table", "labelled", "ggfont", "extrafont", "flexdashboard", "flextable", "gtsummary", "googlesheets4", "REDCapTidieR", "janitor", "ggraph", "gganimate", "tidygraph", "janitor", "webexercises", "synthpop", "slider", "usethis", "testthat", "remotes", "devtools", "httr2", "dataExplorer", "naniar", "visdat", "randomForest", "xgboost", "glmnet", "caret", "ranger", "rpart", "lme4", "keyring", "scholar", "medicaldata", "NHSRdatasets", "lintr", "datapasta", "magick", "magrittr", "officer", "palmerpenguins", "pkgdown", "bookdown", "plotROC", "pwr", "waffle", "ragg", "RColorBrewer", "XML", "conflicted", "corrplot", "jsonlite", "DT", "kable", "kableExtra", "quarto"))
 ```
 

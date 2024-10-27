@@ -56,7 +56,7 @@ To get started, let's download two toy datasets - Copy and run the code
 chunk below to assign these to birthdays and hometowns.
 
 
-```r
+``` r
 birthdays <- read.csv("https://raw.githubusercontent.com/higgi13425/medicaldata/master/data-raw/join_data/birthdays.csv") %>% select(-X)
 
 hometowns <- read.csv("https://raw.githubusercontent.com/higgi13425/medicaldata/master/data-raw/join_data/hometowns.csv") %>% select(-X)
@@ -75,7 +75,7 @@ Let's start with a simple left join with these two small and simple
 glimpse() function on each dataset from the code chunk below.
 
 
-```r
+``` r
 glimpse(birthdays)
 ```
 
@@ -86,7 +86,7 @@ glimpse(birthdays)
 ## $ dob  <chr> "10/13/1821", "6/7/1909", "7/12/1849"
 ```
 
-```r
+``` r
 glimpse(hometowns)
 ```
 
@@ -129,7 +129,7 @@ is `x`, or the base/left dataset, and the birthdays dataset is the `y`,
 or new/right dataset. Notice that we don't specify a variable for `by`.
 
 
-```r
+``` r
 left_join(x = hometowns, y = birthdays)
 ```
 
@@ -171,7 +171,7 @@ specify this with the `by` variable in quotes, as in the below code
 chunk
 
 
-```r
+``` r
 left_join(x = hometowns, y = birthdays, by = "name")
 ```
 
@@ -213,7 +213,7 @@ Sometimes your variable names will be just a bit off. Read in this new
 version of hometowns2 by copying and running the code below.
 
 
-```r
+``` r
 hometowns2 <- read.csv("https://raw.githubusercontent.com/higgi13425/medicaldata/master/data-raw/join_data/hometowns2.csv") %>% select(-X)
 ```
 
@@ -222,7 +222,7 @@ below as a starting point. Remember to *glimpse( )* the new dataset
 first.
 
 
-```r
+``` r
 left_join(x = hometowns2, y = birthdays, by = "name")
 ```
 
@@ -253,7 +253,7 @@ is `x`, or the base/left dataset, and the birthdays dataset is the `y`,
 or new/right dataset. Notice that we don't specify a variable for `by`.
 
 
-```r
+``` r
 right_join(x = hometowns, y = birthdays)
 ```
 
@@ -295,7 +295,7 @@ become the base (x) dataset, as it comes first. If we want to keep birthdays
 as the base (x) dataset, we can use a *right_join()*. This will result in a table in which everyone has a known birthday, but not necessarily a known hometown. 
 
 
-```r
+``` r
 hometowns2 <- read.csv("https://raw.githubusercontent.com/higgi13425/medicaldata/master/data-raw/join_data/hometowns2.csv") %>% 
   select(-X) %>% 
   purrr::set_names(c("name", "hometown"))
@@ -328,7 +328,7 @@ you predict the result will be?
 Look at the datasets below (run the glimpse code) and take a guess.
 
 
-```r
+``` r
 glimpse(birthdays)
 ```
 
@@ -339,7 +339,7 @@ glimpse(birthdays)
 ## $ dob  <chr> "10/13/1821", "6/7/1909", "7/12/1849"
 ```
 
-```r
+``` r
 glimpse(hometowns)
 ```
 
@@ -367,7 +367,7 @@ Which physicians will appear in this resulting table?
 <div class='webex-solution'><button>Click to Reveal</button>
 
 
-```r
+``` r
 inner_join(birthdays, hometowns)
 ```
 
@@ -398,7 +398,7 @@ you predict the result will be?
 Look at the datasets below (run the glimpse code) and take a guess.
 
 
-```r
+``` r
 glimpse(birthdays)
 ```
 
@@ -409,7 +409,7 @@ glimpse(birthdays)
 ## $ dob  <chr> "10/13/1821", "6/7/1909", "7/12/1849"
 ```
 
-```r
+``` r
 glimpse(hometowns)
 ```
 
@@ -436,7 +436,7 @@ Which physicians will appear in this resulting table?
 <div class='webex-solution'><button>Click to Reveal</button>
 
 
-```r
+``` r
 full_join(birthdays, hometowns)
 ```
 

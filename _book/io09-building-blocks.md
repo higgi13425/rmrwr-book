@@ -74,7 +74,7 @@ Guess what the returned value will be before you run the code (click on
 the green arrow at the top right).
 
 
-```r
+``` r
 # you can test vectors with typeof 
 
 typeof(c(1.7,5.3,9.2)) 
@@ -84,7 +84,7 @@ typeof(c(1.7,5.3,9.2))
 [1] "double"
 ```
 
-```r
+``` r
 typeof(c('hypertension', "diabetes", "atherosclerosis"))
 ```
 
@@ -92,7 +92,7 @@ typeof(c('hypertension', "diabetes", "atherosclerosis"))
 [1] "character"
 ```
 
-```r
+``` r
 typeof(c(2L, 4L))
 ```
 
@@ -100,7 +100,7 @@ typeof(c(2L, 4L))
 [1] "integer"
 ```
 
-```r
+``` r
 typeof(c(TRUE, FALSE, TRUE))
 ```
 
@@ -108,7 +108,7 @@ typeof(c(TRUE, FALSE, TRUE))
 [1] "logical"
 ```
 
-```r
+``` r
 table(InsectSprays$spray)
 ```
 
@@ -118,7 +118,7 @@ table(InsectSprays$spray)
 12 12 12 12 12 12 
 ```
 
-```r
+``` r
 typeof(InsectSprays$spray)
 ```
 
@@ -131,7 +131,7 @@ Here are 3 examples of coverting vectors from one type to another with
 the code (click on the green arrow at the top right).
 
 
-```r
+``` r
 # you can convert vectors with as.x
 
 numeric <- (c(1.7,5.3,9.2)) 
@@ -143,7 +143,7 @@ newvec1
 [1] "1.7" "5.3" "9.2"
 ```
 
-```r
+``` r
 typeof(newvec1)
 ```
 
@@ -151,7 +151,7 @@ typeof(newvec1)
 [1] "character"
 ```
 
-```r
+``` r
 logical <- c(TRUE, FALSE, TRUE)
 newvec2 <- as.integer(logical)
 newvec2
@@ -161,7 +161,7 @@ newvec2
 [1] 1 0 1
 ```
 
-```r
+``` r
 typeof(newvec2)
 ```
 
@@ -169,7 +169,7 @@ typeof(newvec2)
 [1] "integer"
 ```
 
-```r
+``` r
 character <- c("2.4", "5.3", "7.2")
 newvec3 <- as.numeric(character)
 newvec3
@@ -179,7 +179,7 @@ newvec3
 [1] 2.4 5.3 7.2
 ```
 
-```r
+``` r
 typeof(newvec3)
 ```
 
@@ -261,7 +261,7 @@ structures, and these include
     anywhere from 1 to 9 movies (as of 2021).
 
     
-    ```r
+    ``` r
     starwars %>% select(name, films) 
     ```
     
@@ -282,7 +282,7 @@ structures, and these include
     # ℹ 77 more rows
     ```
     
-    ```r
+    ``` r
     starwars$films %>% head()
     ```
     
@@ -323,7 +323,7 @@ structures, and these include
     a longer format. \
 
     
-    ```r
+    ``` r
     starwars %>% select(name, films)
     ```
     
@@ -344,7 +344,7 @@ structures, and these include
     # ℹ 77 more rows
     ```
     
-    ```r
+    ``` r
     # gives you a hidden list of films
     starwars %>% 
       select(name, films) %>% 
@@ -368,7 +368,7 @@ structures, and these include
     # ℹ 163 more rows
     ```
     
-    ```r
+    ``` r
     # unnest expands to multiple rows to show detail
     ```
 
@@ -376,7 +376,7 @@ structures, and these include
     types, like the results of a t-test.
 
     
-    ```r
+    ``` r
     t_test_output <- list (
       "Welch Two Sample t-test",
       c("data: height by gender"),
@@ -418,7 +418,7 @@ structures, and these include
     function.
 
     
-    ```r
+    ``` r
     pat_id <- c(1,1,2,2, 3,3)
     date <- c(lubridate::ymd("2020-11-07", "2020-12-03", "2020-12-02", "2020-12-15", "2020-11-09", "2020-12-02"))
     crp <- c(5.1, 3.2, 7.6, 4.1, 4.3, 1.7)
@@ -446,7 +446,7 @@ structures, and these include
         tibble to build with vectors
 
     
-    ```r
+    ``` r
     tibble(new_df)
     ```
     
@@ -462,7 +462,7 @@ structures, and these include
     6      3 2020-12-02   1.7
     ```
     
-    ```r
+    ``` r
     tibble(pat_id, date, crp)
     ```
     
@@ -482,7 +482,7 @@ structures, and these include
     function.
 
     
-    ```r
+    ``` r
     tribble(
       ~pat_id, ~date, ~crp,
       1, lubridate::ymd("2020-12-04"), 5.1,
@@ -541,7 +541,7 @@ important to avoid using R function names (like **data** or **df** or
 greater than key) to assign data to an object.
 
 
-```r
+``` r
 # example 1
 tall <- starwars %>% 
   filter(height > 200)
@@ -578,7 +578,7 @@ interrogating data structures.
 Try this out. Run `str(starwars)` in your RStudio console.
 
 
-```r
+``` r
 str(starwars)
 ```
 
@@ -870,7 +870,7 @@ list-columns, and are more complicated.
 Note that `glimpse(starwars)` provides a prettier version of this output
 
 
-```r
+``` r
 glimpse(starwars)
 ```
 
@@ -897,7 +897,7 @@ If you want more detail about a given variable inside this dataframe,
 you can use `typeof()` or `class()`.
 
 
-```r
+``` r
 typeof(starwars$mass)
 ```
 
@@ -905,7 +905,7 @@ typeof(starwars$mass)
 [1] "double"
 ```
 
-```r
+``` r
 class(starwars$mass)
 ```
 
@@ -921,7 +921,7 @@ The functions `names()` or `colnames()` can quickly get you a vector of
 these names.
 
 
-```r
+``` r
 names(starwars)
 ```
 
@@ -932,7 +932,7 @@ names(starwars)
 [13] "vehicles"   "starships" 
 ```
 
-```r
+``` r
 colnames(starwars)
 ```
 
@@ -957,7 +957,7 @@ column. When this is the case, the dplyr function
 your Console pane.
 
 
-```r
+``` r
 rownames_to_column(mtcars, var = "make_model")
 ```
 
@@ -1052,7 +1052,7 @@ the RStudio console without parentheses. For example, for sd (standard
 deviation).
 
 
-```r
+``` r
 sd
 ```
 
@@ -1060,7 +1060,7 @@ sd
 function (x, na.rm = FALSE) 
 sqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x), 
     na.rm = na.rm))
-<bytecode: 0x135486230>
+<bytecode: 0x13040b878>
 <environment: namespace:stats>
 ```
 :::
@@ -1184,7 +1184,7 @@ the Console) the path to your package library for your specific major
 version of R.
 
 
-```r
+``` r
 # You can check your own library path
 # Run this function in your Rstudio Console to find the current library on your computer
 .libPaths()

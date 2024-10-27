@@ -29,6 +29,7 @@ Linear regression allows you to:
 
 Let's look at a simple linear model to predict annual health care expenses.
 ![shinyapp linear regression](images/shinyapp_hc_expenses.png)
+
 ```{r}
 library(tidyverse)
 library(mlbench)
@@ -188,6 +189,7 @@ medicaldata::blood_storage  %>%
 This model has only one term, the intercept.
 It estimates every value of time to recurrence with the mean, 32.91.
 This is a pretty poor model, but is a place to start.\
+
 \
 Let's look at how good this model is, using another function from the {broom} package.
 We can *glance()* our model, again output into a nice tibble.
@@ -279,20 +281,20 @@ These are
 
 -   The first column is the `term` - these include the (Intercept) and each of the predictors you called in the model.
 -   the second column is the `estimate`. This is the point estimate of the effect of each predictor in the multivariable model. For the `intraOp_surgerySize` predictor, this is 0.316. This means that for each unit or level increase of `intraOp_surgerySize`, which is defined on a 1-3 scale from small to large, the `pacu_30min_throat pain` (on a 0-10 scale), increases by 0.316 points. So a large surgery (2 levels larger than small) will result in, on average, a `pacu_30min_throat pain` score 0.632 points higher than a small surgery.
-- similarly, the estimate for `preop_gender` is -0.265. This means that for each 1 point increase in the level of `preop_gender`, coded as 0=male, 1=female, the `pacu_30min_throat pain` score goes doen by -0.265 points. In this case, that means that the average `pacu_30min_throat pain` score in females was 0.265 points lower than in males.
-- the std.error column tells you about the variance of this estimate, and can help you calculate confidence intervals around the point estimated if needed.
-- the statistic is the t value for the estimate, which allows you to calculate p values with a t test. Values with a large absolute value (farther from zero) imply a stronger effect. Values of the statistic > 1.96 (absolute value) correspond to a p value < 0.05.
-- the p value is the significance of the estimate for that particular predictor variable. Low values (often < 0.05) are considered significant for traditional, historical reasons (it is an arbitrary cutoff).
+-   similarly, the estimate for `preop_gender` is -0.265. This means that for each 1 point increase in the level of `preop_gender`, coded as 0=male, 1=female, the `pacu_30min_throat pain` score goes doen by -0.265 points. In this case, that means that the average `pacu_30min_throat pain` score in females was 0.265 points lower than in males.
+-   the std.error column tells you about the variance of this estimate, and can help you calculate confidence intervals around the point estimated if needed.
+-   the statistic is the t value for the estimate, which allows you to calculate p values with a t test. Values with a large absolute value (farther from zero) imply a stronger effect. Values of the statistic \> 1.96 (absolute value) correspond to a p value \< 0.05.
+-   the p value is the significance of the estimate for that particular predictor variable. Low values (often \< 0.05) are considered significant for traditional, historical reasons (it is an arbitrary cutoff).
 
 ##### Check your work:
 
 For the full model with 5 predictors, the which predictor variable has the largest estimated effect on `pacu30min_throatpain`?
 
-`r mcq(c('intraOp_surgerySize', answer = 'preOp_pain', 'genderFemale', 'smoking', 'treatLicorice'))` 
+`r mcq(c('intraOp_surgerySize', answer = 'preOp_pain', 'genderFemale', 'smoking', 'treatLicorice'))`
 
 For the full model with 5 predictors, what is the BIC value (using the glance function)?
 
-`r mcq(c('-364', answer = '765', '309', '741', '7'))` 
+`r mcq(c('-364', answer = '765', '309', '741', '7'))`
 
 #### Your turn with supra!
 
@@ -311,6 +313,7 @@ medicaldata::supraclavicular %>%
 ```
 
 `r hide('Show Solution')`
+
 ```{r supra model-solve}
 medicaldata::supraclavicular %>%
   lm(formula = onset_sensory ~ age + bmi + gender + group,
@@ -355,7 +358,6 @@ You can even convert this to other formats:
 -   model can be piped into *glance()* for measures of the model
 
 -   model can be piped into *tbl_regression()* for a publication-quality table
-
 
 ## Is Your Model Valid?
 
@@ -421,7 +423,9 @@ Review any observation with a `.cooksd` \> 1 carefully.
 ### Predictions from new data
 
 You can also input new observations (in a data frame) to the model, and predict the outcome for these observations.
-First, we need to create a dataframe that matches the predictor variables for the supra_model. You might get a dataframe of new observations from a colleague. It is important that this is in the same format, with *exactly* the same variable names as the original data.
+First, we need to create a dataframe that matches the predictor variables for the supra_model.
+You might get a dataframe of new observations from a colleague.
+It is important that this is in the same format, with *exactly* the same variable names as the original data.
 
 ```{r}
 new_data <- tibble(age = c(27, 38, 51),
@@ -440,19 +444,15 @@ predict(object = supra_model,
 
 This gives us predictions for each of the 3 rows of the `new_data` dataframe, of the outcome `onset_sensory`.
 
-
 ## Choosing predictors for multivariate modeling -- testing, dealing with collinearity
 
 interactions
 
 ### Challenges
 
-
-
 ## presenting model results with RMarkdown
 
 ### Challenges
-
 
 ## presenting model results with a Shiny App
 

@@ -20,7 +20,7 @@ DEV has specific goals, which include identifying variables with problematic val
 One of the most helpful ways to get started is to explore your continuous variables with the humble histogram or dotplot. These geoms in ggplot2 allow you to see a distribution of a single variable, and are a good way to get started with ggplot. Let's start by looking at the distribution of the number of colon polyps found in participants in a clinical trial. You just need to map a variable (in this case, *number12m*) to the x aesthetic, and you are good to go.
 
 
-```r
+``` r
 medicaldata::polyps %>% 
   ggplot() + 
   aes(x = number12m) + 
@@ -44,7 +44,7 @@ This gives us a very basic histogram, with some participants with zero polyps, b
 We also learn that `geom_histogram` is a bit grumpy, and complains that we have not picked a binwidth (or a number of bins). Since the distribution goes out to 60+ polyps, let's pick a binwidth of 5 (or about 13 bins).
 
 
-```r
+``` r
 polyps %>% 
   ggplot() + 
   aes(x = number12m) +
@@ -61,7 +61,7 @@ polyps %>%
 Even with 13 bins, most bins contain only one or two participants. It would be more helpful to visualize each participant as a single dot, which you can do with a dotplot (geom_dotplot).
 
 
-```r
+``` r
 medicaldata::polyps %>% 
   ggplot() + 
   aes(x = number12m, fill = treatment) +
@@ -89,7 +89,7 @@ When you have a continuous variable that could vary across several categories of
 -   You can set the fill aesthetic to the categorical variable. In this case, we will use the treatment variable. This is OK, as you can see the sulindac-treated patients are shifted to the left, but it is not great, as the counts are stacked, and this can make comparisons hard. Note that color = outline of bars color, as opposed to fill.
 
   
-  ```r
+  ``` r
     medicaldata::polyps %>% 
      ggplot() + 
      aes(x = number12m, fill = treatment) +
@@ -107,7 +107,7 @@ When you have a continuous variable that could vary across several categories of
 -   A mirror histogram can work well for 2 categories. You filter the data by value within the geom, and set the y value to ..density.. for one category value, and to negative -..density.. for the other category value, as seen below. The ..density.. variable is a value ggplot calculates in the background with a stat function.
 
 
-```r
+``` r
     medicaldata::polyps %>% 
      ggplot(aes(x = number12m)) + 
       geom_histogram(fill = "red",
@@ -155,7 +155,7 @@ When you have a continuous variable that could vary across several categories of
 -   You can do small multiples with facet_wrap
 
 
-```r
+``` r
     medicaldata::polyps %>% 
      ggplot() + 
       aes(x = number12m, fill = treatment) +
@@ -173,7 +173,7 @@ When you have a continuous variable that could vary across several categories of
     Note for facet_wrap and facet_grid, the formula notation or the arguments is y \~ x, so that by putting treatment after the tilde, the treatments are compared on the x axis, or side by side. If you put the treatment categorical value in the first (y) position, they would be shown as top and bottom.
 
   
-  ```r
+  ``` r
     medicaldata::polyps %>% 
      ggplot() + 
       aes(x = number12m, fill = treatment) +
@@ -195,7 +195,7 @@ When you have a continuous variable that could vary across several categories of
 You can also look at distributions of different categories, by color:
 
 
-```r
+``` r
 mockstudy %>% 
   ggplot() + 
   aes(x = age, color = sex, fill = sex) +
@@ -212,7 +212,7 @@ mockstudy %>%
 Or with vertical facets:
 
 
-```r
+``` r
 mockstudy %>% 
   ggplot() + 
   aes(x = fu.time, color = sex) +
@@ -230,7 +230,7 @@ mockstudy %>%
 or horizontal facets:
 
 
-```r
+``` r
 mockstudy %>% 
   ggplot() + 
   aes(x = age, color = sex) +
@@ -264,7 +264,7 @@ The only required aesthetic (like histogram) is an x variable. Optional aestheti
 -   linetype (6 types 1-6). You can also use the names of these 6 standard line types in quotes which are "solid", "dashed", "dotted", "dotdash", "longdash", or "twodash". You can even define a cutsom line type, providing the lengths of (up to 8) consecutive on-off segments. The string "3313" specifies a line with 3 units on, 3 units off, 1 unit on, 3 units off (dash-dot). The standard dotted and dashed line types (types 2-6) correspond to "44", "13". "1343", "73" and "2262".
 
 
-```r
+``` r
 mockstudy %>% 
   ggplot() + 
   aes(x = age) +
@@ -350,7 +350,7 @@ Ridgeline plots are great for showing off striking differences between categorie
 Note that you can add the N in each category to the category label when the number in each category varies.
 
 
-```r
+``` r
 cmv %>% 
 ggplot(aes(x = time.to.transplant, y = diagnosis)) + geom_density_ridges(scale = 0.9) 
 ```
@@ -371,7 +371,7 @@ ggplot(aes(x = time.to.transplant, y = diagnosis)) + geom_density_ridges(scale =
 You can also embed plots, for example:
 
 
-```r
+``` r
 cmv %>% 
 ggplot(aes(x = time.to.agvhd, y = diagnosis,
            fill= stat(x))) + 
@@ -399,7 +399,7 @@ ggplot(aes(x = time.to.agvhd, y = diagnosis,
 You can also add data points, for example:
 
 
-```r
+``` r
 cmv %>% 
 ggplot(aes(x = time.to.cmv, y = diagnosis,
            fill= stat(x))) + 
@@ -423,7 +423,7 @@ ggplot(aes(x = time.to.cmv, y = diagnosis,
 You can also add data points, for example:
 
 
-```r
+``` r
 cmv %>% 
 ggplot(aes(x = CD8.dose, y = diagnosis,
            fill= stat(x))) + 
@@ -444,7 +444,7 @@ ggplot(aes(x = CD8.dose, y = diagnosis,
 You can also add data points, for example:
 
 
-```r
+``` r
 cmv %>% 
 ggplot(aes(x = CD3.dose, y = diagnosis,
            fill= stat(x))) + 
@@ -467,7 +467,7 @@ ggplot(aes(x = CD3.dose, y = diagnosis,
 You can also add data points, for example:
 
 
-```r
+``` r
 cmv %>% 
 ggplot(aes(x = TNC.dose, y = diagnosis,
            fill= stat(x))) + 
