@@ -1,7 +1,7 @@
 ---
 title: "Reproducible Medical Research with R"
 author: "Peter D.R. Higgins, MD, PhD, MSc"
-date: "2024-10-27"
+date: "2024-10-31"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book

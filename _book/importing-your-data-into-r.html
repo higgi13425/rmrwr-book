@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2024-10-27" />
+<meta name="date" content="2024-10-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -658,6 +658,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="28.7" data-path="using-found-web-data.html"><a href="using-found-web-data.html#your-turn-6"><i class="fa fa-check"></i><b>28.7</b> Your Turn</a></li>
 <li class="chapter" data-level="28.8" data-path="using-found-web-data.html"><a href="using-found-web-data.html#api-example-with-tidycensus"><i class="fa fa-check"></i><b>28.8</b> API example with {tidycensus}</a></li>
 <li class="chapter" data-level="28.9" data-path="using-found-web-data.html"><a href="using-found-web-data.html#challenges"><i class="fa fa-check"></i><b>28.9</b> Challenges</a></li>
+<li class="chapter" data-level="28.10" data-path="using-found-web-data.html"><a href="using-found-web-data.html#advanced-challenge---dynamic-websites"><i class="fa fa-check"></i><b>28.10</b> Advanced Challenge - Dynamic Websites</a></li>
 </ul></li>
 <li class="chapter" data-level="29" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html"><i class="fa fa-check"></i><b>29</b> Linear Regression and Broom for Tidying Models</a>
 <ul>
@@ -1677,17 +1678,17 @@ See how this is used by running the code chunk below, which uses a 10% random sa
 <span id="cb70-2"><a href="importing-your-data-into-r.html#cb70-2" tabindex="-1"></a>medicaldata<span class="sc">::</span>strep_tb <span class="sc">%&gt;%</span> </span>
 <span id="cb70-3"><a href="importing-your-data-into-r.html#cb70-3" tabindex="-1"></a>  <span class="fu">slice_sample</span>(<span class="at">prop =</span> <span class="fl">0.1</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb70-4"><a href="importing-your-data-into-r.html#cb70-4" tabindex="-1"></a>  <span class="fu">select</span>(radiologic_6m, rad_num, improved)</span></code></pre></div>
-<pre><code>##                 radiologic_6m rad_num improved
-## 1                     1_Death       1    FALSE
-## 2  6_Considerable_improvement       6     TRUE
-## 3      5_Moderate_improvement       5     TRUE
-## 4  6_Considerable_improvement       6     TRUE
-## 5    3_Moderate_deterioration       3    FALSE
-## 6                     1_Death       1    FALSE
-## 7  6_Considerable_improvement       6     TRUE
-## 8      5_Moderate_improvement       5     TRUE
-## 9      5_Moderate_improvement       5     TRUE
-## 10 6_Considerable_improvement       6     TRUE</code></pre>
+<pre><code>##                   radiologic_6m rad_num improved
+## 1                       1_Death       1    FALSE
+## 2                       1_Death       1    FALSE
+## 3  2_Considerable_deterioration       2    FALSE
+## 4    6_Considerable_improvement       6     TRUE
+## 5      3_Moderate_deterioration       3    FALSE
+## 6    6_Considerable_improvement       6     TRUE
+## 7  2_Considerable_deterioration       2    FALSE
+## 8    6_Considerable_improvement       6     TRUE
+## 9                       1_Death       1    FALSE
+## 10   6_Considerable_improvement       6     TRUE</code></pre>
 </div>
 </div>
 <div id="more-exploration-with-skimr-and-dataexplorer" class="section level2 hasAnchor" number="5.6">

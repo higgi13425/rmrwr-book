@@ -373,6 +373,7 @@ rvest-example
 your-turn-6
 api-example-with-tidycensus
 challenges
+advanced-challenge---dynamic-websites
 linear-regression-and-broom-for-tidying-models
 packages-needed
 building-a-simple-base-model-with-lm

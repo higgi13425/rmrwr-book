@@ -378,7 +378,11 @@ Explore the tidycensus webpage a bit, especially the articles tab. This can be v
 
 We will save the deep dive on these for a later chapter.
 
+:::challenge
+
 ## Challenges
+
+:::
 
 Try to use the {datapasta} or the {rvest} approaches on the following webpages:
 
@@ -393,3 +397,7 @@ Try to use the {datapasta} or the {rvest} approaches on the following webpages:
 5.  [**US state population data**](https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_population)
 
 6.  [**US state GDP data**](https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_GDP)
+
+## Advanced Challenge - Dynamic Websites
+
+Sites that dynamically generate tables of data with JavaScript can be difficult to scrape data from, as these do not have data in their static HTML code. A good example is the KFF health website described above in the first of four ways (downloading) found data on the web. You can scrape data from this kind of site with the help of a 'headless' programmable web browser, like the {chromote} package. This is complicated but doable. There is a nice youtube video demonstration [here](https://www.youtube.com/watch?v=30AOpjLeOyI).

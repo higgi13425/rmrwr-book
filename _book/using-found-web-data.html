@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2024-10-27" />
+<meta name="date" content="2024-10-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -658,6 +658,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="28.7" data-path="using-found-web-data.html"><a href="using-found-web-data.html#your-turn-6"><i class="fa fa-check"></i><b>28.7</b> Your Turn</a></li>
 <li class="chapter" data-level="28.8" data-path="using-found-web-data.html"><a href="using-found-web-data.html#api-example-with-tidycensus"><i class="fa fa-check"></i><b>28.8</b> API example with {tidycensus}</a></li>
 <li class="chapter" data-level="28.9" data-path="using-found-web-data.html"><a href="using-found-web-data.html#challenges"><i class="fa fa-check"></i><b>28.9</b> Challenges</a></li>
+<li class="chapter" data-level="28.10" data-path="using-found-web-data.html"><a href="using-found-web-data.html#advanced-challenge---dynamic-websites"><i class="fa fa-check"></i><b>28.10</b> Advanced Challenge - Dynamic Websites</a></li>
 </ul></li>
 <li class="chapter" data-level="29" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html"><i class="fa fa-check"></i><b>29</b> Linear Regression and Broom for Tidying Models</a>
 <ul>
@@ -1182,8 +1183,9 @@ Click here to see the solutions
 <p>Explore the tidycensus webpage a bit, especially the articles tab. This can be very helpful if you have US health data divided by a geographical unit. You may also want to map these data, and the {tigris} and {mapgl} packages can help you with that.</p>
 <p>We will save the deep dive on these for a later chapter.</p>
 </div>
-<div id="challenges" class="section level2 hasAnchor" number="28.9">
+<div id="challenges" class="section level2 hasAnchor challenge" number="28.9">
 <h2><span class="header-section-number">28.9</span> Challenges<a href="using-found-web-data.html#challenges" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
 <p>Try to use the {datapasta} or the {rvest} approaches on the following webpages:</p>
 <ol style="list-style-type: decimal">
 <li><p><a href="https://en.wikipedia.org/wiki/List_of_countries_by_life_expectancy"><strong>life_expectancy by county</strong></a></p></li>
@@ -1193,6 +1195,9 @@ Click here to see the solutions
 <li><p><a href="https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_population"><strong>US state population data</strong></a></p></li>
 <li><p><a href="https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_GDP"><strong>US state GDP data</strong></a></p></li>
 </ol>
+<div id="advanced-challenge---dynamic-websites" class="section level2 hasAnchor" number="28.10">
+<h2><span class="header-section-number">28.10</span> Advanced Challenge - Dynamic Websites<a href="using-found-web-data.html#advanced-challenge---dynamic-websites" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sites that dynamically generate tables of data with JavaScript can be difficult to scrape data from, as these do not have data in their static HTML code. A good example is the KFF health website described above in the first of four ways (downloading) found data on the web. You can scrape data from this kind of site with the help of a ‘headless’ programmable web browser, like the {chromote} package. This is complicated but doable. There is a nice youtube video demonstration <a href="https://www.youtube.com/watch?v=30AOpjLeOyI">here</a>.</p>
 
 </div>
 </div>

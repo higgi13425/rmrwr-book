@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2024-10-27" />
+<meta name="date" content="2024-10-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -658,6 +658,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="28.7" data-path="using-found-web-data.html"><a href="using-found-web-data.html#your-turn-6"><i class="fa fa-check"></i><b>28.7</b> Your Turn</a></li>
 <li class="chapter" data-level="28.8" data-path="using-found-web-data.html"><a href="using-found-web-data.html#api-example-with-tidycensus"><i class="fa fa-check"></i><b>28.8</b> API example with {tidycensus}</a></li>
 <li class="chapter" data-level="28.9" data-path="using-found-web-data.html"><a href="using-found-web-data.html#challenges"><i class="fa fa-check"></i><b>28.9</b> Challenges</a></li>
+<li class="chapter" data-level="28.10" data-path="using-found-web-data.html"><a href="using-found-web-data.html#advanced-challenge---dynamic-websites"><i class="fa fa-check"></i><b>28.10</b> Advanced Challenge - Dynamic Websites</a></li>
 </ul></li>
 <li class="chapter" data-level="29" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html"><i class="fa fa-check"></i><b>29</b> Linear Regression and Broom for Tidying Models</a>
 <ul>
@@ -1118,9 +1119,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>You can even make predictions on new data (in this case, a random 3% sample of the original dataset)</p>
 <div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb693-1"><a href="logistic-regression-and-broom-for-tidying-models.html#cb693-1" tabindex="-1"></a><span class="fu">predict</span>(model, <span class="at">newdata =</span> <span class="fu">slice_sample</span>(prostate, <span class="at">prop =</span> <span class="fl">0.03</span>), <span class="at">type =</span> <span class="st">&quot;response&quot;</span>) </span></code></pre></div>
 <pre><code>##          1          2          3          4          5 
-## 0.09409879 0.25338133 0.09409879 0.09409879 0.09409879 
+## 0.04058836 0.25338133 0.52579385 0.09409879 0.09409879 
 ##          6          7          8          9 
-## 0.12143477 0.09409879 0.04058836 0.09409879</code></pre>
+## 0.04058836 0.09409879 0.25338133 0.12143477</code></pre>
 <p>Let’s see how this works with another dataset, from which we will use predictors to classify diabetes cases. We will start by loading the data into dm_data, and building an “all predictors” model, by specifying the formula predictors as “.” - this means to use all other variables (except the outcome variable) as predictors. Look at the model output for problems.</p>
 <div class="sourceCode" id="cb695"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb695-1"><a href="logistic-regression-and-broom-for-tidying-models.html#cb695-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;PimaIndiansDiabetes2&quot;</span>, <span class="at">package =</span> <span class="st">&quot;mlbench&quot;</span>)</span>
 <span id="cb695-2"><a href="logistic-regression-and-broom-for-tidying-models.html#cb695-2" tabindex="-1"></a>dm_data <span class="ot">&lt;-</span> PimaIndiansDiabetes2</span>
