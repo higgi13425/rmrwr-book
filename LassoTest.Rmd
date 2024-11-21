@@ -1,0 +1,197 @@
+---
+title: "Lasso"
+author: "Peter Higgins"
+date: "2024-11-21"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(glmnet)
+```
+
+## Define
+
+```{r}
+y <- mtcars$hp 
+
+x <- data.matrix(mtcars[, c('mpg', 'wt', 'drat', 'qsec')])
+
+```
+
+
+# Model
+
+```{r cars}
+cv_model <- cv.glmnet(x, y, alpha = 1) 
+
+best_lambda <- cv_model$lambda.min 
+best_lambda
+
+plot(cv_model) 
+
+best_model <- glmnet(x, y, alpha = 1, lambda = best_lambda) 
+coef(best_model)
+
+```
+
+## Predictions
+
+
+```{r predict}
+new = matrix(c(24, 2.5, 3.5, 18.5), nrow=1, ncol=4) 
+
+predict(best_model, s = best_lambda, newx = new)
+```
+
+Calculate r squared
+
+```{r}
+y_predicted <- predict(best_model, s = best_lambda, newx = x) 
+
+sst <- sum((y - mean(y))^2) 
+sse <- sum((y_predicted - y)^2) 
+
+#find R-Squared 
+rsq <- 1 - sse/sst 
+rsq
+
+```
+
+## Indomethacin RCT
+```{r}
+indo_rct <- medicaldata::indo_rct
+```
+
+### define response variable, matrix
+```{r}
+y <- parse_number(as.character(indo_rct$outcome))
+
+x <- data.matrix(indo_rct[, c('site', 'age', 'risk','gender',
+                'sod', 'recpanc', "psphinc", 'precut', 'difcan',
+                'pneudil', 'amp', 'paninj', 'acinar', 'brush',
+                'asa81', 'asa325', 'asa', 'prophystent', 'therastent',
+                'pdstent', 'sodsom', 'bsphinc', 'bstent', 'chole',
+                'pbmal', 'train', 'status', 'type', 'rx')])
+```
+
+### Modeling
+```{r}
+cv_model <- cv.glmnet(x, y, alpha = 1) 
+
+best_lambda <- cv_model$lambda.min
+best_lambda
+
+plot(cv_model)
+```
+
+### Show Coefficients
+
+```{r}
+best_model <- glmnet(x, y, alpha = 1, lambda = best_lambda)
+coef(best_model)
+
+best_model |> 
+  broom::tidy() 
+```
+
+# Example frm Australia
+```{r}
+# install.packages('faraway')
+library(faraway)
+set.seed(1233)
+data("fat")
+head(fat)
+```
+
+# set up modeling
+```{r}
+Y <- fat$brozek
+
+X <- model.matrix(brozek ~ age + weight + height + neck + chest + abdom + hip + thigh + knee + ankle + biceps + forearm + wrist, data=fat)[,-1] 
+
+```
+
+# optimize lambda
+
+```{r}
+cv.lambda.lasso <- cv.glmnet(x=X, y=Y, alpha = 1) 
+
+plot(cv.lambda.lasso) 
+
+cv.lambda.lasso
+```
+
+# Now Model with optimal lambda
+```{r}
+l.lasso.min <- cv.lambda.lasso$lambda.min 
+
+lasso.model <- glmnet(x=X, y=Y, alpha = 1, lambda = l.lasso.min)
+
+lasso.model$beta
+```
+
+### Compare to OLS
+```{r}
+ols.model <- glm(brozek ~ age + weight + height + adipos + neck + chest + abdom + hip + thigh + knee + ankle + biceps + forearm + wrist, data=fat) 
+summary(ols.model)
+```
+
+## Lasso in Logistic
+Breast cancer 0/1 ~ microscopic findings in biopsy histopath, lots of correlations
+
+```{r}
+library(corrplot) #plots the correlation heatmap
+library(pROC)
+set.seed(122) 
+
+dados<-read.csv("https://www.dropbox.com/s/vp44yozebx5xgok/bdiag.csv?dl=1") 
+correlations <- cor(dados[,-c(1,2)]) 
+#correlations among all the predictors #excluding ID and DIAGNOSIS, columns 1&2 
+corrplot(correlations) #plots the correlations – some vars Highly Corr
+
+```
+
+## See problems with correlations
+```{r}
+summary(glm(diagnosis == "M" ~ radius_mean , family=binomial, data=dados )) 
+summary(glm(diagnosis == "M" ~ radius_mean + perimeter_mean, family=binomial, data=dados ))
+
+```
+
+### Model fit with Lasso
+```{r}
+X <-  model.matrix(diagnosis ~  ., data=dados[,-1])[,-1]  
+
+Y <- dados[,"diagnosis"]=="M"       
+
+# find optimal lambda
+cv.model<- cv.glmnet(x=X, y=Y,
+                     family = "binomial",
+                     alpha=1) #alpha=1 is lasso 
+plot(cv.model)
+l.min <- cv.model$lambda.min
+
+```
+
+### Fit model with optimal lambda
+```{r}
+lasso.model <- glmnet(x=X, y=Y, 
+                      family = "binomial",	
+                      alpha=1, lambda = l.min) 
+lasso.model$beta
+
+lasso.model |> 
+  broom::tidy() 
+```
+
+### Assess the model
+```{r}
+assess.glmnet(lasso.model, newx=X, newy = Y)
+#in this case, we are evaluating the model newx = X, 
+#in the same data used to fit the model newy = Y ) 
+plot(roc.glmnet(lasso.model, newx = X, newy = Y ), 	type="l")
+
+```
+
