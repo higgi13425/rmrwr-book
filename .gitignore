@@ -39,3 +39,6 @@ vignettes/*.pdf
 rsconnect/
 .Rproj.user
 .Rdata
+
+# Private key for encrypt
+*.rsa

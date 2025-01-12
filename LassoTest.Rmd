@@ -14,10 +14,14 @@ library(glmnet)
 ## Define
 
 ```{r}
-y <- mtcars$hp 
+# base R dialect
+# y <- mtcars$hp 
+# # x <- data.matrix(mtcars[, c('mpg', 'wt', 'drat', 'qsec')])
 
-x <- data.matrix(mtcars[, c('mpg', 'wt', 'drat', 'qsec')])
+# tidyverse dialect
+y <- mtcars |> select(hp) |> pull()
 
+x <- mtcars |> select(mpg, wt, drat, qsec) |> data.matrix()
 ```
 
 
@@ -27,6 +31,7 @@ x <- data.matrix(mtcars[, c('mpg', 'wt', 'drat', 'qsec')])
 cv_model <- cv.glmnet(x, y, alpha = 1) 
 
 best_lambda <- cv_model$lambda.min 
+
 best_lambda
 
 plot(cv_model) 
@@ -34,6 +39,11 @@ plot(cv_model)
 best_model <- glmnet(x, y, alpha = 1, lambda = best_lambda) 
 coef(best_model)
 
+best_model |> 
+  broom::tidy() 
+
+best_model |> 
+  broom::glance() 
 ```
 
 ## Predictions
@@ -42,7 +52,7 @@ coef(best_model)
 ```{r predict}
 new = matrix(c(24, 2.5, 3.5, 18.5), nrow=1, ncol=4) 
 
-predict(best_model, s = best_lambda, newx = new)
+predict(best_model, s = best_lambda, newx = new) 
 ```
 
 Calculate r squared
@@ -50,7 +60,9 @@ Calculate r squared
 ```{r}
 y_predicted <- predict(best_model, s = best_lambda, newx = x) 
 
+# SST - sum of squares total - diffs between values and mean, squared and sum
 sst <- sum((y - mean(y))^2) 
+# SSE = sum of squared estimate of errors
 sse <- sum((y_predicted - y)^2) 
 
 #find R-Squared 
@@ -162,7 +174,7 @@ summary(glm(diagnosis == "M" ~ radius_mean + perimeter_mean, family=binomial, da
 
 ### Model fit with Lasso
 ```{r}
-X <-  model.matrix(diagnosis ~  ., data=dados[,-1])[,-1]  
+X <-  model.matrix(diagnosis ~  . | pt_id, data=dados[,-1])[,-1]  
 
 Y <- dados[,"diagnosis"]=="M"       
 

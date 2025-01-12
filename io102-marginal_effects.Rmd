@@ -1,0 +1,59 @@
+---
+title: "io102-marginal_effects"
+author: "Peter Higgins"
+date: "2024-12-18"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Marginal Effects
+
+What are marginal effects? How does the {marginaleffects} package help?
+
+```{r marginal}
+library(marginaleffects)
+library(tidyverse)
+library(broom.helpers)
+
+mod <- lm(mpg ~ vs * hp * am, data = mtcars)
+tbl <- avg_comparisons(mod, variables = "hp", by = c("vs", "am"))
+tidy_tbl <- tidy_avg_comparisons(mod, variables = "hp", by = c("vs", "am"))
+tbl
+
+View(tbl)
+
+tidy_tbl
+
+```
+
+## Main Functions
+
+| Goal                         | Function           |
+|------------------------------|--------------------|
+| Predictions                  | predictions()      |
+|                              | avg_predictions()  |
+|                              | plot_predictions() |
+| Comparisons                  | comparisons()      |
+|                              | avg_comparisons()  |
+|                              | plot_comparisons() |
+| Slopes                       | slopes()           |
+|                              | avg_slopes()       |
+|                              | plot_slopes()      |
+| Grids                        | datagrid()         |
+| Hypotheses and Equivalence   | hypotheses()       |
+| Bayes, Bootstrap, Simulation | get_draws()        |
+|                              | inferences()       |
+|                              |                    |
+
+## Including Plots
+
+More examples of marginal effects
+
+```{r plots}
+plot(pressure)
+```
+
+Reference book in Marginal Effects Zoo <https://marginaleffects.com/>

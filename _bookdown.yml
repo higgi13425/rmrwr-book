@@ -44,6 +44,8 @@ rmd_files:
 - io56b-Rmd-citations-Zotero.Rmd
 - io56c-Intro-to-Quarto.Rmd
 - io70-r_cmd_line.Rmd
+- io103-protecting_phi.Rmd
+- io105-targets.Rmd
 - io198-title-holder.Rmd
 - io199-references.Rmd
 
