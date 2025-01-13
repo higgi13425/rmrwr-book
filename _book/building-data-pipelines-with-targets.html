@@ -991,32 +991,32 @@ just update the downstream functions and run these.</p>
 get the basic idea of how {targets} works.</p>
 <div id="air-quality-analysis" class="section level2 hasAnchor" number="40.1">
 <h2><span class="header-section-number">40.1</span> Air Quality Analysis<a href="building-data-pipelines-with-targets.html#air-quality-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Now let’s replicate what Will Landau (author of {targets}, working at Eli Lilly) just narrated. First, go to your
-RStudio and open a New Project. Call it ‘airquality_demo’. Then,
+<p>Now let’s replicate what Will Landau (author of {targets}, working at Eli Lilly) just narrated. First, go to your local
+RStudio and open a File/New Project. Choose a New Directory/New Project, and call it ‘airquality_demo’. Then,
 add a folder named ‘R’ to the project in the Files tab in RStudio by clicking on the folder at top left with a green <code>+</code> sign. This is where you will store your functions.</p>
-<p>Now, within the R folder, create a new R script (New File is just to the right of the New Folder button in the Files tab) called ‘functions.R’ and
+<p>Now, click to enter the R folder in the project, and within the R folder, create a new R script (New File is just to the right of the New Folder button in the Files tab) called ‘functions.R’ and
 copy the code below into this script. This script contains all the
 functions needed to run this targets pipeline on the airquality data.
 Then save the script <code>functions.R</code>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="building-data-pipelines-with-targets.html#cb1-1" tabindex="-1"></a>get_data <span class="ot">&lt;-</span> <span class="cf">function</span>(file) {</span>
-<span id="cb1-2"><a href="building-data-pipelines-with-targets.html#cb1-2" tabindex="-1"></a>  data <span class="ot">&lt;&lt;-</span> <span class="fu">read_csv</span>(file, <span class="at">col_types =</span> <span class="fu">cols</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb1-2"><a href="building-data-pipelines-with-targets.html#cb1-2" tabindex="-1"></a>  <span class="fu">read_csv</span>(file, <span class="at">col_types =</span> <span class="fu">cols</span>()) <span class="sc">%&gt;%</span></span>
 <span id="cb1-3"><a href="building-data-pipelines-with-targets.html#cb1-3" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Ozone))</span>
 <span id="cb1-4"><a href="building-data-pipelines-with-targets.html#cb1-4" tabindex="-1"></a>}</span>
 <span id="cb1-5"><a href="building-data-pipelines-with-targets.html#cb1-5" tabindex="-1"></a></span>
 <span id="cb1-6"><a href="building-data-pipelines-with-targets.html#cb1-6" tabindex="-1"></a>fit_model <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
-<span id="cb1-7"><a href="building-data-pipelines-with-targets.html#cb1-7" tabindex="-1"></a>  <span class="fu">lm</span>(Ozone <span class="sc">~</span> Temp, <span class="at">data =</span> data) <span class="sc">|&gt;</span></span>
+<span id="cb1-7"><a href="building-data-pipelines-with-targets.html#cb1-7" tabindex="-1"></a>  <span class="fu">lm</span>(Ozone <span class="sc">~</span> Temp, data) <span class="sc">%&gt;%</span></span>
 <span id="cb1-8"><a href="building-data-pipelines-with-targets.html#cb1-8" tabindex="-1"></a>    <span class="fu">coefficients</span>()</span>
 <span id="cb1-9"><a href="building-data-pipelines-with-targets.html#cb1-9" tabindex="-1"></a>}</span>
 <span id="cb1-10"><a href="building-data-pipelines-with-targets.html#cb1-10" tabindex="-1"></a></span>
 <span id="cb1-11"><a href="building-data-pipelines-with-targets.html#cb1-11" tabindex="-1"></a>plot_model <span class="ot">&lt;-</span> <span class="cf">function</span>(model, data) {</span>
-<span id="cb1-12"><a href="building-data-pipelines-with-targets.html#cb1-12" tabindex="-1"></a>  <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> Temp, <span class="at">y =</span> Ozone)) <span class="sc">+</span></span>
-<span id="cb1-13"><a href="building-data-pipelines-with-targets.html#cb1-13" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb1-12"><a href="building-data-pipelines-with-targets.html#cb1-12" tabindex="-1"></a>  <span class="fu">ggplot</span>(data) <span class="sc">+</span></span>
+<span id="cb1-13"><a href="building-data-pipelines-with-targets.html#cb1-13" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Temp, <span class="at">y =</span> Ozone)) <span class="sc">+</span></span>
 <span id="cb1-14"><a href="building-data-pipelines-with-targets.html#cb1-14" tabindex="-1"></a>    <span class="fu">geom_abline</span>(<span class="at">intercept =</span> model[<span class="dv">1</span>], <span class="at">slope =</span> model[<span class="dv">2</span>])</span>
 <span id="cb1-15"><a href="building-data-pipelines-with-targets.html#cb1-15" tabindex="-1"></a>}</span></code></pre></div>
 <p>Now, to check that everything is running OK, copy and run (locally in
-RStudio) the code chunk below. This will load the packages and
+the RStudio Console pane) the code chunk below at the cursor - paste and press Enter/Return. This will load the packages and
 functions, write the data.csv file, then run each function to get and
-process the data, then show the plot in your Plots tab.</p>
+process the data, then finaly show the plot in your Plots tab.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="building-data-pipelines-with-targets.html#cb2-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb2-2"><a href="building-data-pipelines-with-targets.html#cb2-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb2-3"><a href="building-data-pipelines-with-targets.html#cb2-3" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
@@ -1039,12 +1039,18 @@ script will contain the pipeline code that you will build up in the next
 steps.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="building-data-pipelines-with-targets.html#cb3-1" tabindex="-1"></a><span class="fu">library</span>(targets)</span>
 <span id="cb3-2"><a href="building-data-pipelines-with-targets.html#cb3-2" tabindex="-1"></a><span class="fu">use_targets</span>()</span></code></pre></div>
-<p>Check your Files tab to confirm that <code>_targets.R</code> now exists in the root
-of your project. Open this file to see the initial code that was
-generated. This is where you will build up your pipeline.</p>
-<p>Within the <code>_targets.R</code> file, scroll down to the <code>tar_option_set()</code> function. This function sets the options for the pipeline, including the packages that you will need. For this pipeline, we will only need “tibble”. For more complex pipelines, we will need more packages.</p>
-<p>Now scroll down to the <code>list()</code> function with two tar_targets inside of it.</p>
-<p>This code will create four targets for the pipeline.
+<p>Click on your Files tab and go up one level from the R folder to the root of the project, to confirm that <code>_targets.R</code> file now exists in the root
+of your project. This file should not be open in your Source pane, and labeled on the tab at the top as <code>_targets.R</code>. This is where you will build up your pipeline.</p>
+<p>Within the <code>_targets.R</code> file, scroll down to the <code>tar_option_set()</code> function. This function sets the options for the pipeline, including al of the packages that you will need. For this pipeline, we will need</p>
+<ul>
+<li>“tibble”</li>
+<li>“readr”</li>
+<li>“ggplot2”</li>
+<li>“dplyr”</li>
+</ul>
+<p>For more complex pipelines, we will need more packages.</p>
+<p>Now scroll down to the <code>list()</code> function with two <code>tar_targets</code> inside of it.</p>
+<p>Our code will need four targets for the pipeline.
 These output objects are:</p>
 <ul>
 <li>file</li>
@@ -1052,8 +1058,8 @@ These output objects are:</p>
 <li>model</li>
 <li>plot</li>
 </ul>
-<p>Notice that each <code>tar_target()</code> function has a first argumemt that is the target, or output object. The second argument is the function that generates the output object (or the datafile if we are just reading in data). The argument to each of these functions is the input object for that function, which is usually generated in the preceding <code>tar_target()</code> function.</p>
-<p>Looking at the example below,</p>
+<p>Before we replace the two existing tar_targets, let’s inspect them. Notice that each of the two <code>tar_target()</code> functions currently shown has a first argument that is the target, or output object. The second argument is the function or command that generates the output object (or the datafile if we are just reading in data). The argument for each of these functions is the input object for that function, which is usually generated in the preceding <code>tar_target()</code> function.</p>
+<p>Looking at our planned airquality_demo (see code chunk below below),</p>
 <ul>
 <li>the first target is <code>file</code></li>
 <li>the second target is <code>data</code>, which is generated by the <code>get_data()</code> function, which uses the <code>file</code> target as input</li>
@@ -1062,18 +1068,19 @@ These output objects are:</p>
 </ul>
 <p>Copy the code chunk below and replace the <code>tar_target()</code> lines (include everything from <code>list(</code> to the closing parenthesis) with the code below.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="building-data-pipelines-with-targets.html#cb4-1" tabindex="-1"></a><span class="fu">list</span>(</span>
-<span id="cb4-2"><a href="building-data-pipelines-with-targets.html#cb4-2" tabindex="-1"></a>  <span class="fu">tar_target</span>(file, <span class="at">format =</span> <span class="st">&quot;file&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;data.csv&quot;</span>),</span>
+<span id="cb4-2"><a href="building-data-pipelines-with-targets.html#cb4-2" tabindex="-1"></a>  <span class="fu">tar_target</span>(file, <span class="st">&quot;data.csv&quot;</span>, <span class="at">format =</span> <span class="st">&quot;file&quot;</span>),</span>
 <span id="cb4-3"><a href="building-data-pipelines-with-targets.html#cb4-3" tabindex="-1"></a>  <span class="fu">tar_target</span>(data, <span class="fu">get_data</span>(file)),</span>
 <span id="cb4-4"><a href="building-data-pipelines-with-targets.html#cb4-4" tabindex="-1"></a>  <span class="fu">tar_target</span>(model, <span class="fu">fit_model</span>(data)),</span>
 <span id="cb4-5"><a href="building-data-pipelines-with-targets.html#cb4-5" tabindex="-1"></a>  <span class="fu">tar_target</span>(plot, <span class="fu">plot_model</span>(model, data)</span>
-<span id="cb4-6"><a href="building-data-pipelines-with-targets.html#cb4-6" tabindex="-1"></a>)</span></code></pre></div>
-<p>Check that all the parnetheses and commas are correct, with no syntax errors, then save <code>_targets.R</code></p>
+<span id="cb4-6"><a href="building-data-pipelines-with-targets.html#cb4-6" tabindex="-1"></a>  )</span>
+<span id="cb4-7"><a href="building-data-pipelines-with-targets.html#cb4-7" tabindex="-1"></a>)</span></code></pre></div>
+<p>Make sure that your list ends with 3 consecutive close parentheses (and a red parenthesis if you are using rainbow parentheses). Check that all the parentheses and commas are correct, with no syntax errors, then save <code>_targets.R</code></p>
 <p>Now we are ready to start building the pipeline.
 Let’s start with some pre-build checks.
-First, run <code>tar_manifest</code> locally in your project as shown below. This will check the pipeline and show you the status of each target.</p>
+First, run <code>tar_manifest</code> locally in your project in the Console as shown below. This will check the pipeline and show you the status of each target.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="building-data-pipelines-with-targets.html#cb5-1" tabindex="-1"></a><span class="fu">tar_manifest</span>(<span class="at">fields =</span> command)</span></code></pre></div>
-<p>This should generate a table in your console with two columns, showing the name of each target, and the command that generates that target. If you see any errors, you will need to fix these before proceeding.</p>
-<p>Then we can visualize our pipeline by running the code chunk below. This will generate a graph of the pipeline, showing the targets and the dependencies between them. The graph should show the four targets, with the file target at the left, and the plot target at the far right. The data target depends on the file target, the model target depends on the data target, and the plot target depends on the model and data targets. There should be a continuous flow from left to right, though it can branch or unite in more complex workflows. As this is a new pipeline, each target will be color coded (a blue-green) as “Outdated”, as each target has not been built yet.</p>
+<p>This should generate a table in your console with two columns, showing the name of each target, and the command that generates that target. Note that the file target will not have a proper function to generate it, but something that looks like <code>"\"data.csv\""</code> If you see any errors and don’t get a 4x 2 table, you will need to fix these before proceeding.</p>
+<p>Then we can visualize our pipeline by copying and running the code chunk below in the Console. This will generate a graph of the pipeline, showing the targets and the dependencies between them. The graph should show the four targets, with the file target at the left, and the plot target at the far right. The data target depends on the file target, the model target depends on the data target, and the plot target depends on the model and data targets. There should be a continuous flow from left to right, though it can branch or unite in more complex workflows. As this is a new pipeline, each target will be color coded (a blue-green) as “Outdated”, as each target has not been built yet.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="building-data-pipelines-with-targets.html#cb6-1" tabindex="-1"></a><span class="fu">tar_visnetwork</span>()</span></code></pre></div>
 <p>Now that the pre-build checks are good, we are ready to build the pipeline. Run the function below in your local project.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="building-data-pipelines-with-targets.html#cb7-1" tabindex="-1"></a><span class="fu">tar_make</span>()</span></code></pre></div>
@@ -1085,7 +1092,7 @@ The output objects are also saved to binary files in the <code>_targets/objects/
 <p>If you now run <code>tar_visnetwork()</code> again, you will see that the pipeline is now complete, with all the targets built (black). The graph should show all the targets as black, indicating that they are up-to-date.</p>
 <p>Run <code>tar_make()</code> again to demonstrate this. You should see that the pipeline runs much faster this time, as nothing needs to be to re-run.</p>
 <p>We can demonstrate the tracking ability of {targets} my making minor changes to the data or the functions.</p>
-<p>As an example, let’s change the model to make the model predictor <code>Wind</code> instead of <code>Temp</code>. Copy the code below to replace the <code>fit_model()</code> function in the <code>R/functions.R</code> script. Save the edited <code>functions.R</code> file. This will change the model output, and the pipeline will have to re-run the model and plot targets, but not the data or file targets.</p>
+<p>As an example, let’s change the model to make the model predictor <code>Wind</code> instead of <code>Temp</code>. Copy the code below to replace the <code>fit_model()</code> function in the <code>R/functions.R</code> script. Note that you can also simply type <code>Wind</code> in place of <code>Temp</code> in the function. Save the edited <code>functions.R</code> file. This will change the model output, and the pipeline will have to re-run the model and plot targets, but not the data or file targets.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="building-data-pipelines-with-targets.html#cb9-1" tabindex="-1"></a>fit_model <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
 <span id="cb9-2"><a href="building-data-pipelines-with-targets.html#cb9-2" tabindex="-1"></a>  <span class="fu">lm</span>(Ozone <span class="sc">~</span> Wind, <span class="at">data =</span> data) <span class="sc">|&gt;</span> </span>
 <span id="cb9-3"><a href="building-data-pipelines-with-targets.html#cb9-3" tabindex="-1"></a>    <span class="fu">coefficients</span>() </span>
@@ -1308,26 +1315,26 @@ We need to make sure we have added all the packages, and identified all the targ
 <p>Now we have the structure installed.</p>
 <p>We can now do our two pipeline pre-checks:</p>
 <ul>
-<li>tar_manifest()</li>
-<li>tar_visnetwork()</li>
+<li>tar_manifest() - should produce a 6 x 2 tibble of targets.</li>
+<li>tar_visnetwork() - should make a completely blue-green (outdated) diagram of the pipeline.</li>
 </ul>
 <p>Make sure each of these runs without errors.
 If not, re-check the steps to create these two files for the pipeline.</p>
 <ul>
-<li>functions.R</li>
-<li>_targets.R</li>
+<li><code>functions.R</code></li>
+<li><code>_targets.R</code></li>
 </ul>
 </div>
 <div id="running-the-pipeline" class="section level2 hasAnchor" number="40.7">
 <h2><span class="header-section-number">40.7</span> Running the Pipeline<a href="building-data-pipelines-with-targets.html#running-the-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Once these are running without errors, we can run the pipeline with <code>tar_make()</code>.
-This will run the pipeline and create the outputs in the <code>_targets</code> folder. Check that these are present, and view each target object with <code>tar_read()</code>.</p>
-<p>Check the output of <code>tar_visnetwork()</code> to see that the pipeline structure is now completely up to date.</p>
+This will run the pipeline and create the outputs in the <code>_targets/objects</code> folder. Check that these are present, and view each target object with <code>tar_read()</code>.</p>
+<p>Check the output of <code>tar_visnetwork()</code> to see that the pipeline structure is now completely up to date (black targets).</p>
 </div>
 <div id="modificatons-to-the-pipeline" class="section level2 hasAnchor" number="40.8">
 <h2><span class="header-section-number">40.8</span> Modificatons to the Pipeline<a href="building-data-pipelines-with-targets.html#modificatons-to-the-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Now modify the <code>make_table</code> function so that countries with over 1 million cases are in red text.
-Use the code below (adding conditional formatting) to edit the <code>make_table()</code> function in the <code>functions.R</code> file in the R folder of the Project. Look carefully at the <code>tab_style()</code> function to see how the conditional formatting is applied.</p>
+Use the code below (adding conditional formatting) to edit the <code>make_table()</code> function in the <code>functions.R</code> file in the R folder of the Project. Look carefully at the <code>tab_style()</code> function to see how the conditional formatting is applied. Make sure that your function ends with 2 close parenthesesm, followed by a closing curly-brace.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="building-data-pipelines-with-targets.html#cb14-1" tabindex="-1"></a>who_clean <span class="sc">|&gt;</span></span>
 <span id="cb14-2"><a href="building-data-pipelines-with-targets.html#cb14-2" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">|&gt;</span> </span>
 <span id="cb14-3"><a href="building-data-pipelines-with-targets.html#cb14-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Case_Count =</span> <span class="fu">sum</span>(count)) <span class="sc">|&gt;</span> </span>
@@ -1342,12 +1349,14 @@ Use the code below (adding conditional formatting) to edit the <code>make_table(
 <span id="cb14-12"><a href="building-data-pipelines-with-targets.html#cb14-12" tabindex="-1"></a>      <span class="at">columns =</span> Case_Count,</span>
 <span id="cb14-13"><a href="building-data-pipelines-with-targets.html#cb14-13" tabindex="-1"></a>      <span class="at">rows =</span> Case_Count <span class="sc">&gt;</span> <span class="dv">1000000</span></span>
 <span id="cb14-14"><a href="building-data-pipelines-with-targets.html#cb14-14" tabindex="-1"></a>    ))</span></code></pre></div>
-<p>Run <code>tar_visnetwork()</code> to check on what is now out of date in the pipeline, and then run <code>tar_make()</code> to update the pipeline with the new function.</p>
-<p>Check out the appearance of the newly-modified table with <code>tar_read()</code>.</p>
+<p>Save your modified <code>functions.R</code> file.
+Run <code>tar_visnetwork()</code> to check on what is now out of date in the pipeline, and then run <code>tar_make()</code> to update the pipeline with the new function. Note that some targets are skipped.</p>
+<p>Check out the appearance of the newly-modified table with <code>tar_read(table)</code>.</p>
+<p>Confirm that the pipeline is now up to date with <code>tar_visnetwork()</code>.</p>
 </div>
 <div id="modify-the-plot" class="section level2 hasAnchor" number="40.9">
 <h2><span class="header-section-number">40.9</span> Modify the Plot<a href="building-data-pipelines-with-targets.html#modify-the-plot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Now modify the plot to make years with points greater than 3 million cases of TB colored red. Use the code below to edit the <code>plot_data()</code> function in the <code>functions.R</code> file in the R folder of the Project.</p>
+<p>Now modify the plot to make years with the points (years) with greater than 3 million cases of TB colored red. Use the code below to edit the <code>plot_data()</code> function in the <code>functions.R</code> file in the R folder of the Project.</p>
 <p>Look carefully at the <code>aes(color)</code> and <code>scale_color_manual()</code> functions to see how the conditional formatting is applied to point color.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="building-data-pipelines-with-targets.html#cb15-1" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> <span class="cf">function</span>(who_clean){</span>
 <span id="cb15-2"><a href="building-data-pipelines-with-targets.html#cb15-2" tabindex="-1"></a>  who_clean <span class="sc">|&gt;</span> </span>
@@ -1363,7 +1372,7 @@ Use the code below (adding conditional formatting) to edit the <code>make_table(
 <span id="cb15-12"><a href="building-data-pipelines-with-targets.html#cb15-12" tabindex="-1"></a>  <span class="fu">return</span>(plot)</span>
 <span id="cb15-13"><a href="building-data-pipelines-with-targets.html#cb15-13" tabindex="-1"></a>}</span></code></pre></div>
 <p>Run <code>tar_visnetwork()</code> to check on what is out of date in the pipeline structure, and then run <code>tar_make()</code> to update the pipeline with the new function.</p>
-<p>Check out the appearance of the newly-modified plot with <code>tar_read()</code></p>
+<p>Check out the appearance of the newly-modified plot with <code>tar_read(plot)</code></p>
 </div>
 <div id="next-steps" class="section level2 hasAnchor" number="40.10">
 <h2><span class="header-section-number">40.10</span> Next Steps<a href="building-data-pipelines-with-targets.html#next-steps" class="anchor-section" aria-label="Anchor link to header"></a></h2>
