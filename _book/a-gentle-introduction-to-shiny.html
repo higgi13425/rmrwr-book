@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 32 A Gentle Introduction to Shiny | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 32 A Gentle Introduction to Shiny | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2024-10-31" />
+<meta name="date" content="2025-01-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -78,7 +78,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -875,6 +875,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="38.10" data-path="cmd-line.html"><a href="cmd-line.html#running-an-r-script-from-the-terminal"><i class="fa fa-check"></i><b>38.10</b> Running an R Script from the Terminal</a></li>
 <li class="chapter" data-level="38.11" data-path="cmd-line.html"><a href="cmd-line.html#rendering-an-rmarkdown-file-from-the-terminal"><i class="fa fa-check"></i><b>38.11</b> Rendering an Rmarkdown file from the Terminal</a></li>
 </ul></li>
+<li class="chapter" data-level="39" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html"><i class="fa fa-check"></i><b>39</b> Protecting PHI (Protected Health Information)</a>
+<ul>
+<li class="chapter" data-level="39.1" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html#protecting-not-inadvertently-sharing-phi"><i class="fa fa-check"></i><b>39.1</b> Protecting (Not Inadvertently Sharing) PHI</a></li>
+<li class="chapter" data-level="39.2" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html#identifying-phi"><i class="fa fa-check"></i><b>39.2</b> Identifying PHI</a></li>
+<li class="chapter" data-level="39.3" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html#selectively-deleting-phi"><i class="fa fa-check"></i><b>39.3</b> Selectively Deleting PHI</a></li>
+<li class="chapter" data-level="39.4" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html#problems-with-phi-free-data"><i class="fa fa-check"></i><b>39.4</b> Problems with PHI-free data</a></li>
+<li class="chapter" data-level="39.5" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html#encrypting-phi"><i class="fa fa-check"></i><b>39.5</b> Encrypting PHI</a>
+<ul>
+<li class="chapter" data-level="39.5.1" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html#generating-public-and-private-keys"><i class="fa fa-check"></i><b>39.5.1</b> Generating Public and Private keys</a></li>
+</ul></li>
+<li class="chapter" data-level="39.6" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html#sharing-synthetic-data-with-synthpop"><i class="fa fa-check"></i><b>39.6</b> Sharing synthetic data with {synthpop}</a></li>
+</ul></li>
+<li class="chapter" data-level="40" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html"><i class="fa fa-check"></i><b>40</b> Building Data Pipelines with {targets}</a>
+<ul>
+<li class="chapter" data-level="40.1" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#what-does-targets-do"><i class="fa fa-check"></i><b>40.1</b> What Does {targets} Do?</a></li>
+<li class="chapter" data-level="40.2" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#air-quality-analysis"><i class="fa fa-check"></i><b>40.2</b> Air Quality Analysis</a>
+<ul>
+<li class="chapter" data-level="40.2.1" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#prepping-the-functions.r-file"><i class="fa fa-check"></i><b>40.2.1</b> Prepping The Functions.R file</a></li>
+<li class="chapter" data-level="40.2.2" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#checking-your-functions"><i class="fa fa-check"></i><b>40.2.2</b> Checking Your Functions</a></li>
+<li class="chapter" data-level="40.2.3" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#set-up-the-pipeline"><i class="fa fa-check"></i><b>40.2.3</b> Set Up the Pipeline</a></li>
+<li class="chapter" data-level="40.2.4" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#pre-build-checks"><i class="fa fa-check"></i><b>40.2.4</b> Pre-Build Checks</a></li>
+<li class="chapter" data-level="40.2.5" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#building-the-pipeline"><i class="fa fa-check"></i><b>40.2.5</b> Building the Pipeline</a></li>
+<li class="chapter" data-level="40.2.6" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#changing-the-pipeline"><i class="fa fa-check"></i><b>40.2.6</b> Changing the Pipeline</a></li>
+</ul></li>
+<li class="chapter" data-level="40.3" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#your-turn---a-tuberculosis-analysis-pipeline"><i class="fa fa-check"></i><b>40.3</b> Your Turn - A Tuberculosis Analysis Pipeline</a>
+<ul>
+<li class="chapter" data-level="40.3.1" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#making-new-functions"><i class="fa fa-check"></i><b>40.3.1</b> Making new Functions</a></li>
+<li class="chapter" data-level="40.3.2" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#testing-functions"><i class="fa fa-check"></i><b>40.3.2</b> Testing functions</a></li>
+<li class="chapter" data-level="40.3.3" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#setting-up-targets"><i class="fa fa-check"></i><b>40.3.3</b> Setting Up {targets}</a></li>
+</ul></li>
+<li class="chapter" data-level="40.4" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#editing-the-_targets.r-file"><i class="fa fa-check"></i><b>40.4</b> Editing the <code>_targets.R</code> File</a>
+<ul>
+<li class="chapter" data-level="40.4.1" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#running-the-pipeline"><i class="fa fa-check"></i><b>40.4.1</b> Running the Pipeline</a></li>
+<li class="chapter" data-level="40.4.2" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#modificatons-to-the-pipeline"><i class="fa fa-check"></i><b>40.4.2</b> Modificatons to the Pipeline</a></li>
+<li class="chapter" data-level="40.4.3" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#modify-the-plot"><i class="fa fa-check"></i><b>40.4.3</b> Modify the Plot</a></li>
+</ul></li>
+<li class="chapter" data-level="40.5" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#next-steps"><i class="fa fa-check"></i><b>40.5</b> Next Steps</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="title-holder.html"><a href="title-holder.html"><i class="fa fa-check"></i>Title holder</a></li>
 <li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -1184,9 +1222,9 @@ A data table differs from a regular table in that it will show a page of data at
 <h2><span class="header-section-number">32.9</span> Building a Functioning Server Section<a href="a-gentle-introduction-to-shiny.html#building-a-functioning-server-section" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The server section defaults are straightforward, and are the bread of the sandwich that you will build for data processing.</p>
 <p>The default content is</p>
-<div class="sourceCode" id="cb785"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb785-1"><a href="a-gentle-introduction-to-shiny.html#cb785-1" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb785-2"><a href="a-gentle-introduction-to-shiny.html#cb785-2" tabindex="-1"></a>  </span>
-<span id="cb785-3"><a href="a-gentle-introduction-to-shiny.html#cb785-3" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb780"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb780-1"><a href="a-gentle-introduction-to-shiny.html#cb780-1" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb780-2"><a href="a-gentle-introduction-to-shiny.html#cb780-2" tabindex="-1"></a>  </span>
+<span id="cb780-3"><a href="a-gentle-introduction-to-shiny.html#cb780-3" tabindex="-1"></a>}</span></code></pre></div>
 <p>and all of the data import, data processing, rendering of objects to HTML, and assigning outputs to <code>output$ID</code> happens between the curly braces.</p>
 <div id="using-the-input-values-data" class="section level3 hasAnchor" number="32.9.1">
 <h3><span class="header-section-number">32.9.1</span> Using the input values &amp; Data<a href="a-gentle-introduction-to-shiny.html#using-the-input-values-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1200,12 +1238,12 @@ A data table differs from a regular table in that it will show a page of data at
 <li>What does the server section below calculate?</li>
 <li>how would you access it in the ui section?</li>
 </ul>
-<div class="sourceCode" id="cb786"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb786-1"><a href="a-gentle-introduction-to-shiny.html#cb786-1" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb786-2"><a href="a-gentle-introduction-to-shiny.html#cb786-2" tabindex="-1"></a>  output<span class="sc">$</span>bc_ratio <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
-<span id="cb786-3"><a href="a-gentle-introduction-to-shiny.html#cb786-3" tabindex="-1"></a>    bc_ratio <span class="ot">&lt;-</span> input<span class="sc">$</span>bun_mg<span class="sc">-</span>dl<span class="sc">/</span>input<span class="sc">$</span>creat_mg_dl</span>
-<span id="cb786-4"><a href="a-gentle-introduction-to-shiny.html#cb786-4" tabindex="-1"></a>    bc_ratio</span>
-<span id="cb786-5"><a href="a-gentle-introduction-to-shiny.html#cb786-5" tabindex="-1"></a>  })</span>
-<span id="cb786-6"><a href="a-gentle-introduction-to-shiny.html#cb786-6" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb781"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb781-1"><a href="a-gentle-introduction-to-shiny.html#cb781-1" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb781-2"><a href="a-gentle-introduction-to-shiny.html#cb781-2" tabindex="-1"></a>  output<span class="sc">$</span>bc_ratio <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb781-3"><a href="a-gentle-introduction-to-shiny.html#cb781-3" tabindex="-1"></a>    bc_ratio <span class="ot">&lt;-</span> input<span class="sc">$</span>bun_mg<span class="sc">-</span>dl<span class="sc">/</span>input<span class="sc">$</span>creat_mg_dl</span>
+<span id="cb781-4"><a href="a-gentle-introduction-to-shiny.html#cb781-4" tabindex="-1"></a>    bc_ratio</span>
+<span id="cb781-5"><a href="a-gentle-introduction-to-shiny.html#cb781-5" tabindex="-1"></a>  })</span>
+<span id="cb781-6"><a href="a-gentle-introduction-to-shiny.html#cb781-6" tabindex="-1"></a>}</span></code></pre></div>
 <div class="webex-solution">
 <button>
 Show Answers
@@ -1272,25 +1310,25 @@ This will require (after wrangling and calculating the output, and returning the
 <p>Re-open the Shiny app file, <code>app.R</code>.
 Your <em>serverPanel</em> should still have a <em>selectInput</em> with 3 choices.</p>
 <p>Delete this and replace it with a <code>numericInput()</code> for weight, and a <code>sliderInput()</code> for height, as shown below</p>
-<div class="sourceCode" id="cb787"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb787-1"><a href="a-gentle-introduction-to-shiny.html#cb787-1" tabindex="-1"></a>  <span class="fu">sidebarPanel</span>( <span class="fu">numericInput</span>(</span>
-<span id="cb787-2"><a href="a-gentle-introduction-to-shiny.html#cb787-2" tabindex="-1"></a>    <span class="at">inputID =</span> <span class="st">&quot;weight_kg&quot;</span>,</span>
-<span id="cb787-3"><a href="a-gentle-introduction-to-shiny.html#cb787-3" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;Enter weight in kilograms&quot;</span>,</span>
-<span id="cb787-4"><a href="a-gentle-introduction-to-shiny.html#cb787-4" tabindex="-1"></a>    <span class="at">value =</span> <span class="dv">70</span>),</span>
-<span id="cb787-5"><a href="a-gentle-introduction-to-shiny.html#cb787-5" tabindex="-1"></a>    <span class="fu">sliderInput</span>(</span>
-<span id="cb787-6"><a href="a-gentle-introduction-to-shiny.html#cb787-6" tabindex="-1"></a>    <span class="at">inputID =</span> <span class="st">&quot;height_m&quot;</span>,</span>
-<span id="cb787-7"><a href="a-gentle-introduction-to-shiny.html#cb787-7" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;Enter height in meters&quot;</span>,</span>
-<span id="cb787-8"><a href="a-gentle-introduction-to-shiny.html#cb787-8" tabindex="-1"></a>    <span class="at">value =</span> <span class="fl">1.7</span>, <span class="at">min =</span> <span class="fl">0.5</span>, <span class="at">max =</span> <span class="fl">2.7</span>)</span>
-<span id="cb787-9"><a href="a-gentle-introduction-to-shiny.html#cb787-9" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb782"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb782-1"><a href="a-gentle-introduction-to-shiny.html#cb782-1" tabindex="-1"></a>  <span class="fu">sidebarPanel</span>( <span class="fu">numericInput</span>(</span>
+<span id="cb782-2"><a href="a-gentle-introduction-to-shiny.html#cb782-2" tabindex="-1"></a>    <span class="at">inputID =</span> <span class="st">&quot;weight_kg&quot;</span>,</span>
+<span id="cb782-3"><a href="a-gentle-introduction-to-shiny.html#cb782-3" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;Enter weight in kilograms&quot;</span>,</span>
+<span id="cb782-4"><a href="a-gentle-introduction-to-shiny.html#cb782-4" tabindex="-1"></a>    <span class="at">value =</span> <span class="dv">70</span>),</span>
+<span id="cb782-5"><a href="a-gentle-introduction-to-shiny.html#cb782-5" tabindex="-1"></a>    <span class="fu">sliderInput</span>(</span>
+<span id="cb782-6"><a href="a-gentle-introduction-to-shiny.html#cb782-6" tabindex="-1"></a>    <span class="at">inputID =</span> <span class="st">&quot;height_m&quot;</span>,</span>
+<span id="cb782-7"><a href="a-gentle-introduction-to-shiny.html#cb782-7" tabindex="-1"></a>    <span class="at">label =</span> <span class="st">&quot;Enter height in meters&quot;</span>,</span>
+<span id="cb782-8"><a href="a-gentle-introduction-to-shiny.html#cb782-8" tabindex="-1"></a>    <span class="at">value =</span> <span class="fl">1.7</span>, <span class="at">min =</span> <span class="fl">0.5</span>, <span class="at">max =</span> <span class="fl">2.7</span>)</span>
+<span id="cb782-9"><a href="a-gentle-introduction-to-shiny.html#cb782-9" tabindex="-1"></a>  )</span></code></pre></div>
 <p>Now scroll down to the server section.
 You can delete the <code>if else</code> section in renderText between the parenthesis/curly brace pairs.</p>
 <p>Change the name of the <code>output$name</code> to <code>output$bmi</code>.
 Then in the renderText section, calculate the BMI, as shown below.</p>
-<div class="sourceCode" id="cb788"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb788-1"><a href="a-gentle-introduction-to-shiny.html#cb788-1" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb788-2"><a href="a-gentle-introduction-to-shiny.html#cb788-2" tabindex="-1"></a>  output<span class="sc">$</span>bmi <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
-<span id="cb788-3"><a href="a-gentle-introduction-to-shiny.html#cb788-3" tabindex="-1"></a>    bmi <span class="ot">&lt;-</span> input<span class="sc">$</span>weight_kg<span class="sc">/</span>(input<span class="sc">$</span>height_m)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb788-4"><a href="a-gentle-introduction-to-shiny.html#cb788-4" tabindex="-1"></a>    bmi</span>
-<span id="cb788-5"><a href="a-gentle-introduction-to-shiny.html#cb788-5" tabindex="-1"></a>  })</span>
-<span id="cb788-6"><a href="a-gentle-introduction-to-shiny.html#cb788-6" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb783"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb783-1"><a href="a-gentle-introduction-to-shiny.html#cb783-1" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb783-2"><a href="a-gentle-introduction-to-shiny.html#cb783-2" tabindex="-1"></a>  output<span class="sc">$</span>bmi <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb783-3"><a href="a-gentle-introduction-to-shiny.html#cb783-3" tabindex="-1"></a>    bmi <span class="ot">&lt;-</span> input<span class="sc">$</span>weight_kg<span class="sc">/</span>(input<span class="sc">$</span>height_m)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb783-4"><a href="a-gentle-introduction-to-shiny.html#cb783-4" tabindex="-1"></a>    bmi</span>
+<span id="cb783-5"><a href="a-gentle-introduction-to-shiny.html#cb783-5" tabindex="-1"></a>  })</span>
+<span id="cb783-6"><a href="a-gentle-introduction-to-shiny.html#cb783-6" tabindex="-1"></a>}</span></code></pre></div>
 <p>This will take the input values from the user and calculate BMI, then render it as text, and then assign it to <code>output$bmi</code>.</p>
 <p>Now let’s scroll back up to the <em>mainPanel</em> in the ui section.
 Your mainPanel should currently be set up to display the bc_ratio.

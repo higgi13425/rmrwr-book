@@ -76,7 +76,7 @@ whoami;date
 
 ```
 ## peterhiggins
-## Thu Oct 31 09:06:08 EDT 2024
+## Mon Jan 13 06:13:22 EST 2025
 ```
 :::
 
@@ -191,6 +191,10 @@ ls
 ## Advice for participants in webinars.docx
 ## Advice for young mentors.docx
 ## Animation of NSAID.pptx
+## Apple Pie Day 1.docx
+## Apple Pie Day 2.docx
+## Apple Pie Filling Nov 2024.docx
+## Apple Pie ingredients.docx
 ## Applicant Research Design Task T32.docx
 ## Applying for Fellowship in Gastroenterology and Hepatology.docx
 ## Ashley_Simone letter rec.docx
@@ -413,6 +417,8 @@ ls
 ## IMIBD_expanded_descriptors.xlsx
 ## INTERNAL_BUDGET_Abbvie_Nav_Rux_Sept_2021.xlsx
 ## Ideas for CTA Phase 2.docx
+## Image functions target.ai
+## Image functions target.png
 ## Introduction to Application Supplement Photoacoustic.docx
 ## Invoice 401 to Buhlmann.docx
 ## Invoice 401 to Buhlmann.pdf
@@ -445,6 +451,7 @@ ls
 ## KP pdfs
 ## K_R_NIH_biosketches_2022.pptx
 ## Kelli Porzondek_Performance_Review_Sep_2021.docx
+## LASSO.pptx
 ## LOI for CSI for RMed.docx
 ## Learning R discussion Jeremy Louissaint.docx
 ## Letter to Frank Hamilton.docx
@@ -519,6 +526,7 @@ ls
 ## Peter_Higgins_photo_headshot.jpg
 ## Pfizer_Contract_for_Peter_Higgins_-_RD-20-D11.pdf
 ## Pictures
+## Pie crust recipe.docx
 ## Pitch Letter - S is for Saffron.docx
 ## Pitching Notes.docx
 ## Poppy Eulogy backup.docx
@@ -544,6 +552,7 @@ ls
 ## R01.US.Revision
 ## RAC Update form.docx
 ## RCode
+## RMRWR chapters.docx
 ## RMed 2023 Meeting 15 Mar.docx
 ## RMed21- Intro to Spatial.pptx
 ## RMed21-Opening remarks Day 1.pptx
@@ -564,6 +573,7 @@ ls
 ## Research Statement.pdf
 ## Review Criteria for COVID Clinical Trials.docx
 ## Review guidelines_2017.docx
+## Rice recipes
 ## Roasted Salted Cashews.docx
 ## Ryan CDA
 ## Ryan K
@@ -688,6 +698,7 @@ ls
 ## Walk Letter of Reference.docx
 ## Walk Letter of Reference.pdf
 ## WebEx
+## Wedding Dance Songs.docx
 ## Weekly Clinical T32 Seminar 2023.docx
 ## Why not excel.docx
 ## Zoom
@@ -768,6 +779,8 @@ ls
 ## ~$Big data with Arrow and DuckDB with demo.pptx
 ## ~$Jun2021_ibdTrials.pptx
 ## ~$T Review Higgins.docx
+## ~$cipeTin Lentil Chickpea Coconut Curry.docx
+## ~$e crust recipe.docx
 ## ~$sk List 2020-5.docx
 ## ~$sk List 2020.docx
 ## ~$sk List 2021.docx

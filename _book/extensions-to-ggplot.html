@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 24 Extensions to ggplot | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 24 Extensions to ggplot | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2024-10-31" />
+<meta name="date" content="2025-01-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -78,7 +78,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -874,6 +874,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="38.9" data-path="cmd-line.html"><a href="cmd-line.html#what-about-just-a-few-lines-of-r"><i class="fa fa-check"></i><b>38.9</b> What about just a few lines of R?</a></li>
 <li class="chapter" data-level="38.10" data-path="cmd-line.html"><a href="cmd-line.html#running-an-r-script-from-the-terminal"><i class="fa fa-check"></i><b>38.10</b> Running an R Script from the Terminal</a></li>
 <li class="chapter" data-level="38.11" data-path="cmd-line.html"><a href="cmd-line.html#rendering-an-rmarkdown-file-from-the-terminal"><i class="fa fa-check"></i><b>38.11</b> Rendering an Rmarkdown file from the Terminal</a></li>
+</ul></li>
+<li class="chapter" data-level="39" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html"><i class="fa fa-check"></i><b>39</b> Protecting PHI (Protected Health Information)</a>
+<ul>
+<li class="chapter" data-level="39.1" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html#protecting-not-inadvertently-sharing-phi"><i class="fa fa-check"></i><b>39.1</b> Protecting (Not Inadvertently Sharing) PHI</a></li>
+<li class="chapter" data-level="39.2" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html#identifying-phi"><i class="fa fa-check"></i><b>39.2</b> Identifying PHI</a></li>
+<li class="chapter" data-level="39.3" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html#selectively-deleting-phi"><i class="fa fa-check"></i><b>39.3</b> Selectively Deleting PHI</a></li>
+<li class="chapter" data-level="39.4" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html#problems-with-phi-free-data"><i class="fa fa-check"></i><b>39.4</b> Problems with PHI-free data</a></li>
+<li class="chapter" data-level="39.5" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html#encrypting-phi"><i class="fa fa-check"></i><b>39.5</b> Encrypting PHI</a>
+<ul>
+<li class="chapter" data-level="39.5.1" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html#generating-public-and-private-keys"><i class="fa fa-check"></i><b>39.5.1</b> Generating Public and Private keys</a></li>
+</ul></li>
+<li class="chapter" data-level="39.6" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html#sharing-synthetic-data-with-synthpop"><i class="fa fa-check"></i><b>39.6</b> Sharing synthetic data with {synthpop}</a></li>
+</ul></li>
+<li class="chapter" data-level="40" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html"><i class="fa fa-check"></i><b>40</b> Building Data Pipelines with {targets}</a>
+<ul>
+<li class="chapter" data-level="40.1" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#what-does-targets-do"><i class="fa fa-check"></i><b>40.1</b> What Does {targets} Do?</a></li>
+<li class="chapter" data-level="40.2" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#air-quality-analysis"><i class="fa fa-check"></i><b>40.2</b> Air Quality Analysis</a>
+<ul>
+<li class="chapter" data-level="40.2.1" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#prepping-the-functions.r-file"><i class="fa fa-check"></i><b>40.2.1</b> Prepping The Functions.R file</a></li>
+<li class="chapter" data-level="40.2.2" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#checking-your-functions"><i class="fa fa-check"></i><b>40.2.2</b> Checking Your Functions</a></li>
+<li class="chapter" data-level="40.2.3" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#set-up-the-pipeline"><i class="fa fa-check"></i><b>40.2.3</b> Set Up the Pipeline</a></li>
+<li class="chapter" data-level="40.2.4" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#pre-build-checks"><i class="fa fa-check"></i><b>40.2.4</b> Pre-Build Checks</a></li>
+<li class="chapter" data-level="40.2.5" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#building-the-pipeline"><i class="fa fa-check"></i><b>40.2.5</b> Building the Pipeline</a></li>
+<li class="chapter" data-level="40.2.6" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#changing-the-pipeline"><i class="fa fa-check"></i><b>40.2.6</b> Changing the Pipeline</a></li>
+</ul></li>
+<li class="chapter" data-level="40.3" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#your-turn---a-tuberculosis-analysis-pipeline"><i class="fa fa-check"></i><b>40.3</b> Your Turn - A Tuberculosis Analysis Pipeline</a>
+<ul>
+<li class="chapter" data-level="40.3.1" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#making-new-functions"><i class="fa fa-check"></i><b>40.3.1</b> Making new Functions</a></li>
+<li class="chapter" data-level="40.3.2" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#testing-functions"><i class="fa fa-check"></i><b>40.3.2</b> Testing functions</a></li>
+<li class="chapter" data-level="40.3.3" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#setting-up-targets"><i class="fa fa-check"></i><b>40.3.3</b> Setting Up {targets}</a></li>
+</ul></li>
+<li class="chapter" data-level="40.4" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#editing-the-_targets.r-file"><i class="fa fa-check"></i><b>40.4</b> Editing the <code>_targets.R</code> File</a>
+<ul>
+<li class="chapter" data-level="40.4.1" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#running-the-pipeline"><i class="fa fa-check"></i><b>40.4.1</b> Running the Pipeline</a></li>
+<li class="chapter" data-level="40.4.2" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#modificatons-to-the-pipeline"><i class="fa fa-check"></i><b>40.4.2</b> Modificatons to the Pipeline</a></li>
+<li class="chapter" data-level="40.4.3" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#modify-the-plot"><i class="fa fa-check"></i><b>40.4.3</b> Modify the Plot</a></li>
+</ul></li>
+<li class="chapter" data-level="40.5" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#next-steps"><i class="fa fa-check"></i><b>40.5</b> Next Steps</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="title-holder.html"><a href="title-holder.html"><i class="fa fa-check"></i>Title holder</a></li>
 <li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>

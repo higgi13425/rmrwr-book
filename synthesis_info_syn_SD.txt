@@ -1,0 +1,11 @@
+Date saved: 13 Jan 2025, 06:13 
+Data frame with original data: mydata 
+Number of synthetic data sets: 1 
+Output file(s):(csv) syn_SD.csv
+Additional file: synobject_syn_SD.RData
+Methods used:
+       sex      agegr        edu    socprof    marital 
+  "sample"     "cart"     "cart"     "cart"     "cart" 
+   depress      trust   trustfam trustneigh     income 
+    "cart"     "cart"     "cart"     "cart"     "cart" 
+Seed used: 123 

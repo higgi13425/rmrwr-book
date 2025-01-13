@@ -378,10 +378,8 @@ Explore the tidycensus webpage a bit, especially the articles tab. This can be v
 
 We will save the deep dive on these for a later chapter.
 
-:::challenge
-
+::: challenge
 ## Challenges
-
 :::
 
 Try to use the {datapasta} or the {rvest} approaches on the following webpages:

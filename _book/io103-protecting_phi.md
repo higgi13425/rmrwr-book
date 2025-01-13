@@ -13,21 +13,20 @@ If you are working with medical data, there is a good chance that you are freque
 
 It is CRITICAL to maintaining your credibility as a data analyst, as well as your access to medical data, that you take the necessary steps to protect PHI. This includes not sharing PHI, encrypting data, and using synthetic data when possible.
 
-## Not Sharing PHI
+## Protecting (Not Inadvertently Sharing) PHI
 
-One important step in protecting PHI is to not share it. This means not sharing data that contains PHI, and not sharing code that contains PHI.
-This is especially important when backing up data to the cloud, or sharing data with collaborators. A very common way to back up data and collaborate on shared data is to establish a repository (repo) on GitHub.
+The first important step in protecting PHI is to not share it. This means not sharing data that contains PHI, and not sharing code that contains PHI.
+This is especially important when backing up data to the cloud, or sharing data with collaborators. A very common way to back up data and collaborate on a shared project is to establish a repository (repo) on GitHub.
 
-It is important that you know how to use the `.gitignore` file to prevent PHI from being shared on GitHub. The `.gitignore` file is a text file that tells Git which files or folders to ignore in a project. The `.gitignore` file should be placed in the root directory of your project. You can include an R-specific `.gitignore` file when you create the repository on GitHub, or you can add it later.
+It is important that you know how to use the `.gitignore` file to prevent PHI from being shared on GitHub. The `.gitignore` file is a text file that tells Git which files or folders to ignore in a project. The `.gitignore` file should be placed in the root directory of your project. You can include an R-specific `.gitignore` file when you create the repository on GitHub (this is a dropdown on the Github page when creating a new repo), or you can add it later.
 
-You can create a `.gitignore` file by opening a text editor, and saving the file as `.gitignore`. You can then add the following lines to the file:
+You can create a `.gitignore` file by opening a text editor, and saving the file as `.gitignore`. For this example, you can then add the following lines to the file:
 
 - `*.csv`
 - `*.Rd`
 - `*.RData`
 - `data/`
 - `output/`
-
 
 These lines tell git to ignore the following kinds of files:
 
@@ -43,7 +42,7 @@ So that when you share your code on GitHub, you are not sharing any PHI.
 
 Protected health information (PHI) is any information in the medical record or designated record set that can be used to identify an individual and that was created, used, or disclosed in the course of providing a health care service such as diagnosis or treatment. HIPAA regulations allow researchers to access and use PHI when necessary to conduct research. However, HIPAA applies only to research that uses, creates, or discloses PHI that enters the medical record or is used for healthcare services, such as treatment, payment, or operations.
 
-Identifying PHI in your data files is the first step in protecting PHI. Per US law, there are 18 types of data that are considered PHI. 
+Identifying PHI in your data files is the next step in protecting PHI. Per US law, there are 18 types of data that are considered PHI. 
 
 1. Names;
 2. All geographical subdivisions smaller than a State, including street address, city, county, precinct, zip code, and their equivalent geocodes, except for the initial three digits of a zip code, if according to the current publicly available data from the Bureau of the Census: (1) The geographic unit formed by combining all zip codes with the same three initial digits contains more than 20,000 people; and (2) The initial three digits of a zip code for all such geographic units containing 20,000 or fewer people is changed to 000.
@@ -151,16 +150,16 @@ gp_encrypt
 ## # A tibble: 1,212 × 8
 ##    organisation_code city        county  postcode opendate  
 ##    <chr>             <chr>       <chr>   <chr>    <date>    
-##  1 S10002            DUNDEE      ANGUS   3667b2c… 1995-05-01
-##  2 S10017            CRIEFF      PERTHS… 7478dc1… 1996-04-06
-##  3 S10036            ABERFELDY   PERTHS… 23cdd26… 2008-04-01
-##  4 S10060            ABERFELDY   PERTHS… 8473c24… 1975-04-01
-##  5 S10106            DUNDEE      ANGUS   4462e12… 1996-07-08
-##  6 S10125            BLAIRGOWRIE PERTHS… 047e59c… 1979-10-01
-##  7 S10182            ARBROATH    ANGUS   4d39464… 1977-10-01
-##  8 S10233            ARBROATH    ANGUS   459cde3… 1986-08-01
-##  9 S10286            ARBROATH    ANGUS   97f1e7a… 1975-08-01
-## 10 S10322            ARBROATH    ANGUS   7da3644… 1971-10-01
+##  1 S10002            DUNDEE      ANGUS   099026e… 1995-05-01
+##  2 S10017            CRIEFF      PERTHS… 421f0a4… 1996-04-06
+##  3 S10036            ABERFELDY   PERTHS… 4ba5daa… 2008-04-01
+##  4 S10060            ABERFELDY   PERTHS… 342c670… 1975-04-01
+##  5 S10106            DUNDEE      ANGUS   3f5785b… 1996-07-08
+##  6 S10125            BLAIRGOWRIE PERTHS… 845a72a… 1979-10-01
+##  7 S10182            ARBROATH    ANGUS   9501203… 1977-10-01
+##  8 S10233            ARBROATH    ANGUS   7e18191… 1986-08-01
+##  9 S10286            ARBROATH    ANGUS   08a1360… 1975-08-01
+## 10 S10322            ARBROATH    ANGUS   6bf505c… 1971-10-01
 ## # ℹ 1,202 more rows
 ## # ℹ 3 more variables: closedate <date>, telephone <chr>,
 ## #   practice_type <dbl>
@@ -219,16 +218,16 @@ gp_encrypt
 ## # A tibble: 1,212 × 8
 ##    organisation_code city        county  postcode opendate  
 ##    <chr>             <chr>       <chr>   <chr>    <date>    
-##  1 S10002            DUNDEE      ANGUS   3667b2c… 1995-05-01
-##  2 S10017            CRIEFF      PERTHS… 7478dc1… 1996-04-06
-##  3 S10036            ABERFELDY   PERTHS… 23cdd26… 2008-04-01
-##  4 S10060            ABERFELDY   PERTHS… 8473c24… 1975-04-01
-##  5 S10106            DUNDEE      ANGUS   4462e12… 1996-07-08
-##  6 S10125            BLAIRGOWRIE PERTHS… 047e59c… 1979-10-01
-##  7 S10182            ARBROATH    ANGUS   4d39464… 1977-10-01
-##  8 S10233            ARBROATH    ANGUS   459cde3… 1986-08-01
-##  9 S10286            ARBROATH    ANGUS   97f1e7a… 1975-08-01
-## 10 S10322            ARBROATH    ANGUS   7da3644… 1971-10-01
+##  1 S10002            DUNDEE      ANGUS   099026e… 1995-05-01
+##  2 S10017            CRIEFF      PERTHS… 421f0a4… 1996-04-06
+##  3 S10036            ABERFELDY   PERTHS… 4ba5daa… 2008-04-01
+##  4 S10060            ABERFELDY   PERTHS… 342c670… 1975-04-01
+##  5 S10106            DUNDEE      ANGUS   3f5785b… 1996-07-08
+##  6 S10125            BLAIRGOWRIE PERTHS… 845a72a… 1979-10-01
+##  7 S10182            ARBROATH    ANGUS   9501203… 1977-10-01
+##  8 S10233            ARBROATH    ANGUS   7e18191… 1986-08-01
+##  9 S10286            ARBROATH    ANGUS   08a1360… 1975-08-01
+## 10 S10322            ARBROATH    ANGUS   6bf505c… 1971-10-01
 ## # ℹ 1,202 more rows
 ## # ℹ 3 more variables: closedate <date>, telephone <chr>,
 ## #   practice_type <dbl>

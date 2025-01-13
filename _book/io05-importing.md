@@ -1055,15 +1055,15 @@ medicaldata::strep_tb %>%
 
 ```
 ##                   radiologic_6m rad_num improved
-## 1                       1_Death       1    FALSE
+## 1        5_Moderate_improvement       5     TRUE
 ## 2                       1_Death       1    FALSE
-## 3  2_Considerable_deterioration       2    FALSE
-## 4    6_Considerable_improvement       6     TRUE
-## 5      3_Moderate_deterioration       3    FALSE
+## 3    6_Considerable_improvement       6     TRUE
+## 4        5_Moderate_improvement       5     TRUE
+## 5    6_Considerable_improvement       6     TRUE
 ## 6    6_Considerable_improvement       6     TRUE
-## 7  2_Considerable_deterioration       2    FALSE
+## 7    6_Considerable_improvement       6     TRUE
 ## 8    6_Considerable_improvement       6     TRUE
-## 9                       1_Death       1    FALSE
+## 9  2_Considerable_deterioration       2    FALSE
 ## 10   6_Considerable_improvement       6     TRUE
 ```
 

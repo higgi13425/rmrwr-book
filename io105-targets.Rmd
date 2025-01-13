@@ -59,18 +59,13 @@ Project, which are meant to be run in order, and have data inputs and
 object outputs (data tables, models, plots, etc., which can be saved
 with `saveRDS` or `ggsave`)
 
+## What Does {targets} Do?
+
 The {targets} package helps you use these scripts as functions,
 as a pipeline of targets. The {targets} package provides a
 set of functions for defining targets, running targets, and managing the
 dependencies between targets. The {targets} package can detect which
-intermediate steps have already been run and are up-to-date, and which
-have changed scripts or input data, and are out-of-date (and need to be
-re-run). For small projects, the {targets} package feel like overkill,
-but for complex projects, it can help you keep track of the dependencies
-between your scripts, and help you run your scripts in the correct
-order. For large projects, the {targets} package can help you manage the
-complexity of your analysis scripts, and help you run your scripts in a
-reproducible and efficient way.
+intermediate steps have already been run and are up-to-date, versus those that have changed scripts or input data, and are out-of-date (and need to be re-run). For small projects, the {targets} package may feel like overkill, but for complex projects, it can help you keep track of the dependencies between your scripts, and help you run your scripts in the correct order. For large projects, the {targets} package can help you manage the complexity of your analysis scripts, and help you run your scripts in a reproducible and efficient way.
 
 If you have an early step in your data pipeline that uses very large
 data, is computationally intensive, or simply takes a while, you do not
@@ -79,20 +74,22 @@ processing functions have not changed. You can be more efficient, and
 just update the downstream functions and run these.
 
 Let's start with the example in the {targets} R user manual, using
-`airquality` data from base R. A walkthrough can be found in this 4 minute video at
-<https://vimeo.com/700982360>. Take a few minutes to watch the video to
+`airquality` data from base R. A walkthrough can be found in this 4 minute video at <br>
+<https://vimeo.com/700982360>. 
+Take a few minutes to watch the video to
 get the basic idea of how {targets} works.
 
 ## Air Quality Analysis
 
-Now let's replicate what Will Landau (author of {targets}, working at Eli Lilly) just narrated. First, go to your local
-RStudio and open a File/New Project. Choose a New Directory/New Project, and call it 'airquality_demo'. Then,
+Now let's replicate what Will Landau (author of {targets}, employed at Eli Lilly) just narrated. First, go to your local
+RStudio and open a File/New Project. Choose a New Directory/New Project, and call it something like 'airquality'. Then,
 add a folder named 'R' to the project in the Files tab in RStudio by clicking on the folder at top left with a green `+` sign. This is where you will store your functions.
 
-Now, click to enter the R folder in the project, and within the R folder, create a new R script (New File is just to the right of the New Folder button in the Files tab) called 'functions.R' and
-copy the code below into this script. This script contains all the
+### Prepping The Functions.R file
+
+Now, click to enter the R folder you just created in the project, and within the R folder, create a new R script (New File is just to the right of the New Folder button in the Files tab) called 'functions.R' and copy the code below (use the co[y icon in the top right corner of the code chunk) into this script. This script contains all the
 functions needed to run this targets pipeline on the airquality data.
-Then save the script `functions.R`.
+Then **save** the script `functions.R`.
 
 ```{r airquality_functions, echo=TRUE, eval=FALSE}
 
@@ -114,10 +111,12 @@ plot_model <- function(model, data) {
 
 ```
 
+### Checking Your Functions
+
 Now, to check that everything is running OK, copy and run (locally in
 the RStudio Console pane) the code chunk below at the cursor - paste and press Enter/Return. This will load the packages and
 functions, write the data.csv file, then run each function to get and
-process the data, then finaly show the plot in your Plots tab.
+process the data, then finally draw the plot in your Plots tab.
 
 ```{r, echo=TRUE, eval=FALSE}
 library(dplyr)
@@ -132,16 +131,13 @@ plot <- plot_model(model, data)
 plot
 ```
 
-This should all be working, and you should see the resulting plot in the Plots tab. This
+This should all be working, and you should see the resulting plot in the Plots tab. If not, go back and check the functions. This
 is all good, but it is still functions/scripts, without a {targets}
-pipeline. But all the prep work is done, with the initial data file in a
-new project, and all the coding/processing in a functions script within
-the R folder. 
+pipeline. But now all the prep work is done, with the initial data file in a new project, and all the coding/processing in a functions script within the R folder. Oftentimes you will have a working script and have to convert it to functions (unless you write your code in functions already) as part of the prep work for a {targets} pipeline. This happens fairly often as you start to scale up projects in size and complexity.
 
-Now you are ready to make a pipeline. Run the code chunk
-below to load {targets}, and run the *use_targets()* function. This will
-create a new file called '\_targets.R' in the root of your project. This
-script will contain the pipeline code that you will build up in the next
+### Set Up the Pipeline
+Now you are ready to build a pipeline. Run the code chunk
+below to load {targets} and run the *use_targets()* function. This will create a new file called '\_targets.R' in the root of your project. This script will contain the pipeline code that you will build up in the next
 steps.
 
 ```{r, echo=TRUE, eval=FALSE}
@@ -149,38 +145,37 @@ library(targets)
 use_targets()
 ```
 
-Click on your Files tab and go up one level from the R folder to the root of the project, to confirm that `_targets.R` file now exists in the root
-of your project. This file should not be open in your Source pane, and labeled on the tab at the top as `_targets.R`. This is where you will build up your pipeline. 
+Click on your Files tab and go up one level from the R folder to the root of the project, to confirm that `_targets.R` file now exists in the root of your project. This file should now be open in your Source pane, and labeled on the tab at the top as `_targets.R`. This is where you will build up your pipeline. 
 
-Within the `_targets.R` file, scroll down to the `tar_option_set()` function. This function sets the options for the pipeline, including al of the packages that you will need. For this pipeline, we will need
+Within the `_targets.R` file, scroll down to the `tar_option_set()` function. This function sets the options for the pipeline, including all of the packages that you will need. For this pipeline, we will need
 
 - "tibble"
 - "readr"
 - "ggplot2"
 - "dplyr"
 
-For more complex pipelines, we will need more packages.
+For more complex pipelines, we will need more packages. Take a moment to add the packages to the list (which starts with only "tibble"), Make sure each one is in quotes, and separated by commas (but without a comma at the end). Confirm that there are no syntax errors, and save the file `_targets.R`.
 
-Now scroll down to the `list()` function with two `tar_targets` inside of it. 
+Now scroll down to the `list()` function at the end with two `tar_targets` inside of it. 
 
 Our code will need four targets for the pipeline.
-These output objects are:
+These target output objects are:
 
 - file
 - data
 - model
 - plot
 
-Before we replace the two existing tar_targets, let's inspect them. Notice that each of the two `tar_target()` functions currently shown has a first argument that is the target, or output object. The second argument is the function or command that generates the output object (or the datafile if we are just reading in data). The argument for each of these functions is the input object for that function, which is usually generated in the preceding `tar_target()` function.
+Before we replace the two existing tar_targets, let's inspect them. Notice that each of the two `tar_target()` functions currently shown has a first argument that is the target, or output object. The second argument is the function or command that generates the output object (or the datafile if we are just reading in data). The argument for each of these functions is the input object for that function, which is usually generated in the preceding `tar_target()` function. This pipeline is essentially a chain of input objects transformed to output objects, which become the input objects for the next function in the pipeline.
 
-Looking at our planned airquality_demo (see code chunk below below), 
+Looking at our planned `airquality` pipeline (see code chunk below below), 
 
 - the first target is `file`
 - the second target is `data`, which is generated by the `get_data()` function, which uses the `file` target as input
 - the third target is `model`, which is generated by the `fit_model()` function, which uses the `data` target as input
 - the fourth target is `plot`, which is generated by the `plot_model()` function, which uses the `model` and `data` targets as input
 
-Copy the code chunk below and replace the `tar_target()` lines (include everything from `list(` to the closing parenthesis) with the code below. 
+Copy the code chunk below and replace the `tar_target()` lines (replace everything from the beginning of `list(` to the closing parenthesis) with the code below. 
 
 ```{r, echo=TRUE, eval=FALSE}
 
@@ -194,32 +189,36 @@ list(
 
 ```
 
-Make sure that your list ends with 3 consecutive close parentheses (and a red parenthesis if you are using rainbow parentheses). Check that all the parentheses and commas are correct, with no syntax errors, then save `_targets.R`
+Make sure that your list ends with 3 consecutive close parentheses (and a red parenthesis if you are using rainbow parentheses). Check that all the parentheses and commas are correct, with no syntax errors, then save `_targets.R` again.
+
+### Pre-Build Checks
 
 Now we are ready to start building the pipeline.
-Let's start with some pre-build checks.
-First, run `tar_manifest` locally in your project in the Console as shown below. This will check the pipeline and show you the status of each target. 
+Let's start with two pre-build checks.
+First, run `tar_manifest()` locally in your project in the Console as shown below. This will check the pipeline and show you the status of each target. 
 
 ```{r, echo=TRUE, eval=FALSE}
 tar_manifest(fields = command)
 ```
-This should generate a table in your console with two columns, showing the name of each target, and the command that generates that target. Note that the file target will not have a proper function to generate it, but something that looks like `"\"data.csv\""` If you see any errors and don't get a 4x 2 table, you will need to fix these before proceeding.
+This should generate a table in your console with two columns, showing the name of each target, and the command that generates that target. Note that the file target will not have a proper function to generate it, but something that looks like `"\"data.csv\""` If you see any errors and don't get a 4 x 2 table, you will need to fix either the `functions.R` file and/or `_targets.R` before proceeding.
 
-Then we can visualize our pipeline by copying and running the code chunk below in the Console. This will generate a graph of the pipeline, showing the targets and the dependencies between them. The graph should show the four targets, with the file target at the left, and the plot target at the far right. The data target depends on the file target, the model target depends on the data target, and the plot target depends on the model and data targets. There should be a continuous flow from left to right, though it can branch or unite in more complex workflows. As this is a new pipeline, each target will be color coded (a blue-green) as "Outdated", as each target has not been built yet.
+Now we can visualize our pipeline by copying and running the code chunk below in the Console. This will generate a graph of the pipeline, showing the targets and the dependencies between them. The graph should show the four targets, with the file target at the left, and the plot target at the far right. The data target depends on the file target, the model target depends on the data target, and the plot target depends on the model and data targets. There should be a continuous flow from left to right, though it can branch or unite in more complex workflows. As this is a new pipeline, each target will be color coded (a blue-green) as "Outdated", as each target has not been built yet.
 
 
 ```{r, echo=TRUE, eval=FALSE}
 tar_visnetwork()
 ```
 
-Now that the pre-build checks are good, we are ready to build the pipeline. Run the function below in your local project.
+### Building the Pipeline
+
+Now that the pre-build checks are good, we are ready to build the pipeline. Run the function below in your local project to build the pipeline.
 
 ```{r, echo=TRUE, eval=FALSE}
 tar_make()
 ```
 
 As this is a new pipeline, it will run (dispatch) every function and create every target anew. The output in the console will tell you when it dispatches each target and when it completes building the target output object, along with how long it takes to run the whole pipeline.
-The output objects are also saved to binary files in the `_targets/objects/` folder (data, model, and plot). You can check these files (with `tar_read(object)`, rather than clicking on them, as they are binary files) to see the output objects, and this will load these objects into your R session to check them. 
+The output objects are also saved to binary files in the `_targets/objects/` folder (data, model, and plot). You can check these files (with `tar_read(object)`, rather than clicking on them, as they are binary files and woin't display like normal R objects) to see the output objects, and this will load these objects into your R session to check them. 
 
 For example, to load the plot object, you would run the code below.
 
@@ -227,13 +226,17 @@ For example, to load the plot object, you would run the code below.
 tar_read(plot)
 ```
 
-Because these target objects are stored and tracked by {targets}, if you re-run `tar_make()` without any changes to the data or the function code, it will skip all the functions, and complete the pipeline very quickly. Only if changes are made to the data or code will the pipeline re-run the functions that are affected by the changes. This is a key feature of {targets} that makes it so powerful for efficient, reproducible research.
+Because these target objects are stored and tracked by {targets}, if you re-run `tar_make()` without any changes to the data or the function code, it will skip all the functions, and complete the pipeline very quickly. 
+
+Only if changes are made to the data or code will the pipeline re-run the functions that are affected by the changes. This is a key feature of {targets} that makes it so powerful for efficient, reproducible research.
 
 If you now run `tar_visnetwork()` again, you will see that the pipeline is now complete, with all the targets built (black). The graph should show all the targets as black, indicating that they are up-to-date.
 
 Run `tar_make()` again to demonstrate this. You should see that the pipeline runs much faster this time, as nothing needs to be to re-run. 
 
 We can demonstrate the tracking ability of {targets} my making minor changes to the data or the functions.
+
+### Changing the Pipeline
 
 As an example, let's change the model to make the model predictor `Wind` instead of `Temp`. Copy the code below to replace the `fit_model()` function in the `R/functions.R` script. Note that you can also simply type `Wind` in place of `Temp` in the function. Save the edited `functions.R` file. This will change the model output, and the pipeline will have to re-run the model and plot targets, but not the data or file targets.
 
@@ -258,7 +261,7 @@ analysis of World health Organization (WHO) data on tuberculosis, which
 are included in the {tidyr} package. 
 
 Start by opening a New Project in RStudio, named something like "who_tb_analysis". Go to the Files tab, then create a new Folder in the project called "R".
-Within this folder, create a new File named "functions.R". Run the script code below in your local session to test out the script, and get a sense of the data.
+Within this folder, create a new File named "functions.R". 
 
 ```{r who_script, echo=TRUE, eval=FALSE}
 # these functions require: dplyr, gt, gtsummary, ggplot2, tidyr, scales
@@ -312,10 +315,10 @@ This is a pretty typical 5-step analysis script. The first step reads in
 the data, the second step cleans the data, the third step makes a table,
 the fourth step models the data, and the fifth step plots the data. 
 
-## Making new Functions
-Now we will convert each of these small scripts into a function, and save these in the functions.R file within the R folder. You can try this
-yourself if you are practicing converting scripts to functions, or you
-can just click on the button to reveal the solution, and copy the code below into the functions.R file.
+Run the script code above in your local session to test out the script, and get a sense of the data. Inspect the inputs and outputs of each step to understand the data and the analysis.
+
+### Making new Functions
+Now we will convert each of these small scripts into a function, and save these in the functions.R file within the R folder. This can be a big part of the prep work in building a {targets} pipeline. You can try this yourself if you are practicing converting scripts to functions, or you can just click on the button to reveal the solution, and copy the code below into the functions.R file.
 
 `r webexercises::hide("Functions Solution")`
 
@@ -382,11 +385,11 @@ plot_data <- function(who_clean){
 
 `r webexercises::unhide()`
 
-After copying in the code, now we have to save the `functions.R` script.
+After copying in the code, now we have to **save** the `functions.R` script.
 
-## Testing functions
+### Testing functions
 
-We can test the new functions by running them in the console. Run the lines of code below to test the functions. Examine the inputs and the output (target) objects.
+We can test the new functions by running them in the console. Copy and run the lines of code below in the Console to test the functions. Examine the inputs and the output (target) objects (there will be a quiz).
 
 ```{r test_functions, echo=TRUE, eval=FALSE}
 library(tidyverse)
@@ -404,13 +407,13 @@ plot_data(who_clean)
 
 If all of the functions are working, this should have produced:
 
-- who_data in the Environment pane
-- who_clean in the Environment pane
+- `who_data` in the Environment pane
+- `who_clean` in the Environment pane
 - A table of the top 10 countries with the most cases in the Viewer tab
-- A regression model of the data in a table in the Viewer tab
+- A table from a regression model in the Viewer tab
 - A plot of the data, with rising cases over time in the Plots tab
 
-### Understanding the data (green answers are correct)
+#### Understanding the data (green answers are correct)
 
 1. What is the name of the raw data object?
 
@@ -433,10 +436,10 @@ If all of the functions are working, this should have produced:
 
 6. What factors do you expect to be associated with case counts?
 
-## Using {targets}
+### Setting Up {targets}
 
 Now that all of the functions are working, to initialize the pipeline,
-we need to first load {targets{, by running the `library(targets)` function. 
+we need to first load {targets}, by running the `library(targets)` function. 
 
 Then we need to run the 
 `use_targets()` function.
@@ -456,7 +459,7 @@ We will add the required packages to the targets pipeline in the _targets.R file
 - `gtsummary`
 - `scales`. 
 
-Be sure that these are all in quotes, within the c() parentheses. Save the _targets.R file.
+Be sure that these are all in quotes, within the c() parentheses and appropriate commas without syntax errors. Save the _targets.R file.
 
 Now scroll down to the list of `tar_targets`. For this pipeline, {targets} will have 6 targets to track. 
 
@@ -467,7 +470,7 @@ Now scroll down to the list of `tar_targets`. For this pipeline, {targets} will 
 - model_cases
 - plot_data
 
-Add these targets to the list, using the code chunk below. Save the `_targets.R` file.
+Replace the existing targets with these targets by replacing the entire list, using the code chunk below. Now **save** the `_targets.R` file.
 
 ```{r targets, echo=TRUE, eval=FALSE}
 list(
@@ -480,12 +483,12 @@ list(
 )
 ```
 
-Now we have the structure installed.
+Now we have the infrastructure installed.
 
 We can now do our two pipeline pre-checks:
 
-- tar_manifest() - should produce a 6 x 2 tibble of targets.
-- tar_visnetwork() - should make a completely blue-green (outdated) diagram of the pipeline.
+- `tar_manifest()` - should produce a 6 x 2 tibble of targets.
+- `tar_visnetwork()` - should make a completely blue-green (outdated) diagram of the pipeline.
 
 Make sure each of these runs without errors.
 If not, re-check the steps to create these two files for the pipeline.
@@ -493,16 +496,16 @@ If not, re-check the steps to create these two files for the pipeline.
 - `functions.R`
 - `_targets.R`
 
-## Running the Pipeline
+### Running the Pipeline
 Once these are running without errors, we can run the pipeline with `tar_make()`.
-This will run the pipeline and create the outputs in the `_targets/objects` folder. Check that these are present, and view each target object with `tar_read()`.
+This will run the pipeline and create the outputs in the `_targets/objects` folder. Check that these are present, and view each target object in the `objects` folder with `tar_read()`.
 
 Check the output of `tar_visnetwork()` to see that the pipeline structure is now completely up to date (black targets).
 
-## Modificatons to the Pipeline
+### Modificatons to the Pipeline
 
-Now modify the `make_table` function so that countries with over 1 million cases are in red text.
-Use the code below (adding conditional formatting) to edit the `make_table()` function in the `functions.R` file in the R folder of the Project. Look carefully at the `tab_style()` function to see how the conditional formatting is applied. Make sure that your function ends with 2 close parenthesesm, followed by a closing curly-brace.
+Now modify the `make_table` function so that countries with over 1 million cases (scary bad, in need of WHO intervention) are in red text.
+Use the code below (adding conditional formatting) to edit the `make_table()` function in the `functions.R` file in the R folder of the Project. Look carefully at the `tab_style()` function below to see how the conditional formatting is applied. Make sure that your function ends with 2 close parenthesesm, followed by a closing curly-brace.
 
 ```{r, echo=TRUE, eval=FALSE} 
 who_clean |>
@@ -529,11 +532,11 @@ Check out the appearance of the newly-modified table with `tar_read(table)`.
 Confirm that the pipeline is now up to date with `tar_visnetwork()`.
 
 
-## Modify the Plot
+### Modify the Plot
 
-Now modify the plot to make years with the points (years) with greater than 3 million cases of TB colored red. Use the code below to edit the `plot_data()` function in the `functions.R` file in the R folder of the Project.
+Now modify the plot to make years with greater than 3 million cases of TB have points that are colored red. Use the code below to edit the `plot_data()` function in the `functions.R` file in the R folder of the Project.
 
-Look carefully at the `aes(color)` and `scale_color_manual()` functions to see how the conditional formatting is applied to point color.
+Look carefully at the `aes(color)` and `scale_color_manual()` functions to see how the conditional formatting is applied to point color.  Make sure that your modified function has no syntax errors, end with the right number of parentheses, and a final closing curly-brace.
 
 ```{r, echo=TRUE, eval=FALSE}
 plot_data <- function(who_clean){
@@ -551,7 +554,7 @@ plot_data <- function(who_clean){
 }
 ```
 
-Run `tar_visnetwork()` to check on what is out of date in the pipeline structure, and then run `tar_make()` to update the pipeline with the new function.
+Run `tar_visnetwork()` to check on what is now out of date in the pipeline, and then run `tar_make()` to update the pipeline with the new function.
 
 Check out the appearance of the newly-modified plot with `tar_read(plot)`
 
@@ -559,8 +562,11 @@ Check out the appearance of the newly-modified plot with `tar_read(plot)`
 
 You now understand the basics of the {targets} package, and how to build a pipeline. You can now use this approach to build much larger and more complex pipelines for your data analysis projects.
 
+:::explore
 Read **much** more about the {targets} package in the Targets Package User Manual [here](https://books.ropensci.org/targets/).
+:::
 
 :::tryit
-Challenge yourself to convert one of your existing script-based pipelines to a function-based pipeline using {targets}.
+**Challenge yourself:** <br>
+Convert one of your existing script-based pipelines to a function-based pipeline using {targets}.
 :::

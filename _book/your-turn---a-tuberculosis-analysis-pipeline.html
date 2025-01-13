@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Introduction to Reproducibility | Reproducible Medical Research with R</title>
+  <title>Chapter 41 Your Turn - A Tuberculosis Analysis Pipeline | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
   <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Introduction to Reproducibility | Reproducible Medical Research with R" />
+  <meta property="og:title" content="Chapter 41 Your Turn - A Tuberculosis Analysis Pipeline | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
   <meta name="github-repo" content="higgi13425/rmrwr-book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Introduction to Reproducibility | Reproducible Medical Research with R" />
+  <meta name="twitter:title" content="Chapter 41 Your Turn - A Tuberculosis Analysis Pipeline | Reproducible Medical Research with R" />
   
   <meta name="twitter:description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="a-tasting-menu-of-r.html"/>
-<link rel="next" href="importing-your-data-into-r.html"/>
+<link rel="prev" href="building-data-pipelines-with-targets.html"/>
+<link rel="next" href="title-holder.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -153,7 +153,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">RMRWR</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> bibliography: [book.bib, packages.bib]</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#who-this-book-is-for"><i class="fa fa-check"></i><b>1.1</b> Who This Book is For</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#prerequisites"><i class="fa fa-check"></i><b>1.2</b> Prerequisites</a></li>
@@ -393,11 +393,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.2" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#the-quick-screen"><i class="fa fa-check"></i><b>12.2</b> The Quick Screen</a></li>
 <li class="chapter" data-level="12.3" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#systematic-hunting-for-bugs-in-pipes"><i class="fa fa-check"></i><b>12.3</b> Systematic Hunting For Bugs in Pipes</a></li>
 <li class="chapter" data-level="12.4" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#systematic-hunting-for-bugs-in-plots"><i class="fa fa-check"></i><b>12.4</b> Systematic Hunting For Bugs in Plots</a></li>
-<li class="chapter" data-level="12.5" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#hashtag-debugging"><i class="fa fa-check"></i><b>12.5</b> Hashtag Debugging</a></li>
-<li class="chapter" data-level="12.6" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#pipe-2"><i class="fa fa-check"></i><b>12.6</b> Pipe 2</a></li>
-<li class="chapter" data-level="12.7" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#plot-2"><i class="fa fa-check"></i><b>12.7</b> Plot 2</a></li>
-<li class="chapter" data-level="12.8" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#plot3"><i class="fa fa-check"></i><b>12.8</b> Plot3</a></li>
-<li class="chapter" data-level="12.9" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#pipe-3"><i class="fa fa-check"></i><b>12.9</b> Pipe 3</a></li>
+<li class="chapter" data-level="12.5" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#your-turn-to-debug-a-plot"><i class="fa fa-check"></i><b>12.5</b> Your Turn to Debug a Plot</a></li>
+<li class="chapter" data-level="12.6" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#hashtag-debugging"><i class="fa fa-check"></i><b>12.6</b> Hashtag Debugging</a></li>
+<li class="chapter" data-level="12.7" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#pipe-2"><i class="fa fa-check"></i><b>12.7</b> Pipe 2</a></li>
+<li class="chapter" data-level="12.8" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#plot-2"><i class="fa fa-check"></i><b>12.8</b> Plot 2</a></li>
+<li class="chapter" data-level="12.9" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#plot3"><i class="fa fa-check"></i><b>12.9</b> Plot3</a></li>
+<li class="chapter" data-level="12.10" data-path="tips-for-hashtag-debugging-your-pipes-and-ggplots.html"><a href="tips-for-hashtag-debugging-your-pipes-and-ggplots.html#pipe-3"><i class="fa fa-check"></i><b>12.10</b> Pipe 3</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="finding-help-in-r.html"><a href="finding-help-in-r.html"><i class="fa fa-check"></i><b>13</b> Finding Help in R</a>
 <ul>
@@ -532,17 +533,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="20.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#paired-t-tests-before-vs-after-or-truly-paired"><i class="fa fa-check"></i><b>20.3</b> Paired t-tests (before vs after, or truly paired)</a></li>
 <li class="chapter" data-level="20.4" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-t-tests-with-unequal-study-arm-sizes"><i class="fa fa-check"></i><b>20.4</b> 2 Sample t tests with Unequal Study Arm Sizes</a></li>
 <li class="chapter" data-level="20.5" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#testing-multiple-options-and-plotting-results"><i class="fa fa-check"></i><b>20.5</b> Testing Multiple Options and Plotting Results</a></li>
-<li class="chapter" data-level="20.6" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#your-turn-2"><i class="fa fa-check"></i><b>20.6</b> Your Turn</a></li>
+<li class="chapter" data-level="20.6" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#your-turn-2"><i class="fa fa-check"></i><b>20.6</b> Your Turn</a>
+<ul>
 <li class="chapter" data-level="20.6.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-1-fev1-in-copd"><i class="fa fa-check"></i><b>20.6.1</b> Scenario 1: FEV1 in COPD</a></li>
 <li class="chapter" data-level="20.6.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-2-bnp-in-chf"><i class="fa fa-check"></i><b>20.6.2</b> Scenario 2: BNP in CHF</a></li>
 <li class="chapter" data-level="20.6.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-3-barthel-index-in-stroke"><i class="fa fa-check"></i><b>20.6.3</b> Scenario 3: Barthel Index in Stroke</a></li>
+</ul></li>
 <li class="chapter" data-level="20.7" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-sizes-for-proportions"><i class="fa fa-check"></i><b>20.7</b> Sample Sizes for Proportions</a></li>
 <li class="chapter" data-level="20.8" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-two-proportions-equal-n"><i class="fa fa-check"></i><b>20.8</b> Sample size for two proportions, equal n</a></li>
 <li class="chapter" data-level="20.9" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#sample-size-for-two-proportions-unequal-arms"><i class="fa fa-check"></i><b>20.9</b> Sample size for two proportions, unequal arms</a></li>
-<li class="chapter" data-level="20.10" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#your-turn-3"><i class="fa fa-check"></i><b>20.10</b> Your Turn</a></li>
+<li class="chapter" data-level="20.10" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#your-turn-3"><i class="fa fa-check"></i><b>20.10</b> Your Turn</a>
+<ul>
 <li class="chapter" data-level="20.10.1" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-1-mortality-on-renal-dialysis"><i class="fa fa-check"></i><b>20.10.1</b> Scenario 1: Mortality on Renal Dialysis</a></li>
 <li class="chapter" data-level="20.10.2" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-2-intestinal-anastomosis-in-crohns-disease"><i class="fa fa-check"></i><b>20.10.2</b> Scenario 2: Intestinal anastomosis in Crohn’s disease</a></li>
 <li class="chapter" data-level="20.10.3" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#scenario-3-metformin-in-donuts"><i class="fa fa-check"></i><b>20.10.3</b> Scenario 3: Metformin in Donuts</a></li>
+</ul></li>
 <li class="chapter" data-level="20.11" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-chi-square"><i class="fa fa-check"></i><b>20.11</b> add chi square</a></li>
 <li class="chapter" data-level="20.12" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-correlation-test"><i class="fa fa-check"></i><b>20.12</b> add correlation test</a></li>
 <li class="chapter" data-level="20.13" data-path="sample-size-calculations-with-pwr.html"><a href="sample-size-calculations-with-pwr.html#add-anova"><i class="fa fa-check"></i><b>20.13</b> add anova</a></li>
@@ -890,28 +895,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="40" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html"><i class="fa fa-check"></i><b>40</b> Building Data Pipelines with {targets}</a>
 <ul>
 <li class="chapter" data-level="40.1" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#what-does-targets-do"><i class="fa fa-check"></i><b>40.1</b> What Does {targets} Do?</a></li>
-<li class="chapter" data-level="40.2" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#air-quality-analysis"><i class="fa fa-check"></i><b>40.2</b> Air Quality Analysis</a>
-<ul>
-<li class="chapter" data-level="40.2.1" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#prepping-the-functions.r-file"><i class="fa fa-check"></i><b>40.2.1</b> Prepping The Functions.R file</a></li>
-<li class="chapter" data-level="40.2.2" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#checking-your-functions"><i class="fa fa-check"></i><b>40.2.2</b> Checking Your Functions</a></li>
-<li class="chapter" data-level="40.2.3" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#set-up-the-pipeline"><i class="fa fa-check"></i><b>40.2.3</b> Set Up the Pipeline</a></li>
-<li class="chapter" data-level="40.2.4" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#pre-build-checks"><i class="fa fa-check"></i><b>40.2.4</b> Pre-Build Checks</a></li>
-<li class="chapter" data-level="40.2.5" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#building-the-pipeline"><i class="fa fa-check"></i><b>40.2.5</b> Building the Pipeline</a></li>
-<li class="chapter" data-level="40.2.6" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#changing-the-pipeline"><i class="fa fa-check"></i><b>40.2.6</b> Changing the Pipeline</a></li>
+<li class="chapter" data-level="40.2" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#air-quality-analysis"><i class="fa fa-check"></i><b>40.2</b> Air Quality Analysis</a></li>
+<li class="chapter" data-level="40.3" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#prepping-the-functions.r-file"><i class="fa fa-check"></i><b>40.3</b> Prepping The Functions.R file</a></li>
+<li class="chapter" data-level="40.4" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#checking-your-functions"><i class="fa fa-check"></i><b>40.4</b> Checking Your Functions</a></li>
+<li class="chapter" data-level="40.5" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#set-up-the-pipeline"><i class="fa fa-check"></i><b>40.5</b> Set Up the Pipeline</a></li>
+<li class="chapter" data-level="40.6" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#pre-build-checks"><i class="fa fa-check"></i><b>40.6</b> Pre-Build Checks</a></li>
+<li class="chapter" data-level="40.7" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#building-the-pipeline"><i class="fa fa-check"></i><b>40.7</b> Building the Pipeline</a></li>
+<li class="chapter" data-level="40.8" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#changing-the-pipeline"><i class="fa fa-check"></i><b>40.8</b> Changing the Pipeline</a></li>
 </ul></li>
-<li class="chapter" data-level="40.3" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#your-turn---a-tuberculosis-analysis-pipeline"><i class="fa fa-check"></i><b>40.3</b> Your Turn - A Tuberculosis Analysis Pipeline</a>
+<li class="chapter" data-level="41" data-path="your-turn---a-tuberculosis-analysis-pipeline.html"><a href="your-turn---a-tuberculosis-analysis-pipeline.html"><i class="fa fa-check"></i><b>41</b> Your Turn - A Tuberculosis Analysis Pipeline</a>
 <ul>
-<li class="chapter" data-level="40.3.1" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#making-new-functions"><i class="fa fa-check"></i><b>40.3.1</b> Making new Functions</a></li>
-<li class="chapter" data-level="40.3.2" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#testing-functions"><i class="fa fa-check"></i><b>40.3.2</b> Testing functions</a></li>
-<li class="chapter" data-level="40.3.3" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#setting-up-targets"><i class="fa fa-check"></i><b>40.3.3</b> Setting Up {targets}</a></li>
-</ul></li>
-<li class="chapter" data-level="40.4" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#editing-the-_targets.r-file"><i class="fa fa-check"></i><b>40.4</b> Editing the <code>_targets.R</code> File</a>
+<li class="chapter" data-level="41.1" data-path="your-turn---a-tuberculosis-analysis-pipeline.html"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#making-new-functions"><i class="fa fa-check"></i><b>41.1</b> Making new Functions</a></li>
+<li class="chapter" data-level="41.2" data-path="your-turn---a-tuberculosis-analysis-pipeline.html"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#testing-functions"><i class="fa fa-check"></i><b>41.2</b> Testing functions</a>
 <ul>
-<li class="chapter" data-level="40.4.1" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#running-the-pipeline"><i class="fa fa-check"></i><b>40.4.1</b> Running the Pipeline</a></li>
-<li class="chapter" data-level="40.4.2" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#modificatons-to-the-pipeline"><i class="fa fa-check"></i><b>40.4.2</b> Modificatons to the Pipeline</a></li>
-<li class="chapter" data-level="40.4.3" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#modify-the-plot"><i class="fa fa-check"></i><b>40.4.3</b> Modify the Plot</a></li>
+<li class="chapter" data-level="41.2.1" data-path="your-turn---a-tuberculosis-analysis-pipeline.html"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#understanding-the-data-green-answers-are-correct"><i class="fa fa-check"></i><b>41.2.1</b> Understanding the data (green answers are correct)</a></li>
 </ul></li>
-<li class="chapter" data-level="40.5" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#next-steps"><i class="fa fa-check"></i><b>40.5</b> Next Steps</a></li>
+<li class="chapter" data-level="41.3" data-path="your-turn---a-tuberculosis-analysis-pipeline.html"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#setting-up-targets"><i class="fa fa-check"></i><b>41.3</b> Setting Up {targets}</a></li>
+<li class="chapter" data-level="41.4" data-path="your-turn---a-tuberculosis-analysis-pipeline.html"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#editing-the-_targets.r-file"><i class="fa fa-check"></i><b>41.4</b> Editing the <code>_targets.R</code> File</a></li>
+<li class="chapter" data-level="41.5" data-path="your-turn---a-tuberculosis-analysis-pipeline.html"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#running-the-pipeline"><i class="fa fa-check"></i><b>41.5</b> Running the Pipeline</a></li>
+<li class="chapter" data-level="41.6" data-path="your-turn---a-tuberculosis-analysis-pipeline.html"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#modificatons-to-the-pipeline"><i class="fa fa-check"></i><b>41.6</b> Modificatons to the Pipeline</a></li>
+<li class="chapter" data-level="41.7" data-path="your-turn---a-tuberculosis-analysis-pipeline.html"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#modify-the-plot"><i class="fa fa-check"></i><b>41.7</b> Modify the Plot</a></li>
+<li class="chapter" data-level="41.8" data-path="your-turn---a-tuberculosis-analysis-pipeline.html"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#next-steps"><i class="fa fa-check"></i><b>41.8</b> Next Steps</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="title-holder.html"><a href="title-holder.html"><i class="fa fa-check"></i>Title holder</a></li>
 <li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
@@ -935,145 +939,288 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="introduction-to-reproducibility" class="section level1 hasAnchor" number="4">
-<h1><span class="header-section-number">Chapter 4</span> Introduction to Reproducibility<a href="introduction-to-reproducibility.html#introduction-to-reproducibility" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>One of the major goals of this book is to help medical researchers make their research projects reproducible.
-This means being able to take the original raw data, and replicate each step of the data cleaning and analysis to produce the same end products, including tables, figures, and the full manuscript.</p>
-<p>This requires:</p>
+<div id="your-turn---a-tuberculosis-analysis-pipeline" class="section level1 hasAnchor" number="41">
+<h1><span class="header-section-number">Chapter 41</span> Your Turn - A Tuberculosis Analysis Pipeline<a href="your-turn---a-tuberculosis-analysis-pipeline.html#your-turn---a-tuberculosis-analysis-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Now it is your turn to convert a set of scripts into functions, then
+into a targets pipeline. The code block below represents a 5-step
+analysis of World health Organization (WHO) data on tuberculosis, which
+are included in the {tidyr} package.</p>
+<p>Start by opening a New Project in RStudio, named something like “who_tb_analysis”. Go to the Files tab, then create a new Folder in the project called “R”.
+Within this folder, create a new File named “functions.R”.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-1" tabindex="-1"></a><span class="co"># these functions require: dplyr, gt, gtsummary, ggplot2, tidyr, scales</span></span>
+<span id="cb10-2"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-2" tabindex="-1"></a><span class="co"># 01 read in data</span></span>
+<span id="cb10-3"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-3" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-4" tabindex="-1"></a>who_data <span class="ot">&lt;-</span> tidyr<span class="sc">::</span>who</span>
+<span id="cb10-5"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-5" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-6" tabindex="-1"></a><span class="co"># 02 clean data</span></span>
+<span id="cb10-7"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-7" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-8" tabindex="-1"></a>who_data <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(</span>
+<span id="cb10-9"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-9" tabindex="-1"></a>  <span class="at">cols =</span> new_sp_m014<span class="sc">:</span>newrel_f65,</span>
+<span id="cb10-10"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-10" tabindex="-1"></a>  <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;diagnosis&quot;</span>, <span class="st">&quot;gender&quot;</span>, <span class="st">&quot;age&quot;</span>),</span>
+<span id="cb10-11"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-11" tabindex="-1"></a>  <span class="at">names_pattern =</span> <span class="st">&quot;new_?(.*)_(.)(.*)&quot;</span>,</span>
+<span id="cb10-12"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-12" tabindex="-1"></a>  <span class="at">values_to =</span> <span class="st">&quot;count&quot;</span></span>
+<span id="cb10-13"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-13" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb10-14"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-14" tabindex="-1"></a>  <span class="fu">na.omit</span>() <span class="ot">-&gt;</span> </span>
+<span id="cb10-15"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-15" tabindex="-1"></a>who_clean</span>
+<span id="cb10-16"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-16" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-17" tabindex="-1"></a></span>
+<span id="cb10-18"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-18" tabindex="-1"></a><span class="co"># 03 make table</span></span>
+<span id="cb10-19"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-19" tabindex="-1"></a></span>
+<span id="cb10-20"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-20" tabindex="-1"></a>who_clean <span class="sc">|&gt;</span></span>
+<span id="cb10-21"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-21" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">|&gt;</span> </span>
+<span id="cb10-22"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-22" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Case_Count =</span> <span class="fu">sum</span>(count)) <span class="sc">|&gt;</span> </span>
+<span id="cb10-23"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-23" tabindex="-1"></a>  <span class="fu">slice_max</span>(Case_Count, <span class="at">n=</span> <span class="dv">10</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-24"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-24" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">gt</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb10-25"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-25" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">fmt_number</span>(<span class="at">columns =</span> Case_Count, <span class="at">use_seps =</span> <span class="cn">TRUE</span>,<span class="at">decimals =</span> <span class="dv">0</span>)</span>
+<span id="cb10-26"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-26" tabindex="-1"></a></span>
+<span id="cb10-27"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-27" tabindex="-1"></a></span>
+<span id="cb10-28"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-28" tabindex="-1"></a><span class="co"># 04 Model case counts</span></span>
+<span id="cb10-29"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-29" tabindex="-1"></a></span>
+<span id="cb10-30"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-30" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(count <span class="sc">~</span> diagnosis <span class="sc">+</span> gender <span class="sc">+</span> age, <span class="at">data =</span> who_clean )</span>
+<span id="cb10-31"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-31" tabindex="-1"></a>model <span class="sc">|&gt;</span> </span>
+<span id="cb10-32"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-32" tabindex="-1"></a>  gtsummary<span class="sc">::</span><span class="fu">tbl_regression</span>()</span>
+<span id="cb10-33"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-33" tabindex="-1"></a></span>
+<span id="cb10-34"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-34" tabindex="-1"></a></span>
+<span id="cb10-35"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-35" tabindex="-1"></a><span class="co"># 05 Plot</span></span>
+<span id="cb10-36"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-36" tabindex="-1"></a></span>
+<span id="cb10-37"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-37" tabindex="-1"></a>who_clean <span class="sc">|&gt;</span> </span>
+<span id="cb10-38"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-38" tabindex="-1"></a>    <span class="fu">group_by</span>( year) <span class="sc">|&gt;</span> </span>
+<span id="cb10-39"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-39" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">sum =</span> <span class="fu">sum</span>(count)) <span class="sc">|&gt;</span> </span>
+<span id="cb10-40"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-40" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> year, <span class="at">y =</span> sum)) <span class="sc">+</span> </span>
+<span id="cb10-41"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-41" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb10-42"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-42" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;WHO Count of TB Cases by Year&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Cases&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>) <span class="sc">+</span>  </span>
+<span id="cb10-43"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-43" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">scale =</span> <span class="fl">1e-6</span>, <span class="at">suffix =</span> <span class="st">&quot;M&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb10-44"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb10-44" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<p>This is a pretty typical 5-step analysis script. The first step reads in
+the data, the second step cleans the data, the third step makes a table,
+the fourth step models the data, and the fifth step plots the data.</p>
+<p>Run the script code above in your local session to test out the script, and get a sense of the data. Inspect the inputs and outputs of each step to understand the data and the analysis.</p>
+<div id="making-new-functions" class="section level2 hasAnchor" number="41.1">
+<h2><span class="header-section-number">41.1</span> Making new Functions<a href="your-turn---a-tuberculosis-analysis-pipeline.html#making-new-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now we will convert each of these small scripts into a function, and save these in the functions.R file within the R folder. This can be a big part of the prep work in building a {targets} pipeline. You can try this yourself if you are practicing converting scripts to functions, or you can just click on the button to reveal the solution, and copy the code below into the functions.R file.</p>
+<div class="webex-solution">
+<button>
+Functions Solution
+</button>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-1" tabindex="-1"></a><span class="co"># 01 read in data </span></span>
+<span id="cb11-2"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-2" tabindex="-1"></a>read_data <span class="ot">&lt;-</span> <span class="cf">function</span>(file){ </span>
+<span id="cb11-3"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-3" tabindex="-1"></a>  who_data <span class="ot">&lt;&lt;-</span> <span class="fu">read_csv</span>(file,</span>
+<span id="cb11-4"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-4" tabindex="-1"></a>          <span class="at">col_types =</span> <span class="fu">cols</span>())</span>
+<span id="cb11-5"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-5" tabindex="-1"></a>}</span>
+<span id="cb11-6"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-6" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-7" tabindex="-1"></a><span class="co"># 02 clean data</span></span>
+<span id="cb11-8"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-8" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-9" tabindex="-1"></a>clean_data <span class="ot">&lt;-</span> <span class="cf">function</span>(who_data){ </span>
+<span id="cb11-10"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-10" tabindex="-1"></a>  who_data <span class="sc">|&gt;</span> </span>
+<span id="cb11-11"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-11" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(</span>
+<span id="cb11-12"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-12" tabindex="-1"></a>      <span class="at">cols =</span> new_sp_m014<span class="sc">:</span>newrel_f65, </span>
+<span id="cb11-13"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-13" tabindex="-1"></a>      <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;diagnosis&quot;</span>, <span class="st">&quot;gender&quot;</span>, <span class="st">&quot;age&quot;</span>),</span>
+<span id="cb11-14"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-14" tabindex="-1"></a>      <span class="at">names_pattern =</span> <span class="st">&quot;new_?(.*)_(.)(.*)&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;count&quot;</span> ) <span class="sc">|&gt;</span> </span>
+<span id="cb11-15"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-15" tabindex="-1"></a>    <span class="fu">na.omit</span>() <span class="ot">-&gt;&gt;</span> </span>
+<span id="cb11-16"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-16" tabindex="-1"></a>  who_clean </span>
+<span id="cb11-17"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-17" tabindex="-1"></a>}</span>
+<span id="cb11-18"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-18" tabindex="-1"></a></span>
+<span id="cb11-19"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-19" tabindex="-1"></a><span class="co"># 03 make table</span></span>
+<span id="cb11-20"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-20" tabindex="-1"></a></span>
+<span id="cb11-21"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-21" tabindex="-1"></a>make_table <span class="ot">&lt;-</span> <span class="cf">function</span>(who_clean){</span>
+<span id="cb11-22"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-22" tabindex="-1"></a>  who_clean <span class="sc">|&gt;</span> </span>
+<span id="cb11-23"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-23" tabindex="-1"></a>    <span class="fu">group_by</span>(country) <span class="sc">|&gt;</span> </span>
+<span id="cb11-24"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-24" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">Case_Count =</span> <span class="fu">sum</span>(count)) <span class="sc">|&gt;</span>  </span>
+<span id="cb11-25"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-25" tabindex="-1"></a>    <span class="fu">slice_max</span>(Case_Count, <span class="at">n=</span><span class="dv">10</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb11-26"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-26" tabindex="-1"></a>    gt<span class="sc">::</span><span class="fu">gt</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb11-27"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-27" tabindex="-1"></a>    gt<span class="sc">::</span><span class="fu">fmt_number</span>(</span>
+<span id="cb11-28"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-28" tabindex="-1"></a>      <span class="at">columns =</span> Case_Count, </span>
+<span id="cb11-29"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-29" tabindex="-1"></a>      <span class="at">use_seps =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb11-30"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-30" tabindex="-1"></a>      <span class="at">decimals =</span> <span class="dv">0</span>) </span>
+<span id="cb11-31"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-31" tabindex="-1"></a>}</span>
+<span id="cb11-32"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-32" tabindex="-1"></a></span>
+<span id="cb11-33"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-33" tabindex="-1"></a><span class="co"># 04 Model case counts</span></span>
+<span id="cb11-34"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-34" tabindex="-1"></a></span>
+<span id="cb11-35"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-35" tabindex="-1"></a>model_cases <span class="ot">&lt;-</span> <span class="cf">function</span>(who_clean){</span>
+<span id="cb11-36"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-36" tabindex="-1"></a>  model <span class="ot">&lt;-</span> <span class="fu">lm</span>(count <span class="sc">~</span> diagnosis <span class="sc">+</span></span>
+<span id="cb11-37"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-37" tabindex="-1"></a>gender <span class="sc">+</span> age, </span>
+<span id="cb11-38"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-38" tabindex="-1"></a>  <span class="at">data =</span> who_clean) </span>
+<span id="cb11-39"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-39" tabindex="-1"></a>  model <span class="sc">|&gt;</span> </span>
+<span id="cb11-40"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-40" tabindex="-1"></a>    gtsummary<span class="sc">::</span><span class="fu">tbl_regression</span>()</span>
+<span id="cb11-41"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-41" tabindex="-1"></a>}</span>
+<span id="cb11-42"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-42" tabindex="-1"></a></span>
+<span id="cb11-43"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-43" tabindex="-1"></a><span class="co"># 05 Plot</span></span>
+<span id="cb11-44"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-44" tabindex="-1"></a></span>
+<span id="cb11-45"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-45" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> <span class="cf">function</span>(who_clean){</span>
+<span id="cb11-46"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-46" tabindex="-1"></a>  plot <span class="ot">&lt;-</span> who_clean <span class="sc">|&gt;</span> </span>
+<span id="cb11-47"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-47" tabindex="-1"></a>    <span class="fu">group_by</span>( year) <span class="sc">|&gt;</span> </span>
+<span id="cb11-48"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-48" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">sum =</span> <span class="fu">sum</span>(count)) <span class="sc">|&gt;</span> </span>
+<span id="cb11-49"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-49" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> year, <span class="at">y =</span> sum)) <span class="sc">+</span></span>
+<span id="cb11-50"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-50" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb11-51"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-51" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;WHO Count of TB Cases by Year&quot;</span>, </span>
+<span id="cb11-52"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-52" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Cases&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>) <span class="sc">+</span></span>
+<span id="cb11-53"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-53" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">scale =</span> <span class="fl">1e-6</span>, <span class="at">suffix =</span> <span class="st">&quot;M&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb11-54"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-54" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) </span>
+<span id="cb11-55"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-55" tabindex="-1"></a>  <span class="fu">return</span>(plot)</span>
+<span id="cb11-56"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb11-56" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<p>After copying in the code, now we have to <strong>save</strong> the <code>functions.R</code> script.</p>
+</div>
+<div id="testing-functions" class="section level2 hasAnchor" number="41.2">
+<h2><span class="header-section-number">41.2</span> Testing functions<a href="your-turn---a-tuberculosis-analysis-pipeline.html#testing-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We can test the new functions by running them in the console. Copy and run the lines of code below in the Console to test the functions. Examine the inputs and the output (target) objects (there will be a quiz).</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb12-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb12-2"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb12-2" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb12-3"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb12-3" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb12-4"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb12-4" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span>
+<span id="cb12-5"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb12-5" tabindex="-1"></a>tidyr<span class="sc">::</span>who <span class="sc">|&gt;</span> <span class="fu">write_csv</span>(<span class="st">&quot;who_data.csv&quot;</span>)</span>
+<span id="cb12-6"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb12-6" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;R/functions.R&quot;</span>) <span class="co"># this loads the functions into the R session</span></span>
+<span id="cb12-7"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb12-7" tabindex="-1"></a><span class="fu">read_data</span>(<span class="st">&#39;who_data.csv&#39;</span>)</span>
+<span id="cb12-8"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb12-8" tabindex="-1"></a><span class="fu">clean_data</span>(who_data)</span>
+<span id="cb12-9"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb12-9" tabindex="-1"></a><span class="fu">make_table</span>(who_clean)</span>
+<span id="cb12-10"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb12-10" tabindex="-1"></a><span class="fu">model_cases</span>(who_clean)</span>
+<span id="cb12-11"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb12-11" tabindex="-1"></a><span class="fu">plot_data</span>(who_clean)</span></code></pre></div>
+<p>If all of the functions are working, this should have produced:</p>
 <ul>
-<li>Robust sharing of data, materials, software, and code</li>
-<li>Documenting the data collection and data analysis processes</li>
-<li>Using authenticated biomaterials, and validated measurement instruments</li>
-<li>Using valid statistical methods and study design</li>
-<li>Pre-registration of studies, including detailed protocols and statistical plans, to avoid p-hacking and HARK-ing (Hypothesizing After the Results are Known (aka post-hoc analyses))</li>
-<li>Publishing (even if only on MedRxiv, or in the American Journal of Gastroenterology Black Issue) well-designed negative studies</li>
+<li><code>who_data</code> in the Environment pane</li>
+<li><code>who_clean</code> in the Environment pane</li>
+<li>A table of the top 10 countries with the most cases in the Viewer tab</li>
+<li>A table from a regression model in the Viewer tab</li>
+<li>A plot of the data, with rising cases over time in the Plots tab</li>
 </ul>
-<p>This book largely focuses on computational reproducibility, as this is rarely taught in medical training, and intense pressure to publish leads the untrained into dark practices.</p>
-<div id="first-steps-to-research-reproducibility" class="section level2 hasAnchor" number="4.1">
-<h2><span class="header-section-number">4.1</span> First Steps to Research Reproducibility<a href="introduction-to-reproducibility.html#first-steps-to-research-reproducibility" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="have-a-plan" class="section level3 hasAnchor" number="4.1.1">
-<h3><span class="header-section-number">4.1.1</span> Have a Plan<a href="introduction-to-reproducibility.html#have-a-plan" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The first steps toward research reproducibility come in planning for reproducibility.
-This means having a clear design and statistical plan, proven methods of data collection and recording, and preserving your raw data in a secure, locked state.</p>
+<div id="understanding-the-data-green-answers-are-correct" class="section level3 hasAnchor" number="41.2.1">
+<h3><span class="header-section-number">41.2.1</span> Understanding the data (green answers are correct)<a href="your-turn---a-tuberculosis-analysis-pipeline.html#understanding-the-data-green-answers-are-correct" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>What is the name of the raw data object?</li>
+</ol>
+<p><select class='webex-select'><option value='blank'></option><option value=''>tb_world</option><option value='answer'>who_data</option><option value=''>who_clean</option><option value=''>who_tb</option><option value=''>who_tb_clean</option></select></p>
+<ol start="2" style="list-style-type: decimal">
+<li>What is the name of the cleaned data object?</li>
+</ol>
+<p><select class='webex-select'><option value='blank'></option><option value=''>tb_world</option><option value=''>who_data</option><option value='answer'>who_clean</option><option value=''>who_tb</option><option value=''>who_tb_clean</option></select></p>
+<ol start="3" style="list-style-type: decimal">
+<li>How is it the clean data object different from the raw data?</li>
+</ol>
+<p><select class='webex-select'><option value='blank'></option><option value=''>shinier</option><option value=''>fewer countries</option><option value='answer'>much taller</option><option value=''>more years</option><option value=''>less sputum</option></select></p>
+<ol start="4" style="list-style-type: decimal">
+<li>How are the age groups in the data defined?</li>
+</ol>
+<p><select class='webex-select'><option value='blank'></option><option value=''>by decile</option><option value='answer'>in 10 year bands (mostly)</option><option value=''>by perfect squares</option><option value=''>divided at prime numbers</option></select></p>
+<ol start="5" style="list-style-type: decimal">
+<li><p>Note the gender codes are obvious, but the diagnosis codes are not - these are sp=sputum, rel = relapse, ep = extra-pulmonary, and new = new cases.</p></li>
+<li><p>What factors do you expect to be associated with case counts?</p></li>
+</ol>
 </div>
-<div id="treat-your-raw-data-like-gold" class="section level3 hasAnchor" number="4.1.2">
-<h3><span class="header-section-number">4.1.2</span> Treat Your Raw Data Like Gold<a href="introduction-to-reproducibility.html#treat-your-raw-data-like-gold" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Largely because you spend a lot of money (often other peoples’ <span class="math display">\[grant\]</span> money) and your own time (and the time of the people who work for you on the studies) in collecting it - you and others have invested a lot of gold to collect this.
-Once it is collected, it should be protected, backed up, and kept in a safe repository.
-Seriously consider having off-site backups for major projects to protect your data from local natural disasters.
-No one at Tulane expected Hurricane Katrina to destroy decades of research data.
-No one at NYU realized that the backup generators (in the basement) would be flooded by Hurricane Sandy.
-No one <strong>expects</strong> that their data and biosamples will be destroyed.
-But in an era (2022) when major natural disasters are increasing rapidly, it is important to plan for Black Swan events.
-Protect your research and protect your career.</p>
 </div>
-<div id="cleaning-and-analyzing-your-data" class="section level3 hasAnchor" number="4.1.3">
-<h3><span class="header-section-number">4.1.3</span> Cleaning and Analyzing Your Data<a href="introduction-to-reproducibility.html#cleaning-and-analyzing-your-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>There are a number of levels of reproducibility, and the following figure/meme illustrates these.</p>
-<div class="float">
-<img src="images/levels_reproducibility.jpg" alt="Levels of Reproducibility" />
-<div class="figcaption">Levels of Reproducibility</div>
+<div id="setting-up-targets" class="section level2 hasAnchor" number="41.3">
+<h2><span class="header-section-number">41.3</span> Setting Up {targets}<a href="your-turn---a-tuberculosis-analysis-pipeline.html#setting-up-targets" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now that all of the functions are working, to initialize the pipeline,
+we need to first load {targets}, by running the <code>library(targets)</code> function.</p>
+<p>Then we need to run the
+<code>use_targets()</code> function.</p>
+<p>This will create a <code>_targets.R</code> file in the R folder.
+We can then edit this to start building the pipeline.
+We need to make sure we have added all the packages, and identified all the targets.</p>
 </div>
-<p>While an amusing meme, the image above does illustrate the arc of progress we hope to make as we move from ‘back of the envelope/Excel’ research to reproducible research.
-You don’t have to be making encapsulated research environments right away, but you can work up to that level.</p>
-<p>Working in Excel, or any other point-and-click environment, is not fundamentally reproducible.
-There are multiple steps that are not recorded, calculations that are not transparent, and formulas that difficult to check (thus, forensic accounting is a growing field).
-Working in Excel leads to many, many errors, which have caused significant damage.
-Excel was never designed for research.
-It was designed for exploring data for small businesses, and it does not scale well.</p>
-<div class="warning">
-<p>going off on a tangent on the Perils of Excel, with examples</p>
+<div id="editing-the-_targets.r-file" class="section level2 hasAnchor" number="41.4">
+<h2><span class="header-section-number">41.4</span> Editing the <code>_targets.R</code> File<a href="your-turn---a-tuberculosis-analysis-pipeline.html#editing-the-_targets.r-file" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We will add the required packages to the targets pipeline in the _targets.R file. Scroll down to <code>tar_option_set</code> and find the list of packages. Add the following 7 packages to the list:</p>
+<ul>
+<li><code>tidyr</code></li>
+<li><code>readr</code></li>
+<li><code>ggplot2</code></li>
+<li><code>dplyr</code></li>
+<li><code>gt</code></li>
+<li><code>gtsummary</code></li>
+<li><code>scales</code>.</li>
+</ul>
+<p>Be sure that these are all in quotes, within the c() parentheses and appropriate commas without syntax errors. Save the _targets.R file.</p>
+<p>Now scroll down to the list of <code>tar_targets</code>. For this pipeline, {targets} will have 6 targets to track.</p>
+<ul>
+<li>file</li>
+<li>who_data</li>
+<li>who_clean</li>
+<li>make_table</li>
+<li>model_cases</li>
+<li>plot_data</li>
+</ul>
+<p>Replace the existing targets with these targets by replacing the entire list, using the code chunk below. Now <strong>save</strong> the <code>_targets.R</code> file.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb13-1" tabindex="-1"></a><span class="fu">list</span>(</span>
+<span id="cb13-2"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb13-2" tabindex="-1"></a>    <span class="fu">tar_target</span>(file, <span class="st">&quot;who_data.csv&quot;</span>, <span class="at">format =</span> <span class="st">&quot;file&quot;</span>),</span>
+<span id="cb13-3"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb13-3" tabindex="-1"></a>    <span class="fu">tar_target</span>(who_data, <span class="fu">read_data</span>(file)),</span>
+<span id="cb13-4"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb13-4" tabindex="-1"></a>    <span class="fu">tar_target</span>(who_clean, <span class="fu">clean_data</span>(who_data)),</span>
+<span id="cb13-5"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb13-5" tabindex="-1"></a>    <span class="fu">tar_target</span>(table, <span class="fu">make_table</span>(who_clean)),</span>
+<span id="cb13-6"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb13-6" tabindex="-1"></a>    <span class="fu">tar_target</span>(model, <span class="fu">model_cases</span>(who_clean)),</span>
+<span id="cb13-7"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb13-7" tabindex="-1"></a>    <span class="fu">tar_target</span>(plot, <span class="fu">plot_data</span>(who_clean))</span>
+<span id="cb13-8"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb13-8" tabindex="-1"></a>)</span></code></pre></div>
+<p>Now we have the infrastructure installed.</p>
+<p>We can now do our two pipeline pre-checks:</p>
+<ul>
+<li><code>tar_manifest()</code> - should produce a 6 x 2 tibble of targets.</li>
+<li><code>tar_visnetwork()</code> - should make a completely blue-green (outdated) diagram of the pipeline.</li>
+</ul>
+<p>Make sure each of these runs without errors.
+If not, re-check the steps to create these two files for the pipeline.</p>
+<ul>
+<li><code>functions.R</code></li>
+<li><code>_targets.R</code></li>
+</ul>
 </div>
-<p>Working in a free, open-source coding language like R greatly eases the transition to reproducible research.
-It provides tools, accessible to anyone with an internet connection, to make science reproducible and transparent.</p>
+<div id="running-the-pipeline" class="section level2 hasAnchor" number="41.5">
+<h2><span class="header-section-number">41.5</span> Running the Pipeline<a href="your-turn---a-tuberculosis-analysis-pipeline.html#running-the-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Once these are running without errors, we can run the pipeline with <code>tar_make()</code>.
+This will run the pipeline and create the outputs in the <code>_targets/objects</code> folder. Check that these are present, and view each target object in the <code>objects</code> folder with <code>tar_read()</code>.</p>
+<p>Check the output of <code>tar_visnetwork()</code> to see that the pipeline structure is now completely up to date (black targets).</p>
 </div>
-<div id="the-first-level-of-reproducibility" class="section level3 hasAnchor" number="4.1.4">
-<h3><span class="header-section-number">4.1.4</span> The First Level of Reproducibility<a href="introduction-to-reproducibility.html#the-first-level-of-reproducibility" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Working in the Console Pane in RStudio allows you to test code, trying out functions on your data.
-This is a good sandbox where you can do little harm, and is helpful when you are using a new package or function, and figuring out the syntax.
-You may need to get help for the function (<code>?function_name</code>), and it may take several iterations to get it to do what you want.
-You may jump over to a browser window to google something from RStudio Community, StackOverflow, or a good blog post to find an example.</p>
-<p>You can even save the results (a table, a figure) to a folder with functions like this in a code chunk.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="introduction-to-reproducibility.html#cb9-1" tabindex="-1"></a><span class="fu">save</span>(table, <span class="at">file =</span> <span class="st">&quot;table.csv&quot;</span>)</span>
-<span id="cb9-2"><a href="introduction-to-reproducibility.html#cb9-2" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="introduction-to-reproducibility.html#cb9-3" tabindex="-1"></a><span class="fu">ggsave</span>(plot, <span class="at">filename =</span> <span class="st">&quot;figure1.jpg&quot;</span>, <span class="at">device =</span> <span class="st">&quot;jpeg&quot;</span>, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>, <span class="at">units =</span> <span class="st">&quot;inches&quot;</span>)</span></code></pre></div>
-<p>This is a good start, and your code is logged in the History, but it is not saved in a named file that you can go back to, and re-run.
-If your data changes, you have to start all over, and re-write the code.
-This is not very reproducible.</p>
+<div id="modificatons-to-the-pipeline" class="section level2 hasAnchor" number="41.6">
+<h2><span class="header-section-number">41.6</span> Modificatons to the Pipeline<a href="your-turn---a-tuberculosis-analysis-pipeline.html#modificatons-to-the-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now modify the <code>make_table</code> function so that countries with over 1 million cases (scary bad, in need of WHO intervention) are in red text.
+Use the code below (adding conditional formatting) to edit the <code>make_table()</code> function in the <code>functions.R</code> file in the R folder of the Project. Look carefully at the <code>tab_style()</code> function below to see how the conditional formatting is applied. Make sure that your function ends with 2 close parenthesesm, followed by a closing curly-brace.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb14-1" tabindex="-1"></a>who_clean <span class="sc">|&gt;</span></span>
+<span id="cb14-2"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb14-2" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">|&gt;</span> </span>
+<span id="cb14-3"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb14-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Case_Count =</span> <span class="fu">sum</span>(count)) <span class="sc">|&gt;</span> </span>
+<span id="cb14-4"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb14-4" tabindex="-1"></a>  <span class="fu">slice_max</span>(Case_Count, <span class="at">n=</span> <span class="dv">10</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb14-5"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb14-5" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">gt</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb14-6"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb14-6" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">fmt_number</span>(<span class="at">columns =</span> Case_Count, <span class="at">use_seps =</span> <span class="cn">TRUE</span>,<span class="at">decimals =</span> <span class="dv">0</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb14-7"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb14-7" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb14-8"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb14-8" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">list</span>(</span>
+<span id="cb14-9"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb14-9" tabindex="-1"></a>      <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb14-10"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb14-10" tabindex="-1"></a>      ),</span>
+<span id="cb14-11"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb14-11" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
+<span id="cb14-12"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb14-12" tabindex="-1"></a>      <span class="at">columns =</span> Case_Count,</span>
+<span id="cb14-13"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb14-13" tabindex="-1"></a>      <span class="at">rows =</span> Case_Count <span class="sc">&gt;</span> <span class="dv">1000000</span></span>
+<span id="cb14-14"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb14-14" tabindex="-1"></a>    ))</span></code></pre></div>
+<p>Save your modified <code>functions.R</code> file.
+Run <code>tar_visnetwork()</code> to check on what is now out of date in the pipeline, and then run <code>tar_make()</code> to update the pipeline with the new function. Note that some targets are skipped.</p>
+<p>Check out the appearance of the newly-modified table with <code>tar_read(table)</code>.</p>
+<p>Confirm that the pipeline is now up to date with <code>tar_visnetwork()</code>.</p>
 </div>
-<div id="the-second-level-of-reproducibility" class="section level3 hasAnchor" number="4.1.5">
-<h3><span class="header-section-number">4.1.5</span> The Second Level of Reproducibility<a href="introduction-to-reproducibility.html#the-second-level-of-reproducibility" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>You can bridge from the sandbox of the Console pane to reproducible, saved code.
-There are a couple of nice features in the History tab (top right in RStudio) to help you.</p>
-<p>To get started, you need to Open a File to save your code in.
-As a default, we will start with RMarkdown files.
-In the RStudio menu, select ** File/New File/Rmarkdown… and give it a title, like “My First Analysis”.
-This will open a file in the RStudio Source pane (top left).</p>
-<p><strong>Note</strong> that this title (“My First Analysis”) is the title at the top of the resulting document, not the name of the file itself.</p>
-<p>Once the file opens, you can see a header at the top, with Title, Author, Date, and Output Fields.
-This is called the YAML header, and it gives instructions for how the document will be processed to make a manuscript or HTML page.
-The YAML header is fenced with both an opening and a closing line of 3 dashes <code>---</code>.</p>
-<p>To save the file itself, you can use Cmd-S(Mac)/Ctrl-S(Windows), or click on the Save icon at the top of the file, then give it a filename, which is generally in lower case, with no numbers or spaces, and no punctuation except for underscores and hyphens.
-Each Rmarkdown filename ends with .Rmd</p>
-<p>The first code chunk - the <strong>setup</strong> chunk - is provided for you in the Rmarkdown template, just below the YAML header.
-This is where you load packages, with the <code>library(_packagename_)</code> function.
-You want to load your packages at the beginning of the file, so that the functions and data from these packages are available later in the file.</p>
-<p>Notice that <em>code chunks</em> are set off with 3 backticks at the beginning and end.
-The first set of backticks is followed by a letter <code>r</code> inside of curly braces, like this: <code>{r}</code>.
-This tells Rstudio that the following code will be in the R language.</p>
-<p>The <code>{r}</code> can be followed by an (optional) chunk name (like <em>setup</em>), then a comma, and a number of (optional) code chunk options.
-Sometimes the code chunk options can get a bit ungainly, and you can enter them like comment lines at the top of the code chunk, before the code actually starts, using the hash-pipe marker, with commas between each option, like this:</p>
-<pre><code>```{r example}
-#| echo = TRUE,
-#| eval = FALSE
-medicaldata::cytomegalovirus %&gt;% 
-  head()
-```</code></pre>
-<p>You can insert new Code chunks with the green button that has a white letter C on it, and a plus sign at the top left corner of the button, at the top of the Source pane.
-When you click on it, R is the first option, but other computer languages are available.</p>
-<p>Often, when you are writing code, you will start with experiments in the Console pane (lower left).
-Each time it does not quite work, you can use the up-arrow to pull down the most recent entry, to edit it and try again.</p>
-<p>Another helpful tip, if you want to find code that you ran a few steps ago, is to press the up arrow (and down arrow) a few times until you reach the code you want.
-If it was a while back, it may be helpful to enter the first few characters of the code, then use Cmd-UpArrow(Mac) or Ctrl-UpArrow(Win) use those characters to search through the history for what you want.</p>
-<p>Another helpful tip is that when you are running a function, and trying to get all the arguments set properly (between the parentheses), you can ask RStudio to prompt you for the remaining arguments.
-If you have your cursor between the parentheses, you can press the tab key and RStudio will give you a list of possible arguments for the function.
-You can select one and set it to an appropriate value.
-After each argument is set, you can enter a comma, and press the tab key again to get the list of arguments for that function.</p>
-<div class="tryit">
-<p>Try this out with the code chunk named <code>cars</code> in the Rmarkdown template.
-Insert your cursor after the word cars, before the close-parenthesis.
-Add a comma, then press the tab key.
-Set the digits argument to 2 or 5, then run the chunk (with the green arrow to the right) to see how the results change.</p>
+<div id="modify-the-plot" class="section level2 hasAnchor" number="41.7">
+<h2><span class="header-section-number">41.7</span> Modify the Plot<a href="your-turn---a-tuberculosis-analysis-pipeline.html#modify-the-plot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now modify the plot to make years with greater than 3 million cases of TB have points that are colored red. Use the code below to edit the <code>plot_data()</code> function in the <code>functions.R</code> file in the R folder of the Project.</p>
+<p>Look carefully at the <code>aes(color)</code> and <code>scale_color_manual()</code> functions to see how the conditional formatting is applied to point color. Make sure that your modified function has no syntax errors, end with the right number of parentheses, and a final closing curly-brace.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb15-1" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> <span class="cf">function</span>(who_clean){</span>
+<span id="cb15-2"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb15-2" tabindex="-1"></a>  who_clean <span class="sc">|&gt;</span> </span>
+<span id="cb15-3"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb15-3" tabindex="-1"></a>    <span class="fu">group_by</span>( year) <span class="sc">|&gt;</span> </span>
+<span id="cb15-4"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb15-4" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">sum =</span> <span class="fu">sum</span>(count)) <span class="sc">|&gt;</span> </span>
+<span id="cb15-5"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb15-5" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> year, <span class="at">y =</span> sum, <span class="at">color =</span> sum <span class="sc">&gt;</span> <span class="dv">3000000</span>)) <span class="sc">+</span></span>
+<span id="cb15-6"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb15-6" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb15-7"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb15-7" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;WHO Count of TB Cases by Year&quot;</span>, </span>
+<span id="cb15-8"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb15-8" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Cases&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>) <span class="sc">+</span></span>
+<span id="cb15-9"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb15-9" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">scale =</span> <span class="fl">1e-6</span>, <span class="at">suffix =</span> <span class="st">&quot;M&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb15-10"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb15-10" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb15-11"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb15-11" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;TRUE&quot;</span> <span class="ot">=</span> <span class="st">&quot;red&quot;</span>, <span class="st">&quot;FALSE&quot;</span> <span class="ot">=</span> <span class="st">&quot;black&quot;</span>))</span>
+<span id="cb15-12"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb15-12" tabindex="-1"></a>  <span class="fu">return</span>(plot)</span>
+<span id="cb15-13"><a href="your-turn---a-tuberculosis-analysis-pipeline.html#cb15-13" tabindex="-1"></a>}</span></code></pre></div>
+<p>Run <code>tar_visnetwork()</code> to check on what is now out of date in the pipeline, and then run <code>tar_make()</code> to update the pipeline with the new function.</p>
+<p>Check out the appearance of the newly-modified plot with <code>tar_read(plot)</code></p>
 </div>
-<p>Once you have worked out how to run a bit of code in the Console, it is helpful to click on the History tab.
-You will see all of your prior attempts.</p>
-<p>You can scroll up and down to find a working version of your code, and then click on buttons at the top of the window to send that line of code to either the - Console, or - Source pane</p>
-<p>If your cursor was in the code chunk you want in the Rmarkdown file, your working version will be copied from the History to your code chunk.</p>
-<p>Rmarkdown is designed to be literate code, with the default for headers and explanatory text, as shown in the Rmarkdown template, and a few code chunks inserted into the manuscript where needed.</p>
-<p><strong>Note</strong> that there are three other options of document types to save your reproducible code.
-- R script (<em>.R) - R notebook (</em>.nb) - Quarto document (*.qmd)</p>
-<p>An R script just has code, with minimal explanation or documentation.
-This is limiting for reproducible research.
-You can add a few comments, but it is a long way from an understandable workflow or a manuscript.</p>
-<p>An R notebook is a hybrid, with an R script and HTML output as an option.</p>
-<p>The Rmarkdown documemt can be processed (knitted) to create Word documents, pdfs, Poerpoint presentations, and HTML web pages.</p>
-<p>Quarto documents are a newer version of code documentation that has a lot of the function of Rmarkdown.</p>
+<div id="next-steps" class="section level2 hasAnchor" number="41.8">
+<h2><span class="header-section-number">41.8</span> Next Steps<a href="your-turn---a-tuberculosis-analysis-pipeline.html#next-steps" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You now understand the basics of the {targets} package, and how to build a pipeline. You can now use this approach to build much larger and more complex pipelines for your data analysis projects.</p>
 <div class="explore">
-<p>Future steps/goals in Reproducibility:</p>
-<ul>
-<li>building Projects in RStudio,</li>
-<li>using the {here} package for file paths</li>
-<li>documenting multiple code files in order with README</li>
-<li>saving interim clean/restructured data files</li>
-<li>backing up / collaborating / code sharing on GitHub</li>
-<li>code review with colleagues to check/test your analysis</li>
-<li>sharing deidentified data and code publicly</li>
-<li>preserving your project package environment with {renv}</li>
-<li>building an encapsulated coding environment with Docker and sharing on DockerHub</li>
-</ul>
+<p>Read <strong>much</strong> more about the {targets} package in the Targets Package User Manual <a href="https://books.ropensci.org/targets/">here</a>.</p>
+</div>
+<div class="tryit">
+<p>Challenge yourself: <br>
+Convert one of your existing script-based pipelines to a function-based pipeline using {targets}.</p>
 </div>
 
-</div>
 </div>
 </div>
 <script>
@@ -1242,8 +1389,8 @@ window.onload = function() {
           </div>
         </div>
       </div>
-<a href="a-tasting-menu-of-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="importing-your-data-into-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="building-data-pipelines-with-targets.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="title-holder.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -1297,20 +1444,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

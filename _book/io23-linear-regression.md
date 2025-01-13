@@ -233,15 +233,6 @@ dm_data_plus %>%
 ``` r
 #check model performance
 performance::check_model(dm_mod, panel = FALSE)
-```
-
-```
-## Cannot simulate residuals for models of class `glm`.
-##   Please try `check_model(..., residual_type =
-##   "normal")` instead.
-```
-
-``` r
 # use panel = TRUE in Rmarkdown to get 2x3 panels for 6 plots
 # 
 performance::model_performance(dm_mod)
@@ -250,9 +241,13 @@ performance::model_performance(dm_mod)
 ```
 ## # Indices of model performance
 ## 
-## AIC     |    AICc |     BIC | Tjur's R2 |  RMSE | Sigma | Log_loss | Score_log | Score_spherical |   PCP
-## --------------------------------------------------------------------------------------------------------
-## 362.021 | 362.492 | 397.763 |     0.364 | 0.376 | 1.000 |    0.439 |   -74.015 |           0.009 | 0.718
+## AIC     |    AICc |     BIC | Tjur's R2 |  RMSE | Sigma
+## -------------------------------------------------------
+## 362.021 | 362.492 | 397.763 |     0.364 | 0.376 | 1.000
+## 
+## AIC     | Log_loss | Score_log | Score_spherical |   PCP
+## --------------------------------------------------------
+## 362.021 |    0.439 |   -74.015 |           0.009 | 0.718
 ```
 
 ``` r
@@ -608,23 +603,23 @@ medicaldata::supraclavicular %>%
 ```
 
 ```{=html}
-<div id="ekagrkoxzx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ekagrkoxzx table {
+<div id="evorqfqblm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#evorqfqblm table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ekagrkoxzx thead, #ekagrkoxzx tbody, #ekagrkoxzx tfoot, #ekagrkoxzx tr, #ekagrkoxzx td, #ekagrkoxzx th {
+#evorqfqblm thead, #evorqfqblm tbody, #evorqfqblm tfoot, #evorqfqblm tr, #evorqfqblm td, #evorqfqblm th {
   border-style: none;
 }
 
-#ekagrkoxzx p {
+#evorqfqblm p {
   margin: 0;
   padding: 0;
 }
 
-#ekagrkoxzx .gt_table {
+#evorqfqblm .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -650,12 +645,12 @@ medicaldata::supraclavicular %>%
   border-left-color: #D3D3D3;
 }
 
-#ekagrkoxzx .gt_caption {
+#evorqfqblm .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ekagrkoxzx .gt_title {
+#evorqfqblm .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -667,7 +662,7 @@ medicaldata::supraclavicular %>%
   border-bottom-width: 0;
 }
 
-#ekagrkoxzx .gt_subtitle {
+#evorqfqblm .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -679,7 +674,7 @@ medicaldata::supraclavicular %>%
   border-top-width: 0;
 }
 
-#ekagrkoxzx .gt_heading {
+#evorqfqblm .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -691,13 +686,13 @@ medicaldata::supraclavicular %>%
   border-right-color: #D3D3D3;
 }
 
-#ekagrkoxzx .gt_bottom_border {
+#evorqfqblm .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ekagrkoxzx .gt_col_headings {
+#evorqfqblm .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -712,7 +707,7 @@ medicaldata::supraclavicular %>%
   border-right-color: #D3D3D3;
 }
 
-#ekagrkoxzx .gt_col_heading {
+#evorqfqblm .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -732,7 +727,7 @@ medicaldata::supraclavicular %>%
   overflow-x: hidden;
 }
 
-#ekagrkoxzx .gt_column_spanner_outer {
+#evorqfqblm .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -744,15 +739,15 @@ medicaldata::supraclavicular %>%
   padding-right: 4px;
 }
 
-#ekagrkoxzx .gt_column_spanner_outer:first-child {
+#evorqfqblm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ekagrkoxzx .gt_column_spanner_outer:last-child {
+#evorqfqblm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ekagrkoxzx .gt_column_spanner {
+#evorqfqblm .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -764,11 +759,11 @@ medicaldata::supraclavicular %>%
   width: 100%;
 }
 
-#ekagrkoxzx .gt_spanner_row {
+#evorqfqblm .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ekagrkoxzx .gt_group_heading {
+#evorqfqblm .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -794,7 +789,7 @@ medicaldata::supraclavicular %>%
   text-align: left;
 }
 
-#ekagrkoxzx .gt_empty_group_heading {
+#evorqfqblm .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -809,15 +804,15 @@ medicaldata::supraclavicular %>%
   vertical-align: middle;
 }
 
-#ekagrkoxzx .gt_from_md > :first-child {
+#evorqfqblm .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ekagrkoxzx .gt_from_md > :last-child {
+#evorqfqblm .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ekagrkoxzx .gt_row {
+#evorqfqblm .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -836,7 +831,7 @@ medicaldata::supraclavicular %>%
   overflow-x: hidden;
 }
 
-#ekagrkoxzx .gt_stub {
+#evorqfqblm .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -849,7 +844,7 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#ekagrkoxzx .gt_stub_row_group {
+#evorqfqblm .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -863,15 +858,15 @@ medicaldata::supraclavicular %>%
   vertical-align: top;
 }
 
-#ekagrkoxzx .gt_row_group_first td {
+#evorqfqblm .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ekagrkoxzx .gt_row_group_first th {
+#evorqfqblm .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ekagrkoxzx .gt_summary_row {
+#evorqfqblm .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -881,16 +876,16 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#ekagrkoxzx .gt_first_summary_row {
+#evorqfqblm .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ekagrkoxzx .gt_first_summary_row.thick {
+#evorqfqblm .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ekagrkoxzx .gt_last_summary_row {
+#evorqfqblm .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -900,7 +895,7 @@ medicaldata::supraclavicular %>%
   border-bottom-color: #D3D3D3;
 }
 
-#ekagrkoxzx .gt_grand_summary_row {
+#evorqfqblm .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -910,7 +905,7 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#ekagrkoxzx .gt_first_grand_summary_row {
+#evorqfqblm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -920,7 +915,7 @@ medicaldata::supraclavicular %>%
   border-top-color: #D3D3D3;
 }
 
-#ekagrkoxzx .gt_last_grand_summary_row_top {
+#evorqfqblm .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -930,11 +925,11 @@ medicaldata::supraclavicular %>%
   border-bottom-color: #D3D3D3;
 }
 
-#ekagrkoxzx .gt_striped {
+#evorqfqblm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ekagrkoxzx .gt_table_body {
+#evorqfqblm .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -943,7 +938,7 @@ medicaldata::supraclavicular %>%
   border-bottom-color: #D3D3D3;
 }
 
-#ekagrkoxzx .gt_footnotes {
+#evorqfqblm .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -957,7 +952,7 @@ medicaldata::supraclavicular %>%
   border-right-color: #D3D3D3;
 }
 
-#ekagrkoxzx .gt_footnote {
+#evorqfqblm .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -966,7 +961,7 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#ekagrkoxzx .gt_sourcenotes {
+#evorqfqblm .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -980,7 +975,7 @@ medicaldata::supraclavicular %>%
   border-right-color: #D3D3D3;
 }
 
-#ekagrkoxzx .gt_sourcenote {
+#evorqfqblm .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -988,106 +983,106 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#ekagrkoxzx .gt_left {
+#evorqfqblm .gt_left {
   text-align: left;
 }
 
-#ekagrkoxzx .gt_center {
+#evorqfqblm .gt_center {
   text-align: center;
 }
 
-#ekagrkoxzx .gt_right {
+#evorqfqblm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ekagrkoxzx .gt_font_normal {
+#evorqfqblm .gt_font_normal {
   font-weight: normal;
 }
 
-#ekagrkoxzx .gt_font_bold {
+#evorqfqblm .gt_font_bold {
   font-weight: bold;
 }
 
-#ekagrkoxzx .gt_font_italic {
+#evorqfqblm .gt_font_italic {
   font-style: italic;
 }
 
-#ekagrkoxzx .gt_super {
+#evorqfqblm .gt_super {
   font-size: 65%;
 }
 
-#ekagrkoxzx .gt_footnote_marks {
+#evorqfqblm .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ekagrkoxzx .gt_asterisk {
+#evorqfqblm .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ekagrkoxzx .gt_indent_1 {
+#evorqfqblm .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ekagrkoxzx .gt_indent_2 {
+#evorqfqblm .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ekagrkoxzx .gt_indent_3 {
+#evorqfqblm .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ekagrkoxzx .gt_indent_4 {
+#evorqfqblm .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ekagrkoxzx .gt_indent_5 {
+#evorqfqblm .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ekagrkoxzx .katex-display {
+#evorqfqblm .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ekagrkoxzx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#evorqfqblm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
   <thead>
     <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="&lt;span class='gt_from_md'&gt;&lt;strong&gt;Characteristic&lt;/strong&gt;&lt;/span&gt;"><span class='gt_from_md'><strong>Characteristic</strong></span></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;span class='gt_from_md'&gt;&lt;strong&gt;Beta&lt;/strong&gt;&lt;/span&gt;"><span class='gt_from_md'><strong>Beta</strong></span></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;span class='gt_from_md'&gt;&lt;strong&gt;95% CI&lt;/strong&gt;&lt;/span&gt;&lt;span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/span&gt;"><span class='gt_from_md'><strong>95% CI</strong></span><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;"><sup>1</sup></span></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;span class='gt_from_md'&gt;&lt;strong&gt;p-value&lt;/strong&gt;&lt;/span&gt;"><span class='gt_from_md'><strong>p-value</strong></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="label"><span class='gt_from_md'><strong>Characteristic</strong></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="estimate"><span class='gt_from_md'><strong>Beta</strong></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="conf.low"><span class='gt_from_md'><strong>95% CI</strong></span><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="p.value"><span class='gt_from_md'><strong>p-value</strong></span></th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
     <tr><td headers="label" class="gt_row gt_left">age</td>
 <td headers="estimate" class="gt_row gt_center">-0.02</td>
-<td headers="ci" class="gt_row gt_center">-0.20, 0.15</td>
+<td headers="conf.low" class="gt_row gt_center">-0.20, 0.15</td>
 <td headers="p.value" class="gt_row gt_center">0.8</td></tr>
     <tr><td headers="label" class="gt_row gt_left">bmi</td>
 <td headers="estimate" class="gt_row gt_center">0.00</td>
-<td headers="ci" class="gt_row gt_center">-0.39, 0.38</td>
+<td headers="conf.low" class="gt_row gt_center">-0.39, 0.38</td>
 <td headers="p.value" class="gt_row gt_center">>0.9</td></tr>
     <tr><td headers="label" class="gt_row gt_left">gender</td>
 <td headers="estimate" class="gt_row gt_center">3.0</td>
-<td headers="ci" class="gt_row gt_center">-1.9, 7.8</td>
+<td headers="conf.low" class="gt_row gt_center">-1.9, 7.8</td>
 <td headers="p.value" class="gt_row gt_center">0.2</td></tr>
     <tr><td headers="label" class="gt_row gt_left">group</td>
 <td headers="estimate" class="gt_row gt_center">2.4</td>
-<td headers="ci" class="gt_row gt_center">-2.2, 7.1</td>
+<td headers="conf.low" class="gt_row gt_center">-2.2, 7.1</td>
 <td headers="p.value" class="gt_row gt_center">0.3</td></tr>
   </tbody>
   
   <tfoot class="gt_footnotes">
     <tr>
-      <td class="gt_footnote" colspan="4"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;"><sup>1</sup></span> <span class='gt_from_md'>CI = Confidence Interval</span></td>
+      <td class="gt_footnote" colspan="4"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> <span class='gt_from_md'>CI = Confidence Interval</span></td>
     </tr>
   </tfoot>
 </table>
