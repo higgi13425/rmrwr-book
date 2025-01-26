@@ -23,14 +23,14 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2025-01-13" />
+<meta name="date" content="2025-01-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="building-data-pipelines-with-targets.html"/>
+<link rel="prev" href="colors-and-scales-in-ggplot2.html"/>
 <link rel="next" href="references-1.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -896,22 +896,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="40.2.2" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#checking-your-functions"><i class="fa fa-check"></i><b>40.2.2</b> Checking Your Functions</a></li>
 <li class="chapter" data-level="40.2.3" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#set-up-the-pipeline"><i class="fa fa-check"></i><b>40.2.3</b> Set Up the Pipeline</a></li>
 <li class="chapter" data-level="40.2.4" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#pre-build-checks"><i class="fa fa-check"></i><b>40.2.4</b> Pre-Build Checks</a></li>
-<li class="chapter" data-level="40.2.5" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#building-the-pipeline"><i class="fa fa-check"></i><b>40.2.5</b> Building the Pipeline</a></li>
-<li class="chapter" data-level="40.2.6" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#changing-the-pipeline"><i class="fa fa-check"></i><b>40.2.6</b> Changing the Pipeline</a></li>
+<li class="chapter" data-level="40.2.5" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#changing-the-pipeline"><i class="fa fa-check"></i><b>40.2.5</b> Changing the Pipeline</a></li>
 </ul></li>
 <li class="chapter" data-level="40.3" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#your-turn---a-tuberculosis-analysis-pipeline"><i class="fa fa-check"></i><b>40.3</b> Your Turn - A Tuberculosis Analysis Pipeline</a>
 <ul>
 <li class="chapter" data-level="40.3.1" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#making-new-functions"><i class="fa fa-check"></i><b>40.3.1</b> Making new Functions</a></li>
 <li class="chapter" data-level="40.3.2" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#testing-functions"><i class="fa fa-check"></i><b>40.3.2</b> Testing functions</a></li>
-<li class="chapter" data-level="40.3.3" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#setting-up-targets"><i class="fa fa-check"></i><b>40.3.3</b> Setting Up {targets}</a></li>
 </ul></li>
-<li class="chapter" data-level="40.4" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#editing-the-_targets.r-file"><i class="fa fa-check"></i><b>40.4</b> Editing the <code>_targets.R</code> File</a>
+<li class="chapter" data-level="40.4" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#resetting-functions-before-the-pipeline-is-built"><i class="fa fa-check"></i><b>40.4</b> Resetting functions before the Pipeline is Built</a>
 <ul>
-<li class="chapter" data-level="40.4.1" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#running-the-pipeline"><i class="fa fa-check"></i><b>40.4.1</b> Running the Pipeline</a></li>
-<li class="chapter" data-level="40.4.2" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#modificatons-to-the-pipeline"><i class="fa fa-check"></i><b>40.4.2</b> Modificatons to the Pipeline</a></li>
-<li class="chapter" data-level="40.4.3" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#modify-the-plot"><i class="fa fa-check"></i><b>40.4.3</b> Modify the Plot</a></li>
+<li class="chapter" data-level="40.4.1" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#setting-up-targets"><i class="fa fa-check"></i><b>40.4.1</b> Setting Up {targets}</a></li>
 </ul></li>
-<li class="chapter" data-level="40.5" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#next-steps"><i class="fa fa-check"></i><b>40.5</b> Next Steps</a></li>
+<li class="chapter" data-level="40.5" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#editing-the-_targets.r-file"><i class="fa fa-check"></i><b>40.5</b> Editing the <code>_targets.R</code> File</a>
+<ul>
+<li class="chapter" data-level="40.5.1" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#running-the-pipeline"><i class="fa fa-check"></i><b>40.5.1</b> Running the Pipeline</a></li>
+<li class="chapter" data-level="40.5.2" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#modificatons-to-the-pipeline"><i class="fa fa-check"></i><b>40.5.2</b> Modificatons to the Pipeline</a></li>
+<li class="chapter" data-level="40.5.3" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#modify-the-plot"><i class="fa fa-check"></i><b>40.5.3</b> Modify the Plot</a></li>
+</ul></li>
+<li class="chapter" data-level="40.6" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#next-steps"><i class="fa fa-check"></i><b>40.6</b> Next Steps</a></li>
+</ul></li>
+<li class="chapter" data-level="41" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html"><i class="fa fa-check"></i><b>41</b> Colors and Scales in {ggplot2}</a>
+<ul>
+<li class="chapter" data-level="41.1" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#goals-for-this-chapter-7"><i class="fa fa-check"></i><b>41.1</b> Goals for this Chapter</a></li>
+<li class="chapter" data-level="41.2" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#colors-in-r-and-ggplot2"><i class="fa fa-check"></i><b>41.2</b> Colors in R and {ggplot2}</a>
+<ul>
+<li class="chapter" data-level="41.2.1" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#using-pre-defined-color-names"><i class="fa fa-check"></i><b>41.2.1</b> Using pre-defined color names</a></li>
+<li class="chapter" data-level="41.2.2" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#using-color-hex-codes"><i class="fa fa-check"></i><b>41.2.2</b> Using color hex codes</a></li>
+<li class="chapter" data-level="41.2.3" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#screen-vs.-print-colors"><i class="fa fa-check"></i><b>41.2.3</b> Screen vs. Print Colors</a></li>
+<li class="chapter" data-level="41.2.4" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#transparency-and-hex-colors"><i class="fa fa-check"></i><b>41.2.4</b> Transparency and hex colors</a></li>
+<li class="chapter" data-level="41.2.5" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#more-obscure-ways-to-select-colors"><i class="fa fa-check"></i><b>41.2.5</b> More obscure ways to select colors</a></li>
+<li class="chapter" data-level="41.2.6" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#using-color-palettes"><i class="fa fa-check"></i><b>41.2.6</b> Using color palettes</a></li>
+<li class="chapter" data-level="41.2.7" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#color-blind-friendly-palettes"><i class="fa fa-check"></i><b>41.2.7</b> Color-blind friendly palettes</a></li>
+</ul></li>
+<li class="chapter" data-level="41.3" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#sequential-diverging-and-qualitative-palettes"><i class="fa fa-check"></i><b>41.3</b> Sequential, Diverging, and Qualitative Palettes</a></li>
+<li class="chapter" data-level="41.4" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#choosing-colors-with-meaning"><i class="fa fa-check"></i><b>41.4</b> Choosing Colors with Meaning</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="title-holder.html"><a href="title-holder.html"><i class="fa fa-check"></i>Title holder</a></li>
 <li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
@@ -1105,7 +1123,7 @@ window.onload = function() {
           </div>
         </div>
       </div>
-<a href="building-data-pipelines-with-targets.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="colors-and-scales-in-ggplot2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="references-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

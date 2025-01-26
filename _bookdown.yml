@@ -44,8 +44,11 @@ rmd_files:
 - io56b-Rmd-citations-Zotero.Rmd
 - io56c-Intro-to-Quarto.Rmd
 - io70-r_cmd_line.Rmd
+- io72-secure_passwords.Rmd
+- io100-working_dates.Rmd
 - io103-protecting_phi.Rmd
 - io105-targets.Rmd
+- io106-scales_colors_ggplot.Rmd
 - io198-title-holder.Rmd
 - io199-references.Rmd
 
