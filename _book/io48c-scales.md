@@ -99,6 +99,11 @@ indo_rct %>%
   scale_x_continuous(limits = c(15,90))
 ```
 
+```
+## Warning: Removed 1 row containing missing values or values outside
+## the scale range (`geom_point()`).
+```
+
 <img src="io48c-scales_files/figure-html/scatter-2-solution-1.png" width="672" />
 
 </div>

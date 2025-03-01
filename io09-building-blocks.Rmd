@@ -16,7 +16,7 @@ library(lubridate)
 library(janitor)
 ```
 
-# The Building Blocks of R: data types, data structures, functions, and packages.
+# The Building Blocks of R: data types, data structures, functions, and packages
 
 In this chapter, we will learn about some critical building blocks in R
 that can lead to a lot of frustration if you do not understand these
@@ -81,11 +81,11 @@ Guess what the returned value will be before you run the code (click on
 the green arrow at the top right).
 
 ```{r demo-is.x, echo=TRUE}
-# you can test vectors with typeof 
+# you can test vectors with typeof
 
-typeof(c(1.7,5.3,9.2)) 
+typeof(c(1.7, 5.3, 9.2))
 
-typeof(c('hypertension', "diabetes", "atherosclerosis"))
+typeof(c("hypertension", "diabetes", "atherosclerosis"))
 
 typeof(c(2L, 4L))
 
@@ -102,7 +102,7 @@ the code (click on the green arrow at the top right).
 ```{r demo-as.x, echo=TRUE}
 # you can convert vectors with as.x
 
-numeric <- (c(1.7,5.3,9.2)) 
+numeric <- (c(1.7, 5.3, 9.2))
 newvec1 <- as.character(numeric)
 newvec1
 typeof(newvec1)
@@ -192,8 +192,8 @@ structures, and these include
     anywhere from 1 to 9 movies (as of 2021).
 
     ```{r}
-    starwars %>% select(name, films) 
-    starwars$films %>% head()
+starwars %>% select(name, films)
+starwars$films %>% head()
     ```
 
     Lists can be a bit clunky to work with, as they nest more than a
@@ -202,24 +202,24 @@ structures, and these include
     a longer format. \
 
     ```{r}
-    starwars %>% select(name, films)
-    # gives you a hidden list of films
-    starwars %>% 
-      select(name, films) %>% 
-      unnest(cols = c(films))
-    # unnest expands to multiple rows to show detail
+starwars %>% select(name, films)
+# gives you a hidden list of films
+starwars %>%
+  select(name, films) %>%
+  unnest(cols = c(films))
+# unnest expands to multiple rows to show detail
     ```
 
     Lists can be useful for bundling togther related data of different
     types, like the results of a t-test.
 
     ```{r}
-    t_test_output <- list (
-      "Welch Two Sample t-test",
-      c("data: height by gender"),
-      data.frame(t = -1.5596, df = 37.315, p = 0.1273)
-    )
-    t_test_output
+t_test_output <- list(
+  "Welch Two Sample t-test",
+  c("data: height by gender"),
+  data.frame(t = -1.5596, df = 37.315, p = 0.1273)
+)
+t_test_output
     ```
 
 -   **data frame** - a very important data structure in R, which
@@ -243,12 +243,11 @@ structures, and these include
     function.
 
     ```{r}
-    pat_id <- c(1,1,2,2, 3,3)
-    date <- c(lubridate::ymd("2020-11-07", "2020-12-03", "2020-12-02", "2020-12-15", "2020-11-09", "2020-12-02"))
-    crp <- c(5.1, 3.2, 7.6, 4.1, 4.3, 1.7)
-    new_df <- tibble(pat_id, date, crp)
-    new_df
-
+pat_id <- c(1, 1, 2, 2, 3, 3)
+date <- c(lubridate::ymd("2020-11-07", "2020-12-03", "2020-12-02", "2020-12-15", "2020-11-09", "2020-12-02"))
+crp <- c(5.1, 3.2, 7.6, 4.1, 4.3, 1.7)
+new_df <- tibble(pat_id, date, crp)
+new_df
     ```
 
     -   **tibble** - a tibble is a modern upgrade to the data frame,
@@ -259,23 +258,23 @@ structures, and these include
         tibble to build with vectors
 
     ```{r}
-    tibble(new_df)
-    tibble(pat_id, date, crp)
+tibble(new_df)
+tibble(pat_id, date, crp)
     ```
 
     You can also build new row-wise tibbles with the `tribble()`
     function.
 
     ```{r}
-    tribble(
-      ~pat_id, ~date, ~crp,
-      1, lubridate::ymd("2020-12-04"), 5.1,
-      1, lubridate::ymd("2020-12-09"), 3.7,
-      2, lubridate::ymd("2020-11-23"), 3.6,
-      2, lubridate::ymd("2020-11-29"), 1.9,
-      3, lubridate::ymd("2020-12-14"), 1.9,
-      3, lubridate::ymd("2020-12-27"), 0.6
-    )
+tribble(
+  ~pat_id, ~date, ~crp,
+  1, lubridate::ymd("2020-12-04"), 5.1,
+  1, lubridate::ymd("2020-12-09"), 3.7,
+  2, lubridate::ymd("2020-11-23"), 3.6,
+  2, lubridate::ymd("2020-11-29"), 1.9,
+  3, lubridate::ymd("2020-12-14"), 1.9,
+  3, lubridate::ymd("2020-12-27"), 0.6
+)
     ```
 
 R uses many other custom objects to contain things like a linear model,
@@ -314,14 +313,13 @@ greater than key) to assign data to an object.
 
 ```{r}
 # example 1
-tall <- starwars %>% 
+tall <- starwars %>%
   filter(height > 200)
 
 # example 2
-starwars %>% 
-  filter(height <70) ->
+starwars %>%
+  filter(height < 70) ->
 short
-
 ```
 
 Leftward arrows are thought of as sort of like the title of a recipe. In
@@ -363,7 +361,6 @@ Note that `glimpse(starwars)` provides a prettier version of this output
 
 ```{r}
 glimpse(starwars)
-
 ```
 
 If you want more detail about a given variable inside this dataframe,
@@ -552,7 +549,6 @@ version of R.
 # You can check your own library path
 # Run this function in your Rstudio Console to find the current library on your computer
 .libPaths()
-
 ```
 
 ## The Building Blocks of R

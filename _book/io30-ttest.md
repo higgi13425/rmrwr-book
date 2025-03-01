@@ -45,6 +45,47 @@ summ
 
 That seems like a big difference for donor.cmv, between 13.7303333 months and 12.7441176 months. And it makes theoretical sense that having a CMV positive donor is more likely to be associated with early activation of CMV in the recipient. But is it a significant difference, one that would be very unlikely to happen by chance? That depends on things like the number of people in each group, and the standard deviation in each group. That is the kind of question you can answer with a t-test, or for particularly skewed data like hospital length of stay or medical charges, a Wilcoxon test.
 
+### Applying the t test
+The t-test is a simple test that compares the means of two groups, and tells you how likely it is that the difference you see is due to random chance. The t-test assumes that the data is normally distributed, and that the variances are equal. If the data is not normally distributed, or the variances are not equal, you can use a non-parametric test like the Wilcoxon test. <br>
+
+``` r
+cytomegalovirus |> 
+  rstatix::t_test(time.to.cmv ~ cgvhd,
+                  detailed = TRUE) 
+```
+
+```
+## # A tibble: 1 × 15
+##   estimate estimate1 estimate2 .y.       group1 group2    n1
+## *    <dbl>     <dbl>     <dbl> <chr>     <chr>  <chr>  <int>
+## 1    -13.8      7.18      21.0 time.to.… 0      1         36
+## # ℹ 8 more variables: n2 <int>, statistic <dbl>, p <dbl>,
+## #   df <dbl>, conf.low <dbl>, conf.high <dbl>,
+## #   method <chr>, alternative <chr>
+```
+
+# Simple example of a t-test
+
+``` r
+mtcars %>% 
+  filter(cyl ==4 | cyl ==6) %>% 
+  mutate(cyl_f = as.factor(cyl)) %>% 
+  t.test(mpg ~ cyl_f, data = .)
+```
+
+```
+
+	Welch Two Sample t-test
+
+data:  mpg by cyl_f
+t = 4.7191, df = 12.956, p-value = 0.0004048
+alternative hypothesis: true difference in means between group 4 and group 6 is not equal to 0
+95 percent confidence interval:
+  3.751376 10.090182
+sample estimates:
+mean in group 4 mean in group 6 
+       26.66364        19.74286 
+```
 
 ## Common Problem
 - Comparing two groups

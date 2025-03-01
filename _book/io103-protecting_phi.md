@@ -150,16 +150,16 @@ gp_encrypt
 ## # A tibble: 1,212 × 8
 ##    organisation_code city        county  postcode opendate  
 ##    <chr>             <chr>       <chr>   <chr>    <date>    
-##  1 S10002            DUNDEE      ANGUS   1e88212… 1995-05-01
-##  2 S10017            CRIEFF      PERTHS… 568fc55… 1996-04-06
-##  3 S10036            ABERFELDY   PERTHS… 98756d3… 2008-04-01
-##  4 S10060            ABERFELDY   PERTHS… 4039f68… 1975-04-01
-##  5 S10106            DUNDEE      ANGUS   7bd0c57… 1996-07-08
-##  6 S10125            BLAIRGOWRIE PERTHS… 6470c58… 1979-10-01
-##  7 S10182            ARBROATH    ANGUS   900fc8e… 1977-10-01
-##  8 S10233            ARBROATH    ANGUS   5086ae3… 1986-08-01
-##  9 S10286            ARBROATH    ANGUS   393404f… 1975-08-01
-## 10 S10322            ARBROATH    ANGUS   9b7cd02… 1971-10-01
+##  1 S10002            DUNDEE      ANGUS   35b89d7… 1995-05-01
+##  2 S10017            CRIEFF      PERTHS… 7d1da71… 1996-04-06
+##  3 S10036            ABERFELDY   PERTHS… 16340a2… 2008-04-01
+##  4 S10060            ABERFELDY   PERTHS… 4342b75… 1975-04-01
+##  5 S10106            DUNDEE      ANGUS   949213a… 1996-07-08
+##  6 S10125            BLAIRGOWRIE PERTHS… 9b46442… 1979-10-01
+##  7 S10182            ARBROATH    ANGUS   4352639… 1977-10-01
+##  8 S10233            ARBROATH    ANGUS   0278dbf… 1986-08-01
+##  9 S10286            ARBROATH    ANGUS   2cc8661… 1975-08-01
+## 10 S10322            ARBROATH    ANGUS   7d2003f… 1971-10-01
 ## # ℹ 1,202 more rows
 ## # ℹ 3 more variables: closedate <date>, telephone <chr>,
 ## #   practice_type <dbl>
@@ -218,16 +218,16 @@ gp_encrypt
 ## # A tibble: 1,212 × 8
 ##    organisation_code city        county  postcode opendate  
 ##    <chr>             <chr>       <chr>   <chr>    <date>    
-##  1 S10002            DUNDEE      ANGUS   1e88212… 1995-05-01
-##  2 S10017            CRIEFF      PERTHS… 568fc55… 1996-04-06
-##  3 S10036            ABERFELDY   PERTHS… 98756d3… 2008-04-01
-##  4 S10060            ABERFELDY   PERTHS… 4039f68… 1975-04-01
-##  5 S10106            DUNDEE      ANGUS   7bd0c57… 1996-07-08
-##  6 S10125            BLAIRGOWRIE PERTHS… 6470c58… 1979-10-01
-##  7 S10182            ARBROATH    ANGUS   900fc8e… 1977-10-01
-##  8 S10233            ARBROATH    ANGUS   5086ae3… 1986-08-01
-##  9 S10286            ARBROATH    ANGUS   393404f… 1975-08-01
-## 10 S10322            ARBROATH    ANGUS   9b7cd02… 1971-10-01
+##  1 S10002            DUNDEE      ANGUS   35b89d7… 1995-05-01
+##  2 S10017            CRIEFF      PERTHS… 7d1da71… 1996-04-06
+##  3 S10036            ABERFELDY   PERTHS… 16340a2… 2008-04-01
+##  4 S10060            ABERFELDY   PERTHS… 4342b75… 1975-04-01
+##  5 S10106            DUNDEE      ANGUS   949213a… 1996-07-08
+##  6 S10125            BLAIRGOWRIE PERTHS… 9b46442… 1979-10-01
+##  7 S10182            ARBROATH    ANGUS   4352639… 1977-10-01
+##  8 S10233            ARBROATH    ANGUS   0278dbf… 1986-08-01
+##  9 S10286            ARBROATH    ANGUS   2cc8661… 1975-08-01
+## 10 S10322            ARBROATH    ANGUS   7d2003f… 1971-10-01
 ## # ℹ 1,202 more rows
 ## # ℹ 3 more variables: closedate <date>, telephone <chr>,
 ## #   practice_type <dbl>

@@ -1,0 +1,460 @@
+---
+title: "Building Your Table One with the {gtsummary} Package"
+author: "Peter Higgins"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.width = 6, message = FALSE, 
+              warning = FALSE, comment = "", cache = FALSE, fig.retina = 3)
+
+library(tidyverse)
+library(medicaldata)
+library(gt)
+library(gtsummary)
+library(flextable)
+library(webexercises)
+```
+
+# Building Your Table One with the {gtsummary} Package
+
+  Table One is a standard table in most clinical studies, where the sample of the
+participants studied is described. This table is often used to provide the 
+demographics and distributions of patient characteristics, to enable reviewers and
+readers to determine whether the study sample is representative of the population
+that they see in their clinical practice, and whether the results are generalizable
+to their patients. <br>
+<br>
+  This is important because the vast majority of clinical trials are extreme 
+examples of a convenience sample, as many potential participants will not meet
+the inclusion and exclusion criteria, and far fewer of the eligible people will
+be willing to consent and enroll. This means that the study sample is often not
+representative of the population of people with the particular disease state 
+under study. <br>
+<br>
+  In order to help the reader, we generally provide the mean and standard deviation
+of numeric variables like age and weight/BMI, and the counts and percentages of categorical
+variables like sex and disease location. If particular numeric variables are 
+quite skewed, like hospital length of stay or medical costs, we will often use
+the median and interquartile range instead of the mean and standard deviation.<br>
+<br>
+  In this chapter, we will use the {gtsummary} package to build a Table One. 
+This package is a powerful tool for making tables in R, and is especially useful 
+for clinical research, which it was designed for. It is built on top of the {gt}
+package, which is a modern and flexible package for building
+and formatting tables in R. 
+
+The {gtsummary} package is designed to make it easy to make a Table One, and to 
+customize it to your needs.
+You can use the tools from {gt} to format the table, or convert the table to 
+another format like {flextable}, and use the formatting tools from that package 
+if you prefer to format your table.
+
+
+## Using tbl_summary() from the gtsummary package
+
+The {gtsummary} package uses the `tbl_summary()` function to make a Table One. 
+But you can do a lot with the options to customize this basic table. 
+Let's start with a clinical trial dataset, and use it to make a basic demographics 
+table. Run the code below to see the data in two different ways. 
+These data are from a simple hypothetical chemotherapy trial built into {gtsummary}.
+
+```{r table1}
+head(trial)
+glimpse(trial)
+```
+
+We can see from this output that patients at different cancer stages and grades 
+are included in the trial, and that the treatment is either Drug A
+or Drug B. There are dichotomous variables for response and death and a continuous
+variable for time to death in months.
+
+You can load the {tidyverse}, {gt}, and {gtsummary} packages in your local 
+RStudio session to get started.
+
+Run `View(trial)` to see the raw trial data in a spreadsheet-like format. Note 
+the variable labels.
+
+## Making a Basic table
+
+You can use the `tbl_summary` function to get started with your first Table One. 
+Copy and run the code below in your local RStudio session as a  first step. 
+Take a look at the HTML 
+output in the Viewer tab on the lower right. 
+Then add more variables to the `include` statement to get a more complete 
+demographics table. Try adding cancer stage (stage) and grade. See 
+how the function (automatically) handles categorical vs. continuous variables.
+Note that there are 11 missing age values. The function will by default 
+include missing values in the table.
+
+
+```{r table2, echo=TRUE}
+library(gt)
+library(gtsummary)
+library(tidyverse, quietly = TRUE)
+trial %>% 
+  tbl_summary(include = c(age, trt),
+              statistic = list(all_categorical() ~ "n = {n}"),
+              digits = all_continuous() ~ 0)
+```
+
+Note that we formatted the categorical variables to show the count of each level,
+with `n = {n}`, and we set the number of digits for continuous variables to 0.
+This is a good starting point for a Table One, but we can do much more with
+the `tbl_summary` function.
+
+:::tryit
+
+### Challenges:
+
+1.  Run `help("tbl_summary")` in your local RStudio console. Read the help file, and figure out what each argument does in the function. 
+2. Also take a look at the [tutorial online](https://www.danieldsjoberg.com/gtsummary/articles/tbl_summary.html). Click
+through this link to see the tutorial on the `{gtsummary} package`tbl_summary()` 
+function.
+3.  How can you tell the function when a variable should be continuous vs 
+categorical vs dichotomous? Set age to continuous.
+4.  How do you control the number of digits in a mean or sd? Try setting age
+(or all_continous) to 2 digits.
+5.  How do you set mean/sd vs median/IQR for a particular variable? (make age 
+a mean/SD)
+6.  Why does the treatment (when you add this variable) print out as 
+Chemotherapy Treatment instead of `trt`? (check the `View` function)
+7.  How can you change the label for a given variable? Try changing the T 
+stage to `Tumor Stage`. 
+8. How can you change the label for a given value (of a categorical variable)? Try changing the drug 
+names to Axitinib (A) and Bleomycin (B). NOTE: this requires a `mutate/case_when` 
+in the data pipeline BEFORE you call the tbl_summary function.
+9. Remove the `n=` from the categorical variables.
+10. Change the missing_text `Unknown` to "Missing" for the missing values in age.
+
+Take a few minutes to do these challenges (lean on the tutorial for help), then 
+peek at the solution below.
+
+:::
+
+`r hide('Solution')`
+
+```{r}
+trial %>% 
+  mutate(trt = case_when(trt == "Drug A" ~ "Axitinib",
+                          trt == "Drug B" ~ "Bleomycin")) %>%
+  tbl_summary(include = c(age, trt, stage, grade),
+              statistic = list(all_categorical() ~ "{n}",
+                               all_continuous() ~ "{mean} ({sd})"),
+              digits = all_continuous() ~ 2,
+              label = list(trt ~ "Chemotherapy Treatment",
+                           stage ~ "Tumor Stage",
+                           grade ~ "Tumor Grade"),
+              missing_text = "Missing")
+```
+
+
+`r unhide()`
+
+
+## Multiple Dimensions
+
+Now for your next challenge - rather than just having one column, let's help the reader compare the demographics of the two treatment arms with a `by` argument within `tbl_summary()`. Copy and edit the code below to produce separate columns for each treatment arm. 
+Note that when you are using `trt` as the `by` variable for columns, it can not 
+be included in the `include`argument to make the rows,
+and it can not be in the list of labels to be modified.
+Note also that we added percentages (in parentheses) to the categorical levels.
+(how would you remove the parentheses and use a forward slash to separate the N 
+from the percentage?)
+Copy and run the code below to see the result.
+
+```{r}
+trial %>% 
+  mutate(trt = case_when(trt == "Drug A" ~ "Axitinib",
+                          trt == "Drug B" ~ "Bleomycin")) %>%
+  tbl_summary(by = trt,
+              include = c(age, stage, grade),
+                        statistic = list(all_categorical() ~ "{n} ({p}%)",
+                               all_continuous() ~ "{mean} ({sd})"),
+                        digits = all_continuous() ~ 2,
+                        label = list(stage ~ "Tumor Stage",
+                           grade ~ "Tumor Grade"),
+                        missing_text = "Missing") 
+```
+
+:::tryit
+
+## New Challenges
+
+Now for your next challenges (lean on the `tbl_summary` tutorial on the website):
+
+1.  Change the label for grade to "Tumor Badness Scale"
+2.  Change the label for stage to "Tumor Extent"
+3. Set all continuous variables to 3 digits
+4.  Set a Spanning Header (using a modify function) over the Drug columns with the
+label of "**Treatment Arm**" (note that the names of the columns are actually 
+"stat1" and "stat2"). What do the asterisks do? What happens if you remove 
+them?)
+5.  Make the labels bold (note that this is a new function, 
+not an argument for `tbl_summary()`)
+6.  Make the levels italicized
+
+Take a few minutes to do these challenges, then peek at the solution below.
+:::
+
+
+`r hide('Solution')`
+
+```{r}
+trial %>% 
+  mutate(trt = case_when(trt == "Drug A" ~ "Axitinib",
+                          trt == "Drug B" ~ "Bleomycin")) %>%
+  tbl_summary(by = trt,
+              include = c(age, trt, stage, grade),
+              statistic = list(all_categorical() ~ "{n} ({p}%)",
+                               all_continuous() ~ "{mean} ({sd})"),
+              digits = all_continuous() ~ 3,
+              label = list(stage ~ "Tumor Extent",
+                           grade ~ "Tumor Badness Scale"),
+              missing_text = "Missing") %>%
+              modify_spanning_header(all_stat_cols() ~ "**Treatment Arm**") |> 
+              italicize_levels() %>%
+              bold_labels()
+```
+
+
+`r unhide()`
+
+## Even More Help
+
+If the package author has set up vignettes, there are examples of how to use a function available as help files in R. You can run the function `vignette(function)` in the Console. Try `vignette("gtsummary_definition")`.
+
+## Figuring out Column names
+Column names are made on the fly by `tbl_summary` when you use the 
+`by=` argument or `add_p()` or `add_n()` in `tbl_summary()` so you can't just refer to 
+them by the name of the drug or trt variable (the displayed names are called Headers).
+You can use the `show_header_names` function to see the names of the columns of
+the table you just built. They are usually (from left to right) something like
+`n, stat_1, stat_2, p.value, etc.` But it helps to know the names of these if you want to build a
+spanning header. See the example below and its output to see how to use
+`show_header_names`. The column name labels (needed to manipulate tbese)
+are **not** the same as the displayed Headers.
+
+```{r}
+tbl <- trial |> 
+  tbl_summary(by = trt) |>
+  add_n() |>
+  add_p() 
+
+tbl
+
+tbl |> 
+  show_header_names()
+```
+
+## Even More Challenges
+
+:::tryit
+
+Start with this chunk of code:
+
+```{r}
+trial %>% 
+  mutate(trt = case_when(trt == "Drug A" ~ "Axitinib",
+                          trt == "Drug B" ~ "Bleomycin")) %>%
+  tbl_summary(by = trt,
+              include = c(age, trt, stage, grade),
+              statistic = list(all_categorical() ~ "{n} ({p}%)",
+                               all_continuous() ~ "{mean} ({sd})"),
+              digits = all_continuous() ~ 3,
+              label = list(stage ~ "Tumor Extent",
+                           grade ~ "Tumor Badness Scale"),
+              missing_text = "Missing") %>%
+              modify_spanning_header(all_stat_cols() ~ "**Treatment Arm**") |> 
+              bold_labels()
+```
+
+Now for your next challenges:
+
+1.  Add an overall column next to Drug A and Drug B
+2.  Change the Characteristic column label to "Variable" (and make it bold)
+3.  Add p values (though you really should not)
+4.  Style p values to 3 digits
+4.  Make the variable levels _italicized_
+5.  Add an N column for each variable
+
+Take a few minutes to do these challenges, then peek at the solution below.
+
+:::
+
+`r hide('Solution')`
+
+```{r}
+trial %>% 
+  mutate(trt = case_when(trt == "Drug A" ~ "Axitinib",
+                          trt == "Drug B" ~ "Bleomycin")) %>%
+  tbl_summary(by = trt,
+              include = c(age, trt, stage, grade),
+              statistic = list(all_categorical() ~ "{n} ({p}%)",
+                               all_continuous() ~ "{mean} ({sd})"),
+              digits = all_continuous() ~ 3,
+              label = list(stage ~ "Tumor Extent",
+                           grade ~ "Tumor Badness Scale"),
+              missing_text = "Missing") %>%
+      modify_header(label = "**Variable**") |> 
+      add_overall() |> 
+      add_n() |>
+      add_p(pvalue_fun = label_style_pvalue(digits = 3)) |>
+      modify_spanning_header(all_stat_cols() ~ "**Treatment Arm**") |> 
+      italicize_levels() %>%
+      bold_labels()
+```
+
+
+`r unhide()`
+
+## Adding Some Formatting
+
+The {gtsummary} package is designed to help you quickly make nice looking tables
+suitable for publication, but if you want complete control of formatting 
+(font, color, etc), you want to use a table formatting package.
+
+The two big ones are {gt}, which is the underlying package for {gtsummary}, and 
+{flextable} which can produce output for MS Word and Powerpoint as well as HTML.
+
+Check out the websites for each by googling for:
+
+1.  gt and pkgdown
+2.  flextable and pkgdown
+
+There are hundreds of functions in each package to help you organize and format 
+tables. Often to a fairly obnoxious level.
+
+To get your tables from {gtsummary} ready for formatting, you need a conversion function.
+
+### Formatting with {gt}
+
+For gt tables, this is `as_gt()`. Once this is done, you can use any {gt) 
+functions to format your table. Using the gt website for guidance, add some more formatting 
+below. Try bolding, text colors, and cell colors. It may be helpful to search 
+(Cmd-F) for `tab_style()` on the gt website.
+Take a few minutes to style your table to something elegant, or
+to something that looks like peak `MySpace web page`.
+
+```{r}
+trial %>% 
+  select(trt, age, stage, grade) %>% 
+  tbl_summary() %>% 
+  as_gt() %>% 
+   opt_table_font(
+    font = list(
+      google_font(name = "Atkinson Hyperlegible Next")
+    )
+  )
+```
+
+## A Fancier Version for gt
+
+Here is a vertigo-inducing example of what you can do with the
+{gt} package. Self-control is important with table formatting.
+
+Take some time to explore the (thousands of) options in the {gt}
+package - you will likely be able to find most anything you could
+want in terms of table formatting, including conditional formatting,
+graphics and trendline
+plots (aka 'sparklines') in table cells.
+Take a look at the code below and try to decipher which functions produce which
+formatting in the resulting table.
+
+```{r}
+trial %>% 
+  tbl_summary(by = trt,
+              include =  c(age, stage, grade)) %>% 
+  as_gt() %>% 
+  opt_table_font(
+    font = list(google_font(name = "Orbitron"))) |> 
+  tab_header(title = md("**Table 1:  Tumor Characteristics by Treatment Arm**"),
+                        subtitle  = "Trial was Conducted in TRON World") |> 
+  tab_style(style = list(
+    cell_text(weight = "bold", color = "white"),
+    cell_fill(color = "blue"),
+    cell_text(size = 14)),
+    locations = cells_body(rows = 1:2)) |>
+  tab_style(style = list(
+    cell_text(weight = "bold", color = "white"),
+    cell_fill(color = "red"),
+    cell_text(size = 14)),
+    locations = cells_body(rows = 3:7)) |> 
+  tab_style(style = list(
+    cell_text(weight = "bold", color = "blue"),
+    cell_fill(color = "pink"),
+    cell_text(size = 14)),
+    locations = cells_body(rows = 8:11)) |> 
+  tab_source_note(
+    source_note = "Source:  TRON World") 
+```
+
+
+### The {flextable} package
+
+For gtsummary output, the conversion function is `as_flex_table()`. Then you can use any {flextable) functions to format. Using the [flextable](https://davidgohel.github.io/flextable/reference/index.html) website, add some more formatting below. Try text and cell colors. It may be helpful to scroll down to the 'Change Visual Properties' header or to apply some of the default themes.
+
+Take some time to explore the (hundreds of) options in the {flextable}
+package - you will likely be able to find most anything you could
+reasonably want in terms of table formatting for publication.
+
+```{r}
+trial %>% 
+  select(trt, age, stage, grade) %>% 
+  tbl_summary() %>% 
+  as_flex_table() %>% 
+  font(fontname = "Brush Script MT",
+       part = "header") %>% 
+  fontsize(size = 18, part = "header")
+```
+
+## A Fancier Version for Flextable
+
+Flextable enables you to use a variety of formatting options and to place the 
+resulting tables into microsoft office documents like Word and Powerpoint using the 
+package {officer}. The several packages (officer, officedown, flextable, 
+mschart, rvg) used to make MS Office tables and plots
+by this group based in France is often referred to as the `Officeverse`.
+There is an entire [book](https://ardata-fr.github.io/flextable-book/) on how tuo
+use flextable. The Officeverse book can
+be found [here](https://ardata-fr.github.io/officeverse/)
+
+Below is an example of some more complex formatting of a basic table one from
+this fake chemotherapy trial.
+While flextable can be used with the pipe operator, in this example we
+are adding conditional formatting and styling to the table in a more 
+step-by-step manner updating the flextable (my_ft) object at each step.
+Conditional formatting (also available in {gt}) is helpful for highlighting
+interesting results for the reader
+
+```{r}
+ myft <- trial %>% 
+  select(trt,age, grade, response) %>% 
+  tbl_summary() %>% 
+  gtsummary::as_flex_table() # builds table, converts to flextable
+big_b <- fp_border_default(color = "black", width = 2) # adds black border
+myft <- italic(myft, j = 1) # makes first column italic
+# row numbers are referred to by i, columns by j
+myft <- bg(myft, bg = "#C90000", part = "header") # red background for header
+myft <- fontsize(myft, part = "all", size = 14) #fontsize for all
+myft <- color(myft, color = "white", part = "header") #white text header
+myft <- border_outer(myft, big_b, part = "header") # add border for header
+myft <- border_outer(myft, big_b, part = "body") # Add border for body
+myft <- bold(myft, i = ~ label == "Chemotherapy Treatment", 
+             j = 1, bold = TRUE) # change label for Rx
+myft <- color(myft, i = ~ label == "Drug A", # color drug label text by row
+              color = "blue")
+myft <- color(myft, i = ~ label == "Drug B", 
+              color = "maroon")
+myft <- bold(myft, i = ~ label == "I"| label == "II", 
+             j = ~ stat_0, bold = TRUE) # highlight interesting results
+myft <- color(myft, i = ~ label == "I"| label == "II", 
+             j = ~ stat_0, color = "red")
+myft <- autofit(myft) #autoformat column height and width
+myft  # print out the table in the viewer
+
+```
+

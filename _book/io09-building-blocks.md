@@ -9,7 +9,7 @@ editor_options:
 
 
 
-# The Building Blocks of R: data types, data structures, functions, and packages.
+# The Building Blocks of R: data types, data structures, functions, and packages
 
 In this chapter, we will learn about some critical building blocks in R
 that can lead to a lot of frustration if you do not understand these
@@ -75,9 +75,9 @@ the green arrow at the top right).
 
 
 ``` r
-# you can test vectors with typeof 
+# you can test vectors with typeof
 
-typeof(c(1.7,5.3,9.2)) 
+typeof(c(1.7, 5.3, 9.2))
 ```
 
 ```
@@ -85,7 +85,7 @@ typeof(c(1.7,5.3,9.2))
 ```
 
 ``` r
-typeof(c('hypertension', "diabetes", "atherosclerosis"))
+typeof(c("hypertension", "diabetes", "atherosclerosis"))
 ```
 
 ```
@@ -134,7 +134,7 @@ the code (click on the green arrow at the top right).
 ``` r
 # you can convert vectors with as.x
 
-numeric <- (c(1.7,5.3,9.2)) 
+numeric <- (c(1.7, 5.3, 9.2))
 newvec1 <- as.character(numeric)
 newvec1
 ```
@@ -262,7 +262,7 @@ structures, and these include
 
     
     ``` r
-    starwars %>% select(name, films) 
+    starwars %>% select(name, films)
     ```
     
     ```
@@ -346,8 +346,8 @@ structures, and these include
     
     ``` r
     # gives you a hidden list of films
-    starwars %>% 
-      select(name, films) %>% 
+    starwars %>%
+      select(name, films) %>%
       unnest(cols = c(films))
     ```
     
@@ -377,7 +377,7 @@ structures, and these include
 
     
     ``` r
-    t_test_output <- list (
+    t_test_output <- list(
       "Welch Two Sample t-test",
       c("data: height by gender"),
       data.frame(t = -1.5596, df = 37.315, p = 0.1273)
@@ -419,7 +419,7 @@ structures, and these include
 
     
     ``` r
-    pat_id <- c(1,1,2,2, 3,3)
+    pat_id <- c(1, 1, 2, 2, 3, 3)
     date <- c(lubridate::ymd("2020-11-07", "2020-12-03", "2020-12-02", "2020-12-15", "2020-11-09", "2020-12-02"))
     crp <- c(5.1, 3.2, 7.6, 4.1, 4.3, 1.7)
     new_df <- tibble(pat_id, date, crp)
@@ -543,12 +543,12 @@ greater than key) to assign data to an object.
 
 ``` r
 # example 1
-tall <- starwars %>% 
+tall <- starwars %>%
   filter(height > 200)
 
 # example 2
-starwars %>% 
-  filter(height <70) ->
+starwars %>%
+  filter(height < 70) ->
 short
 ```
 
@@ -1060,7 +1060,7 @@ sd
 function (x, na.rm = FALSE) 
 sqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x), 
     na.rm = na.rm))
-<bytecode: 0x10eac3a78>
+<bytecode: 0x140afd0b0>
 <environment: namespace:stats>
 ```
 :::

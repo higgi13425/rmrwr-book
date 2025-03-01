@@ -1,0 +1,203 @@
+---
+title: "Risk Pictograms in {ggplot2}"
+author: "Peter Higgins"
+date: "1/22/2025"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# install.packages('hrbrthemes')
+# install.packages('emojifont')
+# remotes::install_github("hrbrmstr/waffle")
+library(waffle)
+library(tidyverse)
+library(hrbrthemes)
+library(emojifont)
+library(webexercises)
+library(gt)
+load.fontawesome()
+```
+
+# Creating Risk Pictograms in {ggplot2}
+
+::: tip
+This chapter is part of the **Data Visualization** pathway. <br> Packages needed for this chapter include {waffle}, {tidyverse}, {hrbrthemes}, {gt}, and {emojifont}. If you don't have these packages installed, you can install them by copying the code chunk below and running it in your local RStudio session.
+
+```{r eval=FALSE}
+install.packages('hrbrthemes')
+install.packages('emojifont')
+install.packages('gt')
+install.packages('remotes')
+remotes::install_github("hrbrmstr/waffle")
+```
+:::
+
+## Why Risk Pictograms?
+
+Patients are often innumerate, and have trouble understanding risk, percentages, and fractions. While you may be able to reel off these numbers, patients will have trouble understanding and comparing these relative risks and benefits. These can be better explained with Risk Pictograms.
+
+Today we will walk through how to make Risk Pictograms in R.
+
+## Loading Libraries
+
+You need to load the key libraries for this project. Copy and run the code chunk below to load these libraries into your local Rstudio session:
+
+```{r eval=FALSE}
+library(waffle)
+library(tidyverse)
+library(hrbrthemes)
+library(emojifont)
+library(gt)
+load.fontawesome()
+```
+
+## Risk of Lymphoma
+
+We will start by presenting the risk of lymphoma in patients with IBD, with or without taking a thiopurine medication, which will increase their risk. Note that these are very rough estimates for the sake of examples. First, we will read in our data estimates into a dataframe called `df`. Run the code chunk below to create this dataframe, which presents risk data per 1000 patient-years:
+
+```{r}
+df <- tibble(
+    group = c("IBD", "IBD", "IBD + Thiopurine", "IBD + Thiopurine"), 
+        outcomes = c("Good", "Lymphoma", "Good", "Lymphoma"), 
+     counts = c(999, 1, 997, 3))
+
+df |> 
+  gt()
+```
+
+Now let's build the pictogram. We will use the `geom_pictogram` function from the {waffle} package. We will use the female icon for persons, and red for cases of lymphoma (vs. gray60 for a good outcome). Experiment with other colors to produce a good contrast (white might work with the standard theme with a gray background) and make the lymphoma cases stand out. We will remove the axis titles, labels, and ticks, with a black and white theme.
+
+```{r}
+df %>% ggplot(aes(label = outcomes)) +
+    geom_pictogram(
+        n_rows = 10, aes(color = outcomes, values = counts),
+        family = "fontawesome-webfont",
+        flip = TRUE
+    ) +
+    scale_label_pictogram(
+        name = "Case",
+        values = c("female"),
+        breaks = c("IBD", "IBD + Thiopurine"),
+        labels = c("Good", "Lymphoma")
+    ) +
+    scale_color_manual(
+        name = "Case",
+        values = c("Good" = "gray80", "Lymphoma" = "red"),
+        breaks = c("IBD", "IBD + Thiopurine"),
+        labels = c("Good", "Lymphoma")
+    ) +
+    facet_grid(~group) + 
+      theme_bw(base_size = 20) +
+   theme(axis.title =element_blank(),
+        axis.text =element_blank(),
+        axis.ticks =element_blank()) +
+  labs(title = "Risk of Lymphoma in IBD without or with Thiopurine Therapy",
+       subtitle = "Red = Cases per Person-Year, Denominator is 1000 Person-Years")
+```
+
+## Risk of Surgery in CD - Your Turn
+
+Now we will try to present the risk of surgery in Crohn's Disease, with or without anti-TNF therapy. Note that these are very rough estimates. Copy the code chunk below to your local RStudio session, and read in the data with the code chunk below.
+
+```{r}
+df <- tibble(
+    group = c("Crohn's", "Crohn's", "Crohn's + Anti-TNF", "Crohn's + Anti-TNF"), 
+        outcomes = c("Good", "Surgery in Lifetime", "Good", "Surgery in Lifetime"), 
+     counts = c(35, 65, 65, 35))
+
+df |> 
+  gt()
+```
+
+Using the Risk Pictogram example above, try to create one for the risk of surgery in Crohn's Disease, with or without anti-TNF therapy. Use the 'male' icon for persons, and red for cases of surgery (vs. gray60 for a good outcome). We will remove the axis titles, labels, and ticks, with a black and white theme and a base font size of 18.
+
+You can select different icons from the fontawesome web icons at this [website](https://fontawesome.com/search?ic=free). Try searching for icons for 'medical', 'scissors', 'health', or 'doctor' to find an appropriate icon for other health outcomes.
+
+Give this a try in your local RStudio environment. If you need help, the solution is below.
+
+`r hide("Solution")`
+
+```{r}
+df %>% ggplot(aes(label = outcomes)) +
+    geom_pictogram(
+        n_rows = 10, aes(color = outcomes, values = counts),
+        family = "fontawesome-webfont",
+        flip = TRUE
+    ) +
+    scale_label_pictogram(
+        name = "Case",
+        values = c("male"), #icon - could be male
+        breaks = c("Crohn's", "Crohn's + TNF"),
+        labels = c("Good", "Surgery")
+    ) +
+    scale_color_manual(
+        name = "Case",
+        values = c("Good" = "gray60", "Surgery in Lifetime" = "red"),
+        breaks = c("Crohn's", "Crohn's + TNF"),
+        labels = c("Good", "Surgery in Lifetime")
+    ) +
+    facet_grid(~group) + 
+   coord_equal() +
+  theme_bw( base_size = 18) +
+   theme(axis.title =element_blank(),
+        axis.text =element_blank(),
+        axis.ticks =element_blank()) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  labs(title = "Risk of Surgery in Crohn's without or with anti-TNF Therapy",
+       subtitle = "Red: Surgery Required at Least Once in Lifetime, \nDenominator is 100 Persons")
+```
+
+`r unhide()`
+
+## Risk of Hepatocellular Carcinoma with Hepatitis C Virus and Alcoholism - Your Turn
+
+Now we will try to present the risk of hepatocellular carcinoma in patients with no liver problems, or Hepatitis C Virus, with or without alcoholism. Copy the code chunk below to your local RStudio session, and read in the data with the code chunk below. Note that these are very rough estimates.
+
+```{r}
+df <- tibble(
+    group = c("No Liver Problems", "No Liver Problems", "Hepatitis C", "Hepatitis C", "Hepatitis C + Alcoholism", "Hepatitis C + Alcoholism"), 
+        outcomes = c("Good", "HCC", "Good", "HCC", "Good", "HCC"), 
+     counts = c(99, 1, 96, 4, 80, 20)) |> 
+  mutate(group = factor(group, levels = c("No Liver Problems", "Hepatitis C", "Hepatitis C + Alcoholism")))
+
+df |>
+  gt()
+```
+
+Using the Risk Pictogram examples above, try to create one for the risk of hepatocellular carcinoma in patients with no liver problems, or Hepatitis C Virus, with or without alcoholism. Use the 'hospital' icon for persons, and red for cases of HCC (vs. gray60 for a good outcome). We will remove the axis titles, labels, and ticks, with a black and white theme and a base font size of 18.
+
+Give this a try in your local RStudio environment. If you need help, the solution is below.
+
+`r hide("Solution")`
+
+```{r}
+df %>% ggplot(aes(label = outcomes)) +
+    geom_pictogram(
+        n_rows = 10, aes(color = outcomes, values = counts),
+        family = "fontawesome-webfont",
+        flip = TRUE
+    ) +
+    scale_label_pictogram(
+        name = "Case",
+        values = c("hospital"), #icon - could be hospital
+        labels = c("Good", "HCC")
+    ) +
+    scale_color_manual(
+        name = "Case",
+        values = c("Good" = "gray60", "HCC" = "red"),
+
+        labels = c("Good", "HCC")
+    ) +
+    facet_grid(~group) + 
+   coord_equal() +
+  theme_bw( base_size = 14) +
+   theme(axis.title =element_blank(),
+        axis.text =element_blank(),
+        axis.ticks =element_blank()) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
+  labs(title = "Risk of Hepatocellular Carcinoma in Patients with No Liver Problems, \nHepatitis C, or Hepatitis C + Alcoholism",
+       subtitle = "Red: Cases per 1000 Person-Years")
+```
+
+`r unhide()`
