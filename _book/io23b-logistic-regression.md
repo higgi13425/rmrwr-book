@@ -92,17 +92,12 @@ summary(prostate_model)
 ##     data = .)
 ## 
 ## Coefficients:
-##             Estimate Std. Error z value            Pr(>|z|)
-## (Intercept)  -3.4485     0.4347  -7.932 0.00000000000000215
-## fam_hx       -0.8983     0.4785  -1.877              0.0605
-## b_gs          1.1839     0.2193   5.399 0.00000006698872947
-##                
-## (Intercept) ***
-## fam_hx      .  
-## b_gs        ***
+##             Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)  -3.4485     0.4347  -7.932 2.15e-15 ***
+## fam_hx       -0.8983     0.4785  -1.877   0.0605 .  
+## b_gs          1.1839     0.2193   5.399 6.70e-08 ***
 ## ---
-## Signif. codes:  
-## 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## (Dispersion parameter for binomial family taken to be 1)
 ## 
@@ -200,10 +195,9 @@ prostate %>%
 
 ```
 ## # A tibble: 1 × 8
-##   null.deviance df.null logLik   AIC   BIC deviance
-##           <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>
-## 1          289.     315  -142.  288.  296.     284.
-## # ℹ 2 more variables: df.residual <int>, nobs <int>
+##   null.deviance df.null logLik   AIC   BIC deviance df.residual  nobs
+##           <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>       <int> <int>
+## 1          289.     315  -142.  288.  296.     284.         314   316
 ```
 
 ``` r
@@ -216,10 +210,9 @@ prostate %>%
 
 ```
 ## # A tibble: 1 × 8
-##   null.deviance df.null logLik   AIC   BIC deviance
-##           <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>
-## 1          282.     313  -123.  253.  264.     247.
-## # ℹ 2 more variables: df.residual <int>, nobs <int>
+##   null.deviance df.null logLik   AIC   BIC deviance df.residual  nobs
+##           <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>       <int> <int>
+## 1          282.     313  -123.  253.  264.     247.         311   314
 ```
 
 You can see that adding the baseline Gleason score improves the model, as it lowers both AIC and BIC. This is not surprising, as it was a significant predictor.
@@ -237,21 +230,20 @@ augment(model)
 
 ```
 ## # A tibble: 314 × 10
-##    .rownames recurrence fam_hx  b_gs .fitted .resid    .hat
-##    <chr>          <dbl>  <dbl> <dbl>   <dbl>  <dbl>   <dbl>
-##  1 1                  1      0     3   0.103  1.13  0.0244 
-##  2 2                  1      0     2  -1.08   1.66  0.00607
-##  3 3                  0      0     3   0.103 -1.22  0.0244 
-##  4 4                  0      0     1  -2.26  -0.445 0.00532
-##  5 5                  0      0     2  -1.08  -0.764 0.00607
-##  6 6                  0      0     1  -2.26  -0.445 0.00532
-##  7 7                  0      0     1  -2.26  -0.445 0.00532
-##  8 8                  1      0     1  -2.26   2.17  0.00532
-##  9 9                  0      0     1  -2.26  -0.445 0.00532
-## 10 10                 0      0     2  -1.08  -0.764 0.00607
+##    .rownames recurrence fam_hx  b_gs .fitted .resid    .hat .sigma  .cooksd
+##    <chr>          <dbl>  <dbl> <dbl>   <dbl>  <dbl>   <dbl>  <dbl>    <dbl>
+##  1 1                  1      0     3   0.103  1.13  0.0244   0.890 0.00771 
+##  2 2                  1      0     2  -1.08   1.66  0.00607  0.887 0.00604 
+##  3 3                  0      0     3   0.103 -1.22  0.0244   0.890 0.00948 
+##  4 4                  0      0     1  -2.26  -0.445 0.00532  0.892 0.000186
+##  5 5                  0      0     2  -1.08  -0.764 0.00607  0.891 0.000695
+##  6 6                  0      0     1  -2.26  -0.445 0.00532  0.892 0.000186
+##  7 7                  0      0     1  -2.26  -0.445 0.00532  0.892 0.000186
+##  8 8                  1      0     1  -2.26   2.17  0.00532  0.884 0.0173  
+##  9 9                  0      0     1  -2.26  -0.445 0.00532  0.892 0.000186
+## 10 10                 0      0     2  -1.08  -0.764 0.00607  0.891 0.000695
 ## # ℹ 304 more rows
-## # ℹ 3 more variables: .sigma <dbl>, .cooksd <dbl>,
-## #   .std.resid <dbl>
+## # ℹ 1 more variable: .std.resid <dbl>
 ```
 
 Note that the fitted data are both positive and negative, with a range within +/- 4. This should tell you that they are in logit (log-odds) units (ln(p/1-p)), in which 0 is a 50% probability of either outcome.
@@ -325,10 +317,8 @@ predict(model) %>%
 ```
 
 ```
-##          1          2          3          4          5 
-##  0.1032671 -1.0806590  0.1032671 -2.2645850 -1.0806590 
-##          6 
-## -2.2645850
+##          1          2          3          4          5          6 
+##  0.1032671 -1.0806590  0.1032671 -2.2645850 -1.0806590 -2.2645850
 ```
 
 ``` r
@@ -344,10 +334,8 @@ predict(model, type = "response") %>%
 ```
 
 ```
-##          1          2          3          4          5 
-## 0.52579385 0.25338133 0.52579385 0.09409879 0.25338133 
-##          6 
-## 0.09409879
+##          1          2          3          4          5          6 
+## 0.52579385 0.25338133 0.52579385 0.09409879 0.25338133 0.09409879
 ```
 
 ``` r
@@ -368,8 +356,8 @@ mean(predicted.classes == prostate$recurrence)
 ```
 
 ```
-## Warning in predicted.classes == prostate$recurrence: longer
-## object length is not a multiple of shorter object length
+## Warning in predicted.classes == prostate$recurrence: longer object length is
+## not a multiple of shorter object length
 ```
 
 ```
@@ -388,10 +376,10 @@ predict(model, newdata = slice_sample(prostate, prop = 0.03), type = "response")
 ```
 
 ```
-##          1          2          3          4          5 
-## 0.25338133 0.25338133 0.04058836 0.52579385 0.09409879 
-##          6          7          8          9 
-## 0.09409879 0.04058836 0.09409879 0.09409879
+##          1          2          3          4          5          6          7 
+## 0.09409879 0.52579385 0.12143477 0.04058836 0.09409879 0.09409879 0.09409879 
+##          8          9 
+## 0.04058836 0.25338133
 ```
 
 Let’s see how this works with another dataset, from which we will use predictors to classify diabetes cases. We will start by loading the data into dm_data, and building an “all predictors” model, by specifying the formula predictors as “.” - this means to use all other variables (except the outcome variable) as predictors. Look at the model output for problems.
@@ -414,12 +402,10 @@ dm_mod
 ## Call:  glm(formula = diabetes ~ ., family = "binomial", data = dm_data)
 ## 
 ## Coefficients:
-## (Intercept)     pregnant      glucose     pressure  
-## -10.0407392    0.0821594    0.0382695   -0.0014203  
-##     triceps      insulin         mass     pedigree  
-##   0.0112214   -0.0008253    0.0705376    1.1409086  
-##         age  
-##   0.0339516  
+## (Intercept)     pregnant      glucose     pressure      triceps      insulin  
+##  -1.004e+01    8.216e-02    3.827e-02   -1.420e-03    1.122e-02   -8.253e-04  
+##        mass     pedigree          age  
+##   7.054e-02    1.141e+00    3.395e-02  
 ## 
 ## Degrees of Freedom: 391 Total (i.e. Null);  383 Residual
 ##   (376 observations deleted due to missingness)
@@ -452,10 +438,8 @@ dm_mod_miss
 ##     age, family = "binomial", data = dm_data)
 ## 
 ## Coefficients:
-## (Intercept)      glucose     pressure         mass  
-##   -9.014890     0.034567    -0.007433     0.088641  
-##    pedigree          age  
-##    0.923290     0.034523  
+## (Intercept)      glucose     pressure         mass     pedigree          age  
+##   -9.014890     0.034567    -0.007433     0.088641     0.923290     0.034523  
 ## 
 ## Degrees of Freedom: 723 Total (i.e. Null);  718 Residual
 ##   (44 observations deleted due to missingness)
@@ -479,29 +463,18 @@ summary(dm_mod)
 ## glm(formula = diabetes ~ ., family = "binomial", data = dm_data)
 ## 
 ## Coefficients:
-##                Estimate  Std. Error z value
-## (Intercept) -10.0407392   1.2176743  -8.246
-## pregnant      0.0821594   0.0554255   1.482
-## glucose       0.0382695   0.0057677   6.635
-## pressure     -0.0014203   0.0118334  -0.120
-## triceps       0.0112214   0.0170837   0.657
-## insulin      -0.0008253   0.0013064  -0.632
-## mass          0.0705376   0.0273421   2.580
-## pedigree      1.1409086   0.4274337   2.669
-## age           0.0339516   0.0183817   1.847
-##                         Pr(>|z|)    
-## (Intercept) < 0.0000000000000002 ***
-## pregnant                 0.13825    
-## glucose          0.0000000000324 ***
-## pressure                 0.90446    
-## triceps                  0.51128    
-## insulin                  0.52757    
-## mass                     0.00989 ** 
-## pedigree                 0.00760 ** 
-## age                      0.06474 .  
+##               Estimate Std. Error z value Pr(>|z|)    
+## (Intercept) -1.004e+01  1.218e+00  -8.246  < 2e-16 ***
+## pregnant     8.216e-02  5.543e-02   1.482  0.13825    
+## glucose      3.827e-02  5.768e-03   6.635 3.24e-11 ***
+## pressure    -1.420e-03  1.183e-02  -0.120  0.90446    
+## triceps      1.122e-02  1.708e-02   0.657  0.51128    
+## insulin     -8.253e-04  1.306e-03  -0.632  0.52757    
+## mass         7.054e-02  2.734e-02   2.580  0.00989 ** 
+## pedigree     1.141e+00  4.274e-01   2.669  0.00760 ** 
+## age          3.395e-02  1.838e-02   1.847  0.06474 .  
 ## ---
-## Signif. codes:  
-## 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## (Dispersion parameter for binomial family taken to be 1)
 ## 
@@ -550,10 +523,9 @@ glance(dm_mod)
 
 ```
 ## # A tibble: 1 × 8
-##   null.deviance df.null logLik   AIC   BIC deviance
-##           <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>
-## 1          498.     391  -172.  362.  398.     344.
-## # ℹ 2 more variables: df.residual <int>, nobs <int>
+##   null.deviance df.null logLik   AIC   BIC deviance df.residual  nobs
+##           <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>       <int> <int>
+## 1          498.     391  -172.  362.  398.     344.         383   392
 ```
 
 OK, let’s make some predictions, and convert these to percent probability (0-100 range).
@@ -570,23 +542,21 @@ dm_data_plus
 
 ```
 ## # A tibble: 392 × 17
-##    diabetes .fitted pct_prob .rownames pregnant glucose
-##    <fct>      <dbl>    <dbl> <chr>        <dbl>   <dbl>
-##  1 pos         5.23     99.5 446              0     180
-##  2 neg         3.85     97.9 229              4     197
-##  3 pos         3.61     97.4 547              5     187
-##  4 pos         3.37     96.7 207              8     196
-##  5 pos         3.27     96.3 160             17     163
-##  6 neg         3.18     96.0 488              0     173
-##  7 pos         3.02     95.3 44               9     171
-##  8 pos         2.86     94.6 371              3     173
-##  9 neg         2.58     93.0 745             13     153
-## 10 pos         2.50     92.4 260             11     155
+##    diabetes .fitted pct_prob .rownames pregnant glucose pressure triceps insulin
+##    <fct>      <dbl>    <dbl> <chr>        <dbl>   <dbl>    <dbl>   <dbl>   <dbl>
+##  1 pos         5.23     99.5 446              0     180       78      63      14
+##  2 neg         3.85     97.9 229              4     197       70      39     744
+##  3 pos         3.61     97.4 547              5     187       76      27     207
+##  4 pos         3.37     96.7 207              8     196       76      29     280
+##  5 pos         3.27     96.3 160             17     163       72      41     114
+##  6 neg         3.18     96.0 488              0     173       78      32     265
+##  7 pos         3.02     95.3 44               9     171      110      24     240
+##  8 pos         2.86     94.6 371              3     173       82      48     465
+##  9 neg         2.58     93.0 745             13     153       88      37     140
+## 10 pos         2.50     92.4 260             11     155       76      28     150
 ## # ℹ 382 more rows
-## # ℹ 11 more variables: pressure <dbl>, triceps <dbl>,
-## #   insulin <dbl>, mass <dbl>, pedigree <dbl>, age <dbl>,
-## #   .resid <dbl>, .hat <dbl>, .sigma <dbl>, .cooksd <dbl>,
-## #   .std.resid <dbl>
+## # ℹ 8 more variables: mass <dbl>, pedigree <dbl>, age <dbl>, .resid <dbl>,
+## #   .hat <dbl>, .sigma <dbl>, .cooksd <dbl>, .std.resid <dbl>
 ```
 
 ``` r
@@ -647,18 +617,15 @@ cp
 
 ```
 ## # A tibble: 1 × 16
-##   direction optimal_cutpoint method          sum_sens_spec
-##   <chr>                <dbl> <chr>                   <dbl>
-## 1 >=                 28.5839 maximize_metric       1.57504
-##        acc sensitivity specificity      AUC pos_class
-##      <dbl>       <dbl>       <dbl>    <dbl> <chr>    
-## 1 0.772959    0.830769    0.744275 0.862361 pos      
-##   neg_class prevalence outcome  predictor data              
-##   <fct>          <dbl> <chr>    <chr>     <list>            
-## 1 neg         0.331633 diabetes pct_prob  <tibble [392 × 2]>
-##   roc_curve             boot 
-##   <list>                <lgl>
-## 1 <rc_ctpnt [393 × 10]> NA
+##   direction optimal_cutpoint method          sum_sens_spec      acc sensitivity
+##   <chr>                <dbl> <chr>                   <dbl>    <dbl>       <dbl>
+## 1 >=                 28.5839 maximize_metric       1.57504 0.772959    0.830769
+##   specificity      AUC pos_class neg_class prevalence outcome  predictor
+##         <dbl>    <dbl> <chr>     <fct>          <dbl> <chr>    <chr>    
+## 1    0.744275 0.862361 pos       neg         0.331633 diabetes pct_prob 
+##   data               roc_curve             boot 
+##   <list>             <list>                <lgl>
+## 1 <tibble [392 × 2]> <rc_ctpnt [393 × 10]> NA
 ```
 
 
@@ -675,20 +642,18 @@ summary(cp)
 ##     AUC   n n_pos n_neg
 ##  0.8624 392   130   262
 ## 
-##  optimal_cutpoint sum_sens_spec   acc sensitivity
-##           28.5839         1.575 0.773      0.8308
-##  specificity  tp fn fp  tn
-##       0.7443 108 22 67 195
+##  optimal_cutpoint sum_sens_spec   acc sensitivity specificity  tp fn fp  tn
+##           28.5839         1.575 0.773      0.8308      0.7443 108 22 67 195
 ## 
 ## Predictor summary: 
-##     Data      Min.        5%   1st Qu.   Median     Mean
-##  Overall 0.8690932  3.071251  8.953085 22.94296 33.16327
-##      neg 0.8690932  2.674187  6.392249 13.48437 21.10577
-##      pos 3.7635587 14.863216 34.854283 62.18036 57.46376
-##   3rd Qu.      95%     Max.       SD NAs
-##  53.11714 88.92870 99.46861 28.45645   0
-##  28.96611 69.31582 97.91551 20.49784   0
-##  80.93884 92.17256 99.46861 26.71998   0
+##     Data      Min.        5%   1st Qu.   Median     Mean  3rd Qu.      95%
+##  Overall 0.8690932  3.071251  8.953085 22.94296 33.16327 53.11714 88.92870
+##      neg 0.8690932  2.674187  6.392249 13.48437 21.10577 28.96611 69.31582
+##      pos 3.7635587 14.863216 34.854283 62.18036 57.46376 80.93884 92.17256
+##      Max.       SD NAs
+##  99.46861 28.45645   0
+##  97.91551 20.49784   0
+##  99.46861 26.71998   0
 ```
 
 
@@ -753,13 +718,13 @@ performance::model_performance(dm_mod)
 ```
 ## # Indices of model performance
 ## 
-## AIC     |    AICc |     BIC | Tjur's R2 |  RMSE | Sigma
-## -------------------------------------------------------
-## 362.021 | 362.492 | 397.763 |     0.364 | 0.376 | 1.000
+## AIC     |    AICc |     BIC | Tjur's R2 |  RMSE | Sigma | Log_loss | Score_log
+## ------------------------------------------------------------------------------
+## 362.021 | 362.492 | 397.763 |     0.364 | 0.376 | 1.000 |    0.439 |   -74.015
 ## 
-## AIC     | Log_loss | Score_log | Score_spherical |   PCP
-## --------------------------------------------------------
-## 362.021 |    0.439 |   -74.015 |           0.009 | 0.718
+## AIC     | Score_spherical |   PCP
+## ---------------------------------
+## 362.021 |           0.009 | 0.718
 ```
 
 
@@ -788,10 +753,9 @@ glance(dm_mod2)
 
 ```
 ## # A tibble: 1 × 8
-##   null.deviance df.null logLik   AIC   BIC deviance
-##           <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>
-## 1          975.     751  -365.  738.  756.     730.
-## # ℹ 2 more variables: df.residual <int>, nobs <int>
+##   null.deviance df.null logLik   AIC   BIC deviance df.residual  nobs
+##           <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>       <int> <int>
+## 1          975.     751  -365.  738.  756.     730.         748   752
 ```
 
 
@@ -811,13 +775,10 @@ summary(dm_mod3)
 ## glm(formula = diabetes ~ 1, family = "binomial", data = dm_data)
 ## 
 ## Coefficients:
-##             Estimate Std. Error z value            Pr(>|z|)
-## (Intercept) -0.62362    0.07571  -8.237 <0.0000000000000002
-##                
-## (Intercept) ***
+##             Estimate Std. Error z value Pr(>|z|)    
+## (Intercept) -0.62362    0.07571  -8.237   <2e-16 ***
 ## ---
-## Signif. codes:  
-## 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## (Dispersion parameter for binomial family taken to be 1)
 ## 

@@ -220,46 +220,36 @@ breast.fft$cues$stats$train
 ```
 
 ```
-##              cue   class threshold direction   n  hi fa mi
-## 1      thickness integer         4         > 342 108 46 12
-## 2  cellsize.unif integer         2         > 342 118 18  2
-## 3 cellshape.unif integer         2         > 342 117 21  3
-## 4       adhesion integer         1         > 342 104 39 16
-## 5     epithelial integer         2         > 342 110 23 10
-## 6    nuclei.bare numeric         1         > 342 114 25  6
-## 7      chromatin integer         3         > 342  98  8 22
-## 8       nucleoli integer         2         > 342  98 11 22
-## 9        mitoses integer         1         > 342  51  7 69
-##    cr      sens      spec       ppv       npv       acc
-## 1 176 0.9000000 0.7927928 0.7012987 0.9361702 0.8304094
-## 2 204 0.9833333 0.9189189 0.8676471 0.9902913 0.9415205
-## 3 201 0.9750000 0.9054054 0.8478261 0.9852941 0.9298246
-## 4 183 0.8666667 0.8243243 0.7272727 0.9195980 0.8391813
-## 5 199 0.9166667 0.8963964 0.8270677 0.9521531 0.9035088
-## 6 197 0.9500000 0.8873874 0.8201439 0.9704433 0.9093567
-## 7 214 0.8166667 0.9639640 0.9245283 0.9067797 0.9122807
-## 8 211 0.8166667 0.9504505 0.8990826 0.9055794 0.9035088
-## 9 215 0.4250000 0.9684685 0.8793103 0.7570423 0.7777778
-##        bacc      wacc   dprime    cost_dec        cost
-## 1 0.8463964 0.8463964 2.086002 -0.16959064 -0.16959064
-## 2 0.9511261 0.9511261 3.473574 -0.05847953 -0.05847953
-## 3 0.9402027 0.9402027 3.234896 -0.07017544 -0.07017544
-## 4 0.8454955 0.8454955 2.032886 -0.16081871 -0.16081871
-## 5 0.9065315 0.9065315 2.628155 -0.09649123 -0.09649123
-## 6 0.9186937 0.9186937 2.835223 -0.09064327 -0.09064327
-## 7 0.8903153 0.8903153 2.683437 -0.08771930 -0.08771930
-## 8 0.8835586 0.8835586 2.537226 -0.09649123 -0.09649123
-## 9 0.6967342 0.6967342 1.655776 -0.22222222 -0.22222222
-##   cost_cue
-## 1        0
-## 2        0
-## 3        0
-## 4        0
-## 5        0
-## 6        0
-## 7        0
-## 8        0
-## 9        0
+##              cue   class threshold direction   n  hi fa mi  cr      sens
+## 1      thickness integer         4         > 342 108 46 12 176 0.9000000
+## 2  cellsize.unif integer         2         > 342 118 18  2 204 0.9833333
+## 3 cellshape.unif integer         2         > 342 117 21  3 201 0.9750000
+## 4       adhesion integer         1         > 342 104 39 16 183 0.8666667
+## 5     epithelial integer         2         > 342 110 23 10 199 0.9166667
+## 6    nuclei.bare numeric         1         > 342 114 25  6 197 0.9500000
+## 7      chromatin integer         3         > 342  98  8 22 214 0.8166667
+## 8       nucleoli integer         2         > 342  98 11 22 211 0.8166667
+## 9        mitoses integer         1         > 342  51  7 69 215 0.4250000
+##        spec       ppv       npv       acc      bacc      wacc   dprime
+## 1 0.7927928 0.7012987 0.9361702 0.8304094 0.8463964 0.8463964 2.086002
+## 2 0.9189189 0.8676471 0.9902913 0.9415205 0.9511261 0.9511261 3.473574
+## 3 0.9054054 0.8478261 0.9852941 0.9298246 0.9402027 0.9402027 3.234896
+## 4 0.8243243 0.7272727 0.9195980 0.8391813 0.8454955 0.8454955 2.032886
+## 5 0.8963964 0.8270677 0.9521531 0.9035088 0.9065315 0.9065315 2.628155
+## 6 0.8873874 0.8201439 0.9704433 0.9093567 0.9186937 0.9186937 2.835223
+## 7 0.9639640 0.9245283 0.9067797 0.9122807 0.8903153 0.8903153 2.683437
+## 8 0.9504505 0.8990826 0.9055794 0.9035088 0.8835586 0.8835586 2.537226
+## 9 0.9684685 0.8793103 0.7570423 0.7777778 0.6967342 0.6967342 1.655776
+##      cost_dec        cost cost_cue
+## 1 -0.16959064 -0.16959064        0
+## 2 -0.05847953 -0.05847953        0
+## 3 -0.07017544 -0.07017544        0
+## 4 -0.16081871 -0.16081871        0
+## 5 -0.09649123 -0.09649123        0
+## 6 -0.09064327 -0.09064327        0
+## 7 -0.08771930 -0.08771930        0
+## 8 -0.09649123 -0.09649123        0
+## 9 -0.22222222 -0.22222222        0
 ```
 
 And see that counting mitoses (#9) is not a great use of your pathologist's time, with a sensitivity of 0.425.
@@ -287,16 +277,15 @@ breast.fft$trees$stats$test
 
 ```
 ## # A tibble: 6 × 20
-##    tree     n    hi    fa    mi    cr  sens  spec    far
-##   <int> <int> <int> <int> <int> <int> <dbl> <dbl>  <dbl>
-## 1     1   341   106    11    13   211 0.891 0.950 0.0495
-## 2     2   341    97     5    22   217 0.815 0.977 0.0225
-## 3     3   341   116    37     3   185 0.975 0.833 0.167 
-## 4     4   341    88     5    31   217 0.739 0.977 0.0225
-## 5     5   341   119    59     0   163 1     0.734 0.266 
-## 6     6   341   119    67     0   155 1     0.698 0.302 
-## # ℹ 11 more variables: ppv <dbl>, npv <dbl>, dprime <dbl>,
-## #   acc <dbl>, bacc <dbl>, wacc <dbl>, cost_dec <dbl>,
+##    tree     n    hi    fa    mi    cr  sens  spec    far   ppv   npv dprime
+##   <int> <int> <int> <int> <int> <int> <dbl> <dbl>  <dbl> <dbl> <dbl>  <dbl>
+## 1     1   341   106    11    13   211 0.891 0.950 0.0495 0.906 0.942   2.86
+## 2     2   341    97     5    22   217 0.815 0.977 0.0225 0.951 0.908   2.88
+## 3     3   341   116    37     3   185 0.975 0.833 0.167  0.758 0.984   2.89
+## 4     4   341    88     5    31   217 0.739 0.977 0.0225 0.946 0.875   2.62
+## 5     5   341   119    59     0   163 1     0.734 0.266  0.669 1       3.49
+## 6     6   341   119    67     0   155 1     0.698 0.302  0.640 1       3.38
+## # ℹ 8 more variables: acc <dbl>, bacc <dbl>, wacc <dbl>, cost_dec <dbl>,
 ## #   cost_cue <dbl>, cost <dbl>, pci <dbl>, mcu <dbl>
 ```
 
@@ -309,14 +298,14 @@ breast.fft$trees$definitions
 
 ```
 ## # A tibble: 6 × 7
-##    tree nodes classes cues       directions thresholds exits
-##   <int> <int> <chr>   <chr>      <chr>      <chr>      <chr>
-## 1     1     2 i;i     cellsize.… >;>        2;2        0;0.5
-## 2     2     3 i;i;n   cellsize.… >;>;>      2;2;1      0;0;…
-## 3     3     2 i;i     cellsize.… >;>        2;2        1;0.5
-## 4     4     4 i;i;n;i cellsize.… >;>;>;>    2;2;1;2    0;0;…
-## 5     5     3 i;i;n   cellsize.… >;>;>      2;2;1      1;1;…
-## 6     6     4 i;i;n;i cellsize.… >;>;>;>    2;2;1;2    1;1;…
+##    tree nodes classes cues                           directions thresholds exits
+##   <int> <int> <chr>   <chr>                          <chr>      <chr>      <chr>
+## 1     1     2 i;i     cellsize.unif;cellshape.unif   >;>        2;2        0;0.5
+## 2     2     3 i;i;n   cellsize.unif;cellshape.unif;… >;>;>      2;2;1      0;0;…
+## 3     3     2 i;i     cellsize.unif;cellshape.unif   >;>        2;2        1;0.5
+## 4     4     4 i;i;n;i cellsize.unif;cellshape.unif;… >;>;>;>    2;2;1;2    0;0;…
+## 5     5     3 i;i;n   cellsize.unif;cellshape.unif;… >;>;>      2;2;1      1;1;…
+## 6     6     4 i;i;n;i cellsize.unif;cellshape.unif;… >;>;>;>    2;2;1;2    1;1;…
 ```
 
 If sensitivity is really important, you might choose model 5 or 6, which both have a sensitivity of 1.
@@ -456,42 +445,37 @@ heart.fft <- FFTrees(diagnosis ~ .,
 ```
 
 ```
-## Warning in comp_pred(formula = x$formula, data.train =
-## x$data$train, data.test = x$data$test, : 4 cases in the
-## test data could not be predicted by 'e' due to new factor
-## values. These cases will be excluded
+## Warning in comp_pred(formula = x$formula, data.train = x$data$train, data.test
+## = x$data$test, : 4 cases in the test data could not be predicted by 'e' due to
+## new factor values. These cases will be excluded
 ```
 
 ```
-## Warning in comp_pred(formula = x$formula, data.train =
-## x$data$train, data.test = x$data$test, : NAs introduced by
-## coercion
+## Warning in comp_pred(formula = x$formula, data.train = x$data$train, data.test
+## = x$data$test, : NAs introduced by coercion
 ```
 
 ```
-## Warning in !ix_NA_pred & !ix_NA_crit: longer object length
-## is not a multiple of shorter object length
+## Warning in !ix_NA_pred & !ix_NA_crit: longer object length is not a multiple of
+## shorter object length
 ```
 
 ```
-## Warning in comp_pred(formula = x$formula, data.train =
-## x$data$train, data.test = x$data$test, : 4 cases in the
-## test data could not be predicted by 'e' due to new factor
-## values. These cases will be excluded
+## Warning in comp_pred(formula = x$formula, data.train = x$data$train, data.test
+## = x$data$test, : 4 cases in the test data could not be predicted by 'e' due to
+## new factor values. These cases will be excluded
 ```
 
 ```
-## Warning in comp_pred(formula = x$formula, data.train =
-## x$data$train, data.test = x$data$test, : 4 cases in the
-## test data could not be predicted by 'e' due to new factor
-## values. These cases will be excluded
+## Warning in comp_pred(formula = x$formula, data.train = x$data$train, data.test
+## = x$data$test, : 4 cases in the test data could not be predicted by 'e' due to
+## new factor values. These cases will be excluded
 ```
 
 ```
-## Warning in comp_pred(formula = x$formula, data.train =
-## x$data$train, data.test = x$data$test, : 4 cases in the
-## test data could not be predicted by 'e' due to new factor
-## values. These cases will be excluded
+## Warning in comp_pred(formula = x$formula, data.train = x$data$train, data.test
+## = x$data$test, : 4 cases in the test data could not be predicted by 'e' due to
+## new factor values. These cases will be excluded
 ```
 
 
@@ -530,62 +514,48 @@ heart.fft$cues$stats$train
 ```
 
 ```
-##         cue     class   threshold direction   n hi fa mi cr
-## 1       age   numeric          56         > 152 47 31 23 51
-## 2       sex   numeric           0         > 152 56 45 14 37
-## 3        cp character           a         = 152 55 19 15 63
-## 4  trestbps   numeric         124         > 152 53 50 17 32
-## 5      chol   numeric         253         > 152 39 22 31 60
-## 6       fbs   numeric           0         > 152 14 12 56 70
-## 7   restecg character hypertrophy         = 152 46 32 24 50
-## 8   thalach   numeric         145        <= 152 37 18 33 64
-## 9     exang   numeric           0         > 152 36 11 34 71
-## 10  oldpeak   numeric         0.8         > 152 48 24 22 58
-## 11    slope character   flat,down         = 152 47 31 23 51
-## 12       ca   numeric           0         > 152 53 20 17 62
-## 13     thal character       rd,fd         = 152 42 18 28 64
-##         sens      spec       ppv       npv       acc
-## 1  0.6714286 0.6219512 0.6025641 0.6891892 0.6447368
-## 2  0.8000000 0.4512195 0.5544554 0.7254902 0.6118421
-## 3  0.7857143 0.7682927 0.7432432 0.8076923 0.7763158
-## 4  0.7571429 0.3902439 0.5145631 0.6530612 0.5592105
-## 5  0.5571429 0.7317073 0.6393443 0.6593407 0.6513158
-## 6  0.2000000 0.8536585 0.5384615 0.5555556 0.5526316
-## 7  0.6571429 0.6097561 0.5897436 0.6756757 0.6315789
-## 8  0.5285714 0.7804878 0.6727273 0.6597938 0.6644737
-## 9  0.5142857 0.8658537 0.7659574 0.6761905 0.7039474
-## 10 0.6857143 0.7073171 0.6666667 0.7250000 0.6973684
-## 11 0.6714286 0.6219512 0.6025641 0.6891892 0.6447368
-## 12 0.7571429 0.7560976 0.7260274 0.7848101 0.7565789
-## 13 0.6000000 0.7804878 0.7000000 0.6956522 0.6973684
-##         bacc      wacc    dprime   cost_dec       cost
-## 1  0.6466899 0.6466899 0.7491666 -0.3552632 -0.3552632
-## 2  0.6256098 0.6256098 0.7122113 -0.3881579 -0.3881579
-## 3  0.7770035 0.7770035 1.5126224 -0.2236842 -0.2236842
-## 4  0.5736934 0.5736934 0.4143740 -0.4407895 -0.4407895
-## 5  0.6444251 0.6444251 0.7564326 -0.3486842 -0.3486842
-## 6  0.5268293 0.5268293 0.2089082 -0.4473684 -0.4473684
-## 7  0.6334495 0.6334495 0.6785982 -0.3684211 -0.3684211
-## 8  0.6545296 0.6545296 0.8392760 -0.3355263 -0.3355263
-## 9  0.6900697 0.6900697 1.1323661 -0.2960526 -0.2960526
-## 10 0.6965157 0.6965157 1.0219430 -0.3026316 -0.3026316
-## 11 0.6466899 0.6466899 0.7491666 -0.3552632 -0.3552632
-## 12 0.7566202 0.7566202 1.3801880 -0.2434211 -0.2434211
-## 13 0.6902439 0.6902439 1.0196178 -0.3026316 -0.3026316
-##    cost_cue
-## 1         0
-## 2         0
-## 3         0
-## 4         0
-## 5         0
-## 6         0
-## 7         0
-## 8         0
-## 9         0
-## 10        0
-## 11        0
-## 12        0
-## 13        0
+##         cue     class   threshold direction   n hi fa mi cr      sens      spec
+## 1       age   numeric          56         > 152 47 31 23 51 0.6714286 0.6219512
+## 2       sex   numeric           0         > 152 56 45 14 37 0.8000000 0.4512195
+## 3        cp character           a         = 152 55 19 15 63 0.7857143 0.7682927
+## 4  trestbps   numeric         124         > 152 53 50 17 32 0.7571429 0.3902439
+## 5      chol   numeric         253         > 152 39 22 31 60 0.5571429 0.7317073
+## 6       fbs   numeric           0         > 152 14 12 56 70 0.2000000 0.8536585
+## 7   restecg character hypertrophy         = 152 46 32 24 50 0.6571429 0.6097561
+## 8   thalach   numeric         145        <= 152 37 18 33 64 0.5285714 0.7804878
+## 9     exang   numeric           0         > 152 36 11 34 71 0.5142857 0.8658537
+## 10  oldpeak   numeric         0.8         > 152 48 24 22 58 0.6857143 0.7073171
+## 11    slope character   flat,down         = 152 47 31 23 51 0.6714286 0.6219512
+## 12       ca   numeric           0         > 152 53 20 17 62 0.7571429 0.7560976
+## 13     thal character       rd,fd         = 152 42 18 28 64 0.6000000 0.7804878
+##          ppv       npv       acc      bacc      wacc    dprime   cost_dec
+## 1  0.6025641 0.6891892 0.6447368 0.6466899 0.6466899 0.7491666 -0.3552632
+## 2  0.5544554 0.7254902 0.6118421 0.6256098 0.6256098 0.7122113 -0.3881579
+## 3  0.7432432 0.8076923 0.7763158 0.7770035 0.7770035 1.5126224 -0.2236842
+## 4  0.5145631 0.6530612 0.5592105 0.5736934 0.5736934 0.4143740 -0.4407895
+## 5  0.6393443 0.6593407 0.6513158 0.6444251 0.6444251 0.7564326 -0.3486842
+## 6  0.5384615 0.5555556 0.5526316 0.5268293 0.5268293 0.2089082 -0.4473684
+## 7  0.5897436 0.6756757 0.6315789 0.6334495 0.6334495 0.6785982 -0.3684211
+## 8  0.6727273 0.6597938 0.6644737 0.6545296 0.6545296 0.8392760 -0.3355263
+## 9  0.7659574 0.6761905 0.7039474 0.6900697 0.6900697 1.1323661 -0.2960526
+## 10 0.6666667 0.7250000 0.6973684 0.6965157 0.6965157 1.0219430 -0.3026316
+## 11 0.6025641 0.6891892 0.6447368 0.6466899 0.6466899 0.7491666 -0.3552632
+## 12 0.7260274 0.7848101 0.7565789 0.7566202 0.7566202 1.3801880 -0.2434211
+## 13 0.7000000 0.6956522 0.6973684 0.6902439 0.6902439 1.0196178 -0.3026316
+##          cost cost_cue
+## 1  -0.3552632        0
+## 2  -0.3881579        0
+## 3  -0.2236842        0
+## 4  -0.4407895        0
+## 5  -0.3486842        0
+## 6  -0.4473684        0
+## 7  -0.3684211        0
+## 8  -0.3355263        0
+## 9  -0.2960526        0
+## 10 -0.3026316        0
+## 11 -0.3552632        0
+## 12 -0.2434211        0
+## 13 -0.3026316        0
 ```
 
 And look at the sens (0.84) and spec (0.16) numbers to find this (order is rearranged) - this was an isolated elevated fasting blood sugar without considering symptoms, demographics, or thallium results - sensitive but not specific (note that \# 12 is an isolated EKG, and that this dataset is from the pre-Troponin (or even CK-MB) era.)

@@ -56,12 +56,11 @@ cytomegalovirus |>
 
 ```
 ## # A tibble: 1 × 15
-##   estimate estimate1 estimate2 .y.       group1 group2    n1
-## *    <dbl>     <dbl>     <dbl> <chr>     <chr>  <chr>  <int>
-## 1    -13.8      7.18      21.0 time.to.… 0      1         36
-## # ℹ 8 more variables: n2 <int>, statistic <dbl>, p <dbl>,
-## #   df <dbl>, conf.low <dbl>, conf.high <dbl>,
-## #   method <chr>, alternative <chr>
+##   estimate estimate1 estimate2 .y.   group1 group2    n1    n2 statistic       p
+## *    <dbl>     <dbl>     <dbl> <chr> <chr>  <chr>  <int> <int>     <dbl>   <dbl>
+## 1    -13.8      7.18      21.0 time… 0      1         36    28     -2.99 0.00493
+## # ℹ 5 more variables: df <dbl>, conf.low <dbl>, conf.high <dbl>, method <chr>,
+## #   alternative <chr>
 ```
 
 # Simple example of a t-test
@@ -110,48 +109,34 @@ head(data)
 ```
 
 ```
-##   ID age sex race                    diagnosis
-## 1  1  61   1    0       acute myeloid leukemia
-## 2  2  62   1    1         non-Hodgkin lymphoma
-## 3  3  63   0    1         non-Hodgkin lymphoma
-## 4  4  33   0    1             Hodgkin lymphoma
-## 5  5  54   0    1 acute lymphoblastic leukemia
-## 6  6  55   1    1                myelofibrosis
-##   diagnosis.type time.to.transplant prior.radiation
-## 1              1               5.16               0
-## 2              0              79.05               1
-## 3              0              35.58               0
-## 4              0              33.02               1
-## 5              0              11.40               0
-## 6              1               2.43               0
-##   prior.chemo prior.transplant recipient.cmv donor.cmv
-## 1           2                0             1         0
-## 2           3                0             0         0
-## 3           4                0             1         1
-## 4           4                0             1         0
-## 5           5                0             1         1
-## 6           0                0             1         1
-##   donor.sex TNC.dose CD34.dose CD3.dose CD8.dose TBI.dose
-## 1         0    18.31      2.29     3.21     0.95      200
-## 2         1     4.26      2.04       NA       NA      200
-## 3         0     8.09      6.97     2.19     0.59      200
-## 4         1    21.02      6.09     4.87     2.32      200
-## 5         0    14.70      2.36     6.55     2.40      400
-## 6         1     4.29      6.91     2.53     0.86      200
-##   C1/C2 aKIRs cmv time.to.cmv agvhd time.to.agvhd cgvhd
-## 1     0     1   1        3.91     1          3.55     0
-## 2     1     5   0       65.12     0         65.12     0
-## 3     0     3   0        3.75     0          3.75     0
-## 4     0     2   0       48.49     1         28.55     1
-## 5     0     6   0        4.37     1          2.79     0
-## 6     0     2   1        4.53     1          3.88     0
-##   time.to.cgvhd
-## 1          6.28
-## 2         65.12
-## 3          3.75
-## 4         10.45
-## 5          4.37
-## 6          6.87
+##   ID age sex race                    diagnosis diagnosis.type
+## 1  1  61   1    0       acute myeloid leukemia              1
+## 2  2  62   1    1         non-Hodgkin lymphoma              0
+## 3  3  63   0    1         non-Hodgkin lymphoma              0
+## 4  4  33   0    1             Hodgkin lymphoma              0
+## 5  5  54   0    1 acute lymphoblastic leukemia              0
+## 6  6  55   1    1                myelofibrosis              1
+##   time.to.transplant prior.radiation prior.chemo prior.transplant recipient.cmv
+## 1               5.16               0           2                0             1
+## 2              79.05               1           3                0             0
+## 3              35.58               0           4                0             1
+## 4              33.02               1           4                0             1
+## 5              11.40               0           5                0             1
+## 6               2.43               0           0                0             1
+##   donor.cmv donor.sex TNC.dose CD34.dose CD3.dose CD8.dose TBI.dose C1/C2 aKIRs
+## 1         0         0    18.31      2.29     3.21     0.95      200     0     1
+## 2         0         1     4.26      2.04       NA       NA      200     1     5
+## 3         1         0     8.09      6.97     2.19     0.59      200     0     3
+## 4         0         1    21.02      6.09     4.87     2.32      200     0     2
+## 5         1         0    14.70      2.36     6.55     2.40      400     0     6
+## 6         1         1     4.29      6.91     2.53     0.86      200     0     2
+##   cmv time.to.cmv agvhd time.to.agvhd cgvhd time.to.cgvhd
+## 1   1        3.91     1          3.55     0          6.28
+## 2   0       65.12     0         65.12     0         65.12
+## 3   0        3.75     0          3.75     0          3.75
+## 4   0       48.49     1         28.55     1         10.45
+## 5   0        4.37     1          2.79     0          4.37
+## 6   1        4.53     1          3.88     0          6.87
 ```
 
 ### Visualize the Distribution of data variables in ggplot
@@ -208,7 +193,7 @@ shapiro.test()
 ## 	Shapiro-Wilk normality test
 ## 
 ## data:  .
-## W = 0.68261, p-value = 0.0000000001762
+## W = 0.68261, p-value = 1.762e-10
 ```
 
 ### Results of Shapiro-Wilk
@@ -281,7 +266,7 @@ t.test(df$sleep_total, alternative = "two.sided",
 ## 	One Sample t-test
 ## 
 ## data:  df$sleep_total
-## t = 4.9822, df = 82, p-value = 0.000003437
+## t = 4.9822, df = 82, p-value = 3.437e-06
 ## alternative hypothesis: true mean is not equal to 8
 ## 95 percent confidence interval:
 ##   9.461972 11.405497
@@ -412,7 +397,7 @@ t.test(x = df$sleep_total, y = df$awake, data = msleep)
 ## 	Welch Two Sample t-test
 ## 
 ## data:  df$sleep_total and df$awake
-## t = -4.5353, df = 164, p-value = 0.00001106
+## t = -4.5353, df = 164, p-value = 1.106e-05
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
 ##  -4.498066 -1.769404
@@ -461,11 +446,10 @@ result
 
 ```
 ## # A tibble: 1 × 10
-##   estimate estimate1 estimate2 statistic p.value parameter
-##      <dbl>     <dbl>     <dbl>     <dbl>   <dbl>     <dbl>
-## 1   0.0577    0.0793    0.0216      1.20   0.253        12
-## # ℹ 4 more variables: conf.low <dbl>, conf.high <dbl>,
-## #   method <chr>, alternative <chr>
+##   estimate estimate1 estimate2 statistic p.value parameter conf.low conf.high
+##      <dbl>     <dbl>     <dbl>     <dbl>   <dbl>     <dbl>    <dbl>     <dbl>
+## 1   0.0577    0.0793    0.0216      1.20   0.253        12  -0.0471     0.163
+## # ℹ 2 more variables: method <chr>, alternative <chr>
 ```
 ## Reporting the results from t.test using inline code
 - use backticks before and after, start with r

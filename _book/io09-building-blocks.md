@@ -313,8 +313,7 @@ structures, and these include
     [5] "The Force Awakens"      
     
     [[6]]
-    [1] "A New Hope"           "Attack of the Clones"
-    [3] "Revenge of the Sith" 
+    [1] "A New Hope"           "Attack of the Clones" "Revenge of the Sith" 
     ```
 
     Lists can be a bit clunky to work with, as they nest more than a
@@ -877,20 +876,20 @@ glimpse(starwars)
 ```
 Rows: 87
 Columns: 14
-$ name       <chr> "Luke Skywalker", "C-3PO", "R2-D2", "Da…
-$ height     <int> 172, 167, 96, 202, 150, 178, 165, 97, 1…
-$ mass       <dbl> 77, 75, 32, 136, 49, 120, 75, 32, 84, 7…
-$ hair_color <chr> "blond", NA, NA, "none", "brown", "brow…
-$ skin_color <chr> "fair", "gold", "white, blue", "white",…
-$ eye_color  <chr> "blue", "yellow", "red", "yellow", "bro…
-$ birth_year <dbl> 19.0, 112.0, 33.0, 41.9, 19.0, 52.0, 47…
-$ sex        <chr> "male", "none", "none", "male", "female…
-$ gender     <chr> "masculine", "masculine", "masculine", …
-$ homeworld  <chr> "Tatooine", "Tatooine", "Naboo", "Tatoo…
-$ species    <chr> "Human", "Droid", "Droid", "Human", "Hu…
-$ films      <list> <"A New Hope", "The Empire Strikes Bac…
-$ vehicles   <list> <"Snowspeeder", "Imperial Speeder Bike…
-$ starships  <list> <"X-wing", "Imperial shuttle">, <>, <>…
+$ name       <chr> "Luke Skywalker", "C-3PO", "R2-D2", "Darth Vader", "Leia Or…
+$ height     <int> 172, 167, 96, 202, 150, 178, 165, 97, 183, 182, 188, 180, 2…
+$ mass       <dbl> 77.0, 75.0, 32.0, 136.0, 49.0, 120.0, 75.0, 32.0, 84.0, 77.…
+$ hair_color <chr> "blond", NA, NA, "none", "brown", "brown, grey", "brown", N…
+$ skin_color <chr> "fair", "gold", "white, blue", "white", "light", "light", "…
+$ eye_color  <chr> "blue", "yellow", "red", "yellow", "brown", "blue", "blue",…
+$ birth_year <dbl> 19.0, 112.0, 33.0, 41.9, 19.0, 52.0, 47.0, NA, 24.0, 57.0, …
+$ sex        <chr> "male", "none", "none", "male", "female", "male", "female",…
+$ gender     <chr> "masculine", "masculine", "masculine", "masculine", "femini…
+$ homeworld  <chr> "Tatooine", "Tatooine", "Naboo", "Tatooine", "Alderaan", "T…
+$ species    <chr> "Human", "Droid", "Droid", "Human", "Human", "Human", "Huma…
+$ films      <list> <"A New Hope", "The Empire Strikes Back", "Return of the J…
+$ vehicles   <list> <"Snowspeeder", "Imperial Speeder Bike">, <>, <>, <>, "Imp…
+$ starships  <list> <"X-wing", "Imperial shuttle">, <>, <>, "TIE Advanced x1",…
 ```
 
 If you want more detail about a given variable inside this dataframe,
@@ -926,10 +925,9 @@ names(starwars)
 ```
 
 ```
- [1] "name"       "height"     "mass"       "hair_color"
- [5] "skin_color" "eye_color"  "birth_year" "sex"       
- [9] "gender"     "homeworld"  "species"    "films"     
-[13] "vehicles"   "starships" 
+ [1] "name"       "height"     "mass"       "hair_color" "skin_color"
+ [6] "eye_color"  "birth_year" "sex"        "gender"     "homeworld" 
+[11] "species"    "films"      "vehicles"   "starships" 
 ```
 
 ``` r
@@ -937,10 +935,9 @@ colnames(starwars)
 ```
 
 ```
- [1] "name"       "height"     "mass"       "hair_color"
- [5] "skin_color" "eye_color"  "birth_year" "sex"       
- [9] "gender"     "homeworld"  "species"    "films"     
-[13] "vehicles"   "starships" 
+ [1] "name"       "height"     "mass"       "hair_color" "skin_color"
+ [6] "eye_color"  "birth_year" "sex"        "gender"     "homeworld" 
+[11] "species"    "films"      "vehicles"   "starships" 
 ```
 
 If you want the dimensions of your dataset, you can use `dim()`. To just
@@ -962,72 +959,39 @@ rownames_to_column(mtcars, var = "make_model")
 ```
 
 ```
-            make_model  mpg cyl  disp  hp drat    wt  qsec
-1            Mazda RX4 21.0   6 160.0 110 3.90 2.620 16.46
-2        Mazda RX4 Wag 21.0   6 160.0 110 3.90 2.875 17.02
-3           Datsun 710 22.8   4 108.0  93 3.85 2.320 18.61
-4       Hornet 4 Drive 21.4   6 258.0 110 3.08 3.215 19.44
-5    Hornet Sportabout 18.7   8 360.0 175 3.15 3.440 17.02
-6              Valiant 18.1   6 225.0 105 2.76 3.460 20.22
-7           Duster 360 14.3   8 360.0 245 3.21 3.570 15.84
-8            Merc 240D 24.4   4 146.7  62 3.69 3.190 20.00
-9             Merc 230 22.8   4 140.8  95 3.92 3.150 22.90
-10            Merc 280 19.2   6 167.6 123 3.92 3.440 18.30
-11           Merc 280C 17.8   6 167.6 123 3.92 3.440 18.90
-12          Merc 450SE 16.4   8 275.8 180 3.07 4.070 17.40
-13          Merc 450SL 17.3   8 275.8 180 3.07 3.730 17.60
-14         Merc 450SLC 15.2   8 275.8 180 3.07 3.780 18.00
-15  Cadillac Fleetwood 10.4   8 472.0 205 2.93 5.250 17.98
-16 Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82
-17   Chrysler Imperial 14.7   8 440.0 230 3.23 5.345 17.42
-18            Fiat 128 32.4   4  78.7  66 4.08 2.200 19.47
-19         Honda Civic 30.4   4  75.7  52 4.93 1.615 18.52
-20      Toyota Corolla 33.9   4  71.1  65 4.22 1.835 19.90
-21       Toyota Corona 21.5   4 120.1  97 3.70 2.465 20.01
-22    Dodge Challenger 15.5   8 318.0 150 2.76 3.520 16.87
-23         AMC Javelin 15.2   8 304.0 150 3.15 3.435 17.30
-24          Camaro Z28 13.3   8 350.0 245 3.73 3.840 15.41
-25    Pontiac Firebird 19.2   8 400.0 175 3.08 3.845 17.05
-26           Fiat X1-9 27.3   4  79.0  66 4.08 1.935 18.90
-27       Porsche 914-2 26.0   4 120.3  91 4.43 2.140 16.70
-28        Lotus Europa 30.4   4  95.1 113 3.77 1.513 16.90
-29      Ford Pantera L 15.8   8 351.0 264 4.22 3.170 14.50
-30        Ferrari Dino 19.7   6 145.0 175 3.62 2.770 15.50
-31       Maserati Bora 15.0   8 301.0 335 3.54 3.570 14.60
-32          Volvo 142E 21.4   4 121.0 109 4.11 2.780 18.60
-   vs am gear carb
-1   0  1    4    4
-2   0  1    4    4
-3   1  1    4    1
-4   1  0    3    1
-5   0  0    3    2
-6   1  0    3    1
-7   0  0    3    4
-8   1  0    4    2
-9   1  0    4    2
-10  1  0    4    4
-11  1  0    4    4
-12  0  0    3    3
-13  0  0    3    3
-14  0  0    3    3
-15  0  0    3    4
-16  0  0    3    4
-17  0  0    3    4
-18  1  1    4    1
-19  1  1    4    2
-20  1  1    4    1
-21  1  0    3    1
-22  0  0    3    2
-23  0  0    3    2
-24  0  0    3    4
-25  0  0    3    2
-26  1  1    4    1
-27  0  1    5    2
-28  1  1    5    2
-29  0  1    5    4
-30  0  1    5    6
-31  0  1    5    8
-32  1  1    4    2
+            make_model  mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+1            Mazda RX4 21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+2        Mazda RX4 Wag 21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+3           Datsun 710 22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+4       Hornet 4 Drive 21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+5    Hornet Sportabout 18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+6              Valiant 18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+7           Duster 360 14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+8            Merc 240D 24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+9             Merc 230 22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+10            Merc 280 19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+11           Merc 280C 17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+12          Merc 450SE 16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+13          Merc 450SL 17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+14         Merc 450SLC 15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+15  Cadillac Fleetwood 10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
+16 Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
+17   Chrysler Imperial 14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+18            Fiat 128 32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+19         Honda Civic 30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+20      Toyota Corolla 33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
+21       Toyota Corona 21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
+22    Dodge Challenger 15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
+23         AMC Javelin 15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+24          Camaro Z28 13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
+25    Pontiac Firebird 19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
+26           Fiat X1-9 27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
+27       Porsche 914-2 26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
+28        Lotus Europa 30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
+29      Ford Pantera L 15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
+30        Ferrari Dino 19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
+31       Maserati Bora 15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
+32          Volvo 142E 21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2
 ```
 
 ## Functions
@@ -1060,7 +1024,7 @@ sd
 function (x, na.rm = FALSE) 
 sqrt(var(if (is.vector(x) || is.factor(x)) x else as.double(x), 
     na.rm = na.rm))
-<bytecode: 0x140afd0b0>
+<bytecode: 0x120b4a4a0>
 <environment: namespace:stats>
 ```
 :::
@@ -1191,7 +1155,7 @@ version of R.
 ```
 
 ```
-[1] "/Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library"
+[1] "/Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/library"
 ```
 
 ## The Building Blocks of R

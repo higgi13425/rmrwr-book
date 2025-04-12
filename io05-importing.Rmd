@@ -108,7 +108,7 @@ Once the {tidyverse} package is installed, you can use `library(tidyverse)` with
 
 We will also want to use the {glue} package shortly to access files on the web. Practice installing this package. Copy and run the code chunk below in your RStudio Console panel to install and load the {glue} package.
 
-```{r, results='hide'}
+```{r, results='hide', eval=FALSE}
 install.packages('glue')
 library(glue)
 ```

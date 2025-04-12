@@ -1,0 +1,386 @@
+---
+title: "Using the {tabulapdf} package tp extract tables from PDFs"
+author: "Peter Higgins"
+date: "1/29/2025"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# install.packages('flowchart')
+
+library(tidyverse)
+library(flowchart)
+library(webexercises)
+library(tabulapdf)
+```
+
+# Using the {tabulapdf} package tp extract tables from PDFs
+
+
+This chapter is part of the **Data Import** pathway. <br> Packages needed for this chapter include {tabulapdf}, {tidyverse}, and a working version of rJava. If you don't have these two packages installed, you can install them by copying the code chunk below and running it in your local RStudio session. You will also likely need the {rJavaEnv} package, 
+which will help you install rJava and connect it to your R environment. 
+
+```{r eval=FALSE}
+install.packages("tabulapdf")
+install.packages("tidyverse")
+install.packages("rJavaEnv")
+```
+
+::: tip
+This chapter takes a bit of setup to get rJava working,
+which is needed for the {tabulapdf} package to work and to interactively 
+extract tables from PDFs.
+
+To get rJava working on your computer can sometimes be a bear. The {rJavaEnv} 
+package has made this a lot more manageable.
+Let's walk through the steps to get rJava set up.
+start by loading {rJavaEnv} with a library command. 
+Then run the `java_check_version_cmd()` function in your local RStudio session 
+to see if you already have a working version of Java on your computer.
+
+```{r}
+library(rJavaEnv)
+java_check_version_cmd()
+```
+If your Java version is confirmed with a path to JAVA HOME and a version number (as it does on my home computer as seen here), 
+you can skip the next step.
+
+If not, you will probably get a message like `! JAVA_HOME is not set.
+[1] FALSE`
+
+If this is the case, copy and run the `java_quick_install()` function from 
+the chunk below in your local RStudio session to install the 
+latest version of Java. 
+```{r, eval=FALSE}
+java_quick_install()
+```
+
+Now check that this worked by running the `java_check_version_cmd()` 
+function in your local RStudio session again.
+
+```{r, eval=FALSE}
+java_check_version_cmd()
+```
+This should now tell you the path to JAVA HOME, the Java path, and the Java version.
+Once this is set, you are ready to get started.
+:::
+
+## Why Tables from PDFs?
+
+Many organizations publish reports as PDFs, with tables of data in them.
+It would be much more valuable to have these data publicly available in a format that can be used for analysis (like downloadable csv files). This chapter will show you how to do extract these tablesfrom PDFs.
+
+## Extracting Tables from PDFs
+The {tabulapdf} package is a great tool for extracting tables from PDFs. It uses the Java library (the equivalent of R packages in the Java computer language are called `libraries`) Tabula to do this, and it works well with many different types of tables.
+
+To use the {tabulapdf} package, you need to have Java installed on your computer. This is because the package uses the Tabula library, which written in the Java language for extracting tables from PDFs. If you don't have Java installed, you can follow the instructions in the previous section to install it.
+
+Run the code chunk below to install the {tabulapdf} package and load it into your R session, along with {tidyverse} to clean up the data tables we will extract (there will be lots of cleaning up).
+
+```{r}
+library(tabulapdf)
+library(tidyverse)
+```
+
+Now let's start with a PDF filled with health-related data tables.
+This is a nice example from KFF, the Kaiser Family Foundation, which is a non-profit organization that provides information on health issues at www.kff.org.
+
+Unfortunately, they publish a lot of interesting health and health insurance data
+in tables in PDFs.
+
+Let's link this pdf to an object in R, by running the code chunk below. Copy and run this code chunk in your local RStudio session.
+
+```{r}
+kff_pdf <- "https://files.kff.org/attachment/Topline-Survey-of-Consumer-Experiences-with-Health-Insurance.pdf"
+```
+
+## Extracting Tables from PDFs
+Now we have to extract some data tables from this PDF. The nice folks at KFF have a habit of including lots of summary rows and subset totals as distinct rows in their tables, so we will have to select the columns and rows that we want, and frequently rename columns.
+
+The {tabulapdf} package has a function called `extract_tables()` that will help you pull out the tables from a PDF.
+To get started, we can simply grab ALL the tables, or do this in a targeted way.
+
+Take a moment to go the the website for this PDF, [here](https://files.kff.org/attachment/Topline-Survey-of-Consumer-Experiences-with-Health-Insurance.pdf), and scroll through the PDF to see what tables are in it. Keep this PDF window open for future reference during this chapter.
+
+Let's take a quick overview of this PDF by running the commands in the code chunk below.
+```{r}
+# Get the number of pages in the PDF
+get_n_pages(kff_pdf)
+
+# Get the metadata on the PDF
+extract_metadata(kff_pdf)
+
+# figure out the pixel dimensions of the PDF pages
+get_page_dims(kff_pdf, pages = 1:2)
+```
+
+Now we know that there are 40 pages in this PDF, it was exported to PDF from Microsoft Word on June 8th 2023, and we have a title and some keywords.
+
+We also learned that each page is 612 pixels wide and 792 pixels tall (the pages are
+all the same 8.5 inch wide by 11 inch tall size).
+
+## Extracting Tables from the PDF
+
+Let's go whole hog. Let's see how many tables there are.
+This will take a moment, but run the code chunk below.
+
+```{r, eval=FALSE}
+# Extract all tables from the PDF
+kff_tables <- extract_tables(kff_pdf, pages = 1:40, output = "tibble")
+```
+If you take a look in your Environment tab, you will now find the kff_tables object.
+It is a list of 38 tables.
+Click on the object in the Environment tab, and you will see a list of 38 tables
+in the Viewer tab. Each table has its own blue dot with a white triangle next
+to the table number. Click on one or two of these to expand them, and compare these to the PDF. See if you can figure out which table object corresponds to which table in the PDF.
+
+You will probably find that there are more than 38 tables in the PDF.
+Several of these are stuck together in the table extraction process, and some of them are empty.
+
+To take a look at one of the tables in the list, run the code chunk below,
+which will pull out the 17th table in the list and show it in the Viewer tab.
+
+```{r, eval=FALSE}
+# Extract the 17th table from the list of tables
+kff_tables[[17]]
+```
+
+The result is a bit wonky, but recognizable as all of the tables in response to questions
+17 through 19b, all bound together. Scroll through the PDF to find these.
+
+## Extracting a Specific Table
+You can slice off some of the rows to get the specific table that you actually want.
+Let's try to get the data in response to question 19a. This was "In the past 12 
+months, did you end up paying more for treatment or services than you expected 
+to pay as a direct result of the problems youhad with your current health
+insurance?"
+
+This is a yes/no question, and the table shows the percentage of people who said
+yes, and the percentage of people who said no. 
+
+To do this, we can use the `extract_tables()` function again, but this time we 
+will pull this one `table` and slice out the rows that we want.
+
+```{r, eval=FALSE}
+# Extract the 17th table from the list of tables
+pay_more <- kff_tables[[17]] |>
+  slice(20:21) |>
+  rename(response = `...1`) |>
+  separate(`Total sponsored`, into = c("overall", "emp_sponsored"), sep = "\\s") |>
+  relocate(overall, .after = Marketplace) |>
+  janitor::clean_names()
+
+pay_more |>
+  gt::gt()
+```
+
+Despite the common assumption that employer sponsored health insurance in the US
+is the best, satisfaction seems to be higher for medicaid and medicare.
+
+You can even remove the response column (the chi-squared test will not work with a character column),
+convert the percentages from character to numeric, and run a chi-squared test to show that the different types of insurance are significantly different from each other by this metric.
+
+```{r, eval=FALSE}
+pay_more |>
+  select(-response) |>
+  mutate_if(is.character, as.numeric) |>
+  chisq.test()
+```
+
+## Extracting a Specific Table
+But this approach is a bit cumbersome, and involves a fair amount of hunting to 
+find the table you want, and to clean it up.
+Instead, we can use the `extract_tables()` function to extract a specific page.
+This narrows it down a lot.
+
+```{r, eval=FALSE}
+kff_tables <- extract_tables(kff_pdf, pages = 5, output = "tibble")
+kff_tables
+```
+Now there is only one table to look at, and it is a bit easier to see what 
+is going on. Note that kff_tables is still a list (take a look in the Viewer tab), and we still have to pluck out the tibble we want, even though there is only one. Our usual data cleaning functions from {dplyr} will work on a tibgle, but not on a list. We need to pluck out the tibble we want. There are two ways to do this:
+
+- kff_tables[[1]], or
+- kff_tables %>% pluck(1)
+
+For our purposes, on page 5 of this PDF, we want the mental health and emotional
+well-being table, so we can slice rows 15 to 20, and clean up the column names 
+to get only the raw data columns.
+
+```{r, eval=FALSE}
+mental_health <- kff_tables[[1]] |>
+  slice(15:20) |>
+  select(1, 3:5, 7:8) |>
+  rename(
+    insurance = `...1`,
+    excellent = `...3`,
+    very_good = `...4`,
+    good = `...5`,
+    fair = `...7`,
+    poor = `...8`
+  ) |>
+  pivot_longer(
+    cols = c(excellent, very_good, good, fair, poor),
+    names_to = "rating",
+    values_to = "percent"
+  ) |>
+  mutate(insurance = case_when(
+    insurance == "Total" ~ "overall",
+    TRUE ~ insurance
+  )) |>
+  filter(insurance != "sponsored") |>
+  pivot_wider(
+    names_from = insurance,
+    values_from = percent
+  ) |>
+  janitor::clean_names() |>
+  relocate(overall, .after = marketplace)
+
+mental_health
+```
+
+As you can see, removing subtotals and rearranging to get clean data takes a
+bit of wrangling to get it into a tidy clean format of raw data.
+But now we can use this data to make plots or perform analyses.
+
+## Viewing and Targeting the PDF
+The {tabula_pdf} package can go even farther. It can let you view thumbnails of
+the pages in the RStudio Viewer window, and even pick out the particular
+table area that you want to extract.
+This can only be done in an **interactive** R session, as it will open a shiny app in the Viewer tab and require a human to draw a rectangle around the desired section of the PDF to extract a table from.
+
+```{r error=TRUE, message=FALSE, warning=FALSE}
+# get some overview data on the PDF
+kff_pdf |>
+  get_n_pages()
+
+subtable <- kff_pdf |>
+  locate_areas(pages = 22)
+# manually select the area of the table
+# using the shiny widget in the Viewer pane
+# then click the Done button at the top right
+
+extract_tables(kff_pdf,
+  pages = 22,
+  guess = FALSE,
+  col_names = FALSE,
+  area = subtable
+)
+```
+
+You can also combine the steps and just use the `extract_areas()` function to
+pull data from a specific area of the PDF. This is useful if you know exactly 
+which table you want to extract.
+
+Let's try this for question 15h (_deny or delay drug coverage_) on page 19 of this PDF in the code chunk 
+below. Copy and run this in your local RStudio session. Click Done when you have completed your rectangle.
+
+```{r, error = TRUE, message = FALSE}
+# Extract the table from the PDF
+deny <- extract_areas(kff_pdf, pages = 19, output = "tibble")
+deny
+```
+
+This should produce a 5 x 6 tibble,
+with some goofy column names, a total row that you probably don't want,
+and some extra columns for `no answer` and N that you don't need.
+
+If you did not draw the rectangle around the table quite right,
+just run the code chunk again and adjust your area.
+The `deny` object that you selected with your rectangle is still a list, 
+so you need to pluck out the first table
+with `deny[[1]]`, or pluck(1) to get a single tibble instead of a list.
+Then use the `select()`  and `slice()` functions to get down to the raw data,
+and rename the columns with the `rename()` function to fix these one at a time,
+or with the `purrr:set_names()` function for renaming all the names at once.
+
+An example of data cleaning is shown below.
+I managed to cut off the `b` in `before` with my rectangle, so I had to shorten 
+the insurance column name in the rename function.
+
+```{r, eval =FALSE, error=TRUE, message=FALSE}
+# Clean up the table
+deny2 <- deny |>
+  pluck(1) |> # you could use deny[[1]] for the first 2 lines
+  rename(
+    insurance = `efore you received it`,
+    yes = `...2`,
+    no = `...3`,
+    not_tried = `...4`
+  ) |>
+  slice(2:5) |>
+  select(-`...5`, -`...6`)
+deny2
+```
+
+
+:::tryit
+Now try it yourself.
+Try to grab an interesting section from the big table on page 22 of the PDF.
+Pick a question that interests you, grab it with a rectangle,
+and extract and clean the raw data into an analysis-ready tibble.
+:::
+
+
+The example below is one possible solution for question 20d
+
+`r hide("Solution")`
+```{r, error=TRUE, message =FALSE}
+# note that I excluded the last 2 columns by drawing a smaller rectangle
+extract_areas(kff_pdf, pages = 22, output = "tibble") |>
+  pluck(1) |>
+  slice(3:6) |>
+  purrr::set_names(c("insurance", "yes", "no"))
+```
+`r unhide()`
+
+Note that the interactive portion of drawing the rectangle actually makes this
+process **less** reproducible, because a key piece is not hard-coded, but it is 
+a pretty convenient tool for quickly getting the data you want.
+
+This sort of interactive step can not be scheduled or run automatically, as
+it requires a person to draw the rectangle in real time, so it is fine for 
+one-off interactive coding, but not for a reproducible workflow.
+
+
+
+### Time for a Quiz
+Take a peek at the last fc object, `statin_fc6`, which provides instructions to `fc_draw`.
+
+1. What command can you run to print out the last flowchart object, `statin_fc6` (pick the _best_ answer)?
+
+`r webexercises::mcq(c("statin_fc6", "statin_fc6$fc", "fc_view(statin_fc6, what ='fc')", answer = "Either of B or C will work", "statin_fc6_tibble"))`
+
+OK, now print out the statin_fc6$fc object in your local RStudio and inspect it for the following questions.
+
+2. What is the y value for the first box (Patients Assessed)?
+
+`r webexercises::mcq(c("2.3", "0.68", "0.2", answer = "0.8", "0.3"))`
+
+3. What is the font size (text_fs) value for the box with id == 9?
+
+`r webexercises::mcq(c("22", "14", "8", answer = "6"))`
+
+4. What is the justification and text_color of the box with id == 3?
+
+`r webexercises::mcq(c(answer = "left and black", "center and red", answer = "right and violet"))`
+
+
+
+
+
+
+:::tryit
+
+## Your Turn
+
+Let's try to extract some data from the KFF PDF.
+::: 
+
+
+:::explore
+### Explore More Features
+Explore more of flowchart at the package website [here](https://bruigtp.github.io/flowchart/).
+You can see the official documentation of this package on CRAN [here](https://cran.r-project.org/web/packages/flowchart/flowchart.pdf).
+:::

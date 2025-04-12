@@ -170,6 +170,24 @@ The Rmarkdown documemt can be processed (knitted) to create Word documents, pdfs
 
 Quarto documents are a newer version of code documentation that has a lot of the function of Rmarkdown.
 
+## The Foundations of Reproducibility
+
+To make your data cleaning and analysis reproducible, you depend on several layers of reproducibility, several of which are out of your control.
+
+1. The **hardware** that you work on - think of this as the foundation. We expect and assume that the hardware will not make computational errors, and will not differ between an Intel chip vs. an AMD chip vs. a Mac M-series chip. This is usually true, but the [Pentium FDIV bug](https://en.wikipedia.org/wiki/Pentium_FDIV_bug) is a famous example of a hardware error that caused problems for a small number of users, but caused huge reputational damage to Intel, which changed their approach to hardware testing. The hardware is the foundation of reproducibility.
+
+2. The **operating system** that you work on. There are differences between Windows, Linux, Mac, and other OSes. Hopefully these differences do not change computational results. 
+
+3. The statistical **programming language** that you use. R is a programming language, and it is open source, so it is constantly being updated and tested by the public. The R Foundation has a [commitment to reproducibility](https://www.r-project.org/doc/Rnews/Rnews_2005-1.pdf) and the R Core team works hard to ensure that computational results are reproducible across versions of R. There are slight differences between R, SAS, Stata, and other statistical programming languages, which can affect outputs, usually based on slightly different defaults in particular computations.
+
+It is important to be aware of these, and when in doubt, to check the [CAMIS project](https://psiaims.github.io/CAMIS/), which has a goal "to demystify conflicting results between software and to help ease the transitions to new languages by providing comparison and comprehensive explanations." These differences are usually small, and can often be resolved by choosing a different computational option in the function arguments. 
+
+4. The **R version** that you are using. R is constantly being updated, and the R Foundation has a [commitment to reproducibility](https://www.r-project.org/doc/Rnews/Rnews_2005-1.pdf) and the R Core team works hard to ensure that the results are reproducible across versions of R. But it is still possible that switching from R 3.1 to R 5.2 will produce different results.
+
+5. The **R packages** and versions that you use. R is a package-based language, and the packages are constantly being updated. Each package developer is aiming for reproducibility, but they may make major breaking changes between package versions that can make your code fail or produce different output. Each package team works hard to ensure that the results are reproducible across versions. But it is still possible that switching from {dplyr} 1.0.0 to {dplyr} 2.0.0 will cause your code to fail (most often) or produce different results (rarely). You can protect your projects from this problem by using the {renv} package, which will save the versions of the packages you are using in a project-specific library. This is a good practice for reproducibility, and is especially important when you are working on a project with multiple collaborators.
+
+6. Your **code**. This is the most important part of reproducibility, and the part that you have the most control over. Your code should be well documented, and should be able to be run by someone else without any changes (including changes to paths, which may require the {here} package to work on different computers). Being able to produce the same results with the same data and code on **any** computer is the goal of reproducible research.
+
 ::: explore
 Future steps/goals in Reproducibility:
 

@@ -60,29 +60,18 @@ summary(dm_mod)
 ## glm(formula = diabetes ~ ., family = "binomial", data = PimaIndiansDiabetes2)
 ## 
 ## Coefficients:
-##                Estimate  Std. Error z value
-## (Intercept) -10.0407392   1.2176743  -8.246
-## pregnant      0.0821594   0.0554255   1.482
-## glucose       0.0382695   0.0057677   6.635
-## pressure     -0.0014203   0.0118334  -0.120
-## triceps       0.0112214   0.0170837   0.657
-## insulin      -0.0008253   0.0013064  -0.632
-## mass          0.0705376   0.0273421   2.580
-## pedigree      1.1409086   0.4274337   2.669
-## age           0.0339516   0.0183817   1.847
-##                         Pr(>|z|)    
-## (Intercept) < 0.0000000000000002 ***
-## pregnant                 0.13825    
-## glucose          0.0000000000324 ***
-## pressure                 0.90446    
-## triceps                  0.51128    
-## insulin                  0.52757    
-## mass                     0.00989 ** 
-## pedigree                 0.00760 ** 
-## age                      0.06474 .  
+##               Estimate Std. Error z value Pr(>|z|)    
+## (Intercept) -1.004e+01  1.218e+00  -8.246  < 2e-16 ***
+## pregnant     8.216e-02  5.543e-02   1.482  0.13825    
+## glucose      3.827e-02  5.768e-03   6.635 3.24e-11 ***
+## pressure    -1.420e-03  1.183e-02  -0.120  0.90446    
+## triceps      1.122e-02  1.708e-02   0.657  0.51128    
+## insulin     -8.253e-04  1.306e-03  -0.632  0.52757    
+## mass         7.054e-02  2.734e-02   2.580  0.00989 ** 
+## pedigree     1.141e+00  4.274e-01   2.669  0.00760 ** 
+## age          3.395e-02  1.838e-02   1.847  0.06474 .  
 ## ---
-## Signif. codes:  
-## 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## (Dispersion parameter for binomial family taken to be 1)
 ## 
@@ -121,10 +110,9 @@ glance(dm_mod)
 
 ```
 ## # A tibble: 1 × 8
-##   null.deviance df.null logLik   AIC   BIC deviance
-##           <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>
-## 1          498.     391  -172.  362.  398.     344.
-## # ℹ 2 more variables: df.residual <int>, nobs <int>
+##   null.deviance df.null logLik   AIC   BIC deviance df.residual  nobs
+##           <dbl>   <int>  <dbl> <dbl> <dbl>    <dbl>       <int> <int>
+## 1          498.     391  -172.  362.  398.     344.         383   392
 ```
 
 ``` r
@@ -152,18 +140,15 @@ cp
 
 ```
 ## # A tibble: 1 × 16
-##   direction optimal_cutpoint method          sum_sens_spec
-##   <chr>                <dbl> <chr>                   <dbl>
-## 1 >=                 28.5839 maximize_metric       1.57504
-##        acc sensitivity specificity      AUC pos_class
-##      <dbl>       <dbl>       <dbl>    <dbl> <chr>    
-## 1 0.772959    0.830769    0.744275 0.862361 pos      
-##   neg_class prevalence outcome  predictor data              
-##   <fct>          <dbl> <chr>    <chr>     <list>            
-## 1 neg         0.331633 diabetes pct_prob  <tibble [392 × 2]>
-##   roc_curve             boot 
-##   <list>                <lgl>
-## 1 <rc_ctpnt [393 × 10]> NA
+##   direction optimal_cutpoint method          sum_sens_spec      acc sensitivity
+##   <chr>                <dbl> <chr>                   <dbl>    <dbl>       <dbl>
+## 1 >=                 28.5839 maximize_metric       1.57504 0.772959    0.830769
+##   specificity      AUC pos_class neg_class prevalence outcome  predictor
+##         <dbl>    <dbl> <chr>     <fct>          <dbl> <chr>    <chr>    
+## 1    0.744275 0.862361 pos       neg         0.331633 diabetes pct_prob 
+##   data               roc_curve             boot 
+##   <list>             <list>                <lgl>
+## 1 <tibble [392 × 2]> <rc_ctpnt [393 × 10]> NA
 ```
 
 ``` r
@@ -179,20 +164,18 @@ summary(cp)
 ##     AUC   n n_pos n_neg
 ##  0.8624 392   130   262
 ## 
-##  optimal_cutpoint sum_sens_spec   acc sensitivity
-##           28.5839         1.575 0.773      0.8308
-##  specificity  tp fn fp  tn
-##       0.7443 108 22 67 195
+##  optimal_cutpoint sum_sens_spec   acc sensitivity specificity  tp fn fp  tn
+##           28.5839         1.575 0.773      0.8308      0.7443 108 22 67 195
 ## 
 ## Predictor summary: 
-##     Data      Min.        5%   1st Qu.   Median     Mean
-##  Overall 0.8690932  3.071251  8.953085 22.94296 33.16327
-##      neg 0.8690932  2.674187  6.392249 13.48437 21.10577
-##      pos 3.7635587 14.863216 34.854283 62.18036 57.46376
-##   3rd Qu.      95%     Max.       SD NAs
-##  53.11714 88.92870 99.46861 28.45645   0
-##  28.96611 69.31582 97.91551 20.49784   0
-##  80.93884 92.17256 99.46861 26.71998   0
+##     Data      Min.        5%   1st Qu.   Median     Mean  3rd Qu.      95%
+##  Overall 0.8690932  3.071251  8.953085 22.94296 33.16327 53.11714 88.92870
+##      neg 0.8690932  2.674187  6.392249 13.48437 21.10577 28.96611 69.31582
+##      pos 3.7635587 14.863216 34.854283 62.18036 57.46376 80.93884 92.17256
+##      Max.       SD NAs
+##  99.46861 28.45645   0
+##  97.91551 20.49784   0
+##  99.46861 26.71998   0
 ```
 
 ``` r
@@ -241,13 +224,13 @@ performance::model_performance(dm_mod)
 ```
 ## # Indices of model performance
 ## 
-## AIC     |    AICc |     BIC | Tjur's R2 |  RMSE | Sigma
-## -------------------------------------------------------
-## 362.021 | 362.492 | 397.763 |     0.364 | 0.376 | 1.000
+## AIC     |    AICc |     BIC | Tjur's R2 |  RMSE | Sigma | Log_loss | Score_log
+## ------------------------------------------------------------------------------
+## 362.021 | 362.492 | 397.763 |     0.364 | 0.376 | 1.000 |    0.439 |   -74.015
 ## 
-## AIC     | Log_loss | Score_log | Score_spherical |   PCP
-## --------------------------------------------------------
-## 362.021 |    0.439 |   -74.015 |           0.009 | 0.718
+## AIC     | Score_spherical |   PCP
+## ---------------------------------
+## 362.021 |           0.009 | 0.718
 ```
 
 ``` r
@@ -271,13 +254,10 @@ summary(dm_mod3)
 ## glm(formula = diabetes ~ 1, family = "binomial", data = PimaIndiansDiabetes2)
 ## 
 ## Coefficients:
-##             Estimate Std. Error z value            Pr(>|z|)
-## (Intercept) -0.62362    0.07571  -8.237 <0.0000000000000002
-##                
-## (Intercept) ***
+##             Estimate Std. Error z value Pr(>|z|)    
+## (Intercept) -0.62362    0.07571  -8.237   <2e-16 ***
 ## ---
-## Signif. codes:  
-## 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## (Dispersion parameter for binomial family taken to be 1)
 ## 
@@ -404,11 +384,10 @@ medicaldata::blood_storage  %>%
 
 ```
 ## # A tibble: 1 × 12
-##   r.squared adj.r.squared sigma statistic p.value    df
-##       <dbl>         <dbl> <dbl>     <dbl>   <dbl> <dbl>
-## 1         0             0  28.6        NA      NA    NA
-## # ℹ 6 more variables: logLik <dbl>, AIC <dbl>, BIC <dbl>,
-## #   deviance <dbl>, df.residual <int>, nobs <int>
+##   r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC
+##       <dbl>         <dbl> <dbl>     <dbl>   <dbl> <dbl>  <dbl> <dbl> <dbl>
+## 1         0             0  28.6        NA      NA    NA -1502. 3009. 3016.
+## # ℹ 3 more variables: deviance <dbl>, df.residual <int>, nobs <int>
 ```
 
 The r.squared and adj.r.squared are both 0, so we are capturing none of the variation in the data with this null model.
@@ -434,11 +413,10 @@ medicaldata::blood_storage  %>%
 
 ```
 ## # A tibble: 1 × 12
-##   r.squared adj.r.squared sigma statistic p.value    df
-##       <dbl>         <dbl> <dbl>     <dbl>   <dbl> <dbl>
-## 1    0.0130       0.00334  28.5      1.34   0.260     3
-## # ℹ 6 more variables: logLik <dbl>, AIC <dbl>, BIC <dbl>,
-## #   deviance <dbl>, df.residual <int>, nobs <int>
+##   r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC
+##       <dbl>         <dbl> <dbl>     <dbl>   <dbl> <dbl>  <dbl> <dbl> <dbl>
+## 1    0.0130       0.00334  28.5      1.34   0.260     3 -1472. 2954. 2972.
+## # ℹ 3 more variables: deviance <dbl>, df.residual <int>, nobs <int>
 ```
 
 We are now explaining some (about 0.33% = 100\*the adjusted R-squared) of the variation with this predictor, and the log likelihood (-1472) got closer to zero, and the AIC (2954) and BIC (2972) were reduced, showing that this is a better model than the NULL model (though still not great).
@@ -512,11 +490,10 @@ medicaldata::licorice_gargle %>%
 
 ```
 ## # A tibble: 1 × 12
-##   r.squared adj.r.squared sigma statistic    p.value    df
-##       <dbl>         <dbl> <dbl>     <dbl>      <dbl> <dbl>
-## 1     0.143         0.124  1.17      7.59 0.00000130     5
-## # ℹ 6 more variables: logLik <dbl>, AIC <dbl>, BIC <dbl>,
-## #   deviance <dbl>, df.residual <int>, nobs <int>
+##   r.squared adj.r.squared sigma statistic    p.value    df logLik   AIC   BIC
+##       <dbl>         <dbl> <dbl>     <dbl>      <dbl> <dbl>  <dbl> <dbl> <dbl>
+## 1     0.143         0.124  1.17      7.59 0.00000130     5  -364.  741.  765.
+## # ℹ 3 more variables: deviance <dbl>, df.residual <int>, nobs <int>
 ```
 
 
@@ -575,11 +552,10 @@ medicaldata::supraclavicular %>%
 
 ```
 ## # A tibble: 1 × 12
-##   r.squared adj.r.squared sigma statistic p.value    df
-##       <dbl>         <dbl> <dbl>     <dbl>   <dbl> <dbl>
-## 1    0.0356      -0.00504  11.5     0.876   0.481     4
-## # ℹ 6 more variables: logLik <dbl>, AIC <dbl>, BIC <dbl>,
-## #   deviance <dbl>, df.residual <int>, nobs <int>
+##   r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC
+##       <dbl>         <dbl> <dbl>     <dbl>   <dbl> <dbl>  <dbl> <dbl> <dbl>
+## 1    0.0356      -0.00504  11.5     0.876   0.481     4  -383.  779.  794.
+## # ℹ 3 more variables: deviance <dbl>, df.residual <int>, nobs <int>
 ```
 
 
@@ -603,23 +579,23 @@ medicaldata::supraclavicular %>%
 ```
 
 ```{=html}
-<div id="pwixlvdepq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#pwixlvdepq table {
+<div id="yytrkfivjp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yytrkfivjp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#pwixlvdepq thead, #pwixlvdepq tbody, #pwixlvdepq tfoot, #pwixlvdepq tr, #pwixlvdepq td, #pwixlvdepq th {
+#yytrkfivjp thead, #yytrkfivjp tbody, #yytrkfivjp tfoot, #yytrkfivjp tr, #yytrkfivjp td, #yytrkfivjp th {
   border-style: none;
 }
 
-#pwixlvdepq p {
+#yytrkfivjp p {
   margin: 0;
   padding: 0;
 }
 
-#pwixlvdepq .gt_table {
+#yytrkfivjp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -645,12 +621,12 @@ medicaldata::supraclavicular %>%
   border-left-color: #D3D3D3;
 }
 
-#pwixlvdepq .gt_caption {
+#yytrkfivjp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#pwixlvdepq .gt_title {
+#yytrkfivjp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -662,7 +638,7 @@ medicaldata::supraclavicular %>%
   border-bottom-width: 0;
 }
 
-#pwixlvdepq .gt_subtitle {
+#yytrkfivjp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -674,7 +650,7 @@ medicaldata::supraclavicular %>%
   border-top-width: 0;
 }
 
-#pwixlvdepq .gt_heading {
+#yytrkfivjp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -686,13 +662,13 @@ medicaldata::supraclavicular %>%
   border-right-color: #D3D3D3;
 }
 
-#pwixlvdepq .gt_bottom_border {
+#yytrkfivjp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pwixlvdepq .gt_col_headings {
+#yytrkfivjp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -707,7 +683,7 @@ medicaldata::supraclavicular %>%
   border-right-color: #D3D3D3;
 }
 
-#pwixlvdepq .gt_col_heading {
+#yytrkfivjp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -727,7 +703,7 @@ medicaldata::supraclavicular %>%
   overflow-x: hidden;
 }
 
-#pwixlvdepq .gt_column_spanner_outer {
+#yytrkfivjp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -739,15 +715,15 @@ medicaldata::supraclavicular %>%
   padding-right: 4px;
 }
 
-#pwixlvdepq .gt_column_spanner_outer:first-child {
+#yytrkfivjp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pwixlvdepq .gt_column_spanner_outer:last-child {
+#yytrkfivjp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pwixlvdepq .gt_column_spanner {
+#yytrkfivjp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -759,11 +735,11 @@ medicaldata::supraclavicular %>%
   width: 100%;
 }
 
-#pwixlvdepq .gt_spanner_row {
+#yytrkfivjp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#pwixlvdepq .gt_group_heading {
+#yytrkfivjp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -789,7 +765,7 @@ medicaldata::supraclavicular %>%
   text-align: left;
 }
 
-#pwixlvdepq .gt_empty_group_heading {
+#yytrkfivjp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -804,15 +780,15 @@ medicaldata::supraclavicular %>%
   vertical-align: middle;
 }
 
-#pwixlvdepq .gt_from_md > :first-child {
+#yytrkfivjp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pwixlvdepq .gt_from_md > :last-child {
+#yytrkfivjp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pwixlvdepq .gt_row {
+#yytrkfivjp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -831,7 +807,7 @@ medicaldata::supraclavicular %>%
   overflow-x: hidden;
 }
 
-#pwixlvdepq .gt_stub {
+#yytrkfivjp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -844,7 +820,7 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#pwixlvdepq .gt_stub_row_group {
+#yytrkfivjp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -858,15 +834,15 @@ medicaldata::supraclavicular %>%
   vertical-align: top;
 }
 
-#pwixlvdepq .gt_row_group_first td {
+#yytrkfivjp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#pwixlvdepq .gt_row_group_first th {
+#yytrkfivjp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#pwixlvdepq .gt_summary_row {
+#yytrkfivjp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -876,16 +852,16 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#pwixlvdepq .gt_first_summary_row {
+#yytrkfivjp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#pwixlvdepq .gt_first_summary_row.thick {
+#yytrkfivjp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#pwixlvdepq .gt_last_summary_row {
+#yytrkfivjp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -895,7 +871,7 @@ medicaldata::supraclavicular %>%
   border-bottom-color: #D3D3D3;
 }
 
-#pwixlvdepq .gt_grand_summary_row {
+#yytrkfivjp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -905,7 +881,7 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#pwixlvdepq .gt_first_grand_summary_row {
+#yytrkfivjp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -915,7 +891,7 @@ medicaldata::supraclavicular %>%
   border-top-color: #D3D3D3;
 }
 
-#pwixlvdepq .gt_last_grand_summary_row_top {
+#yytrkfivjp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -925,11 +901,11 @@ medicaldata::supraclavicular %>%
   border-bottom-color: #D3D3D3;
 }
 
-#pwixlvdepq .gt_striped {
+#yytrkfivjp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pwixlvdepq .gt_table_body {
+#yytrkfivjp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -938,7 +914,7 @@ medicaldata::supraclavicular %>%
   border-bottom-color: #D3D3D3;
 }
 
-#pwixlvdepq .gt_footnotes {
+#yytrkfivjp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -952,7 +928,7 @@ medicaldata::supraclavicular %>%
   border-right-color: #D3D3D3;
 }
 
-#pwixlvdepq .gt_footnote {
+#yytrkfivjp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -961,7 +937,7 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#pwixlvdepq .gt_sourcenotes {
+#yytrkfivjp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -975,7 +951,7 @@ medicaldata::supraclavicular %>%
   border-right-color: #D3D3D3;
 }
 
-#pwixlvdepq .gt_sourcenote {
+#yytrkfivjp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -983,72 +959,72 @@ medicaldata::supraclavicular %>%
   padding-right: 5px;
 }
 
-#pwixlvdepq .gt_left {
+#yytrkfivjp .gt_left {
   text-align: left;
 }
 
-#pwixlvdepq .gt_center {
+#yytrkfivjp .gt_center {
   text-align: center;
 }
 
-#pwixlvdepq .gt_right {
+#yytrkfivjp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pwixlvdepq .gt_font_normal {
+#yytrkfivjp .gt_font_normal {
   font-weight: normal;
 }
 
-#pwixlvdepq .gt_font_bold {
+#yytrkfivjp .gt_font_bold {
   font-weight: bold;
 }
 
-#pwixlvdepq .gt_font_italic {
+#yytrkfivjp .gt_font_italic {
   font-style: italic;
 }
 
-#pwixlvdepq .gt_super {
+#yytrkfivjp .gt_super {
   font-size: 65%;
 }
 
-#pwixlvdepq .gt_footnote_marks {
+#yytrkfivjp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#pwixlvdepq .gt_asterisk {
+#yytrkfivjp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#pwixlvdepq .gt_indent_1 {
+#yytrkfivjp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#pwixlvdepq .gt_indent_2 {
+#yytrkfivjp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#pwixlvdepq .gt_indent_3 {
+#yytrkfivjp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#pwixlvdepq .gt_indent_4 {
+#yytrkfivjp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#pwixlvdepq .gt_indent_5 {
+#yytrkfivjp .gt_indent_5 {
   text-indent: 25px;
 }
 
-#pwixlvdepq .katex-display {
+#yytrkfivjp .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#pwixlvdepq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#yytrkfivjp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1057,7 +1033,7 @@ medicaldata::supraclavicular %>%
     <tr class="gt_col_headings">
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="label"><span class='gt_from_md'><strong>Characteristic</strong></span></th>
       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="estimate"><span class='gt_from_md'><strong>Beta</strong></span></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="conf.low"><span class='gt_from_md'><strong>95% CI</strong></span><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="conf.low"><span class='gt_from_md'><strong>95% CI</strong></span></th>
       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="p.value"><span class='gt_from_md'><strong>p-value</strong></span></th>
     </tr>
   </thead>
@@ -1079,12 +1055,12 @@ medicaldata::supraclavicular %>%
 <td headers="conf.low" class="gt_row gt_center">-2.2, 7.1</td>
 <td headers="p.value" class="gt_row gt_center">0.3</td></tr>
   </tbody>
-  
-  <tfoot class="gt_footnotes">
+  <tfoot class="gt_sourcenotes">
     <tr>
-      <td class="gt_footnote" colspan="4"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> <span class='gt_from_md'>CI = Confidence Interval</span></td>
+      <td class="gt_sourcenote" colspan="4"><span class='gt_from_md'>Abbreviation: CI = Confidence Interval</span></td>
     </tr>
   </tfoot>
+  
 </table>
 </div>
 ```
@@ -1172,21 +1148,20 @@ supra_data_plus
 
 ```
 ## # A tibble: 100 × 12
-##    onset_sensory .fitted .resid .rownames   age   bmi gender
-##            <dbl>   <dbl>  <dbl> <chr>     <dbl> <dbl>  <dbl>
-##  1            19    16.5   2.46 52           18  22.1      1
-##  2            10    16.5  -6.51 99           19  24.4      1
-##  3            14    16.5  -2.50 24           19  25.1      1
-##  4             4    16.5 -12.5  6            21  22.0      1
-##  5             8    16.3  -8.30 87           28  30.4      1
-##  6             9    16.3  -7.27 74           31  21.0      1
-##  7             6    16.3 -10.3  19           28  39.8      1
-##  8            39    16.2  22.8  39           31  29.6      1
-##  9            38    16.2  21.8  48           32  24.4      1
-## 10             3    16.2 -13.2  43           32  35.4      1
+##    onset_sensory .fitted .resid .rownames   age   bmi gender group   .hat .sigma
+##            <dbl>   <dbl>  <dbl> <chr>     <dbl> <dbl>  <dbl> <dbl>  <dbl>  <dbl>
+##  1            19    16.5   2.46 52           18  22.1      1     2 0.0800   11.5
+##  2            10    16.5  -6.51 99           19  24.4      1     2 0.0726   11.5
+##  3            14    16.5  -2.50 24           19  25.1      1     2 0.0719   11.5
+##  4             4    16.5 -12.5  6            21  22.0      1     2 0.0712   11.5
+##  5             8    16.3  -8.30 87           28  30.4      1     2 0.0517   11.5
+##  6             9    16.3  -7.27 74           31  21.0      1     2 0.0522   11.5
+##  7             6    16.3 -10.3  19           28  39.8      1     2 0.0974   11.5
+##  8            39    16.2  22.8  39           31  29.6      1     2 0.0442   11.3
+##  9            38    16.2  21.8  48           32  24.4      1     2 0.0422   11.3
+## 10             3    16.2 -13.2  43           32  35.4      1     2 0.0610   11.4
 ## # ℹ 90 more rows
-## # ℹ 5 more variables: group <dbl>, .hat <dbl>,
-## #   .sigma <dbl>, .cooksd <dbl>, .std.resid <dbl>
+## # ℹ 2 more variables: .cooksd <dbl>, .std.resid <dbl>
 ```
 
 The dataframe `supra_data_plus` includes a prediction of the outcome (`.fitted`) for each observation.

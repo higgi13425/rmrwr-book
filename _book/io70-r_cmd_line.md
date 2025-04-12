@@ -76,7 +76,7 @@ whoami;date
 
 ```
 ## peterhiggins
-## Thu Feb 27 18:56:55 EST 2025
+## Sat Apr 12 13:51:35 EDT 2025
 ```
 :::
 
@@ -519,6 +519,7 @@ ls
 ## Pain in IBD.pptx
 ## Patient Reported Outcomes Plan.docx
 ## Pearson 5 Notes.docx
+## Ped trial draft.docx
 ## Perils of Excel.pptx
 ## Personal statement version 3!.docx
 ## Peter Higgins 2021 Vision Statment for the NSAC.docx
@@ -1048,20 +1049,13 @@ head(mtcars)
 ```
 
 ```
-##                    mpg cyl disp  hp drat    wt  qsec vs am
-## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1
-## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1
-## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1
-## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0
-## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0
-## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0
-##                   gear carb
-## Mazda RX4            4    4
-## Mazda RX4 Wag        4    4
-## Datsun 710           4    1
-## Hornet 4 Drive       3    1
-## Hornet Sportabout    3    2
-## Valiant              3    1
+##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
 ```
 
 ``` r

@@ -82,7 +82,7 @@ glimpse(birthdays)
 ```
 ## Rows: 3
 ## Columns: 2
-## $ name <chr> "Rudolf Virchow", "Virginia Apgar", "William …
+## $ name <chr> "Rudolf Virchow", "Virginia Apgar", "William Osler"
 ## $ dob  <chr> "10/13/1821", "6/7/1909", "7/12/1849"
 ```
 
@@ -93,7 +93,7 @@ glimpse(hometowns)
 ```
 ## Rows: 3
 ## Columns: 2
-## $ name     <chr> "Rudolf Virchow", "Virginia Apgar", "Hipp…
+## $ name     <chr> "Rudolf Virchow", "Virginia Apgar", "Hippocrates"
 ## $ hometown <chr> "Berlin", "Westfield, NJ", "Kos"
 ```
 
@@ -335,7 +335,7 @@ glimpse(birthdays)
 ```
 ## Rows: 3
 ## Columns: 2
-## $ name <chr> "Rudolf Virchow", "Virginia Apgar", "William …
+## $ name <chr> "Rudolf Virchow", "Virginia Apgar", "William Osler"
 ## $ dob  <chr> "10/13/1821", "6/7/1909", "7/12/1849"
 ```
 
@@ -346,7 +346,7 @@ glimpse(hometowns)
 ```
 ## Rows: 3
 ## Columns: 2
-## $ name     <chr> "Rudolf Virchow", "Virginia Apgar", "Hipp…
+## $ name     <chr> "Rudolf Virchow", "Virginia Apgar", "Hippocrates"
 ## $ hometown <chr> "Berlin", "Westfield, NJ", "Kos"
 ```
 
@@ -405,7 +405,7 @@ glimpse(birthdays)
 ```
 ## Rows: 3
 ## Columns: 2
-## $ name <chr> "Rudolf Virchow", "Virginia Apgar", "William …
+## $ name <chr> "Rudolf Virchow", "Virginia Apgar", "William Osler"
 ## $ dob  <chr> "10/13/1821", "6/7/1909", "7/12/1849"
 ```
 
@@ -416,7 +416,7 @@ glimpse(hometowns)
 ```
 ## Rows: 3
 ## Columns: 2
-## $ name     <chr> "Rudolf Virchow", "Virginia Apgar", "Hipp…
+## $ name     <chr> "Rudolf Virchow", "Virginia Apgar", "Hippocrates"
 ## $ hometown <chr> "Berlin", "Westfield, NJ", "Kos"
 ```
 

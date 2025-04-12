@@ -218,98 +218,95 @@ wiki_page %>%
 ```
 ## [[1]]
 ## # A tibble: 9 × 1
-##   X1                                                        
-##   <chr>                                                     
-## 1 "This article is part of a series on"                     
-## 2 "Healthcare reform in theUnited States"                   
-## 3 "History\nDebate"                                         
-## 4 "Legislation\nPrecedingSocial Security Amendments of 1965…
-## 5 "Reforms\nObama administration proposals\nPublic opinion\…
-## 6 "Systems\nFree market\nHealth insurance exchange\nNationa…
-## 7 "Third-party payment models\nAll-payer rate setting\nCapi…
-## 8 "United States portal Health care portal"                 
-## 9 ".mw-parser-output .navbar{display:inline;font-size:88%;f…
+##   X1                                                                            
+##   <chr>                                                                         
+## 1 "This article is part of a series on"                                         
+## 2 "Healthcare reform in theUnited States"                                       
+## 3 "History\nDebate"                                                             
+## 4 "Legislation\nPrecedingSocial Security Amendments of 1965EMTALA (1986)\nHIPAA…
+## 5 "Reforms\nObama administration proposals\nPublic opinion\nReform advocacy gro…
+## 6 "Systems\nFree market\nHealth insurance exchange\nNationalized insurance\nPub…
+## 7 "Third-party payment models\nAll-payer rate setting\nCapitation\nFee-for-serv…
+## 8 "United States portal Health care portal"                                     
+## 9 ".mw-parser-output .navbar{display:inline;font-size:88%;font-weight:normal}.m…
 ## 
 ## [[2]]
 ## # A tibble: 9 × 3
-##   Year           Number Uninsured (Mil…¹ `Uninsured Percent`
-##   <chr>                            <dbl> <chr>              
-## 1 2010                              48.2 18.2%              
-## 2 2013 (Pre-ACA)                    44.3 16.6%              
-## 3 2016                              28.2 10.4%              
-## 4 2017                              28.9 10.7%              
-## 5 2018                              30.1 11.1%              
-## 6 2019                              32.8 12.1%              
-## 7 2020                              31.2 11.5%              
-## 8 2021                              29.6 11.0%              
-## 9 2022H                             27   9.9%               
-## # ℹ abbreviated name: ¹​`Number Uninsured (Mil)`
+##   Year           `Number Uninsured (Mil)` `Uninsured Percent`
+##   <chr>                             <dbl> <chr>              
+## 1 2010                               48.2 18.2%              
+## 2 2013 (Pre-ACA)                     44.3 16.6%              
+## 3 2016                               28.2 10.4%              
+## 4 2017                               28.9 10.7%              
+## 5 2018                               30.1 11.1%              
+## 6 2019                               32.8 12.1%              
+## 7 2020                               31.2 11.5%              
+## 8 2021                               29.6 11.0%              
+## 9 2022H                              27   9.9%               
 ## 
 ## [[3]]
 ## # A tibble: 1 × 2
-##   X1    X2                                                  
-##   <lgl> <chr>                                               
-## 1 NA    This section relies largely or entirely upon a sing…
+##   X1    X2                                                                      
+##   <lgl> <chr>                                                                   
+## 1 NA    This section relies largely or entirely upon a single source. Relevant …
 ## 
 ## [[4]]
 ## # A tibble: 1 × 2
-##   X1    X2                                                  
-##   <lgl> <chr>                                               
-## 1 NA    This section relies largely or entirely upon a sing…
+##   X1    X2                                                                      
+##   <lgl> <chr>                                                                   
+## 1 NA    This section relies largely or entirely upon a single source. Relevant …
 ## 
 ## [[5]]
 ## # A tibble: 52 × 17
-##    Division `1999` `2000` `2001` `2002` `2003` `2004` `2005`
-##    <chr>     <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>
-##  1 United …   13.6   13.1   13.5   13.9   14.6   14.3   14.6
-##  2 Alabama    12     12.5   12.4   12.2   12.5   12     14  
-##  3 Alaska     18.3   17.4   14.8   18     17.5   15.3   16.9
-##  4 Arizona    19.4   16.4   16.7   16.4   16.4   16.2   19.1
-##  5 Arkansas   13.9   14.1   16.4   16.5   17.2   15.9   17.2
-##  6 Califor…   19     17.5   18     16.5   17.3   17.5   18  
-##  7 Colorado   14.1   12.9   14.6   14.5   15.3   15.2   16.2
-##  8 Connect…    7.3    8.9    8.2    8.6    9.4   10.3   10.1
-##  9 Delaware    9.7    8.5    8.5    9.2    9.6   13.1   11.6
-## 10 Distric…   14     12.8   12.3   13     12.7   12     12.4
+##    Division       `1999` `2000` `2001` `2002` `2003` `2004` `2005` `2006` `2007`
+##    <chr>           <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>  <dbl>
+##  1 United States    13.6   13.1   13.5   13.9   14.6   14.3   14.6   15.2   14.7
+##  2 Alabama          12     12.5   12.4   12.2   12.5   12     14     15.1   11.7
+##  3 Alaska           18.3   17.4   14.8   18     17.5   15.3   16.9   16.4   17.6
+##  4 Arizona          19.4   16.4   16.7   16.4   16.4   16.2   19.1   20.8   17.8
+##  5 Arkansas         13.9   14.1   16.4   16.5   17.2   15.9   17.2   18.6   15.7
+##  6 California       19     17.5   18     16.5   17.3   17.5   18     17.8   17.5
+##  7 Colorado         14.1   12.9   14.6   14.5   15.3   15.2   16.2   16.5   16  
+##  8 Connecticut       7.3    8.9    8.2    8.6    9.4   10.3   10.1    8.7    8.6
+##  9 Delaware          9.7    8.5    8.5    9.2    9.6   13.1   11.6   11.9   10.6
+## 10 District of C…   14     12.8   12.3   13     12.7   12     12.4   10.9    9.3
 ## # ℹ 42 more rows
-## # ℹ 9 more variables: `2006` <dbl>, `2007` <dbl>,
-## #   `2008` <dbl>, `2009` <dbl>, `2010` <dbl>, `2011` <dbl>,
+## # ℹ 7 more variables: `2008` <dbl>, `2009` <dbl>, `2010` <dbl>, `2011` <dbl>,
 ## #   `2012` <dbl>, `2013` <dbl>, `2014` <dbl>
 ## 
 ## [[6]]
 ## # A tibble: 1 × 2
-##   X1    X2                                                  
-##   <lgl> <chr>                                               
-## 1 NA    This section relies largely or entirely upon a sing…
+##   X1    X2                                                                      
+##   <lgl> <chr>                                                                   
+## 1 NA    This section relies largely or entirely upon a single source. Relevant …
 ## 
 ## [[7]]
 ## # A tibble: 11 × 14
-##    vteInsurance   vteInsurance ``    ``    ``    ``    ``   
-##    <chr>          <chr>        <chr> <chr> <chr> <chr> <chr>
-##  1 "Types of ins… "Health\nAc… Heal… "Acc… Life  "Lon… Busi…
-##  2 "Health"       "Accident\n… <NA>   <NA> <NA>   <NA> <NA> 
-##  3 "Life"         "Longevity … <NA>   <NA> <NA>   <NA> <NA> 
-##  4 "Business"     "Bond\nBusi… <NA>   <NA> <NA>   <NA> <NA> 
-##  5 "Residential"  "Boiler\nBu… <NA>   <NA> <NA>   <NA> <NA> 
-##  6 "Transport/Co… "Aviation\n… <NA>   <NA> <NA>   <NA> <NA> 
-##  7 "Other"        "Reinsuranc… <NA>   <NA> <NA>   <NA> <NA> 
-##  8 "Insurance po… "Act of God… <NA>   <NA> <NA>   <NA> <NA> 
-##  9 "Insurance by… "Australia\… <NA>   <NA> <NA>   <NA> <NA> 
-## 10 "History"      "Mesopotami… <NA>   <NA> <NA>   <NA> <NA> 
-## 11 "Category\nLi… "Category\n… <NA>   <NA> <NA>   <NA> <NA> 
-## # ℹ 7 more variables: `` <chr>, `` <chr>, `` <chr>,
-## #   `` <chr>, `` <chr>, `` <chr>, `` <chr>
+##    vteInsurance     vteInsurance ``    ``    ``    ``    ``    ``    ``    ``   
+##    <chr>            <chr>        <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr>
+##  1 "Types of insur… "Health\nAc… Heal… "Acc… Life  "Lon… Busi… "Bon… Resi… "Boi…
+##  2 "Health"         "Accident\n… <NA>   <NA> <NA>   <NA> <NA>   <NA> <NA>   <NA>
+##  3 "Life"           "Longevity … <NA>   <NA> <NA>   <NA> <NA>   <NA> <NA>   <NA>
+##  4 "Business"       "Bond\nBusi… <NA>   <NA> <NA>   <NA> <NA>   <NA> <NA>   <NA>
+##  5 "Residential"    "Boiler\nBu… <NA>   <NA> <NA>   <NA> <NA>   <NA> <NA>   <NA>
+##  6 "Transport/Comm… "Aviation\n… <NA>   <NA> <NA>   <NA> <NA>   <NA> <NA>   <NA>
+##  7 "Other"          "Reinsuranc… <NA>   <NA> <NA>   <NA> <NA>   <NA> <NA>   <NA>
+##  8 "Insurance poli… "Act of God… <NA>   <NA> <NA>   <NA> <NA>   <NA> <NA>   <NA>
+##  9 "Insurance by c… "Australia\… <NA>   <NA> <NA>   <NA> <NA>   <NA> <NA>   <NA>
+## 10 "History"        "Mesopotami… <NA>   <NA> <NA>   <NA> <NA>   <NA> <NA>   <NA>
+## 11 "Category\nList… "Category\n… <NA>   <NA> <NA>   <NA> <NA>   <NA> <NA>   <NA>
+## # ℹ 4 more variables: `` <chr>, `` <chr>, `` <chr>, `` <chr>
 ## 
 ## [[8]]
 ## # A tibble: 6 × 2
-##   X1                      X2                                
-##   <chr>                   <chr>                             
-## 1 Health                  "Accident\nAccidental death and d…
-## 2 Life                    "Longevity insurance\nMortgage li…
-## 3 Business                "Bond\nBusiness interruption\nBus…
-## 4 Residential             "Boiler\nBuilder's risk\nContents…
-## 5 Transport/Communication "Aviation\nGAP insurance\nInland …
-## 6 Other                   "Reinsurance\nCatastrophe bond\nI…
+##   X1                      X2                                                    
+##   <chr>                   <chr>                                                 
+## 1 Health                  "Accident\nAccidental death and dismemberment\nDental…
+## 2 Life                    "Longevity insurance\nMortgage life\nTerm life\nUniti…
+## 3 Business                "Bond\nBusiness interruption\nBusiness owner\nCollate…
+## 4 Residential             "Boiler\nBuilder's risk\nContents\nEarthquake\nFlood\…
+## 5 Transport/Communication "Aviation\nGAP insurance\nInland marine\nPublic auto\…
+## 6 Other                   "Reinsurance\nCatastrophe bond\nInsurance-linked secu…
 ```
 
 Now we can pluck out table 5, convert it to an html_table, and then convert it to a tibble. We can then use the `set_names()` function to assign the column names, and assign this to a new object, like `data_ins`. Run the code chunk in your local RStudio and take a look at the resulting data_ins object.

@@ -1,0 +1,219 @@
+---
+title: "The Basics of R"
+author: "Peter Higgins"
+date: "2/1/2022"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: sentence
+---
+
+
+
+# The Basics of R
+
+R is a programming language launched on February 29, 2000, by Ross Ihaka and Rpbert Gentleman. It was developed specifically to enable programming for statistics, and to focus on data handling and manipulation, which was not a focus of general computer languages. R is a dialect of the S language, which was developed at Bell Labs in the 1970s. R is a free software environment, and is available for Windows, Mac, and Linux.
+
+## Why Programming?
+
+For many people, spreadsheets are their first introduction to data analysis. Spreadsheets combine data entry and storage, data display, programming (formulas) to analyze and summarize data, and graphical plotting of data in one format. Spreadsheets are a great way to get started, but compromises are needed for this all-in-one approach, and they have major limitations. 
+
+1. Spreadsheets are not reproducible for data points. If you make a change to a data point in a spreadsheet, it can be hard to remember what you did, and why you did it. There is no audit trail to track who changed the data point, when it was changed, and why. Dedicated data storage programs, like REDCap, do this much better.
+2. Data manipulation in spreadsheets is not reproducible. It is mostly point-and-click, with some hidden programming (in formulas) which is fine for simple manipulations, but becomes hard to reproduce exactly when you have 10 (or 100) steps.
+3. The programming in spreadsheets is hidden in formulas. It can be hard to find the formulas, and hard to test/debug them, or even to detect when they are doing the wrong thing. There are many famous Excel errors that have been resulted in spectacular failures. See the 'London Whale' $6 billion loss at [JP Morgan](https://www.henricodolfing.com/2024/07/case-study-jp-morgan-chase-london-whale.html)
+4. The programming in spreadsheets is limited. You can't write a loop in a spreadsheet, or a function. You can't write a program that will run on a schedule, or write a program to produce the same kind of graph or to reproducibly do tha same data manipulation. 
+5. All of the graphical user interface (GUI) features are convenient, but are hard to reproduce. You can look at a graph in Excel easily, but even if you made it yourself, it can be difficult to figure out how to reproduce it exactly. Each step in the point and click workflow has to be reproduced, and these are not recorded anywhere. If someone else made the plot, it can be nearly impossible to reproduce it.
+
+Programming is the process of creating a specific list of instructions for a computer to load a dataset, manipulate it, then generate summaries, tables, and plots, which then go into manuscripts, posters, and presentations. The computer can do all of this reproducibly, and the written instructions (code) can be saved, shared, and reused. The computer can reproduce your entire manuscript from the raw data at the push of a button. And anyone given the same data and instructions can:
+
+- reproduce all of your tables, plots, and manuscripts
+- check the validitty of your analysis.
+- extend your analysis to new data, or new questions.
+
+This approach makes medical research more reliable and more reproducible. It also makes it easier to collaborate with others, and to share your work with the world.
+
+## Programming Fears
+If you have never written code (programs) before, it can be a bit intimidating at first. There is a lot of mythology about programming. People think you have to be a genius, or a math whiz, or a computer scientist to write code. This is not true. Programming is a skill, like any other, that can be learned. It is a bit like learning a new language, or learning to play a musical instrument. It takes time, and practice, but anyone can do it.
+
+Importantly, computers are very literal. They do exactly what you tell them to do, and nothing else. This can be frustrating, but it is also a great advantage. If you can learn to write code, you can get the computer to do exactly what you want, every time. This is a powerful tool, and can save you a lot of time and effort.
+
+Perhaps the most important part of programming is getting the details of the syntax right. Syntax is the grammar of the programming language. It is the rules that you have to follow to get the computer to understand what you want it to do. If you get the syntax wrong, the computer will not understand you, and will not do what you want. This can be frustrating, but folks who are detail-oriented, and are used to checking their work, are often very good at programming. This is why a lot of medical people find that the approaches used in medicine (attention to detail, checking your work, being careful) are very helpful in programming.
+
+Remember, you **can** do this, and that there are a lot of tools and community resources to help you. It will be frustrating at first, but with time and practice, you will gain a great power - the ability to take data on medical topics and turn it into useful knowledge that can help people.
+
+## Thinking about Wofkflow
+When you are programming, you are creating a workflow. A workflow is a series of steps that you take to get from raw data to a finished product. This can be a manuscript, a poster, or a presentation. The workflow is the series of steps that you take to get from the raw data to the finished product.
+
+A typical workflow might look like this:
+
+1. Load/import the data
+2. Explore and Validate the data
+3. Clean the data as needed to get to a Tidy format
+4. Merge with other datasets as needed
+5. Transform the data - wrangle or reshape as needed
+5. Analyze the data
+  a. Descriptive statistics like Table 1
+  b. Inferential statistics like t-tests, or chi-squared tests, for primary and secondary endpoints.
+  d. Advanced analyses like linear or logistic models of outcomes
+  e. Descriptive counts of adverse events
+6. Generate Outputs to Communicate the Results
+  a. Tables of data - table 1, tables of adverse events, and regression tables
+  b. Graphs - histograms, scatterplots, jittered/violin plots, and survival curves
+  c. Complete manuscripts (with RMarkdown and Quarto)
+  d. Posters and presentations
+
+All of the programming we do with data will be done in order to achieve this sort of workflow with your data. We will start with the basics of R, and then move on to more advanced topics as we go.
+
+
+## Files in R
+There are generally two major categories of files that you will  work with in R:
+1. Data files
+2. Script (or code) files
+
+### Data Files
+Data files are files that contain data. They can be in many formats (named as file.extension), but the most common are:
+
+- .csv files - comma separated values
+- .xlsx files - Excel files
+- .RDS files - R data files
+- .Rda files - R data that can bundle multiple files into one file - these are used less often
+- arrow files - these are a new format that is very fast for big data (similar to feather or parquet files)
+
+and you can import data files from other programs, like
+
+- .sav files - SPSS files
+- .dta files - Stata files
+- .sas7bdat files - SAS files
+
+Most of your data importing can be accomplished with the {readr} package, though the {readxl} and {haven} packages are  very useful for data coming from Excel, SPSS, Stata, and SAS.
+
+### Script files
+
+Script files are files that contain code. They can be in many formats, but the most common are:
+
+- .R files - R script files
+
+These .R files are nearly all code, and to write a comment in the file about your code you need to use a hashtag(#) before the text.
+Writing comments is important for reproducibiiity, as it helps you remember what you were doing, and helps others understand your code.
+
+There are also specialized script files that make it easier to include comments, or even to write a whole manuscript (with R code chunks mixed in to produce the output). These include:
+
+- .Rmd files - RMarkdown files
+- .qmd files - Quarto files
+
+This kind of script file enables you to create a variety of outputs, including manuscripts, presentations, websites, and live web applications that users can interact with.
+
+### Other files
+You will also see other files in R projects, including:
+
+- .html files - web page output for sharing
+- .docx files - Microsoft Word files
+- .pptx files - Microsoft PowerPoint files
+- .xlsx files - Microsoft Excel files
+- .pdf files - Adobe Acrobat files
+- .png, .jpg, .svg files - image files
+- .csv files - comma separated values files
+- .yaml files - Yet Another Markup Language files - to format output like HTML, Word, or powerpoint
+- .Rproj files - R project files - an anchor indicator file used to organize projects
+- .git files - git version control files - used to track changes in your code
+- .log files - log files that record the output of your code
+
+## Paths in R
+Paths are how the computer keeps track of where your files are stored. Paths can be relative or absolute. Relative paths are paths that are relative to the current `working directory`. Absolute paths are paths that are the full path from the root directory of the computer to the file. A typical absolute path might look like this:
+
+`C:/Users/username/Documents/MyData/mydata.csv`
+
+while a typical relative path, while you are working in your Documents folder, might look like this:
+
+`MyData/mydata.csv`
+
+Making sure that you have the right path to read or write a file is very important in all programming languages. If you get the path wrong, R will not be able to find the file, and will give you an error. This can be frustrating, but with practice, you will get better at managing paths. At times you may need to jump into your file system to track down a particular file that is not in the path that you expected.
+
+## Creating variables in R
+Unlike some computer languages, you do not have to 'declare' variables in R. You can just start using them. This is called 'dynamic typing'. You can create a variable by `assigning` a value to it with the `<-` (assignment) operator (often called the arrow). For example, in the code chunk below:
+
+
+``` r
+my_variable <- 5
+```
+
+we are creating a variable called `my_variable` and assigning it the value `5`. You can also use the `=` or the `->` operator to assign values to variables, but the `<-` operator is more common in R. 
+
+The `rightward arrow` operator `->` can be handy if you have used multiple steps to wrangle some data, and you want to assign the result to a new variable. For example, in the code chunk below:
+
+
+``` r
+library(palmerpenguins) # 1
+```
+
+```
+## 
+## Attaching package: 'palmerpenguins'
+```
+
+```
+## The following objects are masked from 'package:datasets':
+## 
+##     penguins, penguins_raw
+```
+
+``` r
+penguins |> # 2, # 3
+  filter(species == "Adelie") |> # 4
+  select( # 5
+    species, bill_length_mm,
+    bill_depth_mm
+  ) -> adelie_penguins # 6
+
+head(adelie_penguins) # 7
+```
+
+```
+## # A tibble: 6 × 3
+##   species bill_length_mm bill_depth_mm
+##   <fct>            <dbl>         <dbl>
+## 1 Adelie            39.1          18.7
+## 2 Adelie            39.5          17.4
+## 3 Adelie            40.3          18  
+## 4 Adelie            NA            NA  
+## 5 Adelie            36.7          19.3
+## 6 Adelie            39.3          20.6
+```
+
+We
+1. loaded the `palmerpenguins` package with `library`
+2. started with the `penguins` dataset
+3. Used the `pipe` operator `|>` to pass the `penguins` data to the `filter` function
+4. Filtered the data to only include the `Adelie` species
+5. Selected only the `species`, `bill_length_mm`, and `bill_depth_mm` variable columns
+6. Assigned the result with the rightward arrow to a new variable called `adelie_penguins`
+7. Printed the first 6 rows (the `head`) of the `adelie_penguins` dataset
+
+## The Pipe Operator
+The pipe is a tool to feed the result of the prior step of code into the next step. This is often very helpful in cleaning and reshaping data (often called `wrangling data`). The pipe operator can be written as `%>%` or `|>` and is read as `and then`. It is a way to make your code more readable, and to avoid having to nest functions inside each other. The pipe operator is part of the `magrittr` package, which is loaded by default with the `tidyverse` package.
+
+Making your code more readable by humans (not just by computers) is the idea behind `literate programming`, which is a programming philosophy. A program written with `literate programming` principles is easier for humans to read, to check the validity of, and easier to `debug` if there are problems.
+
+## R Dialects
+Most of the R code you will see is written in the `tidyverse` dialect of R. This is a set of packages that are designed to work together to make data wrangling and visualization easier. However, for many years before the `tidyverse` was created, the `base` R dialect was the most common. The `base` R dialect is still used in many packages, and is the underlying structure of R. The `base` R dialect is more verbose, and often requires more code to accomplish the same task as the `tidyverse` dialect. However, the `base` R dialect is also more explicit, and there are times when using the `base` R dialect is an easier way to solve a specific problem.
+
+In base R, a variable is referred to in the context of its dataset, so you would write `penguins$species` to refer to the `species` variable in the `penguins` dataset. 
+
+Base R also uses brackets to refer to specific data values in a dataset. For example, to refer to the first row of the `species` variable in the `penguins` dataset, you would write `penguins$species[1]`. Or to refer to the value in the 5th row and the 3rd column in the `penguins` dataset, you would write `penguins[5,3]`. The bracket notation assumes that you always list rows first, then columns.
+
+In the base dialect, you can create a new variable by assigning it, just like in the `tidyverse` dialect. In the code chunk below, you can see two ways to create a new variable in the `penguins` dataset, one using the `base` R dialect, and one using the `tidyverse` dialect:
+
+
+``` r
+# base R version
+penguins$bill_ratio <- penguins$bill_length_mm / penguins$bill_depth_mm
+
+# tidyverse version
+penguins <-
+  penguins |>
+  mutate(bill_ratio = bill_length_mm / bill_depth_mm)
+```
+
+Both approaches work. At times, you may need to use the `base` R dialect, to get specific tasks done that are simply easier in `base` R. 
+
+While we will be largely focused on the tidyverse dialect in this course, it is important to be aware of the base R dialect, and to be able to read and write code in both dialects.

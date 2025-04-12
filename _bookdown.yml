@@ -12,6 +12,7 @@ rmd_files:
 - io80-intro-reproducibility.Rmd
 - io05-importing.Rmd
 - io06a-filter.Rmd
+- io07_basics_R.Rmd
 - io05a-columns.Rmd
 - io92-mutating_new_variables.Rmd
 - io80-mutating_joins.Rmd
@@ -50,6 +51,7 @@ rmd_files:
 - io103-protecting_phi.Rmd
 - io105-targets.Rmd
 - io106-scales_colors_ggplot.Rmd
+- io109-tabula_pdf.Rmd
 - io198-title-holder.Rmd
 - io199-references.Rmd
 

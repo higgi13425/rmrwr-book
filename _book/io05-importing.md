@@ -134,9 +134,9 @@ read_csv(glue(url_stem, 'data/scurvy.csv'))
 
 ```
 ## Rows: 12 Columns: 8
-## ── Column specification ────────────────────────────────────
+## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: ","
-## chr (8): study_id, treatment, dosing_regimen_for_scurvy,...
+## chr (8): study_id, treatment, dosing_regimen_for_scurvy, gum_rot_d6, skin_so...
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
@@ -144,23 +144,22 @@ read_csv(glue(url_stem, 'data/scurvy.csv'))
 
 ```
 ## # A tibble: 12 × 8
-##    study_id treatment      dosing_regimen_for_s…¹ gum_rot_d6
-##    <chr>    <chr>          <chr>                  <chr>     
-##  1 001      cider          1 quart per day        2_moderate
-##  2 002      cider          1 quart per day        2_moderate
-##  3 003      dilute_sulfur… 25 drops of elixir of… 1_mild    
-##  4 004      dilute_sulfur… 25 drops of elixir of… 2_moderate
-##  5 005      vinegar        two spoonfuls, three … 3_severe  
-##  6 006      vinegar        two spoonfuls, three … 3_severe  
-##  7 007      sea_water      half pint daily        3_severe  
-##  8 008      sea_water      half pint daily        3_severe  
-##  9 009      citrus         two lemons and an ora… 1_mild    
-## 10 010      citrus         two lemons and an ora… 0_none    
-## 11 011      purgative_mix… a nutmeg-sized paste … 3_severe  
-## 12 012      purgative_mix… a nutmeg-sized paste … 3_severe  
+##    study_id treatment            dosing_regimen_for_s…¹ gum_rot_d6 skin_sores_d6
+##    <chr>    <chr>                <chr>                  <chr>      <chr>        
+##  1 001      cider                1 quart per day        2_moderate 2_moderate   
+##  2 002      cider                1 quart per day        2_moderate 1_mild       
+##  3 003      dilute_sulfuric_acid 25 drops of elixir of… 1_mild     3_severe     
+##  4 004      dilute_sulfuric_acid 25 drops of elixir of… 2_moderate 3_severe     
+##  5 005      vinegar              two spoonfuls, three … 3_severe   3_severe     
+##  6 006      vinegar              two spoonfuls, three … 3_severe   3_severe     
+##  7 007      sea_water            half pint daily        3_severe   3_severe     
+##  8 008      sea_water            half pint daily        3_severe   3_severe     
+##  9 009      citrus               two lemons and an ora… 1_mild     1_mild       
+## 10 010      citrus               two lemons and an ora… 0_none     0_none       
+## 11 011      purgative_mixture    a nutmeg-sized paste … 3_severe   3_severe     
+## 12 012      purgative_mixture    a nutmeg-sized paste … 3_severe   3_severe     
 ## # ℹ abbreviated name: ¹​dosing_regimen_for_scurvy
-## # ℹ 4 more variables: skin_sores_d6 <chr>,
-## #   weakness_of_the_knees_d6 <chr>, lassitude_d6 <chr>,
+## # ℹ 3 more variables: weakness_of_the_knees_d6 <chr>, lassitude_d6 <chr>,
 ## #   fit_for_duty_d6 <chr>
 ```
 
@@ -199,9 +198,9 @@ scurvy_data <- read_csv(glue(url_stem, 'data/scurvy.csv'))
 
 ```
 ## Rows: 12 Columns: 8
-## ── Column specification ────────────────────────────────────
+## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: ","
-## chr (8): study_id, treatment, dosing_regimen_for_scurvy,...
+## chr (8): study_id, treatment, dosing_regimen_for_scurvy, gum_rot_d6, skin_so...
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
@@ -257,7 +256,7 @@ col_names = c("pat_id", "arm", "dose", "gums", "skin", "weak", "lass", "fit"))
 
 ```
 ## Rows: 13 Columns: 8
-## ── Column specification ────────────────────────────────────
+## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: ","
 ## chr (8): pat_id, arm, dose, gums, skin, weak, lass, fit
 ## 
@@ -267,21 +266,21 @@ col_names = c("pat_id", "arm", "dose", "gums", "skin", "weak", "lass", "fit"))
 
 ```
 ## # A tibble: 13 × 8
-##    pat_id   arm          dose  gums  skin  weak  lass  fit  
-##    <chr>    <chr>        <chr> <chr> <chr> <chr> <chr> <chr>
-##  1 study_id treatment    dosi… gum_… skin… weak… lass… fit_…
-##  2 001      cider        1 qu… 2_mo… 2_mo… 2_mo… 2_mo… 0_no 
-##  3 002      cider        1 qu… 2_mo… 1_mi… 2_mo… 3_se… 0_no 
-##  4 003      dilute_sulf… 25 d… 1_mi… 3_se… 3_se… 3_se… 0_no 
-##  5 004      dilute_sulf… 25 d… 2_mo… 3_se… 3_se… 3_se… 0_no 
-##  6 005      vinegar      two … 3_se… 3_se… 3_se… 3_se… 0_no 
-##  7 006      vinegar      two … 3_se… 3_se… 3_se… 3_se… 0_no 
-##  8 007      sea_water    half… 3_se… 3_se… 3_se… 3_se… 0_no 
-##  9 008      sea_water    half… 3_se… 3_se… 3_se… 3_se… 0_no 
-## 10 009      citrus       two … 1_mi… 1_mi… 0_no… 1_mi… 0_no 
-## 11 010      citrus       two … 0_no… 0_no… 0_no… 0_no… 1_yes
-## 12 011      purgative_m… a nu… 3_se… 3_se… 3_se… 3_se… 0_no 
-## 13 012      purgative_m… a nu… 3_se… 3_se… 3_se… 3_se… 0_no
+##    pat_id   arm                  dose              gums  skin  weak  lass  fit  
+##    <chr>    <chr>                <chr>             <chr> <chr> <chr> <chr> <chr>
+##  1 study_id treatment            dosing_regimen_f… gum_… skin… weak… lass… fit_…
+##  2 001      cider                1 quart per day   2_mo… 2_mo… 2_mo… 2_mo… 0_no 
+##  3 002      cider                1 quart per day   2_mo… 1_mi… 2_mo… 3_se… 0_no 
+##  4 003      dilute_sulfuric_acid 25 drops of elix… 1_mi… 3_se… 3_se… 3_se… 0_no 
+##  5 004      dilute_sulfuric_acid 25 drops of elix… 2_mo… 3_se… 3_se… 3_se… 0_no 
+##  6 005      vinegar              two spoonfuls, t… 3_se… 3_se… 3_se… 3_se… 0_no 
+##  7 006      vinegar              two spoonfuls, t… 3_se… 3_se… 3_se… 3_se… 0_no 
+##  8 007      sea_water            half pint daily   3_se… 3_se… 3_se… 3_se… 0_no 
+##  9 008      sea_water            half pint daily   3_se… 3_se… 3_se… 3_se… 0_no 
+## 10 009      citrus               two lemons and a… 1_mi… 1_mi… 0_no… 1_mi… 0_no 
+## 11 010      citrus               two lemons and a… 0_no… 0_no… 0_no… 0_no… 1_yes
+## 12 011      purgative_mixture    a nutmeg-sized p… 3_se… 3_se… 3_se… 3_se… 0_no 
+## 13 012      purgative_mixture    a nutmeg-sized p… 3_se… 3_se… 3_se… 3_se… 0_no
 ```
 
 In this case, when we set our own **col_names**, there are now **13** rows in our data rectangle, and the original column headers are now listed as the first row of data.
@@ -298,7 +297,7 @@ read_csv(file = glue(url_stem, 'data/scurvy.csv'),
 
 ```
 ## Rows: 12 Columns: 8
-## ── Column specification ────────────────────────────────────
+## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: ","
 ## chr (8): pat_id, arm, dose, gums, skin, weak, lass, fit
 ## 
@@ -308,20 +307,20 @@ read_csv(file = glue(url_stem, 'data/scurvy.csv'),
 
 ```
 ## # A tibble: 12 × 8
-##    pat_id arm            dose  gums  skin  weak  lass  fit  
-##    <chr>  <chr>          <chr> <chr> <chr> <chr> <chr> <chr>
-##  1 001    cider          1 qu… 2_mo… 2_mo… 2_mo… 2_mo… 0_no 
-##  2 002    cider          1 qu… 2_mo… 1_mi… 2_mo… 3_se… 0_no 
-##  3 003    dilute_sulfur… 25 d… 1_mi… 3_se… 3_se… 3_se… 0_no 
-##  4 004    dilute_sulfur… 25 d… 2_mo… 3_se… 3_se… 3_se… 0_no 
-##  5 005    vinegar        two … 3_se… 3_se… 3_se… 3_se… 0_no 
-##  6 006    vinegar        two … 3_se… 3_se… 3_se… 3_se… 0_no 
-##  7 007    sea_water      half… 3_se… 3_se… 3_se… 3_se… 0_no 
-##  8 008    sea_water      half… 3_se… 3_se… 3_se… 3_se… 0_no 
-##  9 009    citrus         two … 1_mi… 1_mi… 0_no… 1_mi… 0_no 
-## 10 010    citrus         two … 0_no… 0_no… 0_no… 0_no… 1_yes
-## 11 011    purgative_mix… a nu… 3_se… 3_se… 3_se… 3_se… 0_no 
-## 12 012    purgative_mix… a nu… 3_se… 3_se… 3_se… 3_se… 0_no
+##    pat_id arm                  dose                gums  skin  weak  lass  fit  
+##    <chr>  <chr>                <chr>               <chr> <chr> <chr> <chr> <chr>
+##  1 001    cider                1 quart per day     2_mo… 2_mo… 2_mo… 2_mo… 0_no 
+##  2 002    cider                1 quart per day     2_mo… 1_mi… 2_mo… 3_se… 0_no 
+##  3 003    dilute_sulfuric_acid 25 drops of elixir… 1_mi… 3_se… 3_se… 3_se… 0_no 
+##  4 004    dilute_sulfuric_acid 25 drops of elixir… 2_mo… 3_se… 3_se… 3_se… 0_no 
+##  5 005    vinegar              two spoonfuls, thr… 3_se… 3_se… 3_se… 3_se… 0_no 
+##  6 006    vinegar              two spoonfuls, thr… 3_se… 3_se… 3_se… 3_se… 0_no 
+##  7 007    sea_water            half pint daily     3_se… 3_se… 3_se… 3_se… 0_no 
+##  8 008    sea_water            half pint daily     3_se… 3_se… 3_se… 3_se… 0_no 
+##  9 009    citrus               two lemons and an … 1_mi… 1_mi… 0_no… 1_mi… 0_no 
+## 10 010    citrus               two lemons and an … 0_no… 0_no… 0_no… 0_no… 1_yes
+## 11 011    purgative_mixture    a nutmeg-sized pas… 3_se… 3_se… 3_se… 3_se… 0_no 
+## 12 012    purgative_mixture    a nutmeg-sized pas… 3_se… 3_se… 3_se… 3_se… 0_no
 ```
 
 Now we don't have extra column names as data, and we are back to 12 rows.
@@ -382,14 +381,14 @@ glimpse(scurvy_cols)
 ```
 ## Rows: 12
 ## Columns: 8
-## $ study_id                  <int> 1, 2, 3, 4, 5, 6, 7, 8, …
-## $ treatment                 <fct> cider, cider, dilute_sul…
-## $ dosing_regimen_for_scurvy <chr> "1 quart per day", "1 qu…
-## $ gum_rot_d6                <chr> "2_moderate", "2_moderat…
-## $ skin_sores_d6             <chr> "2_moderate", "1_mild", …
-## $ weakness_of_the_knees_d6  <chr> "2_moderate", "2_moderat…
-## $ lassitude_d6              <chr> "2_moderate", "3_severe"…
-## $ fit_for_duty_d6           <chr> "0_no", "0_no", "0_no", …
+## $ study_id                  <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+## $ treatment                 <fct> cider, cider, dilute_sulfuric_acid, dilute_s…
+## $ dosing_regimen_for_scurvy <chr> "1 quart per day", "1 quart per day", "25 dr…
+## $ gum_rot_d6                <chr> "2_moderate", "2_moderate", "1_mild", "2_mod…
+## $ skin_sores_d6             <chr> "2_moderate", "1_mild", "3_severe", "3_sever…
+## $ weakness_of_the_knees_d6  <chr> "2_moderate", "2_moderate", "3_severe", "3_s…
+## $ lassitude_d6              <chr> "2_moderate", "3_severe", "3_severe", "3_sev…
+## $ fit_for_duty_d6           <chr> "0_no", "0_no", "0_no", "0_no", "0_no", "0_n…
 ```
 
 You can see that study_id is now considered the integer data type (`<int>`), and the treatment variable is now a factor (`<fct>`).
@@ -426,14 +425,14 @@ glimpse(scurvy_cols2)
 ```
 ## Rows: 12
 ## Columns: 8
-## $ study_id                  <int> 1, 2, 3, 4, 5, 6, 7, 8, …
-## $ treatment                 <fct> cider, cider, dilute_sul…
-## $ dosing_regimen_for_scurvy <chr> "1 quart per day", "1 qu…
-## $ gum_rot_d6                <fct> 2_moderate, 2_moderate, …
-## $ skin_sores_d6             <fct> 2_moderate, 1_mild, 3_se…
-## $ weakness_of_the_knees_d6  <fct> 2_moderate, 2_moderate, …
-## $ lassitude_d6              <fct> 2_moderate, 3_severe, 3_…
-## $ fit_for_duty_d6           <chr> "0_no", "0_no", "0_no", …
+## $ study_id                  <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+## $ treatment                 <fct> cider, cider, dilute_sulfuric_acid, dilute_s…
+## $ dosing_regimen_for_scurvy <chr> "1 quart per day", "1 quart per day", "25 dr…
+## $ gum_rot_d6                <fct> 2_moderate, 2_moderate, 1_mild, 2_moderate, …
+## $ skin_sores_d6             <fct> 2_moderate, 1_mild, 3_severe, 3_severe, 3_se…
+## $ weakness_of_the_knees_d6  <fct> 2_moderate, 2_moderate, 3_severe, 3_severe, …
+## $ lassitude_d6              <fct> 2_moderate, 3_severe, 3_severe, 3_severe, 3_…
+## $ fit_for_duty_d6           <chr> "0_no", "0_no", "0_no", "0_no", "0_no", "0_n…
 ```
 
 ### Try it Yourself
@@ -484,17 +483,17 @@ glimpse(strep_tb_cols)
 ```
 ## Rows: 107
 ## Columns: 11
-## $ patient_id          <chr> "0001", "0002", "0003", "0004"…
-## $ arm                 <chr> "Control", "Control", "Control…
-## $ dose_strep_g        <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
-## $ dose_PAS_g          <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
-## $ gender              <fct> M, F, F, M, F, M, F, M, F, M, …
-## $ baseline_condition  <fct> 1_Good, 1_Good, 1_Good, 1_Good…
-## $ baseline_temp       <fct> 1_98-98.9F, 3_100-100.9F, 1_98…
-## $ baseline_esr        <fct> 2_11-20, 2_11-20, 3_21-50, 3_2…
-## $ baseline_cavitation <fct> yes, no, no, no, no, no, yes, …
-## $ rad_num             <int> 6, 5, 5, 5, 5, 6, 5, 5, 5, 5, …
-## $ improved            <lgl> TRUE, TRUE, TRUE, TRUE, TRUE, …
+## $ patient_id          <chr> "0001", "0002", "0003", "0004", "0005", "0006", "0…
+## $ arm                 <chr> "Control", "Control", "Control", "Control", "Contr…
+## $ dose_strep_g        <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ dose_PAS_g          <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ gender              <fct> M, F, F, M, F, M, F, M, F, M, F, M, F, M, F, M, F,…
+## $ baseline_condition  <fct> 1_Good, 1_Good, 1_Good, 1_Good, 1_Good, 1_Good, 1_…
+## $ baseline_temp       <fct> 1_98-98.9F, 3_100-100.9F, 1_98-98.9F, 1_98-98.9F, …
+## $ baseline_esr        <fct> 2_11-20, 2_11-20, 3_21-50, 3_21-50, 3_21-50, 3_21-…
+## $ baseline_cavitation <fct> yes, no, no, no, no, no, yes, yes, yes, yes, no, y…
+## $ rad_num             <int> 6, 5, 5, 5, 5, 6, 5, 5, 5, 5, 6, 5, 5, 5, 5, 6, 5,…
+## $ improved            <lgl> TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TR…
 ```
 
 </div>
@@ -545,22 +544,22 @@ read_excel(paulolol_xlsx,
 
 ```
 ## # A tibble: 14 × 6
-##    `Data for my study`  ...2         ...3  ...4  ...5  ...6 
-##    <chr>                <chr>        <chr> <chr> <chr> <chr>
-##  1 Paul Investigator MD <NA>         <NA>  <NA>  <NA>  <NA> 
-##  2 44338                <NA>         <NA>  <NA>  <NA>  <NA> 
-##  3 pat_id               SBP_start    SBP_… HR_s… HR_e… trea…
-##  4 1                    145          120   92    78    paul…
-##  5 2                    147          148   88    87    plac…
-##  6 3                    158          139   96    80    paul…
-##  7 4                    167          166   87    88    plac…
-##  8 5                    154          131   84    72    paul…
-##  9 6                    178          177   99    97    plac…
-## 10 7                    151          134   101   86    paul…
-## 11 8                    149          148   92    93    plac…
-## 12 <NA>                 <NA>         <NA>  sbp   hr    <NA> 
-## 13 <NA>                 mean paulol… <NA>  131   79    <NA> 
-## 14 <NA>                 mean placebo <NA>  159.… 91.25 <NA>
+##    `Data for my study`  ...2          ...3    ...4     ...5   ...6     
+##    <chr>                <chr>         <chr>   <chr>    <chr>  <chr>    
+##  1 Paul Investigator MD <NA>          <NA>    <NA>     <NA>   <NA>     
+##  2 44338                <NA>          <NA>    <NA>     <NA>   <NA>     
+##  3 pat_id               SBP_start     SBP_end HR_start HR_end treatment
+##  4 1                    145           120     92       78     paulolol 
+##  5 2                    147           148     88       87     placebo  
+##  6 3                    158           139     96       80     paulolol 
+##  7 4                    167           166     87       88     placebo  
+##  8 5                    154           131     84       72     paulolol 
+##  9 6                    178           177     99       97     placebo  
+## 10 7                    151           134     101      86     paulolol 
+## 11 8                    149           148     92       93     placebo  
+## 12 <NA>                 <NA>          <NA>    sbp      hr     <NA>     
+## 13 <NA>                 mean paulolol <NA>    131      79     <NA>     
+## 14 <NA>                 mean placebo  <NA>    159.75   91.25  <NA>
 ```
 
 You will notice that 
@@ -634,23 +633,21 @@ haven::read_sas(glue(url_stem, "data/blood_storage.sas7bdat"))
 
 ```
 ## # A tibble: 316 × 20
-##    rbc_age_group median_rbc_age   age    aa fam_hx p_vol
-##            <dbl>          <dbl> <dbl> <dbl>  <dbl> <dbl>
-##  1             3             25  72.1     0      0  54  
-##  2             3             25  73.6     0      0  43.2
-##  3             3             25  67.5     0      0 103. 
-##  4             2             15  65.8     0      0  46  
-##  5             2             15  63.2     0      0  60  
-##  6             3             25  65.4     0      0  45.9
-##  7             3             25  65.5     1      0  42.6
-##  8             1             10  67.1     0      0  40.7
-##  9             1             10  63.9     0      0  45  
-## 10             2             15  63       1      0  67.6
+##    rbc_age_group median_rbc_age   age    aa fam_hx p_vol t_vol t_stage  b_gs
+##            <dbl>          <dbl> <dbl> <dbl>  <dbl> <dbl> <dbl>   <dbl> <dbl>
+##  1             3             25  72.1     0      0  54       3       1     3
+##  2             3             25  73.6     0      0  43.2     3       2     2
+##  3             3             25  67.5     0      0 103.      1       1     3
+##  4             2             15  65.8     0      0  46       1       1     1
+##  5             2             15  63.2     0      0  60       2       1     2
+##  6             3             25  65.4     0      0  45.9     2       1     1
+##  7             3             25  65.5     1      0  42.6     2       1     1
+##  8             1             10  67.1     0      0  40.7     3       1     1
+##  9             1             10  63.9     0      0  45       2       1     1
+## 10             2             15  63       1      0  67.6     2       1     2
 ## # ℹ 306 more rows
-## # ℹ 14 more variables: t_vol <dbl>, t_stage <dbl>,
-## #   b_gs <dbl>, bn <dbl>, organ_confined <dbl>,
-## #   preop_psa <dbl>, preop_therapy <dbl>, units <dbl>,
-## #   s_gs <dbl>, any_adj_therapy <dbl>,
+## # ℹ 11 more variables: bn <dbl>, organ_confined <dbl>, preop_psa <dbl>,
+## #   preop_therapy <dbl>, units <dbl>, s_gs <dbl>, any_adj_therapy <dbl>,
 ## #   adj_rad_therapy <dbl>, recurrence <dbl>, censor <dbl>,
 ## #   time_to_recurrence <dbl>
 ```
@@ -664,23 +661,21 @@ haven::read_dta(glue(url_stem, "data/blood_storage.dta"))
 
 ```
 ## # A tibble: 316 × 20
-##    rbc_age_group median_rbc_age   age    aa fam_hx p_vol
-##            <dbl>          <dbl> <dbl> <dbl>  <dbl> <dbl>
-##  1             3             25  72.1     0      0  54  
-##  2             3             25  73.6     0      0  43.2
-##  3             3             25  67.5     0      0 103. 
-##  4             2             15  65.8     0      0  46  
-##  5             2             15  63.2     0      0  60  
-##  6             3             25  65.4     0      0  45.9
-##  7             3             25  65.5     1      0  42.6
-##  8             1             10  67.1     0      0  40.7
-##  9             1             10  63.9     0      0  45  
-## 10             2             15  63       1      0  67.6
+##    rbc_age_group median_rbc_age   age    aa fam_hx p_vol t_vol t_stage  b_gs
+##            <dbl>          <dbl> <dbl> <dbl>  <dbl> <dbl> <dbl>   <dbl> <dbl>
+##  1             3             25  72.1     0      0  54       3       1     3
+##  2             3             25  73.6     0      0  43.2     3       2     2
+##  3             3             25  67.5     0      0 103.      1       1     3
+##  4             2             15  65.8     0      0  46       1       1     1
+##  5             2             15  63.2     0      0  60       2       1     2
+##  6             3             25  65.4     0      0  45.9     2       1     1
+##  7             3             25  65.5     1      0  42.6     2       1     1
+##  8             1             10  67.1     0      0  40.7     3       1     1
+##  9             1             10  63.9     0      0  45       2       1     1
+## 10             2             15  63       1      0  67.6     2       1     2
 ## # ℹ 306 more rows
-## # ℹ 14 more variables: t_vol <dbl>, t_stage <dbl>,
-## #   b_gs <dbl>, bn <dbl>, organ_confined <dbl>,
-## #   preop_psa <dbl>, preop_therapy <dbl>, units <dbl>,
-## #   s_gs <dbl>, any_adj_therapy <dbl>,
+## # ℹ 11 more variables: bn <dbl>, organ_confined <dbl>, preop_psa <dbl>,
+## #   preop_therapy <dbl>, units <dbl>, s_gs <dbl>, any_adj_therapy <dbl>,
 ## #   adj_rad_therapy <dbl>, recurrence <dbl>, censor <dbl>,
 ## #   time_to_recurrence <dbl>
 ```
@@ -694,24 +689,22 @@ haven::read_sav(glue(url_stem, "data/strep_tb.sav"))
 
 ```
 ## # A tibble: 107 × 13
-##    patient_id arm         dose_strep_g dose_PAS_g gender   
-##    <chr>      <dbl+lbl>          <dbl>      <dbl> <dbl+lbl>
-##  1 0001       2 [Control]            0          0 2 [M]    
-##  2 0002       2 [Control]            0          0 1 [F]    
-##  3 0003       2 [Control]            0          0 1 [F]    
-##  4 0004       2 [Control]            0          0 2 [M]    
-##  5 0005       2 [Control]            0          0 1 [F]    
-##  6 0006       2 [Control]            0          0 2 [M]    
-##  7 0007       2 [Control]            0          0 1 [F]    
-##  8 0008       2 [Control]            0          0 2 [M]    
-##  9 0009       2 [Control]            0          0 1 [F]    
-## 10 0010       2 [Control]            0          0 2 [M]    
+##    patient_id arm         dose_strep_g dose_PAS_g gender    baseline_condition
+##    <chr>      <dbl+lbl>          <dbl>      <dbl> <dbl+lbl> <dbl+lbl>         
+##  1 0001       2 [Control]            0          0 2 [M]     1 [1_Good]        
+##  2 0002       2 [Control]            0          0 1 [F]     1 [1_Good]        
+##  3 0003       2 [Control]            0          0 1 [F]     1 [1_Good]        
+##  4 0004       2 [Control]            0          0 2 [M]     1 [1_Good]        
+##  5 0005       2 [Control]            0          0 1 [F]     1 [1_Good]        
+##  6 0006       2 [Control]            0          0 2 [M]     1 [1_Good]        
+##  7 0007       2 [Control]            0          0 1 [F]     1 [1_Good]        
+##  8 0008       2 [Control]            0          0 2 [M]     1 [1_Good]        
+##  9 0009       2 [Control]            0          0 1 [F]     2 [2_Fair]        
+## 10 0010       2 [Control]            0          0 2 [M]     2 [2_Fair]        
 ## # ℹ 97 more rows
-## # ℹ 8 more variables: baseline_condition <dbl+lbl>,
-## #   baseline_temp <dbl+lbl>, baseline_esr <dbl+lbl>,
-## #   baseline_cavitation <dbl+lbl>,
-## #   strep_resistance <dbl+lbl>, radiologic_6m <dbl+lbl>,
-## #   rad_num <dbl>, improved <dbl>
+## # ℹ 7 more variables: baseline_temp <dbl+lbl>, baseline_esr <dbl+lbl>,
+## #   baseline_cavitation <dbl+lbl>, strep_resistance <dbl+lbl>,
+## #   radiologic_6m <dbl+lbl>, rad_num <dbl>, improved <dbl>
 ```
 
 You can learn more about how to read and write other data file types at [haven](https://haven.tidyverse.org)
@@ -763,14 +756,14 @@ glimpse(scurvy)
 ```
 ## Rows: 12
 ## Columns: 8
-## $ study_id                  <chr> "001", "002", "003", "00…
-## $ treatment                 <fct> cider, cider, dilute_sul…
-## $ dosing_regimen_for_scurvy <chr> "1 quart per day", "1 qu…
-## $ gum_rot_d6                <fct> 2_moderate, 2_moderate, …
-## $ skin_sores_d6             <fct> 2_moderate, 1_mild, 3_se…
-## $ weakness_of_the_knees_d6  <fct> 2_moderate, 2_moderate, …
-## $ lassitude_d6              <fct> 2_moderate, 3_severe, 3_…
-## $ fit_for_duty_d6           <fct> 0_no, 0_no, 0_no, 0_no, …
+## $ study_id                  <chr> "001", "002", "003", "004", "005", "006", "0…
+## $ treatment                 <fct> cider, cider, dilute_sulfuric_acid, dilute_s…
+## $ dosing_regimen_for_scurvy <chr> "1 quart per day", "1 quart per day", "25 dr…
+## $ gum_rot_d6                <fct> 2_moderate, 2_moderate, 1_mild, 2_moderate, …
+## $ skin_sores_d6             <fct> 2_moderate, 1_mild, 3_severe, 3_severe, 3_se…
+## $ weakness_of_the_knees_d6  <fct> 2_moderate, 2_moderate, 3_severe, 3_severe, …
+## $ lassitude_d6              <fct> 2_moderate, 3_severe, 3_severe, 3_severe, 3_…
+## $ fit_for_duty_d6           <fct> 0_no, 0_no, 0_no, 0_no, 0_no, 0_no, 0_no, 0_…
 ```
 
 The *glimpse()* function output tells you that there are 12 rows (observations) and 8 columns (variables).
@@ -905,17 +898,16 @@ head(medicaldata::scurvy)
 
 ```
 ## # A tibble: 6 × 8
-##   study_id treatment       dosing_regimen_for_s…¹ gum_rot_d6
-##   <chr>    <fct>           <chr>                  <fct>     
-## 1 001      cider           1 quart per day        2_moderate
-## 2 002      cider           1 quart per day        2_moderate
-## 3 003      dilute_sulfuri… 25 drops of elixir of… 1_mild    
-## 4 004      dilute_sulfuri… 25 drops of elixir of… 2_moderate
-## 5 005      vinegar         two spoonfuls, three … 3_severe  
-## 6 006      vinegar         two spoonfuls, three … 3_severe  
+##   study_id treatment            dosing_regimen_for_sc…¹ gum_rot_d6 skin_sores_d6
+##   <chr>    <fct>                <chr>                   <fct>      <fct>        
+## 1 001      cider                1 quart per day         2_moderate 2_moderate   
+## 2 002      cider                1 quart per day         2_moderate 1_mild       
+## 3 003      dilute_sulfuric_acid 25 drops of elixir of … 1_mild     3_severe     
+## 4 004      dilute_sulfuric_acid 25 drops of elixir of … 2_moderate 3_severe     
+## 5 005      vinegar              two spoonfuls, three t… 3_severe   3_severe     
+## 6 006      vinegar              two spoonfuls, three t… 3_severe   3_severe     
 ## # ℹ abbreviated name: ¹​dosing_regimen_for_scurvy
-## # ℹ 4 more variables: skin_sores_d6 <fct>,
-## #   weakness_of_the_knees_d6 <fct>, lassitude_d6 <fct>,
+## # ℹ 3 more variables: weakness_of_the_knees_d6 <fct>, lassitude_d6 <fct>,
 ## #   fit_for_duty_d6 <fct>
 ```
 
@@ -924,27 +916,20 @@ tail(medicaldata::strep_tb)
 ```
 
 ```
-##     patient_id          arm dose_strep_g dose_PAS_g gender
-## 102        100 Streptomycin            2          0      M
-## 103        101 Streptomycin            2          0      F
-## 104        104 Streptomycin            2          0      M
-## 105        105 Streptomycin            2          0      F
-## 106        106 Streptomycin            2          0      F
-## 107        107 Streptomycin            2          0      F
-##     baseline_condition         baseline_temp baseline_esr
-## 102             3_Poor 2_99-99.9F/37.3-37.7C        4_51+
-## 103             3_Poor        4_>=101F/38.3C        4_51+
-## 104             3_Poor        4_>=101F/38.3C        4_51+
-## 105             3_Poor        4_>=101F/38.3C        4_51+
-## 106             3_Poor        4_>=101F/38.3C        4_51+
-## 107             3_Poor        4_>=101F/38.3C        4_51+
-##     baseline_cavitation strep_resistance
-## 102                 yes    3_resist_100+
-## 103                 yes    3_resist_100+
-## 104                 yes    3_resist_100+
-## 105                 yes    3_resist_100+
-## 106                 yes    3_resist_100+
-## 107                 yes    3_resist_100+
+##     patient_id          arm dose_strep_g dose_PAS_g gender baseline_condition
+## 102        100 Streptomycin            2          0      M             3_Poor
+## 103        101 Streptomycin            2          0      F             3_Poor
+## 104        104 Streptomycin            2          0      M             3_Poor
+## 105        105 Streptomycin            2          0      F             3_Poor
+## 106        106 Streptomycin            2          0      F             3_Poor
+## 107        107 Streptomycin            2          0      F             3_Poor
+##             baseline_temp baseline_esr baseline_cavitation strep_resistance
+## 102 2_99-99.9F/37.3-37.7C        4_51+                 yes    3_resist_100+
+## 103        4_>=101F/38.3C        4_51+                 yes    3_resist_100+
+## 104        4_>=101F/38.3C        4_51+                 yes    3_resist_100+
+## 105        4_>=101F/38.3C        4_51+                 yes    3_resist_100+
+## 106        4_>=101F/38.3C        4_51+                 yes    3_resist_100+
+## 107        4_>=101F/38.3C        4_51+                 yes    3_resist_100+
 ##                    radiologic_6m rad_num improved
 ## 102                  4_No_change       4    FALSE
 ## 103 2_Considerable_deterioration       2    FALSE
@@ -971,27 +956,20 @@ head(as.data.frame(medicaldata::scurvy))
 ## 4      004 dilute_sulfuric_acid
 ## 5      005              vinegar
 ## 6      006              vinegar
-##                          dosing_regimen_for_scurvy
-## 1                                  1 quart per day
-## 2                                  1 quart per day
-## 3 25 drops of elixir of vitriol, three times a day
-## 4 25 drops of elixir of vitriol, three times a day
-## 5                 two spoonfuls, three times daily
-## 6                 two spoonfuls, three times daily
-##   gum_rot_d6 skin_sores_d6 weakness_of_the_knees_d6
-## 1 2_moderate    2_moderate               2_moderate
-## 2 2_moderate        1_mild               2_moderate
-## 3     1_mild      3_severe                 3_severe
-## 4 2_moderate      3_severe                 3_severe
-## 5   3_severe      3_severe                 3_severe
-## 6   3_severe      3_severe                 3_severe
-##   lassitude_d6 fit_for_duty_d6
-## 1   2_moderate            0_no
-## 2     3_severe            0_no
-## 3     3_severe            0_no
-## 4     3_severe            0_no
-## 5     3_severe            0_no
-## 6     3_severe            0_no
+##                          dosing_regimen_for_scurvy gum_rot_d6 skin_sores_d6
+## 1                                  1 quart per day 2_moderate    2_moderate
+## 2                                  1 quart per day 2_moderate        1_mild
+## 3 25 drops of elixir of vitriol, three times a day     1_mild      3_severe
+## 4 25 drops of elixir of vitriol, three times a day 2_moderate      3_severe
+## 5                 two spoonfuls, three times daily   3_severe      3_severe
+## 6                 two spoonfuls, three times daily   3_severe      3_severe
+##   weakness_of_the_knees_d6 lassitude_d6 fit_for_duty_d6
+## 1               2_moderate   2_moderate            0_no
+## 2               2_moderate     3_severe            0_no
+## 3                 3_severe     3_severe            0_no
+## 4                 3_severe     3_severe            0_no
+## 5                 3_severe     3_severe            0_no
+## 6                 3_severe     3_severe            0_no
 ```
 
 ``` r
@@ -999,27 +977,20 @@ print(tail(medicaldata::strep_tb, width = Inf))
 ```
 
 ```
-##     patient_id          arm dose_strep_g dose_PAS_g gender
-## 102        100 Streptomycin            2          0      M
-## 103        101 Streptomycin            2          0      F
-## 104        104 Streptomycin            2          0      M
-## 105        105 Streptomycin            2          0      F
-## 106        106 Streptomycin            2          0      F
-## 107        107 Streptomycin            2          0      F
-##     baseline_condition         baseline_temp baseline_esr
-## 102             3_Poor 2_99-99.9F/37.3-37.7C        4_51+
-## 103             3_Poor        4_>=101F/38.3C        4_51+
-## 104             3_Poor        4_>=101F/38.3C        4_51+
-## 105             3_Poor        4_>=101F/38.3C        4_51+
-## 106             3_Poor        4_>=101F/38.3C        4_51+
-## 107             3_Poor        4_>=101F/38.3C        4_51+
-##     baseline_cavitation strep_resistance
-## 102                 yes    3_resist_100+
-## 103                 yes    3_resist_100+
-## 104                 yes    3_resist_100+
-## 105                 yes    3_resist_100+
-## 106                 yes    3_resist_100+
-## 107                 yes    3_resist_100+
+##     patient_id          arm dose_strep_g dose_PAS_g gender baseline_condition
+## 102        100 Streptomycin            2          0      M             3_Poor
+## 103        101 Streptomycin            2          0      F             3_Poor
+## 104        104 Streptomycin            2          0      M             3_Poor
+## 105        105 Streptomycin            2          0      F             3_Poor
+## 106        106 Streptomycin            2          0      F             3_Poor
+## 107        107 Streptomycin            2          0      F             3_Poor
+##             baseline_temp baseline_esr baseline_cavitation strep_resistance
+## 102 2_99-99.9F/37.3-37.7C        4_51+                 yes    3_resist_100+
+## 103        4_>=101F/38.3C        4_51+                 yes    3_resist_100+
+## 104        4_>=101F/38.3C        4_51+                 yes    3_resist_100+
+## 105        4_>=101F/38.3C        4_51+                 yes    3_resist_100+
+## 106        4_>=101F/38.3C        4_51+                 yes    3_resist_100+
+## 107        4_>=101F/38.3C        4_51+                 yes    3_resist_100+
 ##                    radiologic_6m rad_num improved
 ## 102                  4_No_change       4    FALSE
 ## 103 2_Considerable_deterioration       2    FALSE
@@ -1055,16 +1026,16 @@ medicaldata::strep_tb %>%
 
 ```
 ##                   radiologic_6m rad_num improved
-## 1                       1_Death       1    FALSE
-## 2        5_Moderate_improvement       5     TRUE
+## 1        5_Moderate_improvement       5     TRUE
+## 2    6_Considerable_improvement       6     TRUE
 ## 3    6_Considerable_improvement       6     TRUE
-## 4                       1_Death       1    FALSE
+## 4        5_Moderate_improvement       5     TRUE
 ## 5                   4_No_change       4    FALSE
-## 6      3_Moderate_deterioration       3    FALSE
-## 7    6_Considerable_improvement       6     TRUE
-## 8  2_Considerable_deterioration       2    FALSE
-## 9    6_Considerable_improvement       6     TRUE
-## 10   6_Considerable_improvement       6     TRUE
+## 6    6_Considerable_improvement       6     TRUE
+## 7  2_Considerable_deterioration       2    FALSE
+## 8        5_Moderate_improvement       5     TRUE
+## 9                       1_Death       1    FALSE
+## 10     3_Moderate_deterioration       3    FALSE
 ```
 
 

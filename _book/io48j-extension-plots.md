@@ -368,12 +368,11 @@ medicaldata::covid_testing %>%
 ```
 
 ```
-## Warning: Using the `size` aesthetic with geom_segment was deprecated
-## in ggplot2 3.4.0.
+## Warning: Using the `size` aesthetic with geom_segment was deprecated in ggplot2 3.4.0.
 ## ℹ Please use the `linewidth` aesthetic instead.
 ## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where
-## this warning was generated.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.
 ```
 
 <img src="io48j-extension-plots_files/figure-html/lollipop-1.png" width="672" />
@@ -545,13 +544,12 @@ ggplot(dat, aes(x = time, y = value,
 ```
 
 ```
-## Warning: A numeric `legend.position` argument in `theme()` was
-## deprecated in ggplot2 3.5.0.
-## ℹ Please use the `legend.position.inside` argument of
-##   `theme()` instead.
+## Warning: A numeric `legend.position` argument in `theme()` was deprecated in ggplot2
+## 3.5.0.
+## ℹ Please use the `legend.position.inside` argument of `theme()` instead.
 ## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where
-## this warning was generated.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.
 ```
 
 <img src="io48j-extension-plots_files/figure-html/spaghetti3-1.png" width="672" />

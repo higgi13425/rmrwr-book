@@ -46,23 +46,23 @@ glimpse(covid)
 ```
 ## Rows: 15,524
 ## Columns: 17
-## $ subject_id      <dbl> 1412, 533, 9134, 8518, 8967, 11048…
-## $ fake_first_name <chr> "jhezane", "penny", "grunt", "meli…
-## $ fake_last_name  <chr> "westerling", "targaryen", "rivers…
-## $ gender          <chr> "female", "female", "male", "femal…
-## $ pan_day         <dbl> 4, 7, 7, 8, 8, 8, 9, 9, 9, 9, 9, 9…
-## $ test_id         <chr> "covid", "covid", "covid", "covid"…
-## $ clinic_name     <chr> "inpatient ward a", "clinical lab"…
-## $ result          <chr> "negative", "negative", "negative"…
-## $ demo_group      <chr> "patient", "patient", "patient", "…
-## $ age             <dbl> 0.0, 0.0, 0.8, 0.8, 0.8, 0.8, 0.8,…
-## $ drive_thru_ind  <dbl> 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 0…
-## $ ct_result       <dbl> 45, 45, 45, 45, 45, 45, 45, 45, 45…
-## $ orderset        <dbl> 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1…
-## $ payor_group     <chr> "government", "commercial", NA, NA…
-## $ patient_class   <chr> "inpatient", "not applicable", NA,…
-## $ col_rec_tat     <dbl> 1.4, 2.3, 7.3, 5.8, 1.2, 1.4, 2.6,…
-## $ rec_ver_tat     <dbl> 5.2, 5.8, 4.7, 5.0, 6.4, 7.0, 4.2,…
+## $ subject_id      <dbl> 1412, 533, 9134, 8518, 8967, 11048, 663, 2158, 3794, 4…
+## $ fake_first_name <chr> "jhezane", "penny", "grunt", "melisandre", "rolley", "…
+## $ fake_last_name  <chr> "westerling", "targaryen", "rivers", "swyft", "karstar…
+## $ gender          <chr> "female", "female", "male", "female", "male", "female"…
+## $ pan_day         <dbl> 4, 7, 7, 8, 8, 8, 9, 9, 9, 9, 9, 9, 9, 9, 9, 10, 10, 1…
+## $ test_id         <chr> "covid", "covid", "covid", "covid", "covid", "covid", …
+## $ clinic_name     <chr> "inpatient ward a", "clinical lab", "clinical lab", "c…
+## $ result          <chr> "negative", "negative", "negative", "negative", "negat…
+## $ demo_group      <chr> "patient", "patient", "patient", "patient", "patient",…
+## $ age             <dbl> 0.0, 0.0, 0.8, 0.8, 0.8, 0.8, 0.8, 0.0, 0.0, 0.9, 0.9,…
+## $ drive_thru_ind  <dbl> 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, …
+## $ ct_result       <dbl> 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45…
+## $ orderset        <dbl> 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, …
+## $ payor_group     <chr> "government", "commercial", NA, NA, "government", "com…
+## $ patient_class   <chr> "inpatient", "not applicable", NA, NA, "emergency", "r…
+## $ col_rec_tat     <dbl> 1.4, 2.3, 7.3, 5.8, 1.2, 1.4, 2.6, 0.7, 1.0, 7.1, 2.5,…
+## $ rec_ver_tat     <dbl> 5.2, 5.8, 4.7, 5.0, 6.4, 7.0, 4.2, 6.3, 5.6, 7.0, 3.8,…
 ```
 
 The **Knit** button (at the top of the top left pane of RStudio) runs
@@ -157,19 +157,17 @@ head(covid)
 
 ```
 ## # A tibble: 6 × 17
-##   subject_id fake_first_name fake_last_name gender pan_day
-##        <dbl> <chr>           <chr>          <chr>    <dbl>
-## 1       1412 jhezane         westerling     female       4
-## 2        533 penny           targaryen      female       7
-## 3       9134 grunt           rivers         male         7
-## 4       8518 melisandre      swyft          female       8
-## 5       8967 rolley          karstark       male         8
-## 6      11048 megga           karstark       female       8
-## # ℹ 12 more variables: test_id <chr>, clinic_name <chr>,
-## #   result <chr>, demo_group <chr>, age <dbl>,
-## #   drive_thru_ind <dbl>, ct_result <dbl>, orderset <dbl>,
-## #   payor_group <chr>, patient_class <chr>,
-## #   col_rec_tat <dbl>, rec_ver_tat <dbl>
+##   subject_id fake_first_name fake_last_name gender pan_day test_id clinic_name  
+##        <dbl> <chr>           <chr>          <chr>    <dbl> <chr>   <chr>        
+## 1       1412 jhezane         westerling     female       4 covid   inpatient wa…
+## 2        533 penny           targaryen      female       7 covid   clinical lab 
+## 3       9134 grunt           rivers         male         7 covid   clinical lab 
+## 4       8518 melisandre      swyft          female       8 covid   clinical lab 
+## 5       8967 rolley          karstark       male         8 covid   emergency de…
+## 6      11048 megga           karstark       female       8 covid   oncology day…
+## # ℹ 10 more variables: result <chr>, demo_group <chr>, age <dbl>,
+## #   drive_thru_ind <dbl>, ct_result <dbl>, orderset <dbl>, payor_group <chr>,
+## #   patient_class <chr>, col_rec_tat <dbl>, rec_ver_tat <dbl>
 ```
 
 ### Code Chunk Icons
@@ -235,23 +233,23 @@ covid %>%
 ```
 
 ```{=html}
-<div id="fbfskbhdbs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#fbfskbhdbs table {
+<div id="rdfkkvlepw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rdfkkvlepw table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fbfskbhdbs thead, #fbfskbhdbs tbody, #fbfskbhdbs tfoot, #fbfskbhdbs tr, #fbfskbhdbs td, #fbfskbhdbs th {
+#rdfkkvlepw thead, #rdfkkvlepw tbody, #rdfkkvlepw tfoot, #rdfkkvlepw tr, #rdfkkvlepw td, #rdfkkvlepw th {
   border-style: none;
 }
 
-#fbfskbhdbs p {
+#rdfkkvlepw p {
   margin: 0;
   padding: 0;
 }
 
-#fbfskbhdbs .gt_table {
+#rdfkkvlepw .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -277,12 +275,12 @@ covid %>%
   border-left-color: #D3D3D3;
 }
 
-#fbfskbhdbs .gt_caption {
+#rdfkkvlepw .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fbfskbhdbs .gt_title {
+#rdfkkvlepw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -294,7 +292,7 @@ covid %>%
   border-bottom-width: 0;
 }
 
-#fbfskbhdbs .gt_subtitle {
+#rdfkkvlepw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -306,7 +304,7 @@ covid %>%
   border-top-width: 0;
 }
 
-#fbfskbhdbs .gt_heading {
+#rdfkkvlepw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -318,13 +316,13 @@ covid %>%
   border-right-color: #D3D3D3;
 }
 
-#fbfskbhdbs .gt_bottom_border {
+#rdfkkvlepw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fbfskbhdbs .gt_col_headings {
+#rdfkkvlepw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -339,7 +337,7 @@ covid %>%
   border-right-color: #D3D3D3;
 }
 
-#fbfskbhdbs .gt_col_heading {
+#rdfkkvlepw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -359,7 +357,7 @@ covid %>%
   overflow-x: hidden;
 }
 
-#fbfskbhdbs .gt_column_spanner_outer {
+#rdfkkvlepw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -371,15 +369,15 @@ covid %>%
   padding-right: 4px;
 }
 
-#fbfskbhdbs .gt_column_spanner_outer:first-child {
+#rdfkkvlepw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fbfskbhdbs .gt_column_spanner_outer:last-child {
+#rdfkkvlepw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fbfskbhdbs .gt_column_spanner {
+#rdfkkvlepw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -391,11 +389,11 @@ covid %>%
   width: 100%;
 }
 
-#fbfskbhdbs .gt_spanner_row {
+#rdfkkvlepw .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fbfskbhdbs .gt_group_heading {
+#rdfkkvlepw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -421,7 +419,7 @@ covid %>%
   text-align: left;
 }
 
-#fbfskbhdbs .gt_empty_group_heading {
+#rdfkkvlepw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -436,15 +434,15 @@ covid %>%
   vertical-align: middle;
 }
 
-#fbfskbhdbs .gt_from_md > :first-child {
+#rdfkkvlepw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fbfskbhdbs .gt_from_md > :last-child {
+#rdfkkvlepw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fbfskbhdbs .gt_row {
+#rdfkkvlepw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -463,7 +461,7 @@ covid %>%
   overflow-x: hidden;
 }
 
-#fbfskbhdbs .gt_stub {
+#rdfkkvlepw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -476,7 +474,7 @@ covid %>%
   padding-right: 5px;
 }
 
-#fbfskbhdbs .gt_stub_row_group {
+#rdfkkvlepw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -490,15 +488,15 @@ covid %>%
   vertical-align: top;
 }
 
-#fbfskbhdbs .gt_row_group_first td {
+#rdfkkvlepw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fbfskbhdbs .gt_row_group_first th {
+#rdfkkvlepw .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fbfskbhdbs .gt_summary_row {
+#rdfkkvlepw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -508,16 +506,16 @@ covid %>%
   padding-right: 5px;
 }
 
-#fbfskbhdbs .gt_first_summary_row {
+#rdfkkvlepw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fbfskbhdbs .gt_first_summary_row.thick {
+#rdfkkvlepw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fbfskbhdbs .gt_last_summary_row {
+#rdfkkvlepw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -527,7 +525,7 @@ covid %>%
   border-bottom-color: #D3D3D3;
 }
 
-#fbfskbhdbs .gt_grand_summary_row {
+#rdfkkvlepw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -537,7 +535,7 @@ covid %>%
   padding-right: 5px;
 }
 
-#fbfskbhdbs .gt_first_grand_summary_row {
+#rdfkkvlepw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -547,7 +545,7 @@ covid %>%
   border-top-color: #D3D3D3;
 }
 
-#fbfskbhdbs .gt_last_grand_summary_row_top {
+#rdfkkvlepw .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -557,11 +555,11 @@ covid %>%
   border-bottom-color: #D3D3D3;
 }
 
-#fbfskbhdbs .gt_striped {
+#rdfkkvlepw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fbfskbhdbs .gt_table_body {
+#rdfkkvlepw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -570,7 +568,7 @@ covid %>%
   border-bottom-color: #D3D3D3;
 }
 
-#fbfskbhdbs .gt_footnotes {
+#rdfkkvlepw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -584,7 +582,7 @@ covid %>%
   border-right-color: #D3D3D3;
 }
 
-#fbfskbhdbs .gt_footnote {
+#rdfkkvlepw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -593,7 +591,7 @@ covid %>%
   padding-right: 5px;
 }
 
-#fbfskbhdbs .gt_sourcenotes {
+#rdfkkvlepw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -607,7 +605,7 @@ covid %>%
   border-right-color: #D3D3D3;
 }
 
-#fbfskbhdbs .gt_sourcenote {
+#rdfkkvlepw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -615,72 +613,72 @@ covid %>%
   padding-right: 5px;
 }
 
-#fbfskbhdbs .gt_left {
+#rdfkkvlepw .gt_left {
   text-align: left;
 }
 
-#fbfskbhdbs .gt_center {
+#rdfkkvlepw .gt_center {
   text-align: center;
 }
 
-#fbfskbhdbs .gt_right {
+#rdfkkvlepw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fbfskbhdbs .gt_font_normal {
+#rdfkkvlepw .gt_font_normal {
   font-weight: normal;
 }
 
-#fbfskbhdbs .gt_font_bold {
+#rdfkkvlepw .gt_font_bold {
   font-weight: bold;
 }
 
-#fbfskbhdbs .gt_font_italic {
+#rdfkkvlepw .gt_font_italic {
   font-style: italic;
 }
 
-#fbfskbhdbs .gt_super {
+#rdfkkvlepw .gt_super {
   font-size: 65%;
 }
 
-#fbfskbhdbs .gt_footnote_marks {
+#rdfkkvlepw .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fbfskbhdbs .gt_asterisk {
+#rdfkkvlepw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fbfskbhdbs .gt_indent_1 {
+#rdfkkvlepw .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fbfskbhdbs .gt_indent_2 {
+#rdfkkvlepw .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fbfskbhdbs .gt_indent_3 {
+#rdfkkvlepw .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fbfskbhdbs .gt_indent_4 {
+#rdfkkvlepw .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fbfskbhdbs .gt_indent_5 {
+#rdfkkvlepw .gt_indent_5 {
   text-indent: 25px;
 }
 
-#fbfskbhdbs .katex-display {
+#rdfkkvlepw .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#fbfskbhdbs div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#rdfkkvlepw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1127,12 +1125,12 @@ as illustrated below (note that these would be surrounded by single
 back-ticks)
 
 The mean cycle threshold in this study was
-<div class='webex-radiogroup' id='radio_VDIQZMKTNE'><label><input type="radio" autocomplete="off" name="radio_VDIQZMKTNE" value="answer"></input> <span>r covid %>%  mean(ct_result, na.rm = TRUE) %>% format(digits = 5)</span></label><label><input type="radio" autocomplete="off" name="radio_VDIQZMKTNE" value=""></input> <span>r covid %>% median(ct_result, na.rm = TRUE) %>% format(digits = 7)</span></label><label><input type="radio" autocomplete="off" name="radio_VDIQZMKTNE" value=""></input> <span>r covid %>%  sd(ct_result, na.rm=TRUE) %>% format(digits =3)</span></label></div>
+<div class='webex-radiogroup' id='radio_BWZHDPPHRI'><label><input type="radio" autocomplete="off" name="radio_BWZHDPPHRI" value="answer"></input> <span>r covid %>%  mean(ct_result, na.rm = TRUE) %>% format(digits = 5)</span></label><label><input type="radio" autocomplete="off" name="radio_BWZHDPPHRI" value=""></input> <span>r covid %>% median(ct_result, na.rm = TRUE) %>% format(digits = 7)</span></label><label><input type="radio" autocomplete="off" name="radio_BWZHDPPHRI" value=""></input> <span>r covid %>%  sd(ct_result, na.rm=TRUE) %>% format(digits =3)</span></label></div>
 
 <br>
 
 The standard deviation of the cycle threshold in this study was
-<div class='webex-radiogroup' id='radio_CRZKHRTDIG'><label><input type="radio" autocomplete="off" name="radio_CRZKHRTDIG" value=""></input> <span>r covid %>%  mean(ct_result, na.rm = TRUE) %>% format(digits = 5)</span></label><label><input type="radio" autocomplete="off" name="radio_CRZKHRTDIG" value=""></input> <span>r covid %>% median(ct_result, na.rm = TRUE) %>% format(digits = 7)</span></label><label><input type="radio" autocomplete="off" name="radio_CRZKHRTDIG" value="answer"></input> <span>r covid %>%  sd(ct_result, na.rm=TRUE) %>% format(digits =3)</span></label></div>
+<div class='webex-radiogroup' id='radio_OLSUBFADKZ'><label><input type="radio" autocomplete="off" name="radio_OLSUBFADKZ" value=""></input> <span>r covid %>%  mean(ct_result, na.rm = TRUE) %>% format(digits = 5)</span></label><label><input type="radio" autocomplete="off" name="radio_OLSUBFADKZ" value=""></input> <span>r covid %>% median(ct_result, na.rm = TRUE) %>% format(digits = 7)</span></label><label><input type="radio" autocomplete="off" name="radio_OLSUBFADKZ" value="answer"></input> <span>r covid %>%  sd(ct_result, na.rm=TRUE) %>% format(digits =3)</span></label></div>
 
 
 <br>

@@ -116,15 +116,12 @@ names(licorice)
 ```
 
 ```
-##  [1] "preOp_gender"           "preOp_asa"             
-##  [3] "preOp_calcBMI"          "preOp_age"             
-##  [5] "preOp_mallampati"       "preOp_smoking"         
-##  [7] "preOp_pain"             "treat"                 
-##  [9] "intraOp_surgerySize"    "extubation_cough"      
-## [11] "pacu30min_cough"        "pacu30min_throatPain"  
-## [13] "pacu30min_swallowPain"  "pacu90min_cough"       
-## [15] "pacu90min_throatPain"   "postOp4hour_cough"     
-## [17] "postOp4hour_throatPain" "pod1am_cough"          
+##  [1] "preOp_gender"           "preOp_asa"              "preOp_calcBMI"         
+##  [4] "preOp_age"              "preOp_mallampati"       "preOp_smoking"         
+##  [7] "preOp_pain"             "treat"                  "intraOp_surgerySize"   
+## [10] "extubation_cough"       "pacu30min_cough"        "pacu30min_throatPain"  
+## [13] "pacu30min_swallowPain"  "pacu90min_cough"        "pacu90min_throatPain"  
+## [16] "postOp4hour_cough"      "postOp4hour_throatPain" "pod1am_cough"          
 ## [19] "pod1am_throatPain"
 ```
 
@@ -163,21 +160,20 @@ licorice %>%
 
 ```
 ## # A tibble: 235 × 19
-##      `1` purple   `3`   `4`   `5`   `6`   `7`   `8`   `9`
-##    <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-##  1     0      3  33.0    67     2     1     0     1     2
-##  2     0      2  23.7    76     2     2     0     1     1
-##  3     0      2  26.8    58     2     1     0     1     2
-##  4     0      2  28.4    59     2     1     0     1     3
-##  5     0      1  30.4    73     1     2     0     1     2
-##  6     0      2  35.5    61     3     1     0     1     3
-##  7     0      3  25.5    66     1     1     0     1     3
-##  8     0      2  31.1    61     2     1     0     1     1
-##  9     0      3  21.2    83     1     1     0     1     1
-## 10     0      3  27.2    69     2     3     0     1     2
+##      `1` purple   `3`   `4`   `5`   `6`   `7`   `8`   `9`  `10`  `11`  `12`
+##    <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+##  1     0      3  33.0    67     2     1     0     1     2     0     0     0
+##  2     0      2  23.7    76     2     2     0     1     1     0     0     0
+##  3     0      2  26.8    58     2     1     0     1     2     0     0     0
+##  4     0      2  28.4    59     2     1     0     1     3     0     0     0
+##  5     0      1  30.4    73     1     2     0     1     2     0     0     0
+##  6     0      2  35.5    61     3     1     0     1     3     0     0     0
+##  7     0      3  25.5    66     1     1     0     1     3     0     0     0
+##  8     0      2  31.1    61     2     1     0     1     1     0     0     0
+##  9     0      3  21.2    83     1     1     0     1     1     0     0     0
+## 10     0      3  27.2    69     2     3     0     1     2     0     0     0
 ## # ℹ 225 more rows
-## # ℹ 10 more variables: `10` <dbl>, `11` <dbl>, `12` <dbl>,
-## #   `13` <dbl>, `14` <dbl>, `15` <dbl>, `16` <dbl>,
+## # ℹ 7 more variables: `13` <dbl>, `14` <dbl>, `15` <dbl>, `16` <dbl>,
 ## #   `17` <dbl>, `18` <dbl>, `19` <dbl>
 ```
 
@@ -251,8 +247,7 @@ fruit_vec
 ```
 
 ```
-## [1] "apple"       "banana"      "coconut"     "dragonfruit"
-## [5] "elderberry"
+## [1] "apple"       "banana"      "coconut"     "dragonfruit" "elderberry"
 ```
 
 ## Sequences
@@ -410,24 +405,19 @@ seq_along(licorice$C)
 ```
 
 ```
-##   [1]   1   2   3   4   5   6   7   8   9  10  11  12  13
-##  [14]  14  15  16  17  18  19  20  21  22  23  24  25  26
-##  [27]  27  28  29  30  31  32  33  34  35  36  37  38  39
-##  [40]  40  41  42  43  44  45  46  47  48  49  50  51  52
-##  [53]  53  54  55  56  57  58  59  60  61  62  63  64  65
-##  [66]  66  67  68  69  70  71  72  73  74  75  76  77  78
-##  [79]  79  80  81  82  83  84  85  86  87  88  89  90  91
-##  [92]  92  93  94  95  96  97  98  99 100 101 102 103 104
-## [105] 105 106 107 108 109 110 111 112 113 114 115 116 117
-## [118] 118 119 120 121 122 123 124 125 126 127 128 129 130
-## [131] 131 132 133 134 135 136 137 138 139 140 141 142 143
-## [144] 144 145 146 147 148 149 150 151 152 153 154 155 156
-## [157] 157 158 159 160 161 162 163 164 165 166 167 168 169
-## [170] 170 171 172 173 174 175 176 177 178 179 180 181 182
-## [183] 183 184 185 186 187 188 189 190 191 192 193 194 195
-## [196] 196 197 198 199 200 201 202 203 204 205 206 207 208
-## [209] 209 210 211 212 213 214 215 216 217 218 219 220 221
-## [222] 222 223 224 225 226 227 228 229 230 231 232 233 234
+##   [1]   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18
+##  [19]  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36
+##  [37]  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53  54
+##  [55]  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69  70  71  72
+##  [73]  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90
+##  [91]  91  92  93  94  95  96  97  98  99 100 101 102 103 104 105 106 107 108
+## [109] 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126
+## [127] 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144
+## [145] 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162
+## [163] 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180
+## [181] 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198
+## [199] 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216
+## [217] 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234
 ## [235] 235
 ```
 
@@ -553,20 +543,16 @@ licorice$J == NA
 ```
 
 ```
-##   [1] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
-##  [19] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
-##  [37] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
-##  [55] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
-##  [73] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
-##  [91] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
-## [109] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
-## [127] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
-## [145] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
-## [163] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
-## [181] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
-## [199] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
-## [217] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
-## [235] NA
+##   [1] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+##  [26] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+##  [51] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+##  [76] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [101] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [126] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [151] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [176] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [201] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+## [226] NA NA NA NA NA NA NA NA NA NA
 ```
 
 but, because NAs propagate, you get just NAs, rather than TRUE or FALSE.
@@ -579,33 +565,26 @@ licorice$J %>% is.na()
 ```
 
 ```
-##   [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [10] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [19] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [28] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [46] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [55] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [64] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [73] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [82] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-##  [91] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-## [100] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-## [109] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE
-## [118] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE
-## [127] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-## [136] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-## [145] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-## [154] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-## [163] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-## [172] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-## [181] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-## [190] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-## [199] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-## [208] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-## [217] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-## [226] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-## [235] FALSE
+##   [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [49] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [61] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [73] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [85] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [97] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [109] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [121] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [133] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [145] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [157] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [169] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [181] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [193] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [205] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [217] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [229] FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 ```
 
 There are a few TRUEs in there (value is NA), but they can be hard to count. The sum() function can help, when combined with *is.na().* The *which()* function can help you figure out which values are missing.

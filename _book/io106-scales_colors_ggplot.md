@@ -203,8 +203,18 @@ devtools::install_github("ekholme/blueycolors")
 ```
 
 ```
-## Skipping install of 'blueycolors' from a github remote, the SHA1 (9c72bd5c) has not changed since last install.
-##   Use `force = TRUE` to force installation
+## Downloading GitHub repo ekholme/blueycolors@HEAD
+```
+
+```
+## 
+## ── R CMD build ─────────────────────────────────────────────────────────────────
+## * checking for file ‘/private/var/folders/93/s18zkv2d4f556fxbjvb8yglc0000gp/T/RtmpyEih08/remotes10eb68f0005/ekholme-blueycolors-9c72bd5/DESCRIPTION’ ... OK
+## * preparing ‘blueycolors’:
+## * checking DESCRIPTION meta-information ... OK
+## * checking for LF line-endings in source and make files and shell scripts
+## * checking for empty or unneeded directories
+## * building ‘blueycolors_0.0.1.0.tar.gz’
 ```
 
 ``` r

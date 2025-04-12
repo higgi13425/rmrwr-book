@@ -180,43 +180,43 @@ key_list()
 ## 143                                                                                                                                                                                                    com.apple.assistant
 ## 144                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
 ## 145                                                                                                                                                                                        com.apple.continuity.encryption
-## 146                                                                                                                                                                                        com.apple.continuity.encryption
-## 147                                                                                                                                                                        Adobe App Info (Q0NMaWJyYXJ5Mnt9MjAxODA3MjAwMQ)
-## 148                                                                                                                                                                                        com.apple.continuity.encryption
+## 146                                                                                                                                                                        Adobe App Info (Q0NMaWJyYXJ5Mnt9MjAxODA3MjAwMQ)
+## 147                                                                                                                                                                                        com.apple.continuity.encryption
+## 148                                                                                                                                                                                                                       
 ## 149                                                                                                                                                                                                                       
-## 150                                                                                                                                                                                                                       
-## 151                                                                                                                                                                                                     TelephonyUtilities
+## 150                                                                                                                                                                                        com.apple.continuity.encryption
+## 151                                                                                                                                                                                                    com.apple.assistant
 ## 152                                                                                                                                                                                                    com.apple.assistant
 ## 153                                                                                                                                                                                                    com.apple.assistant
-## 154                                                                                                                                                                                                    com.apple.assistant
+## 154                                                                                                                                                                                             com.apple.ind.registration
 ## 155                                                                                                                                                                                                     TelephonyUtilities
-## 156                                                                                                    com.adobe.creativecloud.com.adobe.acc.container.C2A135575CF3D7EC0A495FA8.AdobeStock:UPDATE_INDICATOR_VISIBILITY_KEY
-## 157                                                                                                                                                                                             com.apple.ind.registration
+## 156                                                                                                                                                                                                     TelephonyUtilities
+## 157                                                                                                    com.adobe.creativecloud.com.adobe.acc.container.C2A135575CF3D7EC0A495FA8.AdobeStock:UPDATE_INDICATOR_VISIBILITY_KEY
 ## 158                                                                                                                                                                                      Apple Persistent State Encryption
-## 159                                                                                                                                                                                                    com.apple.assistant
-## 160                                                                                                                                                                   Adobe App Info (Q3JlYXRpdmVDbG91ZDJ7fTIwMTgwNzIwMDE)
-## 161                                                                                                                                                                                                         OneAuthAccount
-## 162                                                                                                                                                                                                         OneAuthAccount
-## 163                                                                                                                                                                                                                       
-## 164                                                                                                                                                                        Adobe App Info (QWNyb2JhdERDMXt9MjAxODA3MjAwMQ)
-## 165                                                                                                                                                                      Adobe App Info (SWxsdXN0cmF0b3Ixe30yMDE4MDcyMDAx)
-## 166                                                                                                                                                                        Adobe App Info (UGhvdG9zaG9wMXt9MjAxODA3MjAwMQ)
-## 167                                                                                                                                                                          Adobe App Info (Q29yZVN5bmMxe30yMDE4MDcyMDAx)
-## 168                                                                                                                                                                       Adobe App Info (Q0NYUHJvY2VzczF7fTIwMTgwNzIwMDE)
+## 159                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
+## 160                                                                                                                                                 com.apple.gs.icloud.auth.com.apple.account.AppleIDAuthentication.token
+## 161                                                                                                                                                com.apple.gs.appleid.auth.com.apple.account.AppleIDAuthentication.token
+## 162                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
+## 163                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
+## 164                                                                                                                                                                       Adobe App Info (Q0NYUHJvY2VzczF7fTIwMTgwNzIwMDE)
+## 165                                                                                                                                                                          Adobe App Info (Q29yZVN5bmMxe30yMDE4MDcyMDAx)
+## 166                                                                                                                                                                   Adobe App Info (Q3JlYXRpdmVDbG91ZDJ7fTIwMTgwNzIwMDE)
+## 167                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
+## 168                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
 ## 169                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
-## 170                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
-## 171                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
-## 172                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
-## 173                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
-## 174                                                                                                                                                 com.apple.gs.icloud.auth.com.apple.account.AppleIDAuthentication.token
-## 175                                                                                                                                                com.apple.gs.appleid.auth.com.apple.account.AppleIDAuthentication.token
-## 176                                                                                                                                                                                        com.apple.continuity.encryption
+## 170                                                                                                                                                                                                         OneAuthAccount
+## 171                                                                                                                                                                                                         OneAuthAccount
+## 172                                                                                                                                                                                                                       
+## 173                                                                                                                                                                                                    com.apple.assistant
+## 174                                                                                                                                                                        Adobe App Info (QWNyb2JhdERDMXt9MjAxODA3MjAwMQ)
+## 175                                                                                                                                                                      Adobe App Info (SWxsdXN0cmF0b3Ixe30yMDE4MDcyMDAx)
+## 176                                                                                                                                                                        Adobe App Info (UGhvdG9zaG9wMXt9MjAxODA3MjAwMQ)
 ## 177                                                                                                                                                                                                    com.apple.assistant
 ## 178                                                                                                                                                                             com.apple.account.Google.oauth-expiry-date
 ## 179                                                                                                                                                                                   com.apple.account.Google.oauth-token
-## 180                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
-## 181                                                                                                                                                                                                         OneAuthAccount
-## 182                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
+## 180                                                                                                                                                                                        com.apple.continuity.encryption
+## 181                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
+## 182                                                                                                                                                                                                         OneAuthAccount
 ## 183                                                                                                                                                                                                                AirPort
 ## 184                                                                                                                                                                                                                AirPort
 ## 185                                                                                                                                                                                                                AirPort
@@ -235,6 +235,122 @@ key_list()
 ## 198                                                                                                                                                                                                                AirPort
 ## 199                                                                                                                                                                                                                AirPort
 ## 200                                                                                                                                                                                                                AirPort
+## 201                                                                                                                                                                                                                AirPort
+## 202                                                                                                                                                                                                                AirPort
+## 203                                                                                                                                                                                                                AirPort
+## 204                                                                                                                                                                                                                AirPort
+## 205                                                                                                                                                                                                                AirPort
+## 206                                                                                                                                                                                                                AirPort
+## 207                                                                                                                                                                                                                AirPort
+## 208                                                                                                                                                                                                                AirPort
+## 209                                                                                                                                                                                                                AirPort
+## 210                                                                                                                                                                                                                AirPort
+## 211                                                                                                                                                                                                                AirPort
+## 212                                                                                                                                                                                                                AirPort
+## 213                                                                                                                                                                                                                AirPort
+## 214                                                                                                                                                                                                                AirPort
+## 215                                                                                                                                                                                                                AirPort
+## 216                                                                                                                                                                                                                AirPort
+## 217                                                                                                                                                                                                                AirPort
+## 218                                                                                                                                                                                                                AirPort
+## 219                                                                                                                                                                                                                AirPort
+## 220                                                                                                                                                                                                                AirPort
+## 221                                                                                                                                                                                                                AirPort
+## 222                                                                                                                                                                                                                AirPort
+## 223                                                                                                                                                                                                                AirPort
+## 224                                                                                                                                                                                                                AirPort
+## 225                                                                                                                                                                                                                AirPort
+## 226                                                                                                                                                                                                                AirPort
+## 227                                                                                                                                                                                                                AirPort
+## 228                                                                                                                                                                                                                AirPort
+## 229                                                                                                                                                                                                                AirPort
+## 230                                                                                                                                                                                                                AirPort
+## 231                                                                                                                                                                                                                AirPort
+## 232                                                                                                                                                                                                                AirPort
+## 233                                                                                                                                                                                                                AirPort
+## 234                                                                                                                                                                                                                AirPort
+## 235                                                                                                                                                                                                                AirPort
+## 236                                                                                                                                                                                                                AirPort
+## 237                                                                                                                                                                                                                AirPort
+## 238                                                                                                                                                                                                                AirPort
+## 239                                                                                                                                                                                                                AirPort
+## 240                                                                                                                                                                                                                AirPort
+## 241                                                                                                                                                                                                                AirPort
+## 242                                                                                                                                                                                                                AirPort
+## 243                                                                                                                                                                                                                AirPort
+## 244                                                                                                                                                                                                                AirPort
+## 245                                                                                                                                                                                                                AirPort
+## 246                                                                                                                                                                                                                AirPort
+## 247                                                                                                                                                                                                                AirPort
+## 248                                                                                                                                                                                                                AirPort
+## 249                                                                                                                                                                                                                AirPort
+## 250                                                                                                                                                                                    com.citrix.receiver.nomas.HockeySDK
+## 251                                                                                                                                                                                                                AirPort
+## 252                                                                                                                                                                                                                AirPort
+## 253                                                                                                                                                                                                                AirPort
+## 254                                                                                                                                                                                                                AirPort
+## 255                                                                                                                                                                                                                AirPort
+## 256                                                                                                                                                                                                                AirPort
+## 257                                                                                                                                                                                                                AirPort
+## 258                                                                                                                                                                                                                AirPort
+## 259                                                                                                                                                                                                                AirPort
+## 260                                                                                                                                                                                                                AirPort
+## 261                                                                                                                                                                                                                AirPort
+## 262                                                                                                                                                                                                          WiFiAnalytics
+## 263                                                                                                                                                                                                        BluetoothGlobal
+## 264                                                                                                                                                                                                        BluetoothGlobal
+## 265                                                                                                                                                                                                        BluetoothGlobal
+## 266                                                                                                                                                                                                        BluetoothGlobal
+## 267                                                                                                                                                                                                        BluetoothGlobal
+## 268                                                                                                                                                                                                        BluetoothGlobal
+## 269                                                                                                                                                                                                        BluetoothGlobal
+## 270                                                                                                                                                                                                        BluetoothGlobal
+## 271                                                                                                                                                                                                                       
+## 272                                                                                                                                                                                                Remote Pairing Identity
+## 273                                                                                                                                                                                                        BluetoothGlobal
+## 274                                                                                                                                                                                                                AirPort
+## 275                                                                                                                                                                                                            BluetoothLE
+## 276                                                                                                                                                                                                        BluetoothGlobal
+## 277                                                                                                                                                                                                        BluetoothGlobal
+## 278                                                                                                                                                                                                                AirPort
+## 279                                                                                                                                                                                                                AirPort
+## 280                                                                                                                                                                                                                AirPort
+## 281                                                                                                                                                                                                                AirPort
+## 282                                                                                                                                                                                                                AirPort
+## 283                                                                                                                                                                                                                AirPort
+## 284                                                                                                                                                                                                                AirPort
+## 285                                                                                                                                                                                                                AirPort
+## 286                                                                                                                                                                                                                AirPort
+## 287                                                                                                                                                                                                                AirPort
+## 288                                                                                                                                                                                                        BluetoothGlobal
+## 289                                                                                                                                                                                                                AirPort
+## 290                                                                                                                                                                                                                AirPort
+## 291                                                                                                                                                                                                                AirPort
+## 292                                                                                                                                                                                                                AirPort
+## 293                                                                                                                                                                                                                AirPort
+## 294                                                                                                                                                                                                                AirPort
+## 295                                                                                                                                                                                                                AirPort
+## 296                                                                                                                                                                                                                AirPort
+## 297                                                                                                                                                                                                            BluetoothLE
+## 298                                                                                                                                                                                                                AirPort
+## 299                                                                                                                                                                                                            BluetoothLE
+## 300                                                                                                                                                                                                                AirPort
+## 301                                                                                                                                                                                                        BluetoothGlobal
+## 302                                                                                                                                                                                                            BluetoothLE
+## 303                                                                                                                                                                                                        BluetoothGlobal
+## 304                                                                                                                                                                             AF2710E6-F2E5-48E8-AFA4-28BBC7B9CEA8.XAUTH
+## 305                                                                                                                                                                                AF2710E6-F2E5-48E8-AFA4-28BBC7B9CEA8.SS
+## 306                                                                                                                                                                             FDB4238E-3A19-4058-AAEA-42DEAA52A9D8.XAUTH
+## 307                                                                                                                                                                                FDB4238E-3A19-4058-AAEA-42DEAA52A9D8.SS
+## 308                                                                                                                                                                                                        MobileBluetooth
+## 309                                                                                                                                                                                                        MobileBluetooth
+## 310                                                                                                                                                                                                        MobileBluetooth
+## 311                                                                                                                                                                                                        MobileBluetooth
+## 312                                                                                                                                                                                                        MobileBluetooth
+## 313                                                                                                                                                                                                          WiFiAnalytics
+## 314                                                                                                                                                                                                          WiFiAnalytics
+## 315                                                                                                                                                                                                          WiFiAnalytics
+## 316                                                                                                                                                                                                                AirPort
 ##                                                                                                           username
 ## 1                                                                                            pdr.higgins@gmail.com
 ## 2                                                                               com.apple.scopedbookmarksagent.xpc
@@ -381,43 +497,43 @@ key_list()
 ## 143                                                              Siri Global - com.apple.assistant.music.fusetoken
 ## 144                                                                                                        Apple_2
 ## 145                                                    handoff-decryption-key-3FC361CC-4036-4255-B474-0F2B2357A185
-## 146                                                    handoff-decryption-key-1D3B068C-DD25-4A0B-8016-371043696090
-## 147                                                                                                       App Info
-## 148                                                    handoff-decryption-key-F0384A42-87AF-41F5-A4DD-E12353FD9024
-## 149                     /Users/peterhiggins/Library/Application Support/Adobe/Acrobat/DC/Security/AcroMLDataCachek
-## 150                   /Users/peterhiggins/Library/Application Support/Adobe/Acrobat/DC/Security/workflowDataCachek
-## 151                                                                                      lastKnownFaceTimeCallerID
-## 152                                                    9980D418-5756-46F7-99F5-BAAFC46CB734 - Assistant Identifier
-## 153                                            9980D418-5756-46F7-99F5-BAAFC46CB734 - Logging Assistant Identifier
-## 154                                                       9980D418-5756-46F7-99F5-BAAFC46CB734 - Speech Identifier
-## 155                                                                                            registeredProviders
-## 156                                                                                                               
-## 157                                                                           9C1AC72F-511A-46E3-88E3-64885BB78814
+## 146                                                                                                       App Info
+## 147                                                    handoff-decryption-key-F0384A42-87AF-41F5-A4DD-E12353FD9024
+## 148                     /Users/peterhiggins/Library/Application Support/Adobe/Acrobat/DC/Security/AcroMLDataCachek
+## 149                   /Users/peterhiggins/Library/Application Support/Adobe/Acrobat/DC/Security/workflowDataCachek
+## 150                                                    handoff-decryption-key-1D3B068C-DD25-4A0B-8016-371043696090
+## 151                                                    9980D418-5756-46F7-99F5-BAAFC46CB734 - Assistant Identifier
+## 152                                            9980D418-5756-46F7-99F5-BAAFC46CB734 - Logging Assistant Identifier
+## 153                                                       9980D418-5756-46F7-99F5-BAAFC46CB734 - Speech Identifier
+## 154                                                                           9C1AC72F-511A-46E3-88E3-64885BB78814
+## 155                                                                                      lastKnownFaceTimeCallerID
+## 156                                                                                            registeredProviders
+## 157                                                                                                               
 ## 158                                                                                       Window Bitmap Encryption
-## 159                                                         9980D418-5756-46F7-99F5-BAAFC46CB734 - Validation Data
-## 160                                                                                                       App Info
-## 161 e6c3d4cc-993c-41e5-82c6-68254c71767f.1f41d613-d3a1-4ead-918d-2a25b10de330.e66e77b4-5724-44d7-8721-06df160450ce
-## 162                                                                           897557a6-f7f7-4e15-b896-bd49d6ddca75
-## 163                                                                         Microsoft Office Identities Settings 3
+## 159                                                                                                         Akamai
+## 160                                                                                          pdr.higgins@gmail.com
+## 161                                                                                          pdr.higgins@gmail.com
+## 162                                                                                                     CloudFlare
+## 163                                                                                         CloudFlare_OHTTP_Relay
 ## 164                                                                                                       App Info
 ## 165                                                                                                       App Info
 ## 166                                                                                                       App Info
-## 167                                                                                                       App Info
-## 168                                                                                                       App Info
-## 169                                                                                                    Apple_Relay
-## 170                                                                                                         Fastly
-## 171                                                                                             Fastly_OHTTP_Relay
-## 172                                                                                                     CloudFlare
-## 173                                                                                         CloudFlare_OHTTP_Relay
-## 174                                                                                          pdr.higgins@gmail.com
-## 175                                                                                          pdr.higgins@gmail.com
-## 176                                                                                     handoff-own-encryption-key
+## 167                                                                                                    Apple_Relay
+## 168                                                                                                         Fastly
+## 169                                                                                             Fastly_OHTTP_Relay
+## 170 e6c3d4cc-993c-41e5-82c6-68254c71767f.1f41d613-d3a1-4ead-918d-2a25b10de330.e66e77b4-5724-44d7-8721-06df160450ce
+## 171                                                                           897557a6-f7f7-4e15-b896-bd49d6ddca75
+## 172                                                                         Microsoft Office Identities Settings 3
+## 173                                                         9980D418-5756-46F7-99F5-BAAFC46CB734 - Validation Data
+## 174                                                                                                       App Info
+## 175                                                                                                       App Info
+## 176                                                                                                       App Info
 ## 177                                                                  Siri Global - AnalyticsIdentifiers.checkpoint
 ## 178                                                                                          pdr.higgins@gmail.com
 ## 179                                                                                          pdr.higgins@gmail.com
-## 180                                                                                                          Apple
-## 181                                                                           e6c3d4cc-993c-41e5-82c6-68254c71767f
-## 182                                                                                                         Akamai
+## 180                                                                                     handoff-own-encryption-key
+## 181                                                                                                          Apple
+## 182                                                                           e6c3d4cc-993c-41e5-82c6-68254c71767f
 ## 183                                                                                                  NETGEAR-Guest
 ## 184                                                                                                  villaflorida1
 ## 185                                                                                                   Medosz_Front
@@ -436,7 +552,122 @@ key_list()
 ## 198                                                                                                  Evidera-Guest
 ## 199                                                                                                   ZyXEL202-203
 ## 200                                                                                                    Caesar_Hall
-##  [ reached 'max' / getOption("max.print") -- omitted 115 rows ]
+## 201                                                                                           safetourbus mobile 1
+## 202                                                                                          Trans-CWB-2Andar (Me)
+## 203                                                                                                      SBAD 2015
+## 204                                                                                          Trans-CWB-3Andar (Me)
+## 205                                                                                                       GVT-E3FC
+## 206                                                                                          Trans-CWB-3Andar (Fr)
+## 207                                                                                                  Merck - 23/11
+## 208                                                                                                  Merck - 24/11
+## 209                                                                                                    WebbnetDown
+## 210                                                                                                      CampusNet
+## 211                                                                                                         ECCO16
+## 212                                                                                                  TonicLife2015
+## 213                                                                                  MiFi4620L Jetpack E2D3 Secure
+## 214                                                                                          Peter's Wi-Fi Network
+## 215                                                                                  Peter's Library Wi-Fi Network
+## 216                                                                                                      HiltonMTG
+## 217                                                                                         Samsung Galaxy S7 9350
+## 218                                                                                                     murphy2014
+## 219                                                                                                        STELARA
+## 220                                                                                                   Fischer Hall
+## 221                                                                                                        Stelara
+## 222                                                                                                murphy2014.2.4G
+## 223                                                                                                 murphy2014.2.4
+## 224                                                                                                       PRINCESS
+## 225                                                                                 Knights Restaurant Public Wifi
+## 226                                                                                                      SpeedNews
+## 227                                                                                             Apples and Oranges
+## 228                                                                                                  Joe&RosieWifi
+## 229                                                                                                     ATTSzJhvMS
+## 230                                                                                                  ZouZou's Cafe
+## 231                                                                                                       CCFALink
+## 232                                                                                                      colonial1
+## 233                                                                                                Bayshore Resort
+## 234                                                                                                       AB-Guest
+## 235                                                                                            Cardinal 5836 Guest
+## 236                                                                                                     YOTEL-Wifi
+## 237                                                                                                  internet-10NP
+## 238                                                                                                     MAXIMILIAN
+## 239                                                                                                       AIBD2017
+## 240                                                                                                   Sava's Guest
+## 241                                                                                                   rstudio_conf
+## 242                                                                                                      Jul_Menam
+## 243                                                                                                    Jul note FE
+## 244                                                                                                      HOME-4EB7
+## 245                                                                                                  HOME-1841-2.4
+## 246                                                                                                  Hotel_Famulus
+## 247                                                                                     Dennis's Wi-Fi Network_EXT
+## 248                                                                                                  Masonic_Event
+## 249                                                                                                      ICConnect
+## 250                                                                                                   deletionFlag
+## 251                                                                                                     ATTgUEMmbA
+## 252                                                                                                      NETGEAR35
+## 253                                                                                                 AIBDWifiByBMS!
+## 254                                                                                                      rstudio20
+## 255                                                                                                       MOTOBBCA
+## 256                                                                                                      NETGEAR11
+## 257                                                                                                 Peter’s iPhone
+## 258                                                                                                        Amplifi
+## 259                                                                                            MySpectrumWiFi68-2G
+## 260                                                                                            MySpectrumWiFi80-5G
+## 261                                                                                                       WZ-Guest
+## 262                                                                   com.apple.wifi.analytics.tokenStore.airportd
+## 263                                                                                                  Identity Root
+## 264                                                                                                Encryption Root
+## 265                                                                                         Cloud Private Key Root
+## 266                                                                                          Cloud Public Key Root
+## 267                                                                                               Cloud Nonce Root
+## 268                                                                                                    CT TKPeriod
+## 269                                                                                             CT TEK BUFF V2 LEN
+## 270                                                                                        Local Device Identifier
+## 271                                                                                com.apple.LaunchServices.encr.3
+## 272                                                                           44CEED20-EF9C-42CF-A88D-13E49433198A
+## 273                                                                             Local Device Static Random Address
+## 274                                                                                              Peter’s iPhone 13
+## 275                                                              Public EC:A9:07:0C:94:EF Random D9:39:E3:50:39:3A
+## 276                                                                               Non Connectable identity address
+## 277                                                                                  Non Connectable identity root
+## 278                                                                                          Long Pond Cottage-PRO
+## 279                                                                                                        Webbnet
+## 280                                                                                                       Gartland
+## 281                                                                                                      NETGEAR34
+## 282                                                                                                    HOME-3EC2-5
+## 283                                                                                                    hug2g966693
+## 284                                                                                                    hug5g966693
+## 285                                                                                              Long Pond Cottage
+## 286                                                                                                  Fioptics07121
+## 287                                                                                                       Rust2933
+## 288                                                                                          Cloud Master Key Root
+## 289                                                                                                       Wildcats
+## 290                                                                                                   NETGEAR35-5G
+## 291                                                                                                 SkyTeam Lounge
+## 292                                                                                                   Rydges-Guest
+## 293                                                                                                         AGW_24
+## 294                                                                                                  TelstraE2D2C8
+## 295                                                                                                    SPARK GUEST
+## 296                                                                                               5404 Maryanna-5G
+## 297                                                              Public 90:81:58:09:40:F9 Random D9:39:E3:50:39:3A
+## 298                                                                                                      NachoWifi
+## 299                                                              Public 08:FF:44:A2:D9:C1 Random D9:39:E3:50:39:3A
+## 300                                                                                                   CCCongress25
+## 301                                                                                               Cloud FC Address
+## 302                                                              Random F3:B3:86:10:2C:FD Random D9:39:E3:50:39:3A
+## 303                                                                                              Identity Root Key
+## 304                                                                                                       phiggins
+## 305                                                                                           UM-off-campus-access
+## 306                                                                                                       phiggins
+## 307                                                                                          UM-on-campus-wireless
+## 308                                                                                              28:37:37:36:35:C6
+## 309                                                                                              35:09:06:E7:23:9D
+## 310                                                                                              90:9C:4A:09:DB:4E
+## 311                                                                                              DC:A9:04:03:D7:1A
+## 312                                                                                              1C:B3:C9:B2:DE:FF
+## 313                                                                           com.apple.wifi.analytics.persistence
+## 314                                                                        com.apple.wifi.analytics.persistence-iv
+## 315                                                                       com.apple.wifi.analytics.persistence-tag
+## 316                                                                                                            WEL
 ```
 
 This gives you a list of all the keys stored by your operating system credential store.
@@ -457,7 +688,7 @@ If you now run key_list(), and store it in a new object named keys, you can View
 
 ``` r
 keys <- key_list()
-View(keys) 
+View(keys)
 ```
 
 You may need to sort these secrets by service (click on the header of this column) to make it easier to find. Note that you see the service and username, but the password is not visible. To read the secret, you need to use the *key_get*() function.
@@ -484,7 +715,7 @@ If you want to delete a secret, you can use key_delete()
 
 
 ``` r
-key_delete(service = "secure_web"  , username = "pdrh")
+key_delete(service = "secure_web", username = "pdrh")
 ```
 
 You can check this by regenerating your keys dataframe
@@ -492,7 +723,7 @@ You can check this by regenerating your keys dataframe
 
 ``` r
 keys <- key_list()
-View(keys) 
+View(keys)
 ```
 
 You will find that the secret for secure_web is now gone from your Credential Store.

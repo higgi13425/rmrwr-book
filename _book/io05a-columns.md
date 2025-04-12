@@ -130,20 +130,13 @@ medicaldata::blood_storage %>%
 ```
 
 ```
-  RBC.Age.Group bGS BN+ OrganConfined PreopPSA PreopTherapy
-1             3   3   0             0    14.08            1
-2             3   2   0             1    10.50            0
-3             3   3   0             1     6.98            1
-4             2   1   0             1     4.40            0
-5             2   2   0             1    21.40            0
-6             3   1   0             0     5.10            0
-  Units sGS  Age AA
-1     6   1 72.1  0
-2     2   3 73.6  0
-3     1   1 67.5  0
-4     2   3 65.8  0
-5     3   3 63.2  0
-6     1   3 65.4  0
+  RBC.Age.Group bGS BN+ OrganConfined PreopPSA PreopTherapy Units sGS  Age AA
+1             3   3   0             0    14.08            1     6   1 72.1  0
+2             3   2   0             1    10.50            0     2   3 73.6  0
+3             3   3   0             1     6.98            1     1   1 67.5  0
+4             2   1   0             1     4.40            0     2   3 65.8  0
+5             2   2   0             1    21.40            0     3   3 63.2  0
+6             3   1   0             0     5.10            0     1   3 65.4  0
 ```
 
 You can mix single columns, ranges of columns, column names vs. numbers, and even change the order in which the columns are listed.
