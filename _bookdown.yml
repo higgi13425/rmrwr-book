@@ -51,6 +51,7 @@ rmd_files:
 - io103-protecting_phi.Rmd
 - io105-targets.Rmd
 - io106-scales_colors_ggplot.Rmd
+- io108-flowcharts.Rmd
 - io109-tabula_pdf.Rmd
 - io198-title-holder.Rmd
 - io199-references.Rmd

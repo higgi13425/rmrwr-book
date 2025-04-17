@@ -12,7 +12,6 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(flowchart)
 library(webexercises)
-
 ```
 
 # Using the {flowchart} package for CONSORT diagrams in R
@@ -21,8 +20,8 @@ library(webexercises)
 This chapter is part of the **Clinical Studies** pathway. <br> Packages needed for this chapter include {flowchart}, and {tidyverse}. If you don't have these packages installed, you can install them by copying the code chunk below and running it in your local RStudio session.
 
 ```{r eval=FALSE}
-install.packages('flowchart')
-install.packages('tidyverse')
+install.packages("flowchart")
+install.packages("tidyverse")
 ```
 :::
 
@@ -52,32 +51,47 @@ We will build a fake dataset for a clinical trial testing statin vs PBO in patie
 tibble::tibble(
   id = 1:49,
   inclusion_crit = rep("No", 49),
-  exclusion_crit = c(rep("No", 45), 
-                     rep("Yes", 4)),
-  withdrew_consent = c(rep("No", 43), 
-                       rep("Yes", 2), rep(NA, 4)),
-  lost_to_follow_up = c(rep("No", 42), 
-                        rep("Yes", 1), rep(NA, 6)), 
-  other_reasons = c(rep("No", 40), 
-                    rep("Yes", 2), rep(NA, 7)), 
-  group = c(rep("Placebo", 20), rep("Atorvastatin 40 mg QD", 20),  rep(NA, 9)),
-  completed = c(rep("Yes", 19), rep("No", 1),
-                rep("Yes", 20), rep("No", 0),
-                rep(NA, 9)),
-  adverse_event = c(rep("No", 17), rep("Yes", 3), rep("No", 19), rep("Yes", 1),
-  rep(NA, 9)),
+  exclusion_crit = c(
+    rep("No", 45),
+    rep("Yes", 4)
+  ),
+  withdrew_consent = c(
+    rep("No", 43),
+    rep("Yes", 2), rep(NA, 4)
+  ),
+  lost_to_follow_up = c(
+    rep("No", 42),
+    rep("Yes", 1), rep(NA, 6)
+  ),
+  other_reasons = c(
+    rep("No", 40),
+    rep("Yes", 2), rep(NA, 7)
+  ),
+  group = c(rep("Placebo", 20), rep("Atorvastatin 40 mg QD", 20), rep(NA, 9)),
+  completed = c(
+    rep("Yes", 19), rep("No", 1),
+    rep("Yes", 20), rep("No", 0),
+    rep(NA, 9)
+  ),
+  adverse_event = c(
+    rep("No", 17), rep("Yes", 3), rep("No", 19), rep("Yes", 1),
+    rep(NA, 9)
+  ),
   other_reason_withdraw = c(
-    rep("No", 40), 
-  rep(NA, 9)),
+    rep("No", 40),
+    rep(NA, 9)
+  ),
   itt = c(rep("Yes", 40), rep("No", 9)),
   reason_itt = c(rep(NA, 40), rep("No response", 9)),
   pp = c(rep("Yes", 40), rep("No", 9)),
   reason_pp = c(rep(NA, 40), rep("No response", 9))
-)   -> statin
+) -> statin
 
-statin |> 
-  mutate(group = factor(group, ordered = TRUE,
-  levels = c("Placebo", "Atorvastatin 40 mg QD"))) -> statin2
+statin |>
+  mutate(group = factor(group,
+    ordered = TRUE,
+    levels = c("Placebo", "Atorvastatin 40 mg QD")
+  )) -> statin2
 ```
 
 Now we will start to create the flowchart using the {flowchart} package. We will start with the opening box. Note that we made the group variable an ordered factor with two levels, "Placebo" and "Atorvastatin 40 mg QD". This will help control the order of the arms in the diagram, rather than using the default (alphabetical) order.
@@ -87,10 +101,10 @@ The `as_fc()` function converst your dataset into a list-object. This list conta
 THe `fc_draw()` function will then render the flowchart in the Plots pane. As we only have a single box to start with, it is automatically placed in the center of the pane (x = 0.5, y = 0.5). As we add more boxes, the locations of the boxes will be automatically adjusted, though we can fine-tune locations and fonts with minor adjustments later using the `fc_modify()` function.
 
 ```{r}
-statin_fc <- statin2 |> 
+statin_fc <- statin2 |>
   as_fc()
 
-statin_fc |> 
+statin_fc |>
   fc_draw()
 ```
 
@@ -101,7 +115,7 @@ Examine the structure revealed by the `str()` function. Run the str(statin_fc) t
 ```{r}
 str(statin_fc)
 
-statin_fc |> 
+statin_fc |>
   fc_view(what = "fc")
 ```
 
@@ -112,9 +126,9 @@ It is pretty simple so far, but will grow increasingly complex. Later, we may wa
 Now we can add branching to the flowchart to document the exclusions. This requires `fc_filter` to separate the excluded patients from the randomized ones. We will also add a box for the excluded patients. We will add custom labels for the boxes.
 
 ```{r flow2}
-statin_fc2 <- statin2 |> 
-  as_fc(label = "Patients assessed for eligibility") |> 
-  fc_filter(!is.na(group), label = "Randomized", show_exc = TRUE) 
+statin_fc2 <- statin2 |>
+  as_fc(label = "Patients assessed for eligibility") |>
+  fc_filter(!is.na(group), label = "Randomized", show_exc = TRUE)
 
 fc_draw(statin_fc2)
 ```
@@ -122,7 +136,7 @@ fc_draw(statin_fc2)
 Now let's peek at the flowchart data under the hood with the `fc_view(what = 'fc')` function
 
 ```{r}
-statin_fc2 |> 
+statin_fc2 |>
   fc_view(what = "fc")
 ```
 
@@ -133,18 +147,18 @@ Now we have 3 rows in statin_fc2, corresponding to each box in the flowchart. Th
 Then we can start to split the participants into treatment arms (groups) with the `fc_split` function.
 
 ```{r flow3}
-statin_fc3 <- statin2 |> 
-  as_fc(label = "Patients assessed for eligibility") |> 
-  fc_filter(!is.na(group), label = "Randomized participants\nAssigned to therapy", show_exc = TRUE, label_exc = "Excluded patients" ) |>
-  fc_split(group) 
+statin_fc3 <- statin2 |>
+  as_fc(label = "Patients assessed for eligibility") |>
+  fc_filter(!is.na(group), label = "Randomized participants\nAssigned to therapy", show_exc = TRUE, label_exc = "Excluded patients") |>
+  fc_split(group)
 
-statin_fc3 |> 
+statin_fc3 |>
   fc_draw()
 ```
 
 Let's take a peek under the hood with the `fc_view(what = 'fc')` function.
 ```{r}
-statin_fc3 |> 
+statin_fc3 |>
   fc_view(what = "fc")
 ```
 
@@ -170,14 +184,15 @@ Just for fun, let's try a targeted `fc_modify` call to change the background col
 We will mutate the parameters for a specific box with an {ifelse} function, only changing that box, and leaving the rest of the boxes alone.
 
 ```{r}
-statin_fc3 |> 
-  fc_modify( #modifying only boxes 4 and 5
+statin_fc3 |>
+  fc_modify( # modifying only boxes 4 and 5
     ~ . |>
       dplyr::mutate(
         bg_fill = ifelse(id == 4, "gray20", bg_fill),
         text_color = ifelse(id == 4, "white", text_color),
         bg_fill = ifelse(id == 5, "violet", bg_fill)
-      )) |> 
+      )
+  ) |>
   fc_draw()
 ```
 
@@ -190,21 +205,24 @@ The `fc_filter` function is used to filter the data to find those consenters who
 You will get the `fc` object with the details for all 9 boxes in the Console Pane, and the flowchart will be displayed in the Plots Pane by running the code chunk below in your local session of RStudio.
 
 ```{r flow4}
-statin2 |> 
-  as_fc(label = "Patients assessed for eligibility") |> 
-  fc_filter(!is.na(group), label = "Randomized participants\nAssigned to therapy", show_exc = TRUE, label_exc = "Excluded patients" ) |>
-  fc_split(group) |> 
-  fc_filter(completed == "Yes", label = "Completed Study", show_exc = TRUE, 
-      label_exc = "Withdrew\nfrom Study") -> statin_fc4
+statin2 |>
+  as_fc(label = "Patients assessed for eligibility") |>
+  fc_filter(!is.na(group), label = "Randomized participants\nAssigned to therapy", show_exc = TRUE, label_exc = "Excluded patients") |>
+  fc_split(group) |>
+  fc_filter(completed == "Yes",
+    label = "Completed Study", show_exc = TRUE,
+    label_exc = "Withdrew\nfrom Study"
+  ) -> statin_fc4
 
 statin_fc4$fc
 
-statin_fc4 |> fc_draw(box_corners = "sharp",
-                      title = "CONSORT Diagram", 
-                      title_fs = 24,
-                      title_color = 'red', 
-                      title_fface = 3)
-
+statin_fc4 |> fc_draw(
+  box_corners = "sharp",
+  title = "CONSORT Diagram",
+  title_fs = 24,
+  title_color = "red",
+  title_fface = 3
+)
 ```
 
 All the x and y locations are automatically adjusted in the `fc` object to maintain a reasonable spacing between boxes. The more crowded (excluded and withdrawal) boxes are automatically assigned a smaller text size (`text_fs`).
@@ -218,20 +236,22 @@ Let's create the multiline text for the exclusions before randomization. We will
 ```{r exclude_text}
 text_exc <- paste0(
   sum(statin2$exclusion_crit == "Yes",
-      statin2$withdrew_consent == "Yes",
-      statin2$lost_to_follow_up == "Yes",
-      statin2$other_reasons == "Yes", na.rm = TRUE),
+    statin2$withdrew_consent == "Yes",
+    statin2$lost_to_follow_up == "Yes",
+    statin2$other_reasons == "Yes",
+    na.rm = TRUE
+  ),
   " patients excluded\n",
-  "     ", 
+  "     ",
   sum(statin2$exclusion_crit == "Yes", na.rm = TRUE),
   " met exclusion criteria\n",
-  "     ", 
+  "     ",
   sum(statin2$withdrew_consent == "Yes", na.rm = TRUE),
   " withdrew their consent\n",
-  "     ", 
+  "     ",
   sum(statin2$lost_to_follow_up == "Yes", na.rm = TRUE),
   " was lost to follow up\n",
-  "     ", 
+  "     ",
   sum(statin2$other_reasons == "Yes", na.rm = TRUE),
   " were excluded for other reasons"
 )
@@ -245,19 +265,19 @@ Now let's add this multiline text (`text_exc`) for exclusions to the flowchart.
 We are replacing the text in the exclusions box (id == 3) with the more detailed text we created above. We are also adjusting the justification and x location of the text in the box to make it look better, since this box will now be a lot taller, and becomes a bit cramped by the other boxes. We are still turning on `show_exc` and applying the box label of "Excluded patients" to this box. Note that we fine-tune the `arrow_angle` in `fc_draw` to make the arrows look better.
 
 ```{r flow5, fig.width = 10, fig.height = 7.5}
-statin_fc5 <- statin2 |> 
-  as_fc(label = "Patients assessed for eligibility") |> 
-  fc_filter(!is.na(group), label = "Randomized participants\nAssigned to therapy", show_exc = TRUE, label_exc = "Excluded patients" ) |>
-  fc_modify( #modifying only box 3 - exclusions
+statin_fc5 <- statin2 |>
+  as_fc(label = "Patients assessed for eligibility") |>
+  fc_filter(!is.na(group), label = "Randomized participants\nAssigned to therapy", show_exc = TRUE, label_exc = "Excluded patients") |>
+  fc_modify( # modifying only box 3 - exclusions
     ~ . |>
       dplyr::mutate(
-        text = ifelse(id ==3, text_exc, text),
+        text = ifelse(id == 3, text_exc, text),
         just = ifelse(id == 3, "left", "center"),
         x = ifelse(id == 3, x + 0.11, x)
       )
   ) |>
-  fc_split(group) |> 
-  fc_filter(completed == "Yes", label = "Completed Study", show_exc = TRUE, label_exc = "Withdrew\nfrom Study") 
+  fc_split(group) |>
+  fc_filter(completed == "Yes", label = "Completed Study", show_exc = TRUE, label_exc = "Withdrew\nfrom Study")
 
 statin_fc5 |>
   fc_draw(arrow_angle = 18)
@@ -271,8 +291,8 @@ You may want to fine-tune the box padding to make some of the boxes smaller, or 
 
 Just as an example, we can fine-tune the atorvatstain group, and use fc_modify to make the withdrawal boxes red, and the completed boxes green.
 ```{r}
-statin_fc6 <- statin_fc5 |> 
-  fc_modify( #modifying only boxes 6-9
+statin_fc6 <- statin_fc5 |>
+  fc_modify( # modifying only boxes 6-9
     ~ . |>
       dplyr::mutate(
         x = ifelse(id == 5, x - 0.07, x),
@@ -282,7 +302,8 @@ statin_fc6 <- statin_fc5 |>
         bg_fill = ifelse(id == 9, "pink", bg_fill),
         bg_fill = ifelse(id == 6, "lightgreen", bg_fill),
         bg_fill = ifelse(id == 8, "lightgreen", bg_fill)
-      )) 
+      )
+  )
 
 fc_draw(statin_fc6, arrow_angle = 22)
 ```
@@ -368,44 +389,52 @@ tibble::tibble(
   inclusion_crit = rep("Yes", 446),
   exclusion_crit = c(rep("No", 274), rep("Yes", 172)),
   withdrew_consent = c(rep("No", 257), rep("Yes", 17), rep(NA, 172)),
-  lost_to_follow_up = c(rep("No", 255), rep("Yes", 2), rep(NA, 189)), 
-  other_reasons = c(rep("No", 250), rep("Yes", 5), rep(NA, 191)), 
+  lost_to_follow_up = c(rep("No", 255), rep("Yes", 2), rep(NA, 189)),
+  other_reasons = c(rep("No", 250), rep("Yes", 5), rep(NA, 191)),
   group = c(rep("Placebo", 46), rep("Upa 7.5 mg QD", 47), rep("Upa 15 mg QD", 49), rep("Upa 30 mg QD", 52), rep("Upa 45 mg QD", 56), rep(NA, 196)),
-  completed = c(rep("Yes", 41), rep("No", 5),
-                rep("Yes", 45), rep("No", 2),
-                rep("Yes", 45), rep("No", 4),
-                rep("Yes", 46), rep("No", 6),
-                rep("Yes", 50), rep("No", 6),
-                rep(NA, 196)),
-  adverse_event = c(rep("No", 41), rep("Yes", 3), rep("No", 2), 
-  rep("No", 45), rep("Yes", 1), rep("No", 1), 
-  rep("No", 45), rep("Yes", 2), rep("No", 2), 
-  rep("No", 46), rep("Yes", 4), rep("No", 2), 
-  rep("No", 50), rep("Yes", 4), rep("No", 2), 
-  rep(NA, 196)),
+  completed = c(
+    rep("Yes", 41), rep("No", 5),
+    rep("Yes", 45), rep("No", 2),
+    rep("Yes", 45), rep("No", 4),
+    rep("Yes", 46), rep("No", 6),
+    rep("Yes", 50), rep("No", 6),
+    rep(NA, 196)
+  ),
+  adverse_event = c(
+    rep("No", 41), rep("Yes", 3), rep("No", 2),
+    rep("No", 45), rep("Yes", 1), rep("No", 1),
+    rep("No", 45), rep("Yes", 2), rep("No", 2),
+    rep("No", 46), rep("Yes", 4), rep("No", 2),
+    rep("No", 50), rep("Yes", 4), rep("No", 2),
+    rep(NA, 196)
+  ),
   lack_of_efficacy = c(
-    rep("No", 44), rep("Yes", 2), 
-    rep("No", 46), rep("Yes", 1),  
-  rep("No", 47), rep("Yes", 1), rep("No", 1), 
-  rep("No", 50), rep("Yes", 1), rep("No", 1), 
-  rep("No", 54), rep("Yes", 2),  
-  rep(NA, 196)),
+    rep("No", 44), rep("Yes", 2),
+    rep("No", 46), rep("Yes", 1),
+    rep("No", 47), rep("Yes", 1), rep("No", 1),
+    rep("No", 50), rep("Yes", 1), rep("No", 1),
+    rep("No", 54), rep("Yes", 2),
+    rep(NA, 196)
+  ),
   other_reason_withdraw = c(
-    rep("No", 46), 
-    rep("No", 47),  
-    rep("No", 48), rep("Yes", 1),  
-    rep("No", 51), rep("Yes", 1),  
-    rep("No", 56),  
-  rep(NA, 196)),
+    rep("No", 46),
+    rep("No", 47),
+    rep("No", 48), rep("Yes", 1),
+    rep("No", 51), rep("Yes", 1),
+    rep("No", 56),
+    rep(NA, 196)
+  ),
   itt = c(rep("Yes", 250), rep("No", 196)),
   reason_itt = c(rep(NA, 250), rep("No response", 196)),
   pp = c(rep("Yes", 250), rep("No", 196)),
   reason_pp = c(rep(NA, 250), rep("No response", 196))
-)   -> upa
+) -> upa
 
-upa |> 
-  mutate(group = factor(group, ordered = TRUE,
-  levels = c("Placebo", "Upa 7.5 mg QD", "Upa 15 mg QD", "Upa 30 mg QD", "Upa 45 mg QD"))) -> upa2
+upa |>
+  mutate(group = factor(group,
+    ordered = TRUE,
+    levels = c("Placebo", "Upa 7.5 mg QD", "Upa 15 mg QD", "Upa 30 mg QD", "Upa 45 mg QD")
+  )) -> upa2
 ```
 
 Now we will create the flowchart using the {flowchart} package. 
@@ -413,12 +442,12 @@ We will start with the opening box.
 
 
 ```{r flowchart_upa}
-upa_fc <- upa2 |> 
+upa_fc <- upa2 |>
   as_fc()
 
 str(upa_fc, max.level = 1)
 
-upa_fc |> 
+upa_fc |>
   fc_draw()
 ```
 
@@ -433,8 +462,8 @@ The `fc` tibble guides the flowchart drawn by `fc_draw`. The arguments to `fc_dr
 Now we can add branching to the flowchart to document the excluded consenters. We will use `fc_filter` to create a distinct branch for those who were eligible, and label it "Randomized". We will also use `show_exc = TRUE` to show the excluded box in the flowchart.
  
 ```{r flow2_upa}
-upa_fc2 <- upa2 |> 
-  as_fc(label = "Patients assessed for eligibility") |> 
+upa_fc2 <- upa2 |>
+  as_fc(label = "Patients assessed for eligibility") |>
   fc_filter(!is.na(group), label = "Randomized", show_exc = TRUE)
 
 fc_draw(upa_fc2)
@@ -448,13 +477,14 @@ upa_fc2$fc
 Just for practice, let's use `fc_modify` to push the excluded box (id == 3) further to the right (and leave all the other boxes in the same x dimension), and use a bigger font size (9) for the text in only this box, leaving the other boxes with their default text_fs.
 
 ```{r}
-upa_fc2 |> 
+upa_fc2 |>
   fc_modify(
-      ~ . |>
+    ~ . |>
       dplyr::mutate(
         x = ifelse(id == 3, 0.77, x),
         text_fs = ifelse(id == 3, 9, text_fs)
-      )) |> 
+      )
+  ) |>
   fc_draw()
 ```
 
@@ -464,10 +494,10 @@ upa_fc2 |>
 Now we will use `fc_split` to split the flowchart into branches based on the `group` variable. We will still show the "Excluded" group.
 
 ```{r flow3_upa}
-upa_fc2 <- upa2 |> 
-  as_fc(label = "Patients assessed for eligibility") |> 
-  fc_filter(!is.na(group), label = "Randomized participants\nAssigned to therapy", show_exc = TRUE, label_exc = "Excluded patients" ) |>
-  fc_split(group) 
+upa_fc2 <- upa2 |>
+  as_fc(label = "Patients assessed for eligibility") |>
+  fc_filter(!is.na(group), label = "Randomized participants\nAssigned to therapy", show_exc = TRUE, label_exc = "Excluded patients") |>
+  fc_split(group)
 
 fc_draw(upa_fc2)
 ```
@@ -482,7 +512,7 @@ upa_fc2$fc
 
 Let's experiment by modifying the background color of placebo to gray, and the increasing doses of Upa to graded shades of blue.
 ```{r}
-upa_fc2 |> 
+upa_fc2 |>
   fc_modify(
     ~ . |>
       dplyr::mutate(
@@ -491,7 +521,8 @@ upa_fc2 |>
         bg_fill = ifelse(id == 6, "dodgerblue1", bg_fill),
         bg_fill = ifelse(id == 7, "dodgerblue2", bg_fill),
         bg_fill = ifelse(id == 8, "dodgerblue3", bg_fill)
-      )) |> 
+      )
+  ) |>
   fc_draw()
 ```
 
@@ -501,15 +532,15 @@ Now let's filter for completers
 but print the `fc` object in the middle so that we can see what is going on under the hood.
 
 ```{r flow4_upa}
-upa2 |> 
-  as_fc(label = "Patients assessed for eligibility") |> 
-  fc_filter(!is.na(group), label = "Randomized participants\nAssigned to therapy", show_exc = TRUE, label_exc = "Excluded patients" ) |>
-  fc_split(group) |> 
+upa2 |>
+  as_fc(label = "Patients assessed for eligibility") |>
+  fc_filter(!is.na(group), label = "Randomized participants\nAssigned to therapy", show_exc = TRUE, label_exc = "Excluded patients") |>
+  fc_split(group) |>
   fc_filter(completed == "Yes", label = "Completed Study", show_exc = TRUE, label_exc = "Withdrew\nfrom Study") -> upa_fc4
 
 upa_fc4$fc
 
-upa_fc4 |> 
+upa_fc4 |>
   fc_draw()
 ```
 
@@ -532,20 +563,22 @@ We have to count how many consentes were excluded from participation for each pa
 ```{r exclude_text_upa}
 text_exc <- paste0(
   sum(upa$exclusion_crit == "Yes",
-      upa$withdrew_consent == "Yes",
-      upa$lost_to_follow_up == "Yes",
-      upa$other_reasons == "Yes", na.rm = TRUE),
+    upa$withdrew_consent == "Yes",
+    upa$lost_to_follow_up == "Yes",
+    upa$other_reasons == "Yes",
+    na.rm = TRUE
+  ),
   " patients excluded\n",
-  "     ", 
+  "     ",
   sum(upa$exclusion_crit == "Yes", na.rm = TRUE),
   " met exclusion criteria\n",
-  "     ", 
+  "     ",
   sum(upa$withdrew_consent == "Yes", na.rm = TRUE),
   " withdrew their consent\n",
-  "     ", 
+  "     ",
   sum(upa$lost_to_follow_up == "Yes", na.rm = TRUE),
   " were lost to follow up\n",
-  "     ", 
+  "     ",
   sum(upa$other_reasons == "Yes", na.rm = TRUE),
   " were excluded for other reasons"
 )
@@ -558,18 +591,18 @@ let's move it to the right (add to x) and align the text to the left (change jus
 
 
 ```{r flow5_upa, fig.width = 10, fig.height = 7.5}
-upa2 |> 
-  as_fc(label = "Patients assessed for eligibility") |> 
-  fc_filter(!is.na(group), label = "Randomized participants\nAssigned to therapy", show_exc = TRUE, label_exc = "Excluded patients" ) |>
-  fc_modify( #modifying only box 3 - exclusions
+upa2 |>
+  as_fc(label = "Patients assessed for eligibility") |>
+  fc_filter(!is.na(group), label = "Randomized participants\nAssigned to therapy", show_exc = TRUE, label_exc = "Excluded patients") |>
+  fc_modify( # modifying only box 3 - exclusions
     ~ . |>
       dplyr::mutate(
-        text = ifelse(id ==3, text_exc, text),
+        text = ifelse(id == 3, text_exc, text),
         just = ifelse(id == 3, "left", just),
         x = ifelse(id == 3, x + 0.11, x)
       )
   ) |>
-  fc_split(group) |> 
+  fc_split(group) |>
   fc_filter(completed == "Yes", label = "Completed Study", show_exc = TRUE, label_exc = "Withdrew\nfrom Study") |>
   fc_draw()
 ```
@@ -580,19 +613,19 @@ let's add the withdrawal reasons to the flowchart for each group -'adverse event
 Create the multiline text for the withdrawal reasons by running the code chunk below. It will print out in the Console. We have to create a distinct list of counts and withdrawal reasons for each arm of the study, starting with Placebo. Run each of the code chunks below in turn to create the withdrawal text for each arm of the study.
 
 ```{r wd_text_placebo}
-upa_p <- upa2 |> 
-  filter(group == "Placebo") 
+upa_p <- upa2 |>
+  filter(group == "Placebo")
 
 text_wd <- paste0(
   sum(upa_p$completed == "No", na.rm = TRUE),
   " patients excluded\n",
-  "     ", 
+  "     ",
   sum(upa_p$adverse_event == "Yes", na.rm = TRUE),
   " adverse event\n",
-  "     ", 
+  "     ",
   sum(upa_p$lack_of_efficacy == "Yes", na.rm = TRUE),
   " lack of efficacy\n",
-  "     ", 
+  "     ",
   sum(upa_p$other_reason_withdraw == "Yes", na.rm = TRUE),
   " other"
 )
@@ -602,19 +635,19 @@ text_wd
 Now for Upa 7.5 mg QD
 
 ```{r wd_text_7.5}
-upa_7 <- upa2 |> 
-  filter(group == "Upa 7.5 mg QD") 
+upa_7 <- upa2 |>
+  filter(group == "Upa 7.5 mg QD")
 
 text_wd2 <- paste0(
   sum(upa_7$completed == "No", na.rm = TRUE),
   " patients excluded\n",
-  "     ", 
+  "     ",
   sum(upa_7$adverse_event == "Yes", na.rm = TRUE),
   " adverse event\n",
-  "     ", 
+  "     ",
   sum(upa_7$lack_of_efficacy == "Yes", na.rm = TRUE),
   " lack of efficacy\n",
-  "     ", 
+  "     ",
   sum(upa_7$other_reason_withdraw == "Yes", na.rm = TRUE),
   " other"
 )
@@ -624,19 +657,19 @@ text_wd2
 Now for Upa 15 mg QD
 
 ```{r wd_text_15}
-upa_15 <- upa2 |> 
-  filter(group == "Upa 15 mg QD") 
+upa_15 <- upa2 |>
+  filter(group == "Upa 15 mg QD")
 
 text_wd3 <- paste0(
   sum(upa_15$completed == "No", na.rm = TRUE),
   " patients excluded\n",
-  "     ", 
+  "     ",
   sum(upa_15$adverse_event == "Yes", na.rm = TRUE),
   " adverse event\n",
-  "     ", 
+  "     ",
   sum(upa_15$lack_of_efficacy == "Yes", na.rm = TRUE),
   " lack of efficacy\n",
-  "     ", 
+  "     ",
   sum(upa_15$other_reason_withdraw == "Yes", na.rm = TRUE),
   " other"
 )
@@ -646,19 +679,19 @@ text_wd3
 Now for Upa 30 mg QD
 
 ```{r wd_text_30}
-upa_30 <- upa2 |> 
-  filter(group == "Upa 30 mg QD") 
+upa_30 <- upa2 |>
+  filter(group == "Upa 30 mg QD")
 
 text_wd4 <- paste0(
   sum(upa_30$completed == "No", na.rm = TRUE),
   " patients excluded\n",
-  "     ", 
+  "     ",
   sum(upa_30$adverse_event == "Yes", na.rm = TRUE),
   " adverse event\n",
-  "     ", 
+  "     ",
   sum(upa_30$lack_of_efficacy == "Yes", na.rm = TRUE),
   " lack of efficacy\n",
-  "     ", 
+  "     ",
   sum(upa_30$other_reason_withdraw == "Yes", na.rm = TRUE),
   " other"
 )
@@ -668,19 +701,19 @@ text_wd4
 Now for Upa 45 mg QD
 
 ```{r wd_text_45}
-upa_45 <- upa2 |> 
-  filter(group == "Upa 45 mg QD") 
+upa_45 <- upa2 |>
+  filter(group == "Upa 45 mg QD")
 
 text_wd5 <- paste0(
   sum(upa_45$completed == "No", na.rm = TRUE),
   " patients excluded\n",
-  "     ", 
+  "     ",
   sum(upa_45$adverse_event == "Yes", na.rm = TRUE),
   " adverse event\n",
-  "     ", 
+  "     ",
   sum(upa_45$lack_of_efficacy == "Yes", na.rm = TRUE),
   " lack of efficacy\n",
-  "     ", 
+  "     ",
   sum(upa_45$other_reason_withdraw == "Yes", na.rm = TRUE),
   " other"
 )
@@ -693,40 +726,40 @@ After checking the fc, object, we will add the withdrawal reasons to the flowcha
 
 
 ```{r flow6_upa}
-upa2 |> 
-  as_fc(label = "Patients assessed for eligibility") |> 
-  fc_filter(!is.na(group), label = "Randomized participants\nAssigned to therapy", show_exc = TRUE, label_exc = "Excluded patients" ) |>
-  fc_modify( #modifying only box 3 - exclusions
+upa2 |>
+  as_fc(label = "Patients assessed for eligibility") |>
+  fc_filter(!is.na(group), label = "Randomized participants\nAssigned to therapy", show_exc = TRUE, label_exc = "Excluded patients") |>
+  fc_modify( # modifying only box 3 - exclusions
     ~ . |>
       dplyr::mutate(
-        text = ifelse(id ==3, text_exc, text),
+        text = ifelse(id == 3, text_exc, text),
         just = ifelse(id == 3, "left", just),
         x = ifelse(id == 3, x + 0.11, x)
       )
   ) |>
-  fc_split(group) |> 
+  fc_split(group) |>
   fc_filter(completed == "Yes", label = "Completed Study", show_exc = TRUE, label_exc = "Withdrew\nfrom Study") |>
-  fc_modify(# moving group boxes leftward
+  fc_modify( # moving group boxes leftward
     ~ . |>
       dplyr::mutate(
-        x = ifelse(id %in% c(4:9, 9,11,13,15,17), x-0.02, x)
+        x = ifelse(id %in% c(4:9, 9, 11, 13, 15, 17), x - 0.02, x)
       )
-  ) |> 
-  fc_modify(# moving withdraw boxes leftward, down, resize font, align left
+  ) |>
+  fc_modify( # moving withdraw boxes leftward, down, resize font, align left
     ~ . |>
       dplyr::mutate(
-        x = ifelse(id %in% c(10,12,14,16,18), x - 0.01, x),
-         y = ifelse(id %in% c(10,12,14,16,18), y-0.02, y),
-        text_fs = ifelse(id %in% c(10,12,14,16,18), 8, text_fs),
-        just = ifelse(id %in% c(10,12,14,16,18), "left", just)
+        x = ifelse(id %in% c(10, 12, 14, 16, 18), x - 0.01, x),
+        y = ifelse(id %in% c(10, 12, 14, 16, 18), y - 0.02, y),
+        text_fs = ifelse(id %in% c(10, 12, 14, 16, 18), 8, text_fs),
+        just = ifelse(id %in% c(10, 12, 14, 16, 18), "left", just)
       )
-  )  |> 
+  ) |>
   fc_modify( # moving completers down
     ~ . |>
       dplyr::mutate(
-        y = ifelse(id %in% c(9,11,13,15,17), y-0.05, y)
+        y = ifelse(id %in% c(9, 11, 13, 15, 17), y - 0.05, y)
       )
-  ) |> 
+  ) |>
   fc_modify( # replacing text for one withdrawal box at a time, carefully putting the right text into the correct box id
     ~ . |>
       dplyr::mutate(
@@ -743,9 +776,11 @@ upa_fc6$fc
 
 Now let's draw the updated flowchart. You will probably want to zoom this one.
 ```{r , fig.width = 12, fig.height = 6}
-upa_fc6 |> 
-  fc_draw(arrow_angle = 20,
-    arrow_length = grid::unit(0.10, "inches"))
+upa_fc6 |>
+  fc_draw(
+    arrow_angle = 20,
+    arrow_length = grid::unit(0.10, "inches")
+  )
 ```
 
 :::tryit
@@ -768,35 +803,39 @@ n <- 100
 fatigue <- tibble(
   id = 1:n,
   group = sample(c("Modafinil + Placebo", "Buproprion + Placebo", "Modafinil + Buproprion", "Placebo"), n, replace = TRUE),
-fatigue_0 = sample(14:20, n, replace = TRUE),
-fatigue_8 = fatigue_0 - sample(1:5, n, replace = TRUE)) |> 
+  fatigue_0 = sample(14:20, n, replace = TRUE),
+  fatigue_8 = fatigue_0 - sample(1:5, n, replace = TRUE)
+) |>
   mutate(fatigue_8 = case_when(
-    group =="Modafinil + Placebo" ~ fatigue_8 - 2,
-    group =="Buproprion + Placebo" ~ fatigue_8 - 1,
-    group =="Modafinil + Buproprion" ~ fatigue_8 - 4,
-    group =="Placebo" ~ fatigue_8 + 1)) |> 
-  mutate(inclusion_crit = "Yes",
-         exclusion_crit = "No",
-         withdrew_consent = "No",
-         lost_to_follow_up = "No",
-         other_reasons = "No",
-         completed = "Yes",
-         adverse_event = "No",
-         lack_of_efficacy = "No",
-         other_reason_withdraw = "No",
-         itt = "Yes",
-         reason_itt = NA,
-         pp = "Yes",
-         reason_pp = NA)
+    group == "Modafinil + Placebo" ~ fatigue_8 - 2,
+    group == "Buproprion + Placebo" ~ fatigue_8 - 1,
+    group == "Modafinil + Buproprion" ~ fatigue_8 - 4,
+    group == "Placebo" ~ fatigue_8 + 1
+  )) |>
+  mutate(
+    inclusion_crit = "Yes",
+    exclusion_crit = "No",
+    withdrew_consent = "No",
+    lost_to_follow_up = "No",
+    other_reasons = "No",
+    completed = "Yes",
+    adverse_event = "No",
+    lack_of_efficacy = "No",
+    other_reason_withdraw = "No",
+    itt = "Yes",
+    reason_itt = NA,
+    pp = "Yes",
+    reason_pp = NA
+  )
 
 # add excluded,then withdrawers for each group}
 
-n = 20
-f2 <- fatigue |> 
-  slice(81:100) |> 
+n <- 20
+f2 <- fatigue |>
+  slice(81:100) |>
   mutate(
-    exclusion_crit = rep(c("Yes", "No"), c(15,5)),
-    withdrew_consent = rep(c( "No", "Yes", "No"), c(15,3, 2)),
+    exclusion_crit = rep(c("Yes", "No"), c(15, 5)),
+    withdrew_consent = rep(c("No", "Yes", "No"), c(15, 3, 2)),
     lost_to_follow_up = rep(c("No", "Yes", "No"), c(18, 1, 1)),
     other_reason_exclude = rep(c("No", "Yes"), c(19, 1)),
     group = NA,
@@ -806,69 +845,74 @@ f2 <- fatigue |>
     other_reason_withdraw = NA,
     itt = "No",
     pp = "No",
-    completed = "No")
+    completed = "No"
+  )
 
-n=3
+n <- 3
 fatigue_b <- fatigue |>
   arrange(group) |>
   slice(1:3) |>
   mutate(
     fatigue_0 = sample(14:20, n, replace = TRUE),
     fatigue_8 = NA,
-    completed = "No", 
-    adverse_event = rep(c("Yes",  "No"), c(2,1)),
-    lack_of_efficacy = rep(c( "No", "Yes"), c(2,1)))
-                                  
+    completed = "No",
+    adverse_event = rep(c("Yes", "No"), c(2, 1)),
+    lack_of_efficacy = rep(c("No", "Yes"), c(2, 1))
+  )
 
-n=5
+
+n <- 5
 fatigue_m <- fatigue |>
-  arrange(group) |> 
+  arrange(group) |>
   slice(56:60) |>
   mutate(
     fatigue_0 = sample(14:20, n, replace = TRUE),
     fatigue_8 = NA,
-    completed = "No", 
-    adverse_event = rep(c("Yes",  "No"), c(3,2)),
-    lack_of_efficacy = rep(c( "No", "Yes", "No"), c(3,1,1)),
-    other_reason_withdraw = rep(c("No", "Yes"), c(4,1)))
-    
-n=5
+    completed = "No",
+    adverse_event = rep(c("Yes", "No"), c(3, 2)),
+    lack_of_efficacy = rep(c("No", "Yes", "No"), c(3, 1, 1)),
+    other_reason_withdraw = rep(c("No", "Yes"), c(4, 1))
+  )
+
+n <- 5
 fatigue_combo <- fatigue |>
-  arrange(group) |> 
+  arrange(group) |>
   slice(27:31) |>
   mutate(
     fatigue_0 = sample(14:20, n, replace = TRUE),
     fatigue_8 = NA,
-    completed = "No", 
-    adverse_event = rep(c("Yes",  "No"), c(3,2)),
-    lack_of_efficacy = rep(c( "No", "Yes", "No"), c(3,1,1)),
-    other_reason_withdraw = rep(c("No", "Yes"), c(4,1)))
+    completed = "No",
+    adverse_event = rep(c("Yes", "No"), c(3, 2)),
+    lack_of_efficacy = rep(c("No", "Yes", "No"), c(3, 1, 1)),
+    other_reason_withdraw = rep(c("No", "Yes"), c(4, 1))
+  )
 
-n=8
+n <- 8
 fatigue_p <- fatigue |>
-  arrange(group) |> 
+  arrange(group) |>
   slice(84:91) |>
   mutate(
     fatigue_0 = sample(14:20, n, replace = TRUE),
     fatigue_8 = NA,
-    completed = "No", 
-    adverse_event = rep(c("Yes",  "No"), c(2,6)),
-    lack_of_efficacy = rep(c( "No", "Yes", "No"), c(2,5,1)),
-    other_reason_withdraw = rep(c("No", "Yes"), c(7,1)))
+    completed = "No",
+    adverse_event = rep(c("Yes", "No"), c(2, 6)),
+    lack_of_efficacy = rep(c("No", "Yes", "No"), c(2, 5, 1)),
+    other_reason_withdraw = rep(c("No", "Yes"), c(7, 1))
+  )
 
-fatigue <- bind_rows(fatigue, f2, fatigue_b, fatigue_m, fatigue_combo, fatigue_p) 
+fatigue <- bind_rows(fatigue, f2, fatigue_b, fatigue_m, fatigue_combo, fatigue_p)
 fatigue$id[101:141] <- 101:141
 
-fatigue <- fatigue |> 
+fatigue <- fatigue |>
   mutate(group = factor(group, levels = c("Placebo", "Modafinil + Placebo", "Buproprion + Placebo", "Modafinil + Buproprion")))
 ```
 
 OK, let's see how this study turned out. Run the code chunk below to get a quick peek at the week 8 results.
 
 ```{r}
-fatigue |> 
-  filter(completed == "Yes") |> 
-  select(id, group, fatigue_0, fatigue_8) |> 
+fatigue |>
+  filter(completed == "Yes") |>
+  select(id, group, fatigue_0, fatigue_8) |>
   group_by(group) |>
   summarise(mean_fatigue_week_8 = mean(fatigue_8))
 ```
@@ -893,12 +937,12 @@ Start with
 - a box for the assessed population
 
 ```{r flowchart_fatigue}
-fatigue_fc <- fatigue |> 
+fatigue_fc <- fatigue |>
   as_fc()
 
 str(fatigue_fc, max.level = 1)
 
-fatigue_fc |> 
+fatigue_fc |>
   fc_draw()
 ```
 `r unhide()`
@@ -913,9 +957,9 @@ Add a label for the box, and show the excluded.
 `r hide("Solution")`
 
 ```{r flow2_fatigue}
-fatigue |> 
-  as_fc(label = "Patients assessed for eligibility") |> 
-  fc_filter(!is.na(group), label = "Randomized", show_exc = TRUE) |> 
+fatigue |>
+  as_fc(label = "Patients assessed for eligibility") |>
+  fc_filter(!is.na(group), label = "Randomized", show_exc = TRUE) |>
   fc_draw()
 ```
 
@@ -929,10 +973,10 @@ We will use fc_split by group to get a branch for each group.
 
 `r hide("Solution")`
 ```{r flow3_fatigue}
-fatigue |> 
-  as_fc(label = "Patients assessed for eligibility") |> 
-  fc_filter(!is.na(group), label = "Randomized participants\nAssigned to therapy", show_exc = TRUE, label_exc = "Excluded patients" ) |>
-  fc_split(group) |> 
+fatigue |>
+  as_fc(label = "Patients assessed for eligibility") |>
+  fc_filter(!is.na(group), label = "Randomized participants\nAssigned to therapy", show_exc = TRUE, label_exc = "Excluded patients") |>
+  fc_split(group) |>
   fc_draw()
 ```
 `r unhide()`
@@ -946,15 +990,15 @@ Also print out the fc object before the `fc_draw`.
 
 `r hide("Solution")`
 ```{r flow4_fatigue}
-fatigue |> 
-  as_fc(label = "Patients assessed for eligibility") |> 
-  fc_filter(!is.na(group), label = "Randomized participants\nAssigned to therapy", show_exc = TRUE, label_exc = "Excluded patients" ) |>
-  fc_split(group) |> 
+fatigue |>
+  as_fc(label = "Patients assessed for eligibility") |>
+  fc_filter(!is.na(group), label = "Randomized participants\nAssigned to therapy", show_exc = TRUE, label_exc = "Excluded patients") |>
+  fc_split(group) |>
   fc_filter(completed == "Yes", label = "Completed Study", show_exc = TRUE, label_exc = "Withdrew\nfrom Study") -> fatigue_fc4
 
 fatigue_fc4$fc
 
-fatigue_fc4 |> 
+fatigue_fc4 |>
   fc_draw()
 ```
 `r unhide()`
@@ -969,20 +1013,22 @@ Let's create the multiline text for the exclusions before randomization.
 ```{r exclude_text_fatigue}
 text_exc <- paste0(
   sum(fatigue$exclusion_crit == "Yes",
-      fatigue$withdrew_consent == "Yes",
-      fatigue$lost_to_follow_up == "Yes",
-      fatigue$other_reasons == "Yes", na.rm = TRUE),
+    fatigue$withdrew_consent == "Yes",
+    fatigue$lost_to_follow_up == "Yes",
+    fatigue$other_reasons == "Yes",
+    na.rm = TRUE
+  ),
   " patients excluded\n",
-  "     ", 
+  "     ",
   sum(fatigue$exclusion_crit == "Yes", na.rm = TRUE),
   " met exclusion criteria\n",
-  "     ", 
+  "     ",
   sum(fatigue$withdrew_consent == "Yes", na.rm = TRUE),
   " withdrew their consent\n",
-  "     ", 
+  "     ",
   sum(fatigue$lost_to_follow_up == "Yes", na.rm = TRUE),
   " were lost to follow up\n",
-  "     ", 
+  "     ",
   sum(fatigue$other_reasons == "Yes", na.rm = TRUE),
   " were excluded for other reasons"
 )
@@ -999,18 +1045,18 @@ Now let's add this multiline text for exclusions to the flowchart and redraw.
 `r hide("Solution")`
 
 ```{r flow5_fatigue, fig.width = 10, fig.height = 7.5}
-fatigue |> 
-  as_fc(label = "Patients assessed for eligibility") |> 
-  fc_filter(!is.na(group), label = "Randomized participants\nAssigned to therapy", show_exc = TRUE, label_exc = "Excluded patients" ) |>
-  fc_modify( #modifying only box 3 - exclusions
+fatigue |>
+  as_fc(label = "Patients assessed for eligibility") |>
+  fc_filter(!is.na(group), label = "Randomized participants\nAssigned to therapy", show_exc = TRUE, label_exc = "Excluded patients") |>
+  fc_modify( # modifying only box 3 - exclusions
     ~ . |>
       dplyr::mutate(
-        text = ifelse(id ==3, text_exc, text),
+        text = ifelse(id == 3, text_exc, text),
         just = ifelse(id == 3, "left", "center"),
         x = ifelse(id == 3, x + 0.11, x)
       )
   ) |>
-  fc_split(group) |> 
+  fc_split(group) |>
   fc_filter(completed == "Yes", label = "Completed Study", show_exc = TRUE, label_exc = "Withdrew\nfrom Study") |>
   fc_draw()
 ```
@@ -1026,19 +1072,19 @@ We will do this separately for each group/arm, Placebo first.
 `r hide("Solution")`
 
 ```{r wd_text_pbo}
-fatigue_p_wd <- fatigue |> 
-  filter(group == "Placebo") 
+fatigue_p_wd <- fatigue |>
+  filter(group == "Placebo")
 
 text_wd <- paste0(
   sum(fatigue_p_wd$completed == "No", na.rm = TRUE),
   " patients excluded\n",
-  "     ", 
+  "     ",
   sum(fatigue_p_wd$adverse_event == "Yes", na.rm = TRUE),
   " adverse event\n",
-  "     ", 
+  "     ",
   sum(fatigue_p_wd$lack_of_efficacy == "Yes", na.rm = TRUE),
   " lack of efficacy\n",
-  "     ", 
+  "     ",
   sum(fatigue_p_wd$other_reason_withdraw == "Yes", na.rm = TRUE),
   " other"
 )
@@ -1051,19 +1097,19 @@ Now for Modafinil + Placebo
 `r hide("Solution")`
 
 ```{r wd_text_mp}
-fatigue_mp_wd <- fatigue |> 
-  filter(group == "Modafinil + Placebo") 
+fatigue_mp_wd <- fatigue |>
+  filter(group == "Modafinil + Placebo")
 
 text_wd2 <- paste0(
   sum(fatigue_mp_wd$completed == "No", na.rm = TRUE),
   " patients excluded\n",
-  "     ", 
+  "     ",
   sum(fatigue_mp_wd$adverse_event == "Yes", na.rm = TRUE),
   " adverse event\n",
-  "     ", 
+  "     ",
   sum(fatigue_mp_wd$lack_of_efficacy == "Yes", na.rm = TRUE),
   " lack of efficacy\n",
-  "     ", 
+  "     ",
   sum(fatigue_mp_wd$other_reason_withdraw == "Yes", na.rm = TRUE),
   " other"
 )
@@ -1076,19 +1122,19 @@ Now for Buproprion + Placebo
 `r hide("Solution")`
 
 ```{r wd_text_bp}
-fatigue_bp_wd <- fatigue |> 
-  filter(group == "Buproprion + Placebo") 
+fatigue_bp_wd <- fatigue |>
+  filter(group == "Buproprion + Placebo")
 
 text_wd3 <- paste0(
   sum(fatigue_bp_wd$completed == "No", na.rm = TRUE),
   " patients excluded\n",
-  "     ", 
+  "     ",
   sum(fatigue_bp_wd$adverse_event == "Yes", na.rm = TRUE),
   " adverse event\n",
-  "     ", 
+  "     ",
   sum(fatigue_bp_wd$lack_of_efficacy == "Yes", na.rm = TRUE),
   " lack of efficacy\n",
-  "     ", 
+  "     ",
   sum(fatigue_bp_wd$other_reason_withdraw == "Yes", na.rm = TRUE),
   " other"
 )
@@ -1100,19 +1146,19 @@ Now for Modafinil + Bupropion
 
 `r hide("Solution")`
 ```{r wd_text_mb}
-fatigue_mb_wd <- fatigue |> 
-  filter(group == "Modafinil + Buproprion") 
+fatigue_mb_wd <- fatigue |>
+  filter(group == "Modafinil + Buproprion")
 
 text_wd4 <- paste0(
   sum(fatigue_mb_wd$completed == "No", na.rm = TRUE),
   " patients excluded\n",
-  "     ", 
+  "     ",
   sum(fatigue_mb_wd$adverse_event == "Yes", na.rm = TRUE),
   " adverse event\n",
-  "     ", 
+  "     ",
   sum(fatigue_mb_wd$lack_of_efficacy == "Yes", na.rm = TRUE),
   " lack of efficacy\n",
-  "     ", 
+  "     ",
   sum(fatigue_mb_wd$other_reason_withdraw == "Yes", na.rm = TRUE),
   " other"
 )
@@ -1126,40 +1172,40 @@ text_wd4
 `r hide("Solution")`
 
 ```{r flow6_fatigue}
-fatigue |> 
-  as_fc(label = "Patients assessed for eligibility") |> 
-  fc_filter(!is.na(group), label = "Randomized participants\nAssigned to therapy", show_exc = TRUE, label_exc = "Excluded patients" ) |>
-  fc_modify( #modifying only box 3 - exclusions
+fatigue |>
+  as_fc(label = "Patients assessed for eligibility") |>
+  fc_filter(!is.na(group), label = "Randomized participants\nAssigned to therapy", show_exc = TRUE, label_exc = "Excluded patients") |>
+  fc_modify( # modifying only box 3 - exclusions
     ~ . |>
       dplyr::mutate(
-        text = ifelse(id ==3, text_exc, text),
+        text = ifelse(id == 3, text_exc, text),
         just = ifelse(id == 3, "left", just),
         x = ifelse(id == 3, x + 0.11, x)
       )
   ) |>
-  fc_split(group) |> 
+  fc_split(group) |>
   fc_filter(completed == "Yes", label = "Completed Study", show_exc = TRUE, label_exc = "Withdrew\nfrom Study") |>
-  fc_modify(# moving group boxes leftward
+  fc_modify( # moving group boxes leftward
     ~ . |>
       dplyr::mutate(
-        x = ifelse(id %in% c(4:7, 8,10,12,14), x-0.02, x)
+        x = ifelse(id %in% c(4:7, 8, 10, 12, 14), x - 0.02, x)
       )
-  ) |> 
-  fc_modify(# moving withdraw boxes leftward, down, resize font, align left
+  ) |>
+  fc_modify( # moving withdraw boxes leftward, down, resize font, align left
     ~ . |>
       dplyr::mutate(
-        x = ifelse(id %in% c(9,11,13,15), x - 0.01, x),
-         y = ifelse(id %in% c(9,11,13,15), y-0.02, y),
-        text_fs = ifelse(id %in% c(9,11,13,15), 8, text_fs),
-        just = ifelse(id %in% c(9,11,13,15), "left", just)
+        x = ifelse(id %in% c(9, 11, 13, 15), x - 0.01, x),
+        y = ifelse(id %in% c(9, 11, 13, 15), y - 0.02, y),
+        text_fs = ifelse(id %in% c(9, 11, 13, 15), 8, text_fs),
+        just = ifelse(id %in% c(9, 11, 13, 15), "left", just)
       )
-  )  |> 
+  ) |>
   fc_modify( # moving completers down
     ~ . |>
       dplyr::mutate(
-        y = ifelse(id %in% c(8,10,12,14), y-0.05, y)
+        y = ifelse(id %in% c(8, 10, 12, 14), y - 0.05, y)
       )
-  ) |> 
+  ) |>
   fc_modify( # replacing text for one withdraw box
     ~ . |>
       dplyr::mutate(
@@ -1180,9 +1226,11 @@ Now let's draw the flowchart. Zoom it to get a beter view.
 
 `r hide("Solution")`
 ```{r , fig.width = 12, fig.height = 6}
-fatigue_fc6 |> 
-  fc_draw(arrow_angle = 20,
-    arrow_length = grid::unit(0.08, "inches"))
+fatigue_fc6 |>
+  fc_draw(
+    arrow_angle = 20,
+    arrow_length = grid::unit(0.08, "inches")
+  )
 ```
 `r unhide()`
 
