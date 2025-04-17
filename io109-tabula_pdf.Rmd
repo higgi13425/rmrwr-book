@@ -351,13 +351,13 @@ one-off interactive coding, but not for a reproducible workflow.
 
 ## Your Turn
 
-Let's try to extract some data from a CDC PDF. Get the pdf from the code chunk below. Tables are on pages 26-51. You may want to find the PDF on the web at https://www.cdc.gov/nchs/data/hus/hus19-508.pdf to help you pick out an interesting table.
-Note that the page numbers within the pdf do not correspond to the actual page numbers inof the document. You may have to add 11 to the listed page number the get the actual page/table. 
+Let's try to extract some data from a PDF from the Centers for Disease Control (CDC). Get the pdf from the code chunk below. Tables are on pages 26-51. You will want to find & inspect the PDF on the web at https://www.cdc.gov/nchs/data/hus/hus19-508.pdf to help you pick out an interesting table.
+Note that the page numbers within the pdf do not correspond to the actual page numbers of the document. You may have to add ~11 to the listed page number the get the actual page/table. 
 ```{r}
 cdc_pdf <- "https://www.cdc.gov/nchs/data/hus/hus19-508.pdf"
 ```
 
-Pick out a table that you find interesting, and try to extract it and clean it up to raw data. Try doing one table programmatically, and (a harder one) interactively. The side-by-side ones on pages 47-48 (which are really 58-59) may be good examples for interactive extraction. See if you can get all50 states into one table. 
+Pick out a table that you find interesting, and try to extract it and clean it up to raw data. Try doing one table programmatically, and (a harder one) interactively. The side-by-side ones on pages 47-48 (which are really 58-59) may be good examples for interactive extraction. See if you can get all 50 states into one table. 
 
 The example below is one possible table extraction for health care expenditures by an individual.
 
@@ -377,6 +377,7 @@ health_dollars |>
   ))
 ```
 `r unhide()`
+
 ::: 
 
 
