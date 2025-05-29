@@ -1,7 +1,7 @@
 ---
-title: "Using the {tabulapdf} package tp extract tables from PDFs"
+title: "Using the {heemod} package For Health Economic Evaluation Modeling"
 author: "Peter Higgins"
-date: "1/29/2025"
+date: "4/29/2025"
 output: html_document
 ---
 
@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(flowchart)
 library(webexercises)
-library(tabulapdf)
+library(heemod)
 ```
 
 # Using the {tabulapdf} package tp extract tables from PDFs
