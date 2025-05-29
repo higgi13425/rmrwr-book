@@ -5,12 +5,7 @@ date: "5/28/2025"
 output: html_document
 ---
 
-```{r, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-library(tidyverse)
-library(webexercises)
-library(REDCapTidieR)
-```
+
 
 # Using the {REDCapTidieR} package to Extract Data from a REDCap database
 
@@ -53,7 +48,8 @@ Once your database is built, you can request an API key - open your database and
 
 To open and edit the *.Rprofile* file, you need to have the {usethis} package installed. When this is available, you can use the following command in R: usethis::edit_r_profile(). This will open up your *.Rprofile* file in your default text editor, where you can add the following line:  
 
-```{r}
+
+``` r
 redcap_safety_study_api_key = "2E732F39822D600FA09C07D861887823"
 ```
 
@@ -62,9 +58,10 @@ Then save and close your *.Rprofile* file. This will set the environment variabl
 After this restart, your R session will run the updated *.Rprofile* file. The api key will now be available in your global environment. This api key can now be accessed in your R code using the `Sys.getenv()` function.
 You can then access the API key in your R code by using the following command:
 
-```{r}
+
+``` r
 api_key <- Sys.getenv("redcap_safety_study_api_key")
-```   
+```
 This will retrieve the value of the `redcap_safety_study_api_key` global environment variable and store it in a local `api_key` variable. You can then use this variable to access the REDCap database using the {REDCapTidieR} package.
 
 ## Using REDCapTidieR to Extract Data from REDCap
@@ -72,7 +69,8 @@ This will retrieve the value of the `redcap_safety_study_api_key` global environ
 Now you can use REDCapTidieR to extract data from your REDCap database. The {REDCapTidieR} package provides a set of functions that allow you to interact with REDCap projects from R, including functions for extracting data, managing projects, and working with data dictionaries.
 We are planning to do this on a firewalled Linux server that can store PHI from REDCap securely. Your local IT administrator will often be able to rent you a small server for a reasonable price per month. In our case, we set up a new server with a free instance of RStudioServer. A blog post (full of jargon) on how to set this up (which may be helpful to your local IT person) can be found [here](https://higgi13425.github.io/medical_r/posts/2020-12-06-setting-up-a-rstudio-server-with-free-software-version/).
 We will assume that you have already installed the {REDCapTidieR} package, and have loaded it into your R session with the `library(REDCapTidieR)` command. If you have not installed the package yet, you can do so by running the following command:
-```{r}
+
+``` r
 # install.packages("REDCapTidieR")
 library(REDCapTidieR)
 ```
@@ -80,17 +78,26 @@ library(REDCapTidieR)
 You then need to set up a dedicated R project for this study on your R server with File?New Project. Within this new project, open a new R file names something like `safety _study_redcap_extraction.R`. This will be the file that contains the code to extract data from your REDCap database and and save it to a set of data tables.
 
 Start this file by loading libraries, using 
-```{r}
+
+``` r
 library(REDCapTidieR)
 library(tidyverse)
 library(here)
+```
+
+```
+## here() starts at /Users/peterhiggins/Documents/RCode/rmrwr-book
+```
+
+``` r
 library(gt)
 library(gtsummary)
 ```
 
 Then you will assign the api_key and the url of your local REDCap production website to variables.
 
-```{r}
+
+``` r
 api_key <- Sys.getenv("redcap_safety_study_api_key")
 redcap_url <- "https://redcap.yourinstitution.edu/api/"
 ```
@@ -98,8 +105,8 @@ Note that you should check with your local REDCap administrator to get the right
 
 Now you can use the *read_redcap()* function to read in data from your REDCap database.
 
-```{r}
-#| eval: false
+
+``` r
 datfr <- read_redcap(redcap_uri = redcap_url,
                      token = api_key)
 head(datfr)
@@ -109,8 +116,8 @@ If this is working, you should be able to run the code up to this point and get 
 This supertibble contains all of the data from your REDCap database, with one row for each case report form (aka instrument, form).
 
 You can then break up the Supertibble into individual tibbles, one for each form, using the code below:
-```{r}
-#| eval: false
+
+``` r
 datfr |> 
   make_labelled() |> 
   bind_tibbles()
@@ -118,16 +125,16 @@ datfr |>
 Now you should see new dataframe objects popping up in your Environment tab, one for each form in the Supertibble. These will have the same names (labels) that you applied to the forms you created in REDCap, and will often have names like demographics, labs, medications, etc.
 
 You can then save these data tables for future use & analysis, using code for each data table like the code block below.
-```{r}
-#| eval: false
+
+``` r
 saveRDS(demographics, here("data", "safety_study_demographics.Rd"))
 saveRDS(labs, here("data", "safety_study_labs.Rd"))
 saveRDS(labs, here("data", "safety_study_medications.Rd"))
 ```
 
 Optionally, you may have data (often for race) from REDCap that uses checkboxes, which results in a separate variable for each race. These are less helpful for analysis, and for each checkbox variable, you may want to use the *combine_checkboxes()* function from {REDCapTidier} to make these into a single variable. You can do this with code like the code block below (note that this version includes the make_labelled and bind_tibbles functions to separate the output into distinct tibbles):
-```{r}
-#| eval: false
+
+``` r
 combine_checkboxes(
   supertbl = datfr,
   tbl = "demographics",
@@ -153,8 +160,8 @@ At this point, you have extracted data from your REDCap database and saved it to
 For this example, we will assume that you are using a quarto file. Start a new document with File/New File/Quarto Document, and save it as `safety_study_redcap_analysis.qmd`. This will be the file that contains the code to analyze and summarize your data. This will be a mix of tables and plots to summarize the progress of your study. When you render the quarto document, this will produce an HTML file that can be viewed locally, emailed to collaborators (weekly or monthly updates), or regularly published to a website.
 
 To start the quarto dashboard document, we will use a YAML header, with code that looks like this block:
-```{r}
-#| eval: false
+
+``` r
 title: "Study Dashboard"
 author: " `r glue::glue('Your Name   ', 'Updated at: ', as.character(Sys.time))` " # this will stick together the author name and when the file was last updated
 format:
@@ -164,26 +171,11 @@ format:
 ```
 
 Next we will add a setup chunk to load libraries and set a theme for ggplots.
-```{r}
-#| label: setup
-#| include: false
 
-library(tidyverse)
-library(here)
-library(janitor)
-library(flextable)
-library(labelled)
-library(fontawesome)
-library(scales)
-library(gt)
-theme_set(theme_minimal(base_size = 24,
-                       base_family = "Atkinson Hyperlegible"))
-```
 
 Next we will read in the data tables that we saved from the previous step. This will allow us to use the data in our analysis and summaries.
-```{r}
-#| label: read-data
-#| eval:  false
+
+``` r
 demographics <- readRDS(here("data", "safety_study_demographics.Rd"))
 labs <- readRDS(here("data", "safety_study_labs.Rd"))
 medications <- readRDS(here("data", "safety_study_medications.Rd"))
@@ -192,9 +184,8 @@ medications <- readRDS(here("data", "safety_study_medications.Rd"))
 Next we will count the number of participants enrolled at each site, to provide data for a valuebox page of the dashboard. This will give us a quick overview of the number of participants enrolled at each site.
 Note that you may want to peek at the site field in the demographics table to get the exact names of the sites, as these may vary depending on how your REDCap database is set up. Sometimes REDCap will cut off the names after a certain number of characters, so you may need to adjust the site names in the code below to match the names in your demographics table.
 
-```{r}
-#| label: count-participants
-#| eval: false
+
+``` r
 n_enrolled_umich <- demographics |> 
   filter(site == "University of Michigan") |> 
   nrow()
@@ -216,12 +207,8 @@ Next we will make the first page for the websitem a set of value boxes on a sing
 
 `# Counts`
 
-```{r}
-#| content: valuebox
-#| title: "Enrolled Michigan"
-#| width: 25%
-#| eval: false
 
+``` r
 list(
   icon = "person",
   color = "blue",
@@ -229,12 +216,8 @@ list(
 )
 ```
 
-```{r}
-#| content: valuebox
-#| title: "Enrolled Oregon"
-#| width: 25%
-#| eval: false
 
+``` r
 list(
   icon = "person",
   color = "green",
@@ -242,12 +225,8 @@ list(
 )
 ```
 
-```{r}
-#| content: valuebox
-#| title: "Enrolled UCSF"
-#| width: 25%
-#| eval: false
 
+``` r
 list(
   icon = "person",
   color = "red",
@@ -255,12 +234,8 @@ list(
 )
 ```
 
-```{r}
-#| content: valuebox
-#| title: "Enrolled UWash"
-#| width: 25%
-#| eval: false
 
+``` r
 list(
   icon = "person",
   color = "purple",
@@ -272,8 +247,8 @@ The code in these 4 chunks creates a single webpage with 4 columns. If you want 
 
 `# Enrollment Plot` 
 
-```{r}
-#| eval: false
+
+``` r
 screening |> 
   mutate(date = as.Date(data_entry_dt)) |> 
   filter(is.na(date)) |> 
@@ -308,8 +283,8 @@ Let's add a summary table, using the {gtsummary} package, to summarize the demog
 
 `# Enrollment Table`
 
-```{r}
-#| eval: false
+
+``` r
 # first merge two tables
 demo_ibd <- left_join(demographics, ibd_characteristics)
 
@@ -347,8 +322,8 @@ When you update your dashboard, you probably want to notify your collaborators t
 This can be done with a R file. Start a new R file with `File/New File/R Script`, and save it as `safety_study_redcap_email.R`. This will be the file that contains the code to send an email to your collaborators with the link to the published dashboard. See the example below for how to set up the email. You will need to set up your email credentials in the {blastula} package, which can be done with the `create_smtp_creds_key()` function. This will allow you to send emails from R using your server account. You can find more information on how to set this up [here](https://pkgs.rstudio.com/blastula/).
 Note that you can use `\` on an isolated line or `<br>` for line breaks in the email object.
 
-```{r}
-#| eval: false
+
+``` r
 library(blastula)
 
 # generate the email object

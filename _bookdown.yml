@@ -54,6 +54,7 @@ rmd_files:
 - io108-flowcharts.Rmd
 - io109-tabula_pdf.Rmd
 - io110-heemod.Rmd
+- io111-redcap_extraction.Rmd
 - io198-title-holder.Rmd
 - io199-references.Rmd
 

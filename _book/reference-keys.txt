@@ -678,3 +678,16 @@ run-the-model
 your-turn-9
 explore-more-features-2
 explore-health-economics-beyond-heemod
+using-the-redcaptidier-package-to-extract-data-from-a-redcap-database
+why-use-redcap
+preparation-for-data-extraction
+the-redcap-database
+the-redcap-api-key
+using-redcaptidier-to-extract-data-from-redcap
+analyzing-and-summarizing-your-data
+rendering-the-quarto-document
+checking-for-phi
+publishing-the-dashboard
+emailing-update-notifications-to-collaborators
+automating-and-scheduling-your-dashboard-updates
+explore-redcaptidier-and-quarto-dashboards

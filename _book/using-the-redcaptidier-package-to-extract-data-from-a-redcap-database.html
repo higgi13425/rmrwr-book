@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 18 Major R Updates (Where Are My Packages?) | Reproducible Medical Research with R</title>
+  <title>Chapter 50 Using the {REDCapTidieR} package to Extract Data from a REDCap database | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
   <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 18 Major R Updates (Where Are My Packages?) | Reproducible Medical Research with R" />
+  <meta property="og:title" content="Chapter 50 Using the {REDCapTidieR} package to Extract Data from a REDCap database | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
   <meta name="github-repo" content="higgi13425/rmrwr-book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 18 Major R Updates (Where Are My Packages?) | Reproducible Medical Research with R" />
+  <meta name="twitter:title" content="Chapter 50 Using the {REDCapTidieR} package to Extract Data from a REDCap database | Reproducible Medical Research with R" />
   
   <meta name="twitter:description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="updating-r-rstudio-and-your-packages.html"/>
-<link rel="next" href="intermediate-steps-toward-reproducibility.html"/>
+<link rel="prev" href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"/>
+<link rel="next" href="title-holder.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -1112,156 +1112,286 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="major-r-updates-where-are-my-packages" class="section level1 hasAnchor" number="18">
-<h1><span class="header-section-number">Chapter 18</span> Major R Updates (Where Are My Packages?)<a href="major-r-updates-where-are-my-packages.html#major-r-updates-where-are-my-packages" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Versions of R have numbers attached, like R.4.1.2.</p>
-<p>The first number is the <em>major</em> version (4).</p>
-<p>The second number is the <em>minor</em> version (1).</p>
-<p>The third number is the <em>patch level</em> (2).</p>
-<p>When you upgrade R from one patch level to the next, from 4.1.1 to 4.1.2, the changes are very minor, and backward-compatible.</p>
-<p>However, when you upgrade from one minor version (the middle number) to the next, from 4.0.2 to 4.1.0, you will find that most of your carefully installed and much-beloved packages are <strong>gone</strong>. All of the add-on packages you know and love, from {tidyverse} to {rstatix}, did not come along for the upgrade.
-Note that these are not actually <strong>gone</strong>, but in a library specific to the previous minor version (4.1), and that you are expected to have a new library for 4.2.
-The reason for this is that packages are built/updated for minor versions, and if you just tried to use the 4.1 version with R 4.2, you could have some mysterious errors. This likely only applies to 1-3% of packages with each minor update, but it is super-annoying to try to track down which package is misbehaving and needs to be rebuilt for the new version.
-So it is generally not recommended to just copy your packages from the old library (4.1) to the new (4.2) library, but to rebuild them.</p>
-<div class="warning">
-<p><strong>Be Mindful</strong> <br>
-Do not just upgrade R to a new minor (or major) version in the middle of a project.
-This will take a bit of work and time, maybe 10 minutes if you have a lot of packages installed, as this will require re-installing packages to a new library folder. It is possible, though unlikely, that parts of your project may break with a new version of R. The R Consortium tries to avoid breaking changes, especially for recent majpr versions of R.</p>
+<div id="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database" class="section level1 hasAnchor" number="50">
+<h1><span class="header-section-number">Chapter 50</span> Using the {REDCapTidieR} package to Extract Data from a REDCap database<a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#using-the-redcaptidier-package-to-extract-data-from-a-redcap-database" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This chapter is part of the <strong>Clinical Applications</strong> pathway. <br> Packages needed for this chapter include {REDCapTidieR} and {tidyverse}.</p>
+<p>We are going to set up an automated website that will, every morning at around 4 AM, pull data from a REDCap database, and then publish a summary of the data to a public website. This will allow us to share our data with the public, while keeping individual patient health information (PHI) secure. The website will be updated daily with the latest data from the REDCap database, and allow us (and our collaborators at other sites) to keep track of the progress of data collection in the study.
+An example of what we are trying to produce can be found <a href="https://phiggins.quarto.pub/sgm-study-dashboard/">here</a>. This is a public website that summarizes the data collected in an observational study at five sites. The website is updated daily with the latest data from the REDCap database, and allows us to share our data with the public while keeping individual patient health information (PHI) secure.</p>
+<div id="why-use-redcap" class="section level2 hasAnchor" number="50.1">
+<h2><span class="header-section-number">50.1</span> Why Use REDCap?<a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#why-use-redcap" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>REDCap (Research Electronic Data Capture) is a secure web application for building and managing online surveys and databases. It is widely used in academic and clinical research settings for data collection, especially when dealing with sensitive information such as patient health information (PHI). It is especially helpful for multicenter projects, in which you can share a common database and definitions. The {REDCapTidieR} package provides a convenient way to interact with REDCap projects from R, allowing users to extract, manipulate, and analyze data efficiently.</p>
 </div>
-<div id="when-to-upgrade-r" class="section level2 hasAnchor" number="18.1">
-<h2><span class="header-section-number">18.1</span> When to Upgrade R<a href="major-r-updates-where-are-my-packages.html#when-to-upgrade-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>As a general rule, patch upgrades are very minor, but fix problems that have been found with the previous version. You can upgrade to a new patch version at any time, and it is recommended to do so.</p>
-<p>Upgrading to a new minor or major version is a bit more involved. You usually want to wait a week or two after an upgrede for all of the assorted package binaries to catch up and be customized for the new version. You may also want to wait for the first patched version (e.g., 4.5.1, rather than 4.5.0) to come out, to make sure your work is not exposed to the initial bugs of a new version. There usually aren’t many, and they usually aren’t major, but it is a conservative approach to wait for the <code>*.*.1</code> version. On the other hand, sometimes the new features of the new version are so compelling that you don’t want to wait.</p>
-</div>
-<div id="preparing-for-a-minor-or-major-r-upgrade" class="section level2 hasAnchor" number="18.2">
-<h2><span class="header-section-number">18.2</span> Preparing for a Minor or Major R Upgrade<a href="major-r-updates-where-are-my-packages.html#preparing-for-a-minor-or-major-r-upgrade" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>You want to check the version number of the current R version at <a href="https://www.r-project.org">r-project.org</a>. It may have been a while since you upgraded.</p>
-<p>Let’s also check your current installed R version, with
-<code>R.Version()</code> in the Console. If you are not in the middle of a major project, it may be a good time to upgrade. There are several new features (like the native pipe, installing packages in parallel) being added to base R that are worth the upgrade.</p>
-<div class="warning">
-<p>Before you jump into upgrading R versions and packages, make sure that any important projects are protected. Make sure that your important ongoing projects use the {renv} package to preserve their Environment, and that you have taken a recent snapshot with <code>renv::snapshot()</code></p>
-<p>You can also manage more than one R version on your local computer with the {rig} package, so that you can stick with R 4.2.3 until you finish that particular project, while working in R 4.5.1 in all of your new projects.</p>
-</div>
-<p>Take a moment to identify the location of your current package library, with
-<code>.libPaths()</code>. This should look something like:
-<code>[1] "/Library/Frameworks/R.framework/Versions/4.1/Resources/library"</code></p>
-<p>Note that this package library is specific to the most recent major and minor version of R. If you upgrade from 4.0.x to 4.1.x, you will have a new library path to a new <code>4.1/Resources/library</code> folder, and will need to re-install packages in this folder.</p>
-<p>Take a moment to explore this file path with <code>Finder</code> on the Mac or <code>Windows File Explorer</code> in Windows. Go to <code>/Library/Frameworks/R.framework/Versions/</code> to see all the past versions of R that you have installed. You will see a folder for each minor version of R you have installed, and inside each of these folders is a <code>Resources</code> folder, and inside of that is a <code>library</code> folder. This is where all of your packages are stored.</p>
-<p>Take a moment to save this file path in a text file or a word document, as you will need to know where your most recent library is located when you upgrade R. This will be helpful if you choose to use the <code>updater</code> package to help you with the upgrade process.</p>
-<div id="before-you-upgrade-r" class="section level3 hasAnchor" number="18.2.1">
-<h3><span class="header-section-number">18.2.1</span> Before you upgrade R<a href="major-r-updates-where-are-my-packages.html#before-you-upgrade-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>You can copy over some packages from the previous version’s library folder, but these were built under the prior version of R, and some of these won’t work with the new minor version of R.
-It is better (and now pretty fast) to rebuild these packages from scratch, and you can do this in one of two ways:</p>
+<div id="preparation-for-data-extraction" class="section level2 hasAnchor" number="50.2">
+<h2><span class="header-section-number">50.2</span> Preparation for Data Extraction<a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#preparation-for-data-extraction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To prepare for data extraction, we need the following components:</p>
 <ol style="list-style-type: decimal">
-<li><p>After the R upgrade, just install packages as you need them (which is not a bad way to clean out packages you are not actually using), but a lot of people prefer to re-install all of their packages in an organized way, rather than just-in-time when they want to use them. It can be a bit annoying for the first week or two after an upgrade to frequently have to stop and reinstall packages, but you get through it.</p></li>
-<li><p>Re-install all of your packages in bulk right after thee R upgrade. This is a lot faster, and requires you to only stop your work once.</p></li>
+<li><p><strong>A REDCap database</strong>: Usually for an observational study, longitudinal study, or a randomized controlled trial. The database should be set up with the necessary fields and data types to capture the required information.</p></li>
+<li><p><strong>A REDCap API Key</strong>: This is a jumble of letters and numbers that can be used as a passkey to access the REDCap database. It is usually generated by the REDCap administrator and should be kept secure. It should generally be stored on your secure computer or a firewalled server in the .Rprofile file.</p></li>
+<li><p><strong>A Firewalled Server</strong>: You will be extracting PHI data from the REDCap database, so that this should go to a secured computer. This can be a desktop computer, but it is often useful to use a firewalled server, such as a Linux server, to store the data securely. The server should be configured to allow access only to authorized users, and should have appropriate security measures in place to protect the data. Having a server that is up and running 24/7 makes it easier to schedule data extraction tasks and run analyses without needing to keep your personal computer on all the time.</p></li>
+<li><p><strong>cron jobs</strong>: A short program, run on a schedule from a server, is known as a cron job. A set of cron jobs are stored in a crontab. A crontab is a file used by the cron utility in Unix and Linux systems to schedule tasks to run at specific times or intervals. It’s essentially a table of commands that are executed by the operating system on a regular schedule. The crontab file is typically located in the /etc/ directory, and can be edited using the crontab command. Cron jobs are often used to automate repetitive tasks, such as data extraction, data processing, and data analysis. They can be scheduled to run at specific times, such as daily, weekly, or monthly, or at specific intervals, such as every hour or every minute.</p></li>
+<li><p><strong>A publication site</strong>: If you want to publish public summaries (without individual PHI) of your data, you will need a publication site. This can be a website, a GitHub repository, or any other platform that allows you to share your data with the public. The publication site should be secure and should not contain any individual PHI. It is important to ensure that the data is anonymized and de-identified before publishing it to the public. It is common to use sites like RPubs, Quarto Pub, or GitHub Pages to publish public summaries of your data. These sites allow you to create static web pages that can be easily shared with others, and they provide a convenient way to share your summarized data and study progress with the public without exposing individual PHI.</p></li>
 </ol>
+<p>Let’s walk through each step.</p>
 </div>
-<div id="step-1-clean-up-old-unused-packages" class="section level3 hasAnchor" number="18.2.2">
-<h3><span class="header-section-number">18.2.2</span> STEP 1: Clean up old, unused packages<a href="major-r-updates-where-are-my-packages.html#step-1-clean-up-old-unused-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>If you are planning a bulk re-install (#2), you should first take a look at the current packages in RStudio. Click on the Help tab, then the Home icon, then under <code>Reference</code> in the Home window, select Packages. This will show you a list of your currently installed packages in your current library. Take 10 (or more,if you have many packages) minutes to inspect this list, and find packages that you used once and probably won’t use again. This is a good way to do a bit of spring cleaning, and not just blindly re-install every package you tried once and never used again. You can always install more packages later as you need them.</p>
-<p>As an example, I used the R package {blueycolors} for one specific project (it provides ggplot2 palettes for colors from the Bluey cartoon) and I don’t need it anymore. I can just remove it from my library with <code>remove.packages("blueycolors")</code> and then install it again if I need it in the future. But if I find a bunch of packages like this that I want to remove, I can copy the package names from the help window and paste them into a vector in the Console to remove them all at once. I will create a starter vector named <code>pkg_remove_vec</code> with: (copy this code chunk and run it in your local RStudio session)</p>
-<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="major-r-updates-where-are-my-packages.html#cb375-1" tabindex="-1"></a>pkg_remove_vec <span class="ot">&lt;-</span> Hmisc<span class="sc">::</span><span class="fu">Cs</span>(<span class="fu">c</span>())</span></code></pre></div>
-<p>Then I can copy the package names from the Help window, and insert commas between them into the center of the parentheses, like this:</p>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="major-r-updates-where-are-my-packages.html#cb376-1" tabindex="-1"></a>pkg_remove_vec <span class="ot">&lt;-</span> <span class="fu">c</span>(Hmisc<span class="sc">::</span><span class="fu">Cs</span>(billboarder, blueycolors, ggplot2movies))</span></code></pre></div>
-<p>Note that this requires that the {Hmisc} package is installed, so you may need to install {Hmisc} first. The <code>Cs</code> function from Hmisc will take comma-separated values and apply quotes around each item, turning this into a proper vector without you having to type out each quotation mark.</p>
-<p>You now have a vector, <code>pkg_remove_vec</code> in your Environment.</p>
+<div id="the-redcap-database" class="section level2 hasAnchor" number="50.3">
+<h2><span class="header-section-number">50.3</span> The REDCap Database<a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#the-redcap-database" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We are assuming that you have access to REDCap and have a REDCap administrator at your research site. The administrator can help you set up a new project, add fields to the project, and manage the data collected in the project. The administrator can also help you generate an API key for the project, which is needed to access the data from R.
+Most REDCap administrators are overburdened, so you will often have to seek out help to build your database and set up your project. It is important to have a clear understanding of the data you want to collect and how you want to organize it before you start building your database. This will help you avoid having to make major changes to the database later on, which can be time-consuming and frustrating.
+It is helpful to outline your data fields to be collected, and to organize a data dictionary that describes each field, including the field name, field type, and any validation rules that should be applied. This will help you ensure that the data is collected consistently and accurately, and will make it easier to analyze the data later on.
+You sshould organize your data fields into forms, or case report forms (CRFs) that are used to collect data from participants. Generally each visit or encounter will have its own CRF. You should generally structure your fields as numeric with validation rules (ranges), or dropdown categorical values. You should minimize free text fields, as these are difficult to analyze and can lead to inconsistencies in the data. If you need to collect free text data, consider using a separate field for comments or notes, rather than including it in the main data fields.
+You should also try to minimize missing data, by avoiding sensitive fields and requiring completion of all data fields. You can find a REDCap best practices document <a href="https://health.ucdavis.edu/data/includes/documents/REDCap/redcap_data_dictionary-190719-1.pdf">here</a>. There are many helpful guides and videos on the internet to help you get started, and your REDCap administrator can help you with any questions you have about building your database.</p>
 </div>
-<div id="step-2-build-a-dataframe-of-your-currently-installed-packages." class="section level3 hasAnchor" number="18.2.3">
-<h3><span class="header-section-number">18.2.3</span> STEP 2: Build a dataframe of your currently installed packages.<a href="major-r-updates-where-are-my-packages.html#step-2-build-a-dataframe-of-your-currently-installed-packages." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>You can build a dataframe of your currently installed packages with the code chunk below: (copy and run this in your local instance of RStudio)</p>
-<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="major-r-updates-where-are-my-packages.html#cb377-1" tabindex="-1"></a>pkg_current <span class="ot">&lt;-</span> <span class="fu">installed.packages</span>() <span class="sc">|&gt;</span></span>
-<span id="cb377-2"><a href="major-r-updates-where-are-my-packages.html#cb377-2" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span></span>
-<span id="cb377-3"><a href="major-r-updates-where-are-my-packages.html#cb377-3" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(Package, Version) <span class="sc">|&gt;</span></span>
-<span id="cb377-4"><a href="major-r-updates-where-are-my-packages.html#cb377-4" tabindex="-1"></a>  tibble<span class="sc">::</span><span class="fu">remove_rownames</span>()</span></code></pre></div>
-<p>You can now see this dataframe in your Environment tab, with the number of packages (obs.) listed. You can inspoect this dataframe by clicking on the name <code>pkg_current</code>, and then scroll through the list to see if there are any other packages you want to remove.</p>
+<div id="the-redcap-api-key" class="section level2 hasAnchor" number="50.4">
+<h2><span class="header-section-number">50.4</span> The REDCap API Key<a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#the-redcap-api-key" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Once your database is built, you can request an API key - open your database and click on the button on the lower left to request an API key from your administrator. The API key is a long string of letters and numbers that is used to authenticate your access to the database. It is important to keep this key secure, as it allows you to access the data in the database. You should store the API key in a secure location, such as a password manager or a secure file on your computer. You can also store it in your <em>.Rprofile</em> file, which is a hidden file in your home directory that is used to store R configuration settings.</p>
+<p>To open and edit the <em>.Rprofile</em> file, you need to have the {usethis} package installed. When this is available, you can use the following command in R: usethis::edit_r_profile(). This will open up your <em>.Rprofile</em> file in your default text editor, where you can add the following line:</p>
+<div class="sourceCode" id="cb1161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1161-1"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1161-1" tabindex="-1"></a>redcap_safety_study_api_key <span class="ot">=</span> <span class="st">&quot;2E732F39822D600FA09C07D861887823&quot;</span></span></code></pre></div>
+<p>Note that you need to assign a name to your api_key, and it should be specific to the particular redcap database that you will be using (each redcap database will get a unique API, even if you are the user for each one).
+Then save and close your <em>.Rprofile</em> file. This will set the environment variable <code>redcap_safety_study_api_key</code> to the value of your API key each time your start (or restart) R. Take a moment to restart R now.
+After this restart, your R session will run the updated <em>.Rprofile</em> file. The api key will now be available in your global environment. This api key can now be accessed in your R code using the <code>Sys.getenv()</code> function.
+You can then access the API key in your R code by using the following command:</p>
+<div class="sourceCode" id="cb1162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1162-1"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1162-1" tabindex="-1"></a>api_key <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">&quot;redcap_safety_study_api_key&quot;</span>)</span></code></pre></div>
+<p>This will retrieve the value of the <code>redcap_safety_study_api_key</code> global environment variable and store it in a local <code>api_key</code> variable. You can then use this variable to access the REDCap database using the {REDCapTidieR} package.</p>
 </div>
-<div id="step-3-removing-unwanted-packages-from-the-dataframe" class="section level3 hasAnchor" number="18.2.4">
-<h3><span class="header-section-number">18.2.4</span> STEP 3: Removing unwanted Packages from the dataframe<a href="major-r-updates-where-are-my-packages.html#step-3-removing-unwanted-packages-from-the-dataframe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>You can remove unwanted packages from the dataframe with the code below. This will remove any packages in the <code>pkg_remove_vec</code> vector from the <code>pkg_current</code> dataframe.</p>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="major-r-updates-where-are-my-packages.html#cb378-1" tabindex="-1"></a>pkg_current <span class="ot">&lt;-</span> pkg_current <span class="sc">|&gt;</span></span>
-<span id="cb378-2"><a href="major-r-updates-where-are-my-packages.html#cb378-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span>Package <span class="sc">%in%</span> pkg_remove_vec)</span></code></pre></div>
-<p>The data frame <code>pkg_current</code> now contains only the packages you want to keep. You will be able to use this dataframe to re-install all of your packages in bulk.</p>
+<div id="using-redcaptidier-to-extract-data-from-redcap" class="section level2 hasAnchor" number="50.5">
+<h2><span class="header-section-number">50.5</span> Using REDCapTidieR to Extract Data from REDCap<a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#using-redcaptidier-to-extract-data-from-redcap" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now you can use REDCapTidieR to extract data from your REDCap database. The {REDCapTidieR} package provides a set of functions that allow you to interact with REDCap projects from R, including functions for extracting data, managing projects, and working with data dictionaries.
+We are planning to do this on a firewalled Linux server that can store PHI from REDCap securely. Your local IT administrator will often be able to rent you a small server for a reasonable price per month. In our case, we set up a new server with a free instance of RStudioServer. A blog post (full of jargon) on how to set this up (which may be helpful to your local IT person) can be found <a href="https://higgi13425.github.io/medical_r/posts/2020-12-06-setting-up-a-rstudio-server-with-free-software-version/">here</a>.
+We will assume that you have already installed the {REDCapTidieR} package, and have loaded it into your R session with the <code>library(REDCapTidieR)</code> command. If you have not installed the package yet, you can do so by running the following command:</p>
+<div class="sourceCode" id="cb1163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1163-1"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1163-1" tabindex="-1"></a><span class="co"># install.packages(&quot;REDCapTidieR&quot;)</span></span>
+<span id="cb1163-2"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1163-2" tabindex="-1"></a><span class="fu">library</span>(REDCapTidieR)</span></code></pre></div>
+<p>You then need to set up a dedicated R project for this study on your R server with File?New Project. Within this new project, open a new R file names something like <code>safety _study_redcap_extraction.R</code>. This will be the file that contains the code to extract data from your REDCap database and and save it to a set of data tables.</p>
+<p>Start this file by loading libraries, using</p>
+<div class="sourceCode" id="cb1164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1164-1"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1164-1" tabindex="-1"></a><span class="fu">library</span>(REDCapTidieR)</span>
+<span id="cb1164-2"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1164-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1164-3"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1164-3" tabindex="-1"></a><span class="fu">library</span>(here)</span></code></pre></div>
+<pre><code>## here() starts at /Users/peterhiggins/Documents/RCode/rmrwr-book</code></pre>
+<div class="sourceCode" id="cb1166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1166-1"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1166-1" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb1166-2"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1166-2" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span></code></pre></div>
+<p>Then you will assign the api_key and the url of your local REDCap production website to variables.</p>
+<div class="sourceCode" id="cb1167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1167-1"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1167-1" tabindex="-1"></a>api_key <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">&quot;redcap_safety_study_api_key&quot;</span>)</span>
+<span id="cb1167-2"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1167-2" tabindex="-1"></a>redcap_url <span class="ot">&lt;-</span> <span class="st">&quot;https://redcap.yourinstitution.edu/api/&quot;</span></span></code></pre></div>
+<p>Note that you should check with your local REDCap administrator to get the right url for this step.</p>
+<p>Now you can use the <em>read_redcap()</em> function to read in data from your REDCap database.</p>
+<div class="sourceCode" id="cb1168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1168-1"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1168-1" tabindex="-1"></a>datfr <span class="ot">&lt;-</span> <span class="fu">read_redcap</span>(<span class="at">redcap_uri =</span> redcap_url,</span>
+<span id="cb1168-2"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1168-2" tabindex="-1"></a>                     <span class="at">token =</span> api_key)</span>
+<span id="cb1168-3"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1168-3" tabindex="-1"></a><span class="fu">head</span>(datfr)</span></code></pre></div>
+<p>If this is working, you should be able to run the code up to this point and get output that is a REDCapTidieR Supertibble.
+This supertibble contains all of the data from your REDCap database, with one row for each case report form (aka instrument, form).</p>
+<p>You can then break up the Supertibble into individual tibbles, one for each form, using the code below:</p>
+<div class="sourceCode" id="cb1169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1169-1"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1169-1" tabindex="-1"></a>datfr <span class="sc">|&gt;</span> </span>
+<span id="cb1169-2"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1169-2" tabindex="-1"></a>  <span class="fu">make_labelled</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb1169-3"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1169-3" tabindex="-1"></a>  <span class="fu">bind_tibbles</span>()</span></code></pre></div>
+<p>Now you should see new dataframe objects popping up in your Environment tab, one for each form in the Supertibble. These will have the same names (labels) that you applied to the forms you created in REDCap, and will often have names like demographics, labs, medications, etc.</p>
+<p>You can then save these data tables for future use &amp; analysis, using code for each data table like the code block below.</p>
+<div class="sourceCode" id="cb1170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1170-1"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1170-1" tabindex="-1"></a><span class="fu">saveRDS</span>(demographics, <span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;safety_study_demographics.Rd&quot;</span>))</span>
+<span id="cb1170-2"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1170-2" tabindex="-1"></a><span class="fu">saveRDS</span>(labs, <span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;safety_study_labs.Rd&quot;</span>))</span>
+<span id="cb1170-3"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1170-3" tabindex="-1"></a><span class="fu">saveRDS</span>(labs, <span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;safety_study_medications.Rd&quot;</span>))</span></code></pre></div>
+<p>Optionally, you may have data (often for race) from REDCap that uses checkboxes, which results in a separate variable for each race. These are less helpful for analysis, and for each checkbox variable, you may want to use the <em>combine_checkboxes()</em> function from {REDCapTidier} to make these into a single variable. You can do this with code like the code block below (note that this version includes the make_labelled and bind_tibbles functions to separate the output into distinct tibbles):</p>
+<div class="sourceCode" id="cb1171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1171-1"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1171-1" tabindex="-1"></a><span class="fu">combine_checkboxes</span>(</span>
+<span id="cb1171-2"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1171-2" tabindex="-1"></a>  <span class="at">supertbl =</span> datfr,</span>
+<span id="cb1171-3"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1171-3" tabindex="-1"></a>  <span class="at">tbl =</span> <span class="st">&quot;demographics&quot;</span>,</span>
+<span id="cb1171-4"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1171-4" tabindex="-1"></a>  <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">&quot;race__&quot;</span>),</span>
+<span id="cb1171-5"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1171-5" tabindex="-1"></a>  <span class="at">names_prefix =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb1171-6"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1171-6" tabindex="-1"></a>  <span class="at">names_sep =</span> <span class="st">&quot;_&quot;</span>,</span>
+<span id="cb1171-7"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1171-7" tabindex="-1"></a>  <span class="at">names_glue =</span> <span class="cn">NULL</span>,</span>
+<span id="cb1171-8"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1171-8" tabindex="-1"></a>  <span class="at">names_repair =</span> <span class="st">&quot;check_unique&quot;</span>,</span>
+<span id="cb1171-9"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1171-9" tabindex="-1"></a>  <span class="at">multi_value_label =</span> <span class="st">&quot;multiple&quot;</span>,</span>
+<span id="cb1171-10"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1171-10" tabindex="-1"></a>  <span class="at">values_fill =</span> <span class="cn">NA</span>,</span>
+<span id="cb1171-11"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1171-11" tabindex="-1"></a>  <span class="at">raw_or_label =</span> <span class="st">&quot;label&quot;</span>,</span>
+<span id="cb1171-12"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1171-12" tabindex="-1"></a>  <span class="at">keep =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1171-13"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1171-13" tabindex="-1"></a>  <span class="fu">make_labelled</span>() <span class="sc">|&gt;</span></span>
+<span id="cb1171-14"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1171-14" tabindex="-1"></a>  <span class="fu">bind_tibbles</span>() </span></code></pre></div>
+<p>)</p>
 </div>
-<div id="step-4-upgrading-r-to-the-new-version" class="section level3 hasAnchor" number="18.2.5">
-<h3><span class="header-section-number">18.2.5</span> STEP 4: Upgrading R to the new Version<a href="major-r-updates-where-are-my-packages.html#step-4-upgrading-r-to-the-new-version" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li>Go to <a href="https://www.r-project.org">r-project.org</a> and download the new version of R.</li>
-<li>Install the new version of R.</li>
-<li>restart R and RStudio - confirm that the new version is running with <code>R.Version()</code>.</li>
-</ul>
+<div id="analyzing-and-summarizing-your-data" class="section level2 hasAnchor" number="50.6">
+<h2><span class="header-section-number">50.6</span> Analyzing and Summarizing your Data<a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#analyzing-and-summarizing-your-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>At this point, you have extracted data from your REDCap database and saved it to a set of data tables. You can now analyze and summarize your data using the {tidyverse} package in a Rmarkdown or quarto file.</p>
+<p>For this example, we will assume that you are using a quarto file. Start a new document with File/New File/Quarto Document, and save it as <code>safety_study_redcap_analysis.qmd</code>. This will be the file that contains the code to analyze and summarize your data. This will be a mix of tables and plots to summarize the progress of your study. When you render the quarto document, this will produce an HTML file that can be viewed locally, emailed to collaborators (weekly or monthly updates), or regularly published to a website.</p>
+<p>To start the quarto dashboard document, we will use a YAML header, with code that looks like this block:</p>
+<div class="sourceCode" id="cb1172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1172-1"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1172-1" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">&quot;Study Dashboard&quot;</span></span>
+<span id="cb1172-2"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1172-2" tabindex="-1"></a>author<span class="sc">:</span> <span class="st">&quot; `r glue::glue(&#39;Your Name   &#39;, &#39;Updated at: &#39;, as.character(Sys.time))` &quot;</span> <span class="co"># this will stick together the author name and when the file was last updated</span></span>
+<span id="cb1172-3"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1172-3" tabindex="-1"></a>format<span class="sc">:</span></span>
+<span id="cb1172-4"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1172-4" tabindex="-1"></a>  dashboard<span class="sc">:</span></span>
+<span id="cb1172-5"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1172-5" tabindex="-1"></a>    logo<span class="sc">:</span> images<span class="sc">/</span>Signature<span class="sc">-</span>Vertical<span class="sc">-</span>Bug.png <span class="co"># uses a png file to put a logo on the page if desired</span></span>
+<span id="cb1172-6"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1172-6" tabindex="-1"></a>    orientation<span class="sc">:</span> columns</span></code></pre></div>
+<p>Next we will add a setup chunk to load libraries and set a theme for ggplots.</p>
+<p>Next we will read in the data tables that we saved from the previous step. This will allow us to use the data in our analysis and summaries.</p>
+<div class="sourceCode" id="cb1173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1173-1"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1173-1" tabindex="-1"></a>demographics <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;safety_study_demographics.Rd&quot;</span>))</span>
+<span id="cb1173-2"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1173-2" tabindex="-1"></a>labs <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;safety_study_labs.Rd&quot;</span>))</span>
+<span id="cb1173-3"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1173-3" tabindex="-1"></a>medications <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;safety_study_medications.Rd&quot;</span>))</span></code></pre></div>
+<p>Next we will count the number of participants enrolled at each site, to provide data for a valuebox page of the dashboard. This will give us a quick overview of the number of participants enrolled at each site.
+Note that you may want to peek at the site field in the demographics table to get the exact names of the sites, as these may vary depending on how your REDCap database is set up. Sometimes REDCap will cut off the names after a certain number of characters, so you may need to adjust the site names in the code below to match the names in your demographics table.</p>
+<div class="sourceCode" id="cb1174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1174-1"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1174-1" tabindex="-1"></a>n_enrolled_umich <span class="ot">&lt;-</span> demographics <span class="sc">|&gt;</span> </span>
+<span id="cb1174-2"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1174-2" tabindex="-1"></a>  <span class="fu">filter</span>(site <span class="sc">==</span> <span class="st">&quot;University of Michigan&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1174-3"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1174-3" tabindex="-1"></a>  <span class="fu">nrow</span>()</span>
+<span id="cb1174-4"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1174-4" tabindex="-1"></a></span>
+<span id="cb1174-5"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1174-5" tabindex="-1"></a>n_enrolled_oregon <span class="ot">&lt;-</span> demographics <span class="sc">|&gt;</span> </span>
+<span id="cb1174-6"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1174-6" tabindex="-1"></a>  <span class="fu">filter</span>(site <span class="sc">==</span> <span class="st">&quot;Oregon Health &amp; Science University&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1174-7"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1174-7" tabindex="-1"></a>  <span class="fu">nrow</span>()</span>
+<span id="cb1174-8"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1174-8" tabindex="-1"></a></span>
+<span id="cb1174-9"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1174-9" tabindex="-1"></a>n_enrolled_ucsf <span class="ot">&lt;-</span> demographics <span class="sc">|&gt;</span></span>
+<span id="cb1174-10"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1174-10" tabindex="-1"></a>  <span class="fu">filter</span>(site <span class="sc">==</span> <span class="st">&quot;University of Cali-SF&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1174-11"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1174-11" tabindex="-1"></a>  <span class="fu">nrow</span>()</span>
+<span id="cb1174-12"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1174-12" tabindex="-1"></a></span>
+<span id="cb1174-13"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1174-13" tabindex="-1"></a>n_enrolled_uw <span class="ot">&lt;-</span> demographics <span class="sc">|&gt;</span></span>
+<span id="cb1174-14"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1174-14" tabindex="-1"></a>  <span class="fu">filter</span>(site <span class="sc">==</span> <span class="st">&quot;University of Washington&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1174-15"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1174-15" tabindex="-1"></a>  <span class="fu">nrow</span>()</span></code></pre></div>
+<p>Next we will make the first page for the websitem a set of value boxes on a single tab for the website, using the counts calculated above. We will build 4 valueboxes, one for each study site, in an appropriate color for each site, and set each one to 25% width. We will also start with a header label (# Counts), which will appear before the valueboxes on the web page. Note that I added backticks around <code># Counts</code> below to make sure it would not start a new chapter in this e-book. For your quarto webpage, you want to start a new tab, so you would not use the backticks for this level 1 header, <code># Counts</code>.</p>
+<p><code># Counts</code></p>
+<div class="sourceCode" id="cb1175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1175-1"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1175-1" tabindex="-1"></a><span class="fu">list</span>(</span>
+<span id="cb1175-2"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1175-2" tabindex="-1"></a>  <span class="at">icon =</span> <span class="st">&quot;person&quot;</span>,</span>
+<span id="cb1175-3"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1175-3" tabindex="-1"></a>  <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>,</span>
+<span id="cb1175-4"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1175-4" tabindex="-1"></a>  <span class="at">value =</span> n_enrolled_umich</span>
+<span id="cb1175-5"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1175-5" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb1176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1176-1"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1176-1" tabindex="-1"></a><span class="fu">list</span>(</span>
+<span id="cb1176-2"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1176-2" tabindex="-1"></a>  <span class="at">icon =</span> <span class="st">&quot;person&quot;</span>,</span>
+<span id="cb1176-3"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1176-3" tabindex="-1"></a>  <span class="at">color =</span> <span class="st">&quot;green&quot;</span>,</span>
+<span id="cb1176-4"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1176-4" tabindex="-1"></a>  <span class="at">value =</span> n_enrolled_oregon</span>
+<span id="cb1176-5"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1176-5" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb1177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1177-1"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1177-1" tabindex="-1"></a><span class="fu">list</span>(</span>
+<span id="cb1177-2"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1177-2" tabindex="-1"></a>  <span class="at">icon =</span> <span class="st">&quot;person&quot;</span>,</span>
+<span id="cb1177-3"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1177-3" tabindex="-1"></a>  <span class="at">color =</span> <span class="st">&quot;red&quot;</span>,</span>
+<span id="cb1177-4"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1177-4" tabindex="-1"></a>  <span class="at">value =</span> n_enrolled_ucsf</span>
+<span id="cb1177-5"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1177-5" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb1178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1178-1"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1178-1" tabindex="-1"></a><span class="fu">list</span>(</span>
+<span id="cb1178-2"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1178-2" tabindex="-1"></a>  <span class="at">icon =</span> <span class="st">&quot;person&quot;</span>,</span>
+<span id="cb1178-3"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1178-3" tabindex="-1"></a>  <span class="at">color =</span> <span class="st">&quot;purple&quot;</span>,</span>
+<span id="cb1178-4"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1178-4" tabindex="-1"></a>  <span class="at">value =</span> n_enrolled_uw</span>
+<span id="cb1178-5"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1178-5" tabindex="-1"></a>)</span></code></pre></div>
+<p>The code in these 4 chunks creates a single webpage with 4 columns. If you want to add more information, you might want to add extra tabs for additional pages. Each time you add a level 1 header (with a single hashtag, like <code># Counts</code> above), this will create a new tab in the dashboard. You can also add additional content to each tab by adding more code chunks with the appropriate content. Let’s build a new tab for an <code># Enrollment Plot</code> that will show the number of participants enrolled over time by study site. This will be a line plot that shows the number of participants enrolled over time, and will help us track the progress of the study.</p>
+<p><code># Enrollment Plot</code></p>
+<div class="sourceCode" id="cb1179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1179-1"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1179-1" tabindex="-1"></a>screening <span class="sc">|&gt;</span> </span>
+<span id="cb1179-2"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1179-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">as.Date</span>(data_entry_dt)) <span class="sc">|&gt;</span> </span>
+<span id="cb1179-3"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1179-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(date)) <span class="sc">|&gt;</span> </span>
+<span id="cb1179-4"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1179-4" tabindex="-1"></a>  <span class="fu">arrange</span>(date) <span class="sc">|&gt;</span> <span class="co"># sort by non-missing dates</span></span>
+<span id="cb1179-5"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1179-5" tabindex="-1"></a>  <span class="fu">group_by</span>(redcap_data_access_group) <span class="sc">|&gt;</span> <span class="co"># the study sites</span></span>
+<span id="cb1179-6"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1179-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">c=</span><span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="co"># create a counter variable</span></span>
+<span id="cb1179-7"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1179-7" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">enrolled =</span> <span class="fu">cumsum</span>(c)) <span class="sc">|&gt;</span> <span class="co"># add 1 with each enrollment</span></span>
+<span id="cb1179-8"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1179-8" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> enrolled, <span class="at">group =</span> redcap_data_access_group)) <span class="sc">+</span></span>
+<span id="cb1179-9"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1179-9" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb1179-10"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1179-10" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">fill =</span> redcap_data_access_group),</span>
+<span id="cb1179-11"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1179-11" tabindex="-1"></a>               <span class="at">pch =</span> <span class="dv">21</span>, <span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span> <span class="co"># select shape and size of points</span></span>
+<span id="cb1179-12"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1179-12" tabindex="-1"></a>    <span class="fu">scale_x_date</span>(<span class="at">limits =</span> <span class="fu">as.Date</span>(<span class="fu">c</span>(<span class="st">&quot;2024-06-01&quot;</span>, <span class="st">&quot;2025-12-31&quot;</span>)),</span>
+<span id="cb1179-13"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1179-13" tabindex="-1"></a>                 <span class="at">date_breaks =</span> <span class="st">&quot;2 months&quot;</span>,</span>
+<span id="cb1179-14"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1179-14" tabindex="-1"></a>                 <span class="at">date_labels =</span> <span class="st">&quot;%b&quot;</span>) <span class="sc">+</span> <span class="co"># set x-axis limits and labels</span></span>
+<span id="cb1179-15"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1179-15" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Enrollment By Month&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;Started June 2024&quot;</span>,</span>
+<span id="cb1179-16"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1179-16" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;Center&quot;</span>,</span>
+<span id="cb1179-17"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1179-17" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Enrolled&quot;</span>) <span class="sc">+</span></span>
+<span id="cb1179-18"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1179-18" tabindex="-1"></a>  <span class="fu">theme_linedraw</span>(<span class="at">base_size =</span> <span class="dv">18</span>) <span class="sc">+</span> <span class="co"># use a linedraw theme with enlarged font</span></span>
+<span id="cb1179-19"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1179-19" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;purple&quot;</span>),</span>
+<span id="cb1179-20"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1179-20" tabindex="-1"></a>                    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;University of Michigan&quot;</span> , </span>
+<span id="cb1179-21"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1179-21" tabindex="-1"></a>                                <span class="st">&quot;Oregon Health &amp; Science University&quot;</span>,</span>
+<span id="cb1179-22"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1179-22" tabindex="-1"></a>                               <span class="st">&quot;University of California - SF&quot;</span>,</span>
+<span id="cb1179-23"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1179-23" tabindex="-1"></a>                                <span class="st">&quot;University of Washington&quot;</span>                               )) <span class="sc">+</span> <span class="co"># set colors and labels for each site</span></span>
+<span id="cb1179-24"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1179-24" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>) <span class="sc">+</span> <span class="co"># set legend position</span></span>
+<span id="cb1179-25"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1179-25" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x =</span> <span class="fu">as.Date</span>(<span class="st">&quot;2025-11-01&quot;</span>, <span class="at">y =</span> <span class="dv">115</span>,</span>
+<span id="cb1179-26"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1179-26" tabindex="-1"></a>            <span class="at">label =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">&quot;Total</span><span class="sc">\n</span><span class="st">Enrolled: &quot;</span>, <span class="fu">nrow</span>(screening))))</span></code></pre></div>
+<p>This code chunk will produce a plot like the one in the website <a href="https://phiggins.quarto.pub/sgm-study-dashboard/">here</a>. You can add additional plots and tables to the dashboard by adding additional code chunks with the appropriate content.</p>
+<p>Let’s add a summary table, using the {gtsummary} package, to summarize the demographics of the participants enrolled in the study. This will be a table that shows the number of participants enrolled by race, gender, ethnicity, and IBD type. We will start with a first level header to create a new tab. For the purposes of this e-book, I will put backticks around it to avoid starting a new chapter.</p>
+<p><code># Enrollment Table</code></p>
+<div class="sourceCode" id="cb1180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1180-1"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1180-1" tabindex="-1"></a><span class="co"># first merge two tables</span></span>
+<span id="cb1180-2"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1180-2" tabindex="-1"></a>demo_ibd <span class="ot">&lt;-</span> <span class="fu">left_join</span>(demographics, ibd_characteristics)</span>
+<span id="cb1180-3"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1180-3" tabindex="-1"></a></span>
+<span id="cb1180-4"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1180-4" tabindex="-1"></a>demo_ibd <span class="sc">|&gt;</span> </span>
+<span id="cb1180-5"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1180-5" tabindex="-1"></a>  <span class="fu">select</span>(gender, ethnicity, race, ibd_type) <span class="sc">|&gt;</span> </span>
+<span id="cb1180-6"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1180-6" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">remove_empty</span>(<span class="at">which =</span> <span class="st">&quot;rows&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb1180-7"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1180-7" tabindex="-1"></a>  <span class="fu">tbl_summary</span>(</span>
+<span id="cb1180-8"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1180-8" tabindex="-1"></a>  <span class="at">label =</span> <span class="fu">list</span>(gender <span class="sc">~</span> <span class="st">&quot;Gender&quot;</span>, <span class="co"># nicer labels</span></span>
+<span id="cb1180-9"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1180-9" tabindex="-1"></a>               ethnicity <span class="sc">~</span> <span class="st">&quot;Ethnicity&quot;</span>,</span>
+<span id="cb1180-10"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1180-10" tabindex="-1"></a>               ibd_type <span class="sc">~</span> <span class="st">&quot;IBD Type&quot;</span>),</span>
+<span id="cb1180-11"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1180-11" tabindex="-1"></a>  <span class="at">include =</span> <span class="fu">c</span>(gender, ethnicity, ibd_type), <span class="co"># rows by group</span></span>
+<span id="cb1180-12"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1180-12" tabindex="-1"></a>  <span class="at">by =</span> race) <span class="sc">|&gt;</span> <span class="co"># columns by race</span></span>
+<span id="cb1180-13"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1180-13" tabindex="-1"></a>  <span class="fu">bold_labels</span>()</span></code></pre></div>
+<p>This code chunk will produce a table like the one in the website <a href="https://phiggins.quarto.pub/sgm-study-dashboard/">here</a>. You can add additional tables and plots to the dashboard by adding additional tabs and code chunks with the appropriate content.</p>
 </div>
-<div id="step-5-upgrading-the-rstudio-version" class="section level3 hasAnchor" number="18.2.6">
-<h3><span class="header-section-number">18.2.6</span> STEP 5: Upgrading the RStudio Version<a href="major-r-updates-where-are-my-packages.html#step-5-upgrading-the-rstudio-version" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li><p>While you are at it, check in the RStudio menu <code>Help/Check for Updates</code> to see if there is a new version of RStudio. Upgrade this if needed. The new version of RStudio will have updates to make it work better with the new version of R.</p></li>
-<li><p>Restart RStudio. You should now have the new version of R (check <code>R.Version()</code>) and the new version of RStudio (check <code>Help/Check for Updates</code> in RStudio).</p></li>
-</ul>
-<p>Check your library path again with <code>.libPaths()</code>. You should see a new library path for the new version of R.
-Explore this with Finder or Windows File Explorer. You should find a folder for your new version, with a <code>Resources</code> folder, and inside that a <code>library</code> folder. This is where a base set of packages will be installed. But you will be missing packages like <code>tidyverse</code>, <code>ggplot2</code>, and <code>dplyr</code> (and lots of others) that you had in your old version of R.</p>
+<div id="rendering-the-quarto-document" class="section level2 hasAnchor" number="50.7">
+<h2><span class="header-section-number">50.7</span> Rendering the Quarto Document<a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#rendering-the-quarto-document" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Yu can save your Quarto Document, or add additional tabs and plots.
+There are many options for quarto dashboards, which can be found <a href="https://quarto.org/docs/dashboards/">here</a>. You can add additional tabs, plots, and tables to the dashboard by adding additional code chunks with the appropriate content. Look at the <a href="https://quarto.org/docs/gallery/">gallery</a> for some good examples. Other good examples for inspiration can be found in this <a href="https://jenthompson.me/2018/02/09/flexdashboards-monitoring/">blog post</a> on monitoring clinical trials. Quarto dashboards have more options than some of the examples shown, but the MOSAIC study and the “later study” (Insight-ICU) provide some nice ideas of what you can track.It is especially nice that the source code is available for both of these dashboards, so you can see how they were built and adapt them for your own use.</p>
+<p>When you are ready to render the document, you can click on the Render button at the top center of the Source pane in the RStudio IDE, or use the command <code>quarto::quarto_render("safety_study_redcap_analysis.qmd")</code> in the console. This will produce an HTML file that can be viewed locally, emailed to collaborators, or published to a website.</p>
 </div>
+<div id="checking-for-phi" class="section level2 hasAnchor" number="50.8">
+<h2><span class="header-section-number">50.8</span> Checking for PHI<a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#checking-for-phi" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now that you have the rendered HTML, inspect it carefuly to make sure that there is no individual data nor PHI shared in the document. If you find any PHI in the document, you should remove it before publishing the document on a public website.</p>
 </div>
-<div id="step-6-rebuilding-all-of-your-packages-in-one-automated-step" class="section level2 hasAnchor" number="18.3">
-<h2><span class="header-section-number">18.3</span> STEP 6: Rebuilding All of your Packages in One (Automated) Step<a href="major-r-updates-where-are-my-packages.html#step-6-rebuilding-all-of-your-packages-in-one-automated-step" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>There are two options for doing this:</p>
+<div id="publishing-the-dashboard" class="section level2 hasAnchor" number="50.9">
+<h2><span class="header-section-number">50.9</span> Publishing the Dashboard<a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#publishing-the-dashboard" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You can stop here, and just view the HTML yourself, or email the generated HTML file to your collaborators. However, if you want to publish the dashboard to a website, you can use the <code>quarto publish &lt;filename.qmd&gt;</code> command to publish the dashboard to a website. This will allow you to share the dashboard with the public and yuor collaborators, while keeping individual patient health information (PHI) secure. <a href="https://quarto.org/">Quarto Pub</a> is probably the easiest approach for quarto dashboards, but there are a lot of publishing options available <a href="https://quarto.org/docs/publishing/">here</a>. Note that you need to create a free quarto pub account at <a href="https://quartopub.com">Quarto Pub</a> before you can publish your dashboard. Once this is created, website creation can be done manually by running <code>quarto publish filename.qmd</code> each time you want to update the dashboard.</p>
+</div>
+<div id="emailing-update-notifications-to-collaborators" class="section level2 hasAnchor" number="50.10">
+<h2><span class="header-section-number">50.10</span> Emailing Update Notifications to Collaborators<a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#emailing-update-notifications-to-collaborators" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>When you update your dashboard, you probably want to notify your collaborators that you have made an update on the study progress, so that they will look at it and be inspired to enroll more participants. While you may be updating your dashboard daily or weekly, the emails with the link will probably be less frequent (weekly or monthly). You can do this manually of course, but you can also make this a programmatically generated email with the {blastula} package that is sent to a list of your collaborators.</p>
+<p>This can be done with a R file. Start a new R file with <code>File/New File/R Script</code>, and save it as <code>safety_study_redcap_email.R</code>. This will be the file that contains the code to send an email to your collaborators with the link to the published dashboard. See the example below for how to set up the email. You will need to set up your email credentials in the {blastula} package, which can be done with the <code>create_smtp_creds_key()</code> function. This will allow you to send emails from R using your server account. You can find more information on how to set this up <a href="https://pkgs.rstudio.com/blastula/">here</a>.
+Note that you can use <code>\</code> on an isolated line or <code>&lt;br&gt;</code> for line breaks in the email object.</p>
+<div class="sourceCode" id="cb1181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1181-1"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1181-1" tabindex="-1"></a><span class="fu">library</span>(blastula)</span>
+<span id="cb1181-2"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1181-2" tabindex="-1"></a></span>
+<span id="cb1181-3"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1181-3" tabindex="-1"></a><span class="co"># generate the email object</span></span>
+<span id="cb1181-4"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1181-4" tabindex="-1"></a>my_email_object <span class="ot">&lt;-</span> <span class="fu">compose_email</span>(</span>
+<span id="cb1181-5"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1181-5" tabindex="-1"></a>  <span class="at">body =</span> <span class="fu">md</span>(<span class="st">&quot;Hello Collaborators,</span></span>
+<span id="cb1181-6"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1181-6" tabindex="-1"></a><span class="st">  The Safety Study dashboard has been updated with the latest data from the REDCap database. You can view the dashboard at the following link: [Safety Study Dashboard](https://phiggins.quarto.pub/safety-study-dashboard/).</span></span>
+<span id="cb1181-7"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1181-7" tabindex="-1"></a><span class="st">  \</span></span>
+<span id="cb1181-8"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1181-8" tabindex="-1"></a><span class="st">  In today&#39;s news, we have now enrolled over 500 participants across the four sites.</span></span>
+<span id="cb1181-9"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1181-9" tabindex="-1"></a><span class="st">  \</span></span>
+<span id="cb1181-10"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1181-10" tabindex="-1"></a><span class="st">  thanks, &lt;br&gt;</span></span>
+<span id="cb1181-11"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1181-11" tabindex="-1"></a><span class="st">  Study PI Bob&quot;</span>))</span>
+<span id="cb1181-12"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1181-12" tabindex="-1"></a></span>
+<span id="cb1181-13"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1181-13" tabindex="-1"></a><span class="co"># generate the list of recipients</span></span>
+<span id="cb1181-14"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1181-14" tabindex="-1"></a>email_list <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;abel@oregon.edu&quot;</span>, <span class="st">&quot;cal@ucsf.edu&quot;</span>, <span class="st">&quot;wally@uw.edu&quot;</span>)</span>
+<span id="cb1181-15"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1181-15" tabindex="-1"></a></span>
+<span id="cb1181-16"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1181-16" tabindex="-1"></a><span class="co"># execute the send </span></span>
+<span id="cb1181-17"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1181-17" tabindex="-1"></a>blastula<span class="sc">::</span><span class="fu">smtp_send</span>(my_email_object,</span>
+<span id="cb1181-18"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1181-18" tabindex="-1"></a>                    <span class="at">from =</span> <span class="st">&quot;bobs_server@umich.edu&quot;</span>,</span>
+<span id="cb1181-19"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1181-19" tabindex="-1"></a>                    <span class="at">to =</span> email_list,</span>
+<span id="cb1181-20"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1181-20" tabindex="-1"></a>                    <span class="at">subject =</span> <span class="st">&quot;Safety Study Dashboard Update&quot;</span>,</span>
+<span id="cb1181-21"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1181-21" tabindex="-1"></a>                    <span class="at">credentials =</span> <span class="fu">creds_app</span>(<span class="at">host =</span> <span class="st">&quot;localhost&quot;</span>, </span>
+<span id="cb1181-22"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1181-22" tabindex="-1"></a>                                      <span class="at">port=</span><span class="dv">25</span>, <span class="at">use_ssl =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb1181-23"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1181-23" tabindex="-1"></a><span class="co"># you will probably need to ask your local IT expert for the right email credentials to send email from your server.</span></span>
+<span id="cb1181-24"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1181-24" tabindex="-1"></a></span>
+<span id="cb1181-25"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1181-25" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;The email script ran at &quot;</span>, <span class="fu">Sys.time</span>()))</span>
+<span id="cb1181-26"><a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#cb1181-26" tabindex="-1"></a><span class="co"># this last line confirms that the email script ran and will print the time that it ran.</span></span></code></pre></div>
+</div>
+<div id="automating-and-scheduling-your-dashboard-updates" class="section level2 hasAnchor" number="50.11">
+<h2><span class="header-section-number">50.11</span> Automating and Scheduling Your Dashboard Updates<a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#automating-and-scheduling-your-dashboard-updates" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If you are busy, or just lazy, you may want to go to the trouble of automating the steps of</p>
 <ol style="list-style-type: decimal">
-<li>You can use the <code>install.packages()</code> function to install all of your packages in one step with the dataframe we built earlier. You can use the <code>pkg_current</code> dataframe you created above to do this. You can run the code below to install all of your packages in one step: (copy this and run it in your local RStudio session)</li>
+<li>extracting the data from redcap daily</li>
+<li>analyzing the study progress in a quarto dashboard</li>
+<li>rendering the dashboard and publishing to quarto pub</li>
+<li>sending a weekly email to your collaborators with the link to the published dashboard.</li>
 </ol>
-<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="major-r-updates-where-are-my-packages.html#cb379-1" tabindex="-1"></a><span class="fu">install.packages</span>(</span>
-<span id="cb379-2"><a href="major-r-updates-where-are-my-packages.html#cb379-2" tabindex="-1"></a>  pkg_current<span class="sc">$</span>Package,</span>
-<span id="cb379-3"><a href="major-r-updates-where-are-my-packages.html#cb379-3" tabindex="-1"></a>  <span class="at">dependencies =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb379-4"><a href="major-r-updates-where-are-my-packages.html#cb379-4" tabindex="-1"></a>  <span class="at">repos =</span> <span class="fu">c</span>(<span class="at">CRAN =</span> <span class="st">&quot;https://cran.rstudio.com/&quot;</span>),</span>
-<span id="cb379-5"><a href="major-r-updates-where-are-my-packages.html#cb379-5" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;source&quot;</span></span>
-<span id="cb379-6"><a href="major-r-updates-where-are-my-packages.html#cb379-6" tabindex="-1"></a>)</span></code></pre></div>
-<p>One of the benefits of R version 4.5.0 and higher is that it will install packages in parallel, which is <strong>much</strong> faster than the previous parallel approach. From ~ 40 min for 700+ packages to 1 minute.</p>
-<p>Scroll through the output and check for any errors, or packages that did not install. Dig into the error messages (if any) one by one. If you have problems addressing the errors, check the troubleshooting guide at Chapter 12.1.2, Problems with Installing Packages.</p>
-<ol start="2" style="list-style-type: decimal">
-<li>There is a slick package called {updater} which can handle the grunt work for you. It can be found at <a href="https://www.danieldsjoberg.com/updater/" class="uri">https://www.danieldsjoberg.com/updater/</a></li>
-</ol>
-<p>There are 3 steps:</p>
+<p>This requires configuring several cron jobs on your server to run sequentially. You will do this with a local text editor on your server, like vim or nano. This will probably require some help and troubleshooting from your local IT expert who helped to set up the RStudio Server.<br></p>
+<p>Start with the following steps:</p>
 <ol style="list-style-type: decimal">
-<li>Copy and save the path to your current R system library before you upgrade R.</li>
+<li><p>log in to your R Studio Server</p></li>
+<li><p>Open the Terminal tab in R Studio</p></li>
+<li><p>At the cursor, type <code>crontab -e</code> to edit your crontab file</p></li>
+<li><p>Each crontab line will be a separate cron job</p></li>
+<li><p>Each cron job starts with the time and date that the job should run, followed by the command to run.</p></li>
+<li><p>The time and date are in a specific format, which you can learn about <a href="https://crontab.guru/">here</a>. The format is: <code>minute hour day month weekday command</code>. You will list 5 numbers with one space between each number, followed by the command to run. Asterisks can be used as wild cards, to run every month or weekday. Also note that Sunday = 0 For example, to run a command every day at 4:00 AM, you would use <code>0 4 * * * command</code>.</p></li>
+<li><p>For the commands, you want one for each program or script that you will run.</p></li>
+<li><p>You will want to schedule them 1-3 minutes apart, depending on how long each will take to run.</p></li>
+<li><p>The first file that you will want to run is the <code>safety_study_redcap_extraction.R</code> file, which will extract the data from REDCap and save it to the data tables. However, the file name alone is not a command.</p></li>
+<li><p>You first have to track down the path to your R version (the Rscript executable) on your server. You can do this by running the command <code>which Rscript</code> in the terminal. This will give you the path to the Rscript executable, which you can then use in your cron job. This will look something like “/app/apps/rhel8/R/4.3.2/bin/Rscript”</p></li>
+<li><p>You also need the path to your R file on the server, which will look something like “/nfs/corexfs/bob_pi/safety_study_redcap_extraction.R”. You can find this by navigating to the file in the terminal and running the command <code>pwd</code> to get the path to the current directory.</p></li>
+<li><p>Now you can put this all together in your crontab file. The first line will look something like this, running at 4:00 AM: <br>
+0 4 * * * /app/apps/rhel8/R/4.3.2/bin/Rscript “/nfs/corexfs/bob_pi/safety_study_redcap_extraction.R”</p></li>
+<li><p>The next line will be for the <code>safety_study_redcap_analysis.qmd</code> file, which will analyze the data and render the dashboard. Note that this will have a different path to reach quarto, and will use the <code>quarto publish</code> command, followed by the qmd file. This will look something like this, running at 4:03 AM: <br>
+3 4 * * * /app/apps/rhel8/quarto/1.5.54/bin/quarto publish quarto-pub “/nfs/corexfs/bob_pi/safety_study_redcap_analysis.qmd”</p></li>
+<li><p>Note that sometimes the quarto-pub website will want you to manually authorize your access to the HTML webpage, which defeats the purpose of automating the process. If this happens, you will need to log in to the quarto-pub website and authorize your access the first time. You can also set up a personal access token (PAT) to avoid this issue, which can be done by following the instructions <a href="https://quarto.org/docs/publishing/quarto-pub/personal-access-token.html">here</a>. Once you have a token for quarto-pub, you can use it as your authorization as a distinct cron job, which will look something like this, running at 4:05 AM:<br>
+5 4 * * * (export QUARTO_PUB_AUTH_TOKEN=“your_personal_access_token” “/nfs/corexfs/bob_pi/safety_study_redcap_analysis.qmd”)</p></li>
+<li><p>The last line will be for the <code>safety_study_redcap_email.R</code> file, which will send the email to your collaborators. This will look something like this, running at 4:08 AM: <br>
+8 4 * * * /app/apps/rhel8/R/4.3.2/bin/Rscript “/nfs/corexfs/bob_pi/safety_study_redcap_email.R”</p></li>
 </ol>
-<ul>
-<li>Run <code>.libPaths()</code> in the Console to get the path to your current library.</li>
-<li>Copy this path to a text file or Notes/Notepad on your computer.</li>
-</ul>
-<ol start="2" style="list-style-type: decimal">
-<li>Upgrade R to the new version.</li>
-</ol>
-<ul>
-<li>Go to <a href="https://www.r-project.org">r-project.org</a> and download the new version of R.</li>
-<li>Install the new version of R.</li>
-<li>restart R and RStudio - confirm that the new version is running with <code>R.Version()</code>.</li>
-<li>While you are at it, check in the RStudio menu <code>Help/Check for Updates</code> to see if there is a new version of RStudio. Upgrade this if needed</li>
-</ul>
-<ol start="3" style="list-style-type: decimal">
-<li>Install your packages to the new library.</li>
-</ol>
-<ul>
-<li>Install the {updater} package with <code>install.packages("updater")</code>.</li>
-<li>Run <code>updater::install_pkgs(lib.loc = c("&lt;location(s) saved in Step 1&gt;"))</code> in the Console. Note that this is the point where you copy the saved library path from Step 1 into the parentheses (with quotes) into the Console. Note that you will want to update the version number in the path to your new version. This will end up looking something like
-<code>updater::install_pkgs(lib.loc = c("/Library/Frameworks/R.framework/Versions/4.7/Resources/library"))</code>.</li>
-</ul>
+<div id="explore-redcaptidier-and-quarto-dashboards" class="section level3 hasAnchor explore" number="50.11.1">
+<h3><span class="header-section-number">50.11.1</span> Explore REDCapTidieR and Quarto Dashboards<a href="using-the-redcaptidier-package-to-extract-data-from-a-redcap-database.html#explore-redcaptidier-and-quarto-dashboards" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You can find out a lot more about REDCapTidieR <a href="https://chop-cgtinformatics.github.io/REDCapTidieR/">here</a>.</p>
+<p>There is great documentation on Quarto Dashboards <a href="https://quarto.org/docs/dashboards/">here</a>.</p>
+<p>You can also find a lot of great examples of Quarto dashboards in the <a href="https://quarto.org/docs/gallery/">gallery</a>.</p>
+<p>Some good examples of clinical study monitoring with dashboards can be found <a href="https://jenthompson.me/examples/progressdash">here</a> and <a href="https://www.insight-icu.org/">here</a>. These are both examples of clinical trials that are being monitored with dashboards, and they provide a good overview of the study progress and data collection. The links to the source code for these dashboards are available <a href="https://jenthompson.me/2018/02/09/flexdashboards-monitoring/">here</a>.</p>
+<p>Details on publishing webpages with Quarto Pub (and how to get authorization tokens) can be found <a href="https://quarto.org/docs/publishing/quarto-pub.html">here</a>.</p>
+<p>You can find out more about crontab <a href="https://crontab.guru/">here</a>, and more generally about scheduling cron jobs <a href="https://www.tecmint.com/schedule-cron-jobs-in-linux/">here</a>.</p>
 </div>
-<div id="checking-the-new-library-path" class="section level2 hasAnchor" number="18.4">
-<h2><span class="header-section-number">18.4</span> Checking the new library path<a href="major-r-updates-where-are-my-packages.html#checking-the-new-library-path" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>When all of the installation is complete, you can check your work.</p>
-<p>You can check the new library path with <code>.libPaths()</code>. This should now point to the new library folder for the new version of R. If you have multiple library paths, the first one is the one that will be used for installing packages.
-It should look something like <code>/Library/Frameworks/R.framework/Versions/5.1-arm64/Resources/library"</code></p>
-</div>
-<div id="now-check-your-list-of-packages" class="section level2 hasAnchor" number="18.5">
-<h2><span class="header-section-number">18.5</span> Now Check your list of Packages<a href="major-r-updates-where-are-my-packages.html#now-check-your-list-of-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>You should also review the Console text for errors or problems. You may find you need software packages external to R, or that you have tried to install some packages that are not on CRAN. Many packages that are not on CRAN are ones that you may have previously installed from Github or BioConductor.</p>
-<p>Note these by making a list of packages left to be installed, and install those from GitHub with <code>remotes::install_github("username/packagename)</code>. As one example, you can install the development version of the {medicaldata} package from github with <code>remotes::install_github("higgi13425/medicaldata")</code>. Note that the stable version is available on the CRAN repository.</p>
-<p>You may have similar issues with packages installed from BioConductor, which requires you to use <code>BiocManager::install("packagename")</code>.</p>
-<p>Once you have completely installed your packages, check your work by running <code>installed.packages()</code> again. You should see a full list of your packages, and you are updated and ready to go!</p>
-</div>
-<div id="updating-packages" class="section level2 hasAnchor" number="18.6">
-<h2><span class="header-section-number">18.6</span> Updating Packages<a href="major-r-updates-where-are-my-packages.html#updating-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>If all of your current important projects are protected with an {renv} snapshot, this is probably a good time to update your tools (packages). Especially in the first month after a major R update, a lot of R packages are updated to optimize functions in the new version of R.</p>
-<p>You can do this easily within RStudio with the menu commands <strong><code>Tools/Check for Package Updates</code></strong>. Select All, and let the updates begin. You will usually want to compile the newest version from source code, rather than a recent version from binaries. It may take 2-3 weeks after an R update to have all the packages available in binaries, so you may need to compile from source code if you upgrade R right after a new version is released.</p>
-<p>If you have problems with updating packages, check the troubleshooting guide at Chapter 12.1.2, Problems with Installing Packages.</p>
 
 </div>
 </div>
@@ -1431,8 +1561,8 @@ window.onload = function() {
           </div>
         </div>
       </div>
-<a href="updating-r-rstudio-and-your-packages.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="intermediate-steps-toward-reproducibility.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="title-holder.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
