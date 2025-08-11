@@ -15,6 +15,7 @@ output:
 ---
 
 
+# Section One =======
 
 ```{r, include = F}
 knitr::opts_chunk$set(fig.width = 6, message = FALSE, warning = FALSE, comment = "", cache = F)
@@ -23,6 +24,7 @@ library(tidyverse)
 load("current_image.Rdata")
 ```
 
+# Section Two =======
 
 ```{r, echo = F, eval = TRUE , message = F, warning = F}
 xaringanExtra::use_share_again()

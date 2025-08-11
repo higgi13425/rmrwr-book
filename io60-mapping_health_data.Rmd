@@ -1,0 +1,443 @@
+---
+title: "Mapping Health Data in R"
+author: "Peter Higgins"
+date: "11/3/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(osmdata)
+library(tidycensus)
+library(tigris)
+library(sf)
+library(crsuggest)
+library(mapboxapi)
+library(mapgl)
+library(RColorBrewer)
+library(leaflet)
+library(tmap)
+```
+
+# Mapping Health Data in R
+
+There are a number of mapping systems and packages that allow you to visualize gospatial data with R, rather than using a dedicated GIS system like ARCGIS or QGIS. Some of these packages include `sf`, `tmap`, `leaflet`, `mapboxapi`, and `ggplot2`.
+Let's start with a simple example of mapping.
+We will use some open street map data from OpenStreetMap using the `osmdata` package to make a map of Ann Arbor, Michigan.
+We will use the function `getbb()` to get bounding boxes for
+streets, rivers, the coordinates for the town, etc. and then display
+this with {ggplot2}.
+Copy and try the plot below, and (if you have visited Ann Arbor), see if it 
+looks familiar.
+Note the new geom - geom_sf() - which is used to plot simple features (sf) objects.
+Simple features are a standard way to represent spatial data in R, and the `osmdata` package provides a convenient way to access OpenStreetMap data as simple features.
+
+Try to:
+1. Change colors to bring out the highways, rivers, etc.
+2. Try this for a town you know well, and see if this looks familiar.
+
+```{r}
+
+streets <- getbb("Ann Arbor Michigan USA")%>%
+  opq()%>%
+  add_osm_feature(key = "highway", 
+                  value = c("motorway", "primary", 
+                            "secondary", "tertiary")) %>%
+  osmdata_sf()
+streets
+
+small_streets <- getbb("Ann Arbor Michigan USA")%>%
+  opq()%>%
+  add_osm_feature(key = "highway", 
+                  value = c("residential", "living_street",
+                            "unclassified",
+                            "service", "footway")) %>%
+  osmdata_sf()
+
+river <- getbb("Ann Arbor Michigan USA")%>%
+  opq()%>%
+  add_osm_feature(key = "waterway", value = "river") %>%
+  osmdata_sf()
+
+coords <- getbb("Ann Arbor Michigan USA")
+
+ggplot() +
+  geom_sf(data = streets$osm_lines,
+          inherit.aes = FALSE,
+          color = "red",
+          size = .6,
+          alpha = .8) +
+  geom_sf(data = small_streets$osm_lines,
+          inherit.aes = FALSE,
+          color = "bisque1",
+          size = .2,
+          alpha = .6) +
+  geom_sf(data = river$osm_lines,
+          inherit.aes = FALSE,
+          color = "skyblue3",
+          size = 1.5,
+          alpha = .8) +
+  coord_sf(xlim = c(-83.82, -83.665), 
+           ylim = c(42.22, 42.33),
+           expand = FALSE) +
+  theme_void()+
+  theme(
+    plot.background = element_rect(fill = "gray10"))
+```
+
+
+## Another Example
+Let's imagine you are trying to buy a house and be able to commute to Ann Arbor. 
+You know that there is a tradeoff between distance and house price, and your
+budget is limited. Try this out using housing prices from the American Community Survey, available from the Census Beureau, and the Mapbox Directions API to
+get driving times from each Census tract to downtown Ann Arbor.
+We will use the {crsuggest} package to help us find the right coordinate system
+for our area, and the {mapboxapi} package to access the Mapbox Directions API.
+We will use the {tidycensus} package to get Census data, and the {tigris}
+package to get Census tract shapes.
+
+```{r}
+library(mapboxapi)
+library(tidyverse)
+library(tidycensus)
+library(tigris)
+library(sf)
+library(crsuggest)
+options(tigris_use_cache = TRUE) # caching speeds things up later
+
+# note that you need to set up a Mapbox account and get an API key
+# see https://docs.mapbox.com/help/getting-started/access-tokens/
+# and then store this token in your .Renviron file as MAPBOX_API_KEY
+# then we will access it for this script
+mb_access_token(Sys.getenv("MAPBOX_API_KEY"), 
+  install = TRUE
+)
+
+# Grab median gross house price data from the  ACS for the Ann Arbor metro
+county_names <- c("Washtenaw", "Wayne", "Jackson", "Ingham", "Lenawee", "Monroe", "Hillsdale", "Livingston", "Oakland", "Macomb")
+
+# note rent variable is "B25064_001"
+# can find variables by running
+# ACSlist <- tidycensus::load_variables(2021, "acs5")
+# then View() and search box
+aa_median_house <- get_acs(
+  geography = "tract",
+  variables = "B25077_001",
+  state = "MI",
+  county = county_names,
+  year = 2022,
+  geometry = TRUE
+)
+
+# Find the right coordinate system to use; in this case we'll use 26990
+print(suggest_top_crs(aa_median_house, units = "m"))
+
+# Remove water areas - there are a lot in SE Michigan! - to help ensure that a point in a
+# given Census tract will be routable
+# slow but works well
+aa_points <- aa_median_house %>%
+  st_transform(26990) %>%
+  erase_water(area_threshold = 0.95) %>%
+  st_point_on_surface()
+
+# Determine the location of downtown
+downtown_aa <- mb_geocode("Ann Arbor City Hall, Ann Arbor, MI")
+
+# Use mb_matrix() to calculate driving time from all A2 Area Census tracts to downtown
+# slower, but more reliable than mb_directions()
+time_to_downtown <- mb_matrix(
+  origins = aa_points,
+  destinations = downtown_aa
+) %>%
+  as.vector()
+
+# small problem - there are 4 more rows in a_rent vs aa_rent_points.
+# Remove the 4 extra points in aa_rent that are not in aa_rent_points
+# first reduce both to GEOIDs
+aa_house_geoids <- aa_median_house |>
+  select(GEOID) |>
+  as.tibble()
+
+aa_house_points_geoids <- aa_points |>
+  select(GEOID) |>
+  as.tibble()
+
+# find the missing GEOIDs
+missing_geoids <- aa_house_geoids |>
+  select(GEOID) |>
+  as.tibble() |>
+  anti_join(aa_house_points_geoids, by = c("GEOID" = "GEOID"))
+
+# then filter these out of aa_rent
+aa_median_house <- aa_median_house |>
+  filter(!GEOID %in% missing_geoids$GEOID)
+
+# now can add time to aa_rent
+aa_median_house$time <- time_to_downtown
+
+# Visualize how price varies by travel time from downtown with ggplot2
+ggplot(aa_median_house, aes(x = time, y = estimate)) +
+  geom_smooth() +
+  scale_y_continuous(labels = scales::dollar) +
+  labs(
+    x = "Travel time to downtown Ann Arbor (in minutes)",
+    y = "Median Home Value in Census tract",
+    title = "Median Home value by drive-time to \ndowntown Ann Arbor",
+    subtitle = "Census tracts in the ten-county Ann Arbor metropolitan area",
+    caption = "Data sources: Mapbox Directions API, 2018-2022 ACS"
+  ) +
+  theme_minimal()
+```
+
+# Mapping Population By County
+We can also use R to map population data by county. We will zoom out to the entire state of Michigan.
+This will require data from the US Census Bureau, which we can get using the {tidycensus} package.
+You can search for data fields at the census website at
+https://data.census.gov/table/, or use the `load_variables()` function in the {tidycensus} package. This one is a bit fancier, as it links a county map
+with an interactive plot of income by county, using the {ggiraph} package.
+Run the code below, then zoom it (with the zoom button at top left of the Plots 
+window) to see the details. Hover over each county to see the name and its
+location on the plot.
+See if you can find Wayne, Washtenaw, Keewenaw, and Leelenau counties.
+Which counties have the highest and lowest incomes? Which have the most income disparity (wide CI bars)?
+
+```{r}
+# Load required libraries
+library(tidycensus)
+#library(mapboxapi)
+library(mapgl)
+library(sf)
+library(dplyr)
+library(RColorBrewer)
+library(tidyverse)
+
+# you need to set up a Census API key
+# go to the Developers website https://www.census.gov/data/developers.html
+# then click on the button for "Request a Key"
+# you will need to create a free account
+# then you can request a key
+# it will be emailed to you
+# Save this key in your .Renviron file as CENSUS_API_KEY
+
+# Set your Census API key in the code
+# census_api_key("YOUR_API_KEY_HERE", install = TRUE)
+
+
+# Get population data by county for Michigan
+michigan_population <- get_acs(
+  geography = "county",
+  variables = "B01003_001", # Total population variable
+  state = "MI",
+  year = 2022, # Most recent available year
+  survey = "acs5",
+  geometry = TRUE, # Include geographic boundaries
+  cache_table = TRUE
+)
+
+# Clean and prepare the data
+michigan_population <- michigan_population %>%
+  rename(population = estimate) %>%
+  mutate(
+    county_name = gsub(" County, Michigan", "", NAME),
+    # Create population categories for better visualization
+    pop_category = case_when(
+      population < 50000 ~ "< 50K",
+      population < 100000 ~ "50K - 100K",
+      population < 250000 ~ "100K - 250K",
+      population < 500000 ~ "250K - 500K",
+      population >= 500000 ~ "500K+"
+    ),
+    pop_category = factor(pop_category,
+      levels = c(
+        "< 50K", "50K - 100K", "100K - 250K",
+        "250K - 500K", "500K+"
+      )
+    )
+  ) %>%
+  filter(!is.na(population))
+
+# Transform to appropriate CRS for Michigan
+michigan_population <- st_transform(michigan_population, crs = 3857)
+
+# Create choropleth map using mapbox
+
+# plot(michigan_population["population"])
+
+ggplot(data = michigan_population, aes(fill = population)) +
+  geom_sf() +
+  scale_fill_distiller(
+    palette = "RdPu",
+    direction = 1
+  ) +
+  labs(
+    title = "Michigan Population by County, 2022",
+    caption = "Data source: 2022 1-year ACS, US Census Bureau",
+    fill = "ACS estimate"
+  ) +
+  theme_void()
+
+
+# linked maps
+library(tidycensus)
+library(ggiraph)
+library(tidyverse)
+library(patchwork)
+library(scales)
+
+mi_income <- get_acs(
+  geography = "county",
+  variables = "B19013_001",
+  state = "MI",
+  year = 2022,
+  geometry = TRUE
+) %>%
+  mutate(NAME = str_remove(NAME, " County, Michigan"))
+
+mi_map <- ggplot(mi_income, aes(fill = estimate)) +
+  geom_sf_interactive(aes(data_id = GEOID, tooltip = estimate)) +
+  scale_fill_distiller(
+    palette = "Blues",
+    direction = 1,
+    guide = "none"
+  ) +
+  theme_void()
+
+mi_plot <- ggplot(mi_income, aes(
+  x = estimate, y = reorder(NAME, estimate),
+  fill = estimate
+)) +
+  geom_errorbar(aes(xmin = estimate - moe, xmax = estimate + moe)) +
+  geom_point_interactive(
+    color = "black", size = 4, shape = 21,
+    aes(data_id = GEOID)
+  ) +
+  scale_fill_distiller(
+    palette = "Blues", direction = 1,
+    labels = label_dollar()
+  ) +
+  scale_x_continuous(labels = label_dollar()) +
+  labs(
+    title = "Household income by county in Michigan",
+    subtitle = "2016-2020 American Community Survey",
+    y = "",
+    x = "ACS estimate (bars represent margin of error)",
+    fill = "ACS estimate"
+  ) +
+  theme_linedraw(base_size = 8)
+
+girafe(ggobj = mi_map + mi_plot, width_svg = 12, height_svg = 9) %>%
+  girafe_options(opts_hover(css = "fill:red;"))
+
+```
+
+
+## Finding a Census Field
+
+```{r}
+# You can search for variables by running
+vars <- load_variables(2023, "acs5", cache = TRUE)
+View(vars)
+```
+
+```{r}
+library(tidycensus)
+library(tidyverse)
+library(crsuggest)
+library(sf)
+
+    # Example: Get median household income data for tracts in a specific county with geometry
+    data_sf <- get_acs(
+      state = "MI",
+      county = "Washtenaw",
+      geography = "tract",
+      variables = "B19013_001", # Median household income
+      geometry = TRUE, # includes shapefiles
+      year = 2023
+    )
+
+# get top crs (coordinate reference system
+wc_crs <- suggest_top_crs(data_sf)
+
+
+ # Plotting the data
+    data_sf %>%
+      ggplot(aes(fill = estimate)) +
+      geom_sf(color = 'black') + # 'color = NA' removes the outline of the polygons
+      scale_fill_viridis_c(option = "viridis") + # Example color scale
+      labs(title = "Median Household Income by Census Tract",
+           subtitle = "Washtenaw County, 2023 ACS Estimates") +
+      coord_sf(crs = wc_crs) +
+      theme_void() # Removes axes and grid lines for a cleaner map
+```
+
+### Mapping Commute Times
+```{r}
+data_sf <- get_acs(
+      state = "CA",
+      county = "Los Angeles",
+      geography = "tract",
+      variables = "B08134_020", # Commute > 1 hour by car 
+      #"B08128_061", # Work from Home 
+      geometry = TRUE, # includes shapefiles
+      year = 2023
+    )
+
+  data_sf %>%
+    ggplot(aes(fill = estimate)) +
+    geom_sf(color = 'black') + # 'color = NA' removes the outline of the polygons
+    scale_fill_viridis_c(option = "viridis") + # Example color scale
+    labs(title = "Number Who Commute > 1 hour by Car by Census Tract",
+          subtitle = "Los Angeles County, 2023 ACS Estimates") +
+    coord_sf(crs = wc_crs) +
+    theme_void() # Removes axes and grid lines for a cleaner map
+```
+
+```{r}
+data_sf <- get_acs(
+      state = "CT",
+      county = "Fairfield",
+      geography = "tract",
+      variables = "B08134_020", # Commute > 1 hour by car 
+      geometry = TRUE, # includes shapefiles
+      year = 2023
+    )
+
+  data_sf %>%
+    ggplot(aes(fill = estimate)) +
+    geom_sf(color = 'black') + # 'color = NA' removes the outline of the polygons
+    scale_fill_viridis_c(option = "viridis") + # Example color scale
+    labs(title = "Number Who Commute > 1 hour by Car by Census Tract",
+          subtitle = "Fairfield County, CT, 2023 ACS Estimates") +
+    coord_sf(crs = wc_crs) +
+    theme_void() # Removes axes and grid lines for a cleaner map
+```
+
+### Mapping Work From Home
+```{r}
+data_sf <- get_acs(
+      state = "NY",
+      county = "New York",
+      geography = "tract",
+      variables = "B08128_061", # Work from Home 
+      geometry = TRUE, # includes shapefiles
+      year = 2023
+    )
+
+  data_sf %>%
+    ggplot(aes(fill = estimate)) +
+    geom_sf(color = 'black') + # 'color = NA' removes the outline of the polygons
+    scale_fill_viridis_c(option = "viridis") + # Example color scale
+    labs(title = "Number Who Work From Home by Census Tract",
+          subtitle = "New York County, 2023 ACS Estimates") +
+    coord_sf(crs = wc_crs) +
+    theme_void() # Removes axes and grid lines for a cleaner map
+```
+```
+
+
+```{r}
+Now let's look 
+:::challenge
+
+:::

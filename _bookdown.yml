@@ -55,6 +55,7 @@ rmd_files:
 - io109-tabula_pdf.Rmd
 - io110-heemod.Rmd
 - io111-redcap_extraction.Rmd
+- io112-secret_files_snippets.Rmd
 - io198-title-holder.Rmd
 - io199-references.Rmd
 

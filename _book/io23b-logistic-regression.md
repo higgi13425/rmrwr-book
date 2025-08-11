@@ -377,9 +377,9 @@ predict(model, newdata = slice_sample(prostate, prop = 0.03), type = "response")
 
 ```
 ##          1          2          3          4          5          6          7 
-## 0.31109891 0.09409879 0.09409879 0.09409879 0.09409879 0.52579385 0.09409879 
+## 0.09409879 0.25338133 0.25338133 0.09409879 0.09409879 0.12143477 0.12143477 
 ##          8          9 
-## 0.09409879 0.52579385
+## 0.09409879 0.04058836
 ```
 
 Let’s see how this works with another dataset, from which we will use predictors to classify diabetes cases. We will start by loading the data into dm_data, and building an “all predictors” model, by specifying the formula predictors as “.” - this means to use all other variables (except the outcome variable) as predictors. Look at the model output for problems.
