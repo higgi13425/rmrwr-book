@@ -980,6 +980,32 @@ ggplot(la_tracts, aes(fill = time_to_hospital)) +
 
 Note that for some census tracts on the east side, it can take ~ 5 hours to drive to the hospital, while for some on the west side, it can take as little as 10 minutes.
 
+You can learn about other mapping packages, like
+
+- general mapping ebook with chaters on tmap, ggplot2, leaflet, mapbox
+https://bookdown.org/nicohahn/making_maps_with_r5/docs/introduction.html
+
+
+Resources for learning more about {tmap}:
+tmap - 
+- Documentation at https://r-tmap.github.io/tmap/ (read the vignettes)
+- Book Chapter: Geocomputation with R includes a chapter on Making Maps with R, which covers tmap.
+- Work-in-Progress Book: Elegant and Informative Maps with tmap is an upcoming book available at tmap.geocompx.org.
+
+Learning more about {leaflet}:
+Leaflet is a popular R package for creating interactive maps.
+- Official Leaflet for R documentation: https://rstudio.github.io/leaflet/
+- 
+
+
+Learning more aboutusing google maps with {ggmap}:
+- Official ggmap documentation: https://cran.r-project.org/web/packages/ggmap/index.html
+- Getting started with {ggmap} https://docs.stadiamaps.com/tutorials/getting-started-in-r-with-ggmap/ 
+- Guide - https://builtin.com/data-science/ggmap 
+
+
+
+
 ```{r}
 Now let's look 
 :::challenge
