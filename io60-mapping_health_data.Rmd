@@ -8,6 +8,7 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
+library(tigris)
 library(osmdata)
 library(tidycensus)
 library(tigris)
@@ -19,9 +20,62 @@ library(RColorBrewer)
 library(leaflet)
 library(tmap)
 ```
-
 # Mapping Health Data in R
 
+## The {tigris} package and Basic Mapping in R
+The US Census Bureau provides a wealth of geographic data that can be used for mapping and analysis. The {tigris} package in R is designed to make it easy to access and use this data. It provides functions to download shapefiles for various geographic entities, such as states, counties, tracts, block groups, roads, rivers, and more.
+Shapefiles are a common format for storing geographic data, and they can be used to create maps and perform spatial analysis.
+This Census shapefiles are TIGER/Line shapefiles, and TIGER stands for Topologically Integrated Geographic Encoding and Referencing,
+which are a set of shapefiles that provide geographic data for the United States. You can use the {tigris} package to download shapefiles for states, counties, tracts, block groups, roads, rivers, and more.
+
+Let's start with a simple map of some Midwestern states, using the `states()` function from the {tigris} package.
+
+```{r}
+us_states <- 
+  states(cb = TRUE) %>%
+  filter(STUSPS %in% c("MI", "OH", "IN", "IL", "WI", "MN", "IA", "MO")) %>%
+  st_transform(2163) # a coordinate reference system transformation
+ # that is suitable for the US Midwest
+
+ggplot() +
+  geom_sf(data = us_states, fill = "blue", color = "white") +
+  theme_void() +
+  labs(title = "Midwestern US States") +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 20, face = "bold")
+  ) 
+```
+
+Now let's map a few rivers and lakes in New Orleans, using the `rivers()` function from the {tigris} package. 
+
+```{r}
+no_rivers <- 
+  linear_water(state = "LA", county = "Orleans") %>%
+  st_transform(2163) # a coordinate reference system transformation
+
+no_streets <- 
+  roads(state = "LA", county = "Orleans") %>%
+  st_transform(2163) # a coordinate reference system transformation
+
+no_water <-
+  area_water(state = "LA", county = "Orleans") %>%
+  st_transform(2163) # a coordinate reference system transformation
+
+ggplot() +
+  geom_sf(data = no_streets, color = "black", size = 0.1) +
+  geom_sf(data = no_rivers, color = "blue", size = 1) +
+  geom_sf(data = no_water, color = "dodgerblue") +
+  theme_void() +
+  labs(title = "New Orleans Rivers and Streams") +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 20, face = "bold")
+  )
+```
+
+You get the idea.
+You can map all sorts of things in the United states with the {tigris} package. You can learn more about what the {tigris} package can do at https://cran.r-project.org/web/packages/tigris/vignettes/tigris.html.
+
+## Mapping with OpenStreetMap Data
 There are a number of mapping systems and packages that allow you to visualize gospatial data with R, rather than using a dedicated GIS system like ARCGIS or QGIS. Some of these packages include `sf`, `tmap`, `leaflet`, `mapboxapi`, and `ggplot2`.
 Let's start with a simple example of mapping.
 We will use some open street map data from OpenStreetMap using the `osmdata` package to make a map of Ann Arbor, Michigan.
@@ -90,10 +144,8 @@ ggplot() +
 ## Another Example
 Let's imagine you are trying to buy a house and be able to commute to Ann Arbor. 
 You know that there is a tradeoff between distance and house price, and your
-budget is limited. Try this out using housing prices from the American Community Survey, available from the Census Beureau, and the Mapbox Directions API to
-get driving times from each Census tract to downtown Ann Arbor.
-We will use the {crsuggest} package to help us find the right coordinate system
-for our area, and the {mapboxapi} package to access the Mapbox Directions API.
+budget is limited. Try this out using housing prices from the American Community Survey, available from the Census Beureau, and the Mapbox Directions API to get driving times from each Census tract to downtown Ann Arbor.
+We will use the {crsuggest} package to help us find the right coordinate system projection for our area, and the {mapboxapi} package to access the Mapbox Directions API.
 We will use the {tidycensus} package to get Census data, and the {tigris}
 package to get Census tract shapes.
 
@@ -279,11 +331,14 @@ ggplot(data = michigan_population, aes(fill = population)) +
 
 
 # linked maps
+library(tigris)
 library(tidycensus)
 library(ggiraph)
 library(tidyverse)
 library(patchwork)
 library(scales)
+
+
 
 mi_income <- get_acs(
   geography = "county",
@@ -400,7 +455,7 @@ data_sf <- get_acs(
       geography = "tract",
       variables = "B08134_020", # Commute > 1 hour by car 
       geometry = TRUE, # includes shapefiles
-      year = 2023
+      year = 2021
     )
 
   data_sf %>%
@@ -433,8 +488,497 @@ data_sf <- get_acs(
     coord_sf(crs = wc_crs) +
     theme_void() # Removes axes and grid lines for a cleaner map
 ```
+
+
+## Mapping and Merging Health Data
+Lets start by downloading a data set by county, from the North Carolina Institute of Medicine (NCIOM), which has a downloadable Excel spreadsheet
+with health data by county. This can be found at:
+https://nciom.org/nc-health-data/map/
+Look for the Download Data button at the lower left.
+Click on this button to download and save the Excel file to your computer,
+for now, in your Downloads folder.
+We will go step by step on how to will this data into R, and merge it with Census data for counties in North Carolina.
+Set up a folder to be the directory for this project,
+and name it something like `nc_health`.
+Create a folder named 'data' within this folder.
+Then save the datafile as `nciom_health_data.xlsx` in the data directory.
+Then make the `nc_health` folder into a New R project.
+Then, in this folder, create a new quarto file called `nc_health_data.qmd`.
+
+Then copy the code below into a code chunk in the quarto file,
+and run the code below to read in the data.
+
+```{r}
+library(tidyverse)
+library(sf)
+library(readxl)
+library(here)
+
+nciom_health_data <- read_excel(here("data/nciom_health_data.xlsx"),
+                                col_names = TRUE, skip = 1) |> 
+                                  janitor::clean_names() 
 ```
 
+Now, take a look at this data. It has variables in the leftmost column,
+and the counties as columns. This is a bit problematic for merging with 
+shapefile data, which is usually in a long format, with one row per county.
+We will need to pivot this data to a long format, with one row per county 
+and one column per variable.
+
+```{r}
+nciom_health_data_long <- nciom_health_data |> 
+  select(x2, x3, alamance:yancey) |> 
+  pivot_longer(cols = !x2:x3, names_to = "county", 
+               values_to = "value") |> 
+  mutate(county = str_replace_all(county, "_", ""))
+```
+Now this is in long format by county in lower case, with
+variables names and definitions in the first two columns.
+We can now merge this with the Census data for North Carolina counties
+(as long as we make the county names clean and in lower case)
+
+```{r}
+nc_population <- get_acs(
+  geography = "county",
+  variables = "B01003_001", # Total population variable
+  state = "NC",
+  year = 2021, 
+  survey = "acs5",
+  geometry = TRUE, # Include geographic boundaries
+  cache_table = TRUE
+)
+```
+ Note that all the county names have a single word, followed by "County, North Carolina". How will we remove this bit and make the county names lower case? Google "R remove text from string" and you will find the str_extract function, which is part of the stringr package, which is part of the tidyverse. Try to mutate the county name to a clean lower case name
+ 
+### Solution
+```{r}
+nc_population <- nc_population %>%
+  mutate(county = str_extract(NAME, ".+(?= County, North Carolina)")) %>%
+  mutate(county = tolower(county)) %>%
+  mutate(county = str_replace_all(county, " ", "")) %>% # Remove spaces) |> 
+  mutate(county = str_trim(county)) %>% # Trim whitespace
+  select (GEOID, county, geometry)
+```
+
+## Now to merge
+We want to add the geometry from the nc_population data to the nciom_health_data_long data, in a one to many merge.
+Let's start with the nciom_health_data_long data (the one), and then merge it with the nc_population data (the many).
+ 
+```{r}
+nc_merged <- nciom_health_data_long %>%
+  left_join(nc_population, by = "county") %>%
+  rename(variable = x2, definition = x3) %>%
+  mutate(value = as.numeric(value)) # Ensure value is numeric 
+# Note that this does make the Metro variable NA
+```
+
+
+```{r}
+nc_merged %>%
+  filter(variable == "Opioid Prescribing Rate") |> 
+    ggplot(aes(fill = value)) +
+    geom_sf(aes(geometry = geometry), color = 'black') + 
+    scale_fill_viridis_c(option = "viridis") + # Example color scale
+    labs(title = "Opioid Prescribing Rate by County",
+          subtitle = "North Carolina, 2021 NCIOM Estimates") +
+    theme_void() # Removes axes and grid lines for a cleaner map
+```
+
+Note that Scotland County has 142.7 opioid prescriptions per 100 people, while Wake County has 41.1.
+
+## Texas Health Data
+Now let's download some health data for Texas, from the Texas Health Data website. Go to:
+https://www.countyhealthrankings.org/health-data/texas/data-and-resources
+Dowlnoad the first linked file, named 2025 Texas Health Data, 
+and save it in the data folder of your project, as `texas_health_data.xlsx`.
+Then copy the code below into a code chunk in your quarto file, and run it to read in the data.
+
+```{r}
+texas_health_data <- read_excel(here("data/texas_health_data.xlsx"),
+                                col_names = TRUE, skip = 1,
+                                sheet =2) |> 
+                                  janitor::clean_names()
+```
+
+See if you can pull the texas acs county data for population from the ACS to get the shapefiles, using the North Carolina example above, with the `get_acs()` function.
+Then, merge the texas_health_data with the texas_population data, using the county name as the key.
+
+### Solution to ACS
+```{r}
+texas_population <- get_acs(
+  geography = "county",
+  variables = "B01003_001", # Total population variable
+  state = "TX",
+  year = 2023, 
+  survey = "acs5",
+  geometry = TRUE, # Include geographic boundaries
+  cache_table = TRUE
+) |> 
+  mutate(county = str_remove(NAME, " County, Texas")) %>%
+  select (GEOID, county, geometry)
+```
+
+### Solution to Merge
+```{r}
+texas_merged <- texas_health_data %>%
+  right_join(texas_population, by = "county")
+```
+
+
+See if you can map the "percent_vaccinated" (for influenza) variable by county, using the same method as above.
+
+### Solution to Mapping
+```{r}
+texas_merged %>%
+  select(GEOID, county, percent_vaccinated, geometry) |> 
+    ggplot(aes(fill = percent_vaccinated)) +
+    geom_sf(aes(geometry = geometry), color = NA) + #try without borders
+    scale_fill_viridis_c(option = "viridis",
+            name = "% Vax \nfor Flu") +
+    labs(title = "Percent Vaccinated for Influenza by County",
+          subtitle = "Texas, 2025 Health Data Estimates") +
+    theme_void() # Removes axes and grid lines for a cleaner map
+```
+
+
+## Mapping California
+Let's try mapping some health data for California, using the California Health Data website.
+Go to: https://www.countyhealthrankings.org/health-data/california/data-and-resources
+Download the first linked file, named 2025 California Health Data,
+and save it in the data folder of your project, as `california_health_data.xlsx`.
+Then copy the code below into a code chunk in your quarto file, and run it to read in the data.
+```{r}
+california_health_data <- read_excel(here("data/california_health_data.xlsx"),
+                                col_names = TRUE, skip = 1,
+                                sheet =2) |> 
+                                  janitor::clean_names()
+```
+
+Now pull the California shapefiles, using the population variable code from tidycensus. Modify the County names as needed.
+Then, merge the california_health_data with the california_population data, using the county name as the key.
+
+```{r}
+california_population <- get_acs(
+  geography = "county",
+  variables = "B01003_001", # Total population variable
+  state = "CA",
+  year = 2023, 
+  survey = "acs5",
+  geometry = TRUE, # Include geographic boundaries
+  cache_table = TRUE
+) |> 
+  mutate(county = str_remove(NAME, " County, California")) %>%
+  select (GEOID, county, geometry)
+```
+
+Now merge the data, and map the "low_birth_weight" variable by county, using the same method as above.
+```{r}
+california_merged <- california_health_data %>%
+  right_join(california_population, by = "county")
+```
+
+Now map
+```{r}
+california_merged %>%
+  select(GEOID, county, percent_low_birth_weight, geometry) |> 
+    ggplot(aes(fill = percent_low_birth_weight)) +
+    geom_sf(aes(geometry = geometry), color = NA) + #try without borders
+    scale_fill_viridis_c(option = "viridis",
+            name = "% Low \nBirth Weight") +
+    labs(title = "Percent Low Birth Weight by County",
+          subtitle = "California, 2025 Health Data Estimates") +
+    theme_void() # Removes axes and grid lines for a cleaner map
+```
+
+## A bit of US geographic unit history
+
+GEOID and FIPS are both geographic identifiers used by the Census Bureau to classify and organize geographic areas. FIPS (Federal Information Processing Standards) codes are a part of the GEOID structure, but GEOID encompasses a broader range of geographic levels and combinations. Essentially, a GEOID is a unique numeric code that identifies a specific geographic area, and often incorporates FIPS codes for certain levels like state and county.
+
+FIPS Codes:
+.
+These are a set of standards developed by the National Institute of Standards and Technology (NIST). They are used to identify geographic entities like states, counties, and places. FIPS codes are often embedded within GEOIDs. FiPS codes were originally created in the 1970s and have been used in various federal datasets, including those from the Census Bureau, until 2008, when they were (largely) replaced by GEOIDs. 
+
+GEOIDs:
+.
+GEOIDs are unique, numeric identifiers assigned by the Census Bureau to various geographic areas, such as census tracts, block groups, and blocks. They are used to link census data to geographic boundaries. A GEOID is often a combination of FIPS codes and other Census Bureau codes, depending on the geographic level. For example, a census tract GEOID might include the state (2 digit) and county (3 digit) FIPS codes, along with a census tract code. 
+In simpler terms, you can think of it like this: FIPS codes are like building blocks, and GEOIDs are like the structures built using those blocks, along with other components. 
+
+FIPS codes are an older part of the larger GEOID system. 
+GEOIDs are used by the Census Bureau to uniquely identify and organize geographic areas for data tabulation down to the census block. 
+FIPS codes are still used in various contexts, particularly in older datasets and systems. 
+The Census Bureau assigns GEOIDs to a wide range of geographic entities, including those not specifically covered by FIPS codes. 
+A longer GEOID with more digits means that it has more granularity, with extra digits representing more specific geographic areas, such as census tracts or block groups.
+A census tract GEOID (e.g., 53065950101) includes the state code (53), the county code (065), and the tract code (950101). 
+
+
+
+
+
+
+By now you may have noticed that the County Health Rankings website has 
+national health data in a spreadsheet as well.
+If you go to:
+https://www.countyhealthrankings.org/health-data/methodology-and-sources/data-documentation
+You can find and download to your data folder a file named
+`2025 County Health Rankings National Data` as something like
+`national_health_data.xlsx`.
+and you can also find a useful data dictionary file named
+`2025 County Health Rankings Data Dictionary`.
+There are also trend files available to explore.
+Let's start by examining the national data file by county.
+
+First we will load the shapefiles and population by county for the 
+entire us using the `get_acs` function from tidycensus.
+
+# problems with extraction - 223 divisions not named county
+Alaska - Borough (13), Census Area (11), 4 City and Borough
+Puerto Rico - Municipio, (78)
+Louisiana - Parish, (64)
+Connecticut - Planning Region (9)
+Some in Virginia - city, 40 lowercase, 2 "City County"
+Maryland: Baltimore city
+Missouri: St. Louis city
+Nevada: Carson City
+District of Columbia -  District of Columbia, District of Columbia
+
+```{r}
+us_counties <- get_acs(
+  geography = "county",
+  variables = "B01003_001", # Total population variable
+  state = NULL, # all states
+  year = 2023, 
+  survey = "acs5",
+  geometry = TRUE, # Include geographic boundaries
+  cache_table = TRUE
+) |> 
+  shift_geometry() |> #shifting AK, HI, PR to fit US map better
+  # will need to change to case_when
+  mutate(state = str_remove(NAME, "^.+County,")) |> 
+  mutate(county = str_remove(NAME, " County,.+$")) %>%
+  select (GEOID, state, county, geometry)
+```
+
+Now we will read in the national health data file, and merge it with the US counties data. Note that this file includes total rows for the each state and the District of Columbia (with an empty [NA] county name).
+
+```{r}
+national_health_data <- read_excel(here("data/national_health_data.xlsx"),
+                                col_names = TRUE, skip = 1, sheet = 2) |> 
+                                  janitor::clean_names()
+
+natl_health_data_cty <- national_health_data |> 
+  filter(!is.na(county))
+```
+
+## Merge problems
+Alaska - Borough,
+Louisiana - Parish,
+Connecticut - Planning Region,
+Some Virginia counties have "City" in the name
+
+# try matching by GEOID (in us counties) = fips (health data)
+# use county names from health data
+```{r}
+national_health_merged <- natl_health_data_cty %>%
+  right_join(us_counties, by = c("fips" = "GEOID")) |> 
+  rename(county = county.x) 
+```
+
+Now map
+```{r}
+national_health_merged %>%
+  select(fips, county, average_number_of_mentally_unhealthy_days, geometry) |> 
+    ggplot(aes(fill = average_number_of_mentally_unhealthy_days)) +
+    geom_sf(aes(geometry = geometry), color = NA) + 
+    scale_fill_viridis_c(option = "viridis",
+            name = "Average \nMentally \nUnhealthy \nDays") +
+    labs(title = "Average Mentally Unhealthy Days by County",
+          subtitle = "US, 2025 Health Data Estimates") +
+    theme_void() # Removes axes and grid lines for a cleaner map
+```
+
+
+## Mapping Distances
+Acute illness and trauma from MVI (motor vehicle injury) is a major cause of death and disability in the US, and is a major public health problem.
+Outcomes are influenced by distance/time from specialty care. Using {mapboxapi} and the {tigris} package, we can map distances from a set of census tracs to a hospital at a given location, which can serve as a measure of time to travel to reach specialty care.
+
+```{r}
+library(mapboxapi)
+library(tigris)
+library(tidyverse)
+library(sf)
+library(crsuggest)
+# Set up Mapbox API key
+# You need to set up a Mapbox account and get an API key
+# see https://docs.mapbox.com/help/getting-started/access-tokens/
+# and then store this token in your .Renviron file as MAPBOX_API_KEY
+mapbox_key <- Sys.getenv("MAPBOX_API_KEY")
+# mb_access_token(mapbox_key, install = TRUE) # run this once
+
+# Load Census tracts for the state of Michigan using (tigris)
+
+mi_tracts <- 
+  tracts(state = "MI", cb = TRUE) %>%
+  st_transform(2163) # a coordinate reference system transformation
+
+# Find the right coordinate system to use; in this case we'll use 26990
+
+mi_crs <- suggest_top_crs(mi_tracts, units = "m")
+
+# Get the location of the University of Michigan hospital in Ann Arbor, Michigan
+# 
+# You can use the mb_geocode() function to get the coordinates of a location
+
+hospital_location <- mb_geocode("University of Michigan Hospital, Ann Arbor, MI")
+
+# Use mb_matrix() to calculate driving time from all Michigan Census tracts to the hospital
+
+# mi_tracts_points <- mi_tracts %>%
+#   st_transform(mi_crs) %>%
+#   erase_water(area_threshold = 0.95) %>% # can't drive through lakes
+#   st_point_on_surface()
+
+# Now get driving time to the hospital from each tract
+# Takes a few minutes to map driving times
+# by default uses the centroid of each census tract as origin point
+time_to_hospital <- mb_matrix(
+  origins = mi_tracts,
+  destinations = hospital_location
+) %>%
+  as.vector()
+
+# Add the driving time to the Census tracts data
+
+mi_tracts$time_to_hospital <- time_to_hospital
+mi_tracts$time_to_hospital <- as.numeric(mi_tracts$time_to_hospital)
+# Remove any NA values (if any)
+#mi_tracts <- mi_tracts %>%
+  #filter(!is.na(time_to_hospital))
+  
+# Visualize the driving time to the hospital using ggplot2
+ggplot(mi_tracts, aes(fill = time_to_hospital)) +
+  geom_sf(color = "black") +
+  scale_fill_viridis_c(option = "viridis", name = "Driving Time (minutes)") +
+  labs(
+    title = "Driving Time to The University of Michigan Hospital",
+    subtitle = "From Individual Census Tracts in Michigan",
+    caption = "Data source: Mapbox Directions API"
+  ) +
+  theme_void() +
+  coord_sf(crs = mi_crs)
+
+
+```
+
+## We can narrow this down to a smaller Area, such as Philadelphia, and driving time to the Children's Hospital of Philadelphia (CHOP).
+
+When your child is sick, you might want to race them to the local Children's Hospital. How long will it take?
+
+
+```{r}
+philly_tracts <- 
+  tracts(state = "PA", county = "Philadelphia", cb = TRUE, class="sf") 
+chop <- mb_geocode("Children's Hospital of Philadelphia, Philadelphia, PA")
+
+# takes about 40 seconds
+time_to_chop <- mb_matrix(
+  origins = philly_tracts,
+  destinations = chop) %>%
+  as.vector()
+
+philly_tracts$time_to_chop <- time_to_chop
+
+ggplot(philly_tracts, aes(fill = time_to_chop)) +
+  geom_sf(color = "black") +
+  scale_fill_viridis_c(option = "viridis", name = "Driving Time (minutes)") +
+  labs(
+    title = "Driving Time to The Children's Hospital of Philadelphia",
+    subtitle = "From Individual Census Tracts in Philadelphia",
+    caption = "Data source: Mapbox Directions API"
+  ) +
+  theme_void()
+
+```
+
+This is not the only way to map distances, but it is a good way to get started.
+
+You can use the Google Distance API via the {googleway} package, or the {osrm} package to access the Open Source Routing Machine, which is a free routing service that uses OpenStreetMap data.
+
+There is the R5 routing engine, which is a free routing service that uses OpenStreetMap data, and the {r5r} package to access it.
+
+There is the Valhalla routing engine, which is a free routing service that uses OpenStreetMap data, and the {valhallar} package to access it.
+
+The Mapbox and Google options are great for smaller jobs as they are very quick to set up once you have an API key and they have traffic built-in.  But be careful - they can get expensive quickly if you are mapping thousands of individual addresses.  Mapbox limits you to 100K free geocodes per month. Google limits you to a maximum of 25 origins or 25 destinations per request, and a rate limit of 3000 elements (origins * destinations) per minute.
+
+For bigger jobs, look to r5r and Valhalla - both based on open-source engines.
+
+While these tools are more challenging to set up than using an API, they are well worth it for batch jobs.  
+
+Valhalla in particular can be tricky to set up; it may be best used with Docker.
+
+There are lots of great resources in this space.
+
+## Driving to UCLA Reagan Hospital
+If you are living in the traffic jam that makes up the 5 county Los Angeles metro area, you might want to know how long it will take to get to the UCLA Reagan Hospital in Westwood.
+
+```{r}
+library(mapboxapi)
+library(tidyverse)
+library(tigris)
+library(sf)
+library(crsuggest)
+# Set up Mapbox API key
+# You need to set up a Mapbox account and get an API key
+# see https://docs.mapbox.com/help/getting-started/access-tokens/
+# and then store this token in your .Renviron file as MAPBOX_API_KEY
+# mb_access_token(Sys.getenv("MAPBOX_API_KEY"), install = TRUE)
+
+# Load Census tracts for the Los Angeles metro area using (tigris)
+# Note that this will take a few minutes to run
+
+la_tracts <- 
+  tracts(state = "CA", county = c("Los Angeles", "Orange", 
+      "Riverside", "San Bernardino", "Ventura"), cb = TRUE) %>%
+  st_transform(26910) # a coordinate reference system transformation
+
+# Find the right coordinate system to use; in this case we'll use 26910
+
+la_crs <- suggest_top_crs(la_tracts, units = "m")
+
+# Get the location of the UCLA Reagan Hospital in Westwood, Los Angeles, California
+
+hospital_location <- mb_geocode("UCLA Ronald Reagan Medical Center, Los Angeles, CA")
+# Use mb_matrix() to calculate driving time from all Los Angeles metro Census tracts to the hospital - about 4 minutes
+
+time_to_hospital <- mb_matrix(
+  origins = la_tracts,
+  destinations = hospital_location
+) %>%
+  as.vector()
+
+# Add the driving time to the Census tracts data
+
+la_tracts$time_to_hospital <- time_to_hospital
+# Remove any NA values (if any)
+
+la_tracts <- la_tracts %>%
+  filter(!is.na(time_to_hospital))
+
+# Visualize the driving time to the hospital using ggplot2
+
+ggplot(la_tracts, aes(fill = time_to_hospital)) +
+  geom_sf(color = "black") +
+  scale_fill_viridis_c(option = "viridis", name = "Driving Time (minutes)") +
+  labs(
+    title = "Driving Time to UCLA Ronald Reagan Medical Center",
+    subtitle = "From Individual Census Tracts in the Los Angeles Metro Area",
+    caption = "Data source: Mapbox Directions API"
+  ) +
+  theme_void() +
+  coord_sf(crs = la_crs)
+
+```
+
+Note that for some census tracts on the east side, it can take ~ 5 hours to drive to the hospital, while for some on the west side, it can take as little as 10 minutes.
 
 ```{r}
 Now let's look 
