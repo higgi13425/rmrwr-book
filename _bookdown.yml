@@ -34,6 +34,7 @@ rmd_files:
 - io48j-extension-plots.Rmd
 - io48c-scales.Rmd
 - io67-ggplot_helpers.Rmd
+- io60-mapping_health_data.Rmd
 - io71-functions_plots.Rmd
 - io76-found_data.Rmd
 - io23-linear-regression.Rmd

@@ -30,7 +30,7 @@ which are a set of shapefiles that provide geographic data for the United States
 
 Let's start with a simple map of some Midwestern states, using the `states()` function from the {tigris} package.
 
-```{r}
+```{r, results='hide', fig.keep='all', message = FALSE}
 us_states <- 
   states(cb = TRUE) %>%
   filter(STUSPS %in% c("MI", "OH", "IN", "IL", "WI", "MN", "IA", "MO")) %>%
@@ -48,7 +48,7 @@ ggplot() +
 
 Now let's map a few rivers and lakes in New Orleans, using the `rivers()` function from the {tigris} package. 
 
-```{r}
+```{r results='hide', fig.keep='all', message = FALSE}
 no_rivers <- 
   linear_water(state = "LA", county = "Orleans") %>%
   st_transform(2163) # a coordinate reference system transformation
@@ -91,7 +91,7 @@ Try to:
 1. Change colors to bring out the highways, rivers, etc.
 2. Try this for a town you know well, and see if this looks familiar.
 
-```{r}
+```{r, results='hide', fig.keep='all', message = FALSE}
 
 streets <- getbb("Ann Arbor Michigan USA")%>%
   opq()%>%
@@ -149,7 +149,7 @@ We will use the {crsuggest} package to help us find the right coordinate system 
 We will use the {tidycensus} package to get Census data, and the {tigris}
 package to get Census tract shapes.
 
-```{r}
+```{r, results='hide', fig.keep='all', message = FALSE}
 library(mapboxapi)
 library(tidyverse)
 library(tidycensus)
@@ -162,9 +162,7 @@ options(tigris_use_cache = TRUE) # caching speeds things up later
 # see https://docs.mapbox.com/help/getting-started/access-tokens/
 # and then store this token in your .Renviron file as MAPBOX_API_KEY
 # then we will access it for this script
-mb_access_token(Sys.getenv("MAPBOX_API_KEY"), 
-  install = TRUE
-)
+# mb_access_token(Sys.getenv("MAPBOX_API_KEY"),  install = TRUE)
 
 # Grab median gross house price data from the  ACS for the Ann Arbor metro
 county_names <- c("Washtenaw", "Wayne", "Jackson", "Ingham", "Lenawee", "Monroe", "Hillsdale", "Livingston", "Oakland", "Macomb")
@@ -242,7 +240,7 @@ ggplot(aa_median_house, aes(x = time, y = estimate)) +
   theme_minimal()
 ```
 
-# Mapping Population By County
+## Mapping Population By County
 We can also use R to map population data by county. We will zoom out to the entire state of Michigan.
 This will require data from the US Census Bureau, which we can get using the {tidycensus} package.
 You can search for data fields at the census website at
@@ -254,7 +252,7 @@ location on the plot.
 See if you can find Wayne, Washtenaw, Keewenaw, and Leelenau counties.
 Which counties have the highest and lowest incomes? Which have the most income disparity (wide CI bars)?
 
-```{r}
+```{r, results='hide', fig.keep='all', message = FALSE}
 # Load required libraries
 library(tidycensus)
 #library(mapboxapi)
@@ -389,13 +387,13 @@ girafe(ggobj = mi_map + mi_plot, width_svg = 12, height_svg = 9) %>%
 
 ## Finding a Census Field
 
-```{r}
+```{r, results='hide', fig.keep='all', message = FALSE}
 # You can search for variables by running
 vars <- load_variables(2023, "acs5", cache = TRUE)
-View(vars)
+# View(vars)
 ```
 
-```{r}
+```{r, results='hide', fig.keep='all', message = FALSE}
 library(tidycensus)
 library(tidyverse)
 library(crsuggest)
@@ -427,7 +425,7 @@ wc_crs <- suggest_top_crs(data_sf)
 ```
 
 ### Mapping Commute Times
-```{r}
+```{r, results='hide', fig.keep='all', message = FALSE}
 data_sf <- get_acs(
       state = "CA",
       county = "Los Angeles",
@@ -448,7 +446,7 @@ data_sf <- get_acs(
     theme_void() # Removes axes and grid lines for a cleaner map
 ```
 
-```{r}
+```{r, results='hide', fig.keep='all', message = FALSE}
 data_sf <- get_acs(
       state = "CT",
       county = "Fairfield",
@@ -469,7 +467,7 @@ data_sf <- get_acs(
 ```
 
 ### Mapping Work From Home
-```{r}
+```{r, results='hide', fig.keep='all', message = FALSE}
 data_sf <- get_acs(
       state = "NY",
       county = "New York",
@@ -508,7 +506,7 @@ Then, in this folder, create a new quarto file called `nc_health_data.qmd`.
 Then copy the code below into a code chunk in the quarto file,
 and run the code below to read in the data.
 
-```{r}
+```{r, results='hide', fig.keep='all', message = FALSE}
 library(tidyverse)
 library(sf)
 library(readxl)
@@ -525,7 +523,7 @@ shapefile data, which is usually in a long format, with one row per county.
 We will need to pivot this data to a long format, with one row per county 
 and one column per variable.
 
-```{r}
+```{r, results='hide', fig.keep='all', message = FALSE}
 nciom_health_data_long <- nciom_health_data |> 
   select(x2, x3, alamance:yancey) |> 
   pivot_longer(cols = !x2:x3, names_to = "county", 
@@ -537,7 +535,7 @@ variables names and definitions in the first two columns.
 We can now merge this with the Census data for North Carolina counties
 (as long as we make the county names clean and in lower case)
 
-```{r}
+```{r, results='hide', fig.keep='all', message = FALSE}
 nc_population <- get_acs(
   geography = "county",
   variables = "B01003_001", # Total population variable
@@ -593,7 +591,7 @@ Dowlnoad the first linked file, named 2025 Texas Health Data,
 and save it in the data folder of your project, as `texas_health_data.xlsx`.
 Then copy the code below into a code chunk in your quarto file, and run it to read in the data.
 
-```{r}
+```{r,  results='hide', fig.keep='all', message = FALSE}
 texas_health_data <- read_excel(here("data/texas_health_data.xlsx"),
                                 col_names = TRUE, skip = 1,
                                 sheet =2) |> 
@@ -604,7 +602,7 @@ See if you can pull the texas acs county data for population from the ACS to get
 Then, merge the texas_health_data with the texas_population data, using the county name as the key.
 
 ### Solution to ACS
-```{r}
+```{r, results='hide', fig.keep='all', message = FALSE}
 texas_population <- get_acs(
   geography = "county",
   variables = "B01003_001", # Total population variable
@@ -647,7 +645,7 @@ Go to: https://www.countyhealthrankings.org/health-data/california/data-and-reso
 Download the first linked file, named 2025 California Health Data,
 and save it in the data folder of your project, as `california_health_data.xlsx`.
 Then copy the code below into a code chunk in your quarto file, and run it to read in the data.
-```{r}
+```{r cal_data, results='hide', fig.keep='all', message = FALSE}
 california_health_data <- read_excel(here("data/california_health_data.xlsx"),
                                 col_names = TRUE, skip = 1,
                                 sheet =2) |> 
@@ -657,7 +655,7 @@ california_health_data <- read_excel(here("data/california_health_data.xlsx"),
 Now pull the California shapefiles, using the population variable code from tidycensus. Modify the County names as needed.
 Then, merge the california_health_data with the california_population data, using the county name as the key.
 
-```{r}
+```{r cal-pop, results='hide', fig.keep='all', message = FALSE}
 california_population <- get_acs(
   geography = "county",
   variables = "B01003_001", # Total population variable
@@ -672,13 +670,13 @@ california_population <- get_acs(
 ```
 
 Now merge the data, and map the "low_birth_weight" variable by county, using the same method as above.
-```{r}
+```{r cal-merge}
 california_merged <- california_health_data %>%
   right_join(california_population, by = "county")
 ```
 
 Now map
-```{r}
+```{r cal-plot}
 california_merged %>%
   select(GEOID, county, percent_low_birth_weight, geometry) |> 
     ggplot(aes(fill = percent_low_birth_weight)) +
@@ -730,7 +728,7 @@ Let's start by examining the national data file by county.
 First we will load the shapefiles and population by county for the 
 entire us using the `get_acs` function from tidycensus.
 
-# problems with extraction - 223 divisions not named county
+#### problems with extraction - 223 divisions not named county
 Alaska - Borough (13), Census Area (11), 4 City and Borough
 Puerto Rico - Municipio, (78)
 Louisiana - Parish, (64)
@@ -741,7 +739,7 @@ Missouri: St. Louis city
 Nevada: Carson City
 District of Columbia -  District of Columbia, District of Columbia
 
-```{r}
+```{r us-counties,  results='hide', fig.keep='all', message = FALSE}
 us_counties <- get_acs(
   geography = "county",
   variables = "B01003_001", # Total population variable
@@ -760,7 +758,7 @@ us_counties <- get_acs(
 
 Now we will read in the national health data file, and merge it with the US counties data. Note that this file includes total rows for the each state and the District of Columbia (with an empty [NA] county name).
 
-```{r}
+```{r nat-health-data, results='hide', fig.keep='all', message = FALSE}
 national_health_data <- read_excel(here("data/national_health_data.xlsx"),
                                 col_names = TRUE, skip = 1, sheet = 2) |> 
                                   janitor::clean_names()
@@ -775,16 +773,15 @@ Louisiana - Parish,
 Connecticut - Planning Region,
 Some Virginia counties have "City" in the name
 
-# try matching by GEOID (in us counties) = fips (health data)
-# use county names from health data
-```{r}
+## Instead of using names, match by GEOID (in us counties) = fips (health data)
+```{r nat-health-merge}
 national_health_merged <- natl_health_data_cty %>%
   right_join(us_counties, by = c("fips" = "GEOID")) |> 
   rename(county = county.x) 
 ```
 
 Now map
-```{r}
+```{r nat-health-plot}
 national_health_merged %>%
   select(fips, county, average_number_of_mentally_unhealthy_days, geometry) |> 
     ggplot(aes(fill = average_number_of_mentally_unhealthy_days)) +
@@ -801,7 +798,7 @@ national_health_merged %>%
 Acute illness and trauma from MVI (motor vehicle injury) is a major cause of death and disability in the US, and is a major public health problem.
 Outcomes are influenced by distance/time from specialty care. Using {mapboxapi} and the {tigris} package, we can map distances from a set of census tracs to a hospital at a given location, which can serve as a measure of time to travel to reach specialty care.
 
-```{r}
+```{r  a2, results='hide', fig.keep='all', message = FALSE}
 library(mapboxapi)
 library(tigris)
 library(tidyverse)
@@ -811,7 +808,7 @@ library(crsuggest)
 # You need to set up a Mapbox account and get an API key
 # see https://docs.mapbox.com/help/getting-started/access-tokens/
 # and then store this token in your .Renviron file as MAPBOX_API_KEY
-mapbox_key <- Sys.getenv("MAPBOX_API_KEY")
+# mapbox_key <- Sys.getenv("MAPBOX_API_KEY")
 # mb_access_token(mapbox_key, install = TRUE) # run this once
 
 # Load Census tracts for the state of Michigan using (tigris)
@@ -874,7 +871,7 @@ ggplot(mi_tracts, aes(fill = time_to_hospital)) +
 When your child is sick, you might want to race them to the local Children's Hospital. How long will it take?
 
 
-```{r}
+```{r chop, results='hide', fig.keep='all', message = FALSE}
 philly_tracts <- 
   tracts(state = "PA", county = "Philadelphia", cb = TRUE, class="sf") 
 chop <- mb_geocode("Children's Hospital of Philadelphia, Philadelphia, PA")
@@ -920,7 +917,7 @@ There are lots of great resources in this space.
 ## Driving to UCLA Reagan Hospital
 If you are living in the traffic jam that makes up the 5 county Los Angeles metro area, you might want to know how long it will take to get to the UCLA Reagan Hospital in Westwood.
 
-```{r}
+```{r la, results='hide', fig.keep='all', message = FALSE}
 library(mapboxapi)
 library(tidyverse)
 library(tigris)
@@ -980,24 +977,29 @@ ggplot(la_tracts, aes(fill = time_to_hospital)) +
 
 Note that for some census tracts on the east side, it can take ~ 5 hours to drive to the hospital, while for some on the west side, it can take as little as 10 minutes.
 
-You can learn about other mapping packages, like
+## You can learn about other mapping packages, like
 
-- general mapping ebook with chaters on tmap, ggplot2, leaflet, mapbox
+- general R mapping ebook with chaters on tmap, ggplot2, leaflet, mapbox
 https://bookdown.org/nicohahn/making_maps_with_r5/docs/introduction.html
 
+# Resources for Learning More about {mapgl}
 
-Resources for learning more about {tmap}:
-tmap - 
+This R package uses MapboxGL JS and MapLibre GL JS
+
+Guide is at https://walker-data.com/mapgl/
+
+## Resources for learning more about {tmap}:
+{tmap} is a powerful R package for creating thematic maps, both static and interactive.
+
 - Documentation at https://r-tmap.github.io/tmap/ (read the vignettes)
 - Book Chapter: Geocomputation with R includes a chapter on Making Maps with R, which covers tmap.
 - Work-in-Progress Book: Elegant and Informative Maps with tmap is an upcoming book available at tmap.geocompx.org.
 
-Learning more about {leaflet}:
-Leaflet is a popular R package for creating interactive maps.
+## Resources for learning more about {leaflet}:
+Leaflet is a popular R package for creating *interactive* maps.
 - Official Leaflet for R documentation: https://rstudio.github.io/leaflet/
-- 
 
-
+## Resources for learning more about {ggmap}:
 Learning more aboutusing google maps with {ggmap}:
 - Official ggmap documentation: https://cran.r-project.org/web/packages/ggmap/index.html
 - Getting started with {ggmap} https://docs.stadiamaps.com/tutorials/getting-started-in-r-with-ggmap/ 
@@ -1006,8 +1008,8 @@ Learning more aboutusing google maps with {ggmap}:
 
 
 
-```{r}
-Now let's look 
+Now let's try a challenge
+
 :::challenge
 
 :::

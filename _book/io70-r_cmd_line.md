@@ -76,7 +76,7 @@ whoami;date
 
 ```
 ## peterhiggins
-## Thu Jun  5 19:01:14 EDT 2025
+## Thu Aug 28 21:53:21 EDT 2025
 ```
 :::
 
@@ -212,6 +212,7 @@ ls
 ## Awais Chapter Stenosis
 ## AXL_fibrosis_Nov_2021.pptx
 ## AXL_Helmsley_pre-proposal_Higgins.docx
+## AxlI data for Helmsely.pptx
 ## B2. US Accomplishments.docx
 ## B4_IBD_pdrh.docx
 ## B4_IBD_pdrh.pdf
@@ -373,6 +374,7 @@ ls
 ## GradPartyHigginsInvites.xlsx
 ## GrandRounds
 ## GREAT3 slides
+## GreatLakesDiscovery PCS Axl Higgins Clasby.docx
 ## Helmsley Application Nov 2023.docx
 ## hershey_long_term.xlsx
 ## hexStickers.jpg
@@ -420,6 +422,7 @@ ls
 ## IBD Clinical Chief Position.docx
 ## IBD Clinical Trials for MDsDearborn2017.pptx
 ## IBD Databank Talks on the Road
+## IBD Drug Names.docx
 ## IBD House Call and Readmission Data .xlsx
 ## IBD in 20 years.pptx
 ## IBD inbox coverage.docx
@@ -561,6 +564,7 @@ ls
 ## P2PEP2021_Spatial.pptx
 ## Package List recruit
 ## Pain in IBD.pptx
+## Patient Reported Outcome DomainsCCF_Feb2025.docx
 ## Patient Reported Outcomes Plan.docx
 ## PDRH endowed chair bio.docx
 ## PDRH short bio.docx
@@ -653,6 +657,7 @@ ls
 ## Scoring Sheet_Albin_PDRHiggins.docx
 ## Scoring Sheet_Hayek_pdrh.docx
 ## Scoring Sheet_Janda_PDRHiggins.docx
+## Screenshot 2025-06-15 at 6.06.29 PM.png
 ## Screenwriting Contests.docx
 ## SDOH.png
 ## Sean Common App academic honors list.docx
@@ -689,6 +694,7 @@ ls
 ## SingleCell_DDW_2021_ISS.pdf
 ## SkinCancer.IBD.Gentics_Yanhua_PDRH.docx
 ## Slade UC review Walter
+## SMART Figure.png
 ## Social Media for GI.pptx
 ## SoMe_use_2020.png
 ## SOP for Samples for IBD Biobank.docx

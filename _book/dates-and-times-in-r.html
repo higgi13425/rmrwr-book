@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 43 Dates and Times in R | Reproducible Medical Research with R</title>
+  <title>Chapter 45 Dates and Times in R | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
   <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 43 Dates and Times in R | Reproducible Medical Research with R" />
+  <meta property="og:title" content="Chapter 45 Dates and Times in R | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
   <meta name="github-repo" content="higgi13425/rmrwr-book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 43 Dates and Times in R | Reproducible Medical Research with R" />
+  <meta name="twitter:title" content="Chapter 45 Dates and Times in R | Reproducible Medical Research with R" />
   
   <meta name="twitter:description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2025-06-05" />
+<meta name="date" content="2025-08-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -686,411 +686,448 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="29.3" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#website-helpers-for-ggplot"><i class="fa fa-check"></i><b>29.3</b> Website helpers for ggplot</a></li>
 <li class="chapter" data-level="29.4" data-path="helping-out-with-ggplot.html"><a href="helping-out-with-ggplot.html#getting-even-more-help-with-esquisse"><i class="fa fa-check"></i><b>29.4</b> Getting Even more help with esquisse</a></li>
 </ul></li>
-<li class="chapter" data-level="30" data-path="functions-1.html"><a href="functions-1.html"><i class="fa fa-check"></i><b>30</b> Functions</a>
+<li class="chapter" data-level="30" data-path="mapping-health-data-in-r.html"><a href="mapping-health-data-in-r.html"><i class="fa fa-check"></i><b>30</b> Mapping Health Data in R</a>
 <ul>
-<li class="chapter" data-level="30.1" data-path="functions-1.html"><a href="functions-1.html#dont-repeat-yourself"><i class="fa fa-check"></i><b>30.1</b> Don’t repeat yourself</a></li>
-<li class="chapter" data-level="30.2" data-path="functions-1.html"><a href="functions-1.html#your-turn-4"><i class="fa fa-check"></i><b>30.2</b> Your Turn</a></li>
-<li class="chapter" data-level="30.3" data-path="functions-1.html"><a href="functions-1.html#freestyle"><i class="fa fa-check"></i><b>30.3</b> Freestyle</a>
+<li class="chapter" data-level="30.1" data-path="mapping-health-data-in-r.html"><a href="mapping-health-data-in-r.html#the-tigris-package-and-basic-mapping-in-r"><i class="fa fa-check"></i><b>30.1</b> The {tigris} package and Basic Mapping in R</a></li>
+<li class="chapter" data-level="30.2" data-path="mapping-health-data-in-r.html"><a href="mapping-health-data-in-r.html#mapping-with-openstreetmap-data"><i class="fa fa-check"></i><b>30.2</b> Mapping with OpenStreetMap Data</a></li>
+<li class="chapter" data-level="30.3" data-path="mapping-health-data-in-r.html"><a href="mapping-health-data-in-r.html#another-example"><i class="fa fa-check"></i><b>30.3</b> Another Example</a></li>
+<li class="chapter" data-level="30.4" data-path="mapping-health-data-in-r.html"><a href="mapping-health-data-in-r.html#mapping-population-by-county"><i class="fa fa-check"></i><b>30.4</b> Mapping Population By County</a></li>
+<li class="chapter" data-level="30.5" data-path="mapping-health-data-in-r.html"><a href="mapping-health-data-in-r.html#finding-a-census-field"><i class="fa fa-check"></i><b>30.5</b> Finding a Census Field</a>
 <ul>
-<li class="chapter" data-level="30.3.1" data-path="functions-1.html"><a href="functions-1.html#acknowledgement"><i class="fa fa-check"></i><b>30.3.1</b> Acknowledgement</a></li>
+<li class="chapter" data-level="30.5.1" data-path="mapping-health-data-in-r.html"><a href="mapping-health-data-in-r.html#mapping-commute-times"><i class="fa fa-check"></i><b>30.5.1</b> Mapping Commute Times</a></li>
+<li class="chapter" data-level="30.5.2" data-path="mapping-health-data-in-r.html"><a href="mapping-health-data-in-r.html#mapping-work-from-home"><i class="fa fa-check"></i><b>30.5.2</b> Mapping Work From Home</a></li>
 </ul></li>
-<li class="chapter" data-level="30.4" data-path="functions-1.html"><a href="functions-1.html#read-more"><i class="fa fa-check"></i><b>30.4</b> Read More</a></li>
+<li class="chapter" data-level="30.6" data-path="mapping-health-data-in-r.html"><a href="mapping-health-data-in-r.html#mapping-and-merging-health-data"><i class="fa fa-check"></i><b>30.6</b> Mapping and Merging Health Data</a>
+<ul>
+<li class="chapter" data-level="30.6.1" data-path="mapping-health-data-in-r.html"><a href="mapping-health-data-in-r.html#solution"><i class="fa fa-check"></i><b>30.6.1</b> Solution</a></li>
 </ul></li>
-<li class="chapter" data-level="31" data-path="using-found-web-data.html"><a href="using-found-web-data.html"><i class="fa fa-check"></i><b>31</b> Using Found (Web) Data</a>
+<li class="chapter" data-level="30.7" data-path="mapping-health-data-in-r.html"><a href="mapping-health-data-in-r.html#now-to-merge"><i class="fa fa-check"></i><b>30.7</b> Now to merge</a></li>
+<li class="chapter" data-level="30.8" data-path="mapping-health-data-in-r.html"><a href="mapping-health-data-in-r.html#texas-health-data"><i class="fa fa-check"></i><b>30.8</b> Texas Health Data</a>
 <ul>
-<li class="chapter" data-level="31.1" data-path="using-found-web-data.html"><a href="using-found-web-data.html#found-poetry"><i class="fa fa-check"></i><b>31.1</b> Found Poetry</a></li>
-<li class="chapter" data-level="31.2" data-path="using-found-web-data.html"><a href="using-found-web-data.html#found-data"><i class="fa fa-check"></i><b>31.2</b> Found Data</a></li>
-<li class="chapter" data-level="31.3" data-path="using-found-web-data.html"><a href="using-found-web-data.html#download-example"><i class="fa fa-check"></i><b>31.3</b> Download Example</a></li>
-<li class="chapter" data-level="31.4" data-path="using-found-web-data.html"><a href="using-found-web-data.html#datapasta-small-table-example"><i class="fa fa-check"></i><b>31.4</b> Datapasta (small table) Example</a></li>
-<li class="chapter" data-level="31.5" data-path="using-found-web-data.html"><a href="using-found-web-data.html#your-turn-5"><i class="fa fa-check"></i><b>31.5</b> Your Turn</a></li>
-<li class="chapter" data-level="31.6" data-path="using-found-web-data.html"><a href="using-found-web-data.html#rvest-example"><i class="fa fa-check"></i><b>31.6</b> {rvest} Example</a></li>
-<li class="chapter" data-level="31.7" data-path="using-found-web-data.html"><a href="using-found-web-data.html#your-turn-6"><i class="fa fa-check"></i><b>31.7</b> Your Turn</a></li>
-<li class="chapter" data-level="31.8" data-path="using-found-web-data.html"><a href="using-found-web-data.html#api-example-with-tidycensus"><i class="fa fa-check"></i><b>31.8</b> API example with {tidycensus}</a></li>
-<li class="chapter" data-level="31.9" data-path="using-found-web-data.html"><a href="using-found-web-data.html#challenges-1"><i class="fa fa-check"></i><b>31.9</b> Challenges</a></li>
-<li class="chapter" data-level="31.10" data-path="using-found-web-data.html"><a href="using-found-web-data.html#advanced-challenge---dynamic-websites"><i class="fa fa-check"></i><b>31.10</b> Advanced Challenge - Dynamic Websites</a></li>
+<li class="chapter" data-level="30.8.1" data-path="mapping-health-data-in-r.html"><a href="mapping-health-data-in-r.html#solution-to-acs"><i class="fa fa-check"></i><b>30.8.1</b> Solution to ACS</a></li>
+<li class="chapter" data-level="30.8.2" data-path="mapping-health-data-in-r.html"><a href="mapping-health-data-in-r.html#solution-to-merge"><i class="fa fa-check"></i><b>30.8.2</b> Solution to Merge</a></li>
+<li class="chapter" data-level="30.8.3" data-path="mapping-health-data-in-r.html"><a href="mapping-health-data-in-r.html#solution-to-mapping"><i class="fa fa-check"></i><b>30.8.3</b> Solution to Mapping</a></li>
 </ul></li>
-<li class="chapter" data-level="32" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html"><i class="fa fa-check"></i><b>32</b> Linear Regression and Broom for Tidying Models</a>
-<ul>
-<li class="chapter" data-level="32.1" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#packages-needed"><i class="fa fa-check"></i><b>32.1</b> Packages needed</a></li>
-<li class="chapter" data-level="32.2" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#building-a-simple-base-model-with-lm"><i class="fa fa-check"></i><b>32.2</b> Building a simple base model with {lm}</a>
-<ul>
-<li class="chapter" data-level="32.2.1" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#producing-manuscript-quality-tables-with-gtsummary"><i class="fa fa-check"></i><b>32.2.1</b> Producing manuscript-quality tables with {gtsummary}</a></li>
+<li class="chapter" data-level="30.9" data-path="mapping-health-data-in-r.html"><a href="mapping-health-data-in-r.html#mapping-california"><i class="fa fa-check"></i><b>30.9</b> Mapping California</a></li>
+<li class="chapter" data-level="30.10" data-path="mapping-health-data-in-r.html"><a href="mapping-health-data-in-r.html#a-bit-of-us-geographic-unit-history"><i class="fa fa-check"></i><b>30.10</b> A bit of US geographic unit history</a></li>
+<li class="chapter" data-level="30.11" data-path="mapping-health-data-in-r.html"><a href="mapping-health-data-in-r.html#merge-problems"><i class="fa fa-check"></i><b>30.11</b> Merge problems</a></li>
+<li class="chapter" data-level="30.12" data-path="mapping-health-data-in-r.html"><a href="mapping-health-data-in-r.html#instead-of-using-names-match-by-geoid-in-us-counties-fips-health-data"><i class="fa fa-check"></i><b>30.12</b> Instead of using names, match by GEOID (in us counties) = fips (health data)</a></li>
+<li class="chapter" data-level="30.13" data-path="mapping-health-data-in-r.html"><a href="mapping-health-data-in-r.html#mapping-distances"><i class="fa fa-check"></i><b>30.13</b> Mapping Distances</a></li>
+<li class="chapter" data-level="30.14" data-path="mapping-health-data-in-r.html"><a href="mapping-health-data-in-r.html#we-can-narrow-this-down-to-a-smaller-area-such-as-philadelphia-and-driving-time-to-the-childrens-hospital-of-philadelphia-chop."><i class="fa fa-check"></i><b>30.14</b> We can narrow this down to a smaller Area, such as Philadelphia, and driving time to the Children’s Hospital of Philadelphia (CHOP).</a></li>
+<li class="chapter" data-level="30.15" data-path="mapping-health-data-in-r.html"><a href="mapping-health-data-in-r.html#driving-to-ucla-reagan-hospital"><i class="fa fa-check"></i><b>30.15</b> Driving to UCLA Reagan Hospital</a></li>
+<li class="chapter" data-level="30.16" data-path="mapping-health-data-in-r.html"><a href="mapping-health-data-in-r.html#you-can-learn-about-other-mapping-packages-like"><i class="fa fa-check"></i><b>30.16</b> You can learn about other mapping packages, like</a></li>
 </ul></li>
-<li class="chapter" data-level="32.3" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#is-your-model-valid"><i class="fa fa-check"></i><b>32.3</b> Is Your Model Valid?</a></li>
-<li class="chapter" data-level="32.4" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#making-predictions-with-your-model"><i class="fa fa-check"></i><b>32.4</b> Making Predictions with Your Model</a>
+<li class="chapter" data-level="31" data-path="resources-for-learning-more-about-mapgl.html"><a href="resources-for-learning-more-about-mapgl.html"><i class="fa fa-check"></i><b>31</b> Resources for Learning More about {mapgl}</a>
 <ul>
-<li class="chapter" data-level="32.4.1" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#predictions-from-new-data"><i class="fa fa-check"></i><b>32.4.1</b> Predictions from new data</a></li>
+<li class="chapter" data-level="31.1" data-path="resources-for-learning-more-about-mapgl.html"><a href="resources-for-learning-more-about-mapgl.html#resources-for-learning-more-about-tmap"><i class="fa fa-check"></i><b>31.1</b> Resources for learning more about {tmap}:</a></li>
+<li class="chapter" data-level="31.2" data-path="resources-for-learning-more-about-mapgl.html"><a href="resources-for-learning-more-about-mapgl.html#resources-for-learning-more-about-leaflet"><i class="fa fa-check"></i><b>31.2</b> Resources for learning more about {leaflet}:</a></li>
+<li class="chapter" data-level="31.3" data-path="resources-for-learning-more-about-mapgl.html"><a href="resources-for-learning-more-about-mapgl.html#resources-for-learning-more-about-ggmap"><i class="fa fa-check"></i><b>31.3</b> Resources for learning more about {ggmap}:</a></li>
 </ul></li>
-<li class="chapter" data-level="32.5" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#choosing-predictors-for-multivariate-modeling-testing-dealing-with-collinearity"><i class="fa fa-check"></i><b>32.5</b> Choosing predictors for multivariate modeling – testing, dealing with collinearity</a>
+<li class="chapter" data-level="32" data-path="functions-1.html"><a href="functions-1.html"><i class="fa fa-check"></i><b>32</b> Functions</a>
 <ul>
-<li class="chapter" data-level="32.5.1" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#challenges-2"><i class="fa fa-check"></i><b>32.5.1</b> Challenges</a></li>
+<li class="chapter" data-level="32.1" data-path="functions-1.html"><a href="functions-1.html#dont-repeat-yourself"><i class="fa fa-check"></i><b>32.1</b> Don’t repeat yourself</a></li>
+<li class="chapter" data-level="32.2" data-path="functions-1.html"><a href="functions-1.html#your-turn-4"><i class="fa fa-check"></i><b>32.2</b> Your Turn</a></li>
+<li class="chapter" data-level="32.3" data-path="functions-1.html"><a href="functions-1.html#freestyle"><i class="fa fa-check"></i><b>32.3</b> Freestyle</a>
+<ul>
+<li class="chapter" data-level="32.3.1" data-path="functions-1.html"><a href="functions-1.html#acknowledgement"><i class="fa fa-check"></i><b>32.3.1</b> Acknowledgement</a></li>
 </ul></li>
-<li class="chapter" data-level="32.6" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#presenting-model-results-with-rmarkdown"><i class="fa fa-check"></i><b>32.6</b> presenting model results with RMarkdown</a>
-<ul>
-<li class="chapter" data-level="32.6.1" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#challenges-3"><i class="fa fa-check"></i><b>32.6.1</b> Challenges</a></li>
+<li class="chapter" data-level="32.4" data-path="functions-1.html"><a href="functions-1.html#read-more"><i class="fa fa-check"></i><b>32.4</b> Read More</a></li>
 </ul></li>
-<li class="chapter" data-level="32.7" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#presenting-model-results-with-a-shiny-app"><i class="fa fa-check"></i><b>32.7</b> presenting model results with a Shiny App</a>
+<li class="chapter" data-level="33" data-path="using-found-web-data.html"><a href="using-found-web-data.html"><i class="fa fa-check"></i><b>33</b> Using Found (Web) Data</a>
 <ul>
-<li class="chapter" data-level="32.7.1" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#challenges-4"><i class="fa fa-check"></i><b>32.7.1</b> Challenges</a></li>
+<li class="chapter" data-level="33.1" data-path="using-found-web-data.html"><a href="using-found-web-data.html#found-poetry"><i class="fa fa-check"></i><b>33.1</b> Found Poetry</a></li>
+<li class="chapter" data-level="33.2" data-path="using-found-web-data.html"><a href="using-found-web-data.html#found-data"><i class="fa fa-check"></i><b>33.2</b> Found Data</a></li>
+<li class="chapter" data-level="33.3" data-path="using-found-web-data.html"><a href="using-found-web-data.html#download-example"><i class="fa fa-check"></i><b>33.3</b> Download Example</a></li>
+<li class="chapter" data-level="33.4" data-path="using-found-web-data.html"><a href="using-found-web-data.html#datapasta-small-table-example"><i class="fa fa-check"></i><b>33.4</b> Datapasta (small table) Example</a></li>
+<li class="chapter" data-level="33.5" data-path="using-found-web-data.html"><a href="using-found-web-data.html#your-turn-5"><i class="fa fa-check"></i><b>33.5</b> Your Turn</a></li>
+<li class="chapter" data-level="33.6" data-path="using-found-web-data.html"><a href="using-found-web-data.html#rvest-example"><i class="fa fa-check"></i><b>33.6</b> {rvest} Example</a></li>
+<li class="chapter" data-level="33.7" data-path="using-found-web-data.html"><a href="using-found-web-data.html#your-turn-6"><i class="fa fa-check"></i><b>33.7</b> Your Turn</a></li>
+<li class="chapter" data-level="33.8" data-path="using-found-web-data.html"><a href="using-found-web-data.html#api-example-with-tidycensus"><i class="fa fa-check"></i><b>33.8</b> API example with {tidycensus}</a></li>
+<li class="chapter" data-level="33.9" data-path="using-found-web-data.html"><a href="using-found-web-data.html#challenges-1"><i class="fa fa-check"></i><b>33.9</b> Challenges</a></li>
+<li class="chapter" data-level="33.10" data-path="using-found-web-data.html"><a href="using-found-web-data.html#advanced-challenge---dynamic-websites"><i class="fa fa-check"></i><b>33.10</b> Advanced Challenge - Dynamic Websites</a></li>
 </ul></li>
+<li class="chapter" data-level="34" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html"><i class="fa fa-check"></i><b>34</b> Linear Regression and Broom for Tidying Models</a>
+<ul>
+<li class="chapter" data-level="34.1" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#packages-needed"><i class="fa fa-check"></i><b>34.1</b> Packages needed</a></li>
+<li class="chapter" data-level="34.2" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#building-a-simple-base-model-with-lm"><i class="fa fa-check"></i><b>34.2</b> Building a simple base model with {lm}</a>
+<ul>
+<li class="chapter" data-level="34.2.1" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#producing-manuscript-quality-tables-with-gtsummary"><i class="fa fa-check"></i><b>34.2.1</b> Producing manuscript-quality tables with {gtsummary}</a></li>
 </ul></li>
-<li class="chapter" data-level="33" data-path="logistic-regression-and-broom-for-tidying-models.html"><a href="logistic-regression-and-broom-for-tidying-models.html"><i class="fa fa-check"></i><b>33</b> Logistic Regression and Broom for Tidying Models</a>
+<li class="chapter" data-level="34.3" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#is-your-model-valid"><i class="fa fa-check"></i><b>34.3</b> Is Your Model Valid?</a></li>
+<li class="chapter" data-level="34.4" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#making-predictions-with-your-model"><i class="fa fa-check"></i><b>34.4</b> Making Predictions with Your Model</a>
 <ul>
-<li class="chapter" data-level="33.1" data-path="logistic-regression-and-broom-for-tidying-models.html"><a href="logistic-regression-and-broom-for-tidying-models.html#the-model-summary"><i class="fa fa-check"></i><b>33.1</b> The Model Summary</a></li>
-<li class="chapter" data-level="33.2" data-path="logistic-regression-and-broom-for-tidying-models.html"><a href="logistic-regression-and-broom-for-tidying-models.html#evaluating-your-model-assumptions"><i class="fa fa-check"></i><b>33.2</b> Evaluating your Model Assumptions</a></li>
-<li class="chapter" data-level="33.3" data-path="logistic-regression-and-broom-for-tidying-models.html"><a href="logistic-regression-and-broom-for-tidying-models.html#converting-between-logit-odds-ratios-and-probability"><i class="fa fa-check"></i><b>33.3</b> Converting between logit, odds ratios, and probability</a></li>
+<li class="chapter" data-level="34.4.1" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#predictions-from-new-data"><i class="fa fa-check"></i><b>34.4.1</b> Predictions from new data</a></li>
 </ul></li>
-<li class="chapter" data-level="34" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html"><i class="fa fa-check"></i><b>34</b> Fast and Frugal Trees with the {FFTrees} Package</a>
+<li class="chapter" data-level="34.5" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#choosing-predictors-for-multivariate-modeling-testing-dealing-with-collinearity"><i class="fa fa-check"></i><b>34.5</b> Choosing predictors for multivariate modeling – testing, dealing with collinearity</a>
 <ul>
-<li class="chapter" data-level="34.1" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#setup"><i class="fa fa-check"></i><b>34.1</b> Setup</a></li>
-<li class="chapter" data-level="34.2" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#the-breast-cancer-dataset"><i class="fa fa-check"></i><b>34.2</b> The Breast Cancer Dataset</a>
-<ul>
-<li class="chapter" data-level="34.2.1" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#data-inspection"><i class="fa fa-check"></i><b>34.2.1</b> Data Inspection</a></li>
-<li class="chapter" data-level="34.2.2" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#check-your-progress"><i class="fa fa-check"></i><b>34.2.2</b> Check Your Progress</a></li>
+<li class="chapter" data-level="34.5.1" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#challenges-2"><i class="fa fa-check"></i><b>34.5.1</b> Challenges</a></li>
 </ul></li>
-<li class="chapter" data-level="34.3" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#building-a-fftrees-model-for-breast-cancer"><i class="fa fa-check"></i><b>34.3</b> Building a FFTrees Model for Breast Cancer</a></li>
-<li class="chapter" data-level="34.4" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#your-turn-with-heart-disease-data"><i class="fa fa-check"></i><b>34.4</b> Your Turn with Heart Disease Data</a>
+<li class="chapter" data-level="34.6" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#presenting-model-results-with-rmarkdown"><i class="fa fa-check"></i><b>34.6</b> presenting model results with RMarkdown</a>
 <ul>
-<li class="chapter" data-level="34.4.1" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#test-what-you-have-learned-2"><i class="fa fa-check"></i><b>34.4.1</b> Test what you have learned</a></li>
+<li class="chapter" data-level="34.6.1" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#challenges-3"><i class="fa fa-check"></i><b>34.6.1</b> Challenges</a></li>
 </ul></li>
-<li class="chapter" data-level="34.5" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#your-turn-to-build-and-interpret-a-model"><i class="fa fa-check"></i><b>34.5</b> Your Turn to Build and Interpret a Model</a></li>
-<li class="chapter" data-level="34.6" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#now-build-your-fftrees-model-to-predict-improved-status-vs.-death"><i class="fa fa-check"></i><b>34.6</b> Now build your FFTrees model to predict improved status (vs. death)</a></li>
-</ul></li>
-<li class="chapter" data-level="35" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html"><i class="fa fa-check"></i><b>35</b> A Gentle Introduction to Shiny</a>
+<li class="chapter" data-level="34.7" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#presenting-model-results-with-a-shiny-app"><i class="fa fa-check"></i><b>34.7</b> presenting model results with a Shiny App</a>
 <ul>
-<li class="chapter" data-level="35.1" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#what-is-shiny"><i class="fa fa-check"></i><b>35.1</b> What is Shiny?</a></li>
-<li class="chapter" data-level="35.2" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#the-basic-structure-of-a-shiny-app"><i class="fa fa-check"></i><b>35.2</b> The Basic Structure of a Shiny App</a>
-<ul>
-<li class="chapter" data-level="35.2.1" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#the-weirdness-of-a-shiny-app"><i class="fa fa-check"></i><b>35.2.1</b> The weirdness of a Shiny app</a></li>
-</ul></li>
-<li class="chapter" data-level="35.3" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#the-user-interface-section-structure"><i class="fa fa-check"></i><b>35.3</b> The User Interface Section Structure</a></li>
-<li class="chapter" data-level="35.4" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#the-server-section-structure"><i class="fa fa-check"></i><b>35.4</b> The Server Section Structure</a></li>
-<li class="chapter" data-level="35.5" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#how-to-run-an-app"><i class="fa fa-check"></i><b>35.5</b> How to Run an App</a>
-<ul>
-<li class="chapter" data-level="35.5.1" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#how-to-stop-an-app"><i class="fa fa-check"></i><b>35.5.1</b> How to Stop an App</a></li>
-</ul></li>
-<li class="chapter" data-level="35.6" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#building-a-very-simple-app-version-1"><i class="fa fa-check"></i><b>35.6</b> Building a Very Simple App (Version 1)</a>
-<ul>
-<li class="chapter" data-level="35.6.1" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#the-ui-section"><i class="fa fa-check"></i><b>35.6.1</b> The ui section</a></li>
-<li class="chapter" data-level="35.6.2" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#the-server-section"><i class="fa fa-check"></i><b>35.6.2</b> The server section</a></li>
-</ul></li>
-<li class="chapter" data-level="35.7" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#edit-this-app-version-2"><i class="fa fa-check"></i><b>35.7</b> Edit this App (Version 2)</a></li>
-<li class="chapter" data-level="35.8" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#building-a-user-interface-for-inputs-and-outputs"><i class="fa fa-check"></i><b>35.8</b> Building a User Interface for Inputs and Outputs</a>
-<ul>
-<li class="chapter" data-level="35.8.1" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#inputs"><i class="fa fa-check"></i><b>35.8.1</b> Inputs</a></li>
-<li class="chapter" data-level="35.8.2" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#outputs"><i class="fa fa-check"></i><b>35.8.2</b> Outputs</a></li>
-</ul></li>
-<li class="chapter" data-level="35.9" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#building-a-functioning-server-section"><i class="fa fa-check"></i><b>35.9</b> Building a Functioning Server Section</a>
-<ul>
-<li class="chapter" data-level="35.9.1" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#using-the-input-values-data"><i class="fa fa-check"></i><b>35.9.1</b> Using the input values &amp; Data</a></li>
-<li class="chapter" data-level="35.9.2" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#wrangling-and-calculating"><i class="fa fa-check"></i><b>35.9.2</b> Wrangling and Calculating</a></li>
-<li class="chapter" data-level="35.9.3" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#rendering-to-html-outputs"><i class="fa fa-check"></i><b>35.9.3</b> Rendering to HTML Outputs</a></li>
-</ul></li>
-<li class="chapter" data-level="35.10" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#building-a-simple-shiny-app-version-3"><i class="fa fa-check"></i><b>35.10</b> Building a Simple Shiny App (Version 3)</a></li>
-<li class="chapter" data-level="35.11" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#publishing-your-shiny-app-on-the-web"><i class="fa fa-check"></i><b>35.11</b> Publishing Your Shiny App on the Web</a></li>
-<li class="chapter" data-level="35.12" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#more-to-explore"><i class="fa fa-check"></i><b>35.12</b> More to Explore</a></li>
-</ul></li>
-<li class="chapter" data-level="36" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html"><i class="fa fa-check"></i><b>36</b> Sharing Models with Shiny</a>
-<ul>
-<li class="chapter" data-level="36.0.1" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#packages-needed-for-this-chapter-6"><i class="fa fa-check"></i><b>36.0.1</b> Packages Needed for this Chapter</a></li>
-<li class="chapter" data-level="36.1" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#setting-up-and-saving-models"><i class="fa fa-check"></i><b>36.1</b> Setting up and Saving Models</a>
-<ul>
-<li class="chapter" data-level="36.1.1" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#linear-model"><i class="fa fa-check"></i><b>36.1.1</b> Linear Model</a></li>
-<li class="chapter" data-level="36.1.2" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#logistic-model"><i class="fa fa-check"></i><b>36.1.2</b> Logistic Model</a></li>
-<li class="chapter" data-level="36.1.3" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#random-forest-model"><i class="fa fa-check"></i><b>36.1.3</b> Random Forest Model</a></li>
-</ul></li>
-<li class="chapter" data-level="36.2" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#building-a-shiny-app-for-the-linear-model"><i class="fa fa-check"></i><b>36.2</b> Building a Shiny App for the Linear Model</a>
-<ul>
-<li class="chapter" data-level="36.2.1" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#the-default-shiny-app"><i class="fa fa-check"></i><b>36.2.1</b> The Default Shiny App</a></li>
-<li class="chapter" data-level="36.2.2" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#editing-the-ui-sidebarpanel-for-the-input-predictor-variables"><i class="fa fa-check"></i><b>36.2.2</b> Editing the <strong>ui</strong> <em>sidebarPanel</em> for the Input Predictor Variables</a></li>
-<li class="chapter" data-level="36.2.3" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#editing-the-server-section-to-make-predictions"><i class="fa fa-check"></i><b>36.2.3</b> Editing the <em>server</em> section to make Predictions</a></li>
-<li class="chapter" data-level="36.2.4" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#editing-the-mainpanel-in-the-ui-section-to-display-your-prediction"><i class="fa fa-check"></i><b>36.2.4</b> Editing the mainPanel in the ui section to display your Prediction</a></li>
-</ul></li>
-<li class="chapter" data-level="36.3" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#building-a-shiny-app-for-the-logistic-model"><i class="fa fa-check"></i><b>36.3</b> Building a Shiny App for the Logistic Model</a>
-<ul>
-<li class="chapter" data-level="36.3.1" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#the-default-shiny-app-1"><i class="fa fa-check"></i><b>36.3.1</b> The Default Shiny App</a></li>
-<li class="chapter" data-level="36.3.2" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#editing-the-ui-sidebarpanel-for-the-input-predictor-variables-1"><i class="fa fa-check"></i><b>36.3.2</b> Editing the <strong>ui</strong> <em>sidebarPanel</em> for the Input Predictor Variables</a></li>
-<li class="chapter" data-level="36.3.3" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#editing-the-server-section-to-make-predictions-1"><i class="fa fa-check"></i><b>36.3.3</b> Editing the <em>server</em> section to make Predictions</a></li>
-<li class="chapter" data-level="36.3.4" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#editing-the-mainpanel-in-the-ui-section-to-display-your-prediction-1"><i class="fa fa-check"></i><b>36.3.4</b> Editing the mainPanel in the ui section to display your Prediction</a></li>
-</ul></li>
-<li class="chapter" data-level="36.4" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#building-a-shiny-app-for-the-random-forest-model"><i class="fa fa-check"></i><b>36.4</b> Building a Shiny App for the Random Forest Model</a></li>
-<li class="chapter" data-level="36.5" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#challenge-yourself"><i class="fa fa-check"></i><b>36.5</b> Challenge Yourself</a></li>
-</ul></li>
-<li class="chapter" data-level="37" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html"><i class="fa fa-check"></i><b>37</b> Introduction to R Markdown</a>
-<ul>
-<li class="chapter" data-level="37.1" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#what-makes-an-rmarkdown-document"><i class="fa fa-check"></i><b>37.1</b> What Makes an Rmarkdown document?</a></li>
-<li class="chapter" data-level="37.2" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#trying-out-rmarkdown-with-a-mock-manuscript"><i class="fa fa-check"></i><b>37.2</b> Trying out RMarkdown with a Mock Manuscript</a></li>
-<li class="chapter" data-level="37.3" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#inserting-code-chunks"><i class="fa fa-check"></i><b>37.3</b> Inserting Code Chunks</a>
-<ul>
-<li class="chapter" data-level="37.3.1" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#code-chunk-icons"><i class="fa fa-check"></i><b>37.3.1</b> Code Chunk Icons</a></li>
-</ul></li>
-<li class="chapter" data-level="37.4" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#including-plots-1"><i class="fa fa-check"></i><b>37.4</b> Including Plots</a></li>
-<li class="chapter" data-level="37.5" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#including-tables"><i class="fa fa-check"></i><b>37.5</b> Including Tables</a></li>
-<li class="chapter" data-level="37.6" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#including-links-and-images"><i class="fa fa-check"></i><b>37.6</b> Including Links and Images</a>
-<ul>
-<li class="chapter" data-level="37.6.1" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#links"><i class="fa fa-check"></i><b>37.6.1</b> Links</a></li>
-<li class="chapter" data-level="37.6.2" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#images"><i class="fa fa-check"></i><b>37.6.2</b> Images</a></li>
-</ul></li>
-<li class="chapter" data-level="37.7" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#other-languages-in-code-chunks"><i class="fa fa-check"></i><b>37.7</b> Other languages in code chunks</a></li>
-<li class="chapter" data-level="37.8" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#code-chunk-options"><i class="fa fa-check"></i><b>37.8</b> Code Chunk Options</a></li>
-<li class="chapter" data-level="37.9" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#how-it-all-rmarkdown-knitr-pandoc-works"><i class="fa fa-check"></i><b>37.9</b> How It All (Rmarkdown + {knitr} + Pandoc) Works</a></li>
-<li class="chapter" data-level="37.10" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#knitting-and-editing-and-re-knitting-your-rmd-document"><i class="fa fa-check"></i><b>37.10</b> Knitting and Editing (and re-Knitting() Your Rmd document</a></li>
-<li class="chapter" data-level="37.11" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#try-out-other-chunk-options"><i class="fa fa-check"></i><b>37.11</b> Try Out Other Chunk Options</a></li>
-<li class="chapter" data-level="37.12" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#the-setup-chunk"><i class="fa fa-check"></i><b>37.12</b> The <code>setup</code> chunk</a></li>
-<li class="chapter" data-level="37.13" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#markdown-syntax"><i class="fa fa-check"></i><b>37.13</b> Markdown syntax</a></li>
-<li class="chapter" data-level="37.14" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#nd-header"><i class="fa fa-check"></i><b>37.14</b> 2nd Header</a>
-<ul>
-<li class="chapter" data-level="37.14.1" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#rd-header"><i class="fa fa-check"></i><b>37.14.1</b> 3rd Header</a></li>
-</ul></li>
-<li class="chapter" data-level="37.15" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#line-breaks-and-page-breaks"><i class="fa fa-check"></i><b>37.15</b> Line Breaks and Page Breaks</a></li>
-<li class="chapter" data-level="37.16" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#making-lists"><i class="fa fa-check"></i><b>37.16</b> Making Lists</a>
-<ul>
-<li class="chapter" data-level="37.16.1" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#ordered-lists"><i class="fa fa-check"></i><b>37.16.1</b> Ordered Lists</a></li>
-<li class="chapter" data-level="37.16.2" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#un-ordered-lists"><i class="fa fa-check"></i><b>37.16.2</b> Un-ordered lists</a></li>
-<li class="chapter" data-level="37.16.3" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#nested-lists"><i class="fa fa-check"></i><b>37.16.3</b> Nested Lists</a></li>
-</ul></li>
-<li class="chapter" data-level="37.17" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#the-easy-button---visual-markdown-editing"><i class="fa fa-check"></i><b>37.17</b> The Easy Button - Visual Markdown Editing</a>
-<ul>
-<li class="chapter" data-level="37.17.1" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#try-inserting-a-list-a-table-and-a-block-quote"><i class="fa fa-check"></i><b>37.17.1</b> Try inserting a list, a table and a block-quote</a></li>
-</ul></li>
-<li class="chapter" data-level="37.18" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#inline-code"><i class="fa fa-check"></i><b>37.18</b> Inline Code</a>
-<ul>
-<li class="chapter" data-level="37.18.1" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#try-inserting-some-in-line-r-code"><i class="fa fa-check"></i><b>37.18.1</b> Try inserting some in-line R code</a></li>
-</ul></li>
-<li class="chapter" data-level="37.19" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#a-quick-quiz"><i class="fa fa-check"></i><b>37.19</b> A Quick Quiz</a></li>
-</ul></li>
-<li class="chapter" data-level="38" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html"><i class="fa fa-check"></i><b>38</b> Rmarkdown Output Options</a>
-<ul>
-<li class="chapter" data-level="38.1" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#microsoft-word-output-from-rmarkdown"><i class="fa fa-check"></i><b>38.1</b> Microsoft Word Output from Rmarkdown</a>
-<ul>
-<li class="chapter" data-level="38.1.1" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#making-a-styles-reference-file-for-microsoft-word"><i class="fa fa-check"></i><b>38.1.1</b> Making a Styles Reference File for Microsoft Word</a></li>
-<li class="chapter" data-level="38.1.2" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#lets-practice-this."><i class="fa fa-check"></i><b>38.1.2</b> Let’s Practice This.</a></li>
-<li class="chapter" data-level="38.1.3" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#re-formatting-your-template"><i class="fa fa-check"></i><b>38.1.3</b> Re-formatting Your Template</a></li>
-<li class="chapter" data-level="38.1.4" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#using-your-new-styles-template"><i class="fa fa-check"></i><b>38.1.4</b> Using Your New Styles Template</a></li>
-<li class="chapter" data-level="38.1.5" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#now-you-are-ready"><i class="fa fa-check"></i><b>38.1.5</b> Now you are ready!</a></li>
-</ul></li>
-<li class="chapter" data-level="38.2" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#pdf-output-from-rmarkdown"><i class="fa fa-check"></i><b>38.2</b> PDF Output from RMarkdown</a>
-<ul>
-<li class="chapter" data-level="38.2.1" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#latex-and-tinytex"><i class="fa fa-check"></i><b>38.2.1</b> LaTeX and tinytex</a></li>
-<li class="chapter" data-level="38.2.2" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#knitting-to-pdf"><i class="fa fa-check"></i><b>38.2.2</b> Knitting to PDF</a></li>
-</ul></li>
-<li class="chapter" data-level="38.3" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#microsoft-powerpoint-output-from-rmarkdown"><i class="fa fa-check"></i><b>38.3</b> Microsoft Powerpoint Output from Rmarkdown</a>
-<ul>
-<li class="chapter" data-level="38.3.1" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#tables-in-powerpoint"><i class="fa fa-check"></i><b>38.3.1</b> Tables in Powerpoint</a></li>
-<li class="chapter" data-level="38.3.2" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#images-in-powerpoint"><i class="fa fa-check"></i><b>38.3.2</b> Images in Powerpoint</a></li>
-<li class="chapter" data-level="38.3.3" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#plots-in-powerpoint"><i class="fa fa-check"></i><b>38.3.3</b> Plots in Powerpoint</a></li>
+<li class="chapter" data-level="34.7.1" data-path="linear-regression-and-broom-for-tidying-models.html"><a href="linear-regression-and-broom-for-tidying-models.html#challenges-4"><i class="fa fa-check"></i><b>34.7.1</b> Challenges</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="39" data-path="adding-citations-to-your-rmarkdown.html"><a href="adding-citations-to-your-rmarkdown.html"><i class="fa fa-check"></i><b>39</b> Adding Citations to your RMarkdown</a></li>
-<li class="chapter" data-level="40" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html"><i class="fa fa-check"></i><b>40</b> Quarto is a Next-Generation RMarkdown</a>
+<li class="chapter" data-level="35" data-path="logistic-regression-and-broom-for-tidying-models.html"><a href="logistic-regression-and-broom-for-tidying-models.html"><i class="fa fa-check"></i><b>35</b> Logistic Regression and Broom for Tidying Models</a>
 <ul>
-<li class="chapter" data-level="40.1" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#goals-for-this-chapter-6"><i class="fa fa-check"></i><b>40.1</b> Goals for this Chapter</a></li>
-<li class="chapter" data-level="40.2" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#packages-needed-for-this-chapter-7"><i class="fa fa-check"></i><b>40.2</b> Packages Needed for this chapter</a></li>
-<li class="chapter" data-level="40.3" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#introducing-quarto"><i class="fa fa-check"></i><b>40.3</b> Introducing Quarto</a></li>
-<li class="chapter" data-level="40.4" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#a-tour-of-quarto"><i class="fa fa-check"></i><b>40.4</b> A Tour of Quarto</a></li>
-<li class="chapter" data-level="40.5" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#opening-a-new-quarto-document"><i class="fa fa-check"></i><b>40.5</b> Opening a New Quarto Document</a></li>
-<li class="chapter" data-level="40.6" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#annotating-code-in-quarto"><i class="fa fa-check"></i><b>40.6</b> Annotating code in Quarto</a></li>
-<li class="chapter" data-level="40.7" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#the-visual-editor-vs.-source-editor-in-quarto"><i class="fa fa-check"></i><b>40.7</b> The Visual Editor vs. Source Editor in Quarto</a></li>
-<li class="chapter" data-level="40.8" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#adding-code-chunks"><i class="fa fa-check"></i><b>40.8</b> Adding Code Chunks</a></li>
-<li class="chapter" data-level="40.9" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#organized-options-in-code-chunks-with-the-hash-pipe"><i class="fa fa-check"></i><b>40.9</b> Organized Options in Code Chunks with the Hash-Pipe #|</a></li>
-<li class="chapter" data-level="40.10" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#stating-global-options-in-your-yaml-header"><i class="fa fa-check"></i><b>40.10</b> Stating Global Options in Your YAML Header</a>
-<ul>
-<li class="chapter" data-level="40.10.1" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#code-options-and-code-folding"><i class="fa fa-check"></i><b>40.10.1</b> Code Options and Code Folding</a></li>
-<li class="chapter" data-level="40.10.2" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#parameters"><i class="fa fa-check"></i><b>40.10.2</b> Parameters</a></li>
+<li class="chapter" data-level="35.1" data-path="logistic-regression-and-broom-for-tidying-models.html"><a href="logistic-regression-and-broom-for-tidying-models.html#the-model-summary"><i class="fa fa-check"></i><b>35.1</b> The Model Summary</a></li>
+<li class="chapter" data-level="35.2" data-path="logistic-regression-and-broom-for-tidying-models.html"><a href="logistic-regression-and-broom-for-tidying-models.html#evaluating-your-model-assumptions"><i class="fa fa-check"></i><b>35.2</b> Evaluating your Model Assumptions</a></li>
+<li class="chapter" data-level="35.3" data-path="logistic-regression-and-broom-for-tidying-models.html"><a href="logistic-regression-and-broom-for-tidying-models.html#converting-between-logit-odds-ratios-and-probability"><i class="fa fa-check"></i><b>35.3</b> Converting between logit, odds ratios, and probability</a></li>
 </ul></li>
-<li class="chapter" data-level="40.11" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#figures"><i class="fa fa-check"></i><b>40.11</b> Figures</a></li>
-<li class="chapter" data-level="40.12" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#tables"><i class="fa fa-check"></i><b>40.12</b> Tables</a></li>
-<li class="chapter" data-level="40.13" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#inline-code-and-caching"><i class="fa fa-check"></i><b>40.13</b> Inline Code and Caching</a></li>
-<li class="chapter" data-level="40.14" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#quarto-at-the-command-line"><i class="fa fa-check"></i><b>40.14</b> Quarto at the Command Line</a></li>
-<li class="chapter" data-level="40.15" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#citations-in-quarto"><i class="fa fa-check"></i><b>40.15</b> Citations in Quarto</a></li>
-<li class="chapter" data-level="40.16" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#challenge-yourself-1"><i class="fa fa-check"></i><b>40.16</b> Challenge Yourself</a></li>
-<li class="chapter" data-level="40.17" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#exploring-further"><i class="fa fa-check"></i><b>40.17</b> Exploring further</a></li>
+<li class="chapter" data-level="36" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html"><i class="fa fa-check"></i><b>36</b> Fast and Frugal Trees with the {FFTrees} Package</a>
+<ul>
+<li class="chapter" data-level="36.1" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#setup"><i class="fa fa-check"></i><b>36.1</b> Setup</a></li>
+<li class="chapter" data-level="36.2" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#the-breast-cancer-dataset"><i class="fa fa-check"></i><b>36.2</b> The Breast Cancer Dataset</a>
+<ul>
+<li class="chapter" data-level="36.2.1" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#data-inspection"><i class="fa fa-check"></i><b>36.2.1</b> Data Inspection</a></li>
+<li class="chapter" data-level="36.2.2" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#check-your-progress"><i class="fa fa-check"></i><b>36.2.2</b> Check Your Progress</a></li>
 </ul></li>
-<li class="chapter" data-level="41" data-path="cmd-line.html"><a href="cmd-line.html"><i class="fa fa-check"></i><b>41</b> Running R from the UNIX Command Line</a>
+<li class="chapter" data-level="36.3" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#building-a-fftrees-model-for-breast-cancer"><i class="fa fa-check"></i><b>36.3</b> Building a FFTrees Model for Breast Cancer</a></li>
+<li class="chapter" data-level="36.4" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#your-turn-with-heart-disease-data"><i class="fa fa-check"></i><b>36.4</b> Your Turn with Heart Disease Data</a>
 <ul>
-<li class="chapter" data-level="41.1" data-path="cmd-line.html"><a href="cmd-line.html#what-is-the-unix-command-line"><i class="fa fa-check"></i><b>41.1</b> What is the UNIX Command line?</a></li>
-<li class="chapter" data-level="41.2" data-path="cmd-line.html"><a href="cmd-line.html#why-run-r-from-the-command-line"><i class="fa fa-check"></i><b>41.2</b> Why run R from the command line?</a></li>
-<li class="chapter" data-level="41.3" data-path="cmd-line.html"><a href="cmd-line.html#how-do-you-get-started"><i class="fa fa-check"></i><b>41.3</b> How do you get started?</a>
-<ul>
-<li class="chapter" data-level="41.3.1" data-path="cmd-line.html"><a href="cmd-line.html#on-a-mac"><i class="fa fa-check"></i><b>41.3.1</b> On a Mac</a></li>
-<li class="chapter" data-level="41.3.2" data-path="cmd-line.html"><a href="cmd-line.html#on-a-windows-pc"><i class="fa fa-check"></i><b>41.3.2</b> On a Windows PC</a></li>
+<li class="chapter" data-level="36.4.1" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#test-what-you-have-learned-2"><i class="fa fa-check"></i><b>36.4.1</b> Test what you have learned</a></li>
 </ul></li>
-<li class="chapter" data-level="41.4" data-path="cmd-line.html"><a href="cmd-line.html#the-yawning-blackness-of-the-terminal-window"><i class="fa fa-check"></i><b>41.4</b> The Yawning Blackness of the Terminal Window</a></li>
-<li class="chapter" data-level="41.5" data-path="cmd-line.html"><a href="cmd-line.html#where-are-we"><i class="fa fa-check"></i><b>41.5</b> Where Are We?</a></li>
-<li class="chapter" data-level="41.6" data-path="cmd-line.html"><a href="cmd-line.html#cleaning-up"><i class="fa fa-check"></i><b>41.6</b> Cleaning Up</a></li>
-<li class="chapter" data-level="41.7" data-path="cmd-line.html"><a href="cmd-line.html#other-helpful-file-commands"><i class="fa fa-check"></i><b>41.7</b> Other helpful file commands</a></li>
-<li class="chapter" data-level="41.8" data-path="cmd-line.html"><a href="cmd-line.html#what-about-r"><i class="fa fa-check"></i><b>41.8</b> What about R?</a></li>
-<li class="chapter" data-level="41.9" data-path="cmd-line.html"><a href="cmd-line.html#what-about-just-a-few-lines-of-r"><i class="fa fa-check"></i><b>41.9</b> What about just a few lines of R?</a></li>
-<li class="chapter" data-level="41.10" data-path="cmd-line.html"><a href="cmd-line.html#running-an-r-script-from-the-terminal"><i class="fa fa-check"></i><b>41.10</b> Running an R Script from the Terminal</a></li>
-<li class="chapter" data-level="41.11" data-path="cmd-line.html"><a href="cmd-line.html#rendering-an-rmarkdown-file-from-the-terminal"><i class="fa fa-check"></i><b>41.11</b> Rendering an Rmarkdown file from the Terminal</a></li>
+<li class="chapter" data-level="36.5" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#your-turn-to-build-and-interpret-a-model"><i class="fa fa-check"></i><b>36.5</b> Your Turn to Build and Interpret a Model</a></li>
+<li class="chapter" data-level="36.6" data-path="fast-and-frugal-trees-with-the-fftrees-package.html"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#now-build-your-fftrees-model-to-predict-improved-status-vs.-death"><i class="fa fa-check"></i><b>36.6</b> Now build your FFTrees model to predict improved status (vs. death)</a></li>
 </ul></li>
-<li class="chapter" data-level="42" data-path="secure-passwords-in-r.html"><a href="secure-passwords-in-r.html"><i class="fa fa-check"></i><b>42</b> Secure Passwords in R</a>
+<li class="chapter" data-level="37" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html"><i class="fa fa-check"></i><b>37</b> A Gentle Introduction to Shiny</a>
 <ul>
-<li class="chapter" data-level="42.1" data-path="secure-passwords-in-r.html"><a href="secure-passwords-in-r.html#setting-new-keys"><i class="fa fa-check"></i><b>42.1</b> Setting New Keys</a></li>
+<li class="chapter" data-level="37.1" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#what-is-shiny"><i class="fa fa-check"></i><b>37.1</b> What is Shiny?</a></li>
+<li class="chapter" data-level="37.2" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#the-basic-structure-of-a-shiny-app"><i class="fa fa-check"></i><b>37.2</b> The Basic Structure of a Shiny App</a>
+<ul>
+<li class="chapter" data-level="37.2.1" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#the-weirdness-of-a-shiny-app"><i class="fa fa-check"></i><b>37.2.1</b> The weirdness of a Shiny app</a></li>
 </ul></li>
-<li class="chapter" data-level="43" data-path="dates-and-times-in-r.html"><a href="dates-and-times-in-r.html"><i class="fa fa-check"></i><b>43</b> Dates and Times in R</a>
+<li class="chapter" data-level="37.3" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#the-user-interface-section-structure"><i class="fa fa-check"></i><b>37.3</b> The User Interface Section Structure</a></li>
+<li class="chapter" data-level="37.4" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#the-server-section-structure"><i class="fa fa-check"></i><b>37.4</b> The Server Section Structure</a></li>
+<li class="chapter" data-level="37.5" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#how-to-run-an-app"><i class="fa fa-check"></i><b>37.5</b> How to Run an App</a>
 <ul>
-<li class="chapter" data-level="43.1" data-path="dates-and-times-in-r.html"><a href="dates-and-times-in-r.html#data-types-for-dates-and-times"><i class="fa fa-check"></i><b>43.1</b> Data Types for Dates and Times</a></li>
-<li class="chapter" data-level="43.2" data-path="dates-and-times-in-r.html"><a href="dates-and-times-in-r.html#using-posixlt"><i class="fa fa-check"></i><b>43.2</b> Using POSIXlt</a></li>
-<li class="chapter" data-level="43.3" data-path="dates-and-times-in-r.html"><a href="dates-and-times-in-r.html#formatting-dates"><i class="fa fa-check"></i><b>43.3</b> Formatting dates</a>
-<ul>
-<li class="chapter" data-level="43.3.1" data-path="dates-and-times-in-r.html"><a href="dates-and-times-in-r.html#code-chunk-icons-1"><i class="fa fa-check"></i><b>43.3.1</b> Code Chunk Icons</a></li>
+<li class="chapter" data-level="37.5.1" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#how-to-stop-an-app"><i class="fa fa-check"></i><b>37.5.1</b> How to Stop an App</a></li>
 </ul></li>
-<li class="chapter" data-level="43.4" data-path="dates-and-times-in-r.html"><a href="dates-and-times-in-r.html#including-plots-2"><i class="fa fa-check"></i><b>43.4</b> Including Plots</a></li>
-<li class="chapter" data-level="43.5" data-path="dates-and-times-in-r.html"><a href="dates-and-times-in-r.html#including-tables-1"><i class="fa fa-check"></i><b>43.5</b> Including Tables</a></li>
-<li class="chapter" data-level="43.6" data-path="dates-and-times-in-r.html"><a href="dates-and-times-in-r.html#other-languages-in-code-chunks-1"><i class="fa fa-check"></i><b>43.6</b> Other languages in code chunks</a></li>
-<li class="chapter" data-level="43.7" data-path="dates-and-times-in-r.html"><a href="dates-and-times-in-r.html#code-chunk-options-1"><i class="fa fa-check"></i><b>43.7</b> Code Chunk Options</a></li>
-<li class="chapter" data-level="43.8" data-path="dates-and-times-in-r.html"><a href="dates-and-times-in-r.html#try-out-other-chunk-options-1"><i class="fa fa-check"></i><b>43.8</b> Try Out Other Chunk Options</a></li>
-<li class="chapter" data-level="43.9" data-path="dates-and-times-in-r.html"><a href="dates-and-times-in-r.html#the-setup-chunk-1"><i class="fa fa-check"></i><b>43.9</b> The <code>setup</code> chunk</a></li>
-<li class="chapter" data-level="43.10" data-path="dates-and-times-in-r.html"><a href="dates-and-times-in-r.html#the-easy-button---visual-markdown-editing-1"><i class="fa fa-check"></i><b>43.10</b> The Easy Button - Visual Markdown Editing</a></li>
-<li class="chapter" data-level="43.11" data-path="dates-and-times-in-r.html"><a href="dates-and-times-in-r.html#a-quick-quiz-1"><i class="fa fa-check"></i><b>43.11</b> A Quick Quiz</a></li>
+<li class="chapter" data-level="37.6" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#building-a-very-simple-app-version-1"><i class="fa fa-check"></i><b>37.6</b> Building a Very Simple App (Version 1)</a>
+<ul>
+<li class="chapter" data-level="37.6.1" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#the-ui-section"><i class="fa fa-check"></i><b>37.6.1</b> The ui section</a></li>
+<li class="chapter" data-level="37.6.2" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#the-server-section"><i class="fa fa-check"></i><b>37.6.2</b> The server section</a></li>
 </ul></li>
-<li class="chapter" data-level="44" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html"><i class="fa fa-check"></i><b>44</b> Protecting PHI (Protected Health Information)</a>
+<li class="chapter" data-level="37.7" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#edit-this-app-version-2"><i class="fa fa-check"></i><b>37.7</b> Edit this App (Version 2)</a></li>
+<li class="chapter" data-level="37.8" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#building-a-user-interface-for-inputs-and-outputs"><i class="fa fa-check"></i><b>37.8</b> Building a User Interface for Inputs and Outputs</a>
 <ul>
-<li class="chapter" data-level="44.1" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html#protecting-not-inadvertently-sharing-phi"><i class="fa fa-check"></i><b>44.1</b> Protecting (Not Inadvertently Sharing) PHI</a></li>
-<li class="chapter" data-level="44.2" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html#identifying-phi"><i class="fa fa-check"></i><b>44.2</b> Identifying PHI</a></li>
-<li class="chapter" data-level="44.3" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html#selectively-deleting-phi"><i class="fa fa-check"></i><b>44.3</b> Selectively Deleting PHI</a></li>
-<li class="chapter" data-level="44.4" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html#problems-with-phi-free-data"><i class="fa fa-check"></i><b>44.4</b> Problems with PHI-free data</a></li>
-<li class="chapter" data-level="44.5" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html#encrypting-phi"><i class="fa fa-check"></i><b>44.5</b> Encrypting PHI</a>
-<ul>
-<li class="chapter" data-level="44.5.1" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html#generating-public-and-private-keys"><i class="fa fa-check"></i><b>44.5.1</b> Generating Public and Private keys</a></li>
+<li class="chapter" data-level="37.8.1" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#inputs"><i class="fa fa-check"></i><b>37.8.1</b> Inputs</a></li>
+<li class="chapter" data-level="37.8.2" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#outputs"><i class="fa fa-check"></i><b>37.8.2</b> Outputs</a></li>
 </ul></li>
-<li class="chapter" data-level="44.6" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html#sharing-synthetic-data-with-synthpop"><i class="fa fa-check"></i><b>44.6</b> Sharing synthetic data with {synthpop}</a></li>
+<li class="chapter" data-level="37.9" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#building-a-functioning-server-section"><i class="fa fa-check"></i><b>37.9</b> Building a Functioning Server Section</a>
+<ul>
+<li class="chapter" data-level="37.9.1" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#using-the-input-values-data"><i class="fa fa-check"></i><b>37.9.1</b> Using the input values &amp; Data</a></li>
+<li class="chapter" data-level="37.9.2" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#wrangling-and-calculating"><i class="fa fa-check"></i><b>37.9.2</b> Wrangling and Calculating</a></li>
+<li class="chapter" data-level="37.9.3" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#rendering-to-html-outputs"><i class="fa fa-check"></i><b>37.9.3</b> Rendering to HTML Outputs</a></li>
 </ul></li>
-<li class="chapter" data-level="45" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html"><i class="fa fa-check"></i><b>45</b> Building Data Pipelines with {targets}</a>
-<ul>
-<li class="chapter" data-level="45.1" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#what-does-targets-do"><i class="fa fa-check"></i><b>45.1</b> What Does {targets} Do?</a></li>
-<li class="chapter" data-level="45.2" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#air-quality-analysis"><i class="fa fa-check"></i><b>45.2</b> Air Quality Analysis</a>
-<ul>
-<li class="chapter" data-level="45.2.1" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#prepping-the-functions.r-file"><i class="fa fa-check"></i><b>45.2.1</b> Prepping The Functions.R file</a></li>
-<li class="chapter" data-level="45.2.2" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#checking-your-functions"><i class="fa fa-check"></i><b>45.2.2</b> Checking Your Functions</a></li>
-<li class="chapter" data-level="45.2.3" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#set-up-the-pipeline"><i class="fa fa-check"></i><b>45.2.3</b> Set Up the Pipeline</a></li>
-<li class="chapter" data-level="45.2.4" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#pre-build-checks"><i class="fa fa-check"></i><b>45.2.4</b> Pre-Build Checks</a></li>
-<li class="chapter" data-level="45.2.5" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#changing-the-pipeline"><i class="fa fa-check"></i><b>45.2.5</b> Changing the Pipeline</a></li>
+<li class="chapter" data-level="37.10" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#building-a-simple-shiny-app-version-3"><i class="fa fa-check"></i><b>37.10</b> Building a Simple Shiny App (Version 3)</a></li>
+<li class="chapter" data-level="37.11" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#publishing-your-shiny-app-on-the-web"><i class="fa fa-check"></i><b>37.11</b> Publishing Your Shiny App on the Web</a></li>
+<li class="chapter" data-level="37.12" data-path="a-gentle-introduction-to-shiny.html"><a href="a-gentle-introduction-to-shiny.html#more-to-explore"><i class="fa fa-check"></i><b>37.12</b> More to Explore</a></li>
 </ul></li>
-<li class="chapter" data-level="45.3" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#your-turn---a-tuberculosis-analysis-pipeline"><i class="fa fa-check"></i><b>45.3</b> Your Turn - A Tuberculosis Analysis Pipeline</a>
+<li class="chapter" data-level="38" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html"><i class="fa fa-check"></i><b>38</b> Sharing Models with Shiny</a>
 <ul>
-<li class="chapter" data-level="45.3.1" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#making-new-functions"><i class="fa fa-check"></i><b>45.3.1</b> Making new Functions</a></li>
-<li class="chapter" data-level="45.3.2" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#testing-functions"><i class="fa fa-check"></i><b>45.3.2</b> Testing functions</a></li>
+<li class="chapter" data-level="38.0.1" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#packages-needed-for-this-chapter-6"><i class="fa fa-check"></i><b>38.0.1</b> Packages Needed for this Chapter</a></li>
+<li class="chapter" data-level="38.1" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#setting-up-and-saving-models"><i class="fa fa-check"></i><b>38.1</b> Setting up and Saving Models</a>
+<ul>
+<li class="chapter" data-level="38.1.1" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#linear-model"><i class="fa fa-check"></i><b>38.1.1</b> Linear Model</a></li>
+<li class="chapter" data-level="38.1.2" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#logistic-model"><i class="fa fa-check"></i><b>38.1.2</b> Logistic Model</a></li>
+<li class="chapter" data-level="38.1.3" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#random-forest-model"><i class="fa fa-check"></i><b>38.1.3</b> Random Forest Model</a></li>
 </ul></li>
-<li class="chapter" data-level="45.4" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#resetting-functions-before-the-pipeline-is-built"><i class="fa fa-check"></i><b>45.4</b> Resetting functions before the Pipeline is Built</a>
+<li class="chapter" data-level="38.2" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#building-a-shiny-app-for-the-linear-model"><i class="fa fa-check"></i><b>38.2</b> Building a Shiny App for the Linear Model</a>
 <ul>
-<li class="chapter" data-level="45.4.1" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#setting-up-targets"><i class="fa fa-check"></i><b>45.4.1</b> Setting Up {targets}</a></li>
+<li class="chapter" data-level="38.2.1" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#the-default-shiny-app"><i class="fa fa-check"></i><b>38.2.1</b> The Default Shiny App</a></li>
+<li class="chapter" data-level="38.2.2" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#editing-the-ui-sidebarpanel-for-the-input-predictor-variables"><i class="fa fa-check"></i><b>38.2.2</b> Editing the <strong>ui</strong> <em>sidebarPanel</em> for the Input Predictor Variables</a></li>
+<li class="chapter" data-level="38.2.3" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#editing-the-server-section-to-make-predictions"><i class="fa fa-check"></i><b>38.2.3</b> Editing the <em>server</em> section to make Predictions</a></li>
+<li class="chapter" data-level="38.2.4" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#editing-the-mainpanel-in-the-ui-section-to-display-your-prediction"><i class="fa fa-check"></i><b>38.2.4</b> Editing the mainPanel in the ui section to display your Prediction</a></li>
 </ul></li>
-<li class="chapter" data-level="45.5" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#editing-the-_targets.r-file"><i class="fa fa-check"></i><b>45.5</b> Editing the <code>_targets.R</code> File</a>
+<li class="chapter" data-level="38.3" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#building-a-shiny-app-for-the-logistic-model"><i class="fa fa-check"></i><b>38.3</b> Building a Shiny App for the Logistic Model</a>
 <ul>
-<li class="chapter" data-level="45.5.1" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#running-the-pipeline"><i class="fa fa-check"></i><b>45.5.1</b> Running the Pipeline</a></li>
-<li class="chapter" data-level="45.5.2" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#modificatons-to-the-pipeline"><i class="fa fa-check"></i><b>45.5.2</b> Modificatons to the Pipeline</a></li>
-<li class="chapter" data-level="45.5.3" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#modify-the-plot"><i class="fa fa-check"></i><b>45.5.3</b> Modify the Plot</a></li>
+<li class="chapter" data-level="38.3.1" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#the-default-shiny-app-1"><i class="fa fa-check"></i><b>38.3.1</b> The Default Shiny App</a></li>
+<li class="chapter" data-level="38.3.2" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#editing-the-ui-sidebarpanel-for-the-input-predictor-variables-1"><i class="fa fa-check"></i><b>38.3.2</b> Editing the <strong>ui</strong> <em>sidebarPanel</em> for the Input Predictor Variables</a></li>
+<li class="chapter" data-level="38.3.3" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#editing-the-server-section-to-make-predictions-1"><i class="fa fa-check"></i><b>38.3.3</b> Editing the <em>server</em> section to make Predictions</a></li>
+<li class="chapter" data-level="38.3.4" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#editing-the-mainpanel-in-the-ui-section-to-display-your-prediction-1"><i class="fa fa-check"></i><b>38.3.4</b> Editing the mainPanel in the ui section to display your Prediction</a></li>
 </ul></li>
-<li class="chapter" data-level="45.6" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#next-steps"><i class="fa fa-check"></i><b>45.6</b> Next Steps</a></li>
+<li class="chapter" data-level="38.4" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#building-a-shiny-app-for-the-random-forest-model"><i class="fa fa-check"></i><b>38.4</b> Building a Shiny App for the Random Forest Model</a></li>
+<li class="chapter" data-level="38.5" data-path="sharing-models-with-shiny.html"><a href="sharing-models-with-shiny.html#challenge-yourself"><i class="fa fa-check"></i><b>38.5</b> Challenge Yourself</a></li>
 </ul></li>
-<li class="chapter" data-level="46" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html"><i class="fa fa-check"></i><b>46</b> Colors and Scales in {ggplot2}</a>
+<li class="chapter" data-level="39" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html"><i class="fa fa-check"></i><b>39</b> Introduction to R Markdown</a>
 <ul>
-<li class="chapter" data-level="46.1" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#goals-for-this-chapter-7"><i class="fa fa-check"></i><b>46.1</b> Goals for this Chapter</a></li>
-<li class="chapter" data-level="46.2" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#colors-in-r-and-ggplot2"><i class="fa fa-check"></i><b>46.2</b> Colors in R and {ggplot2}</a>
+<li class="chapter" data-level="39.1" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#what-makes-an-rmarkdown-document"><i class="fa fa-check"></i><b>39.1</b> What Makes an Rmarkdown document?</a></li>
+<li class="chapter" data-level="39.2" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#trying-out-rmarkdown-with-a-mock-manuscript"><i class="fa fa-check"></i><b>39.2</b> Trying out RMarkdown with a Mock Manuscript</a></li>
+<li class="chapter" data-level="39.3" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#inserting-code-chunks"><i class="fa fa-check"></i><b>39.3</b> Inserting Code Chunks</a>
 <ul>
-<li class="chapter" data-level="46.2.1" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#using-pre-defined-color-names"><i class="fa fa-check"></i><b>46.2.1</b> Using pre-defined color names</a></li>
-<li class="chapter" data-level="46.2.2" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#using-color-hex-codes"><i class="fa fa-check"></i><b>46.2.2</b> Using color hex codes</a></li>
-<li class="chapter" data-level="46.2.3" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#screen-vs.-print-colors"><i class="fa fa-check"></i><b>46.2.3</b> Screen vs. Print Colors</a></li>
-<li class="chapter" data-level="46.2.4" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#transparency-and-hex-colors"><i class="fa fa-check"></i><b>46.2.4</b> Transparency and hex colors</a></li>
-<li class="chapter" data-level="46.2.5" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#more-obscure-ways-to-select-colors"><i class="fa fa-check"></i><b>46.2.5</b> More obscure ways to select colors</a></li>
-<li class="chapter" data-level="46.2.6" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#using-color-palettes"><i class="fa fa-check"></i><b>46.2.6</b> Using color palettes</a></li>
-<li class="chapter" data-level="46.2.7" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#color-blind-friendly-palettes"><i class="fa fa-check"></i><b>46.2.7</b> Color-blind friendly palettes</a></li>
+<li class="chapter" data-level="39.3.1" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#code-chunk-icons"><i class="fa fa-check"></i><b>39.3.1</b> Code Chunk Icons</a></li>
 </ul></li>
-<li class="chapter" data-level="46.3" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#sequential-diverging-and-qualitative-palettes"><i class="fa fa-check"></i><b>46.3</b> Sequential, Diverging, and Qualitative Palettes</a></li>
-<li class="chapter" data-level="46.4" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#choosing-colors-with-meaning"><i class="fa fa-check"></i><b>46.4</b> Choosing Colors with Meaning</a></li>
+<li class="chapter" data-level="39.4" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#including-plots-1"><i class="fa fa-check"></i><b>39.4</b> Including Plots</a></li>
+<li class="chapter" data-level="39.5" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#including-tables"><i class="fa fa-check"></i><b>39.5</b> Including Tables</a></li>
+<li class="chapter" data-level="39.6" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#including-links-and-images"><i class="fa fa-check"></i><b>39.6</b> Including Links and Images</a>
+<ul>
+<li class="chapter" data-level="39.6.1" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#links"><i class="fa fa-check"></i><b>39.6.1</b> Links</a></li>
+<li class="chapter" data-level="39.6.2" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#images"><i class="fa fa-check"></i><b>39.6.2</b> Images</a></li>
 </ul></li>
-<li class="chapter" data-level="47" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html"><i class="fa fa-check"></i><b>47</b> Using the {flowchart} package for CONSORT diagrams in R</a>
+<li class="chapter" data-level="39.7" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#other-languages-in-code-chunks"><i class="fa fa-check"></i><b>39.7</b> Other languages in code chunks</a></li>
+<li class="chapter" data-level="39.8" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#code-chunk-options"><i class="fa fa-check"></i><b>39.8</b> Code Chunk Options</a></li>
+<li class="chapter" data-level="39.9" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#how-it-all-rmarkdown-knitr-pandoc-works"><i class="fa fa-check"></i><b>39.9</b> How It All (Rmarkdown + {knitr} + Pandoc) Works</a></li>
+<li class="chapter" data-level="39.10" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#knitting-and-editing-and-re-knitting-your-rmd-document"><i class="fa fa-check"></i><b>39.10</b> Knitting and Editing (and re-Knitting() Your Rmd document</a></li>
+<li class="chapter" data-level="39.11" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#try-out-other-chunk-options"><i class="fa fa-check"></i><b>39.11</b> Try Out Other Chunk Options</a></li>
+<li class="chapter" data-level="39.12" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#the-setup-chunk"><i class="fa fa-check"></i><b>39.12</b> The <code>setup</code> chunk</a></li>
+<li class="chapter" data-level="39.13" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#markdown-syntax"><i class="fa fa-check"></i><b>39.13</b> Markdown syntax</a></li>
+<li class="chapter" data-level="39.14" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#nd-header"><i class="fa fa-check"></i><b>39.14</b> 2nd Header</a>
 <ul>
-<li class="chapter" data-level="47.1" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#why-flowcharts"><i class="fa fa-check"></i><b>47.1</b> Why Flowcharts?</a></li>
-<li class="chapter" data-level="47.2" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#loading-libraries"><i class="fa fa-check"></i><b>47.2</b> Loading Libraries</a></li>
-<li class="chapter" data-level="47.3" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#a-consort-flowchart-for-statins-to-prevent-hcc"><i class="fa fa-check"></i><b>47.3</b> A CONSORT Flowchart for Statins to Prevent HCC</a></li>
-<li class="chapter" data-level="47.4" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#data"><i class="fa fa-check"></i><b>47.4</b> Data</a></li>
-<li class="chapter" data-level="47.5" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#branching"><i class="fa fa-check"></i><b>47.5</b> Branching</a></li>
-<li class="chapter" data-level="47.6" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#splitting-into-groups-treatment-arms"><i class="fa fa-check"></i><b>47.6</b> Splitting into Groups (Treatment Arms)</a>
-<ul>
-<li class="chapter" data-level="47.6.1" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#a-short-tangent-on-ifelse"><i class="fa fa-check"></i><b>47.6.1</b> A Short Tangent on {ifelse}</a></li>
+<li class="chapter" data-level="39.14.1" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#rd-header"><i class="fa fa-check"></i><b>39.14.1</b> 3rd Header</a></li>
 </ul></li>
-<li class="chapter" data-level="47.7" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#filtering-for-completers"><i class="fa fa-check"></i><b>47.7</b> Filtering for Completers</a></li>
-<li class="chapter" data-level="47.8" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#modify-exclusions-for-more-detailed-labels"><i class="fa fa-check"></i><b>47.8</b> Modify exclusions for more detailed labels</a>
+<li class="chapter" data-level="39.15" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#line-breaks-and-page-breaks"><i class="fa fa-check"></i><b>39.15</b> Line Breaks and Page Breaks</a></li>
+<li class="chapter" data-level="39.16" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#making-lists"><i class="fa fa-check"></i><b>39.16</b> Making Lists</a>
 <ul>
-<li class="chapter" data-level="47.8.1" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#time-for-a-quiz"><i class="fa fa-check"></i><b>47.8.1</b> Time for a Quiz</a></li>
+<li class="chapter" data-level="39.16.1" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#ordered-lists"><i class="fa fa-check"></i><b>39.16.1</b> Ordered Lists</a></li>
+<li class="chapter" data-level="39.16.2" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#un-ordered-lists"><i class="fa fa-check"></i><b>39.16.2</b> Un-ordered lists</a></li>
+<li class="chapter" data-level="39.16.3" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#nested-lists"><i class="fa fa-check"></i><b>39.16.3</b> Nested Lists</a></li>
 </ul></li>
-<li class="chapter" data-level="47.9" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#a-more-complicated-study"><i class="fa fa-check"></i><b>47.9</b> A More Complicated Study</a></li>
-<li class="chapter" data-level="47.10" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#example"><i class="fa fa-check"></i><b>47.10</b> Example</a></li>
-<li class="chapter" data-level="47.11" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#branching-1"><i class="fa fa-check"></i><b>47.11</b> Branching</a></li>
-<li class="chapter" data-level="47.12" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#splitting-into-groups-treatment-arms-1"><i class="fa fa-check"></i><b>47.12</b> Splitting into Groups (Treatment Arms)</a></li>
-<li class="chapter" data-level="47.13" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#filtering-for-completers-1"><i class="fa fa-check"></i><b>47.13</b> Filtering for Completers</a></li>
-<li class="chapter" data-level="47.14" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#modify-exclusions-for-more-detailed-labels-1"><i class="fa fa-check"></i><b>47.14</b> Modify exclusions for more detailed labels</a></li>
-<li class="chapter" data-level="47.15" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#next-step"><i class="fa fa-check"></i><b>47.15</b> Next step</a></li>
-<li class="chapter" data-level="47.16" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#now-add-these-withdrawal-reasons"><i class="fa fa-check"></i><b>47.16</b> Now Add These Withdrawal Reasons</a></li>
-<li class="chapter" data-level="47.17" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#your-turn-7"><i class="fa fa-check"></i><b>47.17</b> Your Turn</a></li>
-<li class="chapter" data-level="47.17.1" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#fatigue-starting-box"><i class="fa fa-check"></i><b>47.17.1</b> Fatigue Starting Box</a></li>
-<li class="chapter" data-level="47.17.2" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#fatigue-branching-fror-exclusions-with-fc_filter"><i class="fa fa-check"></i><b>47.17.2</b> Fatigue Branching fr=or Exclusions with fc_filter</a></li>
-<li class="chapter" data-level="47.17.3" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#branching-fatigue"><i class="fa fa-check"></i><b>47.17.3</b> Branching Fatigue</a></li>
-<li class="chapter" data-level="47.17.4" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#fatigue-completers"><i class="fa fa-check"></i><b>47.17.4</b> Fatigue Completers</a></li>
-<li class="chapter" data-level="47.17.5" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#fatigue-text-for-exclusions"><i class="fa fa-check"></i><b>47.17.5</b> Fatigue Text for Exclusions</a></li>
-<li class="chapter" data-level="47.17.6" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#fatigue-add-text-for-exclusions"><i class="fa fa-check"></i><b>47.17.6</b> Fatigue Add text for Exclusions</a></li>
-<li class="chapter" data-level="47.17.7" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#withdrawal-reasons"><i class="fa fa-check"></i><b>47.17.7</b> Withdrawal Reasons</a></li>
-<li class="chapter" data-level="47.17.8" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#now-add-these-to-your-flowchart-with-fc_modify"><i class="fa fa-check"></i><b>47.17.8</b> Now add these to Your Flowchart with fc_modify</a></li>
-<li class="chapter" data-level="47.17.9" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#final-fatigue-flowchart-drawing-fatigue_fc6"><i class="fa fa-check"></i><b>47.17.9</b> Final Fatigue Flowchart Drawing fatigue_fc6</a></li>
-<li class="chapter" data-level="47.17.10" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#explore-more-features"><i class="fa fa-check"></i><b>47.17.10</b> Explore More Features</a></li>
+<li class="chapter" data-level="39.17" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#the-easy-button---visual-markdown-editing"><i class="fa fa-check"></i><b>39.17</b> The Easy Button - Visual Markdown Editing</a>
+<ul>
+<li class="chapter" data-level="39.17.1" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#try-inserting-a-list-a-table-and-a-block-quote"><i class="fa fa-check"></i><b>39.17.1</b> Try inserting a list, a table and a block-quote</a></li>
 </ul></li>
-<li class="chapter" data-level="48" data-path="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html"><i class="fa fa-check"></i><b>48</b> Using the {tabulapdf} package tp extract tables from PDFs</a>
+<li class="chapter" data-level="39.18" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#inline-code"><i class="fa fa-check"></i><b>39.18</b> Inline Code</a>
 <ul>
-<li class="chapter" data-level="48.1" data-path="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#why-tables-from-pdfs"><i class="fa fa-check"></i><b>48.1</b> Why Tables from PDFs?</a></li>
-<li class="chapter" data-level="48.2" data-path="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#extracting-tables-from-pdfs"><i class="fa fa-check"></i><b>48.2</b> Extracting Tables from PDFs</a></li>
-<li class="chapter" data-level="48.3" data-path="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#extracting-tables-from-pdfs-1"><i class="fa fa-check"></i><b>48.3</b> Extracting Tables from PDFs</a></li>
-<li class="chapter" data-level="48.4" data-path="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#extracting-tables-from-the-pdf"><i class="fa fa-check"></i><b>48.4</b> Extracting Tables from the PDF</a></li>
-<li class="chapter" data-level="48.5" data-path="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#extracting-a-specific-table"><i class="fa fa-check"></i><b>48.5</b> Extracting a Specific Table</a></li>
-<li class="chapter" data-level="48.6" data-path="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#extracting-a-specific-table-1"><i class="fa fa-check"></i><b>48.6</b> Extracting a Specific Table</a></li>
-<li class="chapter" data-level="48.7" data-path="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#viewing-and-targeting-the-pdf"><i class="fa fa-check"></i><b>48.7</b> Viewing and Targeting the PDF</a></li>
-<li class="chapter" data-level="48.8" data-path="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#your-turn-8"><i class="fa fa-check"></i><b>48.8</b> Your Turn</a></li>
-<li class="chapter" data-level="48.8.1" data-path="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#explore-more-features-1"><i class="fa fa-check"></i><b>48.8.1</b> Explore More Features</a></li>
+<li class="chapter" data-level="39.18.1" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#try-inserting-some-in-line-r-code"><i class="fa fa-check"></i><b>39.18.1</b> Try inserting some in-line R code</a></li>
 </ul></li>
-<li class="chapter" data-level="49" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><i class="fa fa-check"></i><b>49</b> Using the {heemod} package to Evaluate Markov Models of Health Economic Strategies</a>
-<ul>
-<li class="chapter" data-level="49.1" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#why-health-economic-evaluation-and-markov-models"><i class="fa fa-check"></i><b>49.1</b> Why Health Economic Evaluation and Markov Models?</a></li>
-<li class="chapter" data-level="49.2" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#preparation-for-modeling"><i class="fa fa-check"></i><b>49.2</b> Preparation for Modeling</a></li>
-<li class="chapter" data-level="49.3" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#health-states"><i class="fa fa-check"></i><b>49.3</b> Health States</a></li>
-<li class="chapter" data-level="49.4" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#utilities"><i class="fa fa-check"></i><b>49.4</b> Utilities</a></li>
-<li class="chapter" data-level="49.5" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#transition-probabilities"><i class="fa fa-check"></i><b>49.5</b> Transition Probabilities</a></li>
-<li class="chapter" data-level="49.6" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#costs"><i class="fa fa-check"></i><b>49.6</b> Costs</a>
-<ul>
-<li class="chapter" data-level="49.6.1" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#maintenance-health-care-costs"><i class="fa fa-check"></i><b>49.6.1</b> Maintenance Health Care Costs</a></li>
+<li class="chapter" data-level="39.19" data-path="introduction-to-r-markdown.html"><a href="introduction-to-r-markdown.html#a-quick-quiz"><i class="fa fa-check"></i><b>39.19</b> A Quick Quiz</a></li>
 </ul></li>
-<li class="chapter" data-level="49.7" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#cycle-time"><i class="fa fa-check"></i><b>49.7</b> Cycle Time</a></li>
-<li class="chapter" data-level="49.8" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#building-your-model-and-calculating-outcomes"><i class="fa fa-check"></i><b>49.8</b> Building Your Model and Calculating Outcomes</a></li>
-<li class="chapter" data-level="49.9" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#a-first-model"><i class="fa fa-check"></i><b>49.9</b> A First Model</a></li>
-<li class="chapter" data-level="49.10" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#the-transition-state-matrix"><i class="fa fa-check"></i><b>49.10</b> The Transition State Matrix</a></li>
-<li class="chapter" data-level="49.11" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#attach-values-to-states"><i class="fa fa-check"></i><b>49.11</b> Attach Values to States</a></li>
-<li class="chapter" data-level="49.12" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#combining-transitions-and-values-into-a-model"><i class="fa fa-check"></i><b>49.12</b> Combining Transitions and Values into A Model</a></li>
-<li class="chapter" data-level="49.13" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#run-the-model"><i class="fa fa-check"></i><b>49.13</b> Run the Model</a></li>
-<li class="chapter" data-level="49.14" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#your-turn-9"><i class="fa fa-check"></i><b>49.14</b> Your Turn</a>
+<li class="chapter" data-level="40" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html"><i class="fa fa-check"></i><b>40</b> Rmarkdown Output Options</a>
 <ul>
-<li class="chapter" data-level="49.14.1" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#explore-more-features-2"><i class="fa fa-check"></i><b>49.14.1</b> Explore More Features</a></li>
-<li class="chapter" data-level="49.14.2" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#explore-health-economics-beyond-heemod"><i class="fa fa-check"></i><b>49.14.2</b> Explore Health Economics Beyond {heemod}</a></li>
+<li class="chapter" data-level="40.1" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#microsoft-word-output-from-rmarkdown"><i class="fa fa-check"></i><b>40.1</b> Microsoft Word Output from Rmarkdown</a>
+<ul>
+<li class="chapter" data-level="40.1.1" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#making-a-styles-reference-file-for-microsoft-word"><i class="fa fa-check"></i><b>40.1.1</b> Making a Styles Reference File for Microsoft Word</a></li>
+<li class="chapter" data-level="40.1.2" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#lets-practice-this."><i class="fa fa-check"></i><b>40.1.2</b> Let’s Practice This.</a></li>
+<li class="chapter" data-level="40.1.3" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#re-formatting-your-template"><i class="fa fa-check"></i><b>40.1.3</b> Re-formatting Your Template</a></li>
+<li class="chapter" data-level="40.1.4" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#using-your-new-styles-template"><i class="fa fa-check"></i><b>40.1.4</b> Using Your New Styles Template</a></li>
+<li class="chapter" data-level="40.1.5" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#now-you-are-ready"><i class="fa fa-check"></i><b>40.1.5</b> Now you are ready!</a></li>
+</ul></li>
+<li class="chapter" data-level="40.2" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#pdf-output-from-rmarkdown"><i class="fa fa-check"></i><b>40.2</b> PDF Output from RMarkdown</a>
+<ul>
+<li class="chapter" data-level="40.2.1" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#latex-and-tinytex"><i class="fa fa-check"></i><b>40.2.1</b> LaTeX and tinytex</a></li>
+<li class="chapter" data-level="40.2.2" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#knitting-to-pdf"><i class="fa fa-check"></i><b>40.2.2</b> Knitting to PDF</a></li>
+</ul></li>
+<li class="chapter" data-level="40.3" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#microsoft-powerpoint-output-from-rmarkdown"><i class="fa fa-check"></i><b>40.3</b> Microsoft Powerpoint Output from Rmarkdown</a>
+<ul>
+<li class="chapter" data-level="40.3.1" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#tables-in-powerpoint"><i class="fa fa-check"></i><b>40.3.1</b> Tables in Powerpoint</a></li>
+<li class="chapter" data-level="40.3.2" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#images-in-powerpoint"><i class="fa fa-check"></i><b>40.3.2</b> Images in Powerpoint</a></li>
+<li class="chapter" data-level="40.3.3" data-path="rmarkdown-output-options.html"><a href="rmarkdown-output-options.html#plots-in-powerpoint"><i class="fa fa-check"></i><b>40.3.3</b> Plots in Powerpoint</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="50" data-path="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html"><i class="fa fa-check"></i><b>50</b> Using your .Rprofile and .Renviron file and RStudio Code Snippets</a>
+<li class="chapter" data-level="41" data-path="adding-citations-to-your-rmarkdown.html"><a href="adding-citations-to-your-rmarkdown.html"><i class="fa fa-check"></i><b>41</b> Adding Citations to your RMarkdown</a></li>
+<li class="chapter" data-level="42" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html"><i class="fa fa-check"></i><b>42</b> Quarto is a Next-Generation RMarkdown</a>
 <ul>
-<li class="chapter" data-level="50.1" data-path="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#setting-up-your-.rprofile-file"><i class="fa fa-check"></i><b>50.1</b> Setting up your .Rprofile file</a></li>
-<li class="chapter" data-level="50.2" data-path="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#setting-up-your-.renviron-file"><i class="fa fa-check"></i><b>50.2</b> Setting up your .Renviron file</a>
+<li class="chapter" data-level="42.1" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#goals-for-this-chapter-6"><i class="fa fa-check"></i><b>42.1</b> Goals for this Chapter</a></li>
+<li class="chapter" data-level="42.2" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#packages-needed-for-this-chapter-7"><i class="fa fa-check"></i><b>42.2</b> Packages Needed for this chapter</a></li>
+<li class="chapter" data-level="42.3" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#introducing-quarto"><i class="fa fa-check"></i><b>42.3</b> Introducing Quarto</a></li>
+<li class="chapter" data-level="42.4" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#a-tour-of-quarto"><i class="fa fa-check"></i><b>42.4</b> A Tour of Quarto</a></li>
+<li class="chapter" data-level="42.5" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#opening-a-new-quarto-document"><i class="fa fa-check"></i><b>42.5</b> Opening a New Quarto Document</a></li>
+<li class="chapter" data-level="42.6" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#annotating-code-in-quarto"><i class="fa fa-check"></i><b>42.6</b> Annotating code in Quarto</a></li>
+<li class="chapter" data-level="42.7" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#the-visual-editor-vs.-source-editor-in-quarto"><i class="fa fa-check"></i><b>42.7</b> The Visual Editor vs. Source Editor in Quarto</a></li>
+<li class="chapter" data-level="42.8" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#adding-code-chunks"><i class="fa fa-check"></i><b>42.8</b> Adding Code Chunks</a></li>
+<li class="chapter" data-level="42.9" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#organized-options-in-code-chunks-with-the-hash-pipe"><i class="fa fa-check"></i><b>42.9</b> Organized Options in Code Chunks with the Hash-Pipe #|</a></li>
+<li class="chapter" data-level="42.10" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#stating-global-options-in-your-yaml-header"><i class="fa fa-check"></i><b>42.10</b> Stating Global Options in Your YAML Header</a>
 <ul>
-<li class="chapter" data-level="50.2.1" data-path="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#explore-redcaptidier-and-quarto-dashboards"><i class="fa fa-check"></i><b>50.2.1</b> Explore REDCapTidieR and Quarto Dashboards</a></li>
+<li class="chapter" data-level="42.10.1" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#code-options-and-code-folding"><i class="fa fa-check"></i><b>42.10.1</b> Code Options and Code Folding</a></li>
+<li class="chapter" data-level="42.10.2" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#parameters"><i class="fa fa-check"></i><b>42.10.2</b> Parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="42.11" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#figures"><i class="fa fa-check"></i><b>42.11</b> Figures</a></li>
+<li class="chapter" data-level="42.12" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#tables"><i class="fa fa-check"></i><b>42.12</b> Tables</a></li>
+<li class="chapter" data-level="42.13" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#inline-code-and-caching"><i class="fa fa-check"></i><b>42.13</b> Inline Code and Caching</a></li>
+<li class="chapter" data-level="42.14" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#quarto-at-the-command-line"><i class="fa fa-check"></i><b>42.14</b> Quarto at the Command Line</a></li>
+<li class="chapter" data-level="42.15" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#citations-in-quarto"><i class="fa fa-check"></i><b>42.15</b> Citations in Quarto</a></li>
+<li class="chapter" data-level="42.16" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#challenge-yourself-1"><i class="fa fa-check"></i><b>42.16</b> Challenge Yourself</a></li>
+<li class="chapter" data-level="42.17" data-path="quarto-is-a-next-generation-rmarkdown.html"><a href="quarto-is-a-next-generation-rmarkdown.html#exploring-further"><i class="fa fa-check"></i><b>42.17</b> Exploring further</a></li>
+</ul></li>
+<li class="chapter" data-level="43" data-path="cmd-line.html"><a href="cmd-line.html"><i class="fa fa-check"></i><b>43</b> Running R from the UNIX Command Line</a>
+<ul>
+<li class="chapter" data-level="43.1" data-path="cmd-line.html"><a href="cmd-line.html#what-is-the-unix-command-line"><i class="fa fa-check"></i><b>43.1</b> What is the UNIX Command line?</a></li>
+<li class="chapter" data-level="43.2" data-path="cmd-line.html"><a href="cmd-line.html#why-run-r-from-the-command-line"><i class="fa fa-check"></i><b>43.2</b> Why run R from the command line?</a></li>
+<li class="chapter" data-level="43.3" data-path="cmd-line.html"><a href="cmd-line.html#how-do-you-get-started"><i class="fa fa-check"></i><b>43.3</b> How do you get started?</a>
+<ul>
+<li class="chapter" data-level="43.3.1" data-path="cmd-line.html"><a href="cmd-line.html#on-a-mac"><i class="fa fa-check"></i><b>43.3.1</b> On a Mac</a></li>
+<li class="chapter" data-level="43.3.2" data-path="cmd-line.html"><a href="cmd-line.html#on-a-windows-pc"><i class="fa fa-check"></i><b>43.3.2</b> On a Windows PC</a></li>
+</ul></li>
+<li class="chapter" data-level="43.4" data-path="cmd-line.html"><a href="cmd-line.html#the-yawning-blackness-of-the-terminal-window"><i class="fa fa-check"></i><b>43.4</b> The Yawning Blackness of the Terminal Window</a></li>
+<li class="chapter" data-level="43.5" data-path="cmd-line.html"><a href="cmd-line.html#where-are-we"><i class="fa fa-check"></i><b>43.5</b> Where Are We?</a></li>
+<li class="chapter" data-level="43.6" data-path="cmd-line.html"><a href="cmd-line.html#cleaning-up"><i class="fa fa-check"></i><b>43.6</b> Cleaning Up</a></li>
+<li class="chapter" data-level="43.7" data-path="cmd-line.html"><a href="cmd-line.html#other-helpful-file-commands"><i class="fa fa-check"></i><b>43.7</b> Other helpful file commands</a></li>
+<li class="chapter" data-level="43.8" data-path="cmd-line.html"><a href="cmd-line.html#what-about-r"><i class="fa fa-check"></i><b>43.8</b> What about R?</a></li>
+<li class="chapter" data-level="43.9" data-path="cmd-line.html"><a href="cmd-line.html#what-about-just-a-few-lines-of-r"><i class="fa fa-check"></i><b>43.9</b> What about just a few lines of R?</a></li>
+<li class="chapter" data-level="43.10" data-path="cmd-line.html"><a href="cmd-line.html#running-an-r-script-from-the-terminal"><i class="fa fa-check"></i><b>43.10</b> Running an R Script from the Terminal</a></li>
+<li class="chapter" data-level="43.11" data-path="cmd-line.html"><a href="cmd-line.html#rendering-an-rmarkdown-file-from-the-terminal"><i class="fa fa-check"></i><b>43.11</b> Rendering an Rmarkdown file from the Terminal</a></li>
+</ul></li>
+<li class="chapter" data-level="44" data-path="secure-passwords-in-r.html"><a href="secure-passwords-in-r.html"><i class="fa fa-check"></i><b>44</b> Secure Passwords in R</a>
+<ul>
+<li class="chapter" data-level="44.1" data-path="secure-passwords-in-r.html"><a href="secure-passwords-in-r.html#setting-new-keys"><i class="fa fa-check"></i><b>44.1</b> Setting New Keys</a></li>
+</ul></li>
+<li class="chapter" data-level="45" data-path="dates-and-times-in-r.html"><a href="dates-and-times-in-r.html"><i class="fa fa-check"></i><b>45</b> Dates and Times in R</a>
+<ul>
+<li class="chapter" data-level="45.1" data-path="dates-and-times-in-r.html"><a href="dates-and-times-in-r.html#data-types-for-dates-and-times"><i class="fa fa-check"></i><b>45.1</b> Data Types for Dates and Times</a></li>
+<li class="chapter" data-level="45.2" data-path="dates-and-times-in-r.html"><a href="dates-and-times-in-r.html#using-posixlt"><i class="fa fa-check"></i><b>45.2</b> Using POSIXlt</a></li>
+<li class="chapter" data-level="45.3" data-path="dates-and-times-in-r.html"><a href="dates-and-times-in-r.html#formatting-dates"><i class="fa fa-check"></i><b>45.3</b> Formatting dates</a>
+<ul>
+<li class="chapter" data-level="45.3.1" data-path="dates-and-times-in-r.html"><a href="dates-and-times-in-r.html#code-chunk-icons-1"><i class="fa fa-check"></i><b>45.3.1</b> Code Chunk Icons</a></li>
+</ul></li>
+<li class="chapter" data-level="45.4" data-path="dates-and-times-in-r.html"><a href="dates-and-times-in-r.html#including-plots-2"><i class="fa fa-check"></i><b>45.4</b> Including Plots</a></li>
+<li class="chapter" data-level="45.5" data-path="dates-and-times-in-r.html"><a href="dates-and-times-in-r.html#including-tables-1"><i class="fa fa-check"></i><b>45.5</b> Including Tables</a></li>
+<li class="chapter" data-level="45.6" data-path="dates-and-times-in-r.html"><a href="dates-and-times-in-r.html#other-languages-in-code-chunks-1"><i class="fa fa-check"></i><b>45.6</b> Other languages in code chunks</a></li>
+<li class="chapter" data-level="45.7" data-path="dates-and-times-in-r.html"><a href="dates-and-times-in-r.html#code-chunk-options-1"><i class="fa fa-check"></i><b>45.7</b> Code Chunk Options</a></li>
+<li class="chapter" data-level="45.8" data-path="dates-and-times-in-r.html"><a href="dates-and-times-in-r.html#try-out-other-chunk-options-1"><i class="fa fa-check"></i><b>45.8</b> Try Out Other Chunk Options</a></li>
+<li class="chapter" data-level="45.9" data-path="dates-and-times-in-r.html"><a href="dates-and-times-in-r.html#the-setup-chunk-1"><i class="fa fa-check"></i><b>45.9</b> The <code>setup</code> chunk</a></li>
+<li class="chapter" data-level="45.10" data-path="dates-and-times-in-r.html"><a href="dates-and-times-in-r.html#the-easy-button---visual-markdown-editing-1"><i class="fa fa-check"></i><b>45.10</b> The Easy Button - Visual Markdown Editing</a></li>
+<li class="chapter" data-level="45.11" data-path="dates-and-times-in-r.html"><a href="dates-and-times-in-r.html#a-quick-quiz-1"><i class="fa fa-check"></i><b>45.11</b> A Quick Quiz</a></li>
+</ul></li>
+<li class="chapter" data-level="46" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html"><i class="fa fa-check"></i><b>46</b> Protecting PHI (Protected Health Information)</a>
+<ul>
+<li class="chapter" data-level="46.1" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html#protecting-not-inadvertently-sharing-phi"><i class="fa fa-check"></i><b>46.1</b> Protecting (Not Inadvertently Sharing) PHI</a></li>
+<li class="chapter" data-level="46.2" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html#identifying-phi"><i class="fa fa-check"></i><b>46.2</b> Identifying PHI</a></li>
+<li class="chapter" data-level="46.3" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html#selectively-deleting-phi"><i class="fa fa-check"></i><b>46.3</b> Selectively Deleting PHI</a></li>
+<li class="chapter" data-level="46.4" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html#problems-with-phi-free-data"><i class="fa fa-check"></i><b>46.4</b> Problems with PHI-free data</a></li>
+<li class="chapter" data-level="46.5" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html#encrypting-phi"><i class="fa fa-check"></i><b>46.5</b> Encrypting PHI</a>
+<ul>
+<li class="chapter" data-level="46.5.1" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html#generating-public-and-private-keys"><i class="fa fa-check"></i><b>46.5.1</b> Generating Public and Private keys</a></li>
+</ul></li>
+<li class="chapter" data-level="46.6" data-path="protecting-phi-protected-health-information.html"><a href="protecting-phi-protected-health-information.html#sharing-synthetic-data-with-synthpop"><i class="fa fa-check"></i><b>46.6</b> Sharing synthetic data with {synthpop}</a></li>
+</ul></li>
+<li class="chapter" data-level="47" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html"><i class="fa fa-check"></i><b>47</b> Building Data Pipelines with {targets}</a>
+<ul>
+<li class="chapter" data-level="47.1" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#what-does-targets-do"><i class="fa fa-check"></i><b>47.1</b> What Does {targets} Do?</a></li>
+<li class="chapter" data-level="47.2" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#air-quality-analysis"><i class="fa fa-check"></i><b>47.2</b> Air Quality Analysis</a>
+<ul>
+<li class="chapter" data-level="47.2.1" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#prepping-the-functions.r-file"><i class="fa fa-check"></i><b>47.2.1</b> Prepping The Functions.R file</a></li>
+<li class="chapter" data-level="47.2.2" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#checking-your-functions"><i class="fa fa-check"></i><b>47.2.2</b> Checking Your Functions</a></li>
+<li class="chapter" data-level="47.2.3" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#set-up-the-pipeline"><i class="fa fa-check"></i><b>47.2.3</b> Set Up the Pipeline</a></li>
+<li class="chapter" data-level="47.2.4" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#pre-build-checks"><i class="fa fa-check"></i><b>47.2.4</b> Pre-Build Checks</a></li>
+<li class="chapter" data-level="47.2.5" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#changing-the-pipeline"><i class="fa fa-check"></i><b>47.2.5</b> Changing the Pipeline</a></li>
+</ul></li>
+<li class="chapter" data-level="47.3" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#your-turn---a-tuberculosis-analysis-pipeline"><i class="fa fa-check"></i><b>47.3</b> Your Turn - A Tuberculosis Analysis Pipeline</a>
+<ul>
+<li class="chapter" data-level="47.3.1" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#making-new-functions"><i class="fa fa-check"></i><b>47.3.1</b> Making new Functions</a></li>
+<li class="chapter" data-level="47.3.2" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#testing-functions"><i class="fa fa-check"></i><b>47.3.2</b> Testing functions</a></li>
+</ul></li>
+<li class="chapter" data-level="47.4" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#resetting-functions-before-the-pipeline-is-built"><i class="fa fa-check"></i><b>47.4</b> Resetting functions before the Pipeline is Built</a>
+<ul>
+<li class="chapter" data-level="47.4.1" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#setting-up-targets"><i class="fa fa-check"></i><b>47.4.1</b> Setting Up {targets}</a></li>
+</ul></li>
+<li class="chapter" data-level="47.5" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#editing-the-_targets.r-file"><i class="fa fa-check"></i><b>47.5</b> Editing the <code>_targets.R</code> File</a>
+<ul>
+<li class="chapter" data-level="47.5.1" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#running-the-pipeline"><i class="fa fa-check"></i><b>47.5.1</b> Running the Pipeline</a></li>
+<li class="chapter" data-level="47.5.2" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#modificatons-to-the-pipeline"><i class="fa fa-check"></i><b>47.5.2</b> Modificatons to the Pipeline</a></li>
+<li class="chapter" data-level="47.5.3" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#modify-the-plot"><i class="fa fa-check"></i><b>47.5.3</b> Modify the Plot</a></li>
+</ul></li>
+<li class="chapter" data-level="47.6" data-path="building-data-pipelines-with-targets.html"><a href="building-data-pipelines-with-targets.html#next-steps"><i class="fa fa-check"></i><b>47.6</b> Next Steps</a></li>
+</ul></li>
+<li class="chapter" data-level="48" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html"><i class="fa fa-check"></i><b>48</b> Colors and Scales in {ggplot2}</a>
+<ul>
+<li class="chapter" data-level="48.1" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#goals-for-this-chapter-7"><i class="fa fa-check"></i><b>48.1</b> Goals for this Chapter</a></li>
+<li class="chapter" data-level="48.2" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#colors-in-r-and-ggplot2"><i class="fa fa-check"></i><b>48.2</b> Colors in R and {ggplot2}</a>
+<ul>
+<li class="chapter" data-level="48.2.1" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#using-pre-defined-color-names"><i class="fa fa-check"></i><b>48.2.1</b> Using pre-defined color names</a></li>
+<li class="chapter" data-level="48.2.2" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#using-color-hex-codes"><i class="fa fa-check"></i><b>48.2.2</b> Using color hex codes</a></li>
+<li class="chapter" data-level="48.2.3" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#screen-vs.-print-colors"><i class="fa fa-check"></i><b>48.2.3</b> Screen vs. Print Colors</a></li>
+<li class="chapter" data-level="48.2.4" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#transparency-and-hex-colors"><i class="fa fa-check"></i><b>48.2.4</b> Transparency and hex colors</a></li>
+<li class="chapter" data-level="48.2.5" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#more-obscure-ways-to-select-colors"><i class="fa fa-check"></i><b>48.2.5</b> More obscure ways to select colors</a></li>
+<li class="chapter" data-level="48.2.6" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#using-color-palettes"><i class="fa fa-check"></i><b>48.2.6</b> Using color palettes</a></li>
+<li class="chapter" data-level="48.2.7" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#color-blind-friendly-palettes"><i class="fa fa-check"></i><b>48.2.7</b> Color-blind friendly palettes</a></li>
+</ul></li>
+<li class="chapter" data-level="48.3" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#sequential-diverging-and-qualitative-palettes"><i class="fa fa-check"></i><b>48.3</b> Sequential, Diverging, and Qualitative Palettes</a></li>
+<li class="chapter" data-level="48.4" data-path="colors-and-scales-in-ggplot2.html"><a href="colors-and-scales-in-ggplot2.html#choosing-colors-with-meaning"><i class="fa fa-check"></i><b>48.4</b> Choosing Colors with Meaning</a></li>
+</ul></li>
+<li class="chapter" data-level="49" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html"><i class="fa fa-check"></i><b>49</b> Using the {flowchart} package for CONSORT diagrams in R</a>
+<ul>
+<li class="chapter" data-level="49.1" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#why-flowcharts"><i class="fa fa-check"></i><b>49.1</b> Why Flowcharts?</a></li>
+<li class="chapter" data-level="49.2" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#loading-libraries"><i class="fa fa-check"></i><b>49.2</b> Loading Libraries</a></li>
+<li class="chapter" data-level="49.3" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#a-consort-flowchart-for-statins-to-prevent-hcc"><i class="fa fa-check"></i><b>49.3</b> A CONSORT Flowchart for Statins to Prevent HCC</a></li>
+<li class="chapter" data-level="49.4" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#data"><i class="fa fa-check"></i><b>49.4</b> Data</a></li>
+<li class="chapter" data-level="49.5" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#branching"><i class="fa fa-check"></i><b>49.5</b> Branching</a></li>
+<li class="chapter" data-level="49.6" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#splitting-into-groups-treatment-arms"><i class="fa fa-check"></i><b>49.6</b> Splitting into Groups (Treatment Arms)</a>
+<ul>
+<li class="chapter" data-level="49.6.1" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#a-short-tangent-on-ifelse"><i class="fa fa-check"></i><b>49.6.1</b> A Short Tangent on {ifelse}</a></li>
+</ul></li>
+<li class="chapter" data-level="49.7" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#filtering-for-completers"><i class="fa fa-check"></i><b>49.7</b> Filtering for Completers</a></li>
+<li class="chapter" data-level="49.8" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#modify-exclusions-for-more-detailed-labels"><i class="fa fa-check"></i><b>49.8</b> Modify exclusions for more detailed labels</a>
+<ul>
+<li class="chapter" data-level="49.8.1" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#time-for-a-quiz"><i class="fa fa-check"></i><b>49.8.1</b> Time for a Quiz</a></li>
+</ul></li>
+<li class="chapter" data-level="49.9" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#a-more-complicated-study"><i class="fa fa-check"></i><b>49.9</b> A More Complicated Study</a></li>
+<li class="chapter" data-level="49.10" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#example"><i class="fa fa-check"></i><b>49.10</b> Example</a></li>
+<li class="chapter" data-level="49.11" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#branching-1"><i class="fa fa-check"></i><b>49.11</b> Branching</a></li>
+<li class="chapter" data-level="49.12" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#splitting-into-groups-treatment-arms-1"><i class="fa fa-check"></i><b>49.12</b> Splitting into Groups (Treatment Arms)</a></li>
+<li class="chapter" data-level="49.13" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#filtering-for-completers-1"><i class="fa fa-check"></i><b>49.13</b> Filtering for Completers</a></li>
+<li class="chapter" data-level="49.14" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#modify-exclusions-for-more-detailed-labels-1"><i class="fa fa-check"></i><b>49.14</b> Modify exclusions for more detailed labels</a></li>
+<li class="chapter" data-level="49.15" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#next-step"><i class="fa fa-check"></i><b>49.15</b> Next step</a></li>
+<li class="chapter" data-level="49.16" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#now-add-these-withdrawal-reasons"><i class="fa fa-check"></i><b>49.16</b> Now Add These Withdrawal Reasons</a></li>
+<li class="chapter" data-level="49.17" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#your-turn-7"><i class="fa fa-check"></i><b>49.17</b> Your Turn</a></li>
+<li class="chapter" data-level="49.17.1" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#fatigue-starting-box"><i class="fa fa-check"></i><b>49.17.1</b> Fatigue Starting Box</a></li>
+<li class="chapter" data-level="49.17.2" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#fatigue-branching-fror-exclusions-with-fc_filter"><i class="fa fa-check"></i><b>49.17.2</b> Fatigue Branching fr=or Exclusions with fc_filter</a></li>
+<li class="chapter" data-level="49.17.3" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#branching-fatigue"><i class="fa fa-check"></i><b>49.17.3</b> Branching Fatigue</a></li>
+<li class="chapter" data-level="49.17.4" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#fatigue-completers"><i class="fa fa-check"></i><b>49.17.4</b> Fatigue Completers</a></li>
+<li class="chapter" data-level="49.17.5" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#fatigue-text-for-exclusions"><i class="fa fa-check"></i><b>49.17.5</b> Fatigue Text for Exclusions</a></li>
+<li class="chapter" data-level="49.17.6" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#fatigue-add-text-for-exclusions"><i class="fa fa-check"></i><b>49.17.6</b> Fatigue Add text for Exclusions</a></li>
+<li class="chapter" data-level="49.17.7" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#withdrawal-reasons"><i class="fa fa-check"></i><b>49.17.7</b> Withdrawal Reasons</a></li>
+<li class="chapter" data-level="49.17.8" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#now-add-these-to-your-flowchart-with-fc_modify"><i class="fa fa-check"></i><b>49.17.8</b> Now add these to Your Flowchart with fc_modify</a></li>
+<li class="chapter" data-level="49.17.9" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#final-fatigue-flowchart-drawing-fatigue_fc6"><i class="fa fa-check"></i><b>49.17.9</b> Final Fatigue Flowchart Drawing fatigue_fc6</a></li>
+<li class="chapter" data-level="49.17.10" data-path="using-the-flowchart-package-for-consort-diagrams-in-r.html"><a href="using-the-flowchart-package-for-consort-diagrams-in-r.html#explore-more-features"><i class="fa fa-check"></i><b>49.17.10</b> Explore More Features</a></li>
+</ul></li>
+<li class="chapter" data-level="50" data-path="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html"><i class="fa fa-check"></i><b>50</b> Using the {tabulapdf} package tp extract tables from PDFs</a>
+<ul>
+<li class="chapter" data-level="50.1" data-path="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#why-tables-from-pdfs"><i class="fa fa-check"></i><b>50.1</b> Why Tables from PDFs?</a></li>
+<li class="chapter" data-level="50.2" data-path="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#extracting-tables-from-pdfs"><i class="fa fa-check"></i><b>50.2</b> Extracting Tables from PDFs</a></li>
+<li class="chapter" data-level="50.3" data-path="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#extracting-tables-from-pdfs-1"><i class="fa fa-check"></i><b>50.3</b> Extracting Tables from PDFs</a></li>
+<li class="chapter" data-level="50.4" data-path="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#extracting-tables-from-the-pdf"><i class="fa fa-check"></i><b>50.4</b> Extracting Tables from the PDF</a></li>
+<li class="chapter" data-level="50.5" data-path="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#extracting-a-specific-table"><i class="fa fa-check"></i><b>50.5</b> Extracting a Specific Table</a></li>
+<li class="chapter" data-level="50.6" data-path="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#extracting-a-specific-table-1"><i class="fa fa-check"></i><b>50.6</b> Extracting a Specific Table</a></li>
+<li class="chapter" data-level="50.7" data-path="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#viewing-and-targeting-the-pdf"><i class="fa fa-check"></i><b>50.7</b> Viewing and Targeting the PDF</a></li>
+<li class="chapter" data-level="50.8" data-path="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#your-turn-8"><i class="fa fa-check"></i><b>50.8</b> Your Turn</a></li>
+<li class="chapter" data-level="50.8.1" data-path="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#explore-more-features-1"><i class="fa fa-check"></i><b>50.8.1</b> Explore More Features</a></li>
+</ul></li>
+<li class="chapter" data-level="51" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><i class="fa fa-check"></i><b>51</b> Using the {heemod} package to Evaluate Markov Models of Health Economic Strategies</a>
+<ul>
+<li class="chapter" data-level="51.1" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#why-health-economic-evaluation-and-markov-models"><i class="fa fa-check"></i><b>51.1</b> Why Health Economic Evaluation and Markov Models?</a></li>
+<li class="chapter" data-level="51.2" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#preparation-for-modeling"><i class="fa fa-check"></i><b>51.2</b> Preparation for Modeling</a></li>
+<li class="chapter" data-level="51.3" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#health-states"><i class="fa fa-check"></i><b>51.3</b> Health States</a></li>
+<li class="chapter" data-level="51.4" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#utilities"><i class="fa fa-check"></i><b>51.4</b> Utilities</a></li>
+<li class="chapter" data-level="51.5" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#transition-probabilities"><i class="fa fa-check"></i><b>51.5</b> Transition Probabilities</a></li>
+<li class="chapter" data-level="51.6" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#costs"><i class="fa fa-check"></i><b>51.6</b> Costs</a>
+<ul>
+<li class="chapter" data-level="51.6.1" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#maintenance-health-care-costs"><i class="fa fa-check"></i><b>51.6.1</b> Maintenance Health Care Costs</a></li>
+</ul></li>
+<li class="chapter" data-level="51.7" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#cycle-time"><i class="fa fa-check"></i><b>51.7</b> Cycle Time</a></li>
+<li class="chapter" data-level="51.8" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#building-your-model-and-calculating-outcomes"><i class="fa fa-check"></i><b>51.8</b> Building Your Model and Calculating Outcomes</a></li>
+<li class="chapter" data-level="51.9" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#a-first-model"><i class="fa fa-check"></i><b>51.9</b> A First Model</a></li>
+<li class="chapter" data-level="51.10" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#the-transition-state-matrix"><i class="fa fa-check"></i><b>51.10</b> The Transition State Matrix</a></li>
+<li class="chapter" data-level="51.11" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#attach-values-to-states"><i class="fa fa-check"></i><b>51.11</b> Attach Values to States</a></li>
+<li class="chapter" data-level="51.12" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#combining-transitions-and-values-into-a-model"><i class="fa fa-check"></i><b>51.12</b> Combining Transitions and Values into A Model</a></li>
+<li class="chapter" data-level="51.13" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#run-the-model"><i class="fa fa-check"></i><b>51.13</b> Run the Model</a></li>
+<li class="chapter" data-level="51.14" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#your-turn-9"><i class="fa fa-check"></i><b>51.14</b> Your Turn</a>
+<ul>
+<li class="chapter" data-level="51.14.1" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#explore-more-features-2"><i class="fa fa-check"></i><b>51.14.1</b> Explore More Features</a></li>
+<li class="chapter" data-level="51.14.2" data-path="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"><a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html#explore-health-economics-beyond-heemod"><i class="fa fa-check"></i><b>51.14.2</b> Explore Health Economics Beyond {heemod}</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="51" data-path="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets-1.html"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets-1.html"><i class="fa fa-check"></i><b>51</b> Using your .Rprofile and .Renviron file and RStudio Code Snippets</a>
+<li class="chapter" data-level="52" data-path="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html"><i class="fa fa-check"></i><b>52</b> Using your .Rprofile and .Renviron file and RStudio Code Snippets</a>
 <ul>
-<li class="chapter" data-level="51.1" data-path="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets-1.html"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets-1.html#setting-up-your-.rprofile-file-1"><i class="fa fa-check"></i><b>51.1</b> Setting up your .Rprofile file</a></li>
-<li class="chapter" data-level="51.2" data-path="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets-1.html"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets-1.html#setting-up-your-.renviron-file-1"><i class="fa fa-check"></i><b>51.2</b> Setting up your .Renviron file</a>
+<li class="chapter" data-level="52.1" data-path="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#setting-up-your-.rprofile-file"><i class="fa fa-check"></i><b>52.1</b> Setting up your .Rprofile file</a></li>
+<li class="chapter" data-level="52.2" data-path="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#setting-up-your-.renviron-file"><i class="fa fa-check"></i><b>52.2</b> Setting up your .Renviron file</a>
 <ul>
-<li class="chapter" data-level="51.2.1" data-path="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets-1.html"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets-1.html#using-rstudio-code-snippets"><i class="fa fa-check"></i><b>51.2.1</b> Using RStudio Code Snippets</a></li>
+<li class="chapter" data-level="52.2.1" data-path="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#explore-redcaptidier-and-quarto-dashboards"><i class="fa fa-check"></i><b>52.2.1</b> Explore REDCapTidieR and Quarto Dashboards</a></li>
 </ul></li>
-<li class="chapter" data-level="51.3" data-path="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets-1.html"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets-1.html#code-folding-and-sections-in-rstudio"><i class="fa fa-check"></i><b>51.3</b> Code Folding and Sections in RStudio</a>
+</ul></li>
+<li class="chapter" data-level="53" data-path="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets-1.html"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets-1.html"><i class="fa fa-check"></i><b>53</b> Using your .Rprofile and .Renviron file and RStudio Code Snippets</a>
 <ul>
-<li class="chapter" data-level="51.3.1" data-path="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets-1.html"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets-1.html#explore-more-1"><i class="fa fa-check"></i><b>51.3.1</b> Explore More</a></li>
+<li class="chapter" data-level="53.1" data-path="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets-1.html"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets-1.html#setting-up-your-.rprofile-file-1"><i class="fa fa-check"></i><b>53.1</b> Setting up your .Rprofile file</a></li>
+<li class="chapter" data-level="53.2" data-path="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets-1.html"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets-1.html#setting-up-your-.renviron-file-1"><i class="fa fa-check"></i><b>53.2</b> Setting up your .Renviron file</a>
+<ul>
+<li class="chapter" data-level="53.2.1" data-path="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets-1.html"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets-1.html#using-rstudio-code-snippets"><i class="fa fa-check"></i><b>53.2.1</b> Using RStudio Code Snippets</a></li>
+</ul></li>
+<li class="chapter" data-level="53.3" data-path="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets-1.html"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets-1.html#code-folding-and-sections-in-rstudio"><i class="fa fa-check"></i><b>53.3</b> Code Folding and Sections in RStudio</a>
+<ul>
+<li class="chapter" data-level="53.3.1" data-path="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets-1.html"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets-1.html#explore-more-1"><i class="fa fa-check"></i><b>53.3.1</b> Explore More</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="title-holder.html"><a href="title-holder.html"><i class="fa fa-check"></i>Title holder</a></li>
@@ -1115,8 +1152,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="dates-and-times-in-r" class="section level1 hasAnchor" number="43">
-<h1><span class="header-section-number">Chapter 43</span> Dates and Times in R<a href="dates-and-times-in-r.html#dates-and-times-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="dates-and-times-in-r" class="section level1 hasAnchor" number="45">
+<h1><span class="header-section-number">Chapter 45</span> Dates and Times in R<a href="dates-and-times-in-r.html#dates-and-times-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The horrors of dates and times (especially times and time zones) is a
 bane of computing. Dates have changed by government fiat (Gregorian to
 Julian, etc.) several times in history, and time zones and daylight
@@ -1166,8 +1203,8 @@ dates.</p>
 <img src="images/tzmath2.jpg" alt="TZ" />
 <div class="figcaption">TZ</div>
 </div>
-<div id="data-types-for-dates-and-times" class="section level2 hasAnchor" number="43.1">
-<h2><span class="header-section-number">43.1</span> Data Types for Dates and Times<a href="dates-and-times-in-r.html#data-types-for-dates-and-times" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="data-types-for-dates-and-times" class="section level2 hasAnchor" number="45.1">
+<h2><span class="header-section-number">45.1</span> Data Types for Dates and Times<a href="dates-and-times-in-r.html#data-types-for-dates-and-times" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Data for dates and times comes in several formats. - POSIXct - calendar
 time (also called continuous time or count time, as it counts seconds) -
 POSIXlt - local time (also called list time) - Date - date-time <dttm></p>
@@ -1183,11 +1220,11 @@ memory-efficient for storing dates, but not very human-readable.</p>
 zone. We will then print it out, and then show it as it is stored, are
 using the unclass function. Copy and run the code chunk to see the
 results.</p>
-<div class="sourceCode" id="cb893"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb893-1"><a href="dates-and-times-in-r.html#cb893-1" tabindex="-1"></a>date1 <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;2018-01-16 04:34:45&quot;</span>, </span>
-<span id="cb893-2"><a href="dates-and-times-in-r.html#cb893-2" tabindex="-1"></a>                    <span class="at">tz =</span> <span class="st">&quot;America/Detroit&quot;</span>)</span>
-<span id="cb893-3"><a href="dates-and-times-in-r.html#cb893-3" tabindex="-1"></a>date1</span></code></pre></div>
+<div class="sourceCode" id="cb933"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb933-1"><a href="dates-and-times-in-r.html#cb933-1" tabindex="-1"></a>date1 <span class="ot">&lt;-</span> <span class="fu">as.POSIXct</span>(<span class="st">&quot;2018-01-16 04:34:45&quot;</span>, </span>
+<span id="cb933-2"><a href="dates-and-times-in-r.html#cb933-2" tabindex="-1"></a>                    <span class="at">tz =</span> <span class="st">&quot;America/Detroit&quot;</span>)</span>
+<span id="cb933-3"><a href="dates-and-times-in-r.html#cb933-3" tabindex="-1"></a>date1</span></code></pre></div>
 <pre><code>## [1] &quot;2018-01-16 04:34:45 EST&quot;</code></pre>
-<div class="sourceCode" id="cb895"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb895-1"><a href="dates-and-times-in-r.html#cb895-1" tabindex="-1"></a><span class="fu">unclass</span>(date1)</span></code></pre></div>
+<div class="sourceCode" id="cb935"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb935-1"><a href="dates-and-times-in-r.html#cb935-1" tabindex="-1"></a><span class="fu">unclass</span>(date1)</span></code></pre></div>
 <pre><code>## [1] 1516095285
 ## attr(,&quot;tzone&quot;)
 ## [1] &quot;America/Detroit&quot;</code></pre>
@@ -1196,8 +1233,8 @@ when it is unclassed, you get a large integer, which corresponds to the
 number of seconds since midnight, UTC on January 1, 1970. POSIXct dates
 are stored as integer seconds.</p>
 </div>
-<div id="using-posixlt" class="section level2 hasAnchor" number="43.2">
-<h2><span class="header-section-number">43.2</span> Using POSIXlt<a href="dates-and-times-in-r.html#using-posixlt" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="using-posixlt" class="section level2 hasAnchor" number="45.2">
+<h2><span class="header-section-number">45.2</span> Using POSIXlt<a href="dates-and-times-in-r.html#using-posixlt" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>POSIXlt is another version of the POSIX standard, but in a more
 human-readable format. The ‘lt’ stands for local time, but it is often
 thought of as list time, as the data of POSIXlt is stored in a list
@@ -1220,10 +1257,10 @@ items:</p>
 a time zone. We will then print it out, and then show it as it is
 stored, are using the unclass function. We will then extract the month
 and year. Copy and run the code chunk to see the results.</p>
-<div class="sourceCode" id="cb897"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb897-1"><a href="dates-and-times-in-r.html#cb897-1" tabindex="-1"></a>date2 <span class="ot">&lt;-</span> <span class="fu">as.POSIXlt</span>(date1)</span>
-<span id="cb897-2"><a href="dates-and-times-in-r.html#cb897-2" tabindex="-1"></a>date2</span></code></pre></div>
+<div class="sourceCode" id="cb937"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb937-1"><a href="dates-and-times-in-r.html#cb937-1" tabindex="-1"></a>date2 <span class="ot">&lt;-</span> <span class="fu">as.POSIXlt</span>(date1)</span>
+<span id="cb937-2"><a href="dates-and-times-in-r.html#cb937-2" tabindex="-1"></a>date2</span></code></pre></div>
 <pre><code>## [1] &quot;2018-01-16 04:34:45 EST&quot;</code></pre>
-<div class="sourceCode" id="cb899"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb899-1"><a href="dates-and-times-in-r.html#cb899-1" tabindex="-1"></a><span class="fu">unclass</span>(date2)</span></code></pre></div>
+<div class="sourceCode" id="cb939"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb939-1"><a href="dates-and-times-in-r.html#cb939-1" tabindex="-1"></a><span class="fu">unclass</span>(date2)</span></code></pre></div>
 <pre><code>## $sec
 ## [1] 45
 ## 
@@ -1261,25 +1298,25 @@ and year. Copy and run the code chunk to see the results.</p>
 ## [1] &quot;America/Detroit&quot; &quot;EST&quot;             &quot;EDT&quot;            
 ## attr(,&quot;balanced&quot;)
 ## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb901"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb901-1"><a href="dates-and-times-in-r.html#cb901-1" tabindex="-1"></a>date2<span class="sc">$</span>mon</span></code></pre></div>
+<div class="sourceCode" id="cb941"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb941-1"><a href="dates-and-times-in-r.html#cb941-1" tabindex="-1"></a>date2<span class="sc">$</span>mon</span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
-<div class="sourceCode" id="cb903"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb903-1"><a href="dates-and-times-in-r.html#cb903-1" tabindex="-1"></a>date2<span class="sc">$</span>year</span></code></pre></div>
+<div class="sourceCode" id="cb943"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb943-1"><a href="dates-and-times-in-r.html#cb943-1" tabindex="-1"></a>date2<span class="sc">$</span>year</span></code></pre></div>
 <pre><code>## [1] 118</code></pre>
 <p>Again, we get a nicely formatted ISO8601 date when you print the date,
 but when it is unclassed, you get a list of date items. When we extract
 the month and year, these can be surprising (January = 0, Year 2018 =
 118). POSIXlt dates are stored as a list of date items.</p>
 </div>
-<div id="formatting-dates" class="section level2 hasAnchor" number="43.3">
-<h2><span class="header-section-number">43.3</span> Formatting dates<a href="dates-and-times-in-r.html#formatting-dates" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="formatting-dates" class="section level2 hasAnchor" number="45.3">
+<h2><span class="header-section-number">45.3</span> Formatting dates<a href="dates-and-times-in-r.html#formatting-dates" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>as.Date</li>
 <li>strptime</li>
 <li>formatting codes</li>
 <li>the parsedate package</li>
 </ul>
-<div id="code-chunk-icons-1" class="section level3 hasAnchor" number="43.3.1">
-<h3><span class="header-section-number">43.3.1</span> Code Chunk Icons<a href="dates-and-times-in-r.html#code-chunk-icons-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="code-chunk-icons-1" class="section level3 hasAnchor" number="45.3.1">
+<h3><span class="header-section-number">45.3.1</span> Code Chunk Icons<a href="dates-and-times-in-r.html#code-chunk-icons-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table style="width:94%;">
 <caption>Code Chunk Icons</caption>
 <colgroup>
@@ -1315,46 +1352,46 @@ chunks, including the setup chunk</td>
 </table>
 </div>
 </div>
-<div id="including-plots-2" class="section level2 hasAnchor" number="43.4">
-<h2><span class="header-section-number">43.4</span> Including Plots<a href="dates-and-times-in-r.html#including-plots-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb905"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb905-1"><a href="dates-and-times-in-r.html#cb905-1" tabindex="-1"></a>covid <span class="ot">&lt;-</span> medicaldata<span class="sc">::</span>covid_testing</span>
-<span id="cb905-2"><a href="dates-and-times-in-r.html#cb905-2" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
-<span id="cb905-3"><a href="dates-and-times-in-r.html#cb905-3" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb905-4"><a href="dates-and-times-in-r.html#cb905-4" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> pan_day, <span class="at">y =</span> ct_result) <span class="sc">+</span></span>
-<span id="cb905-5"><a href="dates-and-times-in-r.html#cb905-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb905-6"><a href="dates-and-times-in-r.html#cb905-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;COVID Testing in First 100 Days of Pandemic&quot;</span>,</span>
-<span id="cb905-7"><a href="dates-and-times-in-r.html#cb905-7" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Pandemic Day, 2020&quot;</span>,</span>
-<span id="cb905-8"><a href="dates-and-times-in-r.html#cb905-8" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Cycle Threshold </span><span class="sc">\n</span><span class="st">45 is a Negative Test&quot;</span>)</span></code></pre></div>
+<div id="including-plots-2" class="section level2 hasAnchor" number="45.4">
+<h2><span class="header-section-number">45.4</span> Including Plots<a href="dates-and-times-in-r.html#including-plots-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb945"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb945-1"><a href="dates-and-times-in-r.html#cb945-1" tabindex="-1"></a>covid <span class="ot">&lt;-</span> medicaldata<span class="sc">::</span>covid_testing</span>
+<span id="cb945-2"><a href="dates-and-times-in-r.html#cb945-2" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
+<span id="cb945-3"><a href="dates-and-times-in-r.html#cb945-3" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb945-4"><a href="dates-and-times-in-r.html#cb945-4" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> pan_day, <span class="at">y =</span> ct_result) <span class="sc">+</span></span>
+<span id="cb945-5"><a href="dates-and-times-in-r.html#cb945-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb945-6"><a href="dates-and-times-in-r.html#cb945-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;COVID Testing in First 100 Days of Pandemic&quot;</span>,</span>
+<span id="cb945-7"><a href="dates-and-times-in-r.html#cb945-7" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Pandemic Day, 2020&quot;</span>,</span>
+<span id="cb945-8"><a href="dates-and-times-in-r.html#cb945-8" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Cycle Threshold </span><span class="sc">\n</span><span class="st">45 is a Negative Test&quot;</span>)</span></code></pre></div>
 <p><img src="io100-working_dates_files/figure-html/plot-1.png" width="672" /></p>
 </div>
-<div id="including-tables-1" class="section level2 hasAnchor" number="43.5">
-<h2><span class="header-section-number">43.5</span> Including Tables<a href="dates-and-times-in-r.html#including-tables-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb906"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb906-1"><a href="dates-and-times-in-r.html#cb906-1" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
-<span id="cb906-2"><a href="dates-and-times-in-r.html#cb906-2" tabindex="-1"></a>  <span class="fu">count</span>(demo_group, gender) <span class="sc">%&gt;%</span> </span>
-<span id="cb906-3"><a href="dates-and-times-in-r.html#cb906-3" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb906-4"><a href="dates-and-times-in-r.html#cb906-4" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">&quot;Demographics of COVID Testing&quot;</span>,</span>
-<span id="cb906-5"><a href="dates-and-times-in-r.html#cb906-5" tabindex="-1"></a>             <span class="at">subtitle =</span> <span class="st">&quot;By Group and Gender&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb906-6"><a href="dates-and-times-in-r.html#cb906-6" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(<span class="at">source_note =</span> <span class="st">&quot;From CHOP, 2020&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb906-7"><a href="dates-and-times-in-r.html#cb906-7" tabindex="-1"></a>  <span class="fu">cols_label</span>(<span class="at">demo_group =</span> <span class="st">&quot;Group&quot;</span>,</span>
-<span id="cb906-8"><a href="dates-and-times-in-r.html#cb906-8" tabindex="-1"></a>             <span class="at">gender =</span> <span class="st">&quot;Gender&quot;</span>,</span>
-<span id="cb906-9"><a href="dates-and-times-in-r.html#cb906-9" tabindex="-1"></a>             <span class="at">n =</span> <span class="st">&quot;Count&quot;</span>)</span></code></pre></div>
-<div id="maiupyzxfg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#maiupyzxfg table {
+<div id="including-tables-1" class="section level2 hasAnchor" number="45.5">
+<h2><span class="header-section-number">45.5</span> Including Tables<a href="dates-and-times-in-r.html#including-tables-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb946"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb946-1"><a href="dates-and-times-in-r.html#cb946-1" tabindex="-1"></a>covid <span class="sc">%&gt;%</span> </span>
+<span id="cb946-2"><a href="dates-and-times-in-r.html#cb946-2" tabindex="-1"></a>  <span class="fu">count</span>(demo_group, gender) <span class="sc">%&gt;%</span> </span>
+<span id="cb946-3"><a href="dates-and-times-in-r.html#cb946-3" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb946-4"><a href="dates-and-times-in-r.html#cb946-4" tabindex="-1"></a>  <span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">&quot;Demographics of COVID Testing&quot;</span>,</span>
+<span id="cb946-5"><a href="dates-and-times-in-r.html#cb946-5" tabindex="-1"></a>             <span class="at">subtitle =</span> <span class="st">&quot;By Group and Gender&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb946-6"><a href="dates-and-times-in-r.html#cb946-6" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(<span class="at">source_note =</span> <span class="st">&quot;From CHOP, 2020&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb946-7"><a href="dates-and-times-in-r.html#cb946-7" tabindex="-1"></a>  <span class="fu">cols_label</span>(<span class="at">demo_group =</span> <span class="st">&quot;Group&quot;</span>,</span>
+<span id="cb946-8"><a href="dates-and-times-in-r.html#cb946-8" tabindex="-1"></a>             <span class="at">gender =</span> <span class="st">&quot;Gender&quot;</span>,</span>
+<span id="cb946-9"><a href="dates-and-times-in-r.html#cb946-9" tabindex="-1"></a>             <span class="at">n =</span> <span class="st">&quot;Count&quot;</span>)</span></code></pre></div>
+<div id="vplirtydrt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vplirtydrt table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#maiupyzxfg thead, #maiupyzxfg tbody, #maiupyzxfg tfoot, #maiupyzxfg tr, #maiupyzxfg td, #maiupyzxfg th {
+#vplirtydrt thead, #vplirtydrt tbody, #vplirtydrt tfoot, #vplirtydrt tr, #vplirtydrt td, #vplirtydrt th {
   border-style: none;
 }
 
-#maiupyzxfg p {
+#vplirtydrt p {
   margin: 0;
   padding: 0;
 }
 
-#maiupyzxfg .gt_table {
+#vplirtydrt .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1380,12 +1417,12 @@ chunks, including the setup chunk</td>
   border-left-color: #D3D3D3;
 }
 
-#maiupyzxfg .gt_caption {
+#vplirtydrt .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#maiupyzxfg .gt_title {
+#vplirtydrt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1397,7 +1434,7 @@ chunks, including the setup chunk</td>
   border-bottom-width: 0;
 }
 
-#maiupyzxfg .gt_subtitle {
+#vplirtydrt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1409,7 +1446,7 @@ chunks, including the setup chunk</td>
   border-top-width: 0;
 }
 
-#maiupyzxfg .gt_heading {
+#vplirtydrt .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1421,13 +1458,13 @@ chunks, including the setup chunk</td>
   border-right-color: #D3D3D3;
 }
 
-#maiupyzxfg .gt_bottom_border {
+#vplirtydrt .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#maiupyzxfg .gt_col_headings {
+#vplirtydrt .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1442,7 +1479,7 @@ chunks, including the setup chunk</td>
   border-right-color: #D3D3D3;
 }
 
-#maiupyzxfg .gt_col_heading {
+#vplirtydrt .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1462,7 +1499,7 @@ chunks, including the setup chunk</td>
   overflow-x: hidden;
 }
 
-#maiupyzxfg .gt_column_spanner_outer {
+#vplirtydrt .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1474,15 +1511,15 @@ chunks, including the setup chunk</td>
   padding-right: 4px;
 }
 
-#maiupyzxfg .gt_column_spanner_outer:first-child {
+#vplirtydrt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#maiupyzxfg .gt_column_spanner_outer:last-child {
+#vplirtydrt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#maiupyzxfg .gt_column_spanner {
+#vplirtydrt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1494,11 +1531,11 @@ chunks, including the setup chunk</td>
   width: 100%;
 }
 
-#maiupyzxfg .gt_spanner_row {
+#vplirtydrt .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#maiupyzxfg .gt_group_heading {
+#vplirtydrt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1524,7 +1561,7 @@ chunks, including the setup chunk</td>
   text-align: left;
 }
 
-#maiupyzxfg .gt_empty_group_heading {
+#vplirtydrt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1539,15 +1576,15 @@ chunks, including the setup chunk</td>
   vertical-align: middle;
 }
 
-#maiupyzxfg .gt_from_md > :first-child {
+#vplirtydrt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#maiupyzxfg .gt_from_md > :last-child {
+#vplirtydrt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#maiupyzxfg .gt_row {
+#vplirtydrt .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1566,7 +1603,7 @@ chunks, including the setup chunk</td>
   overflow-x: hidden;
 }
 
-#maiupyzxfg .gt_stub {
+#vplirtydrt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1579,7 +1616,7 @@ chunks, including the setup chunk</td>
   padding-right: 5px;
 }
 
-#maiupyzxfg .gt_stub_row_group {
+#vplirtydrt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1593,15 +1630,15 @@ chunks, including the setup chunk</td>
   vertical-align: top;
 }
 
-#maiupyzxfg .gt_row_group_first td {
+#vplirtydrt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#maiupyzxfg .gt_row_group_first th {
+#vplirtydrt .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#maiupyzxfg .gt_summary_row {
+#vplirtydrt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1611,16 +1648,16 @@ chunks, including the setup chunk</td>
   padding-right: 5px;
 }
 
-#maiupyzxfg .gt_first_summary_row {
+#vplirtydrt .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#maiupyzxfg .gt_first_summary_row.thick {
+#vplirtydrt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#maiupyzxfg .gt_last_summary_row {
+#vplirtydrt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1630,7 +1667,7 @@ chunks, including the setup chunk</td>
   border-bottom-color: #D3D3D3;
 }
 
-#maiupyzxfg .gt_grand_summary_row {
+#vplirtydrt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1640,7 +1677,7 @@ chunks, including the setup chunk</td>
   padding-right: 5px;
 }
 
-#maiupyzxfg .gt_first_grand_summary_row {
+#vplirtydrt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1650,7 +1687,7 @@ chunks, including the setup chunk</td>
   border-top-color: #D3D3D3;
 }
 
-#maiupyzxfg .gt_last_grand_summary_row_top {
+#vplirtydrt .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1660,11 +1697,11 @@ chunks, including the setup chunk</td>
   border-bottom-color: #D3D3D3;
 }
 
-#maiupyzxfg .gt_striped {
+#vplirtydrt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#maiupyzxfg .gt_table_body {
+#vplirtydrt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1673,7 +1710,7 @@ chunks, including the setup chunk</td>
   border-bottom-color: #D3D3D3;
 }
 
-#maiupyzxfg .gt_footnotes {
+#vplirtydrt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1687,7 +1724,7 @@ chunks, including the setup chunk</td>
   border-right-color: #D3D3D3;
 }
 
-#maiupyzxfg .gt_footnote {
+#vplirtydrt .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1696,7 +1733,7 @@ chunks, including the setup chunk</td>
   padding-right: 5px;
 }
 
-#maiupyzxfg .gt_sourcenotes {
+#vplirtydrt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1710,7 +1747,7 @@ chunks, including the setup chunk</td>
   border-right-color: #D3D3D3;
 }
 
-#maiupyzxfg .gt_sourcenote {
+#vplirtydrt .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1718,72 +1755,72 @@ chunks, including the setup chunk</td>
   padding-right: 5px;
 }
 
-#maiupyzxfg .gt_left {
+#vplirtydrt .gt_left {
   text-align: left;
 }
 
-#maiupyzxfg .gt_center {
+#vplirtydrt .gt_center {
   text-align: center;
 }
 
-#maiupyzxfg .gt_right {
+#vplirtydrt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#maiupyzxfg .gt_font_normal {
+#vplirtydrt .gt_font_normal {
   font-weight: normal;
 }
 
-#maiupyzxfg .gt_font_bold {
+#vplirtydrt .gt_font_bold {
   font-weight: bold;
 }
 
-#maiupyzxfg .gt_font_italic {
+#vplirtydrt .gt_font_italic {
   font-style: italic;
 }
 
-#maiupyzxfg .gt_super {
+#vplirtydrt .gt_super {
   font-size: 65%;
 }
 
-#maiupyzxfg .gt_footnote_marks {
+#vplirtydrt .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#maiupyzxfg .gt_asterisk {
+#vplirtydrt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#maiupyzxfg .gt_indent_1 {
+#vplirtydrt .gt_indent_1 {
   text-indent: 5px;
 }
 
-#maiupyzxfg .gt_indent_2 {
+#vplirtydrt .gt_indent_2 {
   text-indent: 10px;
 }
 
-#maiupyzxfg .gt_indent_3 {
+#vplirtydrt .gt_indent_3 {
   text-indent: 15px;
 }
 
-#maiupyzxfg .gt_indent_4 {
+#vplirtydrt .gt_indent_4 {
   text-indent: 20px;
 }
 
-#maiupyzxfg .gt_indent_5 {
+#vplirtydrt .gt_indent_5 {
   text-indent: 25px;
 }
 
-#maiupyzxfg .katex-display {
+#vplirtydrt .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#maiupyzxfg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#vplirtydrt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1839,11 +1876,11 @@ chunks, including the setup chunk</td>
 </table>
 </div>
 </div>
-<div id="other-languages-in-code-chunks-1" class="section level2 hasAnchor" number="43.6">
-<h2><span class="header-section-number">43.6</span> Other languages in code chunks<a href="dates-and-times-in-r.html#other-languages-in-code-chunks-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="other-languages-in-code-chunks-1" class="section level2 hasAnchor" number="45.6">
+<h2><span class="header-section-number">45.6</span> Other languages in code chunks<a href="dates-and-times-in-r.html#other-languages-in-code-chunks-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="code-chunk-options-1" class="section level2 hasAnchor" number="43.7">
-<h2><span class="header-section-number">43.7</span> Code Chunk Options<a href="dates-and-times-in-r.html#code-chunk-options-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="code-chunk-options-1" class="section level2 hasAnchor" number="45.7">
+<h2><span class="header-section-number">45.7</span> Code Chunk Options<a href="dates-and-times-in-r.html#code-chunk-options-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <table style="width:92%;">
 <caption>Code Chunk Options</caption>
 <colgroup>
@@ -1948,8 +1985,8 @@ not(!!).</td>
 </tbody>
 </table>
 </div>
-<div id="try-out-other-chunk-options-1" class="section level2 hasAnchor tryit" number="43.8">
-<h2><span class="header-section-number">43.8</span> Try Out Other Chunk Options<a href="dates-and-times-in-r.html#try-out-other-chunk-options-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="try-out-other-chunk-options-1" class="section level2 hasAnchor tryit" number="45.8">
+<h2><span class="header-section-number">45.8</span> Try Out Other Chunk Options<a href="dates-and-times-in-r.html#try-out-other-chunk-options-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Try adding different chunk options, including</p>
 <ul>
 <li><p><code>include = FALSE</code></p></li>
@@ -1957,25 +1994,25 @@ not(!!).</td>
 <li><p><code>eval=TRUE, echo = FALSE</code></p></li>
 </ul>
 </div>
-<div id="the-setup-chunk-1" class="section level2 hasAnchor" number="43.9">
-<h2><span class="header-section-number">43.9</span> The <code>setup</code> chunk<a href="dates-and-times-in-r.html#the-setup-chunk-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="the-setup-chunk-1" class="section level2 hasAnchor" number="45.9">
+<h2><span class="header-section-number">45.9</span> The <code>setup</code> chunk<a href="dates-and-times-in-r.html#the-setup-chunk-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 </div>
-<div id="the-easy-button---visual-markdown-editing-1" class="section level2 hasAnchor" number="43.10">
-<h2><span class="header-section-number">43.10</span> The Easy Button - Visual Markdown Editing<a href="dates-and-times-in-r.html#the-easy-button---visual-markdown-editing-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="the-easy-button---visual-markdown-editing-1" class="section level2 hasAnchor" number="45.10">
+<h2><span class="header-section-number">45.10</span> The Easy Button - Visual Markdown Editing<a href="dates-and-times-in-r.html#the-easy-button---visual-markdown-editing-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 The mean cycle threshold in this study was
-<div id="radio_UXTDIKQGCM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_UXTDIKQGCM" value="answer"></input> <span>r covid %&gt;% mean(ct_result, na.rm = TRUE) %&gt;% format(digits = 5)</span></label><label><input type="radio" autocomplete="off" name="radio_UXTDIKQGCM" value=""></input> <span>r covid %&gt;% median(ct_result, na.rm = TRUE) %&gt;% format(digits = 7)</span></label><label><input type="radio" autocomplete="off" name="radio_UXTDIKQGCM" value=""></input> <span>r covid %&gt;% sd(ct_result, na.rm=TRUE) %&gt;% format(digits =3)</span></label>
+<div id="radio_HXKZCTZIUD" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_HXKZCTZIUD" value="answer"></input> <span>r covid %&gt;% mean(ct_result, na.rm = TRUE) %&gt;% format(digits = 5)</span></label><label><input type="radio" autocomplete="off" name="radio_HXKZCTZIUD" value=""></input> <span>r covid %&gt;% median(ct_result, na.rm = TRUE) %&gt;% format(digits = 7)</span></label><label><input type="radio" autocomplete="off" name="radio_HXKZCTZIUD" value=""></input> <span>r covid %&gt;% sd(ct_result, na.rm=TRUE) %&gt;% format(digits =3)</span></label>
 </div>
 <p><br></p>
 The standard deviation of the cycle threshold in this study was
-<div id="radio_JFSFEBEVYX" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_JFSFEBEVYX" value=""></input> <span>r covid %&gt;% mean(ct_result, na.rm = TRUE) %&gt;% format(digits = 5)</span></label><label><input type="radio" autocomplete="off" name="radio_JFSFEBEVYX" value=""></input> <span>r covid %&gt;% median(ct_result, na.rm = TRUE) %&gt;% format(digits = 7)</span></label><label><input type="radio" autocomplete="off" name="radio_JFSFEBEVYX" value="answer"></input> <span>r covid %&gt;% sd(ct_result, na.rm=TRUE) %&gt;% format(digits =3)</span></label>
+<div id="radio_EWSTHIFWBS" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_EWSTHIFWBS" value=""></input> <span>r covid %&gt;% mean(ct_result, na.rm = TRUE) %&gt;% format(digits = 5)</span></label><label><input type="radio" autocomplete="off" name="radio_EWSTHIFWBS" value=""></input> <span>r covid %&gt;% median(ct_result, na.rm = TRUE) %&gt;% format(digits = 7)</span></label><label><input type="radio" autocomplete="off" name="radio_EWSTHIFWBS" value="answer"></input> <span>r covid %&gt;% sd(ct_result, na.rm=TRUE) %&gt;% format(digits =3)</span></label>
 </div>
 <p><br></p>
 <p>:::</p>
 </div>
-<div id="a-quick-quiz-1" class="section level2 hasAnchor" number="43.11">
-<h2><span class="header-section-number">43.11</span> A Quick Quiz<a href="dates-and-times-in-r.html#a-quick-quiz-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="a-quick-quiz-1" class="section level2 hasAnchor" number="45.11">
+<h2><span class="header-section-number">45.11</span> A Quick Quiz<a href="dates-and-times-in-r.html#a-quick-quiz-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li>Which code chunk option hides the code?
 <select class='webex-select'><option value='blank'></option><option value=''>eval = TRUE</option><option value=''>warning = FALSE</option><option value='answer'>echo = FALSE</option></select></li>

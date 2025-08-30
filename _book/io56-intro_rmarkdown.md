@@ -233,23 +233,23 @@ covid %>%
 ```
 
 ```{=html}
-<div id="lugfkmspqk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lugfkmspqk table {
+<div id="uoqarxblgi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#uoqarxblgi table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lugfkmspqk thead, #lugfkmspqk tbody, #lugfkmspqk tfoot, #lugfkmspqk tr, #lugfkmspqk td, #lugfkmspqk th {
+#uoqarxblgi thead, #uoqarxblgi tbody, #uoqarxblgi tfoot, #uoqarxblgi tr, #uoqarxblgi td, #uoqarxblgi th {
   border-style: none;
 }
 
-#lugfkmspqk p {
+#uoqarxblgi p {
   margin: 0;
   padding: 0;
 }
 
-#lugfkmspqk .gt_table {
+#uoqarxblgi .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -275,12 +275,12 @@ covid %>%
   border-left-color: #D3D3D3;
 }
 
-#lugfkmspqk .gt_caption {
+#uoqarxblgi .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lugfkmspqk .gt_title {
+#uoqarxblgi .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -292,7 +292,7 @@ covid %>%
   border-bottom-width: 0;
 }
 
-#lugfkmspqk .gt_subtitle {
+#uoqarxblgi .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -304,7 +304,7 @@ covid %>%
   border-top-width: 0;
 }
 
-#lugfkmspqk .gt_heading {
+#uoqarxblgi .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -316,13 +316,13 @@ covid %>%
   border-right-color: #D3D3D3;
 }
 
-#lugfkmspqk .gt_bottom_border {
+#uoqarxblgi .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lugfkmspqk .gt_col_headings {
+#uoqarxblgi .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -337,7 +337,7 @@ covid %>%
   border-right-color: #D3D3D3;
 }
 
-#lugfkmspqk .gt_col_heading {
+#uoqarxblgi .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -357,7 +357,7 @@ covid %>%
   overflow-x: hidden;
 }
 
-#lugfkmspqk .gt_column_spanner_outer {
+#uoqarxblgi .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -369,15 +369,15 @@ covid %>%
   padding-right: 4px;
 }
 
-#lugfkmspqk .gt_column_spanner_outer:first-child {
+#uoqarxblgi .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lugfkmspqk .gt_column_spanner_outer:last-child {
+#uoqarxblgi .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lugfkmspqk .gt_column_spanner {
+#uoqarxblgi .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -389,11 +389,11 @@ covid %>%
   width: 100%;
 }
 
-#lugfkmspqk .gt_spanner_row {
+#uoqarxblgi .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lugfkmspqk .gt_group_heading {
+#uoqarxblgi .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -419,7 +419,7 @@ covid %>%
   text-align: left;
 }
 
-#lugfkmspqk .gt_empty_group_heading {
+#uoqarxblgi .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -434,15 +434,15 @@ covid %>%
   vertical-align: middle;
 }
 
-#lugfkmspqk .gt_from_md > :first-child {
+#uoqarxblgi .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lugfkmspqk .gt_from_md > :last-child {
+#uoqarxblgi .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lugfkmspqk .gt_row {
+#uoqarxblgi .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -461,7 +461,7 @@ covid %>%
   overflow-x: hidden;
 }
 
-#lugfkmspqk .gt_stub {
+#uoqarxblgi .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -474,7 +474,7 @@ covid %>%
   padding-right: 5px;
 }
 
-#lugfkmspqk .gt_stub_row_group {
+#uoqarxblgi .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -488,15 +488,15 @@ covid %>%
   vertical-align: top;
 }
 
-#lugfkmspqk .gt_row_group_first td {
+#uoqarxblgi .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lugfkmspqk .gt_row_group_first th {
+#uoqarxblgi .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lugfkmspqk .gt_summary_row {
+#uoqarxblgi .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -506,16 +506,16 @@ covid %>%
   padding-right: 5px;
 }
 
-#lugfkmspqk .gt_first_summary_row {
+#uoqarxblgi .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lugfkmspqk .gt_first_summary_row.thick {
+#uoqarxblgi .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lugfkmspqk .gt_last_summary_row {
+#uoqarxblgi .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -525,7 +525,7 @@ covid %>%
   border-bottom-color: #D3D3D3;
 }
 
-#lugfkmspqk .gt_grand_summary_row {
+#uoqarxblgi .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -535,7 +535,7 @@ covid %>%
   padding-right: 5px;
 }
 
-#lugfkmspqk .gt_first_grand_summary_row {
+#uoqarxblgi .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -545,7 +545,7 @@ covid %>%
   border-top-color: #D3D3D3;
 }
 
-#lugfkmspqk .gt_last_grand_summary_row_top {
+#uoqarxblgi .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -555,11 +555,11 @@ covid %>%
   border-bottom-color: #D3D3D3;
 }
 
-#lugfkmspqk .gt_striped {
+#uoqarxblgi .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lugfkmspqk .gt_table_body {
+#uoqarxblgi .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -568,7 +568,7 @@ covid %>%
   border-bottom-color: #D3D3D3;
 }
 
-#lugfkmspqk .gt_footnotes {
+#uoqarxblgi .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -582,7 +582,7 @@ covid %>%
   border-right-color: #D3D3D3;
 }
 
-#lugfkmspqk .gt_footnote {
+#uoqarxblgi .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -591,7 +591,7 @@ covid %>%
   padding-right: 5px;
 }
 
-#lugfkmspqk .gt_sourcenotes {
+#uoqarxblgi .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -605,7 +605,7 @@ covid %>%
   border-right-color: #D3D3D3;
 }
 
-#lugfkmspqk .gt_sourcenote {
+#uoqarxblgi .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -613,72 +613,72 @@ covid %>%
   padding-right: 5px;
 }
 
-#lugfkmspqk .gt_left {
+#uoqarxblgi .gt_left {
   text-align: left;
 }
 
-#lugfkmspqk .gt_center {
+#uoqarxblgi .gt_center {
   text-align: center;
 }
 
-#lugfkmspqk .gt_right {
+#uoqarxblgi .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lugfkmspqk .gt_font_normal {
+#uoqarxblgi .gt_font_normal {
   font-weight: normal;
 }
 
-#lugfkmspqk .gt_font_bold {
+#uoqarxblgi .gt_font_bold {
   font-weight: bold;
 }
 
-#lugfkmspqk .gt_font_italic {
+#uoqarxblgi .gt_font_italic {
   font-style: italic;
 }
 
-#lugfkmspqk .gt_super {
+#uoqarxblgi .gt_super {
   font-size: 65%;
 }
 
-#lugfkmspqk .gt_footnote_marks {
+#uoqarxblgi .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lugfkmspqk .gt_asterisk {
+#uoqarxblgi .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lugfkmspqk .gt_indent_1 {
+#uoqarxblgi .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lugfkmspqk .gt_indent_2 {
+#uoqarxblgi .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lugfkmspqk .gt_indent_3 {
+#uoqarxblgi .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lugfkmspqk .gt_indent_4 {
+#uoqarxblgi .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lugfkmspqk .gt_indent_5 {
+#uoqarxblgi .gt_indent_5 {
   text-indent: 25px;
 }
 
-#lugfkmspqk .katex-display {
+#uoqarxblgi .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#lugfkmspqk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#uoqarxblgi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1125,12 +1125,12 @@ as illustrated below (note that these would be surrounded by single
 back-ticks)
 
 The mean cycle threshold in this study was
-<div class='webex-radiogroup' id='radio_AWBYFDRKKQ'><label><input type="radio" autocomplete="off" name="radio_AWBYFDRKKQ" value="answer"></input> <span>r covid %>%  mean(ct_result, na.rm = TRUE) %>% format(digits = 5)</span></label><label><input type="radio" autocomplete="off" name="radio_AWBYFDRKKQ" value=""></input> <span>r covid %>% median(ct_result, na.rm = TRUE) %>% format(digits = 7)</span></label><label><input type="radio" autocomplete="off" name="radio_AWBYFDRKKQ" value=""></input> <span>r covid %>%  sd(ct_result, na.rm=TRUE) %>% format(digits =3)</span></label></div>
+<div class='webex-radiogroup' id='radio_NUFWNZWMNG'><label><input type="radio" autocomplete="off" name="radio_NUFWNZWMNG" value="answer"></input> <span>r covid %>%  mean(ct_result, na.rm = TRUE) %>% format(digits = 5)</span></label><label><input type="radio" autocomplete="off" name="radio_NUFWNZWMNG" value=""></input> <span>r covid %>% median(ct_result, na.rm = TRUE) %>% format(digits = 7)</span></label><label><input type="radio" autocomplete="off" name="radio_NUFWNZWMNG" value=""></input> <span>r covid %>%  sd(ct_result, na.rm=TRUE) %>% format(digits =3)</span></label></div>
 
 <br>
 
 The standard deviation of the cycle threshold in this study was
-<div class='webex-radiogroup' id='radio_LPIZSFEZJF'><label><input type="radio" autocomplete="off" name="radio_LPIZSFEZJF" value=""></input> <span>r covid %>%  mean(ct_result, na.rm = TRUE) %>% format(digits = 5)</span></label><label><input type="radio" autocomplete="off" name="radio_LPIZSFEZJF" value=""></input> <span>r covid %>% median(ct_result, na.rm = TRUE) %>% format(digits = 7)</span></label><label><input type="radio" autocomplete="off" name="radio_LPIZSFEZJF" value="answer"></input> <span>r covid %>%  sd(ct_result, na.rm=TRUE) %>% format(digits =3)</span></label></div>
+<div class='webex-radiogroup' id='radio_HUYMXFBMFO'><label><input type="radio" autocomplete="off" name="radio_HUYMXFBMFO" value=""></input> <span>r covid %>%  mean(ct_result, na.rm = TRUE) %>% format(digits = 5)</span></label><label><input type="radio" autocomplete="off" name="radio_HUYMXFBMFO" value=""></input> <span>r covid %>% median(ct_result, na.rm = TRUE) %>% format(digits = 7)</span></label><label><input type="radio" autocomplete="off" name="radio_HUYMXFBMFO" value="answer"></input> <span>r covid %>%  sd(ct_result, na.rm=TRUE) %>% format(digits =3)</span></label></div>
 
 
 <br>
