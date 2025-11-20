@@ -265,13 +265,13 @@ covid %>%
 
 ```
 ## # A tibble: 5 × 3
-##   patient_class        data                plots 
-##   <chr>                <list>              <list>
-## 1 observation          <tibble [28 × 16]>  <gg>  
-## 2 outpatient           <tibble [65 × 16]>  <gg>  
-## 3 emergency            <tibble [124 × 16]> <gg>  
-## 4 recurring outpatient <tibble [11 × 16]>  <gg>  
-## 5 inpatient            <tibble [111 × 16]> <gg>
+##   patient_class        data                plots     
+##   <chr>                <list>              <list>    
+## 1 observation          <tibble [28 × 16]>  <ggplt2::>
+## 2 outpatient           <tibble [65 × 16]>  <ggplt2::>
+## 3 emergency            <tibble [124 × 16]> <ggplt2::>
+## 4 recurring outpatient <tibble [11 × 16]>  <ggplt2::>
+## 5 inpatient            <tibble [111 × 16]> <ggplt2::>
 ```
 
 Now we have a column that contains the plots.

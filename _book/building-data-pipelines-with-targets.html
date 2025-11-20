@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2025-08-28" />
+<meta name="date" content="2025-10-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,10 +54,10 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
 <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/plotly-binding-4.11.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
@@ -67,8 +67,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -78,7 +79,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -1215,21 +1216,21 @@ add a folder named ‘R’ to the project in the Files tab in RStudio by clickin
 <h3><span class="header-section-number">47.2.1</span> Prepping The Functions.R file<a href="building-data-pipelines-with-targets.html#prepping-the-functions.r-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Now, click to enter the R folder you just created in the project, and within the R folder, create a new R script (New File is just to the right of the New Folder button in the Files tab) called ‘functions.R’ and copy the code below (use the copy icon in the top right corner of the code chunk) into this R script. This script will contain all 3 of the functions needed to run this targets pipeline on the airquality data.<br>
 Then <strong>save</strong> the script <code>functions.R</code>.</p>
-<div class="sourceCode" id="cb980"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb980-1"><a href="building-data-pipelines-with-targets.html#cb980-1" tabindex="-1"></a>get_data <span class="ot">&lt;-</span> <span class="cf">function</span>(file) {</span>
-<span id="cb980-2"><a href="building-data-pipelines-with-targets.html#cb980-2" tabindex="-1"></a>  <span class="fu">read_csv</span>(file, <span class="at">col_types =</span> <span class="fu">cols</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb980-3"><a href="building-data-pipelines-with-targets.html#cb980-3" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Ozone))</span>
-<span id="cb980-4"><a href="building-data-pipelines-with-targets.html#cb980-4" tabindex="-1"></a>}</span>
-<span id="cb980-5"><a href="building-data-pipelines-with-targets.html#cb980-5" tabindex="-1"></a></span>
-<span id="cb980-6"><a href="building-data-pipelines-with-targets.html#cb980-6" tabindex="-1"></a>fit_model <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
-<span id="cb980-7"><a href="building-data-pipelines-with-targets.html#cb980-7" tabindex="-1"></a>  <span class="fu">lm</span>(Ozone <span class="sc">~</span> Temp, data) <span class="sc">%&gt;%</span></span>
-<span id="cb980-8"><a href="building-data-pipelines-with-targets.html#cb980-8" tabindex="-1"></a>    <span class="fu">coefficients</span>()</span>
-<span id="cb980-9"><a href="building-data-pipelines-with-targets.html#cb980-9" tabindex="-1"></a>}</span>
-<span id="cb980-10"><a href="building-data-pipelines-with-targets.html#cb980-10" tabindex="-1"></a></span>
-<span id="cb980-11"><a href="building-data-pipelines-with-targets.html#cb980-11" tabindex="-1"></a>plot_model <span class="ot">&lt;-</span> <span class="cf">function</span>(model, data) {</span>
-<span id="cb980-12"><a href="building-data-pipelines-with-targets.html#cb980-12" tabindex="-1"></a>  <span class="fu">ggplot</span>(data) <span class="sc">+</span></span>
-<span id="cb980-13"><a href="building-data-pipelines-with-targets.html#cb980-13" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Temp, <span class="at">y =</span> Ozone)) <span class="sc">+</span></span>
-<span id="cb980-14"><a href="building-data-pipelines-with-targets.html#cb980-14" tabindex="-1"></a>    <span class="fu">geom_abline</span>(<span class="at">intercept =</span> model[<span class="dv">1</span>], <span class="at">slope =</span> model[<span class="dv">2</span>])</span>
-<span id="cb980-15"><a href="building-data-pipelines-with-targets.html#cb980-15" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb982"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb982-1"><a href="building-data-pipelines-with-targets.html#cb982-1" tabindex="-1"></a>get_data <span class="ot">&lt;-</span> <span class="cf">function</span>(file) {</span>
+<span id="cb982-2"><a href="building-data-pipelines-with-targets.html#cb982-2" tabindex="-1"></a>  <span class="fu">read_csv</span>(file, <span class="at">col_types =</span> <span class="fu">cols</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb982-3"><a href="building-data-pipelines-with-targets.html#cb982-3" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Ozone))</span>
+<span id="cb982-4"><a href="building-data-pipelines-with-targets.html#cb982-4" tabindex="-1"></a>}</span>
+<span id="cb982-5"><a href="building-data-pipelines-with-targets.html#cb982-5" tabindex="-1"></a></span>
+<span id="cb982-6"><a href="building-data-pipelines-with-targets.html#cb982-6" tabindex="-1"></a>fit_model <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
+<span id="cb982-7"><a href="building-data-pipelines-with-targets.html#cb982-7" tabindex="-1"></a>  <span class="fu">lm</span>(Ozone <span class="sc">~</span> Temp, data) <span class="sc">%&gt;%</span></span>
+<span id="cb982-8"><a href="building-data-pipelines-with-targets.html#cb982-8" tabindex="-1"></a>    <span class="fu">coefficients</span>()</span>
+<span id="cb982-9"><a href="building-data-pipelines-with-targets.html#cb982-9" tabindex="-1"></a>}</span>
+<span id="cb982-10"><a href="building-data-pipelines-with-targets.html#cb982-10" tabindex="-1"></a></span>
+<span id="cb982-11"><a href="building-data-pipelines-with-targets.html#cb982-11" tabindex="-1"></a>plot_model <span class="ot">&lt;-</span> <span class="cf">function</span>(model, data) {</span>
+<span id="cb982-12"><a href="building-data-pipelines-with-targets.html#cb982-12" tabindex="-1"></a>  <span class="fu">ggplot</span>(data) <span class="sc">+</span></span>
+<span id="cb982-13"><a href="building-data-pipelines-with-targets.html#cb982-13" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Temp, <span class="at">y =</span> Ozone)) <span class="sc">+</span></span>
+<span id="cb982-14"><a href="building-data-pipelines-with-targets.html#cb982-14" tabindex="-1"></a>    <span class="fu">geom_abline</span>(<span class="at">intercept =</span> model[<span class="dv">1</span>], <span class="at">slope =</span> model[<span class="dv">2</span>])</span>
+<span id="cb982-15"><a href="building-data-pipelines-with-targets.html#cb982-15" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="checking-your-functions" class="section level3 hasAnchor" number="47.2.2">
 <h3><span class="header-section-number">47.2.2</span> Checking Your Functions<a href="building-data-pipelines-with-targets.html#checking-your-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1237,16 +1238,16 @@ Then <strong>save</strong> the script <code>functions.R</code>.</p>
 the RStudio Console pane) the code chunk below at the cursor - paste and press Enter/Return. This will load the packages and
 functions, write the data.csv file, then run each function to get and
 process the data, then finally draw the plot in your Plots tab.</p>
-<div class="sourceCode" id="cb981"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb981-1"><a href="building-data-pipelines-with-targets.html#cb981-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb981-2"><a href="building-data-pipelines-with-targets.html#cb981-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb981-3"><a href="building-data-pipelines-with-targets.html#cb981-3" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
-<span id="cb981-4"><a href="building-data-pipelines-with-targets.html#cb981-4" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb981-5"><a href="building-data-pipelines-with-targets.html#cb981-5" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;R/functions.R&quot;</span>)</span>
-<span id="cb981-6"><a href="building-data-pipelines-with-targets.html#cb981-6" tabindex="-1"></a>airquality <span class="sc">|&gt;</span>  <span class="fu">write.csv</span>(<span class="st">&quot;data.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb981-7"><a href="building-data-pipelines-with-targets.html#cb981-7" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_data</span>(<span class="st">&quot;data.csv&quot;</span>)</span>
-<span id="cb981-8"><a href="building-data-pipelines-with-targets.html#cb981-8" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">fit_model</span>(data)</span>
-<span id="cb981-9"><a href="building-data-pipelines-with-targets.html#cb981-9" tabindex="-1"></a>plot <span class="ot">&lt;-</span> <span class="fu">plot_model</span>(model, data)</span>
-<span id="cb981-10"><a href="building-data-pipelines-with-targets.html#cb981-10" tabindex="-1"></a>plot</span></code></pre></div>
+<div class="sourceCode" id="cb983"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb983-1"><a href="building-data-pipelines-with-targets.html#cb983-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb983-2"><a href="building-data-pipelines-with-targets.html#cb983-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb983-3"><a href="building-data-pipelines-with-targets.html#cb983-3" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb983-4"><a href="building-data-pipelines-with-targets.html#cb983-4" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb983-5"><a href="building-data-pipelines-with-targets.html#cb983-5" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;R/functions.R&quot;</span>)</span>
+<span id="cb983-6"><a href="building-data-pipelines-with-targets.html#cb983-6" tabindex="-1"></a>airquality <span class="sc">|&gt;</span>  <span class="fu">write.csv</span>(<span class="st">&quot;data.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb983-7"><a href="building-data-pipelines-with-targets.html#cb983-7" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_data</span>(<span class="st">&quot;data.csv&quot;</span>)</span>
+<span id="cb983-8"><a href="building-data-pipelines-with-targets.html#cb983-8" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">fit_model</span>(data)</span>
+<span id="cb983-9"><a href="building-data-pipelines-with-targets.html#cb983-9" tabindex="-1"></a>plot <span class="ot">&lt;-</span> <span class="fu">plot_model</span>(model, data)</span>
+<span id="cb983-10"><a href="building-data-pipelines-with-targets.html#cb983-10" tabindex="-1"></a>plot</span></code></pre></div>
 <p>This should all be working, and you should see the resulting plot in the Plots tab.
 <img src="images/tar_plot.png" alt="Resulting Plot of Ozone vs. Temp" /></p>
 <p><br>
@@ -1259,8 +1260,8 @@ pipeline. But now all the prep work is done, with the initial data file in a new
 <p>Now you are ready to build a pipeline. Run the code chunk
 below to load {targets} and run the <em>use_targets()</em> function. This will create a new file called ‘_targets.R’ in the root of your project. This script will contain the pipeline code that you will build up in the next
 steps.</p>
-<div class="sourceCode" id="cb982"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb982-1"><a href="building-data-pipelines-with-targets.html#cb982-1" tabindex="-1"></a><span class="fu">library</span>(targets)</span>
-<span id="cb982-2"><a href="building-data-pipelines-with-targets.html#cb982-2" tabindex="-1"></a><span class="fu">use_targets</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb984"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb984-1"><a href="building-data-pipelines-with-targets.html#cb984-1" tabindex="-1"></a><span class="fu">library</span>(targets)</span>
+<span id="cb984-2"><a href="building-data-pipelines-with-targets.html#cb984-2" tabindex="-1"></a><span class="fu">use_targets</span>()</span></code></pre></div>
 <p>Click on your Files tab and go up one level from the R folder to the root of the project, to confirm that <code>_targets.R</code> file now exists in the root of your project. This file should now be open in your Source pane, and labeled on the tab at the top as <code>_targets.R</code>. This is where you will build up your pipeline.</p>
 <p>Within the <code>_targets.R</code> file, scroll down to the <code>tar_option_set()</code> function. This function sets the options for the pipeline, including all of the packages that you will need. For this pipeline, we will need</p>
 <ul>
@@ -1288,13 +1289,13 @@ These target output objects are:</p>
 <li>the fourth target is <code>plot</code>, which is generated by the <code>plot_model()</code> function, which uses the <code>model</code> and <code>data</code> targets as input</li>
 </ul>
 <p>Copy the code chunk below and replace the <code>tar_target()</code> lines (replace everything from the beginning of <code>list(</code> to the closing parenthesis) (everything from line 52 to line 62) with the code below.</p>
-<div class="sourceCode" id="cb983"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb983-1"><a href="building-data-pipelines-with-targets.html#cb983-1" tabindex="-1"></a><span class="fu">list</span>(</span>
-<span id="cb983-2"><a href="building-data-pipelines-with-targets.html#cb983-2" tabindex="-1"></a>  <span class="fu">tar_target</span>(file, <span class="st">&quot;data.csv&quot;</span>, <span class="at">format =</span> <span class="st">&quot;file&quot;</span>),</span>
-<span id="cb983-3"><a href="building-data-pipelines-with-targets.html#cb983-3" tabindex="-1"></a>  <span class="fu">tar_target</span>(data, <span class="fu">get_data</span>(file)),</span>
-<span id="cb983-4"><a href="building-data-pipelines-with-targets.html#cb983-4" tabindex="-1"></a>  <span class="fu">tar_target</span>(model, <span class="fu">fit_model</span>(data)),</span>
-<span id="cb983-5"><a href="building-data-pipelines-with-targets.html#cb983-5" tabindex="-1"></a>  <span class="fu">tar_target</span>(plot, <span class="fu">plot_model</span>(model, data)</span>
-<span id="cb983-6"><a href="building-data-pipelines-with-targets.html#cb983-6" tabindex="-1"></a>  )</span>
-<span id="cb983-7"><a href="building-data-pipelines-with-targets.html#cb983-7" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb985"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb985-1"><a href="building-data-pipelines-with-targets.html#cb985-1" tabindex="-1"></a><span class="fu">list</span>(</span>
+<span id="cb985-2"><a href="building-data-pipelines-with-targets.html#cb985-2" tabindex="-1"></a>  <span class="fu">tar_target</span>(file, <span class="st">&quot;data.csv&quot;</span>, <span class="at">format =</span> <span class="st">&quot;file&quot;</span>),</span>
+<span id="cb985-3"><a href="building-data-pipelines-with-targets.html#cb985-3" tabindex="-1"></a>  <span class="fu">tar_target</span>(data, <span class="fu">get_data</span>(file)),</span>
+<span id="cb985-4"><a href="building-data-pipelines-with-targets.html#cb985-4" tabindex="-1"></a>  <span class="fu">tar_target</span>(model, <span class="fu">fit_model</span>(data)),</span>
+<span id="cb985-5"><a href="building-data-pipelines-with-targets.html#cb985-5" tabindex="-1"></a>  <span class="fu">tar_target</span>(plot, <span class="fu">plot_model</span>(model, data)</span>
+<span id="cb985-6"><a href="building-data-pipelines-with-targets.html#cb985-6" tabindex="-1"></a>  )</span>
+<span id="cb985-7"><a href="building-data-pipelines-with-targets.html#cb985-7" tabindex="-1"></a>)</span></code></pre></div>
 <p>Make sure that your list ends with 3 consecutive close parentheses (and a red parenthesis if you are using rainbow parentheses). Check that all the parentheses and commas are correct, with no syntax errors, then save <code>_targets.R</code> again.</p>
 </div>
 <div id="pre-build-checks" class="section level3 hasAnchor" number="47.2.4">
@@ -1302,7 +1303,7 @@ These target output objects are:</p>
 <p>Now we are ready to start building the pipeline.
 Let’s start with two pre-build checks.
 First, run <code>tar_manifest()</code> locally in your project in the Console as shown below. This will check the pipeline and show you the status of each target.</p>
-<div class="sourceCode" id="cb984"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb984-1"><a href="building-data-pipelines-with-targets.html#cb984-1" tabindex="-1"></a><span class="fu">tar_manifest</span>(<span class="at">fields =</span> command)</span></code></pre></div>
+<div class="sourceCode" id="cb986"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb986-1"><a href="building-data-pipelines-with-targets.html#cb986-1" tabindex="-1"></a><span class="fu">tar_manifest</span>(<span class="at">fields =</span> command)</span></code></pre></div>
 <p>This should generate a table in your console with two columns, showing the name of each target, and the command that generates that target.</p>
 <div class="float">
 <img src="images/tar_manifest.png" alt="tar_manifest Output" />
@@ -1311,7 +1312,7 @@ First, run <code>tar_manifest()</code> locally in your project in the Console as
 <p><br>
 Note that the file target will not have a proper function to generate it, but something that looks like <code>"\"data.csv\""</code> If you see any errors and don’t get a 4 x 2 table, you will need to fix either the <code>functions.R</code> file and/or <code>_targets.R</code> before proceeding.</p>
 <p>Now we can visualize our pipeline by copying and running the code chunk below in the Console. This will generate a graph of the pipeline, showing the targets and the dependencies between them. The graph should show the four targets, with the file target at the left, and the plot target at the far right. The data target depends on the file target, the model target depends on the data target, and the plot target depends on the model and data targets. There should be a continuous flow from left to right, though it can branch or unite in more complex workflows. As this is a new pipeline, each target will be color coded (a blue-green) as “Outdated”, as each target has not been built yet.</p>
-<div class="sourceCode" id="cb985"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb985-1"><a href="building-data-pipelines-with-targets.html#cb985-1" tabindex="-1"></a><span class="fu">tar_visnetwork</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb987"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb987-1"><a href="building-data-pipelines-with-targets.html#cb987-1" tabindex="-1"></a><span class="fu">tar_visnetwork</span>()</span></code></pre></div>
 <div class="float">
 <img src="images/tar_visnetwork.png" alt="New Pipeline" />
 <div class="figcaption">New Pipeline</div>
@@ -1319,7 +1320,7 @@ Note that the file target will not have a proper function to generate it, but so
 <p><br>
 ### Building the Pipeline</p>
 <p>Now that the pre-build checks are good, we are ready to build the pipeline. Run the function below in your local project to build the pipeline.</p>
-<div class="sourceCode" id="cb986"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb986-1"><a href="building-data-pipelines-with-targets.html#cb986-1" tabindex="-1"></a><span class="fu">tar_make</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb988"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb988-1"><a href="building-data-pipelines-with-targets.html#cb988-1" tabindex="-1"></a><span class="fu">tar_make</span>()</span></code></pre></div>
 <p>As this is a new pipeline, it will run (dispatch) every function and create every target anew. The output in the console will tell you when it dispatches each target and when it completes building the target output object, along with how long it takes to run the whole pipeline.</p>
 <div class="float">
 <img src="images/tar_make1.png" alt="tar_make Output" />
@@ -1328,7 +1329,7 @@ Note that the file target will not have a proper function to generate it, but so
 <p><br>
 The output objects are also saved to binary files in the <code>_targets/objects/</code> folder (data, model, and plot). You can check these files (with <code>tar_read(object)</code>, rather than clicking on them, as they are binary files and woin’t display like normal R objects) to see the output objects, and this will load these objects into your R session to check them.</p>
 <p>For example, to load the plot object, you would run the code below.</p>
-<div class="sourceCode" id="cb987"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb987-1"><a href="building-data-pipelines-with-targets.html#cb987-1" tabindex="-1"></a><span class="fu">tar_read</span>(plot)</span></code></pre></div>
+<div class="sourceCode" id="cb989"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb989-1"><a href="building-data-pipelines-with-targets.html#cb989-1" tabindex="-1"></a><span class="fu">tar_read</span>(plot)</span></code></pre></div>
 <p>Because these target objects are stored and tracked by {targets}, if you re-run <code>tar_make()</code> without any changes to the data or the function code, it will skip all the functions, and complete the pipeline very quickly.</p>
 <p>Only if changes are made to the data or code will the pipeline re-run the functions that are affected by the changes. This is a key feature of {targets} that makes it so powerful for efficient, reproducible research.</p>
 <p>If you now run <code>tar_visnetwork()</code> again, you will see that the pipeline is now complete, with all the targets built (black). The graph should show all the targets as black, indicating that they are up-to-date.</p>
@@ -1338,10 +1339,10 @@ The output objects are also saved to binary files in the <code>_targets/objects/
 <div id="changing-the-pipeline" class="section level3 hasAnchor" number="47.2.5">
 <h3><span class="header-section-number">47.2.5</span> Changing the Pipeline<a href="building-data-pipelines-with-targets.html#changing-the-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>As an example, let’s change the model to make the model predictor <code>Wind</code> instead of <code>Temp</code>. Copy the code below to replace the <code>fit_model()</code> function in the <code>R/functions.R</code> script. Note that you can also simply type <code>Wind</code> in place of <code>Temp</code> in the function. Save the edited <code>functions.R</code> file. This will change the model output, and the pipeline will have to re-run the model and plot targets, but not the data or file targets.</p>
-<div class="sourceCode" id="cb988"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb988-1"><a href="building-data-pipelines-with-targets.html#cb988-1" tabindex="-1"></a>fit_model <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
-<span id="cb988-2"><a href="building-data-pipelines-with-targets.html#cb988-2" tabindex="-1"></a>  <span class="fu">lm</span>(Ozone <span class="sc">~</span> Wind, <span class="at">data =</span> data) <span class="sc">|&gt;</span> </span>
-<span id="cb988-3"><a href="building-data-pipelines-with-targets.html#cb988-3" tabindex="-1"></a>    <span class="fu">coefficients</span>() </span>
-<span id="cb988-4"><a href="building-data-pipelines-with-targets.html#cb988-4" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb990"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb990-1"><a href="building-data-pipelines-with-targets.html#cb990-1" tabindex="-1"></a>fit_model <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
+<span id="cb990-2"><a href="building-data-pipelines-with-targets.html#cb990-2" tabindex="-1"></a>  <span class="fu">lm</span>(Ozone <span class="sc">~</span> Wind, <span class="at">data =</span> data) <span class="sc">|&gt;</span> </span>
+<span id="cb990-3"><a href="building-data-pipelines-with-targets.html#cb990-3" tabindex="-1"></a>    <span class="fu">coefficients</span>() </span>
+<span id="cb990-4"><a href="building-data-pipelines-with-targets.html#cb990-4" tabindex="-1"></a>}</span></code></pre></div>
 <p>Now re-run <code>tar_visnetwork()</code> to see the changes in the pipeline. The fit_model function, and the model and plot targets that depend on the model function upstream should now be blue-green, indicating that they are out of date and need to be re-run.</p>
 <div class="float">
 <img src="images/tar_network2.png" alt="Out of Date Network" />
@@ -1361,50 +1362,50 @@ analysis of World health Organization (WHO) data on tuberculosis, which
 are included in the {tidyr} package.</p>
 <p>Start by opening a New Project in RStudio, named something like “who_tb_analysis”. Go to the Files tab, then create a new Folder in the project called “R”.
 Within this folder, create a new File (an RScript) named “functions.R”.</p>
-<div class="sourceCode" id="cb989"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb989-1"><a href="building-data-pipelines-with-targets.html#cb989-1" tabindex="-1"></a><span class="co"># these functions require: dplyr, gt, gtsummary, ggplot2, tidyr, scales</span></span>
-<span id="cb989-2"><a href="building-data-pipelines-with-targets.html#cb989-2" tabindex="-1"></a><span class="co"># 01 read in data</span></span>
-<span id="cb989-3"><a href="building-data-pipelines-with-targets.html#cb989-3" tabindex="-1"></a></span>
-<span id="cb989-4"><a href="building-data-pipelines-with-targets.html#cb989-4" tabindex="-1"></a>who_data <span class="ot">&lt;-</span> tidyr<span class="sc">::</span>who</span>
-<span id="cb989-5"><a href="building-data-pipelines-with-targets.html#cb989-5" tabindex="-1"></a></span>
-<span id="cb989-6"><a href="building-data-pipelines-with-targets.html#cb989-6" tabindex="-1"></a><span class="co"># 02 clean data</span></span>
-<span id="cb989-7"><a href="building-data-pipelines-with-targets.html#cb989-7" tabindex="-1"></a></span>
-<span id="cb989-8"><a href="building-data-pipelines-with-targets.html#cb989-8" tabindex="-1"></a>who_data <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(</span>
-<span id="cb989-9"><a href="building-data-pipelines-with-targets.html#cb989-9" tabindex="-1"></a>  <span class="at">cols =</span> new_sp_m014<span class="sc">:</span>newrel_f65,</span>
-<span id="cb989-10"><a href="building-data-pipelines-with-targets.html#cb989-10" tabindex="-1"></a>  <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;diagnosis&quot;</span>, <span class="st">&quot;gender&quot;</span>, <span class="st">&quot;age&quot;</span>),</span>
-<span id="cb989-11"><a href="building-data-pipelines-with-targets.html#cb989-11" tabindex="-1"></a>  <span class="at">names_pattern =</span> <span class="st">&quot;new_?(.*)_(.)(.*)&quot;</span>,</span>
-<span id="cb989-12"><a href="building-data-pipelines-with-targets.html#cb989-12" tabindex="-1"></a>  <span class="at">values_to =</span> <span class="st">&quot;count&quot;</span></span>
-<span id="cb989-13"><a href="building-data-pipelines-with-targets.html#cb989-13" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb989-14"><a href="building-data-pipelines-with-targets.html#cb989-14" tabindex="-1"></a>  <span class="fu">na.omit</span>() <span class="ot">-&gt;</span> </span>
-<span id="cb989-15"><a href="building-data-pipelines-with-targets.html#cb989-15" tabindex="-1"></a>who_clean</span>
-<span id="cb989-16"><a href="building-data-pipelines-with-targets.html#cb989-16" tabindex="-1"></a></span>
-<span id="cb989-17"><a href="building-data-pipelines-with-targets.html#cb989-17" tabindex="-1"></a></span>
-<span id="cb989-18"><a href="building-data-pipelines-with-targets.html#cb989-18" tabindex="-1"></a><span class="co"># 03 make table</span></span>
-<span id="cb989-19"><a href="building-data-pipelines-with-targets.html#cb989-19" tabindex="-1"></a></span>
-<span id="cb989-20"><a href="building-data-pipelines-with-targets.html#cb989-20" tabindex="-1"></a>who_clean <span class="sc">|&gt;</span></span>
-<span id="cb989-21"><a href="building-data-pipelines-with-targets.html#cb989-21" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">|&gt;</span> </span>
-<span id="cb989-22"><a href="building-data-pipelines-with-targets.html#cb989-22" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Case_Count =</span> <span class="fu">sum</span>(count)) <span class="sc">|&gt;</span> </span>
-<span id="cb989-23"><a href="building-data-pipelines-with-targets.html#cb989-23" tabindex="-1"></a>  <span class="fu">slice_max</span>(Case_Count, <span class="at">n=</span> <span class="dv">10</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb989-24"><a href="building-data-pipelines-with-targets.html#cb989-24" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">gt</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb989-25"><a href="building-data-pipelines-with-targets.html#cb989-25" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">fmt_number</span>(<span class="at">columns =</span> Case_Count, <span class="at">use_seps =</span> <span class="cn">TRUE</span>,<span class="at">decimals =</span> <span class="dv">0</span>)</span>
-<span id="cb989-26"><a href="building-data-pipelines-with-targets.html#cb989-26" tabindex="-1"></a></span>
-<span id="cb989-27"><a href="building-data-pipelines-with-targets.html#cb989-27" tabindex="-1"></a></span>
-<span id="cb989-28"><a href="building-data-pipelines-with-targets.html#cb989-28" tabindex="-1"></a><span class="co"># 04 Model case counts</span></span>
-<span id="cb989-29"><a href="building-data-pipelines-with-targets.html#cb989-29" tabindex="-1"></a></span>
-<span id="cb989-30"><a href="building-data-pipelines-with-targets.html#cb989-30" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(count <span class="sc">~</span> diagnosis <span class="sc">+</span> gender <span class="sc">+</span> age, <span class="at">data =</span> who_clean )</span>
-<span id="cb989-31"><a href="building-data-pipelines-with-targets.html#cb989-31" tabindex="-1"></a>model <span class="sc">|&gt;</span> </span>
-<span id="cb989-32"><a href="building-data-pipelines-with-targets.html#cb989-32" tabindex="-1"></a>  gtsummary<span class="sc">::</span><span class="fu">tbl_regression</span>()</span>
-<span id="cb989-33"><a href="building-data-pipelines-with-targets.html#cb989-33" tabindex="-1"></a></span>
-<span id="cb989-34"><a href="building-data-pipelines-with-targets.html#cb989-34" tabindex="-1"></a></span>
-<span id="cb989-35"><a href="building-data-pipelines-with-targets.html#cb989-35" tabindex="-1"></a><span class="co"># 05 Plot</span></span>
-<span id="cb989-36"><a href="building-data-pipelines-with-targets.html#cb989-36" tabindex="-1"></a></span>
-<span id="cb989-37"><a href="building-data-pipelines-with-targets.html#cb989-37" tabindex="-1"></a>who_clean <span class="sc">|&gt;</span> </span>
-<span id="cb989-38"><a href="building-data-pipelines-with-targets.html#cb989-38" tabindex="-1"></a>    <span class="fu">group_by</span>( year) <span class="sc">|&gt;</span> </span>
-<span id="cb989-39"><a href="building-data-pipelines-with-targets.html#cb989-39" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">sum =</span> <span class="fu">sum</span>(count)) <span class="sc">|&gt;</span> </span>
-<span id="cb989-40"><a href="building-data-pipelines-with-targets.html#cb989-40" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> year, <span class="at">y =</span> sum)) <span class="sc">+</span> </span>
-<span id="cb989-41"><a href="building-data-pipelines-with-targets.html#cb989-41" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb989-42"><a href="building-data-pipelines-with-targets.html#cb989-42" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;WHO Count of TB Cases by Year&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Cases&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>) <span class="sc">+</span>  </span>
-<span id="cb989-43"><a href="building-data-pipelines-with-targets.html#cb989-43" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">scale =</span> <span class="fl">1e-6</span>, <span class="at">suffix =</span> <span class="st">&quot;M&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb989-44"><a href="building-data-pipelines-with-targets.html#cb989-44" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb991"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb991-1"><a href="building-data-pipelines-with-targets.html#cb991-1" tabindex="-1"></a><span class="co"># these functions require: dplyr, gt, gtsummary, ggplot2, tidyr, scales</span></span>
+<span id="cb991-2"><a href="building-data-pipelines-with-targets.html#cb991-2" tabindex="-1"></a><span class="co"># 01 read in data</span></span>
+<span id="cb991-3"><a href="building-data-pipelines-with-targets.html#cb991-3" tabindex="-1"></a></span>
+<span id="cb991-4"><a href="building-data-pipelines-with-targets.html#cb991-4" tabindex="-1"></a>who_data <span class="ot">&lt;-</span> tidyr<span class="sc">::</span>who</span>
+<span id="cb991-5"><a href="building-data-pipelines-with-targets.html#cb991-5" tabindex="-1"></a></span>
+<span id="cb991-6"><a href="building-data-pipelines-with-targets.html#cb991-6" tabindex="-1"></a><span class="co"># 02 clean data</span></span>
+<span id="cb991-7"><a href="building-data-pipelines-with-targets.html#cb991-7" tabindex="-1"></a></span>
+<span id="cb991-8"><a href="building-data-pipelines-with-targets.html#cb991-8" tabindex="-1"></a>who_data <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(</span>
+<span id="cb991-9"><a href="building-data-pipelines-with-targets.html#cb991-9" tabindex="-1"></a>  <span class="at">cols =</span> new_sp_m014<span class="sc">:</span>newrel_f65,</span>
+<span id="cb991-10"><a href="building-data-pipelines-with-targets.html#cb991-10" tabindex="-1"></a>  <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;diagnosis&quot;</span>, <span class="st">&quot;gender&quot;</span>, <span class="st">&quot;age&quot;</span>),</span>
+<span id="cb991-11"><a href="building-data-pipelines-with-targets.html#cb991-11" tabindex="-1"></a>  <span class="at">names_pattern =</span> <span class="st">&quot;new_?(.*)_(.)(.*)&quot;</span>,</span>
+<span id="cb991-12"><a href="building-data-pipelines-with-targets.html#cb991-12" tabindex="-1"></a>  <span class="at">values_to =</span> <span class="st">&quot;count&quot;</span></span>
+<span id="cb991-13"><a href="building-data-pipelines-with-targets.html#cb991-13" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb991-14"><a href="building-data-pipelines-with-targets.html#cb991-14" tabindex="-1"></a>  <span class="fu">na.omit</span>() <span class="ot">-&gt;</span> </span>
+<span id="cb991-15"><a href="building-data-pipelines-with-targets.html#cb991-15" tabindex="-1"></a>who_clean</span>
+<span id="cb991-16"><a href="building-data-pipelines-with-targets.html#cb991-16" tabindex="-1"></a></span>
+<span id="cb991-17"><a href="building-data-pipelines-with-targets.html#cb991-17" tabindex="-1"></a></span>
+<span id="cb991-18"><a href="building-data-pipelines-with-targets.html#cb991-18" tabindex="-1"></a><span class="co"># 03 make table</span></span>
+<span id="cb991-19"><a href="building-data-pipelines-with-targets.html#cb991-19" tabindex="-1"></a></span>
+<span id="cb991-20"><a href="building-data-pipelines-with-targets.html#cb991-20" tabindex="-1"></a>who_clean <span class="sc">|&gt;</span></span>
+<span id="cb991-21"><a href="building-data-pipelines-with-targets.html#cb991-21" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">|&gt;</span> </span>
+<span id="cb991-22"><a href="building-data-pipelines-with-targets.html#cb991-22" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Case_Count =</span> <span class="fu">sum</span>(count)) <span class="sc">|&gt;</span> </span>
+<span id="cb991-23"><a href="building-data-pipelines-with-targets.html#cb991-23" tabindex="-1"></a>  <span class="fu">slice_max</span>(Case_Count, <span class="at">n=</span> <span class="dv">10</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb991-24"><a href="building-data-pipelines-with-targets.html#cb991-24" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">gt</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb991-25"><a href="building-data-pipelines-with-targets.html#cb991-25" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">fmt_number</span>(<span class="at">columns =</span> Case_Count, <span class="at">use_seps =</span> <span class="cn">TRUE</span>,<span class="at">decimals =</span> <span class="dv">0</span>)</span>
+<span id="cb991-26"><a href="building-data-pipelines-with-targets.html#cb991-26" tabindex="-1"></a></span>
+<span id="cb991-27"><a href="building-data-pipelines-with-targets.html#cb991-27" tabindex="-1"></a></span>
+<span id="cb991-28"><a href="building-data-pipelines-with-targets.html#cb991-28" tabindex="-1"></a><span class="co"># 04 Model case counts</span></span>
+<span id="cb991-29"><a href="building-data-pipelines-with-targets.html#cb991-29" tabindex="-1"></a></span>
+<span id="cb991-30"><a href="building-data-pipelines-with-targets.html#cb991-30" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(count <span class="sc">~</span> diagnosis <span class="sc">+</span> gender <span class="sc">+</span> age, <span class="at">data =</span> who_clean )</span>
+<span id="cb991-31"><a href="building-data-pipelines-with-targets.html#cb991-31" tabindex="-1"></a>model <span class="sc">|&gt;</span> </span>
+<span id="cb991-32"><a href="building-data-pipelines-with-targets.html#cb991-32" tabindex="-1"></a>  gtsummary<span class="sc">::</span><span class="fu">tbl_regression</span>()</span>
+<span id="cb991-33"><a href="building-data-pipelines-with-targets.html#cb991-33" tabindex="-1"></a></span>
+<span id="cb991-34"><a href="building-data-pipelines-with-targets.html#cb991-34" tabindex="-1"></a></span>
+<span id="cb991-35"><a href="building-data-pipelines-with-targets.html#cb991-35" tabindex="-1"></a><span class="co"># 05 Plot</span></span>
+<span id="cb991-36"><a href="building-data-pipelines-with-targets.html#cb991-36" tabindex="-1"></a></span>
+<span id="cb991-37"><a href="building-data-pipelines-with-targets.html#cb991-37" tabindex="-1"></a>who_clean <span class="sc">|&gt;</span> </span>
+<span id="cb991-38"><a href="building-data-pipelines-with-targets.html#cb991-38" tabindex="-1"></a>    <span class="fu">group_by</span>( year) <span class="sc">|&gt;</span> </span>
+<span id="cb991-39"><a href="building-data-pipelines-with-targets.html#cb991-39" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">sum =</span> <span class="fu">sum</span>(count)) <span class="sc">|&gt;</span> </span>
+<span id="cb991-40"><a href="building-data-pipelines-with-targets.html#cb991-40" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> year, <span class="at">y =</span> sum)) <span class="sc">+</span> </span>
+<span id="cb991-41"><a href="building-data-pipelines-with-targets.html#cb991-41" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb991-42"><a href="building-data-pipelines-with-targets.html#cb991-42" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;WHO Count of TB Cases by Year&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Cases&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>) <span class="sc">+</span>  </span>
+<span id="cb991-43"><a href="building-data-pipelines-with-targets.html#cb991-43" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">scale =</span> <span class="fl">1e-6</span>, <span class="at">suffix =</span> <span class="st">&quot;M&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb991-44"><a href="building-data-pipelines-with-targets.html#cb991-44" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <p>This is a pretty typical 5-step analysis script. The first step reads in
 the data, the second step cleans the data, the third step makes a table,
 the fourth step models the data, and the fifth step plots the data.</p>
@@ -1416,62 +1417,62 @@ the fourth step models the data, and the fifth step plots the data.</p>
 <button>
 Functions Solution
 </button>
-<div class="sourceCode" id="cb990"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb990-1"><a href="building-data-pipelines-with-targets.html#cb990-1" tabindex="-1"></a><span class="co"># 01 read in data </span></span>
-<span id="cb990-2"><a href="building-data-pipelines-with-targets.html#cb990-2" tabindex="-1"></a>read_data <span class="ot">&lt;-</span> <span class="cf">function</span>(file){ </span>
-<span id="cb990-3"><a href="building-data-pipelines-with-targets.html#cb990-3" tabindex="-1"></a>  who_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(file,</span>
-<span id="cb990-4"><a href="building-data-pipelines-with-targets.html#cb990-4" tabindex="-1"></a>          <span class="at">col_types =</span> <span class="fu">cols</span>())</span>
-<span id="cb990-5"><a href="building-data-pipelines-with-targets.html#cb990-5" tabindex="-1"></a>}</span>
-<span id="cb990-6"><a href="building-data-pipelines-with-targets.html#cb990-6" tabindex="-1"></a></span>
-<span id="cb990-7"><a href="building-data-pipelines-with-targets.html#cb990-7" tabindex="-1"></a><span class="co"># 02 clean data</span></span>
-<span id="cb990-8"><a href="building-data-pipelines-with-targets.html#cb990-8" tabindex="-1"></a></span>
-<span id="cb990-9"><a href="building-data-pipelines-with-targets.html#cb990-9" tabindex="-1"></a>clean_data <span class="ot">&lt;-</span> <span class="cf">function</span>(who_data){ </span>
-<span id="cb990-10"><a href="building-data-pipelines-with-targets.html#cb990-10" tabindex="-1"></a>  who_data <span class="sc">|&gt;</span> </span>
-<span id="cb990-11"><a href="building-data-pipelines-with-targets.html#cb990-11" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(</span>
-<span id="cb990-12"><a href="building-data-pipelines-with-targets.html#cb990-12" tabindex="-1"></a>      <span class="at">cols =</span> new_sp_m014<span class="sc">:</span>newrel_f65, </span>
-<span id="cb990-13"><a href="building-data-pipelines-with-targets.html#cb990-13" tabindex="-1"></a>      <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;diagnosis&quot;</span>, <span class="st">&quot;gender&quot;</span>, <span class="st">&quot;age&quot;</span>),</span>
-<span id="cb990-14"><a href="building-data-pipelines-with-targets.html#cb990-14" tabindex="-1"></a>      <span class="at">names_pattern =</span> <span class="st">&quot;new_?(.*)_(.)(.*)&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;count&quot;</span> ) <span class="sc">|&gt;</span> </span>
-<span id="cb990-15"><a href="building-data-pipelines-with-targets.html#cb990-15" tabindex="-1"></a>    <span class="fu">na.omit</span>() <span class="ot">-&gt;</span> </span>
-<span id="cb990-16"><a href="building-data-pipelines-with-targets.html#cb990-16" tabindex="-1"></a>  who_clean </span>
-<span id="cb990-17"><a href="building-data-pipelines-with-targets.html#cb990-17" tabindex="-1"></a>}</span>
-<span id="cb990-18"><a href="building-data-pipelines-with-targets.html#cb990-18" tabindex="-1"></a></span>
-<span id="cb990-19"><a href="building-data-pipelines-with-targets.html#cb990-19" tabindex="-1"></a><span class="co"># 03 make table</span></span>
-<span id="cb990-20"><a href="building-data-pipelines-with-targets.html#cb990-20" tabindex="-1"></a></span>
-<span id="cb990-21"><a href="building-data-pipelines-with-targets.html#cb990-21" tabindex="-1"></a>make_table <span class="ot">&lt;-</span> <span class="cf">function</span>(who_clean){</span>
-<span id="cb990-22"><a href="building-data-pipelines-with-targets.html#cb990-22" tabindex="-1"></a>  who_clean <span class="sc">|&gt;</span> </span>
-<span id="cb990-23"><a href="building-data-pipelines-with-targets.html#cb990-23" tabindex="-1"></a>    <span class="fu">group_by</span>(country) <span class="sc">|&gt;</span> </span>
-<span id="cb990-24"><a href="building-data-pipelines-with-targets.html#cb990-24" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">Case_Count =</span> <span class="fu">sum</span>(count)) <span class="sc">|&gt;</span>  </span>
-<span id="cb990-25"><a href="building-data-pipelines-with-targets.html#cb990-25" tabindex="-1"></a>    <span class="fu">slice_max</span>(Case_Count, <span class="at">n=</span><span class="dv">10</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb990-26"><a href="building-data-pipelines-with-targets.html#cb990-26" tabindex="-1"></a>    gt<span class="sc">::</span><span class="fu">gt</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb990-27"><a href="building-data-pipelines-with-targets.html#cb990-27" tabindex="-1"></a>    gt<span class="sc">::</span><span class="fu">fmt_number</span>(</span>
-<span id="cb990-28"><a href="building-data-pipelines-with-targets.html#cb990-28" tabindex="-1"></a>      <span class="at">columns =</span> Case_Count, </span>
-<span id="cb990-29"><a href="building-data-pipelines-with-targets.html#cb990-29" tabindex="-1"></a>      <span class="at">use_seps =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb990-30"><a href="building-data-pipelines-with-targets.html#cb990-30" tabindex="-1"></a>      <span class="at">decimals =</span> <span class="dv">0</span>) </span>
-<span id="cb990-31"><a href="building-data-pipelines-with-targets.html#cb990-31" tabindex="-1"></a>}</span>
-<span id="cb990-32"><a href="building-data-pipelines-with-targets.html#cb990-32" tabindex="-1"></a></span>
-<span id="cb990-33"><a href="building-data-pipelines-with-targets.html#cb990-33" tabindex="-1"></a><span class="co"># 04 Model case counts</span></span>
-<span id="cb990-34"><a href="building-data-pipelines-with-targets.html#cb990-34" tabindex="-1"></a></span>
-<span id="cb990-35"><a href="building-data-pipelines-with-targets.html#cb990-35" tabindex="-1"></a>model_cases <span class="ot">&lt;-</span> <span class="cf">function</span>(who_clean){</span>
-<span id="cb990-36"><a href="building-data-pipelines-with-targets.html#cb990-36" tabindex="-1"></a>  model <span class="ot">&lt;-</span> <span class="fu">lm</span>(count <span class="sc">~</span> diagnosis <span class="sc">+</span></span>
-<span id="cb990-37"><a href="building-data-pipelines-with-targets.html#cb990-37" tabindex="-1"></a>gender <span class="sc">+</span> age, </span>
-<span id="cb990-38"><a href="building-data-pipelines-with-targets.html#cb990-38" tabindex="-1"></a>  <span class="at">data =</span> who_clean) </span>
-<span id="cb990-39"><a href="building-data-pipelines-with-targets.html#cb990-39" tabindex="-1"></a>  model <span class="sc">|&gt;</span> </span>
-<span id="cb990-40"><a href="building-data-pipelines-with-targets.html#cb990-40" tabindex="-1"></a>    gtsummary<span class="sc">::</span><span class="fu">tbl_regression</span>()</span>
-<span id="cb990-41"><a href="building-data-pipelines-with-targets.html#cb990-41" tabindex="-1"></a>}</span>
-<span id="cb990-42"><a href="building-data-pipelines-with-targets.html#cb990-42" tabindex="-1"></a></span>
-<span id="cb990-43"><a href="building-data-pipelines-with-targets.html#cb990-43" tabindex="-1"></a><span class="co"># 05 Plot</span></span>
-<span id="cb990-44"><a href="building-data-pipelines-with-targets.html#cb990-44" tabindex="-1"></a></span>
-<span id="cb990-45"><a href="building-data-pipelines-with-targets.html#cb990-45" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> <span class="cf">function</span>(who_clean){</span>
-<span id="cb990-46"><a href="building-data-pipelines-with-targets.html#cb990-46" tabindex="-1"></a>  plot <span class="ot">&lt;-</span> who_clean <span class="sc">|&gt;</span> </span>
-<span id="cb990-47"><a href="building-data-pipelines-with-targets.html#cb990-47" tabindex="-1"></a>    <span class="fu">group_by</span>( year) <span class="sc">|&gt;</span> </span>
-<span id="cb990-48"><a href="building-data-pipelines-with-targets.html#cb990-48" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">sum =</span> <span class="fu">sum</span>(count)) <span class="sc">|&gt;</span> </span>
-<span id="cb990-49"><a href="building-data-pipelines-with-targets.html#cb990-49" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> year, <span class="at">y =</span> sum)) <span class="sc">+</span></span>
-<span id="cb990-50"><a href="building-data-pipelines-with-targets.html#cb990-50" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb990-51"><a href="building-data-pipelines-with-targets.html#cb990-51" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;WHO Count of TB Cases by Year&quot;</span>, </span>
-<span id="cb990-52"><a href="building-data-pipelines-with-targets.html#cb990-52" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Cases&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>) <span class="sc">+</span></span>
-<span id="cb990-53"><a href="building-data-pipelines-with-targets.html#cb990-53" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">scale =</span> <span class="fl">1e-6</span>, <span class="at">suffix =</span> <span class="st">&quot;M&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb990-54"><a href="building-data-pipelines-with-targets.html#cb990-54" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) </span>
-<span id="cb990-55"><a href="building-data-pipelines-with-targets.html#cb990-55" tabindex="-1"></a>  <span class="fu">return</span>(plot)</span>
-<span id="cb990-56"><a href="building-data-pipelines-with-targets.html#cb990-56" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb992"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb992-1"><a href="building-data-pipelines-with-targets.html#cb992-1" tabindex="-1"></a><span class="co"># 01 read in data </span></span>
+<span id="cb992-2"><a href="building-data-pipelines-with-targets.html#cb992-2" tabindex="-1"></a>read_data <span class="ot">&lt;-</span> <span class="cf">function</span>(file){ </span>
+<span id="cb992-3"><a href="building-data-pipelines-with-targets.html#cb992-3" tabindex="-1"></a>  who_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(file,</span>
+<span id="cb992-4"><a href="building-data-pipelines-with-targets.html#cb992-4" tabindex="-1"></a>          <span class="at">col_types =</span> <span class="fu">cols</span>())</span>
+<span id="cb992-5"><a href="building-data-pipelines-with-targets.html#cb992-5" tabindex="-1"></a>}</span>
+<span id="cb992-6"><a href="building-data-pipelines-with-targets.html#cb992-6" tabindex="-1"></a></span>
+<span id="cb992-7"><a href="building-data-pipelines-with-targets.html#cb992-7" tabindex="-1"></a><span class="co"># 02 clean data</span></span>
+<span id="cb992-8"><a href="building-data-pipelines-with-targets.html#cb992-8" tabindex="-1"></a></span>
+<span id="cb992-9"><a href="building-data-pipelines-with-targets.html#cb992-9" tabindex="-1"></a>clean_data <span class="ot">&lt;-</span> <span class="cf">function</span>(who_data){ </span>
+<span id="cb992-10"><a href="building-data-pipelines-with-targets.html#cb992-10" tabindex="-1"></a>  who_data <span class="sc">|&gt;</span> </span>
+<span id="cb992-11"><a href="building-data-pipelines-with-targets.html#cb992-11" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(</span>
+<span id="cb992-12"><a href="building-data-pipelines-with-targets.html#cb992-12" tabindex="-1"></a>      <span class="at">cols =</span> new_sp_m014<span class="sc">:</span>newrel_f65, </span>
+<span id="cb992-13"><a href="building-data-pipelines-with-targets.html#cb992-13" tabindex="-1"></a>      <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;diagnosis&quot;</span>, <span class="st">&quot;gender&quot;</span>, <span class="st">&quot;age&quot;</span>),</span>
+<span id="cb992-14"><a href="building-data-pipelines-with-targets.html#cb992-14" tabindex="-1"></a>      <span class="at">names_pattern =</span> <span class="st">&quot;new_?(.*)_(.)(.*)&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;count&quot;</span> ) <span class="sc">|&gt;</span> </span>
+<span id="cb992-15"><a href="building-data-pipelines-with-targets.html#cb992-15" tabindex="-1"></a>    <span class="fu">na.omit</span>() <span class="ot">-&gt;</span> </span>
+<span id="cb992-16"><a href="building-data-pipelines-with-targets.html#cb992-16" tabindex="-1"></a>  who_clean </span>
+<span id="cb992-17"><a href="building-data-pipelines-with-targets.html#cb992-17" tabindex="-1"></a>}</span>
+<span id="cb992-18"><a href="building-data-pipelines-with-targets.html#cb992-18" tabindex="-1"></a></span>
+<span id="cb992-19"><a href="building-data-pipelines-with-targets.html#cb992-19" tabindex="-1"></a><span class="co"># 03 make table</span></span>
+<span id="cb992-20"><a href="building-data-pipelines-with-targets.html#cb992-20" tabindex="-1"></a></span>
+<span id="cb992-21"><a href="building-data-pipelines-with-targets.html#cb992-21" tabindex="-1"></a>make_table <span class="ot">&lt;-</span> <span class="cf">function</span>(who_clean){</span>
+<span id="cb992-22"><a href="building-data-pipelines-with-targets.html#cb992-22" tabindex="-1"></a>  who_clean <span class="sc">|&gt;</span> </span>
+<span id="cb992-23"><a href="building-data-pipelines-with-targets.html#cb992-23" tabindex="-1"></a>    <span class="fu">group_by</span>(country) <span class="sc">|&gt;</span> </span>
+<span id="cb992-24"><a href="building-data-pipelines-with-targets.html#cb992-24" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">Case_Count =</span> <span class="fu">sum</span>(count)) <span class="sc">|&gt;</span>  </span>
+<span id="cb992-25"><a href="building-data-pipelines-with-targets.html#cb992-25" tabindex="-1"></a>    <span class="fu">slice_max</span>(Case_Count, <span class="at">n=</span><span class="dv">10</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb992-26"><a href="building-data-pipelines-with-targets.html#cb992-26" tabindex="-1"></a>    gt<span class="sc">::</span><span class="fu">gt</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb992-27"><a href="building-data-pipelines-with-targets.html#cb992-27" tabindex="-1"></a>    gt<span class="sc">::</span><span class="fu">fmt_number</span>(</span>
+<span id="cb992-28"><a href="building-data-pipelines-with-targets.html#cb992-28" tabindex="-1"></a>      <span class="at">columns =</span> Case_Count, </span>
+<span id="cb992-29"><a href="building-data-pipelines-with-targets.html#cb992-29" tabindex="-1"></a>      <span class="at">use_seps =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb992-30"><a href="building-data-pipelines-with-targets.html#cb992-30" tabindex="-1"></a>      <span class="at">decimals =</span> <span class="dv">0</span>) </span>
+<span id="cb992-31"><a href="building-data-pipelines-with-targets.html#cb992-31" tabindex="-1"></a>}</span>
+<span id="cb992-32"><a href="building-data-pipelines-with-targets.html#cb992-32" tabindex="-1"></a></span>
+<span id="cb992-33"><a href="building-data-pipelines-with-targets.html#cb992-33" tabindex="-1"></a><span class="co"># 04 Model case counts</span></span>
+<span id="cb992-34"><a href="building-data-pipelines-with-targets.html#cb992-34" tabindex="-1"></a></span>
+<span id="cb992-35"><a href="building-data-pipelines-with-targets.html#cb992-35" tabindex="-1"></a>model_cases <span class="ot">&lt;-</span> <span class="cf">function</span>(who_clean){</span>
+<span id="cb992-36"><a href="building-data-pipelines-with-targets.html#cb992-36" tabindex="-1"></a>  model <span class="ot">&lt;-</span> <span class="fu">lm</span>(count <span class="sc">~</span> diagnosis <span class="sc">+</span></span>
+<span id="cb992-37"><a href="building-data-pipelines-with-targets.html#cb992-37" tabindex="-1"></a>gender <span class="sc">+</span> age, </span>
+<span id="cb992-38"><a href="building-data-pipelines-with-targets.html#cb992-38" tabindex="-1"></a>  <span class="at">data =</span> who_clean) </span>
+<span id="cb992-39"><a href="building-data-pipelines-with-targets.html#cb992-39" tabindex="-1"></a>  model <span class="sc">|&gt;</span> </span>
+<span id="cb992-40"><a href="building-data-pipelines-with-targets.html#cb992-40" tabindex="-1"></a>    gtsummary<span class="sc">::</span><span class="fu">tbl_regression</span>()</span>
+<span id="cb992-41"><a href="building-data-pipelines-with-targets.html#cb992-41" tabindex="-1"></a>}</span>
+<span id="cb992-42"><a href="building-data-pipelines-with-targets.html#cb992-42" tabindex="-1"></a></span>
+<span id="cb992-43"><a href="building-data-pipelines-with-targets.html#cb992-43" tabindex="-1"></a><span class="co"># 05 Plot</span></span>
+<span id="cb992-44"><a href="building-data-pipelines-with-targets.html#cb992-44" tabindex="-1"></a></span>
+<span id="cb992-45"><a href="building-data-pipelines-with-targets.html#cb992-45" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> <span class="cf">function</span>(who_clean){</span>
+<span id="cb992-46"><a href="building-data-pipelines-with-targets.html#cb992-46" tabindex="-1"></a>  plot <span class="ot">&lt;-</span> who_clean <span class="sc">|&gt;</span> </span>
+<span id="cb992-47"><a href="building-data-pipelines-with-targets.html#cb992-47" tabindex="-1"></a>    <span class="fu">group_by</span>( year) <span class="sc">|&gt;</span> </span>
+<span id="cb992-48"><a href="building-data-pipelines-with-targets.html#cb992-48" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">sum =</span> <span class="fu">sum</span>(count)) <span class="sc">|&gt;</span> </span>
+<span id="cb992-49"><a href="building-data-pipelines-with-targets.html#cb992-49" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> year, <span class="at">y =</span> sum)) <span class="sc">+</span></span>
+<span id="cb992-50"><a href="building-data-pipelines-with-targets.html#cb992-50" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb992-51"><a href="building-data-pipelines-with-targets.html#cb992-51" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;WHO Count of TB Cases by Year&quot;</span>, </span>
+<span id="cb992-52"><a href="building-data-pipelines-with-targets.html#cb992-52" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Cases&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>) <span class="sc">+</span></span>
+<span id="cb992-53"><a href="building-data-pipelines-with-targets.html#cb992-53" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">scale =</span> <span class="fl">1e-6</span>, <span class="at">suffix =</span> <span class="st">&quot;M&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb992-54"><a href="building-data-pipelines-with-targets.html#cb992-54" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) </span>
+<span id="cb992-55"><a href="building-data-pipelines-with-targets.html#cb992-55" tabindex="-1"></a>  <span class="fu">return</span>(plot)</span>
+<span id="cb992-56"><a href="building-data-pipelines-with-targets.html#cb992-56" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <p>After copying in the code, now we have to <strong>save</strong> the <code>functions.R</code> script.</p>
 </div>
@@ -1479,38 +1480,38 @@ Functions Solution
 <h3><span class="header-section-number">47.3.2</span> Testing functions<a href="building-data-pipelines-with-targets.html#testing-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We can test the new functions, to make sure they work, but first we have to make two (temporary) minor modifications to make them work outside of the pipeline, for complicated Environment reasons.
 For the first function, change the assignment arrow in the function to a double arrowhead, as shown below:</p>
-<div class="sourceCode" id="cb991"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb991-1"><a href="building-data-pipelines-with-targets.html#cb991-1" tabindex="-1"></a><span class="co"># 01 read in data </span></span>
-<span id="cb991-2"><a href="building-data-pipelines-with-targets.html#cb991-2" tabindex="-1"></a>read_data <span class="ot">&lt;-</span> <span class="cf">function</span>(file){ </span>
-<span id="cb991-3"><a href="building-data-pipelines-with-targets.html#cb991-3" tabindex="-1"></a>  who_data <span class="ot">&lt;&lt;-</span> <span class="fu">read_csv</span>(file,</span>
-<span id="cb991-4"><a href="building-data-pipelines-with-targets.html#cb991-4" tabindex="-1"></a>          <span class="at">col_types =</span> <span class="fu">cols</span>())</span>
-<span id="cb991-5"><a href="building-data-pipelines-with-targets.html#cb991-5" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb993"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb993-1"><a href="building-data-pipelines-with-targets.html#cb993-1" tabindex="-1"></a><span class="co"># 01 read in data </span></span>
+<span id="cb993-2"><a href="building-data-pipelines-with-targets.html#cb993-2" tabindex="-1"></a>read_data <span class="ot">&lt;-</span> <span class="cf">function</span>(file){ </span>
+<span id="cb993-3"><a href="building-data-pipelines-with-targets.html#cb993-3" tabindex="-1"></a>  who_data <span class="ot">&lt;&lt;-</span> <span class="fu">read_csv</span>(file,</span>
+<span id="cb993-4"><a href="building-data-pipelines-with-targets.html#cb993-4" tabindex="-1"></a>          <span class="at">col_types =</span> <span class="fu">cols</span>())</span>
+<span id="cb993-5"><a href="building-data-pipelines-with-targets.html#cb993-5" tabindex="-1"></a>}</span></code></pre></div>
 <p>This will put who_data into the global environment.</p>
 <p>For the second function, change the assignment arrow (near the end, after <code>na.omit()</code> in the function to a double arrowhead, as shown below:</p>
-<div class="sourceCode" id="cb992"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb992-1"><a href="building-data-pipelines-with-targets.html#cb992-1" tabindex="-1"></a><span class="co"># 02 clean data</span></span>
-<span id="cb992-2"><a href="building-data-pipelines-with-targets.html#cb992-2" tabindex="-1"></a></span>
-<span id="cb992-3"><a href="building-data-pipelines-with-targets.html#cb992-3" tabindex="-1"></a>clean_data <span class="ot">&lt;-</span> <span class="cf">function</span>(who_data){ </span>
-<span id="cb992-4"><a href="building-data-pipelines-with-targets.html#cb992-4" tabindex="-1"></a>  who_data <span class="sc">|&gt;</span> </span>
-<span id="cb992-5"><a href="building-data-pipelines-with-targets.html#cb992-5" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(</span>
-<span id="cb992-6"><a href="building-data-pipelines-with-targets.html#cb992-6" tabindex="-1"></a>      <span class="at">cols =</span> new_sp_m014<span class="sc">:</span>newrel_f65, </span>
-<span id="cb992-7"><a href="building-data-pipelines-with-targets.html#cb992-7" tabindex="-1"></a>      <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;diagnosis&quot;</span>, <span class="st">&quot;gender&quot;</span>, <span class="st">&quot;age&quot;</span>),</span>
-<span id="cb992-8"><a href="building-data-pipelines-with-targets.html#cb992-8" tabindex="-1"></a>      <span class="at">names_pattern =</span> <span class="st">&quot;new_?(.*)_(.)(.*)&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;count&quot;</span> ) <span class="sc">|&gt;</span> </span>
-<span id="cb992-9"><a href="building-data-pipelines-with-targets.html#cb992-9" tabindex="-1"></a>    <span class="fu">na.omit</span>() <span class="ot">-&gt;&gt;</span> </span>
-<span id="cb992-10"><a href="building-data-pipelines-with-targets.html#cb992-10" tabindex="-1"></a>  who_clean </span>
-<span id="cb992-11"><a href="building-data-pipelines-with-targets.html#cb992-11" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb994"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb994-1"><a href="building-data-pipelines-with-targets.html#cb994-1" tabindex="-1"></a><span class="co"># 02 clean data</span></span>
+<span id="cb994-2"><a href="building-data-pipelines-with-targets.html#cb994-2" tabindex="-1"></a></span>
+<span id="cb994-3"><a href="building-data-pipelines-with-targets.html#cb994-3" tabindex="-1"></a>clean_data <span class="ot">&lt;-</span> <span class="cf">function</span>(who_data){ </span>
+<span id="cb994-4"><a href="building-data-pipelines-with-targets.html#cb994-4" tabindex="-1"></a>  who_data <span class="sc">|&gt;</span> </span>
+<span id="cb994-5"><a href="building-data-pipelines-with-targets.html#cb994-5" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(</span>
+<span id="cb994-6"><a href="building-data-pipelines-with-targets.html#cb994-6" tabindex="-1"></a>      <span class="at">cols =</span> new_sp_m014<span class="sc">:</span>newrel_f65, </span>
+<span id="cb994-7"><a href="building-data-pipelines-with-targets.html#cb994-7" tabindex="-1"></a>      <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">&quot;diagnosis&quot;</span>, <span class="st">&quot;gender&quot;</span>, <span class="st">&quot;age&quot;</span>),</span>
+<span id="cb994-8"><a href="building-data-pipelines-with-targets.html#cb994-8" tabindex="-1"></a>      <span class="at">names_pattern =</span> <span class="st">&quot;new_?(.*)_(.)(.*)&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;count&quot;</span> ) <span class="sc">|&gt;</span> </span>
+<span id="cb994-9"><a href="building-data-pipelines-with-targets.html#cb994-9" tabindex="-1"></a>    <span class="fu">na.omit</span>() <span class="ot">-&gt;&gt;</span> </span>
+<span id="cb994-10"><a href="building-data-pipelines-with-targets.html#cb994-10" tabindex="-1"></a>  who_clean </span>
+<span id="cb994-11"><a href="building-data-pipelines-with-targets.html#cb994-11" tabindex="-1"></a>}</span></code></pre></div>
 <p>This will put who_clean into the global environment.</p>
 <p>Now save this temporary version of functions.R.</p>
 <p>Copy and run the lines of code below in the Console to test the functions. Examine the inputs and the output (target) objects (there will be a quiz).</p>
-<div class="sourceCode" id="cb993"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb993-1"><a href="building-data-pipelines-with-targets.html#cb993-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb993-2"><a href="building-data-pipelines-with-targets.html#cb993-2" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
-<span id="cb993-3"><a href="building-data-pipelines-with-targets.html#cb993-3" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
-<span id="cb993-4"><a href="building-data-pipelines-with-targets.html#cb993-4" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span>
-<span id="cb993-5"><a href="building-data-pipelines-with-targets.html#cb993-5" tabindex="-1"></a>tidyr<span class="sc">::</span>who <span class="sc">|&gt;</span> <span class="fu">write_csv</span>(<span class="st">&quot;who_data.csv&quot;</span>)</span>
-<span id="cb993-6"><a href="building-data-pipelines-with-targets.html#cb993-6" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;R/functions.R&quot;</span>) <span class="co"># this loads the functions into the R session</span></span>
-<span id="cb993-7"><a href="building-data-pipelines-with-targets.html#cb993-7" tabindex="-1"></a><span class="fu">read_data</span>(<span class="st">&#39;who_data.csv&#39;</span>)</span>
-<span id="cb993-8"><a href="building-data-pipelines-with-targets.html#cb993-8" tabindex="-1"></a><span class="fu">clean_data</span>(who_data)</span>
-<span id="cb993-9"><a href="building-data-pipelines-with-targets.html#cb993-9" tabindex="-1"></a><span class="fu">make_table</span>(who_clean)</span>
-<span id="cb993-10"><a href="building-data-pipelines-with-targets.html#cb993-10" tabindex="-1"></a><span class="fu">model_cases</span>(who_clean)</span>
-<span id="cb993-11"><a href="building-data-pipelines-with-targets.html#cb993-11" tabindex="-1"></a><span class="fu">plot_data</span>(who_clean)</span></code></pre></div>
+<div class="sourceCode" id="cb995"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb995-1"><a href="building-data-pipelines-with-targets.html#cb995-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb995-2"><a href="building-data-pipelines-with-targets.html#cb995-2" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb995-3"><a href="building-data-pipelines-with-targets.html#cb995-3" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb995-4"><a href="building-data-pipelines-with-targets.html#cb995-4" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span>
+<span id="cb995-5"><a href="building-data-pipelines-with-targets.html#cb995-5" tabindex="-1"></a>tidyr<span class="sc">::</span>who <span class="sc">|&gt;</span> <span class="fu">write_csv</span>(<span class="st">&quot;who_data.csv&quot;</span>)</span>
+<span id="cb995-6"><a href="building-data-pipelines-with-targets.html#cb995-6" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;R/functions.R&quot;</span>) <span class="co"># this loads the functions into the R session</span></span>
+<span id="cb995-7"><a href="building-data-pipelines-with-targets.html#cb995-7" tabindex="-1"></a><span class="fu">read_data</span>(<span class="st">&#39;who_data.csv&#39;</span>)</span>
+<span id="cb995-8"><a href="building-data-pipelines-with-targets.html#cb995-8" tabindex="-1"></a><span class="fu">clean_data</span>(who_data)</span>
+<span id="cb995-9"><a href="building-data-pipelines-with-targets.html#cb995-9" tabindex="-1"></a><span class="fu">make_table</span>(who_clean)</span>
+<span id="cb995-10"><a href="building-data-pipelines-with-targets.html#cb995-10" tabindex="-1"></a><span class="fu">model_cases</span>(who_clean)</span>
+<span id="cb995-11"><a href="building-data-pipelines-with-targets.html#cb995-11" tabindex="-1"></a><span class="fu">plot_data</span>(who_clean)</span></code></pre></div>
 <p>If all of the functions are working, this should have produced:</p>
 <ul>
 <li><code>who_data</code> in the Environment pane</li>
@@ -1584,14 +1585,14 @@ We need to make sure we have added all the packages, and identified all the targ
 <li>plot_data</li>
 </ul>
 <p>Replace the existing targets with these targets by replacing the entire list, using the code chunk below. Now <strong>save</strong> the <code>_targets.R</code> file.</p>
-<div class="sourceCode" id="cb994"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb994-1"><a href="building-data-pipelines-with-targets.html#cb994-1" tabindex="-1"></a><span class="fu">list</span>(</span>
-<span id="cb994-2"><a href="building-data-pipelines-with-targets.html#cb994-2" tabindex="-1"></a>    <span class="fu">tar_target</span>(file, <span class="st">&quot;who_data.csv&quot;</span>, <span class="at">format =</span> <span class="st">&quot;file&quot;</span>),</span>
-<span id="cb994-3"><a href="building-data-pipelines-with-targets.html#cb994-3" tabindex="-1"></a>    <span class="fu">tar_target</span>(who_data, <span class="fu">read_data</span>(file)),</span>
-<span id="cb994-4"><a href="building-data-pipelines-with-targets.html#cb994-4" tabindex="-1"></a>    <span class="fu">tar_target</span>(who_clean, <span class="fu">clean_data</span>(who_data)),</span>
-<span id="cb994-5"><a href="building-data-pipelines-with-targets.html#cb994-5" tabindex="-1"></a>    <span class="fu">tar_target</span>(table, <span class="fu">make_table</span>(who_clean)),</span>
-<span id="cb994-6"><a href="building-data-pipelines-with-targets.html#cb994-6" tabindex="-1"></a>    <span class="fu">tar_target</span>(model, <span class="fu">model_cases</span>(who_clean)),</span>
-<span id="cb994-7"><a href="building-data-pipelines-with-targets.html#cb994-7" tabindex="-1"></a>    <span class="fu">tar_target</span>(plot, <span class="fu">plot_data</span>(who_clean))</span>
-<span id="cb994-8"><a href="building-data-pipelines-with-targets.html#cb994-8" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb996"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb996-1"><a href="building-data-pipelines-with-targets.html#cb996-1" tabindex="-1"></a><span class="fu">list</span>(</span>
+<span id="cb996-2"><a href="building-data-pipelines-with-targets.html#cb996-2" tabindex="-1"></a>    <span class="fu">tar_target</span>(file, <span class="st">&quot;who_data.csv&quot;</span>, <span class="at">format =</span> <span class="st">&quot;file&quot;</span>),</span>
+<span id="cb996-3"><a href="building-data-pipelines-with-targets.html#cb996-3" tabindex="-1"></a>    <span class="fu">tar_target</span>(who_data, <span class="fu">read_data</span>(file)),</span>
+<span id="cb996-4"><a href="building-data-pipelines-with-targets.html#cb996-4" tabindex="-1"></a>    <span class="fu">tar_target</span>(who_clean, <span class="fu">clean_data</span>(who_data)),</span>
+<span id="cb996-5"><a href="building-data-pipelines-with-targets.html#cb996-5" tabindex="-1"></a>    <span class="fu">tar_target</span>(table, <span class="fu">make_table</span>(who_clean)),</span>
+<span id="cb996-6"><a href="building-data-pipelines-with-targets.html#cb996-6" tabindex="-1"></a>    <span class="fu">tar_target</span>(model, <span class="fu">model_cases</span>(who_clean)),</span>
+<span id="cb996-7"><a href="building-data-pipelines-with-targets.html#cb996-7" tabindex="-1"></a>    <span class="fu">tar_target</span>(plot, <span class="fu">plot_data</span>(who_clean))</span>
+<span id="cb996-8"><a href="building-data-pipelines-with-targets.html#cb996-8" tabindex="-1"></a>)</span></code></pre></div>
 <p>Now we have the infrastructure installed.</p>
 <p>We can now do our two pipeline pre-checks:</p>
 <ul>
@@ -1623,20 +1624,20 @@ If not, re-check the steps to create these two files for the pipeline.</p>
 <h3><span class="header-section-number">47.5.2</span> Modificatons to the Pipeline<a href="building-data-pipelines-with-targets.html#modificatons-to-the-pipeline" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Now modify the <code>make_table</code> function so that countries with over 1 million cases (scary bad, in need of WHO intervention) are in red text.
 Use the code below (adding conditional formatting) to edit the <code>make_table()</code> function in the <code>functions.R</code> file in the R folder of the Project. Look carefully at the <code>tab_style()</code> function below to see how the conditional formatting is applied. Make sure that your function ends with 2 close parentheses, followed by a closing curly-brace.</p>
-<div class="sourceCode" id="cb995"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb995-1"><a href="building-data-pipelines-with-targets.html#cb995-1" tabindex="-1"></a>who_clean <span class="sc">|&gt;</span></span>
-<span id="cb995-2"><a href="building-data-pipelines-with-targets.html#cb995-2" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">|&gt;</span> </span>
-<span id="cb995-3"><a href="building-data-pipelines-with-targets.html#cb995-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Case_Count =</span> <span class="fu">sum</span>(count)) <span class="sc">|&gt;</span> </span>
-<span id="cb995-4"><a href="building-data-pipelines-with-targets.html#cb995-4" tabindex="-1"></a>  <span class="fu">slice_max</span>(Case_Count, <span class="at">n=</span> <span class="dv">10</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb995-5"><a href="building-data-pipelines-with-targets.html#cb995-5" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">gt</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb995-6"><a href="building-data-pipelines-with-targets.html#cb995-6" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">fmt_number</span>(<span class="at">columns =</span> Case_Count, <span class="at">use_seps =</span> <span class="cn">TRUE</span>,<span class="at">decimals =</span> <span class="dv">0</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb995-7"><a href="building-data-pipelines-with-targets.html#cb995-7" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
-<span id="cb995-8"><a href="building-data-pipelines-with-targets.html#cb995-8" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">list</span>(</span>
-<span id="cb995-9"><a href="building-data-pipelines-with-targets.html#cb995-9" tabindex="-1"></a>      <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb995-10"><a href="building-data-pipelines-with-targets.html#cb995-10" tabindex="-1"></a>      ),</span>
-<span id="cb995-11"><a href="building-data-pipelines-with-targets.html#cb995-11" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
-<span id="cb995-12"><a href="building-data-pipelines-with-targets.html#cb995-12" tabindex="-1"></a>      <span class="at">columns =</span> Case_Count,</span>
-<span id="cb995-13"><a href="building-data-pipelines-with-targets.html#cb995-13" tabindex="-1"></a>      <span class="at">rows =</span> Case_Count <span class="sc">&gt;</span> <span class="dv">1000000</span></span>
-<span id="cb995-14"><a href="building-data-pipelines-with-targets.html#cb995-14" tabindex="-1"></a>    ))</span></code></pre></div>
+<div class="sourceCode" id="cb997"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb997-1"><a href="building-data-pipelines-with-targets.html#cb997-1" tabindex="-1"></a>who_clean <span class="sc">|&gt;</span></span>
+<span id="cb997-2"><a href="building-data-pipelines-with-targets.html#cb997-2" tabindex="-1"></a>  <span class="fu">group_by</span>(country) <span class="sc">|&gt;</span> </span>
+<span id="cb997-3"><a href="building-data-pipelines-with-targets.html#cb997-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">Case_Count =</span> <span class="fu">sum</span>(count)) <span class="sc">|&gt;</span> </span>
+<span id="cb997-4"><a href="building-data-pipelines-with-targets.html#cb997-4" tabindex="-1"></a>  <span class="fu">slice_max</span>(Case_Count, <span class="at">n=</span> <span class="dv">10</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb997-5"><a href="building-data-pipelines-with-targets.html#cb997-5" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">gt</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb997-6"><a href="building-data-pipelines-with-targets.html#cb997-6" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">fmt_number</span>(<span class="at">columns =</span> Case_Count, <span class="at">use_seps =</span> <span class="cn">TRUE</span>,<span class="at">decimals =</span> <span class="dv">0</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb997-7"><a href="building-data-pipelines-with-targets.html#cb997-7" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb997-8"><a href="building-data-pipelines-with-targets.html#cb997-8" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">list</span>(</span>
+<span id="cb997-9"><a href="building-data-pipelines-with-targets.html#cb997-9" tabindex="-1"></a>      <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb997-10"><a href="building-data-pipelines-with-targets.html#cb997-10" tabindex="-1"></a>      ),</span>
+<span id="cb997-11"><a href="building-data-pipelines-with-targets.html#cb997-11" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
+<span id="cb997-12"><a href="building-data-pipelines-with-targets.html#cb997-12" tabindex="-1"></a>      <span class="at">columns =</span> Case_Count,</span>
+<span id="cb997-13"><a href="building-data-pipelines-with-targets.html#cb997-13" tabindex="-1"></a>      <span class="at">rows =</span> Case_Count <span class="sc">&gt;</span> <span class="dv">1000000</span></span>
+<span id="cb997-14"><a href="building-data-pipelines-with-targets.html#cb997-14" tabindex="-1"></a>    ))</span></code></pre></div>
 <p>Save your modified <code>functions.R</code> file.
 Run <code>tar_visnetwork()</code> to check on what is now out of date in the pipeline, and then run <code>tar_make()</code> to update the pipeline with the new function. Note that some targets are skipped.</p>
 <p>Check out the appearance of the newly-modified table with <code>tar_read(table)</code>.</p>
@@ -1651,19 +1652,19 @@ Run <code>tar_visnetwork()</code> to check on what is now out of date in the pip
 <h3><span class="header-section-number">47.5.3</span> Modify the Plot<a href="building-data-pipelines-with-targets.html#modify-the-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Now modify the plot to make years with greater than 3 million cases of TB have points that are colored red. Use the code below to edit the <code>plot_data()</code> function in the <code>functions.R</code> file in the R folder of the Project.</p>
 <p>Look carefully at the <code>aes(color)</code> and <code>scale_color_manual()</code> functions to see how the conditional formatting is applied to point color. Make sure that your modified function has no syntax errors, end with the right number of parentheses, and a final closing curly-brace.</p>
-<div class="sourceCode" id="cb996"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb996-1"><a href="building-data-pipelines-with-targets.html#cb996-1" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> <span class="cf">function</span>(who_clean){</span>
-<span id="cb996-2"><a href="building-data-pipelines-with-targets.html#cb996-2" tabindex="-1"></a>  who_clean <span class="sc">|&gt;</span> </span>
-<span id="cb996-3"><a href="building-data-pipelines-with-targets.html#cb996-3" tabindex="-1"></a>    <span class="fu">group_by</span>( year) <span class="sc">|&gt;</span> </span>
-<span id="cb996-4"><a href="building-data-pipelines-with-targets.html#cb996-4" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">sum =</span> <span class="fu">sum</span>(count)) <span class="sc">|&gt;</span> </span>
-<span id="cb996-5"><a href="building-data-pipelines-with-targets.html#cb996-5" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> year, <span class="at">y =</span> sum, <span class="at">color =</span> sum <span class="sc">&gt;</span> <span class="dv">3000000</span>)) <span class="sc">+</span></span>
-<span id="cb996-6"><a href="building-data-pipelines-with-targets.html#cb996-6" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb996-7"><a href="building-data-pipelines-with-targets.html#cb996-7" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;WHO Count of TB Cases by Year&quot;</span>, </span>
-<span id="cb996-8"><a href="building-data-pipelines-with-targets.html#cb996-8" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Cases&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>) <span class="sc">+</span></span>
-<span id="cb996-9"><a href="building-data-pipelines-with-targets.html#cb996-9" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">scale =</span> <span class="fl">1e-6</span>, <span class="at">suffix =</span> <span class="st">&quot;M&quot;</span>)) <span class="sc">+</span></span>
-<span id="cb996-10"><a href="building-data-pipelines-with-targets.html#cb996-10" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb996-11"><a href="building-data-pipelines-with-targets.html#cb996-11" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;TRUE&quot;</span> <span class="ot">=</span> <span class="st">&quot;red&quot;</span>, <span class="st">&quot;FALSE&quot;</span> <span class="ot">=</span> <span class="st">&quot;black&quot;</span>))</span>
-<span id="cb996-12"><a href="building-data-pipelines-with-targets.html#cb996-12" tabindex="-1"></a>  <span class="fu">return</span>(plot)</span>
-<span id="cb996-13"><a href="building-data-pipelines-with-targets.html#cb996-13" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb998"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb998-1"><a href="building-data-pipelines-with-targets.html#cb998-1" tabindex="-1"></a>plot_data <span class="ot">&lt;-</span> <span class="cf">function</span>(who_clean){</span>
+<span id="cb998-2"><a href="building-data-pipelines-with-targets.html#cb998-2" tabindex="-1"></a>  who_clean <span class="sc">|&gt;</span> </span>
+<span id="cb998-3"><a href="building-data-pipelines-with-targets.html#cb998-3" tabindex="-1"></a>    <span class="fu">group_by</span>( year) <span class="sc">|&gt;</span> </span>
+<span id="cb998-4"><a href="building-data-pipelines-with-targets.html#cb998-4" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">sum =</span> <span class="fu">sum</span>(count)) <span class="sc">|&gt;</span> </span>
+<span id="cb998-5"><a href="building-data-pipelines-with-targets.html#cb998-5" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> year, <span class="at">y =</span> sum, <span class="at">color =</span> sum <span class="sc">&gt;</span> <span class="dv">3000000</span>)) <span class="sc">+</span></span>
+<span id="cb998-6"><a href="building-data-pipelines-with-targets.html#cb998-6" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb998-7"><a href="building-data-pipelines-with-targets.html#cb998-7" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;WHO Count of TB Cases by Year&quot;</span>, </span>
+<span id="cb998-8"><a href="building-data-pipelines-with-targets.html#cb998-8" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">&quot;Cases&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Year&quot;</span>) <span class="sc">+</span></span>
+<span id="cb998-9"><a href="building-data-pipelines-with-targets.html#cb998-9" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">scale =</span> <span class="fl">1e-6</span>, <span class="at">suffix =</span> <span class="st">&quot;M&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb998-10"><a href="building-data-pipelines-with-targets.html#cb998-10" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
+<span id="cb998-11"><a href="building-data-pipelines-with-targets.html#cb998-11" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">&quot;TRUE&quot;</span> <span class="ot">=</span> <span class="st">&quot;red&quot;</span>, <span class="st">&quot;FALSE&quot;</span> <span class="ot">=</span> <span class="st">&quot;black&quot;</span>))</span>
+<span id="cb998-12"><a href="building-data-pipelines-with-targets.html#cb998-12" tabindex="-1"></a>  <span class="fu">return</span>(plot)</span>
+<span id="cb998-13"><a href="building-data-pipelines-with-targets.html#cb998-13" tabindex="-1"></a>}</span></code></pre></div>
 <div class="float">
 <img src="images/tar_tbplot_red.png" alt="new TB plot with conditional color" />
 <div class="figcaption">new TB plot with conditional color</div>

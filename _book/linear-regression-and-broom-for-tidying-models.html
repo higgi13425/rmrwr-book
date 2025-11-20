@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2025-08-28" />
+<meta name="date" content="2025-10-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,10 +54,10 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
 <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/plotly-binding-4.11.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
@@ -67,8 +67,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -78,7 +79,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -1161,27 +1162,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>Let’s look at a simple linear model to predict annual health care expenses.
 <img src="images/shinyapp_hc_expenses.png" alt="shinyapp linear regression" /></p>
-<div class="sourceCode" id="cb674"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb674-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb674-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb674-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb674-2" tabindex="-1"></a><span class="fu">library</span>(mlbench)</span>
-<span id="cb674-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb674-3" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
-<span id="cb674-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb674-4" tabindex="-1"></a><span class="fu">library</span>(cutpointr)</span></code></pre></div>
+<div class="sourceCode" id="cb676"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb676-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb676-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb676-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb676-2" tabindex="-1"></a><span class="fu">library</span>(mlbench)</span>
+<span id="cb676-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb676-3" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb676-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb676-4" tabindex="-1"></a><span class="fu">library</span>(cutpointr)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;cutpointr&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:bayestestR&#39;:
 ## 
 ##     auc</code></pre>
-<div class="sourceCode" id="cb677"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb677-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb677-1" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
-<span id="cb677-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb677-2" tabindex="-1"></a><span class="fu">library</span>(easystats)</span>
-<span id="cb677-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb677-3" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
-<span id="cb677-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb677-4" tabindex="-1"></a></span>
-<span id="cb677-5"><a href="linear-regression-and-broom-for-tidying-models.html#cb677-5" tabindex="-1"></a>dm_data <span class="ot">&lt;-</span> <span class="fu">data</span>(<span class="st">&quot;PimaIndiansDiabetes2&quot;</span>, <span class="at">package =</span> <span class="st">&quot;mlbench&quot;</span>)</span>
-<span id="cb677-6"><a href="linear-regression-and-broom-for-tidying-models.html#cb677-6" tabindex="-1"></a></span>
-<span id="cb677-7"><a href="linear-regression-and-broom-for-tidying-models.html#cb677-7" tabindex="-1"></a><span class="co"># build model, all variables</span></span>
-<span id="cb677-8"><a href="linear-regression-and-broom-for-tidying-models.html#cb677-8" tabindex="-1"></a>dm_mod <span class="ot">&lt;-</span> <span class="fu">glm</span>(diabetes <span class="sc">~</span> ., </span>
-<span id="cb677-9"><a href="linear-regression-and-broom-for-tidying-models.html#cb677-9" tabindex="-1"></a>              <span class="at">data =</span> PimaIndiansDiabetes2, </span>
-<span id="cb677-10"><a href="linear-regression-and-broom-for-tidying-models.html#cb677-10" tabindex="-1"></a>              <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>)</span>
-<span id="cb677-11"><a href="linear-regression-and-broom-for-tidying-models.html#cb677-11" tabindex="-1"></a><span class="co"># output</span></span>
-<span id="cb677-12"><a href="linear-regression-and-broom-for-tidying-models.html#cb677-12" tabindex="-1"></a><span class="fu">summary</span>(dm_mod)</span></code></pre></div>
+<div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb679-1" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb679-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb679-2" tabindex="-1"></a><span class="fu">library</span>(easystats)</span>
+<span id="cb679-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb679-3" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span>
+<span id="cb679-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb679-4" tabindex="-1"></a></span>
+<span id="cb679-5"><a href="linear-regression-and-broom-for-tidying-models.html#cb679-5" tabindex="-1"></a>dm_data <span class="ot">&lt;-</span> <span class="fu">data</span>(<span class="st">&quot;PimaIndiansDiabetes2&quot;</span>, <span class="at">package =</span> <span class="st">&quot;mlbench&quot;</span>)</span>
+<span id="cb679-6"><a href="linear-regression-and-broom-for-tidying-models.html#cb679-6" tabindex="-1"></a></span>
+<span id="cb679-7"><a href="linear-regression-and-broom-for-tidying-models.html#cb679-7" tabindex="-1"></a><span class="co"># build model, all variables</span></span>
+<span id="cb679-8"><a href="linear-regression-and-broom-for-tidying-models.html#cb679-8" tabindex="-1"></a>dm_mod <span class="ot">&lt;-</span> <span class="fu">glm</span>(diabetes <span class="sc">~</span> ., </span>
+<span id="cb679-9"><a href="linear-regression-and-broom-for-tidying-models.html#cb679-9" tabindex="-1"></a>              <span class="at">data =</span> PimaIndiansDiabetes2, </span>
+<span id="cb679-10"><a href="linear-regression-and-broom-for-tidying-models.html#cb679-10" tabindex="-1"></a>              <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>)</span>
+<span id="cb679-11"><a href="linear-regression-and-broom-for-tidying-models.html#cb679-11" tabindex="-1"></a><span class="co"># output</span></span>
+<span id="cb679-12"><a href="linear-regression-and-broom-for-tidying-models.html#cb679-12" tabindex="-1"></a><span class="fu">summary</span>(dm_mod)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = diabetes ~ ., family = &quot;binomial&quot;, data = PimaIndiansDiabetes2)
@@ -1208,8 +1209,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## AIC: 362.02
 ## 
 ## Number of Fisher Scoring iterations: 5</code></pre>
-<div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb679-1" tabindex="-1"></a><span class="co">#tidy version</span></span>
-<span id="cb679-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb679-2" tabindex="-1"></a><span class="fu">tidy</span>(dm_mod)</span></code></pre></div>
+<div class="sourceCode" id="cb681"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb681-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb681-1" tabindex="-1"></a><span class="co">#tidy version</span></span>
+<span id="cb681-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb681-2" tabindex="-1"></a><span class="fu">tidy</span>(dm_mod)</span></code></pre></div>
 <pre><code>## # A tibble: 9 × 5
 ##   term          estimate std.error statistic  p.value
 ##   &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
@@ -1222,26 +1223,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 7 mass          0.0705     0.0273      2.58  9.89e- 3
 ## 8 pedigree      1.14       0.427       2.67  7.60e- 3
 ## 9 age           0.0340     0.0184      1.85  6.47e- 2</code></pre>
-<div class="sourceCode" id="cb681"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb681-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb681-1" tabindex="-1"></a><span class="co"># model performance</span></span>
-<span id="cb681-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb681-2" tabindex="-1"></a><span class="fu">glance</span>(dm_mod)</span></code></pre></div>
+<div class="sourceCode" id="cb683"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb683-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb683-1" tabindex="-1"></a><span class="co"># model performance</span></span>
+<span id="cb683-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb683-2" tabindex="-1"></a><span class="fu">glance</span>(dm_mod)</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 8
 ##   null.deviance df.null logLik   AIC   BIC deviance df.residual  nobs
 ##           &lt;dbl&gt;   &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;       &lt;int&gt; &lt;int&gt;
 ## 1          498.     391  -172.  362.  398.     344.         383   392</code></pre>
-<div class="sourceCode" id="cb683"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb683-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb683-1" tabindex="-1"></a><span class="co"># augment data with fitted predictions and residuals</span></span>
-<span id="cb683-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb683-2" tabindex="-1"></a>dm_data_plus <span class="ot">&lt;-</span> <span class="fu">augment</span>(dm_mod) <span class="sc">%&gt;%</span> </span>
-<span id="cb683-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb683-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pct_prob =</span> <span class="dv">100</span> <span class="sc">*</span> <span class="fu">plogis</span>(.fitted)) <span class="sc">%&gt;%</span> </span>
-<span id="cb683-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb683-4" tabindex="-1"></a>  <span class="fu">relocate</span>(diabetes, .fitted, pct_prob) <span class="sc">%&gt;%</span> </span>
-<span id="cb683-5"><a href="linear-regression-and-broom-for-tidying-models.html#cb683-5" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>.fitted)</span>
-<span id="cb683-6"><a href="linear-regression-and-broom-for-tidying-models.html#cb683-6" tabindex="-1"></a></span>
-<span id="cb683-7"><a href="linear-regression-and-broom-for-tidying-models.html#cb683-7" tabindex="-1"></a><span class="co"># select a cut point for classification</span></span>
-<span id="cb683-8"><a href="linear-regression-and-broom-for-tidying-models.html#cb683-8" tabindex="-1"></a>cp <span class="ot">&lt;-</span> dm_data_plus <span class="sc">%&gt;%</span> </span>
-<span id="cb683-9"><a href="linear-regression-and-broom-for-tidying-models.html#cb683-9" tabindex="-1"></a>  <span class="fu">cutpointr</span>(pct_prob, diabetes,</span>
-<span id="cb683-10"><a href="linear-regression-and-broom-for-tidying-models.html#cb683-10" tabindex="-1"></a>            <span class="at">pos_class =</span> <span class="st">&quot;pos&quot;</span>,</span>
-<span id="cb683-11"><a href="linear-regression-and-broom-for-tidying-models.html#cb683-11" tabindex="-1"></a>            <span class="at">method=</span> maximize_metric,</span>
-<span id="cb683-12"><a href="linear-regression-and-broom-for-tidying-models.html#cb683-12" tabindex="-1"></a>            <span class="at">metric =</span> sum_sens_spec)</span></code></pre></div>
+<div class="sourceCode" id="cb685"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb685-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb685-1" tabindex="-1"></a><span class="co"># augment data with fitted predictions and residuals</span></span>
+<span id="cb685-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb685-2" tabindex="-1"></a>dm_data_plus <span class="ot">&lt;-</span> <span class="fu">augment</span>(dm_mod) <span class="sc">%&gt;%</span> </span>
+<span id="cb685-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb685-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pct_prob =</span> <span class="dv">100</span> <span class="sc">*</span> <span class="fu">plogis</span>(.fitted)) <span class="sc">%&gt;%</span> </span>
+<span id="cb685-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb685-4" tabindex="-1"></a>  <span class="fu">relocate</span>(diabetes, .fitted, pct_prob) <span class="sc">%&gt;%</span> </span>
+<span id="cb685-5"><a href="linear-regression-and-broom-for-tidying-models.html#cb685-5" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>.fitted)</span>
+<span id="cb685-6"><a href="linear-regression-and-broom-for-tidying-models.html#cb685-6" tabindex="-1"></a></span>
+<span id="cb685-7"><a href="linear-regression-and-broom-for-tidying-models.html#cb685-7" tabindex="-1"></a><span class="co"># select a cut point for classification</span></span>
+<span id="cb685-8"><a href="linear-regression-and-broom-for-tidying-models.html#cb685-8" tabindex="-1"></a>cp <span class="ot">&lt;-</span> dm_data_plus <span class="sc">%&gt;%</span> </span>
+<span id="cb685-9"><a href="linear-regression-and-broom-for-tidying-models.html#cb685-9" tabindex="-1"></a>  <span class="fu">cutpointr</span>(pct_prob, diabetes,</span>
+<span id="cb685-10"><a href="linear-regression-and-broom-for-tidying-models.html#cb685-10" tabindex="-1"></a>            <span class="at">pos_class =</span> <span class="st">&quot;pos&quot;</span>,</span>
+<span id="cb685-11"><a href="linear-regression-and-broom-for-tidying-models.html#cb685-11" tabindex="-1"></a>            <span class="at">method=</span> maximize_metric,</span>
+<span id="cb685-12"><a href="linear-regression-and-broom-for-tidying-models.html#cb685-12" tabindex="-1"></a>            <span class="at">metric =</span> sum_sens_spec)</span></code></pre></div>
 <pre><code>## Assuming the positive class has higher x values</code></pre>
-<div class="sourceCode" id="cb685"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb685-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb685-1" tabindex="-1"></a>cp</span></code></pre></div>
+<div class="sourceCode" id="cb687"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb687-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb687-1" tabindex="-1"></a>cp</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 16
 ##   direction optimal_cutpoint method          sum_sens_spec      acc sensitivity
 ##   &lt;chr&gt;                &lt;dbl&gt; &lt;chr&gt;                   &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;
@@ -1252,7 +1253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   data               roc_curve             boot 
 ##   &lt;list&gt;             &lt;list&gt;                &lt;lgl&gt;
 ## 1 &lt;tibble [392 × 2]&gt; &lt;rc_ctpnt [393 × 10]&gt; NA</code></pre>
-<div class="sourceCode" id="cb687"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb687-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb687-1" tabindex="-1"></a><span class="fu">summary</span>(cp)</span></code></pre></div>
+<div class="sourceCode" id="cb689"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb689-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb689-1" tabindex="-1"></a><span class="fu">summary</span>(cp)</span></code></pre></div>
 <pre><code>## Method: maximize_metric 
 ## Predictor: pct_prob 
 ## Outcome: diabetes 
@@ -1273,32 +1274,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  99.46861 28.45645   0
 ##  97.91551 20.49784   0
 ##  99.46861 26.71998   0</code></pre>
-<div class="sourceCode" id="cb689"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb689-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb689-1" tabindex="-1"></a><span class="fu">plot</span>(cp)</span></code></pre></div>
+<div class="sourceCode" id="cb691"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb691-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb691-1" tabindex="-1"></a><span class="fu">plot</span>(cp)</span></code></pre></div>
 <p><img src="io23-linear-regression_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<div class="sourceCode" id="cb690"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb690-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb690-1" tabindex="-1"></a><span class="fu">plot_metric</span>(cp)</span></code></pre></div>
+<div class="sourceCode" id="cb692"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb692-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb692-1" tabindex="-1"></a><span class="fu">plot_metric</span>(cp)</span></code></pre></div>
 <p><img src="io23-linear-regression_files/figure-html/unnamed-chunk-1-2.png" width="672" /></p>
-<div class="sourceCode" id="cb691"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb691-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb691-1" tabindex="-1"></a><span class="co"># classify based on cut point</span></span>
-<span id="cb691-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb691-2" tabindex="-1"></a>dm_data_plus <span class="ot">&lt;-</span> dm_data_plus <span class="sc">%&gt;%</span> </span>
-<span id="cb691-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb691-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred_yes_dm =</span> </span>
-<span id="cb691-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb691-4" tabindex="-1"></a>  <span class="fu">case_when</span>(pct_prob <span class="sc">&gt;</span> cp<span class="sc">$</span>optimal_cutpoint <span class="sc">~</span> <span class="st">&quot;pred_yes_dm&quot;</span>, </span>
-<span id="cb691-5"><a href="linear-regression-and-broom-for-tidying-models.html#cb691-5" tabindex="-1"></a>            <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&quot;pred_no&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb691-6"><a href="linear-regression-and-broom-for-tidying-models.html#cb691-6" tabindex="-1"></a>  <span class="fu">relocate</span>(pred_yes_dm, <span class="at">.after =</span>pct_prob)</span>
-<span id="cb691-7"><a href="linear-regression-and-broom-for-tidying-models.html#cb691-7" tabindex="-1"></a></span>
-<span id="cb691-8"><a href="linear-regression-and-broom-for-tidying-models.html#cb691-8" tabindex="-1"></a><span class="co"># check confusion matrix</span></span>
-<span id="cb691-9"><a href="linear-regression-and-broom-for-tidying-models.html#cb691-9" tabindex="-1"></a>dm_data_plus <span class="sc">%&gt;%</span> </span>
-<span id="cb691-10"><a href="linear-regression-and-broom-for-tidying-models.html#cb691-10" tabindex="-1"></a>  <span class="fu">tabyl</span>(diabetes, pred_yes_dm) <span class="sc">%&gt;%</span> </span>
-<span id="cb691-11"><a href="linear-regression-and-broom-for-tidying-models.html#cb691-11" tabindex="-1"></a>  <span class="fu">adorn_totals</span>(<span class="st">&quot;both&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb691-12"><a href="linear-regression-and-broom-for-tidying-models.html#cb691-12" tabindex="-1"></a>  <span class="fu">adorn_percentages</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb691-13"><a href="linear-regression-and-broom-for-tidying-models.html#cb691-13" tabindex="-1"></a>  <span class="fu">adorn_pct_formatting</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb693-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb693-1" tabindex="-1"></a><span class="co"># classify based on cut point</span></span>
+<span id="cb693-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb693-2" tabindex="-1"></a>dm_data_plus <span class="ot">&lt;-</span> dm_data_plus <span class="sc">%&gt;%</span> </span>
+<span id="cb693-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb693-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">pred_yes_dm =</span> </span>
+<span id="cb693-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb693-4" tabindex="-1"></a>  <span class="fu">case_when</span>(pct_prob <span class="sc">&gt;</span> cp<span class="sc">$</span>optimal_cutpoint <span class="sc">~</span> <span class="st">&quot;pred_yes_dm&quot;</span>, </span>
+<span id="cb693-5"><a href="linear-regression-and-broom-for-tidying-models.html#cb693-5" tabindex="-1"></a>            <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&quot;pred_no&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb693-6"><a href="linear-regression-and-broom-for-tidying-models.html#cb693-6" tabindex="-1"></a>  <span class="fu">relocate</span>(pred_yes_dm, <span class="at">.after =</span>pct_prob)</span>
+<span id="cb693-7"><a href="linear-regression-and-broom-for-tidying-models.html#cb693-7" tabindex="-1"></a></span>
+<span id="cb693-8"><a href="linear-regression-and-broom-for-tidying-models.html#cb693-8" tabindex="-1"></a><span class="co"># check confusion matrix</span></span>
+<span id="cb693-9"><a href="linear-regression-and-broom-for-tidying-models.html#cb693-9" tabindex="-1"></a>dm_data_plus <span class="sc">%&gt;%</span> </span>
+<span id="cb693-10"><a href="linear-regression-and-broom-for-tidying-models.html#cb693-10" tabindex="-1"></a>  <span class="fu">tabyl</span>(diabetes, pred_yes_dm) <span class="sc">%&gt;%</span> </span>
+<span id="cb693-11"><a href="linear-regression-and-broom-for-tidying-models.html#cb693-11" tabindex="-1"></a>  <span class="fu">adorn_totals</span>(<span class="st">&quot;both&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb693-12"><a href="linear-regression-and-broom-for-tidying-models.html#cb693-12" tabindex="-1"></a>  <span class="fu">adorn_percentages</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb693-13"><a href="linear-regression-and-broom-for-tidying-models.html#cb693-13" tabindex="-1"></a>  <span class="fu">adorn_pct_formatting</span>()</span></code></pre></div>
 <pre><code>##  diabetes pred_no pred_yes_dm  Total
 ##       neg   74.4%       25.6% 100.0%
 ##       pos   17.7%       82.3% 100.0%
 ##     Total   55.6%       44.4% 100.0%</code></pre>
-<div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb693-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb693-1" tabindex="-1"></a><span class="co">#check model performance</span></span>
-<span id="cb693-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb693-2" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_model</span>(dm_mod, <span class="at">panel =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb693-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb693-3" tabindex="-1"></a><span class="co"># use panel = TRUE in Rmarkdown to get 2x3 panels for 6 plots</span></span>
-<span id="cb693-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb693-4" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb693-5"><a href="linear-regression-and-broom-for-tidying-models.html#cb693-5" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">model_performance</span>(dm_mod)</span></code></pre></div>
+<div class="sourceCode" id="cb695"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb695-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb695-1" tabindex="-1"></a><span class="co">#check model performance</span></span>
+<span id="cb695-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb695-2" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_model</span>(dm_mod, <span class="at">panel =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb695-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb695-3" tabindex="-1"></a><span class="co"># use panel = TRUE in Rmarkdown to get 2x3 panels for 6 plots</span></span>
+<span id="cb695-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb695-4" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb695-5"><a href="linear-regression-and-broom-for-tidying-models.html#cb695-5" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">model_performance</span>(dm_mod)</span></code></pre></div>
 <pre><code>## # Indices of model performance
 ## 
 ## AIC     |    AICc |     BIC | Tjur&#39;s R2 |  RMSE | Sigma | Log_loss | Score_log
@@ -1308,18 +1309,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## AIC     | Score_spherical |   PCP
 ## ---------------------------------
 ## 362.021 |           0.009 | 0.718</code></pre>
-<div class="sourceCode" id="cb695"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb695-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb695-1" tabindex="-1"></a><span class="co">#try a different model</span></span>
-<span id="cb695-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb695-2" tabindex="-1"></a>dm_mod2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(diabetes <span class="sc">~</span> glucose <span class="sc">+</span> mass <span class="sc">+</span> pedigree <span class="sc">+</span> age, </span>
-<span id="cb695-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb695-3" tabindex="-1"></a>              <span class="at">data =</span> PimaIndiansDiabetes2, </span>
-<span id="cb695-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb695-4" tabindex="-1"></a>              <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>)</span>
-<span id="cb695-5"><a href="linear-regression-and-broom-for-tidying-models.html#cb695-5" tabindex="-1"></a></span>
-<span id="cb695-6"><a href="linear-regression-and-broom-for-tidying-models.html#cb695-6" tabindex="-1"></a><span class="co"># build a really simple (NULL) model as a baseline</span></span>
-<span id="cb695-7"><a href="linear-regression-and-broom-for-tidying-models.html#cb695-7" tabindex="-1"></a></span>
-<span id="cb695-8"><a href="linear-regression-and-broom-for-tidying-models.html#cb695-8" tabindex="-1"></a>dm_mod3 <span class="ot">&lt;-</span> <span class="fu">glm</span>(diabetes <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb695-9"><a href="linear-regression-and-broom-for-tidying-models.html#cb695-9" tabindex="-1"></a>                 <span class="at">data =</span> PimaIndiansDiabetes2, </span>
-<span id="cb695-10"><a href="linear-regression-and-broom-for-tidying-models.html#cb695-10" tabindex="-1"></a>              <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>)</span>
-<span id="cb695-11"><a href="linear-regression-and-broom-for-tidying-models.html#cb695-11" tabindex="-1"></a></span>
-<span id="cb695-12"><a href="linear-regression-and-broom-for-tidying-models.html#cb695-12" tabindex="-1"></a><span class="fu">summary</span>(dm_mod3)</span></code></pre></div>
+<div class="sourceCode" id="cb697"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb697-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb697-1" tabindex="-1"></a><span class="co">#try a different model</span></span>
+<span id="cb697-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb697-2" tabindex="-1"></a>dm_mod2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(diabetes <span class="sc">~</span> glucose <span class="sc">+</span> mass <span class="sc">+</span> pedigree <span class="sc">+</span> age, </span>
+<span id="cb697-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb697-3" tabindex="-1"></a>              <span class="at">data =</span> PimaIndiansDiabetes2, </span>
+<span id="cb697-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb697-4" tabindex="-1"></a>              <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>)</span>
+<span id="cb697-5"><a href="linear-regression-and-broom-for-tidying-models.html#cb697-5" tabindex="-1"></a></span>
+<span id="cb697-6"><a href="linear-regression-and-broom-for-tidying-models.html#cb697-6" tabindex="-1"></a><span class="co"># build a really simple (NULL) model as a baseline</span></span>
+<span id="cb697-7"><a href="linear-regression-and-broom-for-tidying-models.html#cb697-7" tabindex="-1"></a></span>
+<span id="cb697-8"><a href="linear-regression-and-broom-for-tidying-models.html#cb697-8" tabindex="-1"></a>dm_mod3 <span class="ot">&lt;-</span> <span class="fu">glm</span>(diabetes <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb697-9"><a href="linear-regression-and-broom-for-tidying-models.html#cb697-9" tabindex="-1"></a>                 <span class="at">data =</span> PimaIndiansDiabetes2, </span>
+<span id="cb697-10"><a href="linear-regression-and-broom-for-tidying-models.html#cb697-10" tabindex="-1"></a>              <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>)</span>
+<span id="cb697-11"><a href="linear-regression-and-broom-for-tidying-models.html#cb697-11" tabindex="-1"></a></span>
+<span id="cb697-12"><a href="linear-regression-and-broom-for-tidying-models.html#cb697-12" tabindex="-1"></a><span class="fu">summary</span>(dm_mod3)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = diabetes ~ 1, family = &quot;binomial&quot;, data = PimaIndiansDiabetes2)
@@ -1337,17 +1338,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## AIC: 995.48
 ## 
 ## Number of Fisher Scoring iterations: 4</code></pre>
-<div class="sourceCode" id="cb697"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb697-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb697-1" tabindex="-1"></a><span class="co"># compare models</span></span>
-<span id="cb697-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb697-2" tabindex="-1"></a><span class="co"># compare_performance(dm_mod, dm_mod2, dm_mod3, rank = TRUE)</span></span>
-<span id="cb697-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb697-3" tabindex="-1"></a></span>
-<span id="cb697-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb697-4" tabindex="-1"></a><span class="co"># plot(compare_performance(dm_mod, dm_mod2, dm_mod3, rank = TRUE)) + labs(subtitle = &quot;Larger Area is Better&quot;)</span></span>
-<span id="cb697-5"><a href="linear-regression-and-broom-for-tidying-models.html#cb697-5" tabindex="-1"></a></span>
-<span id="cb697-6"><a href="linear-regression-and-broom-for-tidying-models.html#cb697-6" tabindex="-1"></a><span class="co"># plot(compare_performance(dm_mod, dm_mod2, rank = TRUE)) + labs(subtitle = &quot;Larger Area is Better&quot;)</span></span>
-<span id="cb697-7"><a href="linear-regression-and-broom-for-tidying-models.html#cb697-7" tabindex="-1"></a></span>
-<span id="cb697-8"><a href="linear-regression-and-broom-for-tidying-models.html#cb697-8" tabindex="-1"></a><span class="co">#test_performance(dm_mod, dm_mod2, dm_mod3)</span></span>
-<span id="cb697-9"><a href="linear-regression-and-broom-for-tidying-models.html#cb697-9" tabindex="-1"></a></span>
-<span id="cb697-10"><a href="linear-regression-and-broom-for-tidying-models.html#cb697-10" tabindex="-1"></a><span class="co"># save model to RDS</span></span>
-<span id="cb697-11"><a href="linear-regression-and-broom-for-tidying-models.html#cb697-11" tabindex="-1"></a><span class="fu">saveRDS</span>(dm_mod, <span class="st">&quot;dm_mod.RDS&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb699"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb699-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb699-1" tabindex="-1"></a><span class="co"># compare models</span></span>
+<span id="cb699-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb699-2" tabindex="-1"></a><span class="co"># compare_performance(dm_mod, dm_mod2, dm_mod3, rank = TRUE)</span></span>
+<span id="cb699-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb699-3" tabindex="-1"></a></span>
+<span id="cb699-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb699-4" tabindex="-1"></a><span class="co"># plot(compare_performance(dm_mod, dm_mod2, dm_mod3, rank = TRUE)) + labs(subtitle = &quot;Larger Area is Better&quot;)</span></span>
+<span id="cb699-5"><a href="linear-regression-and-broom-for-tidying-models.html#cb699-5" tabindex="-1"></a></span>
+<span id="cb699-6"><a href="linear-regression-and-broom-for-tidying-models.html#cb699-6" tabindex="-1"></a><span class="co"># plot(compare_performance(dm_mod, dm_mod2, rank = TRUE)) + labs(subtitle = &quot;Larger Area is Better&quot;)</span></span>
+<span id="cb699-7"><a href="linear-regression-and-broom-for-tidying-models.html#cb699-7" tabindex="-1"></a></span>
+<span id="cb699-8"><a href="linear-regression-and-broom-for-tidying-models.html#cb699-8" tabindex="-1"></a><span class="co">#test_performance(dm_mod, dm_mod2, dm_mod3)</span></span>
+<span id="cb699-9"><a href="linear-regression-and-broom-for-tidying-models.html#cb699-9" tabindex="-1"></a></span>
+<span id="cb699-10"><a href="linear-regression-and-broom-for-tidying-models.html#cb699-10" tabindex="-1"></a><span class="co"># save model to RDS</span></span>
+<span id="cb699-11"><a href="linear-regression-and-broom-for-tidying-models.html#cb699-11" tabindex="-1"></a><span class="fu">saveRDS</span>(dm_mod, <span class="st">&quot;dm_mod.RDS&quot;</span>)</span></code></pre></div>
 <p>This is a simple web application that lets users who are not familiar with R use your model.</p>
 <p>They can enter values for the 3 predictor variables (gender, age, BMI) for a new patient, and predict their annual health insurance expenses in dollars.
 This web app produces a table with the inputs, and shows the output when you click the PREDICT button.
@@ -1384,8 +1385,8 @@ This model uses the mean value of the outcome to estimate it.</p>
 You can pipe in data if you make the data argument explicit, and set it to <code>data = .</code></p>
 <p>Let’s look at a simple example:</p>
 <p>Copy the code chunk below and run it in your RStudio Console.</p>
-<div class="sourceCode" id="cb698"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb698-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb698-1" tabindex="-1"></a>medicaldata<span class="sc">::</span>blood_storage <span class="sc">%&gt;%</span> </span>
-<span id="cb698-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb698-2" tabindex="-1"></a>  <span class="fu">lm</span>(TimeToRecurrence <span class="sc">~</span> <span class="cn">NULL</span>, <span class="at">data =</span> .)</span></code></pre></div>
+<div class="sourceCode" id="cb700"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb700-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb700-1" tabindex="-1"></a>medicaldata<span class="sc">::</span>blood_storage <span class="sc">%&gt;%</span> </span>
+<span id="cb700-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb700-2" tabindex="-1"></a>  <span class="fu">lm</span>(TimeToRecurrence <span class="sc">~</span> <span class="cn">NULL</span>, <span class="at">data =</span> .)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = TimeToRecurrence ~ NULL, data = .)
@@ -1398,9 +1399,9 @@ In the case of the NULL model, the only coefficient is the intercept.
 This intercept is equal to the mean value of the outcome variable, TimeToRecurrence, in months.
 With no other predictor variables, this is the best estimate available for time to recurrence.</p>
 <p>We can also output the results as a nice tibble, using the <em>tidy()</em> function from the {broom} package.</p>
-<div class="sourceCode" id="cb700"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb700-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb700-1" tabindex="-1"></a>medicaldata<span class="sc">::</span>blood_storage  <span class="sc">%&gt;%</span> </span>
-<span id="cb700-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb700-2" tabindex="-1"></a>  <span class="fu">lm</span>(TimeToRecurrence <span class="sc">~</span> <span class="cn">NULL</span>, <span class="at">data =</span> .) <span class="sc">%&gt;%</span> </span>
-<span id="cb700-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb700-3" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">tidy</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb702"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb702-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb702-1" tabindex="-1"></a>medicaldata<span class="sc">::</span>blood_storage  <span class="sc">%&gt;%</span> </span>
+<span id="cb702-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb702-2" tabindex="-1"></a>  <span class="fu">lm</span>(TimeToRecurrence <span class="sc">~</span> <span class="cn">NULL</span>, <span class="at">data =</span> .) <span class="sc">%&gt;%</span> </span>
+<span id="cb702-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb702-3" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">tidy</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 5
 ##   term        estimate std.error statistic  p.value
 ##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
@@ -1412,9 +1413,9 @@ This is a pretty poor model, but is a place to start.<br />
 <p><br />
 Let’s look at how good this model is, using another function from the {broom} package.
 We can <em>glance()</em> our model, again output into a nice tibble.</p>
-<div class="sourceCode" id="cb702"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb702-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb702-1" tabindex="-1"></a>medicaldata<span class="sc">::</span>blood_storage  <span class="sc">%&gt;%</span> </span>
-<span id="cb702-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb702-2" tabindex="-1"></a>  <span class="fu">lm</span>(TimeToRecurrence <span class="sc">~</span> <span class="cn">NULL</span>, <span class="at">data =</span> .) <span class="sc">%&gt;%</span> </span>
-<span id="cb702-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb702-3" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">glance</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb704"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb704-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb704-1" tabindex="-1"></a>medicaldata<span class="sc">::</span>blood_storage  <span class="sc">%&gt;%</span> </span>
+<span id="cb704-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb704-2" tabindex="-1"></a>  <span class="fu">lm</span>(TimeToRecurrence <span class="sc">~</span> <span class="cn">NULL</span>, <span class="at">data =</span> .) <span class="sc">%&gt;%</span> </span>
+<span id="cb704-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb704-3" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">glance</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 12
 ##   r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC
 ##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -1430,9 +1431,9 @@ BIC also considers the number of observations in the data, which AIC does not.
 Lower values of BIC are better, and BIC is generally always higher than AIC, but absolute values do not matter, only relative values when comparing models on the same dataset for the same outcome.
 If we improve the model (with useful predictor variables), the BIC should go down.</p>
 <p>Let’s add some predictors: Age, TVol (tumor volume), and sGS (surgical Gleason score), and see if we do better.</p>
-<div class="sourceCode" id="cb704"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb704-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb704-1" tabindex="-1"></a>medicaldata<span class="sc">::</span>blood_storage  <span class="sc">%&gt;%</span> </span>
-<span id="cb704-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb704-2" tabindex="-1"></a>  <span class="fu">lm</span>(TimeToRecurrence <span class="sc">~</span>  Age <span class="sc">+</span> TVol <span class="sc">+</span> sGS, <span class="at">data =</span> .) <span class="sc">%&gt;%</span> </span>
-<span id="cb704-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb704-3" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">glance</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb706"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb706-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb706-1" tabindex="-1"></a>medicaldata<span class="sc">::</span>blood_storage  <span class="sc">%&gt;%</span> </span>
+<span id="cb706-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb706-2" tabindex="-1"></a>  <span class="fu">lm</span>(TimeToRecurrence <span class="sc">~</span>  Age <span class="sc">+</span> TVol <span class="sc">+</span> sGS, <span class="at">data =</span> .) <span class="sc">%&gt;%</span> </span>
+<span id="cb706-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb706-3" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">glance</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 12
 ##   r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC
 ##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -1459,19 +1460,19 @@ Use predictors like intraOp_surgerySize, treat, preOp_pain, preOp_gender, and pr
 <p>Then pipe the result into the function tidy() to see the model, and (separately) into the function glance() to evaluate the model quality.</p>
 <p>Copy the code chunk below into RStudio as a start.
 Use <em>tidy()</em> to see the model table, and <em>glance()</em> to look at the performance of the model.</p>
-<div class="sourceCode" id="cb706"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb706-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb706-1" tabindex="-1"></a>medicaldata<span class="sc">::</span>licorice_gargle <span class="sc">%&gt;%</span></span>
-<span id="cb706-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb706-2" tabindex="-1"></a>  <span class="fu">lm</span>(<span class="at">formula =</span> pacu30min_throatPain <span class="sc">~</span> var1 <span class="sc">+</span> var2 <span class="sc">+</span> var3,</span>
-<span id="cb706-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb706-3" tabindex="-1"></a> <span class="at">data =</span> .) </span></code></pre></div>
+<div class="sourceCode" id="cb708"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb708-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb708-1" tabindex="-1"></a>medicaldata<span class="sc">::</span>licorice_gargle <span class="sc">%&gt;%</span></span>
+<span id="cb708-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb708-2" tabindex="-1"></a>  <span class="fu">lm</span>(<span class="at">formula =</span> pacu30min_throatPain <span class="sc">~</span> var1 <span class="sc">+</span> var2 <span class="sc">+</span> var3,</span>
+<span id="cb708-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb708-3" tabindex="-1"></a> <span class="at">data =</span> .) </span></code></pre></div>
 <div class="webex-solution">
 <button>
 Show the solution
 </button>
-<div class="sourceCode" id="cb707"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb707-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb707-1" tabindex="-1"></a>medicaldata<span class="sc">::</span>licorice_gargle <span class="sc">%&gt;%</span></span>
-<span id="cb707-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb707-2" tabindex="-1"></a>  <span class="fu">lm</span>(<span class="at">formula =</span> pacu30min_throatPain <span class="sc">~</span> intraOp_surgerySize  <span class="sc">+</span></span>
-<span id="cb707-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb707-3" tabindex="-1"></a>       treat <span class="sc">+</span> preOp_pain <span class="sc">+</span> preOp_gender <span class="sc">+</span> </span>
-<span id="cb707-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb707-4" tabindex="-1"></a>       preOp_smoking,</span>
-<span id="cb707-5"><a href="linear-regression-and-broom-for-tidying-models.html#cb707-5" tabindex="-1"></a>       <span class="at">data =</span> .) <span class="sc">%&gt;%</span> </span>
-<span id="cb707-6"><a href="linear-regression-and-broom-for-tidying-models.html#cb707-6" tabindex="-1"></a>  <span class="fu">tidy</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb709"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb709-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb709-1" tabindex="-1"></a>medicaldata<span class="sc">::</span>licorice_gargle <span class="sc">%&gt;%</span></span>
+<span id="cb709-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb709-2" tabindex="-1"></a>  <span class="fu">lm</span>(<span class="at">formula =</span> pacu30min_throatPain <span class="sc">~</span> intraOp_surgerySize  <span class="sc">+</span></span>
+<span id="cb709-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb709-3" tabindex="-1"></a>       treat <span class="sc">+</span> preOp_pain <span class="sc">+</span> preOp_gender <span class="sc">+</span> </span>
+<span id="cb709-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb709-4" tabindex="-1"></a>       preOp_smoking,</span>
+<span id="cb709-5"><a href="linear-regression-and-broom-for-tidying-models.html#cb709-5" tabindex="-1"></a>       <span class="at">data =</span> .) <span class="sc">%&gt;%</span> </span>
+<span id="cb709-6"><a href="linear-regression-and-broom-for-tidying-models.html#cb709-6" tabindex="-1"></a>  <span class="fu">tidy</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 5
 ##   term                estimate std.error statistic   p.value
 ##   &lt;chr&gt;                  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
@@ -1481,12 +1482,12 @@ Show the solution
 ## 4 preOp_pain            1.96      0.835      2.35  0.0197   
 ## 5 preOp_gender         -0.265     0.160     -1.65  0.100    
 ## 6 preOp_smoking         0.0652    0.0956     0.682 0.496</code></pre>
-<div class="sourceCode" id="cb709"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb709-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb709-1" tabindex="-1"></a>medicaldata<span class="sc">::</span>licorice_gargle <span class="sc">%&gt;%</span></span>
-<span id="cb709-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb709-2" tabindex="-1"></a>  <span class="fu">lm</span>(<span class="at">formula =</span> pacu30min_throatPain <span class="sc">~</span> intraOp_surgerySize  <span class="sc">+</span></span>
-<span id="cb709-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb709-3" tabindex="-1"></a>       treat <span class="sc">+</span> preOp_pain <span class="sc">+</span> preOp_gender <span class="sc">+</span> </span>
-<span id="cb709-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb709-4" tabindex="-1"></a>       preOp_smoking,</span>
-<span id="cb709-5"><a href="linear-regression-and-broom-for-tidying-models.html#cb709-5" tabindex="-1"></a>       <span class="at">data =</span> .) <span class="sc">%&gt;%</span> </span>
-<span id="cb709-6"><a href="linear-regression-and-broom-for-tidying-models.html#cb709-6" tabindex="-1"></a>  <span class="fu">glance</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb711"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb711-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb711-1" tabindex="-1"></a>medicaldata<span class="sc">::</span>licorice_gargle <span class="sc">%&gt;%</span></span>
+<span id="cb711-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb711-2" tabindex="-1"></a>  <span class="fu">lm</span>(<span class="at">formula =</span> pacu30min_throatPain <span class="sc">~</span> intraOp_surgerySize  <span class="sc">+</span></span>
+<span id="cb711-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb711-3" tabindex="-1"></a>       treat <span class="sc">+</span> preOp_pain <span class="sc">+</span> preOp_gender <span class="sc">+</span> </span>
+<span id="cb711-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb711-4" tabindex="-1"></a>       preOp_smoking,</span>
+<span id="cb711-5"><a href="linear-regression-and-broom-for-tidying-models.html#cb711-5" tabindex="-1"></a>       <span class="at">data =</span> .) <span class="sc">%&gt;%</span> </span>
+<span id="cb711-6"><a href="linear-regression-and-broom-for-tidying-models.html#cb711-6" tabindex="-1"></a>  <span class="fu">glance</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 12
 ##   r.squared adj.r.squared sigma statistic    p.value    df logLik   AIC   BIC
 ##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -1519,18 +1520,18 @@ These are</p>
 <p>Use the <strong>supraclavicular</strong> dataset to build a model with the outcome <code>onset_sensory</code>, with predictors (independent variables) age, bmi, gender, and group.</p>
 <p>Output the regression table with <em>tidy()</em> and the model measures with <em>glance()</em> </p>
 <p>Copy the code chunk below into RStudio as a start</p>
-<div class="sourceCode" id="cb711"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb711-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb711-1" tabindex="-1"></a>medicaldata<span class="sc">::</span>supraclavicular <span class="sc">%&gt;%</span></span>
-<span id="cb711-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb711-2" tabindex="-1"></a>  <span class="fu">lm</span>(<span class="at">formula =</span> onset_sensory <span class="sc">~</span> var1,</span>
-<span id="cb711-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb711-3" tabindex="-1"></a> <span class="at">data =</span> .) <span class="sc">%&gt;%</span> </span>
-<span id="cb711-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb711-4" tabindex="-1"></a>  <span class="fu">glance</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb713"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb713-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb713-1" tabindex="-1"></a>medicaldata<span class="sc">::</span>supraclavicular <span class="sc">%&gt;%</span></span>
+<span id="cb713-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb713-2" tabindex="-1"></a>  <span class="fu">lm</span>(<span class="at">formula =</span> onset_sensory <span class="sc">~</span> var1,</span>
+<span id="cb713-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb713-3" tabindex="-1"></a> <span class="at">data =</span> .) <span class="sc">%&gt;%</span> </span>
+<span id="cb713-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb713-4" tabindex="-1"></a>  <span class="fu">glance</span>()</span></code></pre></div>
 <div class="webex-solution">
 <button>
 Show Solution
 </button>
-<div class="sourceCode" id="cb712"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb712-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb712-1" tabindex="-1"></a>medicaldata<span class="sc">::</span>supraclavicular <span class="sc">%&gt;%</span></span>
-<span id="cb712-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb712-2" tabindex="-1"></a>  <span class="fu">lm</span>(<span class="at">formula =</span> onset_sensory <span class="sc">~</span> age <span class="sc">+</span> bmi <span class="sc">+</span> gender <span class="sc">+</span> group,</span>
-<span id="cb712-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb712-3" tabindex="-1"></a> <span class="at">data =</span> .) <span class="sc">%&gt;%</span> </span>
-<span id="cb712-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb712-4" tabindex="-1"></a>  <span class="fu">glance</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb714"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb714-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb714-1" tabindex="-1"></a>medicaldata<span class="sc">::</span>supraclavicular <span class="sc">%&gt;%</span></span>
+<span id="cb714-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb714-2" tabindex="-1"></a>  <span class="fu">lm</span>(<span class="at">formula =</span> onset_sensory <span class="sc">~</span> age <span class="sc">+</span> bmi <span class="sc">+</span> gender <span class="sc">+</span> group,</span>
+<span id="cb714-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb714-3" tabindex="-1"></a> <span class="at">data =</span> .) <span class="sc">%&gt;%</span> </span>
+<span id="cb714-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb714-4" tabindex="-1"></a>  <span class="fu">glance</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 12
 ##   r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC
 ##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -1545,27 +1546,27 @@ Show Solution
 <div id="producing-manuscript-quality-tables-with-gtsummary" class="section level3 hasAnchor" number="34.2.1">
 <h3><span class="header-section-number">34.2.1</span> Producing manuscript-quality tables with {gtsummary}<a href="linear-regression-and-broom-for-tidying-models.html#producing-manuscript-quality-tables-with-gtsummary" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s take your model above, and rather than pipe it into tidy() or glance(), pipe it into the <em>tbl_regression()</em> function from the {gtsummary} package.</p>
-<div class="sourceCode" id="cb714"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb714-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb714-1" tabindex="-1"></a>medicaldata<span class="sc">::</span>supraclavicular <span class="sc">%&gt;%</span></span>
-<span id="cb714-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb714-2" tabindex="-1"></a>  <span class="fu">lm</span>(<span class="at">formula =</span> onset_sensory <span class="sc">~</span> age <span class="sc">+</span> bmi <span class="sc">+</span> gender <span class="sc">+</span> group,</span>
-<span id="cb714-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb714-3" tabindex="-1"></a> <span class="at">data =</span> .) <span class="sc">%&gt;%</span> </span>
-<span id="cb714-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb714-4" tabindex="-1"></a>  <span class="fu">tbl_regression</span>()</span></code></pre></div>
-<div id="mbahdjsdlm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mbahdjsdlm table {
+<div class="sourceCode" id="cb716"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb716-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb716-1" tabindex="-1"></a>medicaldata<span class="sc">::</span>supraclavicular <span class="sc">%&gt;%</span></span>
+<span id="cb716-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb716-2" tabindex="-1"></a>  <span class="fu">lm</span>(<span class="at">formula =</span> onset_sensory <span class="sc">~</span> age <span class="sc">+</span> bmi <span class="sc">+</span> gender <span class="sc">+</span> group,</span>
+<span id="cb716-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb716-3" tabindex="-1"></a> <span class="at">data =</span> .) <span class="sc">%&gt;%</span> </span>
+<span id="cb716-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb716-4" tabindex="-1"></a>  <span class="fu">tbl_regression</span>()</span></code></pre></div>
+<div id="iujjaaoyeu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#iujjaaoyeu table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#mbahdjsdlm thead, #mbahdjsdlm tbody, #mbahdjsdlm tfoot, #mbahdjsdlm tr, #mbahdjsdlm td, #mbahdjsdlm th {
+#iujjaaoyeu thead, #iujjaaoyeu tbody, #iujjaaoyeu tfoot, #iujjaaoyeu tr, #iujjaaoyeu td, #iujjaaoyeu th {
   border-style: none;
 }
 
-#mbahdjsdlm p {
+#iujjaaoyeu p {
   margin: 0;
   padding: 0;
 }
 
-#mbahdjsdlm .gt_table {
+#iujjaaoyeu .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1591,12 +1592,12 @@ Show Solution
   border-left-color: #D3D3D3;
 }
 
-#mbahdjsdlm .gt_caption {
+#iujjaaoyeu .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mbahdjsdlm .gt_title {
+#iujjaaoyeu .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1608,7 +1609,7 @@ Show Solution
   border-bottom-width: 0;
 }
 
-#mbahdjsdlm .gt_subtitle {
+#iujjaaoyeu .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1620,7 +1621,7 @@ Show Solution
   border-top-width: 0;
 }
 
-#mbahdjsdlm .gt_heading {
+#iujjaaoyeu .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1632,13 +1633,13 @@ Show Solution
   border-right-color: #D3D3D3;
 }
 
-#mbahdjsdlm .gt_bottom_border {
+#iujjaaoyeu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mbahdjsdlm .gt_col_headings {
+#iujjaaoyeu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1653,7 +1654,7 @@ Show Solution
   border-right-color: #D3D3D3;
 }
 
-#mbahdjsdlm .gt_col_heading {
+#iujjaaoyeu .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1673,7 +1674,7 @@ Show Solution
   overflow-x: hidden;
 }
 
-#mbahdjsdlm .gt_column_spanner_outer {
+#iujjaaoyeu .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1685,15 +1686,15 @@ Show Solution
   padding-right: 4px;
 }
 
-#mbahdjsdlm .gt_column_spanner_outer:first-child {
+#iujjaaoyeu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mbahdjsdlm .gt_column_spanner_outer:last-child {
+#iujjaaoyeu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mbahdjsdlm .gt_column_spanner {
+#iujjaaoyeu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1705,11 +1706,11 @@ Show Solution
   width: 100%;
 }
 
-#mbahdjsdlm .gt_spanner_row {
+#iujjaaoyeu .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#mbahdjsdlm .gt_group_heading {
+#iujjaaoyeu .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1735,7 +1736,7 @@ Show Solution
   text-align: left;
 }
 
-#mbahdjsdlm .gt_empty_group_heading {
+#iujjaaoyeu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1750,15 +1751,15 @@ Show Solution
   vertical-align: middle;
 }
 
-#mbahdjsdlm .gt_from_md > :first-child {
+#iujjaaoyeu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mbahdjsdlm .gt_from_md > :last-child {
+#iujjaaoyeu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mbahdjsdlm .gt_row {
+#iujjaaoyeu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1777,7 +1778,7 @@ Show Solution
   overflow-x: hidden;
 }
 
-#mbahdjsdlm .gt_stub {
+#iujjaaoyeu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1790,7 +1791,7 @@ Show Solution
   padding-right: 5px;
 }
 
-#mbahdjsdlm .gt_stub_row_group {
+#iujjaaoyeu .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1804,15 +1805,15 @@ Show Solution
   vertical-align: top;
 }
 
-#mbahdjsdlm .gt_row_group_first td {
+#iujjaaoyeu .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mbahdjsdlm .gt_row_group_first th {
+#iujjaaoyeu .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#mbahdjsdlm .gt_summary_row {
+#iujjaaoyeu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1822,16 +1823,16 @@ Show Solution
   padding-right: 5px;
 }
 
-#mbahdjsdlm .gt_first_summary_row {
+#iujjaaoyeu .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mbahdjsdlm .gt_first_summary_row.thick {
+#iujjaaoyeu .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mbahdjsdlm .gt_last_summary_row {
+#iujjaaoyeu .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1841,7 +1842,7 @@ Show Solution
   border-bottom-color: #D3D3D3;
 }
 
-#mbahdjsdlm .gt_grand_summary_row {
+#iujjaaoyeu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1851,7 +1852,7 @@ Show Solution
   padding-right: 5px;
 }
 
-#mbahdjsdlm .gt_first_grand_summary_row {
+#iujjaaoyeu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1861,7 +1862,7 @@ Show Solution
   border-top-color: #D3D3D3;
 }
 
-#mbahdjsdlm .gt_last_grand_summary_row_top {
+#iujjaaoyeu .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1871,11 +1872,11 @@ Show Solution
   border-bottom-color: #D3D3D3;
 }
 
-#mbahdjsdlm .gt_striped {
+#iujjaaoyeu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mbahdjsdlm .gt_table_body {
+#iujjaaoyeu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1884,7 +1885,7 @@ Show Solution
   border-bottom-color: #D3D3D3;
 }
 
-#mbahdjsdlm .gt_footnotes {
+#iujjaaoyeu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1898,7 +1899,7 @@ Show Solution
   border-right-color: #D3D3D3;
 }
 
-#mbahdjsdlm .gt_footnote {
+#iujjaaoyeu .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1907,7 +1908,7 @@ Show Solution
   padding-right: 5px;
 }
 
-#mbahdjsdlm .gt_sourcenotes {
+#iujjaaoyeu .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1921,7 +1922,7 @@ Show Solution
   border-right-color: #D3D3D3;
 }
 
-#mbahdjsdlm .gt_sourcenote {
+#iujjaaoyeu .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1929,72 +1930,72 @@ Show Solution
   padding-right: 5px;
 }
 
-#mbahdjsdlm .gt_left {
+#iujjaaoyeu .gt_left {
   text-align: left;
 }
 
-#mbahdjsdlm .gt_center {
+#iujjaaoyeu .gt_center {
   text-align: center;
 }
 
-#mbahdjsdlm .gt_right {
+#iujjaaoyeu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mbahdjsdlm .gt_font_normal {
+#iujjaaoyeu .gt_font_normal {
   font-weight: normal;
 }
 
-#mbahdjsdlm .gt_font_bold {
+#iujjaaoyeu .gt_font_bold {
   font-weight: bold;
 }
 
-#mbahdjsdlm .gt_font_italic {
+#iujjaaoyeu .gt_font_italic {
   font-style: italic;
 }
 
-#mbahdjsdlm .gt_super {
+#iujjaaoyeu .gt_super {
   font-size: 65%;
 }
 
-#mbahdjsdlm .gt_footnote_marks {
+#iujjaaoyeu .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#mbahdjsdlm .gt_asterisk {
+#iujjaaoyeu .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mbahdjsdlm .gt_indent_1 {
+#iujjaaoyeu .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mbahdjsdlm .gt_indent_2 {
+#iujjaaoyeu .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mbahdjsdlm .gt_indent_3 {
+#iujjaaoyeu .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mbahdjsdlm .gt_indent_4 {
+#iujjaaoyeu .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mbahdjsdlm .gt_indent_5 {
+#iujjaaoyeu .gt_indent_5 {
   text-indent: 25px;
 }
 
-#mbahdjsdlm .katex-display {
+#iujjaaoyeu .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#mbahdjsdlm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#iujjaaoyeu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2063,16 +2064,16 @@ Technically normality is necessary only for hypothesis tests to be valid.</p></l
 </ol>
 <p>These assumption can be checked easily with the {performance} package in the {easystats} meta-package ({tidyverse} is another meta-package of packages).</p>
 <p>In the code chunk below, we assign the model to the object name <code>supra_model</code>, and then run <code>check_model</code> from the {performance} package.</p>
-<div class="sourceCode" id="cb715"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb715-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb715-1" tabindex="-1"></a>supra_model <span class="ot">&lt;-</span> medicaldata<span class="sc">::</span>supraclavicular <span class="sc">%&gt;%</span></span>
-<span id="cb715-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb715-2" tabindex="-1"></a>  <span class="fu">lm</span>(<span class="at">formula =</span> onset_sensory <span class="sc">~</span> age <span class="sc">+</span> bmi <span class="sc">+</span> gender <span class="sc">+</span> group,</span>
-<span id="cb715-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb715-3" tabindex="-1"></a> <span class="at">data =</span> .) </span>
-<span id="cb715-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb715-4" tabindex="-1"></a></span>
-<span id="cb715-5"><a href="linear-regression-and-broom-for-tidying-models.html#cb715-5" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_model</span>(supra_model, <span class="at">panel =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb717"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb717-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb717-1" tabindex="-1"></a>supra_model <span class="ot">&lt;-</span> medicaldata<span class="sc">::</span>supraclavicular <span class="sc">%&gt;%</span></span>
+<span id="cb717-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb717-2" tabindex="-1"></a>  <span class="fu">lm</span>(<span class="at">formula =</span> onset_sensory <span class="sc">~</span> age <span class="sc">+</span> bmi <span class="sc">+</span> gender <span class="sc">+</span> group,</span>
+<span id="cb717-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb717-3" tabindex="-1"></a> <span class="at">data =</span> .) </span>
+<span id="cb717-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb717-4" tabindex="-1"></a></span>
+<span id="cb717-5"><a href="linear-regression-and-broom-for-tidying-models.html#cb717-5" tabindex="-1"></a>performance<span class="sc">::</span><span class="fu">check_model</span>(supra_model, <span class="at">panel =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p>This produces a nice set of six plots in the Plots tab) with some guidance in the subtitles on how to interpret the plots.</p>
 <p>There is a less pretty version in base R, using <code>plot(model_name)</code>, which also works to produce four of these 6 plots.</p>
 <p>You can also formally test for heteroscedasticity.</p>
 <p>The variance of your residuals should be homogenous.</p>
-<div class="sourceCode" id="cb716"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb716-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb716-1" tabindex="-1"></a><span class="fu">check_heteroscedasticity</span>(supra_model)</span></code></pre></div>
+<div class="sourceCode" id="cb718"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb718-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb718-1" tabindex="-1"></a><span class="fu">check_heteroscedasticity</span>(supra_model)</span></code></pre></div>
 <pre><code>## OK: Error variance appears to be homoscedastic (p = 0.427).</code></pre>
 <p>A green output that starts with <code>OK</code> for <code>check_heteroscedasticity</code>, indicating homoscedasticity (homgeneous residual variance), is good.</p>
 </div>
@@ -2083,10 +2084,10 @@ Technically normality is necessary only for hypothesis tests to be valid.</p></l
 This is often called the <code>training data</code> as it was the data the model was trained on.
 You can add predictions (fitted results) to your dataframe with the <em>augment()</em> function from the {broom} package.
 We <code>augment</code> this dataframe with the model predictions, and then <code>relocate</code> them to the beginning (leftmost columns) of the tibble.</p>
-<div class="sourceCode" id="cb718"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb718-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb718-1" tabindex="-1"></a>supra_data_plus <span class="ot">&lt;-</span>  <span class="fu">augment</span>(supra_model) <span class="sc">%&gt;%</span> </span>
-<span id="cb718-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb718-2" tabindex="-1"></a>  <span class="fu">relocate</span>(onset_sensory, .fitted, .resid) <span class="sc">%&gt;%</span> </span>
-<span id="cb718-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb718-3" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>.fitted)</span>
-<span id="cb718-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb718-4" tabindex="-1"></a>supra_data_plus</span></code></pre></div>
+<div class="sourceCode" id="cb720"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb720-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb720-1" tabindex="-1"></a>supra_data_plus <span class="ot">&lt;-</span>  <span class="fu">augment</span>(supra_model) <span class="sc">%&gt;%</span> </span>
+<span id="cb720-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb720-2" tabindex="-1"></a>  <span class="fu">relocate</span>(onset_sensory, .fitted, .resid) <span class="sc">%&gt;%</span> </span>
+<span id="cb720-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb720-3" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>.fitted)</span>
+<span id="cb720-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb720-4" tabindex="-1"></a>supra_data_plus</span></code></pre></div>
 <pre><code>## # A tibble: 100 × 12
 ##    onset_sensory .fitted .resid .rownames   age   bmi gender group   .hat .sigma
 ##            &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
@@ -2113,11 +2114,11 @@ Review any observation with a <code>.cooksd</code> &gt; 1 carefully.</p>
 First, we need to create a dataframe that matches the predictor variables for the supra_model.
 You might get a dataframe of new observations from a colleague.
 It is important that this is in the same format, with <em>exactly</em> the same variable names as the original data.</p>
-<div class="sourceCode" id="cb720"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb720-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb720-1" tabindex="-1"></a>new_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">age =</span> <span class="fu">c</span>(<span class="dv">27</span>, <span class="dv">38</span>, <span class="dv">51</span>),</span>
-<span id="cb720-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb720-2" tabindex="-1"></a>                   <span class="at">bmi =</span> <span class="fu">c</span>(<span class="fl">30.4</span>, <span class="fl">34.2</span>, <span class="fl">41.1</span>),</span>
-<span id="cb720-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb720-3" tabindex="-1"></a>                   <span class="at">gender =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
-<span id="cb720-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb720-4" tabindex="-1"></a>                   <span class="at">group =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb720-5"><a href="linear-regression-and-broom-for-tidying-models.html#cb720-5" tabindex="-1"></a>new_data</span></code></pre></div>
+<div class="sourceCode" id="cb722"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb722-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb722-1" tabindex="-1"></a>new_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">age =</span> <span class="fu">c</span>(<span class="dv">27</span>, <span class="dv">38</span>, <span class="dv">51</span>),</span>
+<span id="cb722-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb722-2" tabindex="-1"></a>                   <span class="at">bmi =</span> <span class="fu">c</span>(<span class="fl">30.4</span>, <span class="fl">34.2</span>, <span class="fl">41.1</span>),</span>
+<span id="cb722-3"><a href="linear-regression-and-broom-for-tidying-models.html#cb722-3" tabindex="-1"></a>                   <span class="at">gender =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb722-4"><a href="linear-regression-and-broom-for-tidying-models.html#cb722-4" tabindex="-1"></a>                   <span class="at">group =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb722-5"><a href="linear-regression-and-broom-for-tidying-models.html#cb722-5" tabindex="-1"></a>new_data</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 4
 ##     age   bmi gender group
 ##   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
@@ -2125,8 +2126,8 @@ It is important that this is in the same format, with <em>exactly</em> the same 
 ## 2    38  34.2      1     1
 ## 3    51  41.1      1     2</code></pre>
 <p>To make predictions with the new data, you use the base {stats} function predict(), with arguments for the model, and the new data.</p>
-<div class="sourceCode" id="cb722"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb722-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb722-1" tabindex="-1"></a><span class="fu">predict</span>(<span class="at">object =</span> supra_model, </span>
-<span id="cb722-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb722-2" tabindex="-1"></a>        <span class="at">newdata =</span> new_data)</span></code></pre></div>
+<div class="sourceCode" id="cb724"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb724-1"><a href="linear-regression-and-broom-for-tidying-models.html#cb724-1" tabindex="-1"></a><span class="fu">predict</span>(<span class="at">object =</span> supra_model, </span>
+<span id="cb724-2"><a href="linear-regression-and-broom-for-tidying-models.html#cb724-2" tabindex="-1"></a>        <span class="at">newdata =</span> new_data)</span></code></pre></div>
 <pre><code>##        1        2        3 
 ## 19.27186 13.62400 15.77457</code></pre>
 <p>This gives us predictions for each of the 3 rows of the <code>new_data</code> dataframe, of the outcome <code>onset_sensory</code>.</p>

@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2025-08-28" />
+<meta name="date" content="2025-10-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,10 +54,10 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
 <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/plotly-binding-4.11.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
@@ -67,8 +67,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -78,7 +79,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -1179,32 +1180,32 @@ Packages needed for this chapter include {ggplot2}, {scales}, and {paletteer}.</
 <h3><span class="header-section-number">48.2.1</span> Using pre-defined color names<a href="colors-and-scales-in-ggplot2.html#using-pre-defined-color-names" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>I have borrowed the <code>plot_palette()</code> function from a fabulous blog post by Nicola Rennie at <a href="https://nrennie.rbind.io/blog/colours-in-r/">blogpost</a> (it is definitely worth following Nicola for this blog) to show you a few of the pre-defined color palettes available in R.</p>
 <p>Tiy will want to run this in your local RStudio session to create this function, which will make it easy to plot color palettes. Copy the code block below and run it in your local RStudio to enable plotting color palettes.</p>
-<div class="sourceCode" id="cb997"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb997-1"><a href="colors-and-scales-in-ggplot2.html#cb997-1" tabindex="-1"></a>plot_palette <span class="ot">&lt;-</span> <span class="cf">function</span>(palette) {</span>
-<span id="cb997-2"><a href="colors-and-scales-in-ggplot2.html#cb997-2" tabindex="-1"></a>  g <span class="ot">&lt;-</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(</span>
-<span id="cb997-3"><a href="colors-and-scales-in-ggplot2.html#cb997-3" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">data.frame</span>(</span>
-<span id="cb997-4"><a href="colors-and-scales-in-ggplot2.html#cb997-4" tabindex="-1"></a>      <span class="at">x =</span> <span class="fu">seq_len</span>(<span class="fu">length</span>(palette)),</span>
-<span id="cb997-5"><a href="colors-and-scales-in-ggplot2.html#cb997-5" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">&quot;1&quot;</span>,</span>
-<span id="cb997-6"><a href="colors-and-scales-in-ggplot2.html#cb997-6" tabindex="-1"></a>      <span class="at">fill =</span> palette</span>
-<span id="cb997-7"><a href="colors-and-scales-in-ggplot2.html#cb997-7" tabindex="-1"></a>    ),</span>
-<span id="cb997-8"><a href="colors-and-scales-in-ggplot2.html#cb997-8" tabindex="-1"></a>    <span class="at">mapping =</span> ggplot2<span class="sc">::</span><span class="fu">aes</span>(</span>
-<span id="cb997-9"><a href="colors-and-scales-in-ggplot2.html#cb997-9" tabindex="-1"></a>      <span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> fill</span>
-<span id="cb997-10"><a href="colors-and-scales-in-ggplot2.html#cb997-10" tabindex="-1"></a>    )</span>
-<span id="cb997-11"><a href="colors-and-scales-in-ggplot2.html#cb997-11" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb997-12"><a href="colors-and-scales-in-ggplot2.html#cb997-12" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">geom_tile</span>() <span class="sc">+</span></span>
-<span id="cb997-13"><a href="colors-and-scales-in-ggplot2.html#cb997-13" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">scale_fill_identity</span>() <span class="sc">+</span></span>
-<span id="cb997-14"><a href="colors-and-scales-in-ggplot2.html#cb997-14" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">theme_void</span>()</span>
-<span id="cb997-15"><a href="colors-and-scales-in-ggplot2.html#cb997-15" tabindex="-1"></a>  <span class="fu">return</span>(g)</span>
-<span id="cb997-16"><a href="colors-and-scales-in-ggplot2.html#cb997-16" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb999"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb999-1"><a href="colors-and-scales-in-ggplot2.html#cb999-1" tabindex="-1"></a>plot_palette <span class="ot">&lt;-</span> <span class="cf">function</span>(palette) {</span>
+<span id="cb999-2"><a href="colors-and-scales-in-ggplot2.html#cb999-2" tabindex="-1"></a>  g <span class="ot">&lt;-</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(</span>
+<span id="cb999-3"><a href="colors-and-scales-in-ggplot2.html#cb999-3" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">data.frame</span>(</span>
+<span id="cb999-4"><a href="colors-and-scales-in-ggplot2.html#cb999-4" tabindex="-1"></a>      <span class="at">x =</span> <span class="fu">seq_len</span>(<span class="fu">length</span>(palette)),</span>
+<span id="cb999-5"><a href="colors-and-scales-in-ggplot2.html#cb999-5" tabindex="-1"></a>      <span class="at">y =</span> <span class="st">&quot;1&quot;</span>,</span>
+<span id="cb999-6"><a href="colors-and-scales-in-ggplot2.html#cb999-6" tabindex="-1"></a>      <span class="at">fill =</span> palette</span>
+<span id="cb999-7"><a href="colors-and-scales-in-ggplot2.html#cb999-7" tabindex="-1"></a>    ),</span>
+<span id="cb999-8"><a href="colors-and-scales-in-ggplot2.html#cb999-8" tabindex="-1"></a>    <span class="at">mapping =</span> ggplot2<span class="sc">::</span><span class="fu">aes</span>(</span>
+<span id="cb999-9"><a href="colors-and-scales-in-ggplot2.html#cb999-9" tabindex="-1"></a>      <span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">fill =</span> fill</span>
+<span id="cb999-10"><a href="colors-and-scales-in-ggplot2.html#cb999-10" tabindex="-1"></a>    )</span>
+<span id="cb999-11"><a href="colors-and-scales-in-ggplot2.html#cb999-11" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb999-12"><a href="colors-and-scales-in-ggplot2.html#cb999-12" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">geom_tile</span>() <span class="sc">+</span></span>
+<span id="cb999-13"><a href="colors-and-scales-in-ggplot2.html#cb999-13" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">scale_fill_identity</span>() <span class="sc">+</span></span>
+<span id="cb999-14"><a href="colors-and-scales-in-ggplot2.html#cb999-14" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">theme_void</span>()</span>
+<span id="cb999-15"><a href="colors-and-scales-in-ggplot2.html#cb999-15" tabindex="-1"></a>  <span class="fu">return</span>(g)</span>
+<span id="cb999-16"><a href="colors-and-scales-in-ggplot2.html#cb999-16" tabindex="-1"></a>}</span></code></pre></div>
 <p>One of the easiest ways to choose a color or build a palette of colors, is to use one of the 657 pre-defined color names in R. All of the standard color names are in lowercase, and are generally used in quotes, as they are not objects in your Global Environment.</p>
 <p>Here is an example - copy the code below to your local RStudio and run it to see the colors in action.</p>
 <p>Note that as you type in standard color names, RStudio will recognize them and provide a background color for each color name as a preview of what it will look like.</p>
 <p>Running the code will give you a plot of the colors in the palette.</p>
-<div class="sourceCode" id="cb998"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb998-1"><a href="colors-and-scales-in-ggplot2.html#cb998-1" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;purple&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1000"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1000-1"><a href="colors-and-scales-in-ggplot2.html#cb1000-1" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;orange&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;green&quot;</span>, <span class="st">&quot;purple&quot;</span>))</span></code></pre></div>
 <p><img src="io106-scales_colors_ggplot_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>Now experiment with this - edit the color names in the vector defined by <code>c()</code> - try “red2”, “green3”, or “purple4” to see the different shades of the colors. Or see the different shades of one color with “red1” through “red4”.</p>
 <p>You will find that there is no 5th shade of any color. If you type in an unknown color into this vector (or a typo), RStudio will not give a preview color, and the code will fail to run, with an error message like “<code>Unknown colour name: red5</code>”.</p>
 <p>So it can be helpful to see a list of the defined standard colors. You can do this in the console by typing <code>print(colors(), max = 657)</code>, which will return a list of the 657 standard color names.</p>
-<div class="sourceCode" id="cb999"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb999-1"><a href="colors-and-scales-in-ggplot2.html#cb999-1" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">colors</span>(), <span class="at">max =</span> <span class="dv">657</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1001"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1001-1"><a href="colors-and-scales-in-ggplot2.html#cb1001-1" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">colors</span>(), <span class="at">max =</span> <span class="dv">657</span>)</span></code></pre></div>
 <p>This provides an alphabetical list, which is somewhat helpful. You can see that there are actually 102 shades of gray in R, not fifty. But often you are looking for a particular shade of a color, and it would be more helpful to see the colors clustered by color family. There is a nice cheatsheet that shows these colors <a href="https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf">here</a></p>
 <p>As long as one of these 657 colors works for you, you are all set. However, you may want to be more particular about the colors you use in your plots. You may want to use a color palette that is more visually appealing, or that is more accessible to those with color vision deficiencies.
 A more specific way to define colors is with ‘hex codes’.</p>
@@ -1215,7 +1216,7 @@ A more specific way to define colors is with ‘hex codes’.</p>
 <p>It is quite common for a corporation or university brand to have specific colors (defined by hex codes or CMYK codes) that they use in their branding website (an eaxmple <a href="https://brand.umich.edu/design-resources/colors/">here</a>). If you can not find the hex code for a particular color, you can estimate it by using a color picker tool in a graphics program, or by using a website like <a href="https://imagecolorpicker.com/">imagecolorpicker.com</a>.</p>
 <p>Here is an example of using hex codes in R to define a color palette. These include the primary defined colors of the University of Michigan, which are maize and blue, as well as a few other colors that are used in the University of Michigan branding. Note that these start with a hash character, followed by six characters in the 0-9/A-F range (for hexadeximal base 16), and are in quotes. Note that RStudio gives you nice color previews as you type in the hex codes.</p>
 <p>Copy and run this code in your local RStudio to see the colors in action.</p>
-<div class="sourceCode" id="cb1000"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1000-1"><a href="colors-and-scales-in-ggplot2.html#cb1000-1" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">c</span>(<span class="st">&quot;#FFCB05&quot;</span>, <span class="st">&quot;#00274C&quot;</span>, <span class="st">&quot;#00B2A9&quot;</span>, <span class="st">&quot;#2F65A7&quot;</span>, <span class="st">&quot;#702082&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1002"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1002-1"><a href="colors-and-scales-in-ggplot2.html#cb1002-1" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">c</span>(<span class="st">&quot;#FFCB05&quot;</span>, <span class="st">&quot;#00274C&quot;</span>, <span class="st">&quot;#00B2A9&quot;</span>, <span class="st">&quot;#2F65A7&quot;</span>, <span class="st">&quot;#702082&quot;</span>))</span></code></pre></div>
 <p><img src="io106-scales_colors_ggplot_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Go ahead and experiment with these. Go ahea and edit and change these colors. Remember that the 1st two digits represent the red channel, digits 3 and 4 represent the green channel, and digits 5 and 6 represent the blue channel. Note that you will get no preview color (and will generate an error) if you use digits outside of the 0-F range (G is not part of hexadecimal). You can also add more colors to the vector and plot these.</p>
 </div>
@@ -1228,7 +1229,7 @@ A more specific way to define colors is with ‘hex codes’.</p>
 <div id="transparency-and-hex-colors" class="section level3 hasAnchor" number="48.2.4">
 <h3><span class="header-section-number">48.2.4</span> Transparency and hex colors<a href="colors-and-scales-in-ggplot2.html#transparency-and-hex-colors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You can add a 4th channel to your hex codes, which represents the transparency of the desired color. These also range from 00-FF (256 levels of transparency). The <code>00</code> level is fully transparent, and the <code>FF</code> level is fully opaque. This is useful for layering colors on top of each other, or when you want to see other data or text through a color block. Here is an example of a blue color with 0%, 25%, 50%, and 75% transparency, which is a light blue color. Copy and run this code in your local RStudio to see the transparency changes in this color in action.</p>
-<div class="sourceCode" id="cb1001"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1001-1"><a href="colors-and-scales-in-ggplot2.html#cb1001-1" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">c</span>(<span class="st">&quot;#0000FFFF&quot;</span>, <span class="st">&quot;#0000FFC0&quot;</span>, <span class="st">&quot;#0000FF80&quot;</span>, <span class="st">&quot;#0000FF40&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1003"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1003-1"><a href="colors-and-scales-in-ggplot2.html#cb1003-1" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">c</span>(<span class="st">&quot;#0000FFFF&quot;</span>, <span class="st">&quot;#0000FFC0&quot;</span>, <span class="st">&quot;#0000FF80&quot;</span>, <span class="st">&quot;#0000FF40&quot;</span>))</span></code></pre></div>
 <p><img src="io106-scales_colors_ggplot_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 <div id="more-obscure-ways-to-select-colors" class="section level3 hasAnchor" number="48.2.5">
@@ -1239,41 +1240,41 @@ A more specific way to define colors is with ‘hex codes’.</p>
 <h3><span class="header-section-number">48.2.6</span> Using color palettes<a href="colors-and-scales-in-ggplot2.html#using-color-palettes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Sometimes you want to have a lot of control, and select each color individually
 Other times, you may want to use a color palette that has been thoughtfully designed by someone else. There are many color palettes that have been designed by artists, data scientists, and others, and you can use these in your plots. There are many packages in R that provide color palettes, and you can use these in your plots. The {paletteer} R package has gathered many of these palettes into one manageable package. Here are a few examples of color palettes that you can use in R. Copy and run this code in your local RStudio to see the colors in action.</p>
-<div class="sourceCode" id="cb1002"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1002-1"><a href="colors-and-scales-in-ggplot2.html#cb1002-1" tabindex="-1"></a><span class="fu">paletteer_c</span>(<span class="st">&quot;scico::berlin&quot;</span>, <span class="at">n =</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1004"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1004-1"><a href="colors-and-scales-in-ggplot2.html#cb1004-1" tabindex="-1"></a><span class="fu">paletteer_c</span>(<span class="st">&quot;scico::berlin&quot;</span>, <span class="at">n =</span> <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## &lt;colors&gt;
 ## #9EB0FFFF #5AA3DAFF #2D7597FF #194155FF #11181DFF #270C01FF #501802FF #8A3F2AFF #C37469FF #FFACACFF</code></pre>
-<div class="sourceCode" id="cb1004"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1004-1"><a href="colors-and-scales-in-ggplot2.html#cb1004-1" tabindex="-1"></a><span class="fu">paletteer_d</span>(<span class="st">&quot;nord::frost&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1006"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1006-1"><a href="colors-and-scales-in-ggplot2.html#cb1006-1" tabindex="-1"></a><span class="fu">paletteer_d</span>(<span class="st">&quot;nord::frost&quot;</span>)</span></code></pre></div>
 <pre><code>## &lt;colors&gt;
 ## #8FBCBBFF #88C0D0FF #81A1C1FF #5E81ACFF</code></pre>
-<div class="sourceCode" id="cb1006"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1006-1"><a href="colors-and-scales-in-ggplot2.html#cb1006-1" tabindex="-1"></a><span class="fu">paletteer_dynamic</span>(<span class="st">&quot;cartography::green.pal&quot;</span>, <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1008"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1008-1"><a href="colors-and-scales-in-ggplot2.html#cb1008-1" tabindex="-1"></a><span class="fu">paletteer_dynamic</span>(<span class="st">&quot;cartography::green.pal&quot;</span>, <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## &lt;colors&gt;
 ## #B8D9A9FF #8DBC80FF #5D9D52FF #287A22FF #17692CFF</code></pre>
 <p>The {paletteer} package divides color palettes into three categories: continuous, discrete, and dynamic (varies with the number of colors needed). Continuous palettes are used when you have a continuous variable, like temperature or elevation, and you want to show the progression of the variable. Discrete palettes are used when you have a variable that has a number of distinct categories, and provide the same number of colors each time. Dynamic palettes are used when you have a variable that can have a different number of categories, like political party or land use. Dynamic palettes will provide a spectrum across the range with the number of categories you request. You can use the {paletteer} package to select a color palette that fits your data, and then use that palette in your plots.</p>
 <p>This <code>berlin</code> palette is a continuous palette that goes from blue to red, and is useful for showing a progression of values. It comes from the <code>scico</code> package, which has many other palettes that you can use.</p>
-<div class="sourceCode" id="cb1008"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1008-1"><a href="colors-and-scales-in-ggplot2.html#cb1008-1" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">paletteer_c</span>(<span class="st">&quot;scico::berlin&quot;</span>, <span class="at">n =</span> <span class="dv">10</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1010"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1010-1"><a href="colors-and-scales-in-ggplot2.html#cb1010-1" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">paletteer_c</span>(<span class="st">&quot;scico::berlin&quot;</span>, <span class="at">n =</span> <span class="dv">10</span>))</span></code></pre></div>
 <p><img src="io106-scales_colors_ggplot_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>The <code>frost</code> palette is a discrete palette that goes from a light greenish blue to a dark slate blue, and is useful for showing distinct categories. It comes from the <code>nord</code> package.</p>
-<div class="sourceCode" id="cb1009"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1009-1"><a href="colors-and-scales-in-ggplot2.html#cb1009-1" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">paletteer_d</span>(<span class="st">&quot;nord::frost&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1011"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1011-1"><a href="colors-and-scales-in-ggplot2.html#cb1011-1" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">paletteer_d</span>(<span class="st">&quot;nord::frost&quot;</span>))</span></code></pre></div>
 <p><img src="io106-scales_colors_ggplot_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>The <code>green.pal</code> palette is a dynamic palette that goes from light green to dark green, and is useful for showing a range of categories.</p>
-<div class="sourceCode" id="cb1010"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1010-1"><a href="colors-and-scales-in-ggplot2.html#cb1010-1" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">paletteer_dynamic</span>(<span class="st">&quot;cartography::green.pal&quot;</span>, <span class="dv">5</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1012"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1012-1"><a href="colors-and-scales-in-ggplot2.html#cb1012-1" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">paletteer_dynamic</span>(<span class="st">&quot;cartography::green.pal&quot;</span>, <span class="dv">5</span>))</span></code></pre></div>
 <p><img src="io106-scales_colors_ggplot_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>You can use these palettes in your plots by calling the <code>paletteer_c()</code>, <code>paletteer_d()</code>, and <code>paletteer_dynamic()</code> functions, respectively, and specifying the number of colors you want.</p>
 <p>There are many packages that specify color palettes, and you can even build one of your own if you often use the same colors. An example built by Eric Ekholm, an apparent fan of the Bluey cartoon, can be found <a href="hhttps://ekholme.github.io/blueycolors/">here</a>, and used in the code block below. Copy and run this code in your local RStudio to install the package and see the colors in action.</p>
-<div class="sourceCode" id="cb1011"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1011-1"><a href="colors-and-scales-in-ggplot2.html#cb1011-1" tabindex="-1"></a><span class="co"># note that this requires that you already have `devtools` installed. If you do not, you can install it with `install.packages(&quot;devtools&quot;)`</span></span>
-<span id="cb1011-2"><a href="colors-and-scales-in-ggplot2.html#cb1011-2" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;ekholme/blueycolors&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1013"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1013-1"><a href="colors-and-scales-in-ggplot2.html#cb1013-1" tabindex="-1"></a><span class="co"># note that this requires that you already have `devtools` installed. If you do not, you can install it with `install.packages(&quot;devtools&quot;)`</span></span>
+<span id="cb1013-2"><a href="colors-and-scales-in-ggplot2.html#cb1013-2" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;ekholme/blueycolors&quot;</span>)</span></code></pre></div>
 <pre><code>## Using GitHub PAT from the git credential store.</code></pre>
-<pre><code>## Skipping install of &#39;blueycolors&#39; from a github remote, the SHA1 (9c72bd5c) has not changed since last install.
+<pre><code>## Skipping install of &#39;blueycolors&#39; from a github remote, the SHA1 (8558de22) has not changed since last install.
 ##   Use `force = TRUE` to force installation</code></pre>
-<div class="sourceCode" id="cb1014"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1014-1"><a href="colors-and-scales-in-ggplot2.html#cb1014-1" tabindex="-1"></a><span class="fu">library</span>(blueycolors)</span>
-<span id="cb1014-2"><a href="colors-and-scales-in-ggplot2.html#cb1014-2" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">bluey_palette</span>(<span class="st">&quot;bluey&quot;</span>, <span class="dv">5</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1016"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1016-1"><a href="colors-and-scales-in-ggplot2.html#cb1016-1" tabindex="-1"></a><span class="fu">library</span>(blueycolors)</span>
+<span id="cb1016-2"><a href="colors-and-scales-in-ggplot2.html#cb1016-2" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">bluey_palette</span>(<span class="st">&quot;bluey&quot;</span>, <span class="dv">5</span>))</span></code></pre></div>
 <p><img src="io106-scales_colors_ggplot_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <p>A few color-blind safe palettes are built into {ggplot2}. You can use these palettes in your plots by calling the <code>scale_color_viridis_d()</code> and <code>scale_fill_viridis_d()</code> functions, respectively. Here is an example of the <code>viridis</code> palette in action. Copy and run this code in your local RStudio to see the colors in action.
 Other options for viridis include “plasma”, “magma”, “cividis”, and “inferno”.</p>
-<div class="sourceCode" id="cb1015"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1015-1"><a href="colors-and-scales-in-ggplot2.html#cb1015-1" tabindex="-1"></a><span class="fu">ggplot</span>(iris,</span>
-<span id="cb1015-2"><a href="colors-and-scales-in-ggplot2.html#cb1015-2" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x=</span>Sepal.Length, <span class="at">y=</span>Sepal.Width, <span class="at">color=</span>Species)) <span class="sc">+</span></span>
-<span id="cb1015-3"><a href="colors-and-scales-in-ggplot2.html#cb1015-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">6</span>) <span class="sc">+</span> </span>
-<span id="cb1015-4"><a href="colors-and-scales-in-ggplot2.html#cb1015-4" tabindex="-1"></a>  <span class="fu">scale_color_viridis_d</span>(<span class="at">option =</span> <span class="st">&quot;viridis&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1017"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1017-1"><a href="colors-and-scales-in-ggplot2.html#cb1017-1" tabindex="-1"></a><span class="fu">ggplot</span>(iris,</span>
+<span id="cb1017-2"><a href="colors-and-scales-in-ggplot2.html#cb1017-2" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x=</span>Sepal.Length, <span class="at">y=</span>Sepal.Width, <span class="at">color=</span>Species)) <span class="sc">+</span></span>
+<span id="cb1017-3"><a href="colors-and-scales-in-ggplot2.html#cb1017-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">6</span>) <span class="sc">+</span> </span>
+<span id="cb1017-4"><a href="colors-and-scales-in-ggplot2.html#cb1017-4" tabindex="-1"></a>  <span class="fu">scale_color_viridis_d</span>(<span class="at">option =</span> <span class="st">&quot;viridis&quot;</span>)</span></code></pre></div>
 <p><img src="io106-scales_colors_ggplot_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 </div>
 <div id="color-blind-friendly-palettes" class="section level3 hasAnchor" number="48.2.7">
@@ -1292,22 +1293,22 @@ Other options for viridis include “plasma”, “magma”, “cividis”, and 
 <p>See the PrettyCols package
 See the RColorBrewer package</p>
 <p>Here are some examples of each type of palette. Copy and run this code in your local RStudio to see the colors in action.</p>
-<div class="sourceCode" id="cb1016"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1016-1"><a href="colors-and-scales-in-ggplot2.html#cb1016-1" tabindex="-1"></a><span class="fu">library</span>(PrettyCols)</span>
-<span id="cb1016-2"><a href="colors-and-scales-in-ggplot2.html#cb1016-2" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
-<span id="cb1016-3"><a href="colors-and-scales-in-ggplot2.html#cb1016-3" tabindex="-1"></a><span class="co"># Diverging Palettes</span></span>
-<span id="cb1016-4"><a href="colors-and-scales-in-ggplot2.html#cb1016-4" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">prettycols</span>(<span class="at">n =</span> <span class="dv">9</span>, <span class="st">&quot;PurpleGreens&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1018"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1018-1"><a href="colors-and-scales-in-ggplot2.html#cb1018-1" tabindex="-1"></a><span class="fu">library</span>(PrettyCols)</span>
+<span id="cb1018-2"><a href="colors-and-scales-in-ggplot2.html#cb1018-2" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb1018-3"><a href="colors-and-scales-in-ggplot2.html#cb1018-3" tabindex="-1"></a><span class="co"># Diverging Palettes</span></span>
+<span id="cb1018-4"><a href="colors-and-scales-in-ggplot2.html#cb1018-4" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">prettycols</span>(<span class="at">n =</span> <span class="dv">9</span>, <span class="st">&quot;PurpleGreens&quot;</span>))</span></code></pre></div>
 <p><img src="io106-scales_colors_ggplot_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
-<div class="sourceCode" id="cb1017"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1017-1"><a href="colors-and-scales-in-ggplot2.html#cb1017-1" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">brewer.pal</span>(<span class="dv">5</span>, <span class="st">&quot;PuOr&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1019"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1019-1"><a href="colors-and-scales-in-ggplot2.html#cb1019-1" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">brewer.pal</span>(<span class="dv">5</span>, <span class="st">&quot;PuOr&quot;</span>))</span></code></pre></div>
 <p><img src="io106-scales_colors_ggplot_files/figure-html/unnamed-chunk-12-2.png" width="672" /></p>
-<div class="sourceCode" id="cb1018"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1018-1"><a href="colors-and-scales-in-ggplot2.html#cb1018-1" tabindex="-1"></a><span class="co"># Sequential Palettes</span></span>
-<span id="cb1018-2"><a href="colors-and-scales-in-ggplot2.html#cb1018-2" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">prettycols</span>(<span class="at">n =</span> <span class="dv">7</span>, <span class="st">&quot;Tangerines&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1020"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1020-1"><a href="colors-and-scales-in-ggplot2.html#cb1020-1" tabindex="-1"></a><span class="co"># Sequential Palettes</span></span>
+<span id="cb1020-2"><a href="colors-and-scales-in-ggplot2.html#cb1020-2" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">prettycols</span>(<span class="at">n =</span> <span class="dv">7</span>, <span class="st">&quot;Tangerines&quot;</span>))</span></code></pre></div>
 <p><img src="io106-scales_colors_ggplot_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
-<div class="sourceCode" id="cb1019"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1019-1"><a href="colors-and-scales-in-ggplot2.html#cb1019-1" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">brewer.pal</span>(<span class="dv">5</span>, <span class="st">&quot;Blues&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1021"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1021-1"><a href="colors-and-scales-in-ggplot2.html#cb1021-1" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">brewer.pal</span>(<span class="dv">5</span>, <span class="st">&quot;Blues&quot;</span>))</span></code></pre></div>
 <p><img src="io106-scales_colors_ggplot_files/figure-html/unnamed-chunk-13-2.png" width="672" /></p>
-<div class="sourceCode" id="cb1020"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1020-1"><a href="colors-and-scales-in-ggplot2.html#cb1020-1" tabindex="-1"></a><span class="co"># Qualitative Palettes</span></span>
-<span id="cb1020-2"><a href="colors-and-scales-in-ggplot2.html#cb1020-2" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">prettycols</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="st">&quot;Bold&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1022"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1022-1"><a href="colors-and-scales-in-ggplot2.html#cb1022-1" tabindex="-1"></a><span class="co"># Qualitative Palettes</span></span>
+<span id="cb1022-2"><a href="colors-and-scales-in-ggplot2.html#cb1022-2" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">prettycols</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="st">&quot;Bold&quot;</span>))</span></code></pre></div>
 <p><img src="io106-scales_colors_ggplot_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
-<div class="sourceCode" id="cb1021"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1021-1"><a href="colors-and-scales-in-ggplot2.html#cb1021-1" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">brewer.pal</span>(<span class="dv">5</span>, <span class="st">&quot;Set3&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1023"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1023-1"><a href="colors-and-scales-in-ggplot2.html#cb1023-1" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">brewer.pal</span>(<span class="dv">5</span>, <span class="st">&quot;Set3&quot;</span>))</span></code></pre></div>
 <p><img src="io106-scales_colors_ggplot_files/figure-html/unnamed-chunk-14-2.png" width="672" /></p>
 </div>
 <div id="choosing-colors-with-meaning" class="section level2 hasAnchor" number="48.4">
@@ -1318,10 +1319,10 @@ See the RColorBrewer package</p>
 <p>In terms of clinical studies and exposure levels, it is helpful to use a color palette that identifies the control, or placebo, as gray. This is to differentiate it from your active intervention, which can be in a color like blue or green. This is helpful for your audience to quickly identify the control group, and the intervention group, in your plots. When the intensity of the exposure varies across arms, it is helpful to use a color palette that goes from light to dark, or from low to high, to show the progression of the exposure. This is helpful for your audience to quickly identify the level of exposure in your plots.</p>
 <p>For example, in comparing outcomes for 3 dose levels of the active intervention (low, medium, and high) to a placebo or vehicle control, you could use a color palette that goes from gray to blue3 to show the progression of the dose levels. This would help your audience quickly identify the control group, and the low, medium, and high dose groups in your plots. Copy and run this code in your local RStudio to see the colors in action.
 This clear translation of increasing exposure to the treatment to color intensity will help viewers understand the meaning of your plots.</p>
-<div class="sourceCode" id="cb1022"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1022-1"><a href="colors-and-scales-in-ggplot2.html#cb1022-1" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">c</span>(<span class="st">&quot;gray80&quot;</span>,  <span class="st">&quot;lightskyblue1&quot;</span>, <span class="st">&quot;skyblue2&quot;</span>, <span class="st">&quot;deepskyblue3&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1024"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1024-1"><a href="colors-and-scales-in-ggplot2.html#cb1024-1" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">c</span>(<span class="st">&quot;gray80&quot;</span>,  <span class="st">&quot;lightskyblue1&quot;</span>, <span class="st">&quot;skyblue2&quot;</span>, <span class="st">&quot;deepskyblue3&quot;</span>))</span></code></pre></div>
 <p><img src="io106-scales_colors_ggplot_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>If you had more levels of exposure, you could use one of the palettes from the {RColorBrewer} package, which has many palettes that are colorblind safe. Copy and run this code in your local RStudio to see the colors in action.</p>
-<div class="sourceCode" id="cb1023"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1023-1"><a href="colors-and-scales-in-ggplot2.html#cb1023-1" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">c</span>(<span class="st">&quot;gray80&quot;</span>,  RColorBrewer<span class="sc">::</span><span class="fu">brewer.pal</span>(<span class="at">name =</span> <span class="st">&quot;Blues&quot;</span>, <span class="at">n =</span> <span class="dv">7</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb1025"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1025-1"><a href="colors-and-scales-in-ggplot2.html#cb1025-1" tabindex="-1"></a><span class="fu">plot_palette</span>(<span class="fu">c</span>(<span class="st">&quot;gray80&quot;</span>,  RColorBrewer<span class="sc">::</span><span class="fu">brewer.pal</span>(<span class="at">name =</span> <span class="st">&quot;Blues&quot;</span>, <span class="at">n =</span> <span class="dv">7</span>)))</span></code></pre></div>
 <p><img src="io106-scales_colors_ggplot_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p>When you are choosing colors for your plots, it is helpful to think about the meaning of colors, and how they will be interpreted by your audience. You can use the {paletteer} or {RColorBrewer} packages to select a color palette that fits your data, and then use that palette in your plots. You can also build your own color palette, to make your plots more meaningful to your audience.</p>
 

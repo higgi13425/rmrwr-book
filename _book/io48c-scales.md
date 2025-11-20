@@ -99,6 +99,11 @@ indo_rct %>%
   scale_x_continuous(limits = c(15,90))
 ```
 
+```
+## Warning: Removed 1 row containing missing values or values outside the scale range
+## (`geom_point()`).
+```
+
 <img src="io48c-scales_files/figure-html/scatter-2-solution-1.png" width="672" />
 
 </div>
@@ -226,15 +231,6 @@ indo_rct %>%
   theme(legend.position = c(0.85, 0.5)) +
   scale_y_continuous(limits = c(0.5,6),
                      breaks = seq(0.5, 6, by = 0.5)) 
-```
-
-```
-## Warning: A numeric `legend.position` argument in `theme()` was deprecated in ggplot2
-## 3.5.0.
-## ℹ Please use the `legend.position.inside` argument of `theme()` instead.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-## generated.
 ```
 
 <img src="io48c-scales_files/figure-html/scatter-5a-1.png" width="672" />

@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2025-08-28" />
+<meta name="date" content="2025-10-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,10 +54,10 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
 <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/plotly-binding-4.11.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
@@ -67,8 +67,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -78,7 +79,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -1156,9 +1157,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 50</span> Using the {tabulapdf} package tp extract tables from PDFs<a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#using-the-tabulapdf-package-tp-extract-tables-from-pdfs" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This chapter is part of the <strong>Data Import</strong> pathway. <br> Packages needed for this chapter include {tabulapdf}, {tidyverse}, and a working version of rJava. If you don’t have these packages installed, you can install them by copying the code chunk below and running it in your local RStudio session. You will also likely need the {rJavaEnv} package,
 which will help you install rJava and connect it to your R environment.</p>
-<div class="sourceCode" id="cb1106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1106-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1106-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tabulapdf&quot;</span>)</span>
-<span id="cb1106-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1106-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
-<span id="cb1106-3"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1106-3" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rJavaEnv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1108-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1108-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tabulapdf&quot;</span>)</span>
+<span id="cb1108-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1108-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
+<span id="cb1108-3"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1108-3" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rJavaEnv&quot;</span>)</span></code></pre></div>
 <div class="tip">
 <p>This chapter takes a bit of setup to get rJava working,
 which is needed for the {tabulapdf} package to work and to interactively
@@ -1169,8 +1170,8 @@ Let’s walk through the steps to get rJava set up.
 start by loading {rJavaEnv} with a library command.
 Then run the <code>java_check_version_cmd()</code> function in your local RStudio session
 to see if you already have a working version of Java on your computer.</p>
-<div class="sourceCode" id="cb1107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1107-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1107-1" tabindex="-1"></a><span class="fu">library</span>(rJavaEnv)</span>
-<span id="cb1107-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1107-2" tabindex="-1"></a><span class="fu">java_check_version_cmd</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1109-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1109-1" tabindex="-1"></a><span class="fu">library</span>(rJavaEnv)</span>
+<span id="cb1109-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1109-2" tabindex="-1"></a><span class="fu">java_check_version_cmd</span>()</span></code></pre></div>
 <pre><code>## JAVA_HOME:
 ## &#39;/Users/peterhiggins/Library/Caches/org.R-project.R/R/rJavaEnv/installed/macos/aarch64/21&#39;
 ## Java path:
@@ -1186,10 +1187,10 @@ you can skip the next step.</p>
 <p>If this is the case, copy and run the <code>java_quick_install()</code> function from
 the chunk below in your local RStudio session to install the
 latest version of Java.</p>
-<div class="sourceCode" id="cb1110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1110-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1110-1" tabindex="-1"></a><span class="fu">java_quick_install</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1112-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1112-1" tabindex="-1"></a><span class="fu">java_quick_install</span>()</span></code></pre></div>
 <p>Now check that this worked by running the <code>java_check_version_cmd()</code>
 function in your local RStudio session again.</p>
-<div class="sourceCode" id="cb1111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1111-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1111-1" tabindex="-1"></a><span class="fu">java_check_version_cmd</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1113-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1113-1" tabindex="-1"></a><span class="fu">java_check_version_cmd</span>()</span></code></pre></div>
 <p>This should now tell you the path to JAVA HOME, the Java path, and the Java version.
 Once this is set, you are ready to get started.</p>
 </div>
@@ -1204,14 +1205,14 @@ to have these data publicly available in a format that can be used for analysis 
 <p>The {tabulapdf} package is a great tool for extracting tables from PDFs. It uses the Java library Tabula (the equivalent of R packages in the Java computer language are called <code>libraries</code>) to do this, and it works well with many different types of tables.</p>
 <p>To use the {tabulapdf} package, you need to have Java installed on your computer. If you don’t have Java installed, you can follow the instructions in the previous section to install it.</p>
 <p>Run the code chunk below to load the {tabulapdf} package into your R session, along with {tidyverse} to clean up the data tables we will extract (there will be lots of cleaning up).</p>
-<div class="sourceCode" id="cb1112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1112-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1112-1" tabindex="-1"></a><span class="fu">library</span>(tabulapdf)</span>
-<span id="cb1112-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1112-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb1114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1114-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1114-1" tabindex="-1"></a><span class="fu">library</span>(tabulapdf)</span>
+<span id="cb1114-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1114-2" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <p>Now let’s start with a PDF filled with health-related data tables.
 This is a nice example from KFF, the Kaiser Family Foundation, which is a non-profit organization that provides information on health issues at www.kff.org.</p>
 <p>Unfortunately, they publish a lot of interesting health and health insurance data
 in tables in PDFs.</p>
 <p>Let’s link this pdf to an object in R, by running the code chunk below. Copy and run this code chunk in your local RStudio session.</p>
-<div class="sourceCode" id="cb1113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1113-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1113-1" tabindex="-1"></a>kff_pdf <span class="ot">&lt;-</span> <span class="st">&quot;https://files.kff.org/attachment/Topline-Survey-of-Consumer-Experiences-with-Health-Insurance.pdf&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb1115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1115-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1115-1" tabindex="-1"></a>kff_pdf <span class="ot">&lt;-</span> <span class="st">&quot;https://files.kff.org/attachment/Topline-Survey-of-Consumer-Experiences-with-Health-Insurance.pdf&quot;</span></span></code></pre></div>
 </div>
 <div id="extracting-tables-from-pdfs-1" class="section level2 hasAnchor" number="50.3">
 <h2><span class="header-section-number">50.3</span> Extracting Tables from PDFs<a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#extracting-tables-from-pdfs-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -1220,11 +1221,11 @@ in tables in PDFs.</p>
 To get started, we can simply grab ALL the tables, or do this in a targeted way.</p>
 <p>Take a moment to go the the website for this PDF, <a href="https://files.kff.org/attachment/Topline-Survey-of-Consumer-Experiences-with-Health-Insurance.pdf">here</a>, and scroll through the PDF to see what tables are in it. Keep this PDF window open for future reference during this chapter.</p>
 <p>Let’s get a quick overview of this PDF by running the commands in the code chunk below.</p>
-<div class="sourceCode" id="cb1114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1114-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1114-1" tabindex="-1"></a><span class="co"># Get the number of pages in the PDF</span></span>
-<span id="cb1114-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1114-2" tabindex="-1"></a><span class="fu">get_n_pages</span>(kff_pdf)</span></code></pre></div>
+<div class="sourceCode" id="cb1116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1116-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1116-1" tabindex="-1"></a><span class="co"># Get the number of pages in the PDF</span></span>
+<span id="cb1116-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1116-2" tabindex="-1"></a><span class="fu">get_n_pages</span>(kff_pdf)</span></code></pre></div>
 <pre><code>## [1] 40</code></pre>
-<div class="sourceCode" id="cb1116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1116-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1116-1" tabindex="-1"></a><span class="co"># Get the metadata on the PDF</span></span>
-<span id="cb1116-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1116-2" tabindex="-1"></a><span class="fu">extract_metadata</span>(kff_pdf)</span></code></pre></div>
+<div class="sourceCode" id="cb1118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1118-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1118-1" tabindex="-1"></a><span class="co"># Get the metadata on the PDF</span></span>
+<span id="cb1118-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1118-2" tabindex="-1"></a><span class="fu">extract_metadata</span>(kff_pdf)</span></code></pre></div>
 <pre><code>## $pages
 ## [1] 40
 ## 
@@ -1254,8 +1255,8 @@ To get started, we can simply grab ALL the tables, or do this in a targeted way.
 ## 
 ## $trapped
 ## NULL</code></pre>
-<div class="sourceCode" id="cb1118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1118-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1118-1" tabindex="-1"></a><span class="co"># figure out the pixel dimensions of the PDF pages</span></span>
-<span id="cb1118-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1118-2" tabindex="-1"></a><span class="fu">get_page_dims</span>(kff_pdf, <span class="at">pages =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1120-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1120-1" tabindex="-1"></a><span class="co"># figure out the pixel dimensions of the PDF pages</span></span>
+<span id="cb1120-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1120-2" tabindex="-1"></a><span class="fu">get_page_dims</span>(kff_pdf, <span class="at">pages =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 612 792
 ## 
@@ -1269,8 +1270,8 @@ all the same size, 8.5 inches wide by 11 inches tall).</p>
 <h2><span class="header-section-number">50.4</span> Extracting Tables from the PDF<a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#extracting-tables-from-the-pdf" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let’s go whole hog. Let’s see how many tables there are.
 This will take a minute, but run the code chunk belowin your local R session.</p>
-<div class="sourceCode" id="cb1120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1120-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1120-1" tabindex="-1"></a><span class="co"># Extract all tables from the PDF</span></span>
-<span id="cb1120-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1120-2" tabindex="-1"></a>kff_tables <span class="ot">&lt;-</span> <span class="fu">extract_tables</span>(kff_pdf, <span class="at">pages =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">40</span>, <span class="at">output =</span> <span class="st">&quot;tibble&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1122-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1122-1" tabindex="-1"></a><span class="co"># Extract all tables from the PDF</span></span>
+<span id="cb1122-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1122-2" tabindex="-1"></a>kff_tables <span class="ot">&lt;-</span> <span class="fu">extract_tables</span>(kff_pdf, <span class="at">pages =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">40</span>, <span class="at">output =</span> <span class="st">&quot;tibble&quot;</span>)</span></code></pre></div>
 <p>If you take a look in your Environment tab, you will now find the kff_tables object.
 It is a list of 38 tables.
 Click on the object in the Environment tab, and you will see a list of 38 tables
@@ -1280,8 +1281,8 @@ to the table number. Click on one or two of these to expand them, and compare th
 Several of these are stuck together in the table extraction process, and some of them are empty.</p>
 <p>To take a look at one of the tables in the list, run the code chunk below,
 which will pull out the 17th table in the list and show it in the Viewer tab.</p>
-<div class="sourceCode" id="cb1121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1121-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1121-1" tabindex="-1"></a><span class="co"># Extract the 17th table from the list of tables</span></span>
-<span id="cb1121-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1121-2" tabindex="-1"></a>kff_tables[[<span class="dv">17</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb1123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1123-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1123-1" tabindex="-1"></a><span class="co"># Extract the 17th table from the list of tables</span></span>
+<span id="cb1123-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1123-2" tabindex="-1"></a>kff_tables[[<span class="dv">17</span>]]</span></code></pre></div>
 <p>The result is a bit wonky, but recognizable as all of the tables in response to questions
 17 through 19b, all bound together in a single table. Scroll through the PDF to find these.</p>
 </div>
@@ -1297,33 +1298,33 @@ yes, and the percentage of people who said no.</p>
 <p>To do this, we can use the <code>extract_tables()</code> function again, but this time we
 will pull this one <code>table</code> and slice out the rows that we want.
 Copy and run the code below in your local R session. Review each line to make sure you know what each function is doing.</p>
-<div class="sourceCode" id="cb1122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1122-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1122-1" tabindex="-1"></a><span class="co"># Extract the 17th table from the list of tables</span></span>
-<span id="cb1122-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1122-2" tabindex="-1"></a>pay_more <span class="ot">&lt;-</span> kff_tables[[<span class="dv">17</span>]] <span class="sc">|&gt;</span></span>
-<span id="cb1122-3"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1122-3" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">20</span><span class="sc">:</span><span class="dv">21</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1122-4"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1122-4" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">response =</span> <span class="st">`</span><span class="at">...1</span><span class="st">`</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1122-5"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1122-5" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">Total sponsored</span><span class="st">`</span>, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;overall&quot;</span>, <span class="st">&quot;emp_sponsored&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">s&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1122-6"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1122-6" tabindex="-1"></a>  <span class="fu">relocate</span>(overall, <span class="at">.after =</span> Marketplace) <span class="sc">|&gt;</span></span>
-<span id="cb1122-7"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1122-7" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
-<span id="cb1122-8"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1122-8" tabindex="-1"></a></span>
-<span id="cb1122-9"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1122-9" tabindex="-1"></a>pay_more <span class="sc">|&gt;</span></span>
-<span id="cb1122-10"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1122-10" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">gt</span>()</span></code></pre></div>
-<div id="ztbshdkhhw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ztbshdkhhw table {
+<div class="sourceCode" id="cb1124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1124-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1124-1" tabindex="-1"></a><span class="co"># Extract the 17th table from the list of tables</span></span>
+<span id="cb1124-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1124-2" tabindex="-1"></a>pay_more <span class="ot">&lt;-</span> kff_tables[[<span class="dv">17</span>]] <span class="sc">|&gt;</span></span>
+<span id="cb1124-3"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1124-3" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">20</span><span class="sc">:</span><span class="dv">21</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1124-4"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1124-4" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">response =</span> <span class="st">`</span><span class="at">...1</span><span class="st">`</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1124-5"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1124-5" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">Total sponsored</span><span class="st">`</span>, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;overall&quot;</span>, <span class="st">&quot;emp_sponsored&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\\</span><span class="st">s&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1124-6"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1124-6" tabindex="-1"></a>  <span class="fu">relocate</span>(overall, <span class="at">.after =</span> Marketplace) <span class="sc">|&gt;</span></span>
+<span id="cb1124-7"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1124-7" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb1124-8"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1124-8" tabindex="-1"></a></span>
+<span id="cb1124-9"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1124-9" tabindex="-1"></a>pay_more <span class="sc">|&gt;</span></span>
+<span id="cb1124-10"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1124-10" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">gt</span>()</span></code></pre></div>
+<div id="txgfaipbuw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#txgfaipbuw table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ztbshdkhhw thead, #ztbshdkhhw tbody, #ztbshdkhhw tfoot, #ztbshdkhhw tr, #ztbshdkhhw td, #ztbshdkhhw th {
+#txgfaipbuw thead, #txgfaipbuw tbody, #txgfaipbuw tfoot, #txgfaipbuw tr, #txgfaipbuw td, #txgfaipbuw th {
   border-style: none;
 }
 
-#ztbshdkhhw p {
+#txgfaipbuw p {
   margin: 0;
   padding: 0;
 }
 
-#ztbshdkhhw .gt_table {
+#txgfaipbuw .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1349,12 +1350,12 @@ Copy and run the code below in your local R session. Review each line to make su
   border-left-color: #D3D3D3;
 }
 
-#ztbshdkhhw .gt_caption {
+#txgfaipbuw .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ztbshdkhhw .gt_title {
+#txgfaipbuw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1366,7 +1367,7 @@ Copy and run the code below in your local R session. Review each line to make su
   border-bottom-width: 0;
 }
 
-#ztbshdkhhw .gt_subtitle {
+#txgfaipbuw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1378,7 +1379,7 @@ Copy and run the code below in your local R session. Review each line to make su
   border-top-width: 0;
 }
 
-#ztbshdkhhw .gt_heading {
+#txgfaipbuw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1390,13 +1391,13 @@ Copy and run the code below in your local R session. Review each line to make su
   border-right-color: #D3D3D3;
 }
 
-#ztbshdkhhw .gt_bottom_border {
+#txgfaipbuw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ztbshdkhhw .gt_col_headings {
+#txgfaipbuw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1411,7 +1412,7 @@ Copy and run the code below in your local R session. Review each line to make su
   border-right-color: #D3D3D3;
 }
 
-#ztbshdkhhw .gt_col_heading {
+#txgfaipbuw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1431,7 +1432,7 @@ Copy and run the code below in your local R session. Review each line to make su
   overflow-x: hidden;
 }
 
-#ztbshdkhhw .gt_column_spanner_outer {
+#txgfaipbuw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1443,15 +1444,15 @@ Copy and run the code below in your local R session. Review each line to make su
   padding-right: 4px;
 }
 
-#ztbshdkhhw .gt_column_spanner_outer:first-child {
+#txgfaipbuw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ztbshdkhhw .gt_column_spanner_outer:last-child {
+#txgfaipbuw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ztbshdkhhw .gt_column_spanner {
+#txgfaipbuw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1463,11 +1464,11 @@ Copy and run the code below in your local R session. Review each line to make su
   width: 100%;
 }
 
-#ztbshdkhhw .gt_spanner_row {
+#txgfaipbuw .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ztbshdkhhw .gt_group_heading {
+#txgfaipbuw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1493,7 +1494,7 @@ Copy and run the code below in your local R session. Review each line to make su
   text-align: left;
 }
 
-#ztbshdkhhw .gt_empty_group_heading {
+#txgfaipbuw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1508,15 +1509,15 @@ Copy and run the code below in your local R session. Review each line to make su
   vertical-align: middle;
 }
 
-#ztbshdkhhw .gt_from_md > :first-child {
+#txgfaipbuw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ztbshdkhhw .gt_from_md > :last-child {
+#txgfaipbuw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ztbshdkhhw .gt_row {
+#txgfaipbuw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1535,7 +1536,7 @@ Copy and run the code below in your local R session. Review each line to make su
   overflow-x: hidden;
 }
 
-#ztbshdkhhw .gt_stub {
+#txgfaipbuw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1548,7 +1549,7 @@ Copy and run the code below in your local R session. Review each line to make su
   padding-right: 5px;
 }
 
-#ztbshdkhhw .gt_stub_row_group {
+#txgfaipbuw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1562,15 +1563,15 @@ Copy and run the code below in your local R session. Review each line to make su
   vertical-align: top;
 }
 
-#ztbshdkhhw .gt_row_group_first td {
+#txgfaipbuw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ztbshdkhhw .gt_row_group_first th {
+#txgfaipbuw .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ztbshdkhhw .gt_summary_row {
+#txgfaipbuw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1580,16 +1581,16 @@ Copy and run the code below in your local R session. Review each line to make su
   padding-right: 5px;
 }
 
-#ztbshdkhhw .gt_first_summary_row {
+#txgfaipbuw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ztbshdkhhw .gt_first_summary_row.thick {
+#txgfaipbuw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ztbshdkhhw .gt_last_summary_row {
+#txgfaipbuw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1599,7 +1600,7 @@ Copy and run the code below in your local R session. Review each line to make su
   border-bottom-color: #D3D3D3;
 }
 
-#ztbshdkhhw .gt_grand_summary_row {
+#txgfaipbuw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1609,7 +1610,7 @@ Copy and run the code below in your local R session. Review each line to make su
   padding-right: 5px;
 }
 
-#ztbshdkhhw .gt_first_grand_summary_row {
+#txgfaipbuw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1619,7 +1620,7 @@ Copy and run the code below in your local R session. Review each line to make su
   border-top-color: #D3D3D3;
 }
 
-#ztbshdkhhw .gt_last_grand_summary_row_top {
+#txgfaipbuw .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1629,11 +1630,11 @@ Copy and run the code below in your local R session. Review each line to make su
   border-bottom-color: #D3D3D3;
 }
 
-#ztbshdkhhw .gt_striped {
+#txgfaipbuw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ztbshdkhhw .gt_table_body {
+#txgfaipbuw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1642,7 +1643,7 @@ Copy and run the code below in your local R session. Review each line to make su
   border-bottom-color: #D3D3D3;
 }
 
-#ztbshdkhhw .gt_footnotes {
+#txgfaipbuw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1656,7 +1657,7 @@ Copy and run the code below in your local R session. Review each line to make su
   border-right-color: #D3D3D3;
 }
 
-#ztbshdkhhw .gt_footnote {
+#txgfaipbuw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1665,7 +1666,7 @@ Copy and run the code below in your local R session. Review each line to make su
   padding-right: 5px;
 }
 
-#ztbshdkhhw .gt_sourcenotes {
+#txgfaipbuw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1679,7 +1680,7 @@ Copy and run the code below in your local R session. Review each line to make su
   border-right-color: #D3D3D3;
 }
 
-#ztbshdkhhw .gt_sourcenote {
+#txgfaipbuw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1687,72 +1688,72 @@ Copy and run the code below in your local R session. Review each line to make su
   padding-right: 5px;
 }
 
-#ztbshdkhhw .gt_left {
+#txgfaipbuw .gt_left {
   text-align: left;
 }
 
-#ztbshdkhhw .gt_center {
+#txgfaipbuw .gt_center {
   text-align: center;
 }
 
-#ztbshdkhhw .gt_right {
+#txgfaipbuw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ztbshdkhhw .gt_font_normal {
+#txgfaipbuw .gt_font_normal {
   font-weight: normal;
 }
 
-#ztbshdkhhw .gt_font_bold {
+#txgfaipbuw .gt_font_bold {
   font-weight: bold;
 }
 
-#ztbshdkhhw .gt_font_italic {
+#txgfaipbuw .gt_font_italic {
   font-style: italic;
 }
 
-#ztbshdkhhw .gt_super {
+#txgfaipbuw .gt_super {
   font-size: 65%;
 }
 
-#ztbshdkhhw .gt_footnote_marks {
+#txgfaipbuw .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ztbshdkhhw .gt_asterisk {
+#txgfaipbuw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ztbshdkhhw .gt_indent_1 {
+#txgfaipbuw .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ztbshdkhhw .gt_indent_2 {
+#txgfaipbuw .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ztbshdkhhw .gt_indent_3 {
+#txgfaipbuw .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ztbshdkhhw .gt_indent_4 {
+#txgfaipbuw .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ztbshdkhhw .gt_indent_5 {
+#txgfaipbuw .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ztbshdkhhw .katex-display {
+#txgfaipbuw .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ztbshdkhhw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#txgfaipbuw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1789,10 +1790,10 @@ Copy and run the code below in your local R session. Review each line to make su
 is the best, satisfaction seems to be higher for medicaid and medicare.</p>
 <p>You can even remove the response column (the chi-squared test will not work with a character column),
 convert the percentages from character to numeric, and run a chi-squared test to show that the different types of insurance are significantly different from each other by this metric.</p>
-<div class="sourceCode" id="cb1123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1123-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1123-1" tabindex="-1"></a>pay_more <span class="sc">|&gt;</span></span>
-<span id="cb1123-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1123-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>response) <span class="sc">|&gt;</span></span>
-<span id="cb1123-3"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1123-3" tabindex="-1"></a>  <span class="fu">mutate_if</span>(is.character, as.numeric) <span class="sc">|&gt;</span></span>
-<span id="cb1123-4"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1123-4" tabindex="-1"></a>  <span class="fu">chisq.test</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1125-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1125-1" tabindex="-1"></a>pay_more <span class="sc">|&gt;</span></span>
+<span id="cb1125-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1125-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>response) <span class="sc">|&gt;</span></span>
+<span id="cb1125-3"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1125-3" tabindex="-1"></a>  <span class="fu">mutate_if</span>(is.character, as.numeric) <span class="sc">|&gt;</span></span>
+<span id="cb1125-4"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1125-4" tabindex="-1"></a>  <span class="fu">chisq.test</span>()</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test
 ## 
@@ -1805,8 +1806,8 @@ convert the percentages from character to numeric, and run a chi-squared test to
 find the table you want, and to clean it up.
 Instead, we can use the <code>extract_tables()</code> function to extract a specific page.
 This narrows it down a lot.</p>
-<div class="sourceCode" id="cb1125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1125-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1125-1" tabindex="-1"></a>kff_tables <span class="ot">&lt;-</span> <span class="fu">extract_tables</span>(kff_pdf, <span class="at">pages =</span> <span class="dv">5</span>, <span class="at">output =</span> <span class="st">&quot;tibble&quot;</span>)</span>
-<span id="cb1125-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1125-2" tabindex="-1"></a><span class="fu">head</span>(kff_tables)</span></code></pre></div>
+<div class="sourceCode" id="cb1127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1127-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-1" tabindex="-1"></a>kff_tables <span class="ot">&lt;-</span> <span class="fu">extract_tables</span>(kff_pdf, <span class="at">pages =</span> <span class="dv">5</span>, <span class="at">output =</span> <span class="st">&quot;tibble&quot;</span>)</span>
+<span id="cb1127-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-2" tabindex="-1"></a><span class="fu">head</span>(kff_tables)</span></code></pre></div>
 <pre><code>## [[1]]
 ## # A tibble: 20 × 10
 ##    ...1                Excellent ...3  ...4  ...5  ...6  ...7  ...8  ...9  ...10
@@ -1840,35 +1841,35 @@ is going on. Note that kff_tables is still a list (take a look in the Viewer tab
 <p>For our purposes, on page 5 of this PDF, we want the mental health and emotional
 well-being table, so we can slice rows 15 to 20, and clean up the column names
 to get only the raw data columns.</p>
-<div class="sourceCode" id="cb1127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1127-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-1" tabindex="-1"></a>mental_health <span class="ot">&lt;-</span> kff_tables[[<span class="dv">1</span>]] <span class="sc">|&gt;</span></span>
-<span id="cb1127-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-2" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">15</span><span class="sc">:</span><span class="dv">20</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1127-3"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span>, <span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">7</span><span class="sc">:</span><span class="dv">8</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1127-4"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-4" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
-<span id="cb1127-5"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-5" tabindex="-1"></a>    <span class="at">insurance =</span> <span class="st">`</span><span class="at">...1</span><span class="st">`</span>,</span>
-<span id="cb1127-6"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-6" tabindex="-1"></a>    <span class="at">excellent =</span> <span class="st">`</span><span class="at">...3</span><span class="st">`</span>,</span>
-<span id="cb1127-7"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-7" tabindex="-1"></a>    <span class="at">very_good =</span> <span class="st">`</span><span class="at">...4</span><span class="st">`</span>,</span>
-<span id="cb1127-8"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-8" tabindex="-1"></a>    <span class="at">good =</span> <span class="st">`</span><span class="at">...5</span><span class="st">`</span>,</span>
-<span id="cb1127-9"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-9" tabindex="-1"></a>    <span class="at">fair =</span> <span class="st">`</span><span class="at">...7</span><span class="st">`</span>,</span>
-<span id="cb1127-10"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-10" tabindex="-1"></a>    <span class="at">poor =</span> <span class="st">`</span><span class="at">...8</span><span class="st">`</span></span>
-<span id="cb1127-11"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-11" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb1127-12"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-12" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb1127-13"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-13" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(excellent, very_good, good, fair, poor),</span>
-<span id="cb1127-14"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-14" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;rating&quot;</span>,</span>
-<span id="cb1127-15"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-15" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;percent&quot;</span></span>
-<span id="cb1127-16"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-16" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb1127-17"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-17" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">insurance =</span> <span class="fu">case_when</span>(</span>
-<span id="cb1127-18"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-18" tabindex="-1"></a>    insurance <span class="sc">==</span> <span class="st">&quot;Total&quot;</span> <span class="sc">~</span> <span class="st">&quot;overall&quot;</span>,</span>
-<span id="cb1127-19"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-19" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> insurance</span>
-<span id="cb1127-20"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-20" tabindex="-1"></a>  )) <span class="sc">|&gt;</span></span>
-<span id="cb1127-21"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-21" tabindex="-1"></a>  <span class="fu">filter</span>(insurance <span class="sc">!=</span> <span class="st">&quot;sponsored&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1127-22"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-22" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
-<span id="cb1127-23"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-23" tabindex="-1"></a>    <span class="at">names_from =</span> insurance,</span>
-<span id="cb1127-24"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-24" tabindex="-1"></a>    <span class="at">values_from =</span> percent</span>
-<span id="cb1127-25"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-25" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb1127-26"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-26" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span></span>
-<span id="cb1127-27"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-27" tabindex="-1"></a>  <span class="fu">relocate</span>(overall, <span class="at">.after =</span> marketplace)</span>
-<span id="cb1127-28"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-28" tabindex="-1"></a></span>
-<span id="cb1127-29"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1127-29" tabindex="-1"></a>mental_health</span></code></pre></div>
+<div class="sourceCode" id="cb1129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1129-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-1" tabindex="-1"></a>mental_health <span class="ot">&lt;-</span> kff_tables[[<span class="dv">1</span>]] <span class="sc">|&gt;</span></span>
+<span id="cb1129-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-2" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">15</span><span class="sc">:</span><span class="dv">20</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1129-3"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span>, <span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">7</span><span class="sc">:</span><span class="dv">8</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1129-4"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-4" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb1129-5"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-5" tabindex="-1"></a>    <span class="at">insurance =</span> <span class="st">`</span><span class="at">...1</span><span class="st">`</span>,</span>
+<span id="cb1129-6"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-6" tabindex="-1"></a>    <span class="at">excellent =</span> <span class="st">`</span><span class="at">...3</span><span class="st">`</span>,</span>
+<span id="cb1129-7"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-7" tabindex="-1"></a>    <span class="at">very_good =</span> <span class="st">`</span><span class="at">...4</span><span class="st">`</span>,</span>
+<span id="cb1129-8"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-8" tabindex="-1"></a>    <span class="at">good =</span> <span class="st">`</span><span class="at">...5</span><span class="st">`</span>,</span>
+<span id="cb1129-9"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-9" tabindex="-1"></a>    <span class="at">fair =</span> <span class="st">`</span><span class="at">...7</span><span class="st">`</span>,</span>
+<span id="cb1129-10"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-10" tabindex="-1"></a>    <span class="at">poor =</span> <span class="st">`</span><span class="at">...8</span><span class="st">`</span></span>
+<span id="cb1129-11"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-11" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb1129-12"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-12" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb1129-13"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-13" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(excellent, very_good, good, fair, poor),</span>
+<span id="cb1129-14"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-14" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;rating&quot;</span>,</span>
+<span id="cb1129-15"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-15" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;percent&quot;</span></span>
+<span id="cb1129-16"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-16" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb1129-17"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-17" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">insurance =</span> <span class="fu">case_when</span>(</span>
+<span id="cb1129-18"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-18" tabindex="-1"></a>    insurance <span class="sc">==</span> <span class="st">&quot;Total&quot;</span> <span class="sc">~</span> <span class="st">&quot;overall&quot;</span>,</span>
+<span id="cb1129-19"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-19" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> insurance</span>
+<span id="cb1129-20"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-20" tabindex="-1"></a>  )) <span class="sc">|&gt;</span></span>
+<span id="cb1129-21"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-21" tabindex="-1"></a>  <span class="fu">filter</span>(insurance <span class="sc">!=</span> <span class="st">&quot;sponsored&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1129-22"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-22" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb1129-23"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-23" tabindex="-1"></a>    <span class="at">names_from =</span> insurance,</span>
+<span id="cb1129-24"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-24" tabindex="-1"></a>    <span class="at">values_from =</span> percent</span>
+<span id="cb1129-25"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-25" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb1129-26"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-26" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">|&gt;</span></span>
+<span id="cb1129-27"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-27" tabindex="-1"></a>  <span class="fu">relocate</span>(overall, <span class="at">.after =</span> marketplace)</span>
+<span id="cb1129-28"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-28" tabindex="-1"></a></span>
+<span id="cb1129-29"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-29" tabindex="-1"></a>mental_health</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 6
 ##   rating    employer medicare medicaid marketplace overall
 ##   &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;  
@@ -1887,32 +1888,32 @@ But now we can use this data to make plots or perform analyses.</p>
 the pages in the RStudio Viewer window, and even pick out the particular
 table area that you want to extract.
 This can only be done in an <strong>interactive</strong> R session, as it will open a shiny app in the Viewer tab and require a human to draw a rectangle around the desired section of the PDF to extract a table from.</p>
-<div class="sourceCode" id="cb1129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1129-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-1" tabindex="-1"></a><span class="co"># get some overview data on the PDF</span></span>
-<span id="cb1129-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-2" tabindex="-1"></a>kff_pdf <span class="sc">|&gt;</span></span>
-<span id="cb1129-3"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1129-3" tabindex="-1"></a>  <span class="fu">get_n_pages</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1131-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1131-1" tabindex="-1"></a><span class="co"># get some overview data on the PDF</span></span>
+<span id="cb1131-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1131-2" tabindex="-1"></a>kff_pdf <span class="sc">|&gt;</span></span>
+<span id="cb1131-3"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1131-3" tabindex="-1"></a>  <span class="fu">get_n_pages</span>()</span></code></pre></div>
 <pre><code>## [1] 40</code></pre>
-<div class="sourceCode" id="cb1131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1131-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1131-1" tabindex="-1"></a>subtable <span class="ot">&lt;-</span> kff_pdf <span class="sc">|&gt;</span></span>
-<span id="cb1131-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1131-2" tabindex="-1"></a>  <span class="fu">locate_areas</span>(<span class="at">pages =</span> <span class="dv">22</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1133-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1133-1" tabindex="-1"></a>subtable <span class="ot">&lt;-</span> kff_pdf <span class="sc">|&gt;</span></span>
+<span id="cb1133-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1133-2" tabindex="-1"></a>  <span class="fu">locate_areas</span>(<span class="at">pages =</span> <span class="dv">22</span>)</span></code></pre></div>
 <pre><code>## Error in locate_areas(kff_pdf, pages = 22): locate_areas() is only available in an interactive session</code></pre>
-<div class="sourceCode" id="cb1133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1133-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1133-1" tabindex="-1"></a><span class="co"># manually select the area of the table</span></span>
-<span id="cb1133-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1133-2" tabindex="-1"></a><span class="co"># using the shiny widget in the Viewer pane</span></span>
-<span id="cb1133-3"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1133-3" tabindex="-1"></a><span class="co"># then click the Done button at the top right</span></span>
-<span id="cb1133-4"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1133-4" tabindex="-1"></a></span>
-<span id="cb1133-5"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1133-5" tabindex="-1"></a><span class="fu">extract_tables</span>(kff_pdf,</span>
-<span id="cb1133-6"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1133-6" tabindex="-1"></a>  <span class="at">pages =</span> <span class="dv">22</span>,</span>
-<span id="cb1133-7"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1133-7" tabindex="-1"></a>  <span class="at">guess =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb1133-8"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1133-8" tabindex="-1"></a>  <span class="at">col_names =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb1133-9"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1133-9" tabindex="-1"></a>  <span class="at">area =</span> subtable</span>
-<span id="cb1133-10"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1133-10" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb1135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1135-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1135-1" tabindex="-1"></a><span class="co"># manually select the area of the table</span></span>
+<span id="cb1135-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1135-2" tabindex="-1"></a><span class="co"># using the shiny widget in the Viewer pane</span></span>
+<span id="cb1135-3"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1135-3" tabindex="-1"></a><span class="co"># then click the Done button at the top right</span></span>
+<span id="cb1135-4"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1135-4" tabindex="-1"></a></span>
+<span id="cb1135-5"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1135-5" tabindex="-1"></a><span class="fu">extract_tables</span>(kff_pdf,</span>
+<span id="cb1135-6"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1135-6" tabindex="-1"></a>  <span class="at">pages =</span> <span class="dv">22</span>,</span>
+<span id="cb1135-7"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1135-7" tabindex="-1"></a>  <span class="at">guess =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1135-8"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1135-8" tabindex="-1"></a>  <span class="at">col_names =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1135-9"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1135-9" tabindex="-1"></a>  <span class="at">area =</span> subtable</span>
+<span id="cb1135-10"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1135-10" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>## Error: object &#39;subtable&#39; not found</code></pre>
 <p>You can also combine the steps and just use the <code>extract_areas()</code> function to
 pull data from a specific area of the PDF. This is useful if you know exactly
 which table you want to extract.</p>
 <p>Let’s try this for question 15h (<em>deny or delay drug coverage</em>) on page 19 of this PDF in the code chunk
 below. Copy and run this in your local RStudio session. Click Done when you have completed your rectangle.</p>
-<div class="sourceCode" id="cb1135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1135-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1135-1" tabindex="-1"></a><span class="co"># Extract the table from the PDF</span></span>
-<span id="cb1135-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1135-2" tabindex="-1"></a>deny <span class="ot">&lt;-</span> <span class="fu">extract_areas</span>(kff_pdf, <span class="at">pages =</span> <span class="dv">19</span>, <span class="at">output =</span> <span class="st">&quot;tibble&quot;</span>)</span>
-<span id="cb1135-3"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1135-3" tabindex="-1"></a>deny</span></code></pre></div>
+<div class="sourceCode" id="cb1137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1137-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1137-1" tabindex="-1"></a><span class="co"># Extract the table from the PDF</span></span>
+<span id="cb1137-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1137-2" tabindex="-1"></a>deny <span class="ot">&lt;-</span> <span class="fu">extract_areas</span>(kff_pdf, <span class="at">pages =</span> <span class="dv">19</span>, <span class="at">output =</span> <span class="st">&quot;tibble&quot;</span>)</span>
+<span id="cb1137-3"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1137-3" tabindex="-1"></a>deny</span></code></pre></div>
 <p>This should produce a 5 x 6 tibble,
 with some goofy column names, a total row that you probably don’t want,
 and some extra columns for <code>no answer</code> and N that you don’t need.</p>
@@ -1927,18 +1928,18 @@ or with the <code>purrr:set_names()</code> function for renaming all the names a
 <p>An example of data cleaning is shown below.
 I managed to cut off the <code>b</code> in <code>before</code> with my rectangle, so I had to shorten
 the insurance column name in the rename function.</p>
-<div class="sourceCode" id="cb1136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1136-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1136-1" tabindex="-1"></a><span class="co"># Clean up the table</span></span>
-<span id="cb1136-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1136-2" tabindex="-1"></a>deny2 <span class="ot">&lt;-</span> deny <span class="sc">|&gt;</span></span>
-<span id="cb1136-3"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1136-3" tabindex="-1"></a>  <span class="fu">pluck</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="co"># you could use deny[[1]] for the first 2 lines</span></span>
-<span id="cb1136-4"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1136-4" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
-<span id="cb1136-5"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1136-5" tabindex="-1"></a>    <span class="at">insurance =</span> <span class="st">`</span><span class="at">efore you received it</span><span class="st">`</span>,</span>
-<span id="cb1136-6"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1136-6" tabindex="-1"></a>    <span class="at">yes =</span> <span class="st">`</span><span class="at">...2</span><span class="st">`</span>,</span>
-<span id="cb1136-7"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1136-7" tabindex="-1"></a>    <span class="at">no =</span> <span class="st">`</span><span class="at">...3</span><span class="st">`</span>,</span>
-<span id="cb1136-8"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1136-8" tabindex="-1"></a>    <span class="at">not_tried =</span> <span class="st">`</span><span class="at">...4</span><span class="st">`</span></span>
-<span id="cb1136-9"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1136-9" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb1136-10"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1136-10" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1136-11"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1136-11" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="st">`</span><span class="at">...5</span><span class="st">`</span>, <span class="sc">-</span><span class="st">`</span><span class="at">...6</span><span class="st">`</span>)</span>
-<span id="cb1136-12"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1136-12" tabindex="-1"></a>deny2</span></code></pre></div>
+<div class="sourceCode" id="cb1138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1138-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1138-1" tabindex="-1"></a><span class="co"># Clean up the table</span></span>
+<span id="cb1138-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1138-2" tabindex="-1"></a>deny2 <span class="ot">&lt;-</span> deny <span class="sc">|&gt;</span></span>
+<span id="cb1138-3"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1138-3" tabindex="-1"></a>  <span class="fu">pluck</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span> <span class="co"># you could use deny[[1]] for the first 2 lines</span></span>
+<span id="cb1138-4"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1138-4" tabindex="-1"></a>  <span class="fu">rename</span>(</span>
+<span id="cb1138-5"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1138-5" tabindex="-1"></a>    <span class="at">insurance =</span> <span class="st">`</span><span class="at">efore you received it</span><span class="st">`</span>,</span>
+<span id="cb1138-6"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1138-6" tabindex="-1"></a>    <span class="at">yes =</span> <span class="st">`</span><span class="at">...2</span><span class="st">`</span>,</span>
+<span id="cb1138-7"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1138-7" tabindex="-1"></a>    <span class="at">no =</span> <span class="st">`</span><span class="at">...3</span><span class="st">`</span>,</span>
+<span id="cb1138-8"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1138-8" tabindex="-1"></a>    <span class="at">not_tried =</span> <span class="st">`</span><span class="at">...4</span><span class="st">`</span></span>
+<span id="cb1138-9"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1138-9" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb1138-10"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1138-10" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1138-11"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1138-11" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="st">`</span><span class="at">...5</span><span class="st">`</span>, <span class="sc">-</span><span class="st">`</span><span class="at">...6</span><span class="st">`</span>)</span>
+<span id="cb1138-12"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1138-12" tabindex="-1"></a>deny2</span></code></pre></div>
 <div class="tryit">
 <p>Now try it yourself.
 Try to grab an interesting section from the big table on page 22 of the PDF.
@@ -1950,11 +1951,11 @@ and extract and clean the raw data into an analysis-ready tibble.</p>
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb1137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1137-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1137-1" tabindex="-1"></a><span class="co"># note that I excluded the last 2 columns by drawing a smaller rectangle</span></span>
-<span id="cb1137-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1137-2" tabindex="-1"></a><span class="fu">extract_areas</span>(kff_pdf, <span class="at">pages =</span> <span class="dv">22</span>, <span class="at">output =</span> <span class="st">&quot;tibble&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1137-3"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1137-3" tabindex="-1"></a>  <span class="fu">pluck</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1137-4"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1137-4" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1137-5"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1137-5" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">set_names</span>(<span class="fu">c</span>(<span class="st">&quot;insurance&quot;</span>, <span class="st">&quot;yes&quot;</span>, <span class="st">&quot;no&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1139-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1139-1" tabindex="-1"></a><span class="co"># note that I excluded the last 2 columns by drawing a smaller rectangle</span></span>
+<span id="cb1139-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1139-2" tabindex="-1"></a><span class="fu">extract_areas</span>(kff_pdf, <span class="at">pages =</span> <span class="dv">22</span>, <span class="at">output =</span> <span class="st">&quot;tibble&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1139-3"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1139-3" tabindex="-1"></a>  <span class="fu">pluck</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1139-4"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1139-4" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1139-5"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1139-5" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">set_names</span>(<span class="fu">c</span>(<span class="st">&quot;insurance&quot;</span>, <span class="st">&quot;yes&quot;</span>, <span class="st">&quot;no&quot;</span>))</span></code></pre></div>
 <pre><code>## Error in locate_areas(file = file, pages = pages, copy = copy): locate_areas() is only available in an interactive session</code></pre>
 </div>
 <p>Note that the interactive portion of drawing the rectangle actually makes this
@@ -1968,14 +1969,14 @@ one-off interactive coding, but not for a reproducible workflow.</p>
 <h2><span class="header-section-number">50.8</span> Your Turn<a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#your-turn-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let’s try to extract some data from a PDF from the Centers for Disease Control (CDC). Get the pdf from the code chunk below. Tables are on pages 26-51. You will want to find &amp; inspect the PDF on the web at <a href="https://www.cdc.gov/nchs/data/hus/hus19-508.pdf" class="uri">https://www.cdc.gov/nchs/data/hus/hus19-508.pdf</a> to help you pick out an interesting table.
 Note that the page numbers within the pdf do not correspond to the actual page numbers of the document. You may have to add ~11 to the listed page number the get the actual page/table.</p>
-<div class="sourceCode" id="cb1139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1139-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1139-1" tabindex="-1"></a>cdc_pdf <span class="ot">&lt;-</span> <span class="st">&quot;https://www.cdc.gov/nchs/data/hus/hus19-508.pdf&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb1141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1141-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1141-1" tabindex="-1"></a>cdc_pdf <span class="ot">&lt;-</span> <span class="st">&quot;https://www.cdc.gov/nchs/data/hus/hus19-508.pdf&quot;</span></span></code></pre></div>
 <p>Pick out a table that you find interesting, and try to extract it and clean it up to raw data. Try doing one table programmatically, and (a harder one) interactively. The side-by-side ones on pages 47-48 (which are really 58-59) may be good examples for interactive extraction. See if you can get all 50 states into one table.</p>
 <p>The example below is one possible table extraction for health care expenditures by an individual.</p>
 <div class="webex-solution">
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb1140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1140-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1140-1" tabindex="-1"></a>cdc_pdf <span class="sc">|&gt;</span> <span class="fu">extract_tables</span>(<span class="at">pages =</span> <span class="dv">60</span>) <span class="ot">-&gt;</span> health_dollars</span></code></pre></div>
+<div class="sourceCode" id="cb1142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1142-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1142-1" tabindex="-1"></a>cdc_pdf <span class="sc">|&gt;</span> <span class="fu">extract_tables</span>(<span class="at">pages =</span> <span class="dv">60</span>) <span class="ot">-&gt;</span> health_dollars</span></code></pre></div>
 <pre><code>## New names:
 ## • `` -&gt; `...1`
 ## • `` -&gt; `...2`
@@ -1984,16 +1985,16 @@ Solution
 ## • `` -&gt; `...5`
 ## • `` -&gt; `...7`
 ## • `` -&gt; `...8`</code></pre>
-<div class="sourceCode" id="cb1142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1142-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1142-1" tabindex="-1"></a>health_dollars <span class="sc">|&gt;</span></span>
-<span id="cb1142-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1142-2" tabindex="-1"></a>  <span class="fu">pluck</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1142-3"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1142-3" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">15</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1142-4"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1142-4" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">Source of funds</span><span class="st">`</span>, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;medicaid_f&quot;</span>, <span class="st">&quot;medicaid_s&quot;</span>), <span class="at">sep =</span> <span class="st">&quot; &quot;</span>, <span class="at">extra =</span> <span class="st">&quot;merge&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1142-5"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1142-5" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">set_names</span>(<span class="fu">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;hc_spend_total&quot;</span>, <span class="st">&quot;private_ins&quot;</span>, <span class="st">&quot;medicare&quot;</span>, <span class="st">&quot;medicaid_total&quot;</span>, <span class="st">&quot;medicaid_federal&quot;</span>, <span class="st">&quot;medicaid_state&quot;</span>, <span class="st">&quot;out_of_pocket&quot;</span>, <span class="st">&quot;other&quot;</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb1142-6"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1142-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">parse_number</span>(year)) <span class="sc">|&gt;</span></span>
-<span id="cb1142-7"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1142-7" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(</span>
-<span id="cb1142-8"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1142-8" tabindex="-1"></a>    <span class="at">.cols =</span> <span class="fu">where</span>(is.character),</span>
-<span id="cb1142-9"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1142-9" tabindex="-1"></a>    parse_number</span>
-<span id="cb1142-10"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1142-10" tabindex="-1"></a>  ))</span></code></pre></div>
+<div class="sourceCode" id="cb1144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1144-1"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1144-1" tabindex="-1"></a>health_dollars <span class="sc">|&gt;</span></span>
+<span id="cb1144-2"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1144-2" tabindex="-1"></a>  <span class="fu">pluck</span>(<span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1144-3"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1144-3" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">15</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1144-4"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1144-4" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="st">`</span><span class="at">Source of funds</span><span class="st">`</span>, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;medicaid_f&quot;</span>, <span class="st">&quot;medicaid_s&quot;</span>), <span class="at">sep =</span> <span class="st">&quot; &quot;</span>, <span class="at">extra =</span> <span class="st">&quot;merge&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1144-5"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1144-5" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">set_names</span>(<span class="fu">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;hc_spend_total&quot;</span>, <span class="st">&quot;private_ins&quot;</span>, <span class="st">&quot;medicare&quot;</span>, <span class="st">&quot;medicaid_total&quot;</span>, <span class="st">&quot;medicaid_federal&quot;</span>, <span class="st">&quot;medicaid_state&quot;</span>, <span class="st">&quot;out_of_pocket&quot;</span>, <span class="st">&quot;other&quot;</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb1144-6"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1144-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">parse_number</span>(year)) <span class="sc">|&gt;</span></span>
+<span id="cb1144-7"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1144-7" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(</span>
+<span id="cb1144-8"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1144-8" tabindex="-1"></a>    <span class="at">.cols =</span> <span class="fu">where</span>(is.character),</span>
+<span id="cb1144-9"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1144-9" tabindex="-1"></a>    parse_number</span>
+<span id="cb1144-10"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1144-10" tabindex="-1"></a>  ))</span></code></pre></div>
 <pre><code>## # A tibble: 11 × 9
 ##     year hc_spend_total private_ins medicare medicaid_total medicaid_federal
 ##    &lt;dbl&gt;          &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;          &lt;dbl&gt;            &lt;dbl&gt;

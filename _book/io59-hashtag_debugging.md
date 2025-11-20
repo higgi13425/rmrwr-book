@@ -252,6 +252,15 @@ murders %>%
 ```
 
 ```
+## Warning in fortify(data, ...): Arguments in `...` must be used.
+## ✖ Problematic arguments:
+## • x = population/10^6
+## • y = total
+## • label = abb
+## ℹ Did you misspell an argument name?
+```
+
+```
 ## Error: object 'darkgrey' not found
 ```
 

@@ -301,7 +301,7 @@ Paste the four lines of code below into your new code chunk.
 prostate %>% 
   select(age, p_vol, preop_psa, aa, fam_hx) %>% 
   group_by(aa, fam_hx) %>% 
-  summarize(across(age:preop_psa, mean, na.rm=TRUE))
+  summarize(across(age:preop_psa, ~ mean(.x, na.rm=TRUE)))
 ```
 
 This code starts with the prostate dataset, and then selects 5 of the variables.
@@ -423,16 +423,15 @@ Then you can hover your mouse over each point to get more details about the data
 You can also use the crosshairs to draw a zoom rectangle, or use the plotly menu bar at top right to zoom in or out of a region of the data.
 
 ```{r, echo=FALSE}
-p <- medicaldata::cytomegalovirus %>% 
-  ggplot(aes(x = time.to.transplant, y = time.to.agvhd,
-             color = factor(donor.cmv))) +
-  geom_point() +
-  labs(title = "Time to Transplant vs Time to Acute GVHD by Donor CMV Status",
-       x = "Time to Transplant", y = "Time to Acute GVHD",
-       color = "Donor\nCMV\nStatus") +
-  theme_bw() 
-
-ggplotly(p)
+medicaldata::cytomegalovirus %>% 
+  filter(!is.na(time.to.transplant)) %>%
+  plot_ly() %>% 
+  add_markers(x = ~time.to.transplant, y = ~time.to.agvhd, color = ~factor(donor.cmv),
+              colors = c('blue', 'red')) %>%
+  layout(title = "Time to Transplant vs Time to Acute GVHD by Donor CMV Status",
+         xaxis = list(title = "Time to Transplant"),
+         yaxis = list(title = "Time to Acute GVHD"),
+         legend = list(title = list(text = "Donor<br>CMV<br>Status")))
 ```
 
 ### Animated Graphics

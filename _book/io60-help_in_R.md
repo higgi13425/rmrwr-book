@@ -99,6 +99,14 @@ Run the code block below to generate an error, then google the error message and
 
 
 ```
+## Warning in fortify(data, ...): Arguments in `...` must be used.
+## ✖ Problematic arguments:
+## • x = time
+## • y = conc
+## ℹ Did you misspell an argument name?
+```
+
+```
 ## Error in `geom_smooth()`:
 ## ! Problem while computing stat.
 ## ℹ Error occurred in the 1st layer.

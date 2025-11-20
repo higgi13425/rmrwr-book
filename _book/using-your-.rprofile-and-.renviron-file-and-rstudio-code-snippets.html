@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2025-08-28" />
+<meta name="date" content="2025-10-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,10 +54,10 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
 <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/plotly-binding-4.11.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
@@ -67,8 +67,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -78,7 +79,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -1164,26 +1165,26 @@ In general, you should use the .Rprofile file for things that you want to set up
 <p>However, you should avoid loading packages or functions in your <code>.Rprofile</code> file, as this can cause issues when you share your code with collaborators. Instead, you should load packages in your R scripts or RMarkdown files, or use the {renv} package to manage your project-specific library paths and package versions.</p>
 <p>The .Rprofile file is a user-controllable file that can be located in your home directory (<code>~/.Rprofile</code>) or in a project-specific directory (e.g., <code>my_project/.Rprofile</code>). When you start R, it will look for a .Rprofile file in your home directory and in the current working directory, and it will run the code in that file. This allows you to set options that you want to use in every R session. This is a ‘secret’ file that is not visible in the RStudio Files pane, but you can see it in the RStudio source pane if you open it with <code>usethis::edit_r_profile()</code>. It will not be shared on Github when you push your code to a repository, as it is a hidden file (the dot at the beginning of the filename makes it hidden in Unix-like operating systems).</p>
 <p>To set up your .Rprofile file, you can use the {usethis} package. The following code will create a .Rprofile file in your home directory if it does not already exist, and then open it in RStudio for editing:</p>
-<div class="sourceCode" id="cb1202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1202-1"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1202-1" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">edit_r_profile</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb1204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1204-1"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1204-1" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">edit_r_profile</span>()</span></code></pre></div>
 <pre><code>## ☐ Edit &#39;/Users/peterhiggins/.Rprofile&#39;.</code></pre>
 <pre><code>## ☐ Restart R for changes to take effect.</code></pre>
 <p>This will open the .Rprofile file in the source pane of RStudio, and you can add any code that you want to run every time you start R.</p>
 <p>You can edit your <code>.Rprofile</code> file to set some options.
 Here are a few common examples of what people often do wtith their <code>.Rprofile</code> file:</p>
-<div class="sourceCode" id="cb1205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1205-1"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1205-1" tabindex="-1"></a><span class="fu">options</span>(<span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>) <span class="co"># Set strings to not be factors by default</span></span>
-<span id="cb1205-2"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1205-2" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">3</span>) <span class="co"># Set the number of digits to display in output</span></span>
-<span id="cb1205-3"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1205-3" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># Set scientific notation to not be used with a high penalty</span></span>
-<span id="cb1205-4"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1205-4" tabindex="-1"></a><span class="fu">options</span>(<span class="at">tab.width =</span> <span class="dv">2</span>)</span>
-<span id="cb1205-5"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1205-5" tabindex="-1"></a><span class="fu">options</span>(<span class="at">width =</span> <span class="dv">60</span>)</span>
-<span id="cb1205-6"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1205-6" tabindex="-1"></a><span class="fu">options</span>(<span class="at">editor =</span> <span class="st">&quot;TextEdit&quot;</span>)</span>
-<span id="cb1205-7"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1205-7" tabindex="-1"></a><span class="fu">options</span>(<span class="at">usethis.full_name =</span> <span class="st">&quot;Your Name Here&quot;</span>) <span class="co"># Set your name for use in package development</span></span>
-<span id="cb1205-8"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1205-8" tabindex="-1"></a><span class="fu">options</span>(<span class="at">usethis.protocol =</span> <span class="st">&quot;https&quot;</span>)</span>
-<span id="cb1205-9"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1205-9" tabindex="-1"></a><span class="co"># fancy quotes are annoying and lead to</span></span>
-<span id="cb1205-10"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1205-10" tabindex="-1"></a><span class="co"># &#39;copy + paste&#39; bugs / frustrations</span></span>
-<span id="cb1205-11"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1205-11" tabindex="-1"></a><span class="fu">options</span>(<span class="at">useFancyQuotes =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb1205-12"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1205-12" tabindex="-1"></a><span class="fu">options</span>(<span class="at">prompt =</span> <span class="st">&quot;R&gt; &quot;</span>) <span class="co"># CUSTOM prompt</span></span>
-<span id="cb1205-13"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1205-13" tabindex="-1"></a><span class="fu">options</span>(<span class="at">max.print =</span> <span class="dv">400</span>)</span>
-<span id="cb1205-14"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1205-14" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repos =</span> <span class="fu">c</span>(<span class="at">CRAN =</span> <span class="st">&quot;https://repo.miserver.it.umich.edu/cran/&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1207-1"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1207-1" tabindex="-1"></a><span class="fu">options</span>(<span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>) <span class="co"># Set strings to not be factors by default</span></span>
+<span id="cb1207-2"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1207-2" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">3</span>) <span class="co"># Set the number of digits to display in output</span></span>
+<span id="cb1207-3"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1207-3" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># Set scientific notation to not be used with a high penalty</span></span>
+<span id="cb1207-4"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1207-4" tabindex="-1"></a><span class="fu">options</span>(<span class="at">tab.width =</span> <span class="dv">2</span>)</span>
+<span id="cb1207-5"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1207-5" tabindex="-1"></a><span class="fu">options</span>(<span class="at">width =</span> <span class="dv">60</span>)</span>
+<span id="cb1207-6"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1207-6" tabindex="-1"></a><span class="fu">options</span>(<span class="at">editor =</span> <span class="st">&quot;TextEdit&quot;</span>)</span>
+<span id="cb1207-7"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1207-7" tabindex="-1"></a><span class="fu">options</span>(<span class="at">usethis.full_name =</span> <span class="st">&quot;Your Name Here&quot;</span>) <span class="co"># Set your name for use in package development</span></span>
+<span id="cb1207-8"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1207-8" tabindex="-1"></a><span class="fu">options</span>(<span class="at">usethis.protocol =</span> <span class="st">&quot;https&quot;</span>)</span>
+<span id="cb1207-9"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1207-9" tabindex="-1"></a><span class="co"># fancy quotes are annoying and lead to</span></span>
+<span id="cb1207-10"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1207-10" tabindex="-1"></a><span class="co"># &#39;copy + paste&#39; bugs / frustrations</span></span>
+<span id="cb1207-11"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1207-11" tabindex="-1"></a><span class="fu">options</span>(<span class="at">useFancyQuotes =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1207-12"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1207-12" tabindex="-1"></a><span class="fu">options</span>(<span class="at">prompt =</span> <span class="st">&quot;R&gt; &quot;</span>) <span class="co"># CUSTOM prompt</span></span>
+<span id="cb1207-13"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1207-13" tabindex="-1"></a><span class="fu">options</span>(<span class="at">max.print =</span> <span class="dv">400</span>)</span>
+<span id="cb1207-14"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1207-14" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repos =</span> <span class="fu">c</span>(<span class="at">CRAN =</span> <span class="st">&quot;https://repo.miserver.it.umich.edu/cran/&quot;</span>))</span></code></pre></div>
 <p>It is generally a bad idea to set the default library path in your .Rprofile file, as this can cause issues when you share your code with collaborators.
 Similarly, it is generally a bad idea to load packages in your .Rprofile file, as this can cause issues when you share your code with collaborators.
 Instead, you should load packages in your R scripts or RMarkdown files, or use the {renv} package to manage your project-specific library paths and package versions.</p>

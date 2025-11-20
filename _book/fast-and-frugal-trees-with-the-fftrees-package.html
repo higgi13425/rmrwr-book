@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2025-08-28" />
+<meta name="date" content="2025-10-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,10 +54,10 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
 <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/plotly-binding-4.11.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
@@ -67,8 +67,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -78,7 +79,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -1210,7 +1211,7 @@ The dataset is available in the {FFTrees} package as <code>breast_cancer</code>,
 <li>Make predictions about future cases (patients) with their measured predictors on this continuous outcome.</li>
 </ol>
 <p>Load the data into RStudio by copying and running the code below.</p>
-<div class="sourceCode" id="cb799"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb799-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb799-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;breastcancer&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb801"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb801-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb801-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;breastcancer&quot;</span>) </span></code></pre></div>
 <div id="data-inspection" class="section level3 hasAnchor" number="36.2.1">
 <h3><span class="header-section-number">36.2.1</span> Data Inspection<a href="fast-and-frugal-trees-with-the-fftrees-package.html#data-inspection" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You can inspect the <code>breastcancer</code> data in the data Viewer by going to the Environment pane and clicking on it to open the dataset.
@@ -1243,19 +1244,19 @@ Let’s walk through the code block below, which builds a tree model using the <
 <li>We will specify the <code>main</code> argument as “Breast Cancer”, which will be the title of the plot.</li>
 <li>We will specify the <code>decision.labels</code> argument as <code>c("Healthy", "Disease")</code>, which will be the labels for the outcome variable in the plot. This works because the underlying value for FALSE is 0, and the underlying value for TRUE is 1, so that these are in the correct order.</li>
 </ol>
-<div class="sourceCode" id="cb800"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb800-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb800-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb800-2"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb800-2" tabindex="-1"></a><span class="co"># the seed is used to get reproducible outcomes, as the random split into train and test will give slightly different results each time.</span></span>
-<span id="cb800-3"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb800-3" tabindex="-1"></a><span class="co"># note we are not using the cost argument - we will use the default for this.</span></span>
-<span id="cb800-4"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb800-4" tabindex="-1"></a>breast.fft <span class="ot">&lt;-</span> <span class="fu">FFTrees</span>(<span class="at">formula =</span> diagnosis <span class="sc">~</span> .,</span>
-<span id="cb800-5"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb800-5" tabindex="-1"></a>  <span class="at">data =</span> breastcancer,</span>
-<span id="cb800-6"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb800-6" tabindex="-1"></a>  <span class="at">train.p =</span> <span class="fl">0.5</span>,</span>
-<span id="cb800-7"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb800-7" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;Breast Cancer&quot;</span>,</span>
-<span id="cb800-8"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb800-8" tabindex="-1"></a>  <span class="at">decision.labels =</span> <span class="fu">c</span>(<span class="st">&quot;Healthy&quot;</span>, <span class="st">&quot;Disease&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb802"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb802-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb802-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb802-2"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb802-2" tabindex="-1"></a><span class="co"># the seed is used to get reproducible outcomes, as the random split into train and test will give slightly different results each time.</span></span>
+<span id="cb802-3"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb802-3" tabindex="-1"></a><span class="co"># note we are not using the cost argument - we will use the default for this.</span></span>
+<span id="cb802-4"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb802-4" tabindex="-1"></a>breast.fft <span class="ot">&lt;-</span> <span class="fu">FFTrees</span>(<span class="at">formula =</span> diagnosis <span class="sc">~</span> .,</span>
+<span id="cb802-5"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb802-5" tabindex="-1"></a>  <span class="at">data =</span> breastcancer,</span>
+<span id="cb802-6"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb802-6" tabindex="-1"></a>  <span class="at">train.p =</span> <span class="fl">0.5</span>,</span>
+<span id="cb802-7"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb802-7" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;Breast Cancer&quot;</span>,</span>
+<span id="cb802-8"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb802-8" tabindex="-1"></a>  <span class="at">decision.labels =</span> <span class="fu">c</span>(<span class="st">&quot;Healthy&quot;</span>, <span class="st">&quot;Disease&quot;</span>))</span></code></pre></div>
 <p>Now copy this code block and run it in your local RStudio instance.
 This should rank the predictor variables (<code>cues</code>), train some FFT models on the training data, rank them by their performance on the test data, and give you a short printout.
 You should also see a new assigned object, <code>breast.fft</code> in your Environment pane.
 To see the fft object, copy and run the code below:</p>
-<div class="sourceCode" id="cb801"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb801-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb801-1" tabindex="-1"></a>breast.fft</span></code></pre></div>
+<div class="sourceCode" id="cb803"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb803-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb803-1" tabindex="-1"></a>breast.fft</span></code></pre></div>
 <pre><code>## Breast Cancer
 ## FFTrees 
 ## - Trees: 6 fast-and-frugal trees predicting diagnosis
@@ -1283,7 +1284,7 @@ To see the fft object, copy and run the code below:</p>
 <p>This prints out the (default) assigned cost of 1 for false positives (fa for false alarm) and false negatives (mi for miss), the definition of the best tree model (with 2 nodes or branch points), the best tree model’s performance on the training data, and some accuracy statistics.</p>
 <p>Now let’s plot how this model does on the test data.
 Copy and run the code below:</p>
-<div class="sourceCode" id="cb803"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb803-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb803-1" tabindex="-1"></a><span class="fu">plot</span>(breast.fft, <span class="at">data =</span> <span class="st">&quot;test&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb805"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb805-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb805-1" tabindex="-1"></a><span class="fu">plot</span>(breast.fft, <span class="at">data =</span> <span class="st">&quot;test&quot;</span>)</span></code></pre></div>
 <p><img src="io101-fftrees_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>You may need to click the Zoom button at the top left of your Plots pane to get a good view.</p>
 <p>This shows us that among the 341 randomly selected test cases (342 used for training), only 35% had TRUE breast cancer.
@@ -1305,13 +1306,13 @@ You can also change the cost of a false alarm by setting <code>fa = 2</code> and
 This would mean that a false alarm is twice as costly as a missed diagnosis.
 It depends on the clinical situation and your judgement, but you should think about the relative cost/harm of these two types of errors and adjust the cost argument if needed.</p>
 <p>You can see the accuracy of each predictor by plotting these with the code below:</p>
-<div class="sourceCode" id="cb804"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb804-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb804-1" tabindex="-1"></a><span class="fu">plot</span>(breast.fft, <span class="at">what =</span> <span class="st">&quot;cues&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb806"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb806-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb806-1" tabindex="-1"></a><span class="fu">plot</span>(breast.fft, <span class="at">what =</span> <span class="st">&quot;cues&quot;</span>)</span></code></pre></div>
 <pre><code>## Plotting cue training statistics:
 ## — Cue accuracies ranked by bacc</code></pre>
 <p><img src="io101-fftrees_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>You can see that predictor (cue) #9 is not great.
 You can print these out with:</p>
-<div class="sourceCode" id="cb806"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb806-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb806-1" tabindex="-1"></a>breast.fft<span class="sc">$</span>cues<span class="sc">$</span>stats<span class="sc">$</span>train</span></code></pre></div>
+<div class="sourceCode" id="cb808"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb808-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb808-1" tabindex="-1"></a>breast.fft<span class="sc">$</span>cues<span class="sc">$</span>stats<span class="sc">$</span>train</span></code></pre></div>
 <pre><code>##              cue   class threshold direction   n  hi fa mi  cr      sens
 ## 1      thickness integer         4         &gt; 342 108 46 12 176 0.9000000
 ## 2  cellsize.unif integer         2         &gt; 342 118 18  2 204 0.9833333
@@ -1345,12 +1346,12 @@ You can print these out with:</p>
 <p>And see that counting mitoses (#9) is not a great use of your pathologist’s time, with a sensitivity of 0.425.
 Several of these potential predictors are just not that useful, compared to size and shape uniformity.</p>
 <p>You can see the best model in text (words) with:</p>
-<div class="sourceCode" id="cb808"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb808-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb808-1" tabindex="-1"></a><span class="fu">inwords</span>(breast.fft, <span class="at">tree =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb810"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb810-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb810-1" tabindex="-1"></a><span class="fu">inwords</span>(breast.fft, <span class="at">tree =</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;If cellsize.unif &lt;= 2, decide Healthy.&quot;                           
 ## [2] &quot;If cellshape.unif &gt; 2, decide Disease, otherwise, decide Healthy.&quot;</code></pre>
 <p>which gives you a simple decision algorithm.
 If you want to see the accuracy for all of the trees generated, you can use</p>
-<div class="sourceCode" id="cb810"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb810-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb810-1" tabindex="-1"></a>breast.fft<span class="sc">$</span>trees<span class="sc">$</span>stats<span class="sc">$</span>test</span></code></pre></div>
+<div class="sourceCode" id="cb812"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb812-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb812-1" tabindex="-1"></a>breast.fft<span class="sc">$</span>trees<span class="sc">$</span>stats<span class="sc">$</span>test</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 20
 ##    tree     n    hi    fa    mi    cr  sens  spec    far   ppv   npv dprime
 ##   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
@@ -1363,7 +1364,7 @@ If you want to see the accuracy for all of the trees generated, you can use</p>
 ## # ℹ 8 more variables: acc &lt;dbl&gt;, bacc &lt;dbl&gt;, wacc &lt;dbl&gt;, cost_dec &lt;dbl&gt;,
 ## #   cost_cue &lt;dbl&gt;, cost &lt;dbl&gt;, pci &lt;dbl&gt;, mcu &lt;dbl&gt;</code></pre>
 <p>You can see the definitions of all trees with:</p>
-<div class="sourceCode" id="cb812"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb812-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb812-1" tabindex="-1"></a>breast.fft<span class="sc">$</span>trees<span class="sc">$</span>definitions</span></code></pre></div>
+<div class="sourceCode" id="cb814"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb814-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb814-1" tabindex="-1"></a>breast.fft<span class="sc">$</span>trees<span class="sc">$</span>definitions</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 7
 ##    tree nodes classes cues                           directions thresholds exits
 ##   &lt;int&gt; &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;                          &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;
@@ -1375,9 +1376,9 @@ If you want to see the accuracy for all of the trees generated, you can use</p>
 ## 6     6     4 i;i;n;i cellsize.unif;cellshape.unif;… &gt;;&gt;;&gt;;&gt;    2;2;1;2    1;1;…</code></pre>
 <p>If sensitivity is really important, you might choose model 5 or 6, which both have a sensitivity of 1.</p>
 <p>You can also predict the outcome for new data from the best training tree with:</p>
-<div class="sourceCode" id="cb814"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb814-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb814-1" tabindex="-1"></a><span class="fu">predict</span>(breast.fft, </span>
-<span id="cb814-2"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb814-2" tabindex="-1"></a>        <span class="at">newdata =</span> breastcancer[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,],</span>
-<span id="cb814-3"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb814-3" tabindex="-1"></a>        <span class="at">type =</span> <span class="st">&quot;prob&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb816"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb816-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb816-1" tabindex="-1"></a><span class="fu">predict</span>(breast.fft, </span>
+<span id="cb816-2"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb816-2" tabindex="-1"></a>        <span class="at">newdata =</span> breastcancer[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,],</span>
+<span id="cb816-3"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb816-3" tabindex="-1"></a>        <span class="at">type =</span> <span class="st">&quot;prob&quot;</span>)</span></code></pre></div>
 <pre><code>## ✔ Applied 6 FFTs to &#39;test&#39; data.</code></pre>
 <pre><code>## ✔ Generated predictions for tree 1.</code></pre>
 <pre><code>## # A tibble: 10 × 2
@@ -1397,21 +1398,21 @@ If you want to see the accuracy for all of the trees generated, you can use</p>
 You can also use <code>type = "class"</code> to get the predicted class (FALSE or TRUE) for each observation, or use type = “both” if you want to see both.
 <br> You can also manually control which predictors go into the model.
 <br> For example, you could use only bare nuclei and bland chromatin predictors with the code below:</p>
-<div class="sourceCode" id="cb818"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb818-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb818-1" tabindex="-1"></a>breast.fft <span class="ot">&lt;-</span> <span class="fu">FFTrees</span>(<span class="at">formula =</span> diagnosis <span class="sc">~</span> nuclei.bare <span class="sc">+</span> chromatin,</span>
-<span id="cb818-2"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb818-2" tabindex="-1"></a>  <span class="at">data =</span> breastcancer,</span>
-<span id="cb818-3"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb818-3" tabindex="-1"></a>  <span class="at">train.p =</span> <span class="fl">0.5</span>,</span>
-<span id="cb818-4"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb818-4" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;Breast Cancer&quot;</span>,</span>
-<span id="cb818-5"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb818-5" tabindex="-1"></a>  <span class="at">decision.labels =</span> <span class="fu">c</span>(<span class="st">&quot;Healthy&quot;</span>, <span class="st">&quot;Disease&quot;</span>))</span>
-<span id="cb818-6"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb818-6" tabindex="-1"></a></span>
-<span id="cb818-7"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb818-7" tabindex="-1"></a><span class="fu">plot</span>(breast.fft, <span class="at">data =</span> <span class="st">&quot;test&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb820"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb820-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb820-1" tabindex="-1"></a>breast.fft <span class="ot">&lt;-</span> <span class="fu">FFTrees</span>(<span class="at">formula =</span> diagnosis <span class="sc">~</span> nuclei.bare <span class="sc">+</span> chromatin,</span>
+<span id="cb820-2"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb820-2" tabindex="-1"></a>  <span class="at">data =</span> breastcancer,</span>
+<span id="cb820-3"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb820-3" tabindex="-1"></a>  <span class="at">train.p =</span> <span class="fl">0.5</span>,</span>
+<span id="cb820-4"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb820-4" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;Breast Cancer&quot;</span>,</span>
+<span id="cb820-5"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb820-5" tabindex="-1"></a>  <span class="at">decision.labels =</span> <span class="fu">c</span>(<span class="st">&quot;Healthy&quot;</span>, <span class="st">&quot;Disease&quot;</span>))</span>
+<span id="cb820-6"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb820-6" tabindex="-1"></a></span>
+<span id="cb820-7"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb820-7" tabindex="-1"></a><span class="fu">plot</span>(breast.fft, <span class="at">data =</span> <span class="st">&quot;test&quot;</span>)</span></code></pre></div>
 <p><img src="io101-fftrees_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>Or you can manually specify a model with the example code below:.
 Copy and paste into your local RStudio instance.</p>
-<div class="sourceCode" id="cb819"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb819-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb819-1" tabindex="-1"></a>breast.fft <span class="ot">&lt;-</span> <span class="fu">FFTrees</span>(diagnosis <span class="sc">~</span> .,</span>
-<span id="cb819-2"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb819-2" tabindex="-1"></a>  <span class="at">data =</span> breastcancer,</span>
-<span id="cb819-3"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb819-3" tabindex="-1"></a>  <span class="at">my.tree =</span> <span class="st">&quot;If thickness &gt; 6, predict TRUE. If chromatin &gt;3, predict TRUE. Otherwise, predict FALSE.&quot;</span>)</span>
-<span id="cb819-4"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb819-4" tabindex="-1"></a></span>
-<span id="cb819-5"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb819-5" tabindex="-1"></a><span class="fu">plot</span>(breast.fft, <span class="at">data =</span> <span class="st">&quot;train&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb821"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb821-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb821-1" tabindex="-1"></a>breast.fft <span class="ot">&lt;-</span> <span class="fu">FFTrees</span>(diagnosis <span class="sc">~</span> .,</span>
+<span id="cb821-2"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb821-2" tabindex="-1"></a>  <span class="at">data =</span> breastcancer,</span>
+<span id="cb821-3"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb821-3" tabindex="-1"></a>  <span class="at">my.tree =</span> <span class="st">&quot;If thickness &gt; 6, predict TRUE. If chromatin &gt;3, predict TRUE. Otherwise, predict FALSE.&quot;</span>)</span>
+<span id="cb821-4"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb821-4" tabindex="-1"></a></span>
+<span id="cb821-5"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb821-5" tabindex="-1"></a><span class="fu">plot</span>(breast.fft, <span class="at">data =</span> <span class="st">&quot;train&quot;</span>)</span></code></pre></div>
 <p><img src="io101-fftrees_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 </div>
 <div id="your-turn-with-heart-disease-data" class="section level2 hasAnchor" number="36.4">
@@ -1420,7 +1421,7 @@ Copy and paste into your local RStudio instance.</p>
 Load this dataset with the code below.
 Copy and paste into your local RStudio instance.
 Then click on the dataset in your Environment pane (it will appear as a <code>Promise</code> under Values) to see the data.</p>
-<div class="sourceCode" id="cb820"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb820-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb820-1" tabindex="-1"></a><span class="fu">data</span>(heartdisease)</span></code></pre></div>
+<div class="sourceCode" id="cb822"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb822-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb822-1" tabindex="-1"></a><span class="fu">data</span>(heartdisease)</span></code></pre></div>
 <p>This dataset from the Cleveland Clinic has 14 variables:</p>
 <ul>
 <li><code>diagnosis</code> - 0=healthy, 1=disease</li>
@@ -1444,12 +1445,12 @@ You can sort by the diagnosis variable and scroll a bit to get a first impressio
 We will use all of the variables in the dataset.
 Copy and paste the code below into your local RStudio instance.
 I have <strong>left several black spaces</strong> for you to fill in.</p>
-<div class="sourceCode" id="cb821"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb821-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb821-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">111</span>) <span class="co"># note that the actual seed number does not matter, but if you change it, the randomization of train and test (and your results) will change slightly</span></span>
-<span id="cb821-2"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb821-2" tabindex="-1"></a>heart.fft <span class="ot">&lt;-</span> <span class="fu">FFTrees</span>(<span class="sc">---</span> <span class="er">~</span> .,</span>
-<span id="cb821-3"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb821-3" tabindex="-1"></a>  <span class="at">data =</span> <span class="st">&#39;---&#39;</span>,</span>
-<span id="cb821-4"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb821-4" tabindex="-1"></a>  <span class="at">train.p =</span> <span class="fl">0.5</span>,</span>
-<span id="cb821-5"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb821-5" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;Heart Disease&quot;</span>,</span>
-<span id="cb821-6"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb821-6" tabindex="-1"></a>  <span class="at">decision.labels =</span> <span class="fu">c</span>(<span class="st">&quot;---&quot;</span>, <span class="st">&quot;---&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb823"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb823-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb823-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">111</span>) <span class="co"># note that the actual seed number does not matter, but if you change it, the randomization of train and test (and your results) will change slightly</span></span>
+<span id="cb823-2"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb823-2" tabindex="-1"></a>heart.fft <span class="ot">&lt;-</span> <span class="fu">FFTrees</span>(<span class="sc">---</span> <span class="er">~</span> .,</span>
+<span id="cb823-3"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb823-3" tabindex="-1"></a>  <span class="at">data =</span> <span class="st">&#39;---&#39;</span>,</span>
+<span id="cb823-4"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb823-4" tabindex="-1"></a>  <span class="at">train.p =</span> <span class="fl">0.5</span>,</span>
+<span id="cb823-5"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb823-5" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;Heart Disease&quot;</span>,</span>
+<span id="cb823-6"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb823-6" tabindex="-1"></a>  <span class="at">decision.labels =</span> <span class="fu">c</span>(<span class="st">&quot;---&quot;</span>, <span class="st">&quot;---&quot;</span>))</span></code></pre></div>
 <pre><code>## Error in -~.: invalid argument to unary operator</code></pre>
 <p>Fix the code, then run it.
 If the model is not running, peek at the solution below.</p>
@@ -1457,12 +1458,12 @@ If the model is not running, peek at the solution below.</p>
 <button>
 Click here to see the Solution
 </button>
-<div class="sourceCode" id="cb823"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb823-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb823-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">111</span>)</span>
-<span id="cb823-2"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb823-2" tabindex="-1"></a>heart.fft <span class="ot">&lt;-</span> <span class="fu">FFTrees</span>(diagnosis <span class="sc">~</span> .,</span>
-<span id="cb823-3"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb823-3" tabindex="-1"></a>  <span class="at">data =</span> heartdisease,</span>
-<span id="cb823-4"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb823-4" tabindex="-1"></a>  <span class="at">train.p =</span> <span class="fl">0.5</span>,</span>
-<span id="cb823-5"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb823-5" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;Heart Disease&quot;</span>,</span>
-<span id="cb823-6"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb823-6" tabindex="-1"></a>  <span class="at">decision.labels =</span> <span class="fu">c</span>(<span class="st">&quot;Healthy&quot;</span>, <span class="st">&quot;Heart Disease&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb825"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb825-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb825-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">111</span>)</span>
+<span id="cb825-2"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb825-2" tabindex="-1"></a>heart.fft <span class="ot">&lt;-</span> <span class="fu">FFTrees</span>(diagnosis <span class="sc">~</span> .,</span>
+<span id="cb825-3"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb825-3" tabindex="-1"></a>  <span class="at">data =</span> heartdisease,</span>
+<span id="cb825-4"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb825-4" tabindex="-1"></a>  <span class="at">train.p =</span> <span class="fl">0.5</span>,</span>
+<span id="cb825-5"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb825-5" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;Heart Disease&quot;</span>,</span>
+<span id="cb825-6"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb825-6" tabindex="-1"></a>  <span class="at">decision.labels =</span> <span class="fu">c</span>(<span class="st">&quot;Healthy&quot;</span>, <span class="st">&quot;Heart Disease&quot;</span>))</span></code></pre></div>
 <pre><code>## Warning in comp_pred(formula = x$formula, data.train = x$data$train, data.test
 ## = x$data$test, : 4 cases in the test data could not be predicted by &#39;e&#39; due to
 ## new factor values. These cases will be excluded</code></pre>
@@ -1481,16 +1482,16 @@ Click here to see the Solution
 ## new factor values. These cases will be excluded</code></pre>
 </div>
 <p>You can then plot the model.</p>
-<div class="sourceCode" id="cb830"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb830-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb830-1" tabindex="-1"></a><span class="fu">plot</span>(heart.fft, <span class="at">data =</span> <span class="st">&quot;test&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb832"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb832-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb832-1" tabindex="-1"></a><span class="fu">plot</span>(heart.fft, <span class="at">data =</span> <span class="st">&quot;test&quot;</span>)</span></code></pre></div>
 <p><img src="io101-fftrees_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <p>You can see the accuracy of each predictor by plotting the cues with the code below:</p>
-<div class="sourceCode" id="cb831"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb831-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb831-1" tabindex="-1"></a><span class="fu">plot</span>(heart.fft, <span class="at">what =</span> <span class="st">&quot;cues&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb833"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb833-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb833-1" tabindex="-1"></a><span class="fu">plot</span>(heart.fft, <span class="at">what =</span> <span class="st">&quot;cues&quot;</span>)</span></code></pre></div>
 <pre><code>## Plotting cue training statistics:
 ## — Cue accuracies ranked by bacc</code></pre>
 <p><img src="io101-fftrees_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <p>You can see that one predictor (cue) #13 when used in isolation is almost a coin flip.
 You can print these out with:</p>
-<div class="sourceCode" id="cb833"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb833-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb833-1" tabindex="-1"></a>heart.fft<span class="sc">$</span>cues<span class="sc">$</span>stats<span class="sc">$</span>train</span></code></pre></div>
+<div class="sourceCode" id="cb835"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb835-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb835-1" tabindex="-1"></a>heart.fft<span class="sc">$</span>cues<span class="sc">$</span>stats<span class="sc">$</span>train</span></code></pre></div>
 <pre><code>##         cue     class   threshold direction   n hi fa mi cr      sens      spec
 ## 1       age   numeric          56         &gt; 152 47 31 23 51 0.6714286 0.6219512
 ## 2       sex   numeric           0         &gt; 152 56 45 14 37 0.8000000 0.4512195
@@ -1564,19 +1565,19 @@ This dataset has 13 variables:</p>
 <p>there are some other outcome variables like strep_resistance and radiologic_6m, but we will focus on improved.
 However, we do not want to use these as predictors, so we will clean up the dataset a bit.
 Copy and run the code below to remove some extraneous variables for our purposes today.</p>
-<div class="sourceCode" id="cb835"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb835-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb835-1" tabindex="-1"></a>strep_tb <span class="ot">&lt;-</span> medicaldata<span class="sc">::</span>strep_tb <span class="sc">|&gt;</span> </span>
-<span id="cb835-2"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb835-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>strep_resistance,<span class="sc">-</span>rad_num, <span class="sc">-</span>radiologic_6m, <span class="sc">-</span>dose_strep_g, <span class="sc">-</span>dose_PAS_g, <span class="sc">-</span>patient_id) </span></code></pre></div>
+<div class="sourceCode" id="cb837"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb837-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb837-1" tabindex="-1"></a>strep_tb <span class="ot">&lt;-</span> medicaldata<span class="sc">::</span>strep_tb <span class="sc">|&gt;</span> </span>
+<span id="cb837-2"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb837-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>strep_resistance,<span class="sc">-</span>rad_num, <span class="sc">-</span>radiologic_6m, <span class="sc">-</span>dose_strep_g, <span class="sc">-</span>dose_PAS_g, <span class="sc">-</span>patient_id) </span></code></pre></div>
 </div>
 <div id="now-build-your-fftrees-model-to-predict-improved-status-vs.-death" class="section level2 hasAnchor" number="36.6">
 <h2><span class="header-section-number">36.6</span> Now build your FFTrees model to predict improved status (vs. death)<a href="fast-and-frugal-trees-with-the-fftrees-package.html#now-build-your-fftrees-model-to-predict-improved-status-vs.-death" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You will get just a starter bit of code to get you going.
 Pull up the (FFTrees} package <a href="https://cran.r-project.org/web/packages/FFTrees/vignettes/FFTrees_examples.html">website</a>. Fix up this code and run it in your local RStudio to answer the questions below.</p>
-<div class="sourceCode" id="cb836"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb836-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb836-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">99</span>)</span>
-<span id="cb836-2"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb836-2" tabindex="-1"></a>tb.fft <span class="ot">&lt;-</span> <span class="fu">FFTrees</span>(outcome <span class="sc">~</span> ,</span>
-<span id="cb836-3"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb836-3" tabindex="-1"></a>  <span class="at">data =</span> name,</span>
-<span id="cb836-4"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb836-4" tabindex="-1"></a>  <span class="at">train.p =</span> ,</span>
-<span id="cb836-5"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb836-5" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;Streptomycin TB&quot;</span>,</span>
-<span id="cb836-6"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb836-6" tabindex="-1"></a>  <span class="at">decision.labels =</span> )</span></code></pre></div>
+<div class="sourceCode" id="cb838"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb838-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb838-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">99</span>)</span>
+<span id="cb838-2"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb838-2" tabindex="-1"></a>tb.fft <span class="ot">&lt;-</span> <span class="fu">FFTrees</span>(outcome <span class="sc">~</span> ,</span>
+<span id="cb838-3"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb838-3" tabindex="-1"></a>  <span class="at">data =</span> name,</span>
+<span id="cb838-4"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb838-4" tabindex="-1"></a>  <span class="at">train.p =</span> ,</span>
+<span id="cb838-5"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb838-5" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;Streptomycin TB&quot;</span>,</span>
+<span id="cb838-6"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb838-6" tabindex="-1"></a>  <span class="at">decision.labels =</span> )</span></code></pre></div>
 <pre><code>## Error in parse(text = input): &lt;text&gt;:2:29: unexpected &#39;,&#39;
 ## 1: set.seed(99)
 ## 2: tb.fft &lt;- FFTrees(outcome ~ ,
@@ -1587,20 +1588,20 @@ If the model is not running, peek at the solution below.</p>
 <button>
 Click here to see the Solution
 </button>
-<div class="sourceCode" id="cb838"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb838-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb838-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">99</span>)</span>
-<span id="cb838-2"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb838-2" tabindex="-1"></a>tb.fft <span class="ot">&lt;-</span> <span class="fu">FFTrees</span>(improved <span class="sc">~</span> .,</span>
-<span id="cb838-3"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb838-3" tabindex="-1"></a>  <span class="at">data =</span> strep_tb,</span>
-<span id="cb838-4"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb838-4" tabindex="-1"></a>  <span class="at">train.p =</span> <span class="fl">0.5</span>,</span>
-<span id="cb838-5"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb838-5" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;TB Outcomes&quot;</span>,</span>
-<span id="cb838-6"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb838-6" tabindex="-1"></a>  <span class="at">decision.labels =</span> <span class="fu">c</span>(<span class="st">&quot;Died&quot;</span>, <span class="st">&quot;Improved&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb840"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb840-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb840-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">99</span>)</span>
+<span id="cb840-2"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb840-2" tabindex="-1"></a>tb.fft <span class="ot">&lt;-</span> <span class="fu">FFTrees</span>(improved <span class="sc">~</span> .,</span>
+<span id="cb840-3"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb840-3" tabindex="-1"></a>  <span class="at">data =</span> strep_tb,</span>
+<span id="cb840-4"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb840-4" tabindex="-1"></a>  <span class="at">train.p =</span> <span class="fl">0.5</span>,</span>
+<span id="cb840-5"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb840-5" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;TB Outcomes&quot;</span>,</span>
+<span id="cb840-6"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb840-6" tabindex="-1"></a>  <span class="at">decision.labels =</span> <span class="fu">c</span>(<span class="st">&quot;Died&quot;</span>, <span class="st">&quot;Improved&quot;</span>))</span></code></pre></div>
 </div>
 <p>You can then print the model:</p>
-<div class="sourceCode" id="cb839"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb839-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb839-1" tabindex="-1"></a><span class="co"># code here</span></span></code></pre></div>
+<div class="sourceCode" id="cb841"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb841-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb841-1" tabindex="-1"></a><span class="co"># code here</span></span></code></pre></div>
 <div class="webex-solution">
 <button>
 Show Code
 </button>
-<div class="sourceCode" id="cb840"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb840-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb840-1" tabindex="-1"></a><span class="fu">print</span>(tb.fft)</span></code></pre></div>
+<div class="sourceCode" id="cb842"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb842-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb842-1" tabindex="-1"></a><span class="fu">print</span>(tb.fft)</span></code></pre></div>
 <pre><code>## TB Outcomes
 ## FFTrees 
 ## - Trees: 6 fast-and-frugal trees predicting improved
@@ -1642,12 +1643,12 @@ Show Code
 </ol>
 <p><select class='webex-select'><option value='blank'></option><option value=''>Did not know</option><option value='answer'>Died</option><option value=''>Improved</option></select></p>
 <p>You can then plot the model on the test data set:</p>
-<div class="sourceCode" id="cb842"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb842-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb842-1" tabindex="-1"></a><span class="co"># code here</span></span></code></pre></div>
+<div class="sourceCode" id="cb844"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb844-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb844-1" tabindex="-1"></a><span class="co"># code here</span></span></code></pre></div>
 <div class="webex-solution">
 <button>
 Show Code
 </button>
-<div class="sourceCode" id="cb843"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb843-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb843-1" tabindex="-1"></a><span class="fu">plot</span>(tb.fft, <span class="at">data =</span> <span class="st">&quot;test&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb845"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb845-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb845-1" tabindex="-1"></a><span class="fu">plot</span>(tb.fft, <span class="at">data =</span> <span class="st">&quot;test&quot;</span>)</span></code></pre></div>
 <p><img src="io101-fftrees_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 </div>
 <ol style="list-style-type: decimal">
@@ -1660,12 +1661,12 @@ Show Code
 </ol>
 <p><br>
 You can see the accuracy of each predictor by plotting the cues with the code below:</p>
-<div class="sourceCode" id="cb844"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb844-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb844-1" tabindex="-1"></a><span class="co"># code here</span></span></code></pre></div>
+<div class="sourceCode" id="cb846"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb846-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb846-1" tabindex="-1"></a><span class="co"># code here</span></span></code></pre></div>
 <div class="webex-solution">
 <button>
 Show Code
 </button>
-<div class="sourceCode" id="cb845"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb845-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb845-1" tabindex="-1"></a><span class="fu">plot</span>(tb.fft, <span class="at">what =</span> <span class="st">&quot;cues&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb847"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb847-1"><a href="fast-and-frugal-trees-with-the-fftrees-package.html#cb847-1" tabindex="-1"></a><span class="fu">plot</span>(tb.fft, <span class="at">what =</span> <span class="st">&quot;cues&quot;</span>)</span></code></pre></div>
 <pre><code>## Plotting cue training statistics:
 ## — Cue accuracies ranked by bacc</code></pre>
 <p><img src="io101-fftrees_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>

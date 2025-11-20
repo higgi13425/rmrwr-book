@@ -76,7 +76,7 @@ whoami;date
 
 ```
 ## peterhiggins
-## Thu Aug 28 21:53:21 EDT 2025
+## Thu Oct  9 16:39:42 EDT 2025
 ```
 :::
 
@@ -398,6 +398,7 @@ ls
 ## Higgins_LOS_KNewmanAGA_PDRH.pdf
 ## Higgins_LOS_KNewmanF32_letterhead_sig.docx
 ## Higgins_LOS_KNewmanF32_letterhead_sig.pdf
+## Higgins_PCORI_COMET-UC_Short.pdf
 ## Higgins_Peter-The-Janus-Kinase-Inhibitors-Two-Faces-for-Efficacy-and-Safety.pptx
 ## higgins_signature.docx
 ## Higgins_UM_CME_Pregnancy in IBD.pptx

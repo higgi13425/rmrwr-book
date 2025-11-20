@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2025-08-28" />
+<meta name="date" content="2025-10-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,10 +54,10 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
 <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/plotly-binding-4.11.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
@@ -67,8 +67,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -78,7 +79,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -1173,308 +1174,308 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>or by running <code>help(blockrand)</code> in your Console.</p>
 <p>You want to randomize 180 inpatients with severe ulcerative colitis to one of 3 arms: corticosteroids alone (control), corticosteroids + tofacitinib, or corticosteroids + upadacitinib. You want to stratify the participants by (1) prior biologic failure and (2) Albumin level above or below 3.0. To be prepared for dropouts and imbalanced enrollment, you want to have a randomization list with at least 60 assignments available for each arm and stratum. To avoid a recognizable pattern in the randomization, you want to have a permuted block design with blocks of sizes 3, 6, and 9.<br />
 Below, you will see how to do this for the biologic failure - low albumin stratum.</p>
-<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="randomization-for-clinical-trials-with-r.html#cb455-1" tabindex="-1"></a>bfla <span class="ot">&lt;-</span> <span class="fu">blockrand</span>(<span class="at">n =</span> <span class="dv">60</span>, </span>
-<span id="cb455-2"><a href="randomization-for-clinical-trials-with-r.html#cb455-2" tabindex="-1"></a>                     <span class="at">num.levels =</span> <span class="dv">3</span>, <span class="co"># three treatments</span></span>
-<span id="cb455-3"><a href="randomization-for-clinical-trials-with-r.html#cb455-3" tabindex="-1"></a>                     <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;CS&quot;</span>, <span class="st">&quot;CS/Tofa&quot;</span>, <span class="st">&quot;CS/Upa&quot;</span>), <span class="co"># arm names</span></span>
-<span id="cb455-4"><a href="randomization-for-clinical-trials-with-r.html#cb455-4" tabindex="-1"></a>                     <span class="at">stratum =</span> <span class="st">&quot;Bfail.LowAlb&quot;</span>, <span class="co"># stratum name</span></span>
-<span id="cb455-5"><a href="randomization-for-clinical-trials-with-r.html#cb455-5" tabindex="-1"></a>                     <span class="at">id.prefix =</span> <span class="st">&quot;BfLA&quot;</span>, <span class="co"># stratum abbrev</span></span>
-<span id="cb455-6"><a href="randomization-for-clinical-trials-with-r.html#cb455-6" tabindex="-1"></a>                     <span class="at">block.sizes =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="co"># times arms = 3,6,9</span></span>
-<span id="cb455-7"><a href="randomization-for-clinical-trials-with-r.html#cb455-7" tabindex="-1"></a>                     <span class="at">block.prefix =</span> <span class="st">&quot;BfLA&quot;</span>) <span class="co"># stratum abbrev</span></span>
-<span id="cb455-8"><a href="randomization-for-clinical-trials-with-r.html#cb455-8" tabindex="-1"></a>bfla</span></code></pre></div>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="randomization-for-clinical-trials-with-r.html#cb458-1" tabindex="-1"></a>bfla <span class="ot">&lt;-</span> <span class="fu">blockrand</span>(<span class="at">n =</span> <span class="dv">60</span>, </span>
+<span id="cb458-2"><a href="randomization-for-clinical-trials-with-r.html#cb458-2" tabindex="-1"></a>                     <span class="at">num.levels =</span> <span class="dv">3</span>, <span class="co"># three treatments</span></span>
+<span id="cb458-3"><a href="randomization-for-clinical-trials-with-r.html#cb458-3" tabindex="-1"></a>                     <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;CS&quot;</span>, <span class="st">&quot;CS/Tofa&quot;</span>, <span class="st">&quot;CS/Upa&quot;</span>), <span class="co"># arm names</span></span>
+<span id="cb458-4"><a href="randomization-for-clinical-trials-with-r.html#cb458-4" tabindex="-1"></a>                     <span class="at">stratum =</span> <span class="st">&quot;Bfail.LowAlb&quot;</span>, <span class="co"># stratum name</span></span>
+<span id="cb458-5"><a href="randomization-for-clinical-trials-with-r.html#cb458-5" tabindex="-1"></a>                     <span class="at">id.prefix =</span> <span class="st">&quot;BfLA&quot;</span>, <span class="co"># stratum abbrev</span></span>
+<span id="cb458-6"><a href="randomization-for-clinical-trials-with-r.html#cb458-6" tabindex="-1"></a>                     <span class="at">block.sizes =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="co"># times arms = 3,6,9</span></span>
+<span id="cb458-7"><a href="randomization-for-clinical-trials-with-r.html#cb458-7" tabindex="-1"></a>                     <span class="at">block.prefix =</span> <span class="st">&quot;BfLA&quot;</span>) <span class="co"># stratum abbrev</span></span>
+<span id="cb458-8"><a href="randomization-for-clinical-trials-with-r.html#cb458-8" tabindex="-1"></a>bfla</span></code></pre></div>
 <pre><code>##        id      stratum block.id block.size treatment
-## 1  BfLA01 Bfail.LowAlb    BfLA1          6   CS/Tofa
-## 2  BfLA02 Bfail.LowAlb    BfLA1          6        CS
-## 3  BfLA03 Bfail.LowAlb    BfLA1          6   CS/Tofa
-## 4  BfLA04 Bfail.LowAlb    BfLA1          6    CS/Upa
-## 5  BfLA05 Bfail.LowAlb    BfLA1          6    CS/Upa
-## 6  BfLA06 Bfail.LowAlb    BfLA1          6        CS
-## 7  BfLA07 Bfail.LowAlb    BfLA2          6   CS/Tofa
-## 8  BfLA08 Bfail.LowAlb    BfLA2          6   CS/Tofa
-## 9  BfLA09 Bfail.LowAlb    BfLA2          6        CS
-## 10 BfLA10 Bfail.LowAlb    BfLA2          6    CS/Upa
-## 11 BfLA11 Bfail.LowAlb    BfLA2          6    CS/Upa
-## 12 BfLA12 Bfail.LowAlb    BfLA2          6        CS
-## 13 BfLA13 Bfail.LowAlb    BfLA3          3    CS/Upa
-## 14 BfLA14 Bfail.LowAlb    BfLA3          3   CS/Tofa
-## 15 BfLA15 Bfail.LowAlb    BfLA3          3        CS
-## 16 BfLA16 Bfail.LowAlb    BfLA4          9        CS
-## 17 BfLA17 Bfail.LowAlb    BfLA4          9        CS
-## 18 BfLA18 Bfail.LowAlb    BfLA4          9    CS/Upa
-## 19 BfLA19 Bfail.LowAlb    BfLA4          9        CS
-## 20 BfLA20 Bfail.LowAlb    BfLA4          9   CS/Tofa
-## 21 BfLA21 Bfail.LowAlb    BfLA4          9   CS/Tofa
-## 22 BfLA22 Bfail.LowAlb    BfLA4          9    CS/Upa
-## 23 BfLA23 Bfail.LowAlb    BfLA4          9    CS/Upa
-## 24 BfLA24 Bfail.LowAlb    BfLA4          9   CS/Tofa
-## 25 BfLA25 Bfail.LowAlb    BfLA5          9    CS/Upa
-## 26 BfLA26 Bfail.LowAlb    BfLA5          9    CS/Upa
-## 27 BfLA27 Bfail.LowAlb    BfLA5          9        CS
-## 28 BfLA28 Bfail.LowAlb    BfLA5          9        CS
-## 29 BfLA29 Bfail.LowAlb    BfLA5          9   CS/Tofa
-## 30 BfLA30 Bfail.LowAlb    BfLA5          9    CS/Upa
-## 31 BfLA31 Bfail.LowAlb    BfLA5          9        CS
-## 32 BfLA32 Bfail.LowAlb    BfLA5          9   CS/Tofa
-## 33 BfLA33 Bfail.LowAlb    BfLA5          9   CS/Tofa
-## 34 BfLA34 Bfail.LowAlb    BfLA6          9    CS/Upa
-## 35 BfLA35 Bfail.LowAlb    BfLA6          9   CS/Tofa
-## 36 BfLA36 Bfail.LowAlb    BfLA6          9    CS/Upa
-## 37 BfLA37 Bfail.LowAlb    BfLA6          9    CS/Upa
-## 38 BfLA38 Bfail.LowAlb    BfLA6          9        CS
-## 39 BfLA39 Bfail.LowAlb    BfLA6          9        CS
-## 40 BfLA40 Bfail.LowAlb    BfLA6          9   CS/Tofa
-## 41 BfLA41 Bfail.LowAlb    BfLA6          9   CS/Tofa
-## 42 BfLA42 Bfail.LowAlb    BfLA6          9        CS
-## 43 BfLA43 Bfail.LowAlb    BfLA7          9        CS
-## 44 BfLA44 Bfail.LowAlb    BfLA7          9   CS/Tofa
-## 45 BfLA45 Bfail.LowAlb    BfLA7          9        CS
-## 46 BfLA46 Bfail.LowAlb    BfLA7          9    CS/Upa
-## 47 BfLA47 Bfail.LowAlb    BfLA7          9   CS/Tofa
-## 48 BfLA48 Bfail.LowAlb    BfLA7          9        CS
-## 49 BfLA49 Bfail.LowAlb    BfLA7          9   CS/Tofa
-## 50 BfLA50 Bfail.LowAlb    BfLA7          9    CS/Upa
-## 51 BfLA51 Bfail.LowAlb    BfLA7          9    CS/Upa
-## 52 BfLA52 Bfail.LowAlb    BfLA8          6   CS/Tofa
-## 53 BfLA53 Bfail.LowAlb    BfLA8          6    CS/Upa
-## 54 BfLA54 Bfail.LowAlb    BfLA8          6        CS
-## 55 BfLA55 Bfail.LowAlb    BfLA8          6   CS/Tofa
-## 56 BfLA56 Bfail.LowAlb    BfLA8          6    CS/Upa
-## 57 BfLA57 Bfail.LowAlb    BfLA8          6        CS
-## 58 BfLA58 Bfail.LowAlb    BfLA9          6        CS
-## 59 BfLA59 Bfail.LowAlb    BfLA9          6   CS/Tofa
-## 60 BfLA60 Bfail.LowAlb    BfLA9          6   CS/Tofa
-## 61 BfLA61 Bfail.LowAlb    BfLA9          6        CS
-## 62 BfLA62 Bfail.LowAlb    BfLA9          6    CS/Upa
-## 63 BfLA63 Bfail.LowAlb    BfLA9          6    CS/Upa</code></pre>
+## 1  BfLA01 Bfail.LowAlb   BfLA01          9   CS/Tofa
+## 2  BfLA02 Bfail.LowAlb   BfLA01          9    CS/Upa
+## 3  BfLA03 Bfail.LowAlb   BfLA01          9        CS
+## 4  BfLA04 Bfail.LowAlb   BfLA01          9   CS/Tofa
+## 5  BfLA05 Bfail.LowAlb   BfLA01          9        CS
+## 6  BfLA06 Bfail.LowAlb   BfLA01          9    CS/Upa
+## 7  BfLA07 Bfail.LowAlb   BfLA01          9        CS
+## 8  BfLA08 Bfail.LowAlb   BfLA01          9   CS/Tofa
+## 9  BfLA09 Bfail.LowAlb   BfLA01          9    CS/Upa
+## 10 BfLA10 Bfail.LowAlb   BfLA02          9   CS/Tofa
+## 11 BfLA11 Bfail.LowAlb   BfLA02          9        CS
+## 12 BfLA12 Bfail.LowAlb   BfLA02          9    CS/Upa
+## 13 BfLA13 Bfail.LowAlb   BfLA02          9        CS
+## 14 BfLA14 Bfail.LowAlb   BfLA02          9    CS/Upa
+## 15 BfLA15 Bfail.LowAlb   BfLA02          9   CS/Tofa
+## 16 BfLA16 Bfail.LowAlb   BfLA02          9    CS/Upa
+## 17 BfLA17 Bfail.LowAlb   BfLA02          9        CS
+## 18 BfLA18 Bfail.LowAlb   BfLA02          9   CS/Tofa
+## 19 BfLA19 Bfail.LowAlb   BfLA03          3   CS/Tofa
+## 20 BfLA20 Bfail.LowAlb   BfLA03          3        CS
+## 21 BfLA21 Bfail.LowAlb   BfLA03          3    CS/Upa
+## 22 BfLA22 Bfail.LowAlb   BfLA04          3        CS
+## 23 BfLA23 Bfail.LowAlb   BfLA04          3    CS/Upa
+## 24 BfLA24 Bfail.LowAlb   BfLA04          3   CS/Tofa
+## 25 BfLA25 Bfail.LowAlb   BfLA05          9        CS
+## 26 BfLA26 Bfail.LowAlb   BfLA05          9    CS/Upa
+## 27 BfLA27 Bfail.LowAlb   BfLA05          9   CS/Tofa
+## 28 BfLA28 Bfail.LowAlb   BfLA05          9        CS
+## 29 BfLA29 Bfail.LowAlb   BfLA05          9    CS/Upa
+## 30 BfLA30 Bfail.LowAlb   BfLA05          9    CS/Upa
+## 31 BfLA31 Bfail.LowAlb   BfLA05          9        CS
+## 32 BfLA32 Bfail.LowAlb   BfLA05          9   CS/Tofa
+## 33 BfLA33 Bfail.LowAlb   BfLA05          9   CS/Tofa
+## 34 BfLA34 Bfail.LowAlb   BfLA06          3    CS/Upa
+## 35 BfLA35 Bfail.LowAlb   BfLA06          3   CS/Tofa
+## 36 BfLA36 Bfail.LowAlb   BfLA06          3        CS
+## 37 BfLA37 Bfail.LowAlb   BfLA07          9        CS
+## 38 BfLA38 Bfail.LowAlb   BfLA07          9    CS/Upa
+## 39 BfLA39 Bfail.LowAlb   BfLA07          9   CS/Tofa
+## 40 BfLA40 Bfail.LowAlb   BfLA07          9   CS/Tofa
+## 41 BfLA41 Bfail.LowAlb   BfLA07          9    CS/Upa
+## 42 BfLA42 Bfail.LowAlb   BfLA07          9        CS
+## 43 BfLA43 Bfail.LowAlb   BfLA07          9    CS/Upa
+## 44 BfLA44 Bfail.LowAlb   BfLA07          9   CS/Tofa
+## 45 BfLA45 Bfail.LowAlb   BfLA07          9        CS
+## 46 BfLA46 Bfail.LowAlb   BfLA08          6    CS/Upa
+## 47 BfLA47 Bfail.LowAlb   BfLA08          6    CS/Upa
+## 48 BfLA48 Bfail.LowAlb   BfLA08          6   CS/Tofa
+## 49 BfLA49 Bfail.LowAlb   BfLA08          6        CS
+## 50 BfLA50 Bfail.LowAlb   BfLA08          6   CS/Tofa
+## 51 BfLA51 Bfail.LowAlb   BfLA08          6        CS
+## 52 BfLA52 Bfail.LowAlb   BfLA09          6   CS/Tofa
+## 53 BfLA53 Bfail.LowAlb   BfLA09          6        CS
+## 54 BfLA54 Bfail.LowAlb   BfLA09          6   CS/Tofa
+## 55 BfLA55 Bfail.LowAlb   BfLA09          6    CS/Upa
+## 56 BfLA56 Bfail.LowAlb   BfLA09          6    CS/Upa
+## 57 BfLA57 Bfail.LowAlb   BfLA09          6        CS
+## 58 BfLA58 Bfail.LowAlb   BfLA10          3    CS/Upa
+## 59 BfLA59 Bfail.LowAlb   BfLA10          3   CS/Tofa
+## 60 BfLA60 Bfail.LowAlb   BfLA10          3        CS</code></pre>
 <p>You can see the <code>id</code> for each participant, their <code>stratum</code>, the <code>block.id</code> for their permuted block, the <code>block.size</code>, and their assigned <code>treatment</code>. You can imagine this as a randomization list, or as assignments that you could print out on cards and seal in security envelopes for the time of randomization. Of course, this is only one of our four strata. We should do the same for the 3 other strata.</p>
-<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="randomization-for-clinical-trials-with-r.html#cb457-1" tabindex="-1"></a>bfha <span class="ot">&lt;-</span> <span class="fu">blockrand</span>(<span class="at">n =</span> <span class="dv">60</span>, </span>
-<span id="cb457-2"><a href="randomization-for-clinical-trials-with-r.html#cb457-2" tabindex="-1"></a>                     <span class="at">num.levels =</span> <span class="dv">3</span>, <span class="co"># three treatments</span></span>
-<span id="cb457-3"><a href="randomization-for-clinical-trials-with-r.html#cb457-3" tabindex="-1"></a>                     <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;CS&quot;</span>, <span class="st">&quot;CS/Tofa&quot;</span>, <span class="st">&quot;CS/Upa&quot;</span>), <span class="co"># arm names</span></span>
-<span id="cb457-4"><a href="randomization-for-clinical-trials-with-r.html#cb457-4" tabindex="-1"></a>                     <span class="at">stratum =</span> <span class="st">&quot;Bfail.HiAlb&quot;</span>, <span class="co"># stratum name</span></span>
-<span id="cb457-5"><a href="randomization-for-clinical-trials-with-r.html#cb457-5" tabindex="-1"></a>                     <span class="at">id.prefix =</span> <span class="st">&quot;BfHA&quot;</span>, <span class="co"># stratum abbrev</span></span>
-<span id="cb457-6"><a href="randomization-for-clinical-trials-with-r.html#cb457-6" tabindex="-1"></a>                     <span class="at">block.sizes =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="co"># times arms = 3,6,9</span></span>
-<span id="cb457-7"><a href="randomization-for-clinical-trials-with-r.html#cb457-7" tabindex="-1"></a>                     <span class="at">block.prefix =</span> <span class="st">&quot;BfHA&quot;</span>) <span class="co"># stratum abbrev</span></span>
-<span id="cb457-8"><a href="randomization-for-clinical-trials-with-r.html#cb457-8" tabindex="-1"></a>bfha</span></code></pre></div>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="randomization-for-clinical-trials-with-r.html#cb460-1" tabindex="-1"></a>bfha <span class="ot">&lt;-</span> <span class="fu">blockrand</span>(<span class="at">n =</span> <span class="dv">60</span>, </span>
+<span id="cb460-2"><a href="randomization-for-clinical-trials-with-r.html#cb460-2" tabindex="-1"></a>                     <span class="at">num.levels =</span> <span class="dv">3</span>, <span class="co"># three treatments</span></span>
+<span id="cb460-3"><a href="randomization-for-clinical-trials-with-r.html#cb460-3" tabindex="-1"></a>                     <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;CS&quot;</span>, <span class="st">&quot;CS/Tofa&quot;</span>, <span class="st">&quot;CS/Upa&quot;</span>), <span class="co"># arm names</span></span>
+<span id="cb460-4"><a href="randomization-for-clinical-trials-with-r.html#cb460-4" tabindex="-1"></a>                     <span class="at">stratum =</span> <span class="st">&quot;Bfail.HiAlb&quot;</span>, <span class="co"># stratum name</span></span>
+<span id="cb460-5"><a href="randomization-for-clinical-trials-with-r.html#cb460-5" tabindex="-1"></a>                     <span class="at">id.prefix =</span> <span class="st">&quot;BfHA&quot;</span>, <span class="co"># stratum abbrev</span></span>
+<span id="cb460-6"><a href="randomization-for-clinical-trials-with-r.html#cb460-6" tabindex="-1"></a>                     <span class="at">block.sizes =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="co"># times arms = 3,6,9</span></span>
+<span id="cb460-7"><a href="randomization-for-clinical-trials-with-r.html#cb460-7" tabindex="-1"></a>                     <span class="at">block.prefix =</span> <span class="st">&quot;BfHA&quot;</span>) <span class="co"># stratum abbrev</span></span>
+<span id="cb460-8"><a href="randomization-for-clinical-trials-with-r.html#cb460-8" tabindex="-1"></a>bfha</span></code></pre></div>
 <pre><code>##        id     stratum block.id block.size treatment
-## 1  BfHA01 Bfail.HiAlb   BfHA01          3        CS
-## 2  BfHA02 Bfail.HiAlb   BfHA01          3    CS/Upa
-## 3  BfHA03 Bfail.HiAlb   BfHA01          3   CS/Tofa
-## 4  BfHA04 Bfail.HiAlb   BfHA02          6   CS/Tofa
-## 5  BfHA05 Bfail.HiAlb   BfHA02          6    CS/Upa
-## 6  BfHA06 Bfail.HiAlb   BfHA02          6        CS
-## 7  BfHA07 Bfail.HiAlb   BfHA02          6   CS/Tofa
-## 8  BfHA08 Bfail.HiAlb   BfHA02          6    CS/Upa
-## 9  BfHA09 Bfail.HiAlb   BfHA02          6        CS
-## 10 BfHA10 Bfail.HiAlb   BfHA03          6        CS
-## 11 BfHA11 Bfail.HiAlb   BfHA03          6   CS/Tofa
-## 12 BfHA12 Bfail.HiAlb   BfHA03          6    CS/Upa
-## 13 BfHA13 Bfail.HiAlb   BfHA03          6   CS/Tofa
-## 14 BfHA14 Bfail.HiAlb   BfHA03          6        CS
-## 15 BfHA15 Bfail.HiAlb   BfHA03          6    CS/Upa
-## 16 BfHA16 Bfail.HiAlb   BfHA04          9   CS/Tofa
-## 17 BfHA17 Bfail.HiAlb   BfHA04          9   CS/Tofa
-## 18 BfHA18 Bfail.HiAlb   BfHA04          9    CS/Upa
-## 19 BfHA19 Bfail.HiAlb   BfHA04          9    CS/Upa
-## 20 BfHA20 Bfail.HiAlb   BfHA04          9    CS/Upa
-## 21 BfHA21 Bfail.HiAlb   BfHA04          9        CS
-## 22 BfHA22 Bfail.HiAlb   BfHA04          9        CS
-## 23 BfHA23 Bfail.HiAlb   BfHA04          9        CS
-## 24 BfHA24 Bfail.HiAlb   BfHA04          9   CS/Tofa
-## 25 BfHA25 Bfail.HiAlb   BfHA05          3        CS
-## 26 BfHA26 Bfail.HiAlb   BfHA05          3   CS/Tofa
-## 27 BfHA27 Bfail.HiAlb   BfHA05          3    CS/Upa
-## 28 BfHA28 Bfail.HiAlb   BfHA06          9   CS/Tofa
-## 29 BfHA29 Bfail.HiAlb   BfHA06          9    CS/Upa
-## 30 BfHA30 Bfail.HiAlb   BfHA06          9   CS/Tofa
-## 31 BfHA31 Bfail.HiAlb   BfHA06          9        CS
-## 32 BfHA32 Bfail.HiAlb   BfHA06          9    CS/Upa
-## 33 BfHA33 Bfail.HiAlb   BfHA06          9        CS
-## 34 BfHA34 Bfail.HiAlb   BfHA06          9        CS
-## 35 BfHA35 Bfail.HiAlb   BfHA06          9   CS/Tofa
-## 36 BfHA36 Bfail.HiAlb   BfHA06          9    CS/Upa
-## 37 BfHA37 Bfail.HiAlb   BfHA07          3   CS/Tofa
-## 38 BfHA38 Bfail.HiAlb   BfHA07          3    CS/Upa
-## 39 BfHA39 Bfail.HiAlb   BfHA07          3        CS
-## 40 BfHA40 Bfail.HiAlb   BfHA08          6        CS
-## 41 BfHA41 Bfail.HiAlb   BfHA08          6    CS/Upa
-## 42 BfHA42 Bfail.HiAlb   BfHA08          6   CS/Tofa
-## 43 BfHA43 Bfail.HiAlb   BfHA08          6   CS/Tofa
-## 44 BfHA44 Bfail.HiAlb   BfHA08          6        CS
-## 45 BfHA45 Bfail.HiAlb   BfHA08          6    CS/Upa
-## 46 BfHA46 Bfail.HiAlb   BfHA09          3    CS/Upa
-## 47 BfHA47 Bfail.HiAlb   BfHA09          3        CS
-## 48 BfHA48 Bfail.HiAlb   BfHA09          3   CS/Tofa
-## 49 BfHA49 Bfail.HiAlb   BfHA10          3    CS/Upa
-## 50 BfHA50 Bfail.HiAlb   BfHA10          3        CS
-## 51 BfHA51 Bfail.HiAlb   BfHA10          3   CS/Tofa
-## 52 BfHA52 Bfail.HiAlb   BfHA11          6        CS
-## 53 BfHA53 Bfail.HiAlb   BfHA11          6    CS/Upa
-## 54 BfHA54 Bfail.HiAlb   BfHA11          6   CS/Tofa
-## 55 BfHA55 Bfail.HiAlb   BfHA11          6   CS/Tofa
-## 56 BfHA56 Bfail.HiAlb   BfHA11          6        CS
-## 57 BfHA57 Bfail.HiAlb   BfHA11          6    CS/Upa
-## 58 BfHA58 Bfail.HiAlb   BfHA12          3        CS
-## 59 BfHA59 Bfail.HiAlb   BfHA12          3    CS/Upa
-## 60 BfHA60 Bfail.HiAlb   BfHA12          3   CS/Tofa</code></pre>
-<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="randomization-for-clinical-trials-with-r.html#cb459-1" tabindex="-1"></a>bnha <span class="ot">&lt;-</span> <span class="fu">blockrand</span>(<span class="at">n =</span> <span class="dv">60</span>, </span>
-<span id="cb459-2"><a href="randomization-for-clinical-trials-with-r.html#cb459-2" tabindex="-1"></a>                     <span class="at">num.levels =</span> <span class="dv">3</span>, </span>
-<span id="cb459-3"><a href="randomization-for-clinical-trials-with-r.html#cb459-3" tabindex="-1"></a>                     <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;CS&quot;</span>, <span class="st">&quot;CS/Tofa&quot;</span>, <span class="st">&quot;CS/Upa&quot;</span>),</span>
-<span id="cb459-4"><a href="randomization-for-clinical-trials-with-r.html#cb459-4" tabindex="-1"></a>                     <span class="at">stratum =</span> <span class="st">&quot;Bnaive.HiAlb&quot;</span>,</span>
-<span id="cb459-5"><a href="randomization-for-clinical-trials-with-r.html#cb459-5" tabindex="-1"></a>                     <span class="at">id.prefix =</span> <span class="st">&quot;BnHA&quot;</span>,</span>
-<span id="cb459-6"><a href="randomization-for-clinical-trials-with-r.html#cb459-6" tabindex="-1"></a>                     <span class="at">block.sizes =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>, <span class="dv">4</span>), </span>
-<span id="cb459-7"><a href="randomization-for-clinical-trials-with-r.html#cb459-7" tabindex="-1"></a>                     <span class="at">block.prefix =</span> <span class="st">&quot;BnHA&quot;</span>)</span>
-<span id="cb459-8"><a href="randomization-for-clinical-trials-with-r.html#cb459-8" tabindex="-1"></a>bnha</span></code></pre></div>
+## 1  BfHA01 Bfail.HiAlb    BfHA1          6   CS/Tofa
+## 2  BfHA02 Bfail.HiAlb    BfHA1          6        CS
+## 3  BfHA03 Bfail.HiAlb    BfHA1          6   CS/Tofa
+## 4  BfHA04 Bfail.HiAlb    BfHA1          6    CS/Upa
+## 5  BfHA05 Bfail.HiAlb    BfHA1          6    CS/Upa
+## 6  BfHA06 Bfail.HiAlb    BfHA1          6        CS
+## 7  BfHA07 Bfail.HiAlb    BfHA2          3   CS/Tofa
+## 8  BfHA08 Bfail.HiAlb    BfHA2          3        CS
+## 9  BfHA09 Bfail.HiAlb    BfHA2          3    CS/Upa
+## 10 BfHA10 Bfail.HiAlb    BfHA3          9    CS/Upa
+## 11 BfHA11 Bfail.HiAlb    BfHA3          9   CS/Tofa
+## 12 BfHA12 Bfail.HiAlb    BfHA3          9   CS/Tofa
+## 13 BfHA13 Bfail.HiAlb    BfHA3          9    CS/Upa
+## 14 BfHA14 Bfail.HiAlb    BfHA3          9        CS
+## 15 BfHA15 Bfail.HiAlb    BfHA3          9        CS
+## 16 BfHA16 Bfail.HiAlb    BfHA3          9    CS/Upa
+## 17 BfHA17 Bfail.HiAlb    BfHA3          9        CS
+## 18 BfHA18 Bfail.HiAlb    BfHA3          9   CS/Tofa
+## 19 BfHA19 Bfail.HiAlb    BfHA4          9    CS/Upa
+## 20 BfHA20 Bfail.HiAlb    BfHA4          9   CS/Tofa
+## 21 BfHA21 Bfail.HiAlb    BfHA4          9        CS
+## 22 BfHA22 Bfail.HiAlb    BfHA4          9        CS
+## 23 BfHA23 Bfail.HiAlb    BfHA4          9   CS/Tofa
+## 24 BfHA24 Bfail.HiAlb    BfHA4          9   CS/Tofa
+## 25 BfHA25 Bfail.HiAlb    BfHA4          9    CS/Upa
+## 26 BfHA26 Bfail.HiAlb    BfHA4          9        CS
+## 27 BfHA27 Bfail.HiAlb    BfHA4          9    CS/Upa
+## 28 BfHA28 Bfail.HiAlb    BfHA5          9    CS/Upa
+## 29 BfHA29 Bfail.HiAlb    BfHA5          9        CS
+## 30 BfHA30 Bfail.HiAlb    BfHA5          9    CS/Upa
+## 31 BfHA31 Bfail.HiAlb    BfHA5          9   CS/Tofa
+## 32 BfHA32 Bfail.HiAlb    BfHA5          9        CS
+## 33 BfHA33 Bfail.HiAlb    BfHA5          9        CS
+## 34 BfHA34 Bfail.HiAlb    BfHA5          9   CS/Tofa
+## 35 BfHA35 Bfail.HiAlb    BfHA5          9   CS/Tofa
+## 36 BfHA36 Bfail.HiAlb    BfHA5          9    CS/Upa
+## 37 BfHA37 Bfail.HiAlb    BfHA6          6   CS/Tofa
+## 38 BfHA38 Bfail.HiAlb    BfHA6          6        CS
+## 39 BfHA39 Bfail.HiAlb    BfHA6          6   CS/Tofa
+## 40 BfHA40 Bfail.HiAlb    BfHA6          6    CS/Upa
+## 41 BfHA41 Bfail.HiAlb    BfHA6          6        CS
+## 42 BfHA42 Bfail.HiAlb    BfHA6          6    CS/Upa
+## 43 BfHA43 Bfail.HiAlb    BfHA7          3   CS/Tofa
+## 44 BfHA44 Bfail.HiAlb    BfHA7          3        CS
+## 45 BfHA45 Bfail.HiAlb    BfHA7          3    CS/Upa
+## 46 BfHA46 Bfail.HiAlb    BfHA8          9        CS
+## 47 BfHA47 Bfail.HiAlb    BfHA8          9        CS
+## 48 BfHA48 Bfail.HiAlb    BfHA8          9   CS/Tofa
+## 49 BfHA49 Bfail.HiAlb    BfHA8          9    CS/Upa
+## 50 BfHA50 Bfail.HiAlb    BfHA8          9    CS/Upa
+## 51 BfHA51 Bfail.HiAlb    BfHA8          9    CS/Upa
+## 52 BfHA52 Bfail.HiAlb    BfHA8          9   CS/Tofa
+## 53 BfHA53 Bfail.HiAlb    BfHA8          9        CS
+## 54 BfHA54 Bfail.HiAlb    BfHA8          9   CS/Tofa
+## 55 BfHA55 Bfail.HiAlb    BfHA9          9   CS/Tofa
+## 56 BfHA56 Bfail.HiAlb    BfHA9          9    CS/Upa
+## 57 BfHA57 Bfail.HiAlb    BfHA9          9   CS/Tofa
+## 58 BfHA58 Bfail.HiAlb    BfHA9          9    CS/Upa
+## 59 BfHA59 Bfail.HiAlb    BfHA9          9        CS
+## 60 BfHA60 Bfail.HiAlb    BfHA9          9        CS
+## 61 BfHA61 Bfail.HiAlb    BfHA9          9        CS
+## 62 BfHA62 Bfail.HiAlb    BfHA9          9    CS/Upa
+## 63 BfHA63 Bfail.HiAlb    BfHA9          9   CS/Tofa</code></pre>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="randomization-for-clinical-trials-with-r.html#cb462-1" tabindex="-1"></a>bnha <span class="ot">&lt;-</span> <span class="fu">blockrand</span>(<span class="at">n =</span> <span class="dv">60</span>, </span>
+<span id="cb462-2"><a href="randomization-for-clinical-trials-with-r.html#cb462-2" tabindex="-1"></a>                     <span class="at">num.levels =</span> <span class="dv">3</span>, </span>
+<span id="cb462-3"><a href="randomization-for-clinical-trials-with-r.html#cb462-3" tabindex="-1"></a>                     <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;CS&quot;</span>, <span class="st">&quot;CS/Tofa&quot;</span>, <span class="st">&quot;CS/Upa&quot;</span>),</span>
+<span id="cb462-4"><a href="randomization-for-clinical-trials-with-r.html#cb462-4" tabindex="-1"></a>                     <span class="at">stratum =</span> <span class="st">&quot;Bnaive.HiAlb&quot;</span>,</span>
+<span id="cb462-5"><a href="randomization-for-clinical-trials-with-r.html#cb462-5" tabindex="-1"></a>                     <span class="at">id.prefix =</span> <span class="st">&quot;BnHA&quot;</span>,</span>
+<span id="cb462-6"><a href="randomization-for-clinical-trials-with-r.html#cb462-6" tabindex="-1"></a>                     <span class="at">block.sizes =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>, <span class="dv">4</span>), </span>
+<span id="cb462-7"><a href="randomization-for-clinical-trials-with-r.html#cb462-7" tabindex="-1"></a>                     <span class="at">block.prefix =</span> <span class="st">&quot;BnHA&quot;</span>)</span>
+<span id="cb462-8"><a href="randomization-for-clinical-trials-with-r.html#cb462-8" tabindex="-1"></a>bnha</span></code></pre></div>
 <pre><code>##        id      stratum block.id block.size treatment
-## 1  BnHA01 Bnaive.HiAlb    BnHA1          9        CS
-## 2  BnHA02 Bnaive.HiAlb    BnHA1          9   CS/Tofa
-## 3  BnHA03 Bnaive.HiAlb    BnHA1          9   CS/Tofa
-## 4  BnHA04 Bnaive.HiAlb    BnHA1          9        CS
-## 5  BnHA05 Bnaive.HiAlb    BnHA1          9    CS/Upa
-## 6  BnHA06 Bnaive.HiAlb    BnHA1          9    CS/Upa
-## 7  BnHA07 Bnaive.HiAlb    BnHA1          9    CS/Upa
-## 8  BnHA08 Bnaive.HiAlb    BnHA1          9   CS/Tofa
-## 9  BnHA09 Bnaive.HiAlb    BnHA1          9        CS
-## 10 BnHA10 Bnaive.HiAlb    BnHA2          6    CS/Upa
-## 11 BnHA11 Bnaive.HiAlb    BnHA2          6    CS/Upa
-## 12 BnHA12 Bnaive.HiAlb    BnHA2          6        CS
-## 13 BnHA13 Bnaive.HiAlb    BnHA2          6   CS/Tofa
-## 14 BnHA14 Bnaive.HiAlb    BnHA2          6   CS/Tofa
-## 15 BnHA15 Bnaive.HiAlb    BnHA2          6        CS
-## 16 BnHA16 Bnaive.HiAlb    BnHA3          9        CS
-## 17 BnHA17 Bnaive.HiAlb    BnHA3          9   CS/Tofa
-## 18 BnHA18 Bnaive.HiAlb    BnHA3          9        CS
-## 19 BnHA19 Bnaive.HiAlb    BnHA3          9    CS/Upa
-## 20 BnHA20 Bnaive.HiAlb    BnHA3          9   CS/Tofa
-## 21 BnHA21 Bnaive.HiAlb    BnHA3          9   CS/Tofa
-## 22 BnHA22 Bnaive.HiAlb    BnHA3          9        CS
-## 23 BnHA23 Bnaive.HiAlb    BnHA3          9    CS/Upa
-## 24 BnHA24 Bnaive.HiAlb    BnHA3          9    CS/Upa
-## 25 BnHA25 Bnaive.HiAlb    BnHA4          9   CS/Tofa
-## 26 BnHA26 Bnaive.HiAlb    BnHA4          9        CS
-## 27 BnHA27 Bnaive.HiAlb    BnHA4          9    CS/Upa
-## 28 BnHA28 Bnaive.HiAlb    BnHA4          9    CS/Upa
-## 29 BnHA29 Bnaive.HiAlb    BnHA4          9   CS/Tofa
-## 30 BnHA30 Bnaive.HiAlb    BnHA4          9   CS/Tofa
-## 31 BnHA31 Bnaive.HiAlb    BnHA4          9        CS
-## 32 BnHA32 Bnaive.HiAlb    BnHA4          9        CS
-## 33 BnHA33 Bnaive.HiAlb    BnHA4          9    CS/Upa
-## 34 BnHA34 Bnaive.HiAlb    BnHA5          9    CS/Upa
-## 35 BnHA35 Bnaive.HiAlb    BnHA5          9   CS/Tofa
-## 36 BnHA36 Bnaive.HiAlb    BnHA5          9        CS
-## 37 BnHA37 Bnaive.HiAlb    BnHA5          9   CS/Tofa
-## 38 BnHA38 Bnaive.HiAlb    BnHA5          9   CS/Tofa
-## 39 BnHA39 Bnaive.HiAlb    BnHA5          9        CS
-## 40 BnHA40 Bnaive.HiAlb    BnHA5          9    CS/Upa
-## 41 BnHA41 Bnaive.HiAlb    BnHA5          9    CS/Upa
-## 42 BnHA42 Bnaive.HiAlb    BnHA5          9        CS
-## 43 BnHA43 Bnaive.HiAlb    BnHA6         12        CS
-## 44 BnHA44 Bnaive.HiAlb    BnHA6         12    CS/Upa
-## 45 BnHA45 Bnaive.HiAlb    BnHA6         12   CS/Tofa
-## 46 BnHA46 Bnaive.HiAlb    BnHA6         12    CS/Upa
-## 47 BnHA47 Bnaive.HiAlb    BnHA6         12    CS/Upa
-## 48 BnHA48 Bnaive.HiAlb    BnHA6         12   CS/Tofa
-## 49 BnHA49 Bnaive.HiAlb    BnHA6         12   CS/Tofa
-## 50 BnHA50 Bnaive.HiAlb    BnHA6         12    CS/Upa
-## 51 BnHA51 Bnaive.HiAlb    BnHA6         12   CS/Tofa
-## 52 BnHA52 Bnaive.HiAlb    BnHA6         12        CS
-## 53 BnHA53 Bnaive.HiAlb    BnHA6         12        CS
-## 54 BnHA54 Bnaive.HiAlb    BnHA6         12        CS
-## 55 BnHA55 Bnaive.HiAlb    BnHA7         12    CS/Upa
-## 56 BnHA56 Bnaive.HiAlb    BnHA7         12        CS
-## 57 BnHA57 Bnaive.HiAlb    BnHA7         12        CS
-## 58 BnHA58 Bnaive.HiAlb    BnHA7         12   CS/Tofa
-## 59 BnHA59 Bnaive.HiAlb    BnHA7         12   CS/Tofa
-## 60 BnHA60 Bnaive.HiAlb    BnHA7         12        CS
-## 61 BnHA61 Bnaive.HiAlb    BnHA7         12    CS/Upa
-## 62 BnHA62 Bnaive.HiAlb    BnHA7         12   CS/Tofa
-## 63 BnHA63 Bnaive.HiAlb    BnHA7         12    CS/Upa
-## 64 BnHA64 Bnaive.HiAlb    BnHA7         12    CS/Upa
-## 65 BnHA65 Bnaive.HiAlb    BnHA7         12        CS
-## 66 BnHA66 Bnaive.HiAlb    BnHA7         12   CS/Tofa</code></pre>
-<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="randomization-for-clinical-trials-with-r.html#cb461-1" tabindex="-1"></a>bnla <span class="ot">&lt;-</span> <span class="fu">blockrand</span>(<span class="at">n =</span> <span class="dv">60</span>, </span>
-<span id="cb461-2"><a href="randomization-for-clinical-trials-with-r.html#cb461-2" tabindex="-1"></a>                     <span class="at">num.levels =</span> <span class="dv">3</span>, </span>
-<span id="cb461-3"><a href="randomization-for-clinical-trials-with-r.html#cb461-3" tabindex="-1"></a>                     <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;CS&quot;</span>, <span class="st">&quot;CS/Tofa&quot;</span>, <span class="st">&quot;CS/Upa&quot;</span>),</span>
-<span id="cb461-4"><a href="randomization-for-clinical-trials-with-r.html#cb461-4" tabindex="-1"></a>                     <span class="at">stratum =</span> <span class="st">&quot;Bnaive.LoAlb&quot;</span>,</span>
-<span id="cb461-5"><a href="randomization-for-clinical-trials-with-r.html#cb461-5" tabindex="-1"></a>                     <span class="at">id.prefix =</span> <span class="st">&quot;BnLA&quot;</span>,</span>
-<span id="cb461-6"><a href="randomization-for-clinical-trials-with-r.html#cb461-6" tabindex="-1"></a>                     <span class="at">block.sizes =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), </span>
-<span id="cb461-7"><a href="randomization-for-clinical-trials-with-r.html#cb461-7" tabindex="-1"></a>                     <span class="at">block.prefix =</span> <span class="st">&quot;BnLA&quot;</span>)</span>
-<span id="cb461-8"><a href="randomization-for-clinical-trials-with-r.html#cb461-8" tabindex="-1"></a>bnla</span></code></pre></div>
+## 1  BnHA01 Bnaive.HiAlb   BnHA01          6    CS/Upa
+## 2  BnHA02 Bnaive.HiAlb   BnHA01          6        CS
+## 3  BnHA03 Bnaive.HiAlb   BnHA01          6        CS
+## 4  BnHA04 Bnaive.HiAlb   BnHA01          6   CS/Tofa
+## 5  BnHA05 Bnaive.HiAlb   BnHA01          6   CS/Tofa
+## 6  BnHA06 Bnaive.HiAlb   BnHA01          6    CS/Upa
+## 7  BnHA07 Bnaive.HiAlb   BnHA02          3    CS/Upa
+## 8  BnHA08 Bnaive.HiAlb   BnHA02          3   CS/Tofa
+## 9  BnHA09 Bnaive.HiAlb   BnHA02          3        CS
+## 10 BnHA10 Bnaive.HiAlb   BnHA03          3    CS/Upa
+## 11 BnHA11 Bnaive.HiAlb   BnHA03          3   CS/Tofa
+## 12 BnHA12 Bnaive.HiAlb   BnHA03          3        CS
+## 13 BnHA13 Bnaive.HiAlb   BnHA04          6    CS/Upa
+## 14 BnHA14 Bnaive.HiAlb   BnHA04          6        CS
+## 15 BnHA15 Bnaive.HiAlb   BnHA04          6        CS
+## 16 BnHA16 Bnaive.HiAlb   BnHA04          6   CS/Tofa
+## 17 BnHA17 Bnaive.HiAlb   BnHA04          6   CS/Tofa
+## 18 BnHA18 Bnaive.HiAlb   BnHA04          6    CS/Upa
+## 19 BnHA19 Bnaive.HiAlb   BnHA05          6        CS
+## 20 BnHA20 Bnaive.HiAlb   BnHA05          6        CS
+## 21 BnHA21 Bnaive.HiAlb   BnHA05          6    CS/Upa
+## 22 BnHA22 Bnaive.HiAlb   BnHA05          6    CS/Upa
+## 23 BnHA23 Bnaive.HiAlb   BnHA05          6   CS/Tofa
+## 24 BnHA24 Bnaive.HiAlb   BnHA05          6   CS/Tofa
+## 25 BnHA25 Bnaive.HiAlb   BnHA06          6    CS/Upa
+## 26 BnHA26 Bnaive.HiAlb   BnHA06          6   CS/Tofa
+## 27 BnHA27 Bnaive.HiAlb   BnHA06          6   CS/Tofa
+## 28 BnHA28 Bnaive.HiAlb   BnHA06          6        CS
+## 29 BnHA29 Bnaive.HiAlb   BnHA06          6        CS
+## 30 BnHA30 Bnaive.HiAlb   BnHA06          6    CS/Upa
+## 31 BnHA31 Bnaive.HiAlb   BnHA07          6    CS/Upa
+## 32 BnHA32 Bnaive.HiAlb   BnHA07          6        CS
+## 33 BnHA33 Bnaive.HiAlb   BnHA07          6   CS/Tofa
+## 34 BnHA34 Bnaive.HiAlb   BnHA07          6    CS/Upa
+## 35 BnHA35 Bnaive.HiAlb   BnHA07          6   CS/Tofa
+## 36 BnHA36 Bnaive.HiAlb   BnHA07          6        CS
+## 37 BnHA37 Bnaive.HiAlb   BnHA08          9    CS/Upa
+## 38 BnHA38 Bnaive.HiAlb   BnHA08          9   CS/Tofa
+## 39 BnHA39 Bnaive.HiAlb   BnHA08          9        CS
+## 40 BnHA40 Bnaive.HiAlb   BnHA08          9    CS/Upa
+## 41 BnHA41 Bnaive.HiAlb   BnHA08          9        CS
+## 42 BnHA42 Bnaive.HiAlb   BnHA08          9   CS/Tofa
+## 43 BnHA43 Bnaive.HiAlb   BnHA08          9    CS/Upa
+## 44 BnHA44 Bnaive.HiAlb   BnHA08          9        CS
+## 45 BnHA45 Bnaive.HiAlb   BnHA08          9   CS/Tofa
+## 46 BnHA46 Bnaive.HiAlb   BnHA09          6    CS/Upa
+## 47 BnHA47 Bnaive.HiAlb   BnHA09          6        CS
+## 48 BnHA48 Bnaive.HiAlb   BnHA09          6   CS/Tofa
+## 49 BnHA49 Bnaive.HiAlb   BnHA09          6    CS/Upa
+## 50 BnHA50 Bnaive.HiAlb   BnHA09          6        CS
+## 51 BnHA51 Bnaive.HiAlb   BnHA09          6   CS/Tofa
+## 52 BnHA52 Bnaive.HiAlb   BnHA10          9    CS/Upa
+## 53 BnHA53 Bnaive.HiAlb   BnHA10          9        CS
+## 54 BnHA54 Bnaive.HiAlb   BnHA10          9        CS
+## 55 BnHA55 Bnaive.HiAlb   BnHA10          9        CS
+## 56 BnHA56 Bnaive.HiAlb   BnHA10          9    CS/Upa
+## 57 BnHA57 Bnaive.HiAlb   BnHA10          9   CS/Tofa
+## 58 BnHA58 Bnaive.HiAlb   BnHA10          9   CS/Tofa
+## 59 BnHA59 Bnaive.HiAlb   BnHA10          9    CS/Upa
+## 60 BnHA60 Bnaive.HiAlb   BnHA10          9   CS/Tofa</code></pre>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="randomization-for-clinical-trials-with-r.html#cb464-1" tabindex="-1"></a>bnla <span class="ot">&lt;-</span> <span class="fu">blockrand</span>(<span class="at">n =</span> <span class="dv">60</span>, </span>
+<span id="cb464-2"><a href="randomization-for-clinical-trials-with-r.html#cb464-2" tabindex="-1"></a>                     <span class="at">num.levels =</span> <span class="dv">3</span>, </span>
+<span id="cb464-3"><a href="randomization-for-clinical-trials-with-r.html#cb464-3" tabindex="-1"></a>                     <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;CS&quot;</span>, <span class="st">&quot;CS/Tofa&quot;</span>, <span class="st">&quot;CS/Upa&quot;</span>),</span>
+<span id="cb464-4"><a href="randomization-for-clinical-trials-with-r.html#cb464-4" tabindex="-1"></a>                     <span class="at">stratum =</span> <span class="st">&quot;Bnaive.LoAlb&quot;</span>,</span>
+<span id="cb464-5"><a href="randomization-for-clinical-trials-with-r.html#cb464-5" tabindex="-1"></a>                     <span class="at">id.prefix =</span> <span class="st">&quot;BnLA&quot;</span>,</span>
+<span id="cb464-6"><a href="randomization-for-clinical-trials-with-r.html#cb464-6" tabindex="-1"></a>                     <span class="at">block.sizes =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), </span>
+<span id="cb464-7"><a href="randomization-for-clinical-trials-with-r.html#cb464-7" tabindex="-1"></a>                     <span class="at">block.prefix =</span> <span class="st">&quot;BnLA&quot;</span>)</span>
+<span id="cb464-8"><a href="randomization-for-clinical-trials-with-r.html#cb464-8" tabindex="-1"></a>bnla</span></code></pre></div>
 <pre><code>##        id      stratum block.id block.size treatment
-## 1  BnLA01 Bnaive.LoAlb    BnLA1          9   CS/Tofa
-## 2  BnLA02 Bnaive.LoAlb    BnLA1          9   CS/Tofa
-## 3  BnLA03 Bnaive.LoAlb    BnLA1          9        CS
-## 4  BnLA04 Bnaive.LoAlb    BnLA1          9   CS/Tofa
-## 5  BnLA05 Bnaive.LoAlb    BnLA1          9    CS/Upa
-## 6  BnLA06 Bnaive.LoAlb    BnLA1          9        CS
-## 7  BnLA07 Bnaive.LoAlb    BnLA1          9    CS/Upa
-## 8  BnLA08 Bnaive.LoAlb    BnLA1          9    CS/Upa
-## 9  BnLA09 Bnaive.LoAlb    BnLA1          9        CS
-## 10 BnLA10 Bnaive.LoAlb    BnLA2          9   CS/Tofa
-## 11 BnLA11 Bnaive.LoAlb    BnLA2          9   CS/Tofa
-## 12 BnLA12 Bnaive.LoAlb    BnLA2          9    CS/Upa
-## 13 BnLA13 Bnaive.LoAlb    BnLA2          9    CS/Upa
-## 14 BnLA14 Bnaive.LoAlb    BnLA2          9        CS
-## 15 BnLA15 Bnaive.LoAlb    BnLA2          9    CS/Upa
-## 16 BnLA16 Bnaive.LoAlb    BnLA2          9   CS/Tofa
-## 17 BnLA17 Bnaive.LoAlb    BnLA2          9        CS
-## 18 BnLA18 Bnaive.LoAlb    BnLA2          9        CS
-## 19 BnLA19 Bnaive.LoAlb    BnLA3          9   CS/Tofa
-## 20 BnLA20 Bnaive.LoAlb    BnLA3          9   CS/Tofa
-## 21 BnLA21 Bnaive.LoAlb    BnLA3          9    CS/Upa
-## 22 BnLA22 Bnaive.LoAlb    BnLA3          9   CS/Tofa
-## 23 BnLA23 Bnaive.LoAlb    BnLA3          9        CS
-## 24 BnLA24 Bnaive.LoAlb    BnLA3          9    CS/Upa
-## 25 BnLA25 Bnaive.LoAlb    BnLA3          9    CS/Upa
-## 26 BnLA26 Bnaive.LoAlb    BnLA3          9        CS
-## 27 BnLA27 Bnaive.LoAlb    BnLA3          9        CS
-## 28 BnLA28 Bnaive.LoAlb    BnLA4          6        CS
-## 29 BnLA29 Bnaive.LoAlb    BnLA4          6    CS/Upa
-## 30 BnLA30 Bnaive.LoAlb    BnLA4          6    CS/Upa
-## 31 BnLA31 Bnaive.LoAlb    BnLA4          6   CS/Tofa
-## 32 BnLA32 Bnaive.LoAlb    BnLA4          6   CS/Tofa
-## 33 BnLA33 Bnaive.LoAlb    BnLA4          6        CS
-## 34 BnLA34 Bnaive.LoAlb    BnLA5          3    CS/Upa
-## 35 BnLA35 Bnaive.LoAlb    BnLA5          3        CS
-## 36 BnLA36 Bnaive.LoAlb    BnLA5          3   CS/Tofa
-## 37 BnLA37 Bnaive.LoAlb    BnLA6          3    CS/Upa
-## 38 BnLA38 Bnaive.LoAlb    BnLA6          3        CS
-## 39 BnLA39 Bnaive.LoAlb    BnLA6          3   CS/Tofa
-## 40 BnLA40 Bnaive.LoAlb    BnLA7          6        CS
-## 41 BnLA41 Bnaive.LoAlb    BnLA7          6   CS/Tofa
-## 42 BnLA42 Bnaive.LoAlb    BnLA7          6    CS/Upa
-## 43 BnLA43 Bnaive.LoAlb    BnLA7          6    CS/Upa
-## 44 BnLA44 Bnaive.LoAlb    BnLA7          6        CS
-## 45 BnLA45 Bnaive.LoAlb    BnLA7          6   CS/Tofa
-## 46 BnLA46 Bnaive.LoAlb    BnLA8          9    CS/Upa
-## 47 BnLA47 Bnaive.LoAlb    BnLA8          9        CS
-## 48 BnLA48 Bnaive.LoAlb    BnLA8          9        CS
-## 49 BnLA49 Bnaive.LoAlb    BnLA8          9    CS/Upa
-## 50 BnLA50 Bnaive.LoAlb    BnLA8          9   CS/Tofa
-## 51 BnLA51 Bnaive.LoAlb    BnLA8          9    CS/Upa
-## 52 BnLA52 Bnaive.LoAlb    BnLA8          9   CS/Tofa
-## 53 BnLA53 Bnaive.LoAlb    BnLA8          9        CS
-## 54 BnLA54 Bnaive.LoAlb    BnLA8          9   CS/Tofa
-## 55 BnLA55 Bnaive.LoAlb    BnLA9          6   CS/Tofa
-## 56 BnLA56 Bnaive.LoAlb    BnLA9          6   CS/Tofa
-## 57 BnLA57 Bnaive.LoAlb    BnLA9          6        CS
-## 58 BnLA58 Bnaive.LoAlb    BnLA9          6    CS/Upa
-## 59 BnLA59 Bnaive.LoAlb    BnLA9          6        CS
-## 60 BnLA60 Bnaive.LoAlb    BnLA9          6    CS/Upa</code></pre>
+## 1  BnLA01 Bnaive.LoAlb   BnLA01          6    CS/Upa
+## 2  BnLA02 Bnaive.LoAlb   BnLA01          6    CS/Upa
+## 3  BnLA03 Bnaive.LoAlb   BnLA01          6   CS/Tofa
+## 4  BnLA04 Bnaive.LoAlb   BnLA01          6        CS
+## 5  BnLA05 Bnaive.LoAlb   BnLA01          6   CS/Tofa
+## 6  BnLA06 Bnaive.LoAlb   BnLA01          6        CS
+## 7  BnLA07 Bnaive.LoAlb   BnLA02          6   CS/Tofa
+## 8  BnLA08 Bnaive.LoAlb   BnLA02          6   CS/Tofa
+## 9  BnLA09 Bnaive.LoAlb   BnLA02          6        CS
+## 10 BnLA10 Bnaive.LoAlb   BnLA02          6    CS/Upa
+## 11 BnLA11 Bnaive.LoAlb   BnLA02          6        CS
+## 12 BnLA12 Bnaive.LoAlb   BnLA02          6    CS/Upa
+## 13 BnLA13 Bnaive.LoAlb   BnLA03          3    CS/Upa
+## 14 BnLA14 Bnaive.LoAlb   BnLA03          3        CS
+## 15 BnLA15 Bnaive.LoAlb   BnLA03          3   CS/Tofa
+## 16 BnLA16 Bnaive.LoAlb   BnLA04          9   CS/Tofa
+## 17 BnLA17 Bnaive.LoAlb   BnLA04          9    CS/Upa
+## 18 BnLA18 Bnaive.LoAlb   BnLA04          9        CS
+## 19 BnLA19 Bnaive.LoAlb   BnLA04          9    CS/Upa
+## 20 BnLA20 Bnaive.LoAlb   BnLA04          9        CS
+## 21 BnLA21 Bnaive.LoAlb   BnLA04          9        CS
+## 22 BnLA22 Bnaive.LoAlb   BnLA04          9   CS/Tofa
+## 23 BnLA23 Bnaive.LoAlb   BnLA04          9   CS/Tofa
+## 24 BnLA24 Bnaive.LoAlb   BnLA04          9    CS/Upa
+## 25 BnLA25 Bnaive.LoAlb   BnLA05          3    CS/Upa
+## 26 BnLA26 Bnaive.LoAlb   BnLA05          3   CS/Tofa
+## 27 BnLA27 Bnaive.LoAlb   BnLA05          3        CS
+## 28 BnLA28 Bnaive.LoAlb   BnLA06          6        CS
+## 29 BnLA29 Bnaive.LoAlb   BnLA06          6   CS/Tofa
+## 30 BnLA30 Bnaive.LoAlb   BnLA06          6    CS/Upa
+## 31 BnLA31 Bnaive.LoAlb   BnLA06          6        CS
+## 32 BnLA32 Bnaive.LoAlb   BnLA06          6    CS/Upa
+## 33 BnLA33 Bnaive.LoAlb   BnLA06          6   CS/Tofa
+## 34 BnLA34 Bnaive.LoAlb   BnLA07          9    CS/Upa
+## 35 BnLA35 Bnaive.LoAlb   BnLA07          9    CS/Upa
+## 36 BnLA36 Bnaive.LoAlb   BnLA07          9   CS/Tofa
+## 37 BnLA37 Bnaive.LoAlb   BnLA07          9        CS
+## 38 BnLA38 Bnaive.LoAlb   BnLA07          9   CS/Tofa
+## 39 BnLA39 Bnaive.LoAlb   BnLA07          9        CS
+## 40 BnLA40 Bnaive.LoAlb   BnLA07          9   CS/Tofa
+## 41 BnLA41 Bnaive.LoAlb   BnLA07          9        CS
+## 42 BnLA42 Bnaive.LoAlb   BnLA07          9    CS/Upa
+## 43 BnLA43 Bnaive.LoAlb   BnLA08          9    CS/Upa
+## 44 BnLA44 Bnaive.LoAlb   BnLA08          9   CS/Tofa
+## 45 BnLA45 Bnaive.LoAlb   BnLA08          9        CS
+## 46 BnLA46 Bnaive.LoAlb   BnLA08          9   CS/Tofa
+## 47 BnLA47 Bnaive.LoAlb   BnLA08          9        CS
+## 48 BnLA48 Bnaive.LoAlb   BnLA08          9    CS/Upa
+## 49 BnLA49 Bnaive.LoAlb   BnLA08          9        CS
+## 50 BnLA50 Bnaive.LoAlb   BnLA08          9    CS/Upa
+## 51 BnLA51 Bnaive.LoAlb   BnLA08          9   CS/Tofa
+## 52 BnLA52 Bnaive.LoAlb   BnLA09          6   CS/Tofa
+## 53 BnLA53 Bnaive.LoAlb   BnLA09          6        CS
+## 54 BnLA54 Bnaive.LoAlb   BnLA09          6    CS/Upa
+## 55 BnLA55 Bnaive.LoAlb   BnLA09          6    CS/Upa
+## 56 BnLA56 Bnaive.LoAlb   BnLA09          6   CS/Tofa
+## 57 BnLA57 Bnaive.LoAlb   BnLA09          6        CS
+## 58 BnLA58 Bnaive.LoAlb   BnLA10          9   CS/Tofa
+## 59 BnLA59 Bnaive.LoAlb   BnLA10          9    CS/Upa
+## 60 BnLA60 Bnaive.LoAlb   BnLA10          9        CS
+## 61 BnLA61 Bnaive.LoAlb   BnLA10          9   CS/Tofa
+## 62 BnLA62 Bnaive.LoAlb   BnLA10          9        CS
+## 63 BnLA63 Bnaive.LoAlb   BnLA10          9   CS/Tofa
+## 64 BnLA64 Bnaive.LoAlb   BnLA10          9        CS
+## 65 BnLA65 Bnaive.LoAlb   BnLA10          9    CS/Upa
+## 66 BnLA66 Bnaive.LoAlb   BnLA10          9    CS/Upa</code></pre>
 <div id="printing-these-on-cards" class="section level2 hasAnchor" number="24.1">
 <h2><span class="header-section-number">24.1</span> Printing these on Cards<a href="randomization-for-clinical-trials-with-r.html#printing-these-on-cards" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Ideally, you will print out each randomization on a card, and seal it in a security envelope, with the outside of the envelope labeled with the id. You can do this with the <em>plotblockrand()</em> function. This function creates a pdf file of randomization cards for printing. These are designed so that the middle text will show in a standard letter sized envelope with a window, and the top text (the assignment) can be folded over to increase security (against anyone trying to peek through the security envelope to guess the assignment).</p>
-<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="randomization-for-clinical-trials-with-r.html#cb463-1" tabindex="-1"></a>uc_study <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(bfha, bfla, bnha, bnla) <span class="co"># bind together the four strata into one dataframe</span></span>
-<span id="cb463-2"><a href="randomization-for-clinical-trials-with-r.html#cb463-2" tabindex="-1"></a></span>
-<span id="cb463-3"><a href="randomization-for-clinical-trials-with-r.html#cb463-3" tabindex="-1"></a>blockrand<span class="sc">::</span><span class="fu">plotblockrand</span>(uc_study, <span class="co"># input dataframe</span></span>
-<span id="cb463-4"><a href="randomization-for-clinical-trials-with-r.html#cb463-4" tabindex="-1"></a>                    <span class="at">file =</span> <span class="st">&quot;uc_study.pdf&quot;</span>, <span class="co"># output pdf</span></span>
-<span id="cb463-5"><a href="randomization-for-clinical-trials-with-r.html#cb463-5" tabindex="-1"></a>                    <span class="co"># top hidden text with assignment</span></span>
-<span id="cb463-6"><a href="randomization-for-clinical-trials-with-r.html#cb463-6" tabindex="-1"></a>      <span class="at">top=</span><span class="fu">list</span>(<span class="at">text=</span><span class="fu">c</span>(<span class="st">&#39;My Study&#39;</span>,<span class="st">&#39;Patient: %ID%&#39;</span>,<span class="st">&#39;Treatment: %TREAT%&#39;</span>),</span>
-<span id="cb463-7"><a href="randomization-for-clinical-trials-with-r.html#cb463-7" tabindex="-1"></a>                <span class="at">col=</span><span class="fu">c</span>(<span class="st">&#39;black&#39;</span>,<span class="st">&#39;black&#39;</span>,<span class="st">&#39;red&#39;</span>),<span class="at">font=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">4</span>)),</span>
-<span id="cb463-8"><a href="randomization-for-clinical-trials-with-r.html#cb463-8" tabindex="-1"></a>      <span class="co"># middle text to show through window of # 10 envelope </span></span>
-<span id="cb463-9"><a href="randomization-for-clinical-trials-with-r.html#cb463-9" tabindex="-1"></a>    <span class="at">middle=</span><span class="fu">list</span>(<span class="at">text=</span><span class="fu">c</span>(<span class="st">&quot;My Study&quot;</span>,<span class="st">&quot;Stratum: %STRAT%&quot;</span>,<span class="st">&quot;Patient: %ID%&quot;</span>),</span>
-<span id="cb463-10"><a href="randomization-for-clinical-trials-with-r.html#cb463-10" tabindex="-1"></a>               <span class="at">col=</span><span class="fu">c</span>(<span class="st">&#39;black&#39;</span>,<span class="st">&#39;blue&#39;</span>,<span class="st">&#39;orange&#39;</span>),<span class="at">font=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)),</span>
-<span id="cb463-11"><a href="randomization-for-clinical-trials-with-r.html#cb463-11" tabindex="-1"></a>    <span class="co"># bottom text- any instructions to study coordinator</span></span>
-<span id="cb463-12"><a href="randomization-for-clinical-trials-with-r.html#cb463-12" tabindex="-1"></a>   <span class="at">bottom=</span><span class="st">&quot;Call 123-4567 to report patient entry&quot;</span>,</span>
-<span id="cb463-13"><a href="randomization-for-clinical-trials-with-r.html#cb463-13" tabindex="-1"></a>   <span class="at">cut.marks=</span><span class="cn">TRUE</span>) <span class="co"># add cut marks - 4 per page</span></span></code></pre></div>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="randomization-for-clinical-trials-with-r.html#cb466-1" tabindex="-1"></a>uc_study <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(bfha, bfla, bnha, bnla) <span class="co"># bind together the four strata into one dataframe</span></span>
+<span id="cb466-2"><a href="randomization-for-clinical-trials-with-r.html#cb466-2" tabindex="-1"></a></span>
+<span id="cb466-3"><a href="randomization-for-clinical-trials-with-r.html#cb466-3" tabindex="-1"></a>blockrand<span class="sc">::</span><span class="fu">plotblockrand</span>(uc_study, <span class="co"># input dataframe</span></span>
+<span id="cb466-4"><a href="randomization-for-clinical-trials-with-r.html#cb466-4" tabindex="-1"></a>                    <span class="at">file =</span> <span class="st">&quot;uc_study.pdf&quot;</span>, <span class="co"># output pdf</span></span>
+<span id="cb466-5"><a href="randomization-for-clinical-trials-with-r.html#cb466-5" tabindex="-1"></a>                    <span class="co"># top hidden text with assignment</span></span>
+<span id="cb466-6"><a href="randomization-for-clinical-trials-with-r.html#cb466-6" tabindex="-1"></a>      <span class="at">top=</span><span class="fu">list</span>(<span class="at">text=</span><span class="fu">c</span>(<span class="st">&#39;My Study&#39;</span>,<span class="st">&#39;Patient: %ID%&#39;</span>,<span class="st">&#39;Treatment: %TREAT%&#39;</span>),</span>
+<span id="cb466-7"><a href="randomization-for-clinical-trials-with-r.html#cb466-7" tabindex="-1"></a>                <span class="at">col=</span><span class="fu">c</span>(<span class="st">&#39;black&#39;</span>,<span class="st">&#39;black&#39;</span>,<span class="st">&#39;red&#39;</span>),<span class="at">font=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">4</span>)),</span>
+<span id="cb466-8"><a href="randomization-for-clinical-trials-with-r.html#cb466-8" tabindex="-1"></a>      <span class="co"># middle text to show through window of # 10 envelope </span></span>
+<span id="cb466-9"><a href="randomization-for-clinical-trials-with-r.html#cb466-9" tabindex="-1"></a>    <span class="at">middle=</span><span class="fu">list</span>(<span class="at">text=</span><span class="fu">c</span>(<span class="st">&quot;My Study&quot;</span>,<span class="st">&quot;Stratum: %STRAT%&quot;</span>,<span class="st">&quot;Patient: %ID%&quot;</span>),</span>
+<span id="cb466-10"><a href="randomization-for-clinical-trials-with-r.html#cb466-10" tabindex="-1"></a>               <span class="at">col=</span><span class="fu">c</span>(<span class="st">&#39;black&#39;</span>,<span class="st">&#39;blue&#39;</span>,<span class="st">&#39;orange&#39;</span>),<span class="at">font=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)),</span>
+<span id="cb466-11"><a href="randomization-for-clinical-trials-with-r.html#cb466-11" tabindex="-1"></a>    <span class="co"># bottom text- any instructions to study coordinator</span></span>
+<span id="cb466-12"><a href="randomization-for-clinical-trials-with-r.html#cb466-12" tabindex="-1"></a>   <span class="at">bottom=</span><span class="st">&quot;Call 123-4567 to report patient entry&quot;</span>,</span>
+<span id="cb466-13"><a href="randomization-for-clinical-trials-with-r.html#cb466-13" tabindex="-1"></a>   <span class="at">cut.marks=</span><span class="cn">TRUE</span>) <span class="co"># add cut marks - 4 per page</span></span></code></pre></div>
 <p>Open up the file <code>uc_study.pdf</code> in your Files tab to see the output pdf file, with assorted fonts and colors.</p>
 <p>Just for fun, change (and then re-run) the</p>
 <ul>
@@ -1506,35 +1507,35 @@ Below, you will see how to do this for the biologic failure - low albumin stratu
 You can then paste it into your local version of RStudio, edit it, and run it.</p>
 </div>
 <p>In the code block below, fill in the blanks to complete the code to make a dataframe for the <code>low_pam</code> stratum.</p>
-<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="randomization-for-clinical-trials-with-r.html#cb464-1" tabindex="-1"></a>low_pam <span class="ot">&lt;-</span> <span class="fu">blockrand</span>(<span class="at">n =</span> __, </span>
-<span id="cb464-2"><a href="randomization-for-clinical-trials-with-r.html#cb464-2" tabindex="-1"></a>                     <span class="at">num.levels =</span> __, <span class="co">#eight treatments</span></span>
-<span id="cb464-3"><a href="randomization-for-clinical-trials-with-r.html#cb464-3" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;abc&quot;</span>, <span class="st">&quot;abC&quot;</span>, <span class="st">&quot;aBc&quot;</span>, <span class="st">&quot;aBC&quot;</span>,</span>
-<span id="cb464-4"><a href="randomization-for-clinical-trials-with-r.html#cb464-4" tabindex="-1"></a>             <span class="st">&quot;Abc&quot;</span>, <span class="st">&quot;AbC&quot;</span>, <span class="st">&quot;ABc&quot;</span>, <span class="st">&quot;ABC&quot;</span>), <span class="co"># arm names</span></span>
-<span id="cb464-5"><a href="randomization-for-clinical-trials-with-r.html#cb464-5" tabindex="-1"></a>                     <span class="at">stratum =</span> <span class="st">&quot;__&quot;</span>, <span class="co"># stratum name</span></span>
-<span id="cb464-6"><a href="randomization-for-clinical-trials-with-r.html#cb464-6" tabindex="-1"></a>                     <span class="at">id.prefix =</span> <span class="st">&quot;lp&quot;</span>, <span class="co"># stratum abbrev</span></span>
-<span id="cb464-7"><a href="randomization-for-clinical-trials-with-r.html#cb464-7" tabindex="-1"></a>                     <span class="at">block.sizes =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="co"># times arms </span></span>
-<span id="cb464-8"><a href="randomization-for-clinical-trials-with-r.html#cb464-8" tabindex="-1"></a>                     <span class="at">block.prefix =</span> <span class="st">&quot;LP&quot;</span>) <span class="co"># stratum abbrev</span></span>
-<span id="cb464-9"><a href="randomization-for-clinical-trials-with-r.html#cb464-9" tabindex="-1"></a>low_pam</span></code></pre></div>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="randomization-for-clinical-trials-with-r.html#cb467-1" tabindex="-1"></a>low_pam <span class="ot">&lt;-</span> <span class="fu">blockrand</span>(<span class="at">n =</span> __, </span>
+<span id="cb467-2"><a href="randomization-for-clinical-trials-with-r.html#cb467-2" tabindex="-1"></a>                     <span class="at">num.levels =</span> __, <span class="co">#eight treatments</span></span>
+<span id="cb467-3"><a href="randomization-for-clinical-trials-with-r.html#cb467-3" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;abc&quot;</span>, <span class="st">&quot;abC&quot;</span>, <span class="st">&quot;aBc&quot;</span>, <span class="st">&quot;aBC&quot;</span>,</span>
+<span id="cb467-4"><a href="randomization-for-clinical-trials-with-r.html#cb467-4" tabindex="-1"></a>             <span class="st">&quot;Abc&quot;</span>, <span class="st">&quot;AbC&quot;</span>, <span class="st">&quot;ABc&quot;</span>, <span class="st">&quot;ABC&quot;</span>), <span class="co"># arm names</span></span>
+<span id="cb467-5"><a href="randomization-for-clinical-trials-with-r.html#cb467-5" tabindex="-1"></a>                     <span class="at">stratum =</span> <span class="st">&quot;__&quot;</span>, <span class="co"># stratum name</span></span>
+<span id="cb467-6"><a href="randomization-for-clinical-trials-with-r.html#cb467-6" tabindex="-1"></a>                     <span class="at">id.prefix =</span> <span class="st">&quot;lp&quot;</span>, <span class="co"># stratum abbrev</span></span>
+<span id="cb467-7"><a href="randomization-for-clinical-trials-with-r.html#cb467-7" tabindex="-1"></a>                     <span class="at">block.sizes =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="co"># times arms </span></span>
+<span id="cb467-8"><a href="randomization-for-clinical-trials-with-r.html#cb467-8" tabindex="-1"></a>                     <span class="at">block.prefix =</span> <span class="st">&quot;LP&quot;</span>) <span class="co"># stratum abbrev</span></span>
+<span id="cb467-9"><a href="randomization-for-clinical-trials-with-r.html#cb467-9" tabindex="-1"></a>low_pam</span></code></pre></div>
 <p>Now that you have one stratum sorted, edit the code block below to create the <code>med_pam</code> and <code>high_pam</code> strata.</p>
-<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="randomization-for-clinical-trials-with-r.html#cb465-1" tabindex="-1"></a>med_pam <span class="ot">&lt;-</span> <span class="fu">blockrand</span>(<span class="at">n =</span> __, </span>
-<span id="cb465-2"><a href="randomization-for-clinical-trials-with-r.html#cb465-2" tabindex="-1"></a>                     <span class="at">num.levels =</span> __, <span class="co">#eight treatments</span></span>
-<span id="cb465-3"><a href="randomization-for-clinical-trials-with-r.html#cb465-3" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;abc&quot;</span>, <span class="st">&quot;abC&quot;</span>, <span class="st">&quot;aBc&quot;</span>, <span class="st">&quot;aBC&quot;</span>,</span>
-<span id="cb465-4"><a href="randomization-for-clinical-trials-with-r.html#cb465-4" tabindex="-1"></a>             <span class="st">&quot;Abc&quot;</span>, <span class="st">&quot;AbC&quot;</span>, <span class="st">&quot;ABc&quot;</span>, <span class="st">&quot;ABC&quot;</span>), <span class="co"># arm names</span></span>
-<span id="cb465-5"><a href="randomization-for-clinical-trials-with-r.html#cb465-5" tabindex="-1"></a>                     <span class="at">stratum =</span> <span class="st">&quot;__&quot;</span>, <span class="co"># stratum name</span></span>
-<span id="cb465-6"><a href="randomization-for-clinical-trials-with-r.html#cb465-6" tabindex="-1"></a>                     <span class="at">id.prefix =</span> <span class="st">&quot;__&quot;</span>, <span class="co"># stratum abbrev</span></span>
-<span id="cb465-7"><a href="randomization-for-clinical-trials-with-r.html#cb465-7" tabindex="-1"></a>                     <span class="at">block.sizes =</span> <span class="fu">c</span>(__), <span class="co"># times arms </span></span>
-<span id="cb465-8"><a href="randomization-for-clinical-trials-with-r.html#cb465-8" tabindex="-1"></a>                     <span class="at">block.prefix =</span> <span class="st">&quot;__&quot;</span>) <span class="co"># stratum abbrev</span></span>
-<span id="cb465-9"><a href="randomization-for-clinical-trials-with-r.html#cb465-9" tabindex="-1"></a>med_pam</span>
-<span id="cb465-10"><a href="randomization-for-clinical-trials-with-r.html#cb465-10" tabindex="-1"></a></span>
-<span id="cb465-11"><a href="randomization-for-clinical-trials-with-r.html#cb465-11" tabindex="-1"></a>high_pam <span class="ot">&lt;-</span> <span class="fu">blockrand</span>(<span class="at">n =</span> __, </span>
-<span id="cb465-12"><a href="randomization-for-clinical-trials-with-r.html#cb465-12" tabindex="-1"></a>                     <span class="at">num.levels =</span> __, <span class="co">#eight treatments</span></span>
-<span id="cb465-13"><a href="randomization-for-clinical-trials-with-r.html#cb465-13" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;abc&quot;</span>, <span class="st">&quot;abC&quot;</span>, <span class="st">&quot;aBc&quot;</span>, <span class="st">&quot;aBC&quot;</span>,</span>
-<span id="cb465-14"><a href="randomization-for-clinical-trials-with-r.html#cb465-14" tabindex="-1"></a>             <span class="st">&quot;Abc&quot;</span>, <span class="st">&quot;AbC&quot;</span>, <span class="st">&quot;ABc&quot;</span>, <span class="st">&quot;ABC&quot;</span>), <span class="co"># arm names</span></span>
-<span id="cb465-15"><a href="randomization-for-clinical-trials-with-r.html#cb465-15" tabindex="-1"></a>                     <span class="at">stratum =</span> <span class="st">&quot;__&quot;</span>, <span class="co"># stratum name</span></span>
-<span id="cb465-16"><a href="randomization-for-clinical-trials-with-r.html#cb465-16" tabindex="-1"></a>                     <span class="at">id.prefix =</span> <span class="st">&quot;__&quot;</span>, <span class="co"># stratum abbrev</span></span>
-<span id="cb465-17"><a href="randomization-for-clinical-trials-with-r.html#cb465-17" tabindex="-1"></a>                     <span class="at">block.sizes =</span> <span class="fu">c</span>(__), <span class="co"># times arms </span></span>
-<span id="cb465-18"><a href="randomization-for-clinical-trials-with-r.html#cb465-18" tabindex="-1"></a>                     <span class="at">block.prefix =</span> <span class="st">&quot;__&quot;</span>) <span class="co"># stratum abbrev</span></span>
-<span id="cb465-19"><a href="randomization-for-clinical-trials-with-r.html#cb465-19" tabindex="-1"></a>high_pam</span></code></pre></div>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="randomization-for-clinical-trials-with-r.html#cb468-1" tabindex="-1"></a>med_pam <span class="ot">&lt;-</span> <span class="fu">blockrand</span>(<span class="at">n =</span> __, </span>
+<span id="cb468-2"><a href="randomization-for-clinical-trials-with-r.html#cb468-2" tabindex="-1"></a>                     <span class="at">num.levels =</span> __, <span class="co">#eight treatments</span></span>
+<span id="cb468-3"><a href="randomization-for-clinical-trials-with-r.html#cb468-3" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;abc&quot;</span>, <span class="st">&quot;abC&quot;</span>, <span class="st">&quot;aBc&quot;</span>, <span class="st">&quot;aBC&quot;</span>,</span>
+<span id="cb468-4"><a href="randomization-for-clinical-trials-with-r.html#cb468-4" tabindex="-1"></a>             <span class="st">&quot;Abc&quot;</span>, <span class="st">&quot;AbC&quot;</span>, <span class="st">&quot;ABc&quot;</span>, <span class="st">&quot;ABC&quot;</span>), <span class="co"># arm names</span></span>
+<span id="cb468-5"><a href="randomization-for-clinical-trials-with-r.html#cb468-5" tabindex="-1"></a>                     <span class="at">stratum =</span> <span class="st">&quot;__&quot;</span>, <span class="co"># stratum name</span></span>
+<span id="cb468-6"><a href="randomization-for-clinical-trials-with-r.html#cb468-6" tabindex="-1"></a>                     <span class="at">id.prefix =</span> <span class="st">&quot;__&quot;</span>, <span class="co"># stratum abbrev</span></span>
+<span id="cb468-7"><a href="randomization-for-clinical-trials-with-r.html#cb468-7" tabindex="-1"></a>                     <span class="at">block.sizes =</span> <span class="fu">c</span>(__), <span class="co"># times arms </span></span>
+<span id="cb468-8"><a href="randomization-for-clinical-trials-with-r.html#cb468-8" tabindex="-1"></a>                     <span class="at">block.prefix =</span> <span class="st">&quot;__&quot;</span>) <span class="co"># stratum abbrev</span></span>
+<span id="cb468-9"><a href="randomization-for-clinical-trials-with-r.html#cb468-9" tabindex="-1"></a>med_pam</span>
+<span id="cb468-10"><a href="randomization-for-clinical-trials-with-r.html#cb468-10" tabindex="-1"></a></span>
+<span id="cb468-11"><a href="randomization-for-clinical-trials-with-r.html#cb468-11" tabindex="-1"></a>high_pam <span class="ot">&lt;-</span> <span class="fu">blockrand</span>(<span class="at">n =</span> __, </span>
+<span id="cb468-12"><a href="randomization-for-clinical-trials-with-r.html#cb468-12" tabindex="-1"></a>                     <span class="at">num.levels =</span> __, <span class="co">#eight treatments</span></span>
+<span id="cb468-13"><a href="randomization-for-clinical-trials-with-r.html#cb468-13" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;abc&quot;</span>, <span class="st">&quot;abC&quot;</span>, <span class="st">&quot;aBc&quot;</span>, <span class="st">&quot;aBC&quot;</span>,</span>
+<span id="cb468-14"><a href="randomization-for-clinical-trials-with-r.html#cb468-14" tabindex="-1"></a>             <span class="st">&quot;Abc&quot;</span>, <span class="st">&quot;AbC&quot;</span>, <span class="st">&quot;ABc&quot;</span>, <span class="st">&quot;ABC&quot;</span>), <span class="co"># arm names</span></span>
+<span id="cb468-15"><a href="randomization-for-clinical-trials-with-r.html#cb468-15" tabindex="-1"></a>                     <span class="at">stratum =</span> <span class="st">&quot;__&quot;</span>, <span class="co"># stratum name</span></span>
+<span id="cb468-16"><a href="randomization-for-clinical-trials-with-r.html#cb468-16" tabindex="-1"></a>                     <span class="at">id.prefix =</span> <span class="st">&quot;__&quot;</span>, <span class="co"># stratum abbrev</span></span>
+<span id="cb468-17"><a href="randomization-for-clinical-trials-with-r.html#cb468-17" tabindex="-1"></a>                     <span class="at">block.sizes =</span> <span class="fu">c</span>(__), <span class="co"># times arms </span></span>
+<span id="cb468-18"><a href="randomization-for-clinical-trials-with-r.html#cb468-18" tabindex="-1"></a>                     <span class="at">block.prefix =</span> <span class="st">&quot;__&quot;</span>) <span class="co"># stratum abbrev</span></span>
+<span id="cb468-19"><a href="randomization-for-clinical-trials-with-r.html#cb468-19" tabindex="-1"></a>high_pam</span></code></pre></div>
 <p>Great!</p>
 <p>Now try to</p>
 <ul>
@@ -1542,19 +1543,19 @@ You can then paste it into your local version of RStudio, edit it, and run it.</
 <li><p>print these as cards to a pdf file</p></li>
 </ul>
 <p>Edit the code chunk below to produce the pdf file</p>
-<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="randomization-for-clinical-trials-with-r.html#cb466-1" tabindex="-1"></a>cd_study <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(__,__,__) <span class="co"># bind together the 3 strata into one dataframe</span></span>
-<span id="cb466-2"><a href="randomization-for-clinical-trials-with-r.html#cb466-2" tabindex="-1"></a></span>
-<span id="cb466-3"><a href="randomization-for-clinical-trials-with-r.html#cb466-3" tabindex="-1"></a>blockrand<span class="sc">::</span><span class="fu">plotblockrand</span>(__, <span class="co"># input dataframe</span></span>
-<span id="cb466-4"><a href="randomization-for-clinical-trials-with-r.html#cb466-4" tabindex="-1"></a>                    <span class="at">file =</span> <span class="st">&quot;cd_study.pdf&quot;</span>, <span class="co"># output pdf</span></span>
-<span id="cb466-5"><a href="randomization-for-clinical-trials-with-r.html#cb466-5" tabindex="-1"></a>                    <span class="co"># top hidden text with assignment</span></span>
-<span id="cb466-6"><a href="randomization-for-clinical-trials-with-r.html#cb466-6" tabindex="-1"></a>      <span class="at">top=</span><span class="fu">list</span>(<span class="at">text=</span><span class="fu">c</span>(<span class="st">&#39;CD Study&#39;</span>,<span class="st">&#39;Patient: %ID%&#39;</span>,<span class="st">&#39;Treatment: %__%&#39;</span>),</span>
-<span id="cb466-7"><a href="randomization-for-clinical-trials-with-r.html#cb466-7" tabindex="-1"></a>                <span class="at">col=</span><span class="fu">c</span>(<span class="st">&#39;orange&#39;</span>,<span class="st">&#39;blue&#39;</span>,<span class="st">&#39;red&#39;</span>),<span class="at">font=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">4</span>)),</span>
-<span id="cb466-8"><a href="randomization-for-clinical-trials-with-r.html#cb466-8" tabindex="-1"></a>      <span class="co"># middle text to show through window of # 10 envelope </span></span>
-<span id="cb466-9"><a href="randomization-for-clinical-trials-with-r.html#cb466-9" tabindex="-1"></a>    <span class="at">middle=</span><span class="fu">list</span>(<span class="at">text=</span><span class="fu">c</span>(<span class="st">&quot;CD Study&quot;</span>,<span class="st">&quot;Stratum: %STRAT%&quot;</span>,<span class="st">&quot;Patient: %__%&quot;</span>),</span>
-<span id="cb466-10"><a href="randomization-for-clinical-trials-with-r.html#cb466-10" tabindex="-1"></a>               <span class="at">col=</span><span class="fu">c</span>(<span class="st">&#39;black&#39;</span>,<span class="st">&#39;red&#39;</span>,<span class="st">&#39;cadetblue&#39;</span>),<span class="at">font=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)),</span>
-<span id="cb466-11"><a href="randomization-for-clinical-trials-with-r.html#cb466-11" tabindex="-1"></a>    <span class="co"># bottom text- any instructions to study coordinator</span></span>
-<span id="cb466-12"><a href="randomization-for-clinical-trials-with-r.html#cb466-12" tabindex="-1"></a>   <span class="at">bottom=</span><span class="st">&quot;Call 123-4567 to report patient entry&quot;</span>,</span>
-<span id="cb466-13"><a href="randomization-for-clinical-trials-with-r.html#cb466-13" tabindex="-1"></a>   <span class="at">cut.marks=</span><span class="cn">TRUE</span>) <span class="co"># add cut marks - 4 per page</span></span></code></pre></div>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="randomization-for-clinical-trials-with-r.html#cb469-1" tabindex="-1"></a>cd_study <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(__,__,__) <span class="co"># bind together the 3 strata into one dataframe</span></span>
+<span id="cb469-2"><a href="randomization-for-clinical-trials-with-r.html#cb469-2" tabindex="-1"></a></span>
+<span id="cb469-3"><a href="randomization-for-clinical-trials-with-r.html#cb469-3" tabindex="-1"></a>blockrand<span class="sc">::</span><span class="fu">plotblockrand</span>(__, <span class="co"># input dataframe</span></span>
+<span id="cb469-4"><a href="randomization-for-clinical-trials-with-r.html#cb469-4" tabindex="-1"></a>                    <span class="at">file =</span> <span class="st">&quot;cd_study.pdf&quot;</span>, <span class="co"># output pdf</span></span>
+<span id="cb469-5"><a href="randomization-for-clinical-trials-with-r.html#cb469-5" tabindex="-1"></a>                    <span class="co"># top hidden text with assignment</span></span>
+<span id="cb469-6"><a href="randomization-for-clinical-trials-with-r.html#cb469-6" tabindex="-1"></a>      <span class="at">top=</span><span class="fu">list</span>(<span class="at">text=</span><span class="fu">c</span>(<span class="st">&#39;CD Study&#39;</span>,<span class="st">&#39;Patient: %ID%&#39;</span>,<span class="st">&#39;Treatment: %__%&#39;</span>),</span>
+<span id="cb469-7"><a href="randomization-for-clinical-trials-with-r.html#cb469-7" tabindex="-1"></a>                <span class="at">col=</span><span class="fu">c</span>(<span class="st">&#39;orange&#39;</span>,<span class="st">&#39;blue&#39;</span>,<span class="st">&#39;red&#39;</span>),<span class="at">font=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">4</span>)),</span>
+<span id="cb469-8"><a href="randomization-for-clinical-trials-with-r.html#cb469-8" tabindex="-1"></a>      <span class="co"># middle text to show through window of # 10 envelope </span></span>
+<span id="cb469-9"><a href="randomization-for-clinical-trials-with-r.html#cb469-9" tabindex="-1"></a>    <span class="at">middle=</span><span class="fu">list</span>(<span class="at">text=</span><span class="fu">c</span>(<span class="st">&quot;CD Study&quot;</span>,<span class="st">&quot;Stratum: %STRAT%&quot;</span>,<span class="st">&quot;Patient: %__%&quot;</span>),</span>
+<span id="cb469-10"><a href="randomization-for-clinical-trials-with-r.html#cb469-10" tabindex="-1"></a>               <span class="at">col=</span><span class="fu">c</span>(<span class="st">&#39;black&#39;</span>,<span class="st">&#39;red&#39;</span>,<span class="st">&#39;cadetblue&#39;</span>),<span class="at">font=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)),</span>
+<span id="cb469-11"><a href="randomization-for-clinical-trials-with-r.html#cb469-11" tabindex="-1"></a>    <span class="co"># bottom text- any instructions to study coordinator</span></span>
+<span id="cb469-12"><a href="randomization-for-clinical-trials-with-r.html#cb469-12" tabindex="-1"></a>   <span class="at">bottom=</span><span class="st">&quot;Call 123-4567 to report patient entry&quot;</span>,</span>
+<span id="cb469-13"><a href="randomization-for-clinical-trials-with-r.html#cb469-13" tabindex="-1"></a>   <span class="at">cut.marks=</span><span class="cn">TRUE</span>) <span class="co"># add cut marks - 4 per page</span></span></code></pre></div>
 </div>
 <div id="now-freestyle" class="section level2 hasAnchor" number="24.3">
 <h2><span class="header-section-number">24.3</span> Now Freestyle<a href="randomization-for-clinical-trials-with-r.html#now-freestyle" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -1570,55 +1571,55 @@ You can then paste it into your local version of RStudio, edit it, and run it.</
 <li><p>160 per arm</p></li>
 </ul>
 <p>Edit the code block below for the first stratum</p>
-<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="randomization-for-clinical-trials-with-r.html#cb467-1" tabindex="-1"></a>mhbh <span class="ot">&lt;-</span> <span class="fu">blockrand</span>(<span class="at">n =</span> __, <span class="co"># treatment arms</span></span>
-<span id="cb467-2"><a href="randomization-for-clinical-trials-with-r.html#cb467-2" tabindex="-1"></a>                     <span class="at">num.levels =</span> __, <span class="co"># of treatments</span></span>
-<span id="cb467-3"><a href="randomization-for-clinical-trials-with-r.html#cb467-3" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;placebo&quot;</span>, <span class="st">&quot;probiotic&quot;</span>, <span class="st">&quot;synbiotic&quot;</span>), <span class="co"># arm names</span></span>
-<span id="cb467-4"><a href="randomization-for-clinical-trials-with-r.html#cb467-4" tabindex="-1"></a>                     <span class="at">stratum =</span> <span class="st">&quot;__,__&quot;</span>, <span class="co"># stratum name</span></span>
-<span id="cb467-5"><a href="randomization-for-clinical-trials-with-r.html#cb467-5" tabindex="-1"></a>                     <span class="at">id.prefix =</span> <span class="st">&quot;mhbh&quot;</span>, <span class="co"># stratum abbrev</span></span>
-<span id="cb467-6"><a href="randomization-for-clinical-trials-with-r.html#cb467-6" tabindex="-1"></a>                     <span class="at">block.sizes =</span> <span class="fu">c</span>(__,__,__,__), <span class="co"># times arms </span></span>
-<span id="cb467-7"><a href="randomization-for-clinical-trials-with-r.html#cb467-7" tabindex="-1"></a>                     <span class="at">block.prefix =</span> <span class="st">&quot;__&quot;</span>) <span class="co"># stratum abbrev</span></span>
-<span id="cb467-8"><a href="randomization-for-clinical-trials-with-r.html#cb467-8" tabindex="-1"></a>mhbh</span></code></pre></div>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="randomization-for-clinical-trials-with-r.html#cb470-1" tabindex="-1"></a>mhbh <span class="ot">&lt;-</span> <span class="fu">blockrand</span>(<span class="at">n =</span> __, <span class="co"># treatment arms</span></span>
+<span id="cb470-2"><a href="randomization-for-clinical-trials-with-r.html#cb470-2" tabindex="-1"></a>                     <span class="at">num.levels =</span> __, <span class="co"># of treatments</span></span>
+<span id="cb470-3"><a href="randomization-for-clinical-trials-with-r.html#cb470-3" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;placebo&quot;</span>, <span class="st">&quot;probiotic&quot;</span>, <span class="st">&quot;synbiotic&quot;</span>), <span class="co"># arm names</span></span>
+<span id="cb470-4"><a href="randomization-for-clinical-trials-with-r.html#cb470-4" tabindex="-1"></a>                     <span class="at">stratum =</span> <span class="st">&quot;__,__&quot;</span>, <span class="co"># stratum name</span></span>
+<span id="cb470-5"><a href="randomization-for-clinical-trials-with-r.html#cb470-5" tabindex="-1"></a>                     <span class="at">id.prefix =</span> <span class="st">&quot;mhbh&quot;</span>, <span class="co"># stratum abbrev</span></span>
+<span id="cb470-6"><a href="randomization-for-clinical-trials-with-r.html#cb470-6" tabindex="-1"></a>                     <span class="at">block.sizes =</span> <span class="fu">c</span>(__,__,__,__), <span class="co"># times arms </span></span>
+<span id="cb470-7"><a href="randomization-for-clinical-trials-with-r.html#cb470-7" tabindex="-1"></a>                     <span class="at">block.prefix =</span> <span class="st">&quot;__&quot;</span>) <span class="co"># stratum abbrev</span></span>
+<span id="cb470-8"><a href="randomization-for-clinical-trials-with-r.html#cb470-8" tabindex="-1"></a>mhbh</span></code></pre></div>
 <p>Edit the code block below for the remaining strata</p>
-<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="randomization-for-clinical-trials-with-r.html#cb468-1" tabindex="-1"></a>mhbl <span class="ot">&lt;-</span> <span class="fu">blockrand</span>(<span class="at">n =</span> __, <span class="co"># treatment arms</span></span>
-<span id="cb468-2"><a href="randomization-for-clinical-trials-with-r.html#cb468-2" tabindex="-1"></a>                     <span class="at">num.levels =</span> <span class="dv">3</span>, <span class="co"># of treatments</span></span>
-<span id="cb468-3"><a href="randomization-for-clinical-trials-with-r.html#cb468-3" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;placebo&quot;</span>, <span class="st">&quot;probiotic&quot;</span>, <span class="st">&quot;__&quot;</span>), <span class="co"># arm names</span></span>
-<span id="cb468-4"><a href="randomization-for-clinical-trials-with-r.html#cb468-4" tabindex="-1"></a>                     <span class="at">stratum =</span> <span class="st">&quot;msi_hi.bmi_lo&quot;</span>, <span class="co"># stratum name</span></span>
-<span id="cb468-5"><a href="randomization-for-clinical-trials-with-r.html#cb468-5" tabindex="-1"></a>                     <span class="at">id.prefix =</span> <span class="st">&quot;__&quot;</span>, <span class="co"># stratum abbrev</span></span>
-<span id="cb468-6"><a href="randomization-for-clinical-trials-with-r.html#cb468-6" tabindex="-1"></a>                     <span class="at">block.sizes =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,__,__), <span class="co"># times arms </span></span>
-<span id="cb468-7"><a href="randomization-for-clinical-trials-with-r.html#cb468-7" tabindex="-1"></a>                     <span class="at">block.prefix =</span> <span class="st">&quot;MHBL&quot;</span>) <span class="co"># stratum abbrev</span></span>
-<span id="cb468-8"><a href="randomization-for-clinical-trials-with-r.html#cb468-8" tabindex="-1"></a>mhbl</span>
-<span id="cb468-9"><a href="randomization-for-clinical-trials-with-r.html#cb468-9" tabindex="-1"></a></span>
-<span id="cb468-10"><a href="randomization-for-clinical-trials-with-r.html#cb468-10" tabindex="-1"></a>mlbl <span class="ot">&lt;-</span> <span class="fu">blockrand</span>(<span class="at">n =</span> <span class="dv">160</span>, <span class="co"># treatment arms</span></span>
-<span id="cb468-11"><a href="randomization-for-clinical-trials-with-r.html#cb468-11" tabindex="-1"></a>                     <span class="at">num.levels =</span> __, <span class="co"># of treatments</span></span>
-<span id="cb468-12"><a href="randomization-for-clinical-trials-with-r.html#cb468-12" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;placebo&quot;</span>, <span class="st">&quot;__&quot;</span>, <span class="st">&quot;synbiotic&quot;</span>), <span class="co"># arm names</span></span>
-<span id="cb468-13"><a href="randomization-for-clinical-trials-with-r.html#cb468-13" tabindex="-1"></a>                     <span class="at">stratum =</span> <span class="st">&quot;__&quot;</span>, <span class="co"># stratum name</span></span>
-<span id="cb468-14"><a href="randomization-for-clinical-trials-with-r.html#cb468-14" tabindex="-1"></a>                     <span class="at">id.prefix =</span> <span class="st">&quot;mlbl&quot;</span>, <span class="co"># stratum abbrev</span></span>
-<span id="cb468-15"><a href="randomization-for-clinical-trials-with-r.html#cb468-15" tabindex="-1"></a>                     <span class="at">block.sizes =</span> <span class="fu">c</span>(__,__,<span class="dv">3</span>,<span class="dv">4</span>), <span class="co"># times arms </span></span>
-<span id="cb468-16"><a href="randomization-for-clinical-trials-with-r.html#cb468-16" tabindex="-1"></a>                     <span class="at">block.prefix =</span> <span class="st">&quot;MLBL&quot;</span>) <span class="co"># stratum abbrev</span></span>
-<span id="cb468-17"><a href="randomization-for-clinical-trials-with-r.html#cb468-17" tabindex="-1"></a>mlbl</span>
-<span id="cb468-18"><a href="randomization-for-clinical-trials-with-r.html#cb468-18" tabindex="-1"></a></span>
-<span id="cb468-19"><a href="randomization-for-clinical-trials-with-r.html#cb468-19" tabindex="-1"></a>mlbh <span class="ot">&lt;-</span> <span class="fu">blockrand</span>(<span class="at">n =</span> __, <span class="co"># treatment arms</span></span>
-<span id="cb468-20"><a href="randomization-for-clinical-trials-with-r.html#cb468-20" tabindex="-1"></a>                     <span class="at">num.levels =</span> <span class="dv">3</span>, <span class="co"># of treatments</span></span>
-<span id="cb468-21"><a href="randomization-for-clinical-trials-with-r.html#cb468-21" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;__&quot;</span>, <span class="st">&quot;probiotic&quot;</span>, <span class="st">&quot;synbiotic&quot;</span>), <span class="co"># arm names</span></span>
-<span id="cb468-22"><a href="randomization-for-clinical-trials-with-r.html#cb468-22" tabindex="-1"></a>                     <span class="at">stratum =</span> <span class="st">&quot;msi_lo.bmi_hi&quot;</span>, <span class="co"># stratum name</span></span>
-<span id="cb468-23"><a href="randomization-for-clinical-trials-with-r.html#cb468-23" tabindex="-1"></a>                     <span class="at">id.prefix =</span> <span class="st">&quot;__&quot;</span>, <span class="co"># stratum abbrev</span></span>
-<span id="cb468-24"><a href="randomization-for-clinical-trials-with-r.html#cb468-24" tabindex="-1"></a>                     <span class="at">block.sizes =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>), <span class="co"># times arms </span></span>
-<span id="cb468-25"><a href="randomization-for-clinical-trials-with-r.html#cb468-25" tabindex="-1"></a>                     <span class="at">block.prefix =</span> <span class="st">&quot;MLBH&quot;</span>) <span class="co"># stratum abbrev</span></span>
-<span id="cb468-26"><a href="randomization-for-clinical-trials-with-r.html#cb468-26" tabindex="-1"></a>mlbh</span></code></pre></div>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="randomization-for-clinical-trials-with-r.html#cb471-1" tabindex="-1"></a>mhbl <span class="ot">&lt;-</span> <span class="fu">blockrand</span>(<span class="at">n =</span> __, <span class="co"># treatment arms</span></span>
+<span id="cb471-2"><a href="randomization-for-clinical-trials-with-r.html#cb471-2" tabindex="-1"></a>                     <span class="at">num.levels =</span> <span class="dv">3</span>, <span class="co"># of treatments</span></span>
+<span id="cb471-3"><a href="randomization-for-clinical-trials-with-r.html#cb471-3" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;placebo&quot;</span>, <span class="st">&quot;probiotic&quot;</span>, <span class="st">&quot;__&quot;</span>), <span class="co"># arm names</span></span>
+<span id="cb471-4"><a href="randomization-for-clinical-trials-with-r.html#cb471-4" tabindex="-1"></a>                     <span class="at">stratum =</span> <span class="st">&quot;msi_hi.bmi_lo&quot;</span>, <span class="co"># stratum name</span></span>
+<span id="cb471-5"><a href="randomization-for-clinical-trials-with-r.html#cb471-5" tabindex="-1"></a>                     <span class="at">id.prefix =</span> <span class="st">&quot;__&quot;</span>, <span class="co"># stratum abbrev</span></span>
+<span id="cb471-6"><a href="randomization-for-clinical-trials-with-r.html#cb471-6" tabindex="-1"></a>                     <span class="at">block.sizes =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,__,__), <span class="co"># times arms </span></span>
+<span id="cb471-7"><a href="randomization-for-clinical-trials-with-r.html#cb471-7" tabindex="-1"></a>                     <span class="at">block.prefix =</span> <span class="st">&quot;MHBL&quot;</span>) <span class="co"># stratum abbrev</span></span>
+<span id="cb471-8"><a href="randomization-for-clinical-trials-with-r.html#cb471-8" tabindex="-1"></a>mhbl</span>
+<span id="cb471-9"><a href="randomization-for-clinical-trials-with-r.html#cb471-9" tabindex="-1"></a></span>
+<span id="cb471-10"><a href="randomization-for-clinical-trials-with-r.html#cb471-10" tabindex="-1"></a>mlbl <span class="ot">&lt;-</span> <span class="fu">blockrand</span>(<span class="at">n =</span> <span class="dv">160</span>, <span class="co"># treatment arms</span></span>
+<span id="cb471-11"><a href="randomization-for-clinical-trials-with-r.html#cb471-11" tabindex="-1"></a>                     <span class="at">num.levels =</span> __, <span class="co"># of treatments</span></span>
+<span id="cb471-12"><a href="randomization-for-clinical-trials-with-r.html#cb471-12" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;placebo&quot;</span>, <span class="st">&quot;__&quot;</span>, <span class="st">&quot;synbiotic&quot;</span>), <span class="co"># arm names</span></span>
+<span id="cb471-13"><a href="randomization-for-clinical-trials-with-r.html#cb471-13" tabindex="-1"></a>                     <span class="at">stratum =</span> <span class="st">&quot;__&quot;</span>, <span class="co"># stratum name</span></span>
+<span id="cb471-14"><a href="randomization-for-clinical-trials-with-r.html#cb471-14" tabindex="-1"></a>                     <span class="at">id.prefix =</span> <span class="st">&quot;mlbl&quot;</span>, <span class="co"># stratum abbrev</span></span>
+<span id="cb471-15"><a href="randomization-for-clinical-trials-with-r.html#cb471-15" tabindex="-1"></a>                     <span class="at">block.sizes =</span> <span class="fu">c</span>(__,__,<span class="dv">3</span>,<span class="dv">4</span>), <span class="co"># times arms </span></span>
+<span id="cb471-16"><a href="randomization-for-clinical-trials-with-r.html#cb471-16" tabindex="-1"></a>                     <span class="at">block.prefix =</span> <span class="st">&quot;MLBL&quot;</span>) <span class="co"># stratum abbrev</span></span>
+<span id="cb471-17"><a href="randomization-for-clinical-trials-with-r.html#cb471-17" tabindex="-1"></a>mlbl</span>
+<span id="cb471-18"><a href="randomization-for-clinical-trials-with-r.html#cb471-18" tabindex="-1"></a></span>
+<span id="cb471-19"><a href="randomization-for-clinical-trials-with-r.html#cb471-19" tabindex="-1"></a>mlbh <span class="ot">&lt;-</span> <span class="fu">blockrand</span>(<span class="at">n =</span> __, <span class="co"># treatment arms</span></span>
+<span id="cb471-20"><a href="randomization-for-clinical-trials-with-r.html#cb471-20" tabindex="-1"></a>                     <span class="at">num.levels =</span> <span class="dv">3</span>, <span class="co"># of treatments</span></span>
+<span id="cb471-21"><a href="randomization-for-clinical-trials-with-r.html#cb471-21" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;__&quot;</span>, <span class="st">&quot;probiotic&quot;</span>, <span class="st">&quot;synbiotic&quot;</span>), <span class="co"># arm names</span></span>
+<span id="cb471-22"><a href="randomization-for-clinical-trials-with-r.html#cb471-22" tabindex="-1"></a>                     <span class="at">stratum =</span> <span class="st">&quot;msi_lo.bmi_hi&quot;</span>, <span class="co"># stratum name</span></span>
+<span id="cb471-23"><a href="randomization-for-clinical-trials-with-r.html#cb471-23" tabindex="-1"></a>                     <span class="at">id.prefix =</span> <span class="st">&quot;__&quot;</span>, <span class="co"># stratum abbrev</span></span>
+<span id="cb471-24"><a href="randomization-for-clinical-trials-with-r.html#cb471-24" tabindex="-1"></a>                     <span class="at">block.sizes =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>), <span class="co"># times arms </span></span>
+<span id="cb471-25"><a href="randomization-for-clinical-trials-with-r.html#cb471-25" tabindex="-1"></a>                     <span class="at">block.prefix =</span> <span class="st">&quot;MLBH&quot;</span>) <span class="co"># stratum abbrev</span></span>
+<span id="cb471-26"><a href="randomization-for-clinical-trials-with-r.html#cb471-26" tabindex="-1"></a>mlbh</span></code></pre></div>
 <p>Edit the code block below to bind the strata together and print the cards</p>
-<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="randomization-for-clinical-trials-with-r.html#cb469-1" tabindex="-1"></a>adenoma_study <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(mlbl, mlbh, mhbh, mhbl) <span class="co"># bind together the strata into one dataframe</span></span>
-<span id="cb469-2"><a href="randomization-for-clinical-trials-with-r.html#cb469-2" tabindex="-1"></a></span>
-<span id="cb469-3"><a href="randomization-for-clinical-trials-with-r.html#cb469-3" tabindex="-1"></a>blockrand<span class="sc">::</span><span class="fu">plotblockrand</span>(__, <span class="co"># input dataframe</span></span>
-<span id="cb469-4"><a href="randomization-for-clinical-trials-with-r.html#cb469-4" tabindex="-1"></a>                    <span class="at">file =</span> <span class="st">&quot;adenoma_cards.pdf&quot;</span>, <span class="co"># output pdf</span></span>
-<span id="cb469-5"><a href="randomization-for-clinical-trials-with-r.html#cb469-5" tabindex="-1"></a>                    <span class="co"># top hidden text with assignment</span></span>
-<span id="cb469-6"><a href="randomization-for-clinical-trials-with-r.html#cb469-6" tabindex="-1"></a><span class="at">top=</span><span class="fu">list</span>(<span class="at">text=</span><span class="fu">c</span>(<span class="st">&#39;Adenoma Study&#39;</span>,<span class="st">&#39;Patient: %__%&#39;</span>,<span class="st">&#39;Treatment: %TREAT%&#39;</span>),</span>
-<span id="cb469-7"><a href="randomization-for-clinical-trials-with-r.html#cb469-7" tabindex="-1"></a>                <span class="at">col=</span><span class="fu">c</span>(<span class="st">&#39;orange&#39;</span>,<span class="st">&#39;blue&#39;</span>,<span class="st">&#39;red&#39;</span>),<span class="at">font=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">4</span>)),</span>
-<span id="cb469-8"><a href="randomization-for-clinical-trials-with-r.html#cb469-8" tabindex="-1"></a>      <span class="co"># middle text to show through window of # 10 envelope </span></span>
-<span id="cb469-9"><a href="randomization-for-clinical-trials-with-r.html#cb469-9" tabindex="-1"></a>    <span class="at">middle=</span><span class="fu">list</span>(<span class="at">text=</span><span class="fu">c</span>(<span class="st">&quot;Adenoma Study&quot;</span>,<span class="st">&quot;Stratum: %__%&quot;</span>,<span class="st">&quot;Patient: %ID%&quot;</span>),</span>
-<span id="cb469-10"><a href="randomization-for-clinical-trials-with-r.html#cb469-10" tabindex="-1"></a>               <span class="at">col=</span><span class="fu">c</span>(<span class="st">&#39;black&#39;</span>,<span class="st">&#39;red&#39;</span>,<span class="st">&#39;cadetblue&#39;</span>),<span class="at">font=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)),</span>
-<span id="cb469-11"><a href="randomization-for-clinical-trials-with-r.html#cb469-11" tabindex="-1"></a>    <span class="co"># bottom text- any instructions to study coordinator</span></span>
-<span id="cb469-12"><a href="randomization-for-clinical-trials-with-r.html#cb469-12" tabindex="-1"></a>   <span class="at">bottom=</span><span class="st">&quot;Call 123-4567 to report patient entry. </span><span class="sc">\n</span><span class="st">Instruct participant to avoid antibiotics and stop aspirin&quot;</span>,</span>
-<span id="cb469-13"><a href="randomization-for-clinical-trials-with-r.html#cb469-13" tabindex="-1"></a>   <span class="at">cut.marks=</span><span class="cn">TRUE</span>) <span class="co"># add cut marks - 4 per page</span></span></code></pre></div>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="randomization-for-clinical-trials-with-r.html#cb472-1" tabindex="-1"></a>adenoma_study <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(mlbl, mlbh, mhbh, mhbl) <span class="co"># bind together the strata into one dataframe</span></span>
+<span id="cb472-2"><a href="randomization-for-clinical-trials-with-r.html#cb472-2" tabindex="-1"></a></span>
+<span id="cb472-3"><a href="randomization-for-clinical-trials-with-r.html#cb472-3" tabindex="-1"></a>blockrand<span class="sc">::</span><span class="fu">plotblockrand</span>(__, <span class="co"># input dataframe</span></span>
+<span id="cb472-4"><a href="randomization-for-clinical-trials-with-r.html#cb472-4" tabindex="-1"></a>                    <span class="at">file =</span> <span class="st">&quot;adenoma_cards.pdf&quot;</span>, <span class="co"># output pdf</span></span>
+<span id="cb472-5"><a href="randomization-for-clinical-trials-with-r.html#cb472-5" tabindex="-1"></a>                    <span class="co"># top hidden text with assignment</span></span>
+<span id="cb472-6"><a href="randomization-for-clinical-trials-with-r.html#cb472-6" tabindex="-1"></a><span class="at">top=</span><span class="fu">list</span>(<span class="at">text=</span><span class="fu">c</span>(<span class="st">&#39;Adenoma Study&#39;</span>,<span class="st">&#39;Patient: %__%&#39;</span>,<span class="st">&#39;Treatment: %TREAT%&#39;</span>),</span>
+<span id="cb472-7"><a href="randomization-for-clinical-trials-with-r.html#cb472-7" tabindex="-1"></a>                <span class="at">col=</span><span class="fu">c</span>(<span class="st">&#39;orange&#39;</span>,<span class="st">&#39;blue&#39;</span>,<span class="st">&#39;red&#39;</span>),<span class="at">font=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">4</span>)),</span>
+<span id="cb472-8"><a href="randomization-for-clinical-trials-with-r.html#cb472-8" tabindex="-1"></a>      <span class="co"># middle text to show through window of # 10 envelope </span></span>
+<span id="cb472-9"><a href="randomization-for-clinical-trials-with-r.html#cb472-9" tabindex="-1"></a>    <span class="at">middle=</span><span class="fu">list</span>(<span class="at">text=</span><span class="fu">c</span>(<span class="st">&quot;Adenoma Study&quot;</span>,<span class="st">&quot;Stratum: %__%&quot;</span>,<span class="st">&quot;Patient: %ID%&quot;</span>),</span>
+<span id="cb472-10"><a href="randomization-for-clinical-trials-with-r.html#cb472-10" tabindex="-1"></a>               <span class="at">col=</span><span class="fu">c</span>(<span class="st">&#39;black&#39;</span>,<span class="st">&#39;red&#39;</span>,<span class="st">&#39;cadetblue&#39;</span>),<span class="at">font=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)),</span>
+<span id="cb472-11"><a href="randomization-for-clinical-trials-with-r.html#cb472-11" tabindex="-1"></a>    <span class="co"># bottom text- any instructions to study coordinator</span></span>
+<span id="cb472-12"><a href="randomization-for-clinical-trials-with-r.html#cb472-12" tabindex="-1"></a>   <span class="at">bottom=</span><span class="st">&quot;Call 123-4567 to report patient entry. </span><span class="sc">\n</span><span class="st">Instruct participant to avoid antibiotics and stop aspirin&quot;</span>,</span>
+<span id="cb472-13"><a href="randomization-for-clinical-trials-with-r.html#cb472-13" tabindex="-1"></a>   <span class="at">cut.marks=</span><span class="cn">TRUE</span>) <span class="co"># add cut marks - 4 per page</span></span></code></pre></div>
 
 </div>
 </div>

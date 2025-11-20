@@ -151,7 +151,7 @@ copy the hint so that you can paste it into the Exercise box.
 
 <!---LEARNR TUTORIAL EX 1-->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe2" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter1/" data-external="1" scrolling="yes" data-external="1">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe2" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-server/shiny-apps/learn_filter1/" data-external="1" scrolling="yes" data-external="1">
 
 </iframe>
 
@@ -208,7 +208,7 @@ copy the hint so that you can paste it into the Exercise box.
 
 <!---LEARNR TUTORIAL EX 2-->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe4" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter2/" data-external="1" scrolling="yes" data-external="1">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe4" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-server/shiny-apps/learn_filter2/" data-external="1" scrolling="yes" data-external="1">
 
 </iframe>
 
@@ -261,7 +261,7 @@ copy the hint so that you can paste it into the Exercise box.
 
 <!---LEARNR TUTORIAL EX 3-->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe6" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter3/" scrolling="yes" data-external="1">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe6" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-server/shiny-apps/learn_filter3/" scrolling="yes" data-external="1">
 
 </iframe>
 
@@ -316,7 +316,7 @@ copy the hint so that you can paste it into the Exercise box.
 
 <!---LEARNR TUTORIAL EX 4-->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter4/" data-external="1" scrolling="yes">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-server/shiny-apps/learn_filter4/" data-external="1" scrolling="yes">
 
 </iframe>
 
@@ -392,7 +392,7 @@ You saw several examples of filtering missing data, including
 
 <!---LEARNR TUTORIAL EX 5-->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter5/" data-external="1" scrolling="yes">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-server/shiny-apps/learn_filter5/" data-external="1" scrolling="yes">
 
 </iframe>
 
@@ -435,7 +435,7 @@ You saw several examples of filtering duplicate data, including
 
 <!---LEARNR TUTORIAL EX 6-->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter6/" data-external="1" scrolling="yes">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-server/shiny-apps/learn_filter6/" data-external="1" scrolling="yes">
 
 </iframe>
 
@@ -477,7 +477,7 @@ You saw several examples of slicing data, including
 
 <!---LEARNR TUTORIAL EX 7-->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter7/" data-external="1" scrolling="yes">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-server/shiny-apps/learn_filter7/" data-external="1" scrolling="yes">
 
 </iframe>
 
@@ -513,7 +513,7 @@ You saw several examples of sampling data, including
 
 <!---LEARNR TUTORIAL EX 8-->
 
-<iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-apps/learn_filter8/" data-external="1" scrolling="yes">
+<iframe style="margin:0 auto; border: solid black;" id="myIframe8" width="763" height="763" src="https://higginslab-rshiny.med.umich.edu/shiny-server/shiny-apps/learn_filter8/" data-external="1" scrolling="yes">
 
 </iframe>
 

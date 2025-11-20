@@ -203,7 +203,7 @@ devtools::install_github("ekholme/blueycolors")
 ```
 
 ```
-## Skipping install of 'blueycolors' from a github remote, the SHA1 (9c72bd5c) has not changed since last install.
+## Skipping install of 'blueycolors' from a github remote, the SHA1 (8558de22) has not changed since last install.
 ##   Use `force = TRUE` to force installation
 ```
 

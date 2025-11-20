@@ -28,7 +28,7 @@ medicaldata::polyps %>%
 ```
 
 ```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
 
 ```
@@ -201,7 +201,7 @@ mockstudy %>%
 ```
 
 ```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
 
 <img src="io48-univariate_distrib_plots_files/figure-html/unnamed-chunk-4-1.png" width="672" />
@@ -218,7 +218,7 @@ mockstudy %>%
 ```
 
 ```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
 
 <img src="io48-univariate_distrib_plots_files/figure-html/unnamed-chunk-5-1.png" width="672" />
@@ -235,7 +235,7 @@ mockstudy %>%
 ```
 
 ```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
 
 <img src="io48-univariate_distrib_plots_files/figure-html/unnamed-chunk-6-1.png" width="672" />

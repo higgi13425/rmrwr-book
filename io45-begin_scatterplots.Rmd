@@ -406,5 +406,40 @@ mtcars %>%
 
 ```
 
-# Labels Other Ways
+## Labels Other Ways
 labs() is the most convenient way to label your plot and keep all of your labels organized. There are some older ways to do this as well. You may see these in other people's code. ggtitle("My title") also works for titles. xlab("xaxis") and ylab("my_y_axis") also work for specific axis labels.
+
+## Labels for variables
+Several other statistical programming languages (like SPSS and SAS) allow you to assign labels to variables in your dataset. R does not do this natively, but the {labelled} package and {gt}, {sjlabelled}, and {Hmisc} allow you to add more informative, pretty labels to short variable names that are useful in coding. You can also access these labels when you import data files from Stata, SAS, or SPSS files with the {haven} package.
+
+With ggplot2 version 4.0.0, ggplot2 now has the ability to access these labels. Check in your local RStudio under Tools/Update Packages.
+Select ggplot2 to update (or many if you have time).
+Restart R and library(ggplot2) again to get the new version.
+You can check in the package pane to see that you have version 4.0.0 or higher.
+
+Now let's try this out.-
+
+```{r labelled}
+library(labelled)
+library(tidyverse)
+
+View(mtcars)
+
+#apply labels to mtcars
+mtcars2 <- mtcars %>% rownames_to_column("car") |> 
+  mutate(cyl = factor(cyl),
+         am = factor(am, levels = c(0,1), labels = c("automatic", "manual")))
+
+var_label(mtcars2) <- c(car = "Car Model", mpg = "Miles Per Gallon", cyl = "Cylinders", disp = "Displacement (cu.in.)", hp = "Horsepower", drat = "Rear Axle Ratio", wt = "Weight (1000 lbs)", qsec = "1/4 mile time", vs = "Engine (0 = V/S, 1 = straight)", am = "Transmission (0 = auto, 1 = manual)", gear = "Gears", carb = "Carburetors")
+
+View(mtcars2)
+
+#now plot with labelled variables
+mtcars2 %>% 
+  ggplot(aes(x=wt, y = mpg, color=cyl, 
+             size=disp, shape = am)) +
+  geom_point() + 
+  theme(legend.position = "bottom")
+```
+
+You may not need to use the labs() function quite as much anymore, as ggplot2 will automatically access the variable labels. You can still use labs() to modify or add to these labels, and {ggtext} to add markdown and color to your titles and labels.

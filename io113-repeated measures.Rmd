@@ -1,0 +1,385 @@
+---
+title: "Repeated Measures with R"
+author: "Peter Higgins"
+date: "5/28/2025"
+output: html_document
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(webexercises)
+library(usethis)
+library(ggpubr)
+library(rstatix)
+library(datarium)
+```
+
+# Repeated Measures with R
+
+This chapter is part of the **Stats** pathway. <br> Packages needed for this chapter include {tidyverse}, {ggpubr}, {datarium}, and {rstatix}. 
+
+It is quite common in clinical research to follow subjects over time, and to get repeated measures on these patients at each clinic visit, each laboratory test, each procedure, etc. This can be very helpful to see the natural history of a disease or the effect of a treatment over time. However, it does create some challenges for data analysis, as the repeated measures on each subject are **not independent** of each other. This means that we cannot use standard statistical tests that assume independence of observations, such as t-tests, without considering the independence. Instead, we need to use statistical tests that account for the correlation between repeated measures on the same subject.
+
+## Goals for this Chapter
+- Understand the concept of repeated measures and why it is important
+- Learn how to analyze repeated measures data using R
+- Learn how to visualize repeated measures data using R
+- Learn how to interpret the results of repeated measures analysis
+
+## Packages needed for this Chapter
+{tidyverse}
+{rstatix}
+{ggpubr}
+
+## Pathway for this Chapter
+This Chapter is part of the **STATS** pathway.
+
+# Starting with Repeated Measures ANOVA
+We will start with a simple example of repeated measures ANOVA using the selfesteem data set from the datarium package. This dataset contains data on the self-esteem of 30 students measured on a 0-10 scale at three different time points: before, during, and after a course. We will use this dataset to illustrate how to perform a repeated measures ANOVA in R.
+
+```{r}
+data("selfesteem", package = "datarium")
+head(selfesteem, 5)
+```
+
+Let's pivot this to a longer format, then look at  the new structure of the dataset and some summary statistics
+
+```{r}
+se_long <- selfesteem %>%
+  pivot_longer(cols = c(t1, t2, t3), 
+               names_to = "time", 
+               values_to = "se_score") |>   
+  tibble()
+
+se_long |> View()
+
+se_long |> 
+  group_by(time) %>%
+  get_summary_stats(se_score, type = "mean_sd")
+
+```
+
+We can see that there are measurements of self-esteem at three different time points for each subject. Let's plot these data, then we can perform a repeated measures ANOVA using the `anova_test()` function from the rstatix package.
+
+```{r}
+# Spaghetti Plot with Summary Line
+ggplot(aes(x = time, y = se_score, group = id), data = se_long) +
+  geom_point(color= "red") +
+  geom_line(aes(group = id), alpha = 0.3) +
+  stat_summary(fun = mean, geom = "line", color = "blue", size = 1.5, aes(group = 1)) +
+  stat_summary(fun = mean, geom = "point", color = "blue", size = 3) +
+  labs(title = "Self-Esteem Scores Over Time",
+       x = "Time Point",
+       y = "Self-Esteem Score") +
+  theme_minimal()
+```
+
+## Checking ANOVA Assumptions
+Before performing the repeated measures ANOVA, we need to check the assumptions of normality and sphericity, and a lack of outliers.
+- the normality assumption of the dependent variable can be checked using the Shapiro-Wilk test, with the function shapiro_test() from the rstatix package.
+- the sphericity assumption can be checked using Mauchly's test using the anova_test() function from the rstatix package.
+- we can check for outliers using the identify_outliers() function from the rstatix package. This works well for sample sizes up to ~ 50, and after that you need to inspect a qqplot that you can make with the ggqqplot() function from the ggpubr package.
+
+### Let's begin
+```{r}
+# check the normality assumption
+
+se_long %>%
+  group_by(time) %>%
+  shapiro_test(se_score)
+
+# for a plot
+ggqqplot(se_long, "se_score", facet.by = "time")
+
+```
+No p values here are < 0.05, so we can assume normality.
+
+The plot points are reasonably close to the diagonal lines, so we can assume normality.
+
+```{r}
+# check the sphericity assumption
+anova_test(data = se_long, 
+           dv = se_score, 
+           wid = id, 
+           within = time) %>%
+  get_anova_table()
+
+```
+
+The assumption of sphericity is automatically checked during the computation of the ANOVA test using the R function anova_test() [rstatix package]. The Mauchly’s test is internally used to assess the sphericity assumption.
+
+By using the function get_anova_table() [rstatix] to extract the ANOVA table, the Greenhouse-Geisser sphericity correction is automatically applied to factors violating the sphericity assumption.
+
+How to interpret this output with Type III tests?
+
+- F Indicates that we are comparing to an F-distribution (F-test); (2, 18) indicates the degrees of freedom in the numerator (DFn) and the denominator (DFd), respectively; 55.5 indicates the obtained F-statistic value
+- p specifies the p-value
+- ges is the generalized effect size (amount of variability due to the within-subjects factor)
+- We can see that The self-esteem score was statistically significantly different at the different time points, F(2, 18) = 55.5, p < 0.0001, eta2[g] = 0.83.
+
+### Post hoc tests
+If the ANOVA is significant, we can perform post hoc tests to determine which time points are significantly different from each other. We can use the pairwise_t_test() function from the rstatix package to perform pairwise t-tests with Bonferroni correction for multiple comparisons.  
+
+```{r}
+# Perform pairwise tests with bonferroni corrections
+
+se_long %>%
+  pairwise_t_test(
+    se_score ~ time, paired = TRUE,
+    p.adjust.method = "bonferroni"
+  )
+```
+
+All of the pairwise differences are statistically significant, with p values < 0.0001. T3 is quite different from time point 3.
+
+We could report the results of this one-way repeated measures ANOVA as follows:
+
+The self-esteem score was statistically significantly different at the different time points, F(2, 18) = 55.5, p < 0.0001, with a generalized eta squared eta2[g] = 0.83. Post hoc tests using the Bonferroni correction revealed that the self-esteem score was significantly higher at time point 3 (M = 7.8, SD = 1.5) compared to time point 1 (M = 4.5, SD = 1.6), p < 0.0001, and time point 2 (M = 6.0, SD = 1.6), p < 0.0001. The self-esteem score was also significantly higher at time point 2 compared to time point 1, p < 0.0001.
+
+## Boxplot of pairwise comparisons
+```{r}
+# Boxplot with pairwise comparisons
+
+ggplot(aes(x = time, y = se_score), data = se_long) +
+  geom_boxplot(fill = "lightblue", alpha = 0.7) +
+  geom_jitter(width = 0.1, alpha = 0.5) +
+  stat_compare_means(method = "t.test", paired = TRUE, label = "p.format",
+                     comparisons = list(c("t1", "t2"), c("t1", "t3"), c("t2", "t3")),
+                     p.adjust.method = "bonferroni") +
+  labs(title = "Self-Esteem Scores Over Time",
+       x = "Time Point",
+       y = "Self-Esteem Score") +
+  theme_minimal()
+```
+
+## Two-Way Repeated Measures ANOVA
+Now let's consider a more complex example of a two-way repeated measures ANOVA using the selfesteem2 data set from the datarium package. This dataset contains data on the self-esteem of 12 students measured on a 0-10 scale at three different time points (the within-subjects factor): before, during the washout, and after two 4 week interventions, and also includes a between-subjects factor of a control diet and a test diet intervention. These two factors make this a two-way repeated measures ANOVA.
+
+Each participant performed both trials. The order of the trials was balanced and sufficient time was allowed between trials to allow any effects of previous trials to have dissipated (washout).
+The self-esteem score was recorded at three time points: at the beginning (t1), midway (t2) and at the end (t3) of the trials.
+The question is to investigate if this short-term diet treatment can induce a significant increase of self-esteem score over time. In other terms, we wish to know if there is significant interaction between diet and time on the self-esteem score.
+We will use this dataset to illustrate how to perform a two-way repeated measures ANOVA in R.
+Let's look at the wide dataset, then pivot to a longer format, which we will call `se2_long`. Then we can look at the new structure of the dataset and some summary statistics.
+
+```{r}
+data("selfesteem2", package = "datarium")
+head(selfesteem2, 5)
+
+se2_long <- selfesteem2 %>%
+  pivot_longer(cols = c(t1, t2, t3), names_to = "time", 
+               values_to = "se_score") |>  
+  convert_as_factor(id, time) |>  
+  tibble()
+
+glimpse(se2_long)
+```
+ 
+ We now have 72 unique rows (measurements), with 12 subjects, each with 6 measurements (3 time points for each of the 2 diets). Let's look at some summary statistics.
+ 
+```{r}
+se2_long |>
+  group_by(treatment, time) %>%
+  get_summary_stats(se_score, type = "mean_sd")
+```
+
+### We can  visualize these data with a Boxplot
+
+```{r}
+ggplot(aes(x = time, y = se_score, fill = treatment), data = se2_long) +
+  geom_boxplot(position = position_dodge(0.8), alpha = 0.7) +
+  geom_jitter(aes(color = treatment), position = position_jitterdodge(jitter.width = 0.1, dodge.width = 0.8), alpha = 0.5) +
+  labs(title = "Self-Esteem Scores Over Time by Treatment",
+       x = "Time Point",
+       y = "Self-Esteem Score") +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Set1") +
+  scale_color_brewer(palette = "Set1")
+```
+
+# Now it is time to check our 3 assumptions
+1. Normality of the dependent variable
+2. Sphericity of the within-subjects factor
+3. No significant outliers
+
+### 1. Check the normality assumption
+```{r}
+
+se2_long %>%
+  group_by(treatment, time) %>%
+  shapiro_test(se_score)
+
+# for a plot
+ggqqplot(se2_long, "se_score", 
+         facet.by = c("treatment", "time"))    
+```
+Only one low p values here, plot looks ok, so we can assume normality. 
+You can see that there is a noticeable distontinuity in the control group at time point 1, but this may be due to the small sample size (n=6).
+
+### 2. Check for outliers
+
+```{r}
+se2_long %>%
+  group_by(treatment, time) %>%
+  identify_outliers(se_score)
+```
+No outliers detected.
+
+### 3. Check the sphericity assumption (and do the ANOVA)
+```{r}
+anova_test(data = se2_long,
+           dv = se_score,
+           wid = id,
+           within = time,
+           between = treatment) %>%
+  get_anova_table()
+```
+The assumption of sphericity is automatically checked during the computation of the ANOVA test using the R function anova_test() [rstatix package]. The Mauchly’s test is internally used to assess the sphericity assumption.
+
+By using the function get_anova_table() [rstatix] to extract the ANOVA table, the Greenhouse-Geisser sphericity correction is automatically applied to factors violating the sphericity assumption.  
+
+How to interpret this output with Type III tests?
+- F Indicates that we are comparing to an F-distribution (F-test); (2, 18) indicates the degrees of freedom in the numerator (DFn) and the denominator (DFd), respectively; 55.5 indicates the obtained F-statistic value
+- p specifies the p-value
+- ges is the generalized effect size (amount of variability due to the within-subjects factor
+We can see that The self-esteem score was statistically significantly different at the different time points, F(2, 18) = 55.5, p < 0.0001, eta2[g] = 0.83.
+We can also see that there is a significant interaction between time and treatment, F(2, 18) = 5.2, p = 0.015, eta2[g] = 0.22.
+
+### Post hoc tests
+If the ANOVA is significant, we can perform post hoc tests to determine which time points are significantly different from each other.
+
+```{r}  
+# Effect of treatment at each time point
+one.way <- se2_long %>%
+  group_by(time) %>%
+  anova_test(dv = se_score, wid = id, within = treatment) %>%
+  get_anova_table() %>%
+  adjust_pvalue(method = "bonferroni")
+one.way
+```
+
+There are significant differences between the treatment groups at time points 2 and 3, but not at time point 1.
+
+
+### Pairwise comparisons by treatment
+```{r}
+# Pairwise comparisons between treatment groups
+pwc <- se2_long %>%
+  group_by(time) %>%
+  pairwise_t_test(
+    se_score ~ treatment, paired = TRUE,
+    p.adjust.method = "bonferroni"
+    )
+pwc
+```
+
+Considering the Bonferroni adjusted p-value (p.adj), it can be seen that the simple main effect of treatment was not significant at the time point t1 (p = 1) [before diet had started]. It becomes significant at t2 (p = 0.036) and t3 (p = 0.00051).
+
+Pairwise comparisons show that the mean self-esteem score was significantly different between ctr and Diet group at t2 (p = 0.12) and t3 (p = 0.00017) but not at t1 (p = 0.55).
+
+## Effect of time at each level of treatment
+
+```{r}
+# Effect of time at each level of treatment
+one.way2 <- se2_long %>%
+  group_by(treatment) %>%
+  anova_test(dv = se_score, wid = id, within = time) %>%
+  get_anova_table() %>%
+  adjust_pvalue(method = "bonferroni")
+one.way2
+# Pairwise comparisons between time points
+pwc2 <- se2_long %>%
+  group_by(treatment) %>%
+  pairwise_t_test(
+  se_score ~ time, paired = TRUE,
+  p.adjust.method = "bonferroni")
+pwc2
+```
+
+### Boxplot of within-subject factor (time)
+
+```{r}
+# Boxplot with pairwise comparisons of the time points
+
+bxp <- ggplot(aes(x = time, y = se_score, fill = treatment), data = se2_long) +
+  geom_boxplot(position = position_dodge(0.8), alpha = 0.7) +
+  geom_jitter(aes(color = treatment), position = position_jitterdodge(jitter.width = 0.1, dodge.width = 0.8), alpha = 0.5) +
+  labs(title = "Self-Esteem Scores Over Time by Treatment",
+       x = "Time Point",
+       y = "Self-Esteem Score") +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Set1") +
+  scale_color_brewer(palette = "Set1")
+bxp
+```
+
+### Boxplot of betweem-subject factor (treatment)
+
+```{r}
+# Boxplot with pairwise comparisons of the treatment groups
+# at each time point
+
+ggplot(aes(x = treatment, y = se_score, fill = treatment), data = se2_long) +
+  geom_boxplot(position = position_dodge(0.8), alpha = 0.7) +
+  geom_jitter(aes(color = treatment), position = position_jitterdodge(jitter.width = 0.1, dodge.width = 0.8), alpha = 0.5) +
+  stat_compare_means(method = "t.test", label = "p.format",
+                     comparisons = list(c("control", "diet")),
+                     p.adjust.method = "bonferroni") +
+  labs(title = "Self-Esteem Scores by Treatment",
+       x = "Treatment",
+       y = "Self-Esteem Score") +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Set1") +
+  scale_color_brewer(palette = "Set1")
+```
+
+
+## Linear Mixed Effects Modeling with {lme4}
+
+Linear mixed effects models (LMMs) are a powerful tool for analyzing repeated measures data, as they can account for both fixed and random effects. Fixed effects are the effects of interest that we want to estimate, such as the effect of treatment or time. Random effects are the effects that we want to account for, such as the variability between subjects.
+We will use the lme4 package to fit a linear mixed effects model to the selfesteem2 dataset. We will include treatment and time as fixed effects, and subject as a random effect.
+```{r}
+library(lme4)
+library(lmerTest) # for p values
+library(emmeans) # for post hoc tests
+# Fit the model
+# treatment and time as fixed effects, subject as a random effect
+
+lmm <- lmer(se_score ~ treatment * time + (1 | id), data = se2_long)
+# the treatment (diet) is treated as a fixed effect
+# the time (t1, t2, t3) is treated as a fixed effect
+# the subject (id) is treated as a random effect (a random slope for each),
+# as individuals may randomly respond differently to the diet
+# (1 | id) indicates that we are including (1) a random intercept for each subject
+# as they may each start at a different point for self-esteem score
+# the * indicates that we are including an interaction between treatment and time
+
+summary(lmm)
+```
+
+We can see that there is a significant interaction between treatment and time, with a p value of 0.008. We can also see that the treatment effect is significant at time points 2 and 3, but not at time point 1.
+
+### Post hoc tests
+We can use the emmeans package to perform post hoc tests to determine which time points are significantly different from each other.
+```{r}
+# Post hoc tests
+# pairwise comparisons between treatment groups at each time point
+# with Tukey adjustment for multiple comparisons
+# using emmeans package
+
+emmeans(lmm, pairwise ~ treatment | time, adjust = "tukey")
+```
+We can see that the mean self-esteem score was significantly different between control and diet groups at time points 2 and 3, but not at time point 1 (before they had started the treatment or control diet).
+
+```{r}
+# pairwise comparisons between time points at each treatment group
+# with Tukey adjustment for multiple comparisons
+# using emmeans package
+# Effect of time at each level of treatment
+
+emmeans(lmm, pairwise ~ time | treatment, adjust = "tukey")
+```
+We can see that the mean self-esteem score was significantly different between all time points for the control diet, but not for the treatment diet.
+
+We could report the results of this two-way repeated measures ANOVA as follows:
+The self-esteem score was statistically significantly different at the different time points, F(2, 18) = 55.5, p < 0.0001, with a generalized eta squared eta2[g] = 0.83. There was also a significant interaction between treatment and time, F(2, 18) = 5.2, p = 0.015, eta2[g] = 0.22. Post hoc tests using the Bonferroni correction revealed that the mean self-esteem score was significantly different between control and diet groups at time points 2 (p = 0.036) and 3 (p = 0.00051), but not at time point 1 (p = 1). The mean self-esteem score was significantly different between all time points for the control diet (p < 0.05), but not for the treatment diet (p > 0.05).

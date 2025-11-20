@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2025-08-28" />
+<meta name="date" content="2025-10-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,10 +54,10 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
 <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/plotly-binding-4.11.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 <link href="libs/tabwid-1.1.3/tabwid.css" rel="stylesheet" />
@@ -67,8 +67,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -78,7 +79,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -1207,10 +1208,10 @@ This is especially important when backing up data to the cloud, or sharing data 
 <div id="selectively-deleting-phi" class="section level2 hasAnchor" number="46.3">
 <h2><span class="header-section-number">46.3</span> Selectively Deleting PHI<a href="protecting-phi-protected-health-information.html#selectively-deleting-phi" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If this will not affect your data wrangling, you can use the <code>select</code> function in {dplyr} to remove PHI from your data files. For example, if you have a data file called <code>data</code>, you can use the following code to remove PHI:</p>
-<div class="sourceCode" id="cb947"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb947-1"><a href="protecting-phi-protected-health-information.html#cb947-1" tabindex="-1"></a>data_no_phi <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
-<span id="cb947-2"><a href="protecting-phi-protected-health-information.html#cb947-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>name, <span class="sc">-</span>address, <span class="sc">-</span>dob, <span class="sc">-</span>phone, <span class="sc">-</span>email, <span class="sc">-</span>ssn, </span>
-<span id="cb947-3"><a href="protecting-phi-protected-health-information.html#cb947-3" tabindex="-1"></a>         <span class="sc">-</span>mrn, <span class="sc">-</span>hpb, <span class="sc">-</span>account, <span class="sc">-</span>cert, <span class="sc">-</span>vehicle, <span class="sc">-</span>device, </span>
-<span id="cb947-4"><a href="protecting-phi-protected-health-information.html#cb947-4" tabindex="-1"></a>         <span class="sc">-</span>url, <span class="sc">-</span>ip, <span class="sc">-</span>biometric, <span class="sc">-</span>image, <span class="sc">-</span>date_admitted)</span></code></pre></div>
+<div class="sourceCode" id="cb949"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb949-1"><a href="protecting-phi-protected-health-information.html#cb949-1" tabindex="-1"></a>data_no_phi <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
+<span id="cb949-2"><a href="protecting-phi-protected-health-information.html#cb949-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>name, <span class="sc">-</span>address, <span class="sc">-</span>dob, <span class="sc">-</span>phone, <span class="sc">-</span>email, <span class="sc">-</span>ssn, </span>
+<span id="cb949-3"><a href="protecting-phi-protected-health-information.html#cb949-3" tabindex="-1"></a>         <span class="sc">-</span>mrn, <span class="sc">-</span>hpb, <span class="sc">-</span>account, <span class="sc">-</span>cert, <span class="sc">-</span>vehicle, <span class="sc">-</span>device, </span>
+<span id="cb949-4"><a href="protecting-phi-protected-health-information.html#cb949-4" tabindex="-1"></a>         <span class="sc">-</span>url, <span class="sc">-</span>ip, <span class="sc">-</span>biometric, <span class="sc">-</span>image, <span class="sc">-</span>date_admitted)</span></code></pre></div>
 <p>And then be sure that the <code>data</code> file is in your <code>.gitignore</code> file, and you can share the <code>data_no_phi</code> file with collaborators.</p>
 <p>You might even want to create a folder called <code>data_with_phi</code> and a folder called <code>data_no_phi</code> to keep track of your data files separately by PHI status. The <code>data_with_phi</code> folder can show up in your <code>.gitignore</code> file as <code>data_with_phi/</code>, so that you are not sharing PHI.</p>
 </div>
@@ -1233,13 +1234,13 @@ This is especially important when backing up data to the cloud, or sharing data 
 <div id="generating-public-and-private-keys" class="section level3 hasAnchor" number="46.5.1">
 <h3><span class="header-section-number">46.5.1</span> Generating Public and Private keys<a href="protecting-phi-protected-health-information.html#generating-public-and-private-keys" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>genkeys()</code> function generates a public and private key pair. The public key <code>id_rsa.pub</code> can then be shared with collaborators. The private key <code>id_rsa</code> should be kept secure and not shared. It should be listed in your <code>.gitignore</code> file. Set up a new project repository on your GitHub site, and copy the SSH to start a new project in RStudio using version control. Then run the code below (a novel password will be required), then open your <code>.gitignore</code> file in the project, and add <code>id_rsa</code> to the file.</p>
-<div class="sourceCode" id="cb948"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb948-1"><a href="protecting-phi-protected-health-information.html#cb948-1" tabindex="-1"></a><span class="fu">library</span>(encryptr)</span>
-<span id="cb948-2"><a href="protecting-phi-protected-health-information.html#cb948-2" tabindex="-1"></a><span class="fu">genkeys</span>()</span>
-<span id="cb948-3"><a href="protecting-phi-protected-health-information.html#cb948-3" tabindex="-1"></a><span class="co"># &gt; Private key written with name &#39;id_rsa&#39;</span></span>
-<span id="cb948-4"><a href="protecting-phi-protected-health-information.html#cb948-4" tabindex="-1"></a><span class="co"># &gt; Public key written with name &#39;id_rsa.pub&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb950"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb950-1"><a href="protecting-phi-protected-health-information.html#cb950-1" tabindex="-1"></a><span class="fu">library</span>(encryptr)</span>
+<span id="cb950-2"><a href="protecting-phi-protected-health-information.html#cb950-2" tabindex="-1"></a><span class="fu">genkeys</span>()</span>
+<span id="cb950-3"><a href="protecting-phi-protected-health-information.html#cb950-3" tabindex="-1"></a><span class="co"># &gt; Private key written with name &#39;id_rsa&#39;</span></span>
+<span id="cb950-4"><a href="protecting-phi-protected-health-information.html#cb950-4" tabindex="-1"></a><span class="co"># &gt; Public key written with name &#39;id_rsa.pub&#39;</span></span></code></pre></div>
 <p>You can open a new project and test this with the gp dataset provided with the [encryptr} package. Try it out!</p>
-<div class="sourceCode" id="cb949"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb949-1"><a href="protecting-phi-protected-health-information.html#cb949-1" tabindex="-1"></a><span class="fu">data</span>(gp)</span>
-<span id="cb949-2"><a href="protecting-phi-protected-health-information.html#cb949-2" tabindex="-1"></a><span class="fu">head</span>(gp)</span></code></pre></div>
+<div class="sourceCode" id="cb951"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb951-1"><a href="protecting-phi-protected-health-information.html#cb951-1" tabindex="-1"></a><span class="fu">data</span>(gp)</span>
+<span id="cb951-2"><a href="protecting-phi-protected-health-information.html#cb951-2" tabindex="-1"></a><span class="fu">head</span>(gp)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 12
 ##   organisation_code name        address1 address2 address3 city  county postcode
 ##   &lt;chr&gt;             &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;   
@@ -1252,31 +1253,31 @@ This is especially important when backing up data to the cloud, or sharing data 
 ## # ℹ 4 more variables: opendate &lt;date&gt;, closedate &lt;date&gt;, telephone &lt;chr&gt;,
 ## #   practice_type &lt;dbl&gt;</code></pre>
 <p>You can see a listing of the 1212 general NHS practices in Scotland, and you can imagine that you might want to encrypt some fields (telephone, etc.) and delete some unneeded ones in this data before sharing it publicly on GitHub.</p>
-<div class="sourceCode" id="cb951"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb951-1"><a href="protecting-phi-protected-health-information.html#cb951-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb951-2"><a href="protecting-phi-protected-health-information.html#cb951-2" tabindex="-1"></a>gp_encrypt <span class="ot">=</span> gp <span class="sc">%&gt;%</span> </span>
-<span id="cb951-3"><a href="protecting-phi-protected-health-information.html#cb951-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(name, address1, address2, address3)) <span class="sc">%&gt;%</span> </span>
-<span id="cb951-4"><a href="protecting-phi-protected-health-information.html#cb951-4" tabindex="-1"></a>  <span class="fu">encrypt</span>(postcode, telephone)</span>
-<span id="cb951-5"><a href="protecting-phi-protected-health-information.html#cb951-5" tabindex="-1"></a></span>
-<span id="cb951-6"><a href="protecting-phi-protected-health-information.html#cb951-6" tabindex="-1"></a>gp_encrypt </span></code></pre></div>
+<div class="sourceCode" id="cb953"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb953-1"><a href="protecting-phi-protected-health-information.html#cb953-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb953-2"><a href="protecting-phi-protected-health-information.html#cb953-2" tabindex="-1"></a>gp_encrypt <span class="ot">=</span> gp <span class="sc">%&gt;%</span> </span>
+<span id="cb953-3"><a href="protecting-phi-protected-health-information.html#cb953-3" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(name, address1, address2, address3)) <span class="sc">%&gt;%</span> </span>
+<span id="cb953-4"><a href="protecting-phi-protected-health-information.html#cb953-4" tabindex="-1"></a>  <span class="fu">encrypt</span>(postcode, telephone)</span>
+<span id="cb953-5"><a href="protecting-phi-protected-health-information.html#cb953-5" tabindex="-1"></a></span>
+<span id="cb953-6"><a href="protecting-phi-protected-health-information.html#cb953-6" tabindex="-1"></a>gp_encrypt </span></code></pre></div>
 <pre><code>## # A tibble: 1,212 × 8
 ##    organisation_code city        county postcode opendate   closedate  telephone
 ##    &lt;chr&gt;             &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt;    &lt;date&gt;     &lt;date&gt;     &lt;chr&gt;    
-##  1 S10002            DUNDEE      ANGUS  8d41ef0… 1995-05-01 NA         6fe5a725…
-##  2 S10017            CRIEFF      PERTH… 359a552… 1996-04-06 NA         30792c57…
-##  3 S10036            ABERFELDY   PERTH… 025ff02… 2008-04-01 NA         1dea8be1…
-##  4 S10060            ABERFELDY   PERTH… 6cec5d4… 1975-04-01 2008-03-31 539575e3…
-##  5 S10106            DUNDEE      ANGUS  62b57aa… 1996-07-08 NA         9d9e7bec…
-##  6 S10125            BLAIRGOWRIE PERTH… 5b4a3c2… 1979-10-01 NA         7e159bec…
-##  7 S10182            ARBROATH    ANGUS  10553d2… 1977-10-01 NA         5461bbd5…
-##  8 S10233            ARBROATH    ANGUS  2aa1890… 1986-08-01 NA         805bd6c4…
-##  9 S10286            ARBROATH    ANGUS  879b8cb… 1975-08-01 NA         3872ad83…
-## 10 S10322            ARBROATH    ANGUS  13769b1… 1971-10-01 NA         24511c1c…
+##  1 S10002            DUNDEE      ANGUS  8b1036a… 1995-05-01 NA         a5e529c8…
+##  2 S10017            CRIEFF      PERTH… 7cc81de… 1996-04-06 NA         55983afb…
+##  3 S10036            ABERFELDY   PERTH… 84c8892… 2008-04-01 NA         4fb147a6…
+##  4 S10060            ABERFELDY   PERTH… 9cbcf3a… 1975-04-01 2008-03-31 36a8ee30…
+##  5 S10106            DUNDEE      ANGUS  a86b269… 1996-07-08 NA         285bbed2…
+##  6 S10125            BLAIRGOWRIE PERTH… 2d4075a… 1979-10-01 NA         2879a92c…
+##  7 S10182            ARBROATH    ANGUS  7c5a3ac… 1977-10-01 NA         85a62569…
+##  8 S10233            ARBROATH    ANGUS  797f3fd… 1986-08-01 NA         72ab81a9…
+##  9 S10286            ARBROATH    ANGUS  8af080a… 1975-08-01 NA         13b44378…
+## 10 S10322            ARBROATH    ANGUS  5ba41bc… 1971-10-01 NA         695d8eef…
 ## # ℹ 1,202 more rows
 ## # ℹ 1 more variable: practice_type &lt;dbl&gt;</code></pre>
 <p>You can see that postcode and telephone are now encrypted. You can share this data on GitHub, and collaborators can use the private key to decrypt the data when necessary.</p>
 <p>Decryption requires the private key generated using genkeys() and the password set at the time. The password and file are not replaceable so need to be kept safe and secure. The code below will ask you for the password you set when you generated the keys before it provides the decrypted data.</p>
-<div class="sourceCode" id="cb953"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb953-1"><a href="protecting-phi-protected-health-information.html#cb953-1" tabindex="-1"></a>gp_encrypt <span class="sc">%&gt;%</span>  </span>
-<span id="cb953-2"><a href="protecting-phi-protected-health-information.html#cb953-2" tabindex="-1"></a>  <span class="fu">decrypt</span>(postcode, telephone)</span></code></pre></div>
+<div class="sourceCode" id="cb955"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb955-1"><a href="protecting-phi-protected-health-information.html#cb955-1" tabindex="-1"></a>gp_encrypt <span class="sc">%&gt;%</span>  </span>
+<span id="cb955-2"><a href="protecting-phi-protected-health-information.html#cb955-2" tabindex="-1"></a>  <span class="fu">decrypt</span>(postcode, telephone)</span></code></pre></div>
 <pre><code>## # A tibble: 1,212 × 8
 ##    organisation_code city        county postcode opendate   closedate  telephone
 ##    &lt;chr&gt;             &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt;    &lt;date&gt;     &lt;date&gt;     &lt;chr&gt;    
@@ -1294,31 +1295,31 @@ This is especially important when backing up data to the cloud, or sharing data 
 ## # ℹ 1 more variable: practice_type &lt;dbl&gt;</code></pre>
 <p>As an alternative to increase data security, you can store the PHI encrypted data in a separate ‘lookup table’ that is not shared on GitHub. This lookup table can be used to decrypt the data when necessary.</p>
 <p>This can be accomplished by adding a <code>lookup</code> argument to the <code>encrypt</code> function. The <code>lookup</code> argument creates a data frame that contains the PHI data that was encrypted.</p>
-<div class="sourceCode" id="cb955"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb955-1"><a href="protecting-phi-protected-health-information.html#cb955-1" tabindex="-1"></a>gp_encrypt <span class="ot">&lt;-</span> gp <span class="sc">%&gt;%</span> </span>
-<span id="cb955-2"><a href="protecting-phi-protected-health-information.html#cb955-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(name, address1, address2, address3)) <span class="sc">%&gt;%</span> </span>
-<span id="cb955-3"><a href="protecting-phi-protected-health-information.html#cb955-3" tabindex="-1"></a>  <span class="fu">encrypt</span>(postcode, telephone, <span class="at">lookup =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb955-4"><a href="protecting-phi-protected-health-information.html#cb955-4" tabindex="-1"></a>  </span>
-<span id="cb955-5"><a href="protecting-phi-protected-health-information.html#cb955-5" tabindex="-1"></a><span class="co"># Lookup table object created with name &#39;lookup&#39;</span></span>
-<span id="cb955-6"><a href="protecting-phi-protected-health-information.html#cb955-6" tabindex="-1"></a><span class="co"># Lookup table written to file with name &#39;lookup.csv&#39;</span></span></code></pre></div>
-<div class="sourceCode" id="cb956"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb956-1"><a href="protecting-phi-protected-health-information.html#cb956-1" tabindex="-1"></a>gp_encrypt</span></code></pre></div>
+<div class="sourceCode" id="cb957"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb957-1"><a href="protecting-phi-protected-health-information.html#cb957-1" tabindex="-1"></a>gp_encrypt <span class="ot">&lt;-</span> gp <span class="sc">%&gt;%</span> </span>
+<span id="cb957-2"><a href="protecting-phi-protected-health-information.html#cb957-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(name, address1, address2, address3)) <span class="sc">%&gt;%</span> </span>
+<span id="cb957-3"><a href="protecting-phi-protected-health-information.html#cb957-3" tabindex="-1"></a>  <span class="fu">encrypt</span>(postcode, telephone, <span class="at">lookup =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb957-4"><a href="protecting-phi-protected-health-information.html#cb957-4" tabindex="-1"></a>  </span>
+<span id="cb957-5"><a href="protecting-phi-protected-health-information.html#cb957-5" tabindex="-1"></a><span class="co"># Lookup table object created with name &#39;lookup&#39;</span></span>
+<span id="cb957-6"><a href="protecting-phi-protected-health-information.html#cb957-6" tabindex="-1"></a><span class="co"># Lookup table written to file with name &#39;lookup.csv&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb958"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb958-1"><a href="protecting-phi-protected-health-information.html#cb958-1" tabindex="-1"></a>gp_encrypt</span></code></pre></div>
 <pre><code>## # A tibble: 1,212 × 8
 ##    organisation_code city        county postcode opendate   closedate  telephone
 ##    &lt;chr&gt;             &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt;    &lt;date&gt;     &lt;date&gt;     &lt;chr&gt;    
-##  1 S10002            DUNDEE      ANGUS  8d41ef0… 1995-05-01 NA         6fe5a725…
-##  2 S10017            CRIEFF      PERTH… 359a552… 1996-04-06 NA         30792c57…
-##  3 S10036            ABERFELDY   PERTH… 025ff02… 2008-04-01 NA         1dea8be1…
-##  4 S10060            ABERFELDY   PERTH… 6cec5d4… 1975-04-01 2008-03-31 539575e3…
-##  5 S10106            DUNDEE      ANGUS  62b57aa… 1996-07-08 NA         9d9e7bec…
-##  6 S10125            BLAIRGOWRIE PERTH… 5b4a3c2… 1979-10-01 NA         7e159bec…
-##  7 S10182            ARBROATH    ANGUS  10553d2… 1977-10-01 NA         5461bbd5…
-##  8 S10233            ARBROATH    ANGUS  2aa1890… 1986-08-01 NA         805bd6c4…
-##  9 S10286            ARBROATH    ANGUS  879b8cb… 1975-08-01 NA         3872ad83…
-## 10 S10322            ARBROATH    ANGUS  13769b1… 1971-10-01 NA         24511c1c…
+##  1 S10002            DUNDEE      ANGUS  8b1036a… 1995-05-01 NA         a5e529c8…
+##  2 S10017            CRIEFF      PERTH… 7cc81de… 1996-04-06 NA         55983afb…
+##  3 S10036            ABERFELDY   PERTH… 84c8892… 2008-04-01 NA         4fb147a6…
+##  4 S10060            ABERFELDY   PERTH… 9cbcf3a… 1975-04-01 2008-03-31 36a8ee30…
+##  5 S10106            DUNDEE      ANGUS  a86b269… 1996-07-08 NA         285bbed2…
+##  6 S10125            BLAIRGOWRIE PERTH… 2d4075a… 1979-10-01 NA         2879a92c…
+##  7 S10182            ARBROATH    ANGUS  7c5a3ac… 1977-10-01 NA         85a62569…
+##  8 S10233            ARBROATH    ANGUS  797f3fd… 1986-08-01 NA         72ab81a9…
+##  9 S10286            ARBROATH    ANGUS  8af080a… 1975-08-01 NA         13b44378…
+## 10 S10322            ARBROATH    ANGUS  5ba41bc… 1971-10-01 NA         695d8eef…
 ## # ℹ 1,202 more rows
 ## # ℹ 1 more variable: practice_type &lt;dbl&gt;</code></pre>
 <p>You can then add <code>lookup.csv</code> to your <code>.gitignore</code> file, and share the main file for collaborators. Decryption is performed by passing the lookup object or file to the decrypt() function.</p>
-<div class="sourceCode" id="cb958"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb958-1"><a href="protecting-phi-protected-health-information.html#cb958-1" tabindex="-1"></a>gp_encrypt <span class="sc">%&gt;%</span>  </span>
-<span id="cb958-2"><a href="protecting-phi-protected-health-information.html#cb958-2" tabindex="-1"></a>  <span class="fu">decrypt</span>(postcode, telephone, <span class="at">lookup_object =</span> lookup)</span></code></pre></div>
+<div class="sourceCode" id="cb960"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb960-1"><a href="protecting-phi-protected-health-information.html#cb960-1" tabindex="-1"></a>gp_encrypt <span class="sc">%&gt;%</span>  </span>
+<span id="cb960-2"><a href="protecting-phi-protected-health-information.html#cb960-2" tabindex="-1"></a>  <span class="fu">decrypt</span>(postcode, telephone, <span class="at">lookup_object =</span> lookup)</span></code></pre></div>
 <pre><code>## Error: object &#39;lookup&#39; not found</code></pre>
 <p>Learn more about how to encrypt PHI-containing fields from the documentation of {encryptr} at <code>https://encrypt-r.org/</code>.</p>
 </div>
@@ -1331,10 +1332,10 @@ This is especially important when backing up data to the cloud, or sharing data 
 <p>You can find the full documentation at <code>https://cran.r-project.org/web/packages/synthpop/synthpop.pdf</code>, and a ** Getting Started ** page at <a href="https://www.synthpop.org.uk/get-started.html" class="uri">https://www.synthpop.org.uk/get-started.html</a>.</p>
 <p>You can install synthpop from CRAN with <code>install.packages("synthpop")</code>. Then use <code>library(synthpop)</code> to load the package.</p>
 <p>Let’s start with the <code>SD2011</code> survey dataset provided with the {synthpop} package. This dataset contains 5000 records of a 2011 survey in Poland. The dataset contains 35 variables. Run the code below to get a preview of this dataset, and a subset called <code>mydata</code> with only 10 variables.</p>
-<div class="sourceCode" id="cb960"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb960-1"><a href="protecting-phi-protected-health-information.html#cb960-1" tabindex="-1"></a><span class="fu">data</span>(SD2011)</span>
-<span id="cb960-2"><a href="protecting-phi-protected-health-information.html#cb960-2" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> SD2011 <span class="sc">|&gt;</span> </span>
-<span id="cb960-3"><a href="protecting-phi-protected-health-information.html#cb960-3" tabindex="-1"></a>  <span class="fu">select</span>(sex, agegr, edu, socprof, marital, depress, trust, trustfam, trustneigh, income)</span>
-<span id="cb960-4"><a href="protecting-phi-protected-health-information.html#cb960-4" tabindex="-1"></a><span class="fu">glimpse</span>(mydata)</span></code></pre></div>
+<div class="sourceCode" id="cb962"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb962-1"><a href="protecting-phi-protected-health-information.html#cb962-1" tabindex="-1"></a><span class="fu">data</span>(SD2011)</span>
+<span id="cb962-2"><a href="protecting-phi-protected-health-information.html#cb962-2" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> SD2011 <span class="sc">|&gt;</span> </span>
+<span id="cb962-3"><a href="protecting-phi-protected-health-information.html#cb962-3" tabindex="-1"></a>  <span class="fu">select</span>(sex, agegr, edu, socprof, marital, depress, trust, trustfam, trustneigh, income)</span>
+<span id="cb962-4"><a href="protecting-phi-protected-health-information.html#cb962-4" tabindex="-1"></a><span class="fu">glimpse</span>(mydata)</span></code></pre></div>
 <pre><code>## Rows: 5,000
 ## Columns: 10
 ## $ sex        &lt;fct&gt; FEMALE, MALE, FEMALE, FEMALE, FEMALE, MALE, FEMALE, MALE, F…
@@ -1348,14 +1349,14 @@ This is especially important when backing up data to the cloud, or sharing data 
 ## $ trustneigh &lt;fct&gt; NO, NO OPINION, NO, YES, YES, NO OPINION, NO OPINION, YES, …
 ## $ income     &lt;dbl&gt; 800, 350, NA, 900, 1500, -8, 2000, 1197, 580, 1400, 1500, 1…</code></pre>
 <p>There are 603 income values listed as ‘-8’ in the dataset. These are missing values. You can replace these with NA using the code below.</p>
-<div class="sourceCode" id="cb962"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb962-1"><a href="protecting-phi-protected-health-information.html#cb962-1" tabindex="-1"></a><span class="fu">library</span>(naniar)</span>
-<span id="cb962-2"><a href="protecting-phi-protected-health-information.html#cb962-2" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> mydata <span class="sc">|&gt;</span> </span>
-<span id="cb962-3"><a href="protecting-phi-protected-health-information.html#cb962-3" tabindex="-1"></a>  <span class="fu">replace_with_na</span>(<span class="at">replace =</span> <span class="fu">list</span>(<span class="at">income =</span> <span class="sc">-</span><span class="dv">8</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb964"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb964-1"><a href="protecting-phi-protected-health-information.html#cb964-1" tabindex="-1"></a><span class="fu">library</span>(naniar)</span>
+<span id="cb964-2"><a href="protecting-phi-protected-health-information.html#cb964-2" tabindex="-1"></a>mydata <span class="ot">&lt;-</span> mydata <span class="sc">|&gt;</span> </span>
+<span id="cb964-3"><a href="protecting-phi-protected-health-information.html#cb964-3" tabindex="-1"></a>  <span class="fu">replace_with_na</span>(<span class="at">replace =</span> <span class="fu">list</span>(<span class="at">income =</span> <span class="sc">-</span><span class="dv">8</span>))</span></code></pre></div>
 <p>You can now create a synthetic version of the data using the <code>syn</code> function. The <code>syn</code> function requires the data, and the seed. The seed is used to ensure reproducibility. The <code>syn</code> function will create a synthetic version of the data that can be shared without concern for privacy. Note the you need a constant seed to get the same result each time. There is some randomness in the synthesis that will produce different results each time without the same seed.</p>
 <p>The <code>syn</code> default method is CART, which stands for Classification and Regression Trees. This highly adaptive method is used to create synthetic data that is similar to the original data. There are many available methods to synthesize new variables. Each variable is synthesized in order of appearance in the dataset, using the data from the previous variables. If you want to model for a particular variable, you may want to move that variable to the end of the dataset (as we did with income), to ensure that the other variables are synthesized first, and each variable is synthesized conditional on all of the previously synthesized variables. This preserves their statistical relationships for correlations or regression modeling.</p>
 <p>The synthesis initially generates a <code>synds</code> object, which can be used for initial comparisons and modeling with special functions that end with <code>.synds</code>, like <code>glm.synds</code> and <code>lm.synds</code>. Then the <code>write.syn</code> function will return a standard synthetic dataset in formats like csv and RData that can be used for analysis.</p>
 <p>Run the code block below to do a basic synthesis.</p>
-<div class="sourceCode" id="cb963"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb963-1"><a href="protecting-phi-protected-health-information.html#cb963-1" tabindex="-1"></a>syn_data <span class="ot">&lt;-</span> <span class="fu">syn</span>(mydata, <span class="at">seed =</span> <span class="dv">123</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb965"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb965-1"><a href="protecting-phi-protected-health-information.html#cb965-1" tabindex="-1"></a>syn_data <span class="ot">&lt;-</span> <span class="fu">syn</span>(mydata, <span class="at">seed =</span> <span class="dv">123</span>)</span></code></pre></div>
 <pre><code>## 
 ## Synthesis
 ## -----------
@@ -1366,7 +1367,7 @@ This is especially important when backing up data to the cloud, or sharing data 
 - <code>maxfaclevels</code> - the maximum number of factor levels in the synthetic data. The default is 60. Beyond this is considered numeric. Large numbers for maxfaclevels can lead to slow computational speed.
 - <code>numtocat</code> - a vector of numeric variables to convert to categorical factors. The default is NULL.
 - <code>catgroups</code> - a vector of integers of the same length as numtocat, which represents the number of factor levels for each factor variable.</p>
-<div class="sourceCode" id="cb965"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb965-1"><a href="protecting-phi-protected-health-information.html#cb965-1" tabindex="-1"></a><span class="fu">compare</span>(syn_data, mydata, <span class="at">stats =</span> <span class="fu">c</span>(<span class="st">&quot;counts&quot;</span>, <span class="st">&quot;means&quot;</span>, <span class="st">&quot;medians&quot;</span>, <span class="st">&quot;sds&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb967"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb967-1"><a href="protecting-phi-protected-health-information.html#cb967-1" tabindex="-1"></a><span class="fu">compare</span>(syn_data, mydata, <span class="at">stats =</span> <span class="fu">c</span>(<span class="st">&quot;counts&quot;</span>, <span class="st">&quot;means&quot;</span>, <span class="st">&quot;medians&quot;</span>, <span class="st">&quot;sds&quot;</span>))</span></code></pre></div>
 <pre><code>## Calculations done for sex 
 ## Calculations done for agegr 
 ## Calculations done for edu 
@@ -1398,16 +1399,16 @@ This is especially important when backing up data to the cloud, or sharing data 
 ## trustneigh 0.000089 2.383880  3
 ## income     0.000136 2.182507  5</code></pre>
 <p>You can see that the synthetic data are very similar to the original data. You can write this data to a file with the <code>write.syn</code> function to share this synthetic data with collaborators without concern for privacy. In the code block below, you can write the synthetic data to a CSV file, and then read it back in to check that it is looks right.</p>
-<div class="sourceCode" id="cb971"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb971-1"><a href="protecting-phi-protected-health-information.html#cb971-1" tabindex="-1"></a><span class="fu">write.syn</span>(<span class="at">object =</span> syn_data,</span>
-<span id="cb971-2"><a href="protecting-phi-protected-health-information.html#cb971-2" tabindex="-1"></a>          <span class="at">convert.factors =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb971-3"><a href="protecting-phi-protected-health-information.html#cb971-3" tabindex="-1"></a>          <span class="at">filename =</span> <span class="st">&quot;syn_SD&quot;</span>, </span>
-<span id="cb971-4"><a href="protecting-phi-protected-health-information.html#cb971-4" tabindex="-1"></a>          <span class="at">filetype =</span> <span class="st">&quot;csv&quot;</span>, <span class="co"># options include RData, Stata, SAS</span></span>
-<span id="cb971-5"><a href="protecting-phi-protected-health-information.html#cb971-5" tabindex="-1"></a>          <span class="at">data.labels =</span> <span class="cn">TRUE</span> )</span></code></pre></div>
+<div class="sourceCode" id="cb973"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb973-1"><a href="protecting-phi-protected-health-information.html#cb973-1" tabindex="-1"></a><span class="fu">write.syn</span>(<span class="at">object =</span> syn_data,</span>
+<span id="cb973-2"><a href="protecting-phi-protected-health-information.html#cb973-2" tabindex="-1"></a>          <span class="at">convert.factors =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb973-3"><a href="protecting-phi-protected-health-information.html#cb973-3" tabindex="-1"></a>          <span class="at">filename =</span> <span class="st">&quot;syn_SD&quot;</span>, </span>
+<span id="cb973-4"><a href="protecting-phi-protected-health-information.html#cb973-4" tabindex="-1"></a>          <span class="at">filetype =</span> <span class="st">&quot;csv&quot;</span>, <span class="co"># options include RData, Stata, SAS</span></span>
+<span id="cb973-5"><a href="protecting-phi-protected-health-information.html#cb973-5" tabindex="-1"></a>          <span class="at">data.labels =</span> <span class="cn">TRUE</span> )</span></code></pre></div>
 <pre><code>## Synthetic data exported as csv file(s).
 ## Information on synthetic data written to
 ##   /Users/peterhiggins/Documents/RCode/rmrwr-book/synthesis_info_syn_SD.txt</code></pre>
-<div class="sourceCode" id="cb973"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb973-1"><a href="protecting-phi-protected-health-information.html#cb973-1" tabindex="-1"></a><span class="fu">read.csv</span>(<span class="st">&quot;syn_SD.csv&quot;</span>) <span class="ot">-&gt;</span> syn_SD</span>
-<span id="cb973-2"><a href="protecting-phi-protected-health-information.html#cb973-2" tabindex="-1"></a><span class="fu">glimpse</span>(syn_SD)</span></code></pre></div>
+<div class="sourceCode" id="cb975"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb975-1"><a href="protecting-phi-protected-health-information.html#cb975-1" tabindex="-1"></a><span class="fu">read.csv</span>(<span class="st">&quot;syn_SD.csv&quot;</span>) <span class="ot">-&gt;</span> syn_SD</span>
+<span id="cb975-2"><a href="protecting-phi-protected-health-information.html#cb975-2" tabindex="-1"></a><span class="fu">glimpse</span>(syn_SD)</span></code></pre></div>
 <pre><code>## Rows: 5,000
 ## Columns: 10
 ## $ sex        &lt;chr&gt; &quot;MALE&quot;, &quot;FEMALE&quot;, &quot;MALE&quot;, &quot;MALE&quot;, &quot;FEMALE&quot;, &quot;FEMALE&quot;, &quot;MALE…
@@ -1421,14 +1422,14 @@ This is especially important when backing up data to the cloud, or sharing data 
 ## $ trustneigh &lt;chr&gt; &quot;YES&quot;, &quot;YES&quot;, &quot;YES&quot;, &quot;NO&quot;, &quot;NO OPINION&quot;, &quot;NO OPINION&quot;, &quot;YES…
 ## $ income     &lt;int&gt; 2000, 990, 1800, 3000, 1000, 1400, 3300, 1500, 500, 1000, 2…</code></pre>
 <p>One small issue is that string factors are synthesized as character vectors. If these are meant to be ordered factors, we have to redefine these as ordered factors if we want the same ordering which is helpful for modeling. We can ‘borrow’ the order from the original dataset. Run the code block below to redefine six variables as ordered factors.</p>
-<div class="sourceCode" id="cb975"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb975-1"><a href="protecting-phi-protected-health-information.html#cb975-1" tabindex="-1"></a>syn_SD<span class="sc">$</span>sex <span class="ot">&lt;-</span> <span class="fu">factor</span>(syn_SD<span class="sc">$</span>sex, <span class="at">levels =</span> <span class="fu">levels</span>(mydata<span class="sc">$</span>sex))</span>
-<span id="cb975-2"><a href="protecting-phi-protected-health-information.html#cb975-2" tabindex="-1"></a>syn_SD<span class="sc">$</span>agegr <span class="ot">&lt;-</span> <span class="fu">factor</span>(syn_SD<span class="sc">$</span>agegr, <span class="at">levels =</span> <span class="fu">levels</span>(mydata<span class="sc">$</span>agegr))</span>
-<span id="cb975-3"><a href="protecting-phi-protected-health-information.html#cb975-3" tabindex="-1"></a>syn_SD<span class="sc">$</span>edu <span class="ot">&lt;-</span> <span class="fu">factor</span>(syn_SD<span class="sc">$</span>edu, <span class="at">levels =</span> <span class="fu">levels</span>(mydata<span class="sc">$</span>edu))</span>
-<span id="cb975-4"><a href="protecting-phi-protected-health-information.html#cb975-4" tabindex="-1"></a>syn_SD<span class="sc">$</span>socprof <span class="ot">&lt;-</span> <span class="fu">factor</span>(syn_SD<span class="sc">$</span>socprof, <span class="at">levels =</span> <span class="fu">levels</span>(mydata<span class="sc">$</span>socprof))</span>
-<span id="cb975-5"><a href="protecting-phi-protected-health-information.html#cb975-5" tabindex="-1"></a>syn_SD<span class="sc">$</span>marital <span class="ot">&lt;-</span> <span class="fu">factor</span>(syn_SD<span class="sc">$</span>marital, <span class="at">levels =</span> <span class="fu">levels</span>(mydata<span class="sc">$</span>marital))</span></code></pre></div>
+<div class="sourceCode" id="cb977"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb977-1"><a href="protecting-phi-protected-health-information.html#cb977-1" tabindex="-1"></a>syn_SD<span class="sc">$</span>sex <span class="ot">&lt;-</span> <span class="fu">factor</span>(syn_SD<span class="sc">$</span>sex, <span class="at">levels =</span> <span class="fu">levels</span>(mydata<span class="sc">$</span>sex))</span>
+<span id="cb977-2"><a href="protecting-phi-protected-health-information.html#cb977-2" tabindex="-1"></a>syn_SD<span class="sc">$</span>agegr <span class="ot">&lt;-</span> <span class="fu">factor</span>(syn_SD<span class="sc">$</span>agegr, <span class="at">levels =</span> <span class="fu">levels</span>(mydata<span class="sc">$</span>agegr))</span>
+<span id="cb977-3"><a href="protecting-phi-protected-health-information.html#cb977-3" tabindex="-1"></a>syn_SD<span class="sc">$</span>edu <span class="ot">&lt;-</span> <span class="fu">factor</span>(syn_SD<span class="sc">$</span>edu, <span class="at">levels =</span> <span class="fu">levels</span>(mydata<span class="sc">$</span>edu))</span>
+<span id="cb977-4"><a href="protecting-phi-protected-health-information.html#cb977-4" tabindex="-1"></a>syn_SD<span class="sc">$</span>socprof <span class="ot">&lt;-</span> <span class="fu">factor</span>(syn_SD<span class="sc">$</span>socprof, <span class="at">levels =</span> <span class="fu">levels</span>(mydata<span class="sc">$</span>socprof))</span>
+<span id="cb977-5"><a href="protecting-phi-protected-health-information.html#cb977-5" tabindex="-1"></a>syn_SD<span class="sc">$</span>marital <span class="ot">&lt;-</span> <span class="fu">factor</span>(syn_SD<span class="sc">$</span>marital, <span class="at">levels =</span> <span class="fu">levels</span>(mydata<span class="sc">$</span>marital))</span></code></pre></div>
 <p>Now we can compare the original data with the synthetic data by modeling a linear regression for income with each dataset in turn</p>
-<div class="sourceCode" id="cb976"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb976-1"><a href="protecting-phi-protected-health-information.html#cb976-1" tabindex="-1"></a>orig_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(income <span class="sc">~</span> sex <span class="sc">+</span> agegr <span class="sc">+</span> edu <span class="sc">+</span> socprof <span class="sc">+</span> marital, <span class="at">data =</span> mydata)</span>
-<span id="cb976-2"><a href="protecting-phi-protected-health-information.html#cb976-2" tabindex="-1"></a>broom<span class="sc">::</span><span class="fu">tidy</span>(orig_model)</span></code></pre></div>
+<div class="sourceCode" id="cb978"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb978-1"><a href="protecting-phi-protected-health-information.html#cb978-1" tabindex="-1"></a>orig_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(income <span class="sc">~</span> sex <span class="sc">+</span> agegr <span class="sc">+</span> edu <span class="sc">+</span> socprof <span class="sc">+</span> marital, <span class="at">data =</span> mydata)</span>
+<span id="cb978-2"><a href="protecting-phi-protected-health-information.html#cb978-2" tabindex="-1"></a>broom<span class="sc">::</span><span class="fu">tidy</span>(orig_model)</span></code></pre></div>
 <pre><code>## # A tibble: 23 × 5
 ##    term                        estimate std.error statistic  p.value
 ##    &lt;chr&gt;                          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
@@ -1443,9 +1444,9 @@ This is especially important when backing up data to the cloud, or sharing data 
 ##  9 eduSECONDARY                    414.      53.6      7.72 1.46e-14
 ## 10 eduPOST-SECONDARY OR HIGHER    1158.      62.4     18.6  1.13e-73
 ## # ℹ 13 more rows</code></pre>
-<div class="sourceCode" id="cb978"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb978-1"><a href="protecting-phi-protected-health-information.html#cb978-1" tabindex="-1"></a>syn_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(income <span class="sc">~</span> sex <span class="sc">+</span> agegr <span class="sc">+</span> edu <span class="sc">+</span> socprof <span class="sc">+</span> marital, <span class="at">data =</span> syn_SD)</span>
-<span id="cb978-2"><a href="protecting-phi-protected-health-information.html#cb978-2" tabindex="-1"></a></span>
-<span id="cb978-3"><a href="protecting-phi-protected-health-information.html#cb978-3" tabindex="-1"></a>broom<span class="sc">::</span><span class="fu">tidy</span>(syn_model)</span></code></pre></div>
+<div class="sourceCode" id="cb980"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb980-1"><a href="protecting-phi-protected-health-information.html#cb980-1" tabindex="-1"></a>syn_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(income <span class="sc">~</span> sex <span class="sc">+</span> agegr <span class="sc">+</span> edu <span class="sc">+</span> socprof <span class="sc">+</span> marital, <span class="at">data =</span> syn_SD)</span>
+<span id="cb980-2"><a href="protecting-phi-protected-health-information.html#cb980-2" tabindex="-1"></a></span>
+<span id="cb980-3"><a href="protecting-phi-protected-health-information.html#cb980-3" tabindex="-1"></a>broom<span class="sc">::</span><span class="fu">tidy</span>(syn_model)</span></code></pre></div>
 <pre><code>## # A tibble: 23 × 5
 ##    term                        estimate std.error statistic  p.value
 ##    &lt;chr&gt;                          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
