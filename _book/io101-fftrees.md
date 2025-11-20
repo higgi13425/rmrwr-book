@@ -141,6 +141,11 @@ breast.fft
 ## FFTrees 
 ## - Trees: 6 fast-and-frugal trees predicting diagnosis
 ## - Cost of outcomes:  hi = 0,  fa = 1,  mi = 1,  cr = 0
+## - Cost of cues: 
+##      thickness  cellsize.unif cellshape.unif       adhesion     epithelial 
+##              1              1              1              1              1 
+##    nuclei.bare      chromatin       nucleoli        mitoses 
+##              1              1              1              1 
 ## 
 ## FFT #1: Definition
 ## [1] If cellsize.unif <= 2, decide Healthy.
@@ -160,7 +165,8 @@ breast.fft
 ## bacc = 96.3%   sens = 96.7%   spec = 95.9%
 ## 
 ## FFT #1: Training Speed, Frugality, and Cost
-## mcu = 1.4,  pci = 0.84,  cost_dec = 0.038
+## mcu = 1.4,  pci = 0.84
+## cost_dec = 0.038,  cost_cue = 1.398,  cost = 1.436
 ```
 
 This prints out the (default) assigned cost of 1 for false positives (fa for false alarm) and false negatives (mi for miss), the definition of the best tree model (with 2 nodes or branch points), the best tree model's performance on the training data, and some accuracy statistics.
@@ -240,16 +246,16 @@ breast.fft$cues$stats$train
 ## 7 0.9639640 0.9245283 0.9067797 0.9122807 0.8903153 0.8903153 2.683437
 ## 8 0.9504505 0.8990826 0.9055794 0.9035088 0.8835586 0.8835586 2.537226
 ## 9 0.9684685 0.8793103 0.7570423 0.7777778 0.6967342 0.6967342 1.655776
-##      cost_dec        cost cost_cue
-## 1 -0.16959064 -0.16959064        0
-## 2 -0.05847953 -0.05847953        0
-## 3 -0.07017544 -0.07017544        0
-## 4 -0.16081871 -0.16081871        0
-## 5 -0.09649123 -0.09649123        0
-## 6 -0.09064327 -0.09064327        0
-## 7 -0.08771930 -0.08771930        0
-## 8 -0.09649123 -0.09649123        0
-## 9 -0.22222222 -0.22222222        0
+##      cost_dec      cost cost_cue
+## 1 -0.16959064 -1.169591        1
+## 2 -0.05847953 -1.058480        1
+## 3 -0.07017544 -1.070175        1
+## 4 -0.16081871 -1.160819        1
+## 5 -0.09649123 -1.096491        1
+## 6 -0.09064327 -1.090643        1
+## 7 -0.08771930 -1.087719        1
+## 8 -0.09649123 -1.096491        1
+## 9 -0.22222222 -1.222222        1
 ```
 
 And see that counting mitoses (#9) is not a great use of your pathologist's time, with a sensitivity of 0.425.
@@ -444,40 +450,6 @@ heart.fft <- FFTrees(diagnosis ~ .,
   decision.labels = c("Healthy", "Heart Disease"))
 ```
 
-```
-## Warning in comp_pred(formula = x$formula, data.train = x$data$train, data.test
-## = x$data$test, : 4 cases in the test data could not be predicted by 'e' due to
-## new factor values. These cases will be excluded
-```
-
-```
-## Warning in comp_pred(formula = x$formula, data.train = x$data$train, data.test
-## = x$data$test, : NAs introduced by coercion
-```
-
-```
-## Warning in !ix_NA_pred & !ix_NA_crit: longer object length is not a multiple of
-## shorter object length
-```
-
-```
-## Warning in comp_pred(formula = x$formula, data.train = x$data$train, data.test
-## = x$data$test, : 4 cases in the test data could not be predicted by 'e' due to
-## new factor values. These cases will be excluded
-```
-
-```
-## Warning in comp_pred(formula = x$formula, data.train = x$data$train, data.test
-## = x$data$test, : 4 cases in the test data could not be predicted by 'e' due to
-## new factor values. These cases will be excluded
-```
-
-```
-## Warning in comp_pred(formula = x$formula, data.train = x$data$train, data.test
-## = x$data$test, : 4 cases in the test data could not be predicted by 'e' due to
-## new factor values. These cases will be excluded
-```
-
 
 </div>
 
@@ -542,20 +514,20 @@ heart.fft$cues$stats$train
 ## 11 0.6025641 0.6891892 0.6447368 0.6466899 0.6466899 0.7491666 -0.3552632
 ## 12 0.7260274 0.7848101 0.7565789 0.7566202 0.7566202 1.3801880 -0.2434211
 ## 13 0.7000000 0.6956522 0.6973684 0.6902439 0.6902439 1.0196178 -0.3026316
-##          cost cost_cue
-## 1  -0.3552632        0
-## 2  -0.3881579        0
-## 3  -0.2236842        0
-## 4  -0.4407895        0
-## 5  -0.3486842        0
-## 6  -0.4473684        0
-## 7  -0.3684211        0
-## 8  -0.3355263        0
-## 9  -0.2960526        0
-## 10 -0.3026316        0
-## 11 -0.3552632        0
-## 12 -0.2434211        0
-## 13 -0.3026316        0
+##         cost cost_cue
+## 1  -1.355263        1
+## 2  -1.388158        1
+## 3  -1.223684        1
+## 4  -1.440789        1
+## 5  -1.348684        1
+## 6  -1.447368        1
+## 7  -1.368421        1
+## 8  -1.335526        1
+## 9  -1.296053        1
+## 10 -1.302632        1
+## 11 -1.355263        1
+## 12 -1.243421        1
+## 13 -1.302632        1
 ```
 
 And look at the sens (0.84) and spec (0.16) numbers to find this (order is rearranged) - this was an isolated elevated fasting blood sugar without considering symptoms, demographics, or thallium results - sensitive but not specific (note that \# 12 is an isolated EKG, and that this dataset is from the pre-Troponin (or even CK-MB) era.)
@@ -661,6 +633,11 @@ print(tb.fft)
 ## FFTrees 
 ## - Trees: 6 fast-and-frugal trees predicting improved
 ## - Cost of outcomes:  hi = 0,  fa = 1,  mi = 1,  cr = 0
+## - Cost of cues: 
+##                 arm              gender  baseline_condition       baseline_temp 
+##                   1                   1                   1                   1 
+##        baseline_esr baseline_cavitation 
+##                   1                   1 
 ## 
 ## FFT #1: Definition
 ## [1] If baseline_condition != {1_Good,2_Fair}, decide Died.
@@ -681,7 +658,8 @@ print(tb.fft)
 ## bacc = 79.8%   sens = 75.0%   spec = 84.6%
 ## 
 ## FFT #1: Training Speed, Frugality, and Cost
-## mcu = 1.63,  pci = 0.73,  cost_dec = 0.204
+## mcu = 1.63,  pci = 0.73
+## cost_dec = 0.204,  cost_cue = 1.630,  cost = 1.833
 ```
 
 </div>

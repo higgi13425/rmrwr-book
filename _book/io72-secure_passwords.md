@@ -173,58 +173,58 @@ key_list()
 ## 136                                                                                                                                                                                                                 iCloud
 ## 137                                                                                                                                                                                    com.microsoft.OutlookCore.ServiceV2
 ## 138                                                                                                                                                                          com.garmin.cartography.mapupdate.express.auth
-## 139                                                                                                                                                                                                                       
+## 139                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
 ## 140                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
-## 141                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
-## 142                                                                                                                                                                        Adobe App Info (Q0NMaWJyYXJ5Mnt9MjAxODA3MjAwMQ)
-## 143                                                                                                                                                                                        com.apple.continuity.encryption
+## 141                                                                                                                                                                        Adobe App Info (Q0NMaWJyYXJ5Mnt9MjAxODA3MjAwMQ)
+## 142                                                                                                                                                                                        com.apple.continuity.encryption
+## 143                                                                                                                                                                                                                       
 ## 144                                                                                                                                                                                                                       
-## 145                                                                                                                                                                                                                       
-## 146                                                                                                                                                                   Adobe App Info (Q3JlYXRpdmVDbG91ZDJ7fTIwMTgwNzIwMDE)
-## 147                                                                                                                                                                                        com.apple.continuity.encryption
-## 148                                                                                                                                                                                   EDCA163A-9928-49A8-B539-BE9DE9A1B0E6
-## 149                                                                                                                                                                                                        Adobe User Info
-## 150                                                                                                                                                                           com.apple.scopedbookmarksagent.xpc.encrypted
-## 151                                                                                                                                                                                                  Positron Safe Storage
-## 152                                                                                                                                                                                                    com.apple.assistant
-## 153                                                                                                                                                                                        com.apple.continuity.encryption
+## 145                                                                                                                                                                   Adobe App Info (Q3JlYXRpdmVDbG91ZDJ7fTIwMTgwNzIwMDE)
+## 146                                                                                                                                                                                        com.apple.continuity.encryption
+## 147                                                                                                                                                                                   EDCA163A-9928-49A8-B539-BE9DE9A1B0E6
+## 148                                                                                                                                                                           com.apple.scopedbookmarksagent.xpc.encrypted
+## 149                                                                                                                                                                                                  Positron Safe Storage
+## 150                                                                                                                                                                                                    com.apple.assistant
+## 151                                                                                                                                                                                        com.apple.continuity.encryption
+## 152                                                                                                                                                                                        com.apple.continuity.encryption
+## 153                                                                                                                                                                                                                       
 ## 154                                                                                                                                                                                        com.apple.continuity.encryption
-## 155                                                                                                                                                                                                                       
-## 156                                                                                                                                                                                                    com.apple.assistant
-## 157                                                                                                                                                                                                    com.apple.assistant
-## 158                                                                                                                                                                                                    com.apple.assistant
-## 159                                                                                                                                                 com.apple.gs.icloud.auth.com.apple.account.AppleIDAuthentication.token
-## 160                                                                                                                                                com.apple.gs.appleid.auth.com.apple.account.AppleIDAuthentication.token
-## 161                                                                                                                                                                                             com.apple.ind.registration
+## 155                                                                                                                                                                   Adobe App Info (QWNyb2JhdFJlYWRlcjF7fTIwMTgwNzIwMDE)
+## 156                                                                                                                                                                                                                       
+## 157                                                                                                                                                                                                        Adobe User Info
+## 158                                                                                                                                                                                                                       
+## 159                                                                                                                                                                                                                       
+## 160                                                                                                                                                                                                         OneAuthAccount
+## 161                                                                                                                                                                                                         OneAuthAccount
 ## 162                                                                                                                                                                                                         OneAuthAccount
-## 163                                                                                                                                                                                                         OneAuthAccount
-## 164                                                                                                                                                                                        com.apple.continuity.encryption
-## 165                                                                                                                                                                                                                       
-## 166                                                                                                                                                                          Adobe App Info (Q29yZVN5bmMxe30yMDE4MDcyMDAx)
-## 167                                                                                                                                                                                      Apple Persistent State Encryption
-## 168                                                                                                    com.adobe.creativecloud.com.adobe.acc.container.C2A135575CF3D7EC0A495FA8.AdobeStock:UPDATE_INDICATOR_VISIBILITY_KEY
-## 169                                                                                                                                                                       Adobe App Info (Q0NYUHJvY2VzczF7fTIwMTgwNzIwMDE)
-## 170                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
-## 171                                                                                                                                                                                                     TelephonyUtilities
-## 172                                                                                                                                                                   Adobe App Info (QWNyb2JhdFJlYWRlcjF7fTIwMTgwNzIwMDE)
-## 173                                                                                                                                                                                                                       
-## 174                                                                                                                                                                                                     TelephonyUtilities
-## 175                                                                                                                                                                                                    com.apple.assistant
-## 176                                                                                                                                                                                                    com.apple.assistant
-## 177                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
-## 178                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
-## 179                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
-## 180                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
-## 181                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
-## 182                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
-## 183                                                                                                                                                                        Adobe App Info (QWNyb2JhdERDMXt9MjAxODA3MjAwMQ)
-## 184                                                                                                                                                                      Adobe App Info (SWxsdXN0cmF0b3Ixe30yMDE4MDcyMDAx)
-## 185                                                                                                                                                                        Adobe App Info (UGhvdG9zaG9wMXt9MjAxODA3MjAwMQ)
+## 163                                                                                                                                                                          Adobe App Info (Q29yZVN5bmMxe30yMDE4MDcyMDAx)
+## 164                                                                                                                                                 com.apple.gs.icloud.auth.com.apple.account.AppleIDAuthentication.token
+## 165                                                                                                                                                com.apple.gs.appleid.auth.com.apple.account.AppleIDAuthentication.token
+## 166                                                                                                                                                                                                    com.apple.assistant
+## 167                                                                                                                                                                                                    com.apple.assistant
+## 168                                                                                                                                                                                                    com.apple.assistant
+## 169                                                                                                                                                                                                     TelephonyUtilities
+## 170                                                                                                                                                                                                     TelephonyUtilities
+## 171                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
+## 172                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
+## 173                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
+## 174                                                                                                                                                                                             com.apple.ind.registration
+## 175                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
+## 176                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
+## 177                                                                                                                                                                       Adobe App Info (Q0NYUHJvY2VzczF7fTIwMTgwNzIwMDE)
+## 178                                                                                                                                                                        Adobe App Info (QWNyb2JhdERDMXt9MjAxODA3MjAwMQ)
+## 179                                                                                                                                                                      Adobe App Info (SWxsdXN0cmF0b3Ixe30yMDE4MDcyMDAx)
+## 180                                                                                                                                                                        Adobe App Info (UGhvdG9zaG9wMXt9MjAxODA3MjAwMQ)
+## 181                                                                                                    com.adobe.creativecloud.com.adobe.acc.container.C2A135575CF3D7EC0A495FA8.AdobeStock:UPDATE_INDICATOR_VISIBILITY_KEY
+## 182                                                                                                                                                                                      Apple Persistent State Encryption
+## 183                                                                                                                                                                                                    com.apple.assistant
+## 184                                                                                                                                                                                                    com.apple.assistant
+## 185                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
 ## 186                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
 ## 187                                                                                                                                                                             com.apple.account.Google.oauth-expiry-date
 ## 188                                                                                                                                                                                   com.apple.account.Google.oauth-token
 ## 189                                                                                                                                                                                        com.apple.continuity.encryption
-## 190                                                                                                                                                                                                         OneAuthAccount
+## 190                                                                                                                                                                               com.apple.NetworkServiceProxy.ProxyToken
 ## 191                                                                                                                                                                                                                AirPort
 ## 192                                                                                                                                                                                                                AirPort
 ## 193                                                                                                                                                                                                                AirPort
@@ -353,20 +353,21 @@ key_list()
 ## 316                                                                                                                                                                                                                AirPort
 ## 317                                                                                                                                                                                                                AirPort
 ## 318                                                                                                                                                                                                            BluetoothLE
-## 319                                                                                                                                                                                                            BluetoothLE
-## 320                                                                                                                                                                                                        BluetoothGlobal
-## 321                                                                                                                                                                             AF2710E6-F2E5-48E8-AFA4-28BBC7B9CEA8.XAUTH
-## 322                                                                                                                                                                                AF2710E6-F2E5-48E8-AFA4-28BBC7B9CEA8.SS
-## 323                                                                                                                                                                             FDB4238E-3A19-4058-AAEA-42DEAA52A9D8.XAUTH
-## 324                                                                                                                                                                                FDB4238E-3A19-4058-AAEA-42DEAA52A9D8.SS
-## 325                                                                                                                                                                                                        MobileBluetooth
+## 319                                                                                                                                                                                                                AirPort
+## 320                                                                                                                                                                                                            BluetoothLE
+## 321                                                                                                                                                                                                        BluetoothGlobal
+## 322                                                                                                                                                                             AF2710E6-F2E5-48E8-AFA4-28BBC7B9CEA8.XAUTH
+## 323                                                                                                                                                                                AF2710E6-F2E5-48E8-AFA4-28BBC7B9CEA8.SS
+## 324                                                                                                                                                                             FDB4238E-3A19-4058-AAEA-42DEAA52A9D8.XAUTH
+## 325                                                                                                                                                                                FDB4238E-3A19-4058-AAEA-42DEAA52A9D8.SS
 ## 326                                                                                                                                                                                                        MobileBluetooth
 ## 327                                                                                                                                                                                                        MobileBluetooth
 ## 328                                                                                                                                                                                                        MobileBluetooth
 ## 329                                                                                                                                                                                                        MobileBluetooth
-## 330                                                                                                                                                                                                          WiFiAnalytics
+## 330                                                                                                                                                                                                        MobileBluetooth
 ## 331                                                                                                                                                                                                          WiFiAnalytics
 ## 332                                                                                                                                                                                                          WiFiAnalytics
+## 333                                                                                                                                                                                                          WiFiAnalytics
 ##                                                                                                           username
 ## 1                                                                                            pdr.higgins@gmail.com
 ## 2                                                                               com.apple.scopedbookmarksagent.xpc
@@ -506,58 +507,58 @@ key_list()
 ## 136                                                                                                     1457225930
 ## 137                                                                            com.microsoft.OutlookCore.AccountV2
 ## 138                                                                                                     3481069885
-## 139                                                                            Microsoft Office Identities Cache 3
-## 140                                                                           CloudFlare_OHTTP_Relay_Carry_Staging
-## 141                                                                                                        Apple_2
-## 142                                                                                                       App Info
-## 143                                                    handoff-decryption-key-F0384A42-87AF-41F5-A4DD-E12353FD9024
-## 144                     /Users/peterhiggins/Library/Application Support/Adobe/Acrobat/DC/Security/AcroMLDataCachek
-## 145                   /Users/peterhiggins/Library/Application Support/Adobe/Acrobat/DC/Security/workflowDataCachek
-## 146                                                                                                       App Info
-## 147                                                    handoff-decryption-key-94195545-BC3B-45FF-A720-3066E8EAD314
-## 148                                                                      com.apple.continuity.auto-unlock.attested
-## 149                                                                                                        User DT
-## 150                                                                                                               
-## 151                                                                                                       Positron
-## 152                                                              Siri Global - com.apple.assistant.music.fusetoken
-## 153                                                    handoff-decryption-key-53C91792-73B1-4277-A455-428B304D9E1B
-## 154                                                    handoff-decryption-key-1D3B068C-DD25-4A0B-8016-371043696090
-## 155                           /Users/peterhiggins/Library/Application Support/Adobe/Acrobat/DC/Security/Annssk.dat
-## 156                                                    9980D418-5756-46F7-99F5-BAAFC46CB734 - Assistant Identifier
-## 157                                            9980D418-5756-46F7-99F5-BAAFC46CB734 - Logging Assistant Identifier
-## 158                                                       9980D418-5756-46F7-99F5-BAAFC46CB734 - Speech Identifier
-## 159                                                                                          pdr.higgins@gmail.com
-## 160                                                                                          pdr.higgins@gmail.com
-## 161                                                                           9C1AC72F-511A-46E3-88E3-64885BB78814
-## 162 e6c3d4cc-993c-41e5-82c6-68254c71767f.1f41d613-d3a1-4ead-918d-2a25b10de330.e66e77b4-5724-44d7-8721-06df160450ce
-## 163                                                                           897557a6-f7f7-4e15-b896-bd49d6ddca75
-## 164                                                    handoff-decryption-key-3FC361CC-4036-4255-B474-0F2B2357A185
-## 165                                                                         Microsoft Office Identities Settings 3
-## 166                                                                                                       App Info
-## 167                                                                                       Window Bitmap Encryption
-## 168                                                                                                               
-## 169                                                                                                       App Info
-## 170                                                                                                         Akamai
-## 171                                                                                      lastKnownFaceTimeCallerID
-## 172                                                                                                       App Info
-## 173                   /Users/peterhiggins/Library/Application Support/Adobe/Acrobat/DC/Security/AcroMLCacheReaderk
-## 174                                                                                            registeredProviders
-## 175                                                                  Siri Global - AnalyticsIdentifiers.checkpoint
-## 176                                                         9980D418-5756-46F7-99F5-BAAFC46CB734 - Validation Data
-## 177                                                                                                     CloudFlare
-## 178                                                                                                CloudFlare_cp10
-## 179                                                                                                         Fastly
-## 180                                                                                                    Apple_Relay
-## 181                                                                                             Fastly_OHTTP_Relay
-## 182                                                                                         CloudFlare_OHTTP_Relay
-## 183                                                                                                       App Info
-## 184                                                                                                       App Info
-## 185                                                                                                       App Info
+## 139                                                                           CloudFlare_OHTTP_Relay_Carry_Staging
+## 140                                                                                                        Apple_2
+## 141                                                                                                       App Info
+## 142                                                    handoff-decryption-key-F0384A42-87AF-41F5-A4DD-E12353FD9024
+## 143                     /Users/peterhiggins/Library/Application Support/Adobe/Acrobat/DC/Security/AcroMLDataCachek
+## 144                   /Users/peterhiggins/Library/Application Support/Adobe/Acrobat/DC/Security/workflowDataCachek
+## 145                                                                                                       App Info
+## 146                                                    handoff-decryption-key-94195545-BC3B-45FF-A720-3066E8EAD314
+## 147                                                                      com.apple.continuity.auto-unlock.attested
+## 148                                                                                                               
+## 149                                                                                                       Positron
+## 150                                                              Siri Global - com.apple.assistant.music.fusetoken
+## 151                                                    handoff-decryption-key-53C91792-73B1-4277-A455-428B304D9E1B
+## 152                                                    handoff-decryption-key-1D3B068C-DD25-4A0B-8016-371043696090
+## 153                           /Users/peterhiggins/Library/Application Support/Adobe/Acrobat/DC/Security/Annssk.dat
+## 154                                                    handoff-decryption-key-3FC361CC-4036-4255-B474-0F2B2357A185
+## 155                                                                                                       App Info
+## 156                   /Users/peterhiggins/Library/Application Support/Adobe/Acrobat/DC/Security/AcroMLCacheReaderk
+## 157                                                                                                        User DT
+## 158                                                                            Microsoft Office Identities Cache 3
+## 159                                                                         Microsoft Office Identities Settings 3
+## 160 e6c3d4cc-993c-41e5-82c6-68254c71767f.1f41d613-d3a1-4ead-918d-2a25b10de330.e66e77b4-5724-44d7-8721-06df160450ce
+## 161                                                                           e6c3d4cc-993c-41e5-82c6-68254c71767f
+## 162                                                                           897557a6-f7f7-4e15-b896-bd49d6ddca75
+## 163                                                                                                       App Info
+## 164                                                                                          pdr.higgins@gmail.com
+## 165                                                                                          pdr.higgins@gmail.com
+## 166                                                    9980D418-5756-46F7-99F5-BAAFC46CB734 - Assistant Identifier
+## 167                                            9980D418-5756-46F7-99F5-BAAFC46CB734 - Logging Assistant Identifier
+## 168                                                       9980D418-5756-46F7-99F5-BAAFC46CB734 - Speech Identifier
+## 169                                                                                      lastKnownFaceTimeCallerID
+## 170                                                                                            registeredProviders
+## 171                                                                                                         Akamai
+## 172                                                                                                CloudFlare_cp10
+## 173                                                                                                    Apple_Relay
+## 174                                                                           9C1AC72F-511A-46E3-88E3-64885BB78814
+## 175                                                                                             Fastly_OHTTP_Relay
+## 176                                                                                                         Fastly
+## 177                                                                                                       App Info
+## 178                                                                                                       App Info
+## 179                                                                                                       App Info
+## 180                                                                                                       App Info
+## 181                                                                                                               
+## 182                                                                                       Window Bitmap Encryption
+## 183                                                         9980D418-5756-46F7-99F5-BAAFC46CB734 - Validation Data
+## 184                                                                  Siri Global - AnalyticsIdentifiers.checkpoint
+## 185                                                                                                     CloudFlare
 ## 186                                                                                                          Apple
 ## 187                                                                                          pdr.higgins@gmail.com
 ## 188                                                                                          pdr.higgins@gmail.com
 ## 189                                                                                     handoff-own-encryption-key
-## 190                                                                           e6c3d4cc-993c-41e5-82c6-68254c71767f
+## 190                                                                                         CloudFlare_OHTTP_Relay
 ## 191                                                                                                  NETGEAR-Guest
 ## 192                                                                                                  villaflorida1
 ## 193                                                                                                   Medosz_Front
@@ -686,20 +687,21 @@ key_list()
 ## 316                                                                                               Tipilikwani WiFi
 ## 317                                                                                                    Tipilikwani
 ## 318                                                              Public EC:A9:07:0C:94:EF Random D9:39:E3:50:39:3A
-## 319                                                              Public 34:66:91:93:3B:49 Random D9:39:E3:50:39:3A
-## 320                                                                                              Identity Root Key
-## 321                                                                                                       phiggins
-## 322                                                                                           UM-off-campus-access
-## 323                                                                                                       phiggins
-## 324                                                                                          UM-on-campus-wireless
-## 325                                                                                              28:37:37:36:35:C6
-## 326                                                                                              35:09:06:E7:23:9D
-## 327                                                                                              90:9C:4A:09:DB:4E
-## 328                                                                                              DC:A9:04:03:D7:1A
-## 329                                                                                              1C:B3:C9:B2:DE:FF
-## 330                                                                           com.apple.wifi.analytics.persistence
-## 331                                                                        com.apple.wifi.analytics.persistence-iv
-## 332                                                                       com.apple.wifi.analytics.persistence-tag
+## 319                                                                                            Bavarian Guest WIFI
+## 320                                                              Public 34:66:91:93:3B:49 Random D9:39:E3:50:39:3A
+## 321                                                                                              Identity Root Key
+## 322                                                                                                       phiggins
+## 323                                                                                           UM-off-campus-access
+## 324                                                                                                       phiggins
+## 325                                                                                          UM-on-campus-wireless
+## 326                                                                                              28:37:37:36:35:C6
+## 327                                                                                              35:09:06:E7:23:9D
+## 328                                                                                              90:9C:4A:09:DB:4E
+## 329                                                                                              DC:A9:04:03:D7:1A
+## 330                                                                                              1C:B3:C9:B2:DE:FF
+## 331                                                                           com.apple.wifi.analytics.persistence
+## 332                                                                        com.apple.wifi.analytics.persistence-iv
+## 333                                                                       com.apple.wifi.analytics.persistence-tag
 ```
 
 This gives you a list of all the keys stored by your operating system credential store.

@@ -76,7 +76,7 @@ whoami;date
 
 ```
 ## peterhiggins
-## Thu Oct  9 16:39:42 EDT 2025
+## Thu Nov 20 18:17:33 EST 2025
 ```
 :::
 
@@ -179,6 +179,7 @@ ls
 ## ACG_slideformat_ACG22_White_Background.pptx
 ## ACG21_P19_Efficacy and Safety of Upadacitinib Induction Therapy in Patients With Moderately to Severely Active Ulcerative Col_vSub.pptx
 ## ACLS eCard Peter Higgins.pdf
+## Adobe
 ## Advice for participants in webinars.docx
 ## Advice for young mentors.docx
 ## AGA DDW 2021
@@ -463,6 +464,7 @@ ls
 ## INTERNAL_BUDGET_Abbvie_Nav_Rux_Sept_2021.xlsx
 ## introduce_clare.docx
 ## Introduction to Application Supplement Photoacoustic.docx
+## Investment Limits for pretax accounts.docx
 ## Invoice 401 to Buhlmann.docx
 ## Invoice 401 to Buhlmann.pdf
 ## Invoice AV50559_Abbvie_PDRH_Dec2021.doc
@@ -643,6 +645,7 @@ ls
 ## RMRWR chapters.docx
 ## Roasted Salted Cashews.docx
 ## RPPR Checklist .docx
+## RTutorials
 ## Ryan CDA
 ## Ryan K
 ## S is for Saffron 3.0.docx
@@ -710,6 +713,7 @@ ls
 ## starting biologics.pptx
 ## Stelara paper_revised_PDRH_KCC.docx
 ## Stelara paper.docx
+## Steps to Make a Pinback Button.docx
 ## stiff_bcl.R
 ## Structure of Aim 3.docx
 ## submitJanssen_IBD School Videos_12Jul2018.pdf

@@ -1,0 +1,242 @@
+---
+title: "Data Exploration and Validation with the pointblank Package"
+author: "Peter Higgins"
+date: "5/28/2025"
+output: html_document
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(webexercises)
+library(usethis)
+library(pointblank)
+library(here)
+```
+
+# Data Exploration and Validation with the {pointblank} Package
+
+This chapter is part of the **Data Validation** pathway. <br> Packages needed for this chapter include {tidyverse}, {pointblank}, and {medicaldata}. 
+
+It is quite common in clinical research to download a dataset and to want to plunge right in to data analysis. Unfortunately, we often find to our regret, that we should have spent more time exploring and validating the data before starting the analysis. This chapter will introduce you to the {pointblank} package, which provides a powerful set of tools for data validation and exploration in R.
+
+## Goals for this Chapter
+- Understand how to explore and validate data using the {pointblank} package
+- Identify missing and outlier data
+- Learn how to document and fix data issues
+
+## Packages needed for this Chapter
+{tidyverse}
+{pointblank}
+{medicaldata}
+
+## Pathway for this Chapter
+This Chapter is part of the **Data Validation** pathway.
+
+## Getting Started with the {pointblank} package
+We will start by installing and loading this package, using the code below.
+
+```{r}
+# install.packages('pointblank')
+library(pointblank)
+
+```
+
+This package is downloadable from any CRAN mirror, and has a practice dataset built in. Let's take a look at "small table", one of the built-in datasets.
+```{r}
+data("small_table", package = "pointblank")
+small_table
+```
+
+There are 8 variables and thireteen rows in this dataset, with 7 distinct data types.
+
+## Starting with a Quick Scan of Your Table.
+
+The {pointblank} package provides a quick way to scan your dataset for potential issues. We can use the `scan_data()` function to get a summary of the data types, missing values, and unique values in each column. Let's try this on small_table.
+
+```{r}
+scan_data(small_table)
+```
+
+
+## Creating an Agent
+The first step in using {pointblank} is to create an "agent". An agent is an object that holds the data and the validation rules. We can create an agent using the `create_agent()` function.
+
+```{r}
+agent <- create_agent(tbl = small_table)
+agent
+
+```
+This new from the academy agent has no validation rules, but it now holds the `small_table` dataset, and we can add validation rules to it. We want to validate each variable and determine if there are any missing or outlier data points.
+
+## Examples of Validation Rules
+
+The {pointblank} package provides a wide range of validation rules that we can use to check our data. Some examples include:
+
+- `col_vals_not_null()`: Check for missing values in a column
+- `col_vals_between()`: Check for values within a specified range
+- `col_vals_in_set()`: Check for values in a specified set
+- `col_is_numeric()`: Check if a column is numeric
+- `col_is_character()`: Check if a column is character
+- `col_is_logical()`: Check if a column is logical
+- `col_vals_gte()`: Check for values greater than or equal to a specified value
+- `col_vals_lte()`: Check for values less than or equal to a specified value
+- `rows_distinct()`: Check for duplicate rows
+
+
+## Adding Validation Rules
+We can add validation rules to the agent using various functions provided by {pointblank}. This will train up the agent to look for the kind of data problems we care about. For example, we can use the `col_vals_not_null()` function to check for missing values in a column. Or use a data range to check for out of range values.
+
+```{r}
+agent <- agent %>%
+  col_vals_not_null(vars(a)) %>%
+  col_vals_between(vars(b), left = 1, right = 10) |> 
+  col_vals_in_set(vars(c), set = c("A", "B", "C"))
+
+agent
+```
+
+We can see that we have added three validation rules to the agent. The first rule checks that column `a` has no missing values, the second rule checks that column `b` has values between 1 and 10, and the third rule checks that column `c` has values in the set {"A", "B", "C"}.  
+
+## Interrogating the Data with Your Agent
+Once we have added validation rules to the agent, the agent can interrogate the agent to see if the data passes the validation rules. The agent will add novel intel on the dataset. We can use the `interrogate()` function to do this.  
+
+```{r}
+agent <- agent %>%
+  interrogate()
+agent
+```
+
+We can now see the result of the interrogation. The updated agent shows us how many rows passed and failed each validation rule. The dark green sidebars show the number of rows that passed, and the red sidebars show the number of rows that failed. More than 10 rows failed the second and third validation rules. We can dig deeper to see which rows failed. To do this, we can use the `get_data_extracts()` function.
+
+```{r}
+failed_rows <- get_data_extracts(agent)
+failed_rows
+```
+This function returns a data frame with the rows that failed each validation rule. We can see that rows 3, 7, 9, 11, and 13 failed the second validation rule, and rows 4, 6, 8, 10, and 12 failed the third validation rule.  
+
+## Documenting and Fixing Data Issues
+Once we have identified the data issues, we can document them using the `yaml_write()` function
+```{r}
+# yaml_write(agent, filename = "data_issues.yaml")
+```
+This function writes the validation results to a YAML file, which can be used for documentation purposes. 
+We can also fix the data issues using various functions provided by {pointblank}. For example, we can use the `col_vals_replace_na()` function to replace missing values with a specified value. Or use `col_vals_replace_out_of_bounds()` to replace out of bounds values. 
+
+```{r}
+small_table_fixed <- small_table %>%
+  mutate(a = ifelse(is.na(a), 0, a),
+         b = ifelse(b < 1 | b > 10, NA, b),
+         c = ifelse(!c %in% c("A", "B", "C
+"), NA, c))
+small_table_fixed
+```
+
+This code replaces missing values in column `a` with 0, replaces out of range values in column `b` with NA, and replaces invalid values in column `c` with NA.
+## Conclusion
+The {pointblank} package provides a powerful set of tools for data validation and exploration in R. By creating an agent, adding validation rules, interrogating the agent, and documenting and fixing data issues, we can ensure that our data is clean and ready for analysis. 
+
+## Setting action Levels
+By default, the {pointblank} package uses a warning action level for validation rules. This means that if any rows fail a validation rule, the agent will issue a warning. However, we can set different action levels for each validation rule using the `action_levels` argument. The available action levels are "stop", "warn", and "notify".
+
+```{r}
+al <- action_levels(warn_at = 2, stop_at = 4)
+
+small_table %>%
+  create_agent(actions = al) %>% 
+  col_vals_lt(a, value = 7) %>%
+  interrogate()
+
+```
+
+If you look at the validation report table, we can see:
+
+The FAIL column shows that 2 tests units have failed.
+the W column (short for ‘warning’) shows a filled yellow circle indicating those failing test units reached that threshold value.
+the S column (short for ‘stop’) shows an open red circle indicating that the number of failing test units is below that threshold.
+The one final action level, N (for ‘notify’), wasn’t set so it appears on the validation table as a long dash.
+
+
+## Try it Yourself
+Now it's your turn to try using the {pointblank} package. Use the code below to create your own agent, add validation rules, interrogate the agent, and document and fix any data issues you find.
+
+Start with small_table. Edit the agent, and devise interrogation rules to make sure that 
+
+- all values for a are between 1 and 7
+- all values for d are between 100-3000
+- variable e is always a logical
+- variable f is always low, mid, or high, and is turned into a factor variable (mutate)
+
+Create the agent and run the interrogation, then display the updated agent.
+
+`r hide("Show Solution")`
+
+```{r}
+agent <- create_agent(tbl = small_table) %>%
+  col_vals_between(vars(a), left = 1, right = 7) %>%
+  col_vals_between(vars(d), left = 100, right = 3000) %>%
+  col_is_logical(vars(e)) %>%
+  col_vals_in_set(vars(f), set = c("low", "mid", "high")) %>%
+  interrogate()
+
+agent
+```
+`r unhide()`
+
+Now identify the failures and fix them in small_table, creating a new data frame called small_table_fixed.
+
+`r hide("Show Solution")`
+```{r}
+failed_rows <- get_data_extracts(agent)
+failed_rows
+small_table_fixed <- small_table %>%
+  mutate(a = ifelse(a < 1 | a > 7, NA, a),
+         d = ifelse(d < 100 | d > 3000, NA, d),
+         e = as.logical(e),
+         f = factor(ifelse(!f %in% c("low", "mid", "high"), NA, f), levels = c("low", "mid", "high")))
+small_table_fixed
+```
+`r unhide()`
+
+## Further Challenges
+
+Try using the {pointblank} package on your own datasets. Create an agent, add validation rules, interrogate the agent, and document and fix any data issues you find. An example dataset you can use is the `psych` dataset from the {medicaldata} package. Load this dataset and explore it using the {pointblank} package.
+
+```{r}
+psych <- readRDS(here('data/psych.Rd')) |> 
+  select(-form_status_complete)
+```
+
+View the psych dataset. Think about the variable type, allowable values, and ranges for each variable. Create an agent and add at least 8 validation rules to check for variable data type, missing values, out of range values, and invalid values. Make sure that there are no duplicate rows. Interrogate the agent and document any data issues you find. Finally, fix the data issues and create a new data frame called psych_fixed.
+
+Use the documentation from the {pointblank} package at https://rstudio.github.io/pointblank/ to help you create the validation rules.
+
+
+`r hide("Show Solution")`
+```{r}
+agent <- create_agent(tbl = psych) %>%
+  col_vals_not_null(vars(study_id)) %>%
+  col_vals_in_set(vars(redcap_data_access_group), set = c("University of Michigan", "Mayo Clinic", "Oregon Health and Science University")) %>%
+  col_vals_in_set(vars(psych_hx), set = c("Yes", "No")) %>%
+  col_vals_in_set(vars(psych_dep), set = c("Yes", "No")) %>%
+  col_vals_in_set(vars(psych_bipo), set = c("Yes", "No")) %>%
+  col_vals_in_set(vars(psych_anx), set = c("Yes", "No")) %>%
+  col_vals_in_set(vars(psych_ptsd), set = c("Yes", "No")) %>%
+  col_vals_in_set(vars(psych_meds), set = c("Yes", "No")) %>%
+  col_vals_in_set(vars(psych_visit), set = c("Yes", "No", "Not available at study site", "Unknown/not reported"))
+
+interrogate(agent)
+agent
+```
+`r unhide()`
+
+## Additional Resources
+
+There is a lot more that the pointblank package can do, including automated reporting each time new data come in, custom validation rules, emailing automated reports daily or weekly, and integration with other packages.
+There are several great articles and tutorials available online to help you learn more about the {pointblank} package and its capabilities.
+
+For more information on the {pointblank} package, check out the following resources:
+- {pointblank} documentation: https://rich-iannone.github.io/pointblank/
+- {pointblank} GitHub repository: https://github.com/rstudio/pointblank 
+
+  

@@ -199,7 +199,7 @@ devtools::install_github("ekholme/blueycolors")
 ```
 
 ```
-## Using GitHub PAT from the git credential store.
+## Using github PAT from envvar GITHUB_PAT. Use `gitcreds::gitcreds_set()` and unset GITHUB_PAT in .Renviron (or elsewhere) if you want to use the more secure git credential store instead.
 ```
 
 ```

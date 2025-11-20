@@ -34,7 +34,6 @@ rmd_files:
 - io48j-extension-plots.Rmd
 - io48c-scales.Rmd
 - io67-ggplot_helpers.Rmd
-- io60-mapping_health_data.Rmd
 - io71-functions_plots.Rmd
 - io76-found_data.Rmd
 - io23-linear-regression.Rmd
@@ -52,15 +51,15 @@ rmd_files:
 - io103-protecting_phi.Rmd
 - io105-targets.Rmd
 - io106-scales_colors_ggplot.Rmd
-- io108-flowcharts.Rmd
 - io109-tabula_pdf.Rmd
 - io110-heemod.Rmd
 - io111-redcap_extraction.Rmd
 - io112-secret_files_snippets.Rmd
+- io114-dev_pointblank.Rmd
 - io198-title-holder.Rmd
 - io199-references.Rmd
 
-# notes
+# notes - fix 60, 108, bring back
 
 
 # publishing to bookdown.org - primary

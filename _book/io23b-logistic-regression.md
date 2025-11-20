@@ -377,9 +377,9 @@ predict(model, newdata = slice_sample(prostate, prop = 0.03), type = "response")
 
 ```
 ##          1          2          3          4          5          6          7 
-## 0.09409879 0.04058836 0.52579385 0.09409879 0.04058836 0.12143477 0.12143477 
+## 0.31109891 0.09409879 0.04058836 0.25338133 0.09409879 0.52579385 0.25338133 
 ##          8          9 
-## 0.04058836 0.09409879
+## 0.09409879 0.04058836
 ```
 
 Let’s see how this works with another dataset, from which we will use predictors to classify diabetes cases. We will start by loading the data into dm_data, and building an “all predictors” model, by specifying the formula predictors as “.” - this means to use all other variables (except the outcome variable) as predictors. Look at the model output for problems.
@@ -718,13 +718,13 @@ performance::model_performance(dm_mod)
 ```
 ## # Indices of model performance
 ## 
-## AIC     |    AICc |     BIC | Tjur's R2 |  RMSE | Sigma | Log_loss | Score_log
-## ------------------------------------------------------------------------------
-## 362.021 | 362.492 | 397.763 |     0.364 | 0.376 | 1.000 |    0.439 |   -74.015
+## AIC   |  AICc |   BIC | Tjur's R2 |  RMSE | Sigma | Log_loss | Score_log
+## ------------------------------------------------------------------------
+## 362.0 | 362.5 | 397.8 |     0.364 | 0.376 |     1 |    0.439 |   -74.015
 ## 
-## AIC     | Score_spherical |   PCP
-## ---------------------------------
-## 362.021 |           0.009 | 0.718
+## AIC   | Score_spherical |   PCP
+## -------------------------------
+## 362.0 |           0.009 | 0.718
 ```
 
 
