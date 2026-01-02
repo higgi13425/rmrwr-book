@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Dplyr Verbs Tutorial</title>
+  <meta name="description" content="Dplyr Verbs Tutorial" />
+  <meta name="generator" content="bookdown 0.45 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Dplyr Verbs Tutorial" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Dplyr Verbs Tutorial" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+
+<!-- HEAD_CONTENT -->
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="include/webex.css" type="text/css" />
+<link rel="stylesheet" href="include/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">RMRWR</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path=""><a href="#section-take-a-look-at-candy-data."><i class="fa fa-check"></i><b>1</b> Take a look at Candy data.</a></li>
+<li class="chapter" data-level="2" data-path=""><a href="#section-topic-1-selecting-columns"><i class="fa fa-check"></i><b>2</b> Topic 1 : SeleCting Columns</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path=""><a href="#section-more-selecting"><i class="fa fa-check"></i><b>2.1</b> More selecting!</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path=""><a href="#section-topic-2-filtering"><i class="fa fa-check"></i><b>3</b> Topic 2 : FilteRing</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path=""><a href="#section-filter"><i class="fa fa-check"></i><b>3.1</b> Filter</a></li>
+<li class="chapter" data-level="3.2" data-path=""><a href="#section-more-filtering"><i class="fa fa-check"></i><b>3.2</b> More filtering</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path=""><a href="#section-topic-3-mutating"><i class="fa fa-check"></i><b>4</b> Topic 3 : Mutating</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path=""><a href="#section-mutate"><i class="fa fa-check"></i><b>4.1</b> Mutate</a></li>
+<li class="chapter" data-level="4.2" data-path=""><a href="#section-more-mutating"><i class="fa fa-check"></i><b>4.2</b> More mutating</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path=""><a href="#section-topic-4-arranging-sorting"><i class="fa fa-check"></i><b>5</b> Topic 4 : Arranging (Sorting)</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path=""><a href="#section-arrange"><i class="fa fa-check"></i><b>5.1</b> Arrange</a></li>
+<li class="chapter" data-level="5.2" data-path=""><a href="#section-more-arranging"><i class="fa fa-check"></i><b>5.2</b> More arranging</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path=""><a href="#section-topic-5-grouping-with-group_by-then-summarize"><i class="fa fa-check"></i><b>6</b> Topic 5 : Grouping with group_by, then summarize</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path=""><a href="#section-group_by"><i class="fa fa-check"></i><b>6.1</b> group_by</a></li>
+<li class="chapter" data-level="6.2" data-path=""><a href="#section-more-grouping"><i class="fa fa-check"></i><b>6.2</b> More grouping</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path=""><a href="#section-topic-6-tallying-counting-and-recounting"><i class="fa fa-check"></i><b>7</b> Topic 6 : Tallying, Counting and recounting</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path=""><a href="#section-tally"><i class="fa fa-check"></i><b>7.1</b> tally</a></li>
+<li class="chapter" data-level="7.2" data-path=""><a href="#section-count"><i class="fa fa-check"></i><b>7.2</b> count</a></li>
+<li class="chapter" data-level="7.3" data-path=""><a href="#section-more-counting"><i class="fa fa-check"></i><b>7.3</b> More counting</a></li>
+<li class="chapter" data-level="7.4" data-path=""><a href="#section-quiz"><i class="fa fa-check"></i><b>7.4</b> Quiz</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Dplyr Verbs Tutorial</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="section-header">
+<h1 class="title">Dplyr Verbs Tutorial</h1>
+</div>
+<div id="section-take-a-look-at-candy-data." class="section level2 hasAnchor" number="1">
+<h2><span class="header-section-number">1</span> Take a look at Candy data.<a href="#section-take-a-look-at-candy-data." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Edit the code below to
+Glimpse candy_rankings</p>
+<div class="tutorial-exercise" data-label="candyhead" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>glimpse(bechdel)</code></pre>
+<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+</div>
+<div id="section-topic-1-selecting-columns" class="section level2 hasAnchor" number="2">
+<h2><span class="header-section-number">2</span> Topic 1 : SeleCting Columns<a href="#section-topic-1-selecting-columns" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Note the C in seleCt - that is how you remember that it selects columns.</p>
+<p><em>Here’s a simple exercise with select</em></p>
+<p>Edit the R code below to select only the columns:
+competitor name, chocolate, and caramel:</p>
+<div class="tutorial-exercise" data-label="select" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>candy_rankings %&gt;% 
+  select(peanutyalmondy)</code></pre>
+<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+<div id="section-more-selecting" class="section level3 hasAnchor" number="2.1">
+<h3><span class="header-section-number">2.1</span> More selecting!<a href="#section-more-selecting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The select function has a number of helpers.
+You can use the colon to select from varx:vary, including all the columns in between.
+YOu can use select(starts_with(“c”)), or select(ends_with(‘fraction’)).
+You can use select(contains(“rd”))
+You can use select(one_of(c(“chocolate”, “caramel”))), or
+matches(regular expressions), or
+num_range(), or everything()</p>
+<p><em>Here’s an exercise with some prepopulated code as well as <code>exercise.lines = 5</code> to provide a bit more initial room to work.</em></p>
+<p>Now select in the code block below:
+4 different challenges</p>
+<ol style="list-style-type: decimal">
+<li>competitor_name, chocolate, crispedricewafer, and caramel using starts_with</li>
+<li>the variables that end in percent</li>
+<li>caramel, hard, bar, and sugarpercent (“ar”)</li>
+<li>variables in a one_of(‘varname’) vector</li>
+</ol>
+<div class="tutorial-exercise" data-label="select2" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="5" data-pipe="|&gt;">
+<pre class="text"><code>candy_rankings %&gt;% 
+  select(competitorname, chocolate, fruity, caramel)</code></pre>
+<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+</div>
+</div>
+<div id="section-topic-2-filtering" class="section level2 hasAnchor" number="3">
+<h2><span class="header-section-number">3</span> Topic 2 : FilteRing<a href="#section-topic-2-filtering" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="section-filter" class="section level3 hasAnchor" number="3.1">
+<h3><span class="header-section-number">3.1</span> Filter<a href="#section-filter" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>the filteR command has an R in it so that you can remember that you are filtering for Rows.</p>
+<ul>
+<li>Filter for certain rows*</li>
+</ul>
+<p>Modify the following code to filter for:</p>
+<ol style="list-style-type: decimal">
+<li>candy with a sugar percent &gt; 0.75</li>
+</ol>
+<div class="tutorial-exercise" data-label="filter" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>candy_rankings %&gt;% 
+  filter(peanutyalmondy == TRUE)</code></pre>
+<pre><code># A tibble: 14 × 13
+   competitorname              chocolate fruity caramel peanutyalmondy nougat
+   &lt;chr&gt;                       &lt;lgl&gt;     &lt;lgl&gt;  &lt;lgl&gt;   &lt;lgl&gt;          &lt;lgl&gt; 
+ 1 Almond Joy                  TRUE      FALSE  FALSE   TRUE           FALSE 
+ 2 Baby Ruth                   TRUE      FALSE  TRUE    TRUE           TRUE  
+ 3 Boston Baked Beans          FALSE     FALSE  FALSE   TRUE           FALSE 
+ 4 Peanut butter M&amp;M&#39;s         TRUE      FALSE  FALSE   TRUE           FALSE 
+ 5 Mr Good Bar                 TRUE      FALSE  FALSE   TRUE           FALSE 
+ 6 Nestle Butterfinger         TRUE      FALSE  FALSE   TRUE           FALSE 
+ 7 Payday                      FALSE     FALSE  FALSE   TRUE           TRUE  
+ 8 Peanut M&amp;Ms                 TRUE      FALSE  FALSE   TRUE           FALSE 
+ 9 Reese&#39;s Miniatures          TRUE      FALSE  FALSE   TRUE           FALSE 
+10 Reese&#39;s Peanut Butter cup   TRUE      FALSE  FALSE   TRUE           FALSE 
+11 Reese&#39;s pieces              TRUE      FALSE  FALSE   TRUE           FALSE 
+12 Reese&#39;s stuffed with pieces TRUE      FALSE  FALSE   TRUE           FALSE 
+13 Snickers                    TRUE      FALSE  TRUE    TRUE           TRUE  
+14 Snickers Crisper            TRUE      FALSE  TRUE    TRUE           FALSE 
+# ℹ 7 more variables: crispedricewafer &lt;lgl&gt;, hard &lt;lgl&gt;, bar &lt;lgl&gt;,
+#   pluribus &lt;lgl&gt;, sugarpercent &lt;dbl&gt;, pricepercent &lt;dbl&gt;, winpercent &lt;dbl&gt;</code></pre>
+<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+</div>
+<div id="section-more-filtering" class="section level3 hasAnchor" number="3.2">
+<h3><span class="header-section-number">3.2</span> More filtering<a href="#section-more-filtering" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now filter for</p>
+<ol style="list-style-type: decimal">
+<li>candy with chocolate in it (note double equals ==)</li>
+<li>candy with either caramel or nougat (or with | pipe)</li>
+<li>a bar with a pricepercent &gt;= 0.8</li>
+<li>a crispedricewafer with a winpercent &gt;0.4</li>
+<li>a fruity candy with a sugarpercent &gt; 0.7</li>
+<li>A candy with neither chocolate, caramel, or a fruity component</li>
+</ol>
+<div class="tutorial-exercise" data-label="filtermore" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>candy_rankings %&gt;% 
+  filter(chocolate == FALSE &amp; caramel == FALSE)</code></pre>
+<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+</div>
+</div>
+<div id="section-topic-3-mutating" class="section level2 hasAnchor" number="4">
+<h2><span class="header-section-number">4</span> Topic 3 : Mutating<a href="#section-topic-3-mutating" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="section-mutate" class="section level3 hasAnchor" number="4.1">
+<h3><span class="header-section-number">4.1</span> Mutate<a href="#section-mutate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>the Mutate command lets you make new variables. For example
+mutate(bmi = wt_kg/ht_m^2)</p>
+<p>You can do several mutate operations in one set of parentheses,
+separated by commas.</p>
+<p>mutate(bmi = wt_kg/ht_m^2,
+risk_score = bmi * total_chol)</p>
+<p>When you create a new variable with mutate, you can use it immediately in the next statement or in the same data pipe.</p>
+<p>Run the code below to see what it does, then
+Modify the code to mutate to create:
+1. a fruity_caramel variable for candies that have both fruity and caramel ==TRUE</p>
+<div class="tutorial-exercise" data-label="mutate" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>candy_rankings %&gt;% 
+  mutate(nutty_nougat = round((peanutyalmondy + nougat)/2)) %&gt;% 
+  select(peanutyalmondy, nougat, nutty_nougat) %&gt;% 
+  arrange(desc(nutty_nougat))</code></pre>
+<pre><code># A tibble: 85 × 3
+   peanutyalmondy nougat nutty_nougat
+   &lt;lgl&gt;          &lt;lgl&gt;         &lt;dbl&gt;
+ 1 TRUE           TRUE              1
+ 2 TRUE           TRUE              1
+ 3 TRUE           TRUE              1
+ 4 FALSE          FALSE             0
+ 5 FALSE          TRUE              0
+ 6 FALSE          FALSE             0
+ 7 FALSE          FALSE             0
+ 8 FALSE          FALSE             0
+ 9 TRUE           FALSE             0
+10 TRUE           FALSE             0
+# ℹ 75 more rows</code></pre>
+<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+If you only want to keep the new variables, use the transmute verb.
+<div class="tutorial-exercise" data-label="transmute" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>candy_rankings %&gt;% 
+  transmute(nutty_nougat = round((peanutyalmondy + nougat)/2)) %&gt;% 
+  arrange(desc(nutty_nougat))</code></pre>
+<pre><code># A tibble: 85 × 1
+   nutty_nougat
+          &lt;dbl&gt;
+ 1            1
+ 2            1
+ 3            1
+ 4            0
+ 5            0
+ 6            0
+ 7            0
+ 8            0
+ 9            0
+10            0
+# ℹ 75 more rows</code></pre>
+<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+</div>
+<div id="section-more-mutating" class="section level3 hasAnchor" number="4.2">
+<h3><span class="header-section-number">4.2</span> More mutating<a href="#section-more-mutating" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now modify the mutate code below to create</p>
+<ol style="list-style-type: decimal">
+<li>sugar_value - the ratio of sugarpercent to pricepercent</li>
+<li>caramel_bar -candy with both caramel and bar</li>
+<li>log_winpercent - normalized winpercent by taking natural log</li>
+<li>sqrt_sugarpercent - normalize this left-tailed variable</li>
+<li>sugar_pct - convert from a decimal to a percentage.</li>
+</ol>
+<div class="tutorial-exercise" data-label="mutatemore" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>candy_rankings %&gt;% 
+  mutate(nuttinessperdollar = peanutyalmondy/pricepercent)</code></pre>
+<pre><code># A tibble: 85 × 14
+   competitorname     chocolate fruity caramel peanutyalmondy nougat
+   &lt;chr&gt;              &lt;lgl&gt;     &lt;lgl&gt;  &lt;lgl&gt;   &lt;lgl&gt;          &lt;lgl&gt; 
+ 1 100 Grand          TRUE      FALSE  TRUE    FALSE          FALSE 
+ 2 3 Musketeers       TRUE      FALSE  FALSE   FALSE          TRUE  
+ 3 One dime           FALSE     FALSE  FALSE   FALSE          FALSE 
+ 4 One quarter        FALSE     FALSE  FALSE   FALSE          FALSE 
+ 5 Air Heads          FALSE     TRUE   FALSE   FALSE          FALSE 
+ 6 Almond Joy         TRUE      FALSE  FALSE   TRUE           FALSE 
+ 7 Baby Ruth          TRUE      FALSE  TRUE    TRUE           TRUE  
+ 8 Boston Baked Beans FALSE     FALSE  FALSE   TRUE           FALSE 
+ 9 Candy Corn         FALSE     FALSE  FALSE   FALSE          FALSE 
+10 Caramel Apple Pops FALSE     TRUE   TRUE    FALSE          FALSE 
+# ℹ 75 more rows
+# ℹ 8 more variables: crispedricewafer &lt;lgl&gt;, hard &lt;lgl&gt;, bar &lt;lgl&gt;,
+#   pluribus &lt;lgl&gt;, sugarpercent &lt;dbl&gt;, pricepercent &lt;dbl&gt;, winpercent &lt;dbl&gt;,
+#   nuttinessperdollar &lt;dbl&gt;</code></pre>
+<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+</div>
+</div>
+<div id="section-topic-4-arranging-sorting" class="section level2 hasAnchor" number="5">
+<h2><span class="header-section-number">5</span> Topic 4 : Arranging (Sorting)<a href="#section-topic-4-arranging-sorting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="section-arrange" class="section level3 hasAnchor" number="5.1">
+<h3><span class="header-section-number">5.1</span> Arrange<a href="#section-arrange" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>the arrange command lets you sort your dataset by particular variables.</p>
+<p>You can arrange by several variables in order.
+arrange(caramel, chocolate, sugarpercent)</p>
+<p>The default is ascending order, but you can use desc() to change that.
+arrange(desc(pricepercent))</p>
+<p>Run the code below to see what it does, then
+Modify the code to arrange the data by:</p>
+<ol style="list-style-type: decimal">
+<li>descending winpercent</li>
+</ol>
+<p>Note that a select command is added to make it easier to see the result. You can also see this in the whole dataset with View()</p>
+<div class="tutorial-exercise" data-label="arrange" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>candy_rankings %&gt;% 
+  arrange(sugarpercent) %&gt;% 
+  select(competitorname, sugarpercent)</code></pre>
+<pre><code># A tibble: 85 × 2
+   competitorname        sugarpercent
+   &lt;chr&gt;                        &lt;dbl&gt;
+ 1 One dime                    0.011 
+ 2 One quarter                 0.011 
+ 3 Reese&#39;s Miniatures          0.0340
+ 4 Chiclets                    0.046 
+ 5 Lemonhead                   0.046 
+ 6 Sour Patch Kids             0.0690
+ 7 Sour Patch Tricksters       0.0690
+ 8 Jawbusters                  0.0930
+ 9 Pixie Sticks                0.0930
+10 Warheads                    0.0930
+# ℹ 75 more rows</code></pre>
+<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+</div>
+<div id="section-more-arranging" class="section level3 hasAnchor" number="5.2">
+<h3><span class="header-section-number">5.2</span> More arranging<a href="#section-more-arranging" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now modify the arrange code below to sort by</p>
+<ol style="list-style-type: decimal">
+<li>pricepercent</li>
+<li>caramel, nougat, desc(sugarpercent)</li>
+<li>chocolate, descending winpercent</li>
+<li>nougat, peanutyalmondy, pricepercent</li>
+<li>hard, desc(bar), pluribus</li>
+</ol>
+<div class="tutorial-exercise" data-label="arrangemore" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>candy_rankings %&gt;% 
+  arrange(fruity, desc(sugarpercent))</code></pre>
+<pre><code># A tibble: 85 × 13
+   competitorname              chocolate fruity caramel peanutyalmondy nougat
+   &lt;chr&gt;                       &lt;lgl&gt;     &lt;lgl&gt;  &lt;lgl&gt;   &lt;lgl&gt;          &lt;lgl&gt; 
+ 1 Reese&#39;s stuffed with pieces TRUE      FALSE  FALSE   TRUE           FALSE 
+ 2 Milky Way Simply Caramel    TRUE      FALSE  TRUE    FALSE          FALSE 
+ 3 Sugar Babies                FALSE     FALSE  TRUE    FALSE          FALSE 
+ 4 Candy Corn                  FALSE     FALSE  FALSE   FALSE          FALSE 
+ 5 Whoppers                    TRUE      FALSE  FALSE   FALSE          FALSE 
+ 6 Rolo                        TRUE      FALSE  TRUE    FALSE          FALSE 
+ 7 Peanut butter M&amp;M&#39;s         TRUE      FALSE  FALSE   TRUE           FALSE 
+ 8 M&amp;M&#39;s                       TRUE      FALSE  FALSE   FALSE          FALSE 
+ 9 100 Grand                   TRUE      FALSE  TRUE    FALSE          FALSE 
+10 Milky Way Midnight          TRUE      FALSE  TRUE    FALSE          TRUE  
+# ℹ 75 more rows
+# ℹ 7 more variables: crispedricewafer &lt;lgl&gt;, hard &lt;lgl&gt;, bar &lt;lgl&gt;,
+#   pluribus &lt;lgl&gt;, sugarpercent &lt;dbl&gt;, pricepercent &lt;dbl&gt;, winpercent &lt;dbl&gt;</code></pre>
+<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+</div>
+</div>
+<div id="section-topic-5-grouping-with-group_by-then-summarize" class="section level2 hasAnchor" number="6">
+<h2><span class="header-section-number">6</span> Topic 5 : Grouping with group_by, then summarize<a href="#section-topic-5-grouping-with-group_by-then-summarize" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="section-group_by" class="section level3 hasAnchor" number="6.1">
+<h3><span class="header-section-number">6.1</span> group_by<a href="#section-group_by" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>the group_by command lets you group or subset your data by particular variables.
+This allows you to easily calculate subgroup summaries or statistics.</p>
+<p>You can group by several categorical variables in order.
+group_by(caramel, chocolate)</p>
+<p>Note that you can’t group by continuous variables.</p>
+<p>Run the code below to see what it does, then
+Modify the code to group the data by chocolate, then calculate the mean winpercent:</p>
+<p>Note that a select command is added to make it easier to see the result. You can also see this in the whole dataset with View()</p>
+<div class="tutorial-exercise" data-label="group" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>candy_rankings %&gt;% 
+  group_by(peanutyalmondy) %&gt;% 
+  summarize(mean_win = mean(winpercent))</code></pre>
+<pre><code># A tibble: 2 × 2
+  peanutyalmondy mean_win
+  &lt;lgl&gt;             &lt;dbl&gt;
+1 FALSE              47.7
+2 TRUE               63.7</code></pre>
+<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+</div>
+<div id="section-more-grouping" class="section level3 hasAnchor" number="6.2">
+<h3><span class="header-section-number">6.2</span> More grouping<a href="#section-more-grouping" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now modify the arrange code below to</p>
+<ol style="list-style-type: decimal">
+<li>group_by fruity, summarize median pricepercent</li>
+<li>group_by caramel, summarize max winpercent</li>
+<li>group_by caramel, then chocolate, summarize mean winpercent</li>
+<li>group_by bar, then nougat, summarize mean sugarpercent</li>
+<li>group_by hard, then pluribus, summarize mean winpercent</li>
+</ol>
+<div class="tutorial-exercise" data-label="groupmore" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>candy_rankings %&gt;% 
+  group_by(bar) %&gt;% 
+  summarize(mean_sugar = mean(sugarpercent))</code></pre>
+<pre><code># A tibble: 2 × 2
+  bar   mean_sugar
+  &lt;lgl&gt;      &lt;dbl&gt;
+1 FALSE      0.463
+2 TRUE       0.528</code></pre>
+<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+</div>
+</div>
+<div id="section-topic-6-tallying-counting-and-recounting" class="section level2 hasAnchor" number="7">
+<h2><span class="header-section-number">7</span> Topic 6 : Tallying, Counting and recounting<a href="#section-topic-6-tallying-counting-and-recounting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="section-tally" class="section level3 hasAnchor" number="7.1">
+<h3><span class="header-section-number">7.1</span> tally<a href="#section-tally" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Tally will count the number of observations
+<br>
+candy_rankings %&gt;% tally() gives 85
+<br>
+count will do group_by(var), then tally()
+<br>
+candy_rankings %&gt;% count(chocolate) counts the number in each subgroup</p>
+</div>
+<div id="section-count" class="section level3 hasAnchor" number="7.2">
+<h3><span class="header-section-number">7.2</span> count<a href="#section-count" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>the count() command lets you count the number of observations in a particular level of a variable. This is helpful for quickly exploring what you have in each variable, and if there are any strange outliers. You can set sort=TRUE to get a descending sorted table of levels
+<br>
+count() without a variable argument is the same as tally()
+<br>
+You can also count() after a count() function to count the number of levels (which can be helpful if you have many of them)</p>
+<p>You may want to glimpse the starwars dataset, then
+Run the code below to see what it does, then
+Modify the code to count by levels of homeworld.</p>
+<p>You can also add a denominator variable to your dataset with add_tally() or a count per level by add_count(chocolate)</p>
+<div class="tutorial-exercise" data-label="count" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>glimpse(starwars)</code></pre>
+<pre><code>Rows: 87
+Columns: 14
+$ name       &lt;chr&gt; &quot;Luke Skywalker&quot;, &quot;C-3PO&quot;, &quot;R2-D2&quot;, &quot;Darth Vader&quot;, &quot;Leia Or…
+$ height     &lt;int&gt; 172, 167, 96, 202, 150, 178, 165, 97, 183, 182, 188, 180, 2…
+$ mass       &lt;dbl&gt; 77.0, 75.0, 32.0, 136.0, 49.0, 120.0, 75.0, 32.0, 84.0, 77.…
+$ hair_color &lt;chr&gt; &quot;blond&quot;, NA, NA, &quot;none&quot;, &quot;brown&quot;, &quot;brown, grey&quot;, &quot;brown&quot;, N…
+$ skin_color &lt;chr&gt; &quot;fair&quot;, &quot;gold&quot;, &quot;white, blue&quot;, &quot;white&quot;, &quot;light&quot;, &quot;light&quot;, &quot;…
+$ eye_color  &lt;chr&gt; &quot;blue&quot;, &quot;yellow&quot;, &quot;red&quot;, &quot;yellow&quot;, &quot;brown&quot;, &quot;blue&quot;, &quot;blue&quot;,…
+$ birth_year &lt;dbl&gt; 19.0, 112.0, 33.0, 41.9, 19.0, 52.0, 47.0, NA, 24.0, 57.0, …
+$ sex        &lt;chr&gt; &quot;male&quot;, &quot;none&quot;, &quot;none&quot;, &quot;male&quot;, &quot;female&quot;, &quot;male&quot;, &quot;female&quot;,…
+$ gender     &lt;chr&gt; &quot;masculine&quot;, &quot;masculine&quot;, &quot;masculine&quot;, &quot;masculine&quot;, &quot;femini…
+$ homeworld  &lt;chr&gt; &quot;Tatooine&quot;, &quot;Tatooine&quot;, &quot;Naboo&quot;, &quot;Tatooine&quot;, &quot;Alderaan&quot;, &quot;T…
+$ species    &lt;chr&gt; &quot;Human&quot;, &quot;Droid&quot;, &quot;Droid&quot;, &quot;Human&quot;, &quot;Human&quot;, &quot;Human&quot;, &quot;Huma…
+$ films      &lt;list&gt; &lt;&quot;A New Hope&quot;, &quot;The Empire Strikes Back&quot;, &quot;Return of the J…
+$ vehicles   &lt;list&gt; &lt;&quot;Snowspeeder&quot;, &quot;Imperial Speeder Bike&quot;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, &quot;Imp…
+$ starships  &lt;list&gt; &lt;&quot;X-wing&quot;, &quot;Imperial shuttle&quot;&gt;, &lt;&gt;, &lt;&gt;, &quot;TIE Advanced x1&quot;,…</code></pre>
+<pre class="text"><code>starwars %&gt;% 
+  count(eye_color, sort = TRUE)</code></pre>
+<pre><code># A tibble: 15 × 2
+   eye_color         n
+   &lt;chr&gt;         &lt;int&gt;
+ 1 brown            21
+ 2 blue             19
+ 3 yellow           11
+ 4 black            10
+ 5 orange            8
+ 6 red               5
+ 7 hazel             3
+ 8 unknown           3
+ 9 blue-gray         1
+10 dark              1
+11 gold              1
+12 green, yellow     1
+13 pink              1
+14 red, blue         1
+15 white             1</code></pre>
+<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+</div>
+<div id="section-more-counting" class="section level3 hasAnchor" number="7.3">
+<h3><span class="header-section-number">7.3</span> More counting<a href="#section-more-counting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now modify the counting code below to</p>
+<ol style="list-style-type: decimal">
+<li>count the number of each species</li>
+<li>tally the number of observations, and add to dataset with add_tally</li>
+<li>count the number by eye_color, then add_count to the dataset.</li>
+<li>count by skin_color and sort</li>
+<li>count the number by homeworld, and sort</li>
+</ol>
+<div class="tutorial-exercise" data-label="countmore" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0" data-pipe="|&gt;">
+<pre class="text"><code>starwars %&gt;% 
+  count(birth_year, sort=TRUE) </code></pre>
+<pre><code># A tibble: 37 × 2
+   birth_year     n
+        &lt;dbl&gt; &lt;int&gt;
+ 1       NA      44
+ 2       19       2
+ 3       41.9     2
+ 4       48       2
+ 5       52       2
+ 6       72       2
+ 7       82       2
+ 8       92       2
+ 9        8       1
+10       15       1
+# ℹ 27 more rows</code></pre>
+<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
+</div>
+</div>
+<div id="section-quiz" class="section level3 hasAnchor" number="7.4">
+<h3><span class="header-section-number">7.4</span> Quiz<a href="#section-quiz" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><em>You can include any number of single or multiple choice questions as a quiz. Use the <code>question</code> function to define a question and the <code>quiz</code> function for grouping multiple questions together.</em></p>
+<p>Some questions to verify that you understand the purposes of various base and recommended R packages:</p>
+<div class="panel-heading tutorial-quiz-title"><span data-i18n="text.quiz">Quiz</span></div>
+<div class="panel panel-default tutorial-question-container">
+<div data-label="quiz-1" class="tutorial-question panel-body">
+<div id="quiz-1-answer_container" class="shiny-html-output"></div>
+<div id="quiz-1-message_container" class="shiny-html-output"></div>
+<div id="quiz-1-action_button_container" class="shiny-html-output"></div>
+<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
+</div>
+</div>
+<div class="panel panel-default tutorial-question-container">
+<div data-label="quiz-2" class="tutorial-question panel-body">
+<div id="quiz-2-answer_container" class="shiny-html-output"></div>
+<div id="quiz-2-message_container" class="shiny-html-output"></div>
+<div id="quiz-2-action_button_container" class="shiny-html-output"></div>
+<script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
+</div>
+</div>
+<p>
+<script type="application/shiny-prerendered" data-context="server-start">
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(fivethirtyeight)
+data("candy_rankings")
+data("starwars")
+glimpse(starwars)
+glimpse(candy_rankings)
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::register_http_handlers(session, metadata = NULL)
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::prepare_tutorial_state(session)
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::i18n_observe_tutorial_language(input, session)
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+session$onSessionEnded(function() {
+        learnr:::event_trigger(session, "session_stop")
+      })
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-candyhead-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-candyhead-code-editor`)), session)
+output$`tutorial-exercise-candyhead-output` <- renderUI({
+  `tutorial-exercise-candyhead-result`()
+})
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::store_exercise_cache(structure(list(label = "candyhead", global_setup = structure(c("library(learnr)", 
+"knitr::opts_chunk$set(echo = FALSE)", "library(tidyverse)", 
+"library(fivethirtyeight)", "data(\"candy_rankings\")", "data(\"starwars\")", 
+"glimpse(starwars)", "glimpse(candy_rankings)"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "candyhead", code = "glimpse(bechdel)", opts = list(
+        label = "\"candyhead\"", exercise = "TRUE"), engine = "r")), 
+    code_check = NULL, error_check = NULL, check = NULL, solution = NULL, 
+    tests = NULL, options = list(eval = FALSE, echo = TRUE, results = "markup", 
+        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
+        comment = NA, highlight = FALSE, size = "normalsize", 
+        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
+        cache.path = "io39-dplyr_verbs_demo_cache/html/", cache.vars = NULL, 
+        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
+        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
+        fig.align = "default", fig.path = "io39-dplyr_verbs_demo_files/figure-html/", 
+        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
+        fig.width = 7, fig.height = 5, fig.env = "figure", fig.cap = NULL, 
+        fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
+        fig.pos = "", out.width = 672, out.height = NULL, out.extra = NULL, 
+        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
+        aniopts = "controls,loop", warning = TRUE, error = FALSE, 
+        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
+        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
+        label = "candyhead", exercise = TRUE, code = "glimpse(bechdel)", 
+        out.width.px = 672, out.height.px = 480, params.src = "candyhead, exercise = TRUE", 
+        fig.num = 0, exercise.df_print = "default", exercise.checker = "NULL"), 
+    engine = "r", version = "4"), class = c("r", "tutorial_exercise"
+)))
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-select-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-select-code-editor`)), session)
+output$`tutorial-exercise-select-output` <- renderUI({
+  `tutorial-exercise-select-result`()
+})
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::store_exercise_cache(structure(list(label = "select", global_setup = structure(c("library(learnr)", 
+"knitr::opts_chunk$set(echo = FALSE)", "library(tidyverse)", 
+"library(fivethirtyeight)", "data(\"candy_rankings\")", "data(\"starwars\")", 
+"glimpse(starwars)", "glimpse(candy_rankings)"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "select", code = "candy_rankings %>% \n  select(peanutyalmondy)", 
+        opts = list(label = "\"select\"", exercise = "TRUE"), 
+        engine = "r")), code_check = NULL, error_check = NULL, 
+    check = NULL, solution = NULL, tests = NULL, options = list(
+        eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
+        tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
+        highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
+        strip.white = TRUE, cache = 0, cache.path = "io39-dplyr_verbs_demo_cache/html/", 
+        cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
+        autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
+        fig.show = "asis", fig.align = "default", fig.path = "io39-dplyr_verbs_demo_files/figure-html/", 
+        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
+        fig.width = 7, fig.height = 5, fig.env = "figure", fig.cap = NULL, 
+        fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
+        fig.pos = "", out.width = 672, out.height = NULL, out.extra = NULL, 
+        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
+        aniopts = "controls,loop", warning = TRUE, error = FALSE, 
+        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
+        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
+        label = "select", exercise = TRUE, code = c("candy_rankings %>% ", 
+        "  select(peanutyalmondy)"), out.width.px = 672, out.height.px = 480, 
+        params.src = "select, exercise=TRUE", fig.num = 0, exercise.df_print = "default", 
+        exercise.checker = "NULL"), engine = "r", version = "4"), class = c("r", 
+"tutorial_exercise")))
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-select2-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-select2-code-editor`)), session)
+output$`tutorial-exercise-select2-output` <- renderUI({
+  `tutorial-exercise-select2-result`()
+})
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::store_exercise_cache(structure(list(label = "select2", global_setup = structure(c("library(learnr)", 
+"knitr::opts_chunk$set(echo = FALSE)", "library(tidyverse)", 
+"library(fivethirtyeight)", "data(\"candy_rankings\")", "data(\"starwars\")", 
+"glimpse(starwars)", "glimpse(candy_rankings)"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "select2", code = "candy_rankings %>% \n  select(competitorname, chocolate, fruity, caramel)", 
+        opts = list(label = "\"select2\"", exercise = "TRUE", 
+            exercise.lines = "5"), engine = "r")), code_check = NULL, 
+    error_check = NULL, check = NULL, solution = NULL, tests = NULL, 
+    options = list(eval = FALSE, echo = TRUE, results = "markup", 
+        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
+        comment = NA, highlight = FALSE, size = "normalsize", 
+        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
+        cache.path = "io39-dplyr_verbs_demo_cache/html/", cache.vars = NULL, 
+        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
+        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
+        fig.align = "default", fig.path = "io39-dplyr_verbs_demo_files/figure-html/", 
+        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
+        fig.width = 7, fig.height = 5, fig.env = "figure", fig.cap = NULL, 
+        fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
+        fig.pos = "", out.width = 672, out.height = NULL, out.extra = NULL, 
+        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
+        aniopts = "controls,loop", warning = TRUE, error = FALSE, 
+        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
+        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
+        label = "select2", exercise = TRUE, exercise.lines = 5, 
+        code = c("candy_rankings %>% ", "  select(competitorname, chocolate, fruity, caramel)"
+        ), out.width.px = 672, out.height.px = 480, params.src = "select2, exercise=TRUE, exercise.lines = 5", 
+        fig.num = 0, exercise.df_print = "default", exercise.checker = "NULL"), 
+    engine = "r", version = "4"), class = c("r", "tutorial_exercise"
+)))
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-filter-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-filter-code-editor`)), session)
+output$`tutorial-exercise-filter-output` <- renderUI({
+  `tutorial-exercise-filter-result`()
+})
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::store_exercise_cache(structure(list(label = "filter", global_setup = structure(c("library(learnr)", 
+"knitr::opts_chunk$set(echo = FALSE)", "library(tidyverse)", 
+"library(fivethirtyeight)", "data(\"candy_rankings\")", "data(\"starwars\")", 
+"glimpse(starwars)", "glimpse(candy_rankings)"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "filter", code = "candy_rankings %>% \n  filter(peanutyalmondy == TRUE)", 
+        opts = list(label = "\"filter\"", exercise = "TRUE", 
+            exercise.eval = "TRUE"), engine = "r")), code_check = NULL, 
+    error_check = NULL, check = NULL, solution = NULL, tests = NULL, 
+    options = list(eval = TRUE, echo = TRUE, results = "markup", 
+        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
+        comment = NA, highlight = FALSE, size = "normalsize", 
+        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
+        cache.path = "io39-dplyr_verbs_demo_cache/html/", cache.vars = NULL, 
+        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
+        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
+        fig.align = "default", fig.path = "io39-dplyr_verbs_demo_files/figure-html/", 
+        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
+        fig.width = 7, fig.height = 5, fig.env = "figure", fig.cap = NULL, 
+        fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
+        fig.pos = "", out.width = 672, out.height = NULL, out.extra = NULL, 
+        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
+        aniopts = "controls,loop", warning = TRUE, error = FALSE, 
+        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
+        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
+        label = "filter", exercise = TRUE, exercise.eval = TRUE, 
+        code = c("candy_rankings %>% ", "  filter(peanutyalmondy == TRUE)"
+        ), out.width.px = 672, out.height.px = 480, params.src = "filter, exercise=TRUE, exercise.eval=TRUE", 
+        fig.alt = NULL, fig.num = 0, exercise.df_print = "default", 
+        exercise.checker = "NULL"), engine = "r", version = "4"), class = c("r", 
+"tutorial_exercise")))
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-filtermore-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-filtermore-code-editor`)), session)
+output$`tutorial-exercise-filtermore-output` <- renderUI({
+  `tutorial-exercise-filtermore-result`()
+})
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::store_exercise_cache(structure(list(label = "filtermore", global_setup = structure(c("library(learnr)", 
+"knitr::opts_chunk$set(echo = FALSE)", "library(tidyverse)", 
+"library(fivethirtyeight)", "data(\"candy_rankings\")", "data(\"starwars\")", 
+"glimpse(starwars)", "glimpse(candy_rankings)"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "filtermore", code = "candy_rankings %>% \n  filter(chocolate == FALSE & caramel == FALSE)", 
+        opts = list(label = "\"filtermore\"", exercise = "TRUE"), 
+        engine = "r")), code_check = NULL, error_check = NULL, 
+    check = NULL, solution = NULL, tests = NULL, options = list(
+        eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
+        tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
+        highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
+        strip.white = TRUE, cache = 0, cache.path = "io39-dplyr_verbs_demo_cache/html/", 
+        cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
+        autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
+        fig.show = "asis", fig.align = "default", fig.path = "io39-dplyr_verbs_demo_files/figure-html/", 
+        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
+        fig.width = 7, fig.height = 5, fig.env = "figure", fig.cap = NULL, 
+        fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
+        fig.pos = "", out.width = 672, out.height = NULL, out.extra = NULL, 
+        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
+        aniopts = "controls,loop", warning = TRUE, error = FALSE, 
+        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
+        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
+        label = "filtermore", exercise = TRUE, code = c("candy_rankings %>% ", 
+        "  filter(chocolate == FALSE & caramel == FALSE)"), out.width.px = 672, 
+        out.height.px = 480, params.src = "filtermore, exercise = TRUE", 
+        fig.num = 0, exercise.df_print = "default", exercise.checker = "NULL"), 
+    engine = "r", version = "4"), class = c("r", "tutorial_exercise"
+)))
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-mutate-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-mutate-code-editor`)), session)
+output$`tutorial-exercise-mutate-output` <- renderUI({
+  `tutorial-exercise-mutate-result`()
+})
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::store_exercise_cache(structure(list(label = "mutate", global_setup = structure(c("library(learnr)", 
+"knitr::opts_chunk$set(echo = FALSE)", "library(tidyverse)", 
+"library(fivethirtyeight)", "data(\"candy_rankings\")", "data(\"starwars\")", 
+"glimpse(starwars)", "glimpse(candy_rankings)"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "mutate", code = "candy_rankings %>% \n  mutate(nutty_nougat = round((peanutyalmondy + nougat)/2)) %>% \n  select(peanutyalmondy, nougat, nutty_nougat) %>% \n  arrange(desc(nutty_nougat))", 
+        opts = list(label = "\"mutate\"", exercise = "TRUE", 
+            exercise.eval = "TRUE"), engine = "r")), code_check = NULL, 
+    error_check = NULL, check = NULL, solution = NULL, tests = NULL, 
+    options = list(eval = TRUE, echo = TRUE, results = "markup", 
+        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
+        comment = NA, highlight = FALSE, size = "normalsize", 
+        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
+        cache.path = "io39-dplyr_verbs_demo_cache/html/", cache.vars = NULL, 
+        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
+        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
+        fig.align = "default", fig.path = "io39-dplyr_verbs_demo_files/figure-html/", 
+        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
+        fig.width = 7, fig.height = 5, fig.env = "figure", fig.cap = NULL, 
+        fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
+        fig.pos = "", out.width = 672, out.height = NULL, out.extra = NULL, 
+        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
+        aniopts = "controls,loop", warning = TRUE, error = FALSE, 
+        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
+        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
+        label = "mutate", exercise = TRUE, exercise.eval = TRUE, 
+        code = c("candy_rankings %>% ", "  mutate(nutty_nougat = round((peanutyalmondy + nougat)/2)) %>% ", 
+        "  select(peanutyalmondy, nougat, nutty_nougat) %>% ", 
+        "  arrange(desc(nutty_nougat))"), out.width.px = 672, 
+        out.height.px = 480, params.src = "mutate, exercise=TRUE, exercise.eval=TRUE", 
+        fig.alt = NULL, fig.num = 0, exercise.df_print = "default", 
+        exercise.checker = "NULL"), engine = "r", version = "4"), class = c("r", 
+"tutorial_exercise")))
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-transmute-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-transmute-code-editor`)), session)
+output$`tutorial-exercise-transmute-output` <- renderUI({
+  `tutorial-exercise-transmute-result`()
+})
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::store_exercise_cache(structure(list(label = "transmute", global_setup = structure(c("library(learnr)", 
+"knitr::opts_chunk$set(echo = FALSE)", "library(tidyverse)", 
+"library(fivethirtyeight)", "data(\"candy_rankings\")", "data(\"starwars\")", 
+"glimpse(starwars)", "glimpse(candy_rankings)"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "transmute", code = "candy_rankings %>% \n  transmute(nutty_nougat = round((peanutyalmondy + nougat)/2)) %>% \n  arrange(desc(nutty_nougat))", 
+        opts = list(label = "\"transmute\"", exercise = "TRUE", 
+            exercise.eval = "TRUE"), engine = "r")), code_check = NULL, 
+    error_check = NULL, check = NULL, solution = NULL, tests = NULL, 
+    options = list(eval = TRUE, echo = TRUE, results = "markup", 
+        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
+        comment = NA, highlight = FALSE, size = "normalsize", 
+        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
+        cache.path = "io39-dplyr_verbs_demo_cache/html/", cache.vars = NULL, 
+        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
+        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
+        fig.align = "default", fig.path = "io39-dplyr_verbs_demo_files/figure-html/", 
+        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
+        fig.width = 7, fig.height = 5, fig.env = "figure", fig.cap = NULL, 
+        fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
+        fig.pos = "", out.width = 672, out.height = NULL, out.extra = NULL, 
+        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
+        aniopts = "controls,loop", warning = TRUE, error = FALSE, 
+        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
+        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
+        label = "transmute", exercise = TRUE, exercise.eval = TRUE, 
+        code = c("candy_rankings %>% ", "  transmute(nutty_nougat = round((peanutyalmondy + nougat)/2)) %>% ", 
+        "  arrange(desc(nutty_nougat))"), out.width.px = 672, 
+        out.height.px = 480, params.src = "transmute, exercise=TRUE, exercise.eval=TRUE", 
+        fig.alt = NULL, fig.num = 0, exercise.df_print = "default", 
+        exercise.checker = "NULL"), engine = "r", version = "4"), class = c("r", 
+"tutorial_exercise")))
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-mutatemore-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-mutatemore-code-editor`)), session)
+output$`tutorial-exercise-mutatemore-output` <- renderUI({
+  `tutorial-exercise-mutatemore-result`()
+})
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::store_exercise_cache(structure(list(label = "mutatemore", global_setup = structure(c("library(learnr)", 
+"knitr::opts_chunk$set(echo = FALSE)", "library(tidyverse)", 
+"library(fivethirtyeight)", "data(\"candy_rankings\")", "data(\"starwars\")", 
+"glimpse(starwars)", "glimpse(candy_rankings)"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "mutatemore", code = "candy_rankings %>% \n  mutate(nuttinessperdollar = peanutyalmondy/pricepercent)", 
+        opts = list(label = "\"mutatemore\"", exercise = "TRUE", 
+            exercise.eval = "TRUE"), engine = "r")), code_check = NULL, 
+    error_check = NULL, check = NULL, solution = NULL, tests = NULL, 
+    options = list(eval = TRUE, echo = TRUE, results = "markup", 
+        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
+        comment = NA, highlight = FALSE, size = "normalsize", 
+        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
+        cache.path = "io39-dplyr_verbs_demo_cache/html/", cache.vars = NULL, 
+        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
+        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
+        fig.align = "default", fig.path = "io39-dplyr_verbs_demo_files/figure-html/", 
+        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
+        fig.width = 7, fig.height = 5, fig.env = "figure", fig.cap = NULL, 
+        fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
+        fig.pos = "", out.width = 672, out.height = NULL, out.extra = NULL, 
+        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
+        aniopts = "controls,loop", warning = TRUE, error = FALSE, 
+        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
+        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
+        label = "mutatemore", exercise = TRUE, exercise.eval = TRUE, 
+        code = c("candy_rankings %>% ", "  mutate(nuttinessperdollar = peanutyalmondy/pricepercent)"
+        ), out.width.px = 672, out.height.px = 480, params.src = "mutatemore, exercise=TRUE, exercise.eval=TRUE", 
+        fig.alt = NULL, fig.num = 0, exercise.df_print = "default", 
+        exercise.checker = "NULL"), engine = "r", version = "4"), class = c("r", 
+"tutorial_exercise")))
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-arrange-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-arrange-code-editor`)), session)
+output$`tutorial-exercise-arrange-output` <- renderUI({
+  `tutorial-exercise-arrange-result`()
+})
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::store_exercise_cache(structure(list(label = "arrange", global_setup = structure(c("library(learnr)", 
+"knitr::opts_chunk$set(echo = FALSE)", "library(tidyverse)", 
+"library(fivethirtyeight)", "data(\"candy_rankings\")", "data(\"starwars\")", 
+"glimpse(starwars)", "glimpse(candy_rankings)"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "arrange", code = "candy_rankings %>% \n  arrange(sugarpercent) %>% \n  select(competitorname, sugarpercent)", 
+        opts = list(label = "\"arrange\"", exercise = "TRUE", 
+            exercise.eval = "TRUE"), engine = "r")), code_check = NULL, 
+    error_check = NULL, check = NULL, solution = NULL, tests = NULL, 
+    options = list(eval = TRUE, echo = TRUE, results = "markup", 
+        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
+        comment = NA, highlight = FALSE, size = "normalsize", 
+        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
+        cache.path = "io39-dplyr_verbs_demo_cache/html/", cache.vars = NULL, 
+        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
+        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
+        fig.align = "default", fig.path = "io39-dplyr_verbs_demo_files/figure-html/", 
+        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
+        fig.width = 7, fig.height = 5, fig.env = "figure", fig.cap = NULL, 
+        fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
+        fig.pos = "", out.width = 672, out.height = NULL, out.extra = NULL, 
+        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
+        aniopts = "controls,loop", warning = TRUE, error = FALSE, 
+        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
+        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
+        label = "arrange", exercise = TRUE, exercise.eval = TRUE, 
+        code = c("candy_rankings %>% ", "  arrange(sugarpercent) %>% ", 
+        "  select(competitorname, sugarpercent)"), out.width.px = 672, 
+        out.height.px = 480, params.src = "arrange, exercise=TRUE, exercise.eval=TRUE", 
+        fig.alt = NULL, fig.num = 0, exercise.df_print = "default", 
+        exercise.checker = "NULL"), engine = "r", version = "4"), class = c("r", 
+"tutorial_exercise")))
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-arrangemore-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-arrangemore-code-editor`)), session)
+output$`tutorial-exercise-arrangemore-output` <- renderUI({
+  `tutorial-exercise-arrangemore-result`()
+})
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::store_exercise_cache(structure(list(label = "arrangemore", global_setup = structure(c("library(learnr)", 
+"knitr::opts_chunk$set(echo = FALSE)", "library(tidyverse)", 
+"library(fivethirtyeight)", "data(\"candy_rankings\")", "data(\"starwars\")", 
+"glimpse(starwars)", "glimpse(candy_rankings)"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "arrangemore", code = "candy_rankings %>% \n  arrange(fruity, desc(sugarpercent))", 
+        opts = list(label = "\"arrangemore\"", exercise = "TRUE", 
+            exercise.eval = "TRUE"), engine = "r")), code_check = NULL, 
+    error_check = NULL, check = NULL, solution = NULL, tests = NULL, 
+    options = list(eval = TRUE, echo = TRUE, results = "markup", 
+        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
+        comment = NA, highlight = FALSE, size = "normalsize", 
+        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
+        cache.path = "io39-dplyr_verbs_demo_cache/html/", cache.vars = NULL, 
+        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
+        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
+        fig.align = "default", fig.path = "io39-dplyr_verbs_demo_files/figure-html/", 
+        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
+        fig.width = 7, fig.height = 5, fig.env = "figure", fig.cap = NULL, 
+        fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
+        fig.pos = "", out.width = 672, out.height = NULL, out.extra = NULL, 
+        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
+        aniopts = "controls,loop", warning = TRUE, error = FALSE, 
+        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
+        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
+        label = "arrangemore", exercise = TRUE, exercise.eval = TRUE, 
+        code = c("candy_rankings %>% ", "  arrange(fruity, desc(sugarpercent))"
+        ), out.width.px = 672, out.height.px = 480, params.src = "arrangemore, exercise=TRUE, exercise.eval=TRUE", 
+        fig.alt = NULL, fig.num = 0, exercise.df_print = "default", 
+        exercise.checker = "NULL"), engine = "r", version = "4"), class = c("r", 
+"tutorial_exercise")))
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-group-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-group-code-editor`)), session)
+output$`tutorial-exercise-group-output` <- renderUI({
+  `tutorial-exercise-group-result`()
+})
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::store_exercise_cache(structure(list(label = "group", global_setup = structure(c("library(learnr)", 
+"knitr::opts_chunk$set(echo = FALSE)", "library(tidyverse)", 
+"library(fivethirtyeight)", "data(\"candy_rankings\")", "data(\"starwars\")", 
+"glimpse(starwars)", "glimpse(candy_rankings)"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "group", code = "candy_rankings %>% \n  group_by(peanutyalmondy) %>% \n  summarize(mean_win = mean(winpercent))", 
+        opts = list(label = "\"group\"", exercise = "TRUE", exercise.eval = "TRUE"), 
+        engine = "r")), code_check = NULL, error_check = NULL, 
+    check = NULL, solution = NULL, tests = NULL, options = list(
+        eval = TRUE, echo = TRUE, results = "markup", tidy = FALSE, 
+        tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
+        highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
+        strip.white = TRUE, cache = 0, cache.path = "io39-dplyr_verbs_demo_cache/html/", 
+        cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
+        autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
+        fig.show = "asis", fig.align = "default", fig.path = "io39-dplyr_verbs_demo_files/figure-html/", 
+        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
+        fig.width = 7, fig.height = 5, fig.env = "figure", fig.cap = NULL, 
+        fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
+        fig.pos = "", out.width = 672, out.height = NULL, out.extra = NULL, 
+        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
+        aniopts = "controls,loop", warning = TRUE, error = FALSE, 
+        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
+        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
+        label = "group", exercise = TRUE, exercise.eval = TRUE, 
+        code = c("candy_rankings %>% ", "  group_by(peanutyalmondy) %>% ", 
+        "  summarize(mean_win = mean(winpercent))"), out.width.px = 672, 
+        out.height.px = 480, params.src = "group, exercise=TRUE, exercise.eval=TRUE", 
+        fig.alt = NULL, fig.num = 0, exercise.df_print = "default", 
+        exercise.checker = "NULL"), engine = "r", version = "4"), class = c("r", 
+"tutorial_exercise")))
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-groupmore-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-groupmore-code-editor`)), session)
+output$`tutorial-exercise-groupmore-output` <- renderUI({
+  `tutorial-exercise-groupmore-result`()
+})
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::store_exercise_cache(structure(list(label = "groupmore", global_setup = structure(c("library(learnr)", 
+"knitr::opts_chunk$set(echo = FALSE)", "library(tidyverse)", 
+"library(fivethirtyeight)", "data(\"candy_rankings\")", "data(\"starwars\")", 
+"glimpse(starwars)", "glimpse(candy_rankings)"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "groupmore", code = "candy_rankings %>% \n  group_by(bar) %>% \n  summarize(mean_sugar = mean(sugarpercent))", 
+        opts = list(label = "\"groupmore\"", exercise = "TRUE", 
+            exercise.eval = "TRUE"), engine = "r")), code_check = NULL, 
+    error_check = NULL, check = NULL, solution = NULL, tests = NULL, 
+    options = list(eval = TRUE, echo = TRUE, results = "markup", 
+        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
+        comment = NA, highlight = FALSE, size = "normalsize", 
+        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
+        cache.path = "io39-dplyr_verbs_demo_cache/html/", cache.vars = NULL, 
+        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
+        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
+        fig.align = "default", fig.path = "io39-dplyr_verbs_demo_files/figure-html/", 
+        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
+        fig.width = 7, fig.height = 5, fig.env = "figure", fig.cap = NULL, 
+        fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
+        fig.pos = "", out.width = 672, out.height = NULL, out.extra = NULL, 
+        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
+        aniopts = "controls,loop", warning = TRUE, error = FALSE, 
+        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
+        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
+        label = "groupmore", exercise = TRUE, exercise.eval = TRUE, 
+        code = c("candy_rankings %>% ", "  group_by(bar) %>% ", 
+        "  summarize(mean_sugar = mean(sugarpercent))"), out.width.px = 672, 
+        out.height.px = 480, params.src = "groupmore, exercise=TRUE, exercise.eval=TRUE", 
+        fig.alt = NULL, fig.num = 0, exercise.df_print = "default", 
+        exercise.checker = "NULL"), engine = "r", version = "4"), class = c("r", 
+"tutorial_exercise")))
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-count-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-count-code-editor`)), session)
+output$`tutorial-exercise-count-output` <- renderUI({
+  `tutorial-exercise-count-result`()
+})
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::store_exercise_cache(structure(list(label = "count", global_setup = structure(c("library(learnr)", 
+"knitr::opts_chunk$set(echo = FALSE)", "library(tidyverse)", 
+"library(fivethirtyeight)", "data(\"candy_rankings\")", "data(\"starwars\")", 
+"glimpse(starwars)", "glimpse(candy_rankings)"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "count", code = "glimpse(starwars)\nstarwars %>% \n  count(eye_color, sort = TRUE)", 
+        opts = list(label = "\"count\"", exercise = "TRUE", exercise.eval = "TRUE"), 
+        engine = "r")), code_check = NULL, error_check = NULL, 
+    check = NULL, solution = NULL, tests = NULL, options = list(
+        eval = TRUE, echo = TRUE, results = "markup", tidy = FALSE, 
+        tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
+        highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
+        strip.white = TRUE, cache = 0, cache.path = "io39-dplyr_verbs_demo_cache/html/", 
+        cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
+        autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
+        fig.show = "asis", fig.align = "default", fig.path = "io39-dplyr_verbs_demo_files/figure-html/", 
+        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
+        fig.width = 7, fig.height = 5, fig.env = "figure", fig.cap = NULL, 
+        fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
+        fig.pos = "", out.width = 672, out.height = NULL, out.extra = NULL, 
+        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
+        aniopts = "controls,loop", warning = TRUE, error = FALSE, 
+        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
+        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
+        label = "count", exercise = TRUE, exercise.eval = TRUE, 
+        code = c("glimpse(starwars)", "starwars %>% ", "  count(eye_color, sort = TRUE)"
+        ), out.width.px = 672, out.height.px = 480, params.src = "count, exercise=TRUE, exercise.eval=TRUE", 
+        fig.alt = NULL, fig.num = 0, exercise.df_print = "default", 
+        exercise.checker = "NULL"), engine = "r", version = "4"), class = c("r", 
+"tutorial_exercise")))
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+`tutorial-exercise-countmore-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-countmore-code-editor`)), session)
+output$`tutorial-exercise-countmore-output` <- renderUI({
+  `tutorial-exercise-countmore-result`()
+})
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::store_exercise_cache(structure(list(label = "countmore", global_setup = structure(c("library(learnr)", 
+"knitr::opts_chunk$set(echo = FALSE)", "library(tidyverse)", 
+"library(fivethirtyeight)", "data(\"candy_rankings\")", "data(\"starwars\")", 
+"glimpse(starwars)", "glimpse(candy_rankings)"), chunk_opts = list(
+    label = "setup", include = FALSE)), setup = NULL, chunks = list(
+    list(label = "countmore", code = "starwars %>% \n  count(birth_year, sort=TRUE) ", 
+        opts = list(label = "\"countmore\"", exercise = "TRUE", 
+            exercise.eval = "TRUE"), engine = "r")), code_check = NULL, 
+    error_check = NULL, check = NULL, solution = NULL, tests = NULL, 
+    options = list(eval = TRUE, echo = TRUE, results = "markup", 
+        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
+        comment = NA, highlight = FALSE, size = "normalsize", 
+        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
+        cache.path = "io39-dplyr_verbs_demo_cache/html/", cache.vars = NULL, 
+        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
+        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
+        fig.align = "default", fig.path = "io39-dplyr_verbs_demo_files/figure-html/", 
+        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
+        fig.width = 7, fig.height = 5, fig.env = "figure", fig.cap = NULL, 
+        fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
+        fig.pos = "", out.width = 672, out.height = NULL, out.extra = NULL, 
+        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
+        aniopts = "controls,loop", warning = TRUE, error = FALSE, 
+        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
+        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
+        label = "countmore", exercise = TRUE, exercise.eval = TRUE, 
+        code = c("starwars %>% ", "  count(birth_year, sort=TRUE) "
+        ), out.width.px = 672, out.height.px = 480, params.src = "countmore, exercise=TRUE, exercise.eval=TRUE", 
+        fig.alt = NULL, fig.num = 0, exercise.df_print = "default", 
+        exercise.checker = "NULL"), engine = "r", version = "4"), class = c("r", 
+"tutorial_exercise")))
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-1", question = structure("What symbol do you use to test equality in a logical statement?", html = TRUE, class = c("html", 
+"character")), answers = list(structure(list(id = "lnr_ans_835dcb6", 
+    option = " !! ", value = " !! ", label = structure("!!", html = TRUE, class = c("html", 
+    "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_1cb82da", 
+    option = " $ ", value = " $ ", label = structure("$", html = TRUE, class = c("html", 
+    "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_59d94cf", 
+    option = " == ", value = " == ", label = structure("==", html = TRUE, class = c("html", 
+    "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_80a5d82", 
+    option = " = ", value = " = ", label = structure("=", html = TRUE, class = c("html", 
+    "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
+"tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
+"character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html", 
+"character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html", 
+"character")), try_again = structure("Incorrect", html = TRUE, class = c("html", 
+"character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
+"character")), message = NULL, post_message = NULL), ids = list(
+    answer = "quiz-1-answer", question = "quiz-1"), loading = NULL, 
+    random_answer_order = FALSE, allow_retry = FALSE, seed = 1314405207.88793, 
+    options = list()), class = c("learnr_radio", "tutorial_question"
+)), session = session)
+</script>
+
+
+<script type="application/shiny-prerendered" data-context="server">
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "quiz-2", question = structure("What symbol do you use to combine two logical statements with AND?", html = TRUE, class = c("html", 
+"character")), answers = list(structure(list(id = "lnr_ans_e7bd97a", 
+    option = " | ", value = " | ", label = structure("|", html = TRUE, class = c("html", 
+    "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_db34a46", 
+    option = " ^ ", value = " ^ ", label = structure("^", html = TRUE, class = c("html", 
+    "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_7086e3", 
+    option = " % ", value = " % ", label = structure("%", html = TRUE, class = c("html", 
+    "character")), correct = FALSE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_b8a5b33", 
+    option = " & ", value = " & ", label = structure("&amp;", html = TRUE, class = c("html", 
+    "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
+"tutorial_quiz_answer"))), button_labels = list(submit = structure("<span data-i18n=\"button.questionsubmit\">Submit Answer<\u002fspan>", html = TRUE, class = c("html", 
+"character")), try_again = structure("<span data-i18n=\"button.questiontryagain\">Try Again<\u002fspan>", html = TRUE, class = c("html", 
+"character"))), messages = list(correct = structure("Correct!", html = TRUE, class = c("html", 
+"character")), try_again = structure("Incorrect", html = TRUE, class = c("html", 
+"character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
+"character")), message = NULL, post_message = NULL), ids = list(
+    answer = "quiz-2-answer", question = "quiz-2"), loading = NULL, 
+    random_answer_order = FALSE, allow_retry = FALSE, seed = 291299488.364353, 
+    options = list()), class = c("learnr_radio", "tutorial_question"
+)), session = session)
+</script>
+</p>
+<!--html_preserve-->
+<script type="application/shiny-prerendered" data-context="dependencies">
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["fuse"]},{"type":"character","attributes":{},"value":["6.4.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["href"]}},"value":[{"type":"character","attributes":{},"value":["https://cdn.jsdelivr.net/npm/fuse.js@6.4.6"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["dist/fuse.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["gitbook"]},{"type":"character","attributes":{},"value":["2.6.7"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["resources/gitbook"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["js/app.min.js","js/clipboard.min.js","js/plugin-search.js","js/plugin-sharing.js","js/plugin-fontsettings.js","js/plugin-bookdown.js","js/jquery.highlight.js","js/plugin-clipboard.js"]},{"type":"character","attributes":{},"value":["css/style.css","css/plugin-table.css","css/plugin-bookdown.css","css/plugin-highlight.css","css/plugin-search.css","css/plugin-fontsettings.css","css/plugin-clipboard.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["bookdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.45"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["anchor-sections"]},{"type":"character","attributes":{},"value":["1.1.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/anchor-sections"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["anchor-sections.js"]},{"type":"character","attributes":{},"value":["anchor-sections.css","anchor-sections-hash.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.30"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["font-awesome"]},{"type":"character","attributes":{},"value":["6.5.2"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["fontawesome"]}]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["css/all.min.css","css/v4-shims.min.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["fontawesome"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.5.3"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootbox"]},{"type":"character","attributes":{},"value":["5.5.2"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/bootbox"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["bootbox.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["idb-keyvalue"]},{"type":"character","attributes":{},"value":["3.2.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/idb-keyval"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["idb-keyval-iife-compat.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["tutorial"]},{"type":"character","attributes":{},"value":["0.11.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/tutorial"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tutorial.js"]},{"type":"character","attributes":{},"value":["tutorial.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.6"]}]}]}
+</script>
+<!--/html_preserve-->
+<!--html_preserve-->
+<script type="application/shiny-prerendered" data-context="execution_dependencies">
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75]}},"value":[{"type":"character","attributes":{},"value":["backports","base","bookdown","bslib","cachem","checkmate","cli","commonmark","compiler","datasets","digest","dplyr","evaluate","farver","fastmap","fivethirtyeight","fontawesome","forcats","generics","ggplot2","glue","graphics","grDevices","grid","gtable","hms","htmltools","htmlwidgets","httpuv","jquerylib","jsonlite","knitr","later","learnr","lifecycle","litedown","lubridate","magrittr","markdown","methods","mime","otel","pillar","pkgconfig","promises","purrr","R6","RColorBrewer","Rcpp","readr","rlang","rmarkdown","rprojroot","rstudioapi","S7","sass","scales","shiny","stats","stringi","stringr","tibble","tidyr","tidyselect","tidyverse","timechange","tools","tzdb","utf8","utils","vctrs","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["1.5.0","4.5.1","0.45","0.9.0","1.1.0","2.3.3","3.6.5","2.0.0","4.5.1","4.5.1","0.6.38","1.1.4","1.0.5","2.1.2","1.2.0","0.6.2","0.5.3","1.0.1","0.1.4","4.0.0","1.8.0","4.5.1","4.5.1","4.5.1","0.3.6","1.1.4","0.5.8.1","1.6.4","1.6.16","0.1.4","2.0.0","1.50","1.4.4","0.11.6","1.0.4","0.8","1.9.4","2.0.4","2.0","4.5.1","0.13","0.2.0","1.11.1","2.0.3","1.5.0","1.2.0","2.6.1","1.1-3","1.1.0","2.1.5","1.1.7","2.30","2.1.1","0.17.1","0.2.0","0.4.10","1.4.0","1.11.1","4.5.1","1.8.7","1.6.0","3.3.0","1.3.1","1.2.1","2.0.0","0.3.0","4.5.1","0.5.0","1.2.6","4.5.1","0.6.5.9000","3.0.2","0.54","1.8-4","2.3.10"]}]}]}
+</script>
+<!--/html_preserve-->
+</div>
+</div>
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  if (t = document.getElementById("webex-total_correct")) {
+    var correct = document.getElementsByClassName("webex-correct").length;
+    var solvemes = document.getElementsByClassName("webex-solveme").length;
+    var radiogroups = document.getElementsByClassName("webex-radiogroup").length;
+    var selects = document.getElementsByClassName("webex-select").length;
+
+    t.innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  var cl = this.classList
+
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+  }
+
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+  }
+
+  update_total_correct();
+}
+
+</script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": false,
+  "toc": {
+    "collapse": "section"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -13,10 +13,11 @@ library(here)
 library(janitor)
 ```
 
-## More dplyr
+# More dplyr
 
 You have learned the big 7 verbs in dplyr, including
 <br>
+
 1. filteR
 2. seleCt
 3. mutate
@@ -24,10 +25,14 @@ You have learned the big 7 verbs in dplyr, including
 5. summarize
 6. arrange
 7. count
+
+<br>
+You can review with this interactive tutorial: <br>
+[click here](https://hgshiny.med.umich.edu/dplyr_wrangle1/)
 <br>
 But there is more!!
 
-### rename
+### Rename
 
 when you don't need a full mutate, just better names.
 This often comes up after you have used clean_names to improve the formatting of variable names, but you end up with long, long names.

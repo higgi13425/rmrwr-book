@@ -28,7 +28,8 @@ rmd_files:
 - io33-making-table-one.Rmd
 - io30-ttest.Rmd
 - io69-sample_size.Rmd
-- io66-blockrand.rmd
+- io40-more_dplyr.Rmd
+- io66-blockrand.Rmd
 - io48-univariate_distrib_plots.Rmd
 - io48b-bivariate-scatter-plots.Rmd
 - io48j-extension-plots.Rmd

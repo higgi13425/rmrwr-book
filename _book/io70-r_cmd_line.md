@@ -76,7 +76,7 @@ whoami;date
 
 ```
 ## peterhiggins
-## Thu Nov 20 18:17:33 EST 2025
+## Fri Jan  2 16:39:26 EST 2026
 ```
 :::
 
@@ -139,6 +139,7 @@ ls
 ## ~$cipeTin Lentil Chickpea Coconut Curry.docx
 ## ~$e crust recipe.docx
 ## ~$Jun2021_ibdTrials.pptx
+## ~$ple Pie Day 1.docx
 ## ~$sk List 2020-5.docx
 ## ~$sk List 2020.docx
 ## ~$sk List 2021.docx
@@ -194,6 +195,7 @@ ls
 ## AIBD SoMe Higgins.pptx
 ## AIBD20Template.pptx
 ## AJGeditorial w Fletcher MRI 2015
+## Akebia Vadadustat Proposal.docx
 ## algorithms_thiopurine.pdf
 ## AMAG DDW Clear draft_PDRH comments.docx
 ## Animation of NSAID.pptx
@@ -272,6 +274,8 @@ ls
 ## Clinical Coordination and Intense Proactive Monitoring to Improve Utilization of Resources and Reduce Expenditures in High.docx
 ## Clinical Research Alliance
 ## Closing remarks.docx
+## COMET-UC and CCF.pptx
+## Compiled PCORI Other Support.doc
 ## Copy of Crohns Colitis Congress 2023 Pediatric Session Agenda 07.17.2022_pdrh.xlsx
 ## Council Conversations Author Chat Guide.docx
 ## Coursera_Programming in R Notes.docx
@@ -326,6 +330,7 @@ ls
 ## epic schedule viewing_close.ppt
 ## escalator.html
 ## Europe Talks
+## Evaluating the Ability of a Gut.docx
 ## exercise1.xlsx
 ## exercise2.xlsx
 ## Exploring Docker.docx
@@ -627,6 +632,7 @@ ls
 ## Ramp up clinical research_PH.xlsx
 ## Ramping up human subject research - MM 6-1-20 _KDA_PDRH_suggestions.docx
 ## RCode
+## README - Notes on Submission Documents for PIR.docx
 ## Rec_Letter_Simone_Ashley.docx
 ## RecipeTin Lentil Chickpea Coconut Curry.docx
 ## Recordings
@@ -635,9 +641,11 @@ ls
 ## Reply_JAMA_Thiopurines.docx
 ## Research Statement.docx
 ## Research Statement.pdf
+## research_strategy_v1_10.15.25.docx
 ## Review Criteria for COVID Clinical Trials.docx
 ## Review guidelines_2017.docx
 ## Rice recipes
+## RK thesis examination PDRH.docx
 ## RMed 2023 Meeting 15 Mar.docx
 ## RMed21- Intro to Spatial.pptx
 ## RMed21-Opening remarks Day 1.pptx
@@ -715,6 +723,7 @@ ls
 ## Stelara paper.docx
 ## Steps to Make a Pinback Button.docx
 ## stiff_bcl.R
+## Strava_export_5177722
 ## Structure of Aim 3.docx
 ## submitJanssen_IBD School Videos_12Jul2018.pdf
 ## Surgery Topics
@@ -795,6 +804,7 @@ ls
 ## weiser_topics.docx
 ## wga_min20.pdf
 ## Why not excel.docx
+## Xmas letter 2025.docx
 ## Zoom
 ## Zwift
 ## zwift_training_pacepartner.xlsx

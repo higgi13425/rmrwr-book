@@ -248,13 +248,13 @@ wiki_page %>%
 ## # A tibble: 1 × 2
 ##   X1    X2                                                                      
 ##   <lgl> <chr>                                                                   
-## 1 NA    This section relies largely or entirely upon a single source. Relevant …
+## 1 NA    This section relies largely or entirely on a single source. Relevant di…
 ## 
 ## [[4]]
 ## # A tibble: 1 × 2
 ##   X1    X2                                                                      
 ##   <lgl> <chr>                                                                   
-## 1 NA    This section relies largely or entirely upon a single source. Relevant …
+## 1 NA    This section relies largely or entirely on a single source. Relevant di…
 ## 
 ## [[5]]
 ## # A tibble: 52 × 17
@@ -278,7 +278,7 @@ wiki_page %>%
 ## # A tibble: 1 × 2
 ##   X1    X2                                                                      
 ##   <lgl> <chr>                                                                   
-## 1 NA    This section relies largely or entirely upon a single source. Relevant …
+## 1 NA    This section relies largely or entirely on a single source. Relevant di…
 ## 
 ## [[7]]
 ## # A tibble: 11 × 14

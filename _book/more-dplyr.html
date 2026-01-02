@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 50 Using your .Rprofile and .Renviron file and RStudio Code Snippets | Reproducible Medical Research with R</title>
+  <title>Chapter 24 More dplyr | Reproducible Medical Research with R</title>
   <meta name="description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
   <meta name="generator" content="bookdown 0.45 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 50 Using your .Rprofile and .Renviron file and RStudio Code Snippets | Reproducible Medical Research with R" />
+  <meta property="og:title" content="Chapter 24 More dplyr | Reproducible Medical Research with R" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
   <meta name="github-repo" content="higgi13425/rmrwr-book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 50 Using your .Rprofile and .Renviron file and RStudio Code Snippets | Reproducible Medical Research with R" />
+  <meta name="twitter:title" content="Chapter 24 More dplyr | Reproducible Medical Research with R" />
   
   <meta name="twitter:description" content="This book is for anyone in the medical field interested in learning R to analyze available health data." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html"/>
-<link rel="next" href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets-1.html"/>
+<link rel="prev" href="sample-size-calculations-with-pwr.html"/>
+<link rel="next" href="randomization-for-clinical-trials-with-r.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -1105,55 +1105,201 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets" class="section level1 hasAnchor" number="50">
-<h1><span class="header-section-number">Chapter 50</span> Using your .Rprofile and .Renviron file and RStudio Code Snippets<a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This chapter is part of the <strong>Coding</strong> pathway. <br> Packages needed for this chapter include {usethis} and {tidyverse}.</p>
-<p>These are two tools that will help you extend what you can do with R and RStudio. The .Rprofile file is a file that is run every time you start R, and it can be used to set options, load packages, and define functions that you want to use in every R session. RStudio Code Snippets are a way to save and reuse code snippets in RStudio, which can help you work more efficiently. Let’s start with the .Rprofile file.</p>
-<div id="setting-up-your-.rprofile-file" class="section level2 hasAnchor" number="50.1">
-<h2><span class="header-section-number">50.1</span> Setting up your .Rprofile file<a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#setting-up-your-.rprofile-file" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>You can create a .Rprofile file in your home directory or in any project directory. This file is run every time you start R, and it can be used to set options that you want to use in every R session.</p>
-<p>The upside to this is that your workspace is set up consistently the same way every time you start R, and you don’t have to remember to load packages or set options every time. The downside is when you share your code with collaborators, it may not run, as they do not have the same .Rprofile file.
-In general, you should use the .Rprofile file for things that you want to set up every time you start R, and that are not specific to a project. For example, you might want to set options for how R displays output.</p>
-<p>However, you should avoid loading packages or functions in your <code>.Rprofile</code> file, as this can cause issues when you share your code with collaborators. Instead, you should load packages in your R scripts or RMarkdown files, or use the {renv} package to manage your project-specific library paths and package versions.</p>
-<p>The .Rprofile file is a user-controllable file that can be located in your home directory (<code>~/.Rprofile</code>) or in a project-specific directory (e.g., <code>my_project/.Rprofile</code>). When you start R, it will look for a .Rprofile file in your home directory and in the current working directory, and it will run the code in that file. This allows you to set options that you want to use in every R session. This is a ‘secret’ file that is not visible in the RStudio Files pane, but you can see it in the RStudio source pane if you open it with <code>usethis::edit_r_profile()</code>. It will not be shared on Github when you push your code to a repository, as it is a hidden file (the dot at the beginning of the filename makes it hidden in Unix-like operating systems).</p>
-<p>To set up your .Rprofile file, you can use the {usethis} package. The following code will create a .Rprofile file in your home directory if it does not already exist, and then open it in RStudio for editing:</p>
-<div class="sourceCode" id="cb1091"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1091-1"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1091-1" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">edit_r_profile</span>()</span></code></pre></div>
-<pre><code>## ☐ Edit &#39;/Users/peterhiggins/.Rprofile&#39;.</code></pre>
-<pre><code>## ☐ Restart R for changes to take effect.</code></pre>
-<p>This will open the .Rprofile file in the source pane of RStudio, and you can add any code that you want to run every time you start R.</p>
-<p>You can edit your <code>.Rprofile</code> file to set some options.
-Here are a few common examples of what people often do wtith their <code>.Rprofile</code> file:</p>
-<div class="sourceCode" id="cb1094"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1094-1"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1094-1" tabindex="-1"></a><span class="fu">options</span>(<span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>) <span class="co"># Set strings to not be factors by default</span></span>
-<span id="cb1094-2"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1094-2" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">3</span>) <span class="co"># Set the number of digits to display in output</span></span>
-<span id="cb1094-3"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1094-3" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>) <span class="co"># Set scientific notation to not be used with a high penalty</span></span>
-<span id="cb1094-4"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1094-4" tabindex="-1"></a><span class="fu">options</span>(<span class="at">tab.width =</span> <span class="dv">2</span>)</span>
-<span id="cb1094-5"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1094-5" tabindex="-1"></a><span class="fu">options</span>(<span class="at">width =</span> <span class="dv">60</span>)</span>
-<span id="cb1094-6"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1094-6" tabindex="-1"></a><span class="fu">options</span>(<span class="at">editor =</span> <span class="st">&quot;TextEdit&quot;</span>)</span>
-<span id="cb1094-7"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1094-7" tabindex="-1"></a><span class="fu">options</span>(<span class="at">usethis.full_name =</span> <span class="st">&quot;Your Name Here&quot;</span>) <span class="co"># Set your name for use in package development</span></span>
-<span id="cb1094-8"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1094-8" tabindex="-1"></a><span class="fu">options</span>(<span class="at">usethis.protocol =</span> <span class="st">&quot;https&quot;</span>)</span>
-<span id="cb1094-9"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1094-9" tabindex="-1"></a><span class="co"># fancy quotes are annoying and lead to</span></span>
-<span id="cb1094-10"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1094-10" tabindex="-1"></a><span class="co"># &#39;copy + paste&#39; bugs / frustrations</span></span>
-<span id="cb1094-11"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1094-11" tabindex="-1"></a><span class="fu">options</span>(<span class="at">useFancyQuotes =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb1094-12"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1094-12" tabindex="-1"></a><span class="fu">options</span>(<span class="at">prompt =</span> <span class="st">&quot;R&gt; &quot;</span>) <span class="co"># CUSTOM prompt</span></span>
-<span id="cb1094-13"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1094-13" tabindex="-1"></a><span class="fu">options</span>(<span class="at">max.print =</span> <span class="dv">400</span>)</span>
-<span id="cb1094-14"><a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#cb1094-14" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repos =</span> <span class="fu">c</span>(<span class="at">CRAN =</span> <span class="st">&quot;https://repo.miserver.it.umich.edu/cran/&quot;</span>))</span></code></pre></div>
-<p>It is generally a bad idea to set the default library path in your .Rprofile file, as this can cause issues when you share your code with collaborators.
-Similarly, it is generally a bad idea to load packages in your .Rprofile file, as this can cause issues when you share your code with collaborators.
-Instead, you should load packages in your R scripts or RMarkdown files, or use the {renv} package to manage your project-specific library paths and package versions.</p>
-<p>Note that to apply changes to your R session, you need to save the <code>.Rprofile</code> file and then restart R. You can do this by clicking on Session/Restart R in RStudio, or by pressing Shift-Cmd-O.</p>
+<div id="more-dplyr" class="section level1 hasAnchor" number="24">
+<h1><span class="header-section-number">Chapter 24</span> More dplyr<a href="more-dplyr.html#more-dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>You have learned the big 7 verbs in dplyr, including
+<br></p>
+<ol style="list-style-type: decimal">
+<li>filteR</li>
+<li>seleCt</li>
+<li>mutate</li>
+<li>group_by</li>
+<li>summarize</li>
+<li>arrange</li>
+<li>count</li>
+</ol>
+<p><br>
+You can review with this interactive tutorial: <br>
+<a href="https://hgshiny.med.umich.edu/dplyr_wrangle1/">click here</a>
+<br>
+But there is more!!</p>
+<div id="rename" class="section level3 hasAnchor" number="24.0.1">
+<h3><span class="header-section-number">24.0.1</span> Rename<a href="more-dplyr.html#rename" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>when you don’t need a full mutate, just better names.
+This often comes up after you have used clean_names to improve the formatting of variable names, but you end up with long, long names.
+<br>
+First run the code chunk below to see what you have in the data frame</p>
+<p>Then pipe tbl into a rename function, which has the format<br>
+rename(new_name = old_name)
+and rename the sbp as sbp_basel</p>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="more-dplyr.html#cb458-1" tabindex="-1"></a>name <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Bob&quot;</span>, <span class="st">&quot;Carla&quot;</span>, <span class="st">&quot;Dave&quot;</span>)</span>
+<span id="cb458-2"><a href="more-dplyr.html#cb458-2" tabindex="-1"></a>the_value_of_sbp_at_baseline <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">120</span>, <span class="dv">134</span>, <span class="dv">96</span>)</span>
+<span id="cb458-3"><a href="more-dplyr.html#cb458-3" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(name, the_value_of_sbp_at_baseline)</span>
+<span id="cb458-4"><a href="more-dplyr.html#cb458-4" tabindex="-1"></a>tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb458-5"><a href="more-dplyr.html#cb458-5" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">sbp_base =</span> the_value_of_sbp_at_baseline)</span></code></pre></div>
+<pre><code>##    name sbp_base
+## 1   Bob      120
+## 2 Carla      134
+## 3  Dave       96</code></pre>
 </div>
-<div id="setting-up-your-.renviron-file" class="section level2 hasAnchor" number="50.2">
-<h2><span class="header-section-number">50.2</span> Setting up your .Renviron file<a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#setting-up-your-.renviron-file" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>You can use the .Renviron file to store secrets that you need to use to access data through APIs (Application Programming Interfaces). APIs are a common way to make data public, but require users to present a password or key to gain access to the data. API keys are commonly used for REDCap databases, US Census data, Instead, you should use the .Renviron file to set environment variables that are specific to your project or your computer.</p>
-<div id="explore-redcaptidier-and-quarto-dashboards" class="section level3 hasAnchor explore" number="50.2.1">
-<h3><span class="header-section-number">50.2.1</span> Explore REDCapTidieR and Quarto Dashboards<a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets.html#explore-redcaptidier-and-quarto-dashboards" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>You can find out a lot more about REDCapTidieR <a href="https://chop-cgtinformatics.github.io/REDCapTidieR/">here</a>.</p>
-<p>There is great documentation on Quarto Dashboards <a href="https://quarto.org/docs/dashboards/">here</a>.</p>
-<p>You can also find a lot of great examples of Quarto dashboards in the <a href="https://quarto.org/docs/gallery/">gallery</a>.</p>
-<p>Some good examples of clinical study monitoring with dashboards can be found <a href="https://jenthompson.me/examples/progressdash">here</a> and <a href="https://www.insight-icu.org/">here</a>. These are both examples of clinical trials that are being monitored with dashboards, and they provide a good overview of the study progress and data collection. The links to the source code for these dashboards are available <a href="https://jenthompson.me/2018/02/09/flexdashboards-monitoring/">here</a>.</p>
-<p>Details on publishing webpages with Quarto Pub (and how to get authorization tokens) can be found <a href="https://quarto.org/docs/publishing/quarto-pub.html">here</a>.</p>
-<p>You can find out more about crontab <a href="https://crontab.guru/">here</a>, and more generally about scheduling cron jobs <a href="https://www.tecmint.com/schedule-cron-jobs-in-linux/">here</a>.</p>
+<div id="re-arrange-your-variablescolumns" class="section level3 hasAnchor" number="24.0.2">
+<h3><span class="header-section-number">24.0.2</span> Re-arrange your variables/columns<a href="more-dplyr.html#re-arrange-your-variablescolumns" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If you don’t like the order of your variables, you can use <em>select</em> to reorder them.
+use the format:
+select(var1, var2, var3:var4, everything())</p>
+<p>note that everything() puts all the other variables in at the end, in their previous order.
+This is helpful for pulling interesting variables to the front of the line.</p>
+<p>Run the chunk below,
+then pipe the tbl into
+select(pt_id, everything())</p>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="more-dplyr.html#cb460-1" tabindex="-1"></a>firstname <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Bob&quot;</span>, <span class="st">&quot;Carla&quot;</span>, <span class="st">&quot;Dave&quot;</span>, <span class="st">&quot;Elena&quot;</span>)</span>
+<span id="cb460-2"><a href="more-dplyr.html#cb460-2" tabindex="-1"></a>pt_id <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">001</span>, <span class="dv">002</span>, <span class="dv">003</span>, <span class="dv">004</span>)</span>
+<span id="cb460-3"><a href="more-dplyr.html#cb460-3" tabindex="-1"></a>lastname <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Edwards&quot;</span>, <span class="st">&quot;Frankel&quot;</span>, <span class="st">&quot;Genghis&quot;</span>, <span class="st">&quot;Harrison&quot;</span>)</span>
+<span id="cb460-4"><a href="more-dplyr.html#cb460-4" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(firstname, pt_id, lastname)</span>
+<span id="cb460-5"><a href="more-dplyr.html#cb460-5" tabindex="-1"></a>tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb460-6"><a href="more-dplyr.html#cb460-6" tabindex="-1"></a>  <span class="fu">select</span>(pt_id, <span class="fu">everything</span>())</span></code></pre></div>
+<pre><code>##   pt_id firstname lastname
+## 1     1       Bob  Edwards
+## 2     2     Carla  Frankel
+## 3     3      Dave  Genghis
+## 4     4     Elena Harrison</code></pre>
 </div>
+<div id="find-distinct-rows" class="section level3 hasAnchor" number="24.0.3">
+<h3><span class="header-section-number">24.0.3</span> Find distinct rows<a href="more-dplyr.html#find-distinct-rows" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If you want to list only the distinct, unique observations, you can use the distinct function.</p>
+<p>Run the code chunk below to see the replicates by visit_num</p>
+<p>Then pipe tbl into
+distinct(var1, var2) - the variables you care about</p>
+<p>In this case, use firstname, lastname to find the distinct patients</p>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="more-dplyr.html#cb462-1" tabindex="-1"></a>firstname <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Bob&quot;</span>, <span class="st">&quot;Carla&quot;</span>, <span class="st">&quot;Dave&quot;</span>, <span class="st">&quot;Elena&quot;</span>),<span class="dv">3</span>)</span>
+<span id="cb462-2"><a href="more-dplyr.html#cb462-2" tabindex="-1"></a>pt_id <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">001</span>, <span class="dv">002</span>, <span class="dv">003</span>, <span class="dv">004</span>),<span class="dv">3</span>)</span>
+<span id="cb462-3"><a href="more-dplyr.html#cb462-3" tabindex="-1"></a>lastname <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Edwards&quot;</span>, <span class="st">&quot;Frankel&quot;</span>, <span class="st">&quot;Genghis&quot;</span>, <span class="st">&quot;Harrison&quot;</span>),<span class="dv">3</span>)</span>
+<span id="cb462-4"><a href="more-dplyr.html#cb462-4" tabindex="-1"></a>visit_num <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">4</span>), <span class="fu">rep</span>(<span class="dv">2</span>, <span class="dv">4</span>), <span class="fu">rep</span>(<span class="dv">3</span>,<span class="dv">4</span>))</span>
+<span id="cb462-5"><a href="more-dplyr.html#cb462-5" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(pt_id, firstname, lastname, visit_num)</span>
+<span id="cb462-6"><a href="more-dplyr.html#cb462-6" tabindex="-1"></a>tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb462-7"><a href="more-dplyr.html#cb462-7" tabindex="-1"></a>  <span class="fu">distinct</span>(firstname, lastname) <span class="ot">-&gt;</span></span>
+<span id="cb462-8"><a href="more-dplyr.html#cb462-8" tabindex="-1"></a>unique_pts</span></code></pre></div>
+</div>
+<div id="select-a-group-of-rows-with-slice" class="section level3 hasAnchor" number="24.0.4">
+<h3><span class="header-section-number">24.0.4</span> Select a group of rows with slice()<a href="more-dplyr.html#select-a-group-of-rows-with-slice" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sometimes you just want a few contiguous rows, like with head(), or tail().
+but you can also pick which rows with slice()</p>
+<p>This is a simple command with</p>
+<p>slice(start_row:end_row) to select the rows you want</p>
+<p>Run the chunk below to find out how many rows are in the starwars dataset.</p>
+<p>Then look at head and tail functions</p>
+<p>Then pipe starwars into a slice function.</p>
+<p>Slice out rows 15:25
+or
+46:60</p>
+<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="more-dplyr.html#cb463-1" tabindex="-1"></a><span class="fu">dim</span>(starwars)</span></code></pre></div>
+<pre><code>## [1] 87 14</code></pre>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="more-dplyr.html#cb465-1" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb465-2"><a href="more-dplyr.html#cb465-2" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">7</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 7 × 14
+##   name      height  mass hair_color skin_color eye_color birth_year sex   gender
+##   &lt;chr&gt;      &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+## 1 Luke Sky…    172    77 blond      fair       blue            19   male  mascu…
+## 2 C-3PO        167    75 &lt;NA&gt;       gold       yellow         112   none  mascu…
+## 3 R2-D2         96    32 &lt;NA&gt;       white, bl… red             33   none  mascu…
+## 4 Darth Va…    202   136 none       white      yellow          41.9 male  mascu…
+## 5 Leia Org…    150    49 brown      light      brown           19   fema… femin…
+## 6 Owen Lars    178   120 brown, gr… light      blue            52   male  mascu…
+## 7 Beru Whi…    165    75 brown      light      blue            47   fema… femin…
+## # ℹ 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
+## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="more-dplyr.html#cb467-1" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb467-2"><a href="more-dplyr.html#cb467-2" tabindex="-1"></a>  <span class="fu">tail</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 10 × 14
+##    name     height  mass hair_color skin_color eye_color birth_year sex   gender
+##    &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+##  1 Grievous    216   159 none       brown, wh… green, y…         NA male  mascu…
+##  2 Tarfful     234   136 brown      brown      blue              NA male  mascu…
+##  3 Raymus …    188    79 brown      light      brown             NA male  mascu…
+##  4 Sly Moo…    178    48 none       pale       white             NA &lt;NA&gt;  &lt;NA&gt;  
+##  5 Tion Me…    206    80 none       grey       black             NA male  mascu…
+##  6 Finn         NA    NA black      dark       dark              NA male  mascu…
+##  7 Rey          NA    NA brown      light      hazel             NA fema… femin…
+##  8 Poe Dam…     NA    NA brown      light      brown             NA male  mascu…
+##  9 BB8          NA    NA none       none       black             NA none  mascu…
+## 10 Captain…     NA    NA none       none       unknown           NA fema… femin…
+## # ℹ 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
+## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="more-dplyr.html#cb469-1" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb469-2"><a href="more-dplyr.html#cb469-2" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">15</span><span class="sc">:</span><span class="dv">35</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 21 × 14
+##    name    height   mass hair_color skin_color eye_color birth_year sex   gender
+##    &lt;chr&gt;    &lt;int&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+##  1 Greedo     173   74   &lt;NA&gt;       green      black           44   male  mascu…
+##  2 Jabba …    175 1358   &lt;NA&gt;       green-tan… orange         600   herm… mascu…
+##  3 Wedge …    170   77   brown      fair       hazel           21   male  mascu…
+##  4 Jek To…    180  110   brown      fair       blue            NA   &lt;NA&gt;  &lt;NA&gt;  
+##  5 Yoda        66   17   white      green      brown          896   male  mascu…
+##  6 Palpat…    170   75   grey       pale       yellow          82   male  mascu…
+##  7 Boba F…    183   78.2 black      fair       brown           31.5 male  mascu…
+##  8 IG-88      200  140   none       metal      red             15   none  mascu…
+##  9 Bossk      190  113   none       green      red             53   male  mascu…
+## 10 Lando …    177   79   black      dark       brown           31   male  mascu…
+## # ℹ 11 more rows
+## # ℹ 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
+## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
+</div>
+<div id="randomly-sample-some-rows-with-sample_n-or-sample_frac" class="section level3 hasAnchor" number="24.0.5">
+<h3><span class="header-section-number">24.0.5</span> Randomly sample some rows with sample_n() or sample_frac()<a href="more-dplyr.html#randomly-sample-some-rows-with-sample_n-or-sample_frac" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sometimes you want a smaller but representative sample of rows,
+which you can get with sample_n() or sample_frac()</p>
+<p>sample_n needs a size (number of rows)</p>
+<p>while sample_frac needs a size between 0 and 1.</p>
+<p>You can also choose to sample with replacement (replace = TRUE)</p>
+<p>Using the chunk below,
+try to</p>
+<ol style="list-style-type: decimal">
+<li>sample 30 records from starwars (without replacement)</li>
+<li>take a 20% random sample (with replacement)</li>
+</ol>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="more-dplyr.html#cb471-1" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb471-2"><a href="more-dplyr.html#cb471-2" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="at">size =</span><span class="dv">30</span>, <span class="at">replace =</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 30 × 14
+##    name     height  mass hair_color skin_color eye_color birth_year sex   gender
+##    &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+##  1 Wilhuff…    180  NA   auburn, g… fair       blue              64 male  mascu…
+##  2 Ackbar      180  83   none       brown mot… orange            41 male  mascu…
+##  3 Luminar…    170  56.2 black      yellow     blue              58 fema… femin…
+##  4 Luminar…    170  56.2 black      yellow     blue              58 fema… femin…
+##  5 Sebulba     112  40   none       grey, red  orange            NA male  mascu…
+##  6 Mas Ame…    196  NA   none       blue       blue              NA male  mascu…
+##  7 Nien Nu…    160  68   none       grey       black             NA male  mascu…
+##  8 Wedge A…    170  77   brown      fair       hazel             21 male  mascu…
+##  9 Kit Fis…    196  87   none       green      black             NA male  mascu…
+## 10 Greedo      173  74   &lt;NA&gt;       green      black             44 male  mascu…
+## # ℹ 20 more rows
+## # ℹ 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
+## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="more-dplyr.html#cb473-1" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span> </span>
+<span id="cb473-2"><a href="more-dplyr.html#cb473-2" tabindex="-1"></a>  <span class="fu">sample_frac</span>(<span class="at">size =</span> <span class="fl">0.2</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 17 × 14
+##    name     height  mass hair_color skin_color eye_color birth_year sex   gender
+##    &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; 
+##  1 Captain…     NA    NA none       none       unknown         NA   fema… femin…
+##  2 Dormé       165    NA brown      light      brown           NA   fema… femin…
+##  3 Sly Moo…    178    48 none       pale       white           NA   &lt;NA&gt;  &lt;NA&gt;  
+##  4 Poggle …    183    80 none       green      yellow          NA   male  mascu…
+##  5 Jar Jar…    196    66 none       orange     orange          52   male  mascu…
+##  6 Dooku       193    80 white      fair       brown          102   male  mascu…
+##  7 Adi Gal…    184    50 none       dark       blue            NA   fema… femin…
+##  8 Cliegg …    183    NA brown      fair       blue            82   male  mascu…
+##  9 Darth V…    202   136 none       white      yellow          41.9 male  mascu…
+## 10 Jocasta…    167    NA white      fair       blue            NA   fema… femin…
+## 11 Ben Qua…    163    65 none       grey, gre… orange          NA   male  mascu…
+## 12 Owen La…    178   120 brown, gr… light      blue            52   male  mascu…
+## 13 Wedge A…    170    77 brown      fair       hazel           21   male  mascu…
+## 14 Padmé A…    185    45 brown      light      brown           46   fema… femin…
+## 15 Yoda         66    17 white      green      brown          896   male  mascu…
+## 16 Finis V…    170    NA blond      fair       blue            91   male  mascu…
+## 17 Barriss…    166    50 black      yellow     blue            40   fema… femin…
+## # ℹ 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,
+## #   vehicles &lt;list&gt;, starships &lt;list&gt;</code></pre>
+<p>but you can also pick which rows with slice()</p>
 
 </div>
 </div>
@@ -1323,8 +1469,8 @@ window.onload = function() {
           </div>
         </div>
       </div>
-<a href="using-the-heemod-package-to-evaluate-markov-models-of-health-economic-strategies.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="using-your-.rprofile-and-.renviron-file-and-rstudio-code-snippets-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="sample-size-calculations-with-pwr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="randomization-for-clinical-trials-with-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

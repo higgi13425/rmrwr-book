@@ -331,6 +331,12 @@ add-anova
 add-linear-model
 add-note-on-guessing-effect-sizes---cohen-small-medium-large
 explore-more
+more-dplyr
+rename
+re-arrange-your-variablescolumns
+find-distinct-rows
+select-a-group-of-rows-with-slice
+randomly-sample-some-rows-with-sample_n-or-sample_frac
 randomization-for-clinical-trials-with-r
 printing-these-on-cards
 now-try-this-yourself
