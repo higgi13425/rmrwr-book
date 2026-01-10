@@ -44,20 +44,20 @@ for each observation, and often one row for each participant.
 
 There are four types of mutating joins:
 
--   **left join** - all variables from the base dataset (x) are
+-   **left join(x,y) ** - all variables from the base dataset (x) are
     retained, and new variables from new dataset (y) that match the
     observations (rows) in dataset x on the key (unique id) variable are
     added.
 
--   **right join** - all variables from the new dataset (y) are
+-   **right join(x,y) ** - all variables from the new dataset (y) are
     retained, and new variables from the base dataset (x) that match the
     observations (rows) in dataset y on the key (unique id) variable are
     added.
 
--   **inner join** - includes all rows in **both** dataset (x) and
+-   **inner join(x,y) ** - includes all rows in **both** dataset (x) and
     dataset (y), requiring matching on the key (unique id) variable.
 
--   **full join** - includes all rows in **either** dataset (x) or
+-   **full join(x,y) ** - includes all rows in **either** dataset (x) or
     dataset (y), matching on the key (unique id) variable when matches
     are present, and filling in NAs in missing columns if no match is
     present.
@@ -66,6 +66,7 @@ There are four types of mutating joins:
 
 To get started, let's download two toy datasets - Copy and run the code
 chunk below to assign these to birthdays and hometowns.
+- Note that you will need to have loaded (library) the tidyverse package to use the pipe.
 
 ```{r}
 birthdays <- read.csv("https://raw.githubusercontent.com/higgi13425/medicaldata/master/data-raw/join_data/birthdays.csv") %>% select(-X)
@@ -74,7 +75,7 @@ hometowns <- read.csv("https://raw.githubusercontent.com/higgi13425/medicaldata/
 ```
 
 The left join is the most common mutating join, as it allows you to
-start with a base dataset and add matching variables from other sources.
+start with a base dataset (x) and add matching variables from other sources (y).
 
 -   **left join** - all variables from the base dataset (x) are
     retained, and new variables from new dataset (y) that match the
@@ -91,7 +92,7 @@ glimpse(hometowns)
 ```
 
 We now have two small datasets, with 3 rows each and 2 variables each.
-Across the toy datasets, data are provided on 4 famous physicians, so
+Across the toy datasets, incomplete data are provided on four famous physicians, so
 that each dataset is missing one physician from the other dataset.
 
 The 3 main arguments of the left_join() function include
@@ -197,6 +198,12 @@ first.
 left_join(x = hometowns2, y = birthdays, by = "name")
 ```
 
+Note that the by variable is not in both datasets, which throws an error. You can fix this in two ways: 
+
+1. Change the variable name in one of the datasets to match the other dataset, then do the join.
+2. Use the `by = c("varname_in_x" = "varname_in_y")` syntax to specify the matching variables in each dataset.
+Try one of these approaches to get the left join to work.
+
 ## Right Join in Action
 
 The animation below illustrates how a right_join works. The colored
@@ -222,14 +229,14 @@ right_join(x = hometowns, y = birthdays)
 ```
 
 This produces a new dataset with 3 columns - name, hometown, and date of
-birth. Notice that this result id **different** from the `left_join`
+birth. Notice that this result is **different** from the `left_join`
 result above. William Osler appears (without a hometown, as he was born
 in the wilds of Ontario), and Hippocrates does not. Which dataset is the
-base dataset affects the result of the join.
+base (x) dataset affects the result of the join.
 
 The `right_join` function figures out which is the key id variable to
 match datasets on its own. You could assign this dataset to a new
-object, and add more data from a 3rd, or even a 4th dataset, as long as
+object, and then stepwise add more data from a 3rd, or even a 4th dataset, as long as
 each has a matching unique key variable.
 
 Most people entirely use *left_join()*, rather than *right_join()*, for
@@ -258,7 +265,7 @@ hometowns2 %>%
 ## Inner Joins
 
 The inner join only keeps observations for which there is a matching
-observation in **both** datasets. Think of the inner_join as the intersection of the two sets.
+observation in **both** datasets. Think of the inner_join as the intersection of the two sets. Rows without matches in both datasets will be dropped. This will result in a smaller dataset, but with more complete data.
 Here is an animation of what this looks like
 
 ![inner join animation by Garrick Aden-Buie from the `tidyexplain`
@@ -295,7 +302,7 @@ The inner_join requires full matches, so only Virchow and Apgar, who appear in b
 
 ## Full Joins
 
-The full (aka outer) join keeps *all* observations for from **both** datasets, whether or not there is a match. Think of the full_join as the union of the two sets.
+The full (aka outer) join keeps *all* observations for from **both** datasets, whether or not there is a match. Think of the full_join as the union of the two sets. This will result in a larger dataset but one with more missing data.
 Here is an animation of what this looks like
 
 ![full join animation by Garrick Aden-Buie from the `tidyexplain`
@@ -328,3 +335,15 @@ full_join(birthdays, hometowns)
 ```
 The full_join does not require matches, so all observations from both datasets, appear in the full_join result. 
 `r unhide()`
+
+## Complicated Situations
+
+### Repeated Variables
+When the same variable name appears in both datasets but is not the key variable, R will append suffixes to the variable names to distinguish them. This can happen when you are joining datasets with similar variables, like height and weight from two different visits. These new variables are named with the original_name.x and original_name.y suffixes. You can change these suffixes with the `suffix` argument in the join function.
+
+### Keeping a limited set of variables
+When you need to bring in a key variable from another dataset, but you don't want to bring in all the other variables. You can use the `select()` function from dplyr to select only the key variable and any other variables you want to bring in from the new dataset before doing the join. This keeps your resulting dataset smaller and more manageable.
+
+### There are Some NAs or NANs in the Key variable for matching
+
+If there are missing values in the key variable, these rows will not match during the join, and will result in NAs in the resulting dataset. You may need to clean or impute these missing values before doing the join to ensure accurate matching.

@@ -679,3 +679,11 @@ setting-action-levels
 try-it-yourself-2
 further-challenges-2
 additional-resources
+bibliography-book.bib-packages.bib
+complicated-situations
+repeated-variables
+keeping-a-limited-set-of-variables
+there-are-some-nas-or-nans-in-the-key-variable-for-matching
+your-turn-to-debug-a-plot
+building-the-pipeline
+conclusion
