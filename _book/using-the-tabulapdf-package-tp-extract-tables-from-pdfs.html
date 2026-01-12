@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2026-01-02" />
+<meta name="date" content="2026-01-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -373,6 +373,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.13" data-path="mutating-joins-to-combine-data-sources.html"><a href="mutating-joins-to-combine-data-sources.html#full-joins"><i class="fa fa-check"></i><b>10.13</b> Full Joins</a></li>
 <li class="chapter" data-level="10.14" data-path="mutating-joins-to-combine-data-sources.html"><a href="mutating-joins-to-combine-data-sources.html#quick-quiz-2"><i class="fa fa-check"></i><b>10.14</b> Quick Quiz</a></li>
 <li class="chapter" data-level="10.15" data-path="mutating-joins-to-combine-data-sources.html"><a href="mutating-joins-to-combine-data-sources.html#now-lets-take-a-look-at-the-result-1"><i class="fa fa-check"></i><b>10.15</b> Now Let’s take a Look at the result</a></li>
+<li class="chapter" data-level="10.16" data-path="mutating-joins-to-combine-data-sources.html"><a href="mutating-joins-to-combine-data-sources.html#complicated-situations"><i class="fa fa-check"></i><b>10.16</b> Complicated Situations</a>
+<ul>
+<li class="chapter" data-level="10.16.1" data-path="mutating-joins-to-combine-data-sources.html"><a href="mutating-joins-to-combine-data-sources.html#repeated-variables"><i class="fa fa-check"></i><b>10.16.1</b> Repeated Variables</a></li>
+<li class="chapter" data-level="10.16.2" data-path="mutating-joins-to-combine-data-sources.html"><a href="mutating-joins-to-combine-data-sources.html#keeping-a-limited-set-of-variables"><i class="fa fa-check"></i><b>10.16.2</b> Keeping a limited set of variables</a></li>
+<li class="chapter" data-level="10.16.3" data-path="mutating-joins-to-combine-data-sources.html"><a href="mutating-joins-to-combine-data-sources.html#there-are-some-nas-or-nans-in-the-key-variable-for-matching"><i class="fa fa-check"></i><b>10.16.3</b> There are Some NAs or NANs in the Key variable for matching</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html"><i class="fa fa-check"></i><b>11</b> Interpreting Error Messages</a>
 <ul>
@@ -1260,23 +1266,23 @@ Copy and run the code below in your local R session. Review each line to make su
 <span id="cb1011-8"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1011-8" tabindex="-1"></a></span>
 <span id="cb1011-9"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1011-9" tabindex="-1"></a>pay_more <span class="sc">|&gt;</span></span>
 <span id="cb1011-10"><a href="using-the-tabulapdf-package-tp-extract-tables-from-pdfs.html#cb1011-10" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">gt</span>()</span></code></pre></div>
-<div id="wdpleehmoo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wdpleehmoo table {
+<div id="uanidqfqks" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#uanidqfqks table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wdpleehmoo thead, #wdpleehmoo tbody, #wdpleehmoo tfoot, #wdpleehmoo tr, #wdpleehmoo td, #wdpleehmoo th {
+#uanidqfqks thead, #uanidqfqks tbody, #uanidqfqks tfoot, #uanidqfqks tr, #uanidqfqks td, #uanidqfqks th {
   border-style: none;
 }
 
-#wdpleehmoo p {
+#uanidqfqks p {
   margin: 0;
   padding: 0;
 }
 
-#wdpleehmoo .gt_table {
+#uanidqfqks .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1302,12 +1308,12 @@ Copy and run the code below in your local R session. Review each line to make su
   border-left-color: #D3D3D3;
 }
 
-#wdpleehmoo .gt_caption {
+#uanidqfqks .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wdpleehmoo .gt_title {
+#uanidqfqks .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1319,7 +1325,7 @@ Copy and run the code below in your local R session. Review each line to make su
   border-bottom-width: 0;
 }
 
-#wdpleehmoo .gt_subtitle {
+#uanidqfqks .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1331,7 +1337,7 @@ Copy and run the code below in your local R session. Review each line to make su
   border-top-width: 0;
 }
 
-#wdpleehmoo .gt_heading {
+#uanidqfqks .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1343,13 +1349,13 @@ Copy and run the code below in your local R session. Review each line to make su
   border-right-color: #D3D3D3;
 }
 
-#wdpleehmoo .gt_bottom_border {
+#uanidqfqks .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wdpleehmoo .gt_col_headings {
+#uanidqfqks .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1364,7 +1370,7 @@ Copy and run the code below in your local R session. Review each line to make su
   border-right-color: #D3D3D3;
 }
 
-#wdpleehmoo .gt_col_heading {
+#uanidqfqks .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1384,7 +1390,7 @@ Copy and run the code below in your local R session. Review each line to make su
   overflow-x: hidden;
 }
 
-#wdpleehmoo .gt_column_spanner_outer {
+#uanidqfqks .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1396,15 +1402,15 @@ Copy and run the code below in your local R session. Review each line to make su
   padding-right: 4px;
 }
 
-#wdpleehmoo .gt_column_spanner_outer:first-child {
+#uanidqfqks .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wdpleehmoo .gt_column_spanner_outer:last-child {
+#uanidqfqks .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wdpleehmoo .gt_column_spanner {
+#uanidqfqks .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1416,11 +1422,11 @@ Copy and run the code below in your local R session. Review each line to make su
   width: 100%;
 }
 
-#wdpleehmoo .gt_spanner_row {
+#uanidqfqks .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wdpleehmoo .gt_group_heading {
+#uanidqfqks .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1446,7 +1452,7 @@ Copy and run the code below in your local R session. Review each line to make su
   text-align: left;
 }
 
-#wdpleehmoo .gt_empty_group_heading {
+#uanidqfqks .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1461,15 +1467,15 @@ Copy and run the code below in your local R session. Review each line to make su
   vertical-align: middle;
 }
 
-#wdpleehmoo .gt_from_md > :first-child {
+#uanidqfqks .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wdpleehmoo .gt_from_md > :last-child {
+#uanidqfqks .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wdpleehmoo .gt_row {
+#uanidqfqks .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1488,7 +1494,7 @@ Copy and run the code below in your local R session. Review each line to make su
   overflow-x: hidden;
 }
 
-#wdpleehmoo .gt_stub {
+#uanidqfqks .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1501,7 +1507,7 @@ Copy and run the code below in your local R session. Review each line to make su
   padding-right: 5px;
 }
 
-#wdpleehmoo .gt_stub_row_group {
+#uanidqfqks .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1515,15 +1521,15 @@ Copy and run the code below in your local R session. Review each line to make su
   vertical-align: top;
 }
 
-#wdpleehmoo .gt_row_group_first td {
+#uanidqfqks .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wdpleehmoo .gt_row_group_first th {
+#uanidqfqks .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wdpleehmoo .gt_summary_row {
+#uanidqfqks .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1533,16 +1539,16 @@ Copy and run the code below in your local R session. Review each line to make su
   padding-right: 5px;
 }
 
-#wdpleehmoo .gt_first_summary_row {
+#uanidqfqks .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wdpleehmoo .gt_first_summary_row.thick {
+#uanidqfqks .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wdpleehmoo .gt_last_summary_row {
+#uanidqfqks .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1552,7 +1558,7 @@ Copy and run the code below in your local R session. Review each line to make su
   border-bottom-color: #D3D3D3;
 }
 
-#wdpleehmoo .gt_grand_summary_row {
+#uanidqfqks .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1562,7 +1568,7 @@ Copy and run the code below in your local R session. Review each line to make su
   padding-right: 5px;
 }
 
-#wdpleehmoo .gt_first_grand_summary_row {
+#uanidqfqks .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1572,7 +1578,7 @@ Copy and run the code below in your local R session. Review each line to make su
   border-top-color: #D3D3D3;
 }
 
-#wdpleehmoo .gt_last_grand_summary_row_top {
+#uanidqfqks .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1582,11 +1588,11 @@ Copy and run the code below in your local R session. Review each line to make su
   border-bottom-color: #D3D3D3;
 }
 
-#wdpleehmoo .gt_striped {
+#uanidqfqks .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wdpleehmoo .gt_table_body {
+#uanidqfqks .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1595,7 +1601,7 @@ Copy and run the code below in your local R session. Review each line to make su
   border-bottom-color: #D3D3D3;
 }
 
-#wdpleehmoo .gt_footnotes {
+#uanidqfqks .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1609,7 +1615,7 @@ Copy and run the code below in your local R session. Review each line to make su
   border-right-color: #D3D3D3;
 }
 
-#wdpleehmoo .gt_footnote {
+#uanidqfqks .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1618,7 +1624,7 @@ Copy and run the code below in your local R session. Review each line to make su
   padding-right: 5px;
 }
 
-#wdpleehmoo .gt_sourcenotes {
+#uanidqfqks .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1632,7 +1638,7 @@ Copy and run the code below in your local R session. Review each line to make su
   border-right-color: #D3D3D3;
 }
 
-#wdpleehmoo .gt_sourcenote {
+#uanidqfqks .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1640,72 +1646,72 @@ Copy and run the code below in your local R session. Review each line to make su
   padding-right: 5px;
 }
 
-#wdpleehmoo .gt_left {
+#uanidqfqks .gt_left {
   text-align: left;
 }
 
-#wdpleehmoo .gt_center {
+#uanidqfqks .gt_center {
   text-align: center;
 }
 
-#wdpleehmoo .gt_right {
+#uanidqfqks .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wdpleehmoo .gt_font_normal {
+#uanidqfqks .gt_font_normal {
   font-weight: normal;
 }
 
-#wdpleehmoo .gt_font_bold {
+#uanidqfqks .gt_font_bold {
   font-weight: bold;
 }
 
-#wdpleehmoo .gt_font_italic {
+#uanidqfqks .gt_font_italic {
   font-style: italic;
 }
 
-#wdpleehmoo .gt_super {
+#uanidqfqks .gt_super {
   font-size: 65%;
 }
 
-#wdpleehmoo .gt_footnote_marks {
+#uanidqfqks .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wdpleehmoo .gt_asterisk {
+#uanidqfqks .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wdpleehmoo .gt_indent_1 {
+#uanidqfqks .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wdpleehmoo .gt_indent_2 {
+#uanidqfqks .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wdpleehmoo .gt_indent_3 {
+#uanidqfqks .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wdpleehmoo .gt_indent_4 {
+#uanidqfqks .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wdpleehmoo .gt_indent_5 {
+#uanidqfqks .gt_indent_5 {
   text-indent: 25px;
 }
 
-#wdpleehmoo .katex-display {
+#uanidqfqks .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#wdpleehmoo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#uanidqfqks div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>

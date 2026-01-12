@@ -158,6 +158,10 @@ now-lets-take-a-look-at-the-result
 full-joins
 quick-quiz-2
 now-lets-take-a-look-at-the-result-1
+complicated-situations
+repeated-variables
+keeping-a-limited-set-of-variables
+there-are-some-nas-or-nans-in-the-key-variable-for-matching
 interpreting-error-messages
 the-common-errors-table
 examples-of-common-errors-and-how-to-fix-them
@@ -679,11 +683,3 @@ setting-action-levels
 try-it-yourself-2
 further-challenges-2
 additional-resources
-bibliography-book.bib-packages.bib
-complicated-situations
-repeated-variables
-keeping-a-limited-set-of-variables
-there-are-some-nas-or-nans-in-the-key-variable-for-matching
-your-turn-to-debug-a-plot
-building-the-pipeline
-conclusion

@@ -76,7 +76,7 @@ whoami;date
 
 ```
 ## peterhiggins
-## Fri Jan  2 16:39:26 EST 2026
+## Sat Jan 10 14:22:46 EST 2026
 ```
 :::
 
@@ -805,6 +805,7 @@ ls
 ## wga_min20.pdf
 ## Why not excel.docx
 ## Xmas letter 2025.docx
+## Xmas list 2025.xlsx
 ## Zoom
 ## Zwift
 ## zwift_training_pacepartner.xlsx

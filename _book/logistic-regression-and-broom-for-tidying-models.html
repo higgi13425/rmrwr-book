@@ -23,7 +23,7 @@
 <meta name="author" content="Peter D.R. Higgins, MD, PhD, MSc" />
 
 
-<meta name="date" content="2026-01-02" />
+<meta name="date" content="2026-01-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -373,6 +373,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.13" data-path="mutating-joins-to-combine-data-sources.html"><a href="mutating-joins-to-combine-data-sources.html#full-joins"><i class="fa fa-check"></i><b>10.13</b> Full Joins</a></li>
 <li class="chapter" data-level="10.14" data-path="mutating-joins-to-combine-data-sources.html"><a href="mutating-joins-to-combine-data-sources.html#quick-quiz-2"><i class="fa fa-check"></i><b>10.14</b> Quick Quiz</a></li>
 <li class="chapter" data-level="10.15" data-path="mutating-joins-to-combine-data-sources.html"><a href="mutating-joins-to-combine-data-sources.html#now-lets-take-a-look-at-the-result-1"><i class="fa fa-check"></i><b>10.15</b> Now Let’s take a Look at the result</a></li>
+<li class="chapter" data-level="10.16" data-path="mutating-joins-to-combine-data-sources.html"><a href="mutating-joins-to-combine-data-sources.html#complicated-situations"><i class="fa fa-check"></i><b>10.16</b> Complicated Situations</a>
+<ul>
+<li class="chapter" data-level="10.16.1" data-path="mutating-joins-to-combine-data-sources.html"><a href="mutating-joins-to-combine-data-sources.html#repeated-variables"><i class="fa fa-check"></i><b>10.16.1</b> Repeated Variables</a></li>
+<li class="chapter" data-level="10.16.2" data-path="mutating-joins-to-combine-data-sources.html"><a href="mutating-joins-to-combine-data-sources.html#keeping-a-limited-set-of-variables"><i class="fa fa-check"></i><b>10.16.2</b> Keeping a limited set of variables</a></li>
+<li class="chapter" data-level="10.16.3" data-path="mutating-joins-to-combine-data-sources.html"><a href="mutating-joins-to-combine-data-sources.html#there-are-some-nas-or-nans-in-the-key-variable-for-matching"><i class="fa fa-check"></i><b>10.16.3</b> There are Some NAs or NANs in the Key variable for matching</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="interpreting-error-messages.html"><a href="interpreting-error-messages.html"><i class="fa fa-check"></i><b>11</b> Interpreting Error Messages</a>
 <ul>
@@ -1312,7 +1318,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>You can even make predictions on new data (in this case, a random 3% sample of the original dataset)</p>
 <div class="sourceCode" id="cb736"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb736-1"><a href="logistic-regression-and-broom-for-tidying-models.html#cb736-1" tabindex="-1"></a><span class="fu">predict</span>(model, <span class="at">newdata =</span> <span class="fu">slice_sample</span>(prostate, <span class="at">prop =</span> <span class="fl">0.03</span>), <span class="at">type =</span> <span class="st">&quot;response&quot;</span>) </span></code></pre></div>
 <pre><code>##          1          2          3          4          5          6          7 
-## 0.09409879 0.09409879 0.09409879 0.09409879 0.09409879 0.09409879 0.12143477 
+## 0.09409879 0.25338133 0.09409879 0.09409879 0.25338133 0.25338133 0.31109891 
 ##          8          9 
 ## 0.25338133 0.09409879</code></pre>
 <p>Let’s see how this works with another dataset, from which we will use predictors to classify diabetes cases. We will start by loading the data into dm_data, and building an “all predictors” model, by specifying the formula predictors as “.” - this means to use all other variables (except the outcome variable) as predictors. Look at the model output for problems.</p>

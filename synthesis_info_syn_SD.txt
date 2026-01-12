@@ -1,4 +1,4 @@
-Date saved: 02 Jan 2026, 16:39 
+Date saved: 10 Jan 2026, 14:22 
 Data frame with original data: mydata 
 Number of synthetic data sets: 1 
 Output file(s):(csv) syn_SD.csv
